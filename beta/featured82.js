@@ -8,7 +8,7 @@
  panel.insertAdjacentHTML('beforeend',`<aside id="featured-weave" aria-label="Featured theme-weaving">
   <p class="fw-eyebrow">Theme-weaving</p>
   <h2>Constellations of Indigenous Cinema</h2>
-  <ul><li><i style="--dye:#ebc867"></i>Story-making</li><li><i style="--dye:#7f95f5"></i>Remembrance</li><li><i style="--dye:#d8475e"></i>Land defense</li></ul>
+  <ul><li><i style="--dye:#ffd35c"></i>Story-making</li><li><i style="--dye:#8fb4ff"></i>Remembrance</li><li><i style="--dye:#ff6f5a"></i>Land defense</li></ul>
   <p class="fw-actions"><a class="fw-play" href="${href('play')}">Play the weave <span aria-hidden="true">▸</span></a><a href="${href('read')}">Read it</a><a href="about.html">About</a></p>
   <button class="fw-close" aria-label="Hide">×</button></aside>`);
  const card=document.querySelector('#featured-weave');
