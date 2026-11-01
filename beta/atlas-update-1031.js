@@ -42,6 +42,8 @@ window.AtlasUpdate1031=(()=>{
    if(p.filmYears)for(const f of r.films){for(const [t,y] of Object.entries(p.filmYears))if(norm(f.title).startsWith(norm(t))&&!f.year)f.year=y;}
    if(p.note)r.auditNote=[r.auditNote,p.note].filter(Boolean).join(' ');
    stats.patched++;}
+  // Beta 95: spelling-variant duplicates fold into the earlier record and leave the list.
+  for(const m of (d.folds||[])){const into=byId.get(m.into),from=byId.get(m.from);if(!into||!from)continue;addSources(into,from.sources);addAliases(into,[from.name,...(from.aliases||[])]);into.mergedFrom=[...(into.mergedFrom||[]),{id:m.from,why:m.why,on:'2026-11-01'}];const k=records.indexOf(from);if(k>=0)records.splice(k,1);byId.delete(m.from);stats.merged++;}
   for(const r of records)if(r.country==='GRL')r.countryName=names.get('GRL')||'Kalaallit Nunaat / Greenland';
   return stats;
  }
