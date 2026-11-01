@@ -115,3 +115,4 @@ body.selection-held #index #selection-summary>button{flex:none;white-space:nowra
 .weave-dots i{width:6px;height:6px;border-radius:50%;background:currentColor;opacity:.28}
 .weave-dots i.past{opacity:.55}
 .weave-dots i.on{opacity:1;transform:scale(1.5);box-shadow:0 0 6px currentColor}
+#index .suggest-fix{display:inline-block;margin:18px 0 6px;font-size:13px;color:var(--reading-accent);border-bottom:1px solid var(--reading-line);text-decoration:none}
