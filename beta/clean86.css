@@ -79,3 +79,14 @@ header .brand-camera{display:none!important}
 .map-panel .map-actions>details>summary,.map-panel .map-actions>button{padding:5px 10px;border-radius:999px}
 .map-panel .map-actions>details>summary:hover,.map-panel .map-actions>button:hover{background:rgba(122,93,22,.08)}
 :root[data-reading-theme="night"] .map-panel .map-actions{background:rgba(14,23,41,.82);border-color:rgba(233,217,173,.22);box-shadow:0 4px 18px rgba(0,0,0,.3)}
+
+/* Beta 93: small streamlines */
+@media (min-width:681px){header #atlas-browse{display:none!important}}
+#view-forward:disabled{visibility:hidden}
+.map-panel .zoom button:focus-visible{outline:2px solid var(--reading-accent,#7a5d16);outline-offset:-2px}
+#weave-notice{top:112px!important;bottom:auto!important;left:50%!important;right:auto!important;transform:translateX(-50%);max-width:min(440px,calc(100% - 32px))}
+#constellate-graph .constellate-edge-label{opacity:0;transition:opacity .15s ease}
+#constellate-graph g:hover>.constellate-edge-label,#constellate-graph g:focus>.constellate-edge-label{opacity:1}
+@media (max-width:680px){.atlas-ledger{display:flex!important;gap:10px!important;margin:4px 0 0!important;padding:0!important;font-size:9.5px!important}.atlas-ledger b{font-size:15px!important}.atlas-ledger span+span{padding-left:10px!important}.atlas-ledger .ledger-countries{display:flex!important}}
+#constellate-new{white-space:nowrap}
+body.is-theme-weaving .map-panel .map-actions{display:none}

@@ -28,3 +28,8 @@
   closeDock();},true);
  document.addEventListener('keydown',e=>{if(e.key!=='Escape'||document.body.classList.contains('is-theme-weaving'))return;closePeek();closeDock();});
 })();
+// Clearer map tool names, and S opens a surprise.
+(function names(){const c=document.querySelector('#country-drawer>summary'),w=document.querySelector('#world');if(!c||!w)return setTimeout(names,800);
+ for(const n of c.childNodes)if(n.nodeType===3&&/Country totals/.test(n.textContent))n.textContent=n.textContent.replace('Country totals','Countries');
+ const fix=()=>{if(/^World$/.test(w.textContent.trim()))w.textContent='Whole world';};fix();new MutationObserver(fix).observe(w,{childList:true,characterData:true,subtree:true});})();
+document.addEventListener('keydown',e=>{if(e.key!=='s'&&e.key!=='S')return;if(e.metaKey||e.ctrlKey||e.altKey)return;const t=e.target;if(t.closest?.('input,textarea,select,[contenteditable="true"]'))return;if(document.body.classList.contains('is-theme-weaving'))return;const b=document.querySelector('#random-entry');if(b&&!b.disabled){e.preventDefault();b.click();}});
