@@ -37,3 +37,8 @@
 document.addEventListener('keydown',e=>{if(e.key!=='s'&&e.key!=='S')return;if(e.metaKey||e.ctrlKey||e.altKey)return;const t=e.target;if(t.closest?.('input,textarea,select,[contenteditable="true"]'))return;if(document.body.classList.contains('is-theme-weaving'))return;const b=document.querySelector('#random-entry');if(b&&!b.disabled){e.preventDefault();b.click();}});
 // Map tool menus (Countries, Layers, Map key) close when you click elsewhere.
 document.addEventListener('pointerdown',e=>{for(const d of document.querySelectorAll('.map-actions details[open]'))if(!d.contains(e.target))d.open=false;},true);
+// The weave player shows its place as a row of small stars.
+(function dots(){const prog=document.querySelector('#weave-play-progress');if(!prog)return setTimeout(dots,800);
+ const row=document.createElement('span');row.className='weave-dots';row.setAttribute('aria-hidden','true');prog.after(row);
+ const draw=()=>{const m=prog.textContent.match(/(\d+)\s*\/\s*(\d+)/);if(!m){row.innerHTML='';return;}const i=+m[1],n=Math.min(+m[2],24);row.innerHTML=Array.from({length:n},(_,k)=>`<i class="${k+1===i?'on':k+1<i?'past':''}"></i>`).join('');};
+ new MutationObserver(draw).observe(prog,{childList:true,characterData:true,subtree:true});draw();})();
