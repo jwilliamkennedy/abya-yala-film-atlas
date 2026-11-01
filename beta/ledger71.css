@@ -23,7 +23,7 @@ g.land-thumb:is(.awake,.selected) .land-thumb-ring{stroke-width:1.8;stroke-opaci
 @media(prefers-reduced-motion:reduce){g.land-thumb image,g.land-thumb image.duo{animation:none;transition:none}}
 
 /* Quieter basemap (beta 79): relief and Native land stay, colour steps back. */
-:root body #atlas .natural-earth-image{filter:saturate(.72) brightness(.97) contrast(1.02)!important}
+:root body #atlas .natural-earth-image{filter:sepia(.1) saturate(.76) brightness(.98) contrast(1.02)!important}
 :root body #atlas .land-shading .nation-wash{fill-opacity:.2}
 
 /* Type pass (beta 72): Bodoni Moda for land names and titles, Karla for the interface. */

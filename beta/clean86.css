@@ -1,0 +1,29 @@
+/* Beta 86: a calmer selection panel, a leaner Constellate bar, and an About link. */
+
+/* Selection panel: while a filmmaker, film or land is held, the list tools step back. */
+body.selection-held #index .search-row,
+body.selection-held #index #toggle-filters,
+body.selection-held #index #toggle-recent,
+body.selection-held #index #toggle-saved,
+body.selection-held #index .dossier-topline{display:none!important}
+body.selection-held #index .index-control-row{justify-content:flex-end;min-height:0;padding-top:0;padding-bottom:2px}
+body.selection-held #index #selection-tools{margin-left:auto}
+#index .profile-pager.is-single{display:none!important}
+/* "Add to thread" becomes a quiet action instead of a full-width box */
+#index .entry-detail .collect-current{display:inline-flex!important;width:auto!important;min-height:0!important;margin:2px 0 12px!important;padding:4px 0!important;background:none!important;border:0!important;border-bottom:1px solid rgba(233,217,173,.35)!important;border-radius:0!important;font:600 13px/1.3 'Atlas Sans',system-ui,sans-serif!important;letter-spacing:.02em;color:#e9d9ad!important;box-shadow:none!important}
+#index .entry-detail .collect-current:hover,#index .entry-detail .collect-current:focus-visible{border-bottom-color:#e9d9ad!important}
+:root[data-reading-theme="light"] #index .entry-detail .collect-current{color:#7a5d16!important;border-bottom-color:rgba(122,93,22,.35)!important}
+
+/* Constellate bar: compact controls; Clear and Exit sit apart at the end */
+#constellate-mode #constellate-undo,#constellate-mode #constellate-redo{min-width:30px;padding-left:6px;padding-right:6px;font-size:17px!important;line-height:1}
+#constellate-mode #constellate-clear{margin-left:auto}
+#constellate-mode #constellate-clear,#constellate-mode #constellate-exit{color:#f1c9a2}
+#constellate-popup .weave-discard{display:block;margin:12px 0 2px;padding:4px 0;background:none;border:0;border-bottom:1px solid rgba(216,71,94,.45);color:#ec8f9c;font:600 13px/1.3 'Atlas Sans',system-ui,sans-serif;cursor:pointer}
+#constellate-popup .weave-discard:hover,#constellate-popup .weave-discard:focus-visible{border-bottom-color:#ec8f9c}
+
+/* About in the main navigation */
+header nav.primary .about-link{color:inherit;text-decoration:none;opacity:.86}
+header nav.primary .about-link:hover,header nav.primary .about-link:focus-visible{opacity:1}
+body.selection-held #index #section-label{display:none!important}
+/* On a phone the featured weave is a slim line, so the map stays visible */
+@media (max-width:680px){#featured-weave{padding:10px 12px 9px;width:calc(100% - 24px)}#featured-weave ul,#featured-weave .fw-eyebrow{display:none}#featured-weave h2{font-size:17px;margin:0 22px 6px 0}}
