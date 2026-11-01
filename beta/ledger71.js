@@ -34,7 +34,7 @@
  function decorate(){
   const k=zoomK(),placed=[],labels=new Map();
   const tf=g=>{const m=(g.getAttribute('transform')||'').match(/translate\(([-\d.]+)[ ,]+([-\d.]+)/);return m?[+m[1],+m[2]]:[0,0];};
-  document.querySelectorAll('g.land-word').forEach(g=>{try{const b=g.querySelector('.land-word-label').getBBox(),[gx,gy]=tf(g);labels.set(g,{x:gx+b.x-4,y:gy+b.y-2,w:b.width+8,h:b.height+4});}catch{}});
+  document.querySelectorAll('g.land-word').forEach(g=>{if(+(g.style.opacity||1)<.35)return;try{const b=g.querySelector('.land-word-label').getBBox(),[gx,gy]=tf(g);labels.set(g,{x:gx+b.x-4,y:gy+b.y-2,w:b.width+8,h:b.height+4});}catch{}});
   const hits=(box,self)=>placed.some(b=>box.x<b.x+b.w&&box.x+box.w>b.x&&box.y<b.y+b.h&&box.y+box.h>b.y)||[...labels].some(([g,b])=>g!==self&&box.x<b.x+b.w&&box.x+box.w>b.x&&box.y<b.y+b.h&&box.y+box.h>b.y);
   document.querySelectorAll('g.land-word').forEach(g=>{
    const d=g.__data__;if(!d||!d.id)return;
@@ -50,7 +50,7 @@
    try{const bb=g.querySelector('.land-word-label').getBBox(),dot=g.querySelector('.land-reference-dot'),left=Math.min(bb.x,dot?+dot.getAttribute('cx')-4:bb.x);
     // try: above the name (large), left of the name, then left at base size
     const tries=[];if(size>48)tries.push([size,bb.x+Math.min(bb.width,160)*.18-size/2,bb.y-size-4]);
-    tries.push([size,left-7-size,bb.y+bb.height/2-size/2]);const s0=Math.round(base);if(s0<size)tries.push([s0,left-7-s0,bb.y+bb.height/2-s0/2]);
+    tries.push([size,left-7-size,bb.y+bb.height/2-size/2]);const s0=Math.round(base);if(s0<size)tries.push([s0,left-7-s0,bb.y+bb.height/2-s0/2]);tries.push([s0,bb.x+bb.width+8,bb.y+bb.height/2-s0/2]);const s1=Math.max(20,Math.round(s0*.75));tries.push([s1,left-6-s1,bb.y+bb.height/2-s1/2]);
     for(const [sz,tx,ty] of tries){const box={x:gx+tx-3,y:gy+ty-3,w:sz+6,h:sz+6};if(!hits(box,g)){size=sz;x=tx;y=ty;placed.push(box);ok=true;break;}}
    }catch{}
    if(!ok){if(t)t.remove();return;}
