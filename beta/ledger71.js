@@ -32,19 +32,22 @@
  const NS='http://www.w3.org/2000/svg';
  function ensureClip(svg){if(svg.querySelector('#land-thumb-clip'))return;const defs=svg.querySelector('defs')||svg.insertBefore(document.createElementNS(NS,'defs'),svg.firstChild);defs.insertAdjacentHTML('beforeend','<clipPath id="land-thumb-clip" clipPathUnits="objectBoundingBox"><circle cx=".5" cy=".5" r=".5"/></clipPath><radialGradient id="land-thumb-glow"><stop offset="55%" stop-color="#f3dfa6" stop-opacity=".45"/><stop offset="100%" stop-color="#f3dfa6" stop-opacity="0"/></radialGradient>');}
  function decorate(){
+  const k=zoomK();
   document.querySelectorAll('g.land-word').forEach(g=>{
    const d=g.__data__;if(!d||!d.id)return;
-   const big=(d.voice&&d.voice.map>=20)||(d.voice&&d.voice.count>=5);
+   const map=d.voice?.map||12,count=d.voice?.count||0,major=map>=20||count>=5;
+   // More lands earn a circle as you zoom in: major lands always, then any land with two filmmakers, then every land with a film image.
+   const big=major||(k>=1.6&&(count>=2||map>=18))||(k>=3&&count>=1);
    let t=g.querySelector(':scope > g.land-thumb');
    if(!big){if(t)t.remove();return;}
    const c=imageFor(d.id);if(!c){if(t)t.remove();return;}
-   const size=Math.round(Math.min(44,Math.max(30,(d.voice.map||20)*1.35))),lines=(d.lines&&d.lines.length)||1;
+   const size=major?Math.round(Math.min(44,Math.max(30,map*1.35))):Math.round(Math.min(30,Math.max(22,map*1.25))),lines=(d.lines&&d.lines.length)||1;
    const x=-(d.labelWidth||80)/2-14-size,y=-(d.voice.map||20)*(lines-.15)/2-size/2+2;
    if(!t){ensureClip(g.ownerSVGElement);t=document.createElementNS(NS,'g');t.setAttribute('class','land-thumb');t.setAttribute('aria-hidden','true');
     t.innerHTML=`<circle class="land-thumb-halo"/><image preserveAspectRatio="xMidYMid slice" clip-path="url(#land-thumb-clip)"/><circle class="land-thumb-ring"/><title></title>`;
     g.insertBefore(t,g.firstChild);
     const img=t.querySelector('image');img.addEventListener('error',()=>{dark.add(img.getAttribute('href'));if(!repick(d.id))t.remove();schedule();});img.addEventListener('load',()=>{const src=img.getAttribute('href');checkDark(src,()=>{dark.add(src);if(repick(d.id))schedule();});});}
-   const img=t.querySelector('image');if(img.getAttribute('href')!==c.src)img.setAttribute('href',c.src);
+   const img=t.querySelector('image');if(img.getAttribute('href')!==c.src){img.setAttribute('href',c.src);img.style.animation='none';void img.getBoundingClientRect();img.style.animation='';}
    img.setAttribute('x',x);img.setAttribute('y',y);img.setAttribute('width',size);img.setAttribute('height',size);
    const cx=x+size/2,cy=y+size/2;
    const halo=t.querySelector('.land-thumb-halo');halo.setAttribute('cx',cx);halo.setAttribute('cy',cy);halo.setAttribute('r',size*.78);halo.setAttribute('fill','url(#land-thumb-glow)');
@@ -52,7 +55,11 @@
    t.querySelector('title').textContent=c.title+' · '+c.maker;
   });
  }
- let queued=false;const schedule=()=>{if(queued)return;queued=true;requestAnimationFrame(()=>{queued=false;decorate();});};
+ function zoomK(){try{return A.captureState().zoom||1;}catch{return 1;}}
+ // Each new zoom level reshuffles the images, so the map shows different films every time.
+ let lastK=zoomK(),settle=null;
+ function watchZoom(){const k=zoomK();if(Math.abs(Math.log(k/lastK))<Math.log(1.25))return;clearTimeout(settle);settle=setTimeout(()=>{lastK=zoomK();pick.clear();schedule();},380);}
+ let queued=false;const schedule=()=>{if(queued)return;queued=true;requestAnimationFrame(()=>{queued=false;watchZoom();decorate();});};
  const host=document.querySelector('#atlas')||document.querySelector('.map-panel');
  if(host)new MutationObserver(muts=>{if(muts.some(m=>[...m.addedNodes,...m.removedNodes].some(n=>n.nodeType===1&&!n.classList?.contains('land-thumb')&&!n.closest?.('.land-thumb')))||muts.some(m=>m.type==='attributes'&&m.target.classList?.contains('land-word')))schedule();}).observe(host,{subtree:true,childList:true,attributes:true,attributeFilter:['transform']});
  decorate();
