@@ -32,7 +32,10 @@
  const NS='http://www.w3.org/2000/svg';
  function ensureClip(svg){if(svg.querySelector('#land-thumb-clip'))return;const defs=svg.querySelector('defs')||svg.insertBefore(document.createElementNS(NS,'defs'),svg.firstChild);defs.insertAdjacentHTML('beforeend','<clipPath id="land-thumb-clip" clipPathUnits="objectBoundingBox"><circle cx=".5" cy=".5" r=".5"/></clipPath><radialGradient id="land-thumb-glow"><stop offset="55%" stop-color="#f3dfa6" stop-opacity=".45"/><stop offset="100%" stop-color="#f3dfa6" stop-opacity="0"/></radialGradient>');}
  function decorate(){
-  const k=zoomK();
+  const k=zoomK(),placed=[],labels=new Map();
+  const tf=g=>{const m=(g.getAttribute('transform')||'').match(/translate\(([-\d.]+)[ ,]+([-\d.]+)/);return m?[+m[1],+m[2]]:[0,0];};
+  document.querySelectorAll('g.land-word').forEach(g=>{try{const b=g.querySelector('.land-word-label').getBBox(),[gx,gy]=tf(g);labels.set(g,{x:gx+b.x-4,y:gy+b.y-2,w:b.width+8,h:b.height+4});}catch{}});
+  const hits=(box,self)=>placed.some(b=>box.x<b.x+b.w&&box.x+box.w>b.x&&box.y<b.y+b.h&&box.y+box.h>b.y)||[...labels].some(([g,b])=>g!==self&&box.x<b.x+b.w&&box.x+box.w>b.x&&box.y<b.y+b.h&&box.y+box.h>b.y);
   document.querySelectorAll('g.land-word').forEach(g=>{
    const d=g.__data__;if(!d||!d.id)return;
    const map=d.voice?.map||12,count=d.voice?.count||0,major=map>=20||count>=5;
@@ -41,8 +44,16 @@
    let t=g.querySelector(':scope > g.land-thumb');
    if(!big){if(t)t.remove();return;}
    const c=imageFor(d.id);if(!c){if(t)t.remove();return;}
-   const size=major?Math.round(Math.min(44,Math.max(30,map*1.35))):Math.round(Math.min(30,Math.max(22,map*1.25))),lines=(d.lines&&d.lines.length)||1;
-   let x=-(d.labelWidth||80)/2-14-size,y=-(d.voice.map||20)*(lines-.15)/2-size/2+2;try{const bb=g.querySelector('.land-word-label').getBBox(),dot=g.querySelector('.land-reference-dot'),left=Math.min(bb.x,dot?+dot.getAttribute('cx')-4:bb.x);if(bb.width){x=left-7-size;y=bb.y+bb.height/2-size/2;}}catch{}
+   let base=major?Math.min(44,Math.max(30,map*1.35)):Math.min(30,Math.max(22,map*1.25));let size=Math.round(Math.min(major?78:52,base*Math.pow(Math.max(1,k),.42))),lines=(d.lines&&d.lines.length)||1;
+   let x=-(d.labelWidth||80)/2-14-size,y=-(d.voice.map||20)*(lines-.15)/2-size/2+2,ok=false;
+   const [gx,gy]=tf(g);
+   try{const bb=g.querySelector('.land-word-label').getBBox(),dot=g.querySelector('.land-reference-dot'),left=Math.min(bb.x,dot?+dot.getAttribute('cx')-4:bb.x);
+    // try: above the name (large), left of the name, then left at base size
+    const tries=[];if(size>48)tries.push([size,bb.x+Math.min(bb.width,160)*.18-size/2,bb.y-size-4]);
+    tries.push([size,left-7-size,bb.y+bb.height/2-size/2]);const s0=Math.round(base);if(s0<size)tries.push([s0,left-7-s0,bb.y+bb.height/2-s0/2]);
+    for(const [sz,tx,ty] of tries){const box={x:gx+tx-3,y:gy+ty-3,w:sz+6,h:sz+6};if(!hits(box,g)){size=sz;x=tx;y=ty;placed.push(box);ok=true;break;}}
+   }catch{}
+   if(!ok){if(t)t.remove();return;}
    if(!t){ensureClip(g.ownerSVGElement);t=document.createElementNS(NS,'g');t.setAttribute('class','land-thumb');t.setAttribute('aria-hidden','true');
     t.innerHTML=`<circle class="land-thumb-halo"/><image preserveAspectRatio="xMidYMid slice" clip-path="url(#land-thumb-clip)"/><circle class="land-thumb-ring"/><title></title>`;
     g.insertBefore(t,g.firstChild);
@@ -53,6 +64,7 @@
    const halo=t.querySelector('.land-thumb-halo');halo.setAttribute('cx',cx);halo.setAttribute('cy',cy);halo.setAttribute('r',size*.78);halo.setAttribute('fill','url(#land-thumb-glow)');
    const ring=t.querySelector('.land-thumb-ring');ring.setAttribute('cx',cx);ring.setAttribute('cy',cy);ring.setAttribute('r',size/2);
    t.querySelector('title').textContent=c.title+' · '+c.maker;
+   t.querySelector('.land-thumb-cap')?.remove();
   });
  }
  function zoomK(){try{return A.captureState().zoom||1;}catch{return 1;}}

@@ -21,3 +21,5 @@ g.land-word:is(:hover,:focus-visible) g.land-thumb .land-thumb-ring{stroke-width
 :root #atlas .land-word-label{stroke-width:2.1px!important;stroke-opacity:.72!important;letter-spacing:.012em}
 :root #atlas .land-word:is(.selected,:hover,:focus-visible) .land-word-label{stroke-width:2.8px!important}
 @media(max-width:680px){.brand-title{font-size:22px!important}}
+g.land-thumb .land-thumb-cap{font-family:'Atlas Serif',Georgia,serif;font-style:italic;fill:#f1e3bb;stroke:#0d1a2c;stroke-width:3px;stroke-opacity:.8;paint-order:stroke;opacity:0;animation:land-thumb-in .9s ease-out .35s forwards}
+g.land-thumb image,g.land-thumb circle{transition:all .45s cubic-bezier(.2,.7,.2,1)}
