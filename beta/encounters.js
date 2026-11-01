@@ -417,7 +417,7 @@ function switchView(view){
  const changed=s.view!==view,layoutChanged=(s.view==='films')!==(view==='films');if(changed){dismissHoverPreview();svg?.interrupt();closeWorkspacePanels();}s.viewScroll=s.viewScroll||{};if(changed)s.viewScroll[s.view]=$('#index').scrollTop;
  s.view=view;s.previewRecord=s.previewFilm=s.previewLand=null;document.body.dataset.view=view;
  $$('.primary button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.view===view)));
- $('#search').value=s.queries[view];$('#search').placeholder='Search…';$('#search').setAttribute('aria-label','Search '+view);
+ $('#search').value=s.queries[view];$('#search').placeholder=view==='films'?'Search films…':view==='land'?'Search lands and nations…':'Search filmmakers or nations…';$('#search').setAttribute('aria-label','Search '+view);
  renderIndex();syncDrawing();restoreFocus();renderMarkers();if(changed)$('#index').scrollTop=s.viewScroll[view]||0;updateChrome();if(layoutChanged)requestAnimationFrame(()=>{resize();scheduleReadingLines();});else scheduleReadingLines();
 }
 
@@ -429,7 +429,7 @@ function highlightFilm(id,film){drawing.selectAll('.work-node').classed('linked'
 function updateChrome(){
  $('#return').hidden=!s.record&&!s.land&&!s.landHold&&!s.country&&!s.community&&!s.pilot&&!s.unassigned&&!s.crossLand&&!(s.view==='land'&&landQuery().country);
  $('#map-state').textContent=s.country?countryByCode(s.country).name.toUpperCase():s.world?'WORLD':'AMERICAS';$('#world').textContent=s.world?'Americas':'World';$('#world').title=s.world?'Return to the Americas':'Expand to the world';
- $('#map-caption').textContent=selectionIsHeld()?'Selection held · click another name to change · drag to pan':'Preview land · select to explore · drag to pan';
+ $('#map-caption').textContent=selectionIsHeld()?'Selection held · drag to pan':'Preview land · select to explore · drag to pan';
  renderExploration();renderReadingSelection();renderMapFilms();
 }
 

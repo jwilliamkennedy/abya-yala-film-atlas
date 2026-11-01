@@ -36,6 +36,7 @@ window.AtlasUpdate1031=(()=>{
   for(const p of d.patches){const r=byId.get(p.id);if(!r)continue;
    if(p.set)Object.assign(r,p.set);
    if(p.country&&(!r.country||p.set))setCountry(r,p.country,names);
+   if(p.titles)for(const f of r.films||[])if(p.titles[f.title])f.title=p.titles[f.title];
    addAliases(r,p.aliases);addFilms(r,p.films);
    for(const f of p.films||[])addSources(r,[{url:f.sourceURL,type:'Screen credit',evidence:f.credit,authority:'Source retained',checkedOn:d.date}]);
    if(p.filmYears)for(const f of r.films){for(const [t,y] of Object.entries(p.filmYears))if(norm(f.title).startsWith(norm(t))&&!f.year)f.year=y;}
