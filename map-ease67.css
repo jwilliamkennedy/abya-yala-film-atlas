@@ -1,0 +1,18 @@
+/* The same night palette for browsing and composing; relief remains unfiltered. */
+:root[data-reading-theme=night] body.atlas-page .map-panel{background:#111b34}
+:root[data-reading-theme=night] .atlas-night-veil{display:block}
+:root[data-reading-theme=night] #atlas .land-word-label{fill:var(--reading-ink)!important;stroke:#111b34!important;stroke-width:3px}
+:root[data-reading-theme=night] #atlas .land-word[data-linked-count="0"] .land-word-label{fill:var(--reading-muted)!important}
+.land-word[data-linked-count="0"] .land-reference-dot{display:none}
+:root[data-reading-theme=night] #atlas :is(.land-bubble-label,.country-label-name,.marker-count){fill:var(--reading-muted)!important;stroke:#111b34;stroke-width:2;paint-order:stroke}
+:root[data-reading-theme=night] body.is-theme-weaving #atlas .land-word-label{opacity:1}
+#empty-land-note{position:absolute;z-index:45;width:212px;box-sizing:border-box;padding:12px 35px 12px 14px;border:1px solid var(--reading-line);border-radius:5px;background:var(--reading-paper);color:var(--reading-ink);box-shadow:0 5px 18px #060c1826;font:14px/1.4 'Atlas Sans',sans-serif}
+#empty-land-note[hidden]{display:none}
+#empty-land-note strong{display:block;font-weight:500;overflow-wrap:anywhere}
+#empty-land-note span{display:block;margin-top:4px;color:var(--reading-muted)}
+#empty-land-note button{position:absolute;right:3px;top:3px;width:32px;height:32px;padding:0;border:0;background:none;color:var(--reading-accent);font-size:22px;cursor:pointer}
+
+/* Secondary reading actions stay smaller than the browsing controls. */
+:root[data-reading-theme] #index #selection-tools :is(#copy-view-link,#bookmark-selection){font:400 12px/1.35 'Atlas Sans',sans-serif;min-height:28px;padding:3px 6px;background:transparent;border:0;border-radius:3px;box-shadow:none;white-space:nowrap}
+:root[data-reading-theme] #index #selection-tools :is(#copy-view-link,#bookmark-selection):hover{background:var(--reading-wash)}
+@media(max-width:680px){:root[data-reading-theme] #index #selection-tools :is(#copy-view-link,#bookmark-selection){min-height:36px}}

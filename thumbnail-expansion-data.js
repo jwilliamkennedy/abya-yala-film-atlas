@@ -1,0 +1,278 @@
+// Additional exact-title artwork matches; existing media bindings retained.
+Object.assign(window.ATLAS_PROFILE_MEDIA,{
+  "FILM-0033": {
+    "title": "Nũhũ yãg mũ yõg hãm - This Land Is Ours!",
+    "image": "assets/film-images/collect-44-film-0033.jpg",
+    "originalImage": "https://s3.amazonaws.com/festivaldorio/2021/site/peliculas/large2/nu%CC%83hu%CC%83yagmu%CC%83_f02cor_2021110605.jpg",
+    "sourceURL": "https://www.festivaldorio.com.br/br/filmes/nu-hu-yag-mu-yog-ham-essa-terra-e-nossa",
+    "publisher": "festivaldorio.com.br",
+    "kind": "Film publicity image",
+    "checkedOn": "2026-10-29",
+    "rightsStatus": "review_before_publication",
+    "matchBasis": "Existing director ID and exact normalized film title; image visually checked."
+  },
+  "FILM-0066": {
+    "title": "Aitamaako'tamisskapi Natosi: Before the Sun",
+    "image": "assets/film-images/collect-44-film-0066.jpg",
+    "originalImage": "https://m.media-amazon.com/images/M/MV5BZDIyNzYwNTEtNjYyMC00NDRkLThhMTgtY2VjOTQ0YjM4Y2ZhXkEyXkFqcGc%40._V1_.jpg",
+    "sourceURL": "https://www.imdb.com/title/tt25447884/",
+    "publisher": "imdb.com",
+    "kind": "Film poster",
+    "checkedOn": "2026-10-29",
+    "rightsStatus": "review_before_publication",
+    "matchBasis": "Existing director ID and exact normalized film title; image visually checked."
+  },
+  "FILM-0067": {
+    "title": "At the Place of Ghosts",
+    "image": "assets/film-images/collect-44-film-0067.jpg",
+    "originalImage": "https://www.cinemaclock.com/images/posters/1000x1500/78/at-the-place-of-ghosts-2025-can-poster.jpg",
+    "sourceURL": "https://www.cinemaclock.com/movies/at-the-place-of-ghosts-2025",
+    "publisher": "cinemaclock.com",
+    "kind": "Film poster",
+    "checkedOn": "2026-10-29",
+    "rightsStatus": "review_before_publication",
+    "matchBasis": "Existing director ID and exact normalized film title; image visually checked."
+  },
+  "FILM-0073": {
+    "title": "Night Raiders",
+    "image": "assets/film-images/collect-44-film-0073.jpg",
+    "originalImage": "https://m.media-amazon.com/images/M/MV5BOGQwNzcxMGItZmMyZS00YWZlLTk4ZGUtNzE0YjhkOGI5OWQ3XkEyXkFqcGc%40._V1_.jpg",
+    "sourceURL": "https://www.imdb.com/title/tt9568230/mediaindex/",
+    "publisher": "imdb.com",
+    "kind": "Film poster",
+    "checkedOn": "2026-10-29",
+    "rightsStatus": "review_before_publication",
+    "matchBasis": "Existing director ID and exact normalized film title; image visually checked."
+  },
+  "FILM-0074": {
+    "title": "Aki",
+    "image": "assets/film-images/collect-44-film-0074.jpg",
+    "originalImage": "https://m.media-amazon.com/images/M/MV5BYjdmYTUzNGEtOTM2MS00YjZiLWI1MTUtODFhMmQxNGRkZTE5XkEyXkFqcGc%40._V1_.jpg",
+    "sourceURL": "https://www.imdb.com/title/tt37815607/",
+    "publisher": "imdb.com",
+    "kind": "Film poster",
+    "checkedOn": "2026-10-29",
+    "rightsStatus": "review_before_publication",
+    "matchBasis": "Existing director ID and exact normalized film title; image visually checked."
+  },
+  "FILM-0075": {
+    "title": "Rosie",
+    "image": "assets/film-images/collect-44-film-0075.jpg",
+    "originalImage": "https://playhousecinema.ca/files/princesscinemas/movie-posters/rosie-tiff-poster-finalresize-scaled.jpeg",
+    "sourceURL": "https://playhousecinema.ca/movie/rosie",
+    "publisher": "playhousecinema.ca",
+    "kind": "Film poster",
+    "checkedOn": "2026-10-29",
+    "rightsStatus": "review_before_publication",
+    "matchBasis": "Existing director ID and exact normalized film title; image visually checked."
+  },
+  "FILM-0076": {
+    "title": "Edge of the Knife",
+    "image": "assets/film-images/collect-44-film-0076.jpg",
+    "originalImage": "https://s3.amazonaws.com/isuma.picture.xlarge/eotk_insta_viff.jpg",
+    "sourceURL": "https://www.isuma.tv/press-centre/press-releases/%E2%80%9Csg%CC%B1aawaay-k%E2%80%99uuna-edge-of-the-knife%E2%80%9D-to-screen-at",
+    "publisher": "isuma.tv",
+    "kind": "Film publicity image",
+    "checkedOn": "2026-10-29",
+    "rightsStatus": "review_before_publication",
+    "matchBasis": "Existing director ID and exact normalized film title; image visually checked."
+  },
+  "FILM-0079": {
+    "title": "Yintah",
+    "image": "assets/film-images/collect-44-film-0079.jpg",
+    "originalImage": "https://dnm.nflximg.net/api/v6/mAcAr9TxZIVbINe88xb3Teg5_OA/AAAABSp2XQ-Gqetzx79hLJanJBMfPv99ckUd_sqnqXzGpSzcxaycW6K8GDXPpvd8W0M9dsefVlAQIjPAhFbyZS_sq1BLNFO0r0hGpNOJO4fEMk5bFrcbkA6SK1oaOBVUhnWyvzzYqw.jpg?r=7c6",
+    "sourceURL": "https://media.netflix.com/en/only-on-netflix/81925905",
+    "publisher": "media.netflix.com",
+    "kind": "Film poster",
+    "checkedOn": "2026-10-29",
+    "rightsStatus": "review_before_publication",
+    "matchBasis": "Existing director ID and exact normalized film title; image visually checked."
+  },
+  "FILM-0082": {
+    "title": "Wilfred Buck",
+    "image": "assets/film-images/collect-44-film-0082.jpg",
+    "originalImage": "https://dkyhanv6paotz.cloudfront.net/live/fit-in/1600x/medias/nfb_tube/thumbs_xlarge/2024/wilfred-buck-keyart-16x9-epk.jpg",
+    "sourceURL": "https://collection.nfb.ca/film/wilfred-buck-fr",
+    "publisher": "collection.nfb.ca",
+    "kind": "Film publicity image",
+    "checkedOn": "2026-10-29",
+    "rightsStatus": "review_before_publication",
+    "matchBasis": "Existing director ID and exact normalized film title; image visually checked."
+  },
+  "FILM-0084": {
+    "title": "So Surreal: Behind the Masks",
+    "image": "assets/film-images/collect-44-film-0084.jpg",
+    "originalImage": "https://static1.tribute.ca/poster/660x980/so-surreal-behind-the-masks-202395.jpg",
+    "sourceURL": "https://www.tribute.ca/movies/poster/so-surreal-behind-the-masks-202395/",
+    "publisher": "tribute.ca",
+    "kind": "Film poster",
+    "checkedOn": "2026-10-29",
+    "rightsStatus": "review_before_publication",
+    "matchBasis": "Existing director ID and exact normalized film title; image visually checked."
+  },
+  "FILM-0087": {
+    "title": "The Incredible 25th Year of Mitzi Bearclaw",
+    "image": "assets/film-images/collect-44-film-0087.jpg",
+    "originalImage": "https://m.media-amazon.com/images/M/MV5BZjg5NWE2NGYtZTc1My00MGYzLWFkZjktM2RmZTg1ZmE0NzFkXkEyXkFqcGc%40._V1_.jpg",
+    "sourceURL": "https://www.imdb.com/title/tt7584456/",
+    "publisher": "imdb.com",
+    "kind": "Film poster",
+    "checkedOn": "2026-10-29",
+    "rightsStatus": "review_before_publication",
+    "matchBasis": "Existing director ID and exact normalized film title; image visually checked."
+  },
+  "FILM-0090": {
+    "title": "Le Dep",
+    "image": "assets/film-images/collect-44-film-0090.jpg",
+    "originalImage": "https://m.media-amazon.com/images/M/MV5BMTQ4NjQyMjQyMF5BMl5BanBnXkFtZTgwODUyNjk4NTE%40._V1_.jpg",
+    "sourceURL": "https://www.imdb.com/title/tt4494944/",
+    "publisher": "imdb.com",
+    "kind": "Film poster",
+    "checkedOn": "2026-10-29",
+    "rightsStatus": "review_before_publication",
+    "matchBasis": "Existing director ID and exact normalized film title; image visually checked."
+  },
+  "FILM-0096": {
+    "title": "Atanarjuat: The Fast Runner",
+    "image": "assets/film-images/collect-44-film-0096.jpg",
+    "originalImage": "https://m.media-amazon.com/images/M/MV5BNTcxOTI3OTEtYzk1MS00NzIyLThjZDAtZWE3ZDBhZGYzMDRiXkEyXkFqcGc%40._V1_FMjpg_UX1000_.jpg",
+    "sourceURL": "https://www.imdb.com/title/tt0285441/",
+    "publisher": "imdb.com",
+    "kind": "Film poster",
+    "checkedOn": "2026-10-29",
+    "rightsStatus": "review_before_publication",
+    "matchBasis": "Existing director ID and exact normalized film title; image visually checked."
+  },
+  "FILM-0130": {
+    "title": "SŪKŪJULA TEI",
+    "image": "assets/film-images/collect-44-film-0130.jpg",
+    "originalImage": "https://i.vimeocdn.com/video/1523451916-767052a28a09d57908e29510e5ed584a29e112d0f1ebcb6c642064ae90ad3c23-d?f=webp",
+    "sourceURL": "https://www.reciprocity.org/films/sukujula-tei",
+    "publisher": "reciprocity.org",
+    "kind": "Film publicity image",
+    "checkedOn": "2026-10-29",
+    "rightsStatus": "review_before_publication",
+    "matchBasis": "Existing director ID and exact normalized film title; image visually checked."
+  },
+  "FILM-0143": {
+    "title": "Killa",
+    "image": "assets/film-images/collect-44-film-0143.jpg",
+    "originalImage": "https://m.media-amazon.com/images/M/MV5BNTYwYmZlMTktMDViMS00MTY4LWE4OTEtNjdhZjNhY2UzZGRkXkEyXkFqcGc%40._V1_.jpg",
+    "sourceURL": "https://www.imdb.com/title/tt13624866/",
+    "publisher": "imdb.com",
+    "kind": "Film poster",
+    "checkedOn": "2026-10-29",
+    "rightsStatus": "review_before_publication",
+    "matchBasis": "Existing director ID and exact normalized film title; image visually checked."
+  },
+  "FILM-0221": {
+    "title": "Wiñaypacha (Eternity)",
+    "image": "assets/film-images/collect-44-film-0221.jpg",
+    "originalImage": "https://cdn.cinencuentro.com/wp-content/uploads/2017/08/winaypacha.jpg",
+    "sourceURL": "https://www.cinencuentro.com/2017/08/05/critica-festival-de-lima-2017-aymara-winaypacha-ozu-kurosawa-bela-tarr/",
+    "publisher": "cinencuentro.com",
+    "kind": "Film poster",
+    "checkedOn": "2026-10-29",
+    "rightsStatus": "review_before_publication",
+    "matchBasis": "Existing director ID and exact normalized film title; image visually checked."
+  },
+  "FILM-0254": {
+    "title": "Frybread Face and Me",
+    "image": "assets/film-images/collect-44-film-0254.jpg",
+    "originalImage": "https://m.media-amazon.com/images/M/MV5BMjBlOGU5YjctMWFjNC00NDVmLTk5OTAtYmVmMzgwYTYwYzllXkEyXkFqcGc%40._V1_.jpg",
+    "sourceURL": "https://www.imdb.com/title/tt13365482/",
+    "publisher": "imdb.com",
+    "kind": "Film poster",
+    "checkedOn": "2026-10-29",
+    "rightsStatus": "review_before_publication",
+    "matchBasis": "Existing director ID and exact normalized film title; image visually checked."
+  },
+  "FILM-0226": {
+    "title": "Smoke Signals",
+    "image": "assets/film-images/collect-44-film-0226.jpg",
+    "originalImage": "https://i5.walmartimages.com/seo/Smoke-Signals-Movie-Poster-11-x-17-in_a469619d-d9c8-4273-b70a-3b1f2b2ae4d0.67a1ed183d4efe672aecbe7c98a04add.jpeg",
+    "sourceURL": "https://www.walmart.com/ip/5239657747",
+    "publisher": "walmart.com",
+    "kind": "Film publicity image",
+    "checkedOn": "2026-10-29",
+    "rightsStatus": "review_before_publication",
+    "matchBasis": "Existing director ID and exact normalized film title; image visually checked."
+  },
+  "FILM-0261": {
+    "title": "Wild Indian",
+    "image": "assets/film-images/collect-44-film-0261.jpg",
+    "originalImage": "https://chipublib.bibliocommons.com/events/uploads/images/full/4f11cdea706307232952f25a5db0d229/WILDINDIANEDIT.jpg",
+    "sourceURL": "https://chipublib.bibliocommons.com/events/68eecbf406078d360072c5e2",
+    "publisher": "chipublib.bibliocommons.com",
+    "kind": "Film publicity image",
+    "checkedOn": "2026-10-29",
+    "rightsStatus": "review_before_publication",
+    "matchBasis": "Existing director ID and exact normalized film title; image visually checked."
+  },
+  "FILM-0263": {
+    "title": "maɬni – towards the ocean, towards the shore",
+    "image": "assets/film-images/collect-44-film-0263.jpg",
+    "originalImage": "https://static.mfah.com/images/mani-towards-ocean-towards-shore.12531378953740265663.jpg?width=1680",
+    "sourceURL": "https://www.mfah.org/blogs/inside-mfah/poetic-new-documentary-malni",
+    "publisher": "mfah.org",
+    "kind": "Film poster",
+    "checkedOn": "2026-10-29",
+    "rightsStatus": "review_before_publication",
+    "matchBasis": "Existing director ID and exact normalized film title; image visually checked."
+  },
+  "FILM-0271": {
+    "title": "Drunktown’s Finest",
+    "image": "assets/film-images/collect-44-film-0271.jpg",
+    "originalImage": "https://m.media-amazon.com/images/S/pv-target-images/99aa928ae6a52c29a3e3b2b56faffa34df88028d39b3e6643ec5aaa99e0aaeca.jpg",
+    "sourceURL": "https://www.primevideo.com/detail/0SFHBREQQKRCYW2A0DRHOXURH0",
+    "publisher": "primevideo.com",
+    "kind": "Film poster",
+    "checkedOn": "2026-10-29",
+    "rightsStatus": "review_before_publication",
+    "matchBasis": "Existing director ID and exact normalized film title; image visually checked."
+  },
+  "FILM-0273": {
+    "title": "Fancy Dance",
+    "image": "assets/film-images/collect-44-film-0273.jpg",
+    "originalImage": "https://www.querofilme.com.br/images/posters/b/2313-o-rito-da-danca-1.jpg",
+    "sourceURL": "https://www.querofilme.com.br/o-rito-da-danca-2023/imagem/1/",
+    "publisher": "querofilme.com.br",
+    "kind": "Film poster",
+    "checkedOn": "2026-10-29",
+    "rightsStatus": "review_before_publication",
+    "matchBasis": "Existing director ID and exact normalized film title; image visually checked."
+  },
+  "FILM-0282": {
+    "title": "Sugarcane",
+    "image": "assets/film-images/collect-44-film-0282.jpg",
+    "originalImage": "https://m.media-amazon.com/images/M/MV5BZTdiMDNhNmMtZTAxNi00M2U1LWEwZDgtNjg5NjNhMjgwOWI2XkEyXkFqcGc%40._V1_.jpg",
+    "sourceURL": "https://www.imdb.com/title/tt30319854/mediaindex/",
+    "publisher": "imdb.com",
+    "kind": "Film poster",
+    "checkedOn": "2026-10-29",
+    "rightsStatus": "review_before_publication",
+    "matchBasis": "Existing director ID and exact normalized film title; image visually checked."
+  },
+  "NEW-bf34d84a3c19-WORK-1": {
+    "title": "Daughter of a Lost Bird",
+    "image": "assets/film-images/collect-44-new-bf34d84a3c19-work-1.jpg",
+    "originalImage": "https://images.squarespace-cdn.com/content/v1/52655968e4b0002d1619bcc8/1549648905121-CSDNST2P6E63TW41KFOD/Screen%2BShot%2B2019-02-08%2Bat%2B11.01.14%2BAM.png",
+    "sourceURL": "https://www.haileyfaust.com/print-2",
+    "publisher": "haileyfaust.com",
+    "kind": "Film poster",
+    "checkedOn": "2026-10-29",
+    "rightsStatus": "review_before_publication",
+    "matchBasis": "Existing director ID and exact normalized film title; image visually checked."
+  },
+  "REVIEWFILM-20261008-009-02": {
+    "title": "Allpamanda",
+    "image": "assets/film-images/collect-44-reviewfilm-20261008-009-02.jpg",
+    "originalImage": "https://m.media-amazon.com/images/M/MV5BODA2MzJmYmItYTEwZi00ZjBlLWFmMTEtYTYwOGEyN2MzZTNhXkEyXkFqcGc%40._V1_FMjpg_UX1000_.jpg",
+    "sourceURL": "https://www.imdb.com/title/tt23117528/",
+    "publisher": "imdb.com",
+    "kind": "Film poster",
+    "checkedOn": "2026-10-29",
+    "rightsStatus": "review_before_publication",
+    "matchBasis": "Existing director ID and exact normalized film title; image visually checked."
+  }
+});
