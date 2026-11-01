@@ -15,14 +15,17 @@
  }
 
  // Land images: for every named land with linked filmmakers, choose one film image at random per visit.
- const pick=new Map();
+ const pick=new Map(),pools=new Map(),dark=new Set();
+ // Same-origin images can be checked: skip near-black crops so every land shows a legible picture.
+ function checkDark(src,cb){try{if(new URL(src,location.href).origin!==location.origin)return;const i=new Image();i.onload=()=>{try{const c=document.createElement('canvas');c.width=c.height=12;const ctx=c.getContext('2d'),w=i.naturalWidth,h=i.naturalHeight,m=Math.min(w,h);ctx.drawImage(i,(w-m)/2,(h-m)/2,m,m,0,0,12,12);const d=ctx.getImageData(0,0,12,12).data;let sum=0;for(let k=0;k<d.length;k+=4)sum+=.2126*d[k]+.7152*d[k+1]+.0722*d[k+2];if(sum/(d.length/4)<34)cb();}catch{}};i.src=src;}catch{}}
+ function repick(id){const pool=(pools.get(id)||[]).filter(c=>!dark.has(c.src));const c=pool.length?pool[Math.floor(Math.random()*pool.length)]:null;pick.set(id,c);return c;}
  function imageFor(id){
   if(pick.has(id))return pick.get(id);
   let choice=null;
   try{
    const l=A.landById(id),edges=l?A.landLinks(l):[],pool=[];
    for(const e of edges){const r=A.recordById(e.record);if(!r)continue;for(const f of r.films||[]){const m=A.mediaForFilm(f);if(m&&m.image)pool.push({src:m.image,title:f.title,maker:r.name});}}
-   if(pool.length)choice=pool[Math.floor(Math.random()*pool.length)];
+   pools.set(id,pool);if(pool.length)choice=pool[Math.floor(Math.random()*pool.length)];
   }catch{}
   pick.set(id,choice);return choice;
  }
@@ -40,7 +43,7 @@
    if(!t){ensureClip(g.ownerSVGElement);t=document.createElementNS(NS,'g');t.setAttribute('class','land-thumb');t.setAttribute('aria-hidden','true');
     t.innerHTML=`<circle class="land-thumb-halo"/><image preserveAspectRatio="xMidYMid slice" clip-path="url(#land-thumb-clip)"/><circle class="land-thumb-ring"/><title></title>`;
     g.insertBefore(t,g.firstChild);
-    const img=t.querySelector('image');img.addEventListener('error',()=>{pick.set(d.id,null);t.remove();});}
+    const img=t.querySelector('image');img.addEventListener('error',()=>{dark.add(img.getAttribute('href'));if(!repick(d.id))t.remove();schedule();});img.addEventListener('load',()=>{const src=img.getAttribute('href');checkDark(src,()=>{dark.add(src);if(repick(d.id))schedule();});});}
    const img=t.querySelector('image');if(img.getAttribute('href')!==c.src)img.setAttribute('href',c.src);
    img.setAttribute('x',x);img.setAttribute('y',y);img.setAttribute('width',size);img.setAttribute('height',size);
    const cx=x+size/2,cy=y+size/2;
