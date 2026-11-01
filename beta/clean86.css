@@ -110,3 +110,8 @@ body.selection-held #index #selection-summary>button{flex:none;white-space:nowra
 #index .entry-detail.maker-dossier{display:flex;flex-direction:column}
 #index .entry-detail.maker-dossier>.maker-identity{order:-2;margin-top:0}
 #index .entry-detail.maker-dossier>.maker-identity>p:first-child{margin-top:4px}
+#weave-play-progress{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.weave-dots{display:inline-flex;gap:6px;align-items:center;margin:0 8px}
+.weave-dots i{width:6px;height:6px;border-radius:50%;background:currentColor;opacity:.28}
+.weave-dots i.past{opacity:.55}
+.weave-dots i.on{opacity:1;transform:scale(1.5);box-shadow:0 0 6px currentColor}
