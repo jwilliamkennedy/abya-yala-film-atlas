@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#102c31">
+  <meta name="description" content="Explore Indigenous cinema across Abya Yala and Turtle Island. A research atlas connecting films, filmmakers, collectives, community references, and sources across the Americas.">
+  <title>Abya Yala · Indigenous Cinema Atlas</title>
+  <link rel="icon" href="assets/mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="poetics.css">
+  <script src="assets/d3.min.js" defer></script>
+  <script src="assets/topojson-client.min.js" defer></script>
+  <script src="linework.js" defer></script>
+  <script src="autonyms-data.js" defer></script>
+  <script src="autonyms.js" defer></script>
+  <script src="territories-data.js" defer></script>
+  <script src="places.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body data-browse="places">
+  <a class="skip-link" href="#results">Skip to the archive</a>
+  <header class="masthead">
+    <a href="./" class="brand" aria-label="Abya Yala atlas home">
+      <img src="assets/mark.svg" width="40" height="40" alt="">
+      <span class="brand-name">ABYA YALA<span>INDIGENOUS CINEMA ATLAS</span></span>
+    </a>
+    <div class="masthead-center">TURTLE ISLAND <span>↔</span> ABYA YALA</div>
+    <nav aria-label="Main navigation">
+      <a href="encounters.html" class="about-button">Try Encounters · experiment</a>
+      <a href="compare.html" class="about-button">Compare editions</a>
+      <button class="about-button" id="reading-open">Watch & read</button>
+      <span class="active-nav"><span class="nav-index">01</span> Explore</span>
+      <button class="about-button" id="about-open">About the archive <span aria-hidden="true">↗</span></button>
+    </nav>
+  </header>
+
+  <div class="browse-bar"><div class="view-control" role="group" aria-label="Browse by"><button data-view="places" aria-pressed="true">Place names</button><button data-view="people" aria-pressed="false">Filmmakers</button><button data-view="films" aria-pressed="false">Films & works</button><button data-view="names" aria-pressed="false">Names & lands</button></div></div>
+
+  <div class="toolbar">
+    <div class="region-control" role="group" aria-label="Filter by region">
+      <button data-region="all" aria-pressed="true">All regions</button>
+      <button data-region="North America" aria-pressed="false">North America</button>
+      <button data-region="Central America" aria-pressed="false">Central America</button>
+      <button data-region="Caribbean" aria-pressed="false">Caribbean</button>
+      <button data-region="South America" aria-pressed="false">South America</button>
+    </div>
+    <label class="country-picker"><span class="sr-only">Country entry point</span>
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c5 5 5 13 0 18-5-5-5-13 0-18Z"/></svg>
+      <select id="country-select" aria-label="Country entry point"><option value="all">All country entry points</option></select>
+    </label>
+  </div>
+
+  <section class="names-ribbon" aria-label="All supplied names">
+    <div class="ribbon-heading"><span><strong>Names & lands</strong> <small id="ribbon-total">171 names</small></span><label class="ribbon-search"><span class="sr-only">Find a name in the band</span><input id="ribbon-search" type="search" placeholder="Find a name…" autocomplete="off"></label><button id="ribbon-all">All names</button><div class="ribbon-arrows"><button id="ribbon-prev" aria-label="Scroll names left">←</button><button id="ribbon-next" aria-label="Scroll names right">→</button></div></div>
+    <div id="names-band" class="names-band" tabindex="0" aria-label="Scrollable band of all supplied names"><div id="names-band-inner" class="names-band-inner"><svg id="ribbon-thread" aria-hidden="true"></svg><div id="names-band-items"></div></div></div>
+    <p id="ribbon-caption" class="ribbon-caption">Follow a name. Make your own path.</p>
+  </section>
+
+  <section class="place-bar" aria-label="Find Indigenous mapped names"><label>Find a mapped name<input id="place-search" type="search" placeholder="Ixim Ulew, K’iche’, Shiwinna…" autocomplete="off"></label><div class="place-actions"><button id="place-americas">Americas</button><button id="place-world">World</button><button id="place-ixim">Find Ixim Ulew ↗</button></div><div id="place-search-results" hidden></div></section>
+  <main class="workspace" id="workspace">
+    <section class="map-panel" aria-labelledby="map-title">
+      <canvas id="wave-field" aria-hidden="true"></canvas>
+      <div class="map-tools"><label class="names-tools">Browse names by region<select id="names-area" aria-label="Name collection region"><option value="all">All supplied regions</option></select></label><details id="appearance" class="appearance"><summary>Appearance</summary><div class="appearance-options"><button id="branches-toggle" aria-pressed="true">Connecting lines · On</button><button id="waves-toggle" aria-pressed="true">Background flow · On</button><button id="motion-toggle" aria-pressed="false">Animate flow · Off</button><button id="borders-toggle" aria-pressed="true">Country borders · On</button></div></details></div>
+      <div class="map-heading">
+        <p class="eyebrow light"><span class="small-rule"></span> ABYA YALA / TURTLE ISLAND</p>
+        <h1 id="map-title">Indigenous<br><em>Cinema Atlas</em></h1>
+        <p class="map-subtitle">Hover over a place.<br>Follow a film.</p>
+      </div>
+      <div class="map-corner">
+        <span id="map-region-label">THE AMERICAS</span>
+
+      </div>
+      <svg id="atlas-map" role="group" aria-label="Interactive map of country entry points. Use the country menu for an alternative to the map."></svg>
+      <div id="place-hover" class="place-hover" hidden></div>
+      <nav class="names-pagination" aria-label="Browse names"><button id="names-previous" type="button">← Previous names</button><span id="names-position" role="status" aria-live="polite"></span><button id="names-next" type="button">Next names →</button></nav>
+      <section id="name-detail" class="name-detail" aria-label="Selected name" hidden></section>
+      <div id="map-tooltip" class="map-tooltip" hidden></div>
+      <details class="caribbean-inset" id="caribbean-inset">
+        <summary>Caribbean · islands in detail</summary>
+        <svg id="caribbean-map" viewBox="0 0 318 158" role="group" aria-label="Caribbean country entry points"></svg>
+        <div id="island-list" aria-label="Select a Caribbean country"></div>
+      </details>
+      <div class="map-loading" id="map-loading">Opening the atlas…</div>
+      <div class="map-controls" aria-label="Map navigation">
+        <button id="zoom-in" aria-label="Zoom in">+</button>
+        <button id="zoom-out" aria-label="Zoom out">−</button>
+        <button id="zoom-reset" aria-label="Reset map view"><svg width="18" height="18" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="1.5" aria-hidden="true"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5"/><circle cx="12" cy="12" r="4"/></svg></button>
+      </div>
+      <div class="map-bottom">
+        <div class="map-stat"><span id="map-count">—</span><div>map records<small id="map-count-caption">in the current selection</small></div></div>
+        <div class="map-legend"><span><i class="legend-dot"></i> Records</span><span><i class="legend-ring"></i> Research pending</span></div>
+      </div>
+      <p class="map-note">Country entry points are navigation aids, not Indigenous territorial boundaries or filmmakers’ locations.</p>
+    </section>
+
+    <aside id="place-details" class="place-details" aria-label="Names at this location"><p class="eyebrow">MOVE ACROSS THE LAND</p><h2>Names come forward.</h2><p>Hover to reveal names. Click or tap to hold a place and read its sources.</p><div id="place-readout"></div></aside>
+    <section class="archive-panel" aria-labelledby="archive-title">
+      <div class="archive-top">
+        <p class="eyebrow">THE FILM MAP COLLECTION <span class="edition-note">VII · PLACE NAMES</span></p>
+        <div class="archive-heading"><h2 id="archive-title">Explore the archive</h2><span id="results-count" class="count-badge">—</span></div>
+
+
+        <label class="search-field">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg>
+          <input id="search" type="search" placeholder="Name, film, people, or community…" autocomplete="off" aria-label="Search names, films, peoples, communities, or languages">
+          <kbd aria-hidden="true">/</kbd>
+        </label>
+        <div class="archive-filters">
+          <label><span class="sr-only">Research scope</span><select id="scope-select"><option value="map">Map selection</option><option value="all">All research records</option><option value="review">Verification needed</option><option value="candidate">Candidates</option></select></label>
+          <label><span class="sr-only">Sort records</span><select id="sort-select"><option value="name">Name A–Z</option><option value="films">Most films</option><option value="country">Country A–Z</option></select></label>
+        </div>
+        <div class="selection-line"><span id="selection-summary">All country entry points</span><button id="clear-filters" hidden>Clear filters <span aria-hidden="true">×</span></button></div>
+      </div>
+      <div class="results-scroll" id="results" tabindex="-1">
+        <div id="country-context" hidden></div>
+        <div class="record-list" id="record-list" aria-label="Archive records"></div>
+      </div>
+      <div class="archive-footer"><span>USA review <time datetime="2026-09-11">11 Sep 2026</time></span><button id="method-open">Read the method <span aria-hidden="true">↗</span></button></div>
+    </section>
+  </main>
+
+  <div class="sr-only" id="announcement" role="status" aria-live="polite"></div>
+  <dialog id="reading-dialog" class="reading-room" aria-labelledby="reading-title">
+    <div class="dialog-top"><span class="eyebrow">FILMS / POETRY / FORM</span><button id="reading-close" class="close-button" aria-label="Close watch and read">×</button></div>
+    <div class="reading-body">
+      <h2 id="reading-title">Watch & read</h2>
+      <h3>Li Cham (Morí)</h3>
+      <p>Ana Ts’uyeb · México · 2024. Title and credit from the FICCI Festival upload supplied to this project.</p>
+      <div class="video-space" id="li-cham-player"><button class="reading-action" id="load-li-cham">Load the festival trailer</button></div>
+      <p><a href="https://www.youtube.com/watch?v=p866LZfm69g" target="_blank" rel="noopener noreferrer">Watch the trailer on YouTube ↗</a></p>
+      <p>The A:shiwi Map Art Project is a reference for thinking about authored spatial compositions. The atlas’s navigation lines are original interface drawings. <a href="https://emergencemagazine.org/film/counter-mapping/" target="_blank" rel="noopener noreferrer">Explore the Zuni project in Counter Mapping ↗</a></p>
+      <h3>Reading Humberto Ak’abal</h3>
+      <p>These are encounters with particular poems by the K’iche’ poet. The design responses below are editorial interpretations, not claims to represent an Indigenous worldview.</p>
+      <p><strong>“The Pool” and “Memories.”</strong> Reflection becomes something held; remembering changes the direction of travel. These poems suggest shifts between overview and close attention, and the ability to revisit a previous encounter. English translations by Earl Shorris and Sylvia Sasson Shorris. <a href="https://wordswithoutborders.org/read/article/2005-10/twelve-poems-by-humberto-akabal/" target="_blank" rel="noopener noreferrer">Read in Words Without Borders ↗</a></p>
+      <p><strong>“Las flores,” “Oración,” and “Libertad.”</strong> Flowers carry an account of the earth; benches retain the trees’ presence; birds disregard monumental authority. Their humor and sharp turns resist a uniformly pastoral treatment. Spanish and English, translated by Michael Bazzett. <a href="https://lunchticket.org/seven-poems-by-humberto-akabal/" target="_blank" rel="noopener noreferrer">Read in Lunch Ticket ↗</a></p>
+      <p>Branches in the atlas organize records and reading paths. They are interface drawings, not borrowed cultural motifs. The landscape can hold cities, labor, historical violence, and humor alongside plants and water; individual films and sources establish those connections.</p>
+    </div>
+  </dialog>
+
+  <dialog id="record-dialog" class="record-dialog" aria-labelledby="record-title">
+    <div class="dialog-top"><span id="record-number" class="eyebrow"></span><button class="close-button" id="record-close" aria-label="Close record">×</button></div>
+    <div id="record-content"></div>
+  </dialog>
+
+  <dialog id="about-dialog" class="about-dialog" aria-labelledby="about-title">
+    <div class="dialog-top"><span class="eyebrow">THE FILM MAP PROJECT</span><button class="close-button" id="about-close" aria-label="Close about the archive">×</button></div>
+    <div class="about-body">
+      <p class="eyebrow">ABYA YALA & TURTLE ISLAND</p>
+      <h2 id="about-title">A map for finding.<br><em>An archive for questioning.</em></h2>
+      <p>This research atlas brings together films, filmmakers, collectives, and community references across the Americas. It is a way into an evolving collection, with the evidence and its limits kept close to each record.</p>
+      <div class="about-stats"><div><strong>332</strong><span>archive records</span></div><div><strong>155</strong><span>map records</span></div><div><strong>36</strong><span>country entry points</span></div></div>
+      <h3>Place names on the map</h3><p>Place names opens the geographic map. Hover reveals all overlapping records from a 2,059-record Native Land Digital layer distributed by National Geographic MapMaker; click or tap holds the details. Search offers keyboard access. Source names can be ethnonyms or place names and are not all verified autonyms. The imported snapshot was downloaded on 23 September 2026; the service reports a data edit date of 1 October 2023. It is not a current or exhaustive account, and its polygons are not official or legal boundaries.</p><p>Ixim Ulew and Iximulew lead to one entry. The International Mayan League explicitly uses Iximulew for Guatemala; the modern country polygon is only a search and hover reference for this usage. Local source territories remain separate. Repeated source IDs are consolidated, while distinct peoples, languages, places, and historical usages remain distinct. <a href="https://education.nationalgeographic.org/resource/mapmaker-indigenous-territories/" target="_blank" rel="noopener noreferrer">Dataset, attribution and reuse terms ↗</a></p><h3>Reading the map</h3>
+      <p>Country entry points organize discovery. They do not delimit Indigenous territories or establish a filmmaker’s nationality, residence, or identity. Markers are approximate country anchors, not personal locations. The scope includes 35 sovereign states in the Americas and Puerto Rico.</p>
+      <h3>Reading the lines</h3>
+      <p>Names &amp; lands contains the full supplied terminology collection: 171 distinct entries, with the repeated Nunatsiavut consolidated. The regional groups are reading aids; no individual territorial coordinates are inferred. Each entry retains its supplied associations and provisional usage description. Names alone never establish a filmmaker’s affiliation. The collection also includes the supplied names beyond the Americas.</p>
+      <p>Hover or focus on a place to unfold its records. Each main branch stands for one matching archive record; the smaller twigs count its captured films and works. The arrangement is a visual interpretation, not a geography of people or territories. The small drawings beside names follow the same record-to-works structure.</p>
+      <p>The horizontal band includes every supplied name. Its drawn thread follows reading order; the encounter path records your own selections. Colors are editorial choices. Use Appearance to show or hide connecting lines and background flow, or to animate the flow. Your system’s reduced-motion preference is respected.</p>
+      <p>The original dark atlas and the Linework edition are preserved. This edition adds country textures and colors, coast-following bands, a Caribbean inset, film browsing, and a USA source review. Select a country to keep its branches open; on drawings with up to twelve records, the outlined tips open captured films. The film list offers the same access for larger selections and touch screens.</p>
+      <h3>Reading the evidence</h3>
+      <p>“Map selection” follows the archive’s 155 Map Ready records. This is a research workflow status, not a guarantee of Indigenous self-identification or complete verification. Some legacy catalog records retain unresolved credits, community associations, or possible duplicates. Counts refer to records, not necessarily unique people.</p>
+      <p>Community references from catalog evidence are distinguished from stronger source-backed affiliations. A film’s subject, language, or location must not be treated as proof of its maker’s identity. Unrecorded affiliations remain unrecorded.</p>
+      <div class="method-key"><span class="status-tag map-ready">Map selection · 155</span><span class="status-tag review">Verification needed · 43</span><span class="status-tag candidate">Candidates · 131</span></div>
+      <p>The full research view includes 329 records. Three excluded records stay outside browsing. A country with no mapped record is a gap in this collection, not a claim that Indigenous cinema is absent there.</p>
+      <h3>Sources and scope</h3>
+      <p>The USA source review checked seven existing records and added Sydney Freeland and Ciara Lacy against individual filmmaker, festival, and institutional pages. These records carry dated source links. Other records retain the August research snapshot and have not been reverified here. Film lists are captured works, not complete filmographies or promises of streaming access.</p>
+      <p class="source-note">Research snapshot: 17 August 2026. Source: <span>indigenous_cinema_archive_330_country_coverage.xlsx</span>. The map also incorporates the four Map Ready records for Barbados, Dominica, Saint Vincent and the Grenadines, and Trinidad and Tobago previously awaiting interface support.</p>
+      <p class="source-note">Cartography: <a href="https://github.com/topojson/world-atlas" target="_blank" rel="noopener noreferrer">Natural Earth / World Atlas</a>. Equal Earth projection. The base geography is not a representation of Indigenous land boundaries.</p>
+    </div>
+  </dialog>
+  <noscript><div class="noscript">This atlas needs JavaScript for its map and search. <a href="assets/archive.json">Download the research data</a>.</div></noscript>
+</body>
+</html>
