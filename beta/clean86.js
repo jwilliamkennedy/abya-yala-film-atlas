@@ -9,7 +9,9 @@
  function place(){const card=document.querySelector('#featured-weave'),zoom=document.querySelector('.map-panel .zoom'),panel=document.querySelector('.map-panel');if(!card||!zoom||!panel||card.hidden)return;const p=panel.getBoundingClientRect(),z=zoom.getBoundingClientRect();if(!z.height)return;card.style.bottom=Math.max(12,Math.round(p.bottom-z.top+10))+'px';card.style.left=Math.max(12,Math.round(z.left-p.left))+'px';}
  addEventListener('resize',place);new MutationObserver(place).observe(document.body,{attributes:true,attributeFilter:['class']});addEventListener('hashchange',()=>requestAnimationFrame(place));place();setTimeout(place,600);
  // A pager reading "1 / 1" has nowhere to go.
- function pagers(){for(const n of document.querySelectorAll('#index .profile-pager')){const t=n.textContent.replace(/\s+/g,' ');n.classList.toggle('is-single',/\b1\s*\/\s*1\b/.test(t));}}
+ function pagers(){for(const n of document.querySelectorAll('#index .profile-pager')){const bs=[...n.querySelectorAll('button')],counter=[...n.querySelectorAll('*')].find(e=>!e.children.length&&/^\s*\d+\s*\/\s*\d+\s*$/.test(e.textContent));n.classList.toggle('is-single',(bs.length&&bs.every(b=>b.disabled))||(!!counter&&/^\s*1\s*\/\s*1\s*$/.test(counter.textContent)));}
+  // While a selection is held, the trail above already leads back; hide the extra back links.
+  for(const el of document.querySelectorAll('#index .index-header button,#index .index-header a,#index .index-command-bar>button,#index .index-command-bar>a'))el.classList.toggle('trail-duplicate',/^←\s*(Land index|Back to )/.test(el.textContent.trim()));}
  const list=document.querySelector('#index');if(list)new MutationObserver(pagers).observe(list,{childList:true,subtree:true});pagers();
 })();
 // Constellate notices fade after a few seconds instead of sitting over the map controls.
