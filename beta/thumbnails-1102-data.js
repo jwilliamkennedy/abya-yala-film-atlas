@@ -1,4 +1,4 @@
-// Film images from mirror_work (THUMBNAILS and Pass 04–12 image sheets), load-tested and visually checked 1 November 2026.
+// Film images from mirror_work (THUMBNAILS and Pass 04–12 image sheets) and from each film’s own Morelia, NFB or Wikipedia page, load-tested and visually checked 1 November 2026.
 // Films that already had an image keep it.
 (()=>{const add={
 "NEW-c74dcc05c3f0-WORK-1": {
@@ -473,5 +473,346 @@
 "checkedOn": "2026-11-01",
 "rightsStatus": "hotlinked; image remains with its rights holder",
 "matchBasis": "mirror_work matched this image to the film; image load-tested and visually checked in browser 2026-11-01."
+},
+"TOUR-0005": {
+"title": "Honour to Senator Murray Sinclair",
+"image": "https://assets.nfbcdn.ca/medias/norman/thumbs_xlarge/2021/honour-to-senator-murray-sinclair-epk-title-XL.jpg",
+"originalImage": "https://assets.nfbcdn.ca/medias/norman/thumbs_xlarge/2021/honour-to-senator-murray-sinclair-epk-title-XL.jpg",
+"sourceURL": "https://www.nfb.ca/film/honour-to-senator-murray-sinclair/",
+"publisher": "nfb.ca",
+"kind": "Film image (film page)",
+"checkedOn": "2026-11-01",
+"rightsStatus": "hotlinked; image remains with its rights holder",
+"matchBasis": "National Film Board film page; director named on the page; og:image; load-tested and visually checked in browser 2026-11-01."
+},
+"DIR-0059-W1031-5": {
+"title": "Christmas at Moose Factory",
+"image": "https://assets.nfbcdn.ca/medias/norman/thumbs_xlarge/2016/Christmas_at_Moose_Factory_XL_rn7prOc.jpg",
+"originalImage": "https://assets.nfbcdn.ca/medias/norman/thumbs_xlarge/2016/Christmas_at_Moose_Factory_XL_rn7prOc.jpg",
+"sourceURL": "https://www.nfb.ca/film/christmas_at_moose_factory/",
+"publisher": "nfb.ca",
+"kind": "Film image (film page)",
+"checkedOn": "2026-11-01",
+"rightsStatus": "hotlinked; image remains with its rights holder",
+"matchBasis": "National Film Board film page; director named on the page; og:image; load-tested and visually checked in browser 2026-11-01."
+},
+"FILM-SRC-0394": {
+"title": "If the Weather Permits",
+"image": "https://assets.nfbcdn.ca/medias/norman/thumbs_xlarge/2016/if_weather_permits_51095_XL_HBm0ozD.jpg",
+"originalImage": "https://assets.nfbcdn.ca/medias/norman/thumbs_xlarge/2016/if_weather_permits_51095_XL_HBm0ozD.jpg",
+"sourceURL": "https://www.nfb.ca/film/if_the_weather_permits/",
+"publisher": "nfb.ca",
+"kind": "Film image (film page)",
+"checkedOn": "2026-11-01",
+"rightsStatus": "hotlinked; image remains with its rights holder",
+"matchBasis": "National Film Board film page; director named on the page; og:image; load-tested and visually checked in browser 2026-11-01."
+},
+"TOUR-0000": {
+"title": "Kímmapiiyipitssini: The Meaning of Empathy",
+"image": "https://assets.nfbcdn.ca/medias/norman/thumbs_xlarge/2024/1015077_kimmapiiyipitssini_en_keyart_16x9.jpg",
+"originalImage": "https://assets.nfbcdn.ca/medias/norman/thumbs_xlarge/2024/1015077_kimmapiiyipitssini_en_keyart_16x9.jpg",
+"sourceURL": "https://www.nfb.ca/film/kimmapiiyipitssini-the-meaning-of-empathy/",
+"publisher": "nfb.ca",
+"kind": "Film image (film page)",
+"checkedOn": "2026-11-01",
+"rightsStatus": "hotlinked; image remains with its rights holder",
+"matchBasis": "National Film Board film page; director named on the page; og:image; load-tested and visually checked in browser 2026-11-01."
+},
+"FILM-SRC-NFB-00063": {
+"title": "Hands of History",
+"image": "https://assets.nfbcdn.ca/medias/norman/thumbs_xlarge/2016/Hands_of_History_XL_olZydW4.jpg",
+"originalImage": "https://assets.nfbcdn.ca/medias/norman/thumbs_xlarge/2016/Hands_of_History_XL_olZydW4.jpg",
+"sourceURL": "https://www.nfb.ca/film/hands_of_history/",
+"publisher": "nfb.ca",
+"kind": "Film image (film page)",
+"checkedOn": "2026-11-01",
+"rightsStatus": "hotlinked; image remains with its rights holder",
+"matchBasis": "National Film Board film page; director named on the page; og:image; load-tested and visually checked in browser 2026-11-01."
+},
+"DIR-0119-W1031-3": {
+"title": "Forgotten Warriors",
+"image": "https://assets.nfbcdn.ca/medias/norman/thumbs_xlarge/2016/Forgotten-warriors_35206_XL_YFDSY3M.jpg",
+"originalImage": "https://assets.nfbcdn.ca/medias/norman/thumbs_xlarge/2016/Forgotten-warriors_35206_XL_YFDSY3M.jpg",
+"sourceURL": "https://www.nfb.ca/film/forgotten_warriors/",
+"publisher": "nfb.ca",
+"kind": "Film image (film page)",
+"checkedOn": "2026-11-01",
+"rightsStatus": "hotlinked; image remains with its rights holder",
+"matchBasis": "National Film Board film page; director named on the page; og:image; load-tested and visually checked in browser 2026-11-01."
+},
+"FILM-0176": {
+"title": "Uarhicha en la muerte",
+"image": "https://moreliafilmfest.com/sites/default/files/legacy/2013/04/Uarhicha-en-la-muerte.jpg",
+"originalImage": "https://moreliafilmfest.com/sites/default/files/legacy/2013/04/Uarhicha-en-la-muerte.jpg",
+"sourceURL": "https://moreliafilmfest.com/peliculas/uarhicha-en-la-muerte",
+"publisher": "moreliafilmfest.com",
+"kind": "Film image (film page)",
+"checkedOn": "2026-11-01",
+"rightsStatus": "hotlinked; image remains with its rights holder",
+"matchBasis": "Morelia International Film Festival film page; director named on the page; og:image; load-tested and visually checked in browser 2026-11-01."
+},
+"FILM-0177": {
+"title": "Siempre andamos caminando",
+"image": "https://moreliafilmfest.com/sites/default/files/legacy/2017/10/pelicula_documentales_15-0627_0b627f35820cc5cccb045e6405f27bc0e9c38d8e.png",
+"originalImage": "https://moreliafilmfest.com/sites/default/files/legacy/2017/10/pelicula_documentales_15-0627_0b627f35820cc5cccb045e6405f27bc0e9c38d8e.png",
+"sourceURL": "https://moreliafilmfest.com/peliculas/siempre-andamos-caminando",
+"publisher": "moreliafilmfest.com",
+"kind": "Film image (film page)",
+"checkedOn": "2026-11-01",
+"rightsStatus": "hotlinked; image remains with its rights holder",
+"matchBasis": "Morelia International Film Festival film page; director named on the page; og:image; load-tested and visually checked in browser 2026-11-01."
+},
+"FILM-ADD-20261031-18": {
+"title": "Alma & Esperanza",
+"image": "https://moreliafilmfest.com/sites/default/files/legacy/2013/04/Alma-y-esperanza.jpg",
+"originalImage": "https://moreliafilmfest.com/sites/default/files/legacy/2013/04/Alma-y-esperanza.jpg",
+"sourceURL": "https://moreliafilmfest.com/peliculas/alma-esperanza",
+"publisher": "moreliafilmfest.com",
+"kind": "Film image (film page)",
+"checkedOn": "2026-11-01",
+"rightsStatus": "hotlinked; image remains with its rights holder",
+"matchBasis": "Morelia International Film Festival film page; director named on the page; og:image; load-tested and visually checked in browser 2026-11-01."
+},
+"DIR-0229-W1031-7": {
+"title": "Kii Nche Ndutsa (El caracol y el tiempo)",
+"image": "https://moreliafilmfest.com/sites/default/files/legacy/2020/10/pelicula_a7092803c34c139cb9ee656bff8f6c63d7a09724.png",
+"originalImage": "https://moreliafilmfest.com/sites/default/files/legacy/2020/10/pelicula_a7092803c34c139cb9ee656bff8f6c63d7a09724.png",
+"sourceURL": "https://moreliafilmfest.com/peliculas/kii-nche-ndutsa",
+"publisher": "moreliafilmfest.com",
+"kind": "Film image (film page)",
+"checkedOn": "2026-11-01",
+"rightsStatus": "hotlinked; image remains with its rights holder",
+"matchBasis": "Morelia International Film Festival film page; director named on the page; og:image; load-tested and visually checked in browser 2026-11-01."
+},
+"DIR-0238-W1031-2": {
+"title": "Don de ser",
+"image": "https://moreliafilmfest.com/sites/default/files/legacy/2015/09/pelicula_c79ef4ce4001255232932316bf177bc0077a94ad.png",
+"originalImage": "https://moreliafilmfest.com/sites/default/files/legacy/2015/09/pelicula_c79ef4ce4001255232932316bf177bc0077a94ad.png",
+"sourceURL": "https://moreliafilmfest.com/peliculas/don-de-ser",
+"publisher": "moreliafilmfest.com",
+"kind": "Film image (film page)",
+"checkedOn": "2026-11-01",
+"rightsStatus": "hotlinked; image remains with its rights holder",
+"matchBasis": "Morelia International Film Festival film page; director named on the page; og:image; load-tested and visually checked in browser 2026-11-01."
+},
+"DIR-0238-W1031-3": {
+"title": "El Naíl",
+"image": "https://moreliafilmfest.com/sites/default/files/legacy/2013/04/movie_2012.jpg",
+"originalImage": "https://moreliafilmfest.com/sites/default/files/legacy/2013/04/movie_2012.jpg",
+"sourceURL": "https://moreliafilmfest.com/peliculas/el-nail",
+"publisher": "moreliafilmfest.com",
+"kind": "Film image (film page)",
+"checkedOn": "2026-11-01",
+"rightsStatus": "hotlinked; image remains with its rights holder",
+"matchBasis": "Morelia International Film Festival film page; director named on the page; og:image; load-tested and visually checked in browser 2026-11-01."
+},
+"DIR-0240-W1031-3": {
+"title": "Música para después de dormir",
+"image": "https://moreliafilmfest.com/sites/default/files/legacy/2013/09/M%C3%BAsica-para-despu%C3%A9s-de-dormir.jpg",
+"originalImage": "https://moreliafilmfest.com/sites/default/files/legacy/2013/09/M%C3%BAsica-para-despu%C3%A9s-de-dormir.jpg",
+"sourceURL": "https://moreliafilmfest.com/peliculas/musica-para-despues-de-dormir",
+"publisher": "moreliafilmfest.com",
+"kind": "Film image (film page)",
+"checkedOn": "2026-11-01",
+"rightsStatus": "hotlinked; image remains with its rights holder",
+"matchBasis": "Morelia International Film Festival film page; director named on the page; og:image; load-tested and visually checked in browser 2026-11-01."
+},
+"DIR-0240-W1031-4": {
+"title": "Ñuu Kanda (Pueblo en movimiento)",
+"image": "https://moreliafilmfest.com/sites/default/files/legacy/2020/10/pelicula_5e9b9d7d77dd52fda58e4a61ca9385597aa65933.png",
+"originalImage": "https://moreliafilmfest.com/sites/default/files/legacy/2020/10/pelicula_5e9b9d7d77dd52fda58e4a61ca9385597aa65933.png",
+"sourceURL": "https://moreliafilmfest.com/peliculas/nuu-kanda",
+"publisher": "moreliafilmfest.com",
+"kind": "Film image (film page)",
+"checkedOn": "2026-11-01",
+"rightsStatus": "hotlinked; image remains with its rights holder",
+"matchBasis": "Morelia International Film Festival film page; director named on the page; og:image; load-tested and visually checked in browser 2026-11-01."
+},
+"FILM-0201": {
+"title": "Marku Irekani = vivir juntos",
+"image": "https://moreliafilmfest.com/sites/default/files/legacy/2021/10/pelicula_427b489d20460401c5644a4584e82dde05c0759c.png",
+"originalImage": "https://moreliafilmfest.com/sites/default/files/legacy/2021/10/pelicula_427b489d20460401c5644a4584e82dde05c0759c.png",
+"sourceURL": "https://moreliafilmfest.com/peliculas/marku-irekani",
+"publisher": "moreliafilmfest.com",
+"kind": "Film image (film page)",
+"checkedOn": "2026-11-01",
+"rightsStatus": "hotlinked; image remains with its rights holder",
+"matchBasis": "Morelia International Film Festival film page; director named on the page; og:image; load-tested and visually checked in browser 2026-11-01."
+},
+"DIR-0242-W1031-2": {
+"title": "Venero",
+"image": "https://moreliafilmfest.com/sites/default/files/media_68e42e25cb20c8.21397793_6BsTHhZbz4z4TPPnhECVedP5h02CEt8wY5NWZxVR.jpg",
+"originalImage": "https://moreliafilmfest.com/sites/default/files/media_68e42e25cb20c8.21397793_6BsTHhZbz4z4TPPnhECVedP5h02CEt8wY5NWZxVR.jpg",
+"sourceURL": "https://moreliafilmfest.com/peliculas/venero",
+"publisher": "moreliafilmfest.com",
+"kind": "Film image (film page)",
+"checkedOn": "2026-11-01",
+"rightsStatus": "hotlinked; image remains with its rights holder",
+"matchBasis": "Morelia International Film Festival film page; director named on the page; og:image; load-tested and visually checked in browser 2026-11-01."
+},
+"NEW-c8924ed69b8e-WORK-1": {
+"title": "XO RAD Magical",
+"image": "https://assets.nfbcdn.ca/medias/norman/thumbs_xlarge/2019/xo-rad-magical-XL.jpg",
+"originalImage": "https://assets.nfbcdn.ca/medias/norman/thumbs_xlarge/2019/xo-rad-magical-XL.jpg",
+"sourceURL": "https://www.nfb.ca/film/xo-rad-magical/",
+"publisher": "nfb.ca",
+"kind": "Film image (film page)",
+"checkedOn": "2026-11-01",
+"rightsStatus": "hotlinked; image remains with its rights holder",
+"matchBasis": "National Film Board film page; director named on the page; og:image; load-tested and visually checked in browser 2026-11-01."
+},
+"NEW-d78c92028675-WORK-1": {
+"title": "Laxwesa Wa: Strength of the River",
+"image": "https://assets.nfbcdn.ca/medias/norman/thumbs_xlarge/2018/Laxwesa_Wa_XL.jpg",
+"originalImage": "https://assets.nfbcdn.ca/medias/norman/thumbs_xlarge/2018/Laxwesa_Wa_XL.jpg",
+"sourceURL": "https://www.nfb.ca/film/laxwesa_wa_strength_of_the_river/",
+"publisher": "nfb.ca",
+"kind": "Film image (film page)",
+"checkedOn": "2026-11-01",
+"rightsStatus": "hotlinked; image remains with its rights holder",
+"matchBasis": "National Film Board film page; director named on the page; og:image; load-tested and visually checked in browser 2026-11-01."
+},
+"NEW-d78c92028675-WORK-2": {
+"title": "Qatuwas: People Gathering Together",
+"image": "https://assets.nfbcdn.ca/medias/norman/thumbs_xlarge/2018/Qatuwas_XL.jpg",
+"originalImage": "https://assets.nfbcdn.ca/medias/norman/thumbs_xlarge/2018/Qatuwas_XL.jpg",
+"sourceURL": "https://www.nfb.ca/film/qatuwas-people-gathering-together/",
+"publisher": "nfb.ca",
+"kind": "Film image (film page)",
+"checkedOn": "2026-11-01",
+"rightsStatus": "hotlinked; image remains with its rights holder",
+"matchBasis": "National Film Board film page; director named on the page; og:image; load-tested and visually checked in browser 2026-11-01."
+},
+"NEW-68c28da55bd1-WORK-2": {
+"title": "Okimah",
+"image": "https://assets.nfbcdn.ca/medias/norman/thumbs_xlarge/2018/okimah-XL.jpg",
+"originalImage": "https://assets.nfbcdn.ca/medias/norman/thumbs_xlarge/2018/okimah-XL.jpg",
+"sourceURL": "https://www.nfb.ca/film/okimah/",
+"publisher": "nfb.ca",
+"kind": "Film image (film page)",
+"checkedOn": "2026-11-01",
+"rightsStatus": "hotlinked; image remains with its rights holder",
+"matchBasis": "National Film Board film page; director named on the page; og:image; load-tested and visually checked in browser 2026-11-01."
+},
+"NEW-6d73018c2cfc-WORK-2": {
+"title": "Cuando la justicia se hace pueblo",
+"image": "https://moreliafilmfest.com/sites/default/files/legacy/2013/04/Cuando-la-justicia-se-hace-pueblo.jpg",
+"originalImage": "https://moreliafilmfest.com/sites/default/files/legacy/2013/04/Cuando-la-justicia-se-hace-pueblo.jpg",
+"sourceURL": "https://moreliafilmfest.com/peliculas/cuando-la-justicia-se-hace-pueblo",
+"publisher": "moreliafilmfest.com",
+"kind": "Film image (film page)",
+"checkedOn": "2026-11-01",
+"rightsStatus": "hotlinked; image remains with its rights holder",
+"matchBasis": "Morelia International Film Festival film page; director named on the page; og:image; load-tested and visually checked in browser 2026-11-01."
+},
+"NEW-6d73018c2cfc-WORK-5": {
+"title": "Y el río sigue corriendo",
+"image": "https://moreliafilmfest.com/sites/default/files/legacy/2013/04/El-r%C3%ADo-que-sigue-corriendo.jpg",
+"originalImage": "https://moreliafilmfest.com/sites/default/files/legacy/2013/04/El-r%C3%ADo-que-sigue-corriendo.jpg",
+"sourceURL": "https://moreliafilmfest.com/peliculas/y-el-rio-sigue-corriendo",
+"publisher": "moreliafilmfest.com",
+"kind": "Film image (film page)",
+"checkedOn": "2026-11-01",
+"rightsStatus": "hotlinked; image remains with its rights holder",
+"matchBasis": "Morelia International Film Festival film page; director named on the page; og:image; load-tested and visually checked in browser 2026-11-01."
+},
+"NEW-c2055a72bb3e-WORK-1": {
+"title": "Nkwí nayà tónko: compromiso de palabra",
+"image": "https://moreliafilmfest.com/sites/default/files/legacy/2017/10/pelicula_documentales_15-0923_d59dbd7941cfbacf005262578a47c0cd0997c080.png",
+"originalImage": "https://moreliafilmfest.com/sites/default/files/legacy/2017/10/pelicula_documentales_15-0923_d59dbd7941cfbacf005262578a47c0cd0997c080.png",
+"sourceURL": "https://moreliafilmfest.com/peliculas/nkwi-naya-tonko-compromiso-de-palabra",
+"publisher": "moreliafilmfest.com",
+"kind": "Film image (film page)",
+"checkedOn": "2026-11-01",
+"rightsStatus": "hotlinked; image remains with its rights holder",
+"matchBasis": "Morelia International Film Festival film page; director named on the page; og:image; load-tested and visually checked in browser 2026-11-01."
+},
+"NEW-656112f6f1c6-WORK-1": {
+"title": "La pequeña semilla en el asfalto",
+"image": "https://moreliafilmfest.com/sites/default/files/legacy/2013/04/La-peque%C3%B1a-semilla-en-el-asfalto.jpg",
+"originalImage": "https://moreliafilmfest.com/sites/default/files/legacy/2013/04/La-peque%C3%B1a-semilla-en-el-asfalto.jpg",
+"sourceURL": "https://moreliafilmfest.com/peliculas/la-pequena-semilla-en-el-asfalto",
+"publisher": "moreliafilmfest.com",
+"kind": "Film image (film page)",
+"checkedOn": "2026-11-01",
+"rightsStatus": "hotlinked; image remains with its rights holder",
+"matchBasis": "Morelia International Film Festival film page; director named on the page; og:image; load-tested and visually checked in browser 2026-11-01."
+},
+"NEW-9ffc2dcada65-WORK-1": {
+"title": "El cargo",
+"image": "https://moreliafilmfest.com/sites/default/files/legacy/2013/04/El-cargo.jpg",
+"originalImage": "https://moreliafilmfest.com/sites/default/files/legacy/2013/04/El-cargo.jpg",
+"sourceURL": "https://moreliafilmfest.com/peliculas/el-cargo",
+"publisher": "moreliafilmfest.com",
+"kind": "Film image (film page)",
+"checkedOn": "2026-11-01",
+"rightsStatus": "hotlinked; image remains with its rights holder",
+"matchBasis": "Morelia International Film Festival film page; director named on the page; og:image; load-tested and visually checked in browser 2026-11-01."
+},
+"NEW-b0c289d615df-WORK-1": {
+"title": "Piedra",
+"image": "https://moreliafilmfest.com/sites/default/files/prensa_43a8783e82580184160b7e0fe69f580c84850fef.jpg",
+"originalImage": "https://moreliafilmfest.com/sites/default/files/prensa_43a8783e82580184160b7e0fe69f580c84850fef.jpg",
+"sourceURL": "https://moreliafilmfest.com/peliculas/piedra",
+"publisher": "moreliafilmfest.com",
+"kind": "Film image (film page)",
+"checkedOn": "2026-11-01",
+"rightsStatus": "hotlinked; image remains with its rights holder",
+"matchBasis": "Morelia International Film Festival film page; director named on the page; og:image; load-tested and visually checked in browser 2026-11-01."
+},
+"NEW-2d38018d40a3-WORK-1": {
+"title": "Oc ni temiki (sigo soñando)",
+"image": "https://moreliafilmfest.com/sites/default/files/media_68ded76c9b16b1.14171083_01K6K7DJVMQ7PHP8NEPAWFF748.jpg",
+"originalImage": "https://moreliafilmfest.com/sites/default/files/media_68ded76c9b16b1.14171083_01K6K7DJVMQ7PHP8NEPAWFF748.jpg",
+"sourceURL": "https://moreliafilmfest.com/peliculas/oc-ni-temiki",
+"publisher": "moreliafilmfest.com",
+"kind": "Film image (film page)",
+"checkedOn": "2026-11-01",
+"rightsStatus": "hotlinked; image remains with its rights holder",
+"matchBasis": "Morelia International Film Festival film page; director named on the page; og:image; load-tested and visually checked in browser 2026-11-01."
+},
+"NEW-43fd1956949b-WORK-1": {
+"title": "Tu’un Savi",
+"image": "https://moreliafilmfest.com/sites/default/files/legacy/2020/10/pelicula_aa837eebca2a30044eeff1f46e34808c1a66c629.png",
+"originalImage": "https://moreliafilmfest.com/sites/default/files/legacy/2020/10/pelicula_aa837eebca2a30044eeff1f46e34808c1a66c629.png",
+"sourceURL": "https://moreliafilmfest.com/peliculas/tuun-savi",
+"publisher": "moreliafilmfest.com",
+"kind": "Film image (film page)",
+"checkedOn": "2026-11-01",
+"rightsStatus": "hotlinked; image remains with its rights holder",
+"matchBasis": "Morelia International Film Festival film page; director named on the page; og:image; load-tested and visually checked in browser 2026-11-01."
+},
+"DIR-0105-W1031-3": {
+"title": "Brother, I Cry",
+"image": "https://en.wikipedia.org/wiki/Special:FilePath/Brother%2C_I_Cry.jpg?width=500",
+"originalImage": "https://en.wikipedia.org/wiki/Special:FilePath/Brother%2C_I_Cry.jpg?width=500",
+"sourceURL": "https://en.wikipedia.org/wiki/Brother,_I_Cry",
+"publisher": "en.wikipedia.org",
+"kind": "Film image (film page)",
+"checkedOn": "2026-11-01",
+"rightsStatus": "hotlinked; image remains with its rights holder",
+"matchBasis": "Wikipedia article on the film names the director; infobox image; load-tested and visually checked in browser 2026-11-01."
+},
+"DIR-0132-W1031-3": {
+"title": "Vacarme",
+"image": "https://en.wikipedia.org/wiki/Special:FilePath/Vacarme.jpg?width=500",
+"originalImage": "https://en.wikipedia.org/wiki/Special:FilePath/Vacarme.jpg?width=500",
+"sourceURL": "https://en.wikipedia.org/wiki/Vacarme",
+"publisher": "en.wikipedia.org",
+"kind": "Film image (film page)",
+"checkedOn": "2026-11-01",
+"rightsStatus": "hotlinked; image remains with its rights holder",
+"matchBasis": "Wikipedia article on the film names the director; infobox image; load-tested and visually checked in browser 2026-11-01."
+},
+"DIR-0134-W1031-3": {
+"title": "Slash/Back",
+"image": "https://en.wikipedia.org/wiki/Special:FilePath/Slash-Back_poster.jpeg?width=500",
+"originalImage": "https://en.wikipedia.org/wiki/Special:FilePath/Slash-Back_poster.jpeg?width=500",
+"sourceURL": "https://en.wikipedia.org/wiki/Slash/Back",
+"publisher": "en.wikipedia.org",
+"kind": "Film image (film page)",
+"checkedOn": "2026-11-01",
+"rightsStatus": "hotlinked; image remains with its rights holder",
+"matchBasis": "Wikipedia article on the film names the director; infobox image; load-tested and visually checked in browser 2026-11-01."
 }
 };window.ATLAS_PROFILE_MEDIA=window.ATLAS_PROFILE_MEDIA||{};for(const [k,v] of Object.entries(add))if(!window.ATLAS_PROFILE_MEDIA[k])window.ATLAS_PROFILE_MEDIA[k]=v;})();
