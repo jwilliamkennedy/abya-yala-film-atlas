@@ -1,6 +1,9 @@
 'use strict';
 // 31 October 2026 update: Research Master 724 refresh, new records, merges and enrichments.
 // Runs after the site's own review layers, so their corrections stay in force.
+// Statuses shown on the default map layer: reviewed records plus discoveries with a sourced directing credit.
+// 'Review pending', 'Candidate' and 'Verification needed' stay in the research layer.
+window.ATLAS_ON_MAP=new Set(['Map Ready','Discovery · credit supported','Discovery · directing credit sourced']);
 window.AtlasUpdate1031=(()=>{
  const norm=s=>String(s||'').normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();
  const GUF={code:'GUF',name:'French Guiana',region:'South America',coordinates:[-53.1,3.9],iso:'254',scope:'Territorial entry point',coverage:'Source-supported country association',note:'Country navigation reference, not a filmmaker location.',leads:[]};

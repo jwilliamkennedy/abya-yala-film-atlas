@@ -1,4 +1,5 @@
 'use strict';
+window.ATLAS_ON_MAP=window.ATLAS_ON_MAP||new Set(['Map Ready']);
 (async()=>{
  const api=window.Atlas;if(!api)return;await api.ready;if(!document.querySelector('#atlas .geography'))return;
  const $=q=>document.querySelector(q);let applying=false,pending=false,pushPending=false,position=Number(history.state?.atlasIndex)||0,farthest=position,travelling=false;
@@ -28,7 +29,7 @@
   const year=k=>/^\d{4}$/.test(p.get(k))&&Number(p.get(k))>=1900&&Number(p.get(k))<=2100?p.get(k):'';
   const option=(id,k)=>[...$(id).options].some(o=>o.value===p.get(k))?p.get(k):'';
   st.filters={from:year('from'),to:year('to'),language:option('#filter-language','language'),form:option('#filter-form','form'),undated:p.get('undated')!=='0'};
-  st.scope=p.get('reviewed')==='1'&&(!st.record||api.recordById(st.record).status==='Map Ready')?'map':'all';st.relationshipStyle=p.get('curves')==='1'?'curves':'cards';st.world=p.get('world')==='1';st.pilot=p.get('linkedOnly')==='1';st.unassigned=p.get('unassigned')==='1';st.community=null;
+  st.scope=p.get('reviewed')==='1'&&(!st.record||window.ATLAS_ON_MAP.has(api.recordById(st.record).status))?'map':'all';st.relationshipStyle=p.get('curves')==='1'?'curves':'cards';st.world=p.get('world')==='1';st.pilot=p.get('linkedOnly')==='1';st.unassigned=p.get('unassigned')==='1';st.community=null;
   st.branchPage=Math.max(0,Math.min(10000,Number(p.get('connectionsPage'))||1)-1);st.connections=p.get('connections')!=='0';st.cinema=p.get('totals')!=='0';st.boundaries=p.get('outlines')==='1';st.shading=p.get('shading')!=='0';st.worksOpen=p.get('works')!=='0';
   st.center=null;st.scale=null;st.returnContext=st.crossReturn=null;return st;
  }

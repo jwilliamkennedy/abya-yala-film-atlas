@@ -1,4 +1,5 @@
 'use strict';
+window.ATLAS_ON_MAP=window.ATLAS_ON_MAP||new Set(['Map Ready']);
 (async()=>{
  const A=window.Atlas;if(!A)return;await A.ready;
  const $=s=>document.querySelector(s),map=$('.map-panel'),esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -10,7 +11,7 @@
  const safeImage=raw=>{if(!raw)return '';try{const u=new URL(raw,location.href);return u.protocol==='https:'||u.origin===location.origin?u.href:'';}catch{return '';}};
  function filmForLand(id,used=new Set()){
   const l=A.landById(id);if(!l)return null;const seen=new Set();
-  for(const e of A.landLinks(l)){const r=A.recordById(e.record);if(!r||!A.recordPasses(r)||(A.state.scope!=='all'&&r.status!=='Map Ready'))continue;for(const f of r.films){const key=window.AtlasArtwork.workKey(f);if(seen.has(key)||!A.filmPasses(f))continue;seen.add(key);const m=A.mediaForFilm(f),src=safeImage(m?.image);if(src&&m?.sourceURL&&!used.has(src))return {r,f,m,src,land:l};}}
+  for(const e of A.landLinks(l)){const r=A.recordById(e.record);if(!r||!A.recordPasses(r)||(A.state.scope!=='all'&&!window.ATLAS_ON_MAP.has(r.status)))continue;for(const f of r.films){const key=window.AtlasArtwork.workKey(f);if(seen.has(key)||!A.filmPasses(f))continue;seen.add(key);const m=A.mediaForFilm(f),src=safeImage(m?.image);if(src&&m?.sourceURL&&!used.has(src))return {r,f,m,src,land:l};}}
   return null;
  }
  function hide(){clearTimeout(hoverTimer);clearTimeout(leaveTimer);peek.hidden=true;pinned=false;current=null;}
