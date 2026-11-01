@@ -37,6 +37,7 @@ window.AtlasUpdate1031=(()=>{
    if(p.set)Object.assign(r,p.set);
    if(p.country&&(!r.country||p.set))setCountry(r,p.country,names);
    if(p.titles)for(const f of r.films||[])if(p.titles[f.title])f.title=p.titles[f.title];
+   if(p.dropFilms){const gone=new Set(p.dropFilms);r.films=(r.films||[]).filter(f=>!gone.has(f.title));r.filmCount=String(r.films.length);}
    addAliases(r,p.aliases);addFilms(r,p.films);
    for(const f of p.films||[])addSources(r,[{url:f.sourceURL,type:'Screen credit',evidence:f.credit,authority:'Source retained',checkedOn:d.date}]);
    if(p.filmYears)for(const f of r.films){for(const [t,y] of Object.entries(p.filmYears))if(norm(f.title).startsWith(norm(t))&&!f.year)f.year=y;}

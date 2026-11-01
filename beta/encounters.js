@@ -233,7 +233,7 @@ const nationMemo=new WeakMap();function makerNation(r){if(!r)return '';if(nation
 function makerNationRaw(r){if(!window.ATLAS_ON_MAP.has(r.status))return '';const a=String(publicAffiliation(biographyById(r.id)?.affiliation)||publicAffiliation(r.community)||'').split(';')[0].replace(/\s*\(([^)]*)\)/g,', $1').replace(/\s+(director|filmmaker|artist)$/i,'').trim();if(!a||/not recorded|needs review|requires corroboration|context|unknown|pending/i.test(a))return '';return a.length>42?a.slice(0,41).trimEnd()+'…':a;}
 function makerLabel(r){const n=makerNation(r);return n?r.name+' ('+n+')':r.name;}
 // Beta 109: research notes never show as a filmmaker's nation.
-const NOTE_RE=/needs review|pending|unverified|not independently confirmed|festival-reported|festival-described|source-described|context only|eligibility only|confirm|corroborat|surname|by film language|film community|programme|not stated|possibly|not recorded|\bcontext\b/i;
+const NOTE_RE=/needs review|pending|unverified|not independently confirmed|festival-reported|festival-described|source-described|context only|eligibility only|confirm|corroborat|surname|by film language|film community|programme|not stated|possibly|not recorded|project in|classification|\bcontext\b/i;
 function publicAffiliation(v){v=String(v||'').trim();return !v||NOTE_RE.test(v)?'':v;}
 const watchMemo=new WeakMap();function canWatch(f){if(!watchMemo.has(f)){let v=false;try{v=viewingRoutes(f).some(l=>viewingLabel(l)==='Watch');}catch{}watchMemo.set(f,v);}return watchMemo.get(f);}
 const recordHay=new WeakMap();
