@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <meta name="referrer" content="no-referrer">
+  <title>Opening Indigenous Cinema Atlas</title>
+  <script>
+    (function () {
+      // Preserve intentional Atlas parameters and view fragments; remove tracking.
+      const destination = new URL('./', window.location.href);
+      const parameters = new URLSearchParams(window.location.search);
+      for (const key of Array.from(parameters.keys())) {
+        if (key.toLowerCase().startsWith('utm_')) parameters.delete(key);
+      }
+      destination.search = parameters.toString();
+      destination.hash = window.location.hash;
+      window.location.replace(destination.href);
+    })();
+  </script>
+</head>
+<body>
+  <p>Opening the <a href="./">Indigenous Cinema Atlas</a>…</p>
+</body>
+</html>
