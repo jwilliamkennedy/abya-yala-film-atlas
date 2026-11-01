@@ -63,7 +63,7 @@
     layer.appendChild(t);
     t.addEventListener('click',e=>{e.stopPropagation();wordFor(t.dataset.land)?.dispatchEvent(new MouseEvent('click',{bubbles:true}));});
     t.addEventListener('pointerenter',()=>{t.classList.add('awake');wordFor(t.dataset.land)?.dispatchEvent(new PointerEvent('pointerenter'));});
-    t.addEventListener('pointerleave',()=>t.classList.remove('awake'));
+    t.addEventListener('pointerleave',()=>{t.classList.remove('awake');wordFor(t.dataset.land)?.dispatchEvent(new PointerEvent('pointerleave'));});
     const id=d.id,duo=t.querySelector('image.duo');
     duo.addEventListener('error',()=>{dark.add(duo.getAttribute('href'));const n=repick(id);if(n)setImage(t,n);else t.remove();});
     duo.addEventListener('load',()=>{const src=duo.getAttribute('href');checkDark(src,()=>{dark.add(src);const n=repick(id);if(n)setImage(t,n);});});

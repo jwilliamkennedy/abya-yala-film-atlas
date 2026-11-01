@@ -14,3 +14,17 @@
 })();
 // Constellate notices fade after a few seconds instead of sitting over the map controls.
 (function fade(){const n=document.querySelector('#weave-notice');if(!n)return setTimeout(fade,800);let t=null;new MutationObserver(()=>{if(n.hidden||!n.textContent)return;clearTimeout(t);t=setTimeout(()=>{n.hidden=true;},4500);}).observe(n,{childList:true,characterData:true,subtree:true,attributes:true,attributeFilter:['hidden']});})();
+// Floating film boxes close when you click away from them or press Escape.
+(function dismiss(){
+ const map=document.querySelector('.map-panel'),dock=document.querySelector('#map-films'),peek=document.querySelector('#film-peek69');
+ if(!map||!dock)return setTimeout(dismiss,800);
+ const closePeek=()=>{const p=document.querySelector('#film-peek69');if(p&&!p.hidden)p.querySelector('.peek-close69')?.click();};
+ const closeDock=()=>{if(!dock.hidden)dock.classList.add('is-dismissed');};
+ // a new selection brings the films panel back
+ new MutationObserver(()=>dock.classList.remove('is-dismissed')).observe(dock,{attributes:true,attributeFilter:['data-stamp']});
+ document.addEventListener('pointerdown',e=>{const t=e.target;
+  if(!t.closest('#film-peek69'))closePeek();
+  if(!t.closest('.map-panel')||t.closest('#map-films,g.land-word,g.land-thumb,.zoom,#featured-weave,button,a,details,[role="button"],.map-marker,circle[class*="marker"]'))return;
+  closeDock();},true);
+ document.addEventListener('keydown',e=>{if(e.key!=='Escape'||document.body.classList.contains('is-theme-weaving'))return;closePeek();closeDock();});
+})();

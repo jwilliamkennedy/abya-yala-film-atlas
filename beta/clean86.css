@@ -27,3 +27,4 @@ header nav.primary .about-link:hover,header nav.primary .about-link:focus-visibl
 body.selection-held #index #section-label{display:none!important}
 /* On a phone the featured weave is a slim line, so the map stays visible */
 @media (max-width:680px){#featured-weave{padding:10px 12px 9px;width:calc(100% - 24px)}#featured-weave ul,#featured-weave .fw-eyebrow{display:none}#featured-weave h2{font-size:17px;margin:0 22px 6px 0}}
+#map-films.is-dismissed{display:none!important}
