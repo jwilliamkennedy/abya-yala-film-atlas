@@ -32,40 +32,49 @@
  const NS='http://www.w3.org/2000/svg';
  function ensureClip(svg){if(svg.querySelector('#land-thumb-clip'))return;const defs=svg.querySelector('defs')||svg.insertBefore(document.createElementNS(NS,'defs'),svg.firstChild);defs.insertAdjacentHTML('beforeend','<clipPath id="land-thumb-clip" clipPathUnits="objectBoundingBox"><circle cx=".5" cy=".5" r=".5"/></clipPath><radialGradient id="land-thumb-glow"><stop offset="55%" stop-color="#f3dfa6" stop-opacity=".45"/><stop offset="100%" stop-color="#f3dfa6" stop-opacity="0"/></radialGradient>');}
  function decorate(){
-  const k=zoomK(),placed=[],labels=new Map();
+  const k=zoomK(),placed=[],seen=new Set();
   const tf=g=>{const m=(g.getAttribute('transform')||'').match(/translate\(([-\d.]+)[ ,]+([-\d.]+)/);return m?[+m[1],+m[2]]:[0,0];};
-  document.querySelectorAll('g.land-word').forEach(g=>{if(+(g.style.opacity||1)<.35)return;try{const b=g.querySelector('.land-word-label').getBBox(),[gx,gy]=tf(g);labels.set(g,{x:gx+b.x-4,y:gy+b.y-2,w:b.width+8,h:b.height+4});}catch{}});
-  const hits=(box,self)=>placed.some(b=>box.x<b.x+b.w&&box.x+box.w>b.x&&box.y<b.y+b.h&&box.y+box.h>b.y)||[...labels].some(([g,b])=>g!==self&&box.x<b.x+b.w&&box.x+box.w>b.x&&box.y<b.y+b.h&&box.y+box.h>b.y);
-  document.querySelectorAll('g.land-word').forEach(g=>{
-   const d=g.__data__;if(!d||!d.id)return;
+  const words=[...document.querySelectorAll('g.land-word')];if(!words.length)return;
+  // One layer for every circle, drawn beneath all land names: names always stay readable, and no circle has to be hidden.
+  const parent=words[0].parentNode;let layer=parent.querySelector(':scope > g#land-thumb-layer');
+  if(!layer){ensureClip(parent.ownerSVGElement);layer=document.createElementNS(NS,'g');layer.id='land-thumb-layer';}
+  if(parent.firstChild!==layer)parent.insertBefore(layer,parent.firstChild);
+  document.querySelectorAll('g.land-word > g.land-thumb').forEach(t=>t.remove());
+  const hit=box=>placed.some(b=>box.x<b.x+b.w&&box.x+box.w>b.x&&box.y<b.y+b.h&&box.y+box.h>b.y);
+  for(const g of words){
+   const d=g.__data__;if(!d||!d.id)continue;
    const map=d.voice?.map||12,count=d.voice?.count||0,major=map>=20||count>=5;
    // More lands earn a circle as you zoom in: major lands always, then any land with two filmmakers, then every land with a film image.
-   const big=major||(k>=1.6&&(count>=2||map>=18))||(k>=3&&count>=1);
-   let t=g.querySelector(':scope > g.land-thumb');
-   if(!big){if(t)t.remove();return;}
-   const c=imageFor(d.id);if(!c){if(t)t.remove();return;}
-   let base=major?Math.min(44,Math.max(30,map*1.35)):Math.min(30,Math.max(22,map*1.25));let size=Math.round(Math.min(major?78:52,base*Math.pow(Math.max(1,k),.42))),lines=(d.lines&&d.lines.length)||1;
-   let x=-(d.labelWidth||80)/2-14-size,y=-(d.voice.map||20)*(lines-.15)/2-size/2+2,ok=false;
-   const [gx,gy]=tf(g);
-   try{const bb=g.querySelector('.land-word-label').getBBox(),dot=g.querySelector('.land-reference-dot'),left=Math.min(bb.x,dot?+dot.getAttribute('cx')-4:bb.x);
-    // try: above the name (large), left of the name, then left at base size
-    const tries=[];if(size>48)tries.push([size,bb.x+Math.min(bb.width,160)*.18-size/2,bb.y-size-4]);
-    tries.push([size,left-7-size,bb.y+bb.height/2-size/2]);const s0=Math.round(base);if(s0<size)tries.push([s0,left-7-s0,bb.y+bb.height/2-s0/2]);tries.push([s0,bb.x+bb.width+8,bb.y+bb.height/2-s0/2]);const s1=Math.max(20,Math.round(s0*.75));tries.push([s1,left-6-s1,bb.y+bb.height/2-s1/2]);
-    for(const [sz,tx,ty] of tries){const box={x:gx+tx-3,y:gy+ty-3,w:sz+6,h:sz+6};if(!hits(box,g)){size=sz;x=tx;y=ty;placed.push(box);ok=true;break;}}
-   }catch{}
-   if(!ok){if(t)t.remove();return;}
-   if(!t){ensureClip(g.ownerSVGElement);t=document.createElementNS(NS,'g');t.setAttribute('class','land-thumb');t.setAttribute('aria-hidden','true');
+   if(!(major||(k>=1.6&&(count>=2||map>=18))||(k>=3&&count>=1)))continue;
+   const c=imageFor(d.id);if(!c)continue;
+   const base=major?Math.min(44,Math.max(30,map*1.35)):Math.min(32,Math.max(24,map*1.25));
+   let size=Math.round(Math.min(major?84:58,base*Math.pow(Math.max(1,k),.45)));
+   const [gx,gy]=tf(g);let x,y;
+   try{const bb=g.querySelector('.land-word-label').getBBox(),dot=g.querySelector('.land-reference-dot'),left=Math.min(bb.x,dot?+dot.getAttribute('cx')-4:bb.x),mid=bb.y+bb.height/2;
+    const tries=[];if(size>50)tries.push([size,bb.x+Math.min(bb.width,160)*.18-size/2,bb.y-size-2]);
+    tries.push([size,left-6-size,mid-size/2],[size,bb.x+bb.width+6,mid-size/2]);
+    const s0=Math.round(base);tries.push([s0,left-6-s0,mid-s0/2],[s0,bb.x+bb.width+6,mid-s0/2]);
+    let chosen=null;for(const [sz,tx,ty] of tries){const box={x:gx+tx,y:gy+ty,w:sz,h:sz};if(!hit(box)){chosen=[sz,tx,ty];break;}}
+    if(!chosen){const s1=Math.max(20,Math.round(s0*.7));chosen=[s1,left-5-s1,mid-s1/2];}
+    [size,x,y]=chosen;placed.push({x:gx+x,y:gy+y,w:size,h:size});
+   }catch{continue;}
+   seen.add(d.id);
+   let t=layer.querySelector(`g.land-thumb[data-land="${CSS.escape(d.id)}"]`);
+   if(!t){t=document.createElementNS(NS,'g');t.setAttribute('class','land-thumb');t.dataset.land=d.id;t.setAttribute('role','presentation');
     t.innerHTML=`<circle class="land-thumb-halo"/><image preserveAspectRatio="xMidYMid slice" clip-path="url(#land-thumb-clip)"/><circle class="land-thumb-ring"/><title></title>`;
-    g.insertBefore(t,g.firstChild);
-    const img=t.querySelector('image');img.addEventListener('error',()=>{dark.add(img.getAttribute('href'));if(!repick(d.id))t.remove();schedule();});img.addEventListener('load',()=>{const src=img.getAttribute('href');checkDark(src,()=>{dark.add(src);if(repick(d.id))schedule();});});}
-   const img=t.querySelector('image');if(img.getAttribute('href')!==c.src){img.setAttribute('href',c.src);img.style.animation='none';void img.getBoundingClientRect();img.style.animation='';}
-   img.setAttribute('x',x);img.setAttribute('y',y);img.setAttribute('width',size);img.setAttribute('height',size);
-   const cx=x+size/2,cy=y+size/2;
+    layer.appendChild(t);
+    t.addEventListener('click',e=>{e.stopPropagation();const w=[...document.querySelectorAll('g.land-word')].find(w=>w.__data__?.id===t.dataset.land);w?.dispatchEvent(new MouseEvent('click',{bubbles:true}));});
+    t.addEventListener('pointerenter',()=>{const w=[...document.querySelectorAll('g.land-word')].find(w=>w.__data__?.id===t.dataset.land);w?.dispatchEvent(new PointerEvent('pointerenter'));});
+    const img=t.querySelector('image');const id=d.id;img.addEventListener('error',()=>{dark.add(img.getAttribute('href'));if(!repick(id))t.remove();schedule();});img.addEventListener('load',()=>{const src=img.getAttribute('href');checkDark(src,()=>{dark.add(src);if(repick(id))schedule();});});}
+   const ax=gx+x,ay=gy+y,cx=ax+size/2,cy=ay+size/2,img=t.querySelector('image');
+   if(img.getAttribute('href')!==c.src){img.setAttribute('href',c.src);img.style.animation='none';void img.getBoundingClientRect();img.style.animation='';}
+   img.setAttribute('x',ax);img.setAttribute('y',ay);img.setAttribute('width',size);img.setAttribute('height',size);
    const halo=t.querySelector('.land-thumb-halo');halo.setAttribute('cx',cx);halo.setAttribute('cy',cy);halo.setAttribute('r',size*.78);halo.setAttribute('fill','url(#land-thumb-glow)');
    const ring=t.querySelector('.land-thumb-ring');ring.setAttribute('cx',cx);ring.setAttribute('cy',cy);ring.setAttribute('r',size/2);
    t.querySelector('title').textContent=c.title+' · '+c.maker;
-   t.querySelector('.land-thumb-cap')?.remove();
-  });
+   t.style.opacity=g.style.opacity||'';
+  }
+  layer.querySelectorAll('g.land-thumb').forEach(t=>{if(!seen.has(t.dataset.land))t.remove();});
  }
  function zoomK(){try{return A.captureState().zoom||1;}catch{return 1;}}
  // Each new zoom level reshuffles the images, so the map shows different films every time.
@@ -73,6 +82,6 @@
  function watchZoom(){const k=zoomK();if(Math.abs(Math.log(k/lastK))<Math.log(1.25))return;clearTimeout(settle);settle=setTimeout(()=>{lastK=zoomK();pick.clear();schedule();},380);}
  let queued=false;const schedule=()=>{if(queued)return;queued=true;requestAnimationFrame(()=>{queued=false;watchZoom();decorate();});};
  const host=document.querySelector('#atlas')||document.querySelector('.map-panel');
- if(host)new MutationObserver(muts=>{if(muts.some(m=>[...m.addedNodes,...m.removedNodes].some(n=>n.nodeType===1&&!n.classList?.contains('land-thumb')&&!n.closest?.('.land-thumb')))||muts.some(m=>m.type==='attributes'&&m.target.classList?.contains('land-word')))schedule();}).observe(host,{subtree:true,childList:true,attributes:true,attributeFilter:['transform']});
+ if(host)new MutationObserver(muts=>{if(muts.some(m=>[...m.addedNodes,...m.removedNodes].some(n=>n.nodeType===1&&!n.classList?.contains('land-thumb')&&n.id!=='land-thumb-layer'&&!n.closest?.('#land-thumb-layer')))||muts.some(m=>m.type==='attributes'&&m.target.classList?.contains('land-word')))schedule();}).observe(host,{subtree:true,childList:true,attributes:true,attributeFilter:['transform']});
  decorate();
 })();
