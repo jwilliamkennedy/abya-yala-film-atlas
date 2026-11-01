@@ -14,3 +14,10 @@ g.land-thumb .land-thumb-ring{fill:none;stroke:#f1e3bb;stroke-width:1.2;stroke-o
 g.land-word:is(:hover,:focus-visible) g.land-thumb .land-thumb-ring{stroke-width:2;stroke-opacity:1}
 @keyframes land-thumb-in{to{opacity:1}}
 @media(prefers-reduced-motion:reduce){g.land-thumb image{animation:none;opacity:1}}
+
+/* Type pass (beta 72): Bodoni Moda for land names and titles, Karla for the interface. */
+.brand-title{font-family:'Atlas Serif',Georgia,serif!important;font-weight:400!important;font-size:30px!important;letter-spacing:.005em}
+.brand-title small{font-family:'Atlas Sans',sans-serif!important;font-size:11px!important;letter-spacing:.16em!important;text-transform:uppercase;margin-top:6px}
+:root #atlas .land-word-label{stroke-width:2.1px!important;stroke-opacity:.72!important;letter-spacing:.012em}
+:root #atlas .land-word:is(.selected,:hover,:focus-visible) .land-word-label{stroke-width:2.8px!important}
+@media(max-width:680px){.brand-title{font-size:22px!important}}
