@@ -229,7 +229,8 @@ const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
 let recordMap;function recordById(id){return recordMap?.get(id);}
 function allowed(){return archive.records.filter(r=>s.scope==='all'||window.ATLAS_ON_MAP.has(r.status));}
 // Beta 99: a filmmaker's name carries their nation in parentheses wherever the affiliation is sourced.
-function makerNation(r){if(!r||!window.ATLAS_ON_MAP.has(r.status))return '';const a=String(biographyById(r.id)?.affiliation||r.community||'').split(';')[0].replace(/\s*\(([^)]*)\)/g,', $1').replace(/\s+(director|filmmaker|artist)$/i,'').trim();if(!a||/not recorded|needs review|requires corroboration|context|unknown|pending/i.test(a))return '';return a.length>42?a.slice(0,41).trimEnd()+'…':a;}
+const nationMemo=new WeakMap();function makerNation(r){if(!r)return '';if(nationMemo.has(r))return nationMemo.get(r);const v=makerNationRaw(r);nationMemo.set(r,v);return v;}
+function makerNationRaw(r){if(!window.ATLAS_ON_MAP.has(r.status))return '';const a=String(biographyById(r.id)?.affiliation||r.community||'').split(';')[0].replace(/\s*\(([^)]*)\)/g,', $1').replace(/\s+(director|filmmaker|artist)$/i,'').trim();if(!a||/not recorded|needs review|requires corroboration|context|unknown|pending/i.test(a))return '';return a.length>42?a.slice(0,41).trimEnd()+'…':a;}
 function makerLabel(r){const n=makerNation(r);return n?r.name+' ('+n+')':r.name;}
 const recordHay=new WeakMap();
 function recordMatches(r,q){if(!q)return true;let h=recordHay.get(r);if(h===undefined){h=norm([r.name,...(r.aliases||[]),r.countryName,r.country,r.community,biographyById(r.id)?.affiliation,...(edgesByRecord.get(r.id)||[]).map(e=>landById(e.land)?.name)].join(' '));recordHay.set(r,h);}return h.includes(q);}
