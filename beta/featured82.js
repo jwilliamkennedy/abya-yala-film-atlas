@@ -14,6 +14,6 @@
  const card=document.querySelector('#featured-weave');
  let dismissed=false;try{dismissed=sessionStorage.getItem('fw-hidden')==='1';}catch{}
  card.querySelector('.fw-close').onclick=()=>{dismissed=true;try{sessionStorage.setItem('fw-hidden','1');}catch{};update();};
- function update(){const busy=/(maker|film|land|community|country)=/.test(location.hash)||document.body.classList.contains('is-theme-weaving')||document.body.classList.contains('weave-playing');card.hidden=dismissed||busy;}
+ function update(){const busy=/(maker|film|land|community|country)=/.test(location.hash)||document.body.classList.contains('is-theme-weaving')||document.body.classList.contains('weave-playing')||document.body.classList.contains('selection-held');card.hidden=dismissed||busy;}
  addEventListener('hashchange',update);new MutationObserver(update).observe(document.body,{attributes:true,attributeFilter:['class']});update();
 })();
