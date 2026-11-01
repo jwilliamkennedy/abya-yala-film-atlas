@@ -1,0 +1,16 @@
+/* Beta 71: header ledger and land images */
+.atlas-ledger{display:flex;align-items:baseline;gap:22px;margin:0 0 0 auto;padding-right:8px;font:11px/1 'Atlas Sans',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#9fb0c8;white-space:nowrap}
+.atlas-ledger span{display:flex;align-items:baseline;gap:7px}
+.atlas-ledger b{font:400 24px/1 'Atlas Serif',Georgia,serif;letter-spacing:0;text-transform:none;color:#f1e3bb;font-variant-numeric:oldstyle-nums}
+.atlas-ledger span+span{padding-left:22px;border-left:1px solid rgba(241,227,187,.22)}
+header .atlas-utilities{margin-left:0}
+@media(max-width:1180px){.atlas-ledger .ledger-countries{display:none}}
+@media(max-width:900px){.atlas-ledger{gap:12px;letter-spacing:.08em}.atlas-ledger b{font-size:18px}.atlas-ledger span+span{padding-left:12px}}
+@media(max-width:680px){.atlas-ledger{display:none}}
+
+g.land-thumb{pointer-events:none}
+g.land-thumb image{opacity:0;animation:land-thumb-in .9s ease-out .15s forwards}
+g.land-thumb .land-thumb-ring{fill:none;stroke:#f1e3bb;stroke-width:1.2;stroke-opacity:.85}
+g.land-word:is(:hover,:focus-visible) g.land-thumb .land-thumb-ring{stroke-width:2;stroke-opacity:1}
+@keyframes land-thumb-in{to{opacity:1}}
+@media(prefers-reduced-motion:reduce){g.land-thumb image{animation:none;opacity:1}}
