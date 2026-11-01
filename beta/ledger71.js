@@ -7,11 +7,11 @@
  const motion=matchMedia('(prefers-reduced-motion: reduce)');
 
  // Ledger: distinct films (co-directed works counted once), filmmakers and collectives, countries.
- const R=A.allRecords(),works=new Set(),countries=new Set();
- for(const r of R){for(const c of r.countryCodes||[r.country])if(c)countries.add(c);for(const f of r.films||[]){const t=norm(f.title).split(' = ')[0];if(t)works.add(t+'|'+(f.year||''));}}
+ const R=A.allRecords(),works=new Set(),peoples=new Set();
+ for(const r of R){if(window.ATLAS_ON_MAP.has(r.status))try{for(const e of A.recordLandReferences(r.id))if(e.mapped)peoples.add(e.id);}catch{}for(const f of r.films||[]){const t=norm(f.title).split(' = ')[0];if(t)works.add(t+'|'+(f.year||''));}}
  const nav=document.querySelector('header nav.primary');
  if(nav&&!document.querySelector('.atlas-ledger')){
-  nav.insertAdjacentHTML('afterend',`<p class="atlas-ledger" aria-label="${fmt(works.size)} films by ${fmt(R.length)} filmmakers and collectives in ${countries.size} countries and territories"><span><b>${fmt(works.size)}</b> films</span><span><b>${fmt(R.length)}</b> filmmakers</span><span class="ledger-countries"><b>${countries.size}</b> countries</span></p>`);
+  nav.insertAdjacentHTML('afterend',`<p class="atlas-ledger" aria-label="${fmt(works.size)} films by ${fmt(R.length)} filmmakers and collectives across ${fmt(peoples.size)} Indigenous peoples and lands on the map"><span><b>${fmt(works.size)}</b> films</span><span><b>${fmt(R.length)}</b> filmmakers</span><span class="ledger-countries"><b>${fmt(peoples.size)}</b> peoples</span></p>`);
  }
 
  // Posters: each land with linked filmmakers shows one of their film images, chosen at random.
@@ -26,7 +26,11 @@
  }
  const usable=id=>poolFor(id).filter(c=>!dark.has(c.src));
  function repick(id,avoid){const p=usable(id),q=p.length>1&&avoid?p.filter(c=>c.src!==avoid):p;const c=q.length?q[Math.floor(Math.random()*q.length)]:null;pick.set(id,c);return c;}
- const imageFor=id=>pick.has(id)&&pick.get(id)&&!dark.has(pick.get(id).src)?pick.get(id):repick(id);
+ // Each visit shows a different film from the last visit wherever a land has more than one.
+ let last={};try{last=JSON.parse(localStorage.getItem('atlas-last-posters')||'{}')||{};}catch{}
+ const remember=()=>{try{const o={};for(const [k,v] of pick)if(v)o[k]=v.src;localStorage.setItem('atlas-last-posters',JSON.stringify(o));}catch{}};
+ addEventListener('pagehide',remember);document.addEventListener('visibilitychange',()=>{if(document.hidden)remember();});
+ const imageFor=id=>pick.has(id)&&pick.get(id)&&!dark.has(pick.get(id).src)?pick.get(id):repick(id,pick.has(id)?undefined:last[id]);
 
  const NS='http://www.w3.org/2000/svg';
  // Duotone at rest (deep indigo to warm cream), full colour when you engage with the land.

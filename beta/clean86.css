@@ -28,3 +28,48 @@ body.selection-held #index #section-label{display:none!important}
 /* On a phone the featured weave is a slim line, so the map stays visible */
 @media (max-width:680px){#featured-weave{padding:10px 12px 9px;width:calc(100% - 24px)}#featured-weave ul,#featured-weave .fw-eyebrow{display:none}#featured-weave h2{font-size:17px;margin:0 22px 6px 0}}
 #map-films.is-dismissed{display:none!important}
+
+/* Beta 88: no film boxes appear on their own when you zoom; the poster circles carry the films */
+#zoom-films69{display:none!important}
+
+/* Beta 88: one quiet row above a selection: Back on the left, Copy link and Save view on the right */
+body.selection-held #index .index-command-bar{display:grid;grid-template-columns:1fr auto;align-items:center;column-gap:12px}
+body.selection-held #index .index-command-bar>*{grid-column:1/-1}
+body.selection-held #index .index-command-bar>nav.view-history{grid-column:1;grid-row:1;border-bottom:0;margin:0;padding-bottom:6px}
+body.selection-held #index .index-command-bar>.index-control-row{grid-column:2;grid-row:1;border:0;margin:0;padding:0 0 6px}
+body.selection-held #index #view-forward:disabled{visibility:hidden}
+
+/* Beta 89: the paper palette from the About page; no camera in the brand */
+header .brand-camera{display:none!important}
+:root:not([data-reading-theme="night"]) .atlas-ledger{color:var(--reading-muted)}
+:root:not([data-reading-theme="night"]) .atlas-ledger b{color:var(--reading-ink)}
+:root:not([data-reading-theme="night"]) .atlas-ledger span+span{border-left-color:var(--reading-line)}
+:root:not([data-reading-theme="night"]) #index .entry-detail .collect-current{color:var(--reading-accent)!important;border-bottom-color:var(--reading-line)!important}
+:root:not([data-reading-theme="night"]) header nav.primary .about-link{color:var(--reading-ink)}
+:root:not([data-reading-theme="night"]) .map-panel{background:var(--reading-wash)!important}
+:root:not([data-reading-theme="night"]) .map-panel .atlas-utilities-map>*,:root:not([data-reading-theme="night"]) .map-panel>details>summary,:root:not([data-reading-theme="night"]) .map-panel>button#world,:root:not([data-reading-theme="night"]) #map-info>summary{color:var(--reading-ink)!important;text-shadow:none!important}
+:root:not([data-reading-theme="night"]) #featured-weave{background:rgba(246,241,230,.94);border-color:var(--reading-line);color:var(--reading-ink);box-shadow:0 10px 30px rgba(28,36,52,.12)}
+:root:not([data-reading-theme="night"]) #featured-weave h2{color:var(--reading-ink)}
+:root:not([data-reading-theme="night"]) #featured-weave ul{color:var(--reading-ink)}
+:root:not([data-reading-theme="night"]) #featured-weave .fw-eyebrow,:root:not([data-reading-theme="night"]) #featured-weave a{color:var(--reading-accent)}
+:root:not([data-reading-theme="night"]) #featured-weave a{border-bottom-color:var(--reading-line)}
+:root:not([data-reading-theme="night"]) #featured-weave .fw-close{color:var(--reading-muted)}
+
+/* Beta 91: theme-weaving: cards become compact chips with a round film image; threads gain end knots and a slow breath */
+#constellate-graph .constellate-card rect{rx:21px;ry:21px}
+#constellate-graph .constellate-card:not(.selected){opacity:.86}
+#constellate-graph .constellate-card .weave-card-art{opacity:1!important}
+#constellate-graph .weave-chip-ring{fill:none;stroke-width:1.6}
+#constellate-graph .weave-chip-title{font:600 12px/1 'Atlas Sans',system-ui,sans-serif;letter-spacing:.01em}
+#constellate-graph .weave-land-caption{font:italic 11px/1 'Atlas Serif',Georgia,serif!important;letter-spacing:.01em}
+#constellate-graph .weave-film-star{transform-box:fill-box}
+#constellate-graph .weave-thread-line{stroke-width:1.9}
+#constellate-graph .weave-thread-knot circle:first-child{fill:var(--reading-paper,#0e1729);fill-opacity:.9;stroke-width:1.6}
+#constellate-graph .weave-thread-name{font-size:16px}
+@media (prefers-reduced-motion:no-preference){#constellate-graph .weave-thread-glow{animation:weave-breath 5.5s ease-in-out infinite}}
+@keyframes weave-breath{0%,100%{stroke-opacity:.18}50%{stroke-opacity:.42}}
+/* paper theme: a lighter dusk over the map while weaving, and readable bar actions */
+:root:not([data-reading-theme="night"]) .weave-night-veil{fill-opacity:.16}
+:root:not([data-reading-theme="night"]) #constellate-mode #constellate-clear,:root:not([data-reading-theme="night"]) #constellate-mode #constellate-exit{color:#9a3b2c}
+:root:not([data-reading-theme="night"]) #constellate-graph .weave-thread-halo{stroke:#f6f1e6;stroke-opacity:.7}
+:root:not([data-reading-theme="night"]) #constellate-graph .weave-thread-name{stroke:#f6f1e6;stroke-opacity:.9}
