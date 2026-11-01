@@ -90,3 +90,7 @@ header .brand-camera{display:none!important}
 @media (max-width:680px){.atlas-ledger{display:flex!important;gap:10px!important;margin:4px 0 0!important;padding:0!important;font-size:9.5px!important}.atlas-ledger b{font-size:15px!important}.atlas-ledger span+span{padding-left:10px!important}.atlas-ledger .ledger-countries{display:flex!important}}
 #constellate-new{white-space:nowrap}
 body.is-theme-weaving .map-panel .map-actions{display:none}
+/* A missing film image becomes a quiet line instead of a large empty box */
+#index :has(> .artwork-fallback:not([hidden])){min-height:0!important;height:auto!important;aspect-ratio:auto!important;background:transparent!important;border:1px dashed var(--reading-line,#d8cfbd)!important;padding:10px 12px!important}
+#index :has(> .artwork-fallback:not([hidden]))>img{display:none!important}
+#index .artwork-fallback:not([hidden]){position:static!important;display:block!important;font-size:12px;color:var(--reading-muted)!important;text-align:left!important}

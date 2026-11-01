@@ -33,3 +33,5 @@
  for(const n of c.childNodes)if(n.nodeType===3&&/Country totals/.test(n.textContent))n.textContent=n.textContent.replace('Country totals','Countries');
  const fix=()=>{if(/^World$/.test(w.textContent.trim()))w.textContent='Whole world';};fix();new MutationObserver(fix).observe(w,{childList:true,characterData:true,subtree:true});})();
 document.addEventListener('keydown',e=>{if(e.key!=='s'&&e.key!=='S')return;if(e.metaKey||e.ctrlKey||e.altKey)return;const t=e.target;if(t.closest?.('input,textarea,select,[contenteditable="true"]'))return;if(document.body.classList.contains('is-theme-weaving'))return;const b=document.querySelector('#random-entry');if(b&&!b.disabled){e.preventDefault();b.click();}});
+// Map tool menus (Countries, Layers, Map key) close when you click elsewhere.
+document.addEventListener('pointerdown',e=>{for(const d of document.querySelectorAll('.map-actions details[open]'))if(!d.contains(e.target))d.open=false;},true);
