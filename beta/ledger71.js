@@ -42,7 +42,7 @@
    if(!big){if(t)t.remove();return;}
    const c=imageFor(d.id);if(!c){if(t)t.remove();return;}
    const size=major?Math.round(Math.min(44,Math.max(30,map*1.35))):Math.round(Math.min(30,Math.max(22,map*1.25))),lines=(d.lines&&d.lines.length)||1;
-   const x=-(d.labelWidth||80)/2-14-size,y=-(d.voice.map||20)*(lines-.15)/2-size/2+2;
+   let x=-(d.labelWidth||80)/2-14-size,y=-(d.voice.map||20)*(lines-.15)/2-size/2+2;try{const bb=g.querySelector('.land-word-label').getBBox(),dot=g.querySelector('.land-reference-dot'),left=Math.min(bb.x,dot?+dot.getAttribute('cx')-4:bb.x);if(bb.width){x=left-7-size;y=bb.y+bb.height/2-size/2;}}catch{}
    if(!t){ensureClip(g.ownerSVGElement);t=document.createElementNS(NS,'g');t.setAttribute('class','land-thumb');t.setAttribute('aria-hidden','true');
     t.innerHTML=`<circle class="land-thumb-halo"/><image preserveAspectRatio="xMidYMid slice" clip-path="url(#land-thumb-clip)"/><circle class="land-thumb-ring"/><title></title>`;
     g.insertBefore(t,g.firstChild);
