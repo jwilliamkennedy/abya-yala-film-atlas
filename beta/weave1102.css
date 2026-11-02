@@ -103,3 +103,89 @@ body.weave-dropping .map-panel::after{content:"Drop to add to the thread";positi
 #weave-empty-hint span{font:14px/1.45 'Atlas Sans',system-ui,sans-serif;color:var(--reading-muted)}
 body:not(.is-constellating) #weave-empty-hint,body:not(.is-constellating) #weave-peek{display:none}
 @media (max-width:700px){#weave-empty-hint{top:38%;max-width:80%}#weave-empty-hint span{font-size:13px}}
+
+/* ---- Beta 1103: stepping, theme threads, notes on the cord, timeline, compare ---- */
+#constellate-mode #weave-stepper{display:inline-flex;align-items:center;gap:2px;margin:0 4px;padding:0 2px;border:1px solid var(--reading-line);border-radius:18px}
+#constellate-mode #weave-stepper[hidden]{display:none}
+#constellate-mode #weave-stepper button{min-width:32px;min-height:32px;font-size:20px;line-height:1;color:var(--reading-accent);border-radius:16px}
+#constellate-mode #weave-stepper button:disabled{opacity:.3}
+#constellate-mode #weave-step-pos{font:600 12px/1 'Atlas Sans',system-ui,sans-serif;color:var(--reading-muted);min-width:34px;text-align:center}
+#constellate-mode .weave-quick-history{min-width:32px;min-height:32px;font-size:18px;color:var(--reading-accent)}
+#constellate-mode .weave-quick-history:disabled{opacity:.3}
+#constellate-mode #weave-timeline-toggle[aria-pressed="true"]{background:var(--reading-line)}
+.weave-step-nav{position:sticky;top:0;z-index:2;display:flex;align-items:center;gap:6px;margin:-4px 0 8px;padding:6px 0;background:var(--reading-paper);border-bottom:1px solid var(--reading-line)}
+.weave-step-nav button{min-height:34px;padding:4px 10px;font-size:14px!important;border:1px solid var(--reading-line);border-radius:17px;color:var(--reading-accent)}
+.weave-step-nav button:disabled{opacity:.35}
+.weave-step-nav [data-weave-back]{margin-right:auto;border-color:transparent;color:var(--reading-muted)}
+.weave-step-nav span{display:grid;justify-items:center;font-size:13px;line-height:1.1;color:var(--reading-muted)}
+.weave-step-nav span b{color:var(--reading-ink)}
+.weave-step-nav span small{font-size:11px;max-width:150px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.weave-context-themes{font-size:13px;color:var(--reading-muted);margin:2px 0 6px!important}
+#weave-order-list>li.is-active{background:color-mix(in srgb,var(--reading-accent) 10%,transparent);border-radius:4px}
+.weave-order-head{display:flex;align-items:baseline;gap:8px}
+.weave-order-tools{margin-left:auto;display:flex;gap:2px}
+.weave-order-tools button{font-size:13px!important;min-height:30px;padding:2px 8px;color:var(--reading-accent)}
+#weave-order-summary{margin:0 0 6px!important;font-size:13px;color:var(--reading-muted);display:grid;gap:2px}
+#weave-order-summary span{color:var(--reading-ink);font-style:italic}
+#weave-order-list .weave-order-note{grid-column:1 / -1;flex-basis:100%;padding:0 0 4px 30px}
+#weave-order-list .weave-order-note button{font-size:12.5px!important;min-height:26px;padding:0;color:var(--reading-muted);text-align:left}
+#weave-order-list .weave-order-note button.has-note{font-style:italic;color:var(--reading-ink)}
+#weave-order-list .weave-order-note textarea{width:100%;font-size:14px}
+#weave-order-list>li{flex-wrap:wrap}
+#weave-thread-edit-form{display:grid;gap:4px;margin:4px 0 10px;padding:8px;border:1px solid var(--reading-line);border-radius:6px}
+.weave-theme-start{display:grid;gap:3px;margin:4px 0 8px;font-size:13px;color:var(--reading-muted)}
+.weave-theme-start select{font-size:14px;padding:5px 6px}
+#weave-suggest{margin:8px 0;padding:8px 0 0;border-top:1px dashed var(--reading-line)}
+#weave-suggest h4{display:grid;margin:0 0 6px!important;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--reading-muted)}
+#weave-suggest h4 small{text-transform:none;letter-spacing:0;font-weight:400}
+#weave-suggest .constellate-result{cursor:grab}
+.weave-add-matching{display:block;width:100%;margin:0 0 6px;padding:7px 10px;min-height:36px;font-size:14px!important;text-align:left;color:var(--reading-accent);border:1px dashed var(--reading-accent);border-radius:6px}
+.weave-family-key{display:grid;gap:3px;margin:4px 0 0;padding:0;list-style:none;font-size:13px}
+.weave-family-key i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;vertical-align:-1px}
+#constellate-graph .weave-crossing-ring{fill:none;stroke:var(--reading-ink,#222);stroke-width:1.4;stroke-dasharray:2.5 2.5;stroke-opacity:.75}
+:root[data-reading-theme="night"] #constellate-graph .weave-crossing-ring{stroke:#fff}
+#constellate-graph .weave-cross-count{font:600 9px/1 'Atlas Sans',system-ui,sans-serif;fill:var(--reading-ink,#222);paint-order:stroke;stroke:var(--reading-paper,#fff);stroke-width:3px}
+:root[data-reading-theme="night"] #constellate-graph .weave-cross-count{fill:#fff;stroke:#0e1729}
+#constellate-graph .weave-family-ring{fill:none;stroke-width:2.2}
+#constellate-graph .weave-stop.selected circle:not(.weave-crossing-ring):not(.weave-family-ring){stroke:#fff;stroke-width:2.6}
+#constellate-graph .weave-note-mark{cursor:pointer;pointer-events:all}
+#constellate-graph .weave-note-mark rect{stroke-width:1.4}
+#weave-peek .weave-peek-note{margin:5px 0 0;font-style:italic;font-size:13px;line-height:1.35}
+#constellate-graph.weave-play-focus .weave-thread:not(.is-focus){opacity:.22}
+body.weave-dropping .map-panel::after{content:attr(data-drop-label)}
+body.weave-dropping .map-panel.weave-drop-insert::after{background:var(--reading-accent);color:var(--reading-paper)}
+#weave-empty-hint button{pointer-events:auto}
+#weave-hint-themes{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin-top:10px}
+#weave-hint-themes:empty{display:none}
+#weave-hint-themes em{flex-basis:100%;font:13px 'Atlas Sans',system-ui,sans-serif;color:var(--reading-muted)}
+#weave-hint-themes button{padding:5px 11px;min-height:32px;font:14px 'Atlas Sans',system-ui,sans-serif;border:1px solid var(--reading-accent);border-radius:16px;color:var(--reading-accent);background:transparent}
+#weave-hint-themes button small{color:var(--reading-muted)}
+#weave-timeline{position:absolute;left:16px;right:16px;bottom:64px;z-index:17;max-height:42%;overflow:auto;padding:6px 8px 2px;background:var(--reading-paper);border:1px solid var(--reading-line);border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,.16)}
+#weave-timeline[hidden]{display:none}
+#weave-timeline p{margin:6px;font-size:14px;color:var(--reading-muted)}
+#weave-timeline svg{display:block}
+#weave-timeline .wt-tick line{stroke:var(--reading-line)}
+#weave-timeline .wt-tick text{font:11px 'Atlas Sans',system-ui,sans-serif;fill:var(--reading-muted)}
+#weave-timeline .wt-name{font:italic 12.5px "Atlas Serif",Georgia,serif}
+#weave-timeline .wt-arc{fill:none;stroke-width:2;stroke-opacity:.7}
+#weave-timeline .wt-dot{cursor:pointer}
+#weave-timeline .wt-dot circle{stroke-width:2}
+#weave-timeline .wt-dot text{font:600 8.5px 'Atlas Sans',system-ui,sans-serif;fill:#fff;pointer-events:none}
+#weave-timeline .wt-dot.on circle{stroke:#fff;stroke-width:3}
+#weave-compare{margin:10px 0;padding:10px;border:1px solid var(--reading-line);border-radius:6px}
+.weave-compare-head{display:flex;align-items:center}
+.weave-compare-head h3{margin:0!important}
+.weave-compare-head button{margin-left:auto;font-size:20px;min-width:32px}
+.weave-compare-pick{display:flex;align-items:center;gap:6px;margin:6px 0}
+.weave-compare-pick select{flex:1;min-width:0}
+#weave-compare h4{margin:10px 0 2px!important;font-size:13px;color:var(--reading-muted)}
+#weave-compare ul{margin:0;padding-left:18px}
+#weave-compare li button{padding:2px 0;text-align:left;color:var(--reading-accent)}
+.weave-muted{color:var(--reading-muted);font-size:13px}
+.weave-cite-thread{margin-left:8px;font-size:12px!important;font-weight:400;padding:1px 8px;border:1px solid var(--reading-line);border-radius:12px;color:var(--reading-muted)}
+.weave-read-summary,.weave-read-themes{display:block;font-size:13px;color:var(--reading-muted)}
+#weave-play-themes{margin:2px 0;font-size:13px;opacity:.8}
+@media (max-width:700px){#weave-timeline{left:8px;right:8px;bottom:56px}#constellate-mode .weave-quick-history{display:none}}
+.weave-step-nav span em{font-style:normal;white-space:nowrap}
+.weave-step-nav{flex-wrap:nowrap}
+.weave-step-nav button{white-space:nowrap}
