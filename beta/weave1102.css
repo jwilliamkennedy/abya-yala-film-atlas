@@ -304,3 +304,11 @@ body.weave-unmapped #constellate-graph .weave-leader,body.weave-unmapped #conste
 @media (max-width:700px){#weave-relbar small{display:none}}
 #constellate-graph .weave-rel-axis text{stroke:none!important;paint-order:normal}
 @media (max-width:700px){#constellate-mode #weave-unmap{order:1}}
+/* 1103i: Disappear map on the main atlas — names and markers float on paper */
+#atlas .geography{transition:opacity .45s ease}
+body.atlas-unmapped #atlas .geography{opacity:0;pointer-events:none}
+body.atlas-unmapped .map-panel{background:var(--reading-paper,#f3f1ea)}
+#atlas-unmap[aria-pressed="true"]{background:var(--reading-accent);color:var(--reading-paper)}
+.zoom #atlas-unmap{width:auto;padding:0 12px;font-size:11px;white-space:nowrap}
+:root[data-reading-theme] .zoom #atlas-unmap[aria-pressed="true"],.zoom #atlas-unmap[aria-pressed="true"]{background:var(--reading-accent);color:var(--reading-paper)}
+#constellate-graph .weave-rel-axis text{fill:var(--reading-ink,#333);fill-opacity:.7}
