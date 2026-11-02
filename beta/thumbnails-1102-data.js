@@ -463,17 +463,6 @@
 "rightsStatus": "hotlinked; image remains with its rights holder",
 "matchBasis": "mirror_work matched this image to the film; image load-tested and visually checked in browser 2026-11-01."
 },
-"FILM-0005": {
-"title": "La carta para mi nieto = Ma qilqa allchijataki",
-"image": "https://m.media-amazon.com/images/M/MV5BOGExNjBkYTktZjI4NC00Y2I0LTgzNDMtMTFkMzMzYTZhMTk5XkEyXkFqcGc%40._V1_.jpg",
-"originalImage": "https://m.media-amazon.com/images/M/MV5BOGExNjBkYTktZjI4NC00Y2I0LTgzNDMtMTFkMzMzYTZhMTk5XkEyXkFqcGc%40._V1_.jpg",
-"sourceURL": "https://m.media-amazon.com/images/M/MV5BOGExNjBkYTktZjI4NC00Y2I0LTgzNDMtMTFkMzMzYTZhMTk5XkEyXkFqcGc%40._V1_.jpg",
-"publisher": "m.media-amazon.com",
-"kind": "Film image (mirror_work candidate)",
-"checkedOn": "2026-11-01",
-"rightsStatus": "hotlinked; image remains with its rights holder",
-"matchBasis": "mirror_work matched this image to the film; image load-tested and visually checked in browser 2026-11-01."
-},
 "TOUR-0005": {
 "title": "Honour to Senator Murray Sinclair",
 "image": "https://assets.nfbcdn.ca/medias/norman/thumbs_xlarge/2021/honour-to-senator-murray-sinclair-epk-title-XL.jpg",
@@ -1650,5 +1639,16 @@
 "checkedOn": "2026-11-01",
 "rightsStatus": "hotlinked; image remains with its rights holder",
 "matchBasis": "TMDB lists this film among the atlas filmmaker’s directing credits; image load-tested and visually checked in browser 2026-11-01."
+},
+"DIR-0216-W1031-5": {
+"title": "La carta (The Letter)",
+"image": "https://m.media-amazon.com/images/M/MV5BOGExNjBkYTktZjI4NC00Y2I0LTgzNDMtMTFkMzMzYTZhMTk5XkEyXkFqcGc%40._V1_.jpg",
+"originalImage": "https://m.media-amazon.com/images/M/MV5BOGExNjBkYTktZjI4NC00Y2I0LTgzNDMtMTFkMzMzYTZhMTk5XkEyXkFqcGc%40._V1_.jpg",
+"sourceURL": "https://www.imdb.com/title/tt3839602/",
+"publisher": "www.imdb.com",
+"kind": "Film image (mirror_work candidate)",
+"checkedOn": "2026-11-01",
+"rightsStatus": "hotlinked; image remains with its rights holder",
+"matchBasis": "IMDb poster for Ángeles Cruz’s La carta (2014), mirror_work P12; moved 2026-11-01 from a different film it had been attached to in error; load-tested and visually checked."
 }
 };window.ATLAS_PROFILE_MEDIA=window.ATLAS_PROFILE_MEDIA||{};for(const [k,v] of Object.entries(add))if(!window.ATLAS_PROFILE_MEDIA[k])window.ATLAS_PROFILE_MEDIA[k]=v;})();
