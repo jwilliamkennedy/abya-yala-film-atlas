@@ -45,6 +45,8 @@ window.AtlasUpdate1031=(()=>{
    stats.patched++;}
   // Beta 95: spelling-variant duplicates fold into the earlier record and leave the list.
   for(const m of (d.folds||[])){const into=byId.get(m.into),from=byId.get(m.from);if(!into||!from)continue;addSources(into,from.sources);addAliases(into,[from.name,...(from.aliases||[])]);into.mergedFrom=[...(into.mergedFrom||[]),{id:m.from,why:m.why,on:'2026-11-01'}];const k=records.indexOf(from);if(k>=0)records.splice(k,1);byId.delete(m.from);stats.merged++;}
+  // Beta 126: records removed because the filmmaker is not Indigenous; they leave every list and count.
+  for(const x of (d.removals||[])){const r=byId.get(x.id);if(!r)continue;const k=records.indexOf(r);if(k>=0)records.splice(k,1);byId.delete(x.id);stats.removed=(stats.removed||0)+1;}
   for(const r of records)if(r.country==='GRL')r.countryName=names.get('GRL')||'Kalaallit Nunaat / Greenland';
   return stats;
  }
