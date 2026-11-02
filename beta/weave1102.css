@@ -255,3 +255,34 @@ body:has(.weave-more[open]) #weave-notice{display:none}
 #constellate-how{top:27px;border:0!important;padding:0!important;margin:0!important;background:none!important}
 #constellate-how[open]>ol{right:-34px;width:min(316px,78vw);list-style:decimal;padding-left:32px}
 #constellate-how .weave-family-key{margin-top:6px}
+/* 1103f: phone — two compact toolbar rows, quieter map, shorter dock head; header A–Z no longer overlaps the counts */
+@media (max-width:700px){
+ #constellate-mode{padding:6px 8px!important;gap:4px 10px!important;align-items:center}
+ #constellate-mode>span:first-child{display:none!important}
+ #constellate-mode button,#constellate-mode .weave-more>summary{font-size:14px!important;min-height:34px}
+ #constellate-mode::after{content:"";flex-basis:100%;order:2;height:0}
+ #constellate-mode #constellate-edit,#constellate-mode #constellate-read,#constellate-mode #weave-play,#constellate-mode #constellate-share,#constellate-mode .weave-more,#constellate-mode #constellate-exit{order:1}
+ #constellate-mode #weave-stepper,#constellate-mode .weave-tool-group{order:3}
+ #constellate-mode .weave-tool-group{margin-left:auto}
+ #constellate-mode #constellate-exit{margin-left:auto}
+ body.is-constellating #map-caption{display:none}
+ #constellate-popup .constellate-heading h2{font-size:20px!important;margin:0!important}
+ body.atlas-page header .atlas-utilities{justify-content:flex-end}
+ #weave-notice{max-width:calc(100% - 32px)}
+ body.atlas-page header .atlas-utilities #atlas-browse{position:absolute;right:0;top:-52px}
+}
+#constellate-popup .constellate-heading{display:flex;align-items:center;gap:8px}
+#constellate-popup .constellate-heading #constellate-how{position:relative;top:auto;right:auto;margin-left:auto!important}
+#constellate-popup .constellate-heading #constellate-how[open]>ol{right:-40px}
+/* 1103g: Idea beside + Thread; Details inline with the weave picker; empty action rows vanish */
+.weave-thread-heading{display:flex;align-items:baseline;gap:10px}
+.weave-thread-heading h3{margin-right:auto!important}
+#weave-editor>.constellate-actions:not(:has(button:not([hidden]))){display:none}
+.constellate-collection{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px}
+.constellate-collection select{flex:1;min-width:0}
+#weave-settings{flex:none;margin:0!important}
+#weave-settings>summary{font-size:14px;color:var(--reading-accent);cursor:pointer}
+#weave-settings[open]{flex-basis:100%;order:5;padding:8px 0}
+#weave-settings>summary{list-style:none}
+#weave-settings>summary::-webkit-details-marker{display:none}
+#weave-settings>summary::after{content:" ▾";font-size:11px}
