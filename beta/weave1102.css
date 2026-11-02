@@ -1,4 +1,4 @@
-/* Beta 1102: threads drawn as a twisted two-ply cord with numbered knots (after khipu cords),
+/* Beta 1102: threads drawn as an abstract twisted two-ply cord with numbered knots,
    a quieter base map while weaving, an A–Z browser and a simpler toolbar. */
 
 /* ---- threads ---- */
@@ -8,12 +8,12 @@
 #constellate-graph .weave-cord{stroke-width:5;stroke-opacity:1}
 #constellate-graph .weave-ply{stroke-width:2.3;stroke-opacity:1}
 #constellate-graph .weave-thread-glow,#constellate-graph .weave-thread-line{display:none}
-#constellate-graph .weave-cord-loop ellipse{fill:none;stroke-width:3.4}
-#constellate-graph .weave-cord-loop ellipse.ply{stroke-width:1.5}
-#constellate-graph .weave-tassel path{stroke-width:1.7;stroke-linecap:round}
 #constellate-graph .weave-stop circle{stroke-width:1.6}
 #constellate-graph .weave-stop text{font:600 9.5px/1 'Atlas Sans',system-ui,sans-serif;fill:#fff;pointer-events:none}
-#constellate-graph .weave-stop{pointer-events:none}
+#constellate-graph .weave-stop{cursor:pointer;pointer-events:all}
+#constellate-graph .weave-stop circle{transition:r .15s ease}
+#constellate-graph .weave-stop:hover circle{r:10.5}
+#constellate-graph .weave-stop.current circle{r:11;stroke:#fff;stroke-width:2.4}
 #constellate-graph .weave-name-path{fill:none;stroke:none}
 #constellate-graph .weave-thread-name-path{font:italic 500 13.5px/1 "Atlas Serif",Georgia,serif;letter-spacing:.03em;stroke:var(--reading-paper,#0e1729);stroke-width:4px;stroke-opacity:.92;paint-order:stroke;pointer-events:none}
 #constellate-graph .weave-leader{stroke-opacity:.45;stroke-dasharray:2 3}
@@ -67,3 +67,18 @@ body.is-constellating:not(.weave-show-atlas) #atlas .land-word{opacity:.42}
 .weave-az-letter{position:sticky;top:0;z-index:1;margin:0!important;padding:6px 0 3px;font:600 13px/1 'Atlas Serif',Georgia,serif!important;color:var(--reading-accent);background:var(--reading-paper);border-bottom:1px solid var(--reading-line)}
 #constellate-results [data-constellate-add]{white-space:nowrap}
 #constellate-results [data-constellate-add].on{color:var(--reading-muted)}
+
+/* ---- Play: readable camera, quieter labels, current knot ---- */
+body.weave-playing #atlas .land-word{opacity:.3}
+body.weave-playing #atlas .cinema-markers,body.weave-playing #atlas .land-thumb{opacity:.1}
+@media (prefers-reduced-motion:no-preference){#constellate-graph .weave-stop.current circle{animation:weave-knot-pulse 1.8s ease-in-out infinite}}
+@keyframes weave-knot-pulse{0%,100%{stroke-opacity:1}50%{stroke-opacity:.35}}
+
+/* ---- Read mode ---- */
+.weave-read-thread li.has-art{display:grid;grid-template-columns:64px 1fr;column-gap:12px;align-items:start}
+.weave-read-thread li.has-art>*:not(.weave-read-art){grid-column:2}
+.weave-read-art{grid-column:1;grid-row:1 / span 6;width:64px;height:auto;max-height:90px;object-fit:cover;border-radius:2px;background:var(--reading-line)}
+.weave-read-thread .weave-read-land{font-style:italic}
+
+/* ---- Filmmakers: add all films ---- */
+#constellate-results .weave-add-films{white-space:nowrap;font-size:13px;color:var(--reading-accent);margin-right:6px}
