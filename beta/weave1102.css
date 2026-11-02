@@ -232,3 +232,26 @@ body:has(.weave-more[open]) #weave-notice{display:none}
 .weave-suggest-box>summary{cursor:pointer;padding:6px 0;font-size:14px;color:var(--reading-accent)}
 .weave-suggest-box>summary small{color:var(--reading-muted);font-size:12.5px}
 .weave-suggest-box[open]{padding-bottom:6px;border-bottom:1px dashed var(--reading-line)}
+/* 1103e: ? help, one notice, sort tools, list hover preview, Share pressed */
+#constellate-popup{position:relative}
+#constellate-how{position:absolute;top:14px;right:48px;z-index:6}
+#constellate-how>summary{list-style:none;cursor:pointer;width:28px;height:28px;display:grid;place-items:center;border:1px solid var(--reading-line);border-radius:50%;font:600 14px/1 'Atlas Sans',system-ui,sans-serif;color:var(--reading-accent)}
+#constellate-how>summary::-webkit-details-marker{display:none}
+#constellate-how[open]>summary{background:var(--reading-line)}
+#constellate-how[open]>:not(summary){position:absolute;right:0;top:34px;width:min(330px,80vw);margin:0;padding:12px 14px 12px 30px;background:var(--reading-paper);border:1px solid var(--reading-line);border-radius:6px;box-shadow:0 10px 28px rgba(0,0,0,.2);font-size:13.5px;line-height:1.45}
+#constellate-how[open]>ul.weave-family-key{top:auto;position:static;box-shadow:none;border:0;padding:6px 0 0;width:auto}
+#constellate-how[open]{background:transparent}
+#constellate-how[open]>ol{max-height:60vh;overflow:auto}
+#constellate-status{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+#constellate-mode #constellate-share[aria-pressed="true"]{box-shadow:inset 0 -2px 0 var(--reading-accent)}
+.weave-order-tools{flex-wrap:wrap;justify-content:flex-end}
+#weave-order-title{font-size:13px!important;letter-spacing:.06em;text-transform:uppercase;color:var(--reading-muted)}
+#constellate-graph #weave-ghost{pointer-events:none}
+#constellate-graph #weave-ghost circle{fill:none;stroke:var(--reading-accent,#9a3b2c);stroke-width:2;stroke-dasharray:3 3}
+#constellate-graph #weave-ghost circle.dot{fill:var(--reading-accent,#9a3b2c);stroke:none}
+#constellate-graph #weave-ghost text{font:600 12px 'Atlas Sans',system-ui,sans-serif;fill:var(--reading-ink,#222);paint-order:stroke;stroke:var(--reading-paper,#fff);stroke-width:4px}
+@media (prefers-reduced-motion:no-preference){#constellate-graph #weave-ghost circle:not(.dot){animation:weave-ghost 1.4s ease-in-out infinite}}
+@keyframes weave-ghost{0%,100%{stroke-opacity:1}50%{stroke-opacity:.3}}
+#constellate-how{top:27px;border:0!important;padding:0!important;margin:0!important;background:none!important}
+#constellate-how[open]>ol{right:-34px;width:min(316px,78vw);list-style:decimal;padding-left:32px}
+#constellate-how .weave-family-key{margin-top:6px}
