@@ -217,3 +217,18 @@ body:has(.weave-more[open]) #weave-notice{display:none}
  #constellate-mode .weave-tool-group{border-left:0;padding-left:0;margin:0}
  #constellate-mode .weave-more-menu{right:auto;left:0}
 }
+/* 1103d: Thread | Add films tabs in the dock */
+.weave-tabs{position:sticky;top:0;z-index:3;display:grid;grid-template-columns:1fr 1fr;gap:0;margin:0 0 12px;background:var(--reading-paper);border-bottom:1px solid var(--reading-line)}
+.weave-tabs button{min-height:42px;padding:8px 6px;font-size:15px!important;color:var(--reading-muted);border-bottom:3px solid transparent;margin:0!important;border-radius:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.weave-tabs button[aria-selected="true"]{color:var(--reading-ink);border-bottom-color:var(--reading-accent);font-weight:600}
+.weave-tabs button small{font-weight:400;color:var(--reading-muted);margin-left:3px}
+#weave-editor[data-tab="add"]>:not(.weave-tabs):not(.weave-browse):not(#weave-suggest){display:none!important}
+#weave-editor[data-tab="thread"]>.weave-browse,#weave-editor[data-tab="thread"]>#weave-suggest{display:none!important}
+#weave-editor[data-tab="add"] .weave-browse{border-top:0;margin-top:0;padding-top:0}
+#weave-editor[data-tab="add"] #constellate-results{max-height:max(320px,calc(100dvh - 380px))}
+#weave-editor[data-tab="thread"] #constellate-context:not([hidden]){margin-top:0}
+@media (max-width:700px){.weave-tabs{position:static}}
+#weave-suggest{margin:0 0 8px;padding:0;border-top:0}
+.weave-suggest-box>summary{cursor:pointer;padding:6px 0;font-size:14px;color:var(--reading-accent)}
+.weave-suggest-box>summary small{color:var(--reading-muted);font-size:12.5px}
+.weave-suggest-box[open]{padding-bottom:6px;border-bottom:1px dashed var(--reading-line)}
