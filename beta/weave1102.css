@@ -189,3 +189,11 @@ body.weave-dropping .map-panel.weave-drop-insert::after{background:var(--reading
 .weave-step-nav span em{font-style:normal;white-space:nowrap}
 .weave-step-nav{flex-wrap:nowrap}
 .weave-step-nav button{white-space:nowrap}
+/* 1103b: step bar as round arrows; card panel first when a card is selected */
+.weave-step-nav{gap:4px}
+.weave-step-nav [data-weave-step]{width:36px;height:36px;min-height:36px;padding:0;font-size:22px!important;line-height:1;display:grid;place-items:center;border-radius:50%}
+.weave-step-nav span{min-width:76px}
+.weave-step-nav [data-weave-back]{padding-left:0}
+#constellate-context:not([hidden]){margin:0 0 14px;padding:0 0 12px;border-bottom:1px solid var(--reading-line)}
+#constellate-context{scroll-margin-top:64px}
+@media (max-width:700px){.weave-step-nav{position:static;margin-top:0}}
