@@ -11,7 +11,7 @@
  for(const r of R){if(window.ATLAS_ON_MAP.has(r.status))try{for(const e of A.recordLandReferences(r.id))if(e.mapped)peoples.add(e.id);}catch{}for(const f of r.films||[]){const t=norm(f.title).split(' = ')[0];if(t)works.add(t+'|'+(f.year||''));}}
  const nav=document.querySelector('header nav.primary');
  if(nav&&!document.querySelector('.atlas-ledger')){
-  nav.insertAdjacentHTML('afterend',`<p class="atlas-ledger" aria-label="${fmt(works.size)} films by ${fmt(R.length)} filmmakers and collectives across ${fmt(peoples.size)} Indigenous peoples and lands on the map"><span><b>${fmt(works.size)}</b> films</span><span><b>${fmt(R.length)}</b> filmmakers</span><span class="ledger-countries"><b>${fmt(peoples.size)}</b> peoples</span></p>`);
+  nav.insertAdjacentHTML('afterend',`<p class="atlas-ledger" aria-label="${fmt(works.size)} films"><span><b>${fmt(works.size)}</b> films</span></p>`);
  }
 
  // Posters: each land with linked filmmakers shows one of their film images, chosen at random.
