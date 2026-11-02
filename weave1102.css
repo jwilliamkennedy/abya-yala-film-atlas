@@ -82,3 +82,24 @@ body.weave-playing #atlas .cinema-markers,body.weave-playing #atlas .land-thumb{
 
 /* ---- Filmmakers: add all films ---- */
 #constellate-results .weave-add-films{white-space:nowrap;font-size:13px;color:var(--reading-accent);margin-right:6px}
+
+/* ---- interactivity: hover preview, crossings, thread focus, drag to map, empty hint ---- */
+#weave-peek{position:absolute;z-index:25;display:flex;gap:10px;align-items:flex-start;max-width:290px;padding:9px 11px;background:var(--reading-paper);color:var(--reading-ink);border:1px solid var(--reading-line);border-radius:6px;box-shadow:0 8px 24px rgba(0,0,0,.22);pointer-events:none;font:13px/1.35 'Atlas Sans',system-ui,sans-serif}
+#weave-peek img{width:54px;height:72px;object-fit:cover;border-radius:2px;flex:none;background:var(--reading-line)}
+#weave-peek strong{display:block;font-weight:600;font-size:14px;margin-bottom:2px}
+#weave-peek small{display:block;color:var(--reading-muted);font-size:12px}
+#weave-peek .weave-peek-land{font-style:italic}
+#weave-peek .weave-peek-threads{display:flex;flex-wrap:wrap;align-items:center;gap:3px 6px;margin-top:6px;font-size:12px}
+#weave-peek .weave-peek-threads i{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:-2px}
+#weave-peek .weave-peek-threads b{font-weight:400;color:var(--reading-muted)}
+#constellate-graph .weave-crossing-ring{fill:none;stroke-width:2.4}
+#constellate-graph .weave-thread{transition:opacity .2s ease}
+#constellate-graph.weave-focus .weave-thread:not(.is-focus){opacity:.18}
+#constellate-results .constellate-result[draggable="true"]{cursor:grab}
+body.weave-dropping .map-panel{outline:3px dashed var(--reading-accent);outline-offset:-10px}
+body.weave-dropping .map-panel::after{content:"Drop to add to the thread";position:absolute;left:50%;bottom:90px;transform:translateX(-50%);z-index:26;padding:8px 14px;background:var(--reading-paper);color:var(--reading-accent);border:1px solid var(--reading-accent);border-radius:20px;font:14px 'Atlas Sans',system-ui,sans-serif;pointer-events:none}
+#weave-empty-hint{position:absolute;z-index:16;left:50%;top:46%;transform:translate(-50%,-50%);max-width:360px;padding:16px 20px;text-align:center;background:var(--reading-paper);color:var(--reading-ink);border:1px solid var(--reading-line);border-radius:8px;box-shadow:0 10px 30px rgba(0,0,0,.18);pointer-events:none}
+#weave-empty-hint strong{display:block;font:italic 400 22px/1.2 'Atlas Serif',Georgia,serif;margin-bottom:6px}
+#weave-empty-hint span{font:14px/1.45 'Atlas Sans',system-ui,sans-serif;color:var(--reading-muted)}
+body:not(.is-constellating) #weave-empty-hint,body:not(.is-constellating) #weave-peek{display:none}
+@media (max-width:700px){#weave-empty-hint{top:38%;max-width:80%}#weave-empty-hint span{font-size:13px}}
