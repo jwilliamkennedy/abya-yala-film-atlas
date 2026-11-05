@@ -48,6 +48,23 @@ window.AtlasUpdate1031=(()=>{
   // Beta 126: records removed because the filmmaker is not Indigenous; they leave every list and count.
   for(const x of (d.removals||[])){const r=byId.get(x.id);if(!r)continue;const k=records.indexOf(r);if(k>=0)records.splice(k,1);byId.delete(x.id);stats.removed=(stats.removed||0)+1;}
   for(const r of records)if(r.country==='GRL')r.countryName=names.get('GRL')||'Kalaallit Nunaat / Greenland';
+  // Apply the November 5 filmography batch only after all other source layers and folds.
+  // Matched existing filmmaker IDs retain their existing Indigenous biographical records and land links.
+  const next=window.ATLAS_NEXT25_20261105;
+  if(next&&Array.isArray(next.credits)){
+   const result={submitted:next.credits.length,addedCredits:0,duplicateCredits:0,unmatched:[],items:[]};
+   for(const c of next.credits){
+    const r=records.find(x=>x.id===c.record);
+    if(!r){result.unmatched.push({record:c.record,maker:c.maker,film:c.title});continue;}
+    if((r.films||[]).some(f=>norm(f.title)===norm(c.title))){result.duplicateCredits++;continue;}
+    addFilms(r,[{id:c.id,title:c.title,year:c.year,credit:c.credit,medium:'Film',languages:null,notes:c.notes,review:false,sourceURL:c.sourceURL,metadata:{sourceLayer:'mirror_work 2026-11-05',sourceStatus:'Existing filmmaker + sourced film credit',thumbnailStatus:'No cleared film-specific thumbnail linked',filmTerritory:null}}]);
+    addSources(r,[{url:c.sourceURL,type:'Director-film credit',evidence:c.credit,authority:'Research mirror source retained',checkedOn:'2026-11-05'}]);
+    result.addedCredits++;result.items.push({id:c.id,record:r.id,maker:r.name,title:c.title,year:c.year});
+   }
+   const nahua=records.find(x=>x.id==='DIR-0230');
+   if(nahua){nahua.nation='Nahua';nahua.affiliation='Nahua';nahua.community='Acatlán, Chilapa de Álvarez, Guerrero (filmmaker origin)';addSources(nahua,[{url:'https://suracapulco.mx/pondera-el-documentalista-indigena-jose-luis-matias-difusion-de-problemas-sociales-mediante-el-cine/',type:'Personal Indigenous identity and origin',evidence:'Nahua; Acatlán, Chilapa, Guerrero',authority:'Filmmaker biography',checkedOn:'2026-11-05'}]);result.nahuaOriginCorrected=true;}
+   window.ATLAS_NEXT25_RESULT=result;
+  }
   return stats;
  }
  return {apply,stats};
