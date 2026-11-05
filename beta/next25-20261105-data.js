@@ -9,5 +9,14 @@ if(L&&Array.isArray(L.edges)){
  L.edges=L.edges.filter(e=>!(e.record==='DIR-0230'&&e.land==='NAME-103'));
  if(!L.edges.some(e=>e.record==='DIR-0230'&&e.land==='LAND-35989'))
   L.edges.push({land:'LAND-35989',record:'DIR-0230',status:'provisional',basis:'Nahua filmmaker from Acatlán, Chilapa de Álvarez, Guerrero',source:'https://suracapulco.mx/pondera-el-documentalista-indigena-jose-luis-matias-difusion-de-problemas-sociales-mediante-el-cine/',supplement:true,method:'Source-backed filmmaker nation and home origin; not a claim about film subjects, residence or plot.'});
+ // Five additional filmmaker-specific Indigenous land references. Deliberately no automatic film-location inference.
+ const links=[
+  {record:'NEW-ec1edce8f239',land:'LAND-35908',basis:'Nahua filmmaker from San Miguel Canoa, Puebla and San Isidro Buensuceso, Tlaxcala',source:'https://moreliafilmfest.com/realizadores/sanchez-arce-missael'},
+  {record:'DIR-0375',land:'LAND-36363',basis:'Latyaygi / Chontal de Oaxaca filmmaker; community more specific than nation not established',source:'https://moreliafilmfest.com/sites/default/files/2023-10/231115-21FICM-Cat-digital-2%20%281%29.pdf'},
+  {record:'BETA25-20261105-03',land:'LAND-33473',basis:'Waujá filmmaker credited on Replikka; not a claim about the film setting',source:'https://panorama.coisadecinema.com.br/filmes/replikka/'},
+  {record:'NEW-ce827e210914',land:'LAND-33367',basis:'Ayoreo filmmaker identity; no specific home settlement inferred',source:'https://lucasbessire.com/film/'},
+  {record:'NEW-9569183a3b9f',land:'LAND-36020',basis:'Tének filmmaker, Tamapatz, San Luis Potosí; source-listed biographical affiliation',source:'https://www.gob.mx/cms/uploads/attachment/file/617296/mujer-indigena-videastas-del-presente-inpi.pdf'}
+ ];
+ for(const link of links)if(!L.edges.some(e=>e.record===link.record&&e.land===link.land))L.edges.push({...link,status:'provisional',supplement:true,method:'Existing source-attributed filmmaker Indigenous identity matched with named land entry; NOT inferred from film content.'});
 }
 })();
