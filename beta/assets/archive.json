@@ -9958,35 +9958,45 @@
       "name": "1491s",
       "country": "USA",
       "countryName": "United States",
-      "community": "Native American",
-      "affiliation": "Broad",
-      "entity": "Person",
-      "status": "Candidate",
-      "evidence": "D",
-      "notes": "",
-      "films": [],
+      "community": "Intertribal Indigenous collective",
+      "affiliation": "Sourced member affiliations",
+      "entity": "Collective",
+      "status": "Map Ready",
+      "evidence": "B",
+      "notes": "The 1491s are an Indigenous comedy and video collective, not an individual. Member nations are documented in Oregon Shakespeare Festival's collective profile.",
+      "films": [
+        {
+          "id": "FILM-1491S-2009",
+          "title": "New Moon Wolf Pack Auditions",
+          "year": 2009,
+          "medium": "Digital video / comedy sketch",
+          "languages": null,
+          "notes": "Collective moving-image work",
+          "review": false,
+          "credit": "Collective video authorship"
+        }
+      ],
       "sources": [
         {
           "url": "https://en.wikipedia.org/wiki/Category:Native_American_filmmakers",
           "type": "Discovery source",
           "evidence": "Filmmaker/category discovery",
           "authority": "D"
+        },
+        {
+          "url": "https://www.osfashland.org/en/artist-biographies/playwrights/the-1491s.aspx",
+          "type": "Institutional collective profile",
+          "evidence": "Members, affiliations and film title",
+          "authority": "B"
+        },
+        {
+          "url": "https://www.1491s.com/who-we-are-1",
+          "type": "Official collective website",
+          "evidence": "Indigenous video collective",
+          "authority": "A"
         }
       ],
-      "issues": [
-        {
-          "type": "External verification",
-          "action": "Verify with an individual filmmaker, Indigenous organization, festival, distributor, or institutional profile."
-        },
-        {
-          "type": "Missing representative work",
-          "action": "Verify at least one directing/co-directing work before map inclusion."
-        },
-        {
-          "type": "Broad affiliation",
-          "action": "Seek a more specific self-identified nation/community where publicly documented."
-        }
-      ]
+      "issues": []
     },
     {
       "id": "DIR-0267",
