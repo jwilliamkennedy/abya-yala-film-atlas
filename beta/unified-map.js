@@ -25,6 +25,7 @@
    territories:!!$('layer-shading')?.checked,
    names:!!$('layer-connections')?.checked,
    relief:!!$('layer-geography')?.checked,
+   boundaries:!!$('layer-boundaries')?.checked,
    anchors:!!$('layer-cinema')?.checked
   };
  }
@@ -84,7 +85,7 @@
  document.addEventListener('keydown',schedule,true);
  window.addEventListener('hashchange',schedule);
  window.addEventListener('popstate',schedule);
- for(const id of ['layer-shading','layer-connections','layer-geography','layer-cinema']){
+ for(const id of ['layer-shading','layer-connections','layer-geography','layer-boundaries','layer-cinema']){
   $(id)?.addEventListener('change',()=>send('layers',{layers:currentLayers()}));
  }
  // Retain an explicit fallback for accessibility or if external tiles fail to load.
