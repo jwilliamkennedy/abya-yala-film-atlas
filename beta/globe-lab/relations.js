@@ -130,6 +130,7 @@ function renderRecords(root,id){
 function renderDetail(id,sourceName,allowFly){
  var r=nameById.get(id),source=sourceName?landBySource.get(sourceName):null;
  var linked=sourcesByLand.get(id)||[];
+ if(!source&&linked.length)source=linked[0];
  if(!r&&!source){
   // Named source regions may lack an autonym, but can still be indexed by LAND-id.
   source=Array.from(landBySource.values()).find(function(g){return g.id===id;})||null;
@@ -156,8 +157,8 @@ function renderDetail(id,sourceName,allowFly){
       source.alternatives.map(function(x){return x.name+' ['+x.id+']';}).join('; ')+'. No synonymy is asserted.');
    }
    line(body,'Geographic basis. ','Archived 2023 polygon, not a sovereign or exclusive boundary.');
- }else if(!linked.length){
-   line(body,'Geographic basis. ','No geometry is attached to this name in the Atlas. Do not infer a polygon from a country or nearby filmmaker.');
+ }else{
+   line(body,'Geographic basis. ','No geometry is attached to this name in the Atlas, regardless of how many filmmaker references are indexed. Do not infer a polygon from a country or nearby filmmaker.');
  }
  var a=link('Open this exact land index ↗',atlasLandURL(id));a.className='land-index-link';body.appendChild(a);
  renderRecords(body,id);
@@ -236,7 +237,6 @@ function chooseName(id){
  searchNames();el('autonym-results').hidden=true;
  empty(el('overlap-links'));
  renderDetail(id,null,true);
- statusSmall('Selected name '+n.id+' · follow documented links, not spatial proximity.');
 }
 function closePanel(){
  el('selection').hidden=true;selectedLand=null;selectedSource=null;
