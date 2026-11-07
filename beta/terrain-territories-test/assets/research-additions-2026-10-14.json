@@ -1,0 +1,1182 @@
+{
+  "importedOn": "2026-10-14",
+  "masterUnchanged": true,
+  "records": [
+    {
+      "id": "LEAD-20261014-001",
+      "name": "Cristine Takuá",
+      "director": "Cristine Takuá",
+      "community": "Maxakali ancestry; self-described mixed ancestry",
+      "nation": "Maxakali ancestry; self-described mixed ancestry",
+      "country": "BRA",
+      "countryName": "Brazil",
+      "films": [
+        {
+          "id": "LEAD-20261014-001-WORK-01",
+          "title": "LEVIATHAN Episode 8",
+          "year": 2023,
+          "credit": "Co-director",
+          "medium": "Video art",
+          "languages": null,
+          "review": false,
+          "sourceURL": "https://katahirine.org.br/ela/cristine-takua/",
+          "notes": "Research addition; primary-profile credit retained; no archive merge.",
+          "checkedOn": "2026-10-14"
+        }
+      ],
+      "filmCount": 1,
+      "status": "Discovery · credit supported",
+      "affiliation": "Maxakali ancestry; self-described mixed ancestry",
+      "entity": "Person",
+      "sources": [
+        {
+          "url": "https://katahirine.org.br/ela/cristine-takua/",
+          "type": "Creator/network profile checked",
+          "evidence": "ancestry",
+          "checkedOn": "2026-10-14",
+          "authority": "A"
+        }
+      ],
+      "issues": [
+        {
+          "type": "Research addition",
+          "action": "Retain separate from the stable archive; do not promote to Map Ready automatically."
+        }
+      ],
+      "aliases": [],
+      "discovery": true,
+      "supplement": true,
+      "importedOn": "2026-10-14",
+      "auditStatus": "Affiliation/source checked; research addition",
+      "auditNote": "ancestry",
+      "countryBasis": "Explicit Brazilian location or activity in consulted profile; catalog reference only",
+      "notes": "Primary-source wording and credit distinctions retained; canonical review pending.",
+      "metadata": {
+        "publicReady": false,
+        "supplement": true,
+        "supplementDate": "2026-10-14",
+        "reviewState": "Research addition; stable archive untouched",
+        "relationType": "ancestry"
+      }
+    },
+    {
+      "id": "LEAD-20261014-002",
+      "name": "Brisa Flow",
+      "director": "Brisa Flow",
+      "community": "Mapuche",
+      "nation": "Mapuche",
+      "country": null,
+      "countryName": "Unassigned",
+      "films": [
+        {
+          "id": "LEAD-20261014-002-WORK-01",
+          "title": "Fique Viva",
+          "year": null,
+          "credit": "Director/co-director role grouped in self-filmography; title-specific role pending",
+          "medium": "Music video / video art",
+          "languages": null,
+          "review": true,
+          "sourceURL": "https://katahirine.org.br/ela/brisa-flow/",
+          "notes": "Research addition; primary-profile credit retained; no archive merge.",
+          "checkedOn": "2026-10-14"
+        }
+      ],
+      "filmCount": 1,
+      "status": "Discovery · credit supported",
+      "affiliation": "Mapuche",
+      "entity": "Person",
+      "sources": [
+        {
+          "url": "https://katahirine.org.br/ela/brisa-flow/",
+          "type": "Creator/network profile checked",
+          "evidence": "self-identification",
+          "checkedOn": "2026-10-14",
+          "authority": "A"
+        }
+      ],
+      "issues": [
+        {
+          "type": "Research addition",
+          "action": "Retain separate from the stable archive; do not promote to Map Ready automatically."
+        }
+      ],
+      "aliases": [
+        "Brisa de La Cordillera"
+      ],
+      "discovery": true,
+      "supplement": true,
+      "importedOn": "2026-10-14",
+      "auditStatus": "Affiliation/source checked; research addition",
+      "auditNote": "self-identification",
+      "countryBasis": "No explicit catalog country assigned from the consulted profile",
+      "notes": "Primary-source wording and credit distinctions retained; canonical review pending.",
+      "metadata": {
+        "publicReady": false,
+        "supplement": true,
+        "supplementDate": "2026-10-14",
+        "reviewState": "Research addition; stable archive untouched",
+        "relationType": "self-identification"
+      }
+    },
+    {
+      "id": "LEAD-20261014-003",
+      "name": "Márcia Mura",
+      "director": "Márcia Mura",
+      "community": "Mura",
+      "nation": "Mura",
+      "country": "BRA",
+      "countryName": "Brazil",
+      "films": [
+        {
+          "id": "LEAD-20261014-003-WORK-01",
+          "title": "Mura em Marcha",
+          "year": 2021,
+          "credit": "Director",
+          "medium": "Mini-documentary",
+          "languages": null,
+          "review": false,
+          "sourceURL": "https://katahirine.org.br/ela/marcia-mura/",
+          "notes": "Research addition; primary-profile credit retained; no archive merge.",
+          "checkedOn": "2026-10-14"
+        },
+        {
+          "id": "LEAD-20261014-003-WORK-02",
+          "title": "A Vida Antes e Depois das Hidrelétricas",
+          "year": 2023,
+          "credit": "Director",
+          "medium": "Mini-documentary",
+          "languages": null,
+          "review": false,
+          "sourceURL": "https://katahirine.org.br/ela/marcia-mura/",
+          "notes": "Research addition; primary-profile credit retained; no archive merge.",
+          "checkedOn": "2026-10-14"
+        }
+      ],
+      "filmCount": 2,
+      "status": "Discovery · credit supported",
+      "affiliation": "Mura",
+      "entity": "Person",
+      "sources": [
+        {
+          "url": "https://katahirine.org.br/ela/marcia-mura/",
+          "type": "Creator/network profile checked",
+          "evidence": "self-identification / institutional profile",
+          "checkedOn": "2026-10-14",
+          "authority": "A"
+        },
+        {
+          "url": "https://museudasculturasindigenas.org.br/programacao/recuperando-a-memoria-mura-arte-e-pedagogia-da-afirmacao-indigena/",
+          "type": "Museum profile checked",
+          "evidence": "Indigenous Mura collective leader and documentary director",
+          "checkedOn": "2026-10-14",
+          "authority": "A"
+        }
+      ],
+      "issues": [
+        {
+          "type": "Research addition",
+          "action": "Retain separate from the stable archive; do not promote to Map Ready automatically."
+        }
+      ],
+      "aliases": [
+        "Tanamak"
+      ],
+      "discovery": true,
+      "supplement": true,
+      "importedOn": "2026-10-14",
+      "auditStatus": "Affiliation/source checked; research addition",
+      "auditNote": "self-identification / institutional profile",
+      "countryBasis": "Explicit Brazilian location or activity in consulted profile; catalog reference only",
+      "notes": "Primary-source wording and credit distinctions retained; canonical review pending.",
+      "metadata": {
+        "publicReady": false,
+        "supplement": true,
+        "supplementDate": "2026-10-14",
+        "reviewState": "Research addition; stable archive untouched",
+        "relationType": "self-identification / institutional profile"
+      }
+    },
+    {
+      "id": "LEAD-20261014-004",
+      "name": "Yakecan Potyguara",
+      "director": "Yakecan Potyguara",
+      "community": "",
+      "nation": "",
+      "country": "BRA",
+      "countryName": "Brazil",
+      "films": [
+        {
+          "id": "LEAD-20261014-004-WORK-01",
+          "title": "Vozes Ancestrais",
+          "year": 2025,
+          "credit": "Director & screenwriter",
+          "medium": "Film",
+          "languages": null,
+          "review": false,
+          "sourceURL": "https://katahirine.org.br/ela/yakecan-potyguara/",
+          "notes": "Research addition; primary-profile credit retained; no archive merge.",
+          "checkedOn": "2026-10-14"
+        },
+        {
+          "id": "LEAD-20261014-004-WORK-02",
+          "title": "Perder não é matar",
+          "year": 2024,
+          "credit": "Director & screenwriter",
+          "medium": "Film",
+          "languages": null,
+          "review": false,
+          "sourceURL": "https://katahirine.org.br/ela/yakecan-potyguara/",
+          "notes": "Research addition; primary-profile credit retained; no archive merge.",
+          "checkedOn": "2026-10-14"
+        },
+        {
+          "id": "LEAD-20261014-004-WORK-03",
+          "title": "O Filho da Jurema",
+          "year": 2023,
+          "credit": "Director & screenwriter",
+          "medium": "Film",
+          "languages": null,
+          "review": false,
+          "sourceURL": "https://katahirine.org.br/ela/yakecan-potyguara/",
+          "notes": "Research addition; primary-profile credit retained; no archive merge.",
+          "checkedOn": "2026-10-14"
+        }
+      ],
+      "filmCount": 3,
+      "status": "Discovery · credit supported",
+      "affiliation": "Indigenous identity; nation unspecified in consulted profile",
+      "entity": "Person",
+      "sources": [
+        {
+          "url": "https://katahirine.org.br/ela/yakecan-potyguara/",
+          "type": "Creator/network profile checked",
+          "evidence": "Indigenous identity; nation unspecified in consulted profile",
+          "checkedOn": "2026-10-14",
+          "authority": "A"
+        }
+      ],
+      "issues": [
+        {
+          "type": "Research addition",
+          "action": "Retain separate from the stable archive; do not promote to Map Ready automatically."
+        },
+        {
+          "type": "Specific nation unconfirmed",
+          "action": "Do not infer nation from surname or film subject."
+        }
+      ],
+      "aliases": [],
+      "discovery": true,
+      "supplement": true,
+      "importedOn": "2026-10-14",
+      "auditStatus": "Affiliation/source checked; research addition",
+      "auditNote": "Indigenous identity; nation unspecified in consulted profile",
+      "countryBasis": "Explicit Brazilian location or activity in consulted profile; catalog reference only",
+      "notes": "Primary-source wording and credit distinctions retained; canonical review pending.",
+      "metadata": {
+        "publicReady": false,
+        "supplement": true,
+        "supplementDate": "2026-10-14",
+        "reviewState": "Research addition; stable archive untouched",
+        "relationType": "Indigenous identity; nation unspecified in consulted profile"
+      }
+    },
+    {
+      "id": "LEAD-20261014-005",
+      "name": "Sergiane Anacé",
+      "director": "Sergiane Anacé",
+      "community": "Anacé community association; Brotar Cinema",
+      "nation": "Anacé community association; Brotar Cinema",
+      "country": null,
+      "countryName": "Unassigned",
+      "films": [
+        {
+          "id": "LEAD-20261014-005-WORK-01",
+          "title": "Reino da Encantaria",
+          "year": 2024,
+          "credit": "Directing team member",
+          "medium": "Short film",
+          "languages": null,
+          "review": false,
+          "sourceURL": "https://katahirine.org.br/ela/sergiane-anace/",
+          "notes": "Research addition; primary-profile credit retained; no archive merge.",
+          "checkedOn": "2026-10-14"
+        }
+      ],
+      "filmCount": 1,
+      "status": "Discovery · credit supported",
+      "affiliation": "Anacé community association; Brotar Cinema",
+      "entity": "Person",
+      "sources": [
+        {
+          "url": "https://katahirine.org.br/ela/sergiane-anace/",
+          "type": "Creator/network profile checked",
+          "evidence": "community / collective association",
+          "checkedOn": "2026-10-14",
+          "authority": "A"
+        }
+      ],
+      "issues": [
+        {
+          "type": "Research addition",
+          "action": "Retain separate from the stable archive; do not promote to Map Ready automatically."
+        }
+      ],
+      "aliases": [],
+      "discovery": true,
+      "supplement": true,
+      "importedOn": "2026-10-14",
+      "auditStatus": "Affiliation/source checked; research addition",
+      "auditNote": "community / collective association",
+      "countryBasis": "No explicit catalog country assigned from the consulted profile",
+      "notes": "Primary-source wording and credit distinctions retained; canonical review pending.",
+      "metadata": {
+        "publicReady": false,
+        "supplement": true,
+        "supplementDate": "2026-10-14",
+        "reviewState": "Research addition; stable archive untouched",
+        "relationType": "community / collective association"
+      }
+    },
+    {
+      "id": "LEAD-20261014-006",
+      "name": "Yacewara Pataxó",
+      "director": "Yacewara Pataxó",
+      "community": "Pataxó",
+      "nation": "Pataxó",
+      "country": "BRA",
+      "countryName": "Brazil",
+      "films": [
+        {
+          "id": "LEAD-20261014-006-WORK-01",
+          "title": "Fala Sincera",
+          "year": 2023,
+          "credit": "Director",
+          "medium": "Documentary short",
+          "languages": null,
+          "review": false,
+          "sourceURL": "https://katahirine.org.br/ela/yacewara-pataxo/",
+          "notes": "Research addition; primary-profile credit retained; no archive merge.",
+          "checkedOn": "2026-10-14"
+        }
+      ],
+      "filmCount": 1,
+      "status": "Discovery · credit supported",
+      "affiliation": "Pataxó",
+      "entity": "Person",
+      "sources": [
+        {
+          "url": "https://katahirine.org.br/ela/yacewara-pataxo/",
+          "type": "Creator/network profile checked",
+          "evidence": "network profile + festival biography",
+          "checkedOn": "2026-10-14",
+          "authority": "A"
+        },
+        {
+          "url": "https://fincar.com.br/wp-content/uploads/2024/11/IVFINCAR_CATALOGO_2024.pdf",
+          "type": "Festival catalogue indexed; direct fetch timed out",
+          "evidence": "Pataxó biography and Fala Sincera directing credit; 9-minute runtime differs from self-profile 10 minutes",
+          "checkedOn": "2026-10-14",
+          "authority": "B"
+        }
+      ],
+      "issues": [
+        {
+          "type": "Research addition",
+          "action": "Retain separate from the stable archive; do not promote to Map Ready automatically."
+        }
+      ],
+      "aliases": [],
+      "discovery": true,
+      "supplement": true,
+      "importedOn": "2026-10-14",
+      "auditStatus": "Affiliation/source checked; research addition",
+      "auditNote": "network profile + festival biography",
+      "countryBasis": "Explicit Brazilian location or activity in consulted profile; catalog reference only",
+      "notes": "Primary-source wording and credit distinctions retained; canonical review pending.",
+      "metadata": {
+        "publicReady": false,
+        "supplement": true,
+        "supplementDate": "2026-10-14",
+        "reviewState": "Research addition; stable archive untouched",
+        "relationType": "network profile + festival biography"
+      }
+    },
+    {
+      "id": "LEAD-20261014-007",
+      "name": "Bia Pankararu",
+      "director": "Bia Pankararu",
+      "community": "Pankararu",
+      "nation": "Pankararu",
+      "country": "BRA",
+      "countryName": "Brazil",
+      "films": [],
+      "filmCount": 0,
+      "status": "Discovery · review pending",
+      "affiliation": "Pankararu",
+      "entity": "Person",
+      "sources": [
+        {
+          "url": "https://katahirine.org.br/ela/bia-pankararu/",
+          "type": "Creator/network profile checked",
+          "evidence": "self-identification; named credit pending",
+          "checkedOn": "2026-10-14",
+          "authority": "A"
+        }
+      ],
+      "issues": [
+        {
+          "type": "Research addition",
+          "action": "Retain separate from the stable archive; do not promote to Map Ready automatically."
+        },
+        {
+          "type": "Named film credit pending",
+          "action": "Creator role is documented; named completed credit remains to be found."
+        }
+      ],
+      "aliases": [],
+      "discovery": true,
+      "supplement": true,
+      "importedOn": "2026-10-14",
+      "auditStatus": "Affiliation/source checked; research addition",
+      "auditNote": "self-identification; named credit pending",
+      "countryBasis": "Explicit Brazilian location or activity in consulted profile; catalog reference only",
+      "notes": "Primary-source wording and credit distinctions retained; canonical review pending.",
+      "metadata": {
+        "publicReady": false,
+        "supplement": true,
+        "supplementDate": "2026-10-14",
+        "reviewState": "Research addition; stable archive untouched",
+        "relationType": "self-identification; named credit pending"
+      }
+    },
+    {
+      "id": "LEAD-20261014-008",
+      "name": "Bárbara Rehkayie Kaxuyana",
+      "director": "Bárbara Rehkayie Kaxuyana",
+      "community": "Kaxuyana; Tiriyó",
+      "nation": "Kaxuyana; Tiriyó",
+      "country": "BRA",
+      "countryName": "Brazil",
+      "films": [],
+      "filmCount": 0,
+      "status": "Discovery · review pending",
+      "affiliation": "Kaxuyana; Tiriyó",
+      "entity": "Person",
+      "sources": [
+        {
+          "url": "https://katahirine.org.br/ela/barbara-rehkayie-kaxuyana/",
+          "type": "Creator/network profile checked",
+          "evidence": "self-identification; named credit pending",
+          "checkedOn": "2026-10-14",
+          "authority": "A"
+        }
+      ],
+      "issues": [
+        {
+          "type": "Research addition",
+          "action": "Retain separate from the stable archive; do not promote to Map Ready automatically."
+        },
+        {
+          "type": "Named film credit pending",
+          "action": "Creator role is documented; named completed credit remains to be found."
+        }
+      ],
+      "aliases": [],
+      "discovery": true,
+      "supplement": true,
+      "importedOn": "2026-10-14",
+      "auditStatus": "Affiliation/source checked; research addition",
+      "auditNote": "self-identification; named credit pending",
+      "countryBasis": "Explicit Brazilian location or activity in consulted profile; catalog reference only",
+      "notes": "Primary-source wording and credit distinctions retained; canonical review pending.",
+      "metadata": {
+        "publicReady": false,
+        "supplement": true,
+        "supplementDate": "2026-10-14",
+        "reviewState": "Research addition; stable archive untouched",
+        "relationType": "self-identification; named credit pending"
+      }
+    },
+    {
+      "id": "LEAD-20261014-009",
+      "name": "Jéssica Cabral (Yiskah)",
+      "director": "Jéssica Cabral (Yiskah)",
+      "community": "Sateré-Mawé",
+      "nation": "Sateré-Mawé",
+      "country": "BRA",
+      "countryName": "Brazil",
+      "films": [],
+      "filmCount": 0,
+      "status": "Discovery · review pending",
+      "affiliation": "Sateré-Mawé",
+      "entity": "Person",
+      "sources": [
+        {
+          "url": "https://katahirine.org.br/ela/jessica-cabral-yiskah/",
+          "type": "Creator/network profile checked",
+          "evidence": "self-identification; mobile filmmaker; named credit pending",
+          "checkedOn": "2026-10-14",
+          "authority": "A"
+        }
+      ],
+      "issues": [
+        {
+          "type": "Research addition",
+          "action": "Retain separate from the stable archive; do not promote to Map Ready automatically."
+        },
+        {
+          "type": "Named film credit pending",
+          "action": "Creator role is documented; named completed credit remains to be found."
+        }
+      ],
+      "aliases": [
+        "Jéssica Cabral",
+        "Yiskah"
+      ],
+      "discovery": true,
+      "supplement": true,
+      "importedOn": "2026-10-14",
+      "auditStatus": "Affiliation/source checked; research addition",
+      "auditNote": "self-identification; mobile filmmaker; named credit pending",
+      "countryBasis": "Explicit Brazilian location or activity in consulted profile; catalog reference only",
+      "notes": "Primary-source wording and credit distinctions retained; canonical review pending.",
+      "metadata": {
+        "publicReady": false,
+        "supplement": true,
+        "supplementDate": "2026-10-14",
+        "reviewState": "Research addition; stable archive untouched",
+        "relationType": "self-identification; mobile filmmaker; named credit pending"
+      }
+    },
+    {
+      "id": "LEAD-20261014-010",
+      "name": "Beatriz Paulina Pankararu",
+      "director": "Beatriz Paulina Pankararu",
+      "community": "Pankararu",
+      "nation": "Pankararu",
+      "country": "BRA",
+      "countryName": "Brazil",
+      "films": [],
+      "filmCount": 0,
+      "status": "Discovery · review pending",
+      "affiliation": "Pankararu",
+      "entity": "Person",
+      "sources": [
+        {
+          "url": "https://katahirine.org.br/ela/beatriz-pankararu/",
+          "type": "Creator/network profile checked",
+          "evidence": "community association; videomaker; named credit pending",
+          "checkedOn": "2026-10-14",
+          "authority": "A"
+        }
+      ],
+      "issues": [
+        {
+          "type": "Research addition",
+          "action": "Retain separate from the stable archive; do not promote to Map Ready automatically."
+        },
+        {
+          "type": "Named film credit pending",
+          "action": "Creator role is documented; named completed credit remains to be found."
+        }
+      ],
+      "aliases": [
+        "Beatriz Pankararu",
+        "Upyá"
+      ],
+      "discovery": true,
+      "supplement": true,
+      "importedOn": "2026-10-14",
+      "auditStatus": "Affiliation/source checked; research addition",
+      "auditNote": "community association; videomaker; named credit pending",
+      "countryBasis": "Explicit Brazilian location or activity in consulted profile; catalog reference only",
+      "notes": "Primary-source wording and credit distinctions retained; canonical review pending.",
+      "metadata": {
+        "publicReady": false,
+        "supplement": true,
+        "supplementDate": "2026-10-14",
+        "reviewState": "Research addition; stable archive untouched",
+        "relationType": "community association; videomaker; named credit pending"
+      }
+    },
+    {
+      "id": "LEAD-20261014-011",
+      "name": "Carolaine Helena",
+      "director": "Carolaine Helena",
+      "community": "Wanano (Kotiria)",
+      "nation": "Wanano (Kotiria)",
+      "country": "BRA",
+      "countryName": "Brazil",
+      "films": [],
+      "filmCount": 0,
+      "status": "Discovery · review pending",
+      "affiliation": "Wanano (Kotiria)",
+      "entity": "Person",
+      "sources": [
+        {
+          "url": "https://katahirine.org.br/ela/carolaine-helena/",
+          "type": "Creator/network profile checked",
+          "evidence": "self-identification; own video channel; named credit pending",
+          "checkedOn": "2026-10-14",
+          "authority": "A"
+        }
+      ],
+      "issues": [
+        {
+          "type": "Research addition",
+          "action": "Retain separate from the stable archive; do not promote to Map Ready automatically."
+        },
+        {
+          "type": "Named film credit pending",
+          "action": "Creator role is documented; named completed credit remains to be found."
+        }
+      ],
+      "aliases": [],
+      "discovery": true,
+      "supplement": true,
+      "importedOn": "2026-10-14",
+      "auditStatus": "Affiliation/source checked; research addition",
+      "auditNote": "self-identification; own video channel; named credit pending",
+      "countryBasis": "Explicit Brazilian location or activity in consulted profile; catalog reference only",
+      "notes": "Primary-source wording and credit distinctions retained; canonical review pending.",
+      "metadata": {
+        "publicReady": false,
+        "supplement": true,
+        "supplementDate": "2026-10-14",
+        "reviewState": "Research addition; stable archive untouched",
+        "relationType": "self-identification; own video channel; named credit pending"
+      }
+    },
+    {
+      "id": "LEAD-20261014-012",
+      "name": "Daniela Kaiowá",
+      "director": "Daniela Kaiowá",
+      "community": "Kaiowá Guarani",
+      "nation": "Kaiowá Guarani",
+      "country": "BRA",
+      "countryName": "Brazil",
+      "films": [],
+      "filmCount": 0,
+      "status": "Discovery · review pending",
+      "affiliation": "Kaiowá Guarani",
+      "entity": "Person",
+      "sources": [
+        {
+          "url": "https://katahirine.org.br/ela/daniela-kaiowa/",
+          "type": "Creator/network profile checked",
+          "evidence": "self-identification; audiovisual creator; named credit pending",
+          "checkedOn": "2026-10-14",
+          "authority": "A"
+        }
+      ],
+      "issues": [
+        {
+          "type": "Research addition",
+          "action": "Retain separate from the stable archive; do not promote to Map Ready automatically."
+        },
+        {
+          "type": "Named film credit pending",
+          "action": "Creator role is documented; named completed credit remains to be found."
+        }
+      ],
+      "aliases": [
+        "Daniela Jorge João"
+      ],
+      "discovery": true,
+      "supplement": true,
+      "importedOn": "2026-10-14",
+      "auditStatus": "Affiliation/source checked; research addition",
+      "auditNote": "self-identification; audiovisual creator; named credit pending",
+      "countryBasis": "Explicit Brazilian location or activity in consulted profile; catalog reference only",
+      "notes": "Primary-source wording and credit distinctions retained; canonical review pending.",
+      "metadata": {
+        "publicReady": false,
+        "supplement": true,
+        "supplementDate": "2026-10-14",
+        "reviewState": "Research addition; stable archive untouched",
+        "relationType": "self-identification; audiovisual creator; named credit pending"
+      }
+    },
+    {
+      "id": "LEAD-20261014-013",
+      "name": "Neurides Manchineri",
+      "director": "Neurides Manchineri",
+      "community": "Manchineri",
+      "nation": "Manchineri",
+      "country": "BRA",
+      "countryName": "Brazil",
+      "films": [],
+      "filmCount": 0,
+      "status": "Discovery · review pending",
+      "affiliation": "Manchineri",
+      "entity": "Person",
+      "sources": [
+        {
+          "url": "https://katahirine.org.br/ela/neurides-manchineri/",
+          "type": "Creator/network profile checked",
+          "evidence": "self-identification; filmmaker; named credit pending",
+          "checkedOn": "2026-10-14",
+          "authority": "A"
+        }
+      ],
+      "issues": [
+        {
+          "type": "Research addition",
+          "action": "Retain separate from the stable archive; do not promote to Map Ready automatically."
+        },
+        {
+          "type": "Named film credit pending",
+          "action": "Creator role is documented; named completed credit remains to be found."
+        }
+      ],
+      "aliases": [],
+      "discovery": true,
+      "supplement": true,
+      "importedOn": "2026-10-14",
+      "auditStatus": "Affiliation/source checked; research addition",
+      "auditNote": "self-identification; filmmaker; named credit pending",
+      "countryBasis": "Explicit Brazilian location or activity in consulted profile; catalog reference only",
+      "notes": "Primary-source wording and credit distinctions retained; canonical review pending.",
+      "metadata": {
+        "publicReady": false,
+        "supplement": true,
+        "supplementDate": "2026-10-14",
+        "reviewState": "Research addition; stable archive untouched",
+        "relationType": "self-identification; filmmaker; named credit pending"
+      }
+    },
+    {
+      "id": "LEAD-20261014-014",
+      "name": "Mawapãi Huni Kuin",
+      "director": "Mawapãi Huni Kuin",
+      "community": "Huni Kuin; TI Praia do Carapanã",
+      "nation": "Huni Kuin; TI Praia do Carapanã",
+      "country": "BRA",
+      "countryName": "Brazil",
+      "films": [
+        {
+          "id": "LEAD-20261014-014-WORK-01",
+          "title": "RAMI RAMI KIRANI",
+          "year": 2024,
+          "credit": "Co-director",
+          "medium": "Film",
+          "languages": null,
+          "review": false,
+          "sourceURL": "https://katahirine.org.br/ela/mawapai-huni-kuin/",
+          "notes": "Research addition; primary-profile credit retained; no archive merge.",
+          "checkedOn": "2026-10-14"
+        }
+      ],
+      "filmCount": 1,
+      "status": "Discovery · credit supported",
+      "affiliation": "Huni Kuin; TI Praia do Carapanã",
+      "entity": "Person",
+      "sources": [
+        {
+          "url": "https://katahirine.org.br/ela/mawapai-huni-kuin/",
+          "type": "Creator/network profile checked",
+          "evidence": "network self-profile; collective credit",
+          "checkedOn": "2026-10-14",
+          "authority": "A"
+        }
+      ],
+      "issues": [
+        {
+          "type": "Research addition",
+          "action": "Retain separate from the stable archive; do not promote to Map Ready automatically."
+        }
+      ],
+      "aliases": [],
+      "discovery": true,
+      "supplement": true,
+      "importedOn": "2026-10-14",
+      "auditStatus": "Affiliation/source checked; research addition",
+      "auditNote": "network self-profile; collective credit",
+      "countryBasis": "Explicit Brazilian location or activity in consulted profile; catalog reference only",
+      "notes": "Primary-source wording and credit distinctions retained; canonical review pending.",
+      "metadata": {
+        "publicReady": false,
+        "supplement": true,
+        "supplementDate": "2026-10-14",
+        "reviewState": "Research addition; stable archive untouched",
+        "relationType": "network self-profile; collective credit"
+      }
+    },
+    {
+      "id": "LEAD-20261014-015",
+      "name": "Luciana Huni Kuin",
+      "director": "Luciana Huni Kuin",
+      "community": "Huni Kuin; TI Praia do Carapanã",
+      "nation": "Huni Kuin; TI Praia do Carapanã",
+      "country": "BRA",
+      "countryName": "Brazil",
+      "films": [
+        {
+          "id": "LEAD-20261014-015-WORK-01",
+          "title": "RAMI RAMI KIRANI",
+          "year": 2024,
+          "credit": "Co-director",
+          "medium": "Film",
+          "languages": null,
+          "review": false,
+          "sourceURL": "https://katahirine.org.br/ela/luciana-huni-kuin/",
+          "notes": "Research addition; primary-profile credit retained; no archive merge.",
+          "checkedOn": "2026-10-14"
+        }
+      ],
+      "filmCount": 1,
+      "status": "Discovery · credit supported",
+      "affiliation": "Huni Kuin; TI Praia do Carapanã",
+      "entity": "Person",
+      "sources": [
+        {
+          "url": "https://katahirine.org.br/ela/luciana-huni-kuin/",
+          "type": "Creator/network profile checked",
+          "evidence": "network self-profile; collective credit",
+          "checkedOn": "2026-10-14",
+          "authority": "A"
+        }
+      ],
+      "issues": [
+        {
+          "type": "Research addition",
+          "action": "Retain separate from the stable archive; do not promote to Map Ready automatically."
+        }
+      ],
+      "aliases": [],
+      "discovery": true,
+      "supplement": true,
+      "importedOn": "2026-10-14",
+      "auditStatus": "Affiliation/source checked; research addition",
+      "auditNote": "network self-profile; collective credit",
+      "countryBasis": "Explicit Brazilian location or activity in consulted profile; catalog reference only",
+      "notes": "Primary-source wording and credit distinctions retained; canonical review pending.",
+      "metadata": {
+        "publicReady": false,
+        "supplement": true,
+        "supplementDate": "2026-10-14",
+        "reviewState": "Research addition; stable archive untouched",
+        "relationType": "network self-profile; collective credit"
+      }
+    },
+    {
+      "id": "LEAD-20261014-016",
+      "name": "Natália Tupi",
+      "director": "Natália Tupi",
+      "community": "",
+      "nation": "",
+      "country": "BRA",
+      "countryName": "Brazil",
+      "films": [
+        {
+          "id": "LEAD-20261014-016-WORK-01",
+          "title": "Os Sonhos Guiam",
+          "year": null,
+          "credit": "Filmmaker; documentary listed in self-filmography",
+          "medium": "Documentary",
+          "languages": null,
+          "review": true,
+          "sourceURL": "https://katahirine.org.br/ela/natalia-tupi/",
+          "notes": "Research addition; primary-profile credit retained; no archive merge.",
+          "checkedOn": "2026-10-14"
+        },
+        {
+          "id": "LEAD-20261014-016-WORK-02",
+          "title": "Minha câmera é minha flecha",
+          "year": null,
+          "credit": "Filmmaker; documentary listed in self-filmography",
+          "medium": "Documentary",
+          "languages": null,
+          "review": true,
+          "sourceURL": "https://katahirine.org.br/ela/natalia-tupi/",
+          "notes": "Research addition; primary-profile credit retained; no archive merge.",
+          "checkedOn": "2026-10-14"
+        },
+        {
+          "id": "LEAD-20261014-016-WORK-03",
+          "title": "Nhemongaraí: ontem, hoje e amanhã",
+          "year": null,
+          "credit": "Filmmaker; documentary listed in self-filmography",
+          "medium": "Documentary",
+          "languages": null,
+          "review": true,
+          "sourceURL": "https://katahirine.org.br/ela/natalia-tupi/",
+          "notes": "Research addition; primary-profile credit retained; no archive merge.",
+          "checkedOn": "2026-10-14"
+        }
+      ],
+      "filmCount": 3,
+      "status": "Discovery · credit supported",
+      "affiliation": "Indigenous network profile; specific nation not established",
+      "entity": "Person",
+      "sources": [
+        {
+          "url": "https://katahirine.org.br/ela/natalia-tupi/",
+          "type": "Creator/network profile checked",
+          "evidence": "Indigenous network profile; specific nation not established",
+          "checkedOn": "2026-10-14",
+          "authority": "A"
+        }
+      ],
+      "issues": [
+        {
+          "type": "Research addition",
+          "action": "Retain separate from the stable archive; do not promote to Map Ready automatically."
+        },
+        {
+          "type": "Specific nation unconfirmed",
+          "action": "Do not infer nation from surname or film subject."
+        }
+      ],
+      "aliases": [],
+      "discovery": true,
+      "supplement": true,
+      "importedOn": "2026-10-14",
+      "auditStatus": "Affiliation/source checked; research addition",
+      "auditNote": "Indigenous network profile; specific nation not established",
+      "countryBasis": "Explicit Brazilian location or activity in consulted profile; catalog reference only",
+      "notes": "Primary-source wording and credit distinctions retained; canonical review pending.",
+      "metadata": {
+        "publicReady": false,
+        "supplement": true,
+        "supplementDate": "2026-10-14",
+        "reviewState": "Research addition; stable archive untouched",
+        "relationType": "Indigenous network profile; specific nation not established"
+      }
+    },
+    {
+      "id": "LEAD-20261014-017",
+      "name": "Suyani Terena",
+      "director": "Suyani Terena",
+      "community": "Terena, Pareci and Nambikwara ancestry",
+      "nation": "Terena, Pareci and Nambikwara ancestry",
+      "country": "BRA",
+      "countryName": "Brazil",
+      "films": [
+        {
+          "id": "LEAD-20261014-017-WORK-01",
+          "title": "Sawana – Rainha das Formigas",
+          "year": null,
+          "credit": "Filmmaker (realizadora)",
+          "medium": "Documentary",
+          "languages": null,
+          "review": true,
+          "sourceURL": "https://katahirine.org.br/ela/suyani-terena/",
+          "notes": "Research addition; primary-profile credit retained; no archive merge.",
+          "checkedOn": "2026-10-14"
+        }
+      ],
+      "filmCount": 1,
+      "status": "Discovery · credit supported",
+      "affiliation": "Terena, Pareci and Nambikwara ancestry",
+      "entity": "Person",
+      "sources": [
+        {
+          "url": "https://katahirine.org.br/ela/suyani-terena/",
+          "type": "Creator/network profile checked",
+          "evidence": "ancestry",
+          "checkedOn": "2026-10-14",
+          "authority": "A"
+        }
+      ],
+      "issues": [
+        {
+          "type": "Research addition",
+          "action": "Retain separate from the stable archive; do not promote to Map Ready automatically."
+        }
+      ],
+      "aliases": [],
+      "discovery": true,
+      "supplement": true,
+      "importedOn": "2026-10-14",
+      "auditStatus": "Affiliation/source checked; research addition",
+      "auditNote": "ancestry",
+      "countryBasis": "Explicit Brazilian location or activity in consulted profile; catalog reference only",
+      "notes": "Primary-source wording and credit distinctions retained; canonical review pending.",
+      "metadata": {
+        "publicReady": false,
+        "supplement": true,
+        "supplementDate": "2026-10-14",
+        "reviewState": "Research addition; stable archive untouched",
+        "relationType": "ancestry"
+      }
+    },
+    {
+      "id": "LEAD-20261014-018",
+      "name": "Natuyu Yuwipo Txicão",
+      "director": "Natuyu Yuwipo Txicão",
+      "community": "Ikpeng",
+      "nation": "Ikpeng",
+      "country": "BRA",
+      "countryName": "Brazil",
+      "films": [
+        {
+          "id": "LEAD-20261014-018-WORK-01",
+          "title": "Das Crianças Ikpeng para o Mundo",
+          "year": 2001,
+          "credit": "Co-director",
+          "medium": "Film",
+          "languages": null,
+          "review": false,
+          "sourceURL": "https://katahirine.org.br/ela/natuyu-yuwipo-txicao/",
+          "notes": "Research addition; primary-profile credit retained; no archive merge.",
+          "checkedOn": "2026-10-14"
+        }
+      ],
+      "filmCount": 1,
+      "status": "Discovery · credit supported",
+      "affiliation": "Ikpeng",
+      "entity": "Person",
+      "sources": [
+        {
+          "url": "https://katahirine.org.br/ela/natuyu-yuwipo-txicao/",
+          "type": "Creator/network profile checked",
+          "evidence": "self-identification",
+          "checkedOn": "2026-10-14",
+          "authority": "A"
+        }
+      ],
+      "issues": [
+        {
+          "type": "Research addition",
+          "action": "Retain separate from the stable archive; do not promote to Map Ready automatically."
+        }
+      ],
+      "aliases": [],
+      "discovery": true,
+      "supplement": true,
+      "importedOn": "2026-10-14",
+      "auditStatus": "Affiliation/source checked; research addition",
+      "auditNote": "self-identification",
+      "countryBasis": "Explicit Brazilian location or activity in consulted profile; catalog reference only",
+      "notes": "Primary-source wording and credit distinctions retained; canonical review pending.",
+      "metadata": {
+        "publicReady": false,
+        "supplement": true,
+        "supplementDate": "2026-10-14",
+        "reviewState": "Research addition; stable archive untouched",
+        "relationType": "self-identification"
+      }
+    },
+    {
+      "id": "LEAD-20261014-019",
+      "name": "WATUHOW",
+      "director": "WATUHOW",
+      "community": "Myky",
+      "nation": "Myky",
+      "country": null,
+      "countryName": "Unassigned",
+      "films": [],
+      "filmCount": 0,
+      "status": "Discovery · review pending",
+      "affiliation": "Myky",
+      "entity": "Collective",
+      "sources": [
+        {
+          "url": "https://katahirine.org.br/ela/kojayru-myky/",
+          "type": "Creator/network profile checked",
+          "evidence": "collective described by member Kojayru Myky",
+          "checkedOn": "2026-10-14",
+          "authority": "A"
+        }
+      ],
+      "issues": [
+        {
+          "type": "Research addition",
+          "action": "Retain separate from the stable archive; do not promote to Map Ready automatically."
+        },
+        {
+          "type": "Named film credit pending",
+          "action": "Creator role is documented; named completed credit remains to be found."
+        }
+      ],
+      "aliases": [
+        "Coletivo audiovisual WATUHOW"
+      ],
+      "discovery": true,
+      "supplement": true,
+      "importedOn": "2026-10-14",
+      "auditStatus": "Affiliation/source checked; research addition",
+      "auditNote": "collective described by member Kojayru Myky",
+      "countryBasis": "No explicit catalog country assigned from the consulted profile",
+      "notes": "Primary-source wording and credit distinctions retained; canonical review pending.",
+      "metadata": {
+        "publicReady": false,
+        "supplement": true,
+        "supplementDate": "2026-10-14",
+        "reviewState": "Research addition; stable archive untouched",
+        "relationType": "collective described by member Kojayru Myky"
+      }
+    },
+    {
+      "id": "LEAD-20261014-020",
+      "name": "Merlane Tiriyó",
+      "director": "Merlane Tiriyó",
+      "community": "Tiriyó",
+      "nation": "Tiriyó",
+      "country": "BRA",
+      "countryName": "Brazil",
+      "films": [
+        {
+          "id": "LEAD-20261014-020-WORK-01",
+          "title": "Encantadas",
+          "year": 2018,
+          "credit": "Co-screenwriter",
+          "medium": "Film",
+          "languages": null,
+          "review": false,
+          "sourceURL": "https://katahirine.org.br/ela/merlane-tiriyo/",
+          "notes": "Research addition; primary-profile credit retained; no archive merge.",
+          "checkedOn": "2026-10-14"
+        }
+      ],
+      "filmCount": 1,
+      "status": "Discovery · credit supported",
+      "affiliation": "Tiriyó",
+      "entity": "Person",
+      "sources": [
+        {
+          "url": "https://katahirine.org.br/ela/merlane-tiriyo/",
+          "type": "Creator/network profile checked",
+          "evidence": "self-identification; first feature directing project unnamed / in development",
+          "checkedOn": "2026-10-14",
+          "authority": "A"
+        }
+      ],
+      "issues": [
+        {
+          "type": "Research addition",
+          "action": "Retain separate from the stable archive; do not promote to Map Ready automatically."
+        }
+      ],
+      "aliases": [],
+      "discovery": true,
+      "supplement": true,
+      "importedOn": "2026-10-14",
+      "auditStatus": "Affiliation/source checked; research addition",
+      "auditNote": "self-identification; first feature directing project unnamed / in development",
+      "countryBasis": "Explicit Brazilian location or activity in consulted profile; catalog reference only",
+      "notes": "Primary-source wording and credit distinctions retained; canonical review pending.",
+      "metadata": {
+        "publicReady": false,
+        "supplement": true,
+        "supplementDate": "2026-10-14",
+        "reviewState": "Research addition; stable archive untouched",
+        "relationType": "self-identification; first feature directing project unnamed / in development"
+      }
+    }
+  ],
+  "lands": [
+    {
+      "id": "REFERENCE-20261014-MYKY",
+      "name": "Myky",
+      "aliases": [],
+      "context": "Community name retained from a filmmaker self-profile. No mapped territorial extent is assigned.",
+      "usage": "Community reference",
+      "verification": "Self-described Myky filmmaker; community reference only.",
+      "source": "Kojayru Myky / Katahirine self-profile",
+      "sourceURL": "https://katahirine.org.br/ela/kojayru-myky/"
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Terrain Laboratory — Indigenous Cinema Atlas</title>
+<meta name="description" content="Isolated MapLibre comparison of VersaTiles terrain and Natural Earth shaded relief; no changes to the Atlas.">
+<link rel="stylesheet" href="https://unpkg.com/maplibre-gl@5.6.0/dist/maplibre-gl.css">
+<link rel="stylesheet" href="lab.css?v=1">
+<script defer src="https://unpkg.com/maplibre-gl@5.6.0/dist/maplibre-gl.js"></script>
+<script defer src="lab.js?v=1"></script>
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="../"><span aria-hidden="true" class="brand-symbol">◎</span><span>Indigenous Cinema Atlas<small>Terrain laboratory · isolated comparison</small></span></a>
+  <a class="return" href="../">Return to unchanged beta <span aria-hidden="true">↗</span></a>
+</header>
+<main>
+  <div class="intro">
+    <div>
+      <p class="eyebrow">Terrain study · A / B</p>
+      <h1>How should the land appear?</h1>
+      <p class="subhead">Two real, open-data physical maps. Same location, camera and optional Indigenous territory overlay. One uses live elevation data; the other uses Natural Earth shaded relief, supplemented by the <em>same</em> elevation shading for close inspection.</p>
+    </div>
+    <aside class="guardrails"><strong>Experiment only</strong><span>Independent HTML, styles and data. The active beta, its film cards, master Excel and main site are not changed.</span></aside>
+  </div>
+  <section class="controls" aria-label="Terrain comparison settings">
+    <div class="control-field"><label for="region">Study area</label>
+      <select id="region">
+        <option value="guatemala" selected>Guatemalan Highlands</option>
+        <option value="oaxaca">Oaxaca / Sierra Madre</option>
+        <option value="andes">Andes / Southern Peru</option>
+      </select>
+    </div>
+    <div class="control-field"><label for="pitch">Camera angle <output id="pitch-value" for="pitch">35°</output></label>
+      <input id="pitch" type="range" min="0" max="65" step="5" value="35">
+    </div>
+    <div class="control-field"><label for="shade">Hillshade strength <output id="shade-value" for="shade">55%</output></label>
+      <input id="shade" type="range" min="0" max="100" step="5" value="55">
+    </div>
+    <div class="control-field controls-checks">
+      <label><input id="terrain" type="checkbox" checked> 3D relief</label>
+      <label><input id="territories" type="checkbox"> Atlas territory outlines (read-only)</label>
+    </div>
+  </section>
+  <div id="status" class="status" role="status" aria-live="polite">Initializing comparative maps…</div>
+  <div class="compare" aria-label="Side-by-side maps with synchronized cameras">
+    <section class="candidate" aria-label="VersaTiles terrain candidate">
+      <div class="candidate-top"><div><span class="candidate-number">OPTION A</span><h2>VersaTiles + Mapterhorn</h2></div><span class="tag">Live elevation</span></div>
+      <div class="map-wrapper"><div id="map-left" class="map" aria-label="VersaTiles mountain and elevation map"></div><div class="map-loading" id="loading-left">Loading tiles and elevation…</div></div>
+      <div class="candidate-bottom"><p><strong>Strength:</strong> crisp mountains at closer zoom, dynamic slope shading and optional raised terrain.</p><span>MapLibre · VersaTiles · © Mapterhorn · © OpenStreetMap contributors</span></div>
+    </section>
+    <section class="candidate" aria-label="Natural Earth shaded relief candidate">
+      <div class="candidate-top"><div><span class="candidate-number">OPTION B</span><h2>Natural Earth II + relief</h2></div><span class="tag">Physical atlas</span></div>
+      <div class="map-wrapper"><div id="map-right" class="map" aria-label="Natural Earth physical geography and shaded relief map"></div><div class="map-loading" id="loading-right">Loading public-domain shaded relief…</div></div>
+      <div class="candidate-bottom"><p><strong>Strength:</strong> natural-color physiography with mountain shading and little road-map visual noise.</p><span>Natural Earth (public domain) · © Mapterhorn elevation</span></div>
+    </section>
+  </div>
+  <div class="footnote"><strong>Method:</strong> drag or zoom either map and the other follows. “Atlas territory outlines” loads the current beta’s territory shapes in read-only mode, without asserting filmmaker residences or definitive Indigenous boundaries. Natural Earth’s imagery is generalized; Mapterhorn shading supplies local relief detail. Labels and territory overlays are shown solely to judge readability, not to revise existing research.</div>
+  <footer class="links"><span>Sources and software</span><a href="https://versatiles.org/" target="_blank" rel="noopener noreferrer">VersaTiles</a><a href="https://mapterhorn.com/attribution" target="_blank" rel="noopener noreferrer">Mapterhorn attribution</a><a href="https://www.naturalearthdata.com/about/terms-of-use/" target="_blank" rel="noopener noreferrer">Natural Earth</a><a href="https://maplibre.org/" target="_blank" rel="noopener noreferrer">MapLibre</a><a href="../">Current beta</a></footer>
+</main>
+</body>
+</html>

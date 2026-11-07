@@ -1,0 +1,9 @@
+/* Geography and territorial references are separate visible layers. Keep the raster unfiltered. */
+.natural-earth-image,:root[data-reading-theme=night] .natural-earth-image{filter:none!important;opacity:1!important;mix-blend-mode:normal}
+.map-panel,:root[data-reading-theme=night] .map-panel{background:#426e94}
+.geography .base .land-shape,:root[data-reading-theme=night] .geography .base .land-shape{fill:#7b9985!important;fill-opacity:.08;stroke:#536f81;stroke-opacity:.3;stroke-width:.6;vector-effect:non-scaling-stroke}
+.geography[data-geography-fallback=true][data-geography-visible=true] .base .land-shape{fill:#8da78f!important;fill-opacity:1!important;stroke:#d5e3dd;stroke-opacity:.65;stroke-width:.8}
+.geography[data-geography-fallback=true][data-geography-visible=true] .natural-earth-image{visibility:hidden}
+.brand-camera{display:block!important;color:var(--reading-accent);width:30px;height:30px;flex:none;overflow:visible}
+.atlas-home .brand-camera{display:inline-block!important;vertical-align:middle;width:25px;height:25px;margin-right:8px}
+@media(max-width:680px){.brand-camera{width:26px;height:26px}}

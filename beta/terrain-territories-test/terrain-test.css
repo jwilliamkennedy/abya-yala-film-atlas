@@ -1,0 +1,39 @@
+
+/* Isolated terrain + Indigenous territories experiment. Original beta files untouched. */
+.map-panel{position:relative}
+#atlas-terrain{position:absolute;z-index:4;visibility:hidden;overflow:hidden;background:#9fb6ad;touch-action:pan-x pan-y}
+body.terrain-ready #atlas{opacity:0!important;pointer-events:none!important}
+body.terrain-ready #reading-lines{opacity:0!important;pointer-events:none!important}
+.map-panel .map-toolbar{z-index:25!important}
+.map-panel .zoom{z-index:25!important}
+.map-panel #map-films{z-index:25!important}
+.map-panel #map-selection-focus{z-index:26!important}
+.map-panel #map-tip{display:none!important}
+.map-panel .map-footer{z-index:24!important}
+.map-panel .map-actions #layers>div:not(.terrain-layers){display:none!important}
+.terrain-test-mark{font:700 9px/1.3 'Atlas Sans',sans-serif;letter-spacing:.08em;border:1px solid rgba(239,203,124,.6);padding:5px 7px;border-radius:30px;color:#f6deb1;background:#23414b}
+#layers .terrain-layers{min-width:210px;padding:10px 12px;display:grid;gap:8px}
+#layers .terrain-layers label{display:flex;gap:8px;align-items:center;cursor:pointer;font-size:12px}
+#layers .terrain-layers small{font-size:10px;line-height:1.45;color:var(--muted)}
+#terrain-choices{position:absolute;z-index:40;display:block;min-width:215px;max-width:min(325px,calc(100% - 24px));max-height:min(420px,60%);overflow:auto;padding:12px;border:1px solid rgba(39,67,63,.28);border-radius:10px;background:rgba(248,247,236,.98);color:#193b3e;box-shadow:0 12px 35px #0d263c77;overscroll-behavior:contain;font:13px/1.45 system-ui,sans-serif}
+#terrain-choices[hidden]{display:none!important}
+#terrain-choices .terrain-choice-heading{font:700 11px/1.4 system-ui,sans-serif;text-transform:uppercase;letter-spacing:.07em;color:#5b6460;padding-right:25px;margin:0 0 8px}
+#terrain-choices .terrain-choice-close{position:absolute;top:4px;right:5px;border:0;background:transparent;color:#314b4b;cursor:pointer;font:20px/1 system-ui;padding:6px 10px}
+#terrain-choices button.terrain-choice{display:block;text-align:left;width:100%;border:1px solid #d2dcd4;background:#fffdf7;border-radius:7px;padding:9px 10px;margin:6px 0;cursor:pointer;color:#183e44;font:600 13px/1.3 system-ui}
+#terrain-choices button.terrain-choice:hover,#terrain-choices button.terrain-choice:focus-visible{border-color:#568d7d;background:#e9f4ed}
+#terrain-choices button.terrain-choice span{display:block;color:#697a73;font-weight:400;font-size:11px;margin-top:3px}
+#terrain-choices p{margin:8px 0;font-size:12px;line-height:1.5;color:#596c65}
+#terrain-key{position:absolute;z-index:9;bottom:17px;left:14px;max-width:280px;border:1px solid #f7f6e582;background:rgba(244,246,236,.91);border-radius:9px;padding:7px 10px;box-shadow:0 4px 18px #18362d33;font:600 11px/1.4 system-ui,sans-serif;color:#1c4649;pointer-events:none}
+#terrain-key small{display:block;font-weight:400;margin-top:2px}
+#terrain-key .terrain-key-color{display:inline-block;vertical-align:-1px;margin-right:5px;height:10px;width:13px;border-radius:2px;background:linear-gradient(120deg,#dc4c6b,#f0c73d,#4ba47d,#795cc5)}
+#atlas-terrain .maplibregl-ctrl-bottom-left,#atlas-terrain .maplibregl-ctrl-bottom-right{bottom:56px}
+#atlas-terrain .maplibregl-ctrl-attrib{background:rgba(250,249,241,.9);font:9px/1.3 sans-serif}
+#atlas-terrain .maplibregl-control-container{pointer-events:none}
+#atlas-terrain .maplibregl-control-container a,#atlas-terrain .maplibregl-control-container button{pointer-events:auto}
+#terrain-status{font:10px/1.4 sans-serif;color:#cddfd1}
+@media(max-width:680px){
+.terrain-test-mark{font-size:8px;padding:4px}
+#terrain-key{bottom:7px;left:7px;max-width:205px;font-size:9px}
+#terrain-key small{font-size:8px}
+#terrain-choices{max-height:55%}
+}

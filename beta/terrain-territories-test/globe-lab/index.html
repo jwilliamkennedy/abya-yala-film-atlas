@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#173746">
+<title>Rotating Earth · Indigenous Cinema Atlas beta experiment</title>
+<meta name="description" content="A rotating globe with physical geography and colorful overlapping Indigenous land references. Isolated beta experiment.">
+<link rel="stylesheet" href="https://unpkg.com/maplibre-gl@5.6.0/dist/maplibre-gl.css">
+<link rel="stylesheet" href="globe.css?v=4">
+<script defer src="https://unpkg.com/maplibre-gl@5.6.0/dist/maplibre-gl.js"></script>
+<script defer src="../assets/topojson-client.min.js"></script>
+<script defer src="../assets/d3.min.js"></script>
+<script defer src="../territories-data.js"></script>
+<script defer src="../map-label-layout.js?v=52"></script>
+<script defer src="../autonyms-data.js"></script>
+<script defer src="../land-crossindex-data.js?v=29"></script>
+<script defer src="../landlinks-1031-data.js?v=122"></script>
+<script defer src="../rebuild-supplement-data.js?v=24"></script>
+<script defer src="../research-additions-data.js?v=27"></script>
+<script defer src="../south-america-directors-50-data.js?v=28"></script>
+<script defer src="../south-america-directors-50-batch2-data.js?v=29"></script>
+<script defer src="../pilot-catalog-data.js?v=43"></script>
+<script defer src="../atlas-update-1031-data.js?v=70"></script>
+<script defer src="../research-1101-data.js?v=110"></script>
+<script defer src="../research-1102-data.js?v=132"></script>
+<script defer src="../beta-test-1101-data.js?v=1"></script>
+<script defer src="../beta-pilot25-20261105-data.js?v=3"></script>
+<script defer src="../next25-20261105-data.js?v=4"></script>
+<script defer src="../verified30-20261106-data.js?v=1"></script>
+<script defer src="../verified30b-20261107-data.js?v=3"></script>
+<script defer src="../atlas-update-1031.js?v=130"></script>
+<script defer src="globe.js?v=4"></script>
+<script defer src="relations.js?v=4"></script>
+</head>
+<body>
+<header class="atlas-header">
+ <a href="../" class="brand" aria-label="Return to atlas beta"><span class="brand-symbol" aria-hidden="true">◎</span><span>Indigenous Cinema Atlas<small>Abya Yala and Turtle Island</small></span></a>
+ <div class="header-actions"><span class="tag">Beta / Cartographic laboratory</span><a class="return-link" href="../">← Return to film atlas</a></div>
+</header>
+<main class="workspace">
+ <section class="controls" aria-label="Globe experiment controls">
+  <p class="eyebrow">Map experiment 02</p>
+  <h1>A living, moving Earth</h1>
+  <p class="intro">Rotate the globe, approach mountain ranges, and examine overlapping Indigenous land references in color. This tests <strong>real geographic vectors</strong> instead of moving a flat illustration.</p>
+  <div class="group">
+   <h2>Projection</h2>
+   <div class="segmented" role="group" aria-label="Projection"><button id="globe-mode" aria-pressed="true">Rotating globe</button><button id="flat-mode" aria-pressed="false">Flat map</button></div>
+   <button id="spin-toggle" class="secondary" aria-pressed="false">Rotate slowly</button>
+  </div>
+  <div class="group">
+   <h2>Explore a landscape</h2>
+   <label class="sr-only" for="region">Choose a geographic region</label>
+   <select id="region">
+    <option value="americas">Abya Yala &amp; Turtle Island</option>
+    <option value="ixim">Ixim Ulew / Guatemala</option>
+    <option value="oaxaca">Oaxaca / Sierra Madre</option>
+    <option value="turtle">Turtle Island</option>
+    <option value="wallmapu">Wallmapu</option>
+    <option value="andes">Andes</option>
+    <option value="pacific">Pacific view</option>
+   </select>
+   <div class="autonym-explore">
+    <label for="autonym-search">Find an Indigenous name or land</label>
+    <input id="autonym-search" type="search" autocomplete="off" placeholder="Search Iximulew, Binnizá, Wallmapu…" aria-controls="autonym-results">
+    <span id="autonym-count" aria-live="polite"></span>
+    <div id="autonym-results" class="autonym-results" hidden></div>
+    <p id="relation-status" aria-live="polite">Loading cross-indexed names…</p>
+   </div>
+  </div>
+  <div class="group">
+   <h2>Cartographic layers</h2>
+   <label class="check"><input id="land-toggle" type="checkbox" checked><span>Colorful Indigenous land references<small>Overlapping polygons / 2023 snapshot</small></span></label>
+   <label class="check"><input id="name-toggle" type="checkbox" checked><span>Indigenous names on the globe<small>Exact title matches only; no inferred boundaries</small></span></label>
+   <label class="check"><input id="relief-toggle" type="checkbox" checked><span>Mountain elevation shading<small>Physical relief from Mapterhorn</small></span></label>
+   <label class="check"><input id="coast-toggle" type="checkbox" checked><span>Vector coastlines<small>Natural Earth 1:50m TopoJSON</small></span></label>
+   <label class="check"><input id="terrain-toggle" type="checkbox"><span>Raise terrain in 3D<small>Most visible when zoomed in and tilted</small></span></label>
+   <label class="check"><input id="anchor-toggle" type="checkbox"><span>Country-level cinema index anchors<small>Provisional catalog reference points, not residences</small></span></label>
+  </div>
+  <div class="group">
+   <h2>How to read it</h2>
+   <p class="method">A place-name, a 2023 source polygon, and a filmmaker affiliation are three different records. The globe joins them only through existing Atlas IDs and labeled evidence. Sourced filmmaker links and provisional catalog matches remain separate; country and point-in-polygon are never used to infer identity. Some Indigenous names have no geometry, including historical and political terms. Their inclusion does not imply definitive boundaries.</p>
+  </div>
+  <div class="links"><a href="../terrain-lab/">Compare elevation maps</a><a href="https://native-land.ca/maps/native-land" target="_blank" rel="noopener noreferrer">Native Land Digital ↗</a><a href="https://maplibre.org/" target="_blank" rel="noopener noreferrer">MapLibre ↗</a></div>
+ </section>
+ <section class="map-column" aria-label="Interactive physical globe">
+  <div class="map-frame">
+   <div id="globe-map" role="application" aria-label="Interactive rotating Earth with Indigenous territory references. Drag to rotate, scroll to zoom, or use the map controls."></div>
+   <nav class="compact-globe-controls" aria-label="Globe camera controls">
+    <button id="compact-globe" type="button">Globe</button><button id="compact-flat" type="button">Flat</button>
+    <button id="zoom-minus" type="button" aria-label="Zoom out">−</button>
+    <button id="zoom-plus" type="button" aria-label="Zoom in">+</button>
+    <button id="zoom-overview" type="button">Overview</button>
+    <button id="zoom-selected" type="button" title="Fit the selected land's existing reference geometry">Fit land</button>
+    <label for="compact-region" class="sr-only">Explore by region</label>
+    <select id="compact-region" title="Explore a geographic region" aria-label="Explore region">
+      <option value="">Explore…</option><option value="ixim">Ixim Ulew</option>
+      <option value="oaxaca">Oaxaca</option><option value="turtle">Turtle Island</option>
+      <option value="wallmapu">Wallmapu</option><option value="andes">Andes</option>
+      <option value="pacific">Pacific</option>
+    </select>
+   </nav>
+   <div id="initial-loading" class="loading">Preparing physical globe and vector geography…</div>
+   <div class="map-heading"><span id="region-label">Abya Yala &amp; Turtle Island</span><span id="map-help">Drag to rotate Earth · scroll to approach mountains</span></div>
+   <aside id="selection" class="selection-panel" aria-live="polite" hidden>
+    <div class="selection-header"><strong id="selection-heading">Land reference</strong><button id="clear-selection" type="button" aria-label="Close selected land details">×</button></div>
+    <ul id="selection-list"></ul>
+    <div id="overlap-links" class="overlap-links"></div>
+    <div id="selection-relations" class="selection-relations"></div>
+    <p id="selection-note"></p>
+   </aside>
+   <p class="legend"><span class="spectrum" aria-hidden="true"></span>Indigenous land references <span class="legend-divider">·</span> Transparent areas may overlap</p>
+  </div>
+  <p id="status" class="status" role="status" aria-live="polite">Loading geographic layers…</p>
+  <p class="footnote">Autonym → source geometry → sourced/provisional filmmaker edges → exact record ID and filmography. This is a read-only experiment; it does not establish territorial ownership or filmmaker residence. Existing filmmaker records, research verification, master workbook, and main site are unchanged. Vector geography: VersaTiles and Natural Earth. Elevation: Mapterhorn. Archival Indigenous references: Native Land Digital / National Geographic MapMaker (2023). <a href="https://native-land.ca/about/what-we-map" target="_blank" rel="noopener noreferrer">Read Native Land Digital’s current mapping approach.</a></p>
+ </section>
+</main>
+</body>
+</html>
