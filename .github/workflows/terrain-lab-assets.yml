@@ -1,0 +1,59 @@
+name: Build isolated Natural Earth terrain-lab imagery
+on:
+  push:
+    paths:
+      - ".github/workflows/terrain-lab-assets.yml"
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: terrain-lab-natural-earth
+  cancel-in-progress: false
+jobs:
+  crop:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Install image reader
+        run: python -m pip install --disable-pip-version-check "Pillow>=11,<13"
+      - name: Generate genuine Natural Earth shaded-relief crops
+        run: python beta/terrain-lab/generate-natural-earth.py
+      - name: Restrict changes to experimental terrain images
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          f=Path("beta/terrain-lab/assets/manifest.json")
+          d=json.loads(f.read_text())
+          assert set(d["regions"])=={"guatemala","oaxaca","andes"}
+          assert d["license"]=="public domain"
+          for v in d["regions"].values():
+              p=Path("beta/terrain-lab")/v["file"]
+              assert p.is_file() and p.stat().st_size<8_000_000
+          print("TERRAIN_LAB_ASSET_INTEGRITY_PASS")
+          PY
+          git add -- beta/terrain-lab/assets/guatemala.webp beta/terrain-lab/assets/oaxaca.webp beta/terrain-lab/assets/andes.webp beta/terrain-lab/assets/manifest.json
+          git diff --cached --name-only | while IFS= read -r p; do
+            case "$p" in
+              beta/terrain-lab/assets/*) ;;
+              *) echo "Forbidden output path: $p"; exit 1 ;;
+            esac
+          done
+      - name: Commit only terrain-lab images
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "terrain-lab-assets-bot"
+          git config user.email "terrain-lab-assets-bot@users.noreply.github.com"
+          if git diff --cached --quiet; then
+            echo "No asset changes"
+            exit 0
+          fi
+          git commit -m "terrain lab: add Natural Earth II public-domain shaded-relief regional images"
+          git pull --rebase origin main
+          git push origin HEAD:main
