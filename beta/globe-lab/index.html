@@ -93,6 +93,13 @@
     <button id="zoom-plus" type="button" aria-label="Zoom in">+</button>
     <button id="zoom-overview" type="button">Overview</button>
     <button id="zoom-selected" type="button" title="Fit the selected land's existing reference geometry">Fit land</button>
+    <label for="compact-region" class="sr-only">Explore by region</label>
+    <select id="compact-region" title="Explore a geographic region" aria-label="Explore region">
+      <option value="">Explore…</option><option value="ixim">Ixim Ulew</option>
+      <option value="oaxaca">Oaxaca</option><option value="turtle">Turtle Island</option>
+      <option value="wallmapu">Wallmapu</option><option value="andes">Andes</option>
+      <option value="pacific">Pacific</option>
+    </select>
    </nav>
    <div id="initial-loading" class="loading">Preparing physical globe and vector geography…</div>
    <div class="map-heading"><span id="region-label">Abya Yala &amp; Turtle Island</span><span id="map-help">Drag to rotate Earth · scroll to approach mountains</span></div>
