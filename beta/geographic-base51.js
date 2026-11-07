@@ -1,7 +1,7 @@
 'use strict';
-/* Native-resolution vector basemap. Replaces the enlarged earth-57 PNG images
-   with geographic paths from the existing, self-hosted world-50m TopoJSON.
-   Projection, zoom, country interaction and Native Land layers are unchanged. */
+/* Historical beta geography restored. Shaded physical raster beneath crisp
+   self-hosted Natural Earth vector geometry, both in the established Equal Earth projection.
+   Keeps all film links, territory hit-testing, world toggle and camera unchanged. */
 window.AtlasGeographicBase={
  base({geo,path,world}){
   const base=geo.select('g.base');
@@ -16,10 +16,32 @@ window.AtlasGeographicBase={
   }
   gradient('atlas-vector-ocean-gradient',[['0%','#6e9eaf'],['52%','#4b7e96'],['100%','#305976']]);
   gradient('atlas-vector-land-gradient',[['0%','#afbd9d'],['52%','#8caa92'],['100%','#6f9184']]);
-  geo.selectAll('image.natural-earth-image').remove();
+  // Restore the atlas's original, self-hosted shaded geographic raster underneath
+  // the crisp TopoJSON coastlines. Both variants were composed in this exact D3
+  // Equal Earth projection and follow the existing camera transform.
+  const extent=path.bounds({type:'Sphere'}),spherePath=path({type:'Sphere'});
+  const raster='assets/earth-'+(world?'world':'americas')+'-57.png';
+  defs.selectAll('clipPath#atlas-physical-earth-clip').data([0]).join('clipPath')
+    .attr('id','atlas-physical-earth-clip')
+    .selectAll('path').data([spherePath]).join('path').attr('d',d=>d);
   base.selectAll('path.atlas-vector-ocean').data([0]).join('path')
-    .attr('class','atlas-vector-ocean').attr('d',path({type:'Sphere'}))
+    .attr('class','atlas-vector-ocean').attr('d',spherePath)
     .attr('pointer-events','none').lower();
+  const image=base.selectAll('image.natural-earth-image').data([0])
+    .join(enter=>enter.insert('image','path.land-shape'))
+    .attr('class','natural-earth-image')
+    .attr('x',extent[0][0]).attr('y',extent[0][1])
+    .attr('width',extent[1][0]-extent[0][0])
+    .attr('height',extent[1][1]-extent[0][1])
+    .attr('preserveAspectRatio','none')
+    .attr('clip-path','url(#atlas-physical-earth-clip)')
+    .attr('pointer-events','none');
+  image.on('error.earth-relief',()=>geo.attr('data-geography-fallback','true'))
+    .on('load.earth-relief',()=>geo.attr('data-geography-fallback','false'));
+  if(image.attr('href')!==raster){
+    geo.attr('data-geography-fallback','true');
+    image.attr('href',raster);
+  }
   if(typeof d3.geoGraticule10==='function'){
    base.selectAll('path.atlas-vector-grid').data([0])
     .join(enter=>enter.insert('path','path.land-shape'))
