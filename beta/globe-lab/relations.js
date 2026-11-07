@@ -26,6 +26,10 @@ function cleanURL(value){
  try{var u=new URL(value,location.href);return ['https:','http:'].includes(u.protocol)?u.href:null;}catch(e){return null;}
 }
 function stateLabel(status){return status==='sourced'?'Sourced affiliation reference':'Provisional catalog match';}
+function persistLand(id){
+ try{var u=new URL(location.href);if(id)u.searchParams.set('land',id);else u.searchParams.delete('land');
+  history.replaceState(history.state,'',u.pathname+u.search+u.hash);}catch(e){}
+}
 for(var f of polygons){
  if(!f||!f.properties||!f.geometry)continue;
  var source=String(f.properties.name||'Unnamed mapped reference');
@@ -137,6 +141,7 @@ function renderDetail(id,sourceName,allowFly){
  }
  if(!r&&!source)return false;
  selectedLand=id;selectedSource=source&&source.source||null;
+ persistLand(id);
  el('selection').hidden=false;
  el('selection-heading').textContent=r?r.name:source.name;
  var list=el('selection-list'),note=el('selection-note');empty(list);
@@ -240,7 +245,7 @@ function chooseName(id){
 }
 function closePanel(){
  el('selection').hidden=true;selectedLand=null;selectedSource=null;
- empty(el('overlap-links'));
+ persistLand(null);empty(el('overlap-links'));
  if(map&&map.getLayer('atlas-selected-land'))map.setFilter('atlas-selected-land',['==',['get','atlas_land_id'],'']);
 }
 function initializeOnMap(m){
@@ -260,6 +265,11 @@ function initializeOnMap(m){
   paint:{'text-color':'#fff5e4','text-halo-color':'#163c45','text-halo-width':1.8,'text-halo-blur':0.4}});
  var count=landIndexCount.matchedGroups;
  el('relation-status').textContent=count+' mapped source titles correspond to indexed name records. The remaining names stay searchable without invented geometry.';
+ var inbound=new URLSearchParams(location.search).get('land');
+ if(inbound&&/^[a-zA-Z0-9-]+$/.test(inbound)&& (nameById.has(inbound)||sourcesByLand.has(inbound))){
+  var n=nameById.get(inbound);if(n){el('autonym-search').value=n.name;searchNames();el('autonym-results').hidden=true;}
+  renderDetail(inbound,null,true);
+ }
  window.AtlasGlobeRelations.testSummary=function(){return {
   names:names.length,sourceGroups:groups.size,matchedSourceNames:count,
   ambiguousSourceNames:landIndexCount.ambiguousGroups,edges:edges.length,
