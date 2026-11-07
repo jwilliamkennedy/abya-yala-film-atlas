@@ -34,11 +34,11 @@
   if(land&&land!==lastOutboundLand){
    lastOutboundLand=land;send('land',{id:land});
   }
-  if(!land)lastOutboundLand='';
+  if(!land&&lastOutboundLand){lastOutboundLand='';send('land',{id:null});}
   if(maker&&maker!==lastOutboundMaker){
    lastOutboundMaker=maker;send('maker',{id:maker});
   }
-  if(!maker)lastOutboundMaker='';
+  if(!maker&&lastOutboundMaker){lastOutboundMaker='';send('maker',{id:null});}
  }
  function schedule(){
   if(scheduled)return;scheduled=true;requestAnimationFrame(sync);
@@ -76,6 +76,8 @@
   }
  });
  const selection=$('selection-summary'),index=$('index');
+ // Preserving one map also preserves existing search, A–Z, films, and deep links.
+ // This observer syncs selected IDs, not inferred geographical coordinates.
  if(selection)new MutationObserver(schedule).observe(selection,{subtree:true,attributes:true,childList:true,characterData:true});
  if(index)new MutationObserver(schedule).observe(index,{attributes:true,attributeFilter:['data-view']});
  document.addEventListener('click',schedule,true);
