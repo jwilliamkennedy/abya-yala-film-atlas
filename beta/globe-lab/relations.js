@@ -26,7 +26,11 @@ var landIndexCount={groups:0,matchedGroups:0,ambiguousGroups:0,sourced:0,provisi
 function normalize(x){return String(x||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[’‘ʻʼ]/g,"'").toLocaleLowerCase();}
 function title(r){return r&&r.name||r&&r.director||r&&r.id||'Unnamed entry';}
 function button(label,className){var b=document.createElement('button');b.type='button';b.textContent=label;if(className)b.className=className;return b;}
-function link(label,url){var a=document.createElement('a');a.href=url;a.textContent=label;return a;}
+function link(label,url){
+ var a=document.createElement('a');a.href=url;a.textContent=label;
+ try{if(new URL(url,location.href).origin!==location.origin){a.target='_blank';a.rel='noopener noreferrer';}}catch(e){}
+ return a;
+}
 function cleanURL(value){
  try{var u=new URL(value,location.href);return ['https:','http:'].includes(u.protocol)?u.href:null;}catch(e){return null;}
 }
@@ -249,6 +253,17 @@ function chooseName(id){
  empty(el('overlap-links'));
  renderDetail(id,null,true);
 }
+function highlightMaker(id){
+ if(!map||!map.getLayer('atlas-maker-sourced'))return;
+ var associated=edges.filter(function(e){return e.record===id&&sourcesByLand.has(e.land);});
+ var confirmed=[...new Set(associated.filter(function(e){return e.status==='sourced';}).map(function(e){return e.land;}))];
+ var tentative=[...new Set(associated.filter(function(e){return e.status!=='sourced'&&!confirmed.includes(e.land);}).map(function(e){return e.land;}))];
+ map.setFilter('atlas-selected-land',['==',['get','atlas_land_id'],'']);
+ map.setFilter('atlas-maker-sourced',['in',['get','atlas_land_id'],['literal',confirmed]]);
+ map.setFilter('atlas-maker-provisional',['in',['get','atlas_land_id'],['literal',tentative]]);
+ var name=title(recordsById.get(id));
+ statusSmall(name+': '+confirmed.length+' sourced and '+tentative.length+' provisional mapped land references. No filmmaker location inferred.');
+}
 function closePanel(){
  el('selection').hidden=true;selectedLand=null;selectedSource=null;lastNotifiedLand=null;
  persistLand(null);empty(el('overlap-links'));
@@ -259,7 +274,13 @@ function initializeOnMap(m){
  if(!map.getSource('atlas-land-geometry'))return;
  map.addLayer({id:'atlas-selected-land',type:'line',source:'atlas-land-geometry',
   filter:['==',['get','atlas_land_id'],''],
-  paint:{'line-color':'#fff2b0','line-width':3,'line-opacity':0.95}});
+  paint:{'line-color':'#fff2b0','line-width':3.2,'line-opacity':0.95}});
+ map.addLayer({id:'atlas-maker-sourced',type:'line',source:'atlas-land-geometry',
+  filter:['in',['get','atlas_land_id'],['literal',[]]],
+  paint:{'line-color':'#ffedc2','line-opacity':.9,'line-width':2.7}});
+ map.addLayer({id:'atlas-maker-provisional',type:'line',source:'atlas-land-geometry',
+  filter:['in',['get','atlas_land_id'],['literal',[]]],
+  paint:{'line-color':'#ffe7ab','line-opacity':.85,'line-width':2.1,'line-dasharray':[2,2]}});
  // Reuse the basemap's working glyph stack, avoiding unavailable font requests.
  var fontLayer=(map.getStyle().layers||[]).find(function(l){return l.type==='symbol'&&l.layout&&l.layout['text-font'];});
  var autonymLayout={visibility:el('name-toggle').checked?'visible':'none',
@@ -325,16 +346,19 @@ function init(){
  el('selection-relations').addEventListener('click',function(e){
   if(!embedded)return;
   var a=e.target.closest('a[href]');if(!a)return;
-  var url=new URL(a.href,location.href),m=url.hash.match(/(?:^|&)maker=([^&]+)/);
-  if(url.pathname.replace(/\/$/,'')===new URL('../',location.href).pathname.replace(/\/$/,'')&&m){
-   e.preventDefault();informParent('maker',{id:decodeURIComponent(m[1])});
+  var url=new URL(a.href,location.href),m=url.hash.match(/(?:^|&)maker=([^&]+)/),
+    l=url.hash.match(/(?:^|&)land=([^&]+)/);
+  if(url.pathname.replace(/\/$/,'')===new URL('../',location.href).pathname.replace(/\/$/,'')&&(m||l)){
+   e.preventDefault();
+   if(m)informParent('maker',{id:decodeURIComponent(m[1])});
+   if(l)informParent('land',{id:decodeURIComponent(l[1])});
   }
  });
  searchNames();
  loadRecords();
 }
 window.AtlasGlobeRelations={identifyGeometry:identifyGeometry,selectLands:selectLands,
- renderDetail:renderDetail,chooseName:chooseName,closePanel:closePanel,
+ renderDetail:renderDetail,chooseName:chooseName,closePanel:closePanel,highlightMaker:highlightMaker,
  fitSelection:function(){if(selectedLand)focusLand(selectedLand);},testSummary:function(){return {names:names.length,edges:edges.length,sourceGroups:groups.size};}};
 window.addEventListener('atlas-globe-layers-ready',function(e){initializeOnMap(e.detail.map);});
 init();
