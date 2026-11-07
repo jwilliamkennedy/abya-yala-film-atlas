@@ -227,6 +227,7 @@ function setupInteractions(){
  el('zoom-selected').onclick=function(){window.AtlasGlobeRelations&&window.AtlasGlobeRelations.fitSelection&&window.AtlasGlobeRelations.fitSelection();};
  el('compact-globe').onclick=function(){useProjection('globe');};
  el('compact-flat').onclick=function(){useProjection('mercator');};
+ el('compact-region').onchange=function(e){if(e.target.value){focusPlace(e.target.value);e.target.value='';}};
  document.addEventListener('visibilitychange',function(){if(document.hidden)stopSpin();});
 }
 function launch(){
