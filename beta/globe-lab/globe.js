@@ -137,6 +137,7 @@ async function loadCountryAnchors(){
   map.on('click','atlas-country-index-points',function(e){
    if(!e.features||!e.features.length)return;
    var f=e.features[0],name=f.properties.name;
+   notifyHost('country',{code:f.properties.code});
    el('selection').hidden=false;el('selection-heading').textContent=name+' · country index';
    el('selection-list').replaceChildren();
    el('selection-note').textContent='A country-level catalog reference, not the location or residence of a filmmaker. Return to the atlas to examine current film records.';
@@ -229,6 +230,7 @@ function setupInteractions(){
  document.addEventListener('visibilitychange',function(){if(document.hidden)stopSpin();});
 }
 function launch(){
+ if(embedded)document.body.classList.add('embedded');
  setupInteractions();
  if(!window.maplibregl){status('MapLibre could not load. The main atlas has not been changed.',true);return;}
  try{
