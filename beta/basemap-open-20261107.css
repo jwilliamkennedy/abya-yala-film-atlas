@@ -1,0 +1,6 @@
+/* Open basemap under the atlas (beta, 2026-11-07). The basemap sits behind the SVG inside the map panel. */
+:root[data-basemap=open] .map-panel{isolation:isolate}
+#atlas-basemap{position:absolute;inset:0;z-index:-1;pointer-events:none;filter:saturate(.92)}
+#atlas-basemap[hidden],:root[data-basemap-state=failed] #atlas-basemap{display:none}
+#atlas-basemap .maplibregl-canvas{outline:none}
+:root[data-reading-theme=night] #atlas-basemap{filter:brightness(.55) saturate(.7)}
