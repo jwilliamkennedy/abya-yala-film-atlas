@@ -25,7 +25,8 @@ function atlasTerritories(){
  if(!Array.isArray(features))throw new Error('The 2023 territory reference layer is unavailable.');
  return {type:'FeatureCollection',features:features.filter(validFeature).map(function(f,i){
   var name=String(f.properties.name||'Unlabeled land reference');
-  return {type:'Feature',id:i,properties:{name:name,atlas_color:rgb(name),atlas_source:'Native Land Digital / MapMaker · 2023 snapshot'},geometry:f.geometry};
+  var match=window.AtlasGlobeRelations&&window.AtlasGlobeRelations.identifyGeometry(name,f.id)||{id:'LAND-'+f.id,label:''};
+  return {type:'Feature',id:i,properties:{name:name,atlas_color:rgb(name),atlas_source:'Native Land Digital / MapMaker · 2023 snapshot',atlas_feature_id:String(f.id),atlas_land_id:match.id,atlas_autonym:match.label||''},geometry:f.geometry};
  })};
 }
 function readData(){
@@ -52,12 +53,14 @@ function readData(){
    if(unique.length)selectLands(unique.slice(0,12),unique.length);
   });
   loaded.territory=true;
+  window.dispatchEvent(new CustomEvent('atlas-globe-layers-ready',{detail:{map:map}}));
   status('Rotating globe ready · '+territoryCount.toLocaleString()+' land-reference shapes · drag to turn Earth.');
  }catch(err){errors.push(String(err));status('Geographic background loaded; land-reference layer failed: '+err.message,true);}
  loadCoastlines();
  loadCountryAnchors();
 }
 function selectLands(names,total){
+ if(window.AtlasGlobeRelations&&window.AtlasGlobeRelations.selectLands(names,total))return;
  el('selection').hidden=false;
  el('selection-heading').textContent=total>1?total+' overlapping references':names[0];
  el('selection-list').replaceChildren();
