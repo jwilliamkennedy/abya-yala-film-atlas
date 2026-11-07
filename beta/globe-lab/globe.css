@@ -69,3 +69,39 @@ select{width:100%;padding:12px 10px;border:1px solid #b7c9bf;border-radius:4px;b
 .overlap-choice:hover,.overlap-choice:focus-visible{background:#deebdf}
 .selection-relations .relation-note,.selection-relations .relation-overflow{font-size:10px;line-height:1.6;color:#76877b}
 @media(max-width:690px){.selection-panel{width:min(450px,calc(100% - 20px));max-height:65%}.autonym-explore{margin-top:13px;padding-top:11px}}
+
+/* Unified beta map: the globe owns the cartographic surface; the atlas index stays in parent. */
+.compact-globe-controls{display:none}
+body.embedded{height:100dvh;overflow:hidden}
+body.embedded .atlas-header,body.embedded .controls,body.embedded .status,body.embedded .footnote{display:none!important}
+body.embedded .workspace{display:block;min-height:0;height:100dvh;max-width:none}
+body.embedded .map-column{display:block;padding:0;margin:0;height:100%;min-width:0}
+body.embedded .map-frame{height:100%!important;min-height:0!important;border:0}
+body.embedded #globe-map{cursor:grab}
+body.embedded .map-heading{top:66px;left:17px;right:auto;max-width:min(360px,65%);background:rgba(18,55,69,.68);padding:9px 11px}
+body.embedded #region-label{font-size:18px}
+body.embedded #map-help{font-size:9px}
+body.embedded .legend{bottom:47px;left:16px;max-width:58%;font-size:9px}
+body.embedded .selection-panel{bottom:100px;max-height:min(59vh,600px);z-index:9}
+body.embedded .maplibregl-ctrl-top-right{top:59px;right:12px}
+body.embedded .compact-globe-controls{display:flex;align-items:center;flex-wrap:wrap;gap:4px;
+ position:absolute;z-index:8;left:16px;bottom:69px;max-width:calc(100% - 30px);
+ padding:5px;border:1px solid rgba(192,214,195,.5);border-radius:7px;
+ background:rgba(15,50,67,.85);box-shadow:0 4px 17px #102e3b55}
+body.embedded .compact-globe-controls button{color:#f7f1e2;background:transparent;
+ border:1px solid rgba(196,217,203,.25);border-radius:4px;font:600 11px/1.4 Arial,sans-serif;
+ padding:7px 10px;min-height:32px}
+body.embedded .compact-globe-controls button:hover,
+body.embedded .compact-globe-controls button:focus-visible{background:rgba(142,184,177,.28);outline:1px solid #c2e9d6}
+body.embedded .compact-globe-controls #zoom-plus,body.embedded .compact-globe-controls #zoom-minus{
+ font-size:18px;min-width:31px;padding:1px 7px}
+@media(max-width:680px){
+ body.embedded .map-heading{top:57px;left:10px;max-width:60%;padding:6px 8px}
+ body.embedded #region-label{font-size:13px}
+ body.embedded #map-help{display:none}
+ body.embedded .maplibregl-ctrl-top-right{top:45px;right:8px}
+ body.embedded .compact-globe-controls{left:9px;bottom:66px;gap:3px}
+ body.embedded .compact-globe-controls button{padding:6px;min-height:30px;font-size:9px}
+ body.embedded .legend{bottom:38px;left:9px;font-size:8px}
+ body.embedded .selection-panel{left:9px;bottom:107px;max-height:53%}
+}
