@@ -15,7 +15,12 @@ var polygons=window.ATLAS_TERRITORIES&&window.ATLAS_TERRITORIES.features||[];
 var groups=new Map(),landBySource=new Map(),sourcesByLand=new Map();
 var edges=window.ATLAS_LAND_CROSSINDEX&&window.ATLAS_LAND_CROSSINDEX.edges||[];
 var edgesByLand=new Map(),recordsById=new Map(),archiveReady=false;
-var selectedLand=null,selectedSource=null,map=null,query='',maxResults=14;
+var selectedLand=null,selectedSource=null,map=null,query='',maxResults=14,lastNotifiedLand=null;
+var embedded=new URLSearchParams(location.search).get('embed')==='1';
+function informParent(type,attributes){
+ if(!embedded||window.parent===window)return;
+ window.parent.postMessage(Object.assign({source:'atlas-globe',type:type},attributes||{}),location.origin);
+}
 var explicitRegion={ 'NAME-001':'americas', 'NAME-087':'ixim', 'NAME-124':'wallmapu'};
 var landIndexCount={groups:0,matchedGroups:0,ambiguousGroups:0,sourced:0,provisional:0,missingRecords:0};
 function normalize(x){return String(x||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[’‘ʻʼ]/g,"'").toLocaleLowerCase();}
@@ -142,6 +147,7 @@ function renderDetail(id,sourceName,allowFly){
  if(!r&&!source)return false;
  selectedLand=id;selectedSource=source&&source.source||null;
  persistLand(id);
+ if(lastNotifiedLand!==id){lastNotifiedLand=id;informParent('land',{id:id});}
  el('selection').hidden=false;
  el('selection-heading').textContent=r?r.name:source.name;
  var list=el('selection-list'),note=el('selection-note');empty(list);
@@ -208,7 +214,7 @@ function focusLand(id){
   var b=boundsFor(features);
   if(b.every(Number.isFinite)&&b[2]-b[0]<145&&b[3]-b[1]<105){
    var prefersReduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-   map.fitBounds([[b[0],b[1]],[b[2],b[3]]],{padding:85,maxZoom:5.5,duration:prefersReduce?0:950});
+   map.fitBounds([[b[0],b[1]],[b[2],b[3]]],{padding:Math.max(35,Math.min(90,map.getCanvas().clientWidth*.12)),maxZoom:9.5,duration:prefersReduce?0:750});
    statusSmall('Map fitted to the source polygon reference; not to a filmmaker’s location.');return;
   }
  }
@@ -244,7 +250,7 @@ function chooseName(id){
  renderDetail(id,null,true);
 }
 function closePanel(){
- el('selection').hidden=true;selectedLand=null;selectedSource=null;
+ el('selection').hidden=true;selectedLand=null;selectedSource=null;lastNotifiedLand=null;
  persistLand(null);empty(el('overlap-links'));
  if(map&&map.getLayer('atlas-selected-land'))map.setFilter('atlas-selected-land',['==',['get','atlas_land_id'],'']);
 }
@@ -316,11 +322,20 @@ function init(){
   if(map&&map.getLayer('atlas-autonym-symbols'))map.setLayoutProperty('atlas-autonym-symbols','visibility',e.target.checked?'visible':'none');
  });
  el('clear-selection').addEventListener('click',closePanel);
+ el('selection-relations').addEventListener('click',function(e){
+  if(!embedded)return;
+  var a=e.target.closest('a[href]');if(!a)return;
+  var url=new URL(a.href,location.href),m=url.hash.match(/(?:^|&)maker=([^&]+)/);
+  if(url.pathname.replace(/\/$/,'')===new URL('../',location.href).pathname.replace(/\/$/,'')&&m){
+   e.preventDefault();informParent('maker',{id:decodeURIComponent(m[1])});
+  }
+ });
  searchNames();
  loadRecords();
 }
 window.AtlasGlobeRelations={identifyGeometry:identifyGeometry,selectLands:selectLands,
- renderDetail:renderDetail,chooseName:chooseName,testSummary:function(){return {names:names.length,edges:edges.length,sourceGroups:groups.size};}};
+ renderDetail:renderDetail,chooseName:chooseName,closePanel:closePanel,
+ fitSelection:function(){if(selectedLand)focusLand(selectedLand);},testSummary:function(){return {names:names.length,edges:edges.length,sourceGroups:groups.size};}};
 window.addEventListener('atlas-globe-layers-ready',function(e){initializeOnMap(e.detail.map);});
 init();
 })();
