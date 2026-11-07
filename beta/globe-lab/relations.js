@@ -179,6 +179,7 @@ function renderDetail(id,sourceName,allowFly){
  renderRecords(body,id);
  if(allowFly)focusLand(id);
  if(map&&map.getLayer('atlas-selected-land')){
+   highlightMaker(null);
    map.setFilter('atlas-selected-land',['==',['get','atlas_land_id'],id]);
  }
  return true;
@@ -255,6 +256,11 @@ function chooseName(id){
 }
 function highlightMaker(id){
  if(!map||!map.getLayer('atlas-maker-sourced'))return;
+ if(!id){
+  map.setFilter('atlas-maker-sourced',['in',['get','atlas_land_id'],['literal',[]]]);
+  map.setFilter('atlas-maker-provisional',['in',['get','atlas_land_id'],['literal',[]]]);
+  return;
+ }
  var associated=edges.filter(function(e){return e.record===id&&sourcesByLand.has(e.land);});
  var confirmed=[...new Set(associated.filter(function(e){return e.status==='sourced';}).map(function(e){return e.land;}))];
  var tentative=[...new Set(associated.filter(function(e){return e.status!=='sourced'&&!confirmed.includes(e.land);}).map(function(e){return e.land;}))];
