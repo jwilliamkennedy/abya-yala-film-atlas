@@ -249,7 +249,11 @@ function launch(){
   window.addEventListener('message',function(e){
    if(e.origin!==location.origin||!e.data||e.data.source!=='atlas-beta-parent')return;
    var d=e.data;
-   if(d.type==='land'&&d.id&&window.AtlasGlobeRelations)window.AtlasGlobeRelations.renderDetail(d.id,null,false);
+   if(d.type==='land'&&d.id&&window.AtlasGlobeRelations){
+    window.AtlasGlobeRelations.renderDetail(d.id,null,false);
+    window.AtlasGlobeRelations.fitSelection();
+   }
+   if(d.type==='maker'&&d.id&&window.AtlasGlobeRelations)window.AtlasGlobeRelations.highlightMaker(d.id);
    if(d.type==='layers'){
     var l=d.layers||{};
     if(typeof l.territories==='boolean'){el('land-toggle').checked=l.territories;toggleLand();}
