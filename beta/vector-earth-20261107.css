@@ -1,5 +1,5 @@
-/* 2026-11-07 beta: precise SVG basemap, no stretched raster.
-   Native Land outlines and interactive film markers remain separate layers. */
+/* 2026-11-07 beta: shaded physical geography beneath precise, interactive SVG coastlines.
+   Original Equal Earth projection, names, and filmmaker indexing are unchanged. */
 .map-panel,
 :root[data-reading-theme=night] .map-panel{
  background:linear-gradient(155deg,#6e9eaf 0%,#487a94 65%,#2f5b76 100%)!important;
@@ -24,7 +24,7 @@
 .geography[data-geography-mode=vector] .base .land-shape,
 :root[data-reading-theme=night] .geography[data-geography-mode=vector] .base .land-shape{
  fill:url(#atlas-vector-land-gradient)!important;
- fill-opacity:1!important;
+ fill-opacity:.12!important;
  stroke:#426a66!important;
  stroke-opacity:.58!important;
  stroke-width:.68px!important;
@@ -32,7 +32,19 @@
  vector-effect:non-scaling-stroke;
  pointer-events:none;
 }
-.geography[data-geography-mode=vector] .natural-earth-image{display:none!important}
+.geography[data-geography-mode=vector] .natural-earth-image{
+ display:block!important;
+ opacity:1!important;
+ filter:none!important;
+ mix-blend-mode:normal;
+ image-rendering:auto;
+ pointer-events:none;
+}
+/* The same shape serves as a fallback if the geographic raster cannot be loaded. */
+.geography[data-geography-fallback=true] .base .land-shape{
+ fill-opacity:1!important;
+ fill:url(#atlas-vector-land-gradient)!important;
+}
 .geography[data-geography-mode=vector][data-geography-visible=false] .base{
  opacity:0;
  pointer-events:none;
