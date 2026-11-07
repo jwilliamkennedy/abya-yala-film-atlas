@@ -79,12 +79,47 @@ function syncStyleLayers(map){
       state.errors[map===state.left?'left':'right'].push('Territory layer: '+err.message);
   }
 }
-function overlaysChanged(){
+let territoryLoad=null;
+function loadArchivedTerritories(){
+  if(state.overlay)return Promise.resolve(state.overlay);
+  if(territoryLoad)return territoryLoad;
+  territoryLoad=new Promise((resolve,reject)=>{
+    if(window.ATLAS_TERRITORIES){
+      state.overlay=sourceData();
+      return state.overlay?resolve(state.overlay):reject(new Error('Malformed territory data'));
+    }
+    const script=document.createElement('script');
+    script.src='../territories-data.js';
+    script.async=true;
+    script.onload=()=>{
+      state.overlay=sourceData();
+      if(state.overlay)resolve(state.overlay);
+      else reject(new Error('Archived territory dataset did not define GeoJSON features'));
+    };
+    script.onerror=()=>reject(new Error('Could not retrieve archived territory dataset'));
+    document.head.appendChild(script);
+  }).catch(err=>{
+    territoryLoad=null;
+    report('Territory overlays could not load: '+err.message+
+      '. The two basemaps remain fully usable.');
+    console.warn(err);
+    return null;
+  });
+  return territoryLoad;
+}
+async function overlaysChanged(){
+  const enabled=$('territory-outlines').checked||$('territory-fills').checked;
+  if(enabled&&!state.overlay){
+    report('Loading the original 2023 territory polygons on request. Basemaps remain interactive.');
+    await loadArchivedTerritories();
+  }
   ['left','right'].forEach(side=>syncStyleLayers(state[side]));
-  report(($('territory-outlines').checked||$('territory-fills').checked)
-    ? 'Archived Indigenous territory references are enabled on both basemaps ('+
-      (state.overlayCount||0)+' polygon features). Zoom and click to compare overlaps.'
-    : 'Territory overlays hidden. Compare the two physical basemaps directly.');
+  if(!enabled){
+    report('Territory overlays hidden. Compare the two physical basemaps directly.');
+  }else if(state.overlay){
+    report('Archived Indigenous territory references are enabled on both basemaps ('+
+      state.overlayCount+' polygon features). Zoom and click to compare overlaps.');
+  }
 }
 function allOverlaps(map,point){
   if(!map.getLayer(layerIds.hit))return [];
