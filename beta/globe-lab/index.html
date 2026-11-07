@@ -8,9 +8,10 @@
 <title>Rotating Earth · Indigenous Cinema Atlas beta experiment</title>
 <meta name="description" content="A rotating globe with physical geography and colorful overlapping Indigenous land references. Isolated beta experiment.">
 <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@5.6.0/dist/maplibre-gl.css">
-<link rel="stylesheet" href="globe.css?v=2">
+<link rel="stylesheet" href="globe.css?v=3">
 <script defer src="https://unpkg.com/maplibre-gl@5.6.0/dist/maplibre-gl.js"></script>
 <script defer src="../assets/topojson-client.min.js"></script>
+<script defer src="../assets/d3.min.js"></script>
 <script defer src="../territories-data.js"></script>
 <script defer src="../map-label-layout.js?v=52"></script>
 <script defer src="../autonyms-data.js"></script>
@@ -30,7 +31,7 @@
 <script defer src="../verified30-20261106-data.js?v=1"></script>
 <script defer src="../verified30b-20261107-data.js?v=3"></script>
 <script defer src="../atlas-update-1031.js?v=130"></script>
-<script defer src="globe.js?v=2"></script>
+<script defer src="globe.js?v=3"></script>
 <script defer src="relations.js?v=3"></script>
 </head>
 <body>
@@ -86,6 +87,13 @@
  <section class="map-column" aria-label="Interactive physical globe">
   <div class="map-frame">
    <div id="globe-map" role="application" aria-label="Interactive rotating Earth with Indigenous territory references. Drag to rotate, scroll to zoom, or use the map controls."></div>
+   <nav class="compact-globe-controls" aria-label="Globe camera controls">
+    <button id="compact-globe" type="button">Globe</button><button id="compact-flat" type="button">Flat</button>
+    <button id="zoom-minus" type="button" aria-label="Zoom out">−</button>
+    <button id="zoom-plus" type="button" aria-label="Zoom in">+</button>
+    <button id="zoom-overview" type="button">Overview</button>
+    <button id="zoom-selected" type="button" title="Fit the selected land's existing reference geometry">Fit land</button>
+   </nav>
    <div id="initial-loading" class="loading">Preparing physical globe and vector geography…</div>
    <div class="map-heading"><span id="region-label">Abya Yala &amp; Turtle Island</span><span id="map-help">Drag to rotate Earth · scroll to approach mountains</span></div>
    <aside id="selection" class="selection-panel" aria-live="polite" hidden>
