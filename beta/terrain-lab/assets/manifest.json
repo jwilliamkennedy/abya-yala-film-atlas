@@ -1,0 +1,48 @@
+{
+  "provider": "Natural Earth",
+  "dataset": "Natural Earth II with shaded relief",
+  "license": "public domain",
+  "source_url": "https://naturalearth.s3.amazonaws.com/10m_raster/NE2_LR_LC_SR.zip",
+  "pixels_global": [
+    16200,
+    8100
+  ],
+  "regions": {
+    "guatemala": {
+      "file": "assets/guatemala.webp",
+      "bounds": [
+        -94.0,
+        12.0,
+        -87.5,
+        19.5
+      ],
+      "width": 584,
+      "height": 676,
+      "sha256": "c80baefd03504d3e796ef97760fc7af21035deac56af8cbb7b77b6435da31ab3"
+    },
+    "oaxaca": {
+      "file": "assets/oaxaca.webp",
+      "bounds": [
+        -101.0,
+        13.2,
+        -91.0,
+        20.3
+      ],
+      "width": 900,
+      "height": 640,
+      "sha256": "4d81e87458ff64d3f55f7a114717055851dac139830933c0598c13a63a9c1d46"
+    },
+    "andes": {
+      "file": "assets/andes.webp",
+      "bounds": [
+        -79.0,
+        -19.2,
+        -66.0,
+        -9.0
+      ],
+      "width": 1170,
+      "height": 918,
+      "sha256": "a34e14431636d52de62849903fc7e40e9d46f69e03359c9cedbe5796dd429264"
+    }
+  }
+}
