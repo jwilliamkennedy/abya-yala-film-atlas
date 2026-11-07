@@ -105,3 +105,11 @@ body.embedded .compact-globe-controls #zoom-plus,body.embedded .compact-globe-co
  body.embedded .legend{bottom:38px;left:9px;font-size:8px}
  body.embedded .selection-panel{left:9px;bottom:107px;max-height:53%}
 }
+
+body.embedded .compact-globe-controls select{
+ width:112px;max-width:125px;min-height:32px;border-radius:4px;
+ border:1px solid rgba(196,217,203,.35);background:#244b55;color:#f7f1e2;
+ padding:5px 8px;font:600 10px/1.35 Arial,sans-serif;cursor:pointer;
+}
+body.embedded .compact-globe-controls select:focus-visible{outline:2px solid #c2e9d6}
+@media(max-width:680px){body.embedded .compact-globe-controls select{width:93px;min-height:30px;font-size:9px;padding:5px}}
