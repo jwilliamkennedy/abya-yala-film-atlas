@@ -1,0 +1,37 @@
+/* Beta-only Native Land-inspired chromatic cartography test, 2026-11-07.
+   Uses existing cited 2023 atlas geometry; no new boundary data is fetched.
+   Colors distinguish overlaps visually, never delimit sovereign/legal borders. */
+#atlas .land-shading .nation-wash{
+  fill-opacity:.38!important;
+  stroke:none!important;
+  pointer-events:none;
+}
+#atlas .geography[data-vector-world="world"] .land-shading .nation-wash{
+  fill-opacity:.29!important;
+}
+/* Preserve labels, clickable film references and the vector-earth shoreline. */
+.map-panel #atlas{cursor:grab;touch-action:none}
+.map-panel #atlas:active{cursor:grabbing}
+.map-panel #atlas [role="button"]{cursor:pointer}
+@media (prefers-reduced-motion:reduce){
+  .map-panel #atlas,.map-panel #atlas:active{scroll-behavior:auto}
+}
+
+/* Side-by-side experiment entry point: rotating globe, distinct from flat World. */
+.map-panel .map-actions #globe-lab-link{
+ display:inline-flex;align-items:center;justify-content:center;
+ white-space:nowrap;border-radius:999px;padding:5px 10px;
+ color:#385e54!important;text-decoration:none;font:600 11px/1.35 'Atlas Sans',sans-serif;
+ border:1px solid #b9cbbd;background:rgba(237,243,232,.8);
+}
+.map-panel .map-actions #globe-lab-link:hover,.map-panel .map-actions #globe-lab-link:focus-visible{
+ color:#1f4941!important;background:#d9e8d7;outline-offset:2px;
+}
+:root[data-reading-theme="night"] .map-panel .map-actions #globe-lab-link{
+ color:#ead5a9!important;background:rgba(55,85,77,.6);border-color:rgba(234,213,169,.3);
+}
+@media(max-width:680px){
+ .map-panel .map-actions{gap:5px!important;padding:3px 4px!important}
+ .map-panel .map-actions #globe-lab-link{font-size:9px;padding:5px 6px}
+ .map-panel .map-actions>details>summary,.map-panel .map-actions>button{padding:5px 5px!important}
+}
