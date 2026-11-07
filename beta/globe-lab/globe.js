@@ -262,6 +262,9 @@ function launch(){
     if(typeof l.territories==='boolean'){el('land-toggle').checked=l.territories;toggleLand();}
     if(typeof l.relief==='boolean'){el('relief-toggle').checked=l.relief;toggleRelief();}
     if(typeof l.anchors==='boolean'){el('anchor-toggle').checked=l.anchors;toggleAnchors();}
+    if(typeof l.boundaries==='boolean'){settings.boundaries=l.boundaries;
+      if(map.getLayer('atlas-land-lines'))map.setPaintProperty('atlas-land-lines','line-opacity',l.boundaries?0.86:0.37);
+    }
     if(typeof l.names==='boolean'){
       el('name-toggle').checked=l.names;el('name-toggle').dispatchEvent(new Event('change'));
     }
