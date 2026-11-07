@@ -15,7 +15,7 @@ for(const c of batch){
  if(existing){
    const already=(existing.films||[]).some(f=>norm(f.title)===norm(c.title));
    if(already){result.duplicateFilmCreditsAvoided++;continue;}
-   d.patches.push({id:existing.id,films:[film],aliases:c.aliases,note:'Verified 2026-11-07 film credit; master row '+c.masterRow+'. No film territory inferred.'});
+   d.patches.push({id:existing.id,films:[film],aliases:c.aliases,set:{status:'Discovery · credit supported'},note:'Full filmmaker identity and directing credit verified 2026-11-07, master row '+c.masterRow+'. No film territory inferred.'});
    const u=d.updates[existing.id]||(d.updates[existing.id]={films:[],sources:[],aliases:[]});
    u.sources=u.sources||[];
    for(const src of [{url:c.identitySource,type:'Indigenous filmmaker identity',evidence:c.nation,authority:'Verified mirror master',checkedOn:'2026-11-07'},{url:c.filmSource,type:'Director-film credit and screening',evidence:c.credit,authority:'Verified mirror master',checkedOn:'2026-11-07'}])if(!u.sources.some(x=>x.url===src.url))u.sources.push(src);
