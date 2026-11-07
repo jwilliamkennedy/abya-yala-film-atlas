@@ -7,6 +7,40 @@ var colors=['#ef866c','#f6bd60','#69c4ba','#728fdf','#ad8ee2','#cbe178',
  '#e9a6c1','#6fbbdc','#c6a071','#91ce9a','#e69b62','#ada6dc'];
 var settings={projection:'globe',territories:true,relief:true,coast:true,anchors:false,terrain:false,spinning:false};
 var map=null,errors=[],territoryCount=0,loaded={territory:false,coast:false},spinFrame=0,lastFrame=0;
+var geometryIndex=[],mapInitialized=false,embedded=new URLSearchParams(location.search).get('embed')==='1';
+function notifyHost(type,detail){
+ if(!embedded||window.parent===window)return;
+ window.parent.postMessage(Object.assign({source:'atlas-globe',type:type},detail||{}),location.origin);
+}
+function normalizeGeometry(geometry){
+ var g=structuredClone(geometry);
+ if(!window.d3||!d3.geoArea)return g;
+ var polygons=g.type==='Polygon'?[g.coordinates]:g.type==='MultiPolygon'?g.coordinates:[];
+ polygons.forEach(function(rings){
+  if(!rings.length)return;
+  if(d3.geoArea({type:'Polygon',coordinates:[rings[0]]})>2*Math.PI)rings[0].reverse();
+  rings.slice(1).forEach(function(h){if(d3.geoArea({type:'Polygon',coordinates:[h]})<2*Math.PI)h.reverse();});
+ });
+ return g;
+}
+function hitTerritories(lnglat){
+ if(!window.d3||!d3.geoContains)return [];
+ var point=[lnglat.lng,lnglat.lat],seen=new Set(),results=[];
+ for(var f of geometryIndex){
+  if(point[1]<f.minLat||point[1]>f.maxLat||!d3.geoContains(f.feature,point))continue;
+  var name=f.feature.properties.name;
+  if(!seen.has(name)){seen.add(name);results.push(name);}
+ }
+ return results;
+}
+function queryAllLayers(event){
+ if(!settings.territories)return;
+ if(settings.anchors&&map.getLayer('atlas-country-index-points')&&
+    map.queryRenderedFeatures(event.point,{layers:['atlas-country-index-points']}).length)return;
+ var all=hitTerritories(event.lngLat);
+ if(all.length)selectLands(all,all.length);
+}
+
 var places={
  americas:{center:[-96,15],zoom:1.58,pitch:0,label:'Abya Yala & Turtle Island'},
  ixim:{center:[-91,15.2],zoom:6.35,pitch:28,label:'Ixim Ulew / Guatemala'},
@@ -26,35 +60,37 @@ function atlasTerritories(){
  return {type:'FeatureCollection',features:features.filter(validFeature).map(function(f,i){
   var name=String(f.properties.name||'Unlabeled land reference');
   var match=window.AtlasGlobeRelations&&window.AtlasGlobeRelations.identifyGeometry(name,f.id)||{id:'LAND-'+f.id,label:''};
-  return {type:'Feature',id:i,properties:{name:name,atlas_color:rgb(name),atlas_source:'Native Land Digital / MapMaker · 2023 snapshot',atlas_feature_id:String(f.id),atlas_land_id:match.id,atlas_autonym:match.label||''},geometry:f.geometry};
+  return {type:'Feature',id:i,properties:{name:name,atlas_color:rgb(name),atlas_source:'Native Land Digital / MapMaker · 2023 snapshot',atlas_feature_id:String(f.id),atlas_land_id:match.id,atlas_autonym:match.label||''},geometry:normalizeGeometry(f.geometry)};
  })};
 }
 function readData(){
  if(!map)return;
  try{
   var territory=atlasTerritories();territoryCount=territory.features.length;
+  geometryIndex=territory.features.map(function(f){
+    var b=d3.geoBounds(f);return {feature:f,minLat:b[0][1],maxLat:b[1][1]};
+  });
   if(!map.getSource('atlas-land-geometry'))map.addSource('atlas-land-geometry',{type:'geojson',data:territory});
+  var labelLayer=(map.getStyle().layers||[]).find(function(l){return l.type==='symbol';});
+  var before=map.getLayer('atlas-physical-hillshade')?'atlas-physical-hillshade':labelLayer&&labelLayer.id;
   map.addLayer({id:'atlas-land-fill',type:'fill',source:'atlas-land-geometry',
    layout:{visibility:settings.territories?'visible':'none'},
    paint:{'fill-color':['get','atlas_color'],'fill-opacity':[
-    'interpolate',['linear'],['zoom'],0,0.48,3,0.38,7,0.29,12,0.23
-   ],'fill-antialias':true}});
+    'interpolate',['linear'],['zoom'],0,0.40,3,0.34,7,0.25,12,0.18
+   ],'fill-antialias':true}},before);
   map.addLayer({id:'atlas-land-lines',type:'line',source:'atlas-land-geometry',
    layout:{visibility:settings.territories?'visible':'none'},
    paint:{'line-color':['get','atlas_color'],'line-opacity':0.37,'line-width':[
-    'interpolate',['linear'],['zoom'],0,0.2,5,0.7,9,1.1
-   ]}});
+    'interpolate',['linear'],['zoom'],0,0.30,5,0.75,9,1.1
+   ]}},before);
   map.on('mouseenter','atlas-land-fill',function(){map.getCanvas().style.cursor='pointer';});
   map.on('mouseleave','atlas-land-fill',function(){map.getCanvas().style.cursor='grab';});
-  map.on('click','atlas-land-fill',function(e){
-   var features=map.queryRenderedFeatures(e.point,{layers:['atlas-land-fill']});
-   var unique=[],seen=new Set();
-   features.forEach(function(f){var n=f.properties&&f.properties.name;if(n&&!seen.has(n)){seen.add(n);unique.push(n);}});
-   if(unique.length)selectLands(unique.slice(0,12),unique.length);
-  });
+  // Search all geometries on the sphere: no filled polygon can block underlying names.
+  if(!mapInitialized){map.on('click',queryAllLayers);mapInitialized=true;}
   loaded.territory=true;
   window.dispatchEvent(new CustomEvent('atlas-globe-layers-ready',{detail:{map:map}}));
   status('Rotating globe ready · '+territoryCount.toLocaleString()+' land-reference shapes · drag to turn Earth.');
+  notifyHost('ready',{territories:territoryCount});
  }catch(err){errors.push(String(err));status('Geographic background loaded; land-reference layer failed: '+err.message,true);}
  loadCoastlines();
  loadCountryAnchors();
@@ -77,11 +113,12 @@ async function loadCoastlines(){
   if(!window.topojson||!map.getStyle())throw new Error('TopoJSON client unavailable');
   var coast=topojson.mesh(t,t.objects.countries,function(a,b){return a===b;});
   map.addSource('atlas-coasts',{type:'geojson',data:{type:'Feature',properties:{},geometry:coast}});
+  var firstLabel=(map.getStyle().layers||[]).find(function(l){return l.type==='symbol';});
   map.addLayer({id:'atlas-coast-lines',type:'line',source:'atlas-coasts',
    layout:{visibility:settings.coast?'visible':'none'},
    paint:{'line-color':'#274f58','line-width':[
     'interpolate',['linear'],['zoom'],0,0.6,5,1.0,9,1.2
-   ],'line-opacity':0.56}});
+   ],'line-opacity':0.56}},firstLabel&&firstLabel.id);
   loaded.coast=true;
  }catch(err){errors.push(String(err));}
 }
@@ -128,7 +165,7 @@ function useProjection(type){
  el('flat-mode').setAttribute('aria-pressed',String(type==='mercator'));
  el('map-help').textContent=type==='globe'?'Drag to rotate Earth · scroll to approach mountains':'Drag to shift the world · scroll to zoom into physical geography';
  if(type==='mercator'){stopSpin();map.easeTo({pitch:0,duration:650});}
- else if(map.getZoom()>4.5){map.easeTo({zoom:1.6,pitch:0,duration:900});}
+ else if(map.getPitch()>60)map.easeTo({pitch:45,duration:450});
 }
 function stopSpin(){
  settings.spinning=false;
@@ -152,7 +189,7 @@ function spinToggle(){
 function focusPlace(id){
  var p=places[id]||places.americas;
  stopSpin();
- map.flyTo({center:p.center,zoom:p.zoom,pitch:p.pitch,bearing:0,speed:0.75,
+ map.flyTo({center:p.center,zoom:p.zoom,pitch:p.pitch,bearing:0,speed:1.2,curve:1.2,maxDuration:1850,
    essential:!window.matchMedia('(prefers-reduced-motion: reduce)').matches});
  el('region-label').textContent=p.label;
 }
@@ -179,7 +216,16 @@ function setupInteractions(){
  el('anchor-toggle').onchange=toggleAnchors;
  el('relief-toggle').onchange=toggleRelief;
  el('terrain-toggle').onchange=toggleTerrain;
- el('clear-selection').onclick=function(){el('selection').hidden=true;};
+ el('clear-selection').onclick=function(){
+  if(window.AtlasGlobeRelations&&window.AtlasGlobeRelations.closePanel)window.AtlasGlobeRelations.closePanel();
+  else el('selection').hidden=true;
+ };
+ el('zoom-plus').onclick=function(){map.easeTo({zoom:Math.min(map.getMaxZoom(),map.getZoom()+0.75),duration:260});};
+ el('zoom-minus').onclick=function(){map.easeTo({zoom:Math.max(map.getMinZoom(),map.getZoom()-0.75),duration:260});};
+ el('zoom-overview').onclick=function(){focusPlace('americas');};
+ el('zoom-selected').onclick=function(){window.AtlasGlobeRelations&&window.AtlasGlobeRelations.fitSelection&&window.AtlasGlobeRelations.fitSelection();};
+ el('compact-globe').onclick=function(){useProjection('globe');};
+ el('compact-flat').onclick=function(){useProjection('mercator');};
  document.addEventListener('visibilitychange',function(){if(document.hidden)stopSpin();});
 }
 function launch(){
@@ -189,11 +235,29 @@ function launch(){
   map=new maplibregl.Map({container:'globe-map',
    style:'https://tiles.versatiles.org/assets/styles/natural/style.json',
    center:places.americas.center,zoom:places.americas.zoom,pitch:0,bearing:0,
-   maxPitch:70,maxZoom:13,antialias:true,renderWorldCopies:false,
+   minZoom:0.75,maxPitch:70,maxZoom:16,antialias:true,renderWorldCopies:false,
    attributionControl:true});
   window.AtlasGlobeTest={getStatus:function(){return {projection:settings.projection,
    territories:territoryCount,loaded:loaded,errors:errors.slice(),center:map.getCenter(),zoom:map.getZoom()};}};
-  map.addControl(new maplibregl.NavigationControl({showCompass:true,showZoom:true}),'top-right');
+  map.addControl(new maplibregl.NavigationControl({showCompass:true,showZoom:!embedded}),'top-right');
+  map.scrollZoom.setWheelZoomRate(1/680);
+  map.scrollZoom.setZoomRate(1/135);
+  map.doubleClickZoom.enable();
+  map.touchZoomRotate.enable();
+  window.addEventListener('message',function(e){
+   if(e.origin!==location.origin||!e.data||e.data.source!=='atlas-beta-parent')return;
+   var d=e.data;
+   if(d.type==='land'&&d.id&&window.AtlasGlobeRelations)window.AtlasGlobeRelations.renderDetail(d.id,null,false);
+   if(d.type==='layers'){
+    var l=d.layers||{};
+    if(typeof l.territories==='boolean'){el('land-toggle').checked=l.territories;toggleLand();}
+    if(typeof l.relief==='boolean'){el('relief-toggle').checked=l.relief;toggleRelief();}
+    if(typeof l.anchors==='boolean'){el('anchor-toggle').checked=l.anchors;toggleAnchors();}
+    if(typeof l.names==='boolean'){
+      el('name-toggle').checked=l.names;el('name-toggle').dispatchEvent(new Event('change'));
+    }
+   }
+  });
   map.on('style.load',function(){
    map.setProjection({type:'globe'});
    addHillshade();
