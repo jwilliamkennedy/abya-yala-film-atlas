@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#183844">
+<title>Physical basemap comparison · Indigenous Cinema Atlas</title>
+<meta name="description" content="Isolated, token-free side-by-side comparison of OpenFreeMap and Maptoolkit cartography for the Indigenous Cinema Atlas.">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/maplibre-gl@6.9.0/dist/maplibre-gl.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@maptoolkit/maplibre-logo-control@1.0.0/dist/maplibre-logo-control.css">
+<link rel="stylesheet" href="compare.css?v=1">
+<script defer src="../territories-data.js"></script>
+<script type="module" src="compare.js?v=1"></script>
+</head>
+<body>
+<header class="masthead">
+  <a class="brand" href="../" aria-label="Return to the restored Atlas beta"><span class="mark" aria-hidden="true">◎</span><span><strong>Indigenous Cinema Atlas</strong><small>Abya Yala &amp; Turtle Island · cartographic study</small></span></a>
+  <a class="return" href="../">Return to original beta <span aria-hidden="true">↗</span></a>
+</header>
+<main>
+  <section class="intro">
+    <div>
+      <p class="eyebrow">Independent cartographic test · no changes to the Atlas</p>
+      <h1>How should the geography look?</h1>
+      <p>Two free, token-free vector maps at the <strong>same location and scale</strong>. Compare geographic detail, mountains, zoom quality, and the existing Indigenous territory outlines before deciding whether to change the atlas.</p>
+    </div>
+    <div class="condition">Experiment only. The restored beta, film records, autonym index and research master are untouched.</div>
+  </section>
+
+  <section class="controlbar" aria-label="Comparison controls">
+    <label class="control">Location
+      <select id="region">
+        <option value="guatemala">Guatemalan Highlands</option>
+        <option value="oaxaca">Oaxaca / Sierra Madre</option>
+        <option value="andes">Andes / Southern Peru</option>
+        <option value="wallmapu">Wallmapu</option>
+        <option value="turtle">Turtle Island</option>
+        <option value="americas">Entire Americas</option>
+      </select>
+    </label>
+    <label class="control">Camera tilt <output id="pitch-label" for="pitch">0°</output>
+      <input id="pitch" type="range" min="0" max="60" step="5" value="0">
+    </label>
+    <label class="check"><input id="link-cameras" type="checkbox" checked> Synchronize camera</label>
+    <label class="check"><input id="territory-outlines" type="checkbox"> Indigenous territory outlines</label>
+    <label class="check"><input id="territory-fills" type="checkbox"> Colorful territory fills</label>
+    <button id="reset" type="button">Return to region</button>
+  </section>
+
+  <div class="comparison" role="group" aria-label="Two synchronized geographic basemaps">
+    <section class="candidate" aria-labelledby="title-left">
+      <div class="candidate-heading">
+        <div><span class="eyebrow">Option A · clean geographical canvas</span><h2 id="title-left">OpenFreeMap</h2></div>
+        <label class="style-control">Map style
+          <select id="style-left" aria-label="OpenFreeMap map style">
+            <option value="positron">Positron · quiet light</option>
+            <option value="liberty">Liberty · detailed</option>
+            <option value="bright">Bright · colorful</option>
+          </select>
+        </label>
+      </div>
+      <div class="map-wrap">
+        <div id="map-left" class="map" aria-label="Interactive OpenFreeMap geographical map"></div>
+        <div id="loading-left" class="loading" role="status">Loading OpenFreeMap…</div>
+      </div>
+      <div class="candidate-foot">
+        <span id="status-left">Preparing vector map</span>
+        <a href="https://openfreemap.org/quick_start/" target="_blank" rel="noopener noreferrer">Style documentation ↗</a>
+      </div>
+    </section>
+
+    <section class="candidate" aria-labelledby="title-right">
+      <div class="candidate-heading">
+        <div><span class="eyebrow">Option B · physical terrain and elevation</span><h2 id="title-right">Maptoolkit</h2></div>
+        <label class="style-control">Map style
+          <select id="style-right" aria-label="Maptoolkit map style">
+            <option value="hiking">Hiking · contours + hillshade</option>
+            <option value="summer">Summer · softer relief</option>
+            <option value="hiking-3d">Hiking 3D · raised terrain</option>
+          </select>
+        </label>
+      </div>
+      <div class="map-wrap">
+        <div id="map-right" class="map" aria-label="Interactive Maptoolkit relief and elevation map"></div>
+        <div id="loading-right" class="loading" role="status">Loading Maptoolkit terrain…</div>
+      </div>
+      <div class="candidate-foot">
+        <span id="status-right">Preparing topographic map</span>
+        <a href="https://www.maptoolkit.org/outdoor" target="_blank" rel="noopener noreferrer">Physical terrain documentation ↗</a>
+      </div>
+    </section>
+  </div>
+
+  <div class="summary">
+    <p id="summary" role="status" aria-live="polite">Loading map libraries and two independent basemaps…</p>
+    <p>Drag or zoom either map; when synchronized, the other follows. Territory outlines come from the atlas’s archived 2023 Native Land Digital / National Geographic MapMaker reference and are <strong>not</strong> definitive Indigenous boundaries or filmmaker locations. The same source geometry is applied to both maps, without modifying it. Clicking an overlaid region lists the mapped source names, not verified affiliations.</p>
+    <p>The basemaps require no Mapbox token. OpenFreeMap uses OpenStreetMap data. Maptoolkit uses its free community tile service; its attribution and logo remain visible. Neither provider guarantees unlimited uptime. Nothing on this page is being promoted to the production atlas.</p>
+  </div>
+</main>
+<footer class="footer"><a href="../">Original beta</a><a href="https://openfreemap.org/" target="_blank" rel="noopener noreferrer">OpenFreeMap</a><a href="https://www.maptoolkit.org/" target="_blank" rel="noopener noreferrer">Maptoolkit</a><a href="https://maplibre.org/" target="_blank" rel="noopener noreferrer">MapLibre</a><span>Comparison only · November 2026</span></footer>
+</body>
+</html>
