@@ -1,0 +1,48 @@
+name: Capture isolated terrain-lab preview
+on:
+  push:
+    paths:
+      - ".github/workflows/terrain-lab-preview.yml"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+      - name: Render side-by-side maps in Chrome
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m http.server 8768 --bind 127.0.0.1 --directory . >/tmp/terrain-lab-preview-http.log 2>&1 &
+          sleep 2
+          timeout 100 google-chrome --headless=new --no-sandbox --disable-dev-shm-usage \
+            --window-size=1500,1100 --virtual-time-budget=22000 \
+            --screenshot=beta/terrain-lab/preview.png \
+            "http://127.0.0.1:8768/beta/terrain-lab/" \
+            >/tmp/terrain-lab-preview-out.log 2>/tmp/terrain-lab-preview-err.log
+          python - <<'PY'
+          from pathlib import Path
+          from struct import unpack
+          p=Path("beta/terrain-lab/preview.png")
+          assert p.is_file() and p.stat().st_size>45000
+          b=p.read_bytes()
+          assert b[:8]==b'\x89PNG\r\n\x1a\n'
+          w,h=unpack('>II',b[16:24])
+          assert w>=1400 and h>=900
+          print("TERRAIN_LAB_SCREENSHOT_PASS",w,h,p.stat().st_size)
+          PY
+      - name: Save only experimental preview
+        shell: bash
+        run: |
+          set -euo pipefail
+          git add -- beta/terrain-lab/preview.png
+          test "$(git diff --cached --name-only | wc -l)" -le 1
+          git diff --cached --name-only | grep -x 'beta/terrain-lab/preview.png'
+          git config user.name "terrain-lab-preview-bot"
+          git config user.email "terrain-lab-preview-bot@users.noreply.github.com"
+          git commit -m "terrain lab: capture current side-by-side visual comparison"
+          git pull --rebase origin main
+          git push origin HEAD:main
