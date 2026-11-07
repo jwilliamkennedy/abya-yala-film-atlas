@@ -249,11 +249,14 @@ function initializeOnMap(m){
  map.addLayer({id:'atlas-selected-land',type:'line',source:'atlas-land-geometry',
   filter:['==',['get','atlas_land_id'],''],
   paint:{'line-color':'#fff2b0','line-width':3,'line-opacity':0.95}});
- map.addLayer({id:'atlas-autonym-symbols',type:'symbol',source:'atlas-land-geometry',
-  layout:{visibility:el('name-toggle').checked?'visible':'none',
+ // Reuse the basemap's working glyph stack, avoiding unavailable font requests.
+ var fontLayer=(map.getStyle().layers||[]).find(function(l){return l.type==='symbol'&&l.layout&&l.layout['text-font'];});
+ var autonymLayout={visibility:el('name-toggle').checked?'visible':'none',
    'text-field':['get','atlas_autonym'],'text-size':['interpolate',['linear'],['zoom'],1,10,4,12,8,14],
-   'text-font':['Open Sans Regular','Arial Unicode MS Regular'],
-   'text-max-width':10,'text-allow-overlap':false,'text-padding':6},
+   'text-max-width':10,'text-allow-overlap':false,'text-padding':6};
+ if(fontLayer)autonymLayout['text-font']=fontLayer.layout['text-font'];
+ map.addLayer({id:'atlas-autonym-symbols',type:'symbol',source:'atlas-land-geometry',
+  layout:autonymLayout,
   paint:{'text-color':'#fff5e4','text-halo-color':'#163c45','text-halo-width':1.8,'text-halo-blur':0.4}});
  var count=landIndexCount.matchedGroups;
  el('relation-status').textContent=count+' mapped source titles correspond to indexed name records. The remaining names stay searchable without invented geometry.';
