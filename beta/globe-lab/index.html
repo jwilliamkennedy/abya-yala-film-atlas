@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#173746">
+<title>Rotating Earth · Indigenous Cinema Atlas beta experiment</title>
+<meta name="description" content="A rotating globe with physical geography and colorful overlapping Indigenous land references. Isolated beta experiment.">
+<link rel="stylesheet" href="https://unpkg.com/maplibre-gl@5.6.0/dist/maplibre-gl.css">
+<link rel="stylesheet" href="globe.css?v=1">
+<script defer src="https://unpkg.com/maplibre-gl@5.6.0/dist/maplibre-gl.js"></script>
+<script defer src="../assets/topojson-client.min.js"></script>
+<script defer src="../territories-data.js"></script>
+<script defer src="globe.js?v=1"></script>
+</head>
+<body>
+<header class="atlas-header">
+ <a href="../" class="brand" aria-label="Return to atlas beta"><span class="brand-symbol" aria-hidden="true">◎</span><span>Indigenous Cinema Atlas<small>Abya Yala and Turtle Island</small></span></a>
+ <div class="header-actions"><span class="tag">Beta / Cartographic laboratory</span><a class="return-link" href="../">← Return to film atlas</a></div>
+</header>
+<main class="workspace">
+ <section class="controls" aria-label="Globe experiment controls">
+  <p class="eyebrow">Map experiment 02</p>
+  <h1>A living, moving Earth</h1>
+  <p class="intro">Rotate the globe, approach mountain ranges, and examine overlapping Indigenous land references in color. This tests <strong>real geographic vectors</strong> instead of moving a flat illustration.</p>
+  <div class="group">
+   <h2>Projection</h2>
+   <div class="segmented" role="group" aria-label="Projection"><button id="globe-mode" aria-pressed="true">Rotating globe</button><button id="flat-mode" aria-pressed="false">Flat map</button></div>
+   <button id="spin-toggle" class="secondary" aria-pressed="false">Rotate slowly</button>
+  </div>
+  <div class="group">
+   <h2>Explore a landscape</h2>
+   <label class="sr-only" for="region">Choose a geographic region</label>
+   <select id="region">
+    <option value="americas">Abya Yala &amp; Turtle Island</option>
+    <option value="ixim">Ixim Ulew / Guatemala</option>
+    <option value="oaxaca">Oaxaca / Sierra Madre</option>
+    <option value="turtle">Turtle Island</option>
+    <option value="wallmapu">Wallmapu</option>
+    <option value="andes">Andes</option>
+    <option value="pacific">Pacific view</option>
+   </select>
+  </div>
+  <div class="group">
+   <h2>Cartographic layers</h2>
+   <label class="check"><input id="land-toggle" type="checkbox" checked><span>Colorful Indigenous land references<small>Overlapping polygons / 2023 snapshot</small></span></label>
+   <label class="check"><input id="relief-toggle" type="checkbox" checked><span>Mountain elevation shading<small>Physical relief from Mapterhorn</small></span></label>
+   <label class="check"><input id="coast-toggle" type="checkbox" checked><span>Vector coastlines<small>Natural Earth 1:50m TopoJSON</small></span></label>
+   <label class="check"><input id="terrain-toggle" type="checkbox"><span>Raise terrain in 3D<small>Most visible when zoomed in and tilted</small></span></label>
+   <label class="check"><input id="anchor-toggle" type="checkbox"><span>Country-level cinema index anchors<small>Provisional catalog reference points, not residences</small></span></label>
+  </div>
+  <div class="group">
+   <h2>How to read it</h2>
+   <p class="method">Native Land Digital / National Geographic MapMaker archival shapes, not legal or definitive boundaries. Colors distinguish land references, not nations' identity or relative importance. Click a colored area to read overlapping names. The contemporary Native Land Digital project has shifted its emphasis toward language.</p>
+  </div>
+  <div class="links"><a href="../terrain-lab/">Compare elevation maps</a><a href="https://native-land.ca/maps/native-land" target="_blank" rel="noopener noreferrer">Native Land Digital ↗</a><a href="https://maplibre.org/" target="_blank" rel="noopener noreferrer">MapLibre ↗</a></div>
+ </section>
+ <section class="map-column" aria-label="Interactive physical globe">
+  <div class="map-frame">
+   <div id="globe-map" role="application" aria-label="Interactive rotating Earth with Indigenous territory references. Drag to rotate, scroll to zoom, or use the map controls."></div>
+   <div id="initial-loading" class="loading">Preparing physical globe and vector geography…</div>
+   <div class="map-heading"><span id="region-label">Abya Yala &amp; Turtle Island</span><span id="map-help">Drag to rotate Earth · scroll to approach mountains</span></div>
+   <aside id="selection" class="selection-panel" aria-live="polite" hidden>
+    <div class="selection-header"><strong id="selection-heading">Land reference</strong><button id="clear-selection" type="button" aria-label="Close selected land details">×</button></div>
+    <ul id="selection-list"></ul>
+    <p id="selection-note"></p>
+   </aside>
+   <p class="legend"><span class="spectrum" aria-hidden="true"></span>Indigenous land references <span class="legend-divider">·</span> Transparent areas may overlap</p>
+  </div>
+  <p id="status" class="status" role="status" aria-live="polite">Loading geographic layers…</p>
+  <p class="footnote">Experimental cartographic surface only. Existing filmmaker records, research verification, master workbook, and main site are unchanged. Vector geography: VersaTiles and Natural Earth. Elevation: Mapterhorn. Archival Indigenous references: Native Land Digital / National Geographic MapMaker (2023). <a href="https://native-land.ca/about/what-we-map" target="_blank" rel="noopener noreferrer">Read Native Land Digital’s current mapping approach.</a></p>
+ </section>
+</main>
+</body>
+</html>
