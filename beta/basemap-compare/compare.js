@@ -176,7 +176,10 @@ function regionMove(){
   const region=$('region').value,p=presets[region]||presets.guatemala;
   state.region=region;
   const pitch=Number($('pitch').value);
-  ['left','right'].forEach(side=>{
+  // With linked cameras, animate one master only. Animating both would make
+  // the two synchronizers cancel one another's flight on each frame.
+  const targets=$('link-cameras').checked?['left']:['left','right'];
+  targets.forEach(side=>{
     const m=state[side];
     if(!m)return;
     const opts={center:p.center,zoom:p.zoom,pitch,bearing:0,duration:900,essential:true};
