@@ -1,0 +1,70 @@
+name: Beta territory visibility variants
+on:
+  push:
+    paths:
+      - ".github/workflows/beta-territory-variants.yml"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  variants:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Playwright Chromium
+        run: |
+          pip install playwright==1.* >/dev/null
+          python -m playwright install --with-deps chromium >/dev/null
+      - name: Screenshot variants (CSS injected at runtime; no site files changed)
+        run: |
+          python3 -m http.server 8769 --bind 127.0.0.1 >/tmp/http.log 2>&1 &
+          sleep 2
+          mkdir -p shots/territories
+          cat > shoot.py <<'PY'
+          import asyncio
+          from playwright.async_api import async_playwright
+          MUTED = "#atlas-basemap{filter:saturate(.28) brightness(1.06) contrast(.92)!important}"
+          WASH = ":root body #atlas .land-shading .nation-wash{fill-opacity:.36!important;stroke-opacity:.75!important;stroke-width:1!important}"
+          VARIANTS = {
+            'A_current': ('', False),
+            'B_muted_base_stronger_wash': (MUTED + WASH, False),
+            'C_B_plus_outlines': (MUTED + WASH + "#atlas .territory-outlines .territory{stroke-opacity:.85!important;stroke-width:1.1!important}", True),
+          }
+          async def shot(pg, name, css, outlines, wheels, tag):
+              await pg.goto('http://127.0.0.1:8769/beta/index.html', wait_until='networkidle', timeout=90000)
+              await pg.wait_for_timeout(5000)
+              if css: await pg.add_style_tag(content=css)
+              if outlines:
+                  await pg.get_by_text('Layers', exact=True).first.click()
+                  await pg.wait_for_timeout(400)
+                  await pg.get_by_label('Territory outlines').check()
+                  await pg.keyboard.press('Escape'); await pg.wait_for_timeout(300)
+                  if await pg.get_by_text('Close menus', exact=False).first.is_visible():
+                      await pg.get_by_text('Close menus', exact=False).first.click()
+              box = await pg.evaluate("(()=>{const r=document.getElementById('atlas').getBoundingClientRect();return [r.x,r.y,r.width,r.height]})()")
+              pt = await pg.evaluate("window.Atlas.screenPoint([-75,0])")
+              for _ in range(wheels):
+                  await pg.mouse.move(box[0]+pt[0], box[1]+pt[1]); await pg.mouse.wheel(0, -400); await pg.wait_for_timeout(350)
+              await pg.wait_for_timeout(7000)
+              await pg.screenshot(path=f'shots/territories/{name}_{tag}.png', clip={'x':box[0],'y':box[1],'width':box[2],'height':box[3]})
+          async def main():
+              async with async_playwright() as p:
+                  b = await p.chromium.launch(args=['--use-angle=swiftshader','--enable-unsafe-swiftshader'])
+                  ctx = await b.new_context(viewport={'width':1440,'height':900})
+                  pg = await ctx.new_page()
+                  for name,(css,outlines) in VARIANTS.items():
+                      await shot(pg, name, css, outlines, 0, '1x')
+                      await shot(pg, name, css, outlines, 3, '4x')
+                  await b.close()
+          asyncio.run(main())
+          PY
+          python3 shoot.py
+          ls -la shots/territories
+      - name: Publish to ci-shots branch (not deployed)
+        run: |
+          cd shots
+          git init -q -b ci-shots
+          git config user.name "github-actions"; git config user.email "github-actions@users.noreply.github.com"
+          git add . && git commit -q -m "Territory variants ${GITHUB_SHA::7}"
+          git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" ci-shots
