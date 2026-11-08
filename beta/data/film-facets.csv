@@ -3,6 +3,9 @@ FILM-0007,Compañía,2019,theme,Cosmology and Origin Stories,Knowledge and Conti
 FILM-0007,Compañía,2019,theme,More-than-Human Relations,Land and Environment,https://www.themoviedb.org/movie/594019,tagged from a published synopsis
 FILM-0007,Compañía,2019,form,Documentary,,https://www.themoviedb.org/movie/594019,from the published synopsis
 FILM-0007,Compañía,2019,length,Feature,,https://www.themoviedb.org/movie/594019,from the published synopsis
+FILM-0008,El corral y el viento / The Corral and the Wind,2014,language,Aymara,nucl1667,https://www.wikidata.org/wiki/Q108666813,"language fill (languages_2026-11-08_part1.csv), checked against the source page"
+FILM-0008,El corral y el viento / The Corral and the Wind,2014,language,Spanish,stan1288,https://www.wikidata.org/wiki/Q108666813,"language fill (languages_2026-11-08_part1.csv), checked against the source page"
+FILM-0008,El corral y el viento / The Corral and the Wind,2014,language,German,stan1295,https://www.wikidata.org/wiki/Q108666813,"language fill (languages_2026-11-08_part1.csv), checked against the source page"
 FILM-0008,El corral y el viento / The Corral and the Wind,2014,theme,Kinship,Lives and Relations,https://www.themoviedb.org/movie/333641,tagged from a published synopsis; primary theme
 FILM-0008,El corral y el viento / The Corral and the Wind,2014,theme,Youth,Lives and Relations,https://www.themoviedb.org/movie/333641,tagged from a published synopsis
 FILM-0008,El corral y el viento / The Corral and the Wind,2014,theme,More-than-Human Relations,Land and Environment,https://www.themoviedb.org/movie/333641,tagged from a published synopsis
@@ -388,6 +391,7 @@ DIR-0143-W1031-4,Lighting the Seventh Fire,1995,theme,Sovereignty and Self-Deter
 DIR-0143-W1031-4,Lighting the Seventh Fire,1995,theme,Cosmology and Origin Stories,Knowledge and Continuity,https://www.themoviedb.org/movie/485909,tagged from a published synopsis
 DIR-0143-W1031-4,Lighting the Seventh Fire,1995,form,Documentary,,https://www.themoviedb.org/movie/485909,from the published synopsis
 DIR-0143-W1031-4,Lighting the Seventh Fire,1995,length,Feature,,https://www.themoviedb.org/movie/485909,from the published synopsis
+FILM-0086,Inendi,,language,English,stan1293,https://en.wikipedia.org/wiki/Inendi,"language fill (languages_2026-11-08_part1.csv), checked against the source page"
 FILM-0086,Inendi,,theme,Residential and Boarding Schools,Knowledge and Continuity,https://en.wikipedia.org/wiki/Inendi,tagged from a published synopsis; primary theme
 FILM-0086,Inendi,,theme,Elders and Knowledge,Knowledge and Continuity,https://en.wikipedia.org/wiki/Inendi,tagged from a published synopsis
 FILM-0086,Inendi,,theme,Memory and Oral History,Knowledge and Continuity,https://en.wikipedia.org/wiki/Inendi,tagged from a published synopsis
@@ -397,6 +401,7 @@ FILM-0087,The Incredible 25th Year of Mitzi Bearclaw,,theme,Urban Indigeneity,Li
 FILM-0087,The Incredible 25th Year of Mitzi Bearclaw,,theme,Women and Gender,Lives and Relations,https://www.themoviedb.org/movie/585377,tagged from a published synopsis
 FILM-0087,The Incredible 25th Year of Mitzi Bearclaw,,form,Fiction,,https://www.themoviedb.org/movie/585377,from the published synopsis
 FILM-0087,The Incredible 25th Year of Mitzi Bearclaw,,length,Feature,,https://www.themoviedb.org/movie/585377,from the published synopsis
+FILM-SRC-2023-00002,Café Daughter,,language,English,stan1293,https://en.wikipedia.org/wiki/Caf%C3%A9_Daughter,"language fill (languages_2026-11-08_part1.csv), checked against the source page"
 FILM-SRC-2023-00002,Café Daughter,,theme,Youth,Lives and Relations,https://www.themoviedb.org/movie/1139997,tagged from a published synopsis; primary theme
 FILM-SRC-2023-00002,Café Daughter,,theme,Kinship,Lives and Relations,https://www.themoviedb.org/movie/1139997,tagged from a published synopsis
 FILM-SRC-2023-00002,Café Daughter,,form,Fiction,,https://www.themoviedb.org/movie/1139997,from the published synopsis
@@ -478,6 +483,8 @@ TOUR-FILM-00435,Run Woman Run,2020,theme,Linguistic Preservation,Knowledge and C
 TOUR-FILM-00435,Run Woman Run,2020,theme,Women and Gender,Lives and Relations,https://www.themoviedb.org/movie/845191,tagged from a published synopsis
 TOUR-FILM-00435,Run Woman Run,2020,form,Fiction,,https://www.themoviedb.org/movie/845191,from the published synopsis
 TOUR-FILM-00435,Run Woman Run,2020,length,Feature,,https://www.themoviedb.org/movie/845191,from the published synopsis
+FILM-0097,Mala Junta (Bad Influence),,language,Mapudungun,mapu1245,https://www.wikidata.org/wiki/Q51158735,"language fill (languages_2026-11-08_part1.csv), checked against the source page"
+FILM-0097,Mala Junta (Bad Influence),,language,Spanish,stan1288,https://www.wikidata.org/wiki/Q51158735,"language fill (languages_2026-11-08_part1.csv), checked against the source page"
 FILM-0097,Mala Junta (Bad Influence),,theme,Youth,Lives and Relations,https://www.themoviedb.org/movie/421883,tagged from a published synopsis; primary theme
 FILM-0097,Mala Junta (Bad Influence),,theme,Self-Representation and Countering Stereotypes,Expression and Representation,https://www.themoviedb.org/movie/421883,tagged from a published synopsis
 FILM-0097,Mala Junta (Bad Influence),,form,Fiction,,https://www.themoviedb.org/movie/421883,from the published synopsis
@@ -516,6 +523,9 @@ FILM-0119,Eating Up Easter,,theme,Environmental Change,Land and Environment,http
 FILM-0119,Eating Up Easter,,theme,Land Defense,Land and Environment,https://www.themoviedb.org/movie/590357,tagged from a published synopsis
 FILM-0119,Eating Up Easter,,form,Documentary,,https://www.themoviedb.org/movie/590357,from the published synopsis
 FILM-0119,Eating Up Easter,,length,Feature,,https://www.themoviedb.org/movie/590357,from the published synopsis
+FILM-0120,Nabusímake: Memorias de una independencia,,language,Ika (Arhuaco),arhu1242,https://www.retinalatina.org/peliculas/nabusimake-amado-villafana/,"language fill (languages_2026-11-08_part1.csv), checked against the source page"
+BETA30-20261106-F13,Resistencia en la línea negra,2011,language,Ika (Arhuaco),arhu1242,https://www.retinalatina.org/peliculas/resistencia-en-la-linea-negra-amado-villafana/,"language fill (languages_2026-11-08_part1.csv), checked against the source page"
+BETA30-20261106-F15,Sein Zare,2022,language,Ika (Arhuaco),arhu1242,https://www.retinalatina.org/peliculas/sein-zare-amado-villafana/,"language fill (languages_2026-11-08_part1.csv), checked against the source page"
 FILM-0123,Sukujula Tei (Stories of My Mother),,theme,Elders and Knowledge,Knowledge and Continuity,https://www.themoviedb.org/movie/952314,tagged from a published synopsis; primary theme
 FILM-0123,Sukujula Tei (Stories of My Mother),,theme,Women and Gender,Lives and Relations,https://www.themoviedb.org/movie/952314,tagged from a published synopsis
 FILM-0123,Sukujula Tei (Stories of My Mother),,theme,Kinship,Lives and Relations,https://www.themoviedb.org/movie/952314,tagged from a published synopsis
@@ -574,6 +584,7 @@ FILM-0177,Siempre andamos caminando,,theme,Displacement and Migration,Sovereignt
 FILM-0177,Siempre andamos caminando,,theme,Women and Gender,Lives and Relations,https://www.themoviedb.org/movie/483546,tagged from a published synopsis
 FILM-0177,Siempre andamos caminando,,form,Documentary,,https://www.themoviedb.org/movie/483546,from the published synopsis
 FILM-0177,Siempre andamos caminando,,length,Feature,,https://www.themoviedb.org/movie/483546,from the published synopsis
+DIR-0223-W1031-2,Carrizos,2016,language,Spanish,stan1288,https://www.retinalatina.org/peliculas/carrizos-dinazar-urbina/,"language fill (languages_2026-11-08_part1.csv), checked against the source page"
 DIR-0223-W1031-2,Carrizos,2016,theme,Environmental Change,Land and Environment,https://www.themoviedb.org/movie/596527,tagged from a published synopsis; primary theme
 DIR-0223-W1031-2,Carrizos,2016,theme,Food Sovereignty,Land and Environment,https://www.themoviedb.org/movie/596527,tagged from a published synopsis
 DIR-0223-W1031-2,Carrizos,2016,theme,Kinship,Lives and Relations,https://www.themoviedb.org/movie/596527,tagged from a published synopsis
@@ -619,6 +630,8 @@ DIR-0229-W1031-6,Itu Ninu (Cumbres de maíz),2023,length,Feature,,https://moreli
 DIR-0229-W1031-7,Kii Nche Ndutsa (El caracol y el tiempo),2020,theme,Elders and Knowledge,Knowledge and Continuity,https://moreliafilmfest.com/en/peliculas/kii-nche-ndutsa,tagged from a published synopsis; primary theme
 DIR-0229-W1031-7,Kii Nche Ndutsa (El caracol y el tiempo),2020,theme,Youth,Lives and Relations,https://moreliafilmfest.com/en/peliculas/kii-nche-ndutsa,tagged from a published synopsis
 DIR-0229-W1031-7,Kii Nche Ndutsa (El caracol y el tiempo),2020,length,Short,,https://moreliafilmfest.com/en/peliculas/kii-nche-ndutsa,from the published synopsis
+FILM-0186,Nixíí - Bastón de mando,,language,Me'phaa (Tlapanec),meph1234,https://www.moreliafilmfest.com/peliculas/nixii,"language fill (languages_2026-11-08_part1.csv), checked against the source page"
+FILM-B25B-02,Poder pal pueblo,2017,language,Spanish,stan1288,https://ojodeaguacomunicacion.org/poder-pal-pueblo/,"language fill (languages_2026-11-08_part1.csv), checked against the source page"
 FILM-0188,Moon Belly,2024,theme,Women and Gender,Lives and Relations,https://www.themoviedb.org/movie/1323721,tagged from a published synopsis; primary theme
 FILM-0188,Moon Belly,2024,theme,Memory and Oral History,Knowledge and Continuity,https://www.themoviedb.org/movie/1323721,tagged from a published synopsis
 FILM-0188,Moon Belly,2024,form,Documentary,,https://www.themoviedb.org/movie/1323721,from the published synopsis
@@ -627,6 +640,8 @@ FILM-0189,Vientre de luna = Moon belly,2024,theme,Women and Gender,Lives and Rel
 FILM-0189,Vientre de luna = Moon belly,2024,theme,Memory and Oral History,Knowledge and Continuity,https://www.themoviedb.org/movie/1323721,tagged from a published synopsis
 FILM-0189,Vientre de luna = Moon belly,2024,form,Documentary,,https://www.themoviedb.org/movie/1323721,from the published synopsis
 FILM-0189,Vientre de luna = Moon belly,2024,length,Short,,https://www.themoviedb.org/movie/1323721,from the published synopsis
+FILM-B25B-12,Vientre de luna,2024,language,Tsotsil (Tzotzil),tzot1259,https://www.wikidata.org/wiki/Q141309598,"language fill (languages_2026-11-08_part1.csv), checked against the source page"
+FILM-B25B-12,Vientre de luna,2024,language,Spanish,stan1288,https://www.wikidata.org/wiki/Q141309598,"language fill (languages_2026-11-08_part1.csv), checked against the source page"
 FILM-0191,Me parezco tanto a ti (2011),,theme,Women and Gender,Lives and Relations,https://www.themoviedb.org/movie/892112,tagged from a published synopsis; primary theme
 FILM-0191,Me parezco tanto a ti (2011),,theme,Elders and Knowledge,Knowledge and Continuity,https://www.themoviedb.org/movie/892112,tagged from a published synopsis
 FILM-0191,Me parezco tanto a ti (2011),,theme,Youth,Lives and Relations,https://www.themoviedb.org/movie/892112,tagged from a published synopsis
@@ -735,6 +750,7 @@ DIR-0248-W1031-11,40+,2025,theme,Women and Gender,Lives and Relations,https://mo
 DIR-0248-W1031-11,40+,2025,theme,Health and Healing,Lives and Relations,https://moreliafilmfest.com/en/peliculas/40,tagged from a published synopsis
 DIR-0248-W1031-11,40+,2025,form,Fiction,,https://moreliafilmfest.com/en/peliculas/40,from the published synopsis
 DIR-0248-W1031-11,40+,2025,length,Short,,https://moreliafilmfest.com/en/peliculas/40,from the published synopsis
+FILM-0214,Muu Palaa: La abuela mar,,language,Wayuunaiki,wayu1243,https://www.retinalatina.org/peliculas/muu-palaa-la-abuela-mar-olowaili-green-luzbeidy-monterrosa/,"language fill (languages_2026-11-08_part1.csv), checked against the source page"
 FILM-0221,Wiñaypacha (Eternity),2017,theme,Elders and Knowledge,Knowledge and Continuity,https://www.themoviedb.org/movie/511425,tagged from a published synopsis; primary theme
 FILM-0221,Wiñaypacha (Eternity),2017,theme,Kinship,Lives and Relations,https://www.themoviedb.org/movie/511425,tagged from a published synopsis
 FILM-0221,Wiñaypacha (Eternity),2017,form,Fiction,,https://www.themoviedb.org/movie/511425,from the published synopsis
@@ -836,6 +852,7 @@ PILOT-43-kicking-clouds,Kicking the Clouds,2021,length,Short,,https://www.themov
 FILM-ADD-20261031-13,Powwow People,2026,theme,Music and Performance,Expression and Representation,https://www.themoviedb.org/movie/1249271,tagged from a published synopsis; primary theme
 FILM-ADD-20261031-13,Powwow People,2026,form,Documentary,,https://www.themoviedb.org/movie/1249271,from the published synopsis
 FILM-ADD-20261031-13,Powwow People,2026,length,Feature,,https://www.themoviedb.org/movie/1249271,from the published synopsis
+MIRROR-FILMOGRAPHY-20261107-045,wawa,2014,language,Chinuk Wawa,chin1492,https://www.skyhopinka.com/wawa,"language fill (languages_2026-11-08_part1.csv), checked against the source page"
 FILM-0232,Love and Fury,2020,theme,"Art, Craft and Making",Expression and Representation,https://www.themoviedb.org/movie/713823,tagged from a published synopsis; primary theme
 FILM-0232,Love and Fury,2020,theme,Self-Representation and Countering Stereotypes,Expression and Representation,https://www.themoviedb.org/movie/713823,tagged from a published synopsis
 FILM-0232,Love and Fury,2020,form,Documentary,,https://www.themoviedb.org/movie/713823,from the published synopsis
@@ -1221,6 +1238,7 @@ NEW-ece62656570c-W1031-2,Hedtoft,2019,theme,Kinship,Lives and Relations,https://
 NEW-ece62656570c-W1031-2,Hedtoft,2019,theme,Water,Land and Environment,https://www.themoviedb.org/movie/802110,tagged from a published synopsis
 NEW-ece62656570c-W1031-2,Hedtoft,2019,form,Documentary,,https://www.themoviedb.org/movie/802110,from the published synopsis
 NEW-ece62656570c-W1031-2,Hedtoft,2019,length,Short,,https://www.themoviedb.org/movie/802110,from the published synopsis
+NEW-ece62656570c-W1031-3,In the Shadow of the Tugtupite,2020,language,English,stan1293,https://trentofestival.it/en/archives/2021/in-the-shadow-of-the-tugtupite/,"language fill (languages_2026-11-08_part1.csv), checked against the source page"
 NEW-ece62656570c-W1031-3,In the Shadow of the Tugtupite,2020,theme,Extractivism,Land and Environment,https://www.themoviedb.org/movie/787928,tagged from a published synopsis; primary theme
 NEW-ece62656570c-W1031-3,In the Shadow of the Tugtupite,2020,theme,Sovereignty and Self-Determination,Sovereignty and Politics,https://www.themoviedb.org/movie/787928,tagged from a published synopsis
 NEW-ece62656570c-W1031-3,In the Shadow of the Tugtupite,2020,form,Documentary,,https://www.themoviedb.org/movie/787928,from the published synopsis
@@ -1498,6 +1516,10 @@ REVIEWFILM-20261008-008-01,El Río de los Espíritus / River of Spirits,2026,the
 REVIEWFILM-20261008-008-01,El Río de los Espíritus / River of Spirits,2026,theme,Cosmology and Origin Stories,Knowledge and Continuity,https://www.themoviedb.org/movie/1599556,tagged from a published synopsis
 REVIEWFILM-20261008-008-01,El Río de los Espíritus / River of Spirits,2026,form,Documentary,,https://www.themoviedb.org/movie/1599556,from the published synopsis
 REVIEWFILM-20261008-008-01,El Río de los Espíritus / River of Spirits,2026,length,Feature,,https://www.themoviedb.org/movie/1599556,from the published synopsis
+REVIEWFILM-20261008-009-02,Allpamanda,2023,language,Kichwa,colo1257,https://www.retinalatina.org/peliculas/allpamanda-colectivo-tawna/,"language fill (languages_2026-11-08_part1.csv), checked against the source page"
+REVIEWFILM-20261008-009-02,Allpamanda,2023,language,Shuar,shua1257,https://www.retinalatina.org/peliculas/allpamanda-colectivo-tawna/,"language fill (languages_2026-11-08_part1.csv), checked against the source page"
+REVIEWFILM-20261008-009-02,Allpamanda,2023,language,Siekopai,seco1241,https://www.retinalatina.org/peliculas/allpamanda-colectivo-tawna/,"language fill (languages_2026-11-08_part1.csv), checked against the source page"
+REVIEWFILM-20261008-009-02,Allpamanda,2023,language,Waorani,waor1240,https://www.retinalatina.org/peliculas/allpamanda-colectivo-tawna/,"language fill (languages_2026-11-08_part1.csv), checked against the source page"
 REVIEWFILM-20261008-009-02,Allpamanda,2023,theme,Land Defense,Land and Environment,https://www.themoviedb.org/movie/1291508,tagged from a published synopsis; primary theme
 REVIEWFILM-20261008-009-02,Allpamanda,2023,theme,Resistance Movements,Sovereignty and Politics,https://www.themoviedb.org/movie/1291508,tagged from a published synopsis
 REVIEWFILM-20261008-009-02,Allpamanda,2023,theme,Memory and Oral History,Knowledge and Continuity,https://www.themoviedb.org/movie/1291508,tagged from a published synopsis
@@ -1573,6 +1595,9 @@ SA50-20261014-c3fc26c7939c-WORK-01,Ja Chomobicho Baneni / La última tinaja,2019
 SA50-20261014-c3fc26c7939c-WORK-01,Ja Chomobicho Baneni / La última tinaja,2019,theme,"Art, Craft and Making",Expression and Representation,https://www.themoviedb.org/movie/830134,tagged from a published synopsis
 SA50-20261014-c3fc26c7939c-WORK-01,Ja Chomobicho Baneni / La última tinaja,2019,form,Documentary,,https://www.themoviedb.org/movie/830134,from the published synopsis
 SA50-20261014-c3fc26c7939c-WORK-01,Ja Chomobicho Baneni / La última tinaja,2019,length,Short,,https://www.themoviedb.org/movie/830134,from the published synopsis
+SA50-20261014-9b1d14fcc4b5-WORK-01,Venciendo el miedo / Conquering Fear,2004,language,Aymara,nucl1667,https://www.augsburg.edu/filmseries/2012/03/02/condor-meets-eagle-three-night-film-festival/,"language fill (languages_2026-11-08_part1.csv), checked against the source page"
+SA50-20261014-9b1d14fcc4b5-WORK-01,Venciendo el miedo / Conquering Fear,2004,language,Spanish,stan1288,https://www.augsburg.edu/filmseries/2012/03/02/condor-meets-eagle-three-night-film-festival/,"language fill (languages_2026-11-08_part1.csv), checked against the source page"
+SA50-20261014-5b89d6283a0d-WORK-01,El grito de la selva / Cry of the Forest,2008,language,Spanish,stan1288,https://www.augsburg.edu/filmseries/2012/03/02/condor-meets-eagle-three-night-film-festival/,"language fill (languages_2026-11-08_part1.csv), checked against the source page"
 NEW-4ab5dc39b865-WORK-1,A Chegada dos Mêbengôkre na Terra,,theme,Cosmology and Origin Stories,Knowledge and Continuity,https://www.themoviedb.org/movie/1395081?language=pt-BR,tagged from a published synopsis; primary theme
 NEW-4ab5dc39b865-WORK-1,A Chegada dos Mêbengôkre na Terra,,theme,Elders and Knowledge,Knowledge and Continuity,https://www.themoviedb.org/movie/1395081?language=pt-BR,tagged from a published synopsis
 NEW-4ab5dc39b865-WORK-1,A Chegada dos Mêbengôkre na Terra,,theme,Collective and Community Media,Expression and Representation,https://www.themoviedb.org/movie/1395081?language=pt-BR,tagged from a published synopsis
@@ -1599,10 +1624,16 @@ SAB2-20261014-a167facb5a9c-WORK-01,Pakucha,2021,theme,More-than-Human Relations,
 SAB2-20261014-a167facb5a9c-WORK-01,Pakucha,2021,theme,Kinship,Lives and Relations,https://www.themoviedb.org/movie/956506,tagged from a published synopsis
 SAB2-20261014-a167facb5a9c-WORK-01,Pakucha,2021,form,Documentary,,https://www.themoviedb.org/movie/956506,from the published synopsis
 SAB2-20261014-a167facb5a9c-WORK-01,Pakucha,2021,length,Feature,,https://www.themoviedb.org/movie/956506,from the published synopsis
+BETA30B-20261107-F08,Yana-Wara,2023,language,Aymara,nucl1667,https://www.wikidata.org/wiki/Q121358121,"language fill (languages_2026-11-08_part1.csv), checked against the source page"
+BETA30B-20261107-F09,Los indomables,2024,language,Aymara,nucl1667,https://www.wikidata.org/wiki/Q130288025,"language fill (languages_2026-11-08_part1.csv), checked against the source page"
+BETA30B-20261107-F09,Los indomables,2024,language,Quechua,quec1387,https://www.wikidata.org/wiki/Q130288025,"language fill (languages_2026-11-08_part1.csv), checked against the source page"
+BETA30B-20261107-F09,Los indomables,2024,language,Spanish,stan1288,https://www.wikidata.org/wiki/Q130288025,"language fill (languages_2026-11-08_part1.csv), checked against the source page"
 SAB2-20261014-8b424f7a4364-WORK-01,Sembradoras de vida / Mothers of the Land,2019,theme,Food Sovereignty,Land and Environment,https://www.themoviedb.org/movie/598000,tagged from a published synopsis; primary theme
 SAB2-20261014-8b424f7a4364-WORK-01,Sembradoras de vida / Mothers of the Land,2019,theme,Women and Gender,Lives and Relations,https://www.themoviedb.org/movie/598000,tagged from a published synopsis
 SAB2-20261014-8b424f7a4364-WORK-01,Sembradoras de vida / Mothers of the Land,2019,form,Documentary,,https://www.themoviedb.org/movie/598000,from the published synopsis
 SAB2-20261014-8b424f7a4364-WORK-01,Sembradoras de vida / Mothers of the Land,2019,length,Feature,,https://www.themoviedb.org/movie/598000,from the published synopsis
+SAB2-20261014-98fc41053bfb-WORK-01,Jakawisa,2026,language,Aymara,nucl1667,https://cinemanciafestival.com/pelicula/jakawisa/,"language fill (languages_2026-11-08_part1.csv), checked against the source page"
+BETA30-20261106-F29,"Matuna, la sombra del guerrero",2020,language,Damana (Wiwa),mala1522,https://www.retinalatina.org/peliculas/matuna-la-sombra-del-guerrero-rafael-mojica/,"language fill (languages_2026-11-08_part1.csv), checked against the source page"
 PILOT-43-li-cham,Li Cham,2024,form,Documentary,,https://www.moreliafilmfest.com/peliculas/li-cham,"normalised from the recorded form ""Documentary feature"""
 PILOT-43-li-cham,Li Cham,2024,length,Feature,,https://www.moreliafilmfest.com/peliculas/li-cham,"normalised from the recorded form ""Documentary feature"""
 FILM-SRC-0367,Dear Kin,,theme,LGBTQIA2S,Lives and Relations,https://www.themoviedb.org/movie/1025325,tagged from a published synopsis; primary theme
@@ -1782,6 +1813,7 @@ NEW-56ddab7566cd-WORK-1,Le vieil homme et la rivière,,length,Short,,https://wap
 NEW-5c493398e7b1-WORK-1,Mamu Kataiat (Nous étions ensemble),,theme,Kinship,Lives and Relations,https://wapikoni.ca/wp-content/uploads/2025/07/2025-PROGRAMMATION-ENRACINE.E-2.pdf,tagged from a published synopsis; primary theme
 NEW-5c493398e7b1-WORK-1,Mamu Kataiat (Nous étions ensemble),,theme,Women and Gender,Lives and Relations,https://wapikoni.ca/wp-content/uploads/2025/07/2025-PROGRAMMATION-ENRACINE.E-2.pdf,tagged from a published synopsis
 NEW-5c493398e7b1-WORK-1,Mamu Kataiat (Nous étions ensemble),,length,Short,,https://wapikoni.ca/wp-content/uploads/2025/07/2025-PROGRAMMATION-ENRACINE.E-2.pdf,from the published synopsis
+NEW-948f2ac8df47-WORK-1,Meli,2020,language,Mapudungun,mapu1245,https://forestry.ubc.ca/folil-trafun-ingram-dinner-sept-26/,"language fill (languages_2026-11-08_part1.csv), checked against the source page"
 NEW-948f2ac8df47-WORK-1,Meli,2020,theme,Displacement and Migration,Sovereignty and Politics,https://www.themoviedb.org/movie/747038,tagged from a published synopsis; primary theme
 NEW-948f2ac8df47-WORK-1,Meli,2020,theme,Urban Indigeneity,Lives and Relations,https://www.themoviedb.org/movie/747038,tagged from a published synopsis
 NEW-948f2ac8df47-WORK-1,Meli,2020,theme,Women and Gender,Lives and Relations,https://www.themoviedb.org/movie/747038,tagged from a published synopsis
@@ -1823,6 +1855,8 @@ NEW-c2055a72bb3e-W1031-2,Hilando sones,,theme,"Art, Craft and Making",Expression
 NEW-c2055a72bb3e-W1031-2,Hilando sones,,theme,Kinship,Lives and Relations,https://www.themoviedb.org/movie/772539,tagged from a published synopsis
 NEW-c2055a72bb3e-W1031-2,Hilando sones,,form,Documentary,,https://www.themoviedb.org/movie/772539,from the published synopsis
 NEW-c2055a72bb3e-W1031-2,Hilando sones,,length,Feature,,https://www.themoviedb.org/movie/772539,from the published synopsis
+NEW-656112f6f1c6-WORK-1,La pequeña semilla en el asfalto,2009,language,Tsotsil (Tzotzil),tzot1259,https://cinema.ucla.edu/events/the-little-seed-in-the-asphalt-la-peque%C3%B1a-semilla-en-el-asfalto-2009-11-06-11/,"language fill (languages_2026-11-08_part1.csv), checked against the source page"
+NEW-656112f6f1c6-WORK-1,La pequeña semilla en el asfalto,2009,language,Spanish,stan1288,https://cinema.ucla.edu/events/the-little-seed-in-the-asphalt-la-peque%C3%B1a-semilla-en-el-asfalto-2009-11-06-11/,"language fill (languages_2026-11-08_part1.csv), checked against the source page"
 NEW-656112f6f1c6-WORK-1,La pequeña semilla en el asfalto,2009,theme,Urban Indigeneity,Lives and Relations,https://www.themoviedb.org/movie/342451,tagged from a published synopsis; primary theme
 NEW-656112f6f1c6-WORK-1,La pequeña semilla en el asfalto,2009,theme,Youth,Lives and Relations,https://www.themoviedb.org/movie/342451,tagged from a published synopsis
 NEW-656112f6f1c6-WORK-1,La pequeña semilla en el asfalto,2009,theme,Displacement and Migration,Sovereignty and Politics,https://www.themoviedb.org/movie/342451,tagged from a published synopsis
@@ -1886,6 +1920,7 @@ NEW-95c5bc2de21e-WORK-1,Alcatraz Is Not an Island,2000,length,Feature,,https://w
 NEW-aed3afdd4997-WORK-1,Auntie Chuck (Native Lab project),2023,theme,Kinship,Lives and Relations,https://www.themoviedb.org/movie/1316330,tagged from a published synopsis; primary theme
 NEW-aed3afdd4997-WORK-1,Auntie Chuck (Native Lab project),2023,theme,Women and Gender,Lives and Relations,https://www.themoviedb.org/movie/1316330,tagged from a published synopsis
 NEW-aed3afdd4997-WORK-1,Auntie Chuck (Native Lab project),2023,form,Fiction,,https://www.themoviedb.org/movie/1316330,from the published synopsis
+NEW-d5797dcfcb56-WORK-1,Free Leonard Peltier,2025,language,English,stan1293,https://en.wikipedia.org/wiki/Free_Leonard_Peltier,"language fill (languages_2026-11-08_part1.csv), checked against the source page"
 NEW-d5797dcfcb56-WORK-1,Free Leonard Peltier,2025,theme,Resistance Movements,Sovereignty and Politics,https://www.themoviedb.org/movie/1400778,tagged from a published synopsis; primary theme
 NEW-d5797dcfcb56-WORK-1,Free Leonard Peltier,2025,theme,"Justice, Truth and Reconciliation",Sovereignty and Politics,https://www.themoviedb.org/movie/1400778,tagged from a published synopsis
 NEW-d5797dcfcb56-WORK-1,Free Leonard Peltier,2025,form,Documentary,,https://www.themoviedb.org/movie/1400778,from the published synopsis
@@ -1977,6 +2012,7 @@ NEW-ec1edce8f239-WORK-2,In Temazcal uan in Ilhuitl,,length,Short,,https://www.th
 NEW-7f77262897fc-WORK-1,Nada siempre,2024,theme,Women and Gender,Lives and Relations,https://moreliafilmfest.com/en/peliculas/nada-siempre,tagged from a published synopsis; primary theme
 NEW-7f77262897fc-WORK-1,Nada siempre,2024,theme,Urban Indigeneity,Lives and Relations,https://moreliafilmfest.com/en/peliculas/nada-siempre,tagged from a published synopsis
 NEW-7f77262897fc-WORK-1,Nada siempre,2024,form,Fiction,,https://moreliafilmfest.com/en/peliculas/nada-siempre,from the published synopsis
+NEW-8f08db910567-WORK-1,Teat Monteok / El cuento del dios del Rayo,1985,language,Huave,huav1256,https://www.gob.mx/inpi/agenda/ciclo-de-cine-historias-de-mujeres-realizadoras-indigenas?idiom=es,"language fill (languages_2026-11-08_part1.csv), checked against the source page"
 NEW-8f08db910567-WORK-1,Teat Monteok / El cuento del dios del Rayo,1985,theme,Cosmology and Origin Stories,Knowledge and Continuity,https://www.themoviedb.org/movie/833029,tagged from a published synopsis; primary theme
 NEW-8f08db910567-WORK-1,Teat Monteok / El cuento del dios del Rayo,1985,theme,Elders and Knowledge,Knowledge and Continuity,https://www.themoviedb.org/movie/833029,tagged from a published synopsis
 NEW-8f08db910567-WORK-1,Teat Monteok / El cuento del dios del Rayo,1985,theme,Women and Gender,Lives and Relations,https://www.themoviedb.org/movie/833029,tagged from a published synopsis
@@ -1991,7 +2027,9 @@ NEW-f3320a0ced3e-WORK-2,Xhárdonix Xha,,length,Short,,https://www.themoviedb.org
 NEW-f3320a0ced3e-WORK-3,Yoo Herencia Binnigulaza,,theme,Memory and Oral History,Knowledge and Continuity,https://www.themoviedb.org/movie/1486864,tagged from a published synopsis; primary theme
 BETA-T1101-VEN-01-F1,Wachikua: Nuestra historia,2014,form,Documentary,,https://www.youtube.com/watch?v=_TnJ2PZOEDQ,"normalised from the recorded form ""Documentary"""
 BETA-T1101-PER-01-F1,Érase una vez en los Andes,2023,length,Feature,,https://dafo.cultura.pe/cinerobles/erase-una-vez-en-los-andes-en-la-sala-armando-robles-godoy,"normalised from the recorded form ""Feature"""
+BETA-T1101-CAN-01-F1,W8linaktegw ta niona,2022,language,French,stan1290,https://rpff.ca/2023/program/shorts-1/,"language fill (languages_2026-11-08_part1.csv), checked against the source page"
 BETA-T1101-CAN-01-F1,W8linaktegw ta niona,2022,form,Documentary,,https://rpff.ca/2023/program/shorts-1/,"normalised from the recorded form ""Documentary"""
+BETA25-20261105-01-FILM1,La trampa,2024,language,Spanish,stan1288,https://ficcali.com/pelicula/la-trampa/,"language fill (languages_2026-11-08_part1.csv), checked against the source page"
 BETA25-20261105-01-FILM1,La trampa,2024,form,Documentary,,https://ficcali.com/pelicula/la-trampa/,"normalised from the recorded form ""Documentary"""
 BETA25-20261105-02-FILM1,Jamary,2025,form,Documentary,,https://www.phlaff.org/2026-film-guide/jamary,"normalised from the recorded form ""Feature documentary"""
 BETA25-20261105-02-FILM1,Jamary,2025,length,Feature,,https://www.phlaff.org/2026-film-guide/jamary,"normalised from the recorded form ""Feature documentary"""
@@ -2016,3 +2054,8 @@ BETA25-20261105-20-FILM1,Recado,2026,length,Short,,https://museo.precolombino.cl
 BETA25-20261105-21-FILM1,Tahnaanooku’,2024,form,Documentary,,https://www.reciprocity.org/press-kits/tahnaanooku,"normalised from the recorded form ""Documentary"""
 BETA25-20261105-22-FILM1,Ma’s House,2022,form,Documentary,,https://www.reciprocity.org/press-kits/mas-house,"normalised from the recorded form ""Documentary short"""
 BETA25-20261105-22-FILM1,Ma’s House,2022,length,Short,,https://www.reciprocity.org/press-kits/mas-house,"normalised from the recorded form ""Documentary short"""
+BETA30-20261106-F08,Nipi utaiamun,2023,language,Innu-aimun,mont1268,https://ellugarquehabitamos.org/nipi-utaiamun/,"language fill (languages_2026-11-08_part1.csv), checked against the source page"
+BETA30-20261106-F08,Nipi utaiamun,2023,language,French,stan1290,https://ellugarquehabitamos.org/nipi-utaiamun/,"language fill (languages_2026-11-08_part1.csv), checked against the source page"
+BETA30-20261106-F20,El regreso: tras las huellas del tiempo,2010,language,Spanish,stan1288,https://www.unesco.org/archives/multimedia/document-3033,"language fill (languages_2026-11-08_part1.csv), checked against the source page"
+BETA6-20261107-F03,We Are Not Speaking the Same Language,2021,language,English,stan1293,https://rpff.ca/2022/program/school-program-gr-7-8-you-myself-my-identity/,"language fill (languages_2026-11-08_part1.csv), checked against the source page"
+BETA4C-20261107-F02,Bajo sospecha: Zokunentu,2022,language,Mapudungun,mapu1245,https://habanerofilmsales.com/filmmakers/daniel-diaz,"language fill (languages_2026-11-08_part1.csv), checked against the source page"

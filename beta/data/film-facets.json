@@ -1,6 +1,6 @@
 {
  "title": "Indigenous Cinema Atlas · film facets",
- "generated": "2026-11-07",
+ "generated": "2026-11-08",
  "license": "See data.html",
  "films_on_public_map": 1267,
  "fields": {
@@ -68,7 +68,7 @@
   ]
  },
  "language_authority": {
-  "source": "Glottolog (glottolog-cldf, fetched 2026-11-07)",
+  "source": "Glottolog (glottolog-cldf, fetched 2026-11-08)",
   "languages": [
    {
     "label": "Anishinaabemowin (Ojibwe)",
@@ -272,7 +272,7 @@
     "match": "group",
     "indigenous": "yes",
     "note": "Kichwa names the Ecuadorian Quechua varieties",
-    "films": 1
+    "films": 2
    },
    {
     "label": "Lakota",
@@ -392,7 +392,7 @@
     "match": "exact",
     "indigenous": "no",
     "note": "",
-    "films": 58
+    "films": 63
    },
    {
     "label": "Spanish",
@@ -404,7 +404,7 @@
     "match": "exact",
     "indigenous": "no",
     "note": "",
-    "films": 7
+    "films": 18
    },
    {
     "label": "Portuguese",
@@ -428,7 +428,7 @@
     "match": "exact",
     "indigenous": "no",
     "note": "",
-    "films": 0
+    "films": 2
    },
    {
     "label": "Vietnamese",
@@ -437,6 +437,186 @@
     "glottolog_name": "Vietnamese",
     "glottolog_level": "language",
     "iso639_3": "vie",
+    "match": "exact",
+    "indigenous": "no",
+    "note": "",
+    "films": 1
+   },
+   {
+    "label": "Aymara",
+    "also_credited_as": "Aimara; Aymara",
+    "glottocode": "nucl1667",
+    "glottolog_name": "Central-Southern Aymara",
+    "glottolog_level": "family",
+    "iso639_3": "aym",
+    "match": "group",
+    "indigenous": "yes",
+    "note": "Credits name Aymara without a variety; aym is the ISO macrolanguage code",
+    "films": 5
+   },
+   {
+    "label": "Mapudungun",
+    "also_credited_as": "Mapuche language; la lengua del pueblo mapuche",
+    "glottocode": "mapu1245",
+    "glottolog_name": "Mapudungun",
+    "glottolog_level": "language",
+    "iso639_3": "arn",
+    "match": "exact",
+    "indigenous": "yes",
+    "note": "",
+    "films": 3
+   },
+   {
+    "label": "Ika (Arhuaco)",
+    "also_credited_as": "Arhuaco; Ika; Iku",
+    "glottocode": "arhu1242",
+    "glottolog_name": "Arhuaco",
+    "glottolog_level": "language",
+    "iso639_3": "arh",
+    "match": "exact",
+    "indigenous": "yes",
+    "note": "",
+    "films": 3
+   },
+   {
+    "label": "Me'phaa (Tlapanec)",
+    "also_credited_as": "Me’phaa; Me' phaa (Tlapaneco); Tlapanec; Tlapaneco",
+    "glottocode": "meph1234",
+    "glottolog_name": "Mephaa",
+    "glottolog_level": "family",
+    "iso639_3": "",
+    "match": "group",
+    "indigenous": "yes",
+    "note": "Credits name Me'phaa without a variety",
+    "films": 1
+   },
+   {
+    "label": "Tsotsil (Tzotzil)",
+    "also_credited_as": "Tzotzil; Tsotsil",
+    "glottocode": "tzot1259",
+    "glottolog_name": "Tzotzil",
+    "glottolog_level": "language",
+    "iso639_3": "tzo",
+    "match": "exact",
+    "indigenous": "yes",
+    "note": "",
+    "films": 2
+   },
+   {
+    "label": "Wayuunaiki",
+    "also_credited_as": "Wayuu",
+    "glottocode": "wayu1243",
+    "glottolog_name": "Wayuu",
+    "glottolog_level": "language",
+    "iso639_3": "guc",
+    "match": "exact",
+    "indigenous": "yes",
+    "note": "",
+    "films": 1
+   },
+   {
+    "label": "Chinuk Wawa",
+    "also_credited_as": "Chinook Jargon; chinuk wawa",
+    "glottocode": "chin1492",
+    "glottolog_name": "Chinook-based pidgin",
+    "glottolog_level": "family",
+    "iso639_3": "chn",
+    "match": "group",
+    "indigenous": "yes",
+    "note": "Glottolog separates the pidgin and the creolized Grand Ronde variety (chin1272); credits do not say which",
+    "films": 1
+   },
+   {
+    "label": "Shuar",
+    "also_credited_as": "",
+    "glottocode": "shua1257",
+    "glottolog_name": "Shuar",
+    "glottolog_level": "language",
+    "iso639_3": "jiv",
+    "match": "exact",
+    "indigenous": "yes",
+    "note": "",
+    "films": 1
+   },
+   {
+    "label": "Siekopai",
+    "also_credited_as": "Secoya; Siekopai",
+    "glottocode": "seco1241",
+    "glottolog_name": "Secoya",
+    "glottolog_level": "language",
+    "iso639_3": "sey",
+    "match": "exact",
+    "indigenous": "yes",
+    "note": "",
+    "films": 1
+   },
+   {
+    "label": "Waorani",
+    "also_credited_as": "Huaorani; Wao Tededo",
+    "glottocode": "waor1240",
+    "glottolog_name": "Waorani",
+    "glottolog_level": "language",
+    "iso639_3": "auc",
+    "match": "exact",
+    "indigenous": "yes",
+    "note": "",
+    "films": 1
+   },
+   {
+    "label": "Damana (Wiwa)",
+    "also_credited_as": "Damana; Wiwa; Malayo",
+    "glottocode": "mala1522",
+    "glottolog_name": "Malayo",
+    "glottolog_level": "language",
+    "iso639_3": "mbp",
+    "match": "exact",
+    "indigenous": "yes",
+    "note": "",
+    "films": 1
+   },
+   {
+    "label": "Huave",
+    "also_credited_as": "Ikoots; huave",
+    "glottocode": "huav1256",
+    "glottolog_name": "Huavean",
+    "glottolog_level": "family",
+    "iso639_3": "",
+    "match": "group",
+    "indigenous": "yes",
+    "note": "Credits say huave without a variety",
+    "films": 1
+   },
+   {
+    "label": "Innu-aimun",
+    "also_credited_as": "Innu; Montagnais",
+    "glottocode": "mont1268",
+    "glottolog_name": "Montagnais",
+    "glottolog_level": "language",
+    "iso639_3": "moe",
+    "match": "exact",
+    "indigenous": "yes",
+    "note": "",
+    "films": 1
+   },
+   {
+    "label": "Quechua",
+    "also_credited_as": "",
+    "glottocode": "quec1387",
+    "glottolog_name": "Quechuan",
+    "glottolog_level": "family",
+    "iso639_3": "que",
+    "match": "group",
+    "indigenous": "yes",
+    "note": "Credits name Quechua without a variety",
+    "films": 1
+   },
+   {
+    "label": "German",
+    "also_credited_as": "Deutsch",
+    "glottocode": "stan1295",
+    "glottolog_name": "German",
+    "glottolog_level": "language",
+    "iso639_3": "deu",
     "match": "exact",
     "indigenous": "no",
     "note": "",
@@ -492,7 +672,35 @@
      "name": "Miguel Hilari"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "Aymara",
+     "as_credited": "Aymara",
+     "glottocode": "nucl1667",
+     "iso639_3": "aym",
+     "match": "group",
+     "indigenous": true,
+     "source": "https://www.wikidata.org/wiki/Q108666813"
+    },
+    {
+     "label": "Spanish",
+     "as_credited": "Spanish",
+     "glottocode": "stan1288",
+     "iso639_3": "spa",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://www.wikidata.org/wiki/Q108666813"
+    },
+    {
+     "label": "German",
+     "as_credited": "German",
+     "glottocode": "stan1295",
+     "iso639_3": "deu",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://www.wikidata.org/wiki/Q108666813"
+    }
+   ],
    "themes": [
     "Kinship",
     "Youth",
@@ -4352,7 +4560,17 @@
      "name": "Sarain Fox"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://en.wikipedia.org/wiki/Inendi"
+    }
+   ],
    "themes": [
     "Residential and Boarding Schools",
     "Elders and Knowledge",
@@ -4396,7 +4614,17 @@
      "name": "Shelley Niro"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://en.wikipedia.org/wiki/Caf%C3%A9_Daughter"
+    }
+   ],
    "themes": [
     "Youth",
     "Kinship"
@@ -5460,7 +5688,26 @@
      "name": "Claudia Huaiquimilla"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "Mapudungun",
+     "as_credited": "Mapudungun",
+     "glottocode": "mapu1245",
+     "iso639_3": "arn",
+     "match": "exact",
+     "indigenous": true,
+     "source": "https://www.wikidata.org/wiki/Q51158735"
+    },
+    {
+     "label": "Spanish",
+     "as_credited": "Spanish",
+     "glottocode": "stan1288",
+     "iso639_3": "spa",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://www.wikidata.org/wiki/Q51158735"
+    }
+   ],
    "themes": [
     "Youth",
     "Self-Representation and Countering Stereotypes"
@@ -5843,7 +6090,17 @@
      "name": "Amado Villafaña"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "Ika (Arhuaco)",
+     "as_credited": "Ika (Arhuaco)",
+     "glottocode": "arhu1242",
+     "iso639_3": "arh",
+     "match": "exact",
+     "indigenous": true,
+     "source": "https://www.retinalatina.org/peliculas/nabusimake-amado-villafana/"
+    }
+   ],
    "themes": [],
    "primary_theme": null,
    "families": [],
@@ -5859,7 +6116,17 @@
      "name": "Amado Villafaña"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "Ika (Arhuaco)",
+     "as_credited": "Ika (Arhuaco)",
+     "glottocode": "arhu1242",
+     "iso639_3": "arh",
+     "match": "exact",
+     "indigenous": true,
+     "source": "https://www.retinalatina.org/peliculas/resistencia-en-la-linea-negra-amado-villafana/"
+    }
+   ],
    "themes": [],
    "primary_theme": null,
    "families": [],
@@ -5891,7 +6158,17 @@
      "name": "Amado Villafaña"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "Ika (Arhuaco)",
+     "as_credited": "Ika (Arhuaco)",
+     "glottocode": "arhu1242",
+     "iso639_3": "arh",
+     "match": "exact",
+     "indigenous": true,
+     "source": "https://www.retinalatina.org/peliculas/sein-zare-amado-villafana/"
+    }
+   ],
    "themes": [],
    "primary_theme": null,
    "families": [],
@@ -7215,7 +7492,17 @@
      "name": "Dinazar Urbina"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "Spanish",
+     "as_credited": "Spanish",
+     "glottocode": "stan1288",
+     "iso639_3": "spa",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://www.retinalatina.org/peliculas/carrizos-dinazar-urbina/"
+    }
+   ],
    "themes": [
     "Environmental Change",
     "Food Sovereignty",
@@ -7639,7 +7926,17 @@
      "name": "José Luis Matías Alonso"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "Me'phaa (Tlapanec)",
+     "as_credited": "Me'phaa (Tlapanec)",
+     "glottocode": "meph1234",
+     "iso639_3": "",
+     "match": "group",
+     "indigenous": true,
+     "source": "https://www.moreliafilmfest.com/peliculas/nixii"
+    }
+   ],
    "themes": [],
    "primary_theme": null,
    "families": [],
@@ -7883,7 +8180,17 @@
      "name": "José Luis Matías Alonso"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "Spanish",
+     "as_credited": "Spanish",
+     "glottocode": "stan1288",
+     "iso639_3": "spa",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://ojodeaguacomunicacion.org/poder-pal-pueblo/"
+    }
+   ],
    "themes": [],
    "primary_theme": null,
    "families": [],
@@ -7959,7 +8266,26 @@
      "name": "Liliana K'an"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "Tsotsil (Tzotzil)",
+     "as_credited": "Tsotsil (Tzotzil)",
+     "glottocode": "tzot1259",
+     "iso639_3": "tzo",
+     "match": "exact",
+     "indigenous": true,
+     "source": "https://www.wikidata.org/wiki/Q141309598"
+    },
+    {
+     "label": "Spanish",
+     "as_credited": "Spanish",
+     "glottocode": "stan1288",
+     "iso639_3": "spa",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://www.wikidata.org/wiki/Q141309598"
+    }
+   ],
    "themes": [],
    "primary_theme": null,
    "families": [],
@@ -9011,7 +9337,17 @@
      "name": "Olowaili Green"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "Wayuunaiki",
+     "as_credited": "Wayuunaiki",
+     "glottocode": "wayu1243",
+     "iso639_3": "guc",
+     "match": "exact",
+     "indigenous": true,
+     "source": "https://www.retinalatina.org/peliculas/muu-palaa-la-abuela-mar-olowaili-green-luzbeidy-monterrosa/"
+    }
+   ],
    "themes": [],
    "primary_theme": null,
    "families": [],
@@ -9962,7 +10298,17 @@
      "name": "Sky Hopinka"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "Chinuk Wawa",
+     "as_credited": "Chinuk Wawa",
+     "glottocode": "chin1492",
+     "iso639_3": "chn",
+     "match": "group",
+     "indigenous": true,
+     "source": "https://www.skyhopinka.com/wawa"
+    }
+   ],
    "themes": [],
    "primary_theme": null,
    "families": [],
@@ -13012,7 +13358,17 @@
      "name": "Inuk Jørgensen"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://trentofestival.it/en/archives/2021/in-the-shadow-of-the-tugtupite/"
+    }
+   ],
    "themes": [
     "Extractivism",
     "Sovereignty and Self-Determination"
@@ -15192,7 +15548,44 @@
      "name": "Colectivo TAWNA"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "Kichwa",
+     "as_credited": "Kichwa",
+     "glottocode": "colo1257",
+     "iso639_3": "",
+     "match": "group",
+     "indigenous": true,
+     "source": "https://www.retinalatina.org/peliculas/allpamanda-colectivo-tawna/"
+    },
+    {
+     "label": "Shuar",
+     "as_credited": "Shuar",
+     "glottocode": "shua1257",
+     "iso639_3": "jiv",
+     "match": "exact",
+     "indigenous": true,
+     "source": "https://www.retinalatina.org/peliculas/allpamanda-colectivo-tawna/"
+    },
+    {
+     "label": "Siekopai",
+     "as_credited": "Siekopai",
+     "glottocode": "seco1241",
+     "iso639_3": "sey",
+     "match": "exact",
+     "indigenous": true,
+     "source": "https://www.retinalatina.org/peliculas/allpamanda-colectivo-tawna/"
+    },
+    {
+     "label": "Waorani",
+     "as_credited": "Waorani",
+     "glottocode": "waor1240",
+     "iso639_3": "auc",
+     "match": "exact",
+     "indigenous": true,
+     "source": "https://www.retinalatina.org/peliculas/allpamanda-colectivo-tawna/"
+    }
+   ],
    "themes": [
     "Land Defense",
     "Resistance Movements",
@@ -16273,7 +16666,26 @@
      "name": "María Morales Tarqui"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "Aymara",
+     "as_credited": "Aymara",
+     "glottocode": "nucl1667",
+     "iso639_3": "aym",
+     "match": "group",
+     "indigenous": true,
+     "source": "https://www.augsburg.edu/filmseries/2012/03/02/condor-meets-eagle-three-night-film-festival/"
+    },
+    {
+     "label": "Spanish",
+     "as_credited": "Spanish",
+     "glottocode": "stan1288",
+     "iso639_3": "spa",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://www.augsburg.edu/filmseries/2012/03/02/condor-meets-eagle-three-night-film-festival/"
+    }
+   ],
    "themes": [],
    "primary_theme": null,
    "families": [],
@@ -16325,7 +16737,17 @@
      "name": "Nicolás Ipamo"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "Spanish",
+     "as_credited": "Spanish",
+     "glottocode": "stan1288",
+     "iso639_3": "spa",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://www.augsburg.edu/filmseries/2012/03/02/condor-meets-eagle-three-night-film-festival/"
+    }
+   ],
    "themes": [],
    "primary_theme": null,
    "families": [],
@@ -17028,7 +17450,17 @@
      "name": "Tito Catacora"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "Aymara",
+     "as_credited": "Aymara",
+     "glottocode": "nucl1667",
+     "iso639_3": "aym",
+     "match": "group",
+     "indigenous": true,
+     "source": "https://www.wikidata.org/wiki/Q121358121"
+    }
+   ],
    "themes": [],
    "primary_theme": null,
    "families": [],
@@ -17044,7 +17476,35 @@
      "name": "Tito Catacora"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "Aymara",
+     "as_credited": "Aymara",
+     "glottocode": "nucl1667",
+     "iso639_3": "aym",
+     "match": "group",
+     "indigenous": true,
+     "source": "https://www.wikidata.org/wiki/Q130288025"
+    },
+    {
+     "label": "Quechua",
+     "as_credited": "Quechua",
+     "glottocode": "quec1387",
+     "iso639_3": "que",
+     "match": "group",
+     "indigenous": true,
+     "source": "https://www.wikidata.org/wiki/Q130288025"
+    },
+    {
+     "label": "Spanish",
+     "as_credited": "Spanish",
+     "glottocode": "stan1288",
+     "iso639_3": "spa",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://www.wikidata.org/wiki/Q130288025"
+    }
+   ],
    "themes": [],
    "primary_theme": null,
    "families": [],
@@ -17290,7 +17750,17 @@
      "name": "Delia Yujra Chura"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "Aymara",
+     "as_credited": "Aymara",
+     "glottocode": "nucl1667",
+     "iso639_3": "aym",
+     "match": "group",
+     "indigenous": true,
+     "source": "https://cinemanciafestival.com/pelicula/jakawisa/"
+    }
+   ],
    "themes": [],
    "primary_theme": null,
    "families": [],
@@ -17370,7 +17840,17 @@
      "name": "Rafael Mojica Gil"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "Damana (Wiwa)",
+     "as_credited": "Damana (Wiwa)",
+     "glottocode": "mala1522",
+     "iso639_3": "mbp",
+     "match": "exact",
+     "indigenous": true,
+     "source": "https://www.retinalatina.org/peliculas/matuna-la-sombra-del-guerrero-rafael-mojica/"
+    }
+   ],
    "themes": [],
    "primary_theme": null,
    "families": [],
@@ -20225,7 +20705,17 @@
      "name": "Ayelén Lonconao Vargas"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "Mapudungun",
+     "as_credited": "Mapudungun",
+     "glottocode": "mapu1245",
+     "iso639_3": "arn",
+     "match": "exact",
+     "indigenous": true,
+     "source": "https://forestry.ubc.ca/folil-trafun-ingram-dinner-sept-26/"
+    }
+   ],
    "themes": [
     "Displacement and Migration",
     "Urban Indigeneity",
@@ -21179,7 +21669,26 @@
      "name": "Pedro Daniel López López"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "Tsotsil (Tzotzil)",
+     "as_credited": "Tsotsil (Tzotzil)",
+     "glottocode": "tzot1259",
+     "iso639_3": "tzo",
+     "match": "exact",
+     "indigenous": true,
+     "source": "https://cinema.ucla.edu/events/the-little-seed-in-the-asphalt-la-peque%C3%B1a-semilla-en-el-asfalto-2009-11-06-11/"
+    },
+    {
+     "label": "Spanish",
+     "as_credited": "Spanish",
+     "glottocode": "stan1288",
+     "iso639_3": "spa",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://cinema.ucla.edu/events/the-little-seed-in-the-asphalt-la-peque%C3%B1a-semilla-en-el-asfalto-2009-11-06-11/"
+    }
+   ],
    "themes": [
     "Urban Indigeneity",
     "Youth",
@@ -22479,7 +22988,17 @@
      "name": "Jesse Short Bull"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://en.wikipedia.org/wiki/Free_Leonard_Peltier"
+    }
+   ],
    "themes": [
     "Resistance Movements",
     "Justice, Truth and Reconciliation"
@@ -23671,7 +24190,17 @@
      "name": "Elvira Palafox Herranz"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "Huave",
+     "as_credited": "Huave",
+     "glottocode": "huav1256",
+     "iso639_3": "",
+     "match": "group",
+     "indigenous": true,
+     "source": "https://www.gob.mx/inpi/agenda/ciclo-de-cine-historias-de-mujeres-realizadoras-indigenas?idiom=es"
+    }
+   ],
    "themes": [
     "Cosmology and Origin Stories",
     "Elders and Knowledge",
@@ -23902,7 +24431,17 @@
      "name": "Myriam Landry"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "French",
+     "as_credited": "French",
+     "glottocode": "stan1290",
+     "iso639_3": "fra",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://rpff.ca/2023/program/shorts-1/"
+    }
+   ],
    "themes": [],
    "primary_theme": null,
    "families": [],
@@ -23918,7 +24457,17 @@
      "name": "Ferney Noé Iyokina Gittoma"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "Spanish",
+     "as_credited": "Spanish",
+     "glottocode": "stan1288",
+     "iso639_3": "spa",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://ficcali.com/pelicula/la-trampa/"
+    }
+   ],
    "themes": [],
    "primary_theme": null,
    "families": [],
@@ -24370,7 +24919,26 @@
      "name": "Uapukun Mestokosho McKenzie"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "Innu-aimun",
+     "as_credited": "Innu-aimun",
+     "glottocode": "mont1268",
+     "iso639_3": "moe",
+     "match": "exact",
+     "indigenous": true,
+     "source": "https://ellugarquehabitamos.org/nipi-utaiamun/"
+    },
+    {
+     "label": "French",
+     "as_credited": "French",
+     "glottocode": "stan1290",
+     "iso639_3": "fra",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://ellugarquehabitamos.org/nipi-utaiamun/"
+    }
+   ],
    "themes": [],
    "primary_theme": null,
    "families": [],
@@ -24474,7 +25042,17 @@
      "name": "Gumercindo Yumani"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "Spanish",
+     "as_credited": "Spanish",
+     "glottocode": "stan1288",
+     "iso639_3": "spa",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://www.unesco.org/archives/multimedia/document-3033"
+    }
+   ],
    "themes": [],
    "primary_theme": null,
    "families": [],
@@ -24554,7 +25132,17 @@
      "name": "Danika St-Laurent"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://rpff.ca/2022/program/school-program-gr-7-8-you-myself-my-identity/"
+    }
+   ],
    "themes": [],
    "primary_theme": null,
    "families": [],
@@ -24622,7 +25210,17 @@
      "name": "Daniel Díaz Oyarzún"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "Mapudungun",
+     "as_credited": "Mapudungun",
+     "glottocode": "mapu1245",
+     "iso639_3": "arn",
+     "match": "exact",
+     "indigenous": true,
+     "source": "https://habanerofilmsales.com/filmmakers/daniel-diaz"
+    }
+   ],
    "themes": [],
    "primary_theme": null,
    "families": [],
