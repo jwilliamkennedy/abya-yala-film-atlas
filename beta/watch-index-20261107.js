@@ -195,7 +195,8 @@ const createRow=f=>{
  links.append(aLink('Open film',f.watch||f.href));
  if(f.credit&&f.credit!==f.watch)links.append(aLink('Credits / source',f.credit));
  buttons.append(links);
- li.append(buttons,txt('div','slot'));
+ buttons.append(txt('div','slot'));
+ li.append(buttons);
  return li;
 };
 let current=[];
