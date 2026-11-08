@@ -67,7 +67,9 @@ for r in P:
         def add(field, value, code='', source='', basis=''):
             rows.append({'film_id': fid, 'title': f['title'], 'year': f.get('year') or '', 'field': field, 'value': value, 'code': code, 'source_url': source, 'basis': basis})
         # languages
-        if fid in FILLED:
+        if f.get('languageLabels'):  # atlas.xlsx (Published sheet): the language store since 8 Nov 2026
+            raw, lsrc, basis = f['languageLabels'], f.get('languageSource', ''), f.get('languageNote') or 'recorded in atlas.xlsx'
+        elif fid in FILLED:
             raw, lsrc, part = FILLED[fid]; basis = f'language fill ({part}), checked against the source page'
         else:
             raw, lsrc, basis = f.get('languages'), f.get('source', ''), 'recorded with the film in the atlas'

@@ -10923,7 +10923,7 @@
    "languages": [
     {
      "label": "Taíno",
-     "as_credited": "Taíno dialect of Island Arawak Wahiyani",
+     "as_credited": "Taíno",
      "glottocode": "tain1254",
      "iso639_3": "tnq",
      "match": "exact",
@@ -11156,7 +11156,7 @@
     },
     {
      "label": "Diné (Navajo)",
-     "as_credited": "Navajo",
+     "as_credited": "Diné (Navajo)",
      "glottocode": "nava1243",
      "iso639_3": "nav",
      "match": "exact",
@@ -11235,7 +11235,7 @@
     },
     {
      "label": "Diné (Navajo)",
-     "as_credited": "Diné",
+     "as_credited": "Diné (Navajo)",
      "glottocode": "nava1243",
      "iso639_3": "nav",
      "match": "exact",
@@ -11380,7 +11380,7 @@
     },
     {
      "label": "Secwépemctsín",
-     "as_credited": "Secwepemctsín",
+     "as_credited": "Secwépemctsín",
      "glottocode": "shus1248",
      "iso639_3": "shs",
      "match": "exact",
@@ -12251,7 +12251,7 @@
     },
     {
      "label": "Denaakk’e (Koyukon)",
-     "as_credited": "Denaakk’e",
+     "as_credited": "Denaakk’e (Koyukon)",
      "glottocode": "koyu1237",
      "iso639_3": "koy",
      "match": "exact",
@@ -12599,7 +12599,7 @@
    "languages": [
     {
      "label": "Ayuujk (Mixe)",
-     "as_credited": "Ayuujk / Mixe",
+     "as_credited": "Ayuujk (Mixe)",
      "glottocode": "mixe1286",
      "iso639_3": "",
      "match": "group",
@@ -13900,7 +13900,7 @@
    "languages": [
     {
      "label": "Anishinaabemowin (Ojibwe)",
-     "as_credited": "Ojibwe",
+     "as_credited": "Anishinaabemowin (Ojibwe)",
      "glottocode": "ojib1241",
      "iso639_3": "",
      "match": "group",
@@ -14127,7 +14127,7 @@
     },
     {
      "label": "Diné (Navajo)",
-     "as_credited": "Navajo",
+     "as_credited": "Diné (Navajo)",
      "glottocode": "nava1243",
      "iso639_3": "nav",
      "match": "exact",
@@ -14304,7 +14304,7 @@
    "languages": [
     {
      "label": "Kalaallisut",
-     "as_credited": "Kalaallisut (Greenlandic)",
+     "as_credited": "Kalaallisut",
      "glottocode": "kala1399",
      "iso639_3": "kal",
      "match": "exact",
@@ -14778,7 +14778,7 @@
     },
     {
      "label": "Anishinaabemowin (Ojibwe)",
-     "as_credited": "Anishinaabemowin",
+     "as_credited": "Anishinaabemowin (Ojibwe)",
      "glottocode": "ojib1241",
      "iso639_3": "",
      "match": "group",
