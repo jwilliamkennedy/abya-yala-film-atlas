@@ -19,7 +19,15 @@ import merge
 
 D = ' — '
 CREDIT = ['Director', 'Co-director', 'Collective direction', 'Director and writer', 'Director and producer',
-          'Director, writer and producer', 'Segment director', 'Filmmaker', 'Other role']
+          'Director, writer and producer', 'Segment director', 'Filmmaker', 'Producer', 'Writer', 'Crew', 'Other role']
+
+def other_role(o):
+    """Production credits are part of the atlas too: name them."""
+    low = o.lower()
+    if re.search(r'camera|sound|edit|cinematograph', low): return 'Crew'
+    if re.search(r'producer', low): return 'Producer'
+    if re.search(r'writer|screenwriter|story|argumento', low): return 'Writer'
+    return 'Other role'
 AFFIL = ['Own words', 'Biography or programme', 'Heritage or descent', 'Membership or citizenship', 'Collective', 'Needs review']
 COUNTRY = ['Home community or residence', 'Catalogue or programme country', 'Film production country', 'Unassigned']
 REVIEW = {'Map Ready': 'Reviewed: identity and credit', 'Discovery · directing credit sourced': 'Credit sourced; identity from source',
@@ -38,7 +46,7 @@ def credit(v, name=''):
     low = o.lower()
     names_in = re.search(r'\b(with|associates|credited as|co-credit|fellow directors)\b', low)
     if re.search(r'director is|credits .* as director', low) or (re.match(r'^(producers?|associate producer|camera|story|key creative|co-screenwriter)', low) and 'direct' not in low):
-        return 'Other role' + D + o, ''
+        return other_role(o) + D + o, ''
     if re.search(r'segment director|anthology', low):
         role = 'Segment director'
     elif re.search(r'collective direction|collective (video|indigenous) authorship|collective filmography|co-directing (/ production )?collective|co-directing collective', low):
@@ -56,7 +64,7 @@ def credit(v, name=''):
     elif re.search(r'direct|realiza|fellow', low):
         role = 'Director'
     else:
-        return 'Other role' + D + o, ''
+        return other_role(o) + D + o, ''
     ROLEWORDS = r'(co-?directors?|co-?writers?|directors?|writers?|screenwriter|co-?producers?|producers?|filmmaker|fellow|collective attribution|collective direction|co-?creator)'
     rest = re.sub(r'^(' + ROLEWORDS + r'[\s/&,;\-]*(and\s+)?)+', '', o, flags=re.I).strip()
     rest = re.sub(r'^:\s*', '', rest).strip(' ;,:-').strip()
