@@ -2,8 +2,7 @@ name: Thumbnail search (review only)
 on:
   push:
     paths:
-      - "tools/thumbs/**"
-      - ".github/workflows/thumbs-search.yml"
+      - "tools/thumbs/*.json"
   workflow_dispatch:
 permissions:
   contents: write
