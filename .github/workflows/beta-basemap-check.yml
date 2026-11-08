@@ -5,6 +5,8 @@ on:
       - ".github/workflows/beta-basemap-check.yml"
       - "beta/basemap-open-*.js"
       - "beta/basemap-open-*.css"
+      - "beta/menus-*.js"
+      - "beta/menus-*.css"
   workflow_dispatch:
 permissions:
   contents: write
@@ -50,6 +52,17 @@ jobs:
                   out['open_1x'] = await run(pg, base, 'open_1x', 0)
                   out['open_6x'] = await run(pg, base, 'open_6x', 4)
                   out['open_23x'] = await run(pg, base, 'open_23x', 7)
+                  # hover a territory at the 6x view, then open Layers at overview
+                  await run(pg, base, 'hover_6x', 4)
+                  box = await pg.evaluate("(()=>{const r=document.getElementById('atlas').getBoundingClientRect();return [r.x,r.y,r.width,r.height]})()")
+                  pt = await pg.evaluate("window.Atlas.screenPoint([-91.2,15.3])")
+                  await pg.mouse.move(box[0]+pt[0], box[1]+pt[1]); await pg.wait_for_timeout(300)
+                  await pg.mouse.move(box[0]+pt[0]+2, box[1]+pt[1]+1); await pg.wait_for_timeout(1500)
+                  out['hover_shapes'] = await pg.evaluate("document.querySelectorAll('#atlas .territory-focus-shape').length")
+                  await pg.screenshot(path='shots/hover_6x.png', clip={'x':box[0],'y':box[1],'width':box[2],'height':box[3]})
+                  await run(pg, base, 'layers_1x', 0)
+                  await pg.locator('#atlas').focus(); await pg.keyboard.press('l'); await pg.wait_for_timeout(1500)
+                  await pg.screenshot(path='shots/layers_1x.png')
                   out['relief_23x'] = await run(pg, base + '?basemap=relief', 'relief_23x', 7)
                   out['pageerrors'] = errs[:20]
                   await b.close()
