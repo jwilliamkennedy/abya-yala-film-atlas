@@ -272,8 +272,8 @@ function headerNav(tries=0){
  if(about&&nav.firstElementChild!==about)nav.prepend(about);
  if(!nav.querySelector('.watch-link')){const w=el('a',{href:'watch.html',class:'watch-link'},'Watch');nav.append(w);}
  const hh=()=>root.style.setProperty('--header-h',Math.round($('header')?.getBoundingClientRect().height||140)+'px');hh();addEventListener('resize',hh);if(window.ResizeObserver)new ResizeObserver(hh).observe($('header'));
- {const m=nav.querySelector('.more-menu');if(m&&!m.dataset.wired){m.dataset.wired='1';document.addEventListener('pointerdown',e=>{if(m.open&&!m.contains(e.target))m.open=false;});document.addEventListener('keydown',e=>{if(e.key==='Escape'&&m.open){m.open=false;m.querySelector('summary').focus();}});}}
- if(!nav.querySelector('.more-menu')){const m=el('details',{class:'more-menu'},'<summary>More</summary><div><span class="more-group">Browse</span><a href="languages.html">Languages</a><a href="themes.html">Themes</a><a href="timeline.html">Timeline</a><a href="globe-lab/">Globe (preview)</a><span class="more-group">Your list</span><a href="screening.html" data-screen-count>Screening list</a><span class="more-group">About the data</span><a href="data.html">Data and downloads</a><a href="corrections.html">Suggest a correction</a></div>');nav.append(m);
+ {const m=nav.querySelector('.more-menu');if(m&&!m.dataset.wired){m.dataset.wired='1';}}
+ if(!nav.querySelector('.more-menu')){const m=el('details',{class:'more-menu'},'<summary>More</summary><div><a href="languages.html">Languages</a><a href="themes.html">Themes</a><a href="timeline.html">Timeline</a><span class="more-sep"></span><a href="screening.html" data-screen-count>Screening list</a><span class="more-sep"></span><a href="data.html">Data and downloads</a><a href="corrections.html">Suggest a correction</a></div>');nav.append(m);
   document.addEventListener('pointerdown',e=>{if(m.open&&!m.contains(e.target))m.open=false;});document.addEventListener('keydown',e=>{if(e.key==='Escape'&&m.open){m.open=false;m.querySelector('summary').focus();}});
   const sc=document.createElement('script');sc.src='assets/screening.js';document.head.append(sc);}
 }

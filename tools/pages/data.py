@@ -16,7 +16,7 @@ with open(os.path.join(out, 'data', 'atlas-films.csv'), 'w', newline='', encodin
 films_n = n
 page = open(os.path.join(out, 'maker', 'index.html'), encoding='utf-8').read()
 head, rest = page.split('<main>', 1)
-body = (f'<p class="crumb">Indigenous Cinema Atlas</p><h1>Data</h1><p class="who">Download the public atlas as spreadsheets. Exported {today}.</p>'
+body = (f'<h1>Data</h1><p class="who">Download the public atlas as spreadsheets. Exported {today}.</p>'
         f'<div class="actions"><a class="primary" href="data/atlas-films.csv" download>Films · {films_n:,} rows (CSV)</a><a href="data/atlas-filmmakers.csv" download>Filmmakers · {len(d):,} rows (CSV)</a></div>'
         '<h2>What is in them</h2><ul class="src"><li>Only filmmakers on the public map; research candidates are not included.</li>'
         '<li><b>people_as_recorded</b> is the filmmaker’s affiliation as the atlas records it, from their own words or an explicit biographical source. It does not establish enrolment, citizenship or residence.</li>'

@@ -123,7 +123,7 @@ az = ''.join(f'<a href="#L-{k}">{k}</a>' for k in order)
 blocks = ''.join(f'<h2 id="L-{k}">{k}</h2><ul class="dir">' + ''.join(
     f'<li data-q="{esc((r["name"] + " " + r["nation"] + " " + " ".join(r["aliases"])).lower())}"><a href="{esc(r["id"])}.html">{esc(r["name"])}</a><small>{esc(r["nation"] or r["country"])} · {len(r["films"])} film{"s" if len(r["films"]) != 1 else ""}</small></li>'
     for r in letters[k]) + '</ul>' for k in order)
-body = (f'<p class="crumb">Indigenous Cinema Atlas</p><h1>Filmmakers A–Z</h1><p class="who">{len(pages)} filmmakers on the public map, each with a permanent page you can cite.</p>'
+body = (f'<h1>Filmmakers A–Z</h1><p class="who">{len(pages)} filmmakers on the public map, each with a permanent page you can cite.</p>'
         f'<input id="q" type="search" placeholder="Find a filmmaker or people" aria-label="Find a filmmaker or people"><nav class="az" aria-label="Jump to letter">{az}</nav>{blocks}'
         '<script>(()=>{const q=document.getElementById("q");q.oninput=()=>{const t=q.value.trim().toLowerCase();for(const li of document.querySelectorAll("ul.dir li"))li.hidden=!!t&&!li.dataset.q.includes(t);'
         'for(const h of document.querySelectorAll("main h2")){const ul=h.nextElementSibling;const any=[...ul.children].some(li=>!li.hidden);h.hidden=ul.hidden=!any;}};})();</script>')

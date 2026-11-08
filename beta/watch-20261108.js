@@ -1,6 +1,7 @@
-/* Watch, rebuilt 8 Nov 2026 from the Published sheet (beta/watch-data.js, written by tools/atlas/build.py).
-   Only films by filmmakers on the atlas. One list; group it by filmmaker, people or year; play here when the host
-   allows it, otherwise open the film where it lives (↗). */
+/* Watch (8 Nov 2026): one player at the top and one list of films by filmmakers on the atlas (beta/watch-data.js, written by
+   tools/atlas/build.py from the Published sheet). ▶ plays a film in the player; films whose host does not allow it open there (↗).
+   Filter by theme (watch.html?theme=Kinship), search, order. watch.html#<film id> opens with that film in the player.
+   Each film links to its place on the map. */
 (()=>{'use strict';
 const data=(window.ATLAS_WATCH&&window.ATLAS_WATCH.films)||[];
 const $=s=>document.querySelector(s);
@@ -10,51 +11,60 @@ const host=u=>{try{return new URL(u).hostname.replace(/^www\./,'');}catch(e){ret
 const playable=f=>f.links.find(l=>l.embed);
 const makerText=f=>f.makers.map(m=>m.name).join(', ');
 const peopleText=f=>[...new Set(f.makers.map(m=>m.people).filter(Boolean))].join('; ');
-const state={q:'',group:'maker',here:false};
-try{const s=JSON.parse(localStorage.getItem('atlas-watch-view')||'{}');Object.assign(state,{group:s.group||'maker',here:!!s.here});}catch(e){}
-const remember=()=>{try{localStorage.setItem('atlas-watch-view',JSON.stringify({group:state.group,here:state.here}));}catch(e){}};
+const mapHref=f=>`./#view=films&maker=${encodeURIComponent(f.makers[0].id)}&film=${encodeURIComponent(f.fid)}`;
+const makers=f=>f.makers.map(m=>`<a class="in" href="maker/${encodeURIComponent(m.id)}.html">${esc(m.name)}</a>`).join(', ');
+const params=new URLSearchParams(location.search);
+const state={q:'',theme:params.get('theme')||'',sort:'maker',here:false,now:null};
+try{const s=JSON.parse(localStorage.getItem('atlas-watch-view')||'{}');state.sort=['maker','new','title'].includes(s.sort)?s.sort:'maker';state.here=!!s.here;}catch(e){}
+const remember=()=>{try{localStorage.setItem('atlas-watch-view',JSON.stringify({sort:state.sort,here:state.here}));}catch(e){}};
 
-/* now showing */
-const nowFrame=$('#now-frame'),nowTitle=$('#now-title'),nowBy=$('#now-by');
-const showNow=()=>{const pool=data.filter(playable);if(!pool.length){$('#now').hidden=true;return;}
- const f=pool[Math.floor(Math.random()*pool.length)],l=playable(f);
- nowFrame.src=l.embed;nowFrame.title='Player: '+f.t;
- nowTitle.textContent=f.t+(f.y?' ('+f.y+')':'');
- nowBy.innerHTML=f.makers.map(m=>`<a class="in" href="maker/${encodeURIComponent(m.id)}.html">${esc(m.name)}</a>`).join(', ')+
-  (peopleText(f)?` · ${esc(peopleText(f))}`:'')+` · <a class="out" href="${esc(l.url)}" target="_blank" rel="noopener">Watch · ${esc(host(l.url))} ↗</a>`;};
-$('#next').onclick=showNow;
+/* the player */
+const frame=$('#now-frame');
+const play=(f,scroll,quiet)=>{const l=playable(f);if(!l)return;state.now=f.fid;
+ frame.src=l.embed;frame.title='Player: '+f.t;
+ $('#now-title').textContent=f.t+(f.y?' ('+f.y+')':'');
+ $('#now-by').innerHTML=makers(f)+(peopleText(f)?` · ${esc(peopleText(f))}`:'')+` · <a class="in" href="${mapHref(f)}">On the map</a> · <a class="out" href="${esc(l.url)}" target="_blank" rel="noopener">${esc(host(l.url))} ↗</a>`;
+ $('#now-note').textContent=l.note||'';
+ for(const li of document.querySelectorAll('#list>li'))li.classList.toggle('now',li.dataset.fid===f.fid);
+ if(scroll)$('#now').scrollIntoView({behavior:'smooth',block:'start'});
+ if(!quiet)try{history.replaceState(null,'',location.pathname+location.search+'#'+encodeURIComponent(f.fid));}catch(e){}};
+const pool=()=>visible().filter(playable);
+$('#next').onclick=()=>{const p=pool().filter(f=>f.fid!==state.now);const all=p.length?p:data.filter(f=>playable(f)&&f.fid!==state.now);if(all.length)play(all[Math.floor(Math.random()*all.length)],false);};
 
-/* list */
-const list=$('#list'),count=$('#count');
-const groupKey=f=>state.group==='year'?(f.y?String(Math.floor(f.y/10)*10)+'s':'Year not recorded')
- :state.group==='people'?(peopleText(f)||'People not recorded')
- :(norm(f.makers[0].name).match(/[a-z]/)||['#'])[0].toUpperCase();
-const sortKey=f=>state.group==='year'?[-(f.y||0),norm(f.t)].join('|'):norm(makerText(f))+'|'+norm(f.t);
+/* themes */
+const themeCount=new Map();for(const f of data)for(const t of f.th||[])themeCount.set(t,(themeCount.get(t)||0)+1);
+const sel=$('#theme');
+sel.insertAdjacentHTML('beforeend',[...themeCount].sort((a,b)=>a[0].localeCompare(b[0])).map(([t,n])=>`<option value="${esc(t)}">${esc(t)} (${n})</option>`).join(''));
+if(state.theme&&!themeCount.has(state.theme))state.theme='';
+sel.value=state.theme;
+
+/* the list */
+const visible=()=>{const q=norm(state.q).trim();
+ return data.filter(f=>(!state.here||playable(f))&&(!state.theme||(f.th||[]).includes(state.theme))
+  &&(!q||norm([f.t,f.y,makerText(f),peopleText(f),...(f.th||[])].join(' ')).includes(q)));};
+const order={maker:f=>norm(makerText(f))+'|'+norm(f.t),new:f=>String(9999-(f.y||0)).padStart(4,'0')+norm(f.t),title:f=>norm(f.t)};
 const row=f=>{const l=playable(f),out=f.links[0];
- return `<li data-fid="${esc(f.fid)}"><div class="row"><span class="t">${esc(f.t)}</span><span class="meta">${f.y||''}</span></div>
-  <span class="by">${f.makers.map(m=>`<a class="in" href="maker/${encodeURIComponent(m.id)}.html" title="This filmmaker on the atlas">${esc(m.name)}</a>`).join(', ')}${peopleText(f)?` <span class="ppl">· ${esc(peopleText(f))}</span>`:''}</span>
-  <div class="acts">${l?`<button type="button" class="play" data-embed="${esc(l.embed)}" aria-expanded="false">▶ Play here</button>`:''}
-   ${f.links.map(x=>`<a class="out" href="${esc(x.url)}" target="_blank" rel="noopener" title="${esc(x.note||x.label)}">Watch · ${esc(host(x.url))} ↗</a>`).join('')}
-   <button type="button" class="scr" data-screen data-fid="${esc(f.fid)}" data-rid="${esc(f.makers[0].id)}" data-title="${esc(f.t)}" data-year="${f.y||''}" data-maker="${esc(makerText(f))}" data-page="maker/${encodeURIComponent(f.makers[0].id)}.html#${encodeURIComponent(f.fid)}" data-watch="${esc(out.url)}">＋ Screening list</button></div>
-  <div class="slot"></div></li>`;};
-const render=()=>{const q=norm(state.q).trim();
- let items=data.filter(f=>(!state.here||playable(f))&&(!q||norm([f.t,f.y,makerText(f),peopleText(f),...f.links.map(l=>l.label+' '+host(l.url))].join(' ')).includes(q)));
- items.sort((a,b)=>sortKey(a)<sortKey(b)?-1:1);
- const groups=new Map();for(const f of items){const k=groupKey(f);if(!groups.has(k))groups.set(k,[]);groups.get(k).push(f);}
- const keys=[...groups.keys()].sort((a,b)=>state.group==='year'?(b.localeCompare(a)):a.localeCompare(b,undefined,{sensitivity:'base'}));
- list.innerHTML=keys.map(k=>`<h2>${esc(k)} <small>${groups.get(k).length}</small></h2><ol>${groups.get(k).map(row).join('')}</ol>`).join('')||'<p class="empty">No film matches. Clear the search or show films that open elsewhere.</p>';
- count.textContent=`${items.length} of ${data.length} films`;
- for(const b of document.querySelectorAll('.seg button'))b.setAttribute('aria-pressed',String(b.dataset.group===state.group));
- $('#here').checked=state.here;
+ return `<li data-fid="${esc(f.fid)}"${f.fid===state.now?' class="now"':''}>
+  ${l?`<button type="button" class="pl" aria-label="Play ${esc(f.t)}">▶</button>`:`<a class="pl off" href="${esc(out.url)}" target="_blank" rel="noopener" aria-label="Open ${esc(f.t)} on ${esc(host(out.url))}" title="Opens on ${esc(host(out.url))}">↗</a>`}
+  <div><p class="ft">${esc(f.t)}${f.y?`<small>${f.y}</small>`:''}</p>
+  <p class="fb">${makers(f)}${peopleText(f)?` · ${esc(peopleText(f))}`:''}</p>
+  <div class="fl"><a class="in" href="${mapHref(f)}">On the map</a>${f.links.map(x=>`<a class="out" href="${esc(x.url)}" target="_blank" rel="noopener"${x.note?` title="${esc(x.note)}"`:''}>${esc(host(x.url))} ↗</a>`).join('')}
+   ${(f.th||[]).length?`<span class="ttag">${f.th.map(esc).join(' · ')}</span>`:''}
+   <button type="button" class="scr" data-screen data-fid="${esc(f.fid)}" data-rid="${esc(f.makers[0].id)}" data-title="${esc(f.t)}" data-year="${f.y||''}" data-maker="${esc(makerText(f))}" data-page="maker/${encodeURIComponent(f.makers[0].id)}.html#${encodeURIComponent(f.fid)}" data-watch="${esc(out.url)}">＋ Screening list</button></div></div></li>`;};
+const render=()=>{const items=visible().sort((a,b)=>order[state.sort](a)<order[state.sort](b)?-1:1);
+ $('#list').innerHTML=items.map(row).join('')||'<li class="empty">No film matches. Clear the search or the theme.</li>';
+ $('#count').textContent=items.length===data.length?'':`${items.length} of ${data.length}`;
+ $('#here').checked=state.here;$('#sort').value=state.sort;
+ const u=new URL(location.href);if(state.theme)u.searchParams.set('theme',state.theme);else u.searchParams.delete('theme');try{history.replaceState(null,'',u.href);}catch(e){}
  window.dispatchEvent(new Event('screening-change'));};
-list.addEventListener('click',e=>{const b=e.target.closest('.play');if(!b)return;const slot=b.closest('li').querySelector('.slot');
- const open=b.getAttribute('aria-expanded')==='true';
- if(open){slot.innerHTML='';b.setAttribute('aria-expanded','false');b.textContent='▶ Play here';return;}
- slot.innerHTML=`<div class="frame"><iframe src="${esc(b.dataset.embed)}" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen loading="lazy" title="Player"></iframe></div>`;
- b.setAttribute('aria-expanded','true');b.textContent='■ Close player';});
+$('#list').addEventListener('click',e=>{const b=e.target.closest('button.pl');if(!b)return;const f=data.find(x=>x.fid===b.closest('li').dataset.fid);if(f)play(f,true);});
 $('#q').addEventListener('input',e=>{state.q=e.target.value;render();});
-for(const b of document.querySelectorAll('.seg button'))b.onclick=()=>{state.group=b.dataset.group;remember();render();};
+sel.onchange=()=>{state.theme=sel.value;render();};
+$('#sort').onchange=e=>{state.sort=e.target.value;remember();render();};
 $('#here').onchange=e=>{state.here=e.target.checked;remember();render();};
 $('#total').textContent=data.length;$('#playable').textContent=data.filter(playable).length;
-showNow();render();
+render();
+/* first film: the one named in the address (#film id), else one at random from the list */
+const asked=data.find(f=>f.fid===decodeURIComponent(location.hash.slice(1)));
+if(asked&&playable(asked))play(asked,false);else{const p=pool().length?pool():data.filter(playable);if(p.length)play(p[Math.floor(Math.random()*p.length)],false,true);else $('#now').hidden=true;}
 })();
