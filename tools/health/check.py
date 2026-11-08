@@ -38,4 +38,19 @@ tot = lambda k: sum(1 for j in jobs if j[0] == k)
 rep = (f"# Atlas health\n\nBroken means not found, gone, server error or unreachable. Sites that refuse automated checks ({len(walled)} links) are not counted as broken.\n\n- Images: {by('image')} broken of {tot('image')}\n- Watch links: {by('watch')} broken of {tot('watch')}\n"
        f"- Source links: {by('source')} broken of {tot('source')}\n- Films without an image: {len(missing)} of {sum(len(r['films']) for r in d)}\n\n"
        "Details: broken.csv. Films to find images for: missing-images.csv (fill image_url and image_page, then run tools/thumbs/from_csv.py).\n")
+# Data invariants: catches a layer that duplicates or drops records
+import unicodedata
+nm = lambda s: re.sub(r'[^a-z0-9]+', ' ', unicodedata.normalize('NFD', str(s or '')).encode('ascii', 'ignore').decode().lower()).strip()
+seen, dupe_names, dupe_films = {}, [], []
+for r in d:
+    for a in [r['name']] + r['aliases']:
+        k = nm(a)
+        if k and k in seen and seen[k] != r['id']: dupe_names.append(f"{a}: {seen[k]} and {r['id']}")
+        seen.setdefault(k, r['id'])
+    titles = [nm(f['title']) for f in r['films']]
+    dupe_films += [f"{r['name']}: {t}" for t in set(titles) if titles.count(t) > 1]
+ids = [r['id'] for r in d]
+rep += (f"\n## Data checks\n\n- Filmmakers on the public map: {len(d)}; films: {sum(len(r['films']) for r in d)}\n"
+        f"- Duplicate record IDs: {len(ids) - len(set(ids))}\n- Names or aliases shared by two records: {len(dupe_names)}\n- Same title twice under one filmmaker: {len(dupe_films)}\n")
+for x in (dupe_names + dupe_films)[:40]: rep += f"  - {x}\n"
 open('out/report.md', 'w').write(rep); print(rep)
