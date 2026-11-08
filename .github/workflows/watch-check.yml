@@ -1,0 +1,28 @@
+name: Watch links (review only)
+on:
+  push:
+    paths:
+      - "tools/watch/**"
+      - ".github/workflows/watch-check.yml"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check and search
+        run: |
+          pip install requests >/dev/null
+          mkdir -p out
+          python3 tools/watch/check.py | tee out/log.txt
+      - name: Publish to ci-watch branch (not deployed)
+        if: always()
+        run: |
+          cd out
+          git init -q -b ci-watch
+          git config user.name "github-actions"; git config user.email "github-actions@users.noreply.github.com"
+          git add . && git commit -q -m "Watch check ${GITHUB_SHA::7}"
+          git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" ci-watch
