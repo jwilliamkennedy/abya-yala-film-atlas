@@ -1639,6 +1639,7 @@ PILOT-43-ANA-TSUYEB-QM9f1fbc,Andares en la infancia,2018,form,Documentary,,https
 PILOT-43-ANA-TSUYEB-QM9f1fbc,Andares en la infancia,2018,length,Short,,https://ellugarquehabitamos.org/genero-y-disidencias-cine/,"normalised from the recorded form ""Short documentary"""
 PILOT-43-ANA-TSUYEB-QM5960a0,Deconstrucción orgánica,2018,form,Documentary,,https://ellugarquehabitamos.org/genero-y-disidencias-cine/,"normalised from the recorded form ""Short documentary"""
 PILOT-43-ANA-TSUYEB-QM5960a0,Deconstrucción orgánica,2018,length,Short,,https://ellugarquehabitamos.org/genero-y-disidencias-cine/,"normalised from the recorded form ""Short documentary"""
+LEAD-20261011-015-W1031-1,La niña del arpa,2017,form,Fiction,,https://realizadorestzikin.org/muesta/muestra-2019,"normalised from the recorded form ""Fiction"""
 LEAD-20261011-020-W1031-1,Kpaima,2019,theme,Elders and Knowledge,Knowledge and Continuity,https://www.themoviedb.org/movie/758131,tagged from a published synopsis; primary theme
 LEAD-20261011-020-W1031-1,Kpaima,2019,theme,Linguistic Preservation,Knowledge and Continuity,https://www.themoviedb.org/movie/758131,tagged from a published synopsis
 LEAD-20261011-020-W1031-1,Kpaima,2019,form,Documentary,,https://www.themoviedb.org/movie/758131,from the published synopsis
@@ -1832,6 +1833,7 @@ NEW-948f2ac8df47-WORK-1,Meli,2020,theme,Urban Indigeneity,Lives and Relations,ht
 NEW-948f2ac8df47-WORK-1,Meli,2020,theme,Women and Gender,Lives and Relations,https://www.themoviedb.org/movie/747038,tagged from a published synopsis
 NEW-948f2ac8df47-WORK-1,Meli,2020,form,Fiction,,https://www.themoviedb.org/movie/747038,from the published synopsis
 NEW-948f2ac8df47-WORK-1,Meli,2020,length,Short,,https://www.themoviedb.org/movie/747038,from the published synopsis
+NEW-50b79cedd696-WORK-1,"Atánquez, historias de La Piragua",2025,length,Short,,https://lapiragua.com.co/ver-noticias/27,"normalised from the recorded form ""Short film"""
 NEW-c2f732e6e7d6-WORK-1,Untɨ les Origines,,theme,Cosmology and Origin Stories,Knowledge and Continuity,https://www.themoviedb.org/movie/1580573?language=fr-FR,tagged from a published synopsis; primary theme
 NEW-c2f732e6e7d6-WORK-1,Untɨ les Origines,,theme,More-than-Human Relations,Land and Environment,https://www.themoviedb.org/movie/1580573?language=fr-FR,tagged from a published synopsis
 NEW-c2f732e6e7d6-WORK-1,Untɨ les Origines,,theme,Water,Land and Environment,https://www.themoviedb.org/movie/1580573?language=fr-FR,tagged from a published synopsis
@@ -2077,3 +2079,24 @@ QM-234cb393b5-M3,Mamapara – Madre Lluvia,2020,language,Spanish,stan1288,https:
 QM-234cb393b5-M3,Mamapara – Madre Lluvia,2020,theme,Kinship,Lives and Relations,https://www.unla.edu.ar/fibav/mediateca/mamapara,tagged from a published synopsis; primary theme
 QM-234cb393b5-M3,Mamapara – Madre Lluvia,2020,form,Documentary,,https://www.unla.edu.ar/fibav/mediateca/mamapara,from the published synopsis
 QM-234cb393b5-M3,Mamapara – Madre Lluvia,2020,length,Short,,https://www.unla.edu.ar/fibav/mediateca/mamapara,from the published synopsis
+DIR-0212-QM2512de,Negrita,2020,form,Fiction,,https://ifnotusthenwho.me/who/gabriela-solano/,"normalised from the recorded form ""Fiction short"""
+DIR-0212-QM2512de,Negrita,2020,length,Short,,https://ifnotusthenwho.me/who/gabriela-solano/,"normalised from the recorded form ""Fiction short"""
+DIR-0212-QM8209e8,Punto de Encuentro,,form,Documentary,,https://ifnotusthenwho.me/who/gabriela-solano/,"normalised from the recorded form ""Documentary short"""
+DIR-0212-QM8209e8,Punto de Encuentro,,length,Short,,https://ifnotusthenwho.me/who/gabriela-solano/,"normalised from the recorded form ""Documentary short"""
+QM-f87c99833a-M1,Manifiesto Wayúu,2019,form,Documentary,,https://mullu.tv/en/pelicula/manifiesto-wayuu/,"normalised from the recorded form ""Documentary"""
+QM-ac60127ca8-M1,El viaje del Kokorrdit / Dance of the Kokorrdit,2026,form,Hybrid,,https://vlaff.org/es/event/the-dance-of-the-kokorrdit/,"normalised from the recorded form ""Docufiction"""
+QM-2ceb368977-M1,Nondjewaregi / Costumbres antiguas,2012,theme,Elders and Knowledge,Knowledge and Continuity,https://hipermedula.org/2013/04/tekopora-los-mundos-posibles/,tagged from a published synopsis; primary theme
+QM-2ceb368977-M1,Nondjewaregi / Costumbres antiguas,2012,form,Documentary,,https://hipermedula.org/2013/04/tekopora-los-mundos-posibles/,from the published synopsis
+QM-2ceb368977-M1,Nondjewaregi / Costumbres antiguas,2012,length,Short,,https://hipermedula.org/2013/04/tekopora-los-mundos-posibles/,from the published synopsis
+QM-d67e5a6ca3-M1,Tõ Mumbu,2012,theme,Elders and Knowledge,Knowledge and Continuity,https://hipermedula.org/2013/04/tekopora-los-mundos-posibles/,tagged from a published synopsis; primary theme
+QM-d67e5a6ca3-M1,Tõ Mumbu,2012,form,Documentary,,https://hipermedula.org/2013/04/tekopora-los-mundos-posibles/,from the published synopsis
+QM-d67e5a6ca3-M1,Tõ Mumbu,2012,length,Short,,https://hipermedula.org/2013/04/tekopora-los-mundos-posibles/,from the published synopsis
+QM-dc521559a9-M1,(Re)Encontros Akupynh Awjanã,2024,theme,"Archives, Museums and Repatriation",Knowledge and Continuity,https://www.encontro2024.anpocs.org.br/conteudo/view?ID_CONTEUDO=1341,tagged from a published synopsis; primary theme
+QM-dc521559a9-M1,(Re)Encontros Akupynh Awjanã,2024,form,Documentary,,https://www.encontro2024.anpocs.org.br/conteudo/view?ID_CONTEUDO=1341,from the published synopsis
+QM-dc521559a9-M1,(Re)Encontros Akupynh Awjanã,2024,length,Feature,,https://www.encontro2024.anpocs.org.br/conteudo/view?ID_CONTEUDO=1341,from the published synopsis
+QM-c3fae2a924-M1,Cacica – a força da mulher Xavante,2022,theme,Women and Gender,Lives and Relations,https://festivalcinepe.com.br/cacica-a-forca-da-mulher-xavante-mt/,tagged from a published synopsis; primary theme
+QM-c3fae2a924-M1,Cacica – a força da mulher Xavante,2022,form,Documentary,,https://festivalcinepe.com.br/cacica-a-forca-da-mulher-xavante-mt/,from the published synopsis
+QM-c3fae2a924-M1,Cacica – a força da mulher Xavante,2022,length,Short,,https://festivalcinepe.com.br/cacica-a-forca-da-mulher-xavante-mt/,from the published synopsis
+QM-276b2ccc80-M1,Música é Arma de Luta,2021,theme,Land Defense,Land and Environment,https://emaklabin.org.br/tramas-culturais/musica-e-arma-de-luta,tagged from a published synopsis; primary theme
+QM-276b2ccc80-M1,Música é Arma de Luta,2021,form,Documentary,,https://emaklabin.org.br/tramas-culturais/musica-e-arma-de-luta,from the published synopsis
+QM-276b2ccc80-M1,Música é Arma de Luta,2021,length,Short,,https://emaklabin.org.br/tramas-culturais/musica-e-arma-de-luta,from the published synopsis
