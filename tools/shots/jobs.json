@@ -1,0 +1,4 @@
+[
+ {"name":"watch_top","path":"beta/watch.html","viewport":[1280,1000],"settle":9000},
+ {"name":"watch_play","path":"beta/watch.html","viewport":[1280,1000],"steps":[{"click":".play >> nth=1","wait":9000},{"eval":"document.querySelectorAll('.slot iframe').length","as":"frames"}]}
+]
