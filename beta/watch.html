@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="referrer" content="no-referrer">
 <title>Watch · Indigenous Cinema Atlas</title>
-<meta name="description" content="54 films by Indigenous filmmakers on the atlas that you can stream, 36 of them on this page.">
+<meta name="description" content="54 atlas-indexed films, plus 80 Wapikoni short films with source-linked viewing players.">
 <link rel="icon" href="assets/icon-1107.svg" type="image/svg+xml">
 <style>
 :root{--ink:#182028;--muted:#55616b;--accent:#9c3b26;--line:rgba(24,32,40,.15);--bg:#eef0ec;--card:#e4e8e2;--serif:Georgia,'Times New Roman',serif;--sans:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,Roboto,Arial,sans-serif}
@@ -36,7 +36,7 @@ li .meta{font-size:13px;color:var(--muted);white-space:nowrap}li .by{display:blo
 <header><a class="brand" href="./"><img src="assets/icon-1107.svg" alt=""><span>Indigenous Cinema Atlas<small>Abya Yala and Turtle Island</small></span></a><nav class="primary" aria-label="Explore the atlas"><a href="about.html">About</a><a href="./#view=filmmakers">Filmmakers</a><a href="./#view=films">Films</a><a href="./#view=land">Land</a><a href="./?constellate=1">Constellate</a><a href="watch.html" aria-current="page">▸ Watch</a><a href="screening.html" data-screen-count>Screening list</a></nav></header>
 <main>
 <p class="eyebrow">Watch</p><h1>Films you can watch now</h1>
-<p class="lede">54 films by filmmakers on the atlas; 36 play right on this page.</p>
+<p class="lede">54 atlas films, 36 playable here; plus 80 Wapikoni short films in the research viewing collection below.</p>
 <p class="note">Each title opens at its source, where the film and its credits live. A filmmaker’s name opens the film on the map. Links checked on 7 November 2026; availability can change.</p>
 <section id="now" aria-label="Now showing"><p class="label"><span>Now showing</span><button type="button" id="next">Another film ↻</button></p>
 <div class="frame"><iframe id="now-frame" title="Now showing" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
@@ -66,4 +66,4 @@ document.addEventListener('click',e=>{const b=e.target.closest('.play');if(!b)re
  for(const s of $$('.slot'))s.replaceChildren();for(const p of $$('.play'))p.textContent='▶ Play here';
  slot.innerHTML='<div class="frame"><iframe src="'+esc(b.dataset.embed)+'" title="'+esc(b.dataset.title)+'" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>';b.textContent='Close player';});
 document.addEventListener('keydown',e=>{if(e.key==='/'&&document.activeElement!==q){e.preventDefault();q.focus();}});})();
-</script><script src="assets/screening.js"></script></body></html>
+</script><script src="watch-additions-20261107.js?v=1"></script><script src="assets/screening.js"></script></body></html>
