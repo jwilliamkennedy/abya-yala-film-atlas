@@ -2,7 +2,7 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-08",
  "license": "See data.html",
- "films_on_public_map": 1274,
+ "films_on_public_map": 1275,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -1529,6 +1529,26 @@
    "families": [],
    "form": "Documentary",
    "length": null
+  },
+  "DIR-0037-QMa08bd5": {
+   "title": "Maira Porongyta – O Aviso do Céu",
+   "year": 2025,
+   "makers": [
+    {
+     "id": "DIR-0037",
+     "name": "Kujãesage Kaiabi"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Cosmology and Origin Stories"
+   ],
+   "primary_theme": "Cosmology and Origin Stories",
+   "families": [
+    "Knowledge and Continuity"
+   ],
+   "form": null,
+   "length": "Short"
   },
   "FILM-0046": {
    "title": "Nguné Elü - The Day When the Moon Menstruated",
