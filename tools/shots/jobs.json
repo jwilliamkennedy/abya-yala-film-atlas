@@ -1,4 +1,8 @@
 [
- {"name":"watch_top","path":"beta/watch.html","viewport":[1280,1000],"settle":9000},
- {"name":"watch_play","path":"beta/watch.html","viewport":[1280,1000],"steps":[{"click":".play >> nth=1","wait":9000},{"eval":"document.querySelectorAll('.slot iframe').length","as":"frames"}]}
+ {"name":"map_desktop","path":"beta/index.html","viewport":[1440,900],"settle":12000},
+ {"name":"map_phone","path":"beta/index.html","viewport":[390,844],"mobile":true,"settle":12000},
+ {"name":"map_phone_half","path":"beta/index.html","viewport":[390,844],"mobile":true,"settle":10000,"steps":[{"click":"#sheet-handle","wait":1500}]},
+ {"name":"maker_page","path":"beta/maker/DIR-0059.html","viewport":[1100,1300],"settle":6000},
+ {"name":"timeline","path":"beta/timeline.html","viewport":[1100,1000],"settle":3000},
+ {"name":"watch_peoples","path":"beta/watch.html","viewport":[1280,1000],"settle":6000,"steps":[{"click":".seg button[data-view=people]","wait":800},{"eval":"window.scrollTo(0,900)","wait":600}]}
 ]
