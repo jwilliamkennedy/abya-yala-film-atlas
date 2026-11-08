@@ -81,7 +81,7 @@ const T=[
 ['Saved views and recent selections','Vistas guardadas y selecciones recientes','Vistas salvas e seleções recentes','Vues enregistrées et sélections récentes'],
 ['Clear recent','Borrar recientes','Limpar recentes','Effacer les récents'],['No saved views yet.','Aún no hay vistas guardadas.','Ainda não há vistas salvas.','Aucune vue enregistrée.'],
 ['View link','Enlace de la vista','Link da vista','Lien de la vue'],['Current selection','Selección actual','Seleção atual','Sélection actuelle'],
-['Locate','Ubicar','Localizar','Localiser'],['Clear selection','Borrar selección','Limpar seleção','Effacer la sélection'],
+['Locate','Ubicar','Localizar','Localiser'],['Overview','Vista general','Visão geral','Vue d’ensemble'],['View','Vista','Visualização','Affichage'],['Show on map','Ver en el mapa','Ver no mapa','Voir sur la carte'],['Filmmaker page','Página del cineasta','Página do cineasta','Page du cinéaste'],['Data and downloads','Datos y descargas','Dados e downloads','Données et téléchargements'],['Browse','Explorar','Explorar','Parcourir'],['Your list','Tu lista','Sua lista','Votre liste'],['About the data','Sobre los datos','Sobre os dados','À propos des données'],['Clear selection','Borrar selección','Limpar seleção','Effacer la sélection'],
 ['Explore land on the map · select a name','Explora la tierra en el mapa · selecciona un nombre','Explore a terra no mapa · selecione um nome','Explorez le territoire sur la carte · choisissez un nom'],
 ['MAP PREVIEW','VISTA PREVIA DEL MAPA','PRÉVIA DO MAPA','APERÇU DE LA CARTE'],['Land references','Referencias de tierra','Referências de terra','Références territoriales'],
 ['Fit affiliations on map →','Ajustar afiliaciones en el mapa →','Ajustar afiliações no mapa →','Cadrer les affiliations →'],
