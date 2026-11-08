@@ -311,6 +311,12 @@ function initializeOnMap(m){
   selectedLand:selectedLand,selectedSource:selectedSource};};
 }
 async function loadRecords(){
+ if(window.ATLAS_FLAT&&Array.isArray(window.ATLAS_FLAT.records)){ /* flat beta: the published records, already merged */
+  recordsById=new Map(window.ATLAS_FLAT.records.map(function(r){return [r.id,r];}));archiveReady=true;
+  if(selectedLand)renderDetail(selectedLand,selectedSource,false);
+  statusSmall(el('relation-status').textContent+' · '+window.ATLAS_FLAT.records.length+' current record IDs loaded.');return;
+ }
+
  try{
   var [c,a]=await Promise.all([fetch('../assets/catalog-records.json'),fetch('../assets/archive.json')]);
   if(!c.ok||!a.ok)throw new Error('Catalog records unavailable.');

@@ -6,7 +6,7 @@ usage: python3 tools/atlas/build.py <atlas.xlsx> <reference state.json> [--check
      exactly; edited cells and new rows are read from the cells.
   3. Builds the film tags (languages, themes, form, length) with tools/facets/build.py, which also rewrites the Languages and
      Themes pages and the tag downloads in beta/data.
-  4. Writes beta/atlas-data.js (everything of ours in one file) and beta/index-flat.html (tools/atlas/bake.py),
+  4. Writes beta/atlas-data.js (everything of ours in one file) and makes beta/index.html load it (tools/atlas/bake.py),
      and beta/data/atlas-published.csv (the Published sheet without the machine columns)."""
 import csv, json, re, sys, copy, pathlib
 from openpyxl import load_workbook

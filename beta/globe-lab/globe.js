@@ -124,9 +124,9 @@ async function loadCoastlines(){
 }
 async function loadCountryAnchors(){
  try{
-  var response=await fetch('../assets/archive.json');
-  if(!response.ok)return;
-  var data=await response.json();
+  var data;
+  if(window.ATLAS_FLAT&&window.ATLAS_FLAT.countries)data={countries:window.ATLAS_FLAT.countries}; /* flat beta */
+  else{var response=await fetch('../assets/archive.json');if(!response.ok)return;data=await response.json();}
   var countries=(data.countries||[]).filter(function(c){return c.coordinates&&c.coverage&&/represented/i.test(c.coverage);});
   var features=countries.map(function(c){return {type:'Feature',properties:{name:c.name,code:c.code},geometry:{type:'Point',coordinates:c.coordinates}};});
   map.addSource('atlas-country-index',{type:'geojson',data:{type:'FeatureCollection',features:features}});
