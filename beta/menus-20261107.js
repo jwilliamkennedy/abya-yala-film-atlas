@@ -204,6 +204,21 @@ function watchMarks(){
  new MutationObserver(later).observe(svg,{childList:true,subtree:true});addEventListener('atlas-camera-change',later);mark();
 }
 
+/* 12. Selection bar: the filmmaker's permanent page, Cite and Correct. */
+function selectionLinks(){
+ const bar=$('#selection-summary'),A=atlas();if(!bar||!A||typeof A.captureState!=='function')return;
+ const pub=window.ATLAS_ON_MAP;
+ const box=el('span',{class:'sel-links'});bar.querySelector('#selection-locate')?.before(box);
+ const draw=()=>{let st;try{st=A.captureState();}catch(e){return;}const r=st&&st.record&&A.recordById(st.record);
+  if(!r||(pub&&!pub.has(r.status))){if(box.firstChild)box.replaceChildren();return;}
+  const page='maker/'+encodeURIComponent(r.id)+'.html',film=st.film?'#'+encodeURIComponent(st.film):'';
+  const fix='corrections.html?about='+encodeURIComponent(r.name)+'&record='+encodeURIComponent(r.id)+'&page='+encodeURIComponent(new URL(page,location.href).href);
+  const html=`<a href="${page}${film}">Page</a><a href="${page}#cite">Cite</a><a href="${fix}">Correct</a>`;if(box.innerHTML!==html)box.innerHTML=html;};
+ let t=0;const later=()=>{clearTimeout(t);t=setTimeout(draw,60);};
+ const name=bar.querySelector('#selection-name');if(name)new MutationObserver(later).observe(name,{childList:true,characterData:true,subtree:true});
+ new MutationObserver(later).observe(bar,{attributes:true,attributeFilter:['hidden']});addEventListener('hashchange',later);document.addEventListener('click',later);draw();
+}
+
 /* 10. Header: About first, Watch last. */
 function headerNav(tries=0){
  const nav=$('header nav.primary');if(!nav)return;
@@ -214,7 +229,7 @@ function headerNav(tries=0){
 }
 
 whenReady(()=>{
- for(const step of [headerNav,watchMarks,toolbar,closeRule,countries,layers,mapKey,indexPanel,featured,shortcuts,territoryFocus]){try{step();}catch(err){console.warn('UI pass step failed:',step.name,err);}}
+ for(const step of [headerNav,watchMarks,selectionLinks,toolbar,closeRule,countries,layers,mapKey,indexPanel,featured,shortcuts,territoryFocus]){try{step();}catch(err){console.warn('UI pass step failed:',step.name,err);}}
  setTimeout(closeRule,1500);
 });
 })();

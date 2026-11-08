@@ -94,3 +94,6 @@
 #atlas .land-watch path{fill:#f6f4ee}
 :root[data-reading-theme=night] #atlas .land-watch circle{fill:#ebc867;stroke:#0e1729}
 :root[data-reading-theme=night] #atlas .land-watch path{fill:#0e1729}
+/* Selection bar links: permanent page, cite, correct */
+#selection-summary .sel-links{display:inline-flex;gap:12px;margin-right:12px;font-size:13px}
+#selection-summary .sel-links a{color:var(--reading-accent,#9c3b26);border-bottom:1px solid currentColor;text-decoration:none}
