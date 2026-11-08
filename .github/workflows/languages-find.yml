@@ -1,0 +1,47 @@
+name: Film languages — find evidence (review only)
+on:
+  push:
+    paths:
+      - "tools/languages/find.py"
+      - "tools/languages/targets.json"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  find:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0, 1, 2, 3, 4, 5]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Find
+        run: |
+          pip install requests pillow >/dev/null
+          mkdir -p out
+          lo=$(( ${{ matrix.shard }} * 201 )); hi=$(( lo + 201 ))
+          timeout 2400 python3 tools/languages/find.py $lo $hi | tee out/log.txt || true
+          mv out/lang.jsonl out/lang-${{ matrix.shard }}.jsonl || touch out/lang-${{ matrix.shard }}.jsonl
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: lang-${{ matrix.shard }}
+          path: out/lang-${{ matrix.shard }}.jsonl
+  publish:
+    needs: find
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: parts
+      - name: Publish evidence to ci-lang branch (not deployed)
+        run: |
+          mkdir out && cat parts/*/*.jsonl > out/lang.jsonl; wc -l out/lang.jsonl
+          cd out
+          git init -q -b ci-lang
+          git config user.name "github-actions"; git config user.email "github-actions@users.noreply.github.com"
+          git add . && git commit -q -m "Language evidence ${GITHUB_SHA::7}"
+          git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" ci-lang
