@@ -2,7 +2,7 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-08",
  "license": "See data.html",
- "films_on_public_map": 1240,
+ "films_on_public_map": 1263,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -13942,6 +13942,22 @@
    "form": null,
    "length": "Short"
   },
+  "QW-WAPI-V998327868": {
+   "title": "Le courage de Sally",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "NEW-baceba5380b8",
+     "name": "Nathalie Rankin"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "NEW-7b37398372f9-WORK-1": {
    "title": "Walls – Akinni Inuk",
    "year": 2025,
@@ -18169,6 +18185,22 @@
    "form": null,
    "length": null
   },
+  "QW-WAPI-V300380283": {
+   "title": "WHITE NOISE",
+   "year": 2018,
+   "makers": [
+    {
+     "id": "DIR-0402",
+     "name": "Joleen Mitton"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "WAP-2026-NEW403": {
    "title": "Nuhe nenë boghílníh (Protégeons nos terres)",
    "year": 2017,
@@ -18185,9 +18217,41 @@
    "form": null,
    "length": null
   },
+  "QW-WAPI-V293020948": {
+   "title": "Media Resistance Land And Water",
+   "year": 2018,
+   "makers": [
+    {
+     "id": "DIR-0403",
+     "name": "Ashton Janvier"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "WAP-2026-NEW404": {
    "title": "Onickakw (Réveillez-vous)",
    "year": 2013,
+   "makers": [
+    {
+     "id": "DIR-0404",
+     "name": "Sipi Flamand"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QW-WAPI-V181975531": {
+   "title": "Kitci Nehirowwiskwew",
+   "year": 2016,
    "makers": [
     {
      "id": "DIR-0404",
@@ -18270,6 +18334,22 @@
     "Lives and Relations"
    ],
    "form": "Documentary",
+   "length": null
+  },
+  "QW-WAPI-V751740694": {
+   "title": "6 minutes/km",
+   "year": 2022,
+   "makers": [
+    {
+     "id": "DIR-0408",
+     "name": "Catherine Boivin"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
    "length": null
   },
   "WAP-FILM-00409": {
@@ -18357,9 +18437,73 @@
    "form": null,
    "length": null
   },
+  "QW-WAPI-V223552422": {
+   "title": "Ashatsheu-Kushkan Anite Pineuatshi",
+   "year": 2017,
+   "makers": [
+    {
+     "id": "DIR-0413",
+     "name": "Edouard Kaltush"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QW-WAPI-V286586821": {
+   "title": "Uenutishiu Katshapistesh / La richesse du chauffe-eau",
+   "year": 2018,
+   "makers": [
+    {
+     "id": "DIR-0413",
+     "name": "Edouard Kaltush"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QW-WAPI-V339569539": {
+   "title": "Atshen mak innu-auass",
+   "year": 2019,
+   "makers": [
+    {
+     "id": "DIR-0413",
+     "name": "Edouard Kaltush"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "WAP-FILM-00414": {
    "title": "La Ravissante",
    "year": 2023,
+   "makers": [
+    {
+     "id": "DIR-0414",
+     "name": "Diego Gros-Louis"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QW-WAPI-V989620017": {
+   "title": "Tihchion'",
+   "year": 2024,
    "makers": [
     {
      "id": "DIR-0414",
@@ -18492,6 +18636,38 @@
   "WAP-FILM-00422": {
    "title": "IV.ISO:NA.IR__",
    "year": 2024,
+   "makers": [
+    {
+     "id": "DIR-0422",
+     "name": "Jim Matlock"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QW-WAPI-V284190004": {
+   "title": "Rat Sale",
+   "year": 2018,
+   "makers": [
+    {
+     "id": "DIR-0422",
+     "name": "Jim Matlock"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QW-WAPI-V353164518": {
+   "title": "After hell",
+   "year": 2019,
    "makers": [
     {
      "id": "DIR-0422",
@@ -18718,6 +18894,38 @@
    ],
    "form": "Documentary",
    "length": "Short"
+  },
+  "QW-WAPI-V729069424": {
+   "title": "Aski masinikan (2e partie)",
+   "year": 2022,
+   "makers": [
+    {
+     "id": "DIR-0434",
+     "name": "Bryan Coocoo"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QW-WAPI-V169148586": {
+   "title": "NITASKINAN",
+   "year": 2016,
+   "makers": [
+    {
+     "id": "DIR-0434",
+     "name": "Bryan Coocoo"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
   },
   "TOUR-FILM-00436": {
    "title": "The Train Station",
@@ -19481,7 +19689,7 @@
   },
   "NEW-5ced7451a354-WORK-1": {
    "title": "Frozen Unicycle (Unicycle sur glace)",
-   "year": null,
+   "year": 2018,
    "makers": [
     {
      "id": "NEW-5ced7451a354",
@@ -19728,7 +19936,7 @@
   },
   "NEW-cedc0e40389b-WORK-1": {
    "title": "Mahiganiec (Petite Louve / Wolf Club)",
-   "year": null,
+   "year": 2017,
    "makers": [
     {
      "id": "NEW-cedc0e40389b",
@@ -19764,6 +19972,54 @@
    ],
    "form": null,
    "length": "Short"
+  },
+  "QW-WAPI-V256823782": {
+   "title": "Là d'où vient mon sang",
+   "year": 2017,
+   "makers": [
+    {
+     "id": "NEW-18a59ef8e134",
+     "name": "Jemmy Echaquan Dubé"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QW-WAPI-V182028221": {
+   "title": "A TRAVERS LES YEUX",
+   "year": 2016,
+   "makers": [
+    {
+     "id": "NEW-18a59ef8e134",
+     "name": "Jemmy Echaquan Dubé"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QW-WAPI-V181966098": {
+   "title": "MIKWETC",
+   "year": 2016,
+   "makers": [
+    {
+     "id": "NEW-18a59ef8e134",
+     "name": "Jemmy Echaquan Dubé"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
   },
   "NEW-186446e535fd-WORK-1": {
    "title": "Intergenerational Climate Activism (Witness project)",
@@ -19819,6 +20075,38 @@
    ],
    "form": "Documentary",
    "length": "Short"
+  },
+  "QW-WAPI-V370160943": {
+   "title": "Kabak",
+   "year": 2019,
+   "makers": [
+    {
+     "id": "NEW-3d4cce98ac99",
+     "name": "Kijâtai-Alexandra Veillette-Cheezo"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QW-WAPI-V348401401": {
+   "title": "KIJÂTAI",
+   "year": 2019,
+   "makers": [
+    {
+     "id": "NEW-3d4cce98ac99",
+     "name": "Kijâtai-Alexandra Veillette-Cheezo"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
   },
   "NEW-0b08bae85906-WORK-1": {
    "title": "Timelapse",
@@ -19918,7 +20206,23 @@
   },
   "NEW-a2cce2b16ae8-WORK-1": {
    "title": "Nukum Kaut Ussima (Grand-mère contre petit-fils)",
-   "year": null,
+   "year": 2019,
+   "makers": [
+    {
+     "id": "NEW-a2cce2b16ae8",
+     "name": "Milan Ishpatao"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QW-WAPI-V286580819": {
+   "title": "La légende du Titanic",
+   "year": 2018,
    "makers": [
     {
      "id": "NEW-a2cce2b16ae8",
@@ -20041,7 +20345,7 @@
   },
   "NEW-3cea8585a05f-WORK-1": {
    "title": "Missing Offering (L'offrande oubliée)",
-   "year": null,
+   "year": 2016,
    "makers": [
     {
      "id": "NEW-3cea8585a05f",
@@ -20080,6 +20384,22 @@
    ],
    "form": null,
    "length": "Short"
+  },
+  "QW-WAPI-V168686240": {
+   "title": "Co-wreck the record",
+   "year": 2016,
+   "makers": [
+    {
+     "id": "NEW-3cea8585a05f",
+     "name": "Raymond Caplin"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
   },
   "NEW-642461aaa016-WORK-1": {
    "title": "Homelands",
@@ -20137,6 +20457,54 @@
    "form": null,
    "length": "Short"
   },
+  "QW-WAPI-V1105489358": {
+   "title": "Akohakiniw Aski",
+   "year": 2025,
+   "makers": [
+    {
+     "id": "NEW-56ddab7566cd",
+     "name": "Steven Chilton"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QW-WAPI-V169147418": {
+   "title": "Nikawinan",
+   "year": 2016,
+   "makers": [
+    {
+     "id": "NEW-56ddab7566cd",
+     "name": "Steven Chilton"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QW-WAPI-V340799411": {
+   "title": "Akohitowin",
+   "year": 2019,
+   "makers": [
+    {
+     "id": "NEW-56ddab7566cd",
+     "name": "Steven Chilton"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "NEW-f44caa48e338-WORK-1": {
    "title": "The Hunt",
    "year": 1997,
@@ -20187,7 +20555,7 @@
   },
   "NEW-5c493398e7b1-WORK-1": {
    "title": "Mamu Kataiat (Nous étions ensemble)",
-   "year": null,
+   "year": 2017,
    "makers": [
     {
      "id": "NEW-5c493398e7b1",

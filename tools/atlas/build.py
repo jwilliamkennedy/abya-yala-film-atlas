@@ -65,6 +65,52 @@ def film_tags(records, themes, families):
         t = open(f'{d}/facets.js', encoding='utf-8').read()
         return json.loads(t[t.index('window.ATLAS_FACETS=') + len('window.ATLAS_FACETS='):].rstrip().rstrip(';'))
 
+WATCH_RE = re.compile(r'watch|full film|stream|viewing|ver pel[ií]cula|ver filme|wapikoni', re.I)
+NOT_RE = re.compile(r'trailer|teaser|preview|tráiler', re.I)
+
+def embed_of(url):
+    """A player address the Watch page can show inline, when the host allows it."""
+    m = re.search(r'vimeo\.com/(?:video/)?(\d+)', url or '')
+    if m: return f'https://player.vimeo.com/video/{m.group(1)}'
+    m = re.search(r'(?:youtube\.com/watch\?v=|youtu\.be/|youtube\.com/embed/)([\w-]{11})', url or '')
+    if m: return f'https://www.youtube-nocookie.com/embed/{m.group(1)}'
+    m = re.search(r'nfb\.ca/film/([\w-]+)', url or '')
+    if m: return f'https://www.nfb.ca/film/{m.group(1)}/embed/player/'
+    return ''
+
+def link_of(l):
+    """One watch link: where to open it (the official page when there is one) and what can play inline."""
+    note = l.get('context') or ''
+    m = re.match(r'Official Wapikoni film page: (\S+)', note)
+    return {'label': l.get('title') or 'Watch', 'url': m.group(1) if m else l['url'], 'note': '' if m else note, 'embed': embed_of(l['url'])}
+
+def watch_index(records, explore):
+    """beta/watch-data.js: every published film with a link to watch the whole film (not a trailer)."""
+    items, seen = [], {}
+    for r in records:
+        if r.get('status') not in ON_MAP:
+            continue
+        for f in r.get('films') or []:
+            links = list((explore.get(f['id']) or {}).get('links') or [])
+            if f.get('watchURL'):
+                links.append({'title': 'Watch', 'url': f['watchURL'], 'context': ''})
+            links = [l for l in links if l.get('url') and WATCH_RE.search(l.get('title') or '') and not NOT_RE.search(l.get('title') or '')]
+            if not links:
+                continue
+            maker = {'id': r['id'], 'name': r['name'], 'people': r.get('nation') or r.get('community') or ''}
+            if f['id'] in seen:
+                it = seen[f['id']]
+                if r['id'] not in [m['id'] for m in it['makers']]:
+                    it['makers'].append(maker)
+                continue
+            it = {'fid': f['id'], 't': f['title'], 'y': f.get('year') or None, 'makers': [maker],
+                  'links': [link_of(l) for l in links]}
+            seen[f['id']] = it
+            items.append(it)
+    head = '/* Built by tools/atlas/build.py from the Published sheet: films by filmmakers on the atlas that can be watched in full. */\n'
+    pathlib.Path('beta/watch-data.js').write_text(head + 'window.ATLAS_WATCH=' + json.dumps({'films': items}, ensure_ascii=False, separators=(',', ':')) + ';\n', encoding='utf-8')
+    return len(items), sum(1 for i in items if any(l['embed'] for l in i['links']))
+
 def build(path, state_path, check_only=False):
     wb = load_workbook(path, data_only=True)
     state = json.load(open(state_path, encoding='utf-8'))
@@ -211,6 +257,8 @@ def build(path, state_path, check_only=False):
     all_ids = [r['id'] for r in state['records']] + [f['id'] for r in state['records'] for f in r['films']]
     facets = film_tags(records, owned['ATLAS_THEMES_1103'], state['globals'].get('ATLAS_THEMES_1103', {}).get('families', {}))
     sizes = bake.write(records, state['countries'], state['meta'], owned, state['globals'], edges=edges, all_ids=all_ids, facets=facets)
+    nw, ne = watch_index(records, {**{k: v for k, v in state['globals'].get('ATLAS_FILM_EXPLORATION', {}).items()}, **owned['ATLAS_FILM_EXPLORATION']})
+    print(f'  watch: {nw} films, {ne} playable on the page')
     out = pathlib.Path('beta/data/atlas-published.csv')
     with open(out, 'w', newline='', encoding='utf-8') as fh:
         w = csv.writer(fh)
