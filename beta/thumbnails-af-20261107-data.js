@@ -209,5 +209,60 @@
 "checkedOn": "2026-11-07",
 "rightsStatus": "hotlinked; image remains with its rights holder",
 "matchBasis": "Page title matches the film and names its director or year (video on the film’s source page); image load-tested and checked by eye on a contact sheet 2026-11-07."
+},
+"SAB2-20261014-8f38c77ed16e-WORK-01": {
+"title": "Athiambi A’i / Gente invisible",
+"image": "https://clients-simetric-storage.storage.simetricsoftware.com/ecoador/36/001_Frames-Athiambi-A_i-.webp",
+"originalImage": "https://clients-simetric-storage.storage.simetricsoftware.com/ecoador/36/001_Frames-Athiambi-A_i-.webp",
+"sourceURL": "https://ecoador.org/pelicula/athiambi-ai-gente-invisible",
+"publisher": "ecoador.org",
+"kind": "Film still",
+"checkedOn": "2026-11-08",
+"rightsStatus": "hotlinked; image remains with its rights holder; reuse permission not inferred",
+"matchBasis": "Film-specific source page names the film and director; image selected from its film artwork. Load-tested and visually reviewed 2026-11-08; 1946x1088. Rights remain with the rights holder; no reuse permission inferred."
+},
+"SA50-20261014-2c84e403308f-WORK-01": {
+"title": "Frecuencia Sinangoe",
+"image": "https://www.flacso.edu.ec/cine-etnografico/wp-content/uploads/2023/08/sinango3-Boloh-Miranda-Izquierdo_p.jpg",
+"originalImage": "https://www.flacso.edu.ec/cine-etnografico/wp-content/uploads/2023/08/sinango3-Boloh-Miranda-Izquierdo_p.jpg",
+"sourceURL": "https://www.flacso.edu.ec/cine-etnografico/pelicula/frecuencia-sinangoe/",
+"publisher": "www.flacso.edu.ec",
+"kind": "Film still",
+"checkedOn": "2026-11-08",
+"rightsStatus": "hotlinked; image remains with its rights holder; reuse permission not inferred",
+"matchBasis": "Film-specific source page names the film and director; image selected from its film artwork. Load-tested and visually reviewed 2026-11-08; 1200x900. Rights remain with the rights holder; no reuse permission inferred."
+},
+"FILM-0194": {
+"title": "Bankilal (El hermano mayor)",
+"image": "https://americas.dafilms.com/media/gallery/2023/07/30/Bankilal_1.jpg?v=1690721436",
+"originalImage": "https://americas.dafilms.com/media/gallery/2023/07/30/Bankilal_1.jpg?v=1690721436",
+"sourceURL": "https://americas.dafilms.com/film/16009-bankilal-the-big-brother",
+"publisher": "americas.dafilms.com",
+"kind": "Film still",
+"checkedOn": "2026-11-08",
+"rightsStatus": "hotlinked; image remains with its rights holder; reuse permission not inferred",
+"matchBasis": "Film-specific source page names the film and director; image selected from its film artwork. Load-tested and visually reviewed 2026-11-08; 1690x900. Rights remain with the rights holder; no reuse permission inferred."
+},
+"MIRROR-FILMOGRAPHY-20261107-039": {
+"title": "Dislocation Blues",
+"image": "https://www.cinemapolitica.org/wp-content/uploads/2020/05/DislocationBlues2.jpg",
+"originalImage": "https://www.cinemapolitica.org/wp-content/uploads/2020/05/DislocationBlues2.jpg",
+"sourceURL": "https://www.cinemapolitica.org/film/dislocation-blues/",
+"publisher": "www.cinemapolitica.org",
+"kind": "Film still",
+"checkedOn": "2026-11-08",
+"rightsStatus": "hotlinked; image remains with its rights holder; reuse permission not inferred",
+"matchBasis": "Film-specific source page names the film and director; image selected from its film artwork. Load-tested and visually reviewed 2026-11-08; 1500x840. Rights remain with the rights holder; no reuse permission inferred."
+},
+"MIRROR-FILMOGRAPHY-20261107-098": {
+"title": "Creatura Dada",
+"image": "https://i.ytimg.com/vi/FEDqIa7ki5w/maxresdefault.jpg",
+"originalImage": "https://i.ytimg.com/vi/FEDqIa7ki5w/maxresdefault.jpg",
+"sourceURL": "https://www.youtube.com/watch?v=FEDqIa7ki5w",
+"publisher": "www.youtube.com",
+"kind": "Film still",
+"checkedOn": "2026-11-08",
+"rightsStatus": "hotlinked; image remains with its rights holder; reuse permission not inferred",
+"matchBasis": "Film-specific source page names the film and director; image selected from its film artwork. Load-tested and visually reviewed 2026-11-08; 1280x720. Rights remain with the rights holder; no reuse permission inferred."
 }
 };window.ATLAS_PROFILE_MEDIA=window.ATLAS_PROFILE_MEDIA||{};for(const [k,v] of Object.entries(add))if(!window.ATLAS_PROFILE_MEDIA[k])window.ATLAS_PROFILE_MEDIA[k]=v;})();
