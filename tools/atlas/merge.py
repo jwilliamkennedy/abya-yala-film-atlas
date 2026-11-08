@@ -55,8 +55,10 @@ def main(path):
                 for c in maker_cols:
                     wp.cell(n, P[c], wp.cell(existing, P[c]).value)
                 wp.cell(n, P['maker_json'], None)
-            if a == 'lead' and wp.cell(n, P['status']).value not in ON_MAP:
-                wp.cell(n, P['status'], 'Discovery · credit supported')
+            if not existing and wp.cell(n, P['status']).value not in ON_MAP:
+                # accepted = identity sourced and directing credit sourced (checked by Claude against both pages)
+                wp.cell(n, P['status'], 'Discovery · directing credit sourced')
+                wp.cell(n, P['review_status'], 'Credit sourced; identity from source')
             applied['added'] += 1
         elif a == 'correct':
             hit = False

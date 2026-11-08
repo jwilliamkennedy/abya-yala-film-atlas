@@ -2,7 +2,7 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-08",
  "license": "See data.html",
- "films_on_public_map": 1263,
+ "films_on_public_map": 1274,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -404,7 +404,7 @@
     "match": "exact",
     "indigenous": "no",
     "note": "",
-    "films": 18
+    "films": 19
    },
    {
     "label": "Portuguese",
@@ -608,7 +608,7 @@
     "match": "group",
     "indigenous": "yes",
     "note": "Credits name Quechua without a variety",
-    "films": 1
+    "films": 2
    },
    {
     "label": "German",
@@ -1512,6 +1512,22 @@
    "primary_theme": null,
    "families": [],
    "form": null,
+   "length": null
+  },
+  "DIR-0037-QM2df3f7": {
+   "title": "Meriup",
+   "year": 2016,
+   "makers": [
+    {
+     "id": "DIR-0037",
+     "name": "Kujãesage Kaiabi"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
    "length": null
   },
   "FILM-0046": {
@@ -6282,6 +6298,26 @@
    "form": null,
    "length": null
   },
+  "DIR-0183-QM878606": {
+   "title": "Shimirra'in Wayuu: Juegos tradicionales wayuu",
+   "year": null,
+   "makers": [
+    {
+     "id": "DIR-0183",
+     "name": "Elizabeth Pirela González"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Elders and Knowledge"
+   ],
+   "primary_theme": "Elders and Knowledge",
+   "families": [
+    "Knowledge and Continuity"
+   ],
+   "form": "Documentary",
+   "length": "Series"
+  },
   "FILM-0127": {
    "title": "Asuntos indígenas",
    "year": null,
@@ -6457,6 +6493,58 @@
    "families": [],
    "form": null,
    "length": null
+  },
+  "DIR-0187-QMb0d41a": {
+   "title": "Buscando las marcas del Asho’ojushi",
+   "year": null,
+   "makers": [
+    {
+     "id": "DIR-0187",
+     "name": "Marbel Ina Vanegas Jusayu"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Elders and Knowledge"
+   ],
+   "primary_theme": "Elders and Knowledge",
+   "families": [
+    "Knowledge and Continuity"
+   ],
+   "form": "Documentary",
+   "length": "Feature"
+  },
+  "DIR-0187-QM1eab5e": {
+   "title": "El buen vivir – temporada 4",
+   "year": 2022,
+   "makers": [
+    {
+     "id": "DIR-0187",
+     "name": "Marbel Ina Vanegas Jusayu"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Series"
+  },
+  "DIR-0187-QM5d1f57": {
+   "title": "El buen vivir – temporada 6",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "DIR-0187",
+     "name": "Marbel Ina Vanegas Jusayu"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Series"
   },
   "FILM-0135": {
    "title": "Mu Drua (Mi tierra)",
@@ -6918,6 +7006,62 @@
     "Lives and Relations"
    ],
    "form": "Fiction",
+   "length": "Short"
+  },
+  "DIR-0209-QMe52d92": {
+   "title": "Liremu Barana",
+   "year": 2019,
+   "makers": [
+    {
+     "id": "DIR-0209",
+     "name": "Elvis Rigoberto Caj Cojoc"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Water"
+   ],
+   "primary_theme": "Water",
+   "families": [
+    "Land and Environment"
+   ],
+   "form": "Fiction",
+   "length": "Short"
+  },
+  "DIR-0209-QM9cec3e": {
+   "title": "Nanimaj Chik (To Grow Up Again)",
+   "year": null,
+   "makers": [
+    {
+     "id": "DIR-0209",
+     "name": "Elvis Rigoberto Caj Cojoc"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "DIR-0209-QM180a92": {
+   "title": "Flor Blanca",
+   "year": null,
+   "makers": [
+    {
+     "id": "DIR-0209",
+     "name": "Elvis Rigoberto Caj Cojoc"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Elders and Knowledge"
+   ],
+   "primary_theme": "Elders and Knowledge",
+   "families": [
+    "Knowledge and Continuity"
+   ],
+   "form": null,
    "length": "Short"
   },
   "FILM-0163": {
@@ -17591,6 +17735,38 @@
    "form": null,
    "length": null
   },
+  "PILOT-43-ANA-TSUYEB-QM9f1fbc": {
+   "title": "Andares en la infancia",
+   "year": 2018,
+   "makers": [
+    {
+     "id": "PILOT-43-ANA-TSUYEB",
+     "name": "Ana Ts’uyeb"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "PILOT-43-ANA-TSUYEB-QM5960a0": {
+   "title": "Deconstrucción orgánica",
+   "year": 2018,
+   "makers": [
+    {
+     "id": "PILOT-43-ANA-TSUYEB",
+     "name": "Ana Ts’uyeb"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
+  },
   "RESEARCH-FILM-006-02": {
    "title": "Ava Yvy Vera – A Terra do Povo do Raio",
    "year": 2016,
@@ -25204,6 +25380,45 @@
    "families": [],
    "form": null,
    "length": null
+  },
+  "QM-234cb393b5-M3": {
+   "title": "Mamapara – Madre Lluvia",
+   "year": 2020,
+   "makers": [
+    {
+     "id": "QM-234cb393b5",
+     "name": "Alberto Flores Vilca"
+    }
+   ],
+   "languages": [
+    {
+     "label": "Quechua",
+     "as_credited": "Quechua",
+     "glottocode": "quec1387",
+     "iso639_3": "que",
+     "match": "group",
+     "indigenous": true,
+     "source": "https://www.casadelaliteratura.gob.pe/wp-content/uploads/2023/07/Copia-de-N%C2%B035-Mamapara.pdf"
+    },
+    {
+     "label": "Spanish",
+     "as_credited": "Spanish",
+     "glottocode": "stan1288",
+     "iso639_3": "spa",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://www.casadelaliteratura.gob.pe/wp-content/uploads/2023/07/Copia-de-N%C2%B035-Mamapara.pdf"
+    }
+   ],
+   "themes": [
+    "Kinship"
+   ],
+   "primary_theme": "Kinship",
+   "families": [
+    "Lives and Relations"
+   ],
+   "form": "Documentary",
+   "length": "Short"
   }
  }
 }
