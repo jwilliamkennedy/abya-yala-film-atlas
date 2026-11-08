@@ -2,7 +2,7 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-08",
  "license": "See data.html",
- "films_on_public_map": 1336,
+ "films_on_public_map": 1383,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -20611,6 +20611,48 @@
    "form": null,
    "length": null
   },
+  "NEW-3fcfd6413366-WORK-1": {
+   "title": "Growing Together: A Journey in Agriculture",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "NEW-3fcfd6413366",
+     "name": "Adam Koperqualuk"
+    },
+    {
+     "id": "NEW-6ff975cd5626",
+     "name": "Preston Sam"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Food Sovereignty",
+    "Elders and Knowledge"
+   ],
+   "primary_theme": "Food Sovereignty",
+   "families": [
+    "Knowledge and Continuity",
+    "Land and Environment"
+   ],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "NEW-df58a04a3edd-WORK-1": {
+   "title": "Onitcin",
+   "year": 2023,
+   "makers": [
+    {
+     "id": "NEW-df58a04a3edd",
+     "name": "Amy Kistabish-Jerome"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "NEW-d78c92028675-WORK-1": {
    "title": "Laxwesa Wa: Strength of the River",
    "year": 1995,
@@ -20687,6 +20729,22 @@
     {
      "id": "NEW-efb16e33eb64",
      "name": "Brad Mestenapéo"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "NEW-607ce0eaac4a-WORK-1": {
+   "title": "Fight or Flight",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "NEW-607ce0eaac4a",
+     "name": "Brett McLaurin"
     }
    ],
    "languages": [],
@@ -21032,6 +21090,49 @@
    "form": null,
    "length": null
   },
+  "NEW-a970361a90e5-WORK-1": {
+   "title": "La Voix de la liberté",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "NEW-a970361a90e5",
+     "name": "Lenny Francis Chachai"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Health and Healing",
+    "Music and Performance"
+   ],
+   "primary_theme": "Health and Healing",
+   "families": [
+    "Expression and Representation",
+    "Lives and Relations"
+   ],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "NEW-8ff0e773c262-WORK-1": {
+   "title": "Nuuhkuum Uumichiwaapim",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "NEW-8ff0e773c262",
+     "name": "Lindsay Chewanish"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Memory and Oral History",
+    "Elders and Knowledge"
+   ],
+   "primary_theme": "Memory and Oral History",
+   "families": [
+    "Knowledge and Continuity"
+   ],
+   "form": "Documentary",
+   "length": "Short"
+  },
   "NEW-0b08bae85906-WORK-1": {
    "title": "Timelapse",
    "year": null,
@@ -21047,6 +21148,30 @@
    "families": [],
    "form": null,
    "length": null
+  },
+  "NEW-2c290eb6c1ef-WORK-1": {
+   "title": "Madiziwaynane Mamaway Abinodichoc",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "NEW-2c290eb6c1ef",
+     "name": "Marie-Jeanne Anichinapeo"
+    },
+    {
+     "id": "NEW-5aeb06bd7df7",
+     "name": "William Papatie"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Kinship"
+   ],
+   "primary_theme": "Kinship",
+   "families": [
+    "Lives and Relations"
+   ],
+   "form": "Documentary",
+   "length": "Short"
   },
   "NEW-c541530fe485-WORK-1": {
    "title": "Shi-shi-etko",
@@ -26518,6 +26643,662 @@
     "Land and Environment"
    ],
    "form": "Documentary",
+   "length": "Short"
+  },
+  "QM-0f51e1940b-M1": {
+   "title": "Iskwaau",
+   "year": 2025,
+   "makers": [
+    {
+     "id": "QM-0f51e1940b",
+     "name": "Jade Mukash"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
+  },
+  "QM-9c2234bfcb-M1": {
+   "title": "Ashu peshnen",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "QM-9c2234bfcb",
+     "name": "Aïka Raphaël"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
+  },
+  "QM-457606408c-M1": {
+   "title": "C'est toi?",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "QM-457606408c",
+     "name": "Jackie-Andrée Michel Montambault"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
+  },
+  "QM-8009b51ac9-M1": {
+   "title": "Dogumentary",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "QM-8009b51ac9",
+     "name": "Clyde Visitor"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
+  },
+  "QM-0b7245ca98-M1": {
+   "title": "Dozois - Ben raide",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "QM-0b7245ca98",
+     "name": "Cédrick Ratt Michel"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
+  },
+  "QM-8b5196af40-M1": {
+   "title": "Endi' (je suis/nous sommes) : reconnecter avec nos racines",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "QM-8b5196af40",
+     "name": "Béatrice Noël"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
+  },
+  "QM-a9f9ed7859-M1": {
+   "title": "Kiackrananik (Oskélanéo)",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "QM-a9f9ed7859",
+     "name": "Jacqueline Mequish"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
+  },
+  "QM-e3d7f56df0-M1": {
+   "title": "Kukuetshishkatahutuatsh : Courseurs de canots",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "QM-e3d7f56df0",
+     "name": "Maïlys Flamand"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
+  },
+  "QW-WAPI-V280785782": {
+   "title": "Nitaskinan",
+   "year": 2018,
+   "makers": [
+    {
+     "id": "QM-e3d7f56df0",
+     "name": "Maïlys Flamand"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QM-8d7fd9f261-M1": {
+   "title": "L'esprit légendaire de Mishtamishk",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "QM-8d7fd9f261",
+     "name": "Manuel Kak'wa Kurtness"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
+  },
+  "QM-8b3ded0b9d-M1": {
+   "title": "Mamichou",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "QM-8b3ded0b9d",
+     "name": "Nathalie Hamel"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
+  },
+  "QM-3a9d69a2be-M1": {
+   "title": "Mammy",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "QM-3a9d69a2be",
+     "name": "Jackie Basile Petiquay"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
+  },
+  "QM-b2df9e9a16-M1": {
+   "title": "Matcik8aci8etan",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "QM-b2df9e9a16",
+     "name": "Nebis Polson Kistabish"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QM-3fea5f68f3-M1": {
+   "title": "Memories",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "QM-3fea5f68f3",
+     "name": "Ashley Mark-Ottereyes"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
+  },
+  "QM-c90ae6ef19-M1": {
+   "title": "My Father, My Hero",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "QM-c90ae6ef19",
+     "name": "Stefon Rabbitskin"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
+  },
+  "QM-ffeb446abd-M1": {
+   "title": "Naskapi Niistim",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "QM-ffeb446abd",
+     "name": "Loretta Robinson"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
+  },
+  "QM-016e90431b-M1": {
+   "title": "Réjean OBomsawin, Aîné traditionnel Abénaki",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "QM-016e90431b",
+     "name": "Réjean OBomsawin"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
+  },
+  "QM-cc019dae7a-M1": {
+   "title": "Ta veste à franges",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "QM-cc019dae7a",
+     "name": "Sandrine Masse"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
+  },
+  "QM-b050c1ce09-M1": {
+   "title": "Toby",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "QM-b050c1ce09",
+     "name": "Mario Blackned"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
+  },
+  "QM-788b6afb29-M1": {
+   "title": "Uashi-tshishikueshteu",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "QM-788b6afb29",
+     "name": "Pierre-Olivier Hervieux-Picard"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": "Short"
+  },
+  "QM-fce875a634-M1": {
+   "title": "Uteiminan : l'envol de mikun",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "QM-fce875a634",
+     "name": "Fanie Gagnon"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
+  },
+  "QM-3dea07221d-M1": {
+   "title": "Wapoc (le lièvre)",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "QM-3dea07221d",
+     "name": "Mariette Awashish"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
+  },
+  "QM-2f44051d10-M1": {
+   "title": "Awani Na Nokmes?",
+   "year": 2023,
+   "makers": [
+    {
+     "id": "QM-2f44051d10",
+     "name": "Isaak Lachapelle Gill"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
+  },
+  "QM-7148af2273-M1": {
+   "title": "FuREALITY",
+   "year": 2023,
+   "makers": [
+    {
+     "id": "QM-7148af2273",
+     "name": "Aly Labbé-Hervieux"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
+  },
+  "QM-c2135168d9-M1": {
+   "title": "Hier aujourd'hui à demain",
+   "year": 2023,
+   "makers": [
+    {
+     "id": "QM-c2135168d9",
+     "name": "Irène-Kimberley Valin-Awashish"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
+  },
+  "QW-WAPI-V272869240": {
+   "title": "Sweatlodge Song",
+   "year": 2018,
+   "makers": [
+    {
+     "id": "QM-c2135168d9",
+     "name": "Irène-Kimberley Valin-Awashish"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QM-b302bb15b4-M1": {
+   "title": "Kaushunekan",
+   "year": 2023,
+   "makers": [
+    {
+     "id": "QM-b302bb15b4",
+     "name": "Mona Kaltush"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
+  },
+  "QM-16f88fe715-M1": {
+   "title": "Kushtatshun",
+   "year": 2023,
+   "makers": [
+    {
+     "id": "QM-16f88fe715",
+     "name": "Isabelle Kanapé"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
+  },
+  "QM-97c02d8462-M1": {
+   "title": "Le voleur de paix",
+   "year": 2023,
+   "makers": [
+    {
+     "id": "QM-97c02d8462",
+     "name": "Charles Hervieux-Rock"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
+  },
+  "QM-a24df68bd4-M1": {
+   "title": "Mosa kesewe skwete!",
+   "year": 2023,
+   "makers": [
+    {
+     "id": "QM-a24df68bd4",
+     "name": "Gabriel Bordeleau Landry"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
+  },
+  "QM-0f73f10f95-M1": {
+   "title": "Nouvelle famille",
+   "year": 2023,
+   "makers": [
+    {
+     "id": "QM-0f73f10f95",
+     "name": "Amy Mollen"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
+  },
+  "QM-6c1e53b88c-M1": {
+   "title": "People's Story",
+   "year": 2023,
+   "makers": [
+    {
+     "id": "QM-6c1e53b88c",
+     "name": "Landen Spencer"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
+  },
+  "QM-503e429609-M1": {
+   "title": "Rufus Utipatshimun",
+   "year": 2023,
+   "makers": [
+    {
+     "id": "QM-503e429609",
+     "name": "Sandre Tshernish St-Onge"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QM-34783567f7-M1": {
+   "title": "Tapwerta",
+   "year": 2023,
+   "makers": [
+    {
+     "id": "QM-34783567f7",
+     "name": "Eruoma Ottawa Chilton"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": "Short"
+  },
+  "QM-caf2927013-M1": {
+   "title": "Wapamowin",
+   "year": 2023,
+   "makers": [
+    {
+     "id": "QM-caf2927013",
+     "name": "Marie-Kristine Petiquay"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
+  },
+  "QM-c12292416d-M1": {
+   "title": "Abaznoda",
+   "year": 2022,
+   "makers": [
+    {
+     "id": "QM-c12292416d",
+     "name": "Charlotte Gauthier-Nolett"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
+  },
+  "QM-262b24a4e5-M1": {
+   "title": "Aln8baskwa nia",
+   "year": 2022,
+   "makers": [
+    {
+     "id": "QM-262b24a4e5",
+     "name": "Kim Arseneault"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
+  },
+  "QM-6d9241a4aa-M1": {
+   "title": "Aski, la mère de tous",
+   "year": 2022,
+   "makers": [
+    {
+     "id": "QM-6d9241a4aa",
+     "name": "Amélie Courtois"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
+  },
+  "QW-WAPI-V356478780": {
+   "title": "Ilnu aitun au féminin",
+   "year": 2019,
+   "makers": [
+    {
+     "id": "QM-6d9241a4aa",
+     "name": "Amélie Courtois"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QM-4b9385f04e-M1": {
+   "title": "Du bon manger 3.0",
+   "year": 2022,
+   "makers": [
+    {
+     "id": "QM-4b9385f04e",
+     "name": "Canouk Newashish"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
+  },
+  "QM-dc870fb1e6-M1": {
+   "title": "Finish Line",
+   "year": 2022,
+   "makers": [
+    {
+     "id": "QM-dc870fb1e6",
+     "name": "Layla Foubert"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
    "length": "Short"
   }
  }
