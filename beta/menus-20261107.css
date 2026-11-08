@@ -246,7 +246,7 @@ header nav.primary .watch-link::before{content:none!important;display:none!impor
    counts, language and theme to the right only when there is room, never off screen */
 @media (min-width:761px){header{padding-left:28px!important;padding-right:28px!important}}
 header .atlas-ledger{margin-left:auto}
-@media (max-width:1439px){header .atlas-ledger{display:none!important}header .ui-lang{margin-left:auto}}
+@media (max-width:1439px){header .atlas-ledger{display:none!important}}
 @media (max-width:1000px) and (min-width:761px){
  header{flex-wrap:wrap!important;row-gap:0!important;height:auto!important}
  header nav.primary{order:5;width:100%}
@@ -270,3 +270,12 @@ header .atlas-ledger{margin-left:auto}
 #selection-summary .sel-links{display:flex;flex-wrap:wrap;gap:4px 18px}
 #selection-summary .sel-links a,#selection-summary button{white-space:nowrap}
 body.atlas-dossier.no-refs .index-header{display:none!important}
+#index .viewing-route.play-here,#index .viewing-route.play-here span{color:var(--ui-ink)!important;font-weight:600}
+/* 8 Nov · an open film or filmmaker: one tidy row of its links above the card (list tools return when it closes) */
+body.atlas-dossier .index-command-bar>:is(.index-control-row,.index-topline,#index-tools,#exploration-trail){display:none!important}
+body.atlas-dossier .index-command-bar>.view-history:not(:has(button:not([disabled]))){display:none!important}
+body.atlas-dossier .index-command-bar{grid-template-rows:none!important;row-gap:4px!important}
+body.atlas-dossier #selection-summary{display:flex!important;flex-wrap:wrap;align-items:center;gap:4px 18px!important;min-height:44px}
+body.atlas-dossier #selection-summary .sel-links{gap:4px 18px}
+body.atlas-dossier #selection-summary #clear-context{margin-left:auto}
+body.atlas-dossier #selection-summary #clear-context::after{content:' ×';opacity:.7}

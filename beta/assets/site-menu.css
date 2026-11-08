@@ -1,0 +1,58 @@
+/* One menu for every page of the atlas (the map and all other pages load this same file).
+   Same icon, same items, same More menu: it opens under its own word, closes on a second press,
+   on a press anywhere else, on Escape and when you choose an item. */
+:root:not(#_) header .brand .brand-mark{display:block;width:30px;height:30px;flex:none;color:var(--reading-ink,var(--ink,#182028))}
+:root:not(#_) header .brand .brand-mark .star{fill:var(--reading-accent,var(--accent,#9c3b26))}
+:root[data-reading-theme=night]:not(#_) header .brand .brand-mark{color:#e9d9ad}
+:root[data-reading-theme=night]:not(#_) header .brand .brand-mark .star{fill:#ebc867}
+@media (prefers-color-scheme:dark){:root:not([data-reading-theme]):not(#_) header .brand .brand-mark .star{fill:#ebc867}}
+
+:root:not(#_) header nav.primary .more-menu{position:relative;display:flex;align-items:center}
+:root:not(#_) header nav.primary .more-menu>summary{list-style:none;cursor:pointer;user-select:none}
+:root:not(#_) header nav.primary .more-menu>summary::-webkit-details-marker{display:none}
+:root:not(#_) header nav.primary .more-menu>summary::after{content:'\25BE';margin-left:5px;font-size:11px;opacity:.65;display:inline-block;transition:transform .15s}
+:root:not(#_) header nav.primary .more-menu[open]>summary::after{transform:rotate(180deg)}
+:root:not(#_) header nav.primary .more-menu.here>summary{box-shadow:inset 0 -2px 0 var(--reading-accent,var(--accent,#9c3b26))}
+:root:not(#_) header nav.primary .more-menu:not([open])>div{display:none!important}
+:root:not(#_) header nav.primary .more-menu>div{
+ position:absolute!important;top:calc(100% + 4px)!important;left:-12px!important;right:auto!important;bottom:auto!important;z-index:80;
+ display:flex!important;flex-direction:column;min-width:0;width:240px;box-sizing:border-box;padding:6px!important;margin:0;
+ background:var(--reading-paper,var(--bg,#f2f3ef))!important;border:1px solid color-mix(in srgb,currentColor 18%,transparent)!important;
+ border-radius:8px!important;box-shadow:0 12px 32px rgba(20,28,36,.16)!important;color:var(--reading-ink,var(--ink,#182028))}
+:root:not(#_) header nav.primary .more-menu>div a{
+ display:block;padding:9px 12px!important;border:0!important;border-radius:5px;box-shadow:none!important;white-space:nowrap;
+ font:400 15px/1.25 var(--sans,system-ui,-apple-system,'Segoe UI',sans-serif)!important;letter-spacing:normal!important;
+ color:inherit!important;text-decoration:none!important;height:auto!important}
+:root:not(#_) header nav.primary .more-menu>div a:hover,:root:not(#_) header nav.primary .more-menu>div a:focus-visible{background:color-mix(in srgb,currentColor 8%,transparent)!important}
+:root:not(#_) header nav.primary .more-menu>div a[aria-current]{font-weight:600!important}
+:root:not(#_) header nav.primary .more-menu .more-sep{display:block;height:1px;margin:5px 8px;background:color-mix(in srgb,currentColor 15%,transparent)}
+:root:not(#_) header nav.primary .more-menu .more-group{display:none!important}
+:root[data-reading-theme=night]:not(#_) header nav.primary .more-menu>div{background:#0e1729!important;color:#efe6d2}
+/* phones: the list opens straight under the menu, the width of the screen, never off screen */
+@media (max-width:760px){
+ :root:not(#_) header nav.primary{position:relative!important}
+ :root:not(#_) header nav.primary .more-menu{position:static!important}
+ :root:not(#_) header nav.primary .more-menu>div{position:absolute!important;top:100%!important;left:0!important;right:0!important;width:auto;min-width:0}
+ :root:not(#_) header nav.primary .more-menu>div a{padding:12px 12px!important;font-size:16px!important}
+}
+
+/* the map's language and Theme controls: one chevron, drawn the same way and centred in its control */
+:root:not(#_) header .ui-lang{position:relative;display:inline-flex;align-items:center}
+:root:not(#_) header .ui-lang select{-webkit-appearance:none;appearance:none;height:32px;min-height:32px;padding:0 30px 0 13px!important;font-size:13px;line-height:30px;background:transparent;border-radius:999px}
+:root:not(#_) header .ui-lang::after,:root:not(#_) header .palette-choice>summary::after{content:'';display:block;width:6px;height:6px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:translateY(-2px) rotate(45deg);opacity:.7;pointer-events:none}
+:root:not(#_) header .ui-lang::after{position:absolute;right:13px;top:50%;margin-top:-4px;transform:rotate(45deg)}
+:root:not(#_) header .palette-choice>summary{gap:8px}
+:root:not(#_) header .palette-choice[open]>summary::after{transform:translateY(2px) rotate(-135deg)}
+/* language and theme, at the foot of More (they never take a place in the header) */
+:root:not(#_) header>.ui-lang,:root:not(#_) header nav.primary>.ui-lang,:root:not(#_) header .palette-choice{display:none!important}
+:root:not(#_) header .more-settings{display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;gap:6px 14px;padding:6px 12px 6px}
+:root:not(#_) header .more-settings .more-setting-label{font:400 13px/1.2 var(--sans,system-ui,sans-serif);color:var(--reading-muted,var(--muted,#5c6770));position:static;width:auto;height:auto;clip:auto;overflow:visible;white-space:nowrap}
+:root:not(#_) header .more-settings .ui-lang{display:contents}
+:root:not(#_) header .more-settings .ui-lang::after{display:none}
+:root:not(#_) header .more-settings select{width:100%;min-width:0;box-sizing:border-box;height:34px;padding:0 10px!important;border:1px solid color-mix(in srgb,currentColor 25%,transparent);border-radius:6px;background:transparent;color:inherit;font:400 14px/1 var(--sans,system-ui,sans-serif);-webkit-appearance:auto;appearance:auto}
+:root:not(#_) header .more-settings .palette-options{position:static!important;display:flex!important;flex-direction:column;align-items:stretch;gap:2px;width:auto;padding:0!important;border:0!important;box-shadow:none!important;background:transparent!important}
+:root:not(#_) header .more-settings .palette-options button{min-height:34px;padding:4px 8px 4px 4px;gap:8px;font:400 13px/1.2 var(--sans,system-ui,sans-serif);border-radius:6px;white-space:nowrap;color:inherit}
+:root:not(#_) header .more-settings .palette-options i{width:28px;height:24px;font-size:12px}
+/* the map's utilities row takes no room until it has something to show */
+@media (max-width:760px){:root:not(#_) header nav.atlas-utilities{display:contents!important}}
+:root:not(#_) header nav.primary .more-menu>summary{color:var(--ui-ink,var(--reading-ink,var(--ink,#182028)))!important;opacity:1}

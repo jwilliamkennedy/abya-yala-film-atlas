@@ -46,6 +46,31 @@ nav.primary{align-items:center}
 .more-menu>div a{color:var(--ink);border:0;padding:7px 14px;font-size:14px}.more-menu>div a:hover{color:var(--accent)}
 .more-menu .more-group{font:600 10.5px/1 var(--sans);letter-spacing:.09em;text-transform:uppercase;color:var(--muted);padding:12px 14px 4px}
 #now .by a.out{font-size:14px}
+
+/* 8 Nov · Watch: one player, one list */
+h1{margin:0 0 6px}.lede{font-size:17px;color:var(--muted);margin:0 0 18px}
+#now{background:none;border:0;padding:0;margin:0 0 22px}
+#now .frame{border-radius:6px}
+.now-cap{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-top:12px}
+#now h2{font:400 24px/1.25 var(--serif);margin:0 0 2px}#now .by{font-size:14px;color:var(--muted);margin:0}#now .note{font-size:13px;color:var(--muted);margin:4px 0 0}#now .note:empty{display:none}
+#next{flex:none;font:inherit;font-size:14px;min-height:36px;padding:0 14px;border:1px solid var(--line);border-radius:999px;background:transparent;color:var(--ink);cursor:pointer}
+#next:hover{border-color:var(--ink)}
+.tools{gap:10px 12px}
+.tools select{font:inherit;font-size:14px;height:38px;padding:0 10px;border:1px solid var(--line);border-radius:4px;background:var(--bg);color:var(--ink);max-width:100%}
+#q{height:38px}
+#list{margin-top:4px}
+#list>li{display:grid;grid-template-columns:44px 1fr;gap:4px 14px;align-items:start;padding:12px 0}
+#list>li.now{background:color-mix(in srgb,var(--accent) 7%,transparent);border-radius:6px}
+.pl{width:40px;height:40px;border-radius:50%;border:1px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:13px;padding:0 0 0 2px;margin-top:2px}
+.pl:hover,li.now .pl{background:var(--ink);color:var(--bg)}
+.pl.off{border-style:dashed;border-color:var(--line);color:var(--muted);cursor:default;font-size:15px;padding:0}
+.ft{font:400 19px/1.3 var(--serif);color:var(--ink);margin:0}.ft small{font:13px var(--sans);color:var(--muted);margin-left:8px}
+.fb{font-size:14px;color:var(--muted);margin:2px 0 0}
+.fl{display:flex;flex-wrap:wrap;gap:4px 16px;margin-top:6px;font-size:13px}
+.fl a,.fl button{font-size:13px}
+.fl .scr{margin:0;min-height:26px;padding:0 10px}
+.ttag{color:var(--muted)}
+@media (max-width:560px){.now-cap{flex-direction:column;gap:8px}#list>li{grid-template-columns:40px 1fr;gap:4px 10px}.tools select{flex:1 1 45%}}
 </style><script defer src="assets/counter.js"></script>
 <style id="site-nav-css">
 /* the header sits exactly where the map's does: brand at left, the menu right after it, same sizes */
@@ -62,44 +87,31 @@ header nav.primary>a,header nav.primary .more-menu summary{font:400 15px/1 var(-
  header nav.primary{flex-wrap:wrap!important;column-gap:18px!important;margin-top:5px}
  header nav.primary>a,header nav.primary .more-menu summary{height:44px;font-size:16px!important}
 }
-.brand img{width:30px;height:30px;flex:none}
 nav.primary{display:flex;flex-wrap:wrap;align-items:center;gap:4px 20px}
 nav.primary>a{color:var(--ink);border:0;font-size:15px;padding:6px 0}
 nav.primary a[aria-current]{box-shadow:inset 0 -2px 0 var(--accent,var(--gold))}
-.more-menu{position:relative}
-.more-menu summary{list-style:none;cursor:pointer;font-size:15px;color:var(--ink);padding:6px 0}
-.more-menu summary::-webkit-details-marker{display:none}
-.more-menu summary::after{content:' \25BE';font-size:11px;color:var(--muted)}
-.more-menu.here summary{box-shadow:inset 0 -2px 0 var(--accent,var(--gold))}
-.more-menu>div{position:absolute;right:0;top:100%;z-index:50;min-width:220px;background:var(--bg);border:1px solid var(--line);border-radius:8px;box-shadow:0 10px 30px rgba(0,0,0,.14);padding:6px 0;display:flex;flex-direction:column}
-.more-menu>div a{color:var(--ink);border:0;padding:7px 14px;font-size:14px}
-.more-menu>div a:hover,.more-menu>div a:focus-visible{color:var(--accent,var(--gold));background:var(--card,var(--bg2))}
-.more-menu>div a[aria-current]{box-shadow:inset 3px 0 0 var(--accent,var(--gold))}
-.more-menu .more-group{font:600 10.5px/1 var(--sans,system-ui,sans-serif);letter-spacing:.09em;text-transform:uppercase;color:var(--muted);padding:12px 14px 4px}
 /* links: ink inside the atlas, red with an arrow when they leave it (the same rule as the map) */
 main a:not([href^="http"]):not(.primary){color:var(--ink);border-bottom-color:color-mix(in srgb,var(--ink) 30%,transparent)}
 main a:not([href^="http"]):not(.primary):hover{border-bottom-color:var(--ink)}
 main a[href^="http"]{color:var(--accent,var(--gold))}
-@media (max-width:560px){.more-menu>div{position:fixed;left:16px;right:16px;min-width:0}}
 </style>
+<link rel="stylesheet" href="assets/site-menu.css?v=1"><script defer src="assets/site-menu.js?v=1"></script>
 </head><body>
-<header><a class="brand" href="./"><img src="assets/icon-1107.svg" alt=""><span>Indigenous Cinema Atlas<small>Abya Yala and Turtle Island</small></span></a>
-<nav class="primary" aria-label="Explore the atlas"><a href="about.html">About</a><a href="./#view=filmmakers">Filmmakers</a><a href="./#view=films">Films</a><a href="./#view=land">Land</a><a href="./?constellate=1">Constellate</a><a href="watch.html" aria-current="page">Watch</a><details class="more-menu"><summary>More</summary><div><span class="more-group">Browse</span><a href="languages.html">Languages</a><a href="themes.html">Themes</a><a href="timeline.html">Timeline</a><a href="globe-lab/">Globe (preview)</a><span class="more-group">Your list</span><a href="screening.html" data-screen-count>Screening list</a><span class="more-group">About the data</span><a href="data.html">Data and downloads</a><a href="corrections.html">Suggest a correction</a></div></details></nav></header>
+<header><a class="brand" href="./"><svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><circle cx="30" cy="34" r="20" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="30" cy="34" r="8.5" fill="none" stroke="currentColor" stroke-width="2.6"/><path d="M30 14.5v6M30 47.5v6M10.5 34h6M43.5 34h6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" opacity=".5"/><path class="star" d="M49 7 L51.4 13.6 L58 16 L51.4 18.4 L49 25 L46.6 18.4 L40 16 L46.6 13.6 Z"/></svg><span>Indigenous Cinema Atlas<small>Abya Yala and Turtle Island</small></span></a>
+<nav class="primary" aria-label="Explore the atlas"><a href="about.html">About</a><a href="./#view=filmmakers">Filmmakers</a><a href="./#view=films">Films</a><a href="./#view=land">Land</a><a href="./?constellate=1">Constellate</a><a href="watch.html" aria-current="page">Watch</a><details class="more-menu"><summary>More</summary><div><a href="languages.html">Languages</a><a href="themes.html">Themes</a><a href="timeline.html">Timeline</a><span class="more-sep"></span><a href="screening.html" data-screen-count>Screening list</a><span class="more-sep"></span><a href="data.html">Data and downloads</a><a href="corrections.html">Suggest a correction</a></div></details></nav></header>
 <main>
-<p class="eyebrow">Watch</p><h1>Films you can watch now</h1>
-<p class="lede"><span id="total">0</span> films by filmmakers on the atlas · <span id="playable">0</span> play on this page.</p>
-<p class="note">The others open where they live (↗). Players and availability can vary by region. Filmmaker names open their page on the atlas.</p>
-<section id="now" aria-label="Now showing"><p class="label"><span>Now showing</span><button type="button" id="next">Another film ↻</button></p>
-<div class="frame"><iframe id="now-frame" title="Player" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
-<h2 id="now-title"></h2><p class="by" id="now-by"></p></section>
-<div class="tools"><input id="q" type="search" placeholder="Search films, filmmakers, peoples, years…" aria-label="Search films">
-<div class="filters"><span class="seg" role="group" aria-label="Group by"><button type="button" data-group="maker">Filmmaker A–Z</button><button type="button" data-group="people">People</button><button type="button" data-group="year">Decade</button></span>
-<label class="check"><input id="here" type="checkbox"> Plays on this page</label><span class="count" id="count"></span></div></div>
-<div id="list" aria-live="polite"></div>
-<p class="credit">Films come from the atlas's published records; more appear as filmmakers are verified. Something wrong or missing? <a class="in" href="corrections.html">Suggest a correction</a>.</p>
+<h1>Watch</h1>
+<p class="lede"><span id="total">0</span> films by filmmakers on the atlas. <span id="playable">0</span> play here.</p>
+<section id="now" aria-label="Player"><div class="frame"><iframe id="now-frame" title="Player" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
+<div class="now-cap"><div><h2 id="now-title"></h2><p class="by" id="now-by"></p><p class="note" id="now-note"></p></div><button type="button" id="next" title="Play another film">Another film</button></div></section>
+<div class="tools"><input id="q" type="search" placeholder="Search films, filmmakers, peoples" aria-label="Search films">
+<select id="theme" aria-label="Theme"><option value="">All themes</option></select>
+<select id="sort" aria-label="Order"><option value="maker">Filmmaker A–Z</option><option value="new">Newest first</option><option value="title">Title A–Z</option></select>
+<label class="check"><input id="here" type="checkbox"> Plays here</label><span class="count" id="count"></span></div>
+<ol id="list" aria-live="polite"></ol>
+<p class="credit">Something wrong or missing? <a class="in" href="corrections.html">Suggest a correction</a>.</p>
 </main>
-<script src="watch-data.js"></script>
-<script src="watch-20261108.js?v=2"></script>
+<script src="watch-data.js?v=2"></script>
+<script src="watch-20261108.js?v=3"></script>
 <script src="assets/screening.js"></script>
-<script id="site-nav-js">document.addEventListener('click',function(e){document.querySelectorAll('details.more-menu[open]').forEach(function(d){if(!d.contains(e.target))d.open=false;});});
-document.addEventListener('keydown',function(e){if(e.key==='Escape')document.querySelectorAll('details.more-menu[open]').forEach(function(d){d.open=false;d.querySelector('summary').focus();});});</script></body></html>
+</body></html>

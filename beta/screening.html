@@ -26,6 +26,7 @@ ul.dir{list-style:none;padding:0;margin:0;columns:2 280px;column-gap:28px}ul.dir
 #q{width:100%;font:inherit;padding:9px 12px;border:1px solid var(--line);border-radius:4px;background:transparent;color:var(--ink);margin:10px 0}
 @media (max-width:560px){ol.films li{grid-template-columns:88px 1fr}.thumb,.noimg{width:88px}}
 </style><script defer src="assets/counter.js"></script>
+<link rel="stylesheet" href="assets/site-menu.css?v=1"><script defer src="assets/site-menu.js?v=1"></script>
 <style id="site-nav-css">
 /* the header sits exactly where the map's does: brand at left, the menu right after it, same sizes */
 header{display:flex!important;flex-wrap:nowrap!important;justify-content:flex-start!important;align-items:center!important;gap:24px!important;padding:10px 28px!important;min-height:94px;box-sizing:border-box}
@@ -41,27 +42,15 @@ header nav.primary>a,header nav.primary .more-menu summary{font:400 15px/1 var(-
  header nav.primary{flex-wrap:wrap!important;column-gap:18px!important;margin-top:5px}
  header nav.primary>a,header nav.primary .more-menu summary{height:44px;font-size:16px!important}
 }
-.brand img{width:30px;height:30px;flex:none}
 nav.primary{display:flex;flex-wrap:wrap;align-items:center;gap:4px 20px}
 nav.primary>a{color:var(--ink);border:0;font-size:15px;padding:6px 0}
 nav.primary a[aria-current]{box-shadow:inset 0 -2px 0 var(--accent,var(--gold))}
-.more-menu{position:relative}
-.more-menu summary{list-style:none;cursor:pointer;font-size:15px;color:var(--ink);padding:6px 0}
-.more-menu summary::-webkit-details-marker{display:none}
-.more-menu summary::after{content:' \25BE';font-size:11px;color:var(--muted)}
-.more-menu.here summary{box-shadow:inset 0 -2px 0 var(--accent,var(--gold))}
-.more-menu>div{position:absolute;right:0;top:100%;z-index:50;min-width:220px;background:var(--bg);border:1px solid var(--line);border-radius:8px;box-shadow:0 10px 30px rgba(0,0,0,.14);padding:6px 0;display:flex;flex-direction:column}
-.more-menu>div a{color:var(--ink);border:0;padding:7px 14px;font-size:14px}
-.more-menu>div a:hover,.more-menu>div a:focus-visible{color:var(--accent,var(--gold));background:var(--card,var(--bg2))}
-.more-menu>div a[aria-current]{box-shadow:inset 3px 0 0 var(--accent,var(--gold))}
-.more-menu .more-group{font:600 10.5px/1 var(--sans,system-ui,sans-serif);letter-spacing:.09em;text-transform:uppercase;color:var(--muted);padding:12px 14px 4px}
 /* links: ink inside the atlas, red with an arrow when they leave it (the same rule as the map) */
 main a:not([href^="http"]):not(.primary){color:var(--ink);border-bottom-color:color-mix(in srgb,var(--ink) 30%,transparent)}
 main a:not([href^="http"]):not(.primary):hover{border-bottom-color:var(--ink)}
 main a[href^="http"]{color:var(--accent,var(--gold))}
-@media (max-width:560px){.more-menu>div{position:fixed;left:16px;right:16px;min-width:0}}
 </style>
-</head><body><header><a class="brand" href="./"><img src="assets/icon-1107.svg" alt=""><span>Indigenous Cinema Atlas<small>Abya Yala and Turtle Island</small></span></a><nav class="primary" aria-label="Explore the atlas"><a href="about.html">About</a><a href="./#view=filmmakers">Filmmakers</a><a href="./#view=films">Films</a><a href="./#view=land">Land</a><a href="./?constellate=1">Constellate</a><a href="watch.html">Watch</a><details class="more-menu here"><summary>More</summary><div><span class="more-group">Browse</span><a href="languages.html">Languages</a><a href="themes.html">Themes</a><a href="timeline.html">Timeline</a><a href="globe-lab/">Globe (preview)</a><span class="more-group">Your list</span><a href="screening.html" aria-current="page" data-screen-count>Screening list</a><span class="more-group">About the data</span><a href="data.html">Data and downloads</a><a href="corrections.html">Suggest a correction</a></div></details></nav></header><main><script src="assets/screening.js"></script><style>.bars{display:flex;align-items:flex-end;gap:6px;height:150px;margin:18px 0 6px;border-bottom:1px solid var(--line)}
+</head><body><header><a class="brand" href="./"><svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><circle cx="30" cy="34" r="20" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="30" cy="34" r="8.5" fill="none" stroke="currentColor" stroke-width="2.6"/><path d="M30 14.5v6M30 47.5v6M10.5 34h6M43.5 34h6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" opacity=".5"/><path class="star" d="M49 7 L51.4 13.6 L58 16 L51.4 18.4 L49 25 L46.6 18.4 L40 16 L46.6 13.6 Z"/></svg><span>Indigenous Cinema Atlas<small>Abya Yala and Turtle Island</small></span></a><nav class="primary" aria-label="Explore the atlas"><a href="about.html">About</a><a href="./#view=filmmakers">Filmmakers</a><a href="./#view=films">Films</a><a href="./#view=land">Land</a><a href="./?constellate=1">Constellate</a><a href="watch.html">Watch</a><details class="more-menu here"><summary>More</summary><div><a href="languages.html">Languages</a><a href="themes.html">Themes</a><a href="timeline.html">Timeline</a><span class="more-sep"></span><a href="screening.html" aria-current="page" data-screen-count>Screening list</a><span class="more-sep"></span><a href="data.html">Data and downloads</a><a href="corrections.html">Suggest a correction</a></div></details></nav></header><main><script src="assets/screening.js"></script><style>.bars{display:flex;align-items:flex-end;gap:6px;height:150px;margin:18px 0 6px;border-bottom:1px solid var(--line)}
 .bars a{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;border:0;color:var(--muted);font-size:12px;height:100%}
 .bars a span{width:100%;background:var(--accent);opacity:.75;border-radius:2px 2px 0 0;min-height:2px}.bars a:hover span{opacity:1}
 .tl{list-style:none;padding:0;margin:0}.tl li{display:grid;grid-template-columns:52px 1fr auto;gap:2px 12px;padding:9px 0;border-bottom:1px solid var(--line);align-items:baseline}
@@ -69,7 +58,7 @@ main a[href^="http"]{color:var(--accent,var(--gold))}
 .scr{font:inherit;font-size:12px;border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:999px;padding:1px 10px;cursor:pointer;white-space:nowrap}.scr[aria-pressed=true]{background:var(--ink);color:var(--bg)}
 #list li{grid-template-columns:28px 1fr auto}#list textarea{grid-column:2/4;width:100%;font:inherit;font-size:14px;padding:6px 8px;border:1px solid var(--line);border-radius:4px;background:transparent;color:var(--ink);min-height:38px}
 .mv{border:0;background:none;color:var(--muted);cursor:pointer;font-size:14px;padding:0 4px}</style>
-<p class="crumb">Indigenous Cinema Atlas</p><h1>Screening list</h1><p class="who">Films you add from filmmaker pages, the timeline and Watch gather here, kept in this browser. Reorder them, add notes, and copy the list into a syllabus.</p>
+<h1>Screening list</h1><p class="who">Films you add from filmmaker pages, the timeline and Watch gather here, kept in this browser. Reorder them, add notes, and copy the list into a syllabus.</p>
 <div class="actions"><button type="button" class="primary" id="copy">Copy as syllabus</button><button type="button" id="csv">Download CSV</button><button type="button" id="clear">Clear list</button></div>
 <p id="empty" class="who">Nothing here yet. Use “＋ Screening list” on any film.</p><ol class="tl" id="list"></ol><p id="msg" class="note" aria-live="polite"></p>
 <script>(()=>{const $=s=>document.querySelector(s),S=()=>window.AtlasScreening;const esc=s=>String(s||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
@@ -84,5 +73,4 @@ $('#copy').onclick=async()=>{try{await navigator.clipboard.writeText('Screening 
 $('#csv').onclick=()=>{const q=s=>'"'+String(s||'').replace(/"/g,'""')+'"';const rows=[['order','title','year','filmmaker','watch','atlas_page','notes'],...S().load().map((x,i)=>[i+1,x.title,x.year,x.maker,x.watch,x.page,x.note])];
  const a=document.createElement('a');a.href=URL.createObjectURL(new Blob(['\ufeff'+rows.map(r=>r.map(q).join(',')).join('\n')],{type:'text/csv'}));a.download='screening-list.csv';a.click();};
 $('#clear').onclick=()=>{if(S().load().length&&confirm('Clear your screening list?')){S().save([]);draw();}};
-window.addEventListener('screening-change',()=>{if(!document.activeElement||!document.activeElement.dataset||document.activeElement.dataset.note===undefined)draw();});draw();})();</script></main><script id="site-nav-js">document.addEventListener('click',function(e){document.querySelectorAll('details.more-menu[open]').forEach(function(d){if(!d.contains(e.target))d.open=false;});});
-document.addEventListener('keydown',function(e){if(e.key==='Escape')document.querySelectorAll('details.more-menu[open]').forEach(function(d){d.open=false;d.querySelector('summary').focus();});});</script></body></html>
+window.addEventListener('screening-change',()=>{if(!document.activeElement||!document.activeElement.dataset||document.activeElement.dataset.note===undefined)draw();});draw();})();</script></main></body></html>

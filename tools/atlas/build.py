@@ -84,7 +84,7 @@ def link_of(l):
     m = re.match(r'Official Wapikoni film page: (\S+)', note)
     return {'label': l.get('title') or 'Watch', 'url': m.group(1) if m else l['url'], 'note': '' if m else note, 'embed': embed_of(l['url'])}
 
-def watch_index(records, explore):
+def watch_index(records, explore, facets=None):
     """beta/watch-data.js: every published film with a link to watch the whole film (not a trailer)."""
     items, seen = [], {}
     for r in records:
@@ -105,6 +105,9 @@ def watch_index(records, explore):
                 continue
             it = {'fid': f['id'], 't': f['title'], 'y': f.get('year') or None, 'makers': [maker],
                   'links': [link_of(l) for l in links]}
+            tags = ((facets or {}).get('films') or {}).get(f['id']) or {}
+            if tags.get('t'):
+                it['th'] = tags['t']
             seen[f['id']] = it
             items.append(it)
     head = '/* Built by tools/atlas/build.py from the Published sheet: films by filmmakers on the atlas that can be watched in full. */\n'
@@ -257,7 +260,7 @@ def build(path, state_path, check_only=False):
     all_ids = [r['id'] for r in state['records']] + [f['id'] for r in state['records'] for f in r['films']]
     facets = film_tags(records, owned['ATLAS_THEMES_1103'], state['globals'].get('ATLAS_THEMES_1103', {}).get('families', {}))
     sizes = bake.write(records, state['countries'], state['meta'], owned, state['globals'], edges=edges, all_ids=all_ids, facets=facets)
-    nw, ne = watch_index(records, {**{k: v for k, v in state['globals'].get('ATLAS_FILM_EXPLORATION', {}).items()}, **owned['ATLAS_FILM_EXPLORATION']})
+    nw, ne = watch_index(records, {**{k: v for k, v in state['globals'].get('ATLAS_FILM_EXPLORATION', {}).items()}, **owned['ATLAS_FILM_EXPLORATION']}, facets)
     print(f'  watch: {nw} films, {ne} playable on the page')
     out = pathlib.Path('beta/data/atlas-published.csv')
     with open(out, 'w', newline='', encoding='utf-8') as fh:

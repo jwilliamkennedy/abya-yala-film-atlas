@@ -157,14 +157,14 @@ items = []
 for l in order:
     a = A.get(l, {}); codes = []
     if a.get('glottocode'): codes.append(f'<a href="https://glottolog.org/resource/languoid/id/{esc(a["glottocode"])}" rel="noopener">Glottolog {esc(a["glottocode"])}</a>' + (' (language group)' if a.get('glottolog_level') == 'family' else ''))
-    if a.get('iso639_3'): codes.append(f'ISO 639-3 <code>{esc(a["iso639_3"])}</code>')
+    if a.get('iso639_3'): codes.append(f'<a href="https://iso639-3.sil.org/code/{esc(a["iso639_3"])}" rel="noopener" title="International language code (ISO 639-3)">ISO code {esc(a["iso639_3"])}</a>')
     if a.get('match') == 'unresolved': codes.append(esc(a.get('note', 'variety not stated in the credit')))
     fl = sorted(by_lang[l], key=lambda x: (x[1]['year'] or 9999, x[1]['title'].lower()))
     items.append(f'<li id="{esc(key(l).replace(" ", "-"))}"><h2>{esc(l)}</h2><p class="codes">{len(fl)} film{"s" if len(fl) != 1 else ""} · {" · ".join(codes)}</p><ol>{"".join(film_li(fid, e) for fid, e in fl)}</ol></li>')
 n_lang_films = sum(1 for e in films.values() if e['languages'])
 ind = [l for l in order if A.get(l, {}).get('indigenous') == 'yes']
 page('languages.html', 'Languages', f'Films on the Indigenous Cinema Atlas by the languages spoken in them, with Glottolog and ISO 639-3 codes.',
-     f'<p class="crumb"><a href="./">Indigenous Cinema Atlas</a></p><h1>Languages</h1>'
+     f'<h1>Languages</h1>'
      f'<p class="who">{len(ind)} Indigenous languages across {n_lang_films} films with a recorded language, of {len(films):,} films on the public map. Each language links to its Glottolog entry; where a credit names a language group rather than one variety, the group is linked. Languages are recorded only as a film’s credits or synopsis state them. Updated {TODAY}.</p>'
      f'<p class="jump">{" ".join(f"<a href=\"#{esc(key(l).replace(" ", "-"))}\">{esc(l)}</a>" for l in order)}</p>'
      f'<ul class="facet-list">{"".join(items)}</ul><p class="who"><a href="data/languages.csv">Language authority (CSV)</a> · <a href="data/film-facets.csv">All film facets (CSV)</a> · <a href="data.html">About the data</a></p>')
@@ -181,7 +181,7 @@ for fam, tags in T['families'].items():
     secs.append(f'<section class="fam"><h2 style="font:400 28px/1.2 Georgia,serif">{esc(fam)}</h2><ul class="facet-list">{"".join(lis)}</ul></section>')
 n_th = sum(1 for e in films.values() if e['themes'])
 page('themes.html', 'Themes', 'Films on the Indigenous Cinema Atlas by theme: 30 themes in five families, each tagged from a published synopsis.',
-     f'<p class="crumb"><a href="./">Indigenous Cinema Atlas</a></p><h1>Themes</h1>'
+     f'<h1>Themes</h1>'
      f'<p class="who">{n_th} of {len(films):,} films on the public map are tagged so far, each from a published synopsis whose link is kept with the tag. A film can carry several themes; its primary theme is listed first in the data. Tagging continues. Updated {TODAY}.</p>'
      f'<p class="jump">{" ".join(f"<a href=\"#{esc(key(t).replace(" ", "-"))}\">{esc(t)}</a>" for fam in T["families"].values() for t in fam if by_theme.get(t))}</p>'
      + ''.join(secs) + '<p class="who"><a href="data/film-facets.csv">All film facets (CSV)</a> · <a href="data.html">About the data</a></p>')
