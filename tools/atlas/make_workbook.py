@@ -118,7 +118,7 @@ def rows_for(records):
     order = {r['id']: i for i, r in enumerate(state['records'])}
     for r in sorted(records, key=lambda r: (fkey(r['name']), r['id'])):
         mc = maker_cells(r, order[r['id']])
-        orig = {k: v for k, v in r.items() if k != 'films'}
+        orig = {k: (None if k == 'films' else v) for k, v in r.items()}  # films come from the rows; the key keeps its place
         orig['_pos'] = order[r['id']]
         orig['_lands'] = EDGES.get(r['id'], [])
         orig['_film_ids'] = [f['id'] for f in r.get('films') or []]

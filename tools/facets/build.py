@@ -11,6 +11,8 @@ Outputs : beta/data/film-facets.csv   one row per film, field and value, with co
 """
 import csv, json, re, sys, glob, html, datetime, os, unicodedata, collections
 PUB, BETA = sys.argv[1], sys.argv[2].rstrip('/')
+# optional: --themes <json {families, films}> (theme tags as built from atlas.xlsx), --js-out <path> (where the map's copy goes)
+OPT = {sys.argv[i]: sys.argv[i + 1] for i in range(3, len(sys.argv) - 1, 2)}
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TODAY = datetime.date.today().isoformat()
 BASE = 'https://jwilliamkennedy.github.io/abya-yala-film-atlas/beta'
@@ -18,8 +20,11 @@ esc = lambda s: html.escape(str(s or ''), quote=True)
 def key(s): return re.sub(r'[^a-z0-9]+', ' ', unicodedata.normalize('NFD', str(s or '')).encode('ascii', 'ignore').decode().lower()).strip()
 
 P = json.load(open(PUB, encoding='utf-8'))
-s = open(f'{BETA}/themes-1103-data.js', encoding='utf-8').read()
-i = s.index('window.ATLAS_THEMES_1103=') + len('window.ATLAS_THEMES_1103='); T, _ = json.JSONDecoder().raw_decode(s[i:])
+if '--themes' in OPT:
+    T = json.load(open(OPT['--themes'], encoding='utf-8'))
+else:
+    s = open(f'{BETA}/themes-1103-data.js', encoding='utf-8').read()
+    i = s.index('window.ATLAS_THEMES_1103=') + len('window.ATLAS_THEMES_1103='); T, _ = json.JSONDecoder().raw_decode(s[i:])
 FAMILY = {t: fam for fam, ts in T['families'].items() for t in ts}
 
 AUTH = list(csv.DictReader(open(f'{ROOT}/facets/languages_authority.csv', encoding='utf-8')))
@@ -123,7 +128,7 @@ json.dump(doc, open(f'{BETA}/data/film-facets.json', 'w', encoding='utf-8'), ens
 compact = {fid: {k: v for k, v in {'l': [x['label'] for x in e['languages']], 't': e['themes'], 'p': e['primary_theme'], 'f': e['form'], 'n': e['length']}.items() if v}
            for fid, e in films.items()}
 auth = {a['label']: {'g': a['glottocode'], 'i': a['iso639_3'], 'm': a['match'], 'x': a['indigenous'] == 'yes'} for a in AUTH}
-open(f'{BETA}/facets-data.js', 'w', encoding='utf-8').write(
+open(OPT.get('--js-out', f'{BETA}/facets-data.js'), 'w', encoding='utf-8').write(
     f'/* Built by tools/facets/build.py on {TODAY} from the public records, the theme tagging and the language authority. Edit those, not this file. */\n'
     f'window.ATLAS_FACETS={json.dumps({"films": compact, "families": T["families"], "languages": auth, "titleIndex": {key(e["title"]) + "|" + str(e["year"] or ""): fid for fid, e in films.items()}}, ensure_ascii=False, separators=(",", ":"))};\n')
 

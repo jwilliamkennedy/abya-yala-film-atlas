@@ -1,9 +1,9 @@
 """Write the flat beta files.
 
-  beta/atlas-data.js       ATLAS_FLAT (records, countries, meta) + images, watch links and theme tags of the published films
-  beta/reference-data.js   reference tables (land names and links, country index, verification notes, entries for films
-                           not on the map): frozen from the captured beta, with the workbook's land-link edits applied
-  beta/index-flat.html     the beta page loading those two files instead of the layers
+  beta/atlas-data.js       everything of ours in one file: reference tables (land names and links, country index, verification
+                           notes; frozen from the captured beta, with the workbook's land-link edits applied), the records,
+                           images, watch links, theme tags, and the film tags the filters use
+  beta/index-flat.html     the beta page loading it (plus the Native Land shapes and territory-fixes.js) instead of the layers
 
 Normally called by tools/atlas/build.py (from atlas.xlsx). For the one-time identity test it can bake a captured
 state directly:  python3 tools/atlas/bake.py <state.json> --all-records   (never commit that output: it holds leads)."""
@@ -11,9 +11,9 @@ import json, re, sys, pathlib
 
 B = pathlib.Path('beta')
 OWNED = ['ATLAS_PROFILE_MEDIA', 'ATLAS_FILM_EXPLORATION', 'ATLAS_THEMES_1103']
-SKIP = {'ATLAS_UPDATE_1031', 'ATLAS_FACETS', 'ATLAS_ON_MAP', 'ATLAS_FLAT'}
+SKIP = {'ATLAS_UPDATE_1031', 'ATLAS_FACETS', 'ATLAS_ON_MAP', 'ATLAS_FLAT'}  # merge input / built with the records / defined in code
 MIXED = ['ATLAS_REBUILD_SUPPLEMENT', 'ATLAS_RESEARCH_ADDITIONS', 'ATLAS_SOUTH_AMERICA_50', 'ATLAS_SOUTH_AMERICA_50_BATCH2', 'ATLAS_PILOT_CATALOG']
-KEEP_PAGE = {'territories-data.js', 'facets-data.js'}
+KEEP_PAGE = {'territories-data.js'}  # Native Land shapes stay their own file; everything of ours is in atlas-data.js
 
 def js(name, value):
     return f'window.{name}=' + json.dumps(value, ensure_ascii=False, separators=(',', ':')) + ';\n'
@@ -46,7 +46,7 @@ def reference_globals(base_globals, records, all_ids=None, keep_record_arrays=Fa
         ref[k] = scrub(v, hidden) if hidden else v
     return ref
 
-def write(records, countries, meta, owned, base_globals, edges=None, keep_record_arrays=False, all_ids=None):
+def write(records, countries, meta, owned, base_globals, edges=None, keep_record_arrays=False, all_ids=None, facets=None):
     """owned: {global: {film_id: entry}} for published films; base_globals: captured globals (reference source)."""
     film_ids = {f['id'] for r in records for f in r.get('films') or []}
     rec_ids = {r['id'] for r in records}
@@ -60,21 +60,21 @@ def write(records, countries, meta, owned, base_globals, edges=None, keep_record
     if edges is not None:
         ref['ATLAS_LAND_CROSSINDEX'] = dict(ref['ATLAS_LAND_CROSSINDEX'], edges=scrub(edges, hidden))
     th_base = base_globals.get('ATLAS_THEMES_1103', {})
-    ref_txt = ('/* Reference tables, frozen from the beta as it stood with its layers (tools/atlas). Land names and links, '
-               'country index, verification notes, and entries for films not on the map. */\n'
-               + ''.join(js(k, ref[k]) for k in sorted(ref))
-               + merge_js('ATLAS_PROFILE_MEDIA', orphans.get('ATLAS_PROFILE_MEDIA', {}))
-               + merge_js('ATLAS_FILM_EXPLORATION', orphans.get('ATLAS_FILM_EXPLORATION', {}))
-               + js('ATLAS_THEMES_1103', {**{k: v for k, v in th_base.items() if k != 'films'}, 'films': orphans.get('ATLAS_THEMES_1103', {})}))
-    (B / 'reference-data.js').write_text(ref_txt, encoding='utf-8')
-    head = '/* Built by tools/atlas/build.py from the Published sheet of atlas.xlsx (private research repository). Edit the workbook, not this file. */\n'
-    data_txt = (head + js('ATLAS_FLAT', {'records': records, 'countries': countries, 'meta': meta})
-                + merge_js('ATLAS_PROFILE_MEDIA', owned.get('ATLAS_PROFILE_MEDIA', {}))
-                + merge_js('ATLAS_FILM_EXPLORATION', owned.get('ATLAS_FILM_EXPLORATION', {}))
-                + 'Object.assign(window.ATLAS_THEMES_1103.films,' + json.dumps(owned.get('ATLAS_THEMES_1103', {}), ensure_ascii=False, separators=(',', ':')) + ');\n')
-    (B / 'atlas-data.js').write_text(data_txt, encoding='utf-8')
+    head = ('/* The atlas data: built by tools/atlas/build.py from atlas.xlsx (private research repository). Edit the workbook, not this file.\n'
+            '   1. reference tables (land names and links, country index, verification notes; frozen 8 Nov 2026 from the layered beta)\n'
+            '   2. filmmakers and films (Published sheet)  3. images, watch links, theme tags  4. film tags for filters (languages, themes, form, length) */\n')
+    txt = (head + ''.join(js(k, ref[k]) for k in sorted(ref))
+           + js('ATLAS_PROFILE_MEDIA', orphans.get('ATLAS_PROFILE_MEDIA', {}))
+           + js('ATLAS_FILM_EXPLORATION', orphans.get('ATLAS_FILM_EXPLORATION', {}))
+           + js('ATLAS_THEMES_1103', {**{k: v for k, v in th_base.items() if k != 'films'}, 'films': orphans.get('ATLAS_THEMES_1103', {})})
+           + js('ATLAS_FLAT', {'records': records, 'countries': countries, 'meta': meta})
+           + 'Object.assign(window.ATLAS_PROFILE_MEDIA,' + json.dumps(owned.get('ATLAS_PROFILE_MEDIA', {}), ensure_ascii=False, separators=(',', ':')) + ');\n'
+           + 'Object.assign(window.ATLAS_FILM_EXPLORATION,' + json.dumps(owned.get('ATLAS_FILM_EXPLORATION', {}), ensure_ascii=False, separators=(',', ':')) + ');\n'
+           + 'Object.assign(window.ATLAS_THEMES_1103.films,' + json.dumps(owned.get('ATLAS_THEMES_1103', {}), ensure_ascii=False, separators=(',', ':')) + ');\n'
+           + (js('ATLAS_FACETS', facets) if facets is not None else ''))
+    (B / 'atlas-data.js').write_text(txt, encoding='utf-8')
     page()
-    return {'atlas-data.js MB': round((B / 'atlas-data.js').stat().st_size / 1e6, 2), 'reference-data.js MB': round((B / 'reference-data.js').stat().st_size / 1e6, 2)}
+    return {'atlas-data.js MB': round((B / 'atlas-data.js').stat().st_size / 1e6, 2)}
 
 def page():
     html = (B / 'index.html').read_text(encoding='utf-8')
@@ -83,7 +83,7 @@ def page():
     for m in tags:
         src = m.group(1)
         if src.endswith('-data.js') and src not in KEEP_PAGE:
-            rep = '<script src="reference-data.js"></script>\n<script src="atlas-data.js"></script>\n' if first else ''
+            rep = '<script src="atlas-data.js"></script>\n' if first else ''
             first = False
             out = out.replace(m.group(0), rep, 1)
     out = re.sub(r'(<script\b[^>]*\bsrc="territories-data\.js[^"]*"[^>]*></script>)', r'\1<script src="territory-fixes.js" defer></script>', out, count=1)
