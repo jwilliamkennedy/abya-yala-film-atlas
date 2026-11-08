@@ -56,6 +56,11 @@ def check_rows(rows, L, sheet, statuses, errors, notes):
             for u in ([x for x in v(r.get(c)).split('; ') if x] if c == 'language_source' else ([v(r.get(c))] if v(r.get(c)) else [])):
                 if not re.match(r'(https?://|assets/)', u):
                     errors.append(f'{where}: {c} "{u[:60]}" is not a link')
+        for c, lst in (('credit', 'credit role'), ('affiliation_basis', 'affiliation basis'), ('country_basis', 'country basis'), ('review_status', 'review status')):
+            cats = L.get(lst)
+            val = v(r.get(c))
+            if cats and val and val.split(' — ')[0] not in cats:
+                errors.append(f'{where}: {c} "{val[:50]}" must start with one of the {lst} values on the Lists sheet (then optionally " — " and detail)')
         y = r.get('year')
         if v(y) and not re.fullmatch(r'\d{4}', v(y)):
             notes.append(f'{where}: year "{v(y)}" is not a four-digit year')
