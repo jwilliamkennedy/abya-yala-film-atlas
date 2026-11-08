@@ -179,8 +179,8 @@ function territoryFocus(){
   let best=null;for(const it of items()){const b=it.b;if(pt.x<b.x||pt.x>b.x+b.width||pt.y<b.y||pt.y>b.y+b.height)continue;if(best&&it.a>=best.a)continue;
    try{if(it.p.isPointInFill(pt))best=it;}catch(err){}}
   return best?best.p.getAttribute('data-land'):null;};
- svg.addEventListener('pointermove',e=>{if(e.buttons)return;lastEvent=e;if(raf)return;raf=requestAnimationFrame(()=>{raf=0;const id=hit(lastEvent);if(id!==hoverLand){hoverLand=id;draw();}});});
- svg.addEventListener('pointerleave',()=>{if(hoverLand){hoverLand=null;draw();}});
+ svg.addEventListener('pointermove',e=>{if(e.buttons)return;lastEvent=e;if(raf)return;raf=requestAnimationFrame(()=>{raf=0;const id=hit(lastEvent);if(id!==hoverLand){hoverLand=id;draw();}});},{capture:true});
+ (svg.closest('.map-panel')||svg).addEventListener('pointerleave',()=>{if(hoverLand){hoverLand=null;draw();}});
  const later=()=>setTimeout(draw,60);
  addEventListener('atlas-camera-change',later);document.addEventListener('click',later);document.addEventListener('keyup',e=>{if(e.key==='Enter'||e.key==='Escape')later();});
  const t=tint();if(t)new MutationObserver(()=>{cache=null;later();}).observe(t,{childList:true,attributes:true,attributeFilter:['d','style']});
