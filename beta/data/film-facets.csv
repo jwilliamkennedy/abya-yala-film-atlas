@@ -3,9 +3,9 @@ FILM-0007,Compañía,2019,theme,Cosmology and Origin Stories,Knowledge and Conti
 FILM-0007,Compañía,2019,theme,More-than-Human Relations,Land and Environment,https://www.themoviedb.org/movie/594019,tagged from a published synopsis
 FILM-0007,Compañía,2019,form,Documentary,,https://www.themoviedb.org/movie/594019,from the published synopsis
 FILM-0007,Compañía,2019,length,Feature,,https://www.themoviedb.org/movie/594019,from the published synopsis
-FILM-0008,El corral y el viento / The Corral and the Wind,2014,language,Aymara,nucl1667,https://www.wikidata.org/wiki/Q108666813,"language fill (languages_2026-11-08_part1.csv), checked against the source page"
-FILM-0008,El corral y el viento / The Corral and the Wind,2014,language,Spanish,stan1288,https://www.wikidata.org/wiki/Q108666813,"language fill (languages_2026-11-08_part1.csv), checked against the source page"
-FILM-0008,El corral y el viento / The Corral and the Wind,2014,language,German,stan1295,https://www.wikidata.org/wiki/Q108666813,"language fill (languages_2026-11-08_part1.csv), checked against the source page"
+FILM-0008,El corral y el viento / The Corral and the Wind,2014,language,Aymara,nucl1667,https://www.wikidata.org/wiki/Q108666813,recorded with the film
+FILM-0008,El corral y el viento / The Corral and the Wind,2014,language,Spanish,stan1288,https://www.wikidata.org/wiki/Q108666813,recorded with the film
+FILM-0008,El corral y el viento / The Corral and the Wind,2014,language,German,stan1295,https://www.wikidata.org/wiki/Q108666813,recorded with the film
 FILM-0008,El corral y el viento / The Corral and the Wind,2014,theme,Kinship,Lives and Relations,https://www.themoviedb.org/movie/333641,tagged from a published synopsis; primary theme
 FILM-0008,El corral y el viento / The Corral and the Wind,2014,theme,Youth,Lives and Relations,https://www.themoviedb.org/movie/333641,tagged from a published synopsis
 FILM-0008,El corral y el viento / The Corral and the Wind,2014,theme,More-than-Human Relations,Land and Environment,https://www.themoviedb.org/movie/333641,tagged from a published synopsis
@@ -194,8 +194,8 @@ CHECKED-DIR-0061-lake,Lake,2019,theme,Women and Gender,Lives and Relations,https
 CHECKED-DIR-0061-lake,Lake,2019,theme,Food Sovereignty,Land and Environment,https://www.nfb.ca/film/lake/,tagged from a published synopsis
 CHECKED-DIR-0061-lake,Lake,2019,theme,Water,Land and Environment,https://www.nfb.ca/film/lake/,tagged from a published synopsis
 CHECKED-DIR-0061-lake,Lake,2019,form,Documentary,,https://www.nfb.ca/film/lake/,from the published synopsis
-CHECKED-DIR-0062-inkwoforwhenthestarvingreturn,Inkwo for When the Starving Return,2024,language,English,stan1293,https://www.nfb.ca/film/inkwo-for-when-the-starving-return/,recorded with the film in the atlas
-CHECKED-DIR-0062-inkwoforwhenthestarvingreturn,Inkwo for When the Starving Return,2024,language,Dene,,https://www.nfb.ca/film/inkwo-for-when-the-starving-return/,recorded with the film in the atlas
+CHECKED-DIR-0062-inkwoforwhenthestarvingreturn,Inkwo for When the Starving Return,2024,language,English,stan1293,https://www.nfb.ca/film/inkwo-for-when-the-starving-return/,recorded with the film
+CHECKED-DIR-0062-inkwoforwhenthestarvingreturn,Inkwo for When the Starving Return,2024,language,Dene,,https://www.nfb.ca/film/inkwo-for-when-the-starving-return/,recorded with the film
 CHECKED-DIR-0062-inkwoforwhenthestarvingreturn,Inkwo for When the Starving Return,2024,theme,LGBTQIA2S,Lives and Relations,https://www.themoviedb.org/movie/1175546,tagged from a published synopsis; primary theme
 CHECKED-DIR-0062-inkwoforwhenthestarvingreturn,Inkwo for When the Starving Return,2024,theme,Health and Healing,Lives and Relations,https://www.themoviedb.org/movie/1175546,tagged from a published synopsis
 CHECKED-DIR-0062-inkwoforwhenthestarvingreturn,Inkwo for When the Starving Return,2024,form,Animation,,https://www.themoviedb.org/movie/1175546,from the published synopsis
@@ -394,7 +394,7 @@ DIR-0143-W1031-4,Lighting the Seventh Fire,1995,theme,Sovereignty and Self-Deter
 DIR-0143-W1031-4,Lighting the Seventh Fire,1995,theme,Cosmology and Origin Stories,Knowledge and Continuity,https://www.themoviedb.org/movie/485909,tagged from a published synopsis
 DIR-0143-W1031-4,Lighting the Seventh Fire,1995,form,Documentary,,https://www.themoviedb.org/movie/485909,from the published synopsis
 DIR-0143-W1031-4,Lighting the Seventh Fire,1995,length,Feature,,https://www.themoviedb.org/movie/485909,from the published synopsis
-FILM-0086,Inendi,,language,English,stan1293,https://en.wikipedia.org/wiki/Inendi,"language fill (languages_2026-11-08_part1.csv), checked against the source page"
+FILM-0086,Inendi,,language,English,stan1293,https://en.wikipedia.org/wiki/Inendi,recorded with the film
 FILM-0086,Inendi,,theme,Residential and Boarding Schools,Knowledge and Continuity,https://en.wikipedia.org/wiki/Inendi,tagged from a published synopsis; primary theme
 FILM-0086,Inendi,,theme,Elders and Knowledge,Knowledge and Continuity,https://en.wikipedia.org/wiki/Inendi,tagged from a published synopsis
 FILM-0086,Inendi,,theme,Memory and Oral History,Knowledge and Continuity,https://en.wikipedia.org/wiki/Inendi,tagged from a published synopsis
@@ -404,7 +404,7 @@ FILM-0087,The Incredible 25th Year of Mitzi Bearclaw,,theme,Urban Indigeneity,Li
 FILM-0087,The Incredible 25th Year of Mitzi Bearclaw,,theme,Women and Gender,Lives and Relations,https://www.themoviedb.org/movie/585377,tagged from a published synopsis
 FILM-0087,The Incredible 25th Year of Mitzi Bearclaw,,form,Fiction,,https://www.themoviedb.org/movie/585377,from the published synopsis
 FILM-0087,The Incredible 25th Year of Mitzi Bearclaw,,length,Feature,,https://www.themoviedb.org/movie/585377,from the published synopsis
-FILM-SRC-2023-00002,Café Daughter,,language,English,stan1293,https://en.wikipedia.org/wiki/Caf%C3%A9_Daughter,"language fill (languages_2026-11-08_part1.csv), checked against the source page"
+FILM-SRC-2023-00002,Café Daughter,,language,English,stan1293,https://en.wikipedia.org/wiki/Caf%C3%A9_Daughter,recorded with the film
 FILM-SRC-2023-00002,Café Daughter,,theme,Youth,Lives and Relations,https://www.themoviedb.org/movie/1139997,tagged from a published synopsis; primary theme
 FILM-SRC-2023-00002,Café Daughter,,theme,Kinship,Lives and Relations,https://www.themoviedb.org/movie/1139997,tagged from a published synopsis
 FILM-SRC-2023-00002,Café Daughter,,form,Fiction,,https://www.themoviedb.org/movie/1139997,from the published synopsis
@@ -486,8 +486,8 @@ TOUR-FILM-00435,Run Woman Run,2020,theme,Linguistic Preservation,Knowledge and C
 TOUR-FILM-00435,Run Woman Run,2020,theme,Women and Gender,Lives and Relations,https://www.themoviedb.org/movie/845191,tagged from a published synopsis
 TOUR-FILM-00435,Run Woman Run,2020,form,Fiction,,https://www.themoviedb.org/movie/845191,from the published synopsis
 TOUR-FILM-00435,Run Woman Run,2020,length,Feature,,https://www.themoviedb.org/movie/845191,from the published synopsis
-FILM-0097,Mala Junta (Bad Influence),,language,Mapudungun,mapu1245,https://www.wikidata.org/wiki/Q51158735,"language fill (languages_2026-11-08_part1.csv), checked against the source page"
-FILM-0097,Mala Junta (Bad Influence),,language,Spanish,stan1288,https://www.wikidata.org/wiki/Q51158735,"language fill (languages_2026-11-08_part1.csv), checked against the source page"
+FILM-0097,Mala Junta (Bad Influence),,language,Mapudungun,mapu1245,https://www.wikidata.org/wiki/Q51158735,recorded with the film
+FILM-0097,Mala Junta (Bad Influence),,language,Spanish,stan1288,https://www.wikidata.org/wiki/Q51158735,recorded with the film
 FILM-0097,Mala Junta (Bad Influence),,theme,Youth,Lives and Relations,https://www.themoviedb.org/movie/421883,tagged from a published synopsis; primary theme
 FILM-0097,Mala Junta (Bad Influence),,theme,Self-Representation and Countering Stereotypes,Expression and Representation,https://www.themoviedb.org/movie/421883,tagged from a published synopsis
 FILM-0097,Mala Junta (Bad Influence),,form,Fiction,,https://www.themoviedb.org/movie/421883,from the published synopsis
@@ -526,9 +526,9 @@ FILM-0119,Eating Up Easter,,theme,Environmental Change,Land and Environment,http
 FILM-0119,Eating Up Easter,,theme,Land Defense,Land and Environment,https://www.themoviedb.org/movie/590357,tagged from a published synopsis
 FILM-0119,Eating Up Easter,,form,Documentary,,https://www.themoviedb.org/movie/590357,from the published synopsis
 FILM-0119,Eating Up Easter,,length,Feature,,https://www.themoviedb.org/movie/590357,from the published synopsis
-FILM-0120,Nabusímake: Memorias de una independencia,,language,Ika (Arhuaco),arhu1242,https://www.retinalatina.org/peliculas/nabusimake-amado-villafana/,"language fill (languages_2026-11-08_part1.csv), checked against the source page"
-BETA30-20261106-F13,Resistencia en la línea negra,2011,language,Ika (Arhuaco),arhu1242,https://www.retinalatina.org/peliculas/resistencia-en-la-linea-negra-amado-villafana/,"language fill (languages_2026-11-08_part1.csv), checked against the source page"
-BETA30-20261106-F15,Sein Zare,2022,language,Ika (Arhuaco),arhu1242,https://www.retinalatina.org/peliculas/sein-zare-amado-villafana/,"language fill (languages_2026-11-08_part1.csv), checked against the source page"
+FILM-0120,Nabusímake: Memorias de una independencia,,language,Ika (Arhuaco),arhu1242,https://www.retinalatina.org/peliculas/nabusimake-amado-villafana/,recorded with the film
+BETA30-20261106-F13,Resistencia en la línea negra,2011,language,Ika (Arhuaco),arhu1242,https://www.retinalatina.org/peliculas/resistencia-en-la-linea-negra-amado-villafana/,recorded with the film
+BETA30-20261106-F15,Sein Zare,2022,language,Ika (Arhuaco),arhu1242,https://www.retinalatina.org/peliculas/sein-zare-amado-villafana/,recorded with the film
 FILM-0123,Sukujula Tei (Stories of My Mother),,theme,Elders and Knowledge,Knowledge and Continuity,https://www.themoviedb.org/movie/952314,tagged from a published synopsis; primary theme
 FILM-0123,Sukujula Tei (Stories of My Mother),,theme,Women and Gender,Lives and Relations,https://www.themoviedb.org/movie/952314,tagged from a published synopsis
 FILM-0123,Sukujula Tei (Stories of My Mother),,theme,Kinship,Lives and Relations,https://www.themoviedb.org/movie/952314,tagged from a published synopsis
@@ -601,7 +601,7 @@ FILM-0177,Siempre andamos caminando,,theme,Displacement and Migration,Sovereignt
 FILM-0177,Siempre andamos caminando,,theme,Women and Gender,Lives and Relations,https://www.themoviedb.org/movie/483546,tagged from a published synopsis
 FILM-0177,Siempre andamos caminando,,form,Documentary,,https://www.themoviedb.org/movie/483546,from the published synopsis
 FILM-0177,Siempre andamos caminando,,length,Feature,,https://www.themoviedb.org/movie/483546,from the published synopsis
-DIR-0223-W1031-2,Carrizos,2016,language,Spanish,stan1288,https://www.retinalatina.org/peliculas/carrizos-dinazar-urbina/,"language fill (languages_2026-11-08_part1.csv), checked against the source page"
+DIR-0223-W1031-2,Carrizos,2016,language,Spanish,stan1288,https://www.retinalatina.org/peliculas/carrizos-dinazar-urbina/,recorded with the film
 DIR-0223-W1031-2,Carrizos,2016,theme,Environmental Change,Land and Environment,https://www.themoviedb.org/movie/596527,tagged from a published synopsis; primary theme
 DIR-0223-W1031-2,Carrizos,2016,theme,Food Sovereignty,Land and Environment,https://www.themoviedb.org/movie/596527,tagged from a published synopsis
 DIR-0223-W1031-2,Carrizos,2016,theme,Kinship,Lives and Relations,https://www.themoviedb.org/movie/596527,tagged from a published synopsis
@@ -647,10 +647,10 @@ FILM-B25B-16,Tiempo de lluvia,2018,theme,Health and Healing,Lives and Relations,
 FILM-B25B-16,Tiempo de lluvia,2018,theme,Displacement and Migration,Sovereignty and Politics,https://www.themoviedb.org/movie/565316,tagged from a published synopsis
 FILM-B25B-16,Tiempo de lluvia,2018,form,Fiction,,https://www.themoviedb.org/movie/565316,from the published synopsis
 FILM-B25B-16,Tiempo de lluvia,2018,length,Feature,,https://www.themoviedb.org/movie/565316,from the published synopsis
-FILM-0186,Nixíí - Bastón de mando,,language,Me'phaa (Tlapanec),meph1234,https://www.moreliafilmfest.com/peliculas/nixii,"language fill (languages_2026-11-08_part1.csv), checked against the source page"
-FILM-B25B-02,Poder pal pueblo,2017,language,Spanish,stan1288,https://ojodeaguacomunicacion.org/poder-pal-pueblo/,"language fill (languages_2026-11-08_part1.csv), checked against the source page"
-FILM-B25B-12,Vientre de luna,2024,language,Tsotsil (Tzotzil),tzot1259,https://www.wikidata.org/wiki/Q141309598,"language fill (languages_2026-11-08_part1.csv), checked against the source page"
-FILM-B25B-12,Vientre de luna,2024,language,Spanish,stan1288,https://www.wikidata.org/wiki/Q141309598,"language fill (languages_2026-11-08_part1.csv), checked against the source page"
+FILM-0186,Nixíí - Bastón de mando,,language,Me'phaa (Tlapanec),meph1234,https://www.moreliafilmfest.com/peliculas/nixii,recorded with the film
+FILM-B25B-02,Poder pal pueblo,2017,language,Spanish,stan1288,https://ojodeaguacomunicacion.org/poder-pal-pueblo/,recorded with the film
+FILM-B25B-12,Vientre de luna,2024,language,Tsotsil (Tzotzil),tzot1259,https://www.wikidata.org/wiki/Q141309598,recorded with the film
+FILM-B25B-12,Vientre de luna,2024,language,Spanish,stan1288,https://www.wikidata.org/wiki/Q141309598,recorded with the film
 FILM-B25B-12,Vientre de luna,2024,theme,Women and Gender,Lives and Relations,https://www.themoviedb.org/movie/1323721,tagged from a published synopsis; primary theme
 FILM-B25B-12,Vientre de luna,2024,theme,Memory and Oral History,Knowledge and Continuity,https://www.themoviedb.org/movie/1323721,tagged from a published synopsis
 FILM-B25B-12,Vientre de luna,2024,form,Documentary,,https://www.themoviedb.org/movie/1323721,from the published synopsis
@@ -763,7 +763,7 @@ DIR-0248-W1031-11,40+,2025,theme,Women and Gender,Lives and Relations,https://mo
 DIR-0248-W1031-11,40+,2025,theme,Health and Healing,Lives and Relations,https://moreliafilmfest.com/en/peliculas/40,tagged from a published synopsis
 DIR-0248-W1031-11,40+,2025,form,Fiction,,https://moreliafilmfest.com/en/peliculas/40,from the published synopsis
 DIR-0248-W1031-11,40+,2025,length,Short,,https://moreliafilmfest.com/en/peliculas/40,from the published synopsis
-FILM-0214,Muu Palaa: La abuela mar,,language,Wayuunaiki,wayu1243,https://www.retinalatina.org/peliculas/muu-palaa-la-abuela-mar-olowaili-green-luzbeidy-monterrosa/,"language fill (languages_2026-11-08_part1.csv), checked against the source page"
+FILM-0214,Muu Palaa: La abuela mar,,language,Wayuunaiki,wayu1243,https://www.retinalatina.org/peliculas/muu-palaa-la-abuela-mar-olowaili-green-luzbeidy-monterrosa/,recorded with the film
 FILM-0221,Wiñaypacha (Eternity),2017,theme,Elders and Knowledge,Knowledge and Continuity,https://www.themoviedb.org/movie/511425,tagged from a published synopsis; primary theme
 FILM-0221,Wiñaypacha (Eternity),2017,theme,Kinship,Lives and Relations,https://www.themoviedb.org/movie/511425,tagged from a published synopsis
 FILM-0221,Wiñaypacha (Eternity),2017,form,Fiction,,https://www.themoviedb.org/movie/511425,from the published synopsis
@@ -865,7 +865,7 @@ PILOT-43-kicking-clouds,Kicking the Clouds,2021,length,Short,,https://www.themov
 FILM-ADD-20261031-13,Powwow People,2026,theme,Music and Performance,Expression and Representation,https://www.themoviedb.org/movie/1249271,tagged from a published synopsis; primary theme
 FILM-ADD-20261031-13,Powwow People,2026,form,Documentary,,https://www.themoviedb.org/movie/1249271,from the published synopsis
 FILM-ADD-20261031-13,Powwow People,2026,length,Feature,,https://www.themoviedb.org/movie/1249271,from the published synopsis
-MIRROR-FILMOGRAPHY-20261107-045,wawa,2014,language,Chinuk Wawa,chin1492,https://www.skyhopinka.com/wawa,"language fill (languages_2026-11-08_part1.csv), checked against the source page"
+MIRROR-FILMOGRAPHY-20261107-045,wawa,2014,language,Chinuk Wawa,chin1492,https://www.skyhopinka.com/wawa,recorded with the film
 FILM-0232,Love and Fury,2020,theme,"Art, Craft and Making",Expression and Representation,https://www.themoviedb.org/movie/713823,tagged from a published synopsis; primary theme
 FILM-0232,Love and Fury,2020,theme,Self-Representation and Countering Stereotypes,Expression and Representation,https://www.themoviedb.org/movie/713823,tagged from a published synopsis
 FILM-0232,Love and Fury,2020,form,Documentary,,https://www.themoviedb.org/movie/713823,from the published synopsis
@@ -913,25 +913,25 @@ FILM-0238,Dak’Toká Taíno (I Am Taíno),2018,theme,Elders and Knowledge,Knowl
 FILM-0238,Dak’Toká Taíno (I Am Taíno),2018,theme,Environmental Change,Land and Environment,https://www.themoviedb.org/movie/635797,tagged from a published synopsis
 FILM-0238,Dak’Toká Taíno (I Am Taíno),2018,form,Fiction,,https://www.themoviedb.org/movie/635797,from the published synopsis
 FILM-0238,Dak’Toká Taíno (I Am Taíno),2018,length,Short,,https://www.themoviedb.org/movie/635797,from the published synopsis
-FILM-0239,The Amerindians,2010,language,English,stan1293,,recorded with the film in the atlas
+FILM-0239,The Amerindians,2010,language,English,stan1293,,recorded with the film
 FILM-0239,The Amerindians,2010,form,Documentary,,,"normalised from the recorded form ""Documentary"""
 FILM-0240,Samuel & Samanta,1993,length,Short,,,"normalised from the recorded form ""Short film"""
-FILM-0241,Garifuna in Peril,2012,language,Garifuna,gari1256,,recorded with the film in the atlas
-FILM-0241,Garifuna in Peril,2012,language,English,stan1293,,recorded with the film in the atlas
-FILM-0241,Garifuna in Peril,2012,language,Spanish,stan1288,,recorded with the film in the atlas
+FILM-0241,Garifuna in Peril,2012,language,Garifuna,gari1256,,recorded with the film
+FILM-0241,Garifuna in Peril,2012,language,English,stan1293,,recorded with the film
+FILM-0241,Garifuna in Peril,2012,language,Spanish,stan1288,,recorded with the film
 FILM-0241,Garifuna in Peril,2012,theme,Linguistic Preservation,Knowledge and Continuity,https://www.themoviedb.org/movie/309936,tagged from a published synopsis; primary theme
 FILM-0241,Garifuna in Peril,2012,theme,Land Defense,Land and Environment,https://www.themoviedb.org/movie/309936,tagged from a published synopsis
 FILM-0241,Garifuna in Peril,2012,form,Fiction,,https://www.themoviedb.org/movie/309936,from the published synopsis
 FILM-0241,Garifuna in Peril,2012,length,Feature,,https://www.themoviedb.org/movie/309936,from the published synopsis
 FILM-0242,Guama,2022,form,Documentary,,,"normalised from the recorded form ""Documentary"""
-FILM-0243,Taíno Daka (I Am),,language,English,stan1293,,recorded with the film in the atlas
-FILM-0243,Taíno Daka (I Am),,language,Spanish,stan1288,,recorded with the film in the atlas
+FILM-0243,Taíno Daka (I Am),,language,English,stan1293,,recorded with the film
+FILM-0243,Taíno Daka (I Am),,language,Spanish,stan1288,,recorded with the film
 FILM-0243,Taíno Daka (I Am),,theme,Memory and Oral History,Knowledge and Continuity,https://www.themoviedb.org/movie/586042,tagged from a published synopsis; primary theme
 FILM-0243,Taíno Daka (I Am),,theme,Self-Representation and Countering Stereotypes,Expression and Representation,https://www.themoviedb.org/movie/586042,tagged from a published synopsis
 FILM-0243,Taíno Daka (I Am),,form,Documentary,,https://www.themoviedb.org/movie/586042,from the published synopsis
 FILM-0243,Taíno Daka (I Am),,length,Feature,,https://www.themoviedb.org/movie/586042,from the published synopsis
-FILM-0244,Mayfly,2021,language,Taíno,tain1254,,"recorded with the film in the atlas; credited as ""Taíno dialect of Island Arawak Wahiyani"""
-FILM-0244,Mayfly,2021,language,English,stan1293,,"recorded with the film in the atlas; credited as ""Taíno dialect of Island Arawak Wahiyani"""
+FILM-0244,Mayfly,2021,language,Taíno,tain1254,,recorded with the film
+FILM-0244,Mayfly,2021,language,English,stan1293,,recorded with the film
 FILM-0244,Mayfly,2021,length,Short,,,"normalised from the recorded form ""Short film"""
 FILM-0245,Spirit Emulsion,2022,theme,Kinship,Lives and Relations,https://www.themoviedb.org/movie/946809,tagged from a published synopsis; primary theme
 FILM-0245,Spirit Emulsion,2022,theme,Cosmology and Origin Stories,Knowledge and Continuity,https://www.themoviedb.org/movie/946809,tagged from a published synopsis
@@ -967,8 +967,8 @@ FILM-0273,Fancy Dance,2023,length,Feature,,https://www.themoviedb.org/movie/1058
 FILM-0274,Inyanka Sni,2018,theme,Women and Gender,Lives and Relations,https://www.themoviedb.org/movie/739779,tagged from a published synopsis; primary theme
 FILM-0274,Inyanka Sni,2018,form,Fiction,,https://www.themoviedb.org/movie/739779,from the published synopsis
 FILM-0274,Inyanka Sni,2018,length,Short,,https://www.themoviedb.org/movie/739779,from the published synopsis
-FILM-0275,Shash Jaa’: Bears Ears,2016,language,English,stan1293,https://cinelasamericas.org/panorama-short-films-claiff20/2017/shash-jaa-bears-ears/,"recorded with the film in the atlas; credited as ""Navajo"""
-FILM-0275,Shash Jaa’: Bears Ears,2016,language,Diné (Navajo),nava1243,https://cinelasamericas.org/panorama-short-films-claiff20/2017/shash-jaa-bears-ears/,"recorded with the film in the atlas; credited as ""Navajo"""
+FILM-0275,Shash Jaa’: Bears Ears,2016,language,English,stan1293,https://cinelasamericas.org/panorama-short-films-claiff20/2017/shash-jaa-bears-ears/,recorded with the film
+FILM-0275,Shash Jaa’: Bears Ears,2016,language,Diné (Navajo),nava1243,https://cinelasamericas.org/panorama-short-films-claiff20/2017/shash-jaa-bears-ears/,recorded with the film
 FILM-0275,Shash Jaa’: Bears Ears,2016,form,Documentary,,https://cinelasamericas.org/panorama-short-films-claiff20/2017/shash-jaa-bears-ears/,"normalised from the recorded form ""Documentary short"""
 FILM-0275,Shash Jaa’: Bears Ears,2016,length,Short,,https://cinelasamericas.org/panorama-short-films-claiff20/2017/shash-jaa-bears-ears/,"normalised from the recorded form ""Documentary short"""
 FILM-0276,Bring Her Home,2022,theme,MMIWG2S,Sovereignty and Politics,https://www.themoviedb.org/movie/944290,tagged from a published synopsis; primary theme
@@ -979,16 +979,16 @@ FILM-0277,Your Name Isn’t English,2018,theme,Self-Representation and Counterin
 FILM-0277,Your Name Isn’t English,2018,theme,Women and Gender,Lives and Relations,https://www.themoviedb.org/movie/883453,tagged from a published synopsis
 FILM-0277,Your Name Isn’t English,2018,form,Fiction,,https://www.themoviedb.org/movie/883453,from the published synopsis
 FILM-0277,Your Name Isn’t English,2018,length,Short,,https://www.themoviedb.org/movie/883453,from the published synopsis
-FILM-0278,I Am Home,2022,language,English,stan1293,https://mothertongue.si.edu/2024-program.html,"recorded with the film in the atlas; credited as ""Diné"""
-FILM-0278,I Am Home,2022,language,Diné (Navajo),nava1243,https://mothertongue.si.edu/2024-program.html,"recorded with the film in the atlas; credited as ""Diné"""
+FILM-0278,I Am Home,2022,language,English,stan1293,https://mothertongue.si.edu/2024-program.html,recorded with the film
+FILM-0278,I Am Home,2022,language,Diné (Navajo),nava1243,https://mothertongue.si.edu/2024-program.html,recorded with the film
 FILM-0278,I Am Home,2022,theme,More-than-Human Relations,Land and Environment,https://www.themoviedb.org/movie/1063345,tagged from a published synopsis; primary theme
 FILM-0278,I Am Home,2022,form,Documentary,,https://www.themoviedb.org/movie/1063345,from the published synopsis
 FILM-0278,I Am Home,2022,length,Short,,https://www.themoviedb.org/movie/1063345,from the published synopsis
-FILM-0279,Ronnie BoDean,2015,language,English,stan1293,https://zakide.com/the-wawasayg-program-curated-by-asinabka-festival/,recorded with the film in the atlas
+FILM-0279,Ronnie BoDean,2015,language,English,stan1293,https://zakide.com/the-wawasayg-program-curated-by-asinabka-festival/,recorded with the film
 FILM-0279,Ronnie BoDean,2015,form,Fiction,,https://zakide.com/the-wawasayg-program-curated-by-asinabka-festival/,"normalised from the recorded form ""Narrative short"""
 FILM-0279,Ronnie BoDean,2015,length,Short,,https://zakide.com/the-wawasayg-program-curated-by-asinabka-festival/,"normalised from the recorded form ""Narrative short"""
-FILM-0280,Ohero:kon - Under the Husk,2016,language,English,stan1293,https://www.tworowproductions.org/,recorded with the film in the atlas
-FILM-0280,Ohero:kon - Under the Husk,2016,language,Mohawk,moha1258,https://www.tworowproductions.org/,recorded with the film in the atlas
+FILM-0280,Ohero:kon - Under the Husk,2016,language,English,stan1293,https://www.tworowproductions.org/,recorded with the film
+FILM-0280,Ohero:kon - Under the Husk,2016,language,Mohawk,moha1258,https://www.tworowproductions.org/,recorded with the film
 FILM-0280,Ohero:kon - Under the Husk,2016,theme,Women and Gender,Lives and Relations,https://www.themoviedb.org/movie/699015,tagged from a published synopsis; primary theme
 FILM-0280,Ohero:kon - Under the Husk,2016,theme,Youth,Lives and Relations,https://www.themoviedb.org/movie/699015,tagged from a published synopsis
 FILM-0280,Ohero:kon - Under the Husk,2016,theme,Elders and Knowledge,Knowledge and Continuity,https://www.themoviedb.org/movie/699015,tagged from a published synopsis
@@ -998,68 +998,68 @@ FILM-0281,Mary Two-Axe Earley: I Am Indian Again,2021,theme,Women and Gender,Liv
 FILM-0281,Mary Two-Axe Earley: I Am Indian Again,2021,theme,Sovereignty and Self-Determination,Sovereignty and Politics,https://www.nfb.ca/film/mary-two-axe-earley/,tagged from a published synopsis
 FILM-0281,Mary Two-Axe Earley: I Am Indian Again,2021,form,Documentary,,https://www.nfb.ca/film/mary-two-axe-earley/,from the published synopsis
 FILM-0281,Mary Two-Axe Earley: I Am Indian Again,2021,length,Short,,https://www.nfb.ca/film/mary-two-axe-earley/,"normalised from the recorded form ""Documentary short"""
-FILM-0282,Sugarcane,2024,language,English,stan1293,https://www.siff.net/festival/archives/festival-2024/sugarcane,recorded with the film in the atlas
-FILM-0282,Sugarcane,2024,language,Secwépemctsín,shus1248,https://www.siff.net/festival/archives/festival-2024/sugarcane,recorded with the film in the atlas
+FILM-0282,Sugarcane,2024,language,English,stan1293,https://www.siff.net/festival/archives/festival-2024/sugarcane,recorded with the film
+FILM-0282,Sugarcane,2024,language,Secwépemctsín,shus1248,https://www.siff.net/festival/archives/festival-2024/sugarcane,recorded with the film
 FILM-0282,Sugarcane,2024,theme,Residential and Boarding Schools,Knowledge and Continuity,https://www.themoviedb.org/movie/1158874,tagged from a published synopsis; primary theme
 FILM-0282,Sugarcane,2024,theme,"Justice, Truth and Reconciliation",Sovereignty and Politics,https://www.themoviedb.org/movie/1158874,tagged from a published synopsis
 FILM-0282,Sugarcane,2024,theme,State Violence and Genocide,Sovereignty and Politics,https://www.themoviedb.org/movie/1158874,tagged from a published synopsis
 FILM-0282,Sugarcane,2024,form,Documentary,,https://www.themoviedb.org/movie/1158874,from the published synopsis
 FILM-0282,Sugarcane,2024,length,Feature,,https://www.themoviedb.org/movie/1158874,from the published synopsis
-NEW-902ec5c62298-WORK-1,Aanikoobijigan [ancestor/great-grandparent/great-grandchild],2026,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,recorded with the film in the atlas
+NEW-902ec5c62298-WORK-1,Aanikoobijigan [ancestor/great-grandparent/great-grandchild],2026,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,recorded with the film
 NEW-902ec5c62298-WORK-1,Aanikoobijigan [ancestor/great-grandparent/great-grandchild],2026,theme,"Archives, Museums and Repatriation",Knowledge and Continuity,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,tagged from a published synopsis; primary theme
 NEW-902ec5c62298-WORK-1,Aanikoobijigan [ancestor/great-grandparent/great-grandchild],2026,form,Documentary,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,from the published synopsis
 NEW-902ec5c62298-WORK-1,Aanikoobijigan [ancestor/great-grandparent/great-grandchild],2026,length,Feature,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,from the published synopsis
-NEW-3b7e9c5a5cc1-WORK-1,Itseetamapi,2026,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,recorded with the film in the atlas
-NEW-3b7e9c5a5cc1-WORK-1,Itseetamapi,2026,language,Blackfoot,siks1238,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,recorded with the film in the atlas
+NEW-3b7e9c5a5cc1-WORK-1,Itseetamapi,2026,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,recorded with the film
+NEW-3b7e9c5a5cc1-WORK-1,Itseetamapi,2026,language,Blackfoot,siks1238,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,recorded with the film
 NEW-3b7e9c5a5cc1-WORK-1,Itseetamapi,2026,form,Fiction,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,"normalised from the recorded form ""Dramatic short"""
 NEW-3b7e9c5a5cc1-WORK-1,Itseetamapi,2026,length,Short,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,"normalised from the recorded form ""Dramatic short"""
-NEW-a5ec37084949-WORK-1,Wolverine and Little Thunder: An Eel Hunting Adventure,2025,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,recorded with the film in the atlas
+NEW-a5ec37084949-WORK-1,Wolverine and Little Thunder: An Eel Hunting Adventure,2025,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,recorded with the film
 NEW-a5ec37084949-WORK-1,Wolverine and Little Thunder: An Eel Hunting Adventure,2025,theme,Food Sovereignty,Land and Environment,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,tagged from a published synopsis; primary theme
 NEW-a5ec37084949-WORK-1,Wolverine and Little Thunder: An Eel Hunting Adventure,2025,theme,Youth,Lives and Relations,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,tagged from a published synopsis
 NEW-a5ec37084949-WORK-1,Wolverine and Little Thunder: An Eel Hunting Adventure,2025,form,Animation,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,from the published synopsis
 NEW-a5ec37084949-WORK-1,Wolverine and Little Thunder: An Eel Hunting Adventure,2025,length,Short,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,from the published synopsis
 NEW-7185cd45c3f6-WORK-1,O rio tem dono,2012,length,Short,,https://narrativasindigenas.ensp.fiocruz.br/rede/alexandre-pankararu/,"normalised from the recorded form ""Short film"""
-NEW-b11991513c99-WORK-1,Amber Alert: A Fashion Statement for Truth and Healing,2025,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,recorded with the film in the atlas
-NEW-b11991513c99-WORK-1,Amber Alert: A Fashion Statement for Truth and Healing,2025,language,Plains Cree,plai1258,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,recorded with the film in the atlas
+NEW-b11991513c99-WORK-1,Amber Alert: A Fashion Statement for Truth and Healing,2025,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,recorded with the film
+NEW-b11991513c99-WORK-1,Amber Alert: A Fashion Statement for Truth and Healing,2025,language,Plains Cree,plai1258,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,recorded with the film
 NEW-b11991513c99-WORK-1,Amber Alert: A Fashion Statement for Truth and Healing,2025,theme,Residential and Boarding Schools,Knowledge and Continuity,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,tagged from a published synopsis; primary theme
 NEW-b11991513c99-WORK-1,Amber Alert: A Fashion Statement for Truth and Healing,2025,theme,"Justice, Truth and Reconciliation",Sovereignty and Politics,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,tagged from a published synopsis
 NEW-b11991513c99-WORK-1,Amber Alert: A Fashion Statement for Truth and Healing,2025,theme,"Art, Craft and Making",Expression and Representation,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,tagged from a published synopsis
 NEW-b11991513c99-WORK-1,Amber Alert: A Fashion Statement for Truth and Healing,2025,form,Hybrid,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,from the published synopsis
 NEW-b11991513c99-WORK-1,Amber Alert: A Fashion Statement for Truth and Healing,2025,length,Short,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,from the published synopsis
-NEW-514e349bd362-WORK-1,The Prince and the Pauper,2025,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,recorded with the film in the atlas
+NEW-514e349bd362-WORK-1,The Prince and the Pauper,2025,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,recorded with the film
 NEW-514e349bd362-WORK-1,The Prince and the Pauper,2025,form,Fiction,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,"normalised from the recorded form ""Dramatic short"""
 NEW-514e349bd362-WORK-1,The Prince and the Pauper,2025,length,Short,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,"normalised from the recorded form ""Dramatic short"""
 FILM-SRC-2023-00044,Four Nights and a Fire,,theme,Kinship,Lives and Relations,https://www.themoviedb.org/movie/1210017,tagged from a published synopsis; primary theme
 FILM-SRC-2023-00044,Four Nights and a Fire,,theme,Cosmology and Origin Stories,Knowledge and Continuity,https://www.themoviedb.org/movie/1210017,tagged from a published synopsis
 FILM-SRC-2023-00044,Four Nights and a Fire,,form,Fiction,,https://www.themoviedb.org/movie/1210017,from the published synopsis
 FILM-SRC-2023-00044,Four Nights and a Fire,,length,Short,,https://www.themoviedb.org/movie/1210017,from the published synopsis
-NEW-54e5ca967749-WORK-1,IXIM (el amor no tiene género),2024,language,Spanish,stan1288,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,recorded with the film in the atlas
-NEW-54e5ca967749-WORK-1,IXIM (el amor no tiene género),2024,language,Q’eqchi’,kekc1242,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,recorded with the film in the atlas
+NEW-54e5ca967749-WORK-1,IXIM (el amor no tiene género),2024,language,Spanish,stan1288,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,recorded with the film
+NEW-54e5ca967749-WORK-1,IXIM (el amor no tiene género),2024,language,Q’eqchi’,kekc1242,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,recorded with the film
 NEW-54e5ca967749-WORK-1,IXIM (el amor no tiene género),2024,theme,LGBTQIA2S,Lives and Relations,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,tagged from a published synopsis; primary theme
 NEW-54e5ca967749-WORK-1,IXIM (el amor no tiene género),2024,theme,Women and Gender,Lives and Relations,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,tagged from a published synopsis
 NEW-54e5ca967749-WORK-1,IXIM (el amor no tiene género),2024,form,Documentary,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,from the published synopsis
 NEW-54e5ca967749-WORK-1,IXIM (el amor no tiene género),2024,length,Short,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,from the published synopsis
-NEW-50f72e3ea718-WORK-1,Allison Goes Berry Picking,2024,language,Hän,hann1241,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,recorded with the film in the atlas
-NEW-50f72e3ea718-WORK-1,Allison Goes Berry Picking,2024,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,recorded with the film in the atlas
+NEW-50f72e3ea718-WORK-1,Allison Goes Berry Picking,2024,language,Hän,hann1241,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,recorded with the film
+NEW-50f72e3ea718-WORK-1,Allison Goes Berry Picking,2024,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,recorded with the film
 NEW-50f72e3ea718-WORK-1,Allison Goes Berry Picking,2024,form,Documentary,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,"normalised from the recorded form ""Documentary short"""
 NEW-50f72e3ea718-WORK-1,Allison Goes Berry Picking,2024,length,Short,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,"normalised from the recorded form ""Documentary short"""
 NEW-1f8a8f87fd75-WORK-1,Ni racaladxe’,,form,Documentary,,https://imcine.gob.mx/nota.php?id=326,"normalised from the recorded form ""Documentary short"""
 NEW-1f8a8f87fd75-WORK-1,Ni racaladxe’,,length,Short,,https://imcine.gob.mx/nota.php?id=326,"normalised from the recorded form ""Documentary short"""
 NEW-c8924ed69b8e-WORK-1,XO RAD Magical,2019,theme,Health and Healing,Lives and Relations,https://collection.nfb.ca/film/xo-rad-magical,tagged from a published synopsis; primary theme
 NEW-c8924ed69b8e-WORK-1,XO RAD Magical,2019,form,Experimental,,https://collection.nfb.ca/film/xo-rad-magical,from the published synopsis
-NEW-d2ab78a4b919-WORK-1,W7éyle (moon’s wife),2025,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,recorded with the film in the atlas
-NEW-d2ab78a4b919-WORK-1,W7éyle (moon’s wife),2025,language,Secwépemctsín,shus1248,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,recorded with the film in the atlas
+NEW-d2ab78a4b919-WORK-1,W7éyle (moon’s wife),2025,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,recorded with the film
+NEW-d2ab78a4b919-WORK-1,W7éyle (moon’s wife),2025,language,Secwépemctsín,shus1248,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,recorded with the film
 NEW-d2ab78a4b919-WORK-1,W7éyle (moon’s wife),2025,form,Fiction,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,"normalised from the recorded form ""Dramatic short"""
 NEW-d2ab78a4b919-WORK-1,W7éyle (moon’s wife),2025,length,Short,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,"normalised from the recorded form ""Dramatic short"""
-NEW-4caabfec0c3c-WORK-1,Run as One,2025,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,recorded with the film in the atlas
+NEW-4caabfec0c3c-WORK-1,Run as One,2025,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,recorded with the film
 NEW-4caabfec0c3c-WORK-1,Run as One,2025,theme,Music and Performance,Expression and Representation,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,tagged from a published synopsis; primary theme
 NEW-4caabfec0c3c-WORK-1,Run as One,2025,theme,Kinship,Lives and Relations,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,tagged from a published synopsis
 NEW-4caabfec0c3c-WORK-1,Run as One,2025,form,Documentary,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,from the published synopsis
 NEW-4caabfec0c3c-WORK-1,Run as One,2025,length,Short,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,from the published synopsis
 NEW-5f50a0036382-WORK-1,Dene: A Journey,,form,Documentary,,https://www.adzestudios.com/about/,"normalised from the recorded form ""Television documentary series"""
 NEW-5f50a0036382-WORK-1,Dene: A Journey,,length,Series,,https://www.adzestudios.com/about/,"normalised from the recorded form ""Television documentary series"""
-NEW-5895019ac1c2-WORK-1,On the Ice,2011,language,English,stan1293,https://tsoaweb-col.home.nyu.edu/about/directory/grad-film/939084944,recorded with the film in the atlas
-NEW-5895019ac1c2-WORK-1,On the Ice,2011,language,Iñupiaq,inup1234,https://tsoaweb-col.home.nyu.edu/about/directory/grad-film/939084944,recorded with the film in the atlas
+NEW-5895019ac1c2-WORK-1,On the Ice,2011,language,English,stan1293,https://tsoaweb-col.home.nyu.edu/about/directory/grad-film/939084944,recorded with the film
+NEW-5895019ac1c2-WORK-1,On the Ice,2011,language,Iñupiaq,inup1234,https://tsoaweb-col.home.nyu.edu/about/directory/grad-film/939084944,recorded with the film
 NEW-5895019ac1c2-WORK-1,On the Ice,2011,theme,Youth,Lives and Relations,https://www.themoviedb.org/movie/82492,tagged from a published synopsis; primary theme
 NEW-5895019ac1c2-WORK-1,On the Ice,2011,theme,Food Sovereignty,Land and Environment,https://www.themoviedb.org/movie/82492,tagged from a published synopsis
 NEW-5895019ac1c2-WORK-1,On the Ice,2011,form,Fiction,,https://www.themoviedb.org/movie/82492,from the published synopsis
@@ -1074,23 +1074,23 @@ NEW-28bcdcd1880f-WORK-1,Kawá,,theme,Linguistic Preservation,Knowledge and Conti
 NEW-28bcdcd1880f-WORK-1,Kawá,,theme,Youth,Lives and Relations,https://www.themoviedb.org/movie/1181286,tagged from a published synopsis
 NEW-28bcdcd1880f-WORK-1,Kawá,,theme,Kinship,Lives and Relations,https://www.themoviedb.org/movie/1181286,tagged from a published synopsis
 NEW-28bcdcd1880f-WORK-1,Kawá,,length,Short,,https://collab.sundance.org/catalog/Kaw-2024-02-13-070311,"normalised from the recorded form ""Short film"""
-NEW-733d4188c088-WORK-1,The Great Cherokee Grandmother,2024,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,recorded with the film in the atlas
-NEW-733d4188c088-WORK-1,The Great Cherokee Grandmother,2024,language,Cherokee,cher1273,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,recorded with the film in the atlas
+NEW-733d4188c088-WORK-1,The Great Cherokee Grandmother,2024,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,recorded with the film
+NEW-733d4188c088-WORK-1,The Great Cherokee Grandmother,2024,language,Cherokee,cher1273,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,recorded with the film
 NEW-733d4188c088-WORK-1,The Great Cherokee Grandmother,2024,theme,Self-Representation and Countering Stereotypes,Expression and Representation,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,tagged from a published synopsis; primary theme
 NEW-733d4188c088-WORK-1,The Great Cherokee Grandmother,2024,form,Fiction,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,from the published synopsis
 NEW-733d4188c088-WORK-1,The Great Cherokee Grandmother,2024,length,Short,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,from the published synopsis
-NEW-7d388cd4363a-WORK-1,Tamatta Ataqatigiippugut – We are all connected,2026,language,Kalaallisut,kala1399,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,recorded with the film in the atlas
+NEW-7d388cd4363a-WORK-1,Tamatta Ataqatigiippugut – We are all connected,2026,language,Kalaallisut,kala1399,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,recorded with the film
 NEW-7d388cd4363a-WORK-1,Tamatta Ataqatigiippugut – We are all connected,2026,theme,More-than-Human Relations,Land and Environment,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,tagged from a published synopsis; primary theme
 NEW-7d388cd4363a-WORK-1,Tamatta Ataqatigiippugut – We are all connected,2026,form,Documentary,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,from the published synopsis
 NEW-7d388cd4363a-WORK-1,Tamatta Ataqatigiippugut – We are all connected,2026,length,Short,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,from the published synopsis
-NEW-73f9e534b2d7-WORK-1,Sukkaillutit Uqaruk (Say It Slowly),2026,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,recorded with the film in the atlas
-NEW-73f9e534b2d7-WORK-1,Sukkaillutit Uqaruk (Say It Slowly),2026,language,Inuktitut,east2534,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,recorded with the film in the atlas
+NEW-73f9e534b2d7-WORK-1,Sukkaillutit Uqaruk (Say It Slowly),2026,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,recorded with the film
+NEW-73f9e534b2d7-WORK-1,Sukkaillutit Uqaruk (Say It Slowly),2026,language,Inuktitut,east2534,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,recorded with the film
 NEW-73f9e534b2d7-WORK-1,Sukkaillutit Uqaruk (Say It Slowly),2026,theme,Linguistic Preservation,Knowledge and Continuity,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,tagged from a published synopsis; primary theme
 NEW-73f9e534b2d7-WORK-1,Sukkaillutit Uqaruk (Say It Slowly),2026,theme,Environmental Change,Land and Environment,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,tagged from a published synopsis
 NEW-73f9e534b2d7-WORK-1,Sukkaillutit Uqaruk (Say It Slowly),2026,form,Documentary,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,from the published synopsis
 NEW-73f9e534b2d7-WORK-1,Sukkaillutit Uqaruk (Say It Slowly),2026,length,Short,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,from the published synopsis
-NEW-41297500b675-WORK-1,Last Summer,2024,language,Cree,cree1272,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,recorded with the film in the atlas
-NEW-41297500b675-WORK-1,Last Summer,2024,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,recorded with the film in the atlas
+NEW-41297500b675-WORK-1,Last Summer,2024,language,Cree,cree1272,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,recorded with the film
+NEW-41297500b675-WORK-1,Last Summer,2024,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,recorded with the film
 NEW-41297500b675-WORK-1,Last Summer,2024,theme,Youth,Lives and Relations,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,tagged from a published synopsis; primary theme
 NEW-41297500b675-WORK-1,Last Summer,2024,form,Fiction,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,from the published synopsis
 NEW-41297500b675-WORK-1,Last Summer,2024,length,Short,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,from the published synopsis
@@ -1102,7 +1102,7 @@ NEW-f50923a97b8d-WORK-1,Wawatay,2018,theme,Cosmology and Origin Stories,Knowledg
 NEW-f50923a97b8d-WORK-1,Wawatay,2018,theme,Memory and Oral History,Knowledge and Continuity,https://www.themoviedb.org/movie/720604,tagged from a published synopsis
 NEW-f50923a97b8d-WORK-1,Wawatay,2018,length,Short,,https://www.themoviedb.org/movie/720604,from the published synopsis
 NEW-f50923a97b8d-WORK-1,Wawatay,2018,form,Animation,,https://nsi-canada.ca/media_release/announcing-participants-for-the-2021-edition-of-nsi-indigidocs-as-online-training-launches-today/,"normalised from the recorded form ""Animated short"""
-NEW-46482de334b6-WORK-1,Imagining the Indian: The Fight Against Native American Mascoting,2022,language,English,stan1293,https://www.collectiveeye.org/products/imagining-the-indian,recorded with the film in the atlas
+NEW-46482de334b6-WORK-1,Imagining the Indian: The Fight Against Native American Mascoting,2022,language,English,stan1293,https://www.collectiveeye.org/products/imagining-the-indian,recorded with the film
 NEW-46482de334b6-WORK-1,Imagining the Indian: The Fight Against Native American Mascoting,2022,theme,Self-Representation and Countering Stereotypes,Expression and Representation,https://www.themoviedb.org/movie/999305,tagged from a published synopsis; primary theme
 NEW-46482de334b6-WORK-1,Imagining the Indian: The Fight Against Native American Mascoting,2022,theme,Resistance Movements,Sovereignty and Politics,https://www.themoviedb.org/movie/999305,tagged from a published synopsis
 NEW-46482de334b6-WORK-1,Imagining the Indian: The Fight Against Native American Mascoting,2022,form,Documentary,,https://www.themoviedb.org/movie/999305,from the published synopsis
@@ -1110,8 +1110,8 @@ NEW-46482de334b6-WORK-1,Imagining the Indian: The Fight Against Native American 
 NEW-f317ba4dd3d9-WORK-1,My Village in Nunavik,,form,Documentary,,https://www.nfb.ca/film/my_village_in_nunavik/,"normalised from the recorded form ""Documentary"""
 NEW-d974a88bb0da-WORK-1,Spirit of a Nation: The Places We Belong,2022,form,Documentary,,https://justicefilmfestival.ca/2022-cj-film-festival/spirit-of-a-nation-the-places-we-belong,"normalised from the recorded form ""Documentary short"""
 NEW-d974a88bb0da-WORK-1,Spirit of a Nation: The Places We Belong,2022,length,Short,,https://justicefilmfestival.ca/2022-cj-film-festival/spirit-of-a-nation-the-places-we-belong,"normalised from the recorded form ""Documentary short"""
-NEW-0c03bd75e69a-WORK-1,Deneege Leł Ghu Kk’ots’eedeneeyh Te Heł Hoozoonh Ts’e Denots’edeneeyh,2026,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,"recorded with the film in the atlas; credited as ""Denaakk’e"""
-NEW-0c03bd75e69a-WORK-1,Deneege Leł Ghu Kk’ots’eedeneeyh Te Heł Hoozoonh Ts’e Denots’edeneeyh,2026,language,Denaakk’e (Koyukon),koyu1237,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,"recorded with the film in the atlas; credited as ""Denaakk’e"""
+NEW-0c03bd75e69a-WORK-1,Deneege Leł Ghu Kk’ots’eedeneeyh Te Heł Hoozoonh Ts’e Denots’edeneeyh,2026,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,recorded with the film
+NEW-0c03bd75e69a-WORK-1,Deneege Leł Ghu Kk’ots’eedeneeyh Te Heł Hoozoonh Ts’e Denots’edeneeyh,2026,language,Denaakk’e (Koyukon),koyu1237,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,recorded with the film
 NEW-0c03bd75e69a-WORK-1,Deneege Leł Ghu Kk’ots’eedeneeyh Te Heł Hoozoonh Ts’e Denots’edeneeyh,2026,theme,"Art, Craft and Making",Expression and Representation,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,tagged from a published synopsis; primary theme
 NEW-0c03bd75e69a-WORK-1,Deneege Leł Ghu Kk’ots’eedeneeyh Te Heł Hoozoonh Ts’e Denots’edeneeyh,2026,theme,Women and Gender,Lives and Relations,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,tagged from a published synopsis
 NEW-0c03bd75e69a-WORK-1,Deneege Leł Ghu Kk’ots’eedeneeyh Te Heł Hoozoonh Ts’e Denots’edeneeyh,2026,theme,Elders and Knowledge,Knowledge and Continuity,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,tagged from a published synopsis
@@ -1121,50 +1121,50 @@ NEW-bf34d84a3c19-WORK-1,Daughter of a Lost Bird,2021,theme,Kinship,Lives and Rel
 NEW-bf34d84a3c19-WORK-1,Daughter of a Lost Bird,2021,theme,Self-Representation and Countering Stereotypes,Expression and Representation,https://www.themoviedb.org/movie/746783,tagged from a published synopsis
 NEW-bf34d84a3c19-WORK-1,Daughter of a Lost Bird,2021,form,Documentary,,https://www.themoviedb.org/movie/746783,from the published synopsis
 NEW-bf34d84a3c19-WORK-1,Daughter of a Lost Bird,2021,length,Feature,,https://www.themoviedb.org/movie/746783,from the published synopsis
-NEW-ec378ac9f637-WORK-1,Kin,2023,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,recorded with the film in the atlas
+NEW-ec378ac9f637-WORK-1,Kin,2023,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,recorded with the film
 NEW-ec378ac9f637-WORK-1,Kin,2023,theme,More-than-Human Relations,Land and Environment,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,tagged from a published synopsis; primary theme
 NEW-ec378ac9f637-WORK-1,Kin,2023,form,Experimental,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,from the published synopsis
 NEW-ec378ac9f637-WORK-1,Kin,2023,length,Short,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,from the published synopsis
-NEW-3965b06822b5-WORK-1,Kimotiwin: The Act of Stealing,2023,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,recorded with the film in the atlas
+NEW-3965b06822b5-WORK-1,Kimotiwin: The Act of Stealing,2023,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,recorded with the film
 NEW-3965b06822b5-WORK-1,Kimotiwin: The Act of Stealing,2023,form,Animation,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,"normalised from the recorded form ""Animated short"""
 NEW-3965b06822b5-WORK-1,Kimotiwin: The Act of Stealing,2023,length,Short,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,"normalised from the recorded form ""Animated short"""
 NEW-60305ce10147-WORK-1,Manoá – A Lenda das Queixadas,2002,length,Short,,https://trabalhoindigenista.org.br/confira-programacao-da-mostra-de-cinema-guarani-no-agosto-indigena/,"normalised from the recorded form ""Short film"""
-NEW-658f62cb5309-WORK-1,Raised by the Canoe,2026,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,recorded with the film in the atlas
+NEW-658f62cb5309-WORK-1,Raised by the Canoe,2026,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,recorded with the film
 NEW-658f62cb5309-WORK-1,Raised by the Canoe,2026,theme,Kinship,Lives and Relations,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,tagged from a published synopsis; primary theme
 NEW-658f62cb5309-WORK-1,Raised by the Canoe,2026,theme,Elders and Knowledge,Knowledge and Continuity,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,tagged from a published synopsis
 NEW-658f62cb5309-WORK-1,Raised by the Canoe,2026,theme,"Art, Craft and Making",Expression and Representation,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,tagged from a published synopsis
 NEW-658f62cb5309-WORK-1,Raised by the Canoe,2026,form,Documentary,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,from the published synopsis
 NEW-658f62cb5309-WORK-1,Raised by the Canoe,2026,length,Short,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,from the published synopsis
-NEW-178cf7fdceba-WORK-1,Coureurs de nuit / Night Runners,2005,language,Atikamekw,atik1240,https://festival.shortfilm.com/media/pages/medialibrary/89f5de5154-1736517014/2016_ikff_katalog.pdf,recorded with the film in the atlas
+NEW-178cf7fdceba-WORK-1,Coureurs de nuit / Night Runners,2005,language,Atikamekw,atik1240,https://festival.shortfilm.com/media/pages/medialibrary/89f5de5154-1736517014/2016_ikff_katalog.pdf,recorded with the film
 NEW-178cf7fdceba-WORK-1,Coureurs de nuit / Night Runners,2005,length,Short,,https://festival.shortfilm.com/media/pages/medialibrary/89f5de5154-1736517014/2016_ikff_katalog.pdf,"normalised from the recorded form ""Short film"""
-NEW-ed3c2611e1a6-WORK-1,This Land Carries Us,2025,language,Tewa,tewa1261,https://www.okeeffemuseum.org/news/this-land-carries-us-wins-best-documentary-short-at-deadcenter-film-festival/,recorded with the film in the atlas
-NEW-ed3c2611e1a6-WORK-1,This Land Carries Us,2025,language,English,stan1293,https://www.okeeffemuseum.org/news/this-land-carries-us-wins-best-documentary-short-at-deadcenter-film-festival/,recorded with the film in the atlas
+NEW-ed3c2611e1a6-WORK-1,This Land Carries Us,2025,language,Tewa,tewa1261,https://www.okeeffemuseum.org/news/this-land-carries-us-wins-best-documentary-short-at-deadcenter-film-festival/,recorded with the film
+NEW-ed3c2611e1a6-WORK-1,This Land Carries Us,2025,language,English,stan1293,https://www.okeeffemuseum.org/news/this-land-carries-us-wins-best-documentary-short-at-deadcenter-film-festival/,recorded with the film
 NEW-ed3c2611e1a6-WORK-1,This Land Carries Us,2025,theme,Memory and Oral History,Knowledge and Continuity,https://www.themoviedb.org/movie/1699978,tagged from a published synopsis; primary theme
 NEW-ed3c2611e1a6-WORK-1,This Land Carries Us,2025,theme,Elders and Knowledge,Knowledge and Continuity,https://www.themoviedb.org/movie/1699978,tagged from a published synopsis
 NEW-ed3c2611e1a6-WORK-1,This Land Carries Us,2025,form,Experimental,,https://www.themoviedb.org/movie/1699978,from the published synopsis
 NEW-ed3c2611e1a6-WORK-1,This Land Carries Us,2025,length,Short,,https://www.themoviedb.org/movie/1699978,from the published synopsis
-NEW-dc664128300b-WORK-1,Confluence,2025,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,recorded with the film in the atlas
+NEW-dc664128300b-WORK-1,Confluence,2025,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,recorded with the film
 NEW-dc664128300b-WORK-1,Confluence,2025,form,Experimental,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,"normalised from the recorded form ""Experimental short"""
 NEW-dc664128300b-WORK-1,Confluence,2025,length,Short,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,"normalised from the recorded form ""Experimental short"""
 NEW-dc37f3bd7a6d-WORK-1,Sitting Bull,2025,form,Documentary,,https://filmfreeway.com/christopher.nataanii%40gmail.com,"normalised from the recorded form ""Television documentary series"""
 NEW-dc37f3bd7a6d-WORK-1,Sitting Bull,2025,length,Series,,https://filmfreeway.com/christopher.nataanii%40gmail.com,"normalised from the recorded form ""Television documentary series"""
-NEW-45cb5ec69bd9-WORK-1,Convenience Store NDN Zombie,2025,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,recorded with the film in the atlas
+NEW-45cb5ec69bd9-WORK-1,Convenience Store NDN Zombie,2025,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,recorded with the film
 NEW-45cb5ec69bd9-WORK-1,Convenience Store NDN Zombie,2025,form,Fiction,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,"normalised from the recorded form ""Dramatic short"""
 NEW-45cb5ec69bd9-WORK-1,Convenience Store NDN Zombie,2025,length,Short,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,"normalised from the recorded form ""Dramatic short"""
 NEW-01a3564b2b5b-WORK-1,Shirtnami,,form,Animation,,https://www.rednationff.com/shirtnami/,"normalised from the recorded form ""Animated short"""
 NEW-01a3564b2b5b-WORK-1,Shirtnami,,length,Short,,https://www.rednationff.com/shirtnami/,"normalised from the recorded form ""Animated short"""
-NEW-3793ef943e83-WORK-1,Mujer de barro,2024,language,Ayuujk (Mixe),mixe1286,https://www.filmoteca.unam.mx/exhibiciones/septima-muestra-de-cine-en-lenguas-originarias/mujer-de-barro-hilando-sones/,recorded with the film in the atlas
+NEW-3793ef943e83-WORK-1,Mujer de barro,2024,language,Ayuujk (Mixe),mixe1286,https://www.filmoteca.unam.mx/exhibiciones/septima-muestra-de-cine-en-lenguas-originarias/mujer-de-barro-hilando-sones/,recorded with the film
 NEW-3793ef943e83-WORK-1,Mujer de barro,2024,theme,"Art, Craft and Making",Expression and Representation,https://www.themoviedb.org/movie/1602552,tagged from a published synopsis; primary theme
 NEW-3793ef943e83-WORK-1,Mujer de barro,2024,theme,Women and Gender,Lives and Relations,https://www.themoviedb.org/movie/1602552,tagged from a published synopsis
 NEW-3793ef943e83-WORK-1,Mujer de barro,2024,theme,Health and Healing,Lives and Relations,https://www.themoviedb.org/movie/1602552,tagged from a published synopsis
 NEW-3793ef943e83-WORK-1,Mujer de barro,2024,form,Documentary,,https://www.themoviedb.org/movie/1602552,from the published synopsis
 NEW-3793ef943e83-WORK-1,Mujer de barro,2024,length,Short,,https://www.themoviedb.org/movie/1602552,from the published synopsis
-NEW-da58b683f110-WORK-1,#skoden,2025,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,recorded with the film in the atlas
-NEW-da58b683f110-WORK-1,#skoden,2025,language,Blackfoot,siks1238,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,recorded with the film in the atlas
+NEW-da58b683f110-WORK-1,#skoden,2025,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,recorded with the film
+NEW-da58b683f110-WORK-1,#skoden,2025,language,Blackfoot,siks1238,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,recorded with the film
 NEW-da58b683f110-WORK-1,#skoden,2025,theme,Self-Representation and Countering Stereotypes,Expression and Representation,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,tagged from a published synopsis; primary theme
 NEW-da58b683f110-WORK-1,#skoden,2025,form,Documentary,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,from the published synopsis
 NEW-da58b683f110-WORK-1,#skoden,2025,length,Feature,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,from the published synopsis
-NEW-5ba881030fa8-WORK-1,Niimi,2025,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,recorded with the film in the atlas
+NEW-5ba881030fa8-WORK-1,Niimi,2025,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,recorded with the film
 NEW-5ba881030fa8-WORK-1,Niimi,2025,theme,Music and Performance,Expression and Representation,https://www.themoviedb.org/movie/1514494,tagged from a published synopsis; primary theme
 NEW-5ba881030fa8-WORK-1,Niimi,2025,theme,Health and Healing,Lives and Relations,https://www.themoviedb.org/movie/1514494,tagged from a published synopsis
 NEW-5ba881030fa8-WORK-1,Niimi,2025,theme,Women and Gender,Lives and Relations,https://www.themoviedb.org/movie/1514494,tagged from a published synopsis
@@ -1189,7 +1189,7 @@ NEW-4df03f9ddcb0-WORK-1,Datrin (The Raven),,theme,Elders and Knowledge,Knowledge
 NEW-4df03f9ddcb0-WORK-1,Datrin (The Raven),,theme,More-than-Human Relations,Land and Environment,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,tagged from a published synopsis
 NEW-4df03f9ddcb0-WORK-1,Datrin (The Raven),,form,Fiction,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,from the published synopsis
 NEW-4df03f9ddcb0-WORK-1,Datrin (The Raven),,length,Short,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,from the published synopsis
-NEW-11d1a00b41b7-WORK-1,Pendleton Man,2024,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,recorded with the film in the atlas
+NEW-11d1a00b41b7-WORK-1,Pendleton Man,2024,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,recorded with the film
 NEW-11d1a00b41b7-WORK-1,Pendleton Man,2024,theme,Kinship,Lives and Relations,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,tagged from a published synopsis; primary theme
 NEW-11d1a00b41b7-WORK-1,Pendleton Man,2024,theme,Youth,Lives and Relations,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,tagged from a published synopsis
 NEW-11d1a00b41b7-WORK-1,Pendleton Man,2024,form,Fiction,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,from the published synopsis
@@ -1224,13 +1224,13 @@ NEW-10f8d32b8220-WORK-1,Regalia,,theme,Urban Indigeneity,Lives and Relations,htt
 NEW-10f8d32b8220-WORK-1,Regalia,,theme,Music and Performance,Expression and Representation,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,tagged from a published synopsis
 NEW-10f8d32b8220-WORK-1,Regalia,,form,Fiction,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,from the published synopsis
 NEW-10f8d32b8220-WORK-1,Regalia,,length,Short,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,from the published synopsis
-NEW-a26382b65f7e-WORK-1,Guts & Glitz,2024,language,Payómkawichum Chaamteela,luis1253,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,recorded with the film in the atlas
-NEW-a26382b65f7e-WORK-1,Guts & Glitz,2024,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,recorded with the film in the atlas
+NEW-a26382b65f7e-WORK-1,Guts & Glitz,2024,language,Payómkawichum Chaamteela,luis1253,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,recorded with the film
+NEW-a26382b65f7e-WORK-1,Guts & Glitz,2024,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,recorded with the film
 NEW-a26382b65f7e-WORK-1,Guts & Glitz,2024,theme,Health and Healing,Lives and Relations,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,tagged from a published synopsis; primary theme
 NEW-a26382b65f7e-WORK-1,Guts & Glitz,2024,theme,Non-Conformity / Punk Film,Expression and Representation,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,tagged from a published synopsis
 NEW-a26382b65f7e-WORK-1,Guts & Glitz,2024,form,Experimental,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,from the published synopsis
 NEW-a26382b65f7e-WORK-1,Guts & Glitz,2024,length,Feature,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,from the published synopsis
-NEW-15d5f34b0dd7-WORK-1,Taxi the Empties,2026,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,recorded with the film in the atlas
+NEW-15d5f34b0dd7-WORK-1,Taxi the Empties,2026,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,recorded with the film
 NEW-15d5f34b0dd7-WORK-1,Taxi the Empties,2026,theme,Youth,Lives and Relations,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,tagged from a published synopsis; primary theme
 NEW-15d5f34b0dd7-WORK-1,Taxi the Empties,2026,form,Fiction,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,from the published synopsis
 NEW-15d5f34b0dd7-WORK-1,Taxi the Empties,2026,length,Short,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,from the published synopsis
@@ -1247,7 +1247,7 @@ NEW-ece62656570c-W1031-2,Hedtoft,2019,theme,Kinship,Lives and Relations,https://
 NEW-ece62656570c-W1031-2,Hedtoft,2019,theme,Water,Land and Environment,https://www.themoviedb.org/movie/802110,tagged from a published synopsis
 NEW-ece62656570c-W1031-2,Hedtoft,2019,form,Documentary,,https://www.themoviedb.org/movie/802110,from the published synopsis
 NEW-ece62656570c-W1031-2,Hedtoft,2019,length,Short,,https://www.themoviedb.org/movie/802110,from the published synopsis
-NEW-ece62656570c-W1031-3,In the Shadow of the Tugtupite,2020,language,English,stan1293,https://trentofestival.it/en/archives/2021/in-the-shadow-of-the-tugtupite/,"language fill (languages_2026-11-08_part1.csv), checked against the source page"
+NEW-ece62656570c-W1031-3,In the Shadow of the Tugtupite,2020,language,English,stan1293,https://trentofestival.it/en/archives/2021/in-the-shadow-of-the-tugtupite/,recorded with the film
 NEW-ece62656570c-W1031-3,In the Shadow of the Tugtupite,2020,theme,Extractivism,Land and Environment,https://www.themoviedb.org/movie/787928,tagged from a published synopsis; primary theme
 NEW-ece62656570c-W1031-3,In the Shadow of the Tugtupite,2020,theme,Sovereignty and Self-Determination,Sovereignty and Politics,https://www.themoviedb.org/movie/787928,tagged from a published synopsis
 NEW-ece62656570c-W1031-3,In the Shadow of the Tugtupite,2020,form,Documentary,,https://www.themoviedb.org/movie/787928,from the published synopsis
@@ -1256,8 +1256,8 @@ NEW-be50361fffae-WORK-1,Nenaboozhoo,,theme,Cosmology and Origin Stories,Knowledg
 NEW-be50361fffae-WORK-1,Nenaboozhoo,,theme,Linguistic Preservation,Knowledge and Continuity,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,tagged from a published synopsis
 NEW-be50361fffae-WORK-1,Nenaboozhoo,,form,Animation,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,from the published synopsis
 NEW-be50361fffae-WORK-1,Nenaboozhoo,,length,Short,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,from the published synopsis
-NEW-b5c3aa388940-WORK-1,Why Would I Leave,2025,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,recorded with the film in the atlas
-NEW-b5c3aa388940-WORK-1,Why Would I Leave,2025,language,Nlakapamuxcheen,thom1243,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,recorded with the film in the atlas
+NEW-b5c3aa388940-WORK-1,Why Would I Leave,2025,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,recorded with the film
+NEW-b5c3aa388940-WORK-1,Why Would I Leave,2025,language,Nlakapamuxcheen,thom1243,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,recorded with the film
 NEW-b5c3aa388940-WORK-1,Why Would I Leave,2025,theme,Environmental Change,Land and Environment,https://www.themoviedb.org/movie/1737403,tagged from a published synopsis; primary theme
 NEW-b5c3aa388940-WORK-1,Why Would I Leave,2025,theme,Memory and Oral History,Knowledge and Continuity,https://www.themoviedb.org/movie/1737403,tagged from a published synopsis
 NEW-b5c3aa388940-WORK-1,Why Would I Leave,2025,length,Short,,https://www.themoviedb.org/movie/1737403,from the published synopsis
@@ -1266,7 +1266,7 @@ NEW-0e6943bcfc39-WORK-1,Wînipêk,,theme,Displacement and Migration,Sovereignty 
 NEW-0e6943bcfc39-WORK-1,Wînipêk,,theme,More-than-Human Relations,Land and Environment,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,tagged from a published synopsis
 NEW-0e6943bcfc39-WORK-1,Wînipêk,,form,Experimental,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,from the published synopsis
 NEW-0e6943bcfc39-WORK-1,Wînipêk,,length,Short,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,from the published synopsis
-NEW-473fa4602c6b-WORK-1,Dream Touch Believe,2025,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,recorded with the film in the atlas
+NEW-473fa4602c6b-WORK-1,Dream Touch Believe,2025,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,recorded with the film
 NEW-473fa4602c6b-WORK-1,Dream Touch Believe,2025,theme,"Art, Craft and Making",Expression and Representation,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,tagged from a published synopsis; primary theme
 NEW-473fa4602c6b-WORK-1,Dream Touch Believe,2025,form,Documentary,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,from the published synopsis
 NEW-473fa4602c6b-WORK-1,Dream Touch Believe,2025,length,Feature,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,from the published synopsis
@@ -1276,16 +1276,16 @@ NEW-70c811ab5f63-WORK-1,Moon Noonk Edouard,,form,Hybrid,,https://imaginenative.o
 NEW-70c811ab5f63-WORK-1,Moon Noonk Edouard,,length,Short,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,from the published synopsis
 NEW-39a09ddff30e-WORK-1,John’s First Tattoo,2024,form,Fiction,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,"normalised from the recorded form ""Dramatic Short"""
 NEW-39a09ddff30e-WORK-1,John’s First Tattoo,2024,length,Short,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,"normalised from the recorded form ""Dramatic Short"""
-NEW-2f13bf985833-WORK-1,Ohskennón:ten Owí:ra (Little Deer),2023,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,recorded with the film in the atlas
+NEW-2f13bf985833-WORK-1,Ohskennón:ten Owí:ra (Little Deer),2023,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,recorded with the film
 NEW-2f13bf985833-WORK-1,Ohskennón:ten Owí:ra (Little Deer),2023,theme,Residential and Boarding Schools,Knowledge and Continuity,https://www.themoviedb.org/movie/1493835,tagged from a published synopsis; primary theme
 NEW-2f13bf985833-WORK-1,Ohskennón:ten Owí:ra (Little Deer),2023,theme,Youth,Lives and Relations,https://www.themoviedb.org/movie/1493835,tagged from a published synopsis
 NEW-2f13bf985833-WORK-1,Ohskennón:ten Owí:ra (Little Deer),2023,form,Fiction,,https://www.themoviedb.org/movie/1493835,from the published synopsis
 NEW-2f13bf985833-WORK-1,Ohskennón:ten Owí:ra (Little Deer),2023,length,Short,,https://www.themoviedb.org/movie/1493835,from the published synopsis
-NEW-4870cf62f977-WORK-1,Flowers,2024,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,recorded with the film in the atlas
-NEW-4870cf62f977-WORK-1,Flowers,2024,language,Spanish,stan1288,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,recorded with the film in the atlas
-NEW-4870cf62f977-WORK-1,Flowers,2024,language,Tupí,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,recorded with the film in the atlas
-NEW-4870cf62f977-WORK-1,Flowers,2024,language,Portuguese,port1283,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,recorded with the film in the atlas
-NEW-4870cf62f977-WORK-1,Flowers,2024,language,Vietnamese,viet1252,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,recorded with the film in the atlas
+NEW-4870cf62f977-WORK-1,Flowers,2024,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,recorded with the film
+NEW-4870cf62f977-WORK-1,Flowers,2024,language,Spanish,stan1288,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,recorded with the film
+NEW-4870cf62f977-WORK-1,Flowers,2024,language,Tupí,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,recorded with the film
+NEW-4870cf62f977-WORK-1,Flowers,2024,language,Portuguese,port1283,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,recorded with the film
+NEW-4870cf62f977-WORK-1,Flowers,2024,language,Vietnamese,viet1252,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,recorded with the film
 NEW-4870cf62f977-WORK-1,Flowers,2024,theme,State Violence and Genocide,Sovereignty and Politics,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,tagged from a published synopsis; primary theme
 NEW-4870cf62f977-WORK-1,Flowers,2024,theme,Kinship,Lives and Relations,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,tagged from a published synopsis
 NEW-4870cf62f977-WORK-1,Flowers,2024,form,Documentary,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,from the published synopsis
@@ -1293,10 +1293,10 @@ NEW-4870cf62f977-WORK-1,Flowers,2024,length,Short,,https://imaginenative.org/the
 NEW-2f279d2a517d-WORK-1,The Woman Who Married A Bear,,theme,More-than-Human Relations,Land and Environment,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,tagged from a published synopsis; primary theme
 NEW-2f279d2a517d-WORK-1,The Woman Who Married A Bear,,form,Fiction,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,from the published synopsis
 NEW-2f279d2a517d-WORK-1,The Woman Who Married A Bear,,length,Short,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,from the published synopsis
-NEW-ff0e80bc0b40-WORK-1,Bimaadizi/Along in Space and Time,2026,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,recorded with the film in the atlas
+NEW-ff0e80bc0b40-WORK-1,Bimaadizi/Along in Space and Time,2026,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,recorded with the film
 NEW-ff0e80bc0b40-WORK-1,Bimaadizi/Along in Space and Time,2026,form,Fiction,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,"normalised from the recorded form ""Dramatic Short"""
 NEW-ff0e80bc0b40-WORK-1,Bimaadizi/Along in Space and Time,2026,length,Short,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,"normalised from the recorded form ""Dramatic Short"""
-NEW-9be87ea2f6c9-WORK-1,Love Is Trash,2025,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,recorded with the film in the atlas
+NEW-9be87ea2f6c9-WORK-1,Love Is Trash,2025,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,recorded with the film
 NEW-9be87ea2f6c9-WORK-1,Love Is Trash,2025,form,Fiction,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,"normalised from the recorded form ""Dramatic Short"""
 NEW-9be87ea2f6c9-WORK-1,Love Is Trash,2025,length,Short,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,"normalised from the recorded form ""Dramatic Short"""
 NEW-2cadf6c546d8-WORK-1,Little Orange Bandages,2025,theme,"Justice, Truth and Reconciliation",Sovereignty and Politics,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,tagged from a published synopsis; primary theme
@@ -1308,13 +1308,13 @@ NEW-c65e17478a98-WORK-1,Defend the Sacred,,theme,Land Defense,Land and Environme
 NEW-c65e17478a98-WORK-1,Defend the Sacred,,theme,Water,Land and Environment,https://www.themoviedb.org/movie/461101,tagged from a published synopsis
 NEW-c65e17478a98-WORK-1,Defend the Sacred,,form,Documentary,,https://www.themoviedb.org/movie/461101,from the published synopsis
 NEW-c65e17478a98-WORK-1,Defend the Sacred,,length,Short,,https://www.themoviedb.org/movie/461101,from the published synopsis
-NEW-315f602c7b8a-WORK-1,My Braid is Beautiful – Gnaajwan Nkaadengan,2025,language,Anishinaabemowin (Ojibwe),ojib1241,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,"recorded with the film in the atlas; credited as ""Ojibwe"""
-NEW-315f602c7b8a-WORK-1,My Braid is Beautiful – Gnaajwan Nkaadengan,2025,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,"recorded with the film in the atlas; credited as ""Ojibwe"""
+NEW-315f602c7b8a-WORK-1,My Braid is Beautiful – Gnaajwan Nkaadengan,2025,language,Anishinaabemowin (Ojibwe),ojib1241,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,recorded with the film
+NEW-315f602c7b8a-WORK-1,My Braid is Beautiful – Gnaajwan Nkaadengan,2025,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,recorded with the film
 NEW-315f602c7b8a-WORK-1,My Braid is Beautiful – Gnaajwan Nkaadengan,2025,theme,Linguistic Preservation,Knowledge and Continuity,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,tagged from a published synopsis; primary theme
 NEW-315f602c7b8a-WORK-1,My Braid is Beautiful – Gnaajwan Nkaadengan,2025,theme,Self-Representation and Countering Stereotypes,Expression and Representation,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,tagged from a published synopsis
 NEW-315f602c7b8a-WORK-1,My Braid is Beautiful – Gnaajwan Nkaadengan,2025,form,Documentary,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,from the published synopsis
 NEW-315f602c7b8a-WORK-1,My Braid is Beautiful – Gnaajwan Nkaadengan,2025,length,Short,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,from the published synopsis
-NEW-d4f5a65b029e-WORK-1,Little Lake,2024,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,recorded with the film in the atlas
+NEW-d4f5a65b029e-WORK-1,Little Lake,2024,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,recorded with the film
 NEW-d4f5a65b029e-WORK-1,Little Lake,2024,form,Fiction,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,"normalised from the recorded form ""Dramatic Short"""
 NEW-d4f5a65b029e-WORK-1,Little Lake,2024,length,Short,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,"normalised from the recorded form ""Dramatic Short"""
 NEW-c91587181e29-WORK-1,One Duck Down,,theme,More-than-Human Relations,Land and Environment,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,tagged from a published synopsis; primary theme
@@ -1326,10 +1326,10 @@ FILM-SRC-2023-00057,Nigiqtuq (The South Wind),,theme,Women and Gender,Lives and 
 FILM-SRC-2023-00057,Nigiqtuq (The South Wind),,theme,Kinship,Lives and Relations,https://www.themoviedb.org/movie/1175870,tagged from a published synopsis
 FILM-SRC-2023-00057,Nigiqtuq (The South Wind),,form,Fiction,,https://www.themoviedb.org/movie/1175870,from the published synopsis
 FILM-SRC-2023-00057,Nigiqtuq (The South Wind),,length,Short,,https://www.themoviedb.org/movie/1175870,from the published synopsis
-NEW-6481dcf12002-WORK-1,Windsong,2026,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,recorded with the film in the atlas
+NEW-6481dcf12002-WORK-1,Windsong,2026,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,recorded with the film
 NEW-6481dcf12002-WORK-1,Windsong,2026,form,Music Video,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,"normalised from the recorded form ""Music Video"""
-NEW-4b48761bbc57-WORK-1,Yiyíistsʼą́ą́ʼ (Listen),2025,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,"recorded with the film in the atlas; credited as ""Navajo"""
-NEW-4b48761bbc57-WORK-1,Yiyíistsʼą́ą́ʼ (Listen),2025,language,Diné (Navajo),nava1243,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,"recorded with the film in the atlas; credited as ""Navajo"""
+NEW-4b48761bbc57-WORK-1,Yiyíistsʼą́ą́ʼ (Listen),2025,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,recorded with the film
+NEW-4b48761bbc57-WORK-1,Yiyíistsʼą́ą́ʼ (Listen),2025,language,Diné (Navajo),nava1243,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,recorded with the film
 NEW-4b48761bbc57-WORK-1,Yiyíistsʼą́ą́ʼ (Listen),2025,form,Documentary,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,"normalised from the recorded form ""Documentary Short"""
 NEW-4b48761bbc57-WORK-1,Yiyíistsʼą́ą́ʼ (Listen),2025,length,Short,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,"normalised from the recorded form ""Documentary Short"""
 FILM-SRC-2023-00046,Grape Soda in the Parking Lot,,theme,Linguistic Preservation,Knowledge and Continuity,https://www.themoviedb.org/movie/1102759,tagged from a published synopsis; primary theme
@@ -1353,7 +1353,7 @@ NEW-665e8a4ab293-WORK-1,cadèwašteya,,length,Short,,https://imaginenative.org/t
 NEW-baceba5380b8-WORK-1,Sally’s Bravery,,theme,Women and Gender,Lives and Relations,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,tagged from a published synopsis; primary theme
 NEW-baceba5380b8-WORK-1,Sally’s Bravery,,theme,Kinship,Lives and Relations,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,tagged from a published synopsis
 NEW-baceba5380b8-WORK-1,Sally’s Bravery,,length,Short,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,from the published synopsis
-NEW-7b37398372f9-WORK-1,Walls – Akinni Inuk,2025,language,Kalaallisut,kala1399,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,"recorded with the film in the atlas; credited as ""Kalaallisut (Greenlandic)"""
+NEW-7b37398372f9-WORK-1,Walls – Akinni Inuk,2025,language,Kalaallisut,kala1399,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,recorded with the film
 NEW-7b37398372f9-WORK-1,Walls – Akinni Inuk,2025,form,Documentary,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,"normalised from the recorded form ""Documentary Feature"""
 NEW-7b37398372f9-WORK-1,Walls – Akinni Inuk,2025,length,Feature,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,"normalised from the recorded form ""Documentary Feature"""
 NEW-bd42ac361cc5-WORK-1,The Wandering Soul,,theme,Kinship,Lives and Relations,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,tagged from a published synopsis; primary theme
@@ -1372,7 +1372,7 @@ NEW-5b6f10a24b2e-WORK-1,pîķîwî,,theme,LGBTQIA2S,Lives and Relations,https://
 NEW-5b6f10a24b2e-WORK-1,pîķîwî,,theme,Health and Healing,Lives and Relations,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,tagged from a published synopsis
 NEW-5b6f10a24b2e-WORK-1,pîķîwî,,form,Fiction,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,from the published synopsis
 NEW-5b6f10a24b2e-WORK-1,pîķîwî,,length,Short,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,from the published synopsis
-NEW-4debd18cb5d1-WORK-1,The Lemonade Stand – Making Medicines,2024,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,recorded with the film in the atlas
+NEW-4debd18cb5d1-WORK-1,The Lemonade Stand – Making Medicines,2024,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,recorded with the film
 NEW-4debd18cb5d1-WORK-1,The Lemonade Stand – Making Medicines,2024,theme,Health and Healing,Lives and Relations,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,tagged from a published synopsis; primary theme
 NEW-4debd18cb5d1-WORK-1,The Lemonade Stand – Making Medicines,2024,theme,Kinship,Lives and Relations,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,tagged from a published synopsis
 NEW-4debd18cb5d1-WORK-1,The Lemonade Stand – Making Medicines,2024,theme,Elders and Knowledge,Knowledge and Continuity,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,tagged from a published synopsis
@@ -1389,20 +1389,20 @@ FILM-SRC-2023-00039,Do Digital Curanderas Use Eggs In Their Limpias?,,theme,Heal
 FILM-SRC-2023-00039,Do Digital Curanderas Use Eggs In Their Limpias?,,theme,Urban Indigeneity,Lives and Relations,https://www.themoviedb.org/movie/1002521,tagged from a published synopsis
 FILM-SRC-2023-00039,Do Digital Curanderas Use Eggs In Their Limpias?,,form,Fiction,,https://www.themoviedb.org/movie/1002521,from the published synopsis
 FILM-SRC-2023-00039,Do Digital Curanderas Use Eggs In Their Limpias?,,length,Short,,https://www.themoviedb.org/movie/1002521,from the published synopsis
-NEW-86d0a18ee535-WORK-1,Michif Land-Based Knowledge,2024,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,recorded with the film in the atlas
+NEW-86d0a18ee535-WORK-1,Michif Land-Based Knowledge,2024,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,recorded with the film
 NEW-86d0a18ee535-WORK-1,Michif Land-Based Knowledge,2024,theme,"Art, Craft and Making",Expression and Representation,https://www.themoviedb.org/movie/1368796,tagged from a published synopsis; primary theme
 NEW-86d0a18ee535-WORK-1,Michif Land-Based Knowledge,2024,theme,More-than-Human Relations,Land and Environment,https://www.themoviedb.org/movie/1368796,tagged from a published synopsis
 NEW-86d0a18ee535-WORK-1,Michif Land-Based Knowledge,2024,length,Short,,https://www.themoviedb.org/movie/1368796,from the published synopsis
 NEW-86d0a18ee535-WORK-1,Michif Land-Based Knowledge,2024,form,Experimental,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,"normalised from the recorded form ""Experimental Short"""
-NEW-7feb9c9ffe82-WORK-1,Mann’s Sparks,2024,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,recorded with the film in the atlas
+NEW-7feb9c9ffe82-WORK-1,Mann’s Sparks,2024,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,recorded with the film
 NEW-7feb9c9ffe82-WORK-1,Mann’s Sparks,2024,form,Experimental,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,"normalised from the recorded form ""Experimental Feature"""
 NEW-7feb9c9ffe82-WORK-1,Mann’s Sparks,2024,length,Feature,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,"normalised from the recorded form ""Experimental Feature"""
 NEW-d42947e0d942-WORK-1,Isunngannguaq,,theme,More-than-Human Relations,Land and Environment,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,tagged from a published synopsis; primary theme
 NEW-d42947e0d942-WORK-1,Isunngannguaq,,theme,Youth,Lives and Relations,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,tagged from a published synopsis
 NEW-d42947e0d942-WORK-1,Isunngannguaq,,form,Fiction,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,from the published synopsis
 NEW-d42947e0d942-WORK-1,Isunngannguaq,,length,Short,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,from the published synopsis
-NEW-df0d54c464f8-WORK-1,KINKU,2025,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,recorded with the film in the atlas
-NEW-df0d54c464f8-WORK-1,KINKU,2025,language,Spanish,stan1288,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,recorded with the film in the atlas
+NEW-df0d54c464f8-WORK-1,KINKU,2025,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,recorded with the film
+NEW-df0d54c464f8-WORK-1,KINKU,2025,language,Spanish,stan1288,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,recorded with the film
 NEW-df0d54c464f8-WORK-1,KINKU,2025,theme,Kinship,Lives and Relations,https://www.themoviedb.org/movie/1434229,tagged from a published synopsis; primary theme
 NEW-df0d54c464f8-WORK-1,KINKU,2025,theme,Youth,Lives and Relations,https://www.themoviedb.org/movie/1434229,tagged from a published synopsis
 NEW-df0d54c464f8-WORK-1,KINKU,2025,form,Animation,,https://www.themoviedb.org/movie/1434229,from the published synopsis
@@ -1410,16 +1410,16 @@ NEW-df0d54c464f8-WORK-1,KINKU,2025,length,Short,,https://www.themoviedb.org/movi
 FILM-SRC-2023-00032,NANGULVI,,theme,Extractivism,Land and Environment,https://www.themoviedb.org/movie/1390333,tagged from a published synopsis; primary theme
 FILM-SRC-2023-00032,NANGULVI,,theme,More-than-Human Relations,Land and Environment,https://www.themoviedb.org/movie/1390333,tagged from a published synopsis
 FILM-SRC-2023-00032,NANGULVI,,length,Short,,https://www.themoviedb.org/movie/1390333,from the published synopsis
-NEW-7c78fdbe16c7-WORK-1,The Orange Flower,2025,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,recorded with the film in the atlas
+NEW-7c78fdbe16c7-WORK-1,The Orange Flower,2025,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,recorded with the film
 NEW-7c78fdbe16c7-WORK-1,The Orange Flower,2025,theme,Residential and Boarding Schools,Knowledge and Continuity,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,tagged from a published synopsis; primary theme
 NEW-7c78fdbe16c7-WORK-1,The Orange Flower,2025,theme,Youth,Lives and Relations,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,tagged from a published synopsis
 NEW-7c78fdbe16c7-WORK-1,The Orange Flower,2025,length,Short,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,from the published synopsis
 NEW-7c78fdbe16c7-WORK-1,The Orange Flower,2025,form,Fiction,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,"normalised from the recorded form ""Dramatic Short"""
-NEW-fbac80ee10db-WORK-1,A Girl Like That,2026,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,recorded with the film in the atlas
+NEW-fbac80ee10db-WORK-1,A Girl Like That,2026,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,recorded with the film
 NEW-fbac80ee10db-WORK-1,A Girl Like That,2026,form,Fiction,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,"normalised from the recorded form ""Dramatic Short"""
 NEW-fbac80ee10db-WORK-1,A Girl Like That,2026,length,Short,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,"normalised from the recorded form ""Dramatic Short"""
-NEW-c46238144cea-WORK-1,Ni-Naadamaadiz: Red Power Rising,2025,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,"recorded with the film in the atlas; credited as ""Anishinaabemowin"""
-NEW-c46238144cea-WORK-1,Ni-Naadamaadiz: Red Power Rising,2025,language,Anishinaabemowin (Ojibwe),ojib1241,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,"recorded with the film in the atlas; credited as ""Anishinaabemowin"""
+NEW-c46238144cea-WORK-1,Ni-Naadamaadiz: Red Power Rising,2025,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,recorded with the film
+NEW-c46238144cea-WORK-1,Ni-Naadamaadiz: Red Power Rising,2025,language,Anishinaabemowin (Ojibwe),ojib1241,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,recorded with the film
 NEW-c46238144cea-WORK-1,Ni-Naadamaadiz: Red Power Rising,2025,theme,Resistance Movements,Sovereignty and Politics,https://www.themoviedb.org/movie/1526219,tagged from a published synopsis; primary theme
 NEW-c46238144cea-WORK-1,Ni-Naadamaadiz: Red Power Rising,2025,theme,Youth,Lives and Relations,https://www.themoviedb.org/movie/1526219,tagged from a published synopsis
 NEW-c46238144cea-WORK-1,Ni-Naadamaadiz: Red Power Rising,2025,theme,"Archives, Museums and Repatriation",Knowledge and Continuity,https://www.themoviedb.org/movie/1526219,tagged from a published synopsis
@@ -1427,7 +1427,7 @@ NEW-c46238144cea-WORK-1,Ni-Naadamaadiz: Red Power Rising,2025,form,Documentary,,
 NEW-c46238144cea-WORK-1,Ni-Naadamaadiz: Red Power Rising,2025,length,Feature,,https://www.themoviedb.org/movie/1526219,from the published synopsis
 NEW-ea9c6fdc5105-WORK-1,Gâteau Girl (Pussy Pussy Pussy),2024,form,Experimental,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,"normalised from the recorded form ""Experimental Short"""
 NEW-ea9c6fdc5105-WORK-1,Gâteau Girl (Pussy Pussy Pussy),2024,length,Short,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,"normalised from the recorded form ""Experimental Short"""
-NEW-1567e52b3a80-WORK-1,Happy Thanksgiving,2024,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,recorded with the film in the atlas
+NEW-1567e52b3a80-WORK-1,Happy Thanksgiving,2024,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,recorded with the film
 NEW-1567e52b3a80-WORK-1,Happy Thanksgiving,2024,form,Fiction,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,"normalised from the recorded form ""Dramatic Short"""
 NEW-1567e52b3a80-WORK-1,Happy Thanksgiving,2024,length,Short,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,"normalised from the recorded form ""Dramatic Short"""
 NEW-e0d12f4753ec-WORK-1,Nivingajuliat,,theme,"Art, Craft and Making",Expression and Representation,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,tagged from a published synopsis; primary theme
@@ -1439,10 +1439,10 @@ NEW-65dc33c64059-WORK-1,The Business of Fancydancing,,theme,LGBTQIA2S,Lives and 
 NEW-65dc33c64059-WORK-1,The Business of Fancydancing,,theme,"Art, Craft and Making",Expression and Representation,https://www.themoviedb.org/movie/40920,tagged from a published synopsis
 NEW-65dc33c64059-WORK-1,The Business of Fancydancing,,form,Fiction,,https://www.themoviedb.org/movie/40920,from the published synopsis
 NEW-65dc33c64059-WORK-1,The Business of Fancydancing,,length,Feature,,https://www.themoviedb.org/movie/40920,from the published synopsis
-NEW-938e5240b40b-WORK-1,Visitant,2026,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,recorded with the film in the atlas
+NEW-938e5240b40b-WORK-1,Visitant,2026,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,recorded with the film
 NEW-938e5240b40b-WORK-1,Visitant,2026,form,Fiction,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,"normalised from the recorded form ""Dramatic Short"""
 NEW-938e5240b40b-WORK-1,Visitant,2026,length,Short,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,"normalised from the recorded form ""Dramatic Short"""
-NEW-ba0e237dc98a-WORK-1,Uncle Lyle,2025,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,recorded with the film in the atlas
+NEW-ba0e237dc98a-WORK-1,Uncle Lyle,2025,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,recorded with the film
 NEW-ba0e237dc98a-WORK-1,Uncle Lyle,2025,theme,Kinship,Lives and Relations,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,tagged from a published synopsis; primary theme
 NEW-ba0e237dc98a-WORK-1,Uncle Lyle,2025,form,Fiction,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,from the published synopsis
 NEW-ba0e237dc98a-WORK-1,Uncle Lyle,2025,length,Short,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,from the published synopsis
@@ -1454,7 +1454,7 @@ FILM-SRC-2023-00012,Headdress,,theme,Self-Representation and Countering Stereoty
 FILM-SRC-2023-00012,Headdress,,theme,LGBTQIA2S,Lives and Relations,https://www.themoviedb.org/movie/1061325,tagged from a published synopsis
 FILM-SRC-2023-00012,Headdress,,form,Fiction,,https://www.themoviedb.org/movie/1061325,from the published synopsis
 FILM-SRC-2023-00012,Headdress,,length,Short,,https://www.themoviedb.org/movie/1061325,from the published synopsis
-NEW-32b9da7d3995-WORK-1,Do You Speak Paiute?,2025,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,recorded with the film in the atlas
+NEW-32b9da7d3995-WORK-1,Do You Speak Paiute?,2025,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,recorded with the film
 NEW-32b9da7d3995-WORK-1,Do You Speak Paiute?,2025,theme,Linguistic Preservation,Knowledge and Continuity,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,tagged from a published synopsis; primary theme
 NEW-32b9da7d3995-WORK-1,Do You Speak Paiute?,2025,theme,Kinship,Lives and Relations,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,tagged from a published synopsis
 NEW-32b9da7d3995-WORK-1,Do You Speak Paiute?,2025,form,Documentary,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,from the published synopsis
@@ -1464,13 +1464,13 @@ NEW-99cac4bf4e69-WORK-1,Endless Sunlight,,theme,Women and Gender,Lives and Relat
 NEW-99cac4bf4e69-WORK-1,Endless Sunlight,,theme,Memory and Oral History,Knowledge and Continuity,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,tagged from a published synopsis
 NEW-99cac4bf4e69-WORK-1,Endless Sunlight,,form,Documentary,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,from the published synopsis
 NEW-99cac4bf4e69-WORK-1,Endless Sunlight,,length,Short,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,from the published synopsis
-NEW-f64866092029-WORK-1,Are You Native?,2026,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,recorded with the film in the atlas
+NEW-f64866092029-WORK-1,Are You Native?,2026,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,recorded with the film
 NEW-f64866092029-WORK-1,Are You Native?,2026,form,Documentary,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,"normalised from the recorded form ""Documentary Short"""
 NEW-f64866092029-WORK-1,Are You Native?,2026,length,Short,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,"normalised from the recorded form ""Documentary Short"""
-NEW-24d192d7169f-WORK-1,My Message to You,2024,language,Haida,haid1248,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,recorded with the film in the atlas
+NEW-24d192d7169f-WORK-1,My Message to You,2024,language,Haida,haid1248,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,recorded with the film
 NEW-24d192d7169f-WORK-1,My Message to You,2024,form,Documentary,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,"normalised from the recorded form ""Documentary Short"""
 NEW-24d192d7169f-WORK-1,My Message to You,2024,length,Short,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,"normalised from the recorded form ""Documentary Short"""
-NEW-c74dcc05c3f0-WORK-1,Boca Vieja,2025,language,Spanish,stan1288,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,recorded with the film in the atlas
+NEW-c74dcc05c3f0-WORK-1,Boca Vieja,2025,language,Spanish,stan1288,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,recorded with the film
 NEW-c74dcc05c3f0-WORK-1,Boca Vieja,2025,theme,Environmental Change,Land and Environment,https://www.themoviedb.org/movie/1357891,tagged from a published synopsis; primary theme
 NEW-c74dcc05c3f0-WORK-1,Boca Vieja,2025,theme,Kinship,Lives and Relations,https://www.themoviedb.org/movie/1357891,tagged from a published synopsis
 NEW-c74dcc05c3f0-WORK-1,Boca Vieja,2025,theme,Food Sovereignty,Land and Environment,https://www.themoviedb.org/movie/1357891,tagged from a published synopsis
@@ -1480,13 +1480,13 @@ NEW-031a02f81a1f-WORK-1,Corn Husk Doll,,theme,Cosmology and Origin Stories,Knowl
 NEW-031a02f81a1f-WORK-1,Corn Husk Doll,,theme,Linguistic Preservation,Knowledge and Continuity,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,tagged from a published synopsis
 NEW-031a02f81a1f-WORK-1,Corn Husk Doll,,form,Fiction,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,from the published synopsis
 NEW-031a02f81a1f-WORK-1,Corn Husk Doll,,length,Short,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,from the published synopsis
-NEW-f31285b461ae-WORK-1,Niwahkohmahkanis,2024,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,recorded with the film in the atlas
-NEW-f31285b461ae-WORK-1,Niwahkohmahkanis,2024,language,Cree,cree1272,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,recorded with the film in the atlas
+NEW-f31285b461ae-WORK-1,Niwahkohmahkanis,2024,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,recorded with the film
+NEW-f31285b461ae-WORK-1,Niwahkohmahkanis,2024,language,Cree,cree1272,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,recorded with the film
 NEW-f31285b461ae-WORK-1,Niwahkohmahkanis,2024,theme,Kinship,Lives and Relations,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,tagged from a published synopsis; primary theme
 NEW-f31285b461ae-WORK-1,Niwahkohmahkanis,2024,theme,Youth,Lives and Relations,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,tagged from a published synopsis
 NEW-f31285b461ae-WORK-1,Niwahkohmahkanis,2024,form,Music Video,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,from the published synopsis
 NEW-f31285b461ae-WORK-1,Niwahkohmahkanis,2024,length,Short,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,from the published synopsis
-REVIEWFILM-20261008-001-01,MIWENE: Reclaiming the Amazon,2022,language,Spanish,stan1288,https://filmfreeway.com/MIWENE,recorded with the film in the atlas
+REVIEWFILM-20261008-001-01,MIWENE: Reclaiming the Amazon,2022,language,Spanish,stan1288,https://filmfreeway.com/MIWENE,recorded with the film
 REVIEWFILM-20261008-003-01,A História da Cutia e do Macaco,2011,theme,Women and Gender,Lives and Relations,https://www.themoviedb.org/movie/864557,tagged from a published synopsis; primary theme
 REVIEWFILM-20261008-003-01,A História da Cutia e do Macaco,2011,theme,Cosmology and Origin Stories,Knowledge and Continuity,https://www.themoviedb.org/movie/864557,tagged from a published synopsis
 REVIEWFILM-20261008-003-01,A História da Cutia e do Macaco,2011,theme,Collective and Community Media,Expression and Representation,https://www.themoviedb.org/movie/864557,tagged from a published synopsis
@@ -1521,17 +1521,17 @@ REVIEWFILM-20261008-008-01,El Río de los Espíritus / River of Spirits,2026,the
 REVIEWFILM-20261008-008-01,El Río de los Espíritus / River of Spirits,2026,theme,Cosmology and Origin Stories,Knowledge and Continuity,https://www.themoviedb.org/movie/1599556,tagged from a published synopsis
 REVIEWFILM-20261008-008-01,El Río de los Espíritus / River of Spirits,2026,form,Documentary,,https://www.themoviedb.org/movie/1599556,from the published synopsis
 REVIEWFILM-20261008-008-01,El Río de los Espíritus / River of Spirits,2026,length,Feature,,https://www.themoviedb.org/movie/1599556,from the published synopsis
-REVIEWFILM-20261008-009-02,Allpamanda,2023,language,Kichwa,colo1257,https://www.retinalatina.org/peliculas/allpamanda-colectivo-tawna/,"language fill (languages_2026-11-08_part1.csv), checked against the source page"
-REVIEWFILM-20261008-009-02,Allpamanda,2023,language,Shuar,shua1257,https://www.retinalatina.org/peliculas/allpamanda-colectivo-tawna/,"language fill (languages_2026-11-08_part1.csv), checked against the source page"
-REVIEWFILM-20261008-009-02,Allpamanda,2023,language,Siekopai,seco1241,https://www.retinalatina.org/peliculas/allpamanda-colectivo-tawna/,"language fill (languages_2026-11-08_part1.csv), checked against the source page"
-REVIEWFILM-20261008-009-02,Allpamanda,2023,language,Waorani,waor1240,https://www.retinalatina.org/peliculas/allpamanda-colectivo-tawna/,"language fill (languages_2026-11-08_part1.csv), checked against the source page"
+REVIEWFILM-20261008-009-02,Allpamanda,2023,language,Kichwa,colo1257,https://www.retinalatina.org/peliculas/allpamanda-colectivo-tawna/,recorded with the film
+REVIEWFILM-20261008-009-02,Allpamanda,2023,language,Shuar,shua1257,https://www.retinalatina.org/peliculas/allpamanda-colectivo-tawna/,recorded with the film
+REVIEWFILM-20261008-009-02,Allpamanda,2023,language,Siekopai,seco1241,https://www.retinalatina.org/peliculas/allpamanda-colectivo-tawna/,recorded with the film
+REVIEWFILM-20261008-009-02,Allpamanda,2023,language,Waorani,waor1240,https://www.retinalatina.org/peliculas/allpamanda-colectivo-tawna/,recorded with the film
 REVIEWFILM-20261008-009-02,Allpamanda,2023,theme,Land Defense,Land and Environment,https://www.themoviedb.org/movie/1291508,tagged from a published synopsis; primary theme
 REVIEWFILM-20261008-009-02,Allpamanda,2023,theme,Resistance Movements,Sovereignty and Politics,https://www.themoviedb.org/movie/1291508,tagged from a published synopsis
 REVIEWFILM-20261008-009-02,Allpamanda,2023,theme,Memory and Oral History,Knowledge and Continuity,https://www.themoviedb.org/movie/1291508,tagged from a published synopsis
 REVIEWFILM-20261008-009-02,Allpamanda,2023,theme,Collective and Community Media,Expression and Representation,https://www.themoviedb.org/movie/1291508,tagged from a published synopsis
 REVIEWFILM-20261008-009-02,Allpamanda,2023,form,Documentary,,https://www.themoviedb.org/movie/1291508,from the published synopsis
 REVIEWFILM-20261008-009-02,Allpamanda,2023,length,Feature,,https://www.themoviedb.org/movie/1291508,from the published synopsis
-CHECKED-LEAD-20261008-010-sachamamakuna,Sacha Mamakuna,2019,language,Kichwa,colo1257,https://www.sachamamakuna.com/,recorded with the film in the atlas
+CHECKED-LEAD-20261008-010-sachamamakuna,Sacha Mamakuna,2019,language,Kichwa,colo1257,https://www.sachamamakuna.com/,recorded with the film
 REVIEWFILM-20261008-011-01,Lithipokoroda,2022,theme,Music and Performance,Expression and Representation,https://www.themoviedb.org/movie/1130773,tagged from a published synopsis; primary theme
 REVIEWFILM-20261008-011-01,Lithipokoroda,2022,theme,Land Defense,Land and Environment,https://www.themoviedb.org/movie/1130773,tagged from a published synopsis
 REVIEWFILM-20261008-011-01,Lithipokoroda,2022,theme,Women and Gender,Lives and Relations,https://www.themoviedb.org/movie/1130773,tagged from a published synopsis
@@ -1596,9 +1596,9 @@ SA50-20261014-c3fc26c7939c-WORK-01,Ja Chomobicho Baneni / La última tinaja,2019
 SA50-20261014-c3fc26c7939c-WORK-01,Ja Chomobicho Baneni / La última tinaja,2019,theme,"Art, Craft and Making",Expression and Representation,https://www.themoviedb.org/movie/830134,tagged from a published synopsis
 SA50-20261014-c3fc26c7939c-WORK-01,Ja Chomobicho Baneni / La última tinaja,2019,form,Documentary,,https://www.themoviedb.org/movie/830134,from the published synopsis
 SA50-20261014-c3fc26c7939c-WORK-01,Ja Chomobicho Baneni / La última tinaja,2019,length,Short,,https://www.themoviedb.org/movie/830134,from the published synopsis
-SA50-20261014-9b1d14fcc4b5-WORK-01,Venciendo el miedo / Conquering Fear,2004,language,Aymara,nucl1667,https://www.augsburg.edu/filmseries/2012/03/02/condor-meets-eagle-three-night-film-festival/,"language fill (languages_2026-11-08_part1.csv), checked against the source page"
-SA50-20261014-9b1d14fcc4b5-WORK-01,Venciendo el miedo / Conquering Fear,2004,language,Spanish,stan1288,https://www.augsburg.edu/filmseries/2012/03/02/condor-meets-eagle-three-night-film-festival/,"language fill (languages_2026-11-08_part1.csv), checked against the source page"
-SA50-20261014-5b89d6283a0d-WORK-01,El grito de la selva / Cry of the Forest,2008,language,Spanish,stan1288,https://www.augsburg.edu/filmseries/2012/03/02/condor-meets-eagle-three-night-film-festival/,"language fill (languages_2026-11-08_part1.csv), checked against the source page"
+SA50-20261014-9b1d14fcc4b5-WORK-01,Venciendo el miedo / Conquering Fear,2004,language,Aymara,nucl1667,https://www.augsburg.edu/filmseries/2012/03/02/condor-meets-eagle-three-night-film-festival/,recorded with the film
+SA50-20261014-9b1d14fcc4b5-WORK-01,Venciendo el miedo / Conquering Fear,2004,language,Spanish,stan1288,https://www.augsburg.edu/filmseries/2012/03/02/condor-meets-eagle-three-night-film-festival/,recorded with the film
+SA50-20261014-5b89d6283a0d-WORK-01,El grito de la selva / Cry of the Forest,2008,language,Spanish,stan1288,https://www.augsburg.edu/filmseries/2012/03/02/condor-meets-eagle-three-night-film-festival/,recorded with the film
 NEW-4ab5dc39b865-WORK-1,A Chegada dos Mêbengôkre na Terra,,theme,Cosmology and Origin Stories,Knowledge and Continuity,https://www.themoviedb.org/movie/1395081?language=pt-BR,tagged from a published synopsis; primary theme
 NEW-4ab5dc39b865-WORK-1,A Chegada dos Mêbengôkre na Terra,,theme,Elders and Knowledge,Knowledge and Continuity,https://www.themoviedb.org/movie/1395081?language=pt-BR,tagged from a published synopsis
 NEW-4ab5dc39b865-WORK-1,A Chegada dos Mêbengôkre na Terra,,theme,Collective and Community Media,Expression and Representation,https://www.themoviedb.org/movie/1395081?language=pt-BR,tagged from a published synopsis
@@ -1626,15 +1626,15 @@ SAB2-20261014-a167facb5a9c-WORK-01,Pakucha,2021,theme,More-than-Human Relations,
 SAB2-20261014-a167facb5a9c-WORK-01,Pakucha,2021,theme,Kinship,Lives and Relations,https://www.themoviedb.org/movie/956506,tagged from a published synopsis
 SAB2-20261014-a167facb5a9c-WORK-01,Pakucha,2021,form,Documentary,,https://www.themoviedb.org/movie/956506,from the published synopsis
 SAB2-20261014-a167facb5a9c-WORK-01,Pakucha,2021,length,Feature,,https://www.themoviedb.org/movie/956506,from the published synopsis
-BETA30B-20261107-F09,Los indomables,2024,language,Aymara,nucl1667,https://www.wikidata.org/wiki/Q130288025,"language fill (languages_2026-11-08_part1.csv), checked against the source page"
-BETA30B-20261107-F09,Los indomables,2024,language,Quechua,quec1387,https://www.wikidata.org/wiki/Q130288025,"language fill (languages_2026-11-08_part1.csv), checked against the source page"
-BETA30B-20261107-F09,Los indomables,2024,language,Spanish,stan1288,https://www.wikidata.org/wiki/Q130288025,"language fill (languages_2026-11-08_part1.csv), checked against the source page"
+BETA30B-20261107-F09,Los indomables,2024,language,Aymara,nucl1667,https://www.wikidata.org/wiki/Q130288025,recorded with the film
+BETA30B-20261107-F09,Los indomables,2024,language,Quechua,quec1387,https://www.wikidata.org/wiki/Q130288025,recorded with the film
+BETA30B-20261107-F09,Los indomables,2024,language,Spanish,stan1288,https://www.wikidata.org/wiki/Q130288025,recorded with the film
 SAB2-20261014-8b424f7a4364-WORK-01,Sembradoras de vida / Mothers of the Land,2019,theme,Food Sovereignty,Land and Environment,https://www.themoviedb.org/movie/598000,tagged from a published synopsis; primary theme
 SAB2-20261014-8b424f7a4364-WORK-01,Sembradoras de vida / Mothers of the Land,2019,theme,Women and Gender,Lives and Relations,https://www.themoviedb.org/movie/598000,tagged from a published synopsis
 SAB2-20261014-8b424f7a4364-WORK-01,Sembradoras de vida / Mothers of the Land,2019,form,Documentary,,https://www.themoviedb.org/movie/598000,from the published synopsis
 SAB2-20261014-8b424f7a4364-WORK-01,Sembradoras de vida / Mothers of the Land,2019,length,Feature,,https://www.themoviedb.org/movie/598000,from the published synopsis
-SAB2-20261014-98fc41053bfb-WORK-01,Jakawisa,2026,language,Aymara,nucl1667,https://cinemanciafestival.com/pelicula/jakawisa/,"language fill (languages_2026-11-08_part1.csv), checked against the source page"
-BETA30-20261106-F29,"Matuna, la sombra del guerrero",2020,language,Damana (Wiwa),mala1522,https://www.retinalatina.org/peliculas/matuna-la-sombra-del-guerrero-rafael-mojica/,"language fill (languages_2026-11-08_part1.csv), checked against the source page"
+SAB2-20261014-98fc41053bfb-WORK-01,Jakawisa,2026,language,Aymara,nucl1667,https://cinemanciafestival.com/pelicula/jakawisa/,recorded with the film
+BETA30-20261106-F29,"Matuna, la sombra del guerrero",2020,language,Damana (Wiwa),mala1522,https://www.retinalatina.org/peliculas/matuna-la-sombra-del-guerrero-rafael-mojica/,recorded with the film
 PILOT-43-ANA-TSUYEB-QM9f1fbc,Andares en la infancia,2018,form,Documentary,,https://ellugarquehabitamos.org/genero-y-disidencias-cine/,"normalised from the recorded form ""Short documentary"""
 PILOT-43-ANA-TSUYEB-QM9f1fbc,Andares en la infancia,2018,length,Short,,https://ellugarquehabitamos.org/genero-y-disidencias-cine/,"normalised from the recorded form ""Short documentary"""
 PILOT-43-ANA-TSUYEB-QM5960a0,Deconstrucción orgánica,2018,form,Documentary,,https://ellugarquehabitamos.org/genero-y-disidencias-cine/,"normalised from the recorded form ""Short documentary"""
@@ -1842,7 +1842,7 @@ NEW-5c493398e7b1-WORK-1,Mamu Kataiat (Nous étions ensemble),2017,theme,Kinship,
 NEW-5c493398e7b1-WORK-1,Mamu Kataiat (Nous étions ensemble),2017,theme,Women and Gender,Lives and Relations,https://wapikoni.ca/wp-content/uploads/2025/07/2025-PROGRAMMATION-ENRACINE.E-2.pdf,tagged from a published synopsis
 NEW-5c493398e7b1-WORK-1,Mamu Kataiat (Nous étions ensemble),2017,length,Short,,https://wapikoni.ca/wp-content/uploads/2025/07/2025-PROGRAMMATION-ENRACINE.E-2.pdf,from the published synopsis
 NEW-5c493398e7b1-QMbef502,Mamu Kataiat,2017,length,Short,,https://evenementswapikoni.ca/collection-duvres/films-2017,"normalised from the recorded form ""Short film (Wapikoni Mobile film collection)"""
-NEW-948f2ac8df47-WORK-1,Meli,2020,language,Mapudungun,mapu1245,https://forestry.ubc.ca/folil-trafun-ingram-dinner-sept-26/,"language fill (languages_2026-11-08_part1.csv), checked against the source page"
+NEW-948f2ac8df47-WORK-1,Meli,2020,language,Mapudungun,mapu1245,https://forestry.ubc.ca/folil-trafun-ingram-dinner-sept-26/,recorded with the film
 NEW-948f2ac8df47-WORK-1,Meli,2020,theme,Displacement and Migration,Sovereignty and Politics,https://www.themoviedb.org/movie/747038,tagged from a published synopsis; primary theme
 NEW-948f2ac8df47-WORK-1,Meli,2020,theme,Urban Indigeneity,Lives and Relations,https://www.themoviedb.org/movie/747038,tagged from a published synopsis
 NEW-948f2ac8df47-WORK-1,Meli,2020,theme,Women and Gender,Lives and Relations,https://www.themoviedb.org/movie/747038,tagged from a published synopsis
@@ -1885,8 +1885,8 @@ NEW-c2055a72bb3e-W1031-2,Hilando sones,,theme,"Art, Craft and Making",Expression
 NEW-c2055a72bb3e-W1031-2,Hilando sones,,theme,Kinship,Lives and Relations,https://www.themoviedb.org/movie/772539,tagged from a published synopsis
 NEW-c2055a72bb3e-W1031-2,Hilando sones,,form,Documentary,,https://www.themoviedb.org/movie/772539,from the published synopsis
 NEW-c2055a72bb3e-W1031-2,Hilando sones,,length,Feature,,https://www.themoviedb.org/movie/772539,from the published synopsis
-NEW-656112f6f1c6-WORK-1,La pequeña semilla en el asfalto,2009,language,Tsotsil (Tzotzil),tzot1259,https://cinema.ucla.edu/events/the-little-seed-in-the-asphalt-la-peque%C3%B1a-semilla-en-el-asfalto-2009-11-06-11/,"language fill (languages_2026-11-08_part1.csv), checked against the source page"
-NEW-656112f6f1c6-WORK-1,La pequeña semilla en el asfalto,2009,language,Spanish,stan1288,https://cinema.ucla.edu/events/the-little-seed-in-the-asphalt-la-peque%C3%B1a-semilla-en-el-asfalto-2009-11-06-11/,"language fill (languages_2026-11-08_part1.csv), checked against the source page"
+NEW-656112f6f1c6-WORK-1,La pequeña semilla en el asfalto,2009,language,Tsotsil (Tzotzil),tzot1259,https://cinema.ucla.edu/events/the-little-seed-in-the-asphalt-la-peque%C3%B1a-semilla-en-el-asfalto-2009-11-06-11/,recorded with the film
+NEW-656112f6f1c6-WORK-1,La pequeña semilla en el asfalto,2009,language,Spanish,stan1288,https://cinema.ucla.edu/events/the-little-seed-in-the-asphalt-la-peque%C3%B1a-semilla-en-el-asfalto-2009-11-06-11/,recorded with the film
 NEW-656112f6f1c6-WORK-1,La pequeña semilla en el asfalto,2009,theme,Urban Indigeneity,Lives and Relations,https://www.themoviedb.org/movie/342451,tagged from a published synopsis; primary theme
 NEW-656112f6f1c6-WORK-1,La pequeña semilla en el asfalto,2009,theme,Youth,Lives and Relations,https://www.themoviedb.org/movie/342451,tagged from a published synopsis
 NEW-656112f6f1c6-WORK-1,La pequeña semilla en el asfalto,2009,theme,Displacement and Migration,Sovereignty and Politics,https://www.themoviedb.org/movie/342451,tagged from a published synopsis
@@ -1950,7 +1950,7 @@ NEW-95c5bc2de21e-WORK-1,Alcatraz Is Not an Island,2000,length,Feature,,https://w
 NEW-aed3afdd4997-WORK-1,Auntie Chuck (Native Lab project),2023,theme,Kinship,Lives and Relations,https://www.themoviedb.org/movie/1316330,tagged from a published synopsis; primary theme
 NEW-aed3afdd4997-WORK-1,Auntie Chuck (Native Lab project),2023,theme,Women and Gender,Lives and Relations,https://www.themoviedb.org/movie/1316330,tagged from a published synopsis
 NEW-aed3afdd4997-WORK-1,Auntie Chuck (Native Lab project),2023,form,Fiction,,https://www.themoviedb.org/movie/1316330,from the published synopsis
-NEW-d5797dcfcb56-WORK-1,Free Leonard Peltier,2025,language,English,stan1293,https://en.wikipedia.org/wiki/Free_Leonard_Peltier,"language fill (languages_2026-11-08_part1.csv), checked against the source page"
+NEW-d5797dcfcb56-WORK-1,Free Leonard Peltier,2025,language,English,stan1293,https://en.wikipedia.org/wiki/Free_Leonard_Peltier,recorded with the film
 NEW-d5797dcfcb56-WORK-1,Free Leonard Peltier,2025,theme,Resistance Movements,Sovereignty and Politics,https://www.themoviedb.org/movie/1400778,tagged from a published synopsis; primary theme
 NEW-d5797dcfcb56-WORK-1,Free Leonard Peltier,2025,theme,"Justice, Truth and Reconciliation",Sovereignty and Politics,https://www.themoviedb.org/movie/1400778,tagged from a published synopsis
 NEW-d5797dcfcb56-WORK-1,Free Leonard Peltier,2025,form,Documentary,,https://www.themoviedb.org/movie/1400778,from the published synopsis
@@ -2042,7 +2042,7 @@ NEW-ec1edce8f239-WORK-2,In Temazcal uan in Ilhuitl,,length,Short,,https://www.th
 NEW-7f77262897fc-WORK-1,Nada siempre,2024,theme,Women and Gender,Lives and Relations,https://moreliafilmfest.com/en/peliculas/nada-siempre,tagged from a published synopsis; primary theme
 NEW-7f77262897fc-WORK-1,Nada siempre,2024,theme,Urban Indigeneity,Lives and Relations,https://moreliafilmfest.com/en/peliculas/nada-siempre,tagged from a published synopsis
 NEW-7f77262897fc-WORK-1,Nada siempre,2024,form,Fiction,,https://moreliafilmfest.com/en/peliculas/nada-siempre,from the published synopsis
-NEW-8f08db910567-WORK-1,Teat Monteok / El cuento del dios del Rayo,1985,language,Huave,huav1256,https://www.gob.mx/inpi/agenda/ciclo-de-cine-historias-de-mujeres-realizadoras-indigenas?idiom=es,"language fill (languages_2026-11-08_part1.csv), checked against the source page"
+NEW-8f08db910567-WORK-1,Teat Monteok / El cuento del dios del Rayo,1985,language,Huave,huav1256,https://www.gob.mx/inpi/agenda/ciclo-de-cine-historias-de-mujeres-realizadoras-indigenas?idiom=es,recorded with the film
 NEW-8f08db910567-WORK-1,Teat Monteok / El cuento del dios del Rayo,1985,theme,Cosmology and Origin Stories,Knowledge and Continuity,https://www.themoviedb.org/movie/833029,tagged from a published synopsis; primary theme
 NEW-8f08db910567-WORK-1,Teat Monteok / El cuento del dios del Rayo,1985,theme,Elders and Knowledge,Knowledge and Continuity,https://www.themoviedb.org/movie/833029,tagged from a published synopsis
 NEW-8f08db910567-WORK-1,Teat Monteok / El cuento del dios del Rayo,1985,theme,Women and Gender,Lives and Relations,https://www.themoviedb.org/movie/833029,tagged from a published synopsis
@@ -2057,9 +2057,9 @@ NEW-f3320a0ced3e-WORK-2,Xhárdonix Xha,,length,Short,,https://www.themoviedb.org
 NEW-f3320a0ced3e-WORK-3,Yoo Herencia Binnigulaza,,theme,Memory and Oral History,Knowledge and Continuity,https://www.themoviedb.org/movie/1486864,tagged from a published synopsis; primary theme
 BETA-T1101-VEN-01-F1,Wachikua: Nuestra historia,2014,form,Documentary,,https://www.youtube.com/watch?v=_TnJ2PZOEDQ,"normalised from the recorded form ""Documentary"""
 BETA-T1101-PER-01-F1,Érase una vez en los Andes,2023,length,Feature,,https://dafo.cultura.pe/cinerobles/erase-una-vez-en-los-andes-en-la-sala-armando-robles-godoy,"normalised from the recorded form ""Feature"""
-BETA-T1101-CAN-01-F1,W8linaktegw ta niona,2022,language,French,stan1290,https://rpff.ca/2023/program/shorts-1/,"language fill (languages_2026-11-08_part1.csv), checked against the source page"
+BETA-T1101-CAN-01-F1,W8linaktegw ta niona,2022,language,French,stan1290,https://rpff.ca/2023/program/shorts-1/,recorded with the film
 BETA-T1101-CAN-01-F1,W8linaktegw ta niona,2022,form,Documentary,,https://rpff.ca/2023/program/shorts-1/,"normalised from the recorded form ""Documentary"""
-BETA25-20261105-01-FILM1,La trampa,2024,language,Spanish,stan1288,https://ficcali.com/pelicula/la-trampa/,"language fill (languages_2026-11-08_part1.csv), checked against the source page"
+BETA25-20261105-01-FILM1,La trampa,2024,language,Spanish,stan1288,https://ficcali.com/pelicula/la-trampa/,recorded with the film
 BETA25-20261105-01-FILM1,La trampa,2024,form,Documentary,,https://ficcali.com/pelicula/la-trampa/,"normalised from the recorded form ""Documentary"""
 BETA25-20261105-02-FILM1,Jamary,2025,form,Documentary,,https://www.phlaff.org/2026-film-guide/jamary,"normalised from the recorded form ""Feature documentary"""
 BETA25-20261105-02-FILM1,Jamary,2025,length,Feature,,https://www.phlaff.org/2026-film-guide/jamary,"normalised from the recorded form ""Feature documentary"""
@@ -2084,11 +2084,11 @@ BETA25-20261105-20-FILM1,Recado,2026,length,Short,,https://museo.precolombino.cl
 BETA25-20261105-21-FILM1,Tahnaanooku’,2024,form,Documentary,,https://www.reciprocity.org/press-kits/tahnaanooku,"normalised from the recorded form ""Documentary"""
 BETA25-20261105-22-FILM1,Ma’s House,2022,form,Documentary,,https://www.reciprocity.org/press-kits/mas-house,"normalised from the recorded form ""Documentary short"""
 BETA25-20261105-22-FILM1,Ma’s House,2022,length,Short,,https://www.reciprocity.org/press-kits/mas-house,"normalised from the recorded form ""Documentary short"""
-BETA30-20261106-F08,Nipi utaiamun,2023,language,Innu-aimun,mont1268,https://ellugarquehabitamos.org/nipi-utaiamun/,"language fill (languages_2026-11-08_part1.csv), checked against the source page"
-BETA30-20261106-F08,Nipi utaiamun,2023,language,French,stan1290,https://ellugarquehabitamos.org/nipi-utaiamun/,"language fill (languages_2026-11-08_part1.csv), checked against the source page"
-BETA30-20261106-F20,El regreso: tras las huellas del tiempo,2010,language,Spanish,stan1288,https://www.unesco.org/archives/multimedia/document-3033,"language fill (languages_2026-11-08_part1.csv), checked against the source page"
-BETA6-20261107-F03,We Are Not Speaking the Same Language,2021,language,English,stan1293,https://rpff.ca/2022/program/school-program-gr-7-8-you-myself-my-identity/,"language fill (languages_2026-11-08_part1.csv), checked against the source page"
-BETA4C-20261107-F02,Bajo sospecha: Zokunentu,2022,language,Mapudungun,mapu1245,https://habanerofilmsales.com/filmmakers/daniel-diaz,"language fill (languages_2026-11-08_part1.csv), checked against the source page"
+BETA30-20261106-F08,Nipi utaiamun,2023,language,Innu-aimun,mont1268,https://ellugarquehabitamos.org/nipi-utaiamun/,recorded with the film
+BETA30-20261106-F08,Nipi utaiamun,2023,language,French,stan1290,https://ellugarquehabitamos.org/nipi-utaiamun/,recorded with the film
+BETA30-20261106-F20,El regreso: tras las huellas del tiempo,2010,language,Spanish,stan1288,https://www.unesco.org/archives/multimedia/document-3033,recorded with the film
+BETA6-20261107-F03,We Are Not Speaking the Same Language,2021,language,English,stan1293,https://rpff.ca/2022/program/school-program-gr-7-8-you-myself-my-identity/,recorded with the film
+BETA4C-20261107-F02,Bajo sospecha: Zokunentu,2022,language,Mapudungun,mapu1245,https://habanerofilmsales.com/filmmakers/daniel-diaz,recorded with the film
 QM-234cb393b5-M3,Mamapara – Madre Lluvia,2020,language,Quechua,quec1387,https://www.casadelaliteratura.gob.pe/wp-content/uploads/2023/07/Copia-de-N%C2%B035-Mamapara.pdf,"Quechua, castellano"
 QM-234cb393b5-M3,Mamapara – Madre Lluvia,2020,language,Spanish,stan1288,https://www.casadelaliteratura.gob.pe/wp-content/uploads/2023/07/Copia-de-N%C2%B035-Mamapara.pdf,"Quechua, castellano"
 QM-234cb393b5-M3,Mamapara – Madre Lluvia,2020,theme,Kinship,Lives and Relations,https://www.unla.edu.ar/fibav/mediateca/mamapara,tagged from a published synopsis; primary theme

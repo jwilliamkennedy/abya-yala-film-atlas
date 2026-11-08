@@ -265,10 +265,19 @@ def build(path, state_path, check_only=False):
     out = pathlib.Path('beta/data/atlas-published.csv')
     with open(out, 'w', newline='', encoding='utf-8') as fh:
         w = csv.writer(fh)
-        cols = [c for c in PUBLISHED_COLS if c not in ('maker_json', 'film_json')]
+        # the public download: the record and its sources, without research notes, audit notes, open questions or process fields
+        INTERNAL_COLS = {'maker_json', 'film_json', 'maker_notes', 'audit_note', 'open_questions', 'film_notes', 'film_checked',
+                         'image_basis', 'image_checked', 'country_source', 'credit_note'}
+        cols = [c for c in PUBLISHED_COLS if c not in INTERNAL_COLS]
         w.writerow(cols)
         for row in pub:
-            w.writerow([cellnorm(row.get(c)) for c in cols])
+            pub_row = dict(row)
+            c = cellnorm(row.get('credit'))
+            if ' — ' in c and bake.INTERNAL_WORDS.search(c.split(' — ', 1)[1]):
+                pub_row['credit'] = c.split(' — ', 1)[0]
+            if bake.INTERNAL_WORDS.search(cellnorm(row.get('language_note'))) or '.csv' in cellnorm(row.get('language_note')):
+                pub_row['language_note'] = ''
+            w.writerow([cellnorm(pub_row.get(c)) for c in cols])
     print(' | '.join(f'{k} {v}' for k, v in stats.items()), '| land-link edits', len(land_edits), '|', sizes)
 
 if __name__ == '__main__':

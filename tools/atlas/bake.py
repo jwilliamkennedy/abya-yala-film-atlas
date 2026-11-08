@@ -46,6 +46,38 @@ def reference_globals(base_globals, records, all_ids=None, keep_record_arrays=Fa
         ref[k] = scrub(v, hidden) if hidden else v
     return ref
 
+INTERNAL_WORDS = re.compile(r'research lead|pending|audit|verif|workbook|queue|staged|mirror|import|fill\b|recorded with the film', re.I)
+
+def public(records):
+    """The records as the public file carries them: research notes, audit notes, open issues, internal file names and
+    review wording stay in the workbook. Source quotes, credits, countries and their basis stay."""
+    out = []
+    for r in records:
+        r = dict(r, notes='', auditNote='', issues=[])
+        for k in ('issues_json', 'identityWordingNote', 'previousCountry'):
+            r.pop(k, None)
+        if isinstance(r.get('metadata'), dict):
+            md = {k: v for k, v in r['metadata'].items() if k not in ('previousNotes', 'previousIssues', 'reviewNotes')}
+            if isinstance(md.get('countryReview'), dict):
+                md['countryReview'] = {k: v for k, v in md['countryReview'].items() if k != 'previousCountryBasis'}
+            r['metadata'] = md
+        if not str(r.get('countrySource') or '').startswith('http'):
+            r['countrySource'] = ''
+        films = []
+        for f in r.get('films') or []:
+            f = dict(f, notes=None)
+            if not str(f.get('creditNote') or '').startswith('Credited as'):
+                f['creditNote'] = None
+            c = str(f.get('credit') or '')
+            if ' — ' in c and INTERNAL_WORDS.search(c.split(' — ', 1)[1]):
+                f['credit'] = c.split(' — ', 1)[0]  # the role; the review wording after it stays in the workbook
+            if INTERNAL_WORDS.search(str(f.get('languageNote') or '')) or '.csv' in str(f.get('languageNote') or ''):
+                f['languageNote'] = ''
+            films.append(f)
+        r['films'] = films
+        out.append(r)
+    return out
+
 def write(records, countries, meta, owned, base_globals, edges=None, keep_record_arrays=False, all_ids=None, facets=None):
     """owned: {global: {film_id: entry}} for published films; base_globals: captured globals (reference source)."""
     film_ids = {f['id'] for r in records for f in r.get('films') or []}
@@ -67,7 +99,7 @@ def write(records, countries, meta, owned, base_globals, edges=None, keep_record
            + js('ATLAS_PROFILE_MEDIA', orphans.get('ATLAS_PROFILE_MEDIA', {}))
            + js('ATLAS_FILM_EXPLORATION', orphans.get('ATLAS_FILM_EXPLORATION', {}))
            + js('ATLAS_THEMES_1103', {**{k: v for k, v in th_base.items() if k != 'films'}, 'films': orphans.get('ATLAS_THEMES_1103', {})})
-           + js('ATLAS_FLAT', {'records': records, 'countries': countries, 'meta': meta})
+           + js('ATLAS_FLAT', {'records': public(records), 'countries': countries, 'meta': meta})
            + 'Object.assign(window.ATLAS_PROFILE_MEDIA,' + json.dumps(owned.get('ATLAS_PROFILE_MEDIA', {}), ensure_ascii=False, separators=(',', ':')) + ');\n'
            + 'Object.assign(window.ATLAS_FILM_EXPLORATION,' + json.dumps(owned.get('ATLAS_FILM_EXPLORATION', {}), ensure_ascii=False, separators=(',', ':')) + ');\n'
            + 'Object.assign(window.ATLAS_THEMES_1103.films,' + json.dumps(owned.get('ATLAS_THEMES_1103', {}), ensure_ascii=False, separators=(',', ':')) + ');\n'

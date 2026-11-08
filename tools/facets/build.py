@@ -18,7 +18,8 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TODAY = datetime.date.today().isoformat()
 BASE = 'https://jwilliamkennedy.github.io/abya-yala-film-atlas/beta'
 esc = lambda s: html.escape(str(s or ''), quote=True)
-def key(s): return re.sub(r'[^a-z0-9]+', ' ', unicodedata.normalize('NFD', str(s or '')).encode('ascii', 'ignore').decode().lower()).strip()
+def key(s):  # same as the map's: accents dropped, every other non-letter (’ ' - …) a space, so typing variants match
+    return re.sub(r'[^a-z0-9]+', ' ', ''.join(c for c in unicodedata.normalize('NFD', str(s or '')) if not unicodedata.combining(c)).lower()).strip()
 
 P = json.load(open(PUB, encoding='utf-8'))
 if '--themes' in OPT:
@@ -74,11 +75,11 @@ for r in P:
             rows.append({'film_id': fid, 'title': f['title'], 'year': f.get('year') or '', 'field': field, 'value': value, 'code': code, 'source_url': source, 'basis': basis})
         # languages
         if f.get('languageLabels'):  # atlas.xlsx (Published sheet): the language store since 8 Nov 2026
-            raw, lsrc, basis = f['languageLabels'], f.get('languageSource', ''), f.get('languageNote') or 'recorded in atlas.xlsx'
+            raw, lsrc, basis = f['languageLabels'], f.get('languageSource', ''), (f.get('languageNote') if f.get('languageNote') and not re.search(r'\.csv|fill\b|atlas\.xlsx|in the atlas', f.get('languageNote')) else 'recorded with the film')
         elif fid in FILLED:
-            raw, lsrc, part = FILLED[fid]; basis = f'language fill ({part}), checked against the source page'
+            raw, lsrc, part = FILLED[fid]; basis = 'checked against the source page'
         else:
-            raw, lsrc, basis = f.get('languages'), f.get('source', ''), 'recorded with the film in the atlas'
+            raw, lsrc, basis = f.get('languages'), f.get('source', ''), 'recorded with the film'
         for name in split_langs(raw):
             a = ALIAS.get(key(name))
             label = a['label'] if a else name
