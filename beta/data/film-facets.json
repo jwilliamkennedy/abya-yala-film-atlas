@@ -8217,6 +8217,22 @@
    "form": "Documentary",
    "length": "Short"
   },
+  "DIR-0232-Q-akriox": {
+   "title": "Ak’riox (Guiadora de caminos)",
+   "year": 2014,
+   "makers": [
+    {
+     "id": "DIR-0232",
+     "name": "Liliana K'an"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "FILM-0190": {
    "title": "Los años azules",
    "year": null,
@@ -21693,22 +21709,6 @@
     {
      "id": "NEW-0fc759606756",
      "name": "Laura Margarita Quiroz Ruiz"
-    }
-   ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
-  },
-  "NEW-7ad9da92f69b-WORK-1": {
-   "title": "Ak riox",
-   "year": 2017,
-   "makers": [
-    {
-     "id": "NEW-7ad9da92f69b",
-     "name": "Liliana Guadalupe López López"
     }
    ],
    "languages": [],
