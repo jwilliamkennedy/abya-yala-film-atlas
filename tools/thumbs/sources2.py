@@ -81,9 +81,24 @@ def try_video(g):
                 return {'n': g['n'], 'how': 'video on the film’s source page', 'page': v, 'image': info['image'], 'pageTitle': info['title'][:160]}
     return None
 
+def try_festival(g):
+    hosts = ' '.join(g['sources'])
+    tries = []
+    for t in dict.fromkeys([g['title'], main_title(g['title'])]):
+        tries.append(('Morelia film page', f'https://www.moreliafilmfest.com/en/peliculas/{slug(t)}'))
+        if 'wapikoni' in hosts or 'Wapikoni' in ' '.join(g.get('nations', [])):
+            tries.append(('Wapikoni film page', f'https://www.wapikoni.ca/movies/{slug(t)}'))
+    for how, url in tries:
+        info = page_meta(url)
+        if info and info.get('image') and title_ok(g['title'], info['title']) and maker_ok(g, info['text']):
+            if re.search(r'logo|banner|default|placeholder', info['image'], re.I):
+                continue
+            return {'n': g['n'], 'how': how, 'page': info['url'], 'image': info['image'], 'pageTitle': info['title'][:160]}
+    return None
+
 def one(g):
     cand = None
-    for step in (try_nfb, try_wikipedia, try_wikidata, try_video):
+    for step in (try_festival, try_nfb, try_wikipedia, try_wikidata, try_video):
         try:
             cand = step(g)
         except Exception:
@@ -109,4 +124,4 @@ if __name__ == '__main__':
         done = {json.loads(l)['n'] for l in open('out/found.jsonl', encoding='utf-8')}
     with ThreadPoolExecutor(max_workers=6) as ex:
         list(ex.map(one, [g for g in films if g['n'] not in done]))
-    print('PASS 2 DONE', flush=True)
+    print('PASS DONE', flush=True)

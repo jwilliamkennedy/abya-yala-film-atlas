@@ -1,0 +1,213 @@
+// Film images for A–F titles, 7 November 2026: each film's own page, or one search on title + director + year,
+// kept only when the page names the film and its director or year; shared images (banners, logos) rejected; every image checked by eye.
+(()=>{const add={
+"NEW-a1673e2c116c-WORK-1": {
+"title": "Amanecer",
+"image": "https://i.ytimg.com/vi/evMZhIZUhyM/hqdefault.jpg",
+"originalImage": "https://i.ytimg.com/vi/evMZhIZUhyM/hqdefault.jpg",
+"sourceURL": "https://youtu.be/evMZhIZUhyM",
+"publisher": "youtu.be",
+"kind": "Film image (A–F search)",
+"checkedOn": "2026-11-07",
+"rightsStatus": "hotlinked; image remains with its rights holder",
+"matchBasis": "Page title matches the film and names its director or year (video on the film’s source page); image load-tested and checked by eye on a contact sheet 2026-11-07."
+},
+"BETA30B-20261107-F15": {
+"title": "Aquel cuatro de noviembre",
+"image": "https://i.ytimg.com/vi/3OD_bixFcUI/hqdefault.jpg",
+"originalImage": "https://i.ytimg.com/vi/3OD_bixFcUI/hqdefault.jpg",
+"sourceURL": "https://www.youtube.com/watch?v=3OD_bixFcUI",
+"publisher": "www.youtube.com",
+"kind": "Film image (A–F search)",
+"checkedOn": "2026-11-07",
+"rightsStatus": "hotlinked; image remains with its rights holder",
+"matchBasis": "Page title matches the film and names its director or year (video on the film’s source page); image load-tested and checked by eye on a contact sheet 2026-11-07."
+},
+"SA50-20261014-c6d731eec058-WORK-01": {
+"title": "Atizando la Hoguera",
+"image": "http://daupara.com/img/movie/movie1_21061302wPj9.jpg",
+"originalImage": "http://daupara.com/img/movie/movie1_21061302wPj9.jpg",
+"sourceURL": "https://daupara.com/obra/atizando-la-hoguera",
+"publisher": "daupara.com",
+"kind": "Film image (A–F search)",
+"checkedOn": "2026-11-07",
+"rightsStatus": "hotlinked; image remains with its rights holder",
+"matchBasis": "Page title matches the film and names its director or year (own source page); image load-tested and checked by eye on a contact sheet 2026-11-07."
+},
+"NEW-4cece503d728-WORK-1": {
+"title": "Behind the Bayano",
+"image": "https://i.ytimg.com/vi/v2NdO8Z1_c0/hqdefault.jpg",
+"originalImage": "https://i.ytimg.com/vi/v2NdO8Z1_c0/hqdefault.jpg",
+"sourceURL": "https://www.youtube.com/watch?v=v2NdO8Z1_c0",
+"publisher": "www.youtube.com",
+"kind": "Film image (A–F search)",
+"checkedOn": "2026-11-07",
+"rightsStatus": "hotlinked; image remains with its rights holder",
+"matchBasis": "Page title matches the film and names its director or year (video on the film’s source page); image load-tested and checked by eye on a contact sheet 2026-11-07."
+},
+"MIRROR-FILMOGRAPHY-20261107-082": {
+"title": "Bill Reid Remembers",
+"image": "https://assets.nfbcdn.ca/medias/norman/thumbs_xlarge/2022/bill-reid-remembers-XL.jpg?w=2048&amp;h=",
+"originalImage": "https://assets.nfbcdn.ca/medias/norman/thumbs_xlarge/2022/bill-reid-remembers-XL.jpg?w=2048&amp;h=",
+"sourceURL": "https://www.nfb.ca/film/bill-reid-remembers/",
+"publisher": "www.nfb.ca",
+"kind": "Film image (A–F search)",
+"checkedOn": "2026-11-07",
+"rightsStatus": "hotlinked; image remains with its rights holder",
+"matchBasis": "Page title matches the film and names its director or year (NFB film page); image load-tested and checked by eye on a contact sheet 2026-11-07."
+},
+"BETA30B-20261107-F12": {
+"title": "Canción sin miedo. Juntanza de mujeres indígenas colombianas",
+"image": "http://daupara.com/img/movie/movie1_22043057JIUx.jpg",
+"originalImage": "http://daupara.com/img/movie/movie1_22043057JIUx.jpg",
+"sourceURL": "https://daupara.com/obra/cancion-sin-miedo-juntanza-de-mujeres-indigenas-colombianas",
+"publisher": "daupara.com",
+"kind": "Film image (A–F search)",
+"checkedOn": "2026-11-07",
+"rightsStatus": "hotlinked; image remains with its rights holder",
+"matchBasis": "Page title matches the film and names its director or year (own source page); image load-tested and checked by eye on a contact sheet 2026-11-07."
+},
+"BETA25-20261105-19-FILM1": {
+"title": "Chew Müley (Dónde está)",
+"image": "https://i.vimeocdn.com/video/2079302678-7544a681a80230fa8fe5900eec6a7d1c00f20977cc66ab57bccf6190fcae325b-d_960?region=us",
+"originalImage": "https://i.vimeocdn.com/video/2079302678-7544a681a80230fa8fe5900eec6a7d1c00f20977cc66ab57bccf6190fcae325b-d_960?region=us",
+"sourceURL": "https://vimeo.com/1134309522",
+"publisher": "vimeo.com",
+"kind": "Film image (A–F search)",
+"checkedOn": "2026-11-07",
+"rightsStatus": "hotlinked; image remains with its rights holder",
+"matchBasis": "Page title matches the film and names its director or year (video on the film’s source page); image load-tested and checked by eye on a contact sheet 2026-11-07."
+},
+"NEW-702fb56c7641-WORK-2": {
+"title": "Corpo Memória Submersa",
+"image": "https://i.ytimg.com/vi/ecYGyWgK3gY/hqdefault.jpg",
+"originalImage": "https://i.ytimg.com/vi/ecYGyWgK3gY/hqdefault.jpg",
+"sourceURL": "https://youtube.com/watch?v=ecYGyWgK3gY",
+"publisher": "youtube.com",
+"kind": "Film image (A–F search)",
+"checkedOn": "2026-11-07",
+"rightsStatus": "hotlinked; image remains with its rights holder",
+"matchBasis": "Page title matches the film and names its director or year (video on the film’s source page); image load-tested and checked by eye on a contact sheet 2026-11-07."
+},
+"BETA30-20261106-F27": {
+"title": "Cuidar la tierra",
+"image": "https://www.retinalatina.org/wp-content/uploads/2022/08/DEST-elbuenvivir-02.png",
+"originalImage": "https://www.retinalatina.org/wp-content/uploads/2022/08/DEST-elbuenvivir-02.png",
+"sourceURL": "https://www.retinalatina.org/peliculas/cuidar-la-tierra/",
+"publisher": "www.retinalatina.org",
+"kind": "Film image (A–F search)",
+"checkedOn": "2026-11-07",
+"rightsStatus": "hotlinked; image remains with its rights holder",
+"matchBasis": "Page title matches the film and names its director or year (own source page); image load-tested and checked by eye on a contact sheet 2026-11-07."
+},
+"BETA30-20261106-F18": {
+"title": "Cuidar la tierra",
+"image": "https://www.retinalatina.org/wp-content/uploads/2022/08/DEST-elbuenvivir-02.png",
+"originalImage": "https://www.retinalatina.org/wp-content/uploads/2022/08/DEST-elbuenvivir-02.png",
+"sourceURL": "https://www.retinalatina.org/peliculas/cuidar-la-tierra/",
+"publisher": "www.retinalatina.org",
+"kind": "Film image (A–F search)",
+"checkedOn": "2026-11-07",
+"rightsStatus": "hotlinked; image remains with its rights holder",
+"matchBasis": "Page title matches the film and names its director or year (own source page); image load-tested and checked by eye on a contact sheet 2026-11-07."
+},
+"BETA30-20261106-F16": {
+"title": "Curar con los espíritus",
+"image": "https://www.retinalatina.org/wp-content/uploads/2022/08/DEST-elbuenvivir-01.png",
+"originalImage": "https://www.retinalatina.org/wp-content/uploads/2022/08/DEST-elbuenvivir-01.png",
+"sourceURL": "https://www.retinalatina.org/peliculas/curar-con-los-espiritus/",
+"publisher": "www.retinalatina.org",
+"kind": "Film image (A–F search)",
+"checkedOn": "2026-11-07",
+"rightsStatus": "hotlinked; image remains with its rights holder",
+"matchBasis": "Page title matches the film and names its director or year (own source page); image load-tested and checked by eye on a contact sheet 2026-11-07."
+},
+"FILM-B25B-23": {
+"title": "El cielo es muy bonito",
+"image": "https://moreliafilmfest.com/sites/default/files/pelicula_db890bbd7c530992d4c39f1be6bc6affea8ce004.png",
+"originalImage": "https://moreliafilmfest.com/sites/default/files/pelicula_db890bbd7c530992d4c39f1be6bc6affea8ce004.png",
+"sourceURL": "https://moreliafilmfest.com/peliculas/el-cielo-es-muy-bonito",
+"publisher": "moreliafilmfest.com",
+"kind": "Film image (A–F search)",
+"checkedOn": "2026-11-07",
+"rightsStatus": "hotlinked; image remains with its rights holder",
+"matchBasis": "Page title matches the film and names its director or year (own source page); image load-tested and checked by eye on a contact sheet 2026-11-07."
+},
+"NEW-ced1815bec80-WORK-1": {
+"title": "El legado harakbut",
+"image": "https://i.ytimg.com/vi/jf7OlqeNKpc/hqdefault.jpg",
+"originalImage": "https://i.ytimg.com/vi/jf7OlqeNKpc/hqdefault.jpg",
+"sourceURL": "https://www.youtube.com/watch?v=jf7OlqeNKpc",
+"publisher": "www.youtube.com",
+"kind": "Film image (A–F search)",
+"checkedOn": "2026-11-07",
+"rightsStatus": "hotlinked; image remains with its rights holder",
+"matchBasis": "Page title matches the film and names its director or year (video on the film’s source page); image load-tested and checked by eye on a contact sheet 2026-11-07."
+},
+"NEW-13f56b3b790a-WORK-1": {
+"title": "El legado harakbut",
+"image": "https://i.ytimg.com/vi/jf7OlqeNKpc/hqdefault.jpg",
+"originalImage": "https://i.ytimg.com/vi/jf7OlqeNKpc/hqdefault.jpg",
+"sourceURL": "https://www.youtube.com/watch?v=jf7OlqeNKpc",
+"publisher": "www.youtube.com",
+"kind": "Film image (A–F search)",
+"checkedOn": "2026-11-07",
+"rightsStatus": "hotlinked; image remains with its rights holder",
+"matchBasis": "Page title matches the film and names its director or year (video on the film’s source page); image load-tested and checked by eye on a contact sheet 2026-11-07."
+},
+"BETA30-20261106-F20": {
+"title": "El regreso: tras las huellas del tiempo",
+"image": "https://www.unesco.org/archives/multimedia/images/3033/keyframe_medium/shot0727.png",
+"originalImage": "https://www.unesco.org/archives/multimedia/images/3033/keyframe_medium/shot0727.png",
+"sourceURL": "https://www.unesco.org/archives/multimedia/document-3033",
+"publisher": "www.unesco.org",
+"kind": "Film image (A–F search)",
+"checkedOn": "2026-11-07",
+"rightsStatus": "hotlinked; image remains with its rights holder",
+"matchBasis": "Page title matches the film and names its director or year (own source page); image load-tested and checked by eye on a contact sheet 2026-11-07."
+},
+"SA50-20261014-e399048bf7e6-WORK-01": {
+"title": "Escuchar la palabra de los Mayores",
+"image": "http://daupara.com/img/movie/movie1_22102101FS9t.jpg",
+"originalImage": "http://daupara.com/img/movie/movie1_22102101FS9t.jpg",
+"sourceURL": "https://daupara.com/obra/escuchar-la-palabra-de-los-mayores",
+"publisher": "daupara.com",
+"kind": "Film image (A–F search)",
+"checkedOn": "2026-11-07",
+"rightsStatus": "hotlinked; image remains with its rights holder",
+"matchBasis": "Page title matches the film and names its director or year (own source page); image load-tested and checked by eye on a contact sheet 2026-11-07."
+},
+"NEW-796258423fc1-WORK-1": {
+"title": "Estamos Vivos e Atentos: Mutirão Payayá",
+"image": "https://i.ytimg.com/vi/vGKwTvyELP8/hqdefault.jpg",
+"originalImage": "https://i.ytimg.com/vi/vGKwTvyELP8/hqdefault.jpg",
+"sourceURL": "https://www.youtube.com/watch?v=vGKwTvyELP8",
+"publisher": "www.youtube.com",
+"kind": "Film image (A–F search)",
+"checkedOn": "2026-11-07",
+"rightsStatus": "hotlinked; image remains with its rights holder",
+"matchBasis": "Page title matches the film and names its director or year (video on the film’s source page); image load-tested and checked by eye on a contact sheet 2026-11-07."
+},
+"NEW-e034e5304f10-WORK-1": {
+"title": "Estamos Vivos e Atentos: Mutirão Payayá",
+"image": "https://i.ytimg.com/vi/vGKwTvyELP8/hqdefault.jpg",
+"originalImage": "https://i.ytimg.com/vi/vGKwTvyELP8/hqdefault.jpg",
+"sourceURL": "https://www.youtube.com/watch?v=vGKwTvyELP8",
+"publisher": "www.youtube.com",
+"kind": "Film image (A–F search)",
+"checkedOn": "2026-11-07",
+"rightsStatus": "hotlinked; image remains with its rights holder",
+"matchBasis": "Page title matches the film and names its director or year (video on the film’s source page); image load-tested and checked by eye on a contact sheet 2026-11-07."
+},
+"NEW-6a88b648eb1e-WORK-1": {
+"title": "Eu sou Kaxuyana",
+"image": "https://i.ytimg.com/vi/4IetTgAo_W4/hqdefault.jpg",
+"originalImage": "https://i.ytimg.com/vi/4IetTgAo_W4/hqdefault.jpg",
+"sourceURL": "https://www.youtube.com/watch?v=4IetTgAo_W4",
+"publisher": "www.youtube.com",
+"kind": "Film image (A–F search)",
+"checkedOn": "2026-11-07",
+"rightsStatus": "hotlinked; image remains with its rights holder",
+"matchBasis": "Page title matches the film and names its director or year (video on the film’s source page); image load-tested and checked by eye on a contact sheet 2026-11-07."
+}
+};window.ATLAS_PROFILE_MEDIA=window.ATLAS_PROFILE_MEDIA||{};for(const [k,v] of Object.entries(add))if(!window.ATLAS_PROFILE_MEDIA[k])window.ATLAS_PROFILE_MEDIA[k]=v;})();
