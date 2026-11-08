@@ -43,7 +43,7 @@ def maker_ok(g, text):
 
 def get(url, **kw):
     try:
-        r = S.get(url, timeout=20, allow_redirects=True, **kw)
+        r = S.get(url, timeout=8, allow_redirects=True, **kw)
         return r
     except Exception:
         return None
@@ -98,7 +98,7 @@ def search(q):
         r = get('https://www.bing.com/search?q=' + quote_plus(q) + '&setlang=en')
         if r is not None and r.status_code == 200:
             out = re.findall(r'<li class="b_algo"[^>]*>.*?<a[^>]+href="(https?://[^"]+)"', r.text, re.S)
-    return [u for u in out if u.startswith('http')][:10]
+    return [u for u in out if u.startswith('http')][:4]
 
 BAD_HOST = ('facebook.com', 'instagram.com', 'twitter.com', 'x.com', 'tiktok.com', 'pinterest.', 'linkedin.com', 'amazon.', 'ebay.')
 def candidate_from(url, g, how):
@@ -131,36 +131,52 @@ def check_image(url):
     h = ''.join('1' if p > avg else '0' for p in px)
     return {'w': im.width, 'h': im.height, 'hash': h, 'img': im.convert('RGB')}
 
-def main():
-    films = json.load(open('tools/thumbs/af_missing.json'))
-    found, imgs = [], {}
-    for g in films:
-        cand = None
-        for src in g['sources']:
-            if src and not src.lower().endswith('.pdf'):
-                cand = candidate_from(src, g, 'own source page')
-                if cand: break
-        if not cand:
-            surname = (n(g['makers'][0]).split() or [''])[-1] if g['makers'] else ''
-            q = f'"{g["title"]}" {surname} {g["year"] or ""} film'.strip()
-            for url in search(q):
-                cand = candidate_from(url, g, 'search: ' + q)
-                if cand: break
-                time.sleep(0.4)
-            time.sleep(1.2)
+import threading
+from concurrent.futures import ThreadPoolExecutor, as_completed
+LOCK = threading.Lock()
+
+def one(g):
+    cand = None
+    for src in g['sources']:
+        if src and not src.lower().endswith('.pdf'):
+            cand = candidate_from(src, g, 'own source page')
+            if cand: break
+    if not cand:
+        surname = (n(g['makers'][0]).split() or [''])[-1] if g['makers'] else ''
+        q = f'"{g["title"]}" {surname} {g["year"] or ""} film'.strip()
+        for url in search(q):
+            cand = candidate_from(url, g, 'search: ' + q)
+            if cand: break
+    if cand:
+        chk = check_image(cand['image'])
+        if chk:
+            cand.update({'w': chk['w'], 'h': chk['h'], 'hash': chk['hash']})
+            chk['img'].thumbnail((400, 300)); chk['img'].save(f"out/img/{g['n']}.jpg", quality=85)
+        else:
+            cand = None
+    with LOCK:
         if cand:
-            chk = check_image(cand['image'])
-            if chk:
-                cand.update({'w': chk['w'], 'h': chk['h'], 'hash': chk['hash']})
-                imgs[g['n']] = chk['img']; found.append(cand)
+            with open('out/found.jsonl', 'a', encoding='utf-8') as fh: fh.write(json.dumps(cand, ensure_ascii=False) + '\n')
         print(g['n'], g['title'][:40], '->', cand and cand['page'][:80], flush=True)
-    # reject images (by perceptual hash) that recur across different films: banners, logos
+
+def main():
+    import os
+    os.makedirs('out/img', exist_ok=True)
+    films = json.load(open('tools/thumbs/af_missing.json'))
+    done = set()
+    if os.path.exists('out/found.jsonl'):
+        done = {json.loads(l)['n'] for l in open('out/found.jsonl', encoding='utf-8')}
+    with ThreadPoolExecutor(max_workers=8) as ex:
+        list(ex.map(one, [g for g in films if g['n'] not in done]))
+    print('SEARCH DONE', flush=True)
+
+def sheets():
+    films = json.load(open('tools/thumbs/af_missing.json'))
+    found = [json.loads(l) for l in open('out/found.jsonl', encoding='utf-8')] if __import__('os').path.exists('out/found.jsonl') else []
     counts = {}
-    for c in found:
-        counts[c['hash']] = counts.get(c['hash'], 0) + 1
-    kept = [c for c in found if counts[c['hash']] == 1]
+    for c in found: counts[c['hash']] = counts.get(c['hash'], 0) + 1
+    kept = sorted([c for c in found if counts[c['hash']] == 1], key=lambda c: c['n'])
     json.dump({'kept': kept, 'rejectedAsShared': [c for c in found if counts[c['hash']] > 1]}, open('out/candidates.json', 'w'), ensure_ascii=False, indent=1)
-    # contact sheets
     try:
         font = ImageFont.truetype('/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf', 13)
     except Exception:
@@ -173,7 +189,7 @@ def main():
         d = ImageDraw.Draw(sheet)
         for i, c in enumerate(chunk):
             x, y = (i % cols) * cw, (i // cols) * ch
-            im = imgs[c['n']].copy(); im.thumbnail((cw - 10, ch - 52))
+            im = Image.open(f"out/img/{c['n']}.jpg"); im.thumbnail((cw - 10, ch - 52))
             sheet.paste(im, (x + 5, y + 5))
             g = byn[c['n']]
             d.text((x + 5, y + ch - 46), f"#{c['n']} {g['title'][:30]}", fill='black', font=font)
@@ -183,4 +199,4 @@ def main():
     print('FOUND', len(found), 'KEPT', len(kept), 'OF', len(films))
 
 if __name__ == '__main__':
-    main()
+    sheets() if sys.argv[1:] == ['sheets'] else main()
