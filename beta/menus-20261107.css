@@ -88,3 +88,9 @@
 :root[data-reading-theme=night] #featured-weave.is-collapsed .fw-pill{background:rgba(14,23,41,.9);color:#efe6d2;border-color:rgba(233,217,173,.28)}
 @media (min-width:761px){:root[data-ui-bar=one] #featured-weave{bottom:44px!important}}
 :root[data-ui="1107"] .map-panel .zoom #atlas-unmap[aria-pressed="true"]{background:var(--reading-accent,#9c3b26)!important;color:#f6f4ee!important}
+/* Play mark beside land names with watchable films */
+#atlas .land-watch{pointer-events:auto;cursor:pointer}
+#atlas .land-watch circle{fill:var(--reading-accent,#9c3b26);stroke:#f6f4ee;stroke-width:1.4}
+#atlas .land-watch path{fill:#f6f4ee}
+:root[data-reading-theme=night] #atlas .land-watch circle{fill:#ebc867;stroke:#0e1729}
+:root[data-reading-theme=night] #atlas .land-watch path{fill:#0e1729}

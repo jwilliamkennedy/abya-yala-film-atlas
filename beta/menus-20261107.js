@@ -187,6 +187,23 @@ function territoryFocus(){
  draw();
 }
 
+/* 11. A small play mark beside land names whose filmmakers have a film you can watch. */
+function watchMarks(){
+ const svg=$('#atlas'),A=atlas();if(!svg||!A||typeof A.landLinks!=='function')return;
+ const NS='http://www.w3.org/2000/svg',cache=new Map(),WATCH=/watch|full film|stream|viewing|ver pelicula|ver filme/i,NOT=/trailer|teaser|preview/i;
+ const watchable=id=>{if(cache.has(id))return cache.get(id);let n=0;try{const seen=new Set();for(const e of A.landLinks(id)||[]){if(seen.has(e.record))continue;seen.add(e.record);const r=A.recordById(e.record);
+   if(r&&(r.films||[]).some(f=>(A.viewingRoutes(f)||[]).some(l=>WATCH.test(l.title||'')&&!NOT.test(l.title||''))))n++;}}catch(err){}cache.set(id,n);return n;};
+ const mark=()=>{for(const g of svg.querySelectorAll('g.land-word')){const id=g.getAttribute('data-connection');const n=id?watchable(id):0;let m=g.querySelector('.land-watch');
+   if(!n){m?.remove();continue;}
+   const label=g.querySelector('text.land-word-label,text');if(!label)continue;let b;try{b=label.getBBox();}catch(err){continue;}
+   if(!m){m=document.createElementNS(NS,'g');m.setAttribute('class','land-watch');const c=document.createElementNS(NS,'circle'),p=document.createElementNS(NS,'path');c.setAttribute('r','7');p.setAttribute('d','M-2.2,-3.6 L3.8,0 L-2.2,3.6 Z');m.append(c,p);
+    const t=document.createElementNS(NS,'title');m.append(t);g.append(m);}
+   m.querySelector('title').textContent=n===1?'1 filmmaker here has a film you can watch':n+' filmmakers here have films you can watch';
+   m.setAttribute('transform',`translate(${b.x+b.width+11},${b.y+b.height/2})`);}};
+ let t=0;const later=()=>{clearTimeout(t);t=setTimeout(mark,120);};
+ new MutationObserver(later).observe(svg,{childList:true,subtree:true});addEventListener('atlas-camera-change',later);mark();
+}
+
 /* 10. Header: About first, Watch last. */
 function headerNav(tries=0){
  const nav=$('header nav.primary');if(!nav)return;
@@ -197,7 +214,7 @@ function headerNav(tries=0){
 }
 
 whenReady(()=>{
- for(const step of [headerNav,toolbar,closeRule,countries,layers,mapKey,indexPanel,featured,shortcuts,territoryFocus]){try{step();}catch(err){console.warn('UI pass step failed:',step.name,err);}}
+ for(const step of [headerNav,watchMarks,toolbar,closeRule,countries,layers,mapKey,indexPanel,featured,shortcuts,territoryFocus]){try{step();}catch(err){console.warn('UI pass step failed:',step.name,err);}}
  setTimeout(closeRule,1500);
 });
 })();
