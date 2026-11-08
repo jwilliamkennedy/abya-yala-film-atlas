@@ -1,0 +1,105 @@
+name: Verify Watch index source fidelity and browser interactions
+on:
+  push:
+    paths:
+      - '.github/workflows/_watch_qa_once.yml'
+permissions:
+  contents: write
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install browser DOM test harness
+        run: npm install --prefix /tmp/watchqa --no-audit --no-fund jsdom@25
+      - name: Test source-integrated Watch page from repository
+        run: |
+          export NODE_PATH=/tmp/watchqa/node_modules
+          node <<'JS' > /tmp/atlas-watch-qa.log 2>&1
+          const fs=require('fs');
+          const assert=require('node:assert/strict');
+          const {JSDOM}=require('jsdom');
+          const html=fs.readFileSync('beta/watch.html','utf8');
+          const dom=new JSDOM(html,{url:'https://jwilliamkennedy.github.io/abya-yala-film-atlas/beta/watch.html',runScripts:'outside-only',pretendToBeVisual:true});
+          const w=dom.window,d=w.document;
+          const evalSource=s=>w.eval(fs.readFileSync(s,'utf8'));
+          for(const inline of d.querySelectorAll('script:not([src])')){if(inline.textContent.trim())w.eval(inline.textContent);}
+          evalSource('beta/watch-library-20261107-data.js');
+          evalSource('beta/watch-index-20261107.js');
+          evalSource('beta/assets/screening.js');
+          const assertCount=(n,msg)=>{
+           const v=d.querySelector('#count')?.textContent;
+           assert.equal(v,n+' films',msg+' -> '+v);
+          };
+          const act=(sel,ev='change')=>sel.dispatchEvent(new w.Event(ev,{bubbles:true}));
+          const field=k=>d.querySelector('select[data-filter="'+k+'"]');
+          assert.equal(w.ATLAS_WATCH_RESEARCH.films.length,366);
+          assert.equal(d.querySelectorAll('.view[data-view="source"] li').length,54);
+          assert.equal(d.querySelectorAll('.watch-facets select').length,6);
+          assert(d.body.classList.contains('watch-unified'));
+          assertCount(420,'initial count');
+          assert.equal(d.querySelectorAll('#watch-results section.grp li').length,48,'initial pagination');
+          field('source').value='Wapikoni';act(field('source'));assertCount(366,'Wapikoni source');
+          field('source').value='National Film Board of Canada';act(field('source'));assertCount(36,'NFB source');
+          field('source').value='';act(field('source'));
+          field('index').value='atlas';act(field('index'));assertCount(54,'Atlas index');
+          field('index').value='research';act(field('index'));assertCount(366,'research index');
+          field('index').value='';act(field('index'));assertCount(420,'all credits');
+          field('people').value='Abenaki (W8linak)';act(field('people'));
+          assert(d.querySelector('#count').textContent.startsWith('1 ')||Number(d.querySelector('#count').textContent.split(' ')[0])>0,'biographical affiliation source facet');
+          field('people').value='';act(field('people'));
+          const q=d.querySelector('#q');
+          q.value='Catherine Boivin';act(q,'input');assertCount(1,'creator exact search');
+          assert(d.querySelector('#watch-results li .t')?.textContent.includes('6 minutes/km'));
+          q.value='ECOUTE TA PASSION';act(q,'input');
+          assert(Number(d.querySelector('#count').textContent.split(' ')[0])>0,'accent-insensitive search');
+          q.value='';act(q,'input');assertCount(420,'clear query');
+          field('decade').value='2010';act(field('decade'));
+          assert(Number(d.querySelector('#count').textContent.split(' ')[0])>=150,'2010s film decade filter');
+          field('decade').value='';act(field('decade'));
+          field('access').value='embed';act(field('access'));
+          assert(Number(d.querySelector('#count').textContent.split(' ')[0])>=400,'embedded film source filter');
+          field('access').value='';act(field('access'));
+          const btn=d.querySelector('#watch-results li .play');
+          assert(btn&&btn.parentElement.querySelector('.slot'),'player button and slot in same parent');
+          btn.click();assert(btn.parentElement.querySelector('.slot iframe'),'embedded player opens');
+          const frame=d.querySelector('#now-frame'),next=d.querySelector('#next');
+          assert(frame?.src.startsWith('https://')&&next,'featured frame available');
+          const before=frame.src;next.click();assert.notEqual(frame.src,before,'featured discovery rotates source');
+          q.value='Catherine Boivin';act(q,'input');
+          const save=d.querySelector('#watch-results [data-screen]');
+          assert(save&&save.dataset.page.startsWith('https://'),'research screening button has real external page');
+          save.click();assert.equal(w.AtlasScreening.load().length,1,'screening list persists research film');
+          assert.equal(w.AtlasScreening.load()[0].rid,'RESEARCH-WAPIKONI','screening research id never masquerades as mapped maker');
+          const pp=new w.URLSearchParams(w.location.search);
+          assert.equal(pp.get('q'),'Catherine Boivin','shareable search URL');
+          const tabs=d.querySelectorAll('.seg button');
+          tabs[1].click();assert(d.querySelector('#watch-results section.grp h2'),'peoples group exists');
+          tabs[2].click();assert(d.querySelector('#watch-results section.grp h2'),'filmmaker group exists');
+          d.querySelector('.watch-facets .clear').click();assertCount(420,'clear all controls');
+          console.log('PASS: 420 films, 54 atlas, 366 Wapikoni; grouped and full-text search, community facet, year/source/index/access, featured player, URL state and screening list.');
+          
+          JS
+          cat /tmp/atlas-watch-qa.log
+      - name: Save short test diagnostic when broken
+        if: failure()
+        run: |
+          tail -c 5000 /tmp/atlas-watch-qa.log > .github/_watch_qa_failure.txt || echo "No diagnostic" > .github/_watch_qa_failure.txt
+          git config user.name atlas-qa
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add .github/_watch_qa_failure.txt
+          git commit -m "Diagnostic: failed unified Watch browser test" || true
+          git push origin HEAD:main
+      - name: Remove one-time test workflow when complete
+        run: |
+          git config user.name atlas-qa
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git rm .github/workflows/_watch_qa_once.yml
+          git commit -m "QA PASS: 420 Watch films, 366 research players, indexes and screening controls verified"
+          git push origin HEAD:main
