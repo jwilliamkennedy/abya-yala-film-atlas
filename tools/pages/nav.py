@@ -12,7 +12,21 @@ MORE = [('Browse', [('Languages', 'languages.html'), ('Themes', 'themes.html'), 
         ('About the data', [('Data and downloads', 'data.html'), ('Suggest a correction', 'corrections.html')])]
 
 CSS = '''<style id="site-nav-css">
-.brand{display:flex;align-items:center;gap:10px}.brand img{width:28px;height:28px;flex:none}
+/* the header sits exactly where the map's does: brand at left, the menu right after it, same sizes */
+header{display:flex!important;flex-wrap:nowrap!important;justify-content:flex-start!important;align-items:center!important;gap:24px!important;padding:10px 28px!important;min-height:94px;box-sizing:border-box}
+header .brand{display:flex;align-items:center;gap:22px!important;flex:none;border:0;color:var(--ink)}
+header .brand>span{font:400 30px/1.1 Georgia,'Times New Roman',serif!important;letter-spacing:-.035em;color:var(--ink)}
+header .brand small{display:block;font:500 11px/1.4 var(--sans,system-ui,sans-serif)!important;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-top:6px!important}
+header nav.primary{flex-wrap:nowrap!important;gap:0 20px!important}
+header nav.primary>a,header nav.primary .more-menu summary{font:400 15px/1 var(--sans,system-ui,sans-serif)!important;letter-spacing:normal;height:44px;display:flex;align-items:center;padding:0 2px!important;opacity:1}
+@media (max-width:1000px) and (min-width:761px){header{flex-wrap:wrap!important;row-gap:0!important}}
+@media (max-width:760px){
+ header{display:block!important;padding:12px 16px 4px!important;min-height:0}
+ header .brand>span{font-size:22px!important}
+ header nav.primary{flex-wrap:wrap!important;column-gap:18px!important;margin-top:5px}
+ header nav.primary>a,header nav.primary .more-menu summary{height:44px;font-size:16px!important}
+}
+.brand img{width:30px;height:30px;flex:none}
 nav.primary{display:flex;flex-wrap:wrap;align-items:center;gap:4px 20px}
 nav.primary>a{color:var(--ink);border:0;font-size:15px;padding:6px 0}
 nav.primary a[aria-current]{box-shadow:inset 0 -2px 0 var(--accent,var(--gold))}

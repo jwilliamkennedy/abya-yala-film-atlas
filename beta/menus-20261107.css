@@ -237,3 +237,26 @@ button.collect-current:hover{color:var(--ui-accent)!important}
 /* 8 Nov: every top menu item in one colour, as on the other pages; the current view keeps its underline; no play mark on Watch */
 header nav.primary>a,header nav.primary>button,header nav.primary .more-menu summary,header nav.primary .watch-link,header nav.primary .about-link{color:var(--ui-ink)!important;opacity:1}
 header nav.primary .watch-link::before{content:none!important;display:none!important}
+/* 8 Nov: on phones the menu wraps onto a second row (as on every other page) instead of scrolling Watch and More off screen */
+@media (max-width:760px){
+ header nav.primary{flex-wrap:wrap!important;overflow:visible!important;row-gap:0!important;column-gap:18px!important}
+ header nav.primary>a,header nav.primary>button,header nav.primary .more-menu summary,header nav.primary .watch-link{height:40px;display:flex;align-items:center}
+}
+/* 8 Nov · the header holds its place: brand at left, the menu right after it (as on every page);
+   counts, language and theme to the right only when there is room, never off screen */
+@media (min-width:761px){header{padding-left:28px!important;padding-right:28px!important}}
+header .atlas-ledger{margin-left:auto}
+@media (max-width:1439px){header .atlas-ledger{display:none!important}header .ui-lang{margin-left:auto}}
+@media (max-width:1000px) and (min-width:761px){
+ header{flex-wrap:wrap!important;row-gap:0!important;height:auto!important}
+ header nav.primary{order:5;width:100%}
+}
+@media (max-width:760px){
+ header,body.atlas-page header{display:flex!important;flex-wrap:wrap!important;align-items:center;height:auto!important;min-height:0!important;padding:12px 16px 4px!important;column-gap:10px!important;row-gap:6px!important}
+ header .brand{order:1;flex:1 1 100%;min-width:0;padding-right:52px}
+ header .ui-lang{order:5;position:static!important;margin:2px 0 6px!important}
+ header nav.atlas-utilities,body.atlas-page header .atlas-utilities{order:6;position:static!important;top:auto!important;right:auto!important;margin-left:0!important}
+ header #atlas-browse{position:absolute!important;top:12px!important;right:16px!important}
+ header .atlas-ledger{display:none!important}
+ header nav.primary,body.atlas-page header nav.primary{order:2;position:static!important;height:auto!important;bottom:auto!important;left:auto!important;right:auto!important;gap:0 18px!important;width:100%;justify-content:flex-start!important;flex-wrap:wrap!important;column-gap:18px!important;margin:0!important}
+}
