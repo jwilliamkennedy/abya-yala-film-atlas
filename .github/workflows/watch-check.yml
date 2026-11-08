@@ -2,7 +2,7 @@ name: Watch links (review only)
 on:
   push:
     paths:
-      - "tools/watch/embed.py"
+      - "tools/watch/geo.py"
       - ".github/workflows/watch-check.yml"
   workflow_dispatch:
 permissions:
@@ -15,9 +15,10 @@ jobs:
       - uses: actions/checkout@v4
       - name: Check and search
         run: |
-          pip install requests >/dev/null
+          pip install requests playwright==1.* >/dev/null
+          python -m playwright install --with-deps chromium >/dev/null
           mkdir -p out
-          python3 tools/watch/embed.py | tee out/log.txt
+          python3 tools/watch/geo.py | tee out/log.txt
       - name: Publish to ci-watch branch (not deployed)
         if: always()
         run: |
