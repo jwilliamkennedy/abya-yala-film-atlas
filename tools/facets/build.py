@@ -1,12 +1,13 @@
 """Build the atlas's film facets: one documented store for languages, themes, form and length, with a source per value.
 
-usage: python3 tools/facets/build.py <public.json from tools/pages/dump.py> <beta dir>
-Inputs  : public.json (films by filmmakers on the public map), beta/themes-1103-data.js (themes from published synopses),
-          tools/facets/languages_authority.csv (checked against Glottolog), tools/languages/filled/*.csv (new language fills).
+Run by tools/atlas/build.py (since 8 Nov 2026 the inputs come from atlas.xlsx):
+usage: python3 tools/facets/build.py <records json> <beta dir> --themes <themes json> --js-out <path>
+Inputs  : the published records (languages from the workbook's language columns), the theme tags (workbook theme columns),
+          tools/facets/languages_authority.csv (checked against Glottolog; the workbook's Lists sheet carries the same list).
 Outputs : beta/data/film-facets.csv   one row per film, field and value, with code, source and basis (long form)
           beta/data/film-facets.json  the same as one document, with vocabularies and the language authority
           beta/data/languages.csv     the language authority with film counts
-          beta/facets-data.js         compact copy the map loads (filters and search)
+          the compact copy the map loads (filters and search), written to --js-out and folded into beta/atlas-data.js
           beta/languages.html, beta/themes.html   browse pages
 """
 import csv, json, re, sys, glob, html, datetime, os, unicodedata, collections

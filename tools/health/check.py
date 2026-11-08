@@ -37,7 +37,7 @@ by = lambda k: sum(1 for j in bad if j[0] == k)
 tot = lambda k: sum(1 for j in jobs if j[0] == k)
 rep = (f"# Atlas health\n\nBroken means not found, gone, server error or unreachable. Sites that refuse automated checks ({len(walled)} links) are not counted as broken.\n\n- Images: {by('image')} broken of {tot('image')}\n- Watch links: {by('watch')} broken of {tot('watch')}\n"
        f"- Source links: {by('source')} broken of {tot('source')}\n- Films without an image: {len(missing)} of {sum(len(r['films']) for r in d)}\n\n"
-       "Details: broken.csv. Films to find images for: missing-images.csv (fill image_url and image_page, then run tools/thumbs/from_csv.py).\n")
+       "Details: broken.csv. Films to find images for: missing-images.csv (add each image as a \"correct\" row in the Queue of atlas.xlsx: image_url, image_page, image_credit).\n")
 # Data invariants: catches a layer that duplicates or drops records
 import unicodedata
 nm = lambda s: re.sub(r'[^a-z0-9]+', ' ', unicodedata.normalize('NFD', str(s or '')).encode('ascii', 'ignore').decode().lower()).strip()

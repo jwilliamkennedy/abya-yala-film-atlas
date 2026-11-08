@@ -3,7 +3,7 @@
   beta/atlas-data.js       everything of ours in one file: reference tables (land names and links, country index, verification
                            notes; frozen from the captured beta, with the workbook's land-link edits applied), the records,
                            images, watch links, theme tags, and the film tags the filters use
-  beta/index-flat.html     the beta page loading it (plus the Native Land shapes and territory-fixes.js) instead of the layers
+  beta/index.html          made to load it (plus the Native Land shapes and territory-fixes.js) instead of any layers
 
 Normally called by tools/atlas/build.py (from atlas.xlsx). For the one-time identity test it can bake a captured
 state directly:  python3 tools/atlas/bake.py <state.json> --all-records   (never commit that output: it holds leads)."""
@@ -76,8 +76,9 @@ def write(records, countries, meta, owned, base_globals, edges=None, keep_record
     page()
     return {'atlas-data.js MB': round((B / 'atlas-data.js').stat().st_size / 1e6, 2)}
 
-def page():
-    html = (B / 'index.html').read_text(encoding='utf-8')
+def page(path=B / 'index.html'):
+    """Make the beta page load atlas-data.js instead of any data layers (idempotent: run on the flat page it changes nothing)."""
+    html = path.read_text(encoding='utf-8')
     tags = list(re.finditer(r'[ \t]*<script\b[^>]*\bsrc="([^"?]+)(?:\?[^"]*)?"[^>]*></script>\n?', html))
     out, first = html, True
     for m in tags:
@@ -86,8 +87,9 @@ def page():
             rep = '<script src="atlas-data.js"></script>\n' if first else ''
             first = False
             out = out.replace(m.group(0), rep, 1)
-    out = re.sub(r'(<script\b[^>]*\bsrc="territories-data\.js[^"]*"[^>]*></script>)', r'\1<script src="territory-fixes.js" defer></script>', out, count=1)
-    (B / 'index-flat.html').write_text(out, encoding='utf-8')
+    if 'territory-fixes.js' not in out:
+        out = re.sub(r'(<script\b[^>]*\bsrc="territories-data\.js[^"]*"[^>]*></script>)', r'\1<script src="territory-fixes.js" defer></script>', out, count=1)
+    path.write_text(out, encoding='utf-8')
 
 if __name__ == '__main__':
     state = json.load(open(sys.argv[1], encoding='utf-8'))
