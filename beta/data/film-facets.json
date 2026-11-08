@@ -2,7 +2,7 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-08",
  "license": "See data.html",
- "films_on_public_map": 1275,
+ "films_on_public_map": 1317,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -452,7 +452,7 @@
     "match": "group",
     "indigenous": "yes",
     "note": "Credits name Aymara without a variety; aym is the ISO macrolanguage code",
-    "films": 5
+    "films": 4
    },
    {
     "label": "Mapudungun",
@@ -1159,6 +1159,86 @@
    "form": "Documentary",
    "length": "Feature"
   },
+  "DIR-0021-QMae9084": {
+   "title": "Ava Marangatu",
+   "year": 2016,
+   "makers": [
+    {
+     "id": "DIR-0021",
+     "name": "Dulcídio Gomes"
+    },
+    {
+     "id": "DIR-0023",
+     "name": "Genito Gomes"
+    },
+    {
+     "id": "DIR-0030",
+     "name": "Jhonaton Gomes"
+    },
+    {
+     "id": "LEAD-20261011-006",
+     "name": "Sarah Brites"
+    },
+    {
+     "id": "BETA8D-20261107-D09",
+     "name": "Valmir Gonçalves Cabreira"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "DIR-0021-QMa30a08": {
+   "title": "Ava Yvy Vera – A Terra do Povo do Raio",
+   "year": 2016,
+   "makers": [
+    {
+     "id": "DIR-0021",
+     "name": "Dulcídio Gomes"
+    },
+    {
+     "id": "DIR-0023",
+     "name": "Genito Gomes"
+    },
+    {
+     "id": "DIR-0030",
+     "name": "Jhonaton Gomes"
+    },
+    {
+     "id": "LEAD-20261011-006",
+     "name": "Sarah Brites"
+    },
+    {
+     "id": "BETA8D-20261107-D09",
+     "name": "Valmir Gonçalves Cabreira"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "DIR-0023-QMec1bce": {
+   "title": "Ava Yvy Pyte Ygua (People from the Heart of the Earth)",
+   "year": 2023,
+   "makers": [
+    {
+     "id": "DIR-0023",
+     "name": "Genito Gomes"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "FILM-0030": {
    "title": "The Rainy Season",
    "year": null,
@@ -1357,30 +1437,6 @@
    "form": "Documentary",
    "length": "Feature"
   },
-  "BETA11D-20261107-F02": {
-   "title": "Ava Marangatu",
-   "year": 2016,
-   "makers": [
-    {
-     "id": "DIR-0030",
-     "name": "Jhonaton Gomes"
-    },
-    {
-     "id": "LEAD-20261011-006",
-     "name": "Sarah Brites"
-    },
-    {
-     "id": "BETA8D-20261107-D09",
-     "name": "Valmir Gonçalves Cabreira"
-    }
-   ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
-  },
   "FILM-0037": {
    "title": "A história do monstro Kátpy (rep.)",
    "year": null,
@@ -1400,6 +1456,38 @@
   "BETA30B-20261107-F07": {
    "title": "Sukande Kasáká | Terra Doente",
    "year": 2025,
+   "makers": [
+    {
+     "id": "DIR-0032",
+     "name": "Kamikia Kisêdjê"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "DIR-0032-QM587b31": {
+   "title": "Txeijkhô khãm Mby",
+   "year": 2007,
+   "makers": [
+    {
+     "id": "DIR-0032",
+     "name": "Kamikia Kisêdjê"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "DIR-0032-QM0e7b49": {
+   "title": "Mulheres Guerreiras",
+   "year": 2010,
    "makers": [
     {
      "id": "DIR-0032",
@@ -1968,6 +2056,22 @@
    ],
    "form": null,
    "length": "Feature"
+  },
+  "DIR-0056-QMe38030": {
+   "title": "Já Me Transformei em Imagem",
+   "year": 2008,
+   "makers": [
+    {
+     "id": "DIR-0056",
+     "name": "Zezinho Yube"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
   },
   "FILM-0061": {
    "title": "Fire Song",
@@ -6186,6 +6290,10 @@
     {
      "id": "DIR-0179",
      "name": "Amado Villafaña"
+    },
+    {
+     "id": "SAB2-20261014-4af382f5d619",
+     "name": "Rafael Mojica Gil"
     }
    ],
    "languages": [],
@@ -6261,6 +6369,22 @@
     {
      "id": "DIR-0184",
      "name": "Leiqui Uriana Henríquez"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "DIR-0182-QM1e6bc8": {
+   "title": "SŪKŪJULA TEI (Relatos de mi madre)",
+   "year": 2022,
+   "makers": [
+    {
+     "id": "DIR-0182",
+     "name": "David Hernández Palmar"
     }
    ],
    "languages": [],
@@ -6405,6 +6529,38 @@
   "FILM-0131": {
    "title": "La memoria de la avispa",
    "year": null,
+   "makers": [
+    {
+     "id": "DIR-0184",
+     "name": "Leiqui Uriana Henríquez"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "DIR-0184-QM1887ec": {
+   "title": "Jikiru’u Ko’ooikaa – La memoria de la avispa",
+   "year": null,
+   "makers": [
+    {
+     "id": "DIR-0184",
+     "name": "Leiqui Uriana Henríquez"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "DIR-0184-QM495fff": {
+   "title": "Ser un ser humano",
+   "year": 2011,
    "makers": [
     {
      "id": "DIR-0184",
@@ -6565,6 +6721,38 @@
    "families": [],
    "form": "Documentary",
    "length": "Series"
+  },
+  "DIR-0187-QMe5b47a": {
+   "title": "Apotnojushi: la casa del viento",
+   "year": 2025,
+   "makers": [
+    {
+     "id": "DIR-0187",
+     "name": "Marbel Ina Vanegas Jusayu"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "DIR-0187-QM392ad4": {
+   "title": "Jintüikai – El niño",
+   "year": null,
+   "makers": [
+    {
+     "id": "DIR-0187",
+     "name": "Marbel Ina Vanegas Jusayu"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
   },
   "FILM-0135": {
    "title": "Mu Drua (Mi tierra)",
@@ -7412,6 +7600,26 @@
    "form": null,
    "length": null
   },
+  "DIR-0221-QMe072e9": {
+   "title": "Susurros del Ipx Yukp",
+   "year": 2023,
+   "makers": [
+    {
+     "id": "DIR-0221",
+     "name": "Damián Dositelo Martínez Vásquez"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Elders and Knowledge"
+   ],
+   "primary_theme": "Elders and Knowledge",
+   "families": [
+    "Knowledge and Continuity"
+   ],
+   "form": "Documentary",
+   "length": "Feature"
+  },
   "FILM-0175": {
    "title": "Día 2 / Day 2",
    "year": 2004,
@@ -7722,6 +7930,22 @@
    "form": null,
    "length": null
   },
+  "DIR-0226-QM36e5c3": {
+   "title": "Ch’ul be, senda sagrada",
+   "year": 2023,
+   "makers": [
+    {
+     "id": "DIR-0226",
+     "name": "Humberto Gómez Pérez"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "FILM-0183": {
    "title": "Gente de mar y viento",
    "year": 2016,
@@ -7931,6 +8155,22 @@
    ],
    "form": "Fiction",
    "length": "Feature"
+  },
+  "DIR-0229-QMffa3dd": {
+   "title": "Itu Ninu",
+   "year": null,
+   "makers": [
+    {
+     "id": "DIR-0229",
+     "name": "Itandehui Jansen"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
   },
   "FILM-0186": {
    "title": "Nixíí - Bastón de mando",
@@ -8170,6 +8410,22 @@
      "source": "https://ojodeaguacomunicacion.org/poder-pal-pueblo/"
     }
    ],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "DIR-0230-QMa4ce7f": {
+   "title": "Voces del agua",
+   "year": 2021,
+   "makers": [
+    {
+     "id": "DIR-0230",
+     "name": "José Luis Matías Alonso"
+    }
+   ],
+   "languages": [],
    "themes": [],
    "primary_theme": null,
    "families": [],
@@ -8437,6 +8693,22 @@
    "form": null,
    "length": null
   },
+  "DIR-0234-QM5deb8a": {
+   "title": "Sapi",
+   "year": null,
+   "makers": [
+    {
+     "id": "DIR-0234",
+     "name": "Magdalena Cacari León"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "FILM-0194": {
    "title": "Bankilal (El hermano mayor)",
    "year": 2015,
@@ -8482,6 +8754,26 @@
    ],
    "form": "Documentary",
    "length": "Feature"
+  },
+  "DIR-0235-QMa1cff4": {
+   "title": "Conoce, crea y baila",
+   "year": null,
+   "makers": [
+    {
+     "id": "DIR-0235",
+     "name": "María Sojob"
+    },
+    {
+     "id": "PILOT-43-ANA-TSUYEB",
+     "name": "Ana Ts’uyeb"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
   },
   "FILM-0197": {
    "title": "Mudubina",
@@ -8728,6 +9020,22 @@
    "form": "Fiction",
    "length": "Short"
   },
+  "DIR-0240-QMa811c2": {
+   "title": "Koo / Serpiente",
+   "year": null,
+   "makers": [
+    {
+     "id": "DIR-0240",
+     "name": "Nicolás Rojas"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "FILM-0201": {
    "title": "Marku Irekani = vivir juntos",
    "year": null,
@@ -8851,6 +9159,22 @@
    "form": null,
    "length": "Short"
   },
+  "DIR-0243-QM286be9": {
+   "title": "Leaw amangoch tinden nop ikoods (La vida de una familia ikoods)",
+   "year": 1988,
+   "makers": [
+    {
+     "id": "DIR-0243",
+     "name": "Teófila Palafox Herranz"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "FILM-0206": {
    "title": "La Baláhna",
    "year": null,
@@ -8973,6 +9297,22 @@
    ],
    "form": "Documentary",
    "length": "Feature"
+  },
+  "DIR-0247-QM017cc4": {
+   "title": "K’in Paxion",
+   "year": 2008,
+   "makers": [
+    {
+     "id": "DIR-0247",
+     "name": "Xun Sero"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
   },
   "FILM-0209": {
    "title": "2501 Migrants: A Journey",
@@ -9185,6 +9525,22 @@
    "form": "Fiction",
    "length": "Short"
   },
+  "DIR-0248-QM1beba1": {
+   "title": "Reencuentros: 2501 migrantes",
+   "year": 2009,
+   "makers": [
+    {
+     "id": "DIR-0248",
+     "name": "Yolanda Cruz"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "FILM-0213": {
    "title": "Burwa Dii Ebo (The Wind and the Water)",
    "year": 2008,
@@ -9267,6 +9623,38 @@
    "form": null,
    "length": null
   },
+  "DIR-0253-QMce53f2": {
+   "title": "Mugan Boe (El llanto de las abuelas)",
+   "year": 2021,
+   "makers": [
+    {
+     "id": "DIR-0253",
+     "name": "Olowaili Green"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "DIR-0254-QMd8514f": {
+   "title": "Héroe Transparente",
+   "year": 2014,
+   "makers": [
+    {
+     "id": "DIR-0254",
+     "name": "Orgún Wagua"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "FILM-0221": {
    "title": "Wiñaypacha (Eternity)",
    "year": 2017,
@@ -9292,6 +9680,42 @@
   "BETA30B-20261107-F11": {
    "title": "Imperdonables",
    "year": 2005,
+   "makers": [
+    {
+     "id": "DIR-0262",
+     "name": "Óscar Catacora"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "DIR-0262-QM99e00c": {
+   "title": "Yana-Wara",
+   "year": 2023,
+   "makers": [
+    {
+     "id": "DIR-0262",
+     "name": "Óscar Catacora"
+    },
+    {
+     "id": "SAB2-20261014-a167facb5a9c",
+     "name": "Tito Catacora"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "DIR-0262-QM950e46": {
+   "title": "El sendero del Chulo",
+   "year": 2007,
    "makers": [
     {
      "id": "DIR-0262",
@@ -13249,6 +13673,22 @@
    "form": null,
    "length": null
   },
+  "NEW-f82421999862-QM97f908": {
+   "title": "Akababuru: Expresión de Asombro",
+   "year": 2025,
+   "makers": [
+    {
+     "id": "NEW-f82421999862",
+     "name": "Irati Dojura Landa Yagarí"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "NEW-be50361fffae-WORK-1": {
    "title": "Nenaboozhoo",
    "year": null,
@@ -13987,6 +14427,26 @@
    "form": null,
    "length": null
   },
+  "NEW-ec20b11d6f81-QM8c0997": {
+   "title": "Rebeldías y esperanzas",
+   "year": 2005,
+   "makers": [
+    {
+     "id": "NEW-ec20b11d6f81",
+     "name": "Marcelina Cárdenas Sausa"
+    },
+    {
+     "id": "SA50-20261014-e4fb233d3bf0",
+     "name": "Nicolás Ipamo"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "FILM-SRC-2023-00046": {
    "title": "Grape Soda in the Parking Lot",
    "year": null,
@@ -14351,6 +14811,22 @@
    ],
    "form": "Fiction",
    "length": "Short"
+  },
+  "NEW-075d560f1fc5-QMaef0dd": {
+   "title": "En Memoria",
+   "year": 2025,
+   "makers": [
+    {
+     "id": "NEW-075d560f1fc5",
+     "name": "Roberto Fatal"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
   },
   "NEW-86d0a18ee535-WORK-1": {
    "title": "Michif Land-Based Knowledge",
@@ -15025,6 +15501,22 @@
    "form": "Documentary",
    "length": "Short"
   },
+  "NEW-72d1f9f5e205-QM543bf7": {
+   "title": "Nangulvi",
+   "year": 2023,
+   "makers": [
+    {
+     "id": "NEW-72d1f9f5e205",
+     "name": "Wayra Ana Velásquez"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "NEW-c74dcc05c3f0-WORK-1": {
    "title": "Boca Vieja",
    "year": 2025,
@@ -15333,6 +15825,26 @@
     {
      "id": "LEAD-20261008-007",
      "name": "Sani Montahuano"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "LEAD-20261008-007-QM2aff14": {
+   "title": "El Río de los Espíritus",
+   "year": 2025,
+   "makers": [
+    {
+     "id": "LEAD-20261008-007",
+     "name": "Sani Montahuano"
+    },
+    {
+     "id": "LEAD-20261008-008",
+     "name": "Nase Lino Sumpinanch"
     }
    ],
    "languages": [],
@@ -15719,6 +16231,22 @@
    "form": "Documentary",
    "length": null
   },
+  "LEAD-20261014-016-QM0c12db": {
+   "title": "Re-Existências",
+   "year": 2026,
+   "makers": [
+    {
+     "id": "LEAD-20261014-016",
+     "name": "Natália Tupi"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "LEAD-20261014-017-WORK-01": {
    "title": "Sawana – Rainha das Formigas",
    "year": null,
@@ -15841,6 +16369,10 @@
      "name": "Vanuzia Bonfim Vieira"
     },
     {
+     "id": "SAB2-20261014-f86e9a6c6cbe",
+     "name": "Kerexu Martim"
+    },
+    {
      "id": "BETA30-20261106-D11",
      "name": "Francy Baniwa"
     }
@@ -15863,6 +16395,10 @@
     {
      "id": "NEW-084a145f8fa7",
      "name": "Graciela Guarani"
+    },
+    {
+     "id": "BETA30-20261106-D07",
+     "name": "Michele Perito Concianza Kaiowá"
     }
    ],
    "languages": [],
@@ -15933,6 +16469,30 @@
     {
      "id": "SA50-20261014-59f87a2e3ce5",
      "name": "Aida Harika Yanomami"
+    },
+    {
+     "id": "SA50-20261014-3646d5d9be66",
+     "name": "Edmar Tokorino Yanomami"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "SA50-20261014-59f87a2e3ce5-QM30550d": {
+   "title": "Yuri u xëatima thë – A Pesca com Timbó",
+   "year": 2023,
+   "makers": [
+    {
+     "id": "SA50-20261014-59f87a2e3ce5",
+     "name": "Aida Harika Yanomami"
+    },
+    {
+     "id": "SA50-20261014-0eb675abc594",
+     "name": "Roseane Yariana Yanomami"
     },
     {
      "id": "SA50-20261014-3646d5d9be66",
@@ -16249,6 +16809,22 @@
    "form": null,
    "length": null
   },
+  "SA50-20261014-cbcef9a56096-QM118f46": {
+   "title": "La Industria del Fuego",
+   "year": 2019,
+   "makers": [
+    {
+     "id": "SA50-20261014-cbcef9a56096",
+     "name": "Jimmy Piaguaje"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "SA50-20261014-50ce6a02e8f9-WORK-01": {
    "title": "Sacha Warmi",
    "year": null,
@@ -16512,13 +17088,21 @@
    "form": null,
    "length": null
   },
-  "BETA30B-20261107-F18": {
-   "title": "Rebeldías y esperanzas",
-   "year": 2005,
+  "SA50-20261014-e4fb233d3bf0-QMb4c904": {
+   "title": "La tentación del Nixhixh, el espíritu del bosque",
+   "year": 2016,
    "makers": [
     {
      "id": "SA50-20261014-e4fb233d3bf0",
      "name": "Nicolás Ipamo"
+    },
+    {
+     "id": "BETA30-20261106-D09",
+     "name": "Gumercindo Yumani"
+    },
+    {
+     "id": "BETA30-20261106-D10",
+     "name": "Martha Zelady"
     }
    ],
    "languages": [],
@@ -16712,6 +17296,22 @@
    "form": null,
    "length": null
   },
+  "SA50-20261014-b13c85277547-QM7f4ded": {
+   "title": "Anku Tupue: ofrenda a los muertos",
+   "year": 2018,
+   "makers": [
+    {
+     "id": "SA50-20261014-b13c85277547",
+     "name": "Maryoli Ceballos Vivas"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "SA50-20261014-c6d731eec058-WORK-01": {
    "title": "Atizando la Hoguera",
    "year": 2018,
@@ -16845,6 +17445,22 @@
     "Knowledge and Continuity"
    ],
    "form": null,
+   "length": null
+  },
+  "SAB2-20261014-e3499178f69e-QMebc038": {
+   "title": "Raoni. A descida do povo mebêngôkre na terra",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "SAB2-20261014-e3499178f69e",
+     "name": "Matsipaya Waurá Txucarramãe"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
    "length": null
   },
   "SAB2-20261014-ee20e32cc8f8-WORK-01": {
@@ -17179,32 +17795,6 @@
    "form": "Documentary",
    "length": "Feature"
   },
-  "BETA30B-20261107-F08": {
-   "title": "Yana-Wara",
-   "year": 2023,
-   "makers": [
-    {
-     "id": "SAB2-20261014-a167facb5a9c",
-     "name": "Tito Catacora"
-    }
-   ],
-   "languages": [
-    {
-     "label": "Aymara",
-     "as_credited": "Aymara",
-     "glottocode": "nucl1667",
-     "iso639_3": "aym",
-     "match": "group",
-     "indigenous": true,
-     "source": "https://www.wikidata.org/wiki/Q121358121"
-    }
-   ],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
-  },
   "BETA30B-20261107-F09": {
    "title": "Los indomables",
    "year": 2024,
@@ -17332,6 +17922,22 @@
   "SAB2-20261014-2a23090377cc-WORK-01": {
    "title": "Segundo",
    "year": 2017,
+   "makers": [
+    {
+     "id": "SAB2-20261014-2a23090377cc",
+     "name": "Diego Cabascango"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "SAB2-20261014-2a23090377cc-QM4951e7": {
+   "title": "Este Inti Raymi, quédate en casa",
+   "year": 2020,
    "makers": [
     {
      "id": "SAB2-20261014-2a23090377cc",
@@ -17803,13 +18409,13 @@
    "form": "Documentary",
    "length": "Short"
   },
-  "RESEARCH-FILM-006-02": {
-   "title": "Ava Yvy Vera – A Terra do Povo do Raio",
-   "year": 2016,
+  "PILOT-43-ANA-TSUYEB-QMbd5b9f": {
+   "title": "Guardianes de la tierra",
+   "year": null,
    "makers": [
     {
-     "id": "LEAD-20261011-006",
-     "name": "Sarah Brites"
+     "id": "PILOT-43-ANA-TSUYEB",
+     "name": "Ana Ts’uyeb"
     }
    ],
    "languages": [],
@@ -20162,6 +20768,22 @@
    "form": null,
    "length": null
   },
+  "NEW-cedc0e40389b-QMba9550": {
+   "title": "Mahiganiec",
+   "year": 2017,
+   "makers": [
+    {
+     "id": "NEW-cedc0e40389b",
+     "name": "Jacqueline Michel"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
+  },
   "NEW-18a59ef8e134-WORK-1": {
    "title": "Deux Pocahontas en ville",
    "year": null,
@@ -20783,6 +21405,22 @@
    "families": [
     "Lives and Relations"
    ],
+   "form": null,
+   "length": "Short"
+  },
+  "NEW-5c493398e7b1-QMbef502": {
+   "title": "Mamu Kataiat",
+   "year": 2017,
+   "makers": [
+    {
+     "id": "NEW-5c493398e7b1",
+     "name": "Valerie Kaltush"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
    "form": null,
    "length": "Short"
   },
@@ -23669,6 +24307,22 @@
    "form": null,
    "length": null
   },
+  "NEW-5746f6e4ef72-QMdd4f22": {
+   "title": "Fire Tender",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "NEW-5746f6e4ef72",
+     "name": "Roni Jo Draper"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "NEW-eb8552ed354b-WORK-1": {
    "title": "(Sundance Graton Fellowship project, 2025)",
    "year": 2025,
@@ -24010,6 +24664,22 @@
    "form": null,
    "length": null
   },
+  "NEW-084a145f8fa7-QM6ced28": {
+   "title": "Meu Sangue é Vermelho (My Blood Is Red)",
+   "year": 2020,
+   "makers": [
+    {
+     "id": "NEW-084a145f8fa7",
+     "name": "Graciela Guarani"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "NEW-f51c22579e1e-WORK-1": {
    "title": "Ayllu: Memorias y Visiones",
    "year": 2024,
@@ -24017,6 +24687,22 @@
     {
      "id": "NEW-f51c22579e1e",
      "name": "Ariel Chalán"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "NEW-edd193bd0a2d-QM3b9736": {
+   "title": "Ati’t",
+   "year": 2023,
+   "makers": [
+    {
+     "id": "NEW-edd193bd0a2d",
+     "name": "Tirza Ixmucané"
     }
    ],
    "languages": [],
@@ -24062,6 +24748,22 @@
     "Lives and Relations"
    ],
    "form": "Animation",
+   "length": null
+  },
+  "NEW-551fa83631f3-QM22bf13": {
+   "title": "Ñaa' ñuudoo' naa. Mujer que es escuchada",
+   "year": 2025,
+   "makers": [
+    {
+     "id": "NEW-551fa83631f3",
+     "name": "Yerid López Barrera"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
    "length": null
   },
   "NEW-11d2e0d50c24-WORK-1": {
@@ -24512,6 +25214,38 @@
    "form": null,
    "length": null
   },
+  "BETA-T1101-PER-01-QMbe8ec2": {
+   "title": "Sarah",
+   "year": 2019,
+   "makers": [
+    {
+     "id": "BETA-T1101-PER-01",
+     "name": "Rómulo Sulca Ricra"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "BETA-T1101-PER-01-QMe0f8a6": {
+   "title": "Osmany",
+   "year": 2016,
+   "makers": [
+    {
+     "id": "BETA-T1101-PER-01",
+     "name": "Rómulo Sulca Ricra"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "BETA-T1101-CAN-01-F1": {
    "title": "W8linaktegw ta niona",
    "year": 2022,
@@ -24579,6 +25313,22 @@
    "families": [],
    "form": "Documentary",
    "length": "Feature"
+  },
+  "BETA25-20261105-02-QMc77b91": {
+   "title": "Jamary (feature film)",
+   "year": 2025,
+   "makers": [
+    {
+     "id": "BETA25-20261105-02",
+     "name": "Begê Muniz"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
   },
   "BETA25-20261105-03-FILM1": {
    "title": "Replikka",
@@ -25094,26 +25844,6 @@
     {
      "id": "BETA30-20261106-D08",
      "name": "Marly Cáceres Uncacía"
-    }
-   ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
-  },
-  "BETA30-20261106-F19": {
-   "title": "La tentación del Nixhixh, el espíritu del bosque",
-   "year": 2016,
-   "makers": [
-    {
-     "id": "BETA30-20261106-D09",
-     "name": "Gumercindo Yumani"
-    },
-    {
-     "id": "BETA30-20261106-D10",
-     "name": "Martha Zelady"
     }
    ],
    "languages": [],
