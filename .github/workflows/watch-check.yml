@@ -2,7 +2,7 @@ name: Watch links (review only)
 on:
   push:
     paths:
-      - "tools/watch/**"
+      - "tools/watch/embed.py"
       - ".github/workflows/watch-check.yml"
   workflow_dispatch:
 permissions:
@@ -17,7 +17,7 @@ jobs:
         run: |
           pip install requests >/dev/null
           mkdir -p out
-          python3 tools/watch/check.py | tee out/log.txt
+          python3 tools/watch/embed.py | tee out/log.txt
       - name: Publish to ci-watch branch (not deployed)
         if: always()
         run: |
