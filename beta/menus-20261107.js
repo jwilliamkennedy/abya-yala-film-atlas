@@ -226,6 +226,9 @@ function headerNav(tries=0){
  if(!about&&tries<40)return setTimeout(()=>headerNav(tries+1),250);
  if(about&&nav.firstElementChild!==about)nav.prepend(about);
  if(!nav.querySelector('.watch-link')){const w=el('a',{href:'watch.html',class:'watch-link'},'Watch');nav.append(w);}
+ if(!nav.querySelector('.more-menu')){const m=el('details',{class:'more-menu'},'<summary>More</summary><div><a href="maker/">Filmmakers A–Z</a><a href="timeline.html">Timeline</a><a href="screening.html" data-screen-count>Screening list</a><a href="data.html">Data</a><a href="corrections.html">Suggest a correction</a></div>');nav.append(m);
+  document.addEventListener('pointerdown',e=>{if(m.open&&!m.contains(e.target))m.open=false;});document.addEventListener('keydown',e=>{if(e.key==='Escape'&&m.open){m.open=false;m.querySelector('summary').focus();}});
+  const sc=document.createElement('script');sc.src='assets/screening.js';document.head.append(sc);}
 }
 
 whenReady(()=>{

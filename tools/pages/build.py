@@ -29,7 +29,7 @@ h2{font:400 22px/1.2 var(--serif);margin:32px 0 8px}h2 small{font:13px var(--san
 ol.films{list-style:none;margin:0;padding:0}ol.films li{display:grid;grid-template-columns:120px 1fr;gap:4px 16px;padding:14px 0;border-bottom:1px solid var(--line);scroll-margin-top:16px}
 ol.films li:target{background:var(--card)}.thumb{width:120px;aspect-ratio:16/10;object-fit:cover;background:var(--card);border-radius:3px;display:block}
 .noimg{width:120px;aspect-ratio:16/10;background:var(--card);border-radius:3px;display:flex;align-items:center;justify-content:center;font:28px var(--serif);color:var(--muted)}
-.ft{font:400 19px/1.3 var(--serif);margin:0}.fm{font-size:14px;color:var(--muted);margin:2px 0 0}.fl{font-size:13px;margin:4px 0 0;display:flex;flex-wrap:wrap;gap:4px 14px}
+.ft{font:400 19px/1.3 var(--serif);margin:0}.fm{font-size:14px;color:var(--muted);margin:2px 0 0}.fl{font-size:13px;margin:4px 0 0;display:flex;flex-wrap:wrap;gap:4px 14px;align-items:center}.scr{font:inherit;font-size:12px;border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:999px;padding:1px 10px;cursor:pointer}.scr[aria-pressed=true]{background:var(--ink);color:var(--bg)}
 ul.src{padding-left:18px;font-size:14px}ul.src li{margin:4px 0}
 .cite{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:12px 16px;font-size:14px}.cite p{margin:6px 0}.cite b{font-weight:600}
 .cite button{font:inherit;font-size:12px;border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:999px;padding:2px 10px;cursor:pointer;margin-left:6px}
@@ -43,7 +43,7 @@ def header(depth):
     up = '../' * depth
     return (f'<header><a class="brand" href="{up}./"><img src="{up}assets/icon-1107.svg" alt=""><span>Indigenous Cinema Atlas<small>Abya Yala and Turtle Island</small></span></a>'
             f'<nav class="primary" aria-label="Explore the atlas"><a href="{up}about.html">About</a><a href="{up}./#view=filmmakers">Filmmakers</a><a href="{up}./#view=films">Films</a>'
-            f'<a href="{up}./#view=land">Land</a><a href="{up}./?constellate=1">Constellate</a><a href="{up}watch.html">▸ Watch</a></nav></header>')
+            f'<a href="{up}./#view=land">Land</a><a href="{up}./?constellate=1">Constellate</a><a href="{up}watch.html">▸ Watch</a><a href="{up}screening.html" data-screen-count>Screening list</a></nav></header>')
 
 def page(title, desc, body, depth, extra_head=''):
     up = '../' * depth
@@ -71,6 +71,7 @@ for r in data:
         if f['source']: links.append(f'<a href="{esc(f["source"])}" target="_blank" rel="noopener">Credit source ↗</a>')
         if f['image'] and f['imagePage']: links.append(f'<a href="{esc(f["imagePage"])}" target="_blank" rel="noopener">Image: {esc(urlparse(f["imagePage"]).netloc.replace("www.",""))} ↗</a>')
         links.append(f'<a href="../#view=films&amp;maker={esc(r["id"])}&amp;film={esc(f["id"])}">On the map</a>')
+        links.append(f'<button type="button" class="scr" data-screen data-fid="{esc(f["id"])}" data-rid="{esc(r["id"])}" data-title="{esc(f["title"])}" data-year="{esc(f["year"] or "")}" data-maker="{esc(nm)}" data-page="{esc(r["id"])}.html#{esc(f["id"])}" data-watch="{esc((f["watch"] or [""])[0])}">＋ Screening list</button>')
         meta = ' · '.join(x for x in [str(f['year']) if f['year'] else '', f['credit'], f['medium'] if f['medium'] and f['medium'] != 'Film' else '', f['languages']] if x)
         items.append(f'<li id="{esc(f["id"])}">{img}<div><p class="ft">{esc(f["title"])}</p><p class="fm">{esc(meta)}</p><p class="fl">{"".join(links)}</p></div></li>')
     srcs = ''.join(f'<li><a href="{esc(s["url"])}" target="_blank" rel="noopener">{esc(urlparse(s["url"]).netloc.replace("www.",""))}</a>{" · " + esc(s["type"]) if s["type"] else ""}{" — " + esc(s["evidence"][:140]) if s["evidence"] else ""}</li>' for s in r['sources'])
@@ -95,7 +96,7 @@ for r in data:
             + f'<p><b>Chicago</b><button type="button" data-copy="chi-{esc(r["id"])}">Copy</button></p><p id="chi-{esc(r["id"])}">{chi}</p>'
             + f'<p><button type="button" id="ris" data-name="{esc(r["id"])}" data-ris="{esc(ris)}">Download for Zotero (RIS)</button></p></div>'
             + '<p class="note">Identity is recorded only from the filmmaker’s own words or an explicit biographical source; it is never inferred from a film’s subject, language or setting. Images remain with their rights holders.</p>'
-            + CITE_JS)
+            + CITE_JS + '<script src="../assets/screening.js"></script>')
     head = '<script type="application/ld+json">' + json.dumps([ld] + movies, ensure_ascii=False).replace('</', '<\\/') + '</script>'
     desc = f'{nm}{" (" + r["nation"] + ")" if r["nation"] else ""}: {len(films)} film{"s" if len(films) != 1 else ""} on the Indigenous Cinema Atlas.'
     open(os.path.join(out, 'maker', r['id'] + '.html'), 'w', encoding='utf-8').write(page(f'{nm} · Indigenous Cinema Atlas', desc, body, 1, head))
