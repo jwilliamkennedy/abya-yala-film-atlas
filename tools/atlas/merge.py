@@ -50,28 +50,31 @@ def main(path):
             existing = next((x for x in range(3, wp.max_row + 1) if wp.cell(x, P['filmmaker_id']).value == mid), None)
             for c, i in P.items():
                 if c in Q:
-                    wp.cell(n, i, qv(r, c))
+                    wp.cell(n, i).value = qv(r, c)
             if existing:  # a film for someone already published: their filmmaker columns come from Published, not the Queue copy
                 for c in maker_cols:
-                    wp.cell(n, P[c], wp.cell(existing, P[c]).value)
-                wp.cell(n, P['maker_json'], None)
+                    wp.cell(n, P[c]).value = wp.cell(existing, P[c]).value
+                wp.cell(n, P['maker_json']).value = None
             if not existing and wp.cell(n, P['status']).value not in ON_MAP:
                 # accepted = identity sourced and directing credit sourced (checked by Claude against both pages)
-                wp.cell(n, P['status'], 'Discovery · directing credit sourced')
-                wp.cell(n, P['review_status'], 'Credit sourced; identity from source')
+                wp.cell(n, P['status']).value = 'Discovery · directing credit sourced'
+                wp.cell(n, P['review_status']).value = 'Credit sourced; identity from source'
             applied['added'] += 1
         elif a == 'correct':
             hit = False
             for pr in range(3, wp.max_row + 1):
                 fid, mid = wp.cell(pr, P['film_id']).value, wp.cell(pr, P['filmmaker_id']).value
                 if t == fid and str(mid) == str(qv(r, 'filmmaker_id') or mid):
+                    full = qv(r, 'title') not in (None, '')   # a full copy of the row may empty a cell; a sparse row only fills
                     for c in film_cols:
-                        wp.cell(pr, P[c], qv(r, c))
+                        if full or qv(r, c) not in (None, ''):
+                            wp.cell(pr, P[c]).value = qv(r, c)
                     hit = True
                 if t == mid:
+                    full = qv(r, 'name') not in (None, '')
                     for c in maker_cols:
-                        if c != 'filmmaker_id':
-                            wp.cell(pr, P[c], qv(r, c))
+                        if c != 'filmmaker_id' and (full or qv(r, c) not in (None, '')):
+                            wp.cell(pr, P[c]).value = qv(r, c)
                     hit = True
             if not hit:
                 print(f'Queue row {r}: target {t} not found; left as accepted'); continue
@@ -87,22 +90,22 @@ def main(path):
                     mid = wp.cell(pr, P['filmmaker_id']).value
                     stay = [x for x in range(3, wp.max_row + 1) if x not in rows and wp.cell(x, P['filmmaker_id']).value == mid]
                     if stay:
-                        wp.cell(stay[0], P['maker_json'], mj)
+                        wp.cell(stay[0], P['maker_json']).value = mj
             for pr in sorted(rows, reverse=True):
                 wp.delete_rows(pr)
             applied['removed'] += 1
         else:
             continue
-        wq.cell(r, Q['queue_status'], 'merged')
-        wq.cell(r, Q['review_note'], ((qv(r, 'review_note') or '') + f' Merged {today}.').strip())
+        wq.cell(r, Q['queue_status']).value = 'merged'
+        wq.cell(r, Q['review_note']).value = ((qv(r, 'review_note') or '') + f' Merged {today}.').strip()
     for vals in removed_rows:
         n = wq.max_row + 1
         for c, v in vals.items():
             if c in Q:
-                wq.cell(n, Q[c], v)
-        wq.cell(n, Q['queue_action'], 'remove'); wq.cell(n, Q['queue_status'], 'removed')
-        wq.cell(n, Q['queue_target'], vals.get('film_id') or vals.get('filmmaker_id'))
-        wq.cell(n, Q['proposed_on'], today); wq.cell(n, Q['review_note'], f'Removed from Published {today}; restore by setting queue_action "lead" or "add film" and status "accepted".')
+                wq.cell(n, Q[c]).value = v
+        wq.cell(n, Q['queue_action']).value = 'remove'; wq.cell(n, Q['queue_status']).value = 'removed'
+        wq.cell(n, Q['queue_target']).value = vals.get('film_id') or vals.get('filmmaker_id')
+        wq.cell(n, Q['proposed_on']).value = today; wq.cell(n, Q['review_note']).value = f'Removed from Published {today}; restore by setting queue_action "lead" or "add film" and status "accepted".'
     wp.protection.sheet = True
     wb.save(path)
     fp = fingerprint(load_workbook(path, read_only=True)['Published'])
