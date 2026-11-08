@@ -109,3 +109,35 @@ header nav.primary .more-menu>div a:hover{background:rgba(24,32,40,.07)}
 :root[data-reading-theme=night] header nav.primary .more-menu>div a{color:#efe6d2}
 header nav.primary .more-menu summary,header nav.primary .watch-link{font-family:var(--sans)!important;font-size:15px;letter-spacing:.375px;padding:0 2px;color:rgb(85,97,107);display:flex;align-items:center;height:44px}
 :root[data-reading-theme=night] header nav.primary .more-menu summary,:root[data-reading-theme=night] header nav.primary .watch-link{color:inherit}
+/* Phone bottom sheet */
+#sheet-handle{display:none}
+@media (max-width:760px){
+ :root[data-sheet] body{overflow:hidden;height:100dvh}
+ :root[data-sheet] main{display:block!important;height:calc(100dvh - var(--header-h,140px))!important;overflow:hidden}
+ :root[data-sheet] .map-panel{height:100%!important;min-height:0!important}
+ :root[data-sheet] #index{position:fixed!important;left:0;right:0;bottom:0;top:auto!important;z-index:45;margin:0!important;width:auto!important;max-width:none!important;
+  overflow-y:auto;overscroll-behavior:contain;background:var(--reading-paper,#eef0ec);border-radius:16px 16px 0 0;box-shadow:0 -10px 30px rgba(28,36,52,.2);transition:height .28s ease;padding-top:0!important}
+ :root[data-sheet=peek] #index{height:96px}
+ :root[data-sheet=half] #index{height:52dvh}
+ :root[data-sheet=full] #index{height:88dvh}
+ :root[data-sheet] #sheet-handle{display:flex;flex-direction:column;align-items:center;gap:6px;position:sticky;top:0;z-index:2;width:100%;padding:10px 16px 10px;border:0;
+  background:inherit;font:inherit;font-size:14px;color:var(--reading-ink,#182028);cursor:grab;touch-action:none}
+ :root[data-sheet] #sheet-handle .grip{width:44px;height:5px;border-radius:3px;background:rgba(24,32,40,.28)}
+ :root[data-sheet] #jump-map,:root[data-sheet] .map-actions #jump-index{display:none!important}
+ :root[data-sheet] .map-panel .zoom{bottom:calc(96px + 12px)!important;top:auto!important}
+ :root[data-sheet] #featured-weave{bottom:calc(96px + 60px)!important}
+ :root[data-reading-theme=night][data-sheet] #index{background:#0e1729}
+}
+@media (max-width:760px) and (prefers-reduced-motion:reduce){:root[data-sheet] #index{transition:none}}
+/* Keep new pieces inside the screen */
+header nav.primary .more-menu:not([open])>div{display:none!important}
+:root[data-ui="1107"] #maker-browser{min-width:0;max-width:100%}
+:root[data-ui="1107"] #maker-alphabet{min-width:0;max-width:100%;width:100%}
+@media (max-width:760px){header nav.primary .more-menu>div{left:auto;right:0}}
+@media (max-width:760px){
+ header nav.primary{flex-wrap:nowrap!important;max-width:100%;column-gap:20px!important;overflow-x:auto!important;overflow-y:hidden;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+ header nav.primary::-webkit-scrollbar{display:none}
+ header nav.primary .more-menu>div{position:fixed!important;top:var(--header-h,140px)!important;right:12px!important;left:auto!important}
+ header nav.primary>*{flex:0 0 auto}
+ header nav.primary .more-menu summary,header nav.primary .watch-link{height:40px}
+}

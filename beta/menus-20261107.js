@@ -219,6 +219,34 @@ function selectionLinks(){
  new MutationObserver(later).observe(bar,{attributes:true,attributeFilter:['hidden']});addEventListener('hashchange',later);document.addEventListener('click',later);draw();
 }
 
+/* 13. Accessibility: a page heading for screen readers; the featured card as a labelled region. */
+function a11y(){
+ if(!document.querySelector('h1')){const h=el('h1',{class:'sr-only'},'Indigenous Cinema Atlas: films of Abya Yala and Turtle Island');($('main')||document.body).prepend(h);}
+ const fix=()=>{const f=$('#featured-weave');if(f&&f.tagName==='ASIDE'&&!f.getAttribute('role'))f.setAttribute('role','region');};fix();setTimeout(fix,1500);
+}
+
+/* 14. Phones: the reading panel becomes a bottom sheet over a full-height map (peek / half / full). */
+function sheet(){
+ const idx=$('#index'),panel=$('.map-panel');if(!idx||!panel)return;
+ const mq=matchMedia('(max-width:760px)');let handle=null;
+ const STATES=['peek','half','full'];
+ const set=st=>{root.dataset.sheet=st;if(handle){handle.setAttribute('aria-expanded',String(st!=='peek'));handle.querySelector('.lbl').textContent=st==='full'?'Show the map':'Filmmakers, films and land';}
+  try{store.set('sheet',st);}catch(e){}};
+ const enable=()=>{if(!mq.matches){delete root.dataset.sheet;handle?.remove();handle=null;return;}
+  if(!handle){handle=el('button',{type:'button',id:'sheet-handle','aria-controls':'index'},'<span class="grip" aria-hidden="true"></span><span class="lbl"></span>');idx.prepend(handle);
+   let y0=null,h0=0,moved=false;
+   handle.addEventListener('pointerdown',e=>{y0=e.clientY;h0=idx.getBoundingClientRect().height;moved=false;handle.setPointerCapture(e.pointerId);});
+   handle.addEventListener('pointermove',e=>{if(y0===null)return;const dy=e.clientY-y0;if(Math.abs(dy)>6)moved=true;if(moved){idx.style.height=Math.max(90,Math.min(innerHeight*.92,h0-dy))+'px';idx.style.transition='none';}});
+   handle.addEventListener('pointerup',e=>{if(y0===null)return;const was=moved;y0=null;idx.style.transition='';
+    if(was){const f=idx.getBoundingClientRect().height/innerHeight;idx.style.height='';set(f<.33?'peek':f<.72?'half':'full');}
+    else{const i=STATES.indexOf(root.dataset.sheet);set(STATES[(i+1)%3]);}});}
+  const hh=$('header')?.getBoundingClientRect().height||140;root.style.setProperty('--header-h',Math.round(hh)+'px');set(root.dataset.sheet||'peek');};
+ mq.addEventListener('change',enable);enable();
+ document.addEventListener('click',e=>{if(!mq.matches)return;if(e.target.closest('#jump-index'))setTimeout(()=>set('half'),0);if(e.target.closest('#jump-map'))setTimeout(()=>set('peek'),0);},true);
+ const sum=$('#selection-summary');if(sum)new MutationObserver(()=>{if(mq.matches&&!sum.hidden&&root.dataset.sheet==='peek')set('half');}).observe(sum,{attributes:true,attributeFilter:['hidden']});
+ const search=$('#search');search?.addEventListener('focus',()=>{if(mq.matches&&root.dataset.sheet!=='full')set('full');});
+}
+
 /* 10. Header: About first, Watch last. */
 function headerNav(tries=0){
  const nav=$('header nav.primary');if(!nav)return;
@@ -226,13 +254,14 @@ function headerNav(tries=0){
  if(!about&&tries<40)return setTimeout(()=>headerNav(tries+1),250);
  if(about&&nav.firstElementChild!==about)nav.prepend(about);
  if(!nav.querySelector('.watch-link')){const w=el('a',{href:'watch.html',class:'watch-link'},'Watch');nav.append(w);}
+ const hh=()=>root.style.setProperty('--header-h',Math.round($('header')?.getBoundingClientRect().height||140)+'px');hh();addEventListener('resize',hh);
  if(!nav.querySelector('.more-menu')){const m=el('details',{class:'more-menu'},'<summary>More</summary><div><a href="maker/">Filmmakers A–Z</a><a href="timeline.html">Timeline</a><a href="screening.html" data-screen-count>Screening list</a><a href="data.html">Data</a><a href="corrections.html">Suggest a correction</a></div>');nav.append(m);
   document.addEventListener('pointerdown',e=>{if(m.open&&!m.contains(e.target))m.open=false;});document.addEventListener('keydown',e=>{if(e.key==='Escape'&&m.open){m.open=false;m.querySelector('summary').focus();}});
   const sc=document.createElement('script');sc.src='assets/screening.js';document.head.append(sc);}
 }
 
 whenReady(()=>{
- for(const step of [headerNav,watchMarks,selectionLinks,toolbar,closeRule,countries,layers,mapKey,indexPanel,featured,shortcuts,territoryFocus]){try{step();}catch(err){console.warn('UI pass step failed:',step.name,err);}}
+ for(const step of [a11y,headerNav,sheet,watchMarks,selectionLinks,toolbar,closeRule,countries,layers,mapKey,indexPanel,featured,shortcuts,territoryFocus]){try{step();}catch(err){console.warn('UI pass step failed:',step.name,err);}}
  setTimeout(closeRule,1500);
 });
 })();
