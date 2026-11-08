@@ -2,7 +2,7 @@ name: Thumbnail search (review only)
 on:
   push:
     paths:
-      - "tools/thumbs/*.json"
+      - "tools/thumbs/sources2.py"
   workflow_dispatch:
 permissions:
   contents: write
@@ -16,7 +16,8 @@ jobs:
         run: |
           pip install requests pillow >/dev/null
           mkdir -p out
-          timeout 1200 python3 tools/thumbs/search.py | tee out/log.txt || true
+          cp tools/thumbs/pass1/found.jsonl out/found.jsonl; cp -r tools/thumbs/pass1/img out/
+          timeout 1500 python3 tools/thumbs/sources2.py | tee out/log.txt || true
       - name: Contact sheets
         if: always()
         run: python3 tools/thumbs/search.py sheets | tee -a out/log.txt
