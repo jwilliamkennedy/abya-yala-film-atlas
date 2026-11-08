@@ -228,3 +228,9 @@ button.collect-current:hover{color:var(--ui-accent)!important}
  header .atlas-counts,header [class*=count]{padding-left:2px;overflow:visible!important}
  .primary{scroll-padding-inline:16px;padding-right:16px}
 }
+/* inside the atlas = ink; arrows (→) open things here, ↗ leaves the atlas */
+:root:not(#_) #index .filmography-row,:root:not(#_) #index .filmography-row *,:root:not(#_) #index .dossier-section-heading button,
+:root:not(#_) #index a.suggest-fix,:root:not(#_) #index .filmography-row strong{color:var(--ui-ink)!important}
+:root:not(#_) #index .filmography-row:hover strong,:root:not(#_) #index .filmography-row:hover,:root:not(#_) #index .dossier-section-heading button:hover,:root:not(#_) #index a.suggest-fix:hover{color:var(--ui-accent)!important}
+:root:not(#_) #index .filmography-row small,:root:not(#_) #index .filmography-row time{color:var(--ui-muted)!important}
+:root:not(#_) #index a.suggest-fix{border-bottom:0!important;font-family:var(--sans)!important;font-size:13px!important}
