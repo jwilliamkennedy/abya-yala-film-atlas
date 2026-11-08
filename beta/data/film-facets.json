@@ -2,7 +2,7 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-08",
  "license": "See data.html",
- "films_on_public_map": 1383,
+ "films_on_public_map": 1382,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -7921,22 +7921,6 @@
   "BETA30B-20261107-F06": {
    "title": "Ñichim Chab",
    "year": 2021,
-   "makers": [
-    {
-     "id": "DIR-0226",
-     "name": "Humberto Gómez Pérez"
-    }
-   ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
-  },
-  "DIR-0226-QM36e5c3": {
-   "title": "Ch’ul be, senda sagrada",
-   "year": 2023,
    "makers": [
     {
      "id": "DIR-0226",

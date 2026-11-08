@@ -14,10 +14,14 @@ with open(os.path.join(out, 'data', 'atlas-films.csv'), 'w', newline='', encodin
         for f in r['films']:
             w.writerow([f['id'], f['title'], f['year'] or '', r['name'], r['id'], f['credit'], f['medium'], f['languages'], f['source'], ' '.join(f['watch']), f'{BASE}/maker/{r["id"]}.html#{f["id"]}']); n += 1
 films_n = n
+try:
+    works_n = json.load(open(os.path.join(out, 'data', 'film-facets.json'), encoding='utf-8'))['films_on_public_map']
+except Exception:
+    works_n = None
 page = open(os.path.join(out, 'maker', 'index.html'), encoding='utf-8').read()
 head, rest = page.split('<main>', 1)
-body = (f'<h1>Data</h1><p class="who">Download the public atlas as spreadsheets. Exported {today}.</p>'
-        f'<div class="actions"><a class="primary" href="data/atlas-films.csv" download>Films · {films_n:,} rows (CSV)</a><a href="data/atlas-filmmakers.csv" download>Filmmakers · {len(d):,} rows (CSV)</a></div>'
+body = (f'<h1>Data</h1><p class="who">Download the public atlas as spreadsheets. Exported {today}.' + (f' {works_n:,} films by {len(d):,} filmmakers; a film with two directors has one row for each.' if works_n else '') + '</p>'
+        f'<div class="actions"><a class="primary" href="data/atlas-films.csv" download>Film credits · {films_n:,} rows (CSV)</a><a href="data/atlas-filmmakers.csv" download>Filmmakers · {len(d):,} rows (CSV)</a></div>'
         '<h2>What is in them</h2><ul class="src"><li>Only filmmakers on the public map; research candidates are not included.</li>'
         '<li><b>people_as_recorded</b> is the filmmaker’s affiliation as the atlas records it, from their own words or an explicit biographical source. It does not establish enrolment, citizenship or residence.</li>'
         '<li><b>country_index</b> is the country the atlas files the filmmaker under for browsing.</li>'
