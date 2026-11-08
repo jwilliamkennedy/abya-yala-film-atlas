@@ -112,6 +112,8 @@ def check_queue(rows, wb, published_rows):
         t = v(r.get('queue_target'))
         if a in ('correct', 'remove') and t not in pub_makers and t not in pub_films:
             errors.append(f'{where}: {a} needs queue_target = an existing filmmaker_id or film_id (got "{t}")')
+        if a == 'add filmmaker' and v(r.get('filmmaker_id')) in pub_makers:
+            errors.append(f'{where}: filmmaker_id {v(r.get("filmmaker_id"))} already exists in Published — use add film or correct')
         if a == 'add film' and v(r.get('filmmaker_id')) not in pub_makers:
             notes.append(f'{where}: add film for a filmmaker who is not published yet ({v(r.get("filmmaker_id"))})')
         if a in ('add filmmaker', 'add film') and v(r.get('film_id')) in pub_films and not v(r.get('co_directed_with')):
