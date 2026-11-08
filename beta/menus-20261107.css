@@ -260,3 +260,13 @@ header .atlas-ledger{margin-left:auto}
  header .atlas-ledger{display:none!important}
  header nav.primary,body.atlas-page header nav.primary{order:2;position:static!important;height:auto!important;bottom:auto!important;left:auto!important;right:auto!important;gap:0 18px!important;width:100%;justify-content:flex-start!important;flex-wrap:wrap!important;column-gap:18px!important;margin:0!important}
 }
+/* 8 Nov · film cards: everything that stays inside the atlas in ink; red only for links that leave it (↗) */
+#index button,#index summary,#index .reading-number,#index .maker-film-card b,#index #reading-frame,#index button span{color:var(--ui-ink)!important}
+#index button:disabled{opacity:.45}
+#index a[href^="http"],#index a[href^="http"] span{color:var(--ui-accent)!important}
+#index .viewing-route span{color:inherit}
+#index .filmography-row[aria-current] small{color:var(--ui-muted)}
+#index .filmography-row[aria-current] span{font-weight:600}
+#selection-summary .sel-links{display:flex;flex-wrap:wrap;gap:4px 18px}
+#selection-summary .sel-links a,#selection-summary button{white-space:nowrap}
+body.atlas-dossier.no-refs .index-header{display:none!important}

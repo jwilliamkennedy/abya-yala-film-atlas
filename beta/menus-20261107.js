@@ -229,7 +229,7 @@ function selectionLinks(){
  const draw=()=>{let st;try{st=A.captureState();}catch(e){return;}const r=st&&st.record&&A.recordById(st.record);
   if(!r||(pub&&!pub.has(r.status))){if(box.firstChild)box.replaceChildren();return;}
   const page='maker/'+encodeURIComponent(r.id)+'.html',film=st.film?'#'+encodeURIComponent(st.film):'';
-  const fix='corrections.html?about='+encodeURIComponent(r.name)+'&record='+encodeURIComponent(r.id)+'&page='+encodeURIComponent(new URL(page,location.href).href);
+  const ft=st.film&&(r.films||[]).find(f=>f.id===st.film);const fix='corrections.html?about='+encodeURIComponent(ft?ft.title+' — '+r.name:r.name)+'&record='+encodeURIComponent(r.id)+'&page='+encodeURIComponent(new URL(page,location.href).href);
   const html=`<a href="${page}${film}" title="This filmmaker's permanent page on the atlas">Filmmaker page</a><a href="${page}#cite" title="How to cite this record">Cite</a><a href="${fix}" title="Tell us what is wrong or missing">Suggest a correction</a>`;if(box.innerHTML!==html)box.innerHTML=html;};
  let t=0;const later=()=>{clearTimeout(t);t=setTimeout(draw,60);};
  const name=bar.querySelector('#selection-name');if(name)new MutationObserver(later).observe(name,{childList:true,characterData:true,subtree:true});
@@ -290,12 +290,16 @@ whenReady(()=>{
    A newly opened film or filmmaker starts at its top, below the sticky toolbar, so nothing is cut off. */
 (()=>{const index=document.getElementById('index');if(!index)return;let last='';
  const sync=()=>{const d=index.querySelector('.profile-dossier');document.body.classList.toggle('atlas-dossier',!!d);
+  const ref=document.getElementById('reference-disclosure');if(ref){const n=(ref.querySelector('summary')?.textContent.match(/\d+/)||['1'])[0];ref.hidden=n==='0';document.body.classList.toggle('no-refs',n==='0');}
   const bar=document.querySelector('.index-command-bar');if(bar)index.style.setProperty('--cmdbar-h',bar.offsetHeight+'px');
   const key=d?(d.querySelector('h2')?.textContent||'')+'|'+d.className:'';
+  if(d&&key!==last&&matchMedia('(max-width:760px)').matches&&document.documentElement.dataset.sheet==='peek')document.documentElement.dataset.sheet='half';
   if(d&&key!==last){const top=d.closest('article')||d;const h=bar?bar.offsetHeight:0;
    requestAnimationFrame(()=>{const y=top.getBoundingClientRect().top-index.getBoundingClientRect().top+index.scrollTop-h-8;if(Math.abs(index.scrollTop-y)>4)index.scrollTop=Math.max(0,y);});}
   last=key;};
  new MutationObserver(()=>requestAnimationFrame(sync)).observe(index,{childList:true,subtree:true});sync();
+ // a film or filmmaker opened from a link: on phones, show its panel rather than leaving it folded under the map
+ setTimeout(()=>{if(index.querySelector('.profile-dossier')&&matchMedia('(max-width:760px)').matches&&document.documentElement.dataset.sheet==='peek'){const h=document.querySelector('.sheet-handle, #sheet-handle, [data-sheet-handle]');document.documentElement.dataset.sheet='half';}},1500);
  // the filmmaker named under a film title opens them here in the atlas: say so
  const label=()=>{for(const b of index.querySelectorAll('.film-maker-route:not([data-labelled])')){b.dataset.labelled='1';b.title='Open this filmmaker in the atlas';}};
  new MutationObserver(label).observe(index,{childList:true,subtree:true});label();
