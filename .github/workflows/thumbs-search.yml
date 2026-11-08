@@ -9,14 +9,17 @@ permissions:
 jobs:
   search:
     runs-on: ubuntu-latest
-    timeout-minutes: 75
+    timeout-minutes: 35
     steps:
       - uses: actions/checkout@v4
       - name: Search
         run: |
           pip install requests pillow >/dev/null
           mkdir -p out
-          python3 tools/thumbs/search.py | tee out/log.txt
+          timeout 1200 python3 tools/thumbs/search.py | tee out/log.txt || true
+      - name: Contact sheets
+        if: always()
+        run: python3 tools/thumbs/search.py sheets | tee -a out/log.txt
       - name: Publish results to ci-shots branch (not deployed)
         if: always()
         run: |
