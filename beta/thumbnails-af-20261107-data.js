@@ -47,8 +47,8 @@
 },
 "MIRROR-FILMOGRAPHY-20261107-082": {
 "title": "Bill Reid Remembers",
-"image": "https://assets.nfbcdn.ca/medias/norman/thumbs_xlarge/2022/bill-reid-remembers-XL.jpg?w=2048&amp;h=",
-"originalImage": "https://assets.nfbcdn.ca/medias/norman/thumbs_xlarge/2022/bill-reid-remembers-XL.jpg?w=2048&amp;h=",
+"image": "https://assets.nfbcdn.ca/medias/norman/thumbs_xlarge/2022/bill-reid-remembers-XL.jpg?w=2048&h=",
+"originalImage": "https://assets.nfbcdn.ca/medias/norman/thumbs_xlarge/2022/bill-reid-remembers-XL.jpg?w=2048&h=",
 "sourceURL": "https://www.nfb.ca/film/bill-reid-remembers/",
 "publisher": "www.nfb.ca",
 "kind": "Film image (A–F search)",
