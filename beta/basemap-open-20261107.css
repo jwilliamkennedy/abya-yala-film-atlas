@@ -4,3 +4,7 @@
 #atlas-basemap[hidden],:root[data-basemap-state=failed] #atlas-basemap{display:none}
 #atlas-basemap .maplibregl-canvas{outline:none}
 :root[data-reading-theme=night] #atlas-basemap{filter:brightness(.55) saturate(.7)}
+/* Disappear map (atlas and Constellate) also hides the basemap */
+#atlas-basemap{transition:opacity .45s ease}
+body.atlas-unmapped #atlas-basemap,body.weave-unmapped #atlas-basemap{opacity:0;visibility:hidden}
+@media (prefers-reduced-motion:reduce){#atlas-basemap{transition:none}}
