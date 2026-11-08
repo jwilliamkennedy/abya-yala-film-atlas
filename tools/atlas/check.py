@@ -72,7 +72,7 @@ def check_rows(rows, L, sheet, statuses, errors, notes):
         mj = [r for r in rs if v(r.get('maker_json'))]
         if len(mj) > 1:
             errors.append(f"{sheet}: filmmaker {mid} has machine data on more than one row ({', '.join(str(r['_row']) for r in mj)})")
-        if not mj and not v(rs[0].get('source_1_url')) and v(rs[0].get('queue_action')) not in ('correct', 'remove'):
+        if not mj and not v(rs[0].get('source_1_url')) and v(rs[0].get('queue_action')) not in ('correct', 'remove', 'lead'):
             errors.append(f"{sheet} row {rs[0]['_row']}: new filmmaker {mid} has no source_1_url (the page that names their people)")
         elif not v(rs[0].get('source_1_url')):
             notes.append(f'{sheet}: {mid} has no source listed')
