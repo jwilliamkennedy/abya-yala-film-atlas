@@ -46,9 +46,15 @@ def main(path):
         a, t = str(qv(r, 'queue_action') or '').strip(), str(qv(r, 'queue_target') or '').strip()
         if a in ('add filmmaker', 'add film', 'lead'):
             n = wp.max_row + 1
+            mid = qv(r, 'filmmaker_id')
+            existing = next((x for x in range(3, wp.max_row + 1) if wp.cell(x, P['filmmaker_id']).value == mid), None)
             for c, i in P.items():
                 if c in Q:
                     wp.cell(n, i, qv(r, c))
+            if existing:  # a film for someone already published: their filmmaker columns come from Published, not the Queue copy
+                for c in maker_cols:
+                    wp.cell(n, P[c], wp.cell(existing, P[c]).value)
+                wp.cell(n, P['maker_json'], None)
             if a == 'lead' and wp.cell(n, P['status']).value not in ON_MAP:
                 wp.cell(n, P['status'], 'Discovery · credit supported')
             applied['added'] += 1
