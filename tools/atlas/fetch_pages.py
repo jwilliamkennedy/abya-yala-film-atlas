@@ -24,6 +24,10 @@ def main(lst, out):
             except Exception as e:
                 t, st = '', type(e).__name__
             open(f'{out}/{n}.txt', 'w', encoding='utf-8').write(t)
+            if st == 200 and 'html' in r.headers.get('content-type', ''):   # the page's links, as "text<TAB>href" lines
+                from urllib.parse import urljoin
+                links = re.findall(r'(?is)<a\b[^>]*href=["\']([^"\']+)["\'][^>]*>(.*?)</a>', r.text)
+                open(f'{out}/{n}.links', 'w', encoding='utf-8').write('\n'.join(re.sub(r'\s+', ' ', H.unescape(re.sub(r'<[^>]+>', ' ', x))).strip() + '\t' + urljoin(u, h) for h, x in links))
             idx.write(f'{n}\t{st}\t{len(t)}\t{u}\n'); print(n, st, len(t), u, flush=True)
 if __name__ == '__main__':
     main(sys.argv[1], sys.argv[2])
