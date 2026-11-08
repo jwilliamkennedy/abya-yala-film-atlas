@@ -159,4 +159,4 @@ QUEUE_STATUSES = ['new', 'needs more', 'accepted', 'rejected', 'merged', 'remove
 ENTITIES = ['Person', 'Collective']
 
 def dumps(o):
-    return json.dumps(o, ensure_ascii=False, separators=(',', ':'), sort_keys=True)
+    return json.dumps(o, ensure_ascii=False, separators=(',', ':'))  # key order kept as recorded

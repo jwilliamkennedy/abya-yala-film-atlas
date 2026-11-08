@@ -4,7 +4,9 @@ usage: python3 tools/atlas/build.py <atlas.xlsx> <reference state.json> [--check
   1. Checks the workbook (tools/atlas/check.py rules): stops on any error, writes nothing.
   2. Rebuilds every record and film from the Published rows. Cells that still show the original keep the original value
      exactly; edited cells and new rows are read from the cells.
-  3. Writes beta/atlas-data.js, beta/reference-data.js (land-link edits applied) and beta/index-flat.html (tools/atlas/bake.py),
+  3. Builds the film tags (languages, themes, form, length) with tools/facets/build.py, which also rewrites the Languages and
+     Themes pages and the tag downloads in beta/data.
+  4. Writes beta/atlas-data.js (everything of ours in one file) and beta/index-flat.html (tools/atlas/bake.py),
      and beta/data/atlas-published.csv (the Published sheet without the machine columns)."""
 import csv, json, re, sys, copy, pathlib
 from openpyxl import load_workbook
@@ -41,6 +43,27 @@ def read_sheet(ws, cols_expected):
             d['_row'] = n
             out.append(d)
     return out
+
+def film_tags(records, themes, families):
+    """Film tags for the filters (languages, themes, form, length), plus the Languages / Themes pages and the CSV downloads:
+    tools/facets/build.py run on these records, so there is one definition of how tags are made."""
+    import subprocess, tempfile, os
+    ON = set(ON_MAP)
+    pub = [{'id': r['id'], 'name': r['name'], 'films': [{'id': f['id'], 'title': f['title'], 'year': f.get('year') or None, 'medium': f.get('medium') or '',
+            'languages': f.get('languages') or '', 'languageLabels': f.get('languageLabels'), 'languageSource': f.get('languageSource', ''),
+            'languageNote': f.get('languageNote', ''), 'source': f.get('sourceURL') or f.get('source') or ''} for f in r.get('films') or []]}
+           for r in records if r.get('status') in ON]
+    with tempfile.TemporaryDirectory() as d:
+        json.dump(pub, open(f'{d}/pub.json', 'w', encoding='utf-8'), ensure_ascii=False)
+        json.dump({'families': families, 'films': themes}, open(f'{d}/themes.json', 'w', encoding='utf-8'), ensure_ascii=False)
+        here = os.path.dirname(os.path.abspath(__file__))
+        out = subprocess.run([sys.executable, os.path.join(here, '..', 'facets', 'build.py'), f'{d}/pub.json', 'beta', '--themes', f'{d}/themes.json',
+                              '--js-out', f'{d}/facets.js'], capture_output=True, text=True)
+        if out.returncode:
+            raise SystemExit('film tags failed:\n' + out.stderr[-2000:])
+        print(' ', out.stdout.strip().splitlines()[-1])
+        t = open(f'{d}/facets.js', encoding='utf-8').read()
+        return json.loads(t[t.index('window.ATLAS_FACETS=') + len('window.ATLAS_FACETS='):].rstrip().rstrip(';'))
 
 def build(path, state_path, check_only=False):
     wb = load_workbook(path, data_only=True)
@@ -186,7 +209,8 @@ def build(path, state_path, check_only=False):
                 if (rid, l) not in have:
                     edges.append({'record': rid, 'land': l, 'basis': 'atlas.xlsx', 'method': 'Land link entered in the Published sheet of atlas.xlsx.', 'status': 'provisional'})
     all_ids = [r['id'] for r in state['records']] + [f['id'] for r in state['records'] for f in r['films']]
-    sizes = bake.write(records, state['countries'], state['meta'], owned, state['globals'], edges=edges, all_ids=all_ids)
+    facets = film_tags(records, owned['ATLAS_THEMES_1103'], state['globals'].get('ATLAS_THEMES_1103', {}).get('families', {}))
+    sizes = bake.write(records, state['countries'], state['meta'], owned, state['globals'], edges=edges, all_ids=all_ids, facets=facets)
     out = pathlib.Path('beta/data/atlas-published.csv')
     with open(out, 'w', newline='', encoding='utf-8') as fh:
         w = csv.writer(fh)

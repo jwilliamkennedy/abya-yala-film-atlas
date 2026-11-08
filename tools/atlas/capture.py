@@ -21,7 +21,7 @@ async def main(url, out, chrome=None):
           return JSON.parse(JSON.stringify({records:Atlas.allRecords(),countries:Atlas.allCountries?Atlas.allCountries():null,
             meta:Atlas.archiveMeta?Atlas.archiveMeta():null,globals:g,territories:(window.ATLAS_TERRITORIES.features||[]).map(f=>[String(f.id),f.properties&&f.properties.name,f.properties&&f.properties.broadOf||null,JSON.stringify(f.geometry).length])}));}''')
         data['errors'] = errs
-        json.dump(data, open(out, 'w', encoding='utf-8'), ensure_ascii=False, sort_keys=True)
+        json.dump(data, open(out, 'w', encoding='utf-8'), ensure_ascii=False)  # key order kept: some tables (theme families) are shown in their stored order
         print(url, '|', len(data['records']), 'records |', len(data['globals']), 'globals | page errors:', errs[:3])
         await b.close()
 
