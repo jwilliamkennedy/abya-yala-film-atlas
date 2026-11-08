@@ -2,7 +2,7 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-08",
  "license": "See data.html",
- "films_on_public_map": 1325,
+ "films_on_public_map": 1336,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -1230,6 +1230,10 @@
     {
      "id": "DIR-0023",
      "name": "Genito Gomes"
+    },
+    {
+     "id": "QM-748e73232d",
+     "name": "Jhon Nara Gomes"
     }
    ],
    "languages": [],
@@ -18425,6 +18429,22 @@
    "form": null,
    "length": null
   },
+  "LEAD-20261011-015-W1031-1": {
+   "title": "La niña del arpa",
+   "year": 2017,
+   "makers": [
+    {
+     "id": "LEAD-20261011-015",
+     "name": "Leyzer Chiquin"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": null
+  },
   "LEAD-20261011-020-W1031-1": {
    "title": "Kpaima",
    "year": 2019,
@@ -21622,6 +21642,22 @@
    "families": [],
    "form": null,
    "length": null
+  },
+  "NEW-50b79cedd696-WORK-1": {
+   "title": "Atánquez, historias de La Piragua",
+   "year": 2025,
+   "makers": [
+    {
+     "id": "NEW-50b79cedd696",
+     "name": "Allison Cáceres Martínez"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
   },
   "NEW-2424973e2e86-WORK-1": {
    "title": "Amapola, solución o destrucción (TV series)",
@@ -26319,6 +26355,170 @@
    "families": [],
    "form": null,
    "length": null
+  },
+  "DIR-0212-QM2512de": {
+   "title": "Negrita",
+   "year": 2020,
+   "makers": [
+    {
+     "id": "DIR-0212",
+     "name": "Gabriela Solano"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": "Short"
+  },
+  "DIR-0212-QM8209e8": {
+   "title": "Punto de Encuentro",
+   "year": null,
+   "makers": [
+    {
+     "id": "DIR-0212",
+     "name": "Gabriela Solano"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "QM-f87c99833a-M1": {
+   "title": "Manifiesto Wayúu",
+   "year": 2019,
+   "makers": [
+    {
+     "id": "QM-f87c99833a",
+     "name": "Miguel Iván Ramírez Boscán"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "QM-ac60127ca8-M1": {
+   "title": "El viaje del Kokorrdit / Dance of the Kokorrdit",
+   "year": 2026,
+   "makers": [
+    {
+     "id": "QM-ac60127ca8",
+     "name": "Elio B. Cunampio"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Hybrid",
+   "length": null
+  },
+  "QM-2ceb368977-M1": {
+   "title": "Nondjewaregi / Costumbres antiguas",
+   "year": 2012,
+   "makers": [
+    {
+     "id": "QM-2ceb368977",
+     "name": "Norma Tapari"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Elders and Knowledge"
+   ],
+   "primary_theme": "Elders and Knowledge",
+   "families": [
+    "Knowledge and Continuity"
+   ],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "QM-d67e5a6ca3-M1": {
+   "title": "Tõ Mumbu",
+   "year": 2012,
+   "makers": [
+    {
+     "id": "QM-d67e5a6ca3",
+     "name": "Ricardo Mbekrorongi"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Elders and Knowledge"
+   ],
+   "primary_theme": "Elders and Knowledge",
+   "families": [
+    "Knowledge and Continuity"
+   ],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "QM-dc521559a9-M1": {
+   "title": "(Re)Encontros Akupynh Awjanã",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "QM-dc521559a9",
+     "name": "Andressa Iremex Apinajé"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Archives, Museums and Repatriation"
+   ],
+   "primary_theme": "Archives, Museums and Repatriation",
+   "families": [
+    "Knowledge and Continuity"
+   ],
+   "form": "Documentary",
+   "length": "Feature"
+  },
+  "QM-c3fae2a924-M1": {
+   "title": "Cacica – a força da mulher Xavante",
+   "year": 2022,
+   "makers": [
+    {
+     "id": "QM-c3fae2a924",
+     "name": "Carolina Rewaptu"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Women and Gender"
+   ],
+   "primary_theme": "Women and Gender",
+   "families": [
+    "Lives and Relations"
+   ],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "QM-276b2ccc80-M1": {
+   "title": "Música é Arma de Luta",
+   "year": 2021,
+   "makers": [
+    {
+     "id": "QM-276b2ccc80",
+     "name": "Idjahure Kadiwel"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Land Defense"
+   ],
+   "primary_theme": "Land Defense",
+   "families": [
+    "Land and Environment"
+   ],
+   "form": "Documentary",
+   "length": "Short"
   }
  }
 }
