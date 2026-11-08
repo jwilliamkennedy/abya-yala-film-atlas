@@ -86,11 +86,18 @@ def main(path, out):
             ok, ctx = has(t, quote) if quote else (False, '')
             res['checks']['identity'] = {'url': src, 'quote_found': ok, 'name_found': surname_hit(t, name), 'context': ctx, 'fetch': t[:20] if t.startswith('__') else 'ok'}
         if a in ('add filmmaker', 'add film') and title:
-            src = v(r.get('film_source')) or v(r.get('evidence_url'))
-            t = text_of(src) if src else ''
             main_title = re.split(r'\s[/=(]|\s[–-]\s|:\s', title)[0]
-            ok, ctx = has(t, main_title)
-            res['checks']['credit'] = {'url': src, 'title_found': ok, 'name_found': surname_hit(t, name), 'context': ctx, 'fetch': t[:20] if t.startswith('__') else 'ok'}
+            urls = [u.strip() for u in re.split(r'\s\|\s|;\s', (v(r.get('film_source')) or '') + ' | ' + (v(r.get('evidence_url')) or '')) if u.strip().startswith('http')]
+            best = {'url': '', 'title_found': False, 'name_found': False, 'context': '', 'fetch': 'no url'}
+            for src in dict.fromkeys(urls):   # every page the row gives, until one names both the film and the filmmaker
+                t = text_of(src)
+                ok, ctx = has(t, main_title)
+                c = {'url': src, 'title_found': ok, 'name_found': surname_hit(t, name), 'context': ctx, 'fetch': t[:20] if t.startswith('__') else 'ok'}
+                if (c['title_found'], c['name_found']) > (best['title_found'], best['name_found']) or not best['url']:
+                    best = c
+                if ok and c['name_found']:
+                    break
+            res['checks']['credit'] = best
         if a == 'correct':
             src = v(r.get('evidence_url'))
             t = text_of(src) if src else ''
