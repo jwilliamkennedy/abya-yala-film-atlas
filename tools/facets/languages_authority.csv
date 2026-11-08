@@ -1,0 +1,32 @@
+label,also_credited_as,glottocode,glottolog_name,glottolog_level,iso639_3,match,indigenous,note
+Anishinaabemowin (Ojibwe),Ojibwe; Ojibway; Anishinaabemowin,ojib1241,Ojibwa,family,,group,yes,Credits name the language without a regional variety
+Atikamekw,,atik1240,Atikamekw,language,atj,exact,yes,
+Ayuujk (Mixe),Ayuujk / Mixe; Ayuujk; Mixe,mixe1286,Mixe,family,,group,yes,Credits name Ayuujk without a variety
+Blackfoot,,siks1238,Siksika,language,bla,exact,yes,
+Cherokee,,cher1273,Cherokee,language,chr,exact,yes,
+Cree,,cree1272,Cree,family,cre,group,yes,Credits name Cree without a variety
+Plains Cree,Nehiyawewin,plai1258,Plains Cree,language,crk,exact,yes,
+Denaakk’e (Koyukon),Denaakk’e; Koyukon,koyu1237,Koyukon,language,koy,exact,yes,
+Dene,,,,,,unresolved,yes,Several Dene languages; the credit does not say which
+Diné (Navajo),Diné; Navajo; Diné Bizaad,nava1243,Navajo,language,nav,exact,yes,
+Garifuna,,gari1256,Garifuna,language,cab,exact,yes,
+Haida,,haid1248,Haida,family,hai,group,yes,
+Hän,,hann1241,Han,language,haa,exact,yes,
+Inuktitut,,east2534,Eastern Canadian Inuktitut,language,ike,probable,yes,Inuktitut in Canadian credits usually names the eastern variety
+Iñupiaq,Inupiaq,inup1234,Alaskan Inupiaq,family,ipk,group,yes,
+Kalaallisut,Kalaallisut (Greenlandic); Greenlandic,kala1399,Kalaallisut,language,kal,exact,yes,
+Kichwa,,colo1257,Colombia-Ecuador Quechua,family,,group,yes,Kichwa names the Ecuadorian Quechua varieties
+Lakota,,lako1247,Lakota,language,lkt,exact,yes,
+Mohawk,Kanien’kéha,moha1258,Mohawk,language,moh,exact,yes,
+Nlakapamuxcheen,,thom1243,Thompson,language,thp,exact,yes,
+Payómkawichum Chaamteela,Luiseño,luis1253,Luiseno-Juaneño,language,lui,exact,yes,
+Q’eqchi’,,kekc1242,Q'eqchi',language,kek,exact,yes,
+Secwépemctsín,Secwepemctsín; Secwepemctsin; Shuswap,shus1248,Shuswap,language,shs,exact,yes,
+Taíno,Taíno dialect of Island Arawak Wahiyani,tain1254,Taino,language,tnq,exact,yes,
+Tewa,,tewa1261,Tewa,family,,group,yes,
+Tupí,,,,,,unresolved,yes,Tupí names several Tupian languages; the credit does not say which
+English,,stan1293,English,language,eng,exact,no,
+Spanish,Español,stan1288,Spanish,language,spa,exact,no,
+Portuguese,Português,port1283,Portuguese,language,por,exact,no,
+French,Français,stan1290,French,language,fra,exact,no,
+Vietnamese,,viet1252,Vietnamese,language,vie,exact,no,
