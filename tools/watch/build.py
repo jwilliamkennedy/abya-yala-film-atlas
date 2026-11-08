@@ -5,6 +5,10 @@ from urllib.parse import urlparse
 d = json.load(open(sys.argv[1])); embeds = json.load(open(sys.argv[2])); people = json.load(open(sys.argv[3]))
 esc = lambda s: html.escape(str(s or ''), quote=True)
 ca = {f['url']: f['canadaOnly'] for f in d['found']}
+import os
+if os.path.exists('tools/watch/geo.json'):
+    for u, v in json.load(open('tools/watch/geo.json')).items():
+        if v in ('plays', 'blocked'): ca[u] = (v == 'blocked')  # tested from a US runner with the real player
 
 def people_label(rid):
     n = (people.get(rid) or {}).get('nation') or ''
@@ -144,7 +148,7 @@ open(sys.argv[4], 'w', encoding='utf-8').write(page)
 links = {}
 for f in d['found']:
     label = 'Watch at the NFB' if 'nfb.ca' in f['url'] else 'Watch on the filmmaker’s site'
-    links.setdefault(f['fid'], []).append({'url': f['url'], 'title': label, 'context': 'Free to stream in Canada.' if f['canadaOnly'] else ''})
+    links.setdefault(f['fid'], []).append({'url': f['url'], 'title': label, 'context': 'Free to stream in Canada.' if ca.get(f['url'], f['canadaOnly']) else ''})
 js = ('/* Beta-only watch links found 7 Nov 2026 (NFB film pages and skyhopinka.com), each matched on title and director and checked from a runner. */\n'
       '(()=>{const add=' + json.dumps(links, ensure_ascii=False) + ';const X=window.ATLAS_FILM_EXPLORATION=window.ATLAS_FILM_EXPLORATION||{};'
       'for(const [id,ls] of Object.entries(add)){const e=X[id]||(X[id]={});const have=new Set((e.links||[]).map(l=>l.url));e.links=[...(e.links||[]),...ls.filter(l=>!have.has(l.url))];}})();\n')
