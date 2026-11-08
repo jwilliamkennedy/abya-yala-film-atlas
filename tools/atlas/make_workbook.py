@@ -69,7 +69,7 @@ def film_cells(r, f, pos):
     c = {}
     for col, field in FILM_FIELD.items():
         v = f.get(field)
-        c[col] = '' if v is None else v
+        c[col] = '' if v is None else show(col, v)
     c['film_id'] = f['id']
     others = [x for x in groups[(fkey(f['title']), str(f.get('year') or ''))] if x != r['id']]
     c['co_directed_with'] = SEP.join(dict.fromkeys(others))
@@ -175,7 +175,7 @@ cq = sheet(wq, QUEUE_COLS, lead_rows, group_extra=True)
 # Lists (hidden)
 wl = wb.create_sheet('Lists')
 forms = sorted({f.get('weaveForm') for r in state['records'] for f in r['films'] if f.get('weaveForm')})
-lengths = sorted({f.get('weaveLength') for r in state['records'] for f in r['films'] if f.get('weaveLength')})
+lengths = sorted({show('length', f.get('weaveLength')) for r in state['records'] for f in r['films'] if f.get('weaveLength')})
 fam = {}
 for r in state['records']:
     for f in r['films']:

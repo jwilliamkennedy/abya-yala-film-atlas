@@ -2,7 +2,7 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-08",
  "license": "See data.html",
- "films_on_public_map": 1267,
+ "films_on_public_map": 1240,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -716,22 +716,6 @@
   },
   "FILM-0009": {
    "title": "Qulqi chaleco : Chaleco de plata = Vest made of money",
-   "year": null,
-   "makers": [
-    {
-     "id": "DIR-0008",
-     "name": "Patricio Luna"
-    }
-   ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
-  },
-  "FILM-0010": {
-   "title": "Qulqi Chaliku - Vest Made of Money",
    "year": null,
    "makers": [
     {
@@ -5778,22 +5762,6 @@
    "form": null,
    "length": null
   },
-  "FILM-0102": {
-   "title": "Mencer",
-   "year": null,
-   "makers": [
-    {
-     "id": "DIR-0170",
-     "name": "Francisco Huichaqueo Pérez"
-    }
-   ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
-  },
   "FILM-0103": {
    "title": "Mencer: Ñi Pewma",
    "year": null,
@@ -6625,27 +6593,6 @@
    "form": null,
    "length": null
   },
-  "FILM-0143": {
-   "title": "Killa",
-   "year": null,
-   "makers": [
-    {
-     "id": "DIR-0196",
-     "name": "Alberto Muenala"
-    }
-   ],
-   "languages": [],
-   "themes": [
-    "Extractivism",
-    "Land Defense"
-   ],
-   "primary_theme": "Extractivism",
-   "families": [
-    "Land and Environment"
-   ],
-   "form": "Fiction",
-   "length": "Feature"
-  },
   "FILM-0144": {
    "title": "Killa (Killa Ñawpumukun)",
    "year": null,
@@ -7025,22 +6972,6 @@
    "form": null,
    "length": null
   },
-  "FILM-0166": {
-   "title": "MAJT'ANIL - The Legacy",
-   "year": null,
-   "makers": [
-    {
-     "id": "DIR-0215",
-     "name": "Ángel López Gómez"
-    }
-   ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
-  },
   "FILM-0167": {
    "title": "Majt'anil : el legado",
    "year": null,
@@ -7149,25 +7080,9 @@
    "form": null,
    "length": null
   },
-  "FILM-B25B-17": {
-   "title": "La carta",
-   "year": 2014,
-   "makers": [
-    {
-     "id": "DIR-0216",
-     "name": "Ángeles Cruz"
-    }
-   ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
-  },
-  "FILM-0170": {
-   "title": "El cielo es muy bonito / The sky is very pretty",
-   "year": null,
+  "FILM-B25B-23": {
+   "title": "El cielo es muy bonito",
+   "year": 2022,
    "makers": [
     {
      "id": "DIR-0217",
@@ -7188,38 +7103,6 @@
    "form": "Documentary",
    "length": "Short"
   },
-  "FILM-SRC-2023-00054": {
-   "title": "the sky is very pretty",
-   "year": null,
-   "makers": [
-    {
-     "id": "DIR-0217",
-     "name": "Aracely Méndez"
-    }
-   ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
-  },
-  "FILM-B25B-23": {
-   "title": "El cielo es muy bonito",
-   "year": 2022,
-   "makers": [
-    {
-     "id": "DIR-0217",
-     "name": "Aracely Méndez"
-    }
-   ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
-  },
   "FILM-0171": {
    "title": "El arte de limpiar",
    "year": null,
@@ -7238,7 +7121,7 @@
   },
   "FILM-0172": {
    "title": "La espera (short film)",
-   "year": null,
+   "year": 2021,
    "makers": [
     {
      "id": "DIR-0219",
@@ -7299,22 +7182,6 @@
   "BETA30B-20261107-F21": {
    "title": "Ixu jarkashkac’ e acompañando",
    "year": 2022,
-   "makers": [
-    {
-     "id": "DIR-0219",
-     "name": "Celina Yunuen Manuel Piñón"
-    }
-   ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
-  },
-  "FILM-B25B-18": {
-   "title": "La espera",
-   "year": 2021,
    "makers": [
     {
      "id": "DIR-0219",
@@ -7749,31 +7616,6 @@
    "form": null,
    "length": null
   },
-  "FILM-0185": {
-   "title": "Tiempo de lluvia (In Times of Rain)",
-   "year": null,
-   "makers": [
-    {
-     "id": "DIR-0229",
-     "name": "Itandehui Jansen"
-    }
-   ],
-   "languages": [],
-   "themes": [
-    "Kinship",
-    "Elders and Knowledge",
-    "Health and Healing",
-    "Displacement and Migration"
-   ],
-   "primary_theme": "Kinship",
-   "families": [
-    "Knowledge and Continuity",
-    "Lives and Relations",
-    "Sovereignty and Politics"
-   ],
-   "form": "Fiction",
-   "length": "Feature"
-  },
   "FILM-ADD-20261031-18": {
    "title": "Alma & Esperanza",
    "year": 2012,
@@ -7911,11 +7753,20 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Kinship",
+    "Elders and Knowledge",
+    "Health and Healing",
+    "Displacement and Migration"
+   ],
+   "primary_theme": "Kinship",
+   "families": [
+    "Knowledge and Continuity",
+    "Lives and Relations",
+    "Sovereignty and Politics"
+   ],
+   "form": "Fiction",
+   "length": "Feature"
   },
   "FILM-0186": {
    "title": "Nixíí - Bastón de mando",
@@ -7943,22 +7794,6 @@
    "form": null,
    "length": null
   },
-  "DIR-0230-W1031-2": {
-   "title": "Poder pa'l pueblo",
-   "year": 2017,
-   "makers": [
-    {
-     "id": "DIR-0230",
-     "name": "José Luis Matías Alonso"
-    }
-   ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
-  },
   "DIR-0230-W1031-3": {
    "title": "Guerrero. Abriendo brecha",
    "year": 2019,
@@ -7966,26 +7801,6 @@
     {
      "id": "DIR-0230",
      "name": "José Luis Matías Alonso"
-    }
-   ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
-  },
-  "DIR-0230-W1031-4": {
-   "title": "A cielo abierto",
-   "year": 2007,
-   "makers": [
-    {
-     "id": "DIR-0230",
-     "name": "José Luis Matías Alonso"
-    },
-    {
-     "id": "NEW-6d73018c2cfc",
-     "name": "Carlos Efraín Pérez Rojas"
     }
    ],
    "languages": [],
@@ -8197,66 +8012,6 @@
    "form": null,
    "length": null
   },
-  "FILM-B25B-03": {
-   "title": "Abriendo Brecha",
-   "year": 2019,
-   "makers": [
-    {
-     "id": "DIR-0230",
-     "name": "José Luis Matías Alonso"
-    }
-   ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
-  },
-  "FILM-0188": {
-   "title": "Moon Belly",
-   "year": 2024,
-   "makers": [
-    {
-     "id": "DIR-0232",
-     "name": "Liliana K'an"
-    }
-   ],
-   "languages": [],
-   "themes": [
-    "Women and Gender",
-    "Memory and Oral History"
-   ],
-   "primary_theme": "Women and Gender",
-   "families": [
-    "Knowledge and Continuity",
-    "Lives and Relations"
-   ],
-   "form": "Documentary",
-   "length": "Short"
-  },
-  "FILM-0189": {
-   "title": "Vientre de luna = Moon belly",
-   "year": 2024,
-   "makers": [
-    {
-     "id": "DIR-0232",
-     "name": "Liliana K'an"
-    }
-   ],
-   "languages": [],
-   "themes": [
-    "Women and Gender",
-    "Memory and Oral History"
-   ],
-   "primary_theme": "Women and Gender",
-   "families": [
-    "Knowledge and Continuity",
-    "Lives and Relations"
-   ],
-   "form": "Documentary",
-   "length": "Short"
-  },
   "FILM-B25B-12": {
    "title": "Vientre de luna",
    "year": 2024,
@@ -8286,11 +8041,17 @@
      "source": "https://www.wikidata.org/wiki/Q141309598"
     }
    ],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Women and Gender",
+    "Memory and Oral History"
+   ],
+   "primary_theme": "Women and Gender",
+   "families": [
+    "Knowledge and Continuity",
+    "Lives and Relations"
+   ],
+   "form": "Documentary",
+   "length": "Short"
   },
   "FILM-0190": {
    "title": "Los años azules",
@@ -8307,29 +8068,6 @@
    "families": [],
    "form": null,
    "length": null
-  },
-  "FILM-0191": {
-   "title": "Me parezco tanto a ti (2011)",
-   "year": null,
-   "makers": [
-    {
-     "id": "DIR-0233",
-     "name": "Luna Marán"
-    }
-   ],
-   "languages": [],
-   "themes": [
-    "Women and Gender",
-    "Elders and Knowledge",
-    "Youth"
-   ],
-   "primary_theme": "Women and Gender",
-   "families": [
-    "Knowledge and Continuity",
-    "Lives and Relations"
-   ],
-   "form": "Documentary",
-   "length": "Short"
   },
   "FILM-0192": {
    "title": "Tio Yim",
@@ -8371,7 +8109,7 @@
   },
   "DIR-0233-W1031-5": {
    "title": "Bucan Tu Rachhidu",
-   "year": null,
+   "year": 2023,
    "makers": [
     {
      "id": "DIR-0233",
@@ -8419,27 +8157,18 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
-  },
-  "FILM-B25B-06": {
-   "title": "Bucan Tu Rachhidu (Deja lo que te espanta)",
-   "year": 2023,
-   "makers": [
-    {
-     "id": "DIR-0233",
-     "name": "Luna Marán"
-    }
+   "themes": [
+    "Women and Gender",
+    "Elders and Knowledge",
+    "Youth"
    ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "primary_theme": "Women and Gender",
+   "families": [
+    "Knowledge and Continuity",
+    "Lives and Relations"
+   ],
+   "form": "Documentary",
+   "length": "Short"
   },
   "FILM-0193": {
    "title": "Kárapani Tsínharhini",
@@ -8737,26 +8466,6 @@
    "form": null,
    "length": "Feature"
   },
-  "FILM-0200": {
-   "title": "Koo = serpiente",
-   "year": null,
-   "makers": [
-    {
-     "id": "DIR-0240",
-     "name": "Nicolás Rojas"
-    }
-   ],
-   "languages": [],
-   "themes": [
-    "Cosmology and Origin Stories"
-   ],
-   "primary_theme": "Cosmology and Origin Stories",
-   "families": [
-    "Knowledge and Continuity"
-   ],
-   "form": "Fiction",
-   "length": "Short"
-  },
   "DIR-0240-W1031-2": {
    "title": "Snuu Viko / El lugar de las nubes",
    "year": 2008,
@@ -8829,11 +8538,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Cosmology and Origin Stories"
+   ],
+   "primary_theme": "Cosmology and Origin Stories",
+   "families": [
+    "Knowledge and Continuity"
+   ],
+   "form": "Fiction",
+   "length": "Short"
   },
   "FILM-0201": {
    "title": "Marku Irekani = vivir juntos",
@@ -8934,9 +8647,9 @@
    "form": "Hybrid",
    "length": "Short"
   },
-  "FILM-0204": {
-   "title": "Las ollas de san marcos",
-   "year": null,
+  "FILM-B25B-08": {
+   "title": "Ollas de San Marcos",
+   "year": 1992,
    "makers": [
     {
      "id": "DIR-0243",
@@ -8957,22 +8670,6 @@
    ],
    "form": null,
    "length": "Short"
-  },
-  "FILM-B25B-08": {
-   "title": "Ollas de San Marcos",
-   "year": 1992,
-   "makers": [
-    {
-     "id": "DIR-0243",
-     "name": "Teófila Palafox Herranz"
-    }
-   ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
   },
   "FILM-0206": {
    "title": "La Baláhna",
@@ -11435,31 +11132,6 @@
    "form": "Documentary",
    "length": "Feature"
   },
-  "RESEARCH-FILM-20261031-800-0027": {
-   "title": "Aanikoobijigan",
-   "year": 2026,
-   "makers": [
-    {
-     "id": "NEW-902ec5c62298",
-     "name": "Adam Khalil"
-    },
-    {
-     "id": "NEW-1364b94d56f9",
-     "name": "Zack Khalil"
-    }
-   ],
-   "languages": [],
-   "themes": [
-    "Archives, Museums and Repatriation",
-    "Cosmology and Origin Stories"
-   ],
-   "primary_theme": "Archives, Museums and Repatriation",
-   "families": [
-    "Knowledge and Continuity"
-   ],
-   "form": "Documentary",
-   "length": "Feature"
-  },
   "NEW-3b7e9c5a5cc1-WORK-1": {
    "title": "Itseetamapi",
    "year": 2026,
@@ -13791,28 +13463,6 @@
   },
   "NEW-2cadf6c546d8-WORK-1": {
    "title": "Little Orange Bandages",
-   "year": null,
-   "makers": [
-    {
-     "id": "NEW-2cadf6c546d8",
-     "name": "Kile M. George"
-    }
-   ],
-   "languages": [],
-   "themes": [
-    "Justice, Truth and Reconciliation",
-    "Youth"
-   ],
-   "primary_theme": "Justice, Truth and Reconciliation",
-   "families": [
-    "Lives and Relations",
-    "Sovereignty and Politics"
-   ],
-   "form": "Experimental",
-   "length": "Short"
-  },
-  "TOUR-0007": {
-   "title": "Little Orange Bandage",
    "year": 2025,
    "makers": [
     {
@@ -15081,22 +14731,6 @@
   },
   "NEW-2aa6df7856b7-WORK-1": {
    "title": "REZervations for Two (television)",
-   "year": null,
-   "makers": [
-    {
-     "id": "NEW-2aa6df7856b7",
-     "name": "Vanessa Loewen"
-    }
-   ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
-  },
-  "RESEARCH-FILM-20261031-800-0029": {
-   "title": "REZervations for Two",
    "year": 2026,
    "makers": [
     {
@@ -15602,22 +15236,6 @@
    "form": "Documentary",
    "length": "Feature"
   },
-  "REVIEWFILM-20261008-010-01": {
-   "title": "Sacha Mamakuna – Mamás de la Selva",
-   "year": 2019,
-   "makers": [
-    {
-     "id": "LEAD-20261008-010",
-     "name": "Asociación de Mujeres Parteras Kichwas del Alto Napo (AMUPAKIN)"
-    }
-   ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
-  },
   "CHECKED-LEAD-20261008-010-sachamamakuna": {
    "title": "Sacha Mamakuna",
    "year": 2019,
@@ -15864,7 +15482,7 @@
   },
   "LEAD-20261014-016-WORK-02": {
    "title": "Minha câmera é minha flecha",
-   "year": null,
+   "year": 2024,
    "makers": [
     {
      "id": "LEAD-20261014-016",
@@ -15902,30 +15520,6 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": "Documentary",
-   "length": null
-  },
-  "NEW-c101070024a4-WORK-1": {
-   "title": "Minha Câmera, Minha Flecha",
-   "year": 2024,
-   "makers": [
-    {
-     "id": "LEAD-20261014-016",
-     "name": "Natália Tupi"
-    }
-   ],
-   "languages": [],
-   "themes": [
-    "Collective and Community Media",
-    "Youth",
-    "Resistance Movements"
-   ],
-   "primary_theme": "Collective and Community Media",
-   "families": [
-    "Expression and Representation",
-    "Lives and Relations",
-    "Sovereignty and Politics"
-   ],
    "form": "Documentary",
    "length": null
   },
@@ -16641,22 +16235,6 @@
    "form": null,
    "length": null
   },
-  "NEW-9e21f9235e57-WORK-2": {
-   "title": "Qati qati",
-   "year": 1999,
-   "makers": [
-    {
-     "id": "SA50-20261014-fe9bfc7dfdb8",
-     "name": "Reynaldo Yujra"
-    }
-   ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
-  },
   "SA50-20261014-9b1d14fcc4b5-WORK-01": {
    "title": "Venciendo el miedo / Conquering Fear",
    "year": 2004,
@@ -16686,22 +16264,6 @@
      "source": "https://www.augsburg.edu/filmseries/2012/03/02/condor-meets-eagle-three-night-film-festival/"
     }
    ],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
-  },
-  "NEW-8424b0a63adb-WORK-1": {
-   "title": "Conquering Fear (Venciendo el miedo)",
-   "year": 2004,
-   "makers": [
-    {
-     "id": "SA50-20261014-9b1d14fcc4b5",
-     "name": "María Morales Tarqui"
-    }
-   ],
-   "languages": [],
    "themes": [],
    "primary_theme": null,
    "families": [],
@@ -16748,26 +16310,6 @@
      "source": "https://www.augsburg.edu/filmseries/2012/03/02/condor-meets-eagle-three-night-film-festival/"
     }
    ],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
-  },
-  "NEW-a18f3e493cfe-WORK-1": {
-   "title": "El Grito de la Selva",
-   "year": 2008,
-   "makers": [
-    {
-     "id": "SA50-20261014-5b89d6283a0d",
-     "name": "Alejandro Noza"
-    },
-    {
-     "id": "SA50-20261014-e4fb233d3bf0",
-     "name": "Nicolás Ipamo"
-    }
-   ],
-   "languages": [],
    "themes": [],
    "primary_theme": null,
    "families": [],
@@ -18016,22 +17558,6 @@
    "families": [],
    "form": null,
    "length": null
-  },
-  "PILOT-43-li-cham": {
-   "title": "Li Cham",
-   "year": 2024,
-   "makers": [
-    {
-     "id": "PILOT-43-ANA-TSUYEB",
-     "name": "Ana Ts’uyeb"
-    }
-   ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": "Documentary",
-   "length": "Feature"
   },
   "FILM-B25B-11": {
    "title": "Li Cham (Morí)",
@@ -21202,6 +20728,22 @@
    "form": null,
    "length": null
   },
+  "NEW-6d73018c2cfc-WORK-4": {
+   "title": "A cielo abierto",
+   "year": 2007,
+   "makers": [
+    {
+     "id": "NEW-6d73018c2cfc",
+     "name": "Carlos Efraín Pérez Rojas"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "NEW-6d73018c2cfc-WORK-5": {
    "title": "Y el río sigue corriendo",
    "year": 2010,
@@ -22164,7 +21706,7 @@
   },
   "NEW-ce827e210914-WORK-1": {
    "title": "Ujirei",
-   "year": null,
+   "year": 2019,
    "makers": [
     {
      "id": "NEW-ce827e210914",
@@ -22181,22 +21723,6 @@
    ],
    "form": "Experimental",
    "length": "Feature"
-  },
-  "FILM-B25B-22": {
-   "title": "Ujirei – Regeneration",
-   "year": 2019,
-   "makers": [
-    {
-     "id": "NEW-ce827e210914",
-     "name": "Mateo Sobode Chiqueno"
-    }
-   ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
   },
   "NEW-75f92529652d-WORK-1": {
    "title": "C. N. Infierno: por un turismo sostenible",

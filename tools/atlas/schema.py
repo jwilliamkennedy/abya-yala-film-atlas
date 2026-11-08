@@ -134,6 +134,13 @@ FILM_FIELD = {'title': 'title', 'year': 'year', 'credit': 'credit', 'credit_note
               'runtime_min': 'runtimeMinutes', 'film_source': 'sourceURL', 'film_notes': 'notes', 'film_checked': 'checkedOn',
               'primary_theme': 'primaryTheme', 'form': 'weaveForm', 'length': 'weaveLength', 'theme_source': 'themeSource'}
 NUMERIC = {'year', 'runtime_min'}
+# cells that show a readable word for a stored code (the records keep the code)
+SHOW = {'length': {'S': 'Short', 'F': 'Feature'}}
+def show(col, value):
+    return SHOW.get(col, {}).get(value, value)
+def store(col, cell):
+    back = {v: k for k, v in SHOW.get(col, {}).items()}
+    return back.get(cell, cell)
 
 IMAGE = [('image_url', 30, 'image'), ('image_original', 30, 'originalImage'), ('image_page', 30, 'sourceURL'),
          ('image_credit', 22, 'publisher'), ('image_kind', 20, 'kind'), ('image_basis', 30, 'matchBasis'),

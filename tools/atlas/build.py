@@ -141,9 +141,9 @@ def build(path, state_path, check_only=False):
                 v = fb.get(field) if fj else None
                 if col in NUMERIC and fj and _same_number(row.get(col), v):
                     continue
-                if cellnorm(row.get(col)) != ('' if not fj or v is None else cellnorm(v)):
+                if cellnorm(row.get(col)) != ('' if not fj or v is None else cellnorm(show(col, v))):
                     c = row.get(col)
-                    f[field] = num(c) if col in NUMERIC else (None if c in (None, '') else str(c).strip())
+                    f[field] = num(c) if col in NUMERIC else (None if c in (None, '') else store(col, str(c).strip()))
                     stats['edited cells'] += bool(fj)
             terms = SEP.join(x['term'] for x in fb.get('themes') or [] if isinstance(x, dict)) if fj else None
             if cellnorm(row.get('themes')) != (terms if fj else ''):
@@ -181,7 +181,7 @@ def build(path, state_path, check_only=False):
             # theme tags used by Constellate
             th0 = (fj or {}).get('_th')
             th_now = [split_list(row.get('themes')), cellnorm(row.get('primary_theme')), cellnorm(row.get('form')),
-                      cellnorm(row.get('length')), cellnorm(row.get('theme_source'))]
+                      cellnorm(store('length', cellnorm(row.get('length')))), cellnorm(row.get('theme_source'))]
             if th0 and th_now == [th0[0], cellnorm(th0[1]), cellnorm(th0[2]), cellnorm(th0[3]), cellnorm(th0[4])]:
                 owned['ATLAS_THEMES_1103'][f['id']] = th0
             elif th_now[4] and th_now[0]:

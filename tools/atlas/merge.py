@@ -72,6 +72,14 @@ def main(path):
             rows = [pr for pr in range(3, wp.max_row + 1) if t in (wp.cell(pr, P['filmmaker_id']).value, wp.cell(pr, P['film_id']).value)]
             for pr in rows:
                 removed_rows.append(prow_values(pr))
+            # a filmmaker's hidden record data sits on one of their rows: if that row leaves, hand it to a row that stays
+            for pr in rows:
+                mj = wp.cell(pr, P['maker_json']).value
+                if mj:
+                    mid = wp.cell(pr, P['filmmaker_id']).value
+                    stay = [x for x in range(3, wp.max_row + 1) if x not in rows and wp.cell(x, P['filmmaker_id']).value == mid]
+                    if stay:
+                        wp.cell(stay[0], P['maker_json'], mj)
             for pr in sorted(rows, reverse=True):
                 wp.delete_rows(pr)
             applied['removed'] += 1
