@@ -2,7 +2,7 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-08",
  "license": "See data.html",
- "films_on_public_map": 1317,
+ "films_on_public_map": 1325,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -18425,6 +18425,27 @@
    "form": null,
    "length": null
   },
+  "LEAD-20261011-020-W1031-1": {
+   "title": "Kpaima",
+   "year": 2019,
+   "makers": [
+    {
+     "id": "LEAD-20261011-020",
+     "name": "Norma Delia Robles Carrillo"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Elders and Knowledge",
+    "Linguistic Preservation"
+   ],
+   "primary_theme": "Elders and Knowledge",
+   "families": [
+    "Knowledge and Continuity"
+   ],
+   "form": "Documentary",
+   "length": "Short"
+  },
   "FILM-SRC-0367": {
    "title": "Dear Kin",
    "year": null,
@@ -18445,6 +18466,51 @@
    ],
    "form": null,
    "length": "Short"
+  },
+  "RESEARCH-FILM-20261031-0065-01": {
+   "title": "Ka’a zar ukyze wà – Os donos da floresta em perigo",
+   "year": 2019,
+   "makers": [
+    {
+     "id": "LEAD-20261031-0065",
+     "name": "Flay Guajajara"
+    },
+    {
+     "id": "LEAD-20261031-0066",
+     "name": "Edivan dos Santos Guajajara"
+    },
+    {
+     "id": "LEAD-20261031-0067",
+     "name": "Erisvan Bone Guajajara"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Land Defense",
+    "Extractivism"
+   ],
+   "primary_theme": "Land Defense",
+   "families": [
+    "Land and Environment"
+   ],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "LEAD-20261031-0066-W1031-2": {
+   "title": "Somos Raízes: Guardiões da Floresta",
+   "year": null,
+   "makers": [
+    {
+     "id": "LEAD-20261031-0066",
+     "name": "Edivan dos Santos Guajajara"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
   },
   "RESEARCH-FILM-20261031-800-NEW-343": {
    "title": "The Opening Address",
@@ -20227,6 +20293,10 @@
    "title": "Thutalinãnsu",
    "year": 2025,
    "makers": [
+    {
+     "id": "NEW-e00d7fdda37e",
+     "name": "Helena Corezomaé"
+    },
     {
      "id": "NEW-e00d7fdda37e",
      "name": "Helena Corezomaé"
@@ -26169,6 +26239,86 @@
    ],
    "form": "Documentary",
    "length": "Short"
+  },
+  "QM-6c1fe38e88-M1": {
+   "title": "Corte Pelo",
+   "year": 2025,
+   "makers": [
+    {
+     "id": "QM-6c1fe38e88",
+     "name": "Evaristo Jarawi"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QM-6c1fe38e88-M2": {
+   "title": "Miro",
+   "year": 2019,
+   "makers": [
+    {
+     "id": "QM-6c1fe38e88",
+     "name": "Evaristo Jarawi"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QM-6c1fe38e88-M3": {
+   "title": "Autorretrato",
+   "year": 2021,
+   "makers": [
+    {
+     "id": "QM-6c1fe38e88",
+     "name": "Evaristo Jarawi"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QM-ff5a5485f3-M1": {
+   "title": "Jurijri",
+   "year": null,
+   "makers": [
+    {
+     "id": "QM-ff5a5485f3",
+     "name": "Mery Utitiaj"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QM-1c9dfcba3c-M1": {
+   "title": "Altanema-Seiana' / Los Enenlhet, su territorio y los paraguayos",
+   "year": 2016,
+   "makers": [
+    {
+     "id": "QM-1c9dfcba3c",
+     "name": "Lanto’oy’ Ronaldo Unruh"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
   }
  }
 }
