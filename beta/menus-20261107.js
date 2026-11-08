@@ -23,6 +23,22 @@ function toolbar(){
  place();addEventListener('resize',place);
 }
 
+/* 1b. 2026-11-08 · fewer controls, each where it belongs.
+   Map toolbar keeps moving the map (zoom, fit, overview) and the three map panels (Countries, Layers, Map key).
+   What the map shows moves into Layers: Americas / whole world, and Disappear map.
+   Surprise me joins the index tools beside Filters, Recent and Saved, because it opens an entry there. */
+function streamline(){
+ const layersBox=$('#layers > div')||$('#layers > :not(summary)');const world=$('#world'),unmap=$('#atlas-unmap');
+ if(layersBox&&!$('#view-control')&&(world||unmap)){
+  const fs=el('fieldset',{id:'view-control'},'<legend>View</legend><div class="view-toggles"></div>');
+  const row=fs.querySelector('.view-toggles');if(world)row.append(world);if(unmap)row.append(unmap);
+  layersBox.prepend(fs);
+ }
+ const random=$('#random-entry'),saved=$('#toggle-saved');
+ if(random&&saved&&random.parentElement!==saved.parentElement)saved.after(random);
+ const reset=$('#zoom-reset');if(reset&&/Map overview/.test(reset.textContent))reset.textContent='Overview';
+}
+
 /* 2. One close rule: every drawer gets a × in its corner; the separate header button goes. */
 function closeRule(){
  for(const b of $$('.map-panel-close,#close-filters')){if(b.dataset.uiX)continue;b.dataset.uiX='1';b.setAttribute('aria-label','Close');b.title='Close (Esc)';if(b.id!=='close-filters')b.textContent='×';}
@@ -214,7 +230,7 @@ function selectionLinks(){
   if(!r||(pub&&!pub.has(r.status))){if(box.firstChild)box.replaceChildren();return;}
   const page='maker/'+encodeURIComponent(r.id)+'.html',film=st.film?'#'+encodeURIComponent(st.film):'';
   const fix='corrections.html?about='+encodeURIComponent(r.name)+'&record='+encodeURIComponent(r.id)+'&page='+encodeURIComponent(new URL(page,location.href).href);
-  const html=`<a href="${page}${film}">Page</a><a href="${page}#cite">Cite</a><a href="${fix}">Correct</a>`;if(box.innerHTML!==html)box.innerHTML=html;};
+  const html=`<a href="${page}${film}" title="This filmmaker's permanent page on the atlas">Filmmaker page</a><a href="${page}#cite" title="How to cite this record">Cite</a><a href="${fix}" title="Tell us what is wrong or missing">Suggest a correction</a>`;if(box.innerHTML!==html)box.innerHTML=html;};
  let t=0;const later=()=>{clearTimeout(t);t=setTimeout(draw,60);};
  const name=bar.querySelector('#selection-name');if(name)new MutationObserver(later).observe(name,{childList:true,characterData:true,subtree:true});
  new MutationObserver(later).observe(bar,{attributes:true,attributeFilter:['hidden']});addEventListener('hashchange',later);document.addEventListener('click',later);draw();
@@ -256,13 +272,30 @@ function headerNav(tries=0){
  if(about&&nav.firstElementChild!==about)nav.prepend(about);
  if(!nav.querySelector('.watch-link')){const w=el('a',{href:'watch.html',class:'watch-link'},'Watch');nav.append(w);}
  const hh=()=>root.style.setProperty('--header-h',Math.round($('header')?.getBoundingClientRect().height||140)+'px');hh();addEventListener('resize',hh);
- if(!nav.querySelector('.more-menu')){const m=el('details',{class:'more-menu'},'<summary>More</summary><div><a href="maker/">Filmmakers A–Z</a><a href="languages.html">Languages</a><a href="themes.html">Themes</a><a href="timeline.html">Timeline</a><a href="globe-lab/">Globe (preview)</a><a href="screening.html" data-screen-count>Screening list</a><a href="data.html">Data</a><a href="corrections.html">Suggest a correction</a></div>');nav.append(m);
+ if(!nav.querySelector('.more-menu')){const m=el('details',{class:'more-menu'},'<summary>More</summary><div><span class="more-group">Browse</span><a href="languages.html">Languages</a><a href="themes.html">Themes</a><a href="timeline.html">Timeline</a><a href="globe-lab/">Globe (preview)</a><span class="more-group">Your list</span><a href="screening.html" data-screen-count>Screening list</a><span class="more-group">About the data</span><a href="data.html">Data and downloads</a><a href="corrections.html">Suggest a correction</a></div>');nav.append(m);
   document.addEventListener('pointerdown',e=>{if(m.open&&!m.contains(e.target))m.open=false;});document.addEventListener('keydown',e=>{if(e.key==='Escape'&&m.open){m.open=false;m.querySelector('summary').focus();}});
   const sc=document.createElement('script');sc.src='assets/screening.js';document.head.append(sc);}
 }
 
 whenReady(()=>{
- for(const step of [a11y,headerNav,sheet,watchMarks,selectionLinks,toolbar,closeRule,countries,layers,mapKey,indexPanel,featured,shortcuts,territoryFocus]){try{step();}catch(err){console.warn('UI pass step failed:',step.name,err);}}
+ for(const step of [a11y,headerNav,sheet,watchMarks,selectionLinks,toolbar,closeRule,countries,layers,mapKey,indexPanel,featured,shortcuts,territoryFocus,streamline]){try{step();}catch(err){console.warn('UI pass step failed:',step.name,err);}}
  setTimeout(closeRule,1500);
 });
+})();
+
+/* 2026-11-08: one clear film / filmmaker panel.
+   While a film or filmmaker is open, its own heading names it, so the path line above is hidden (no second link to
+   the same filmmaker), and the map's "More films" drawer stays closed because the panel already lists the filmography.
+   A newly opened film or filmmaker starts at its top, below the sticky toolbar, so nothing is cut off. */
+(()=>{const index=document.getElementById('index');if(!index)return;let last='';
+ const sync=()=>{const d=index.querySelector('.profile-dossier');document.body.classList.toggle('atlas-dossier',!!d);
+  const bar=document.querySelector('.index-command-bar');if(bar)index.style.setProperty('--cmdbar-h',bar.offsetHeight+'px');
+  const key=d?(d.querySelector('h2')?.textContent||'')+'|'+d.className:'';
+  if(d&&key!==last){const top=d.closest('article')||d;const h=bar?bar.offsetHeight:0;
+   requestAnimationFrame(()=>{const y=top.getBoundingClientRect().top-index.getBoundingClientRect().top+index.scrollTop-h-8;if(Math.abs(index.scrollTop-y)>4)index.scrollTop=Math.max(0,y);});}
+  last=key;};
+ new MutationObserver(()=>requestAnimationFrame(sync)).observe(index,{childList:true,subtree:true});sync();
+ // the filmmaker named under a film title opens them here in the atlas: say so
+ const label=()=>{for(const b of index.querySelectorAll('.film-maker-route:not([data-labelled])')){b.dataset.labelled='1';b.title='Open this filmmaker in the atlas';}};
+ new MutationObserver(label).observe(index,{childList:true,subtree:true});label();
 })();
