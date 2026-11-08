@@ -1,0 +1,30 @@
+name: Atlas health (nightly)
+on:
+  schedule:
+    - cron: "17 9 * * *"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  health:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          pip install requests playwright==1.* >/dev/null
+          python -m playwright install --with-deps chromium >/dev/null
+      - run: |
+          python3 -m http.server 8772 --bind 127.0.0.1 >/tmp/http.log 2>&1 &
+          sleep 2; mkdir -p out
+          python3 tools/pages/dump.py http://127.0.0.1:8772/beta/index.html out/public.json
+          python3 tools/health/check.py out/public.json
+          cat out/report.md >> "$GITHUB_STEP_SUMMARY"
+      - name: Publish to ci-health branch (not deployed)
+        if: always()
+        run: |
+          cd out
+          git init -q -b ci-health
+          git config user.name "github-actions"; git config user.email "github-actions@users.noreply.github.com"
+          git add . && git commit -q -m "Atlas health $(date -u +%F)"
+          git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" ci-health
