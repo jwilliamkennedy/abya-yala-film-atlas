@@ -39,13 +39,15 @@ for i, f in enumerate(films): f['i'] = i
 def item(f):
     makers = ', '.join(f'<a href="./#view=films&amp;maker={esc(rid)}&amp;film={esc(fid)}">{esc(m)}</a>' for rid, m, fid in f['makers'])
     tag = '<span class="tag">Free in Canada</span>' if f['canadaOnly'] else ''
+    rid0, m0, fid0 = f['makers'][0]
+    scr = f'<button type="button" class="scr" data-screen data-fid="{esc(fid0)}" data-rid="{esc(rid0)}" data-title="{esc(f["title"])}" data-year="{esc(f["year"] or "")}" data-maker="{esc(", ".join(m for _, m, _ in f["makers"]))}" data-page="maker/{esc(rid0)}.html#{esc(fid0)}" data-watch="{esc(f["url"])}">＋ Screening list</button>'
     play = f'<button type="button" class="play" data-embed="{esc(f["embed"])}" data-title="{esc(f["title"])}" aria-label="Play {esc(f["title"])} here">▶ Play here</button>' if f['embed'] else ''
     host = urlparse(f['url']).netloc.replace('www.', '')
     peoples = ' · '.join(dict.fromkeys(people_label(rid) for rid, _, _ in f['makers']))
     q = esc(' '.join([f['title'], f['source'], peoples] + [m for _, m, _ in f['makers']]).lower())
     return (f'<li data-q="{q}" data-i="{f["i"]}"><div class="row"><a class="t" href="{esc(f["url"])}" target="_blank" rel="noopener">{esc(f["title"])}</a>'
             f'<span class="meta">{esc(f["year"] or "")}{" · " if f["year"] else ""}{esc(host)}</span></div>'
-            f'<span class="by">{makers} <span class="ppl">{esc(peoples)}</span>{tag}</span>{play}<div class="slot"></div></li>')
+            f'<span class="by">{makers} <span class="ppl">{esc(peoples)}</span>{tag}</span>{play}{scr}<div class="slot"></div></li>')
 
 def group(name, key, order=None, blurb=None):
     groups = {}
@@ -74,7 +76,7 @@ views = (group('source', lambda f: [f['source']], ORDER, BLURB)
 pool = [f for f in films if f['embed'] and not f['canadaOnly'] and f['source'] == 'National Film Board of Canada']
 pool_js = json.dumps([{'t': f['title'], 'y': f['year'], 'e': f['embed'], 'u': f['url'], 'm': [[r, m, fid] for r, m, fid in f['makers']]} for f in pool], ensure_ascii=False)
 total = len(films); playable = sum(1 for f in films if f['embed'])
-nav = '<nav class="primary" aria-label="Explore the atlas"><a href="about.html">About</a><a href="./#view=filmmakers">Filmmakers</a><a href="./#view=films">Films</a><a href="./#view=land">Land</a><a href="./?constellate=1">Constellate</a><a href="watch.html" aria-current="page">▸ Watch</a></nav>'
+nav = '<nav class="primary" aria-label="Explore the atlas"><a href="about.html">About</a><a href="./#view=filmmakers">Filmmakers</a><a href="./#view=films">Films</a><a href="./#view=land">Land</a><a href="./?constellate=1">Constellate</a><a href="watch.html" aria-current="page">▸ Watch</a><a href="screening.html" data-screen-count>Screening list</a></nav>'
 page = f'''<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="referrer" content="no-referrer">
 <title>Watch · Indigenous Cinema Atlas</title>
@@ -107,7 +109,7 @@ ol{{list-style:none;margin:0;padding:0}}li{{padding:12px 0;border-bottom:1px sol
 li .meta{{font-size:13px;color:var(--muted);white-space:nowrap}}li .by{{display:block;font-size:14px;color:var(--muted)}}.ppl{{margin-left:6px}}
 .tag{{margin-left:10px;font-size:12px;padding:1px 8px;border:1px solid var(--line);border-radius:999px}}
 .play{{margin-top:6px;font:inherit;font-size:13px;min-height:30px;padding:0 12px;border:1px solid var(--accent);border-radius:999px;background:transparent;color:var(--accent);cursor:pointer}}
-.slot .frame{{margin-top:10px}}.credit,.empty{{color:var(--muted);font-size:14px;margin-top:32px}}
+.slot .frame{{margin-top:10px}}.scr{{margin:6px 0 0 8px;font:inherit;font-size:13px;min-height:30px;padding:0 12px;border:1px solid var(--line);border-radius:999px;background:transparent;color:var(--ink);cursor:pointer}}.scr[aria-pressed=true]{{background:var(--ink);color:var(--bg)}}.credit,.empty{{color:var(--muted);font-size:14px;margin-top:32px}}
 @media (max-width:560px){{.row{{flex-direction:column;gap:0}}}}
 </style></head><body>
 <header><a class="brand" href="./"><img src="assets/icon-1107.svg" alt=""><span>Indigenous Cinema Atlas<small>Abya Yala and Turtle Island</small></span></a>{nav}</header>
@@ -143,7 +145,7 @@ document.addEventListener('click',e=>{{const b=e.target.closest('.play');if(!b)r
  for(const s of $$('.slot'))s.replaceChildren();for(const p of $$('.play'))p.textContent='▶ Play here';
  slot.innerHTML='<div class="frame"><iframe src="'+esc(b.dataset.embed)+'" title="'+esc(b.dataset.title)+'" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>';b.textContent='Close player';}});
 document.addEventListener('keydown',e=>{{if(e.key==='/'&&document.activeElement!==q){{e.preventDefault();q.focus();}}}});}})();
-</script></body></html>'''
+</script><script src="assets/screening.js"></script></body></html>'''
 open(sys.argv[4], 'w', encoding='utf-8').write(page)
 links = {}
 for f in d['found']:
