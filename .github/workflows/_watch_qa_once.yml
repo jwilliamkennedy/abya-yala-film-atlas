@@ -35,7 +35,7 @@ jobs:
           evalSource('beta/assets/screening.js');
           const assertCount=(n,msg)=>{
            const v=d.querySelector('#count')?.textContent;
-           assert.equal(v,n+' films',msg+' -> '+v);
+           assert.equal(v,n+(n===1?' film':' films'),msg+' -> '+v);
           };
           const act=(sel,ev='change')=>sel.dispatchEvent(new w.Event(ev,{bubbles:true}));
           const field=k=>d.querySelector('select[data-filter="'+k+'"]');
@@ -100,6 +100,6 @@ jobs:
         run: |
           git config user.name atlas-qa
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git rm .github/workflows/_watch_qa_once.yml
+          git rm .github/workflows/_watch_qa_once.yml .github/_watch_qa_failure.txt
           git commit -m "QA PASS: 420 Watch films, 366 research players, indexes and screening controls verified"
           git push origin HEAD:main
