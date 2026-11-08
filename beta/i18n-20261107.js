@@ -74,7 +74,7 @@ const T=[
 ['From year','Desde el año','Do ano','À partir de'],['To year','Hasta el año','Até o ano','Jusqu’à'],
 ['Include undated works','Incluir obras sin fecha','Incluir obras sem data','Inclure les œuvres non datées'],['Film language','Idioma de la película','Idioma do filme','Langue du film'],
 ['Any language','Cualquier idioma','Qualquer idioma','Toutes les langues'],['Indigenous languages','Lenguas indígenas','Línguas indígenas','Langues autochtones'],
-['Other languages','Otras lenguas','Outras línguas','Autres langues'],['Film form','Forma','Forma','Forme'],['Any form','Cualquier forma','Qualquer forma','Toutes les formes'],
+['Other languages','Otras lenguas','Outras línguas','Autres langues'],['Film form','Forma','Forma','Forme'],['Any theme','Cualquier tema','Qualquer tema','Tous les thèmes'],['Languages','Lenguas','Línguas','Langues'],['Themes','Temas','Temas','Thèmes'],['Any form','Cualquier forma','Qualquer forma','Toutes les formes'],
 ['Film order','Orden','Ordem','Ordre'],['Title','Título','Título','Titre'],['Year','Año','Ano','Année'],
 ['Include research candidates','Incluir candidatos en investigación','Incluir candidatos em pesquisa','Inclure les candidats à l’étude'],
 ['Clear filters','Borrar filtros','Limpar filtros','Effacer les filtres'],['Done','Listo','Pronto','Terminé'],

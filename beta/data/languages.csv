@@ -1,0 +1,32 @@
+label,also_credited_as,glottocode,glottolog_name,glottolog_level,iso639_3,match,indigenous,note,films
+Anishinaabemowin (Ojibwe),Ojibwe; Ojibway; Anishinaabemowin,ojib1241,Ojibwa,family,,group,yes,Credits name the language without a regional variety,2
+Atikamekw,,atik1240,Atikamekw,language,atj,exact,yes,,1
+Ayuujk (Mixe),Ayuujk / Mixe; Ayuujk; Mixe,mixe1286,Mixe,family,,group,yes,Credits name Ayuujk without a variety,1
+Blackfoot,,siks1238,Siksika,language,bla,exact,yes,,2
+Cherokee,,cher1273,Cherokee,language,chr,exact,yes,,1
+Cree,,cree1272,Cree,family,cre,group,yes,Credits name Cree without a variety,2
+Plains Cree,Nehiyawewin,plai1258,Plains Cree,language,crk,exact,yes,,1
+Denaakk’e (Koyukon),Denaakk’e; Koyukon,koyu1237,Koyukon,language,koy,exact,yes,,1
+Dene,,,,,,unresolved,yes,Several Dene languages; the credit does not say which,1
+Diné (Navajo),Diné; Navajo; Diné Bizaad,nava1243,Navajo,language,nav,exact,yes,,3
+Garifuna,,gari1256,Garifuna,language,cab,exact,yes,,1
+Haida,,haid1248,Haida,family,hai,group,yes,,1
+Hän,,hann1241,Han,language,haa,exact,yes,,1
+Inuktitut,,east2534,Eastern Canadian Inuktitut,language,ike,probable,yes,Inuktitut in Canadian credits usually names the eastern variety,1
+Iñupiaq,Inupiaq,inup1234,Alaskan Inupiaq,family,ipk,group,yes,,1
+Kalaallisut,Kalaallisut (Greenlandic); Greenlandic,kala1399,Kalaallisut,language,kal,exact,yes,,2
+Kichwa,,colo1257,Colombia-Ecuador Quechua,family,,group,yes,Kichwa names the Ecuadorian Quechua varieties,1
+Lakota,,lako1247,Lakota,language,lkt,exact,yes,,0
+Mohawk,Kanien’kéha,moha1258,Mohawk,language,moh,exact,yes,,1
+Nlakapamuxcheen,,thom1243,Thompson,language,thp,exact,yes,,1
+Payómkawichum Chaamteela,Luiseño,luis1253,Luiseno-Juaneño,language,lui,exact,yes,,1
+Q’eqchi’,,kekc1242,Q'eqchi',language,kek,exact,yes,,1
+Secwépemctsín,Secwepemctsín; Secwepemctsin; Shuswap,shus1248,Shuswap,language,shs,exact,yes,,2
+Taíno,Taíno dialect of Island Arawak Wahiyani,tain1254,Taino,language,tnq,exact,yes,,1
+Tewa,,tewa1261,Tewa,family,,group,yes,,1
+Tupí,,,,,,unresolved,yes,Tupí names several Tupian languages; the credit does not say which,1
+English,,stan1293,English,language,eng,exact,no,,58
+Spanish,Español,stan1288,Spanish,language,spa,exact,no,,7
+Portuguese,Português,port1283,Portuguese,language,por,exact,no,,1
+French,Français,stan1290,French,language,fra,exact,no,,0
+Vietnamese,,viet1252,Vietnamese,language,vie,exact,no,,1

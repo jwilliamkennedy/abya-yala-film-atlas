@@ -122,6 +122,7 @@ function indexPanel(){
   if(t?.value)list.push(['To '+t.value,()=>{t.value='';fire(t,'input');}]);
   if(lang?.value)list.push([label(lang),()=>{lang.value='';fire(lang,'change');}]);
   if(form?.value)list.push([label(form),()=>{form.value='';fire(form,'change');}]);
+  const th=val('filter-theme');if(th?.value)list.push([label(th),()=>{th.value='';fire(th,'change');}]);
   if(u&&!u.checked)list.push(['Dated works only',()=>{u.checked=true;fire(u,'change');}]);
   if(res&&!res.checked)list.push(['Research candidates hidden',()=>{res.checked=true;fire(res,'change');}]);
   chips.replaceChildren(...list.map(([text,clear])=>{const b=el('button',{type:'button',class:'filter-chip','aria-label':'Remove filter: '+text},`${text}<span aria-hidden="true">×</span>`);b.onclick=()=>{clear();setTimeout(render,0);};return b;}));
@@ -255,7 +256,7 @@ function headerNav(tries=0){
  if(about&&nav.firstElementChild!==about)nav.prepend(about);
  if(!nav.querySelector('.watch-link')){const w=el('a',{href:'watch.html',class:'watch-link'},'Watch');nav.append(w);}
  const hh=()=>root.style.setProperty('--header-h',Math.round($('header')?.getBoundingClientRect().height||140)+'px');hh();addEventListener('resize',hh);
- if(!nav.querySelector('.more-menu')){const m=el('details',{class:'more-menu'},'<summary>More</summary><div><a href="maker/">Filmmakers A–Z</a><a href="timeline.html">Timeline</a><a href="globe-lab/">Globe (preview)</a><a href="screening.html" data-screen-count>Screening list</a><a href="data.html">Data</a><a href="corrections.html">Suggest a correction</a></div>');nav.append(m);
+ if(!nav.querySelector('.more-menu')){const m=el('details',{class:'more-menu'},'<summary>More</summary><div><a href="maker/">Filmmakers A–Z</a><a href="languages.html">Languages</a><a href="themes.html">Themes</a><a href="timeline.html">Timeline</a><a href="globe-lab/">Globe (preview)</a><a href="screening.html" data-screen-count>Screening list</a><a href="data.html">Data</a><a href="corrections.html">Suggest a correction</a></div>');nav.append(m);
   document.addEventListener('pointerdown',e=>{if(m.open&&!m.contains(e.target))m.open=false;});document.addEventListener('keydown',e=>{if(e.key==='Escape'&&m.open){m.open=false;m.querySelector('summary').focus();}});
   const sc=document.createElement('script');sc.src='assets/screening.js';document.head.append(sc);}
 }
