@@ -21,7 +21,7 @@ const showNow=()=>{const pool=data.filter(playable);if(!pool.length){$('#now').h
  nowFrame.src=l.embed;nowFrame.title='Player: '+f.t;
  nowTitle.textContent=f.t+(f.y?' ('+f.y+')':'');
  nowBy.innerHTML=f.makers.map(m=>`<a class="in" href="maker/${encodeURIComponent(m.id)}.html">${esc(m.name)}</a>`).join(', ')+
-  (peopleText(f)?` · ${esc(peopleText(f))}`:'')+` · <a class="out" href="${esc(l.url)}" target="_blank" rel="noopener">Open at ${esc(host(l.url))} ↗</a>`;};
+  (peopleText(f)?` · ${esc(peopleText(f))}`:'')+` · <a class="out" href="${esc(l.url)}" target="_blank" rel="noopener">Watch · ${esc(host(l.url))} ↗</a>`;};
 $('#next').onclick=showNow;
 
 /* list */
@@ -34,7 +34,7 @@ const row=f=>{const l=playable(f),out=f.links[0];
  return `<li data-fid="${esc(f.fid)}"><div class="row"><span class="t">${esc(f.t)}</span><span class="meta">${f.y||''}</span></div>
   <span class="by">${f.makers.map(m=>`<a class="in" href="maker/${encodeURIComponent(m.id)}.html" title="This filmmaker on the atlas">${esc(m.name)}</a>`).join(', ')}${peopleText(f)?` <span class="ppl">· ${esc(peopleText(f))}</span>`:''}</span>
   <div class="acts">${l?`<button type="button" class="play" data-embed="${esc(l.embed)}" aria-expanded="false">▶ Play here</button>`:''}
-   ${f.links.map(x=>`<a class="out" href="${esc(x.url)}" target="_blank" rel="noopener" title="${esc(x.note||x.label)}">${l&&x===l?'Open at ':'Watch at '}${esc(host(x.url))} ↗</a>`).join('')}
+   ${f.links.map(x=>`<a class="out" href="${esc(x.url)}" target="_blank" rel="noopener" title="${esc(x.note||x.label)}">Watch · ${esc(host(x.url))} ↗</a>`).join('')}
    <button type="button" class="scr" data-screen data-fid="${esc(f.fid)}" data-rid="${esc(f.makers[0].id)}" data-title="${esc(f.t)}" data-year="${f.y||''}" data-maker="${esc(makerText(f))}" data-page="maker/${encodeURIComponent(f.makers[0].id)}.html#${encodeURIComponent(f.fid)}" data-watch="${esc(out.url)}">＋ Screening list</button></div>
   <div class="slot"></div></li>`;};
 const render=()=>{const q=norm(state.q).trim();

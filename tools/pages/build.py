@@ -39,6 +39,14 @@ ul.dir{list-style:none;padding:0;margin:0;columns:2 280px;column-gap:28px}ul.dir
 #q{width:100%;font:inherit;padding:9px 12px;border:1px solid var(--line);border-radius:4px;background:transparent;color:var(--ink);margin:10px 0}
 @media (max-width:560px){ol.films li{grid-template-columns:88px 1fr}.thumb,.noimg{width:88px}}
 '''
+INTERNAL = re.compile(r'verif|pending|confirm|do not|not imported|inferred|secure|rights|audit|research|mirror|staged|promot|checked|retain|import|lead\b|workbook|queue|assess|establish|independent|catalog|discovery|evidence|programme|program |listed|documented|review|preserve|per source|attribution|credits? the|describes', re.I)
+def public_credit(c):
+    """what a visitor reads: the credit's role, plus a collaborator's name when the detail gives one; never the review wording"""
+    c = str(c or '')
+    if ' — ' not in c: return c
+    role, d = c.split(' — ', 1)
+    return role if INTERNAL.search(d) else role + (' ' + d if d.lower().startswith('with ') else ' · ' + d)
+
 def header(depth):
     up = '../' * depth
     return (f'<header><a class="brand" href="{up}./"><img src="{up}assets/icon-1107.svg" alt=""><span>Indigenous Cinema Atlas<small>Abya Yala and Turtle Island</small></span></a>'
@@ -66,15 +74,17 @@ for r in data:
     for f in films:
         img = (f'<img class="thumb" src="{esc(f["image"])}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.replaceWith(Object.assign(document.createElement(\'div\'),{{className:\'noimg\',textContent:\'{esc((sortkey(f["title"])[:1] or "#").upper())}\'}}))">'
                if f['image'] else f'<div class="noimg" aria-hidden="true">{esc((sortkey(f["title"])[:1] or "#").upper())}</div>')
-        links = []
-        for w in f['watch'][:2]: links.append(f'<a href="{esc(w)}" target="_blank" rel="noopener">▶ Watch</a>')
-        if f['source']: links.append(f'<a href="{esc(f["source"])}" target="_blank" rel="noopener">Credit source ↗</a>')
-        if f['image'] and f['imagePage']: links.append(f'<a href="{esc(f["imagePage"])}" target="_blank" rel="noopener">Image: {esc(urlparse(f["imagePage"]).netloc.replace("www.",""))} ↗</a>')
+        links, used = [], set()
+        host = lambda u: urlparse(u).netloc.replace('www.', '')
+        for w in f['watch'][:2]:
+            if w not in used: used.add(w); links.append(f'<a href="{esc(w)}" target="_blank" rel="noopener">Watch · {esc(host(w))} ↗</a>')
+        if f['source'] and f['source'] not in used: used.add(f['source']); links.append(f'<a href="{esc(f["source"])}" target="_blank" rel="noopener">Credit source · {esc(host(f["source"]))} ↗</a>')
+        if f['image'] and f['imagePage'] and f['imagePage'] not in used: links.append(f'<a href="{esc(f["imagePage"])}" target="_blank" rel="noopener">Image · {esc(host(f["imagePage"]))} ↗</a>')
         links.append(f'<a href="../#view=films&amp;maker={esc(r["id"])}&amp;film={esc(f["id"])}">On the map</a>')
         links.append(f'<button type="button" class="scr" data-screen data-fid="{esc(f["id"])}" data-rid="{esc(r["id"])}" data-title="{esc(f["title"])}" data-year="{esc(f["year"] or "")}" data-maker="{esc(nm)}" data-page="{esc(r["id"])}.html#{esc(f["id"])}" data-watch="{esc((f["watch"] or [""])[0])}">＋ Screening list</button>')
-        meta = ' · '.join(x for x in [str(f['year']) if f['year'] else '', f['credit'], f['medium'] if f['medium'] and f['medium'] != 'Film' else '', f['languages']] if x)
+        meta = ' · '.join(x for x in [str(f['year']) if f['year'] else '', public_credit(f['credit']), f['medium'] if f['medium'] and f['medium'] != 'Film' else '', f['languages']] if x)
         items.append(f'<li id="{esc(f["id"])}">{img}<div><p class="ft">{esc(f["title"])}</p><p class="fm">{esc(meta)}</p><p class="fl">{"".join(links)}</p></div></li>')
-    srcs = ''.join(f'<li><a href="{esc(s["url"])}" target="_blank" rel="noopener">{esc(urlparse(s["url"]).netloc.replace("www.",""))}</a>{" · " + esc(s["type"]) if s["type"] else ""}{" — " + esc(s["evidence"][:140]) if s["evidence"] else ""}</li>' for s in r['sources'])
+    srcs = ''.join(f'<li><a href="{esc(s["url"])}" target="_blank" rel="noopener">{esc(urlparse(s["url"]).netloc.replace("www.",""))}</a>{" · " + esc(s["type"]) if s["type"] else ""}{" — “" + esc(s["evidence"][:160]) + "”" if s["evidence"] and not INTERNAL.search(s["evidence"]) else ""}</li>' for s in r['sources'])
     mla = f'“{esc(nm)}.” <i>{SITE}</i>, created by John Kennedy Godoy, University of Colorado Boulder, 2026, <span data-url>{esc(BASE)}/maker/{esc(r["id"])}.html</span>. Accessed <span data-acc></span>.'
     chi = f'Godoy, John Kennedy. “{esc(nm)}.” <i>{SITE}</i>. University of Colorado Boulder, 2026. <span data-urlfull>{esc(BASE)}/maker/{esc(r["id"])}.html</span>.'
     ris = f'TY  - ELEC\nTI  - {nm}\nT2  - {SITE}\nAU  - Godoy, John Kennedy\nPB  - University of Colorado Boulder\nPY  - 2026\nUR  - {{URL}}\nY2  - {{Y}}\nER  - \n'
