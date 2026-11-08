@@ -13,3 +13,7 @@ g.land-thumb .land-thumb-cap{font-family:var(--serif)}
 /* Watch link in the header */
 header nav.primary .watch-link{display:inline-flex;align-items:center;gap:6px}
 header nav.primary .watch-link::before{content:'';width:0;height:0;border-left:7px solid currentColor;border-top:4.5px solid transparent;border-bottom:4.5px solid transparent;opacity:.85}
+/* Interface language switcher */
+header .ui-lang{display:inline-flex;align-items:center;margin-left:8px}
+header .ui-lang select{font:inherit;font-size:13px;min-height:30px;padding:0 6px;border:1px solid var(--reading-line,#c9d0c6);border-radius:999px;background:transparent;color:inherit;cursor:pointer}
+.visually-hidden{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
