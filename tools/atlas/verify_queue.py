@@ -1,6 +1,7 @@
 """Check Queue proposals against their own sources (runs on a GitHub runner, which can reach the web).
 
-usage: python3 tools/atlas/verify_queue.py <atlas.xlsx> <out dir>
+usage: python3 tools/atlas/verify_queue.py <atlas.xlsx> <out dir> [--leads]
+--leads: check "lead" rows instead (identity quote and credit page), to find leads ready for review; nothing changes
 For every Queue row with queue_status "new" and an action other than "lead":
   identity  (add filmmaker): the source_1_url page contains the source_1_quote and the filmmaker's name
   credit    (add filmmaker / add film): the film_source page names the film and the filmmaker
@@ -70,12 +71,16 @@ def surname_hit(text, name):
     t = norm(text)
     return bool(parts) and (parts[-1] in t.split() or all(p in t for p in parts[:2]))
 
-def main(path, out):
+def main(path, out, leads=False):
     os.makedirs(out, exist_ok=True)
     wb = load_workbook(path, data_only=True)
     rows = build.read_sheet(wb['Queue'], QUEUE_COLS)
     v = build.cellnorm
-    todo = [r for r in rows if v(r.get('queue_status')) == 'new' and v(r.get('queue_action')) not in ('lead', '')]
+    if leads:
+        todo = [dict(r, queue_action='add filmmaker') for r in rows if v(r.get('queue_status')) == 'new' and v(r.get('queue_action')) == 'lead'
+                and v(r.get('source_1_url')).startswith('http') and v(r.get('source_1_quote'))]
+    else:
+        todo = [r for r in rows if v(r.get('queue_status')) == 'new' and v(r.get('queue_action')) not in ('lead', '')]
     report = []
     for r in todo:
         a, name, title = v(r.get('queue_action')), v(r.get('name')), v(r.get('title'))
@@ -122,4 +127,4 @@ def main(path, out):
             fh.write('\n')
 
 if __name__ == '__main__':
-    main(sys.argv[1], sys.argv[2])
+    main(sys.argv[1], sys.argv[2], '--leads' in sys.argv)
