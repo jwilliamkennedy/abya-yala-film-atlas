@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "If you use the Indigenous Cinema Atlas or its data, please cite it as below."
+title: "Indigenous Cinema Atlas: Abya Yala and Turtle Island"
+type: dataset
+authors:
+  - family-names: Godoy
+    given-names: John Kennedy
+    affiliation: University of Colorado Boulder
+repository-code: "https://github.com/jwilliamkennedy/abya-yala-film-atlas"
+url: "https://jwilliamkennedy.github.io/abya-yala-film-atlas/"
+abstract: >-
+  A digital atlas of films by Indigenous filmmakers across Abya Yala and Turtle Island, linking each filmmaker's
+  sourced affiliation to Native Land Digital / MapMaker territory references, with film credits, sources and viewing links.
+keywords:
+  - Indigenous cinema
+  - Abya Yala
+  - Turtle Island
+  - digital humanities
+  - film studies
+  - Critical Indigenous Studies
