@@ -267,6 +267,7 @@ FILM-0073,Night Raiders,,theme,State Violence and Genocide,Sovereignty and Polit
 FILM-0073,Night Raiders,,theme,Kinship,Lives and Relations,https://www.themoviedb.org/movie/795778,tagged from a published synopsis
 FILM-0073,Night Raiders,,form,Fiction,,https://www.themoviedb.org/movie/795778,from the published synopsis
 FILM-0073,Night Raiders,,length,Feature,,https://www.themoviedb.org/movie/795778,from the published synopsis
+DIR-0085-F1,Polar Sun,2016,length,Short,,https://www.theinc.ca/events/screening-series/imaginenative-femme-totale,"normalised from the recorded form ""Short drama"""
 FILM-SRC-0394,If the Weather Permits,,theme,Elders and Knowledge,Knowledge and Continuity,https://www.themoviedb.org/movie/288991,tagged from a published synopsis; primary theme
 FILM-SRC-0394,If the Weather Permits,,theme,Youth,Lives and Relations,https://www.themoviedb.org/movie/288991,tagged from a published synopsis
 FILM-SRC-0394,If the Weather Permits,,form,Documentary,,https://www.themoviedb.org/movie/288991,from the published synopsis
@@ -367,6 +368,7 @@ DIR-0121-W1031-2,Uvanga,2013,length,Feature,,https://www.themoviedb.org/movie/23
 FILM-0083,Finality of Dusk,,theme,Environmental Change,Land and Environment,https://www.themoviedb.org/movie/1291225,tagged from a published synopsis; primary theme
 FILM-0083,Finality of Dusk,,form,Fiction,,https://www.themoviedb.org/movie/1291225,from the published synopsis
 FILM-0083,Finality of Dusk,,length,Feature,,https://www.themoviedb.org/movie/1291225,from the published synopsis
+DIR-0122-F3,Exposed Nerves,2016,length,Short,,https://www.theinc.ca/events/screening-series/imaginenative-femme-totale,"normalised from the recorded form ""Short drama"""
 RESEARCH-FILM-20261031-800-0021,Embers of Queer Joy,2025,theme,LGBTQIA2S,Lives and Relations,https://www.themoviedb.org/movie/1498713,tagged from a published synopsis; primary theme
 RESEARCH-FILM-20261031-800-0021,Embers of Queer Joy,2025,length,Short,,https://www.themoviedb.org/movie/1498713,from the published synopsis
 FILM-SRC-NFB-00065,Natsik Hunting,,theme,Food Sovereignty,Land and Environment,https://www.themoviedb.org/movie/471427,tagged from a published synopsis; primary theme
@@ -1012,6 +1014,8 @@ FILM-0273,Fancy Dance,2023,length,Feature,,https://www.themoviedb.org/movie/1058
 FILM-0274,Inyanka Sni,2018,theme,Women and Gender,Lives and Relations,https://www.themoviedb.org/movie/739779,tagged from a published synopsis; primary theme
 FILM-0274,Inyanka Sni,2018,form,Fiction,,https://www.themoviedb.org/movie/739779,from the published synopsis
 FILM-0274,Inyanka Sni,2018,length,Short,,https://www.themoviedb.org/movie/739779,from the published synopsis
+DIR-0334-F2,I Am Thy Weapon,2016,length,Short,,https://www.theinc.ca/events/screening-series/imaginenative-femme-totale,"normalised from the recorded form ""Short drama"""
+DIR-0334-F3,Murder in Big Horn,2023,length,Series,,https://www.sundance.org/blogs/your-guide-to-the-indigenous-works-at-the-2023-sundance-film-festival/,"normalised from the recorded form ""Docuseries"""
 FILM-0275,Shash Jaa’: Bears Ears,2016,language,English,stan1293,https://cinelasamericas.org/panorama-short-films-claiff20/2017/shash-jaa-bears-ears/,recorded with the film
 FILM-0275,Shash Jaa’: Bears Ears,2016,language,Diné (Navajo),nava1243,https://cinelasamericas.org/panorama-short-films-claiff20/2017/shash-jaa-bears-ears/,recorded with the film
 FILM-0275,Shash Jaa’: Bears Ears,2016,form,Documentary,,https://cinelasamericas.org/panorama-short-films-claiff20/2017/shash-jaa-bears-ears/,"normalised from the recorded form ""Documentary short"""
@@ -1351,6 +1355,8 @@ NEW-2f279d2a517d-WORK-1,The Woman Who Married A Bear,,length,Short,,https://imag
 NEW-ff0e80bc0b40-WORK-1,Bimaadizi/Along in Space and Time,2026,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,recorded with the film
 NEW-ff0e80bc0b40-WORK-1,Bimaadizi/Along in Space and Time,2026,form,Fiction,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,"normalised from the recorded form ""Dramatic Short"""
 NEW-ff0e80bc0b40-WORK-1,Bimaadizi/Along in Space and Time,2026,length,Short,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,"normalised from the recorded form ""Dramatic Short"""
+NEW-ea1a043758b3-F1,Smoke That Travels,2016,form,Documentary,,https://www.theinc.ca/events/screening-series/imaginenative-femme-totale,"normalised from the recorded form ""Short documentary"""
+NEW-ea1a043758b3-F1,Smoke That Travels,2016,length,Short,,https://www.theinc.ca/events/screening-series/imaginenative-femme-totale,"normalised from the recorded form ""Short documentary"""
 NEW-9be87ea2f6c9-WORK-1,Love Is Trash,2025,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,recorded with the film
 NEW-9be87ea2f6c9-WORK-1,Love Is Trash,2025,form,Fiction,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,"normalised from the recorded form ""Dramatic Short"""
 NEW-9be87ea2f6c9-WORK-1,Love Is Trash,2025,length,Short,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,"normalised from the recorded form ""Dramatic Short"""
@@ -1743,6 +1749,11 @@ RESEARCH-FILM-20261031-800-NEW-363,He Moʻolelo Wahi Pana (A Storied Landscape),
 RESEARCH-FILM-20261031-800-NEW-363,He Moʻolelo Wahi Pana (A Storied Landscape),2025,theme,Cosmology and Origin Stories,Knowledge and Continuity,https://www.themoviedb.org/movie/1713582,tagged from a published synopsis
 RESEARCH-FILM-20261031-800-NEW-363,He Moʻolelo Wahi Pana (A Storied Landscape),2025,theme,Kinship,Lives and Relations,https://www.themoviedb.org/movie/1713582,tagged from a published synopsis
 RESEARCH-FILM-20261031-800-NEW-363,He Moʻolelo Wahi Pana (A Storied Landscape),2025,length,Short,,https://www.themoviedb.org/movie/1713582,from the published synopsis
+FILM-SRC-0370,Ancestral Threads,2023,theme,"Art, Craft and Making",Expression and Representation,https://www.themoviedb.org/movie/1110753,tagged from a published synopsis; primary theme
+FILM-SRC-0370,Ancestral Threads,2023,theme,Health and Healing,Lives and Relations,https://www.themoviedb.org/movie/1110753,tagged from a published synopsis
+FILM-SRC-0370,Ancestral Threads,2023,theme,Urban Indigeneity,Lives and Relations,https://www.themoviedb.org/movie/1110753,tagged from a published synopsis
+FILM-SRC-0370,Ancestral Threads,2023,form,Documentary,,https://www.themoviedb.org/movie/1110753,from the published synopsis
+FILM-SRC-0370,Ancestral Threads,2023,length,Short,,https://www.themoviedb.org/movie/1110753,from the published synopsis
 FILM-SRC-0388,Our Grandmother The Inlet,2023,theme,Water,Land and Environment,https://www.themoviedb.org/movie/1175423,tagged from a published synopsis; primary theme
 FILM-SRC-0388,Our Grandmother The Inlet,2023,theme,Elders and Knowledge,Knowledge and Continuity,https://www.themoviedb.org/movie/1175423,tagged from a published synopsis
 FILM-SRC-0388,Our Grandmother The Inlet,2023,theme,Women and Gender,Lives and Relations,https://www.themoviedb.org/movie/1175423,tagged from a published synopsis
@@ -2316,3 +2327,9 @@ QM-ccf695f8b4-M1,Searching for the Songs of Wanaragua,2025,form,Documentary,,htt
 QM-ccf695f8b4-M1,Searching for the Songs of Wanaragua,2025,length,Short,,https://www.wanaraguadoc.com/,from the published synopsis
 QM-ac60127ca8-M1,El viaje del Kokorrdit / Dance of the Kokorrdit,2026,form,Hybrid,,https://vlaff.org/es/event/the-dance-of-the-kokorrdit/,"normalised from the recorded form ""Docufiction"""
 QM-e267cad3ee-M1,Amu Adji Ty / Mudança De Aldeia,2022,form,Documentary,,https://cinekurumin.com.br/,"normalised from the recorded form ""Documentary (Cine Kurumin 2024 festival program)"""
+Q20261108-31-F1,The Length of Grief: The Daughters of Métis Mothers,2016,form,Experimental,,https://www.theinc.ca/events/screening-series/imaginenative-femme-totale,"normalised from the recorded form ""Experimental"""
+Q20261108-33-F1,Bad Press,2023,form,Documentary,,https://www.sundance.org/blogs/your-guide-to-the-indigenous-works-at-the-2023-sundance-film-festival/,"normalised from the recorded form ""Documentary feature"""
+Q20261108-33-F1,Bad Press,2023,length,Feature,,https://www.sundance.org/blogs/your-guide-to-the-indigenous-works-at-the-2023-sundance-film-festival/,"normalised from the recorded form ""Documentary feature"""
+Q20261108-34-F1,Gesture Down (I Don’t Sing),2016,length,Short,,https://www.sundance.org/blogs/your-guide-to-all-indigenous-works-at-the-2022-sundance-film-festival/,"normalised from the recorded form ""Short"""
+Q20261108-35-F1,Kikuyu Land,2026,form,Documentary,,https://www.sundance.org/blogs/your-guide-to-the-indigenous-works-at-the-2026-sundance-film-festival/,"normalised from the recorded form ""Documentary feature"""
+Q20261108-35-F1,Kikuyu Land,2026,length,Feature,,https://www.sundance.org/blogs/your-guide-to-the-indigenous-works-at-the-2026-sundance-film-festival/,"normalised from the recorded form ""Documentary feature"""
