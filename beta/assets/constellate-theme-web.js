@@ -21,6 +21,7 @@
   'Expression and Representation':['Art, Craft and Making','Music and Performance','Self-Representation and Countering Stereotypes','Collective and Community Media','Indigenous Futurisms','Humor and Satire']
  };
  var nodeByName=new Map(),films=[],graphLinks=[],families=[],selected='',selectedPair='',activeFamily='All themes',search='',isOpen=false,view=null;
+ var filmsShown=20,lastFilmView='';
  var NS='http://www.w3.org/2000/svg';
  var esc=function(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});};
  var canon=function(s){return String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();};
@@ -111,7 +112,8 @@
    if(window.matchMedia('(max-width:700px)').matches)aside.scrollIntoView({block:'start',behavior:'instant'});
   });
   aside.addEventListener('click',function(e){
-   var b=e.target.closest('[data-open-term],[data-film-id],[data-start-term]');if(!b)return;
+   var b=e.target.closest('[data-open-term],[data-film-id],[data-start-term],[data-more-films]');if(!b)return;
+    if(b.hasAttribute('data-more-films')){filmsShown+=20;detail();return;}
    if(b.dataset.openTerm){selected=b.dataset.openTerm;selectedPair='';search='';searchBox.value='';activeFamily='All themes';draw();return;}
    if(b.dataset.startTerm){
     show(false);atlas().themeThread(b.dataset.startTerm);
@@ -189,6 +191,8 @@
   svg.innerHTML='<g class="tw-family-headings">'+familyHeaders+'</g><g>'+edgeLines+dots+'</g>';
  }
  function detail(){
+  var viewKey=selectedPair?'bridge:'+selectedPair:selected?'theme:'+selected:'home';
+  if(viewKey!==lastFilmView){lastFilmView=viewKey;filmsShown=20;}
   var entry=nodeByName.get(selected),edge=selectedPair&&graphLinks.find(l=>l.source+'\u001f'+l.target===selectedPair);
   if(edge){
    var both=edge.films;
@@ -211,16 +215,17 @@
  }
  function renderFilms(arr){
   var api=atlas(),seen=new Set(),unique=[];
-  for(var item of arr){if(seen.has(item.x.id))continue;seen.add(item.x.id);unique.push(item);if(unique.length===20)break;}
+  for(var item of arr){if(seen.has(item.x.id))continue;seen.add(item.x.id);unique.push(item);if(unique.length===filmsShown)break;}
   var total=new Set(arr.map(e=>e.x.id)).size;
   return '<div class="tw-films">'+unique.map(function(item){
    var x=item.x,image=api.sourceImage(x),f=window.Atlas&&window.Atlas.recordById&&window.Atlas.recordById(x.record)?.films.find(g=>g.id===x.film);
+    var initials=String(x.title||'').trim().split(/\s+/).filter(Boolean).slice(0,2).map(w=>Array.from(w)[0]||'').join('').toUpperCase()||'·';
    var source=f&&f.themeSource;
-   return '<article class="tw-film"><div class="tw-film-art">'+(image?'<img loading="lazy" src="'+esc(image)+'" alt="" onerror="this.hidden=true;this.parentElement.classList.add(\'no-art\')">':'')+'<span aria-hidden="true">'+esc(short(x.title,1))+'</span></div>'+
+   return '<article class="tw-film"><div class="tw-film-art">'+(image?'<img loading="lazy" src="'+esc(image)+'" alt="" onerror="this.hidden=true;this.parentElement.classList.add(\'no-art\')">':'')+'<span aria-hidden="true">'+esc(initials)+'</span></div>'+ 
     '<div class="tw-film-copy"><strong>'+esc(x.title)+'</strong><small>'+esc([x.maker,x.year].filter(Boolean).join(' · '))+'</small>'+
     (source?'<a href="'+esc(source)+'" target="_blank" rel="noopener noreferrer">Synopsis source ↗</a>':'<span class="tw-no-source">Atlas theme tag</span>')+'</div>'+
     '<button type="button" data-film-id="'+esc(x.id)+'" aria-label="Follow '+esc(x.title)+' in your weave">Follow →</button></article>';
-  }).join('')+'</div>'+(total>unique.length?'<p class="tw-more-count">'+(total-unique.length)+' more films · Create a thread for the full theme.</p>':'');
+  }).join('')+'</div>'+(total>unique.length?'<div class="tw-more-actions"><span class="tw-more-count">Showing '+unique.length+' of '+total+' films</span><button type="button" data-more-films>Show next '+Math.min(20,total-unique.length)+' films</button></div>':'');
  }
  function example(){
   var api=atlas(),s=store();if(!api||!s)return;
