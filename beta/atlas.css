@@ -3501,3 +3501,8 @@ header .ui-lang select{font:inherit;font-size:13px;min-height:30px;padding:0 6px
 #weave-suggest .weave-follow-result>span:not(.weave-media-thumb){min-width:0;flex:1}
 #weave-suggest [data-weave-follow]{flex:none;padding:6px 8px;border:1px solid var(--reading-line);border-radius:4px;color:var(--reading-accent);font-size:12px;font-weight:650}
 #weave-suggest [data-weave-follow]:hover,#weave-suggest [data-weave-follow]:focus-visible{border-color:var(--reading-accent);background:color-mix(in srgb,var(--reading-accent) 9%,transparent)}
+
+/* Preserve a tappable region below the sticky Constellate title on phones. */
+#constellate-popup{scroll-padding-top:92px}
+#weave-suggest .weave-follow-result,#weave-suggest [data-weave-follow]{scroll-margin-top:100px}
+@media(max-width:700px){#constellate-popup{scroll-padding-top:120px}#weave-suggest [data-weave-follow]{min-height:42px}}
