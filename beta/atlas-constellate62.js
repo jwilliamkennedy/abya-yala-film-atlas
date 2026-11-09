@@ -202,10 +202,12 @@
   if(drawThread)setDrawThread(false);
   if(reading)setRead(false);
   const old=existingWork(x);
-  if(!old||!S.activeThread().items.includes(old.id)){if(!add(x))return false;}
+  const membership=old&&S.current().threads.find(t=>t.items.includes(old.id));
+  // A film already in any thread is a navigation target, not a duplicate addition.
+  if(!membership){if(!add(x))return false;}
   const target=existingWork(x)||S.current().items.find(i=>i.id===x.id);
   if(!target)return false;
-  stepThread=S.activeThread().id;
+  stepThread=membership?.id||S.activeThread().id;
   const ref=reference(target);
   if(ref)A.focusLandOnMap(ref.id);
   choose(target.id);
@@ -277,15 +279,16 @@
   const last=[...t.items].reverse().map(id=>c.items.find(x=>x.id===id)).find(x=>x&&x.type==='film'&&terms(x).length);
   const seed=current||last;
   if(!seed){box.hidden=true;box.innerHTML='';return;}
-  const want=new Set(terms(seed)),have=new Set(t.items.map(id=>{const x=c.items.find(y=>y.id===id);return x?key(x):id;})),ly=yearNum(seed);
-  const picks=azAll('film').filter(x=>x.id!==seed.id&&!have.has(key(x))).map(x=>{
-   const shared=[...new Set(terms(x).filter(k=>want.has(k)))],y=yearNum(x);
-   return {x,shared,score:shared.length*10-(ly&&y?Math.min(5,Math.abs(y-ly)/8):3)};
+  const want=new Set(terms(seed)),ly=yearNum(seed);
+  const picks=azAll('film').filter(x=>key(x)!==key(seed)).map(x=>{
+   const shared=[...new Set(terms(x).filter(k=>want.has(k)))],y=yearNum(x),saved=existingWork(x);
+   const sameThread=!!(saved&&t.items.includes(saved.id)),inWeave=!!saved;
+   return {x,shared,sameThread,inWeave,score:shared.length*10+(sameThread?22:inWeave?10:0)-(ly&&y?Math.min(5,Math.abs(y-ly)/8):3)};
   }).filter(p=>p.shared.length).sort((a,b)=>b.score-a.score||Number(!!sourceImage(b.x))-Number(!!sourceImage(a.x))||azSort.compare(a.x.title,b.x.title)).slice(0,6);
   box.hidden=false;
   box.innerHTML='<div class="weave-suggest-head"><h3>Follow another film</h3><small>'+esc(chipText(seed.title,45))+'</small></div>'+
    (picks.length?'<p class="weave-suggest-intro">Documented connections through shared synopsis themes. Choose a film to move there.</p>'+
-    picks.map(({x,shared})=>'<div class="constellate-result weave-follow-result" draggable="true" data-drag-film="'+esc(x.id)+'">'+thumb(x)+'<span><strong>'+esc(x.title)+'</strong><small>'+esc([x.maker,x.year].filter(Boolean).join(' · '))+'</small><small class="weave-theme-tags">Shares '+esc(shared.join(' · '))+'</small></span><button type="button" data-weave-follow="'+esc(x.id)+'" aria-label="Follow to '+esc(x.title)+'">Follow →</button></div>').join('')
+    picks.map(({x,shared,sameThread,inWeave})=>'<div class="constellate-result weave-follow-result" draggable="true" data-drag-film="'+esc(x.id)+'">'+thumb(x)+'<span><strong>'+esc(x.title)+'</strong><small>'+esc([x.maker,x.year].filter(Boolean).join(' · '))+'</small><small class="weave-theme-tags">Shares '+esc(shared.join(' · '))+'</small></span><button type="button" data-weave-follow="'+esc(x.id)+'" aria-label="Follow to '+esc(x.title)+'">Follow →</button></div>').join('')
    :'<p class="weave-suggest-intro">No further films share a documented theme with this title yet. Use Find films to continue.</p>');
  }
  // drop on the cord inserts between knots
