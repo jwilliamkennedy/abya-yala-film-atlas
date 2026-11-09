@@ -2,7 +2,7 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-09",
  "license": "See data.html",
- "films_on_public_map": 1528,
+ "films_on_public_map": 1533,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -10099,6 +10099,26 @@
    "form": null,
    "length": null
   },
+  "DIR-0328-F1": {
+   "title": "Dulemas",
+   "year": 2019,
+   "makers": [
+    {
+     "id": "DIR-0254",
+     "name": "Orgún Wagua"
+    },
+    {
+     "id": "DIR-0328",
+     "name": "Duiren Wagua"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "FILM-0221": {
    "title": "Wiñaypacha (Eternity)",
    "year": 2017,
@@ -11965,6 +11985,38 @@
    ],
    "form": "Documentary",
    "length": "Feature"
+  },
+  "DIR-0328-QM0d4431": {
+   "title": "Ibegwa",
+   "year": 2022,
+   "makers": [
+    {
+     "id": "DIR-0328",
+     "name": "Duiren Wagua"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "DIR-0328-QM7439ca": {
+   "title": "Djaba Wera",
+   "year": 2019,
+   "makers": [
+    {
+     "id": "DIR-0328",
+     "name": "Duiren Wagua"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
   },
   "FILM-0251": {
    "title": "Territory",
@@ -30166,6 +30218,38 @@
    "primary_theme": null,
    "families": [],
    "form": "Animation",
+   "length": null
+  },
+  "QM-fa560b068c-M1": {
+   "title": "Agricultura en tiempos de pandemia",
+   "year": 2020,
+   "makers": [
+    {
+     "id": "QM-fa560b068c",
+     "name": "Nelson Cetino"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QM-fa560b068c-F1": {
+   "title": "Kawil Ch’oolej. La resistencia Q’eqchi’ en El Estor",
+   "year": 2022,
+   "makers": [
+    {
+     "id": "QM-fa560b068c",
+     "name": "Nelson Cetino"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
    "length": null
   }
  }
