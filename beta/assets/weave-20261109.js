@@ -133,6 +133,7 @@ function settle(){setTimeout(tick,80);setTimeout(tick,500);}
 function tick(){
  var st=stage();
  if(st)root.dataset.weaveStage=st;else delete root.dataset.weaveStage;
+ var web=$('#atlas-theme-web');if(web&&!web.hidden)root.dataset.weaveWeb='1';else delete root.dataset.weaveWeb;
  if(!st)return;
  buildStart();buildGuide();labels();
  if(st==='start'){savedList();}
