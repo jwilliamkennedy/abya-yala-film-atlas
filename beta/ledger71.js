@@ -9,9 +9,11 @@
  // Ledger: distinct films (co-directed works counted once), filmmakers and collectives, countries.
  const R=A.allRecords(),works=new Set(),peoples=new Set();
  for(const r of R){if(window.ATLAS_ON_MAP.has(r.status))try{for(const e of A.recordLandReferences(r.id))if(e.mapped)peoples.add(e.id);}catch{}for(const f of r.films||[]){const t=norm(f.title).split(' = ')[0];if(t)works.add(t+'|'+(f.year||''));}}
+ // 2026-11-09: the film total is the Films list's own count (one row per work, co-directed films once).
+ let filmTotal=works.size;try{const W=window.AtlasArtwork;if(W&&W.groupCredits)filmTotal=W.groupCredits(R.flatMap(r=>(r.films||[]).map(f=>({r,f}))),null,null).length;}catch{}
  const nav=document.querySelector('header nav.primary');
  if(nav&&!document.querySelector('.atlas-ledger')){
-  nav.insertAdjacentHTML('afterend',`<p class="atlas-ledger" aria-label="${fmt(window.ATLAS_FACETS&&window.ATLAS_FACETS.films?Object.keys(window.ATLAS_FACETS.films).length:works.size)} films by ${fmt(R.length)} filmmakers and collectives"><span><b>${fmt(window.ATLAS_FACETS&&window.ATLAS_FACETS.films?Object.keys(window.ATLAS_FACETS.films).length:works.size)}</b> films</span><span><b>${fmt(R.length)}</b> filmmakers</span></p>`);
+  nav.insertAdjacentHTML('afterend',`<p class="atlas-ledger" aria-label="${fmt(filmTotal)} films by ${fmt(R.length)} filmmakers and collectives"><span><b>${fmt(filmTotal)}</b> films</span><span><b>${fmt(R.length)}</b> filmmakers</span></p>`);
  }
 
  // Posters: each land with linked filmmakers shows one of their film images, chosen at random.

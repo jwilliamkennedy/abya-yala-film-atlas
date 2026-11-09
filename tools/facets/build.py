@@ -107,6 +107,32 @@ for r in P:
             if ln: e['length'] = ln; add('length', ln, '', f.get('source', ''), f'normalised from the recorded form "{f.get("medium")}"')
         films[fid] = e
 
+# Distinct works, counted the way the map's Films list groups them (2026-11-09): credits sharing a film ID are one work;
+# copies of the same title from different filmmakers are one work when their years agree, or when one year is missing and
+# the title is long enough to be distinctive; "Title / Translation" or "Title: subtitle" matches "Title" when the years agree.
+# (beta/artwork-presentation59.js and beta/films-merge-20261107.js.) Facet entries above stay one per film ID.
+def count_works(records):
+    by_id, groups = {}, []
+    for r in records:
+        for f in r['films']:
+            if f['id'] in by_id: continue
+            g = {'t': key(f['title']), 'y': f.get('year') or None, 'main': key(re.split(r'\s+/\s+|:\s', str(f['title'] or ''))[0])}
+            by_id[f['id']] = g; groups.append(g)
+    kept, by_title, by_main = 0, {}, {}
+    for g in groups:
+        lst = by_title.setdefault(g['t'], [])
+        match = next((o for o in lst if (g['y'] == o['y'] if g['y'] and o['y'] else len(g['t']) >= 10)), None)
+        mk = g['main'] + '|' + str(g['y'] or '')
+        if not match and g['y'] and len(mk) > 8: match = by_main.get(mk)
+        if match:
+            if not match['y'] and g['y']: match['y'] = g['y']
+            continue
+        lst.append(g)
+        if g['y']: by_main[mk] = g
+        kept += 1
+    return kept
+WORKS = count_works(P)
+
 os.makedirs(f'{BETA}/data', exist_ok=True)
 cols = ['film_id', 'title', 'year', 'field', 'value', 'code', 'source_url', 'basis']
 with open(f'{BETA}/data/film-facets.csv', 'w', newline='', encoding='utf-8') as fh:
@@ -119,7 +145,7 @@ for label, n in lang_count.items():
         lang_rows.append({'label': label, 'also_credited_as': '', 'glottocode': '', 'glottolog_name': '', 'glottolog_level': '', 'iso639_3': '', 'match': 'not in authority', 'indigenous': '', 'note': 'Add to tools/facets/languages_authority.csv', 'films': n})
 with open(f'{BETA}/data/languages.csv', 'w', newline='', encoding='utf-8') as fh:
     w = csv.DictWriter(fh, fieldnames=list(lang_rows[0].keys())); w.writeheader(); w.writerows(lang_rows)
-doc = {'title': 'Indigenous Cinema Atlas · film facets', 'generated': TODAY, 'license': 'See data.html', 'films_on_public_map': len(films),
+doc = {'title': 'Indigenous Cinema Atlas · film facets', 'generated': TODAY, 'license': 'See data.html', 'films_on_public_map': WORKS, 'film_entries': len(films),
        'fields': {'language': 'Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3',
                   'theme': 'Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept',
                   'form': 'Documentary, Fiction, Animation, Experimental, Hybrid or Music Video', 'length': 'Short, Mid-length, Feature or Series'},
@@ -166,7 +192,7 @@ n_lang_films = sum(1 for e in films.values() if e['languages'])
 ind = [l for l in order if A.get(l, {}).get('indigenous') == 'yes']
 page('languages.html', 'Languages', f'Films on the Indigenous Cinema Atlas by the languages spoken in them, with Glottolog and ISO 639-3 codes.',
      f'<h1>Languages</h1>'
-     f'<p class="who">{len(ind)} Indigenous languages across {n_lang_films} films with a recorded language, of {len(films):,} films on the public map. Each language links to its Glottolog entry; where a credit names a language group rather than one variety, the group is linked. Languages are recorded only as a film’s credits or synopsis state them. Updated {TODAY}.</p>'
+     f'<p class="who">{len(ind)} Indigenous languages across {n_lang_films} films with a recorded language, of {WORKS:,} films on the public map. Each language links to its Glottolog entry; where a credit names a language group rather than one variety, the group is linked. Languages are recorded only as a film’s credits or synopsis state them. Updated {TODAY}.</p>'
      f'<p class="jump">{" ".join(f"<a href=\"#{esc(key(l).replace(" ", "-"))}\">{esc(l)}</a>" for l in order)}</p>'
      f'<ul class="facet-list">{"".join(items)}</ul><p class="who"><a href="data/languages.csv">Language authority (CSV)</a> · <a href="data/film-facets.csv">All film facets (CSV)</a> · <a href="data.html">About the data</a></p>')
 by_theme = collections.defaultdict(list)
@@ -183,7 +209,7 @@ for fam, tags in T['families'].items():
 n_th = sum(1 for e in films.values() if e['themes'])
 page('themes.html', 'Themes', 'Films on the Indigenous Cinema Atlas by theme: 30 themes in five families, each tagged from a published synopsis.',
      f'<h1>Themes</h1>'
-     f'<p class="who">{n_th} of {len(films):,} films on the public map are tagged so far, each from a published synopsis whose link is kept with the tag. A film can carry several themes; its primary theme is listed first in the data. Tagging continues. Updated {TODAY}.</p>'
+     f'<p class="who">{n_th} of {WORKS:,} films on the public map are tagged so far, each from a published synopsis whose link is kept with the tag. A film can carry several themes; its primary theme is listed first in the data. Tagging continues. Updated {TODAY}.</p>'
      f'<p class="jump">{" ".join(f"<a href=\"#{esc(key(t).replace(" ", "-"))}\">{esc(t)}</a>" for fam in T["families"].values() for t in fam if by_theme.get(t))}</p>'
      + ''.join(secs) + '<p class="who"><a href="data/film-facets.csv">All film facets (CSV)</a> · <a href="data.html">About the data</a></p>')
-print(f'films {len(films)} | with language {n_lang_films} | Indigenous languages {len(ind)} | with themes {n_th} | facet rows {len(rows)} | languages not in authority: {[l for l in lang_count if l not in A]}')
+print(f'films {WORKS} (facet entries {len(films)}) | with language {n_lang_films} | Indigenous languages {len(ind)} | with themes {n_th} | facet rows {len(rows)} | languages not in authority: {[l for l in lang_count if l not in A]}')
