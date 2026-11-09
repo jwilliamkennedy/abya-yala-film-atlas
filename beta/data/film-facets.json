@@ -2,7 +2,7 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-09",
  "license": "See data.html",
- "films_on_public_map": 1396,
+ "films_on_public_map": 1401,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -13213,6 +13213,46 @@
    "form": null,
    "length": null
   },
+  "NEW-797d6554404b-W1031-1": {
+   "title": "El camino es largo",
+   "year": 2017,
+   "makers": [
+    {
+     "id": "NEW-797d6554404b",
+     "name": "Edgar Noé Sajcabún Mux"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Youth"
+   ],
+   "primary_theme": "Youth",
+   "families": [
+    "Lives and Relations"
+   ],
+   "form": "Fiction",
+   "length": "Short"
+  },
+  "NEW-797d6554404b-W1031-2": {
+   "title": "Xik Vuh",
+   "year": 2014,
+   "makers": [
+    {
+     "id": "NEW-797d6554404b",
+     "name": "Edgar Noé Sajcabún Mux"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Youth"
+   ],
+   "primary_theme": "Youth",
+   "families": [
+    "Lives and Relations"
+   ],
+   "form": null,
+   "length": "Short"
+  },
   "NEW-72e611292227-WORK-1": {
    "title": "América",
    "year": null,
@@ -18458,6 +18498,22 @@
    "form": "Documentary",
    "length": "Short"
   },
+  "RESEARCH-FILM-20261031-0001-01": {
+   "title": "Kvpalme – El Origen",
+   "year": 2019,
+   "makers": [
+    {
+     "id": "LEAD-20261031-0001",
+     "name": "Escuela de Cine y Comunicación Mapuche del Aylla Rewe Budi"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "FILM-SRC-0367": {
    "title": "Dear Kin",
    "year": null,
@@ -20100,6 +20156,22 @@
     {
      "id": "NEW-d80b926f6064",
      "name": "Humberto Paz"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "NEW-914d3498dfac-WORK-1": {
+   "title": "Supaya: The Good Devil",
+   "year": 1996,
+   "makers": [
+    {
+     "id": "NEW-914d3498dfac",
+     "name": "Inocencio Ramos"
     }
    ],
    "languages": [],
@@ -22193,6 +22265,28 @@
    "families": [],
    "form": null,
    "length": null
+  },
+  "NEW-af9802b816c1-WORK-1": {
+   "title": "Inuk Woman City Blues",
+   "year": 2002,
+   "makers": [
+    {
+     "id": "NEW-af9802b816c1",
+     "name": "Laila Hansen"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Urban Indigeneity",
+    "Women and Gender",
+    "Health and Healing"
+   ],
+   "primary_theme": "Urban Indigeneity",
+   "families": [
+    "Lives and Relations"
+   ],
+   "form": "Documentary",
+   "length": "Short"
   },
   "NEW-562efc43b2dc-WORK-1": {
    "title": "Anori",
