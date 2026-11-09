@@ -6663,6 +6663,10 @@
     {
      "id": "DIR-0179",
      "name": "Amado Villafaña"
+    },
+    {
+     "id": "QM-970c76e39a",
+     "name": "Silvestre Gil Zarabata"
     }
    ],
    "languages": [
@@ -6676,11 +6680,18 @@
      "source": "https://www.retinalatina.org/peliculas/resistencia-en-la-linea-negra-amado-villafana/"
     }
    ],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Land Defense",
+    "Resistance Movements",
+    "Sovereignty and Self-Determination"
+   ],
+   "primary_theme": "Land Defense",
+   "families": [
+    "Land and Environment",
+    "Sovereignty and Politics"
+   ],
+   "form": "Documentary",
+   "length": "Feature"
   },
   "BETA30-20261106-F14": {
    "title": "Naboba, visión ancestral del agua del pueblo arhuaco",
