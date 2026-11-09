@@ -134,22 +134,28 @@
   if(!isOpen)return;
   var nodes=provided||visibleNodes(),names=new Set(nodes.map(n=>n.name)),edges=providedEdges||graphLinks.filter(l=>names.has(l.source)&&names.has(l.target));
   var w=720,h=550;
-  var placed=nodes.map((n,i)=>({id:n.name,node:n,r:Math.min(23,7+Math.sqrt(n.films.length)*1.5),x:w/2+Math.cos(i*2.39996)*(25+7*i),y:h/2+Math.sin(i*2.39996)*(25+6*i)}));
-  var byId=new Map(placed.map(x=>[x.id,x]));
-  if(window.d3&&placed.length){
-   var links=edges.slice(0,140).map(x=>({source:x.source,target:x.target,count:x.count}));
-   var sim=window.d3.forceSimulation(placed).force('center',window.d3.forceCenter(w/2,h/2))
-    .force('charge',window.d3.forceManyBody().strength(-190))
-    .force('link',window.d3.forceLink(links).id(n=>n.id).distance(l=>Math.max(65,133-l.count*2)).strength(.13))
-    .force('collide',window.d3.forceCollide(n=>n.r+26).strength(.8))
-    .stop();
-   for(var i=0;i<220;i++)sim.tick();
+  // Stable thematic-family lanes preserve legible labels at all 30 nodes.
+  // The network is a diagram of co-tags, not a geographic or semantic distance map.
+  var orders=Object.keys(COLORS).filter(f=>nodes.some(n=>n.family===f));
+  var laneMode=orders.length>1&&activeFamily==='All themes'&&!search;
+  var placed=[],familyHeaders='';
+  if(laneMode){
+   var gap=w/orders.length;
+   orders.forEach(function(f,col){
+    var group=nodes.filter(n=>n.family===f).sort((a,b)=>b.films.length-a.films.length||a.name.localeCompare(b.name));
+    var step=(h-100)/Math.max(7,group.length);
+    familyHeaders+='<text class="tw-family-head" x="'+(gap*(col+.5)).toFixed(1)+'" y="24" text-anchor="middle">'+esc(short(f.replace(' and ',' / '),23))+'</text>';
+    group.forEach(function(n,row){placed.push({id:n.name,node:n,r:Math.min(22,6+Math.sqrt(n.films.length)*1.4),x:gap*(col+.5),y:65+step*(row+.5)});});
+   });
+  }else{
+   var cols=Math.min(4,Math.max(1,Math.ceil(Math.sqrt(nodes.length*1.5))));var rows=Math.max(1,Math.ceil(nodes.length/cols));
+   nodes.forEach(function(n,i){placed.push({id:n.name,node:n,r:Math.min(23,7+Math.sqrt(n.films.length)*1.5),x:w*(i%cols+.5)/cols,y:65+(h-135)*(Math.floor(i/cols)+.5)/rows});});
   }
-  for(var n of placed){n.x=Math.max(n.r+80,Math.min(w-n.r-80,n.x));n.y=Math.max(n.r+22,Math.min(h-n.r-22,n.y));}
+  var byId=new Map(placed.map(x=>[x.id,x]));
   var related=new Set();
   if(selected){for(var e of edges)if(e.source===selected)related.add(e.target);else if(e.target===selected)related.add(e.source);}
   var dimTheme=function(n){return selected&&n!==selected&&!related.has(n);};
-  var edgeLines=edges.slice(0,140).map(function(l){
+  var edgeLines=edges.slice().sort(function(a,b){var pa=selected&&(a.source===selected||a.target===selected)?1000:0,pb=selected&&(b.source===selected||b.target===selected)?1000:0;return pb-pa||b.count-a.count;}).slice(0,100).map(function(l){
    var a=byId.get(l.source),b=byId.get(l.target);
    if(!a||!b)return '';
    var highlighted=selectedPair===(l.source+'\u001f'+l.target)||!!selected&&(l.source===selected||l.target===selected);
@@ -163,10 +169,10 @@
    var active=n.id===selected,fade=dimTheme(n.id),c=COLORS[n.node.family]||COLORS['Other themes'];
    return '<g class="tw-node'+(active?' is-chosen':'')+(fade?' is-faded':'')+'" data-term="'+esc(n.id)+'" role="button" tabindex="0" aria-label="'+esc(n.id+', '+n.node.films.length+' tagged films')+'" transform="translate('+n.x.toFixed(1)+','+n.y.toFixed(1)+')">'+
      '<circle class="tw-ring" r="'+(n.r+6)+'"/><circle class="tw-dot" r="'+n.r+'" fill="'+c+'"/><text class="tw-count" dy="4" text-anchor="middle">'+n.node.films.length+'</text>'+
-     '<text class="tw-node-label" y="'+(n.r+17)+'" text-anchor="middle">'+esc(short(n.id,24))+'</text>'+
+     '<text class="tw-node-label" y="'+(n.r+17)+'" text-anchor="middle">'+esc(short(n.id,20))+'</text>'+
      '<title>'+esc(n.id+' · '+n.node.films.length+' films')+'</title></g>';
   }).join('');
-  svg.innerHTML='<g>'+edgeLines+dots+'</g>';
+  svg.innerHTML='<g class="tw-family-headings">'+familyHeaders+'</g><g>'+edgeLines+dots+'</g>';
  }
  function detail(){
   var entry=nodeByName.get(selected),edge=selectedPair&&graphLinks.find(l=>l.source+'\u001f'+l.target===selectedPair);
