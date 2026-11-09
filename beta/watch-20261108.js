@@ -5,6 +5,8 @@
 (()=>{'use strict';
 const data=(window.ATLAS_WATCH&&window.ATLAS_WATCH.films)||[];
 const $=s=>document.querySelector(s);
+/* The old count sentence is intentionally excluded from the Watch page. */
+const obsoleteWatchCounter=$('#total')?.closest('.lede');if(obsoleteWatchCounter)obsoleteWatchCounter.remove();
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const norm=s=>String(s??'').normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
 const host=u=>{try{return new URL(u).hostname.replace(/^www\./,'');}catch(e){return '';}};
