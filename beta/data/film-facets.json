@@ -2,7 +2,7 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-09",
  "license": "See data.html",
- "films_on_public_map": 1468,
+ "films_on_public_map": 1476,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -10135,6 +10135,22 @@
    "form": "Fiction",
    "length": null
   },
+  "DIR-0273-F1": {
+   "title": "Native America (season 2)",
+   "year": null,
+   "makers": [
+    {
+     "id": "DIR-0273",
+     "name": "Daniel Golding"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "FILM-0261": {
    "title": "Wild Indian",
    "year": 2021,
@@ -14075,6 +14091,22 @@
    "form": "Experimental",
    "length": "Short"
   },
+  "NEW-51a974dacd52-F1": {
+   "title": "Our Maternal Home",
+   "year": null,
+   "makers": [
+    {
+     "id": "NEW-51a974dacd52",
+     "name": "Janine Windolph"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "NEW-530611f5ba51-WORK-1": {
    "title": "Wind Rabbit",
    "year": null,
@@ -14082,6 +14114,38 @@
     {
      "id": "NEW-530611f5ba51",
      "name": "January Rogers"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "NEW-910d2e1ea6f9-F1": {
+   "title": "Bay of Herons",
+   "year": 2023,
+   "makers": [
+    {
+     "id": "NEW-910d2e1ea6f9",
+     "name": "Jared Lank"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "NEW-9a693520a54d-F1": {
+   "title": "Holy Angels",
+   "year": 2017,
+   "makers": [
+    {
+     "id": "NEW-9a693520a54d",
+     "name": "Jay Cardinal Villeneuve"
     }
    ],
    "languages": [],
@@ -14274,6 +14338,22 @@
    ],
    "form": "Documentary",
    "length": "Short"
+  },
+  "NEW-5a7d1437fd07-F1": {
+   "title": "Positions",
+   "year": 2018,
+   "makers": [
+    {
+     "id": "NEW-5a7d1437fd07",
+     "name": "Justin Ducharme"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
   },
   "NEW-2f279d2a517d-WORK-1": {
    "title": "The Woman Who Married A Bear",
@@ -15138,6 +15218,22 @@
    "form": null,
    "length": null
   },
+  "NEW-f829db7cc228-F1": {
+   "title": "The Daily Life of Mistress Red",
+   "year": null,
+   "makers": [
+    {
+     "id": "NEW-f829db7cc228",
+     "name": "Peshawn Bread"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "RESEARCH-FILM-20261031-800-0035": {
    "title": "The Neighborhood Kids / AND THE KIDS SAY",
    "year": 2025,
@@ -15707,6 +15803,38 @@
    ],
    "form": "Fiction",
    "length": "Short"
+  },
+  "NEW-18a06da1a153-F1": {
+   "title": "Crash Site",
+   "year": null,
+   "makers": [
+    {
+     "id": "NEW-18a06da1a153",
+     "name": "Sonya Ballantyne"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "NEW-790b3156f35a-F1": {
+   "title": "Bridge Disaster of 1896",
+   "year": null,
+   "makers": [
+    {
+     "id": "NEW-790b3156f35a",
+     "name": "Steven Thomas Davies"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
   },
   "NEW-699df72682cb-F1": {
    "title": "The Strange Case of Bunny Weequod",
