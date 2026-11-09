@@ -2,7 +2,7 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-09",
  "license": "See data.html",
- "films_on_public_map": 1508,
+ "films_on_public_map": 1528,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -3130,6 +3130,22 @@
    "form": null,
    "length": null
   },
+  "DIR-0064-F1": {
+   "title": "Three Thousand",
+   "year": 2017,
+   "makers": [
+    {
+     "id": "DIR-0064",
+     "name": "Asinnajaq"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "FILM-0066": {
    "title": "Aitamaako'tamisskapi Natosi: Before the Sun",
    "year": null,
@@ -3841,6 +3857,38 @@
    "form": null,
    "length": null
   },
+  "DIR-0093-F1": {
+   "title": "Older Than America",
+   "year": 2008,
+   "makers": [
+    {
+     "id": "DIR-0093",
+     "name": "Georgina Lightning"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "DIR-0094-F1": {
+   "title": "Honour Thy Father",
+   "year": 2008,
+   "makers": [
+    {
+     "id": "DIR-0094",
+     "name": "Gerald Auger"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "FILM-SRC-NFB-00059": {
    "title": "Foster Child",
    "year": null,
@@ -3918,6 +3966,38 @@
    ],
    "form": "Fiction",
    "length": "Short"
+  },
+  "DIR-0099-F1": {
+   "title": "Butterfly",
+   "year": 2007,
+   "makers": [
+    {
+     "id": "DIR-0099",
+     "name": "Jackie Traverse"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "DIR-0100-F1": {
+   "title": "Katshinau (Les Mains sales)",
+   "year": 2023,
+   "makers": [
+    {
+     "id": "DIR-0100",
+     "name": "Jani Bellefleur-Kaltush"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
   },
   "FILM-0077": {
    "title": "File Under Miscellaneous",
@@ -4037,6 +4117,22 @@
    "form": "Fiction",
    "length": "Feature"
   },
+  "DIR-0106-F1": {
+   "title": "Might of the Star Chaser",
+   "year": 2002,
+   "makers": [
+    {
+     "id": "DIR-0106",
+     "name": "Joseph Lazare"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "RESEARCH-FILM-20261031-800-0004": {
    "title": "NiiMisSak: Sisters in Film",
    "year": 2024,
@@ -4120,6 +4216,22 @@
     {
      "id": "DIR-0110",
      "name": "Katherena Vermette"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "DIR-0111-F1": {
+   "title": "The Dancing Cop",
+   "year": 2012,
+   "makers": [
+    {
+     "id": "DIR-0111",
+     "name": "Kelvin Redvers"
     }
    ],
    "languages": [],
@@ -4402,6 +4514,22 @@
    "form": null,
    "length": "Short"
   },
+  "DIR-0124-F1": {
+   "title": "The Road Forward",
+   "year": 2017,
+   "makers": [
+    {
+     "id": "DIR-0124",
+     "name": "Marie Clements"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "RESEARCH-FILM-20261031-800-0021": {
    "title": "Embers of Queer Joy",
    "year": 2025,
@@ -4499,6 +4627,22 @@
    ],
    "form": "Documentary",
    "length": "Short"
+  },
+  "DIR-0131-F1": {
+   "title": "Maliglutit (Searchers)",
+   "year": 2016,
+   "makers": [
+    {
+     "id": "DIR-0131",
+     "name": "Natar Ungalaaq"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
   },
   "DIR-0132-W1031-1": {
    "title": "Guanzillum",
@@ -4676,6 +4820,27 @@
    "primary_theme": "Youth",
    "families": [
     "Expression and Representation",
+    "Lives and Relations"
+   ],
+   "form": "Fiction",
+   "length": "Feature"
+  },
+  "FILM-0085": {
+   "title": "Ste. Anne",
+   "year": 2021,
+   "makers": [
+    {
+     "id": "DIR-0138",
+     "name": "Rhayne Vermette"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Kinship",
+    "Women and Gender"
+   ],
+   "primary_theme": "Kinship",
+   "families": [
     "Lives and Relations"
    ],
    "form": "Fiction",
@@ -4865,6 +5030,22 @@
     {
      "id": "DIR-0143",
      "name": "Sandra Sunrising Osawa"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "DIR-0144-F1": {
+   "title": "Six Miles Deep",
+   "year": 2010,
+   "makers": [
+    {
+     "id": "DIR-0144",
+     "name": "Sara Roque"
     }
    ],
    "languages": [],
@@ -5153,6 +5334,38 @@
    ],
    "form": "Fiction",
    "length": "Feature"
+  },
+  "DIR-0152-F1": {
+   "title": "Sol",
+   "year": null,
+   "makers": [
+    {
+     "id": "DIR-0152",
+     "name": "Susan Avingaq"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "DIR-0153-F1": {
+   "title": "MONSTR",
+   "year": 2023,
+   "makers": [
+    {
+     "id": "DIR-0153",
+     "name": "Tank Standing Buffalo"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
   },
   "FILM-0091": {
    "title": "Nîpawistamâsowin: We Will Stand Up",
@@ -5759,6 +5972,22 @@
    "form": null,
    "length": null
   },
+  "DIR-0159-F1": {
+   "title": "Portraits from a Fire",
+   "year": 2021,
+   "makers": [
+    {
+     "id": "DIR-0159",
+     "name": "Trevor Mack"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "RESEARCH-FILM-20261031-800-0023": {
    "title": "Organza’s Revenge",
    "year": 2024,
@@ -5820,6 +6049,22 @@
    ],
    "form": "Music Video",
    "length": "Short"
+  },
+  "DIR-0164-F1": {
+   "title": "Mesnak",
+   "year": 2011,
+   "makers": [
+    {
+     "id": "DIR-0164",
+     "name": "Yves Sioui Durand"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
   },
   "FILM-0096": {
    "title": "Atanarjuat: The Fast Runner",
@@ -10272,6 +10517,54 @@
    "form": null,
    "length": null
   },
+  "DIR-0275-F1": {
+   "title": "I Belong to This",
+   "year": 2003,
+   "makers": [
+    {
+     "id": "DIR-0275",
+     "name": "Dustinn Craig"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "DIR-0277-F1": {
+   "title": "Ramona",
+   "year": 1928,
+   "makers": [
+    {
+     "id": "DIR-0277",
+     "name": "Edwin Carewe"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "DIR-0285-F1": {
+   "title": "Rabbit Stories",
+   "year": 2023,
+   "makers": [
+    {
+     "id": "DIR-0285",
+     "name": "Joseph L. Erb"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "FILM-0261": {
    "title": "Wild Indian",
    "year": 2021,
@@ -10339,6 +10632,22 @@
     {
      "id": "DIR-0294",
      "name": "MorningStar Angeline"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "DIR-0295-F1": {
+   "title": "Awake: A Dream From Standing Rock",
+   "year": 2017,
+   "makers": [
+    {
+     "id": "DIR-0295",
+     "name": "Myron Dewey"
     }
    ],
    "languages": [],
@@ -11095,6 +11404,22 @@
     {
      "id": "DIR-0308",
      "name": "Sterlin Harjo"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "DIR-0309-F1": {
+   "title": "Doing the Sheep Good",
+   "year": 2013,
+   "makers": [
+    {
+     "id": "DIR-0309",
+     "name": "Teresa Montoya"
     }
    ],
    "languages": [],
