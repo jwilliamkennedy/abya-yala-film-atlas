@@ -121,7 +121,7 @@
    if(b.dataset.filmId){
     var entry=films.find(f=>f.x.id===b.dataset.filmId);
     if(!entry)return;
-    show(false);atlas().open();atlas().add(entry.x);
+    show(false);atlas().open();atlas().followFilm(entry.x);
    }
   });
   document.addEventListener('keydown',function(e){if(e.key==='Escape'&&isOpen){show(false);toggle.focus();}});
@@ -219,7 +219,7 @@
    return '<article class="tw-film"><div class="tw-film-art">'+(image?'<img loading="lazy" src="'+esc(image)+'" alt="" onerror="this.hidden=true;this.parentElement.classList.add(\'no-art\')">':'')+'<span aria-hidden="true">'+esc(short(x.title,1))+'</span></div>'+
     '<div class="tw-film-copy"><strong>'+esc(x.title)+'</strong><small>'+esc([x.maker,x.year].filter(Boolean).join(' · '))+'</small>'+
     (source?'<a href="'+esc(source)+'" target="_blank" rel="noopener noreferrer">Synopsis source ↗</a>':'<span class="tw-no-source">Atlas theme tag</span>')+'</div>'+
-    '<button type="button" data-film-id="'+esc(x.id)+'" aria-label="Add '+esc(x.title)+' to your weave">+ Add</button></article>';
+    '<button type="button" data-film-id="'+esc(x.id)+'" aria-label="Follow '+esc(x.title)+' in your weave">Follow →</button></article>';
   }).join('')+'</div>'+(total>unique.length?'<p class="tw-more-count">'+(total-unique.length)+' more films · Create a thread for the full theme.</p>':'');
  }
  function example(){
