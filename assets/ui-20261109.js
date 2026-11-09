@@ -122,13 +122,55 @@ function mapPage(){
   var gap=sel.getBoundingClientRect().top-bar.getBoundingClientRect().bottom;
   if(gap<8){var sc=ix.scrollHeight>ix.clientHeight?ix:(document.scrollingElement||document.documentElement);sc.scrollTop+=gap-12;}
  }
+
+ /* Horizontal alphabet has accessible arrows, wheel scrolling and keeps selection visible. */
+ function alphabetScroll(){
+  ['maker','film'].forEach(function(kind){
+   var nav=$('#'+kind+'-alphabet');if(!nav||nav.closest('.ui-alpha-shell'))return;
+   var shell=document.createElement('div');shell.className='ui-alpha-shell';
+   var prev=document.createElement('button'),next=document.createElement('button');
+   prev.type=next.type='button';prev.className='ui-alpha-arrow';next.className='ui-alpha-arrow';
+   prev.textContent='‹';next.textContent='›';
+   prev.setAttribute('aria-label','Scroll '+(kind==='maker'?'filmmaker names':'film titles')+' toward A');
+   next.setAttribute('aria-label','Scroll '+(kind==='maker'?'filmmaker names':'film titles')+' toward Z');
+   nav.before(shell);shell.append(prev,nav,next);
+   function update(){
+    var has=nav.scrollWidth>nav.clientWidth+2;
+    shell.classList.toggle('has-overflow',has);
+    prev.disabled=!has||nav.scrollLeft<=1;
+    next.disabled=!has||nav.scrollLeft+nav.clientWidth>=nav.scrollWidth-2;
+   }
+   function move(dir){nav.scrollBy({left:dir*Math.max(110,nav.clientWidth*.72),behavior:'smooth'});}
+   prev.addEventListener('click',function(){move(-1);});
+   next.addEventListener('click',function(){move(1);});
+   nav.addEventListener('scroll',update,{passive:true});
+   nav.addEventListener('wheel',function(e){
+    if(e.ctrlKey||e.metaKey||Math.abs(e.deltaY)<=Math.abs(e.deltaX)||nav.scrollWidth<=nav.clientWidth+2)return;
+    var amount=e.deltaY*(e.deltaMode===1?18:e.deltaMode===2?nav.clientWidth:1);
+    if(amount<0&&nav.scrollLeft<=0||amount>0&&nav.scrollLeft+nav.clientWidth>=nav.scrollWidth-1)return;
+    if(e.cancelable)e.preventDefault();nav.scrollLeft+=amount;
+   },{passive:false});
+   function track(){
+    var active=nav.querySelector('button[aria-pressed="true"]');
+    if(active){
+     var a=active.getBoundingClientRect(),n=nav.getBoundingClientRect();
+     if(a.left<n.left+3)nav.scrollLeft-=n.left-a.left+9;
+     else if(a.right>n.right-3)nav.scrollLeft+=a.right-n.right+9;
+    }
+    update();
+   }
+   new MutationObserver(function(){requestAnimationFrame(track);}).observe(nav,{childList:true});
+   if(window.ResizeObserver)new ResizeObserver(update).observe(nav);
+   requestAnimationFrame(track);
+  });
+ }
  /* zoom: far below 2.5× */
  function zoomState(){
   var z=$('#zoom-level');var k=z?parseFloat(String(z.textContent).replace(',','.'))||1:1;
   root.dataset.uiZoom=k<2.5?'far':'near';
  }
  /* map marks */
- var outsideCache=new WeakMap();
+ /* Do not cache per-path visibility across map cameras. */
  /* longitude of a screen x, from two known points (the overlay is Web Mercator, so x is linear in longitude) */
  function lonAt(x){
   try{var a=window.Atlas.screenPoint([-90,0]),b=window.Atlas.screenPoint([-89,0]);var dx=b[0]-a[0];if(!(dx>0))return null;return -90+(x-a[0])/dx;}catch(e){return null;}
@@ -147,7 +189,7 @@ function mapPage(){
    g.dataset.uiOk='wait';var probe=new Image();probe.onload=function(){if(g.dataset.uiSrc===src)g.dataset.uiOk='1';};probe.onerror=function(){if(g.dataset.uiSrc===src)g.dataset.uiOk='0';};probe.src=src;
   });
   $$('#atlas .nation-wash').forEach(function(p){
-   if(outsideCache.has(p))return;var out=outside(p);if(out==null)return;outsideCache.set(p,out);p.classList.toggle('ui-outside',out);
+   var out=outside(p);if(out==null)return;p.classList.toggle('ui-outside',out);
   });
  }
  /* map key: the play button */
@@ -169,9 +211,10 @@ function mapPage(){
  }
  /* run */
  var raf=0;function soon(){if(raf)return;raf=requestAnimationFrame(function(){raf=0;zoomState();marks();placeholders();renameIn($('main'));keyWatch();constellate();});}
- indexMore();barHeight();zoomState();soon();keepList();
+ indexMore();alphabetScroll();barHeight();zoomState();soon();keepList();
  new MutationObserver(soon).observe(document.body,{subtree:true,childList:true,attributes:true,attributeFilter:['hidden','aria-pressed','aria-expanded','open']});
  var zl=$('#zoom-level');if(zl)new MutationObserver(zoomState).observe(zl,{childList:true,characterData:true,subtree:true});
+ window.addEventListener('atlas-camera-change',soon);
  document.addEventListener('click',function(e){if(e.target.closest('.entry-button,[data-adjacent-maker],[data-show-maker],[data-cross-maker]'))setTimeout(clearOfBar,450);},true);
  setTimeout(keepList,1500);setTimeout(soon,2500);
 }
