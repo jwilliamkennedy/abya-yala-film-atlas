@@ -2,7 +2,7 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-09",
  "license": "See data.html",
- "films_on_public_map": 1533,
+ "films_on_public_map": 1541,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -30251,6 +30251,134 @@
    "families": [],
    "form": null,
    "length": null
+  },
+  "Q20261108-61-F1": {
+   "title": "Voices of the Grand Canyon",
+   "year": 2022,
+   "makers": [
+    {
+     "id": "Q20261108-61",
+     "name": "Deidra Peaches"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261108-62-F1": {
+   "title": "Uu?uu~tah",
+   "year": 2019,
+   "makers": [
+    {
+     "id": "Q20261108-62",
+     "name": "Chad Charlie"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": "Short"
+  },
+  "Q20261108-63-F1": {
+   "title": "Viva Verdi!",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261108-63",
+     "name": "Yvonne Russo"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "Q20261108-64-F1": {
+   "title": "Talking Stones: The Cherokee Syllabary Cave",
+   "year": 2020,
+   "makers": [
+    {
+     "id": "Q20261108-64",
+     "name": "Rory Crittenden"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261108-65-F1": {
+   "title": "Dear Alaska",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261108-65",
+     "name": "Moriah Hayes"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "Q20261108-66-F1": {
+   "title": "My Roommate Makayla",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261108-66",
+     "name": "Jonelle Belcourt"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
+  },
+  "Q20261108-67-F1": {
+   "title": "Oshki-aya'aa (Something New)",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "Q20261108-67",
+     "name": "Jordan Wanakamik"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
+  },
+  "Q20261108-68-F1": {
+   "title": "Dogwood",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261108-68",
+     "name": "Maya Rose Dittloff"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
   }
  }
 }
