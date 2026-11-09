@@ -2,7 +2,7 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-09",
  "license": "See data.html",
- "films_on_public_map": 1432,
+ "films_on_public_map": 1436,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -13029,6 +13029,10 @@
     {
      "id": "NEW-5a9be9a8d692",
      "name": "Cristiane Pankararu"
+    },
+    {
+     "id": "NEW-1d473747ac7c",
+     "name": "Glicéria Tupinambá"
     }
    ],
    "languages": [],
@@ -18591,6 +18595,22 @@
    "form": null,
    "length": null
   },
+  "RESEARCH-FILM-004-01": {
+   "title": "Pohã Re’yi",
+   "year": 2020,
+   "makers": [
+    {
+     "id": "LEAD-20261011-004",
+     "name": "Jhomalis Franco Gomes"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "LEAD-20261011-015-W1031-1": {
    "title": "La niña del arpa",
    "year": 2017,
@@ -22355,6 +22375,22 @@
    "form": null,
    "length": null
   },
+  "NEW-a1673e2c116c-WORK-1": {
+   "title": "Amanecer",
+   "year": 2014,
+   "makers": [
+    {
+     "id": "NEW-a1673e2c116c",
+     "name": "Cecilia Us"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "NEW-35815ec235b0-WORK-1": {
    "title": "Kat at Kat'ex?",
    "year": 2017,
@@ -22407,6 +22443,22 @@
     "Lives and Relations",
     "Sovereignty and Politics"
    ],
+   "form": null,
+   "length": null
+  },
+  "NEW-1976cd104bb2-WORK-1": {
+   "title": "Mujer",
+   "year": 2021,
+   "makers": [
+    {
+     "id": "NEW-1976cd104bb2",
+     "name": "Marta Choc Calel"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
    "form": null,
    "length": null
   },
@@ -24079,6 +24131,29 @@
    "families": [],
    "form": null,
    "length": null
+  },
+  "NEW-dc54dcde5a1a-WORK-1": {
+   "title": "Akicita: The Battle of Standing Rock",
+   "year": 2018,
+   "makers": [
+    {
+     "id": "NEW-dc54dcde5a1a",
+     "name": "Cody Lucich"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Resistance Movements",
+    "Land Defense",
+    "Extractivism"
+   ],
+   "primary_theme": "Resistance Movements",
+   "families": [
+    "Land and Environment",
+    "Sovereignty and Politics"
+   ],
+   "form": "Documentary",
+   "length": "Feature"
   },
   "NEW-f932aaa99059-WORK-1": {
    "title": "Hocak Ecology",
