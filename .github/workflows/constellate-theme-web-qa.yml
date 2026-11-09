@@ -1,0 +1,90 @@
+name: Constellate theme web QA (beta only)
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'beta/assets/constellate-theme-web.js'
+      - 'beta/assets/constellate-theme-web.css'
+      - 'beta/atlas-constellate62.js'
+      - 'beta/index.html'
+      - '.github/workflows/constellate-theme-web-qa.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          pip install -q playwright==1.*
+          python3 -m playwright install --with-deps chromium >/dev/null
+      - name: Exercise live Constellate controls on desktop and phone
+        run: |
+          python3 -m http.server 8789 --bind 127.0.0.1 >/tmp/atlas-qa-web.log 2>&1 &
+          sleep 2
+          mkdir -p shots
+          cat > /tmp/atlas-theme-web-smoke.py <<'PY'
+          import asyncio,json,os
+          from playwright.async_api import async_playwright
+          BASE='http://127.0.0.1:8789/beta/index.html?constellate=1&theme-web=1'
+          async def run():
+            report={}
+            async with async_playwright() as p:
+              b=await p.chromium.launch(args=['--use-angle=swiftshader','--enable-unsafe-swiftshader'])
+              for name,viewport in [('desktop',{'width':1440,'height':900}),('mobile',{'width':390,'height':844})]:
+                ctx=await b.new_context(viewport=viewport,device_scale_factor=1,locale='en-US')
+                page=await ctx.new_page()
+                errors=[]
+                page.on('pageerror',lambda e:errors.append(str(e)))
+                await page.goto(BASE,wait_until='domcontentloaded',timeout=90000)
+                await page.locator('#weave-theme-web-toggle').wait_for(state='visible',timeout=90000)
+                await page.locator('#atlas-theme-web:not([hidden])').wait_for(timeout=20000)
+                await page.locator('#tw-graph [data-term]').first.wait_for(timeout=15000)
+                state=await page.evaluate("""() => ({
+                  themes: document.querySelectorAll('#tw-graph [data-term]').length,
+                  links: document.querySelectorAll('#tw-graph [data-bridge]').length,
+                  panels: document.querySelectorAll('#atlas-theme-web:not([hidden])').length,
+                  filmCatalog: window.AtlasConstellate.catalog.filter(x=>x.type==='film').length,
+                  filteredSource: document.querySelectorAll('#tw-detail a[href^="http"]').length
+                })""")
+                assert state['themes']>=10, f'too few theme nodes {state}'
+                assert state['links']>0, f'no sourced bridges {state}'
+                await page.screenshot(path=f'shots/theme-web-{name}.png',full_page=False)
+                await page.locator('#tw-graph [data-term]').first.click()
+                await page.locator('#tw-detail .tw-films .tw-film').first.wait_for(timeout=10000)
+                state['selected']=await page.locator('#tw-detail h3').inner_text()
+                await page.locator('#tw-search').fill('memory')
+                state['searchNodes']=await page.locator('#tw-graph [data-term]').count()
+                assert state['searchNodes']>=1, f'search failed {state}'
+                await page.locator('#tw-search').fill('')
+                if name=='desktop':
+                  await page.locator('#tw-seed').click()
+                  await page.wait_for_timeout(2500)
+                  state['example']=await page.evaluate("""() => ({
+                    threads: window.AtlasCollections.current().threads.length,
+                    items: window.AtlasCollections.current().items.length,
+                    visible: !document.querySelector('#atlas-theme-web').hidden
+                  })""")
+                  assert state['example']['threads']>=4,state
+                  assert state['example']['items']>=15,state
+                  assert not state['example']['visible'],state
+                  await page.screenshot(path='shots/theme-web-example-desktop.png',full_page=False)
+                else:
+                  await page.locator('#tw-close').click()
+                  assert await page.locator('#atlas-theme-web').is_hidden()
+                state['pageerrors']=errors[:12]
+                report[name]=state
+                await ctx.close()
+              await b.close()
+            with open('shots/theme-web-qa.json','w') as f:json.dump(report,f,indent=2)
+            print('CONSTELLATE_THEME_WEB_QA_OK',json.dumps(report,ensure_ascii=False))
+          asyncio.run(run())
+          PY
+          python3 /tmp/atlas-theme-web-smoke.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: constellate-theme-web-qa
+          path: shots/
