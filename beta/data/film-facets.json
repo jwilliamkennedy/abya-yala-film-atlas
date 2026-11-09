@@ -2,7 +2,7 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-09",
  "license": "See data.html",
- "films_on_public_map": 1547,
+ "films_on_public_map": 1551,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -26688,6 +26688,22 @@
    "form": null,
    "length": null
   },
+  "NEW-4cece503d728-F1": {
+   "title": "Identidad",
+   "year": 2017,
+   "makers": [
+    {
+     "id": "NEW-4cece503d728",
+     "name": "Iván Jaripio"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "NEW-4b43cfbe178e-WORK-1": {
    "title": "Nichimal Tseb",
    "year": null,
@@ -30475,6 +30491,54 @@
    "families": [],
    "form": null,
    "length": "Short"
+  },
+  "QM-da9c531d9e-M1": {
+   "title": "Donde he dejado el alma",
+   "year": 2017,
+   "makers": [
+    {
+     "id": "QM-da9c531d9e",
+     "name": "Benjamín Sagüí"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QM-1a5fde6c6a-M1": {
+   "title": "Alma mestiza",
+   "year": 2018,
+   "makers": [
+    {
+     "id": "QM-1a5fde6c6a",
+     "name": "Rosa Chávez"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Music Video",
+   "length": null
+  },
+  "QM-1a5fde6c6a-F1": {
+   "title": "Kixampe",
+   "year": 2021,
+   "makers": [
+    {
+     "id": "QM-1a5fde6c6a",
+     "name": "Rosa Chávez"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Music Video",
+   "length": null
   }
  }
 }
