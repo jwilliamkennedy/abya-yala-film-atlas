@@ -226,7 +226,6 @@ html[data-reading-theme="night"] #atlas .land-shading{opacity:.8}
 #weave-draw-thread{order:5;margin-left:14px!important}#weave-browse-films{order:6}#weave-theme-web-toggle{order:7}
 #constellate-mode .weave-tool-group{order:8;margin-left:10px}
 #constellate-share{order:10;margin-left:auto!important}#constellate-mode .weave-more{order:11}#constellate-exit{order:12}
-#constellate-mode>#constellate-clear{display:none!important} /* now in Options, behind its confirmation */
 #constellate-edit,#constellate-read,#weave-play{border-radius:0!important;border:1px solid var(--ui-line)!important;background:var(--ui-surface)!important;color:var(--ui-muted)!important;font:600 14px/1 var(--ui-sans)!important;padding:9px 14px!important;margin:0!important}
 #constellate-edit{border-radius:999px 0 0 999px!important}#weave-play{border-radius:0 999px 999px 0!important}
 #constellate-read{border-left:0!important;border-right:0!important}
@@ -238,7 +237,6 @@ html body #constellate-mode #constellate-edit[aria-pressed="true"],html body #co
 #weave-empty-hint h2{font:400 36px/1.12 var(--ui-serif)!important;letter-spacing:-.015em;color:var(--ui-ink)!important}
 #weave-empty-hint .weave-intro-kicker{font:600 12px/1 var(--ui-sans)!important;letter-spacing:.12em;color:var(--ui-accent)!important}
 #weave-empty-hint .weave-intro-lede{font:400 16px/1.5 var(--ui-sans)!important;color:var(--ui-muted)!important}
-.weave-more-menu #constellate-clear{color:var(--ui-accent)!important}
 html[data-ui-constellate="on"] #atlas .land-shading{opacity:.5}
 
 /* ---------- Night ---------- */

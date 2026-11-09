@@ -1,0 +1,100 @@
+/* Constellate: a clearer way into weaving, 2026-11-09 (Claude). Pairs with weave-20261109.js. Uses the tokens in ui-20261109.css. */
+
+/* ---------- start: one card, nothing competing with it ---------- */
+html[data-weave-stage="start"] #constellate-popup{display:none!important}
+:root:not(#_):not(#__)[data-weave-stage="start"] body main{grid-template-columns:minmax(0,1fr)!important}
+:root:not(#_):not(#__)[data-weave-stage="start"] body .map-panel{grid-column:1/-1!important;width:auto!important}
+html[data-weave-stage="start"] .map-panel .zoom,html[data-weave-stage="start"] .map-toolbar .map-actions{visibility:hidden}
+html[data-weave-stage="start"] #constellate-mode>*:not(#constellate-exit):not(span:first-child):not(.weave-more):not(.weave-tool-group){display:none!important}
+html[data-weave-stage="start"] #constellate-mode .weave-tool-group{order:0!important;margin-left:0!important}
+html[data-weave-stage] #weave-empty-hint{display:none!important}
+#weave-start{display:none}
+html[data-weave-stage="start"] #weave-start{display:block}
+#weave-start{position:absolute;z-index:30;left:50%;top:66px;transform:translateX(-50%);width:min(1000px,calc(100% - 48px));max-height:calc(100% - 110px);overflow:auto;
+ background:var(--ui-surface);color:var(--ui-ink);border:1px solid var(--ui-line);border-radius:18px;box-shadow:var(--ui-shadow);padding:24px 28px 22px;font-family:var(--ui-sans)}
+#weave-start .ws-kicker{margin:0 0 8px;font:600 12px/1 var(--ui-sans);letter-spacing:.14em;text-transform:uppercase;color:var(--ui-accent)}
+#weave-start h2{margin:0 0 8px;font:400 34px/1.1 var(--ui-serif);letter-spacing:-.015em;color:var(--ui-ink)}
+#weave-start .ws-lede{margin:0 0 16px;max-width:62ch;font:400 16px/1.55 var(--ui-sans);color:var(--ui-muted)}
+#weave-start .ws-how{display:flex;flex-wrap:wrap;gap:6px 22px;list-style:none;margin:0 0 16px;padding:0;font:600 14px/1.2 var(--ui-sans);color:var(--ui-ink)}
+#weave-start .ws-how b{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--ui-ink);color:var(--ui-paper);font-size:12px;margin-right:6px}
+#weave-start .ws-paths{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+#weave-start .ws-path{border:1px solid var(--ui-line);border-radius:14px;padding:16px 16px 14px;background:var(--ui-paper);display:flex;flex-direction:column;gap:10px;min-width:0}
+#weave-start .ws-path h3{margin:0;font:400 21px/1.2 var(--ui-serif);color:var(--ui-ink)}
+#weave-start .ws-path p{margin:0;font:400 14px/1.45 var(--ui-sans);color:var(--ui-muted)}
+#weave-start .ws-chips{display:flex;flex-wrap:wrap;gap:6px}
+#weave-start .ws-chips button{font:600 13px/1 var(--ui-sans);color:var(--ui-ink);background:var(--ui-surface);border:1px solid var(--ui-line);border-radius:999px;padding:7px 10px;cursor:pointer}
+#weave-start .ws-chips button small{font-weight:400;color:var(--ui-muted);margin-left:2px}
+#weave-start .ws-chips button:hover,#weave-start .ws-chips button:focus-visible{border-color:var(--ui-ink);background:var(--ui-wash)}
+#weave-start select,#weave-start input[type="search"]{width:100%;box-sizing:border-box;font:400 15px/1.2 var(--ui-sans);color:var(--ui-ink);background:var(--ui-surface);border:1px solid var(--ui-line);border-radius:10px;padding:10px 12px;min-height:42px}
+#weave-start select{appearance:none;background:var(--ui-surface) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%2355616b' stroke-width='1.6'/%3E%3C/svg%3E") no-repeat right 12px center;padding-right:32px}
+#weave-start input[type="search"]:focus{outline:2px solid var(--ui-accent);outline-offset:1px;border-color:transparent}
+#weave-start .ws-results{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2px;max-height:240px;overflow:auto}
+#weave-start .ws-results button{display:block;width:100%;text-align:left;background:transparent;border:0;border-radius:8px;padding:8px 10px;cursor:pointer;color:var(--ui-ink)}
+#weave-start .ws-results button:hover,#weave-start .ws-results button:focus-visible{background:var(--ui-wash)}
+#weave-start .ws-results strong{display:block;font:400 16px/1.25 var(--ui-serif)}
+#weave-start .ws-results small{display:block;font:400 13px/1.3 var(--ui-sans);color:var(--ui-muted)}
+#weave-start .ws-none{font:400 14px/1.4 var(--ui-sans);color:var(--ui-muted);padding:6px 10px}
+#weave-start .ws-primary{align-self:flex-start;font:600 15px/1 var(--ui-sans);color:var(--ui-accent-ink);background:var(--ui-accent);border:1px solid var(--ui-accent);border-radius:999px;padding:12px 18px;cursor:pointer;margin-top:auto}
+#weave-start .ws-link{align-self:flex-start;font:600 14px/1.2 var(--ui-sans);color:var(--ui-accent);background:none;border:0;padding:4px 0;cursor:pointer}
+#weave-start .ws-saved{margin-top:16px;padding-top:14px;border-top:1px solid var(--ui-line);display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+#weave-start .ws-saved[hidden]{display:none}
+#weave-start .ws-saved label{font:600 14px/1 var(--ui-sans);color:var(--ui-ink)}
+#weave-start .ws-saved select{width:auto;min-width:260px}
+#weave-start .ws-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ---------- build: the guide at the top of the panel ---------- */
+#weave-guide{position:sticky;top:0;z-index:5;margin:4px 0 14px;padding:14px 14px 12px;border:1px solid var(--ui-line);border-radius:12px;background:var(--ui-surface);font-family:var(--ui-sans)}
+#weave-guide .wg-steps{display:flex;gap:4px;list-style:none;margin:0 0 10px;padding:0;counter-reset:wg}
+#weave-guide .wg-steps li{counter-increment:wg;flex:1;font:600 12px/1.2 var(--ui-sans);color:var(--ui-muted);padding-top:8px;border-top:3px solid var(--ui-line)}
+#weave-guide .wg-steps li::before{content:counter(wg) ' · '}
+#weave-guide .wg-steps li.is-done{color:var(--ui-ink);border-top-color:var(--ui-ink)}
+#weave-guide .wg-steps li.is-now{color:var(--ui-accent);border-top-color:var(--ui-accent)}
+#weave-guide .wg-text{margin:0 0 10px;font:400 14px/1.5 var(--ui-sans);color:var(--ui-ink)}
+#weave-guide .wg-actions{display:flex;flex-wrap:wrap;gap:6px}
+#weave-guide .wg-actions button{font:600 13px/1 var(--ui-sans);color:var(--ui-ink);background:transparent;border:1px solid var(--ui-line);border-radius:999px;padding:8px 12px;cursor:pointer}
+#weave-guide .wg-actions button.wg-primary{background:var(--ui-accent);border-color:var(--ui-accent);color:var(--ui-accent-ink)}
+html[data-weave-stage="play"] #weave-guide,html[data-weave-stage="read"] #weave-guide{display:none}
+
+/* ---------- toolbar: modes, then building tools (only while building), then the weave's own actions ---------- */
+#constellate-edit{order:1}#constellate-read{order:2}#weave-play{order:3}
+#weave-browse-films{order:5;margin-left:14px!important}#weave-draw-thread{order:6}#weave-theme-web-toggle{order:7}
+#constellate-mode .weave-tool-group{order:8;margin-left:10px}
+#constellate-share{order:10;margin-left:auto!important}
+#constellate-clear{order:11}
+#constellate-mode .weave-more{order:12}
+#constellate-exit{order:13}
+:root:not(#_):not(#__) #constellate-mode #constellate-clear{display:inline-flex!important;font:600 14px/1 var(--ui-sans)!important;color:var(--ui-accent)!important;background:transparent!important;border:1px solid color-mix(in srgb,var(--ui-accent) 45%,transparent)!important;border-radius:999px!important;padding:8px 12px!important}
+:root:not(#_):not(#__) #constellate-mode #constellate-clear:hover{background:color-mix(in srgb,var(--ui-accent) 10%,transparent)!important}
+:root:not(#_):not(#__)[data-weave-stage="start"] #constellate-mode #constellate-clear{display:none!important}
+html[data-weave-stage="read"] #weave-browse-films,html[data-weave-stage="read"] #weave-draw-thread,html[data-weave-stage="read"] #weave-theme-web-toggle,
+html[data-weave-stage="play"] #weave-browse-films,html[data-weave-stage="play"] #weave-draw-thread,html[data-weave-stage="play"] #weave-theme-web-toggle{display:none!important}
+
+/* ---------- the atlas stays behind the weave ---------- */
+html[data-weave-stage] #atlas .land-word{opacity:.32;transition:opacity .2s}
+html[data-weave-stage] #atlas .land-word:hover{opacity:.8}
+html[data-weave-stage] #atlas .land-watch,html[data-weave-stage] #atlas .land-thumb,html[data-weave-stage] #atlas .cinema-anchor,html[data-weave-stage] #atlas .anchor-leader{display:none!important}
+
+/* ---------- phones ---------- */
+@media (max-width:760px){
+ #weave-start{top:62px;left:8px;right:8px;width:auto;transform:none;max-height:calc(100% - 76px);padding:20px 18px}
+ #weave-start h2{font-size:28px}
+ #weave-start .ws-paths{grid-template-columns:1fr}
+ #weave-start .ws-saved select{min-width:0;width:100%}
+}
+#weave-start .ws-example-films{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+#weave-start .ws-example-films .weave-intro-film{min-width:0;font:400 12px/1.3 var(--ui-sans);color:var(--ui-muted)}
+#weave-start .ws-example-films .weave-media-thumb{display:block;aspect-ratio:16/10;border-radius:6px;overflow:hidden;background:var(--ui-wash)}
+#weave-start .ws-example-films img{width:100%;height:100%;object-fit:cover;display:block}
+#weave-start .ws-example-films strong,#weave-start .ws-example-films b{color:var(--ui-ink)}
+#weave-start .ws-example-label{font:400 13px/1.3 var(--ui-sans)!important;color:var(--ui-muted)!important}
+/* connection and suggestion wording */
+#weave-guide .wg-text b{font-weight:600}
+@media (max-width:760px){#weave-start{top:12px}}
+#weave-start .ws-example-films .weave-media-thumb{position:relative!important;width:100%!important;height:auto!important}
+#weave-start .ws-example-films .weave-media-placeholder{position:absolute!important;inset:0!important;display:grid;place-items:center;align-content:center;font:400 18px/1 var(--ui-serif);color:var(--ui-muted)}
+#weave-start .ws-example-films .weave-media-placeholder small{font:600 10px/1 var(--ui-sans);letter-spacing:.08em;text-transform:uppercase}
+#weave-start .ws-example-films .weave-media-thumb.has-source:not(.is-broken) .weave-media-placeholder{display:none}
+#weave-start .ws-example-films .weave-media-thumb.is-broken img{display:none}
+#weave-start .ws-example-films .weave-intro-film>*:not(.weave-media-thumb){display:block;margin-top:4px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#weave-start .ws-example-films .weave-media-thumb{aspect-ratio:16/8!important}
+#weave-start .ws-path{gap:8px}
