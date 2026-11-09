@@ -121,6 +121,14 @@ def watch_index(records, explore, facets=None):
             items.append(it)
     head = '/* Built by tools/atlas/build.py from the Published sheet: films by filmmakers on the atlas that can be watched in full. */\n'
     pathlib.Path('beta/watch-data.js').write_text(head + 'window.ATLAS_WATCH=' + json.dumps({'films': items}, ensure_ascii=False, separators=(',', ':')) + ';\n', encoding='utf-8')
+    # Remove obsolete Watch-page count sentence during automatic beta rebuilds,
+    # including when a concurrent site checkout still contains the old template.
+    watch_page=pathlib.Path('beta/watch.html')
+    if watch_page.is_file():
+        h=watch_page.read_text(encoding='utf-8')
+        stale='<p class="lede"><span id="total">0</span> films by filmmakers on the atlas. <span id="playable">0</span> play here.</p>'
+        if stale in h:
+            watch_page.write_text(h.replace(stale,''), encoding='utf-8')
     return len(items), sum(1 for i in items if any(l['embed'] for l in i['links']))
 
 def build(path, state_path, check_only=False):
