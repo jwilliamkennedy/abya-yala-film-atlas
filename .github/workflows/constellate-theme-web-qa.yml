@@ -6,7 +6,6 @@ on:
       - 'beta/assets/constellate-theme-web.js'
       - 'beta/assets/constellate-theme-web.css'
       - 'beta/atlas-constellate62.js'
-      - 'beta/index.html'
       - '.github/workflows/constellate-theme-web-qa.yml'
   workflow_dispatch:
 permissions:
