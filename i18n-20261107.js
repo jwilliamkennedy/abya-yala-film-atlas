@@ -34,7 +34,7 @@ const T=[["Films you add from filmmaker pages, the timeline and Watch gather her
 ["Choose one film. Films that share a documented theme with it are suggested next.", "Elige una película. Se sugieren después las que comparten con ella un tema documentado.", "Escolha um filme. Os que compartilham com ele um tema documentado são sugeridos em seguida.", "Choisissez un film. Les films qui partagent avec lui un thème documenté sont proposés ensuite."],
 ["Search a film or filmmaker…", "Busca una película o cineasta…", "Busque um filme ou cineasta…", "Cherchez un film ou un cinéaste…"],
 ["See an example", "Ver un ejemplo", "Ver um exemplo", "Voir un exemple"],
-["Four films that share a theme, already woven, to read and change.", "Cuatro películas que comparten un tema, ya tejidas, para leer y cambiar.", "Quatro filmes que compartilham um tema, já tecidos, para ler e mudar.", "Quatre films qui partagent un thème, déjà tissés, à lire et à modifier."],
+["Three films that share a theme, already woven, to read and change.", "Tres películas que comparten un tema, ya tejidas, para leer y modificar.", "Três filmes que compartilham um tema, já tecidos, para ler e modificar.", "Trois films qui partagent un thème, déjà tissés, à lire et à modifier."],
 ["Open the example", "Abrir el ejemplo", "Abrir o exemplo", "Ouvrir l’exemple"],
 ["Or explore the theme web →", "O explora la red de temas →", "Ou explore a rede de temas →", "Ou explorez la toile des thèmes →"],
 ["Open a saved weave", "Abrir un tejido guardado", "Abrir uma tecelagem salva", "Ouvrir un tissage enregistré"],
@@ -42,7 +42,12 @@ const T=[["Films you add from filmmaker pages, the timeline and Watch gather her
 ["Read and share", "Leer y compartir", "Ler e compartilhar", "Lire et partager"],
 ["Add next", "Añadir después", "Adicionar em seguida", "Ajouter ensuite"],
 ["Films that could come next", "Películas que podrían seguir", "Filmes que podem vir em seguida", "Films qui pourraient suivre"],
-["Connect two films", "Conectar dos películas", "Conectar dois filmes", "Relier deux films"],
+["Search themes","Buscar temas","Buscar temas","Rechercher des thèmes"],
+ ["Search themes…","Buscar temas…","Buscar temas…","Rechercher des thèmes…"],
+ ["No matching themes.","No se encontraron temas.","Nenhum tema encontrado.","Aucun thème trouvé."],
+ ["Continue this weave","Continuar este tejido","Continuar esta tecelagem","Reprendre ce tissage"],
+ ["Memory and Oral History","Memoria e historia oral","Memória e história oral","Mémoire et histoire orale"],
+ ["Connect two films", "Conectar dos películas", "Conectar dois filmes", "Relier deux films"],
 ["Read the weave", "Leer el tejido", "Ler a tecelagem", "Lire le tissage"],
 ["Search films", "Buscar películas", "Buscar filmes", "Chercher des films"],
 ["See films that could come next", "Ver películas que podrían seguir", "Ver filmes que podem vir em seguida", "Voir les films qui pourraient suivre"],
@@ -168,6 +173,17 @@ const SKIP='#atlas,#map-caption,#map-tip,#country-rail>button span,script,style,
 const DATA_ZONE='#index-list,#search-relay,#selection-crumbs,#featured-weave .fw-body';
 function tr(en){
  const k=en.trim();if(!k)return null;const i=IDX[lang];
+ /* A live Constellate guide includes the actual theme and number of films. */
+ const guide=k.match(/^“(.+?)” runs through ([\d,]+) films\. Connect two films to say how they meet: answers, echoes, shares land, or your own words\.$/);
+ if(guide){
+  const theme=DICT[guide[1]]?.[i]||guide[1],n=guide[2];
+  const msg={
+   es:'«'+theme+'» recorre '+n+' películas. Conecta dos películas para explicar cómo se relacionan: una responde a la otra, se hacen eco, comparten territorio o se vinculan con tus propias palabras.',
+   pt:'«'+theme+'» percorre '+n+' filmes. Conecte dois filmes para explicar como se relacionam: um responde ao outro, ecoam, compartilham território ou se vinculam com suas próprias palavras.',
+   fr:'«'+theme+'» traverse '+n+' films. Reliez deux films pour expliquer leur rencontre : réponse, écho, territoire partagé ou vos propres mots.'
+  };
+  return en.replace(k,msg[lang]);
+ }
  const row=DICT[k];if(row)return en.replace(k,row[i]);
  if(k.includes(' · ')){const parts=k.split(' · ');if(parts.every(p=>DICT[p]||/^[\d,]+$/.test(p)))return en.replace(k,parts.map(p=>DICT[p]?DICT[p][i]:p).join(' · '));}
  for(const [re,out] of PAT){if(out&&re.test(k))return en.replace(k,k.replace(re,out[i-1]));}
