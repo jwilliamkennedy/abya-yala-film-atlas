@@ -2966,9 +2966,8 @@ body:has(.weave-more[open]) #weave-notice{display:none}
 .weave-tabs button{min-height:42px;padding:8px 6px;font-size:15px!important;color:var(--reading-muted);border-bottom:3px solid transparent;margin:0!important;border-radius:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .weave-tabs button[aria-selected="true"]{color:var(--reading-ink);border-bottom-color:var(--reading-accent);font-weight:600}
 .weave-tabs button small{font-weight:400;color:var(--reading-muted);margin-left:3px}
-#weave-editor[data-tab="add"]>:not(.weave-tabs):not(.weave-browse):not(#weave-suggest){display:none!important}
-#weave-editor[data-tab="thread"]>.weave-browse,
-#weave-editor[data-tab="thread"]>#weave-suggest{display:none!important}
+#weave-editor[data-tab="add"]>:not(.weave-tabs):not(.weave-browse){display:none!important}
+#weave-editor[data-tab="thread"]>.weave-browse{display:none!important}
 #weave-editor[data-tab="add"] .weave-browse{border-top:0;margin-top:0;padding-top:0}
 #weave-editor[data-tab="add"] #constellate-results{max-height:max(320px,calc(100dvh - 380px))}
 #weave-editor[data-tab="thread"] #constellate-context:not([hidden]){margin-top:0}
@@ -3491,3 +3490,14 @@ header .ui-lang select{font:inherit;font-size:13px;min-height:30px;padding:0 6px
 
 /* the pager shows Previous / Next only (its count was of film credits, not films) */
 .profile-pager .profile-position{visibility:hidden}
+
+/* Constellate: the next sourced film must be visible beside the selected film. */
+#weave-editor[data-tab="thread"] #weave-suggest:not([hidden]){display:block!important;margin:10px 0 16px;padding:12px 0;border-top:1px solid var(--reading-line)}
+#weave-suggest .weave-suggest-head{display:flex;align-items:baseline;gap:10px;justify-content:space-between;margin:0 0 5px}
+#weave-suggest .weave-suggest-head h3{font-size:14px;margin:0!important;font-weight:700;color:var(--reading-ink)}
+#weave-suggest .weave-suggest-head small{font-size:11px;color:var(--reading-muted);max-width:52%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#weave-suggest .weave-suggest-intro{font-size:12px;line-height:1.45;color:var(--reading-muted);margin:4px 0 8px}
+#weave-suggest .weave-follow-result{display:flex;align-items:center;gap:9px;padding:8px 2px;border-bottom:1px solid var(--reading-line);min-width:0}
+#weave-suggest .weave-follow-result>span:not(.weave-media-thumb){min-width:0;flex:1}
+#weave-suggest [data-weave-follow]{flex:none;padding:6px 8px;border:1px solid var(--reading-line);border-radius:4px;color:var(--reading-accent);font-size:12px;font-weight:650}
+#weave-suggest [data-weave-follow]:hover,#weave-suggest [data-weave-follow]:focus-visible{border-color:var(--reading-accent);background:color-mix(in srgb,var(--reading-accent) 9%,transparent)}
