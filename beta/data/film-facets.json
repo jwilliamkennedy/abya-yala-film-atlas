@@ -2,7 +2,7 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-09",
  "license": "See data.html",
- "films_on_public_map": 1438,
+ "films_on_public_map": 1440,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -22925,6 +22925,58 @@
    "form": null,
    "length": null
   },
+  "NEW-7a1ad96c1468-WORK-1": {
+   "title": "Buscando mi vida",
+   "year": 2016,
+   "makers": [
+    {
+     "id": "NEW-7a1ad96c1468",
+     "name": "Eva Melina Ruiz"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "NEW-7a1ad96c1468-WORK-2": {
+   "title": "Palabras por la vida",
+   "year": 2015,
+   "makers": [
+    {
+     "id": "NEW-7a1ad96c1468",
+     "name": "Eva Melina Ruiz"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "NEW-7a1ad96c1468-WORK-3": {
+   "title": "Saludos desde el pueblo que dice no a la minería",
+   "year": 2015,
+   "makers": [
+    {
+     "id": "NEW-7a1ad96c1468",
+     "name": "Eva Melina Ruiz"
+    },
+    {
+     "id": "NEW-4c89eb1eecae",
+     "name": "Sergio Julián Caballero"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "NEW-899aa88133e1-WORK-1": {
    "title": "Estado de ánimo",
    "year": 2014,
@@ -23670,22 +23722,6 @@
   "NEW-4c89eb1eecae-WORK-5": {
    "title": "Soberanía alimentaria en Santiago Yucuyachi",
    "year": 2013,
-   "makers": [
-    {
-     "id": "NEW-4c89eb1eecae",
-     "name": "Sergio Julián Caballero"
-    }
-   ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
-  },
-  "NEW-4c89eb1eecae-WORK-6": {
-   "title": "Saludos desde el pueblo que dice no a la minería",
-   "year": 2015,
    "makers": [
     {
      "id": "NEW-4c89eb1eecae",
