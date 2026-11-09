@@ -72,8 +72,24 @@ def embed_of(url):
     """A player address the Watch page can show inline, when the host allows it."""
     m = re.search(r'vimeo\.com/(?:video/)?(\d+)', url or '')
     if m: return f'https://player.vimeo.com/video/{m.group(1)}'
-    m = re.search(r'(?:youtube\.com/watch\?v=|youtu\.be/|youtube\.com/embed/)([\w-]{11})', url or '')
-    if m: return f'https://www.youtube-nocookie.com/embed/{m.group(1)}'
+    # Normalize video links for the embedded player; keep each original source URL.
+    from urllib.parse import urlsplit, parse_qs
+    try:
+        parsed = urlsplit(url or '')
+        host = parsed.hostname.lower().removeprefix('www.') if parsed.hostname else ''
+        video = ''
+        if host in ('youtube.com', 'm.youtube.com', 'music.youtube.com', 'youtube-nocookie.com'):
+            parts = [p for p in parsed.path.split('/') if p]
+            if parts and parts[0] == 'watch':
+                video = parse_qs(parsed.query).get('v', [''])[0]
+            elif len(parts) >= 2 and parts[0] in ('embed', 'shorts', 'live', 'v'):
+                video = parts[1]
+        elif host == 'youtu.be':
+            video = parsed.path.strip('/').split('/')[0]
+        if re.fullmatch(r'[A-Za-z0-9_-]{11}', video):
+            return f'https://www.youtube-nocookie.com/embed/{video}'
+    except ValueError:
+        pass
     m = re.search(r'nfb\.ca/film/([\w-]+)', url or '')
     if m: return f'https://www.nfb.ca/film/{m.group(1)}/embed/player/'
     return ''
