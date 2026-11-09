@@ -94,6 +94,11 @@ def watch_index(records, explore, facets=None):
             links = list((explore.get(f['id']) or {}).get('links') or [])
             if f.get('watchURL'):
                 links.append({'title': 'Watch', 'url': f['watchURL'], 'context': ''})
+            # Watch editorial policy (8 Nov 2026): omit the Canadian Wapikoni youth
+            # programme from Watch. Its makers and films remain in the Atlas and its
+            # Published sheet; the exclusion applies to this viewing collection only.
+            if any('wapikoni' in (' '.join(str(l.get(k) or '') for k in ('title', 'url', 'context'))).lower() for l in links):
+                continue
             links = [l for l in links if l.get('url') and WATCH_RE.search(l.get('title') or '') and not NOT_RE.search(l.get('title') or '')]
             if not links:
                 continue
