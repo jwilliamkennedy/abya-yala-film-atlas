@@ -235,3 +235,31 @@
 @media(max-height:590px){
  #weave-empty-hint{top:115px;transform:translateX(-50%);max-height:calc(100% - 140px)}
 }
+
+
+/* Film imagery continues into the thread order and selected film details. */
+#weave-order-list [data-order-select]{align-items:center;gap:9px}
+#weave-order-list [data-order-select]>.weave-media-thumb{
+ display:block;position:relative;flex:0 0 42px;width:42px;height:43px;min-width:42px;
+ border:1px solid var(--reading-line);border-radius:4px;overflow:hidden;
+ background:var(--reading-wash);
+}
+#weave-order-list [data-order-select]>.weave-media-thumb .weave-media-placeholder>b{font-size:13px}
+#weave-order-list [data-order-select]>.weave-media-thumb .weave-media-placeholder>small{font-size:8px!important}
+#weave-order-list [data-order-select]>span:not(.weave-media-thumb){flex:1;min-width:0}
+#constellate-context .weave-context-preview{
+ display:flex;align-items:center;gap:12px;
+ margin:4px 0 10px;min-width:0;
+}
+#constellate-context .weave-context-preview .weave-media-thumb{
+ position:relative;display:block;flex:0 0 72px;width:72px;height:68px;
+ min-width:72px;border:1px solid var(--reading-line);
+ background:var(--reading-wash);border-radius:5px;overflow:hidden;
+}
+#constellate-context .weave-context-preview h3{
+ margin:0;line-height:1.25;min-width:0;
+ font:500 19px/1.25 "Atlas Serif",Georgia,serif;
+ color:var(--reading-ink);
+}
+#constellate-context .weave-context-preview .weave-media-placeholder>b{font-size:20px}
+#constellate-context .weave-context-preview .weave-media-placeholder>small{font-size:10px!important}
