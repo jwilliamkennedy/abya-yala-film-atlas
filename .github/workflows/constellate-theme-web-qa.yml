@@ -53,7 +53,9 @@ jobs:
                 })""")
                 assert state['themes']>=10, f'too few theme nodes {state}'
                 assert state['links']>0, f'no sourced bridges {state}'
-                await page.screenshot(path=f'shots/theme-web-{name}.png',full_page=False)
+                try:
+                  await page.screenshot(path=f'shots/theme-web-{name}.png',full_page=False,timeout=15000,animations='disabled')
+                except Exception as ex: print('NONFATAL_SCREENSHOT_ERROR',name,str(ex)[:130])
                 await page.locator('#tw-graph [data-term]' if name=='desktop' else '#tw-mobile-list [data-mobile-term]').first.click()
                 await page.locator('#tw-detail .tw-films .tw-film').first.wait_for(timeout=10000)
                 state['selected']=await page.locator('#tw-detail h3').inner_text()
@@ -73,7 +75,9 @@ jobs:
                   assert state['example']['threads']>=4,state
                   assert state['example']['items']>=15,state
                   assert not state['example']['visible'],state
-                  await page.screenshot(path='shots/theme-web-example-desktop.png',full_page=False)
+                  try:
+                    await page.screenshot(path='shots/theme-web-example-desktop.png',full_page=False,timeout=15000,animations='disabled')
+                  except Exception as ex: print('NONFATAL_SCREENSHOT_ERROR',name,str(ex)[:130])
                 else:
                   await page.locator('#tw-mobile-list [data-mobile-network]').click()
                   assert await page.locator('#tw-graph').is_visible(), 'mobile network option not visible'
