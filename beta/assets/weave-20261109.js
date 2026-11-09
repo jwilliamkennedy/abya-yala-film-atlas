@@ -12,17 +12,19 @@ var root=document.documentElement,$=function(s,r){return (r||document).querySele
 var esc=function(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});};
 var norm=function(s){return String(s||'').normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();};
 var C=function(){return window.AtlasConstellate;},S=function(){return window.AtlasCollections;};
+var showWelcome=false;
+document.addEventListener('click',function(e){if(e.target.closest('.constellate-link'))showWelcome=true;},true);
 
 function on(){var c=C();return !!(c&&c.enabled&&document.body.classList.contains('is-constellating'));}
 function current(){try{return S().current();}catch(e){return null;}}
 function thread(){try{return S().activeThread();}catch(e){return null;}}
 function reading(){var b=$('#constellate-read');return !!(b&&b.getAttribute('aria-pressed')==='true');}
 function stage(){
- if(!on())return '';
+ if(!on()){showWelcome=false;return '';}
  var c=current();if(!c)return '';
  if(C().playing)return 'play';
- if(!c.items.length)return 'start';
- return reading()?'read':'build';
+ if(reading())return 'read';
+ return showWelcome||!c.items.length?'start':'build';
 }
 
 /* ---------- the start card ---------- */
@@ -51,33 +53,44 @@ function buildStart(){
   '<ol class="ws-how" aria-label="How weaving works"><li><b>1</b> Add films</li><li><b>2</b> Link them, and say why</li><li><b>3</b> Read, play or share</li></ol>'+
   '<div class="ws-paths">'+
    '<section class="ws-path"><h3>Start from a theme</h3><p>Every film on the thread shares the theme, taken from its published synopsis.</p>'+
-    '<div class="ws-chips">'+top.map(function(t){return '<button type="button" data-ws-theme="'+esc(t.name)+'">'+esc(t.name)+' <small>'+t.n+'</small></button>';}).join('')+'</div>'+
+    '<div class="ws-chips">'+top.map(function(t){return '<button type="button" data-ws-theme="'+esc(t.name)+'">'+esc(t.name)+' <small>'+t.n+'</small></button>';}).join('')+'</div>'+ 
+    '<label class="ws-sr" for="ws-theme-q">Search themes</label><input id="ws-theme-q" type="search" autocomplete="off" placeholder="Search themes…">'+
+    '<ul class="ws-results" id="ws-theme-results" aria-live="polite"></ul>'+
     '<label class="ws-sr" for="ws-theme-all">All themes</label><select id="ws-theme-all"><option value="">All 30 themes…</option>'+all.map(function(t){return '<option value="'+esc(t.name)+'">'+esc(t.name)+' ('+t.n+')</option>';}).join('')+'</select></section>'+
    '<section class="ws-path"><h3>Start from a film</h3><p>Choose one film. Films that share a documented theme with it are suggested next.</p>'+
     '<label class="ws-sr" for="ws-film-q">Search a film or filmmaker</label><input id="ws-film-q" type="search" autocomplete="off" placeholder="Search a film or filmmaker…">'+
     '<ul id="ws-film-results" class="ws-results" aria-live="polite"></ul></section>'+
-   '<section class="ws-path"><h3>See an example</h3><p>Four films that share a theme, already woven, to read and change.</p><div class="ws-example-films"></div><p class="ws-example-label"></p>'+
+   '<section class="ws-path"><h3>See an example</h3><p>Three films that share a theme, already woven, to read and change.</p><div class="ws-example-films"></div><p class="ws-example-label"></p>'+
     '<button type="button" class="ws-primary" data-ws-example>Open the example</button>'+
     '<button type="button" class="ws-link" data-ws-web>Or explore the theme web →</button></section>'+
   '</div>'+
+  '<div class="ws-current" hidden><button type="button" data-ws-continue>Continue this weave</button><small class="ws-current-name"></small></div>'+ 
   '<div class="ws-saved" hidden><label for="ws-saved-select">Open a saved weave</label><select id="ws-saved-select"></select></div>';
  host.appendChild(sec);
  var src=$('#weave-intro-films'),lab=$('#weave-intro-label');if(src){$('.ws-example-films',sec).innerHTML=src.innerHTML;}if(lab)$('.ws-example-label',sec).textContent=lab.textContent;
  sec.addEventListener('click',function(e){
-  var t=e.target.closest('[data-ws-theme]');if(t){C().themeThread(t.dataset.wsTheme);settle();return;}
-  if(e.target.closest('[data-ws-example]')){var b=$('#weave-example');if(b)b.click();settle();return;}
+  var t=e.target.closest('[data-ws-theme]');if(t){showWelcome=false;C().themeThread(t.dataset.wsTheme);settle();return;}
+  if(e.target.closest('[data-ws-example]')){showWelcome=false;var b=$('#weave-example');if(b)b.click();settle();return;}
+  if(e.target.closest('[data-ws-continue]')){showWelcome=false;settle();return;}
   if(e.target.closest('[data-ws-web]')){var w=$('#weave-theme-web-toggle');if(w)w.click();return;}
-  var f=e.target.closest('[data-ws-film]');if(f){var x=(FILMS||films()).find(function(v){return v.id===f.dataset.wsFilm;});if(x){C().add(x);var tab=$('#weave-tab-thread');if(tab)tab.click();settle();}}
+  var f=e.target.closest('[data-ws-film]');if(f){var x=(FILMS||films()).find(function(v){return v.id===f.dataset.wsFilm;});if(x){showWelcome=false;C().add(x);var tab=$('#weave-tab-thread');if(tab)tab.click();settle();}}
  });
- $('#ws-theme-all',sec).addEventListener('change',function(e){var v=e.target.value;e.target.value='';if(v){C().themeThread(v);settle();}});
+ $('#ws-theme-all',sec).addEventListener('change',function(e){var v=e.target.value;e.target.value='';if(v){showWelcome=false;C().themeThread(v);settle();}});
  var q=$('#ws-film-q',sec),list=$('#ws-film-results',sec);
  q.addEventListener('input',function(){var hits=search(q.value);
   list.innerHTML=hits.map(function(x){return '<li><button type="button" data-ws-film="'+esc(x.id)+'"><strong>'+esc(x.title)+'</strong><small>'+esc([x.maker,x.year].filter(Boolean).join(' · '))+'</small></button></li>';}).join('')||(q.value.trim().length>1?'<li class="ws-none">No film or filmmaker matches.</li>':'');});
  q.addEventListener('keydown',function(e){if(e.key==='Enter'){var b=list.querySelector('[data-ws-film]');if(b){e.preventDefault();b.click();}}});
- $('#ws-saved-select',sec).addEventListener('change',function(e){var v=e.target.value;if(!v)return;var sel=$('#constellate-collection');if(sel){sel.value=v;sel.dispatchEvent(new Event('change',{bubbles:true}));}settle();});
+ var tq=$('#ws-theme-q',sec),tr=$('#ws-theme-results',sec);
+ tq.addEventListener('input',function(){
+  var needle=norm(tq.value).trim(),found=needle?all.filter(function(t){return norm(t.name).includes(needle);}).slice(0,12):[];
+  tr.innerHTML=found.map(function(t){return '<li><button type="button" data-ws-theme="'+esc(t.name)+'"><strong>'+esc(t.name)+'</strong><small>'+t.n+' films</small></button></li>';}).join('')||(needle?'<li class="ws-none">No matching themes.</li>':'');
+ });
+ tq.addEventListener('keydown',function(e){if(e.key==='Enter'){var b=tr.querySelector('[data-ws-theme]');if(b){e.preventDefault();b.click();}}});
+ $('#ws-saved-select',sec).addEventListener('change',function(e){var v=e.target.value;if(!v)return;showWelcome=false;var sel=$('#constellate-collection');if(sel){sel.value=v;sel.dispatchEvent(new Event('change',{bubbles:true}));}settle();});
 }
 function savedList(){
  var box=$('#weave-start .ws-saved');if(!box)return;var c=current(),ws=weavesSaved().filter(function(w){return !c||w.id!==c.id;});
+ var old=$('#weave-start .ws-current');if(old){old.hidden=!(c&&c.items.length);var label=$('.ws-current-name',old);if(label&&c)label.textContent=c.name;}
  box.hidden=!ws.length;if(!ws.length)return;
  $('#ws-saved-select',box).innerHTML='<option value="">Choose a weave…</option>'+ws.map(function(w){return '<option value="'+esc(w.id)+'">'+esc(w.name)+' · '+w.items.length+' film'+(w.items.length===1?'':'s')+'</option>';}).join('');
 }
