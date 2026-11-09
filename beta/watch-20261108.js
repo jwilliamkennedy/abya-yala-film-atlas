@@ -22,8 +22,10 @@ const remember=()=>{try{localStorage.setItem('atlas-watch-view',JSON.stringify({
 
 /* the player */
 const frame=$('#now-frame');
+// YouTube error 153: send this page's origin as the Referer on the iframe request.
+frame.referrerPolicy='strict-origin-when-cross-origin';
 const play=(f,scroll,quiet)=>{const l=playable(f);if(!l)return;state.now=f.fid;
- frame.src=l.embed;frame.title='Player: '+f.t;
+ frame.referrerPolicy='strict-origin-when-cross-origin';frame.src=l.embed;frame.title='Player: '+f.t;
  $('#now-title').textContent=f.t+(f.y?' ('+f.y+')':'');
  $('#now-by').innerHTML=makers(f)+(f.fx?` · ${esc(f.fx)}`:'')+` · <a class="in" href="${mapHref(f)}">On the map</a> · <a class="out" href="${esc(l.url)}" target="_blank" rel="noopener">${esc(host(l.url))} ↗</a>`;
  $('#now-note').textContent=l.note||'';
