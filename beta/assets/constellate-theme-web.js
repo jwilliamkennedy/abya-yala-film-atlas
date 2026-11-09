@@ -175,7 +175,7 @@
   var related=new Set();
   if(selected){for(var e of edges)if(e.source===selected)related.add(e.target);else if(e.target===selected)related.add(e.source);}
   var dimTheme=function(n){return selected&&n!==selected&&!related.has(n);};
-  var edgeLines=edges.slice().sort(function(a,b){var pa=selected&&(a.source===selected||a.target===selected)?1000:0,pb=selected&&(b.source===selected||b.target===selected)?1000:0;return pb-pa||b.count-a.count;}).slice(0,showAllBridges?undefined:100).map(function(l){
+  var edgeLines=edges.slice().sort(function(a,b){var pa=selected&&(a.source===selected||a.target===selected)?1000:0,pb=selected&&(b.source===selected||b.target===selected)?1000:0;return pb-pa||b.count-a.count;}).slice(0,showAllBridges?edges.length:100).map(function(l){
    var a=byId.get(l.source),b=byId.get(l.target);
    if(!a||!b)return '';
    var highlighted=selectedPair===(l.source+'\u001f'+l.target)||!!selected&&(l.source===selected||l.target===selected);
