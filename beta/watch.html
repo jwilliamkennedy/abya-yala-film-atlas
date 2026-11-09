@@ -1,5 +1,6 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="referrer" content="no-referrer">
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><!-- YouTube requires the site origin as HTTP Referer for embedded playback (error 153). -->
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Watch · Indigenous Cinema Atlas</title>
 <meta name="description" content="Films by Indigenous filmmakers on the atlas that you can watch in full: on this page when the host allows it, or at their source.">
 <link rel="icon" href="assets/icon-1107.svg" type="image/svg+xml">
@@ -103,7 +104,7 @@ main a[href^="http"]{color:var(--accent,var(--gold))}
 <main>
 <h1>Watch</h1>
 
-<section id="now" aria-label="Player"><div class="frame"><iframe id="now-frame" title="Player" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
+<section id="now" aria-label="Player"><div class="frame"><iframe id="now-frame" title="Player" referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
 <div class="now-cap"><div><h2 id="now-title"></h2><p class="by" id="now-by"></p><p class="note" id="now-note"></p></div><button type="button" id="next" title="Play another film">Another film</button></div></section>
 <div class="tools"><input id="q" type="search" placeholder="Search films, filmmakers, peoples" aria-label="Search films">
 <select id="theme" aria-label="Theme"><option value="">All themes</option></select>
