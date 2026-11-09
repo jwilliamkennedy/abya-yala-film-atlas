@@ -324,3 +324,12 @@ html[data-reading-theme="night"] body:not(.atlas-page) :is(.cite,.card,table,pre
 :root:not(#_) #index #selection-summary .sel-links:empty{display:none!important}
 /* a placeholder tile only where the picture is missing */
 :root:not(#_) .ui-ph[hidden],:root:not(#_) img:not([hidden]) ~ .ui-ph{display:none!important}
+
+/* 2026-11-09: complete A–Z access without hiding the horizontal scroll. */
+#index .ui-alpha-shell{display:grid;grid-template-columns:30px minmax(0,1fr) 30px;align-items:center;gap:3px;width:100%;min-width:0}
+html body #index .ui-alpha-shell #maker-alphabet,
+html body #index .ui-alpha-shell #film-alphabet{width:100%!important;min-width:0!important;max-width:100%;overflow-x:auto!important;scrollbar-width:thin!important;scrollbar-color:var(--ui-muted) transparent;mask-image:none!important;overscroll-behavior-inline:contain;touch-action:pan-x;padding-bottom:9px!important;scroll-behavior:smooth}
+#index .ui-alpha-shell .ui-alpha-arrow{display:flex;align-items:center;justify-content:center;width:30px;height:34px;padding:0;border:1px solid var(--ui-line);border-radius:7px;background:var(--ui-surface);color:var(--ui-ink);font:26px/1 var(--ui-sans);cursor:pointer}
+#index .ui-alpha-shell .ui-alpha-arrow:hover:not(:disabled){background:var(--ui-wash)}
+#index .ui-alpha-shell .ui-alpha-arrow:disabled{opacity:.3;cursor:default}
+#index .ui-alpha-shell:not(.has-overflow) .ui-alpha-arrow{visibility:hidden}
