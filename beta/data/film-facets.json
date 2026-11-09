@@ -2,7 +2,7 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-09",
  "license": "See data.html",
- "films_on_public_map": 1436,
+ "films_on_public_map": 1438,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -18426,6 +18426,10 @@
     {
      "id": "SAB2-20261014-2501b24c169e",
      "name": "Gerardo Berrocal"
+    },
+    {
+     "id": "LEAD-20261031-0003",
+     "name": "Juan Rain"
     }
    ],
    "languages": [],
@@ -22391,6 +22395,22 @@
    "form": null,
    "length": null
   },
+  "NEW-83ca2931274d-WORK-1": {
+   "title": "Iyonel",
+   "year": 2018,
+   "makers": [
+    {
+     "id": "NEW-83ca2931274d",
+     "name": "Cleida Cholotío Cholotío"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "NEW-35815ec235b0-WORK-1": {
    "title": "Kat at Kat'ex?",
    "year": 2017,
@@ -23796,6 +23816,22 @@
    ],
    "form": "Experimental",
    "length": "Feature"
+  },
+  "NEW-4e90fde2b240-WORK-1": {
+   "title": "Los nietos del huito",
+   "year": null,
+   "makers": [
+    {
+     "id": "NEW-4e90fde2b240",
+     "name": "Eddy Menkorie"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
   },
   "NEW-75f92529652d-WORK-1": {
    "title": "C. N. Infierno: por un turismo sostenible",
