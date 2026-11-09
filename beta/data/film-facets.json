@@ -2,7 +2,7 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-09",
  "license": "See data.html",
- "films_on_public_map": 1476,
+ "films_on_public_map": 1482,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -28992,6 +28992,106 @@
    "primary_theme": null,
    "families": [],
    "form": "Hybrid",
+   "length": null
+  },
+  "QM-6937cf7910-M1": {
+   "title": "La tierra llama",
+   "year": 2023,
+   "makers": [
+    {
+     "id": "QM-6937cf7910",
+     "name": "Miguel Valdés"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QM-97b718afc1-M1": {
+   "title": "Marku irekani / Vivir juntos",
+   "year": 2021,
+   "makers": [
+    {
+     "id": "QM-97b718afc1",
+     "name": "Rosalba López López"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QM-ff4d7b57f6-M1": {
+   "title": "A Body Over the Sea",
+   "year": 2025,
+   "makers": [
+    {
+     "id": "QM-ff4d7b57f6",
+     "name": "Gabriel Gabriel Zhiminaicela"
+    },
+    {
+     "id": "QM-9bc82c1132",
+     "name": "Christian Paúl Espinoza"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QM-8ade5da1ed-M1": {
+   "title": "Drowned Land",
+   "year": 2025,
+   "makers": [
+    {
+     "id": "QM-8ade5da1ed",
+     "name": "Colleen Thurston"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QM-46e5bc5c8e-M1": {
+   "title": "Who She Is",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "QM-46e5bc5c8e",
+     "name": "Jordan Dresser"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QM-be5968b3d5-M1": {
+   "title": "Primera marcha villera trans plurinacional",
+   "year": 2021,
+   "makers": [
+    {
+     "id": "QM-be5968b3d5",
+     "name": "Puma Katrileo"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
    "length": null
   }
  }
