@@ -4,7 +4,7 @@
 (()=>{'use strict';
 const LANGS={en:'English',es:'Español',pt:'Português',fr:'Français'};
 // [English, Español, Português, Français]
-const T=[
+const T=[["On the map","En el mapa","No mapa","Sur la carte"],["Plays here","Se reproduce aquí","Toca aqui","Lecture ici"],["All themes","Todos los temas","Todos os temas","Tous les thèmes"],["Language","Idioma","Idioma","Langue"],["Another film","Otra película","Outro filme","Un autre film"],["Filmmaker A–Z","Cineasta A–Z","Cineasta A–Z","Cinéaste A–Z"],["Newest first","Más recientes primero","Mais recentes primeiro","Plus récents d’abord"],["Title A–Z","Título A–Z","Título A–Z","Titre A–Z"],["Search films, filmmakers, peoples","Buscar películas, cineastas, pueblos","Buscar filmes, cineastas, povos","Chercher des films, cinéastes, peuples"],["Something wrong or missing?","¿Algo está mal o falta?","Algo errado ou faltando?","Une erreur ou un oubli ?"],["films by filmmakers on the atlas.","películas de cineastas del atlas.","filmes de cineastas do atlas.","films de cinéastes de l’atlas."],["play here.","se ven aquí.","podem ser vistos aqui.","se regardent ici."],["▶ Play on Watch","▶ Reproducir en Ver","▶ Reproduzir em Assistir","▶ Lire dans Regarder"],["Film credits","Créditos","Créditos","Crédits"],
 ['Skip to index','Saltar al índice','Pular para o índice','Aller à l’index'],
 ['Abya Yala and Turtle Island','Abya Yala e Isla Tortuga','Abya Yala e Ilha da Tartaruga','Abya Yala et l’Île de la Tortue'],
 ['About','Acerca de','Sobre','À propos'],['Filmmakers','Cineastas','Cineastas','Cinéastes'],['Films','Películas','Filmes','Films'],

@@ -44,7 +44,20 @@
 :root:not(#_) header .palette-choice>summary{gap:8px}
 :root:not(#_) header .palette-choice[open]>summary::after{transform:translateY(2px) rotate(-135deg)}
 /* language and theme, at the foot of More (they never take a place in the header) */
-:root:not(#_) header>.ui-lang,:root:not(#_) header nav.primary>.ui-lang,:root:not(#_) header .palette-choice{display:none!important}
+:root:not(#_) header .palette-choice{display:none!important}
+/* the language selector: top right of the header, on every page */
+:root:not(#_) header>.ui-lang{display:inline-flex!important;margin-left:auto!important;order:9;flex:none}
+@media (min-width:1440px){:root:not(#_) header>.atlas-ledger~.ui-lang{margin-left:28px!important}}
+@media (max-width:1000px) and (min-width:761px){:root:not(#_) header>.ui-lang{position:absolute!important;top:24px!important;right:28px!important;margin:0!important}}
+:root:not(#_) header{position:relative}
+@media (max-width:760px){
+ :root:not(#_) header>.ui-lang{position:absolute!important;top:14px!important;right:16px!important;margin:0!important}
+ :root:not(#_) header>.ui-lang select{height:34px;min-height:34px;padding:0 26px 0 11px!important;font-size:14px}
+ :root:not(#_) header>.ui-lang::after{right:11px}
+ :root:not(#_) header .brand{padding-right:72px!important}
+ :root:not(#_) header .brand small{white-space:nowrap}
+ :root:not(#_) header #atlas-browse{display:none!important}
+}
 :root:not(#_) header .more-settings{display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;gap:6px 14px;padding:6px 12px 6px}
 :root:not(#_) header .more-settings .more-setting-label{font:400 13px/1.2 var(--sans,system-ui,sans-serif);color:var(--reading-muted,var(--muted,#5c6770));position:static;width:auto;height:auto;clip:auto;overflow:visible;white-space:nowrap}
 :root:not(#_) header .more-settings .ui-lang{display:contents}
@@ -56,3 +69,4 @@
 /* the map's utilities row takes no room until it has something to show */
 @media (max-width:760px){:root:not(#_) header nav.atlas-utilities{display:contents!important}}
 :root:not(#_) header nav.primary .more-menu>summary{color:var(--ui-ink,var(--reading-ink,var(--ink,#182028)))!important;opacity:1}
+:root:not(#_) header .ui-lang .visually-hidden{position:absolute!important;width:1px!important;height:1px!important;overflow:hidden!important;clip:rect(0 0 0 0)!important;white-space:nowrap!important;padding:0!important;margin:-1px!important;border:0!important}
