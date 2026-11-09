@@ -4,7 +4,7 @@
    share one ⋯ menu; a selected filmmaker scrolls clear of the sticky bar; country markers and play buttons wait until
    the map is closer; thumbnails appear only once their picture has loaded; territory colour outside Abya Yala and
    Turtle Island is muted; one lettered tile replaces every "image unavailable"; plainer labels; zoom-to-land stops at 10×;
-   Constellate's Clear moves into Options and the map dims while Constellate is open.
+   the map dims while Constellate is open (the weave flow itself is in weave-20261109.js).
    Builds on the existing controls (same ids and handlers); no engine code is replaced. */
 (function(){'use strict';
 var root=document.documentElement,$=function(s,r){return (r||document).querySelector(s);},$$=function(s,r){return [].slice.call((r||document).querySelectorAll(s));};
@@ -160,10 +160,9 @@ function mapPage(){
   var host=dash?dash.closest('.key-row,li,div'):after;
   if(host&&host.parentNode)host.parentNode.insertBefore(row,host.nextSibling);else key.appendChild(row);
  }
- /* Constellate: Clear moves into Options; the map dims while it is open */
+ /* Constellate: the map dims while it is open */
  function constellate(){
-  var mode=$('#constellate-mode'),clear=$('#constellate-clear'),menu=$('#constellate-mode .weave-more-menu');
-  if(clear&&menu&&clear.parentNode!==menu){if(!menu.querySelector('.ui-weave-heading')){var h=document.createElement('small');h.className='weave-menu-heading ui-weave-heading';h.textContent='This weave';menu.appendChild(h);}clear.textContent='Clear this weave…';menu.appendChild(clear);}
+  var mode=$('#constellate-mode');
   var on=!!(mode&&!mode.hidden&&mode.getBoundingClientRect().height>0);
   root.dataset.uiConstellate=on?'on':'off';
   var ml=$('header .map-link');if(ml){if(on)ml.removeAttribute('aria-current');else ml.setAttribute('aria-current','page');}
