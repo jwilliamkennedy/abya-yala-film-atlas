@@ -62,7 +62,7 @@ $('#q').addEventListener('input',e=>{state.q=e.target.value;render();});
 sel.onchange=()=>{state.theme=sel.value;render();};
 $('#sort').onchange=e=>{state.sort=e.target.value;remember();render();};
 $('#here').onchange=e=>{state.here=e.target.checked;remember();render();};
-$('#total').textContent=data.length;$('#playable').textContent=data.filter(playable).length;
+
 render();
 /* first film: the one named in the address (#film id), else one at random from the list */
 const asked=data.find(f=>f.fid===decodeURIComponent(location.hash.slice(1)));
