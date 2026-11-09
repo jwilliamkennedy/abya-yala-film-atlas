@@ -2,7 +2,7 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-09",
  "license": "See data.html",
- "films_on_public_map": 1556,
+ "films_on_public_map": 1555,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -11908,10 +11908,6 @@
     {
      "id": "DIR-0326",
      "name": "Rahe-Wanitanama"
-    },
-    {
-     "id": "Q20261108-44",
-     "name": "Rahe-wanitanama Alexa Wynter"
     }
    ],
    "languages": [
@@ -13581,6 +13577,22 @@
    "families": [],
    "form": "Documentary",
    "length": "Series"
+  },
+  "NEW-dc37f3bd7a6d-FD1": {
+   "title": "Bloodlines",
+   "year": 2014,
+   "makers": [
+    {
+     "id": "NEW-dc37f3bd7a6d",
+     "name": "Christopher Nataanii Cegielski"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
   },
   "NEW-45cb5ec69bd9-WORK-1": {
    "title": "Convenience Store NDN Zombie",
@@ -15798,6 +15810,22 @@
    "form": null,
    "length": "Short"
   },
+  "NEW-5cafd747b4da-FD1": {
+   "title": "Equilíbrio",
+   "year": 2020,
+   "makers": [
+    {
+     "id": "NEW-5cafd747b4da",
+     "name": "Olinda Wanderley"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "NEW-5b6f10a24b2e-WORK-1": {
    "title": "pîķîwî",
    "year": null,
@@ -17858,6 +17886,22 @@
   },
   "SA50-20261014-3e3ac546338d-WORK-01": {
    "title": "Ngô beje — Barragem",
+   "year": 2023,
+   "makers": [
+    {
+     "id": "SA50-20261014-3e3ac546338d",
+     "name": "Pat-i Kayapó"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "SA50-20261014-3e3ac546338d-FD1": {
+   "title": "Nhakpoti Star Girl",
    "year": 2023,
    "makers": [
     {
@@ -25527,6 +25571,22 @@
    "form": null,
    "length": null
   },
+  "NEW-3cde80ad0d2f-FD1": {
+   "title": "Voices of the Grand Canyon",
+   "year": 2022,
+   "makers": [
+    {
+     "id": "NEW-3cde80ad0d2f",
+     "name": "Deidre Peaches"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
+  },
   "NEW-0cee87bf6b30-WORK-1": {
    "title": "Detour: Or How I Spent My Weekend",
    "year": 1994,
@@ -29676,22 +29736,6 @@
    "form": null,
    "length": null
   },
-  "Q20261108-01-F1": {
-   "title": "Equilíbrio",
-   "year": 2020,
-   "makers": [
-    {
-     "id": "Q20261108-01",
-     "name": "Olinda Yawar Wanderley"
-    }
-   ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
-  },
   "Q20261108-02-F1": {
    "title": "Namtrik, fogones lingüísticos",
    "year": 2025,
@@ -29811,22 +29855,6 @@
     {
      "id": "Q20261108-09",
      "name": "Lady Giovanna Vásquez Cuaspa"
-    }
-   ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
-  },
-  "Q20261108-93-F1": {
-   "title": "Bloodlines",
-   "year": 2014,
-   "makers": [
-    {
-     "id": "Q20261108-93",
-     "name": "Christopher Cegielski"
     }
    ],
    "languages": [],
@@ -30160,26 +30188,6 @@
    "form": null,
    "length": "Short"
   },
-  "MT-MUUPALAA-2021": {
-   "title": "Muu Palaa: La abuela mar",
-   "year": 2021,
-   "makers": [
-    {
-     "id": "Q20261108-42",
-     "name": "Luzbeidy Monterrosa Antencio"
-    },
-    {
-     "id": "Q20261108-43",
-     "name": "Olowaili Green Santacruz"
-    }
-   ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": "Animation",
-   "length": "Short"
-  },
   "Q20261108-45-F1": {
    "title": "Definition of Resilience, Episode 2: “Identity”",
    "year": 2018,
@@ -30210,22 +30218,6 @@
    "primary_theme": null,
    "families": [],
    "form": "Documentary",
-   "length": null
-  },
-  "Q20261108-47-F1": {
-   "title": "Nhakpoti Star Girl",
-   "year": 2023,
-   "makers": [
-    {
-     "id": "Q20261108-47",
-     "name": "Pat-i Kayapó"
-    }
-   ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
    "length": null
   },
   "Q20261108-48-F1": {
@@ -30299,22 +30291,6 @@
    "families": [],
    "form": null,
    "length": null
-  },
-  "Q20261108-61-F1": {
-   "title": "Voices of the Grand Canyon",
-   "year": 2022,
-   "makers": [
-    {
-     "id": "Q20261108-61",
-     "name": "Deidra Peaches"
-    }
-   ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": "Documentary",
-   "length": "Short"
   },
   "Q20261108-62-F1": {
    "title": "Uu?uu~tah",
