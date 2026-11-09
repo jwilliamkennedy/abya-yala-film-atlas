@@ -140,7 +140,8 @@
   var nodes=visibleNodes(),names=new Set(nodes.map(n=>n.name)),edges=graphLinks.filter(l=>names.has(l.source)&&names.has(l.target));
   var caption=films.length+' tagged films · '+nodeByName.size+' attested themes · '+graphLinks.length+' documented co-tag bridges';
    var linksButton=document.getElementById('tw-all-links');
-   linksButton.textContent=showAllBridges?'Show strongest bridges':'Show all '+graphLinks.length+' bridges';
+   linksButton.hidden=edges.length<=100;
+   linksButton.textContent=showAllBridges?'Show strongest bridges':'Show all '+edges.length+' bridges';
    linksButton.setAttribute('aria-pressed',String(showAllBridges));
   document.getElementById('tw-stat').textContent=caption;
   chipRow.innerHTML=['All themes'].concat(families).map(f=>'<button type="button" data-family="'+esc(f)+'" aria-pressed="'+(f===activeFamily)+'"><i style="background:'+esc(COLORS[f]||'#667e8b')+'"></i>'+esc(f)+(f==='All themes'?'':' <small>'+[...nodeByName.values()].filter(x=>x.family===f).length+'</small>')+'</button>').join('');
