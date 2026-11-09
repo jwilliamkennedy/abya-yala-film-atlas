@@ -77,7 +77,7 @@ function countries(){
 }
 
 /* 4. Layers: one Territories control; clearer names. */
-const PRESET={soft:20,strong:36};
+const PRESET={soft:24,strong:41};
 function setStrength(v){root.style.setProperty('--territory-wash',String(v/100));}
 function layers(){
  const shading=$('#layer-shading'),bounds=$('#layer-boundaries'),geo=$('#layer-geography');if(!shading||$('#territory-control'))return;
@@ -101,7 +101,7 @@ function layers(){
  range.addEventListener('input',()=>{const v=+range.value;setStrength(v);if(!shading.checked){shading.checked=true;fire(shading,'change');}
   show(v===PRESET.soft?'soft':v===PRESET.strong?'strong':'custom');store.set('territories','custom');store.set('territory-strength',v);});
  shading.addEventListener('change',()=>{if(!shading.checked)show('off');});
- const mode=store.get('territories','strong'),v=store.get('territory-strength',PRESET.strong);
+ const mode=store.get('territories','strong'),saved=store.get('territory-strength',null),v=Object.prototype.hasOwnProperty.call(PRESET,mode)?PRESET[mode]:(Number.isFinite(saved)?saved:PRESET.strong);
  range.value=v;setStrength(v);
  if(mode==='off')setMode('off',false);else{if(!shading.checked){shading.checked=true;fire(shading,'change');}show(mode);}
 }
