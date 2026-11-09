@@ -81,6 +81,28 @@ jobs:
                   assert await page.locator('#tw-mobile-list [data-mobile-term]').first.is_visible()
                   await page.locator('#tw-close').click()
                   assert await page.locator('#atlas-theme-web').is_hidden()
+                # Regression: a thematic link must MOVE to the selected film and
+                # clicking Follow must update the open card, not just add silently.
+                if await page.locator('#atlas-theme-web').is_hidden():
+                  await page.locator('#weave-theme-web-toggle').click()
+                if name=='desktop':
+                  await page.locator('#tw-graph [data-term]').first.click()
+                else:
+                  await page.locator('#tw-mobile-list [data-mobile-term]').first.click()
+                await page.locator('#tw-detail [data-film-id]').first.wait_for(timeout=12000)
+                destination=await page.locator('#tw-detail [data-film-id]').first.get_attribute('data-film-id')
+                await page.locator('#tw-detail [data-film-id]').first.click()
+                await page.locator('#constellate-context').wait_for(state='visible',timeout=12000)
+                current=await page.locator('#constellate-context .weave-context-preview h3').inner_text()
+                state['followed']=current
+                assert current, 'Theme-film selection did not open a destination card'
+                if await page.locator('#weave-suggest [data-weave-follow]').count():
+                  button=page.locator('#weave-suggest [data-weave-follow]').first
+                  await button.click(timeout=15000)
+                  nxt=await page.locator('#constellate-context .weave-context-preview h3').inner_text()
+                  assert nxt and nxt!=current, 'Follow did not move to the next film'
+                  state['nextFilm']=nxt
+                assert not errors, f'Navigation raised page errors: {errors}'
                 state['pageerrors']=errors[:12]
                 report[name]=state
                 await ctx.close()
