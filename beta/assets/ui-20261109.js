@@ -24,7 +24,7 @@ function headerTools(){
  var header=$('header');if(!header||$('.ui-header-tools',header))return !!header;
  var lang=$('label.ui-lang',header);if(!lang)return false;
  var box=document.createElement('div');box.className='ui-header-tools';
- lang.parentNode.insertBefore(box,lang);box.appendChild(lang);
+ var util=$('.atlas-utilities',header);if(util)header.insertBefore(box,util);else header.appendChild(box);box.appendChild(lang);
  var b=document.createElement('button');b.type='button';b.className='ui-theme-toggle';b.innerHTML=MOON+SUN;
  b.addEventListener('click',function(){setTheme((root.dataset.readingTheme==='night')?'paper':'night');});
  box.appendChild(b);setTheme(root.dataset.readingTheme==='night'?'night':'paper');

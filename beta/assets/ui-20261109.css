@@ -324,3 +324,5 @@ html[data-reading-theme="night"] body:not(.atlas-page) :is(.cite,.card,table,pre
 :root:not(#_) #index #selection-summary #selection-path *{white-space:nowrap!important;word-break:normal!important;width:auto!important;display:inline!important}
 :root:not(#_) #index #selection-summary:not([hidden]){flex-wrap:wrap!important}
 :root:not(#_) #index #selection-summary .sel-links:empty{display:none!important}
+/* a placeholder tile only where the picture is missing */
+:root:not(#_) .ui-ph[hidden],:root:not(#_) img:not([hidden]) ~ .ui-ph{display:none!important}
