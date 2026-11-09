@@ -279,3 +279,10 @@ body.atlas-dossier #selection-summary{display:flex!important;flex-wrap:wrap;alig
 body.atlas-dossier #selection-summary .sel-links{gap:4px 18px}
 body.atlas-dossier #selection-summary #clear-context{margin-left:auto}
 body.atlas-dossier #selection-summary #clear-context::after{content:' ×';opacity:.7}
+/* 8 Nov · phones: an open card's links on one row, Show map and Close on the next */
+@media (max-width:760px){
+ body.atlas-dossier #selection-summary .sel-links{flex:1 1 100%;flex-wrap:nowrap;gap:0 16px;font-size:14px}
+ body.atlas-dossier #selection-summary{gap:2px 16px!important;flex-wrap:wrap!important}
+ body.atlas-dossier #selection-summary>.selection-label{display:none!important}
+ body.atlas-dossier #selection-summary #selection-locate{padding-left:0!important}
+}
