@@ -40,7 +40,10 @@ jobs:
                 await page.goto(BASE,wait_until='domcontentloaded',timeout=90000)
                 await page.locator('#weave-theme-web-toggle').wait_for(state='visible',timeout=90000)
                 await page.locator('#atlas-theme-web:not([hidden])').wait_for(timeout=20000)
-                await page.locator('#tw-graph [data-term]').first.wait_for(timeout=15000)
+                if name=='desktop':
+                  await page.locator('#tw-graph [data-term]').first.wait_for(timeout=15000)
+                else:
+                  await page.locator('#tw-mobile-list [data-mobile-term]').first.wait_for(timeout=15000)
                 state=await page.evaluate("""() => ({
                   themes: document.querySelectorAll('#tw-graph [data-term]').length,
                   links: document.querySelectorAll('#tw-graph [data-bridge]').length,
@@ -51,9 +54,10 @@ jobs:
                 assert state['themes']>=10, f'too few theme nodes {state}'
                 assert state['links']>0, f'no sourced bridges {state}'
                 await page.screenshot(path=f'shots/theme-web-{name}.png',full_page=False)
-                await page.locator('#tw-graph [data-term]').first.click()
+                await page.locator('#tw-graph [data-term]' if name=='desktop' else '#tw-mobile-list [data-mobile-term]').first.click()
                 await page.locator('#tw-detail .tw-films .tw-film').first.wait_for(timeout=10000)
                 state['selected']=await page.locator('#tw-detail h3').inner_text()
+                state['synopsisLinks']=await page.locator('#tw-detail a[href^="http"]').count()
                 await page.locator('#tw-search').fill('memory')
                 state['searchNodes']=await page.locator('#tw-graph [data-term]').count()
                 assert state['searchNodes']>=1, f'search failed {state}'
@@ -71,6 +75,10 @@ jobs:
                   assert not state['example']['visible'],state
                   await page.screenshot(path='shots/theme-web-example-desktop.png',full_page=False)
                 else:
+                  await page.locator('#tw-mobile-list [data-mobile-network]').click()
+                  assert await page.locator('#tw-graph').is_visible(), 'mobile network option not visible'
+                  await page.locator('#tw-mobile-list [data-mobile-network]').click()
+                  assert await page.locator('#tw-mobile-list [data-mobile-term]').first.is_visible()
                   await page.locator('#tw-close').click()
                   assert await page.locator('#atlas-theme-web').is_hidden()
                 state['pageerrors']=errors[:12]
