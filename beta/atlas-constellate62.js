@@ -189,6 +189,52 @@
  function themeFilms(term){return azAll('film').filter(x=>terms(x).includes(term)).sort((a,b)=>(yearNum(a)||9999)-(yearNum(b)||9999));}
  function themeThread(term){$('#weave-thread-form').hidden=true;setTab('thread');const all=themeFilms(term),CAP=24,films=all.length<=CAP?all:Array.from({length:CAP},(_,i)=>all[Math.round(i*(all.length-1)/(CAP-1))]);if(!films.length)return;if(!enabled)open();setRead(false);const desc='Films tagged '+term+' from their published synopses, in order of year. Reorder, cut and annotate freely.';const id=transaction('Start theme thread',()=>{const c=S.current(),blank=c.threads.length===1&&!c.threads[0].items.length;let tid;if(blank){const t0=c.threads[0];t0.name=term;t0.description=desc;t0.color=DYE_FOR[FAM[term]]||t0.color;tid=t0.id;}else tid=S.createThread(term,desc,DYE_FOR[FAM[term]]);if(!tid)return false;for(const x of films){const own=existingWork(x);if(own)S.addToThread(own.id,tid);else S.add(x,{threadId:tid});}c.activeThread=tid;c.selectedItem=null;S.save();return tid;});if(!id){status('This weave has the most threads it can hold.');return;}active=null;fit();render();status(all.length>films.length?`Started “${term}” with ${films.length} of its ${all.length} films, spread across the years. Search “${term}” to add the rest.`:`Started “${term}” with ${films.length} film${films.length>1?'s':''}.`);}
  function renderThemeStart(){const m=new Map();for(const x of azAll('film'))for(const t of terms(x))m.set(t,(m.get(t)||0)+1);$('#weave-theme-start').innerHTML='<option value="">Choose a theme…</option>'+Object.entries(TH.families).map(([fam,ts])=>`<optgroup label="${esc(fam)}">${ts.filter(t=>m.get(t)).map(t=>`<option value="${esc(t)}">${esc(t)} (${m.get(t)})</option>`).join('')}</optgroup>`).join('');const top=[...m].sort((a,b)=>b[1]-a[1]).slice(0,4);$('#weave-hint-themes').innerHTML=top.length?'<em>Or start from a theme</em>'+top.map(([t,n])=>`<button type="button" data-theme-thread="${esc(t)}">${esc(t)} <small>${n}</small></button>`).join(''):'';}
+
+ // The first-look example uses only film themes already present in the atlas.
+ // No links or imagined relationships are inserted; viewers author those themselves.
+ const EXAMPLE_TERMS=['Memory and Oral History','Linguistic Preservation','Land Defense'];
+ function exampleSeed(){
+  const names=[...new Set([...EXAMPLE_TERMS,...Object.values(TH.families).flat()])];
+  const groups=names.map(term=>({term,films:themeFilms(term)}));
+  const chosen=groups.find(g=>new Set(g.films.map(x=>x.record)).size>=4)
+   ||groups.sort((a,b)=>b.films.length-a.films.length)[0];
+  const items=chosen?.films||[];
+  const pool=[...items.filter(sourceImage),...items.filter(x=>!sourceImage(x))];
+  const sampled=pool.length>4?[pool[0],pool[Math.floor(pool.length/3)],pool[Math.floor(pool.length*2/3)],pool.at(-1)]:pool;
+  const seen=new Set(),films=[];
+  for(const x of [...sampled,...pool]){
+   if(!x||seen.has(x.record)||films.some(y=>y.id===x.id))continue;
+   seen.add(x.record);films.push(x);
+   if(films.length===4)break;
+  }
+  return {theme:chosen?.term||'Memory and Oral History',films};
+ }
+ const example=exampleSeed();
+ function renderExamplePreview(){
+  const area=$('#weave-intro-films'),cta=$('#weave-example');
+  area.innerHTML=example.films.map(x=>`<div class="weave-intro-film" role="listitem">${thumb(x)}<strong>${esc(chipText(x.title,32))}</strong><small>${esc(chipText(x.maker,25))}</small></div>`).join('');
+  $('#weave-intro-label').textContent=example.films.length
+   ?'An example · '+example.theme+' · '+example.films.length+' films':'Choose a theme below to begin.';
+  cta.disabled=example.films.length<3;
+ }
+ function createExample(){
+  if(example.films.length<3){status('Choose a theme or browse the films to start.');return;}
+  if(S.state.collections.length>=50){status('This browser has 50 weaves. Export or remove one before opening an example.');return;}
+  if(!S.create('Example · '+example.theme)){status('Could not save an example in this browser.');return;}
+  const c=S.current(),t=S.activeThread();
+  c.note='A starting constellation of films tagged '+example.theme+' in published film synopses. This common theme is documented; any further relation you draw is yours to interpret.';
+  t.name=example.theme;
+  t.description='Films sharing an atlas theme. Reorder, compare and make your own connections.';
+  t.color=DYE_FOR[FAM[example.theme]]||'star-bluewhite';
+  for(const x of example.films)S.add(x,{threadId:t.id});
+  c.selectedItem=null;S.save();known.set(c.id,copy(c));
+  active=null;context.hidden=inline.hidden=true;
+  setTab('thread');setRead(false);render();fit();
+  status('Opened '+example.films.length+' films in a new example weave, saved in this browser. You can edit or share it.');
+ }
+ renderExamplePreview();
+ $('#weave-example').onclick=createExample;
+ $('#weave-intro-browse').onclick=()=>{setTab('add');$('#constellate-search').focus({preventScroll:true});};
  renderThemeStart();$('#weave-theme-start').onchange=e=>{const v=e.target.value;e.target.value='';if(v)themeThread(v);};$('#weave-empty-hint').addEventListener('click',e=>{const b=e.target.closest('[data-theme-thread]');if(b)themeThread(b.dataset.themeThread);});
  // suggestions after the last film on the thread
  function renderSuggest(){const box=$('#weave-suggest'),t=S.activeThread(),last=[...t.items].reverse().map(id=>S.current().items.find(x=>x.id===id)).find(x=>x&&terms(x).length);if(!last){box.hidden=true;box.innerHTML='';return;}const want=new Set(terms(last)),have=new Set(t.items.map(id=>{const x=S.current().items.find(y=>y.id===id);return x?key(x):id;})),ly=yearNum(last);const picks=azAll('film').filter(x=>!have.has(key(x))).map(x=>{const shared=terms(x).filter(k=>want.has(k)),y=yearNum(x);return{x,shared,score:shared.length*10-(ly&&y?Math.min(5,Math.abs(y-ly)/8):3)};}).filter(p=>p.shared.length).sort((a,b)=>b.score-a.score||azSort.compare(a.x.title,b.x.title)).slice(0,3);box.hidden=!picks.length;box.innerHTML=picks.length?`<details class="weave-suggest-box"${suggestOpen?' open':''}><summary>Next, perhaps <small>· ${picks.length} films that share themes with ${esc(chipText(last.title,34))}</small></summary>`+picks.map(({x,shared})=>`<div class="constellate-result" draggable="true" data-drag-film="${esc(x.id)}">${thumb(x)}<span><strong>${esc(x.title)}</strong><small>${esc([x.maker,x.year].filter(Boolean).join(' · '))}</small><small class="weave-theme-tags">Shares ${esc(shared.join(' · '))}</small></span><button data-constellate-add="${esc(x.id)}">+ Add</button></div>`).join('')+'</details>':'';box.querySelector('details')?.addEventListener('toggle',e=>{suggestOpen=e.target.open;});}
