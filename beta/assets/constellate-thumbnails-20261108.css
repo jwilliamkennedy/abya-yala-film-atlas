@@ -263,3 +263,88 @@
 }
 #constellate-context .weave-context-preview .weave-media-placeholder>b{font-size:20px}
 #constellate-context .weave-context-preview .weave-media-placeholder>small{font-size:10px!important}
+
+
+/* 8 Nov · Draw threads is the main interaction, not a hidden feature. */
+:root:not(#_) body.is-constellating #constellate-mode #weave-draw-thread{
+ font-weight:650!important;color:var(--reading-accent)!important;
+ background:color-mix(in srgb,var(--reading-accent) 9%,var(--reading-paper))!important;
+ border:1px solid color-mix(in srgb,var(--reading-accent) 32%,var(--reading-line))!important;
+ border-radius:7px!important;padding-inline:12px!important;white-space:nowrap;
+}
+:root:not(#_) body.is-constellating #constellate-mode #weave-draw-thread[aria-pressed="true"]{
+ background:var(--reading-accent)!important;color:var(--reading-paper)!important;
+}
+:root:not(#_) body.is-constellating #constellate-mode #constellate-clear{
+ margin-left:3px!important;color:#9a3b2c!important;
+ border:1px solid color-mix(in srgb,#9a3b2c 27%,var(--reading-line))!important;
+ border-radius:6px!important;padding-inline:10px!important;
+}
+:root[data-reading-theme="night"]:not(#_) body.is-constellating #constellate-mode #constellate-clear{
+ color:#f2b8a3!important;border-color:#b96d57!important;
+}
+#constellate-mode .weave-more-menu>.weave-menu-heading{
+ display:block;width:100%;max-width:none;white-space:normal;
+ margin:6px 0 1px;padding:8px 10px 3px;border-top:1px solid var(--reading-line);
+ color:var(--reading-muted);
+ font:700 10px/1.3 "Atlas Sans",system-ui,sans-serif;
+ letter-spacing:.085em;text-transform:uppercase;
+}
+#constellate-mode .weave-more-menu>.weave-menu-heading:first-child{border-top:0;margin-top:0}
+#constellate-mode .weave-more-menu>button:not(:last-child){
+ text-align:left;min-height:38px;
+}
+#constellate-graph.weave-drawing-mode .constellate-card:not(.concept),
+#constellate-graph.weave-drawing-mode .weave-connect-handle,
+#constellate-graph.weave-drawing-mode .weave-stop{cursor:crosshair!important}
+#constellate-graph.weave-drawing-mode .constellate-card.selected rect:first-child{
+ stroke:var(--reading-accent);stroke-width:3;
+}
+#constellate-graph.weave-drawing-mode .constellate-preview{
+ stroke:var(--reading-accent);stroke-opacity:.95;stroke-width:2.5;
+ stroke-dasharray:6 4;stroke-linecap:round;
+}
+#weave-draw-help{
+ display:flex;align-items:flex-start;justify-content:space-between;
+ gap:9px;padding:11px 10px;margin:9px 0 13px;
+ border:1px solid var(--reading-accent);border-radius:6px;
+ background:color-mix(in srgb,var(--reading-accent) 7%,var(--reading-paper));
+ color:var(--reading-ink);
+}
+#weave-draw-help[hidden]{display:none!important}
+#weave-draw-help span{
+ font:13px/1.45 "Atlas Sans",system-ui,sans-serif;min-width:0;
+}
+#weave-draw-help b{font-weight:700;color:var(--reading-accent)}
+#weave-draw-help button{
+ min-height:35px;flex:none;border:1px solid var(--reading-accent);
+ border-radius:5px;padding:6px 9px;color:var(--reading-accent);
+ background:var(--reading-paper);font:600 12px/1.2 "Atlas Sans",system-ui,sans-serif;
+}
+@media(max-width:1150px){
+ #constellate-mode #constellate-edit,
+ #constellate-mode #weave-play,
+ #constellate-mode #constellate-share{
+  /* These controls are moved into Options by constellate-bar.js, not hidden. */
+  order:0;
+ }
+}
+@media(max-width:760px){
+ :root:not(#_) body.is-constellating #constellate-mode:not([hidden]){
+  gap:1px!important;padding-inline:4px!important;
+ }
+ :root:not(#_) body.is-constellating #constellate-mode button,
+ :root:not(#_) body.is-constellating #constellate-mode .weave-more>summary{
+  padding-inline:6px!important;font-size:12px!important;
+ }
+ :root:not(#_) body.is-constellating #constellate-mode #weave-draw-thread{
+  padding-inline:7px!important;font-size:12px!important;
+ }
+ :root:not(#_) body.is-constellating #constellate-mode #constellate-clear{
+  padding-inline:6px!important;
+ }
+ #weave-draw-help{flex-wrap:wrap}
+}
+@media(max-width:380px){
+ :root:not(#_) body.is-constellating #constellate-mode #weave-browse-films{display:none!important}
+}
