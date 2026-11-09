@@ -136,6 +136,9 @@ body.is-theme-web-open .map-panel{width:100%!important;max-width:none!important}
 .tw-film button:hover{border-color:var(--reading-accent,#315771)}
 .tw-more-count{font:11px/1.3 system-ui;color:var(--reading-muted,#596c77)}
 #atlas-theme-web button:focus-visible,#atlas-theme-web a:focus-visible,#atlas-theme-web input:focus-visible{outline:2px solid #d18b31;outline-offset:2px}
+.tw-more-actions{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;padding:13px 0 6px}
+.tw-more-actions button{min-height:38px;padding:8px 12px;border:1px solid var(--reading-accent,#315771);border-radius:5px;background:var(--reading-wash,#f1f5f5);color:var(--reading-accent,#315771);font:650 12px/1.2 "Atlas Sans",system-ui,sans-serif;cursor:pointer}
+.tw-more-actions button:hover{background:var(--reading-accent,#315771);color:var(--reading-paper,#fff)}
 @media(max-width:1120px){
  #atlas-theme-web{inset:54px 9px 65px}
  .tw-graph-wrap{min-height:350px}
