@@ -227,9 +227,9 @@
   if(s.state.collections.length>=50){notice.textContent='Export or remove an old weave before creating a new one.';return;}
   var all=[...nodeByName.values()];
   var candidates=[
-   'Land Defense','Linguistic Preservation','Memory and Oral History',
-   'Kinship','More-than-Human Relations','Art, Craft and Making',
-   'Justice, Truth and Reconciliation','Health and Healing','Women and Gender','Music and Performance'
+   'Land Defense','Justice, Truth and Reconciliation','Linguistic Preservation',
+   'Kinship','Art, Craft and Making','More-than-Human Relations',
+   'Memory and Oral History','Health and Healing','Women and Gender','Music and Performance'
   ];
   var chosen=[];
   for(var name of candidates){var node=nodeByName.get(name);if(node&&node.films.length>=4)chosen.push(node);if(chosen.length>=6)break;}
@@ -251,7 +251,7 @@
     return bb-aa||(a.x.year||9999)-(b.x.year||9999);
    });
    var picks=[],local=new Set();
-   for(var f of ranked){if(local.has(f.x.record)||f.x.type!=='film')continue;local.add(f.x.record);picks.push(f);if(picks.length===7)break;}
+   for(var f of ranked){if(local.has(f.x.record)||f.x.type!=='film')continue;local.add(f.x.record);picks.push(f);if(picks.length===8)break;}
    for(var f of picks){var clean=s.item(f.x);if(!clean)continue;if(!c.items.some(x=>x.id===clean.id))c.items.push(clean);if(!thread.items.includes(clean.id))thread.items.push(clean.id);usedIds.add(clean.id);seenMakers.add(clean.record);}
   });
   c.activeThread=c.threads[0].id;c.selectedItem=null;s.save();
