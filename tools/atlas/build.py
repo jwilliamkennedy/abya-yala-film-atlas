@@ -97,7 +97,7 @@ def watch_index(records, explore, facets=None):
             links = [l for l in links if l.get('url') and WATCH_RE.search(l.get('title') or '') and not NOT_RE.search(l.get('title') or '')]
             if not links:
                 continue
-            maker = {'id': r['id'], 'name': r['name'], 'people': r.get('nation') or r.get('community') or ''}
+            maker = {'id': r['id'], 'name': r['name'], 'people': re.sub(r'\s+(director|filmmaker|artist)$', '', r.get('nation') or r.get('community') or '', flags=re.I)}
             if f['id'] in seen:
                 it = seen[f['id']]
                 if r['id'] not in [m['id'] for m in it['makers']]:
@@ -108,6 +108,10 @@ def watch_index(records, explore, facets=None):
             tags = ((facets or {}).get('films') or {}).get(f['id']) or {}
             if tags.get('t'):
                 it['th'] = tags['t']
+            facts = [tags.get('f') or f.get('weaveForm') or '', tags.get('n') or '',
+                     ', '.join(f['languageLabels']) if isinstance(f.get('languageLabels'), list) else (f.get('languages') or '')]
+            if any(facts):
+                it['fx'] = ' · '.join(x for x in facts if x)
             seen[f['id']] = it
             items.append(it)
     head = '/* Built by tools/atlas/build.py from the Published sheet: films by filmmakers on the atlas that can be watched in full. */\n'

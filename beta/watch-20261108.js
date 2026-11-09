@@ -12,7 +12,7 @@ const playable=f=>f.links.find(l=>l.embed);
 const makerText=f=>f.makers.map(m=>m.name).join(', ');
 const peopleText=f=>[...new Set(f.makers.map(m=>m.people).filter(Boolean))].join('; ');
 const mapHref=f=>`./#view=films&maker=${encodeURIComponent(f.makers[0].id)}&film=${encodeURIComponent(f.fid)}`;
-const makers=f=>f.makers.map(m=>`<a class="in" href="maker/${encodeURIComponent(m.id)}.html">${esc(m.name)}</a>`).join(', ');
+const makers=f=>f.makers.map(m=>`<a class="in" href="maker/${encodeURIComponent(m.id)}.html">${esc(m.name)}</a>${m.people?` (${esc(m.people)})`:''}`).join(', ');
 const params=new URLSearchParams(location.search);
 const state={q:'',theme:params.get('theme')||'',sort:'maker',here:false,now:null};
 try{const s=JSON.parse(localStorage.getItem('atlas-watch-view')||'{}');state.sort=['maker','new','title'].includes(s.sort)?s.sort:'maker';state.here=!!s.here;}catch(e){}
@@ -23,7 +23,7 @@ const frame=$('#now-frame');
 const play=(f,scroll,quiet)=>{const l=playable(f);if(!l)return;state.now=f.fid;
  frame.src=l.embed;frame.title='Player: '+f.t;
  $('#now-title').textContent=f.t+(f.y?' ('+f.y+')':'');
- $('#now-by').innerHTML=makers(f)+(peopleText(f)?` · ${esc(peopleText(f))}`:'')+` · <a class="in" href="${mapHref(f)}">On the map</a> · <a class="out" href="${esc(l.url)}" target="_blank" rel="noopener">${esc(host(l.url))} ↗</a>`;
+ $('#now-by').innerHTML=makers(f)+(f.fx?` · ${esc(f.fx)}`:'')+` · <a class="in" href="${mapHref(f)}">On the map</a> · <a class="out" href="${esc(l.url)}" target="_blank" rel="noopener">${esc(host(l.url))} ↗</a>`;
  $('#now-note').textContent=l.note||'';
  for(const li of document.querySelectorAll('#list>li'))li.classList.toggle('now',li.dataset.fid===f.fid);
  if(scroll)$('#now').scrollIntoView({behavior:'smooth',block:'start'});
@@ -47,9 +47,9 @@ const row=f=>{const l=playable(f),out=f.links[0];
  return `<li data-fid="${esc(f.fid)}"${f.fid===state.now?' class="now"':''}>
   ${l?`<button type="button" class="pl" aria-label="Play ${esc(f.t)}">▶</button>`:`<a class="pl off" href="${esc(out.url)}" target="_blank" rel="noopener" aria-label="Open ${esc(f.t)} on ${esc(host(out.url))}" title="Opens on ${esc(host(out.url))}">↗</a>`}
   <div><p class="ft">${esc(f.t)}${f.y?`<small>${f.y}</small>`:''}</p>
-  <p class="fb">${makers(f)}${peopleText(f)?` · ${esc(peopleText(f))}`:''}</p>
-  <div class="fl"><a class="in" href="${mapHref(f)}">On the map</a>${f.links.map(x=>`<a class="out" href="${esc(x.url)}" target="_blank" rel="noopener"${x.note?` title="${esc(x.note)}"`:''}>${esc(host(x.url))} ↗</a>`).join('')}
-   ${(f.th||[]).length?`<span class="ttag">${f.th.map(esc).join(' · ')}</span>`:''}
+  <p class="fb">${makers(f)}${f.fx?` · ${esc(f.fx)}`:''}</p>
+  ${(f.th||[]).length?`<p class="tags">${f.th.map(t=>`<span>${esc(t)}</span>`).join('')}</p>`:''}
+  <div class="fl">${f.links.map(x=>`<a class="out" href="${esc(x.url)}" target="_blank" rel="noopener"${x.note?` title="${esc(x.note)}"`:''}>Watch · ${esc(host(x.url))} ↗</a>`).join('')}<a class="in" href="${mapHref(f)}">On the map</a>
    <button type="button" class="scr" data-screen data-fid="${esc(f.fid)}" data-rid="${esc(f.makers[0].id)}" data-title="${esc(f.t)}" data-year="${f.y||''}" data-maker="${esc(makerText(f))}" data-page="maker/${encodeURIComponent(f.makers[0].id)}.html#${encodeURIComponent(f.fid)}" data-watch="${esc(out.url)}">＋ Screening list</button></div></div></li>`;};
 const render=()=>{const items=visible().sort((a,b)=>order[state.sort](a)<order[state.sort](b)?-1:1);
  $('#list').innerHTML=items.map(row).join('')||'<li class="empty">No film matches. Clear the search or the theme.</li>';

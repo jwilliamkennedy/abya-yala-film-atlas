@@ -3488,3 +3488,6 @@ header .ui-lang select{font:inherit;font-size:13px;min-height:30px;padding:0 6px
 :root:not(#_) body.is-constellating #constellate-mode .weave-more-menu>#weave-unmap{order:-1!important;margin:0!important}
 :root:not(#_) body.is-constellating #constellate-mode .weave-more-menu>#weave-unmap::before{content:none!important}
 :root:not(#_) body.is-constellating #constellate-mode::after{content:none!important;display:none!important}
+
+/* the pager shows Previous / Next only (its count was of film credits, not films) */
+.profile-pager .profile-position{visibility:hidden}

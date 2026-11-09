@@ -7,7 +7,8 @@ return A.allRecords().filter(r=>on.has(r.status)).map(r=>({id:r.id,name:r.name,a
  nation:r.nation||r.community||'',country:r.countryName||'',status:r.status,lands:lands(r.id),
  sources:(Array.isArray(r.sources)?r.sources:[]).filter(s=>s&&s.url).map(s=>({url:s.url,type:s.type||'',evidence:s.evidence||''})).slice(0,12),
  films:(r.films||[]).map(f=>{const m=M[f.id];let routes=[];try{routes=A.viewingRoutes(f)||[]}catch(e){}
-  return {id:f.id,title:f.title,year:f.year||null,credit:f.credit||'',medium:f.medium||'',languages:f.languages||'',languageLabels:f.languageLabels||null,languageSource:f.languageSource||'',languageNote:f.languageNote||'',source:f.sourceURL||f.source||'',
+  const fa=((window.ATLAS_FACETS||{}).films||{})[f.id]||{};
+  return {id:f.id,title:f.title,year:f.year||null,credit:f.credit||'',form:fa.f||f.weaveForm||'',length:fa.n||'',themes:fa.t||[],medium:f.medium||'',languages:f.languages||'',languageLabels:f.languageLabels||null,languageSource:f.languageSource||'',languageNote:f.languageNote||'',source:f.sourceURL||f.source||'',
    image:(m&&m.image)||f.thumbnailURL||f.imageURL||'',imagePage:(m&&m.sourceURL)||'',watch:routes.filter(l=>WATCH.test(l.title||'')&&!NOT.test(l.title||'')).map(l=>l.url)}})}))}'''
 async def main():
     async with async_playwright() as p:

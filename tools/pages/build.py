@@ -29,7 +29,7 @@ h2{font:400 22px/1.2 var(--serif);margin:32px 0 8px}h2 small{font:13px var(--san
 ol.films{list-style:none;margin:0;padding:0}ol.films li{display:grid;grid-template-columns:120px 1fr;gap:4px 16px;padding:14px 0;border-bottom:1px solid var(--line);scroll-margin-top:16px}
 ol.films li:target{background:var(--card)}.thumb{width:120px;aspect-ratio:16/10;object-fit:cover;background:var(--card);border-radius:3px;display:block}
 .noimg{width:120px;aspect-ratio:16/10;background:var(--card);border-radius:3px;display:flex;align-items:center;justify-content:center;font:28px var(--serif);color:var(--muted)}
-.ft{font:400 19px/1.3 var(--serif);margin:0}.fm{font-size:14px;color:var(--muted);margin:2px 0 0}.fl{font-size:13px;margin:4px 0 0;display:flex;flex-wrap:wrap;gap:4px 14px;align-items:center}.scr{font:inherit;font-size:12px;border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:999px;padding:1px 10px;cursor:pointer}.scr[aria-pressed=true]{background:var(--ink);color:var(--bg)}
+.ft{font:400 19px/1.3 var(--serif);margin:0}.ft small{font:13px var(--sans);color:var(--muted);margin-left:8px}.tags{display:flex;flex-wrap:wrap;gap:4px;margin:6px 0 0}.tags span{font-size:11.5px;border:1px solid var(--line);border-radius:999px;padding:1px 8px;color:var(--muted)}.thumbln{border:0;display:block}.fm{font-size:14px;color:var(--muted);margin:2px 0 0}.fl{font-size:13px;margin:4px 0 0;display:flex;flex-wrap:wrap;gap:4px 14px;align-items:center}.scr{font:inherit;font-size:12px;border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:999px;padding:1px 10px;cursor:pointer}.scr[aria-pressed=true]{background:var(--ink);color:var(--bg)}
 ul.src{padding-left:18px;font-size:14px}ul.src li{margin:4px 0}
 .cite{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:12px 16px;font-size:14px}.cite p{margin:6px 0}.cite b{font-weight:600}
 .cite button{font:inherit;font-size:12px;border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:999px;padding:2px 10px;cursor:pointer;margin-left:6px}
@@ -72,19 +72,32 @@ for r in data:
     who = ' · '.join(x for x in [r['nation'], r['country']] if x)
     items = []
     for f in films:
-        img = (f'<img class="thumb" src="{esc(f["image"])}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.replaceWith(Object.assign(document.createElement(\'div\'),{{className:\'noimg\',textContent:\'{esc((sortkey(f["title"])[:1] or "#").upper())}\'}}))">'
+        thumb = f['image'].replace('assets/film-images/', 'assets/film-thumbs/') if f['image'] else ''
+        if thumb and not re.match(r'https?:|/', thumb):
+            thumb = '../' + thumb  # these pages sit in maker/
+        img = (f'<img class="thumb" src="{esc(thumb)}" alt="{esc(f["title"])}" loading="lazy" referrerpolicy="no-referrer" onerror="this.replaceWith(Object.assign(document.createElement(\'div\'),{{className:\'noimg\',textContent:\'{esc((sortkey(f["title"])[:1] or "#").upper())}\'}}))">'
                if f['image'] else f'<div class="noimg" aria-hidden="true">{esc((sortkey(f["title"])[:1] or "#").upper())}</div>')
+        if f['image'] and f['imagePage']:  # the image links to the page it comes from (its credit)
+            img = f'<a class="thumbln" href="{esc(f["imagePage"])}" target="_blank" rel="noopener" title="Image: {esc(urlparse(f["imagePage"]).netloc.replace("www.", ""))}">{img}</a>'
         links, used = [], set()
         host = lambda u: urlparse(u).netloc.replace('www.', '')
         for w in f['watch'][:2]:
             if w not in used: used.add(w); links.append(f'<a href="{esc(w)}" target="_blank" rel="noopener">Watch · {esc(host(w))} ↗</a>')
         if f['source'] and f['source'] not in used: used.add(f['source']); links.append(f'<a href="{esc(f["source"])}" target="_blank" rel="noopener">Credit source · {esc(host(f["source"]))} ↗</a>')
-        if f['image'] and f['imagePage'] and f['imagePage'] not in used: links.append(f'<a href="{esc(f["imagePage"])}" target="_blank" rel="noopener">Image · {esc(host(f["imagePage"]))} ↗</a>')
         links.append(f'<a href="../#view=films&amp;maker={esc(r["id"])}&amp;film={esc(f["id"])}">On the map</a>')
         links.append(f'<button type="button" class="scr" data-screen data-fid="{esc(f["id"])}" data-rid="{esc(r["id"])}" data-title="{esc(f["title"])}" data-year="{esc(f["year"] or "")}" data-maker="{esc(nm)}" data-page="{esc(r["id"])}.html#{esc(f["id"])}" data-watch="{esc((f["watch"] or [""])[0])}">＋ Screening list</button>')
-        meta = ' · '.join(x for x in [str(f['year']) if f['year'] else '', public_credit(f['credit']), f['medium'] if f['medium'] and f['medium'] != 'Film' else '', f['languages']] if x)
-        items.append(f'<li id="{esc(f["id"])}">{img}<div><p class="ft">{esc(f["title"])}</p><p class="fm">{esc(meta)}</p><p class="fl">{"".join(links)}</p></div></li>')
-    srcs = ''.join(f'<li><a href="{esc(s["url"])}" target="_blank" rel="noopener">{esc(urlparse(s["url"]).netloc.replace("www.",""))}</a>{" · " + esc(s["type"]) if s["type"] else ""}{" — “" + esc(s["evidence"][:160]) + "”" if s["evidence"] and not INTERNAL.search(s["evidence"]) else ""}</li>' for s in r['sources'])
+        # one order for a film everywhere (map card, this page, Watch): title and year · role · form, length, language · themes · links
+        langs = ', '.join(f['languageLabels']) if isinstance(f.get('languageLabels'), list) else (f['languages'] or '')
+        facts = ' · '.join(x for x in [f.get('form') or (f['medium'] if f['medium'] and f['medium'] != 'Film' else ''), f.get('length') or '', langs] if x)
+        role = public_credit(f['credit'])
+        themes = ''.join(f'<span>{esc(t)}</span>' for t in f.get('themes') or [])
+        items.append(f'<li id="{esc(f["id"])}">{img}<div><p class="ft">{esc(f["title"])}{f" <small>{esc(str(f["year"]))}</small>" if f["year"] else ""}</p>'
+                     f'<p class="fm">{esc(" · ".join(x for x in [role, facts] if x))}</p>{f"<p class=tags>{themes}</p>" if themes else ""}<p class="fl">{"".join(links)}</p></div></li>')
+    quote = lambda e: e if e and len(e.split()) >= 4 and not re.search(r'[+]|\w/\w', e) and not INTERNAL.search(e) else ''
+    srcs = ''.join(f'<li><a href="{esc(s["url"])}" target="_blank" rel="noopener">{esc(urlparse(s["url"]).netloc.replace("www.",""))}</a>'
+                   f'{" · " + esc(s["type"]) if s["type"] and not INTERNAL.search(s["type"]) and not re.search("credit", s["type"], re.I) else ""}'
+                   f'{" — “" + esc(quote(s["evidence"])[:200]) + "”" if quote(s["evidence"]) else ""}</li>'
+                   for s in r['sources'] if not re.search('discovery', s['type'] or '', re.I))
     mla = f'“{esc(nm)}.” <i>{SITE}</i>, created by John Kennedy Godoy, University of Colorado Boulder, 2026, <span data-url>{esc(BASE)}/maker/{esc(r["id"])}.html</span>. Accessed <span data-acc></span>.'
     chi = f'Godoy, John Kennedy. “{esc(nm)}.” <i>{SITE}</i>. University of Colorado Boulder, 2026. <span data-urlfull>{esc(BASE)}/maker/{esc(r["id"])}.html</span>.'
     ris = f'TY  - ELEC\nTI  - {nm}\nT2  - {SITE}\nAU  - Godoy, John Kennedy\nPB  - University of Colorado Boulder\nPY  - 2026\nUR  - {{URL}}\nY2  - {{Y}}\nER  - \n'
