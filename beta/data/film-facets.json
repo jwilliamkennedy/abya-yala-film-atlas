@@ -2,7 +2,7 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-09",
  "license": "See data.html",
- "films_on_public_map": 1555,
+ "films_on_public_map": 1558,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -7437,6 +7437,22 @@
   "FILM-0150": {
    "title": "The Return",
    "year": null,
+   "makers": [
+    {
+     "id": "DIR-0199",
+     "name": "Eriberto Gualinga"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "DIR-0199-F1": {
+   "title": "Los descendientes del jaguar",
+   "year": 2012,
    "makers": [
     {
      "id": "DIR-0199",
@@ -19736,6 +19752,38 @@
   "RESEARCH-FILM-20261031-0001-01": {
    "title": "Kvpalme – El Origen",
    "year": 2019,
+   "makers": [
+    {
+     "id": "LEAD-20261031-0001",
+     "name": "Escuela de Cine y Comunicación Mapuche del Aylla Rewe Budi"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "LEAD-20261031-0001-F1": {
+   "title": "Ñvmineyiñ Kimvn – Recogiendo el Conocimiento",
+   "year": 2018,
+   "makers": [
+    {
+     "id": "LEAD-20261031-0001",
+     "name": "Escuela de Cine y Comunicación Mapuche del Aylla Rewe Budi"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "LEAD-20261031-0001-F2": {
+   "title": "Ince ka mogetun – Yo también volví a nacer",
+   "year": 2018,
    "makers": [
     {
      "id": "LEAD-20261031-0001",
