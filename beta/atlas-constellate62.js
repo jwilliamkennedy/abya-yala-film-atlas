@@ -321,6 +321,8 @@
 
  // Beta 1103d: the dock has two tabs, so the A–Z list is never pushed down by the thread
  $('#weave-editor').insertAdjacentHTML('afterbegin','<div class="weave-tabs" role="tablist" aria-label="Weave editor"><button type="button" role="tab" id="weave-tab-thread" data-weave-tab="thread" aria-selected="true"></button><button type="button" role="tab" id="weave-tab-add" data-weave-tab="add" aria-selected="false">Browse films</button></div>');
+ // Keep the next-film choices immediately after the selected film card.
+ $('#constellate-context').after($('#weave-suggest'));
  function setTab(tab){const ed=$('#weave-editor');if(ed.dataset.tab===tab)return;ed.dataset.tab=tab;$$('[data-weave-tab]').forEach(b=>b.setAttribute('aria-selected',String(b.dataset.weaveTab===tab)));panel.scrollTop=0;}
  function tabLabel(){const t=S.activeThread();$('#weave-tab-thread').innerHTML=`${esc(chipText(t.name,22))} <small>${t.items.length}</small>`;}
  $$('[data-weave-tab]').forEach(b=>b.onclick=()=>{setTab(b.dataset.weaveTab);if(b.dataset.weaveTab==='add')$('#constellate-search').focus({preventScroll:true});});
