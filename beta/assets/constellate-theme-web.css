@@ -71,6 +71,10 @@
 #tw-graph .tw-edge:hover,#tw-graph .tw-edge:focus-visible,
 #tw-graph .tw-edge.is-related{stroke-opacity:.85;stroke:var(--reading-accent,#24496b)}
 #tw-graph .tw-edge.is-faded{stroke-opacity:.06}
+#tw-graph .tw-bridge{cursor:pointer;outline:none}
+#tw-graph .tw-edge-hit{pointer-events:stroke;cursor:pointer}
+#tw-graph .tw-bridge:hover .tw-edge,#tw-graph .tw-bridge:focus-visible .tw-edge{stroke-opacity:1;stroke:var(--reading-accent,#24496b)}
+#tw-graph .tw-bridge:focus-visible .tw-edge-hit{stroke:rgba(208,138,46,.35)}
 #tw-graph .tw-node{cursor:pointer;outline:none}
 #tw-graph .tw-ring{fill:none;stroke:var(--reading-paper,#fff);stroke-width:4;opacity:.9}
 #tw-graph .tw-node.is-chosen .tw-ring{stroke:var(--reading-accent,#234967);stroke-width:5}
