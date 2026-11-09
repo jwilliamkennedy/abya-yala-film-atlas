@@ -54,3 +54,184 @@
 @media(prefers-reduced-motion:reduce){
  .weave-media-thumb *{animation:none!important;transition:none!important}
 }
+
+
+/* Constellate 8 Nov · opening editorial preview, single-ribbon graphics and quieter controls */
+#weave-empty-hint{
+ position:absolute;z-index:16;left:50%;top:47%;transform:translate(-50%,-50%);
+ width:min(548px,calc(100% - 42px));max-width:none;
+ max-height:calc(100% - 130px);box-sizing:border-box;
+ overflow:auto;padding:22px 25px 20px;text-align:left;
+ border:1px solid var(--reading-line);border-radius:12px;
+ background:var(--reading-paper);color:var(--reading-ink);
+ box-shadow:0 14px 55px #0a1e3150;
+ pointer-events:auto;overscroll-behavior:contain;
+}
+#weave-empty-hint[hidden]{display:none!important}
+#weave-empty-hint .weave-intro-kicker{
+ margin:0 0 8px;color:var(--reading-accent);
+ font:650 10px/1.3 "Atlas Sans",system-ui,sans-serif;
+ letter-spacing:.12em;text-transform:uppercase;
+}
+#weave-empty-hint h2{
+ font:400 clamp(25px,3vw,35px)/1.08 "Atlas Serif",Georgia,serif;
+ letter-spacing:-.025em;margin:0 0 7px;color:var(--reading-ink);
+}
+#weave-empty-hint .weave-intro-lede{
+ font:14px/1.48 "Atlas Sans",system-ui,sans-serif;
+ margin:0 0 17px;color:var(--reading-muted);max-width:480px;
+}
+#weave-empty-hint .weave-intro-films{
+ position:relative;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
+ gap:9px;align-items:stretch;margin:0 0 7px;padding:7px 0 1px;
+}
+#weave-empty-hint .weave-intro-films::before{
+ content:"";position:absolute;z-index:0;left:4%;right:4%;top:40px;
+ height:2px;background:linear-gradient(90deg,transparent,rgba(109,122,171,.65) 14%,rgba(109,122,171,.65) 86%,transparent);
+ pointer-events:none;
+}
+#weave-empty-hint .weave-intro-film{
+ position:relative;z-index:1;display:flex;flex-direction:column;align-items:stretch;
+ min-width:0;gap:4px;padding:6px 6px 8px;border:1px solid var(--reading-line);
+ border-radius:7px;background:var(--reading-paper);text-align:left;
+}
+#weave-empty-hint .weave-intro-film .weave-media-thumb{
+ display:block;width:100%;height:70px;position:relative;
+ overflow:hidden;border-radius:4px;background:var(--reading-wash);
+}
+#weave-empty-hint .weave-intro-film .weave-media-thumb>img{object-fit:cover!important}
+#weave-empty-hint .weave-intro-film strong{
+ display:-webkit-box;line-clamp:2;-webkit-line-clamp:2;-webkit-box-orient:vertical;
+ overflow:hidden;min-height:27px;color:var(--reading-ink);
+ font:600 11px/1.22 "Atlas Sans",system-ui,sans-serif;
+}
+#weave-empty-hint .weave-intro-film small{
+ display:block;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;
+ font:11px/1.3 "Atlas Sans",system-ui,sans-serif;color:var(--reading-muted);
+}
+#weave-empty-hint .weave-intro-label{
+ font:11px/1.4 "Atlas Sans",system-ui,sans-serif;
+ margin:3px 0 16px;color:var(--reading-muted);
+}
+#weave-empty-hint .weave-intro-actions{
+ display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin:0 0 15px;
+}
+#weave-empty-hint .weave-intro-actions button{
+ cursor:pointer;min-height:39px;padding:9px 13px;border-radius:5px;
+ border:1px solid var(--reading-accent);font:600 13px/1.3 "Atlas Sans",system-ui,sans-serif;
+ color:var(--reading-accent);background:var(--reading-paper);
+}
+#weave-empty-hint .weave-intro-actions #weave-example{
+ color:var(--reading-paper);background:var(--reading-accent);
+}
+#weave-empty-hint .weave-intro-actions button:disabled{opacity:.35;cursor:not-allowed}
+#weave-empty-hint .weave-intro-actions button:focus-visible,
+#weave-empty-hint #weave-hint-themes button:focus-visible{outline:2px solid var(--reading-accent);outline-offset:2px}
+#weave-empty-hint .weave-intro-themes{
+ border-top:1px solid var(--reading-line);padding-top:12px;
+}
+#weave-empty-hint .weave-intro-themes>span{
+ display:block;font:12px/1.3 "Atlas Sans",system-ui,sans-serif;
+ color:var(--reading-muted);margin-bottom:9px;
+}
+#weave-empty-hint #weave-hint-themes{
+ display:flex;align-items:center;gap:6px;flex-wrap:wrap;pointer-events:auto;
+}
+#weave-empty-hint #weave-hint-themes button{
+ cursor:pointer;min-height:30px;padding:6px 9px;
+ font:12px/1.2 "Atlas Sans",system-ui,sans-serif;color:var(--reading-ink);
+ background:var(--reading-wash);border:1px solid var(--reading-line);
+ border-radius:30px;
+}
+#weave-empty-hint #weave-hint-themes button small{color:var(--reading-muted);margin-left:4px}
+#weave-empty-hint #weave-hint-themes button:hover{border-color:var(--reading-accent)}
+/* Thematic routes are smooth, single strokes rather than simulated rope. */
+#constellate-graph .weave-thread-shadow{fill:none;stroke:#071526;stroke-width:8;stroke-opacity:.14}
+#constellate-graph .weave-thread-halo{
+ fill:none;stroke:var(--reading-paper);stroke-width:6.6;stroke-opacity:.88;
+}
+#constellate-graph .weave-thread .weave-ribbon{
+ fill:none;stroke-width:3.5;stroke-opacity:1;
+ stroke-linecap:round;stroke-linejoin:round;
+}
+#constellate-graph .weave-thread .weave-ribbon-sheen{
+ fill:none;stroke-width:1.1;stroke-opacity:.33;
+ stroke-linecap:round;stroke-linejoin:round;pointer-events:none;
+}
+#constellate-graph .weave-thread.is-active .weave-ribbon{stroke-width:4.4}
+#constellate-graph .weave-thread.is-active .weave-ribbon-sheen{stroke-opacity:.46}
+#constellate-graph .weave-thread.is-quiet .weave-ribbon{stroke-opacity:.48;stroke-width:2.7}
+#constellate-graph .weave-thread.is-quiet .weave-ribbon-sheen{stroke-opacity:.19}
+#constellate-graph .weave-thread.is-quiet .weave-thread-name{opacity:.7}
+#constellate-graph .weave-thread.is-focus .weave-ribbon{stroke-width:5.3;stroke-opacity:1}
+#constellate-graph .weave-thread .weave-ply,
+#constellate-graph .weave-cord-loop,#constellate-graph .weave-tassel{display:none!important}
+/* Documented and interpretive connections use distinct strokes. */
+#constellate-graph .constellate-edge.sourced-thread{stroke-dasharray:none;stroke-width:1.9;stroke-opacity:.88}
+#constellate-graph .constellate-edge.dream-thread{stroke-dasharray:3.5 5;stroke-width:1.4;stroke-opacity:.75}
+#constellate-graph .weave-crossing-ring{stroke-dasharray:3 4;stroke-width:1.25}
+/* Squared film-still chips are easier to distinguish from the circular thread knots. */
+#constellate-graph .constellate-card>rect:first-child{stroke-width:1.35}
+#constellate-graph .constellate-card rect.weave-chip-ring{
+ rx:5px;ry:5px;fill:none;stroke-width:1.3;
+}
+#constellate-graph .constellate-card>rect[width="32"]:not(.weave-chip-ring){
+ rx:5px;ry:5px;stroke:none;
+}
+#constellate-graph .constellate-card .weave-card-art{opacity:1}
+/* Header: make core actions legible; keep advanced layout within Options. */
+#constellate-mode .weave-options-label{display:inline;font:500 13px/1.2 "Atlas Sans",system-ui,sans-serif}
+#constellate-mode .weave-options-icon{display:none}
+#constellate-mode .weave-more>summary{min-height:32px}
+#constellate-popup .constellate-heading{
+ gap:7px;border-bottom:1px solid var(--reading-line);
+ padding-bottom:8px;
+}
+#constellate-popup .constellate-heading h2{font-size:23px;letter-spacing:-.01em}
+#weave-find-films{border-radius:5px;padding:6px 10px}
+#weave-peek{max-width:340px;border-radius:9px;padding:12px;gap:12px;box-shadow:0 11px 35px #081e3442}
+#weave-peek>.weave-media-thumb{width:68px;height:80px;min-width:68px;flex-basis:68px;border-radius:5px}
+#weave-peek strong{font-size:15px;line-height:1.3}
+#weave-peek small{line-height:1.42}
+.weave-title-card .weave-play-art{
+ position:relative;display:block;flex:0 0 min(22%,165px);
+ width:min(22%,165px);height:120px;overflow:hidden;
+ background:#253248;border-radius:6px;border:1px solid #485b77;
+}
+.weave-title-card .weave-play-art img{
+ position:absolute;inset:0;width:100%!important;height:100%!important;
+ max-height:none!important;max-width:none!important;
+ object-fit:cover!important;display:block;
+}
+.weave-title-card .weave-play-art img[hidden]{display:none!important}
+.weave-title-card .weave-play-fallback{
+ display:flex;align-items:center;justify-content:center;
+ height:100%;width:100%;font:400 42px/1 Georgia,serif;
+ color:#e8d6ae;background:linear-gradient(135deg,#273a53,#0d182c);
+}
+.weave-title-card .weave-play-fallback[hidden]{display:none!important}
+@media(max-width:1000px){
+ #weave-empty-hint{padding:19px 19px 17px}
+ #weave-empty-hint .weave-intro-film .weave-media-thumb{height:57px}
+ #weave-empty-hint .weave-intro-films::before{top:34px}
+}
+@media(max-width:760px){
+ #constellate-mode .weave-options-label{display:none}
+ #constellate-mode .weave-options-icon{display:inline}
+ #weave-empty-hint{
+  top:48%;width:calc(100% - 24px);max-height:calc(100% - 105px);
+  padding:17px 15px 16px;border-radius:9px;
+ }
+ #weave-empty-hint .weave-intro-lede{font-size:13px}
+ #weave-empty-hint .weave-intro-films{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+ #weave-empty-hint .weave-intro-films::before{display:none}
+ #weave-empty-hint .weave-intro-film{padding:5px}
+ #weave-empty-hint .weave-intro-film .weave-media-thumb{height:58px}
+ #weave-empty-hint .weave-intro-film strong{min-height:0}
+ #weave-empty-hint .weave-intro-actions button{min-height:40px;font-size:12px}
+ #weave-peek{max-width:min(300px,calc(100% - 24px))}
+ .weave-title-card .weave-play-art{flex:0 0 76px;width:76px;height:96px}
+}
+@media(max-height:590px){
+ #weave-empty-hint{top:115px;transform:translateX(-50%);max-height:calc(100% - 140px)}
+}
