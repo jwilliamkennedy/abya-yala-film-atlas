@@ -92,6 +92,16 @@ jobs:
                 await page.locator('#tw-detail [data-film-id]').first.wait_for(timeout=12000)
                 destination=await page.locator('#tw-detail [data-film-id]').first.get_attribute('data-film-id')
                 await page.locator('#tw-detail [data-film-id]').first.click()
+                debug=await page.evaluate("""() => {
+                  const c=document.querySelector('#constellate-context'),p=document.querySelector('#constellate-popup');
+                  return {contextHidden:c?.hidden,contextDisplay:c&&getComputedStyle(c).display,
+                    popupHidden:p?.hidden,editorHidden:document.querySelector('#weave-editor')?.hidden,
+                    editorTab:document.querySelector('#weave-editor')?.dataset.tab,
+                    preview:c?.querySelector('.weave-context-preview h3')?.textContent,
+                    selected:window.AtlasCollections.current().selectedItem,
+                    count:window.AtlasCollections.current().items.length};
+                }""")
+                print('FOLLOW_DEBUG',name,json.dumps(debug),errors[:3])
                 await page.locator('#constellate-context').wait_for(state='visible',timeout=12000)
                 current=await page.locator('#constellate-context .weave-context-preview h3').inner_text()
                 state['followed']=current
