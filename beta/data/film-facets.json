@@ -2,7 +2,7 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-09",
  "license": "See data.html",
- "films_on_public_map": 1544,
+ "films_on_public_map": 1546,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -28552,26 +28552,6 @@
    "form": "Documentary",
    "length": "Short"
   },
-  "QM-f87c99833a-M1": {
-   "title": "Manifiesto Wayúu",
-   "year": 2019,
-   "makers": [
-    {
-     "id": "QM-f87c99833a",
-     "name": "Miguel Iván Ramírez Boscán"
-    }
-   ],
-   "languages": [],
-   "themes": [
-    "Justice, Truth and Reconciliation"
-   ],
-   "primary_theme": "Justice, Truth and Reconciliation",
-   "families": [
-    "Sovereignty and Politics"
-   ],
-   "form": "Documentary",
-   "length": "Short"
-  },
   "QM-2ceb368977-M1": {
    "title": "Nondjewaregi / Costumbres antiguas",
    "year": 2012,
@@ -29628,6 +29608,26 @@
    "form": null,
    "length": null
   },
+  "DIR-0188-F3": {
+   "title": "Manifiesto Wayúu",
+   "year": 2019,
+   "makers": [
+    {
+     "id": "DIR-0188",
+     "name": "Miguel Ramírez Boscán"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Justice, Truth and Reconciliation"
+   ],
+   "primary_theme": "Justice, Truth and Reconciliation",
+   "families": [
+    "Sovereignty and Politics"
+   ],
+   "form": "Documentary",
+   "length": "Short"
+  },
   "QM-650864154e-M1": {
    "title": "Valuing the Embera Culture",
    "year": 2018,
@@ -30427,6 +30427,38 @@
    "families": [],
    "form": "Documentary",
    "length": "Feature"
+  },
+  "Q20261108-71-F1": {
+   "title": "Comunidad Sikuani de La Campana",
+   "year": 2013,
+   "makers": [
+    {
+     "id": "Q20261108-71",
+     "name": "Geodiel Chindicué"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261108-72-F1": {
+   "title": "Majayut",
+   "year": 2008,
+   "makers": [
+    {
+     "id": "Q20261108-72",
+     "name": "Luis Misael Socarrás Ipuana"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
   }
  }
 }
