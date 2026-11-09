@@ -70,3 +70,10 @@
 @media (max-width:760px){:root:not(#_) header nav.atlas-utilities{display:contents!important}}
 :root:not(#_) header nav.primary .more-menu>summary{color:var(--ui-ink,var(--reading-ink,var(--ink,#182028)))!important;opacity:1}
 :root:not(#_) header .ui-lang .visually-hidden{position:absolute!important;width:1px!important;height:1px!important;overflow:hidden!important;clip:rect(0 0 0 0)!important;white-space:nowrap!important;padding:0!important;margin:-1px!important;border:0!important}
+/* laptop widths (761–1000px): brand and language on the first row, the menu on its own row below, on every page */
+@media (max-width:1000px) and (min-width:761px){
+ :root:not(#_) header{flex-wrap:wrap!important;row-gap:0!important;align-content:flex-start!important;align-items:center!important}
+ :root:not(#_) header nav.primary{order:5;width:100%;flex-basis:100%}
+}
+/* keyboard focus: always visible, on every page */
+:root:not(#_) :is(a,button,summary,select,input,textarea,[tabindex]):focus-visible{outline:2px solid currentColor!important;outline-offset:2px!important}

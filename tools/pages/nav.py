@@ -72,7 +72,7 @@ def main(root):
         new = re.sub(r'<img src="(?:\.\./)*assets/icon-1107\.svg" alt="">', MARK, new)
         new = re.sub(r'<script id="site-nav-js">.*?</script>', '', new, flags=re.S)
         new = re.sub(r'<link rel="stylesheet" href="(?:\.\./)*assets/site-menu\.css[^"]*"><script defer src="(?:\.\./)*assets/site-menu\.js[^"]*"></script>(?:<script defer src="(?:\.\./)*i18n-20261107\.js[^"]*"></script>)?\n', '', new)
-        new = new.replace('</head>', f'<link rel="stylesheet" href="{up}assets/site-menu.css?v=9"><script defer src="{up}assets/site-menu.js?v=3"></script><script defer src="{up}i18n-20261107.js?v=7"></script>\n</head>', 1)
+        new = new.replace('</head>', f'<link rel="stylesheet" href="{up}assets/site-menu.css?v=11"><script defer src="{up}assets/site-menu.js?v=3"></script><script defer src="{up}i18n-20261107.js?v=8"></script>\n</head>', 1)
         new = re.sub(r'<main.*</main>', lambda m: re.sub(r'(<a [^>]*href="https?://[^"]*"[^>]*>)([^<]*?)</a>',
                      lambda a: a.group(0) if '\u2197' in a.group(2) or not a.group(2).strip() else f'{a.group(1)}{a.group(2)} \u2197</a>', m.group(0)), new, count=1, flags=re.S)
         if 'id="site-nav-css"' in new:
