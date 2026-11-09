@@ -2,7 +2,7 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-08",
  "license": "See data.html",
- "films_on_public_map": 1451,
+ "films_on_public_map": 1458,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -12554,12 +12554,12 @@
    "length": null
   },
   "FILM-SRC-2023-00037": {
-   "title": "Home",
-   "year": null,
+   "title": "Nuestro hogar",
+   "year": 2014,
    "makers": [
     {
-     "id": "NEW-41297500b675",
-     "name": "Barry Bilinsky"
+     "id": "Q20261108-12",
+     "name": "Detsy Barrigón"
     }
    ],
    "languages": [],
@@ -22487,6 +22487,22 @@
    "form": null,
    "length": null
   },
+  "NEW-e5acfe14bc47-F1": {
+   "title": "Ri wachik",
+   "year": 2011,
+   "makers": [
+    {
+     "id": "NEW-e5acfe14bc47",
+     "name": "Berta Lidia Chirix"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "NEW-a1673e2c116c-WORK-1": {
    "title": "Amanecer",
    "year": 2014,
@@ -22592,6 +22608,22 @@
   },
   "NEW-1976cd104bb2-WORK-1": {
    "title": "Mujer",
+   "year": 2021,
+   "makers": [
+    {
+     "id": "NEW-1976cd104bb2",
+     "name": "Marta Choc Calel"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "NEW-1976cd104bb2-F1": {
+   "title": "Ixoq",
    "year": 2021,
    "makers": [
     {
@@ -27496,22 +27528,6 @@
    "form": "Documentary",
    "length": null
   },
-  "QM-ac60127ca8-M1": {
-   "title": "El viaje del Kokorrdit / Dance of the Kokorrdit",
-   "year": 2026,
-   "makers": [
-    {
-     "id": "QM-ac60127ca8",
-     "name": "Elio B. Cunampio"
-    }
-   ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": "Hybrid",
-   "length": null
-  },
   "QM-2ceb368977-M1": {
    "title": "Nondjewaregi / Costumbres antiguas",
    "year": 2012,
@@ -28592,6 +28608,102 @@
    "primary_theme": null,
    "families": [],
    "form": null,
+   "length": null
+  },
+  "QM-722f3b1060-M1": {
+   "title": "Manuel Yojcom Mendoza, vida sin límite",
+   "year": 2015,
+   "makers": [
+    {
+     "id": "QM-722f3b1060",
+     "name": "Franklín Cholotío"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261108-10-F1": {
+   "title": "Kumilha’",
+   "year": 2017,
+   "makers": [
+    {
+     "id": "Q20261108-10",
+     "name": "Daniel Pac"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261108-11-F1": {
+   "title": "Tejida",
+   "year": 2021,
+   "makers": [
+    {
+     "id": "Q20261108-11",
+     "name": "Belén Pac Batz"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261108-13-F1": {
+   "title": "Tramas y trascendencias",
+   "year": 2013,
+   "makers": [
+    {
+     "id": "Q20261108-13",
+     "name": "Flor de María Álvarez Medrano"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QM-577ad2c826-F1": {
+   "title": "Nurdargana",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "QM-577ad2c826",
+     "name": "Alcibíades Rodríguez"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QM-ac60127ca8-M1": {
+   "title": "El viaje del Kokorrdit / Dance of the Kokorrdit",
+   "year": 2026,
+   "makers": [
+    {
+     "id": "QM-ac60127ca8",
+     "name": "Elio B. Cunampio"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Hybrid",
    "length": null
   }
  }
