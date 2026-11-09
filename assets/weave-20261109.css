@@ -116,3 +116,6 @@ html[data-weave-stage] #atlas .land-watch,html[data-weave-stage] #atlas .land-th
 /* The film card already carries its thumbnail: hovering it should not create a second floating thumbnail. */
 #weave-peek{max-width:260px;align-items:flex-start}
 #weave-peek>div{min-width:0}
+
+/* Respect the hidden attribute even though atlas.css gives the hover preview display:flex. */
+#weave-peek[hidden]{display:none!important}
