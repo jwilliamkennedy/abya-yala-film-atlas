@@ -2,7 +2,7 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-09",
  "license": "See data.html",
- "films_on_public_map": 1401,
+ "films_on_public_map": 1411,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -4218,6 +4218,49 @@
    "form": null,
    "length": null
   },
+  "DIR-0121-W1031-1": {
+   "title": "Before Tomorrow",
+   "year": 2008,
+   "makers": [
+    {
+     "id": "DIR-0121",
+     "name": "Madeline Ivalu"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Elders and Knowledge",
+    "Kinship",
+    "Women and Gender"
+   ],
+   "primary_theme": "Elders and Knowledge",
+   "families": [
+    "Knowledge and Continuity",
+    "Lives and Relations"
+   ],
+   "form": "Fiction",
+   "length": "Feature"
+  },
+  "DIR-0121-W1031-2": {
+   "title": "Uvanga",
+   "year": 2013,
+   "makers": [
+    {
+     "id": "DIR-0121",
+     "name": "Madeline Ivalu"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Kinship"
+   ],
+   "primary_theme": "Kinship",
+   "families": [
+    "Lives and Relations"
+   ],
+   "form": "Fiction",
+   "length": "Feature"
+  },
   "FILM-0083": {
    "title": "Finality of Dusk",
    "year": null,
@@ -4489,6 +4532,45 @@
    ],
    "primary_theme": "Youth",
    "families": [
+    "Lives and Relations"
+   ],
+   "form": "Fiction",
+   "length": "Feature"
+  },
+  "DIR-0136-W1031-1": {
+   "title": "High Horse",
+   "year": 1994,
+   "makers": [
+    {
+     "id": "DIR-0136",
+     "name": "Randy Redroad"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "DIR-0136-W1031-2": {
+   "title": "The Doe Boy",
+   "year": 2001,
+   "makers": [
+    {
+     "id": "DIR-0136",
+     "name": "Randy Redroad"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Youth",
+    "Health and Healing",
+    "Self-Representation and Countering Stereotypes"
+   ],
+   "primary_theme": "Youth",
+   "families": [
+    "Expression and Representation",
     "Lives and Relations"
    ],
    "form": "Fiction",
@@ -21998,6 +22080,46 @@
    "form": null,
    "length": null
   },
+  "NEW-0031c6469e76-WORK-1": {
+   "title": "Los sueños viajan con el viento (Dreams Travel with the Wind)",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "NEW-0031c6469e76",
+     "name": "Inti Jacanamijoy"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Kinship",
+    "Memory and Oral History",
+    "Displacement and Migration"
+   ],
+   "primary_theme": "Kinship",
+   "families": [
+    "Knowledge and Continuity",
+    "Lives and Relations",
+    "Sovereignty and Politics"
+   ],
+   "form": "Documentary",
+   "length": "Feature"
+  },
+  "NEW-0031c6469e76-QM86bec2": {
+   "title": "La Manuela",
+   "year": 2019,
+   "makers": [
+    {
+     "id": "NEW-0031c6469e76",
+     "name": "Inti Jacanamijoy"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "NEW-288e467f0bc7-WORK-1": {
    "title": "Tejedoras de resistencia – El Buen Vivir",
    "year": 2021,
@@ -26316,6 +26438,14 @@
     {
      "id": "BETA30-20261106-D05",
      "name": "Luciana Tira Huni Kuin"
+    },
+    {
+     "id": "QM-5b6f874ea2",
+     "name": "Lira Mawapai HuniKui"
+    },
+    {
+     "id": "QM-b1d16e4857",
+     "name": "Luciana Tira HuniKui"
     }
    ],
    "languages": [],
@@ -27691,6 +27821,70 @@
    ],
    "form": "Documentary",
    "length": "Short"
+  },
+  "DIR-0188-QMfdf4b6": {
+   "title": "Wounmainkat (Nuestra Tierra)",
+   "year": 2008,
+   "makers": [
+    {
+     "id": "DIR-0188",
+     "name": "Miguel Ramírez Boscán"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "DIR-0188-QM4dff6f": {
+   "title": "Mujeres indígenas y otras formas de sabiduría",
+   "year": 2010,
+   "makers": [
+    {
+     "id": "DIR-0188",
+     "name": "Miguel Ramírez Boscán"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QM-650864154e-M1": {
+   "title": "Valuing the Embera Culture",
+   "year": 2018,
+   "makers": [
+    {
+     "id": "QM-650864154e",
+     "name": "Olo Villalaz"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QM-4f304218b3-M1": {
+   "title": "The Forest, Land, and Water are Hurting",
+   "year": 2023,
+   "makers": [
+    {
+     "id": "QM-4f304218b3",
+     "name": "Florenio Xuc"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
   }
  }
 }
