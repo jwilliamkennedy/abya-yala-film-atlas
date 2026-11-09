@@ -2,7 +2,7 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-09",
  "license": "See data.html",
- "films_on_public_map": 1482,
+ "films_on_public_map": 1484,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -13478,6 +13478,22 @@
    ],
    "form": null,
    "length": "Short"
+  },
+  "NEW-797d6554404b-F9": {
+   "title": "El camino es largo",
+   "year": 2016,
+   "makers": [
+    {
+     "id": "NEW-797d6554404b",
+     "name": "Edgar Noé Sajcabún Mux"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
   },
   "NEW-72e611292227-WORK-1": {
    "title": "América",
@@ -29092,6 +29108,22 @@
    "primary_theme": null,
    "families": [],
    "form": null,
+   "length": null
+  },
+  "QM-e267cad3ee-M1": {
+   "title": "Amu Adji Ty / Mudança De Aldeia",
+   "year": 2022,
+   "makers": [
+    {
+     "id": "QM-e267cad3ee",
+     "name": "Renan Khisetje"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
    "length": null
   }
  }
