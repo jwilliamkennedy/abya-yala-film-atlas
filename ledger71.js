@@ -11,7 +11,7 @@
  for(const r of R){if(window.ATLAS_ON_MAP.has(r.status))try{for(const e of A.recordLandReferences(r.id))if(e.mapped)peoples.add(e.id);}catch{}for(const f of r.films||[]){const t=norm(f.title).split(' = ')[0];if(t)works.add(t+'|'+(f.year||''));}}
  const nav=document.querySelector('header nav.primary');
  if(nav&&!document.querySelector('.atlas-ledger')){
-  nav.insertAdjacentHTML('afterend',`<p class="atlas-ledger" aria-label="${fmt(works.size)} films by ${fmt(R.length)} filmmakers and collectives"><span><b>${fmt(works.size)}</b> films</span><span><b>${fmt(R.length)}</b> filmmakers</span></p>`);
+  nav.insertAdjacentHTML('afterend',`<p class="atlas-ledger" aria-label="${fmt(window.ATLAS_FACETS&&window.ATLAS_FACETS.films?Object.keys(window.ATLAS_FACETS.films).length:works.size)} films by ${fmt(R.length)} filmmakers and collectives"><span><b>${fmt(window.ATLAS_FACETS&&window.ATLAS_FACETS.films?Object.keys(window.ATLAS_FACETS.films).length:works.size)}</b> films</span><span><b>${fmt(R.length)}</b> filmmakers</span></p>`);
  }
 
  // Posters: each land with linked filmmakers shows one of their film images, chosen at random.
@@ -38,7 +38,7 @@
   defs.insertAdjacentHTML('beforeend','<clipPath id="land-thumb-clip" clipPathUnits="objectBoundingBox"><circle cx=".5" cy=".5" r=".5"/></clipPath><radialGradient id="land-thumb-glow"><stop offset="55%" stop-color="#f3dfa6" stop-opacity=".38"/><stop offset="100%" stop-color="#f3dfa6" stop-opacity="0"/></radialGradient><filter id="land-duotone" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values=".2126 .7152 .0722 0 0 .2126 .7152 .0722 0 0 .2126 .7152 .0722 0 0 0 0 0 1 0"/><feComponentTransfer><feFuncR type="table" tableValues=".09 .96"/><feFuncG type="table" tableValues=".11 .89"/><feFuncB type="table" tableValues=".2 .72"/></feComponentTransfer></filter>');}
  const tf=g=>{const m=(g.getAttribute('transform')||'').match(/translate\(([-\d.]+)[ ,]+([-\d.]+)/);return m?[+m[1],+m[2]]:[0,0];};
  const wordFor=id=>[...document.querySelectorAll('g.land-word')].find(w=>w.__data__?.id===id);
- function setImage(t,c){t.querySelectorAll('image').forEach(i=>{if(i.getAttribute('href')!==c.src)i.setAttribute('href',c.src);});t.querySelector('title').textContent=c.title+' · '+c.maker;t.dataset.src=c.src;}
+ function setImage(t,c){const small=String(c.src||'').replace('assets/film-images/','assets/film-thumbs/');t.querySelectorAll('image').forEach(i=>{if(i.getAttribute('href')!==small)i.setAttribute('href',small);});t.querySelector('title').textContent=c.title+' · '+c.maker;t.dataset.src=c.src;}
 
  function decorate(){
   const k=zoomK(),placed=[],seen=new Set();

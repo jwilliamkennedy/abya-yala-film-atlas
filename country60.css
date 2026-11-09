@@ -1,5 +1,0 @@
-#country-rail .country-counts{font:12px/1.35 'Atlas Sans',sans-serif;text-align:right;white-space:nowrap;flex:none;color:var(--reading-muted)}
-#country-rail .country-counts b{font-weight:500;color:var(--reading-ink)}
-#country-rail .country-counts small{font:inherit;display:block;margin-top:3px}
-#country-rail button>span:first-child{font-size:14px;line-height:1.4}
-#country-rail button{gap:12px}
