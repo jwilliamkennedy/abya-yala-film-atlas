@@ -1,12 +1,12 @@
-/* Constellate strip: Clear lives at the foot of ⋯ (it empties the whole weave, so it stays out of the row);
-   on phones Disappear map moves into ⋯ too, and back to the row on wider screens. */
+/* Constellate strip: Clear is a visible top-level action, never hidden in Options.
+   On phones Disappear map moves into Options while Draw thread and Clear stay visible. */
 (function(){
   var phone=window.matchMedia('(max-width:760px)');
   function place(){
     var bar=document.getElementById('constellate-mode');if(!bar)return false;
     var menu=bar.querySelector('.weave-more-menu'),clear=document.getElementById('constellate-clear'),unmap=document.getElementById('weave-unmap'),more=bar.querySelector('.weave-more');
     if(!menu||!more)return false;
-    if(clear&&clear.parentNode!==menu)menu.append(clear);
+    if(clear&&(clear.parentNode!==bar||clear.nextElementSibling!==more))bar.insertBefore(clear,more);
     if(unmap){if(phone.matches&&unmap.parentNode!==menu)menu.prepend(unmap);
       else if(!phone.matches&&unmap.parentNode===menu){var g=bar.querySelector('.weave-tool-group');bar.insertBefore(unmap,g||more);}}
     var m=bar.querySelector('.weave-more-menu');
