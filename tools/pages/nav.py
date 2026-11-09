@@ -73,14 +73,15 @@ def main(root):
         new = re.sub(r'<script id="site-nav-js">.*?</script>', '', new, flags=re.S)
         new = re.sub(r'<link rel="stylesheet" href="(?:\.\./)*assets/site-menu\.css[^"]*"><script defer src="(?:\.\./)*assets/site-menu\.js[^"]*"></script>(?:<script defer src="(?:\.\./)*i18n-20261107\.js[^"]*"></script>)?\n', '', new)
         new = re.sub(r'<link rel="stylesheet" href="(?:\.\./)*assets/ui-20261109\.css[^"]*"><script defer src="(?:\.\./)*assets/ui-20261109\.js[^"]*"></script>\n', '', new)
-        new = new.replace('</head>', f'<link rel="stylesheet" href="{up}assets/site-menu.css?v=11"><script defer src="{up}assets/site-menu.js?v=3"></script><script defer src="{up}i18n-20261107.js?v=9"></script>\n</head>', 1)
-        new = new.replace('</head>', f'<link rel="stylesheet" href="{up}assets/ui-20261109.css?v=2"><script defer src="{up}assets/ui-20261109.js?v=2"></script>\n</head>', 1)
         new = re.sub(r'<main.*</main>', lambda m: re.sub(r'(<a [^>]*href="https?://[^"]*"[^>]*>)([^<]*?)</a>',
                      lambda a: a.group(0) if '\u2197' in a.group(2) or not a.group(2).strip() else f'{a.group(1)}{a.group(2)} \u2197</a>', m.group(0)), new, count=1, flags=re.S)
         if 'id="site-nav-css"' in new:
             new = re.sub(r'<style id="site-nav-css">.*?</style>', lambda m: CSS, new, flags=re.S)
         else:
             new = new.replace('</head>', CSS + '\n</head>', 1)
+        # shared stylesheets last, after the page's own styles and site-nav-css, so the shared layer wins the cascade
+        new = new.replace('</head>', f'<link rel="stylesheet" href="{up}assets/site-menu.css?v=11"><script defer src="{up}assets/site-menu.js?v=3"></script><script defer src="{up}i18n-20261107.js?v=10"></script>\n</head>', 1)
+        new = new.replace('</head>', f'<link rel="stylesheet" href="{up}assets/ui-20261109.css?v=3"><script defer src="{up}assets/ui-20261109.js?v=3"></script>\n</head>', 1)
         if new != t:
             f.write_text(new, encoding='utf-8'); n += 1
     print('header menu written on', n, 'pages')
