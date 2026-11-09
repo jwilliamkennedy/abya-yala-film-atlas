@@ -2,7 +2,7 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-09",
  "license": "See data.html",
- "films_on_public_map": 1498,
+ "films_on_public_map": 1508,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -7746,6 +7746,22 @@
    "form": null,
    "length": null
   },
+  "DIR-0219-F4": {
+   "title": "Paisajes de valor",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "DIR-0219",
+     "name": "Celina Yunuen Manuel Piñón"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "FILM-0173": {
    "title": "Huachinango rojo (Behua Xiñá')",
    "year": 2023,
@@ -11547,6 +11563,10 @@
     {
      "id": "DIR-0326",
      "name": "Rahe-Wanitanama"
+    },
+    {
+     "id": "Q20261108-44",
+     "name": "Rahe-wanitanama Alexa Wynter"
     }
    ],
    "languages": [
@@ -15164,6 +15184,26 @@
    ],
    "form": null,
    "length": "Short"
+  },
+  "MT-SPIRITTOSOAR-2021": {
+   "title": "Mashkawi-Manidoo Bimaadiziwin / Spirit to Soar",
+   "year": 2021,
+   "makers": [
+    {
+     "id": "NEW-2652d494da73",
+     "name": "Michelle Derosier"
+    },
+    {
+     "id": "Q20261108-52",
+     "name": "Tanya Talaga"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
   },
   "NEW-f6c274cb3b76-WORK-1": {
    "title": "My Friend Saabe",
@@ -29662,6 +29702,146 @@
    "families": [],
    "form": "Documentary",
    "length": "Feature"
+  },
+  "QM-b581191e82-F1": {
+   "title": "(((((/*\\)))))",
+   "year": 2019,
+   "makers": [
+    {
+     "id": "QM-b581191e82",
+     "name": "Saúl Kak"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261108-41-F1": {
+   "title": "Kiñe Rupa: Treng Treng Kai Kai",
+   "year": 2018,
+   "makers": [
+    {
+     "id": "Q20261108-41",
+     "name": "Marilen Llancaqueo"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
+  },
+  "MT-MUUPALAA-2021": {
+   "title": "Muu Palaa: La abuela mar",
+   "year": 2021,
+   "makers": [
+    {
+     "id": "Q20261108-42",
+     "name": "Luzbeidy Monterrosa Antencio"
+    },
+    {
+     "id": "Q20261108-43",
+     "name": "Olowaili Green Santacruz"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": "Short"
+  },
+  "Q20261108-45-F1": {
+   "title": "Definition of Resilience, Episode 2: “Identity”",
+   "year": 2018,
+   "makers": [
+    {
+     "id": "Q20261108-45",
+     "name": "Tomás Karamelo Amaya"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261108-46-F1": {
+   "title": "Imalirijit",
+   "year": 2021,
+   "makers": [
+    {
+     "id": "Q20261108-46",
+     "name": "Tim Anaviapik Soucie"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "Q20261108-47-F1": {
+   "title": "Nhakpoti Star Girl",
+   "year": 2023,
+   "makers": [
+    {
+     "id": "Q20261108-47",
+     "name": "Pat-i Kayapó"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261108-48-F1": {
+   "title": "Radio Bingo",
+   "year": 2023,
+   "makers": [
+    {
+     "id": "Q20261108-48",
+     "name": "Shelby Adams"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "MT-CUTKNIFE-2023": {
+   "title": "Más Mik'áátùní Tsisgò (Cut Knife Creek)",
+   "year": 2023,
+   "makers": [
+    {
+     "id": "Q20261108-49",
+     "name": "Beric Dean Manywounds"
+    },
+    {
+     "id": "Q20261108-50",
+     "name": "Ben Pipestem"
+    },
+    {
+     "id": "Q20261108-51",
+     "name": "Alanna Bluebird-onespot"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": null
   }
  }
 }
