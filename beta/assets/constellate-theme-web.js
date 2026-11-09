@@ -21,7 +21,7 @@
   'Expression and Representation':['Art, Craft and Making','Music and Performance','Self-Representation and Countering Stereotypes','Collective and Community Media','Indigenous Futurisms','Humor and Satire']
  };
  var nodeByName=new Map(),films=[],graphLinks=[],families=[],selected='',selectedPair='',activeFamily='All themes',search='',isOpen=false,view=null;
- var filmsShown=20,lastFilmView='';
+ var filmsShown=20,lastFilmView='',showAllBridges=false;
  var NS='http://www.w3.org/2000/svg';
  var esc=function(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});};
  var canon=function(s){return String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();};
@@ -83,7 +83,7 @@
     '<button id="tw-seed" type="button">Explore a woven example</button></div>'+
     '<div id="tw-families" class="tw-families" role="group" aria-label="Theme families"></div>'+
     '<div class="tw-main"><div class="tw-graph-wrap"><div id="tw-mobile-list" class="tw-mobile-list" aria-label="Browse themes by name"></div><svg id="tw-graph" viewBox="0 0 720 550" role="group" aria-label="Interactive network of sourced themes and co-tagged films"></svg>'+
-      '<p class="tw-graph-foot"><span id="tw-stat"></span> · Lines indicate co-tags, not cultural similarity. <button type="button" id="tw-reset">See all</button></p></div>'+
+      '<p class="tw-graph-foot"><span id="tw-stat"></span> · Lines indicate co-tags, not cultural similarity. <button type="button" id="tw-all-links" aria-pressed="false">All bridges</button> <button type="button" id="tw-reset">Reset view</button></p></div>'+ 
     '<aside id="tw-detail" class="tw-detail" aria-live="polite" aria-label="Selected theme and films"></aside></div>'+
     '<p id="tw-live" class="sr-only" role="status" aria-live="polite"></p>'+
    '</section>');
@@ -92,6 +92,7 @@
   toggle.onclick=function(){show(!isOpen);};
   document.getElementById('tw-close').onclick=function(){show(false);toggle.focus();};
   document.getElementById('tw-reset').onclick=function(){activeFamily='All themes';selected='';selectedPair='';search='';searchBox.value='';draw();};
+   document.getElementById('tw-all-links').onclick=function(){showAllBridges=!showAllBridges;draw();};
   document.getElementById('tw-seed').onclick=example;
   searchBox.addEventListener('input',function(){search=searchBox.value.trim();selectedPair='';draw();});
   chipRow.addEventListener('click',function(e){var b=e.target.closest('[data-family]');if(!b)return;activeFamily=b.dataset.family;selected='';selectedPair='';draw();});
@@ -138,6 +139,9 @@
   if(!isOpen)return;
   var nodes=visibleNodes(),names=new Set(nodes.map(n=>n.name)),edges=graphLinks.filter(l=>names.has(l.source)&&names.has(l.target));
   var caption=films.length+' tagged films · '+nodeByName.size+' attested themes · '+graphLinks.length+' documented co-tag bridges';
+   var linksButton=document.getElementById('tw-all-links');
+   linksButton.textContent=showAllBridges?'Show strongest bridges':'Show all '+graphLinks.length+' bridges';
+   linksButton.setAttribute('aria-pressed',String(showAllBridges));
   document.getElementById('tw-stat').textContent=caption;
   chipRow.innerHTML=['All themes'].concat(families).map(f=>'<button type="button" data-family="'+esc(f)+'" aria-pressed="'+(f===activeFamily)+'"><i style="background:'+esc(COLORS[f]||'#667e8b')+'"></i>'+esc(f)+(f==='All themes'?'':' <small>'+[...nodeByName.values()].filter(x=>x.family===f).length+'</small>')+'</button>').join('');
   var mobile=document.getElementById('tw-mobile-list');
@@ -171,7 +175,7 @@
   var related=new Set();
   if(selected){for(var e of edges)if(e.source===selected)related.add(e.target);else if(e.target===selected)related.add(e.source);}
   var dimTheme=function(n){return selected&&n!==selected&&!related.has(n);};
-  var edgeLines=edges.slice().sort(function(a,b){var pa=selected&&(a.source===selected||a.target===selected)?1000:0,pb=selected&&(b.source===selected||b.target===selected)?1000:0;return pb-pa||b.count-a.count;}).slice(0,100).map(function(l){
+  var edgeLines=edges.slice().sort(function(a,b){var pa=selected&&(a.source===selected||a.target===selected)?1000:0,pb=selected&&(b.source===selected||b.target===selected)?1000:0;return pb-pa||b.count-a.count;}).slice(0,showAllBridges?undefined:100).map(function(l){
    var a=byId.get(l.source),b=byId.get(l.target);
    if(!a||!b)return '';
    var highlighted=selectedPair===(l.source+'\u001f'+l.target)||!!selected&&(l.source===selected||l.target===selected);
