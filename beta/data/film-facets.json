@@ -2,7 +2,7 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-09",
  "license": "See data.html",
- "films_on_public_map": 1428,
+ "films_on_public_map": 1432,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -13676,6 +13676,30 @@
    "form": "Fiction",
    "length": "Short"
   },
+  "NEW-b711f8b08315-W1031-1": {
+   "title": "Miss Campbell: Inuk Teacher",
+   "year": 2023,
+   "makers": [
+    {
+     "id": "NEW-b711f8b08315",
+     "name": "Heather Campbell"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Sovereignty and Self-Determination",
+    "Memory and Oral History",
+    "Women and Gender"
+   ],
+   "primary_theme": "Sovereignty and Self-Determination",
+   "families": [
+    "Knowledge and Continuity",
+    "Lives and Relations",
+    "Sovereignty and Politics"
+   ],
+   "form": "Documentary",
+   "length": "Short"
+  },
   "NEW-f8409bf84ccd-WORK-1": {
    "title": "Sweetgrass Rings",
    "year": null,
@@ -18643,6 +18667,22 @@
     {
      "id": "LEAD-20261031-0007",
      "name": "Mariano Estrada"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "RESEARCH-FILM-20261031-0054-01": {
+   "title": "The Best Days Are Ahead of Us",
+   "year": null,
+   "makers": [
+    {
+     "id": "LEAD-20261031-0054",
+     "name": "Willi White"
     }
    ],
    "languages": [],
@@ -23645,6 +23685,30 @@
    "form": null,
    "length": null
   },
+  "NEW-07c91b32d42b-WORK-1": {
+   "title": "Tsihueri, el que fue valiente",
+   "year": 2021,
+   "makers": [
+    {
+     "id": "NEW-07c91b32d42b",
+     "name": "Yunuen Torres Ascencio"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Kinship",
+    "Memory and Oral History",
+    "Music and Performance"
+   ],
+   "primary_theme": "Kinship",
+   "families": [
+    "Expression and Representation",
+    "Knowledge and Continuity",
+    "Lives and Relations"
+   ],
+   "form": "Documentary",
+   "length": "Short"
+  },
   "NEW-373f5316c571-WORK-1": {
    "title": "An Dule",
    "year": 2026,
@@ -25171,6 +25235,27 @@
    "families": [],
    "form": null,
    "length": null
+  },
+  "NEW-47f1d133e435-WORK-1": {
+   "title": "Naturally Native",
+   "year": 1998,
+   "makers": [
+    {
+     "id": "NEW-47f1d133e435",
+     "name": "Valerie Red-Horse Mohl"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Women and Gender",
+    "Kinship"
+   ],
+   "primary_theme": "Women and Gender",
+   "families": [
+    "Lives and Relations"
+   ],
+   "form": "Fiction",
+   "length": "Feature"
   },
   "NEW-4cece503d728-WORK-1": {
    "title": "Behind the Bayano",
