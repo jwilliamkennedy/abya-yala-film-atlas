@@ -1,6 +1,11 @@
 /* Film Atlas · Constellate / theme web (beta)
    Source-led thematic navigation. The geography remains a reference, while concepts
    have no invented coordinates. Styles are scoped to this optional lens. */
+/* The thematic lens takes the full map width; the regular editing dock returns on close.
+   This avoids competing search boxes and keeps the scholarly network readable. */
+body.atlas-page.is-theme-weaving.weave-dock-open.is-theme-web-open main{display:block!important;grid-template-columns:minmax(0,1fr)!important}
+body.is-theme-web-open #constellate-popup{display:none!important}
+body.is-theme-web-open .map-panel{width:100%!important;max-width:none!important}
 #weave-theme-web-toggle{
  appearance:none;flex:0 0 auto;white-space:nowrap;
  min-height:36px;padding:7px 11px;
@@ -65,7 +70,7 @@
 .tw-graph-wrap{min-width:0;min-height:0;display:flex;flex-direction:column;position:relative;background:var(--reading-wash,#f2f5f3);overflow:hidden}
 #tw-graph{width:100%;flex:1;min-height:0;display:block;touch-action:manipulation}
 #tw-graph .tw-edge{
- stroke:var(--reading-muted,#728d9b);stroke-opacity:.23;cursor:pointer;
+ stroke:var(--reading-muted,#728d9b);stroke-opacity:.15;cursor:pointer;
  stroke-linecap:round;transition:stroke-opacity .15s;
 }
 #tw-graph .tw-edge:hover,#tw-graph .tw-edge:focus-visible,
