@@ -106,3 +106,13 @@ html[data-weave-stage] #atlas .land-watch,html[data-weave-stage] #atlas .land-th
  :root:not(#_)[data-weave-stage="build"] body.is-theme-weaving #constellate-popup{max-height:none!important}
  #weave-guide{position:static}
 }
+
+/* Theme search and a link back to an existing authored weave. */
+#weave-start .ws-current{display:flex;align-items:center;flex-wrap:wrap;gap:8px 14px;margin-top:16px;padding:12px 0;border-top:1px solid var(--ui-line)}
+#weave-start .ws-current[hidden]{display:none}
+#weave-start .ws-current button{font:600 14px/1.2 var(--ui-sans);background:transparent;color:var(--ui-accent);border:0;cursor:pointer;padding:6px 0;text-decoration:underline;text-underline-offset:3px}
+#weave-start .ws-current-name{font:400 13px/1.35 var(--ui-sans);color:var(--ui-muted);overflow-wrap:anywhere}
+#weave-start #ws-theme-results{max-height:180px}
+/* The film card already carries its thumbnail: hovering it should not create a second floating thumbnail. */
+#weave-peek{max-width:260px;align-items:flex-start}
+#weave-peek>div{min-width:0}
