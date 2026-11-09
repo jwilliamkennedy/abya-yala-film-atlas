@@ -1,8 +1,8 @@
 {
  "title": "Indigenous Cinema Atlas · film facets",
- "generated": "2026-11-08",
+ "generated": "2026-11-09",
  "license": "See data.html",
- "films_on_public_map": 1382,
+ "films_on_public_map": 1396,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -68,7 +68,7 @@
   ]
  },
  "language_authority": {
-  "source": "Glottolog (glottolog-cldf, fetched 2026-11-08)",
+  "source": "Glottolog (glottolog-cldf, fetched 2026-11-09)",
   "languages": [
    {
     "label": "Anishinaabemowin (Ojibwe)",
@@ -404,7 +404,7 @@
     "match": "exact",
     "indigenous": "no",
     "note": "",
-    "films": 19
+    "films": 20
    },
    {
     "label": "Portuguese",
@@ -1182,6 +1182,10 @@
     {
      "id": "BETA8D-20261107-D09",
      "name": "Valmir Gonçalves Cabreira"
+    },
+    {
+     "id": "QM-b28a904c25",
+     "name": "Joilson Brites"
     }
    ],
    "languages": [],
@@ -1214,6 +1218,10 @@
     {
      "id": "BETA8D-20261107-D09",
      "name": "Valmir Gonçalves Cabreira"
+    },
+    {
+     "id": "QM-b28a904c25",
+     "name": "Joilson Brites"
     }
    ],
    "languages": [],
@@ -18471,6 +18479,22 @@
    "form": null,
    "length": "Short"
   },
+  "RESEARCH-FILM-20261031-0059-01": {
+   "title": "Yarang Mamin — Movimento das Mulheres Yarang",
+   "year": 2019,
+   "makers": [
+    {
+     "id": "LEAD-20261031-0059",
+     "name": "Kamatxi Ikpeng"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "RESEARCH-FILM-20261031-0065-01": {
    "title": "Ka’a zar ukyze wà – Os donos da floresta em perigo",
    "year": 2019,
@@ -18865,6 +18889,88 @@
     "Lives and Relations"
    ],
    "form": null,
+   "length": "Short"
+  },
+  "FILM-SRC-0366": {
+   "title": "Dear Stephen King, instead of using Indian Burial Grounds in your books, have you thought of using European Burial Grounds?",
+   "year": 2023,
+   "makers": [
+    {
+     "id": "DIR-0366",
+     "name": "Joey Clift"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "FILM-SRC-0381": {
+   "title": "Ni Wapiten – I see",
+   "year": 2022,
+   "makers": [
+    {
+     "id": "DIR-0381",
+     "name": "Noémie Echaquan"
+    },
+    {
+     "id": "DIR-0382",
+     "name": "Julie Ottawa"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "FILM-SRC-0388": {
+   "title": "Our Grandmother The Inlet",
+   "year": 2023,
+   "makers": [
+    {
+     "id": "DIR-0388",
+     "name": "Kayah George"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Water",
+    "Elders and Knowledge",
+    "Women and Gender"
+   ],
+   "primary_theme": "Water",
+   "families": [
+    "Knowledge and Continuity",
+    "Land and Environment",
+    "Lives and Relations"
+   ],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "FILM-SRC-0390": {
+   "title": "Istén:’a",
+   "year": 2023,
+   "makers": [
+    {
+     "id": "DIR-0390",
+     "name": "KJ Edwards"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Kinship",
+    "Cosmology and Origin Stories"
+   ],
+   "primary_theme": "Kinship",
+   "families": [
+    "Knowledge and Continuity",
+    "Lives and Relations"
+   ],
+   "form": "Experimental",
    "length": "Short"
   },
   "FILM-SRC-0395": {
@@ -21704,6 +21810,26 @@
    "form": null,
    "length": null
   },
+  "NEW-242fbff78a16-WORK-1": {
+   "title": "Vai Tupuna",
+   "year": 2015,
+   "makers": [
+    {
+     "id": "NEW-242fbff78a16",
+     "name": "Beatriz Rapu Tepano"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Water"
+   ],
+   "primary_theme": "Water",
+   "families": [
+    "Land and Environment"
+   ],
+   "form": "Documentary",
+   "length": "Short"
+  },
   "NEW-e1d1606969b9-WORK-1": {
    "title": "Kume Srupu",
    "year": null,
@@ -21983,6 +22109,42 @@
    ],
    "form": "Documentary",
    "length": "Feature"
+  },
+  "NEW-f60277eedca1-WORK-1": {
+   "title": "Wachari",
+   "year": 2026,
+   "makers": [
+    {
+     "id": "NEW-f60277eedca1",
+     "name": "Nery Bernárdez"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Elders and Knowledge"
+   ],
+   "primary_theme": "Elders and Knowledge",
+   "families": [
+    "Knowledge and Continuity"
+   ],
+   "form": "Fiction",
+   "length": "Short"
+  },
+  "NEW-f60277eedca1-WORK-2": {
+   "title": "Lumalali Niwani",
+   "year": 2025,
+   "makers": [
+    {
+     "id": "NEW-f60277eedca1",
+     "name": "Nery Bernárdez"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
   },
   "NEW-0d399fe7dc63-WORK-1": {
    "title": "Ajornavianngilatit (You'll Be Ok)",
@@ -23105,6 +23267,32 @@
    "form": null,
    "length": null
   },
+  "NEW-bc62a137e896-WORK-1": {
+   "title": "Yubán (Tierra viva)",
+   "year": 2011,
+   "makers": [
+    {
+     "id": "NEW-bc62a137e896",
+     "name": "Yaasib Vázquez Colmenares"
+    }
+   ],
+   "languages": [
+    {
+     "label": "Spanish",
+     "as_credited": "Spanish",
+     "glottocode": "stan1288",
+     "iso639_3": "spa",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://sic.cultura.gob.mx/ficha.php?table=produccion_cine&table_id=4359"
+    }
+   ],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "NEW-373f5316c571-WORK-1": {
    "title": "An Dule",
    "year": 2026,
@@ -23733,6 +23921,29 @@
    "families": [],
    "form": null,
    "length": null
+  },
+  "NEW-5b2be22f2d92-WORK-1": {
+   "title": "Kapaemahu",
+   "year": 2020,
+   "makers": [
+    {
+     "id": "NEW-5b2be22f2d92",
+     "name": "Hinaleimoana Wong-Kalu"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Cosmology and Origin Stories",
+    "Health and Healing",
+    "LGBTQIA2S"
+   ],
+   "primary_theme": "Cosmology and Origin Stories",
+   "families": [
+    "Knowledge and Continuity",
+    "Lives and Relations"
+   ],
+   "form": "Animation",
+   "length": "Short"
   },
   "NEW-b74ea7ce6f19-WORK-1": {
    "title": "Menominee Homecoming",
@@ -27283,6 +27494,108 @@
    "primary_theme": null,
    "families": [],
    "form": null,
+   "length": "Short"
+  },
+  "LEAD-20261011-012-QM2111e9": {
+   "title": "Warmis, guardianas del agua",
+   "year": 2023,
+   "makers": [
+    {
+     "id": "LEAD-20261011-012",
+     "name": "Paola Gabriela Quispe Quispe"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Women and Gender",
+    "Environmental Change",
+    "Water"
+   ],
+   "primary_theme": "Women and Gender",
+   "families": [
+    "Land and Environment",
+    "Lives and Relations"
+   ],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "QM-525e464677-M1": {
+   "title": "Os espíritos só entendem o nosso idioma",
+   "year": 2019,
+   "makers": [
+    {
+     "id": "QM-525e464677",
+     "name": "Cileuza Jemjusi"
+    },
+    {
+     "id": "QM-16407925f9",
+     "name": "Robert Tamuxi"
+    },
+    {
+     "id": "QM-62919a496f",
+     "name": "Valdeilson Jolasi"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Elders and Knowledge"
+   ],
+   "primary_theme": "Elders and Knowledge",
+   "families": [
+    "Knowledge and Continuity"
+   ],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "QM-17c9c63d9e-M1": {
+   "title": "Tecendo nossos caminhos",
+   "year": 2019,
+   "makers": [
+    {
+     "id": "QM-17c9c63d9e",
+     "name": "Cledson Kanunxi"
+    },
+    {
+     "id": "QM-b5d10fdf99",
+     "name": "Jackson Xinunxi"
+    },
+    {
+     "id": "QM-3ac44eff94",
+     "name": "Marta Tipuici"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Elders and Knowledge"
+   ],
+   "primary_theme": "Elders and Knowledge",
+   "families": [
+    "Knowledge and Continuity"
+   ],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "QM-ccf695f8b4-M1": {
+   "title": "Searching for the Songs of Wanaragua",
+   "year": 2025,
+   "makers": [
+    {
+     "id": "QM-ccf695f8b4",
+     "name": "Cesar Vargas Sabio"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Linguistic Preservation",
+    "Music and Performance",
+    "Elders and Knowledge"
+   ],
+   "primary_theme": "Linguistic Preservation",
+   "families": [
+    "Expression and Representation",
+    "Knowledge and Continuity"
+   ],
+   "form": "Documentary",
    "length": "Short"
   }
  }
