@@ -2,7 +2,7 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-09",
  "license": "See data.html",
- "films_on_public_map": 1541,
+ "films_on_public_map": 1544,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -14619,6 +14619,22 @@
    "form": "Animation",
    "length": "Short"
   },
+  "NEW-40ae1617c88c-F1": {
+   "title": "Powerlands",
+   "year": 2022,
+   "makers": [
+    {
+     "id": "NEW-40ae1617c88c",
+     "name": "Ivey-Camille Manybeads Tso"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Feature"
+  },
   "NEW-b5c3aa388940-WORK-1": {
    "title": "Why Would I Leave",
    "year": 2025,
@@ -19736,6 +19752,22 @@
    "families": [],
    "form": null,
    "length": null
+  },
+  "LEAD-20261031-0055-F1": {
+   "title": "Carrying the Fire",
+   "year": 2021,
+   "makers": [
+    {
+     "id": "LEAD-20261031-0055",
+     "name": "Ajuawak Kapashesit"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
   },
   "FILM-SRC-0367": {
    "title": "Dear Kin",
@@ -30379,6 +30411,22 @@
    "families": [],
    "form": null,
    "length": "Short"
+  },
+  "Q20261108-69-F1": {
+   "title": "Bring Them Home / Aiskótáhkapiyaaya",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "Q20261108-69",
+     "name": "Ivan MacDonald"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Feature"
   }
  }
 }
