@@ -250,7 +250,7 @@
    tries++;
    if(atlas()?.catalog&&store()&&document.getElementById('constellate-mode')){
     clearInterval(timer);
-    if(collect()&&markup()){draw();if(new URLSearchParams(location.search).get('theme-web')==='1'){atlas().open();show(true);}}
+    if(collect()&&markup()){var query=new URLSearchParams(location.search);var firstVisit=query.get('constellate')==='1'&&!store().current().items.length&&!query.has('weave')&&!location.hash.includes('weave=');if(query.get('theme-web')==='1'||firstVisit){atlas().open();show(true);}}
    }else if(tries>70)clearInterval(timer);
   },200);
  }
