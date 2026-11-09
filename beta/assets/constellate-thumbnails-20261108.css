@@ -1,0 +1,56 @@
+/* Constellate only: truthful film-image coverage and lightweight discovery controls.
+   Text tiles mark records without a sourced image; never substitute another work. */
+.constellate-result>.weave-media-thumb,
+#weave-suggest .constellate-result>.weave-media-thumb{
+ position:relative;display:flex;align-items:center;justify-content:center;
+ flex:0 0 52px;width:52px;height:43px;min-width:52px;
+ overflow:hidden;isolation:isolate;border-radius:4px;
+ border:1px solid var(--reading-line);background:var(--reading-wash);
+}
+.weave-media-thumb>img{
+ position:absolute;inset:0;display:block;width:100%!important;height:100%!important;
+ min-width:0!important;max-width:none!important;object-fit:cover!important;
+ background:#1b2c3c;z-index:2;
+}
+.weave-media-thumb.is-broken>img{display:none!important}
+.weave-media-placeholder{
+ position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;
+ align-items:center;gap:2px;text-align:center;
+ background:linear-gradient(148deg,var(--reading-wash) 0%,var(--reading-line) 100%);
+ color:var(--reading-accent);font:600 15px/1.05 "Atlas Sans",system-ui,sans-serif;
+}
+.weave-media-placeholder>b{font:600 16px/1 "Atlas Serif",Georgia,serif;letter-spacing:.04em}
+.weave-media-placeholder>small{
+ display:block!important;margin:0!important;font:500 9px/1 "Atlas Sans",system-ui,sans-serif!important;
+ letter-spacing:.035em;text-transform:uppercase;color:var(--reading-muted);
+}
+.weave-media-thumb.has-source:not(.is-broken)>.weave-media-placeholder{display:none}
+#constellate-popup .constellate-result>span:not(.weave-media-thumb){flex:1;min-width:0}
+#constellate-popup .constellate-result>.weave-media-thumb{flex:0 0 52px}
+.weave-media-note{margin:6px 0 4px!important;font:12px/1.4 "Atlas Sans",system-ui,sans-serif;color:var(--reading-muted)}
+#constellate-popup .constellate-heading h2{flex:1;min-width:0}
+#weave-find-films{
+ flex:none;min-height:34px;padding:5px 9px;
+ border:1px solid var(--reading-line);border-radius:4px;
+ font:500 12px/1.2 "Atlas Sans",system-ui,sans-serif;
+ background:var(--reading-wash);color:var(--reading-accent);
+}
+#weave-find-films:hover,#weave-find-films:focus-visible{border-color:var(--reading-accent)}
+#constellate-how>summary{font-size:13px!important;text-decoration:underline;text-underline-offset:3px}
+.weave-read-thread li.has-art>.weave-media-thumb{
+ grid-column:1;grid-row:1 / span 6;width:64px;height:85px;min-width:64px;
+ align-self:start;justify-self:start;
+}
+.weave-read-thread li.has-art>.weave-media-thumb .weave-media-placeholder>b{font-size:21px}
+#weave-peek>.weave-media-thumb{
+ width:54px;height:72px;min-width:54px;flex:0 0 54px;
+}
+#weave-peek>.weave-media-thumb .weave-media-placeholder>b{font-size:20px}
+@media (max-width:700px){
+ #weave-find-films{min-height:40px}
+ .constellate-result>.weave-media-thumb{width:48px;height:42px;min-width:48px;flex-basis:48px}
+ .weave-media-note{font-size:11px}
+}
+@media(prefers-reduced-motion:reduce){
+ .weave-media-thumb *{animation:none!important;transition:none!important}
+}
