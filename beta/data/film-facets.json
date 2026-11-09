@@ -2,7 +2,7 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-09",
  "license": "See data.html",
- "films_on_public_map": 1440,
+ "films_on_public_map": 1441,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -22976,6 +22976,30 @@
    "families": [],
    "form": null,
    "length": null
+  },
+  "NEW-36eb3ff5a48b-WORK-1": {
+   "title": "Cuentos Mixe",
+   "year": 2022,
+   "makers": [
+    {
+     "id": "NEW-36eb3ff5a48b",
+     "name": "Galileo Beethoven Genaro Domínguez"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Cosmology and Origin Stories",
+    "Water",
+    "Youth"
+   ],
+   "primary_theme": "Cosmology and Origin Stories",
+   "families": [
+    "Knowledge and Continuity",
+    "Land and Environment",
+    "Lives and Relations"
+   ],
+   "form": "Animation",
+   "length": "Short"
   },
   "NEW-899aa88133e1-WORK-1": {
    "title": "Estado de ánimo",
