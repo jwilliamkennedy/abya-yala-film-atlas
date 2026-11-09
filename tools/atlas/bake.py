@@ -75,8 +75,16 @@ def public(records):
                 f['languageNote'] = ''
             films.append(f)
         r['films'] = films
-        out.append(r)
+        out.append(prune(r))
     return out
+
+def prune(o):
+    """Leave out empty values (null, ''): the map reads a missing field the same way, and the file is smaller."""
+    if isinstance(o, dict):
+        return {k: prune(v) for k, v in o.items() if v is not None and v != ''}
+    if isinstance(o, list):
+        return [prune(x) for x in o]
+    return o
 
 def write(records, countries, meta, owned, base_globals, edges=None, keep_record_arrays=False, all_ids=None, facets=None):
     """owned: {global: {film_id: entry}} for published films; base_globals: captured globals (reference source)."""

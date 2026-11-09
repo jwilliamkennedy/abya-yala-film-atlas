@@ -45,8 +45,15 @@ def main(path):
             continue
         a, t = str(qv(r, 'queue_action') or '').strip(), str(qv(r, 'queue_target') or '').strip()
         if a in ('add filmmaker', 'add film', 'lead'):
-            n = wp.max_row + 1
             mid = qv(r, 'filmmaker_id')
+            if any(wp.cell(x, P['filmmaker_id']).value == mid and wp.cell(x, P['film_id']).value == qv(r, 'film_id')
+                   for x in range(3, wp.max_row + 1)):
+                # this filmmaker already has this film: adding it again would make a duplicate. Use "correct" instead.
+                wq.cell(r, Q['queue_status']).value = 'needs more'
+                wq.cell(r, Q['review_note']).value = ((qv(r, 'review_note') or '') + f' Not merged: {mid} already has {qv(r, "film_id")} on the atlas; to change it, use a "correct" row ({today}).').strip()
+                print(f'Queue row {r}: {mid} already has {qv(r, "film_id")}; set to needs more')
+                continue
+            n = wp.max_row + 1
             existing = next((x for x in range(3, wp.max_row + 1) if wp.cell(x, P['filmmaker_id']).value == mid), None)
             for c, i in P.items():
                 if c in Q:

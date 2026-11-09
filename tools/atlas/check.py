@@ -144,4 +144,4 @@ if __name__ == '__main__':
     print(f'{len(pub)} Published rows, {len(q)} Queue rows | {len(e1) + len(e2)} errors | {len(n1) + len(n2)} notes')
     for n in (n1 + n2)[:40]:
         print('note', n)
-    sys.exit(1 if e1 or e2 else 0)
+    sys.exit(1 if e1 or (e2 and '--published-only' not in sys.argv) else 0)
