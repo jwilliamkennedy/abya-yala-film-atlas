@@ -2,7 +2,7 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-09",
  "license": "See data.html",
- "films_on_public_map": 1551,
+ "films_on_public_map": 1556,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -30538,6 +30538,86 @@
    "primary_theme": null,
    "families": [],
    "form": "Music Video",
+   "length": null
+  },
+  "Q20261108-74-F1": {
+   "title": "ahcahkopiyêsis",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261108-74",
+     "name": "Bree Island"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": "Short"
+  },
+  "Q20261108-75-F1": {
+   "title": "Martins Beach",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261108-75",
+     "name": "Catherine Herrera"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "Q20261108-76-F1": {
+   "title": "Blayne Tree",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261108-76",
+     "name": "Halle Frieden"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
+  },
+  "Q20261108-77-F1": {
+   "title": "Prodigal Daughter",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "Q20261108-77",
+     "name": "Mabel Valdiviezo"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Feature"
+  },
+  "Q20261108-78-F1": {
+   "title": "Body Stories: Together",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261108-78",
+     "name": "Mariluz Guerra"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
    "length": null
   }
  }
