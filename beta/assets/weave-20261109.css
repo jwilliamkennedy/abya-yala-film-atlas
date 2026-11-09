@@ -5,7 +5,9 @@ html[data-weave-stage="start"] #constellate-popup{display:none!important}
 :root:not(#_):not(#__)[data-weave-stage="start"] body main{grid-template-columns:minmax(0,1fr)!important}
 :root:not(#_):not(#__)[data-weave-stage="start"] body .map-panel{grid-column:1/-1!important;width:auto!important}
 html[data-weave-stage="start"] .map-panel .zoom,html[data-weave-stage="start"] .map-toolbar .map-actions{visibility:hidden}
-html[data-weave-stage="start"] #constellate-mode>*:not(#constellate-exit):not(span:first-child):not(.weave-more):not(.weave-tool-group){display:none!important}
+html[data-weave-stage="start"] #constellate-mode>*:not(#constellate-exit):not(span:first-child):not(.weave-more):not(.weave-tool-group):not(#weave-theme-web-toggle){display:none!important}
+html[data-weave-stage="start"] #weave-theme-web-toggle{order:1!important;margin-left:0!important}
+html[data-weave-web="1"] #weave-start{display:none!important}
 html[data-weave-stage="start"] #constellate-mode .weave-tool-group{order:0!important;margin-left:0!important}
 html[data-weave-stage] #weave-empty-hint{display:none!important}
 #weave-start{display:none}
@@ -89,7 +91,7 @@ html[data-weave-stage] #atlas .land-watch,html[data-weave-stage] #atlas .land-th
 #weave-start .ws-example-label{font:400 13px/1.3 var(--ui-sans)!important;color:var(--ui-muted)!important}
 /* connection and suggestion wording */
 #weave-guide .wg-text b{font-weight:600}
-@media (max-width:760px){#weave-start{top:12px}}
+@media (max-width:760px){#weave-start{top:58px}}
 #weave-start .ws-example-films .weave-media-thumb{position:relative!important;width:100%!important;height:auto!important}
 #weave-start .ws-example-films .weave-media-placeholder{position:absolute!important;inset:0!important;display:grid;place-items:center;align-content:center;font:400 18px/1 var(--ui-serif);color:var(--ui-muted)}
 #weave-start .ws-example-films .weave-media-placeholder small{font:600 10px/1 var(--ui-sans);letter-spacing:.08em;text-transform:uppercase}
@@ -98,3 +100,9 @@ html[data-weave-stage] #atlas .land-watch,html[data-weave-stage] #atlas .land-th
 #weave-start .ws-example-films .weave-intro-film>*:not(.weave-media-thumb){display:block;margin-top:4px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 #weave-start .ws-example-films .weave-media-thumb{aspect-ratio:16/8!important}
 #weave-start .ws-path{gap:8px}
+/* phones while building: a shorter map, so the guide and the thread show beneath it without scrolling */
+@media (max-width:760px){
+ :root:not(#_)[data-weave-stage="build"] body.is-theme-weaving .map-panel{height:52dvh!important;min-height:300px!important;max-height:52dvh!important}
+ :root:not(#_)[data-weave-stage="build"] body.is-theme-weaving #constellate-popup{max-height:none!important}
+ #weave-guide{position:static}
+}
