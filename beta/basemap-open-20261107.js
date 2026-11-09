@@ -59,7 +59,7 @@ async function boot(){
  svg.parentElement.insertBefore(host,svg);credit();
  let ml;try{const lib=await import(new URL('assets/maplibre/maplibre-gl.mjs',document.baseURI).href);ml=lib.default||lib;}catch(e){fail();return;}
  try{map=new ml.Map({container:host,style,interactive:false,attributionControl:false,fadeDuration:0,renderWorldCopies:true,center:[-90,10],zoom:1.4,maxZoom:18,maxPitch:0,trackResize:false});}catch(e){fail();return;}
- map.on('load',()=>{ready=true;root.dataset.basemapState='ready';sync();});
+ map.on('load',()=>{ready=true;root.dataset.basemapState='ready';sync();applyPalette();});
  map.on('error',()=>{if(!ready&&++errors>6)fail();});
  setTimeout(()=>{if(!ready)fail();},20000);
  new ResizeObserver(()=>{map.resize();sync();}).observe(svg);
@@ -67,6 +67,17 @@ async function boot(){
  new MutationObserver(visibility).observe(svg,{subtree:true,attributes:true,attributeFilter:['data-geography-visible']});
  sync();visibility();
 }
-window.AtlasOpenBasemap={active:true,projection:()=>d3.geoMercator(),sync};
+/* 2026-11-09: night palette for Starry night and while Constellate is open (ocean #070b16, land #121a2c). */
+const DAY={},NIGHT={'land':{'background-color':'#121a2c'},'water':{'fill-color':'#070b16'},'rivers':{'line-color':'#1d2a44'},
+ 'cover-wood':{'fill-color':'#1a2640'},'cover-grass':{'fill-color':'#162036'},'cover-wet':{'fill-color':'#16223a'},'cover-sand':{'fill-color':'#1c2438'},'cover-ice':{'fill-color':'#26324d'},
+ 'roads':{'line-opacity':0},'elevation-tint':{'color-relief-opacity':0},'relief':{'hillshade-shadow-color':'#000000','hillshade-highlight-color':'#2a3550','hillshade-accent-color':'#0b1020','hillshade-exaggeration':.35}};
+let palette='day';
+function applyPalette(){
+ if(!map||!ready)return;const want=(root.dataset.readingTheme==='night'||root.dataset.uiConstellate==='on')?'night':'day';if(want===palette)return;palette=want;
+ for(const [id,props] of Object.entries(NIGHT)){if(!map.getLayer(id))continue;for(const [k,v] of Object.entries(props)){try{if(!(id in DAY))DAY[id]={};if(!(k in DAY[id]))DAY[id][k]=map.getPaintProperty(id,k);map.setPaintProperty(id,k,want==='night'?v:DAY[id][k]);}catch(e){}}}
+ root.dataset.basemapPalette=want;
+}
+new MutationObserver(applyPalette).observe(root,{attributes:true,attributeFilter:['data-reading-theme','data-ui-constellate']});
+window.AtlasOpenBasemap={active:true,projection:()=>d3.geoMercator(),sync,applyPalette,get map(){return map;}};
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});else boot();
 })();

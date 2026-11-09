@@ -1,13 +1,13 @@
 """One header menu for every page of the beta except the map itself (which builds the same menu in menus-20261107.js).
-Same items, same order, same words as the map: About · Filmmakers · Films · Land · Constellate · Watch · More
-(Browse: Languages, Themes, Timeline, Globe · Your list: Screening list · About the data: Data and downloads,
-Suggest a correction). The current page is marked. Safe to run again.
+Same items, same order, same words as the map: About · Map · Constellate · Watch · More
+(Browse: Land, Languages, Themes, Timeline · Your list: Screening list · About the data: Data and downloads,
+Suggest a correction). Filmmakers, Films and Land are switched inside the map's sidebar (2026-11-09).
+Also loads the shared interface layer (assets/ui-20261109.css and .js) after site-menu.css. The current page is marked. Safe to run again.
 usage: python3 tools/pages/nav.py beta"""
 import sys, re, pathlib
 
-TOP = [('About', 'about.html'), ('Filmmakers', './#view=filmmakers'), ('Films', './#view=films'), ('Land', './#view=land'),
-       ('Constellate', './?constellate=1'), ('Watch', 'watch.html')]
-MORE = [[('Languages', 'languages.html'), ('Themes', 'themes.html'), ('Timeline', 'timeline.html')],
+TOP = [('About', 'about.html'), ('Map', './'), ('Constellate', './?constellate=1'), ('Watch', 'watch.html')]
+MORE = [[('Land', './#view=land'), ('Languages', 'languages.html'), ('Themes', 'themes.html'), ('Timeline', 'timeline.html')],
         [('Screening list', 'screening.html')],
         [('Data and downloads', 'data.html'), ('Suggest a correction', 'corrections.html')]]
 # the map's own mark, drawn in the page's ink (the same icon on every page, in light and night themes)
@@ -64,7 +64,7 @@ def main(root):
         if '<nav class="primary"' not in t:
             continue
         depth = len(rel.parts) - 1
-        current = './#view=filmmakers' if rel.parts[0] == 'maker' else str(rel)
+        current = './' if rel.parts[0] == 'maker' else str(rel)
         new = re.sub(r'<nav class="primary".*?</nav>', lambda m: nav(depth, current), t, count=1, flags=re.S)
         up = '../' * depth
         new = new.replace('<a class="brand" href="./">Indigenous Cinema Atlas<small>Abya Yala and Turtle Island</small></a>',
@@ -72,7 +72,9 @@ def main(root):
         new = re.sub(r'<img src="(?:\.\./)*assets/icon-1107\.svg" alt="">', MARK, new)
         new = re.sub(r'<script id="site-nav-js">.*?</script>', '', new, flags=re.S)
         new = re.sub(r'<link rel="stylesheet" href="(?:\.\./)*assets/site-menu\.css[^"]*"><script defer src="(?:\.\./)*assets/site-menu\.js[^"]*"></script>(?:<script defer src="(?:\.\./)*i18n-20261107\.js[^"]*"></script>)?\n', '', new)
-        new = new.replace('</head>', f'<link rel="stylesheet" href="{up}assets/site-menu.css?v=11"><script defer src="{up}assets/site-menu.js?v=3"></script><script defer src="{up}i18n-20261107.js?v=8"></script>\n</head>', 1)
+        new = re.sub(r'<link rel="stylesheet" href="(?:\.\./)*assets/ui-20261109\.css[^"]*"><script defer src="(?:\.\./)*assets/ui-20261109\.js[^"]*"></script>\n', '', new)
+        new = new.replace('</head>', f'<link rel="stylesheet" href="{up}assets/site-menu.css?v=11"><script defer src="{up}assets/site-menu.js?v=3"></script><script defer src="{up}i18n-20261107.js?v=9"></script>\n</head>', 1)
+        new = new.replace('</head>', f'<link rel="stylesheet" href="{up}assets/ui-20261109.css?v=1"><script defer src="{up}assets/ui-20261109.js?v=1"></script>\n</head>', 1)
         new = re.sub(r'<main.*</main>', lambda m: re.sub(r'(<a [^>]*href="https?://[^"]*"[^>]*>)([^<]*?)</a>',
                      lambda a: a.group(0) if '\u2197' in a.group(2) or not a.group(2).strip() else f'{a.group(1)}{a.group(2)} \u2197</a>', m.group(0)), new, count=1, flags=re.S)
         if 'id="site-nav-css"' in new:
