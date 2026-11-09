@@ -81,7 +81,7 @@
     '<div class="tw-top"><label for="tw-search">Find a theme</label><input id="tw-search" type="search" placeholder="Search themes…" autocomplete="off">'+
     '<button id="tw-seed" type="button">Explore a woven example</button></div>'+
     '<div id="tw-families" class="tw-families" role="group" aria-label="Theme families"></div>'+
-    '<div class="tw-main"><div class="tw-graph-wrap"><svg id="tw-graph" viewBox="0 0 720 550" role="group" aria-label="Interactive network of sourced themes and co-tagged films"></svg>'+
+    '<div class="tw-main"><div class="tw-graph-wrap"><div id="tw-mobile-list" class="tw-mobile-list" aria-label="Browse themes by name"></div><svg id="tw-graph" viewBox="0 0 720 550" role="group" aria-label="Interactive network of sourced themes and co-tagged films"></svg>'+
       '<p class="tw-graph-foot"><span id="tw-stat"></span> · Lines indicate co-tags, not cultural similarity. <button type="button" id="tw-reset">See all</button></p></div>'+
     '<aside id="tw-detail" class="tw-detail" aria-live="polite" aria-label="Selected theme and films"></aside></div>'+
     '<p id="tw-live" class="sr-only" role="status" aria-live="polite"></p>'+
@@ -100,6 +100,16 @@
    if(node){selected=node.dataset.term;selectedPair='';detail();drawGraph();return;}
   });
   svg.addEventListener('keydown',function(e){if(e.key!=='Enter'&&e.key!==' ')return;var el=e.target.closest('[data-term],[data-bridge]');if(el){e.preventDefault();el.dispatchEvent(new MouseEvent('click',{bubbles:true}));}});
+  document.getElementById('tw-mobile-list').addEventListener('click',function(e){
+   var b=e.target.closest('[data-mobile-term],[data-mobile-network]');if(!b)return;
+   if(b.hasAttribute('data-mobile-network')){
+    root.classList.toggle('tw-show-network');
+    b.textContent=root.classList.contains('tw-show-network')?'List of themes':'See the network diagram';
+    return;
+   }
+   selected=b.dataset.mobileTerm;selectedPair='';drawGraph();detail();
+   if(window.matchMedia('(max-width:700px)').matches)aside.scrollIntoView({block:'start',behavior:'instant'});
+  });
   aside.addEventListener('click',function(e){
    var b=e.target.closest('[data-open-term],[data-film-id],[data-start-term]');if(!b)return;
    if(b.dataset.openTerm){selected=b.dataset.openTerm;selectedPair='';search='';searchBox.value='';activeFamily='All themes';draw();return;}
@@ -128,6 +138,9 @@
   var caption=films.length+' tagged films · '+nodeByName.size+' attested themes · '+graphLinks.length+' documented co-tag bridges';
   document.getElementById('tw-stat').textContent=caption;
   chipRow.innerHTML=['All themes'].concat(families).map(f=>'<button type="button" data-family="'+esc(f)+'" aria-pressed="'+(f===activeFamily)+'"><i style="background:'+esc(COLORS[f]||'#667e8b')+'"></i>'+esc(f)+(f==='All themes'?'':' <small>'+[...nodeByName.values()].filter(x=>x.family===f).length+'</small>')+'</button>').join('');
+  var mobile=document.getElementById('tw-mobile-list');
+  mobile.innerHTML='<div class="tw-mobile-guide"><strong>Explore '+nodes.length+' themes</strong><button type="button" data-mobile-network>'+(root.classList.contains('tw-show-network')?'List of themes':'See the network diagram')+'</button></div>'+
+   '<div class="tw-mobile-grid">'+nodes.map(function(n){return '<button type="button" data-mobile-term="'+esc(n.name)+'" aria-pressed="'+(selected===n.name)+'"><i style="background:'+esc(COLORS[n.family]||'#75838c')+'"></i><span>'+esc(n.name)+'</span><small>'+n.films.length+' films</small></button>';}).join('')+'</div>';
   drawGraph(nodes,edges);detail();
  }
  function drawGraph(provided,providedEdges){
