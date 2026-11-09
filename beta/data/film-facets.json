@@ -2,7 +2,7 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-09",
  "license": "See data.html",
- "films_on_public_map": 1417,
+ "films_on_public_map": 1428,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -14317,6 +14317,30 @@
    "form": "Documentary",
    "length": "Short"
   },
+  "NEW-11da7ce6ca91-W1031-1": {
+   "title": "Wehsé Darasé – Trabalho da Roça",
+   "year": 2016,
+   "makers": [
+    {
+     "id": "NEW-11da7ce6ca91",
+     "name": "Larissa Ye’padiho Duarte"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Food Sovereignty",
+    "Youth",
+    "Elders and Knowledge"
+   ],
+   "primary_theme": "Food Sovereignty",
+   "families": [
+    "Knowledge and Continuity",
+    "Land and Environment",
+    "Lives and Relations"
+   ],
+   "form": "Documentary",
+   "length": "Short"
+  },
   "NEW-d4f5a65b029e-WORK-1": {
    "title": "Little Lake",
    "year": 2024,
@@ -18587,6 +18611,22 @@
     {
      "id": "LEAD-20261031-0001",
      "name": "Escuela de Cine y Comunicación Mapuche del Aylla Rewe Budi"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "RESEARCH-FILM-20261031-0006-01": {
+   "title": "Jiru luiai",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "LEAD-20261031-0006",
+     "name": "Yon Arley Ágreda"
     }
    ],
    "languages": [],
@@ -27973,6 +28013,150 @@
     {
      "id": "QM-4f304218b3",
      "name": "Florenio Xuc"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261108-01-F1": {
+   "title": "Equilíbrio",
+   "year": 2020,
+   "makers": [
+    {
+     "id": "Q20261108-01",
+     "name": "Olinda Yawar Wanderley"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261108-02-F1": {
+   "title": "Namtrik, fogones lingüísticos",
+   "year": 2025,
+   "makers": [
+    {
+     "id": "Q20261108-02",
+     "name": "Cristian Conejo"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261108-03-F1": {
+   "title": "Muiyukuna: Relatos de la chagra viva",
+   "year": 2026,
+   "makers": [
+    {
+     "id": "Q20261108-03",
+     "name": "Alex Rufino"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261108-04-F1": {
+   "title": "Pueblo Viejo, guardianes de la montaña",
+   "year": 2026,
+   "makers": [
+    {
+     "id": "Q20261108-04",
+     "name": "Pedro Jajoy"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261108-05-F1": {
+   "title": "Iyeba pôrã",
+   "year": 2025,
+   "makers": [
+    {
+     "id": "Q20261108-05",
+     "name": "Wilber Edison Caballero"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261108-06-F1": {
+   "title": "Exhibida",
+   "year": 2025,
+   "makers": [
+    {
+     "id": "Q20261108-06",
+     "name": "Aty Senen Zapata Izquierdo"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261108-07-F1": {
+   "title": "Tabanóka Otjenayá, Soñadora del Lugar de Origen",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "Q20261108-07",
+     "name": "Yamid Alejandro Juagibioy Muchachasoy"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261108-08-F1": {
+   "title": "Voces Protectoras del Territorio, Mujer Guardia Indígena",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "Q20261108-08",
+     "name": "Darsy Karina Gugú Hurtado"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261108-09-F1": {
+   "title": "Aktar Tas An Mal Chilmal (Esta vida es mía)",
+   "year": 2023,
+   "makers": [
+    {
+     "id": "Q20261108-09",
+     "name": "Lady Giovanna Vásquez Cuaspa"
     }
    ],
    "languages": [],
