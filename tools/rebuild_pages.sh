@@ -12,6 +12,8 @@ python3 tools/pages/dump.py "$3" tools/pages/public.json ${4:-}
 python3 tools/pages/build.py tools/pages/public.json beta "$BASE"
 python3 tools/pages/extra.py tools/pages/public.json beta
 python3 tools/pages/data.py tools/pages/public.json beta "$BASE"
+cp tools/pages/templates/*.html beta/   # hand-written pages (Watch): edit them in tools/pages/templates
 python3 tools/pages/watch_links.py beta
 python3 tools/pages/counter_tag.py beta
 python3 tools/pages/nav.py beta
+python3 tools/pages/check_pages.py "$(dirname "$3")/" ${4:-}   # stops if a page errors or the header moves
