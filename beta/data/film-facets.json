@@ -2,8 +2,8 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-09",
  "license": "See data.html",
- "films_on_public_map": 1538,
- "film_entries": 1553,
+ "films_on_public_map": 1540,
+ "film_entries": 1555,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -405,7 +405,7 @@
     "match": "exact",
     "indigenous": "no",
     "note": "",
-    "films": 20
+    "films": 21
    },
    {
     "label": "Portuguese",
@@ -30543,6 +30543,57 @@
    "families": [],
    "form": null,
    "length": null
+  },
+  "QM-1249b8bc7b-M1": {
+   "title": "8 venado, garra jaguar",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "QM-1249b8bc7b",
+     "name": "María Conchita Díaz López"
+    }
+   ],
+   "languages": [
+    {
+     "label": "Spanish",
+     "as_credited": "Spanish",
+     "glottocode": "stan1288",
+     "iso639_3": "spa",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://www.imcine.gob.mx/media/2025/10/programacion_muestra_ecamc_2025.pdf"
+    }
+   ],
+   "themes": [
+    "Cosmology and Origin Stories",
+    "Memory and Oral History"
+   ],
+   "primary_theme": "Cosmology and Origin Stories",
+   "families": [
+    "Knowledge and Continuity"
+   ],
+   "form": "Fiction",
+   "length": "Feature"
+  },
+  "Q20261108-91-F1": {
+   "title": "La soledad",
+   "year": 2023,
+   "makers": [
+    {
+     "id": "QM-1249b8bc7b",
+     "name": "María Conchita Díaz López"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Kinship"
+   ],
+   "primary_theme": "Kinship",
+   "families": [
+    "Lives and Relations"
+   ],
+   "form": "Fiction",
+   "length": "Short"
   }
  }
 }
