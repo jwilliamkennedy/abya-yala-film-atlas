@@ -333,3 +333,10 @@ html body #index .ui-alpha-shell #film-alphabet{width:100%!important;min-width:0
 #index .ui-alpha-shell .ui-alpha-arrow:hover:not(:disabled){background:var(--ui-wash)}
 #index .ui-alpha-shell .ui-alpha-arrow:disabled{opacity:.3;cursor:default}
 #index .ui-alpha-shell:not(.has-overflow) .ui-alpha-arrow{visibility:hidden}
+
+/* A–Z arrows: same visual baseline as letters, no surrounding white boxes. */
+#index .ui-alpha-shell{grid-template-columns:30px minmax(0,1fr) 30px;gap:0;align-items:center}
+html body #index .ui-alpha-shell #maker-alphabet,
+html body #index .ui-alpha-shell #film-alphabet{padding:2px 0!important;scrollbar-width:none!important;min-height:34px;align-items:center}
+#index .ui-alpha-shell .ui-alpha-arrow{height:30px!important;min-height:30px!important;padding:0!important;background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;line-height:1!important;align-self:center}
+#index .ui-alpha-shell .ui-alpha-arrow:hover:not(:disabled){background:transparent!important;color:var(--ui-accent)!important}
