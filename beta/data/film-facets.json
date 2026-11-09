@@ -2,7 +2,7 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-09",
  "license": "See data.html",
- "films_on_public_map": 1442,
+ "films_on_public_map": 1450,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -10921,6 +10921,98 @@
     {
      "id": "DIR-0308",
      "name": "Sterlin Harjo"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261108-92-F1": {
+   "title": "March Point",
+   "year": 2008,
+   "makers": [
+    {
+     "id": "DIR-0311",
+     "name": "Tracy Rector"
+    },
+    {
+     "id": "NEW-6f392d1dc3a3",
+     "name": "Cody Cayou"
+    },
+    {
+     "id": "NEW-d62d153e01c5",
+     "name": "Nick Clark"
+    },
+    {
+     "id": "NEW-17edef454a6b",
+     "name": "Travis Tom"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261108-92-F3": {
+   "title": "Unreserved: The Work of Louie Gong",
+   "year": 2009,
+   "makers": [
+    {
+     "id": "DIR-0311",
+     "name": "Tracy Rector"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261108-92-F4": {
+   "title": "Reviens-moi",
+   "year": 2012,
+   "makers": [
+    {
+     "id": "DIR-0311",
+     "name": "Tracy Rector"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261108-92-F5": {
+   "title": "HUITZILOPOCHTLI (Hummingbird)",
+   "year": 2013,
+   "makers": [
+    {
+     "id": "DIR-0311",
+     "name": "Tracy Rector"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261108-92-F6": {
+   "title": "Samish Canoe Journey",
+   "year": 2014,
+   "makers": [
+    {
+     "id": "DIR-0311",
+     "name": "Tracy Rector"
     }
    ],
    "languages": [],
@@ -23305,6 +23397,22 @@
    "form": null,
    "length": null
   },
+  "NEW-6375ff07a20c-WORK-1": {
+   "title": "X-Juliaon (Soy Julia)",
+   "year": 2016,
+   "makers": [
+    {
+     "id": "NEW-6375ff07a20c",
+     "name": "Martiniano Hernández Gómez"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "NEW-de086db3e078-WORK-1": {
    "title": "Sh'aak kumiai tipei aalhuwei / Mujeres kumiai que platican",
    "year": 2012,
@@ -25151,6 +25259,22 @@
     {
      "id": "NEW-9b0ab398f2cf",
      "name": "Nicholas Galanin"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261108-92-F2": {
+   "title": "Rez Life",
+   "year": 2005,
+   "makers": [
+    {
+     "id": "NEW-d62d153e01c5",
+     "name": "Nick Clark"
     }
    ],
    "languages": [],
@@ -28429,6 +28553,22 @@
     {
      "id": "Q20261108-09",
      "name": "Lady Giovanna Vásquez Cuaspa"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261108-93-F1": {
+   "title": "Bloodlines",
+   "year": 2014,
+   "makers": [
+    {
+     "id": "Q20261108-93",
+     "name": "Christopher Cegielski"
     }
    ],
    "languages": [],
