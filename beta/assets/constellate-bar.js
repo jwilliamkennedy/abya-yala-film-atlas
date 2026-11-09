@@ -10,13 +10,17 @@
   var draw=document.getElementById('weave-draw-thread'),clear=document.getElementById('constellate-clear');
   var unmap=document.getElementById('weave-unmap'),edit=document.getElementById('constellate-edit');
   var play=document.getElementById('weave-play'),share=document.getElementById('constellate-share');
-  if(!menu||!more||!draw||!clear||!edit||!play||!share)return false;
+  var undo=document.getElementById('constellate-undo'),redo=document.getElementById('constellate-redo'),group=bar.querySelector('.weave-tool-group');
+  if(!menu||!more||!draw||!clear||!edit||!play||!share||!undo||!redo||!group)return false;
   if(compact.matches){
    /* Make the most important actions visible: Draw, Find films, Read, Clear, Options, Exit. */
-   for(var button of [share,play,edit]){
+   for(var button of [redo,undo,share,play,edit]){
     if(button.parentNode!==menu)menu.prepend(button);
    }
+   undo.textContent='Undo';redo.textContent='Redo';
   }else{
+   if(undo.parentNode!==group||redo.parentNode!==group)group.append(undo,redo);
+   undo.textContent='↶';redo.textContent='↷';
    if(edit.parentNode!==bar||edit.nextElementSibling!==draw)bar.insertBefore(edit,draw);
    if(play.parentNode!==bar)bar.insertBefore(play,clear);
    if(share.parentNode!==bar)bar.insertBefore(share,clear);
