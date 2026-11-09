@@ -105,7 +105,7 @@
    if(b.hasAttribute('data-mobile-network')){
     root.classList.toggle('tw-show-network');
     b.textContent=root.classList.contains('tw-show-network')?'List of themes':'See the network diagram';
-    return;
+    drawGraph();return;
    }
    selected=b.dataset.mobileTerm;selectedPair='';drawGraph();detail();
    if(window.matchMedia('(max-width:700px)').matches)aside.scrollIntoView({block:'start',behavior:'instant'});
@@ -146,7 +146,8 @@
  function drawGraph(provided,providedEdges){
   if(!isOpen)return;
   var nodes=provided||visibleNodes(),names=new Set(nodes.map(n=>n.name)),edges=providedEdges||graphLinks.filter(l=>names.has(l.source)&&names.has(l.target));
-  var w=720,h=550;
+  var bounds=svg.getBoundingClientRect(),w=Math.max(620,Math.round(bounds.width||720)),h=Math.max(440,Math.round(bounds.height||550));
+  svg.setAttribute('viewBox','0 0 '+w+' '+h);
   // Stable thematic-family lanes preserve legible labels at all 30 nodes.
   // The network is a diagram of co-tags, not a geographic or semantic distance map.
   var orders=Object.keys(COLORS).filter(f=>nodes.some(n=>n.family===f));
@@ -266,6 +267,7 @@
   document.body.classList.toggle('is-theme-web-open',isOpen);
   if(isOpen){draw();searchBox.focus({preventScroll:true});}
  }
+ window.addEventListener('resize',function(){if(isOpen)drawGraph();});
  function init(){
   var tries=0;
   var timer=setInterval(function(){
