@@ -605,8 +605,8 @@ DIR-0209-W1031-2,Ixquic,2025,length,Short,,https://www.themoviedb.org/movie/1714
 DIR-0209-QMe52d92,Liremu Barana,2019,theme,Water,Land and Environment,https://riddu.com/en/program/urfilm-shorts-1,tagged from a published synopsis; primary theme
 DIR-0209-QMe52d92,Liremu Barana,2019,form,Fiction,,https://riddu.com/en/program/urfilm-shorts-1,from the published synopsis
 DIR-0209-QMe52d92,Liremu Barana,2019,length,Short,,https://riddu.com/en/program/urfilm-shorts-1,from the published synopsis
-DIR-0209-QM180a92,Flor Blanca,,theme,Elders and Knowledge,Knowledge and Continuity,https://www.prensalibre.com/vida/escenario/cineastas-guatemaltecos-presentan-cortos-sobre-pueblos-originarios-del-pais/,tagged from a published synopsis; primary theme
-DIR-0209-QM180a92,Flor Blanca,,length,Short,,https://www.prensalibre.com/vida/escenario/cineastas-guatemaltecos-presentan-cortos-sobre-pueblos-originarios-del-pais/,from the published synopsis
+DIR-0209-QM180a92,Flor Blanca,2014,theme,Elders and Knowledge,Knowledge and Continuity,https://www.prensalibre.com/vida/escenario/cineastas-guatemaltecos-presentan-cortos-sobre-pueblos-originarios-del-pais/,tagged from a published synopsis; primary theme
+DIR-0209-QM180a92,Flor Blanca,2014,length,Short,,https://www.prensalibre.com/vida/escenario/cineastas-guatemaltecos-presentan-cortos-sobre-pueblos-originarios-del-pais/,from the published synopsis
 FILM-NUDO-MIXTECO-2021,Nudo mixteco,2021,theme,Women and Gender,Lives and Relations,https://moreliafilmfest.com/en/peliculas/nudo-mixteco,tagged from a published synopsis; primary theme
 FILM-NUDO-MIXTECO-2021,Nudo mixteco,2021,theme,LGBTQIA2S,Lives and Relations,https://moreliafilmfest.com/en/peliculas/nudo-mixteco,tagged from a published synopsis
 FILM-NUDO-MIXTECO-2021,Nudo mixteco,2021,theme,Displacement and Migration,Sovereignty and Politics,https://moreliafilmfest.com/en/peliculas/nudo-mixteco,tagged from a published synopsis
@@ -740,10 +740,10 @@ DIR-0240-W1031-4,Ñuu Kanda (Pueblo en movimiento),2020,length,Short,,https://mo
 FILM-B25B-19,Koo,2021,theme,Cosmology and Origin Stories,Knowledge and Continuity,https://www.themoviedb.org/movie/890654,tagged from a published synopsis; primary theme
 FILM-B25B-19,Koo,2021,form,Fiction,,https://www.themoviedb.org/movie/890654,from the published synopsis
 FILM-B25B-19,Koo,2021,length,Short,,https://www.themoviedb.org/movie/890654,from the published synopsis
-FILM-0201,Marku Irekani = vivir juntos,,theme,Linguistic Preservation,Knowledge and Continuity,https://www.themoviedb.org/movie/890647?language=es-MX,tagged from a published synopsis; primary theme
-FILM-0201,Marku Irekani = vivir juntos,,theme,Elders and Knowledge,Knowledge and Continuity,https://www.themoviedb.org/movie/890647?language=es-MX,tagged from a published synopsis
-FILM-0201,Marku Irekani = vivir juntos,,theme,Kinship,Lives and Relations,https://www.themoviedb.org/movie/890647?language=es-MX,tagged from a published synopsis
-FILM-0201,Marku Irekani = vivir juntos,,form,Documentary,,https://www.themoviedb.org/movie/890647?language=es-MX,from the published synopsis
+FILM-0201,Marku Irekani = vivir juntos,2021,theme,Linguistic Preservation,Knowledge and Continuity,https://www.themoviedb.org/movie/890647?language=es-MX,tagged from a published synopsis; primary theme
+FILM-0201,Marku Irekani = vivir juntos,2021,theme,Elders and Knowledge,Knowledge and Continuity,https://www.themoviedb.org/movie/890647?language=es-MX,tagged from a published synopsis
+FILM-0201,Marku Irekani = vivir juntos,2021,theme,Kinship,Lives and Relations,https://www.themoviedb.org/movie/890647?language=es-MX,tagged from a published synopsis
+FILM-0201,Marku Irekani = vivir juntos,2021,form,Documentary,,https://www.themoviedb.org/movie/890647?language=es-MX,from the published synopsis
 FILM-0202,Probo Tzu - Noche blanca,,theme,Displacement and Migration,Sovereignty and Politics,https://www.themoviedb.org/movie/890863,tagged from a published synopsis; primary theme
 FILM-0202,Probo Tzu - Noche blanca,,theme,Memory and Oral History,Knowledge and Continuity,https://www.themoviedb.org/movie/890863,tagged from a published synopsis
 FILM-0202,Probo Tzu - Noche blanca,,theme,Environmental Change,Land and Environment,https://www.themoviedb.org/movie/890863,tagged from a published synopsis
@@ -2131,6 +2131,10 @@ NEW-47f1d133e435-WORK-1,Naturally Native,1998,theme,Women and Gender,Lives and R
 NEW-47f1d133e435-WORK-1,Naturally Native,1998,theme,Kinship,Lives and Relations,https://www.themoviedb.org/movie/302579,tagged from a published synopsis
 NEW-47f1d133e435-WORK-1,Naturally Native,1998,form,Fiction,,https://www.themoviedb.org/movie/302579,from the published synopsis
 NEW-47f1d133e435-WORK-1,Naturally Native,1998,length,Feature,,https://www.themoviedb.org/movie/302579,from the published synopsis
+FILM-0201,Marku Irekani = vivir juntos,,theme,Linguistic Preservation,Knowledge and Continuity,https://www.themoviedb.org/movie/890647?language=es-MX,tagged from a published synopsis; primary theme
+FILM-0201,Marku Irekani = vivir juntos,,theme,Elders and Knowledge,Knowledge and Continuity,https://www.themoviedb.org/movie/890647?language=es-MX,tagged from a published synopsis
+FILM-0201,Marku Irekani = vivir juntos,,theme,Kinship,Lives and Relations,https://www.themoviedb.org/movie/890647?language=es-MX,tagged from a published synopsis
+FILM-0201,Marku Irekani = vivir juntos,,form,Documentary,,https://www.themoviedb.org/movie/890647?language=es-MX,from the published synopsis
 NEW-2d38018d40a3-WORK-1,Oc ni temiki (sigo soñando),,theme,Displacement and Migration,Sovereignty and Politics,https://www.themoviedb.org/movie/1567022?language=es-MX,tagged from a published synopsis; primary theme
 NEW-2d38018d40a3-WORK-1,Oc ni temiki (sigo soñando),,theme,Women and Gender,Lives and Relations,https://www.themoviedb.org/movie/1567022?language=es-MX,tagged from a published synopsis
 NEW-2d38018d40a3-WORK-1,Oc ni temiki (sigo soñando),,theme,Kinship,Lives and Relations,https://www.themoviedb.org/movie/1567022?language=es-MX,tagged from a published synopsis

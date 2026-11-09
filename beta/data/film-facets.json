@@ -2,7 +2,8 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-09",
  "license": "See data.html",
- "films_on_public_map": 1558,
+ "films_on_public_map": 1538,
+ "film_entries": 1553,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -1176,12 +1177,12 @@
      "name": "Jhonaton Gomes"
     },
     {
-     "id": "LEAD-20261011-006",
-     "name": "Sarah Brites"
+     "id": "DIR-0053",
+     "name": "Valmir G. Cabreira"
     },
     {
-     "id": "BETA8D-20261107-D09",
-     "name": "Valmir Gonçalves Cabreira"
+     "id": "LEAD-20261011-006",
+     "name": "Sarah Brites"
     },
     {
      "id": "QM-b28a904c25",
@@ -1214,10 +1215,6 @@
     {
      "id": "LEAD-20261011-006",
      "name": "Sarah Brites"
-    },
-    {
-     "id": "BETA8D-20261107-D09",
-     "name": "Valmir Gonçalves Cabreira"
     },
     {
      "id": "QM-b28a904c25",
@@ -7654,10 +7651,6 @@
     {
      "id": "DIR-0209",
      "name": "Elvis Rigoberto Caj Cojoc"
-    },
-    {
-     "id": "DIR-0362",
-     "name": "Elvis Caj"
     }
    ],
    "languages": [],
@@ -7714,7 +7707,7 @@
   },
   "DIR-0209-QM180a92": {
    "title": "Flor Blanca",
-   "year": null,
+   "year": 2014,
    "makers": [
     {
      "id": "DIR-0209",
@@ -7734,15 +7727,11 @@
   },
   "FILM-0163": {
    "title": "Ati't",
-   "year": null,
+   "year": 2023,
    "makers": [
     {
      "id": "DIR-0211",
      "name": "Tirza Yanira Ixmucané Saloj Oroxom"
-    },
-    {
-     "id": "NEW-edd193bd0a2d",
-     "name": "Tirza Ixmucané"
     }
    ],
    "languages": [],
@@ -9500,10 +9489,6 @@
    "title": "Marku Irekani = vivir juntos",
    "year": null,
    "makers": [
-    {
-     "id": "DIR-0241",
-     "name": "Rosalba López"
-    },
     {
      "id": "DIR-0241-B",
      "name": "Daniel Isidoro Morales"
@@ -13153,12 +13138,12 @@
    "length": null
   },
   "FILM-SRC-2023-00037": {
-   "title": "Nuestro hogar",
-   "year": 2014,
+   "title": "Home",
+   "year": null,
    "makers": [
     {
-     "id": "Q20261108-12",
-     "name": "Detsy Barrigón"
+     "id": "NEW-41297500b675",
+     "name": "Barry Bilinsky"
     }
    ],
    "languages": [],
@@ -13955,22 +13940,6 @@
    ],
    "form": "Experimental",
    "length": "Short"
-  },
-  "NEW-605d07d12a9f-F1": {
-   "title": "Pox, bebida sagrada",
-   "year": null,
-   "makers": [
-    {
-     "id": "NEW-605d07d12a9f",
-     "name": "Dolores Santiz"
-    }
-   ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
   },
   "NEW-4df03f9ddcb0-WORK-1": {
    "title": "Datrin (The Raven)",
@@ -17635,30 +17604,6 @@
    "form": null,
    "length": null
   },
-  "SA50-20261014-3aa4a6a794f3-WORK-01": {
-   "title": "Nhemongueta Kunhã Mbaraete",
-   "year": 2020,
-   "makers": [
-    {
-     "id": "SA50-20261014-3aa4a6a794f3",
-     "name": "Michele Kaiowá"
-    },
-    {
-     "id": "NEW-084a145f8fa7",
-     "name": "Graciela Guarani"
-    },
-    {
-     "id": "BETA30-20261106-D07",
-     "name": "Michele Perito Concianza Kaiowá"
-    }
-   ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
-  },
   "SA50-20261014-70978a9507b4-WORK-01": {
    "title": "Ãgawaraita",
    "year": 2022,
@@ -20238,38 +20183,6 @@
    ],
    "form": "Documentary",
    "length": "Short"
-  },
-  "DIR-0362-W1031-2": {
-   "title": "Flor Blanca",
-   "year": 2014,
-   "makers": [
-    {
-     "id": "DIR-0362",
-     "name": "Elvis Caj"
-    }
-   ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
-  },
-  "DIR-0362-W1031-3": {
-   "title": "Melodía del Mar / Liremu Barana",
-   "year": 2020,
-   "makers": [
-    {
-     "id": "DIR-0362",
-     "name": "Elvis Caj"
-    }
-   ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
   },
   "RESEARCH-FILM-20261031-800-NEW-363": {
    "title": "He Moʻolelo Wahi Pana (A Storied Landscape)",
@@ -27034,6 +26947,26 @@
    "form": "Documentary",
    "length": "Feature"
   },
+  "NEW-084a145f8fa7-W1031-2": {
+   "title": "Nhemongueta Kunhã Mbaraete",
+   "year": 2020,
+   "makers": [
+    {
+     "id": "NEW-084a145f8fa7",
+     "name": "Graciela Guarani"
+    },
+    {
+     "id": "BETA30-20261106-D07",
+     "name": "Michele Perito Concianza Kaiowá"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "BETA30B-20261107-F13": {
    "title": "Kunhangue – Universo de um novo mundo",
    "year": 2020,
@@ -27073,22 +27006,6 @@
     {
      "id": "NEW-f51c22579e1e",
      "name": "Ariel Chalán"
-    }
-   ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
-  },
-  "NEW-edd193bd0a2d-QM3b9736": {
-   "title": "Ati’t",
-   "year": 2023,
-   "makers": [
-    {
-     "id": "NEW-edd193bd0a2d",
-     "name": "Tirza Ixmucané"
     }
    ],
    "languages": [],
@@ -28165,34 +28082,6 @@
      "source": "https://ellugarquehabitamos.org/nipi-utaiamun/"
     }
    ],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
-  },
-  "BETA30-20261106-F09": {
-   "title": "Rami Rami Kirani",
-   "year": 2023,
-   "makers": [
-    {
-     "id": "BETA30-20261106-D04",
-     "name": "Lira Mawapãi Huni Kuin"
-    },
-    {
-     "id": "BETA30-20261106-D05",
-     "name": "Luciana Tira Huni Kuin"
-    },
-    {
-     "id": "QM-5b6f874ea2",
-     "name": "Lira Mawapai HuniKui"
-    },
-    {
-     "id": "QM-b1d16e4857",
-     "name": "Luciana Tira HuniKui"
-    }
-   ],
-   "languages": [],
    "themes": [],
    "primary_theme": null,
    "families": [],
@@ -29960,6 +29849,22 @@
    "form": null,
    "length": null
   },
+  "Q20261108-12-F1": {
+   "title": "Nuestro hogar",
+   "year": 2014,
+   "makers": [
+    {
+     "id": "Q20261108-12",
+     "name": "Detsy Barrigón"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "Q20261108-13-F1": {
    "title": "Tramas y trascendencias",
    "year": 2013,
@@ -30015,22 +29920,6 @@
     {
      "id": "QM-6937cf7910",
      "name": "Miguel Valdés"
-    }
-   ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
-  },
-  "QM-97b718afc1-M1": {
-   "title": "Marku irekani / Vivir juntos",
-   "year": 2021,
-   "makers": [
-    {
-     "id": "QM-97b718afc1",
-     "name": "Rosalba López López"
     }
    ],
    "languages": [],
