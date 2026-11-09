@@ -114,7 +114,12 @@ jobs:
                   button=page.locator('#weave-suggest [data-weave-follow]').first
                   await button.scroll_into_view_if_needed()
                   if name=='mobile':
-                    await page.locator('#constellate-popup').evaluate('(el) => { el.scrollTop=Math.max(0,el.scrollTop-110); }')
+                    await button.evaluate("""el => {
+                      const sc=el.closest('#constellate-popup');
+                      if(sc){const a=el.getBoundingClientRect(),p=sc.getBoundingClientRect();
+                        sc.scrollTop+=a.top-p.top-140;}
+                    }""")
+                    await page.wait_for_timeout(180)
                   await button.click(timeout=15000)
                   nxt=await page.locator('#constellate-context .weave-context-preview h3').inner_text()
                   assert nxt and nxt!=current, 'Follow did not move to the next film'
