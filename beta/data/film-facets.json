@@ -2,7 +2,7 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-09",
  "license": "See data.html",
- "films_on_public_map": 1458,
+ "films_on_public_map": 1468,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -13222,6 +13222,22 @@
    "form": null,
    "length": null
   },
+  "NEW-c353ac25a797-F1": {
+   "title": "For Angela",
+   "year": 1993,
+   "makers": [
+    {
+     "id": "NEW-c353ac25a797",
+     "name": "Daniel Prouty"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "NEW-7314e3db4581-WORK-1": {
    "title": "Midnight Migrations: Wëdzey Tąy (Caribou Trails)",
    "year": null,
@@ -13320,6 +13336,22 @@
    ],
    "form": "Experimental",
    "length": "Short"
+  },
+  "NEW-605d07d12a9f-F1": {
+   "title": "Pox, bebida sagrada",
+   "year": null,
+   "makers": [
+    {
+     "id": "NEW-605d07d12a9f",
+     "name": "Dolores Santiz"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
   },
   "NEW-4df03f9ddcb0-WORK-1": {
    "title": "Datrin (The Raven)",
@@ -13772,6 +13804,22 @@
    "form": "Fiction",
    "length": "Short"
   },
+  "NEW-099ac75a70fe-F1": {
+   "title": "No Turning Back: The Royal Commission on Aboriginal Peoples",
+   "year": 1996,
+   "makers": [
+    {
+     "id": "NEW-099ac75a70fe",
+     "name": "Greg Coyes"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "NEW-b711f8b08315-W1031-1": {
    "title": "Miss Campbell: Inuk Teacher",
    "year": 2023,
@@ -13795,6 +13843,22 @@
    ],
    "form": "Documentary",
    "length": "Short"
+  },
+  "NEW-45f5368fec01-F1": {
+   "title": "Jaad Sdiihlyl’lxa / Woman Who Returns",
+   "year": null,
+   "makers": [
+    {
+     "id": "NEW-45f5368fec01",
+     "name": "Heather Hatch"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
   },
   "NEW-f8409bf84ccd-WORK-1": {
    "title": "Sweetgrass Rings",
@@ -14293,6 +14357,22 @@
    "form": null,
    "length": null
   },
+  "NEW-62ef600b6317-F1": {
+   "title": "Gods Acre",
+   "year": 2016,
+   "makers": [
+    {
+     "id": "NEW-62ef600b6317",
+     "name": "Kelton Stepanowich"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "NEW-9be87ea2f6c9-WORK-1": {
    "title": "Love Is Trash",
    "year": 2025,
@@ -14709,6 +14789,22 @@
    "form": null,
    "length": null
   },
+  "NEW-2d4188cc6b1c-F1": {
+   "title": "Ekbeh",
+   "year": 2023,
+   "makers": [
+    {
+     "id": "NEW-2d4188cc6b1c",
+     "name": "Mariah Hernandez-Fitch"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "FILM-SRC-2023-00046": {
    "title": "Grape Soda in the Parking Lot",
    "year": null,
@@ -14851,6 +14947,22 @@
     {
      "id": "NEW-baceba5380b8",
      "name": "Nathalie Rankin"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "NEW-97e35c60f73d-F1": {
+   "title": "The Guest",
+   "year": 2015,
+   "makers": [
+    {
+     "id": "NEW-97e35c60f73d",
+     "name": "Nick Rodgers"
     }
    ],
    "languages": [],
@@ -15009,6 +15121,22 @@
    ],
    "form": "Documentary",
    "length": "Short"
+  },
+  "NEW-b93019eca0fe-F1": {
+   "title": "Susto",
+   "year": 2016,
+   "makers": [
+    {
+     "id": "NEW-b93019eca0fe",
+     "name": "Pearl Salas"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
   },
   "RESEARCH-FILM-20261031-800-0035": {
    "title": "The Neighborhood Kids / AND THE KIDS SAY",
@@ -15193,6 +15321,22 @@
     {
      "id": "NEW-b8ff82e3ca1c",
      "name": "Sarah Houle"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "NEW-8b961b170d36-F1": {
+   "title": "ᏓᏗᏬᏂᏏ (We Will Speak)",
+   "year": 2023,
+   "makers": [
+    {
+     "id": "NEW-8b961b170d36",
+     "name": "Schon Duncan"
     }
    ],
    "languages": [],
@@ -15563,6 +15707,22 @@
    ],
    "form": "Fiction",
    "length": "Short"
+  },
+  "NEW-699df72682cb-F1": {
+   "title": "The Strange Case of Bunny Weequod",
+   "year": 1999,
+   "makers": [
+    {
+     "id": "NEW-699df72682cb",
+     "name": "Steve Van Denzen"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
   },
   "NEW-78d238c60c79-WORK-1": {
    "title": "Hatarimuy: Rise Up",
