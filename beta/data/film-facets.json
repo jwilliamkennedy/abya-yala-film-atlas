@@ -2,7 +2,7 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-09",
  "license": "See data.html",
- "films_on_public_map": 1411,
+ "films_on_public_map": 1417,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -18596,6 +18596,22 @@
    "form": null,
    "length": null
   },
+  "RESEARCH-FILM-20261031-0007-01": {
+   "title": "Una mirada diferente… para un futuro más digno",
+   "year": 2008,
+   "makers": [
+    {
+     "id": "LEAD-20261031-0007",
+     "name": "Mariano Estrada"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "FILM-SRC-0367": {
    "title": "Dear Kin",
    "year": null,
@@ -20700,6 +20716,22 @@
    "form": null,
    "length": null
   },
+  "NEW-a0f4a440a4b9-WORK-1": {
+   "title": "Wadja",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "NEW-a0f4a440a4b9",
+     "name": "Narriman Kauane"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "NEW-231f4cf29b1a-WORK-1": {
    "title": "Hekura",
    "year": null,
@@ -22179,6 +22211,54 @@
    "form": "Documentary",
    "length": null
   },
+  "NEW-8c72a5a58254-WORK-1": {
+   "title": "Kaashama, la course à l'identité",
+   "year": 1993,
+   "makers": [
+    {
+     "id": "NEW-8c72a5a58254",
+     "name": "Maurice Tiouka"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "NEW-8c72a5a58254-WORK-3": {
+   "title": "L'Attente",
+   "year": 1987,
+   "makers": [
+    {
+     "id": "NEW-8c72a5a58254",
+     "name": "Maurice Tiouka"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "NEW-8c72a5a58254-WORK-4": {
+   "title": "Le Manioc",
+   "year": 1989,
+   "makers": [
+    {
+     "id": "NEW-8c72a5a58254",
+     "name": "Maurice Tiouka"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "NEW-e0e31180b550-WORK-1": {
    "title": "Mis raíces: mayas durante la covid-19",
    "year": 2023,
@@ -23198,6 +23278,22 @@
    ],
    "form": "Fiction",
    "length": "Short"
+  },
+  "NEW-b066165d7a41-WORK-1": {
+   "title": "Toyol kajal / Noosfera",
+   "year": 2016,
+   "makers": [
+    {
+     "id": "NEW-b066165d7a41",
+     "name": "Rosa Amelia Hernández Gómez"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
   },
   "NEW-9569183a3b9f-WORK-1": {
    "title": "Nenek",
