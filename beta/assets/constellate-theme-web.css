@@ -104,7 +104,8 @@ body.is-theme-web-open .map-panel{width:100%!important;max-width:none!important}
  background:var(--reading-paper,#fff);
  font:10px/1.4 "Atlas Sans",system-ui,sans-serif;color:var(--reading-muted,#536d78);
 }
-#tw-reset{border:none;background:transparent;color:var(--reading-accent,#245479);cursor:pointer;text-decoration:underline;font:600 11px system-ui}
+#tw-reset,#tw-all-links{border:none;background:transparent;color:var(--reading-accent,#245479);cursor:pointer;text-decoration:underline;font:600 11px system-ui}
+#tw-all-links[aria-pressed="true"]{font-weight:750;text-decoration-thickness:2px}
 .tw-detail{
  min-width:0;min-height:0;overflow:auto;overscroll-behavior:contain;
  border-left:1px solid var(--reading-line,#c9d0d3);padding:16px 15px 24px;
