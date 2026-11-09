@@ -2,7 +2,7 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-09",
  "license": "See data.html",
- "films_on_public_map": 1484,
+ "films_on_public_map": 1498,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -3624,6 +3624,22 @@
    "form": null,
    "length": null
   },
+  "DIR-0085-F1": {
+   "title": "Polar Sun",
+   "year": 2016,
+   "makers": [
+    {
+     "id": "DIR-0085",
+     "name": "Doane Tulugaq Avery"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
+  },
   "FILM-SRC-0394": {
    "title": "If the Weather Permits",
    "year": null,
@@ -4097,6 +4113,22 @@
    "form": null,
    "length": null
   },
+  "DIR-0110-F1": {
+   "title": "this river",
+   "year": 2016,
+   "makers": [
+    {
+     "id": "DIR-0110",
+     "name": "Katherena Vermette"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "RESEARCH-FILM-20261031-800-0002": {
    "title": "Ninan Auassat: We, The Children",
    "year": 2024,
@@ -4353,6 +4385,22 @@
    "families": [],
    "form": null,
    "length": null
+  },
+  "DIR-0122-F3": {
+   "title": "Exposed Nerves",
+   "year": 2016,
+   "makers": [
+    {
+     "id": "DIR-0122",
+     "name": "Madison Thomas"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
   },
   "RESEARCH-FILM-20261031-800-0021": {
    "title": "Embers of Queer Joy",
@@ -11716,6 +11764,38 @@
    "form": "Fiction",
    "length": "Short"
   },
+  "DIR-0334-F2": {
+   "title": "I Am Thy Weapon",
+   "year": 2016,
+   "makers": [
+    {
+     "id": "DIR-0334",
+     "name": "Razelle Benally"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
+  },
+  "DIR-0334-F3": {
+   "title": "Murder in Big Horn",
+   "year": 2023,
+   "makers": [
+    {
+     "id": "DIR-0334",
+     "name": "Razelle Benally"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Series"
+  },
   "FILM-0275": {
    "title": "Shash Jaa’: Bears Ears",
    "year": 2016,
@@ -14513,6 +14593,22 @@
    "primary_theme": null,
    "families": [],
    "form": "Fiction",
+   "length": "Short"
+  },
+  "NEW-ea1a043758b3-F1": {
+   "title": "Smoke That Travels",
+   "year": 2016,
+   "makers": [
+    {
+     "id": "NEW-ea1a043758b3",
+     "name": "Kayla Briët"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
    "length": "Short"
   },
   "NEW-38fb59d07d8f-WORK-1": {
@@ -19662,6 +19758,29 @@
    "form": null,
    "length": null
   },
+  "FILM-SRC-0370": {
+   "title": "Ancestral Threads",
+   "year": 2023,
+   "makers": [
+    {
+     "id": "DIR-0370",
+     "name": "Sean Stiller"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Art, Craft and Making",
+    "Health and Healing",
+    "Urban Indigeneity"
+   ],
+   "primary_theme": "Art, Craft and Making",
+   "families": [
+    "Expression and Representation",
+    "Lives and Relations"
+   ],
+   "form": "Documentary",
+   "length": "Short"
+  },
   "FILM-SRC-0381": {
    "title": "Ni Wapiten – I see",
    "year": 2022,
@@ -19673,6 +19792,38 @@
     {
      "id": "DIR-0382",
      "name": "Julie Ottawa"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "FILM-SRC-0383": {
+   "title": "Follow",
+   "year": 2023,
+   "makers": [
+    {
+     "id": "DIR-0383",
+     "name": "Brent Owen Beauchamp"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "FILM-SRC-0387": {
+   "title": "Nisihkason Lex",
+   "year": 2022,
+   "makers": [
+    {
+     "id": "DIR-0387",
+     "name": "Kaayla Whachell"
     }
    ],
    "languages": [],
@@ -29330,6 +29481,86 @@
    "families": [],
    "form": "Documentary",
    "length": null
+  },
+  "Q20261108-31-F1": {
+   "title": "The Length of Grief: The Daughters of Métis Mothers",
+   "year": 2016,
+   "makers": [
+    {
+     "id": "Q20261108-31",
+     "name": "Amy Malbeuf"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Experimental",
+   "length": null
+  },
+  "Q20261108-32-F1": {
+   "title": "Heartbeat of a Nation",
+   "year": 2022,
+   "makers": [
+    {
+     "id": "Q20261108-32",
+     "name": "Eric Janvier"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261108-33-F1": {
+   "title": "Bad Press",
+   "year": 2023,
+   "makers": [
+    {
+     "id": "Q20261108-33",
+     "name": "Rebecca Landsberry-Baker"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Feature"
+  },
+  "Q20261108-34-F1": {
+   "title": "Gesture Down (I Don’t Sing)",
+   "year": 2016,
+   "makers": [
+    {
+     "id": "Q20261108-34",
+     "name": "Cedar Sherbert"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
+  },
+  "Q20261108-35-F1": {
+   "title": "Kikuyu Land",
+   "year": 2026,
+   "makers": [
+    {
+     "id": "Q20261108-35",
+     "name": "Andrew H. Brown"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Feature"
   }
  }
 }
