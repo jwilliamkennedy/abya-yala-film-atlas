@@ -2,7 +2,7 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-09",
  "license": "See data.html",
- "films_on_public_map": 1441,
+ "films_on_public_map": 1442,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -22370,6 +22370,22 @@
     {
      "id": "NEW-e0e31180b550",
      "name": "Angela Chiquín"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "NEW-e5acfe14bc47-WORK-1": {
+   "title": "Ri-Wachic (My Dream)",
+   "year": 2010,
+   "makers": [
+    {
+     "id": "NEW-e5acfe14bc47",
+     "name": "Berta Lidia Chirix"
     }
    ],
    "languages": [],
