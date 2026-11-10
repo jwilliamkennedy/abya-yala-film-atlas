@@ -2,6 +2,14 @@
  const u=new URLSearchParams(location.search),r=document.documentElement;
  r.dataset.atlasEntry=u.get('constellate')==='1'?'constellate':'map';
  if(matchMedia('(max-width:760px)').matches)r.dataset.uiBar='split';
+ // Restore the visible state of inbound shared map links before navigation runs.
+ const hash=new URLSearchParams(location.hash.slice(1));
+ if(hash.has('view')){
+  if(hash.get('totals')==='0')r.dataset.atlasInboundTotals='off';
+  if(hash.get('shading')==='0')r.dataset.atlasInboundShading='off';
+  if(hash.get('connections')==='0')r.dataset.atlasInboundConnections='off';
+  if(hash.get('world')==='1')r.dataset.atlasInboundWorld='1';
+ }
  // Match reading-theme.js and menus-20261107.js before painting.
  const palette={
   paper:{paper:'#eef0ec',ink:'#182028',muted:'#55616b',accent:'#9c3b26',wash:'#e2e6e0',line:'#c9d0c6'},
@@ -40,6 +48,12 @@ html[data-atlas-entry="map"]:not([data-atlas-ui="ready"]) body.atlas-page .map-p
  html[data-atlas-entry="map"] body.atlas-page .map-toolbar{visibility:visible!important}
  html[data-atlas-entry="map"]:not([data-atlas-ui="ready"]) body.atlas-page .map-toolbar{pointer-events:none!important}
 }
+/* Shared link visibility controls are held until navigation.js restores its route. */
+html[data-atlas-inbound-shading="off"] body:not([data-navigation="ready"]) #atlas .land-shading,
+html[data-atlas-inbound-totals="off"] body:not([data-navigation="ready"]) #atlas .cinema-markers,
+html[data-atlas-inbound-connections="off"] body:not([data-navigation="ready"]) #atlas .land-word{visibility:hidden!important;pointer-events:none!important}
+html[data-atlas-inbound-world="1"] body:not([data-navigation="ready"]) #atlas .geography,
+html[data-atlas-inbound-world="1"] body:not([data-navigation="ready"]) #atlas-basemap{visibility:hidden!important;pointer-events:none!important}
 /* Respect saved Off while geography is loading; later checkbox state owns visibility. */
 html[data-atlas-initial-territories="off"]:not([data-atlas-ui="ready"]) body.atlas-page #atlas .land-shading{visibility:hidden!important;pointer-events:none!important}
 /* Constellate's start card and theme web are authored asynchronously by separate modules.
@@ -66,6 +80,12 @@ html[data-atlas-entry="constellate"] body.atlas-page .map-panel{background:#1528
 </div></details></div></div>
 <script id="atlas-preseed-layer-input">
  if(document.documentElement.dataset.atlasInitialTerritories==='off')document.getElementById('layer-shading').checked=false;
+ const shared=new URLSearchParams(location.hash.slice(1));
+ if(shared.has('view')){
+  for(const [id,value] of [['layer-cinema',shared.get('totals')!=='0'],['layer-connections',shared.get('connections')!=='0'],['layer-shading',shared.get('shading')!=='0'],['layer-boundaries',shared.get('outlines')==='1']]){
+   const el=document.getElementById(id);if(el)el.checked=value;
+  }
+ }
  try{if(localStorage.getItem('atlas-unmapped')==='1'){document.body.classList.add('atlas-unmapped');const b=document.getElementById('atlas-unmap');if(b){b.setAttribute('aria-pressed','true');b.textContent='Return map';}}}catch(e){}
  </script><svg id="atlas" tabindex="0" aria-describedby="map-help" role="group" aria-label="Land and cinema atlas. Move across land to read Indigenous names in the index margin. Tab to a name and press Enter to explore. All country totals are in the Country totals menu."></svg>
 <div id="map-selection-focus" hidden role="status" aria-live="polite"><strong id="map-focus-name"></strong><span id="map-focus-basis"></span></div><div class="zoom" role="group" aria-label="Map controls"><button id="zoom-out" aria-label="Zoom out" title="Zoom out">−</button><output id="zoom-level" aria-label="Current zoom">1×</output><button id="zoom-in" aria-label="Zoom in" title="Zoom in">+</button><button id="zoom-selection" title="Fit the selected affiliation or country reference; keep the index" disabled="">Fit selection</button><button id="zoom-reset" aria-label="Map overview" title="Return to overview; keep the current selection and filters">Overview</button></div>
