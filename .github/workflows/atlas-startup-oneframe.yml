@@ -1,0 +1,92 @@
+name: Atlas first-paint and single-map QA
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'index.html'
+      - 'beta/index.html'
+      - 'menus-20261107.js'
+      - 'beta/menus-20261107.js'
+      - 'basemap-open-20261107.js'
+      - 'beta/basemap-open-20261107.js'
+      - '.github/workflows/atlas-startup-oneframe.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 17
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Chromium
+        run: |
+          pip install -q playwright==1.*
+          python3 -m playwright install --with-deps chromium >/dev/null
+      - name: Verify no legacy menu or premature map appears
+        run: |
+          python3 -m http.server 8809 --bind 127.0.0.1 >/tmp/atlas-startup.log 2>&1 &
+          sleep 2
+          mkdir -p shots
+          cat > /tmp/atlas-first-paint-qa.py <<'PY'
+          import asyncio,json
+          from playwright.async_api import async_playwright
+          BASE="http://127.0.0.1:8809/"
+          async def main():
+            report={}
+            async with async_playwright() as playwright:
+              browser=await playwright.chromium.launch(args=["--use-angle=swiftshader","--enable-unsafe-swiftshader"])
+              for path in ("index.html","beta/index.html"):
+                for view in ("map","constellate"):
+                  name=path.replace("/","-")+"-"+view
+                  context=await browser.new_context(viewport={"width":1440,"height":900})
+                  page=await context.new_page()
+                  exceptions=[]
+                  page.on("pageerror",lambda exc:exceptions.append(str(exc)))
+                  async def delay_world(route):
+                    await asyncio.sleep(2)
+                    await route.continue_()
+                  await page.route("**/assets/world-50m.json",delay_world)
+                  url=BASE+path+("?constellate=1" if view=="constellate" else "")
+                  await page.goto(url,wait_until="domcontentloaded",timeout=90000)
+                  before=await page.evaluate("""() => ({
+                    pending:document.documentElement.dataset.atlasBoot==='pending',
+                    hidden:getComputedStyle(document.querySelector('main')).visibility==='hidden',
+                    mapNodes:document.querySelectorAll('#atlas').length,
+                    statusVisible:getComputedStyle(document.querySelector('#atlas-startup-status')).display!=='none'
+                  })""")
+                  assert before=={"pending":True,"hidden":True,"mapNodes":1,"statusVisible":True},(name,before)
+                  await page.wait_for_function("document.documentElement.dataset.atlasBoot==='ready'",timeout=30000)
+                  after=await page.evaluate("""() => ({
+                    menuPanels:document.querySelectorAll('.map-actions>details').length,
+                    mapNodes:document.querySelectorAll('#atlas').length,
+                    baseNodes:document.querySelectorAll('#atlas-basemap').length,
+                    toolbarNodes:document.querySelectorAll('.map-panel>.map-toolbar').length,
+                    worldInLayers:!!document.querySelector('#view-control #world'),
+                    keyReady:!!document.querySelector('#visual-key'),
+                    uiReady:document.documentElement.dataset.atlasUi==='ready',
+                    visible:getComputedStyle(document.querySelector('main')).visibility==='visible',
+                    palette:document.documentElement.dataset.basemapPalette||null,
+                    stage:document.documentElement.dataset.weaveStage||null
+                  })""")
+                  assert after["toolbarNodes"]==1 and after["menuPanels"]==3,(name,after)
+                  assert after["mapNodes"]==1 and after["baseNodes"]<=1,(name,after)
+                  assert after["worldInLayers"] and after["keyReady"] and after["uiReady"] and after["visible"],(name,after)
+                  if view=="constellate":
+                    assert after["stage"] in ("start","build","read","play"),(name,after)
+                    if after["baseNodes"]:assert after["palette"]=="night",(name,after)
+                  assert not exceptions,(name,exceptions)
+                  await page.screenshot(path="shots/"+name+".png",animations="disabled",timeout=15000)
+                  report[name]={"before":before,"after":after}
+                  await context.close()
+              await browser.close()
+            with open("shots/startup-report.json","w") as fp:json.dump(report,fp,indent=2)
+            print("ATLAS_FIRST_PAINT_QA_OK",json.dumps(report))
+          asyncio.run(main())
+          PY
+          python3 /tmp/atlas-first-paint-qa.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: atlas-first-paint-qa
+          path: shots/
