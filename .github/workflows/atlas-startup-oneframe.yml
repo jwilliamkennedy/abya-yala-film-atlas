@@ -58,11 +58,13 @@ jobs:
                     menuHidden:getComputedStyle(document.querySelector('.map-toolbar')).visibility==='hidden',
                     mapVisible:getComputedStyle(document.querySelector('main')).visibility==='visible',
                     mapNodes:document.querySelectorAll('#atlas').length,
+                    baseMapGuard:(() => {const n=document.querySelector('#atlas-basemap');return !n||n.dataset.cameraSynced==='true'||getComputedStyle(n).visibility==='hidden';})(),
                     toolbarNodes:document.querySelectorAll('.map-panel .map-toolbar').length,
                     topItems:[...document.querySelector('.map-actions').children].filter(e=>e.matches('details,#world')).map(e=>e.id),
                     worldInside:!!document.querySelector('#view-control #world')
                   })""")
                   assert before["mapVisible"] and before["mapNodes"]==1 and before["toolbarNodes"]==1,(name,before)
+                  assert before["baseMapGuard"],(name,before)
                   assert before["topItems"]==["country-drawer","layers","map-info"],(name,before)
                   assert before["worldInside"],(name,before)
                   if not before["ready"]:assert before["menuHidden"],(name,before)
@@ -77,6 +79,8 @@ jobs:
                     keyReady:!!document.querySelector('#visual-key'),
                     uiReady:document.documentElement.dataset.atlasUi==='ready',
                     toolbarVisible:getComputedStyle(document.querySelector('.map-toolbar')).visibility==='visible',
+                    basemapGuard:(() => {const n=document.querySelector('#atlas-basemap');return !n||n.dataset.cameraSynced==='true'||getComputedStyle(n).visibility==='hidden';})(),
+                    mapSynced:document.querySelector('#atlas-basemap')?.dataset.cameraSynced||null,
                     visible:getComputedStyle(document.querySelector('main')).visibility==='visible',
                     palette:document.documentElement.dataset.basemapPalette||null,
                     stage:document.documentElement.dataset.weaveStage||null
@@ -84,6 +88,7 @@ jobs:
                   assert after["toolbarNodes"]==1 and after["menuPanels"]==3,(name,after)
                   assert after["topDesktopItems"]==["country-drawer","layers","map-info"],(name,after)
                   assert after["mapNodes"]==1 and after["baseNodes"]<=1,(name,after)
+                  assert after["basemapGuard"],(name,after)
                   assert after["worldInLayers"] and after["keyReady"] and after["uiReady"] and after["visible"] and after["toolbarVisible"],(name,after)
                   if view=="constellate":
                     assert after["stage"] in ("start","build","read","play"),(name,after)
