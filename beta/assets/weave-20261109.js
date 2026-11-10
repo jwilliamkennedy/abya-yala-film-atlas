@@ -49,8 +49,8 @@ function buildStart(){
  sec.innerHTML=
   '<p class="ws-kicker">Constellate</p>'+
   '<h2 id="weave-start-title">How can films encounter each other?</h2>'+
-  '<p class="ws-lede">Weave films into threads by what they share: a theme, a land, a question. Each thread runs across the map from film to film, to read, play and share.</p>'+
-  '<ol class="ws-how" aria-label="How weaving works"><li><b>1</b> Add films</li><li><b>2</b> Link them, and say why</li><li><b>3</b> Read, play or share</li></ol>'+
+  '<p class="ws-lede">Connect films into threads through what they share: a theme, a land, a question. Each thread runs across the map from film to film, to read, play and share.</p>'+
+  '<ol class="ws-how" aria-label="How constellation building works"><li><b>1</b> Add films</li><li><b>2</b> Link them, and say why</li><li><b>3</b> Read, play or share</li></ol>'+
   '<div class="ws-paths">'+
    '<section class="ws-path"><h3>Start from a theme</h3><p>Every film on the thread shares the theme, taken from its published synopsis.</p>'+
     '<div class="ws-chips">'+top.map(function(t){return '<button type="button" data-ws-theme="'+esc(t.name)+'">'+esc(t.name)+' <small>'+t.n+'</small></button>';}).join('')+'</div>'+ 
@@ -60,12 +60,12 @@ function buildStart(){
    '<section class="ws-path"><h3>Start from a film</h3><p>Choose one film. Films that share a documented theme with it are suggested next.</p>'+
     '<label class="ws-sr" for="ws-film-q">Search a film or filmmaker</label><input id="ws-film-q" type="search" autocomplete="off" placeholder="Search a film or filmmaker…">'+
     '<ul id="ws-film-results" class="ws-results" aria-live="polite"></ul></section>'+
-   '<section class="ws-path"><h3>See an example</h3><p>Three films that share a theme, already woven, to read and change.</p><div class="ws-example-films"></div><p class="ws-example-label"></p>'+
+   '<section class="ws-path"><h3>See an example</h3><p>Three films that share a theme, already connected, to read and change.</p><div class="ws-example-films"></div><p class="ws-example-label"></p>'+
     '<button type="button" class="ws-primary" data-ws-example>Open the example</button>'+
     '<button type="button" class="ws-link" data-ws-web>Or explore the theme web →</button></section>'+
   '</div>'+
-  '<div class="ws-current" hidden><button type="button" data-ws-continue>Continue this weave</button><small class="ws-current-name"></small></div>'+ 
-  '<div class="ws-saved" hidden><label for="ws-saved-select">Open a saved weave</label><select id="ws-saved-select"></select></div>';
+  '<div class="ws-current" hidden><button type="button" data-ws-continue>Continue this constellation</button><small class="ws-current-name"></small></div>'+ 
+  '<div class="ws-saved" hidden><label for="ws-saved-select">Open a saved constellation</label><select id="ws-saved-select"></select></div>';
  host.appendChild(sec);
  var src=$('#weave-intro-films'),lab=$('#weave-intro-label');if(src){$('.ws-example-films',sec).innerHTML=src.innerHTML;}if(lab)$('.ws-example-label',sec).textContent=lab.textContent;
  sec.addEventListener('click',function(e){
@@ -93,7 +93,7 @@ function savedList(){
  var old=$('#weave-start .ws-current');if(old){old.hidden=!(c&&c.items.length);var label=$('.ws-current-name',old);if(label&&c)label.textContent=c.name;}
  box.hidden=!ws.length;if(!ws.length)return;
  var sel=$('#ws-saved-select',box);if(!sel)return;
-  var html='<option value="">Choose a weave…</option>'+ws.map(function(w){return '<option value="'+esc(w.id)+'">'+esc(w.name)+' · '+w.items.length+' film'+(w.items.length===1?'':'s')+'</option>';}).join('');
+  var html='<option value="">Choose a constellation…</option>'+ws.map(function(w){return '<option value="'+esc(w.id)+'">'+esc(w.name)+' · '+w.items.length+' film'+(w.items.length===1?'':'s')+'</option>';}).join('');
   if(sel.innerHTML!==html){var previous=sel.value;sel.innerHTML=html;if(previous&&[].some.call(sel.options,function(o){return o.value===previous;}))sel.value=previous;}
 }
 
@@ -101,7 +101,7 @@ function savedList(){
 function buildGuide(){
  var pop=$('#constellate-popup'),head=pop&&$('.constellate-heading',pop);if(!head||$('#weave-guide'))return;
  var g=document.createElement('section');g.id='weave-guide';g.setAttribute('aria-live','polite');
- g.innerHTML='<ol class="wg-steps" aria-label="Weaving steps"><li data-step="add">Add films</li><li data-step="link">Link them</li><li data-step="share">Read and share</li></ol><p class="wg-text"></p><div class="wg-actions"></div>';
+ g.innerHTML='<ol class="wg-steps" aria-label="Constellation steps"><li data-step="add">Add films</li><li data-step="link">Link them</li><li data-step="share">Read and share</li></ol><p class="wg-text"></p><div class="wg-actions"></div>';
  head.after(g);
  g.addEventListener('click',function(e){var a=e.target.closest('[data-wg]');if(!a)return;var k=a.dataset.wg;
   if(k==='add'){var t=$('#weave-tab-add');if(t)t.click();var s=$('#constellate-search');if(s)setTimeout(function(){s.focus();},60);}
@@ -124,7 +124,7 @@ function guide(st){
  else if(drawing){step='link';text='Click films on the map in the order the thread should run. Choose Done drawing to finish.';acts=[['draw','Done drawing']];}
  else if(n===0){step='add';text=total?('Add films to “'+t.name+'”: search, or use Draw thread to click films already on the map.'):'Add the first film: search, or click a film on the map.';acts=[['add','Add films'],total?['draw','Draw thread']:null];}
  else if(n===1){step='add';text='Add a second film. Films that share a documented theme with this one are listed below.';acts=[['suggest','See films that could come next'],['add','Search films']];}
- else{step='link';text='“'+t.name+'” runs through '+n+' films. Connect two films to say how they meet: answers, echoes, shares land, or your own words.';acts=[['connect','Connect two films'],['read','Read the weave'],['add','Add films']];}
+ else{step='link';text='“'+t.name+'” runs through '+n+' films. Connect two films to say how they meet: answers, echoes, shares land, or your own words.';acts=[['connect','Connect two films'],['read','Read the constellation'],['add','Add films']];}
  $$('.wg-steps li',g).forEach(function(li){var order=['add','link','share'];var k=li.dataset.step===step?'is-now':(order.indexOf(li.dataset.step)<order.indexOf(step)?'is-done':'');if(li.className!==k)li.className=k;});
  var tx=$('.wg-text',g);if(tx.textContent!==text)tx.textContent=text;
  var html=acts.filter(Boolean).map(function(a,i){return '<button type="button" data-wg="'+a[0]+'" class="'+(i===0?'wg-primary':'')+'">'+a[1]+'</button>';}).join('');
@@ -135,7 +135,7 @@ function guide(st){
 function labels(){
  var b=$('#weave-browse-films');if(b&&b.textContent.trim()==='Find films'){b.textContent='Add films';b.title='Search the atlas and add films to the active thread';}
  var tab=$('#weave-tab-add');if(tab&&tab.textContent.trim()==='Browse films')tab.textContent='Add films';
- var cl=$('#constellate-clear');if(cl&&cl.textContent.trim()==='Clear'){cl.textContent='Clear weave';}
+ var cl=$('#constellate-clear');if(cl&&cl.textContent.trim()==='Clear weave'){cl.textContent='Clear';}
  $$('#weave-suggest [data-weave-follow]').forEach(function(b){if(/^Follow/.test(b.textContent.trim()))b.textContent='Add next';});
  var sh=$('#weave-suggest h3, #weave-suggest strong');if(sh&&/^Follow another film$/.test(sh.textContent.trim()))sh.textContent='Films that could come next';
  $$('#weave-suggest p').forEach(function(pp){if(pp.textContent.trim()==='Documented connections through shared synopsis themes. Choose a film to move there.')pp.textContent='Each shares a theme with this film in its published synopsis. Add next puts it on the thread.';});
