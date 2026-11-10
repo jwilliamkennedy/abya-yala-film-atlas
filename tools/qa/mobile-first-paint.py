@@ -29,6 +29,7 @@ JS=r"""() => {
   initialTerritories:document.documentElement.dataset.atlasInitialTerritories||null,
   territoryWash:getComputedStyle(document.documentElement).getPropertyValue('--territory-wash').trim(),
   shadingChecked:$('#layer-shading')?.checked??null,
+  territorySelected:$('#territory-control [aria-checked="true"]')?.dataset.mode||null,
   connectionsChecked:$('#layer-connections')?.checked??null,
   cinemaChecked:$('#layer-cinema')?.checked??null,
   outlinesChecked:$('#layer-boundaries')?.checked??null,
