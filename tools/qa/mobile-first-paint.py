@@ -80,6 +80,16 @@ async def case(browser,engine,name,route,width,persisted=None):
    if phase in ('dom','settled'):
     try:await p.screenshot(path=f'shots/mobile-{engine}-{width}-{route.replace("/","-")}-{name}-{phase}.png',animations='disabled',timeout=7000)
     except Exception as e:print('NONFATAL_MOBILE_SCREENSHOT',engine,width,name,str(e)[:110])
+  # Detect map DOM feedback loops after animations and initial geography settle.
+  idle=await p.evaluate("""async () => {
+   const root=document.querySelector('#atlas'),counts={attributes:0,childList:0};
+   if(!root)return counts;
+   const obs=new MutationObserver(records=>{for(const r of records){if(r.type in counts)counts[r.type]++;}});
+   obs.observe(root,{attributes:true,childList:true,subtree:true});
+   await new Promise(resolve=>setTimeout(resolve,650));
+   obs.disconnect();return counts;
+  }""")
+  samples.append({'phase':'idle-650ms','mutations':idle})
   # Interaction: menu, sheet, and touch target sizes
   if name=='map' and await p.locator('#layers').count():
    await p.locator('#layers>summary').click(timeout=5000)
@@ -119,6 +129,9 @@ async def main():
   seq=[v for v in item['samples'] if v.get('phase') in ('dom','early','middle','settled')]
   if len(seq)<4:failures.append((item['browser'],item['route'],item['name'],'missing phases'));continue
   first,last=seq[0],seq[-1]
+  idle=next((v.get('mutations',{}) for v in item['samples'] if v.get('phase')=='idle-650ms'),{})
+  if idle.get('childList',0)>120:failures.append((item['browser'],item['route'],item['name'],'continuous SVG mutation loop',idle['childList']))
+  if idle.get('attributes',0)>240:failures.append((item['browser'],item['route'],item['name'],'continuous SVG attribute loop',idle['attributes'])
   if first['sheetState']!='peek' or last['sheetState']!='peek':failures.append((item['browser'],item['route'],item['name'],'sheet state',first['sheetState'],last['sheetState']))
   h0,h1=first['mapRect']['h'],last['mapRect']['h']
   if abs(h1-h0)>5:failures.append((item['browser'],item['route'],item['name'],'map height shift',h0,h1))
