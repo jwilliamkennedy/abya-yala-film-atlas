@@ -62,7 +62,7 @@ async function boot(){
  let ml;try{const lib=await import(new URL('assets/maplibre/maplibre-gl.mjs',document.baseURI).href);ml=lib.default||lib;}catch(e){fail();return;}
  // Set the actual initial palette before MapLibre paints its first frame.
  // Retain the day values for correct subsequent mode switching.
- const openingWeave=root.dataset.atlasBoot==='pending'&&new URLSearchParams(location.search).get('constellate')==='1';
+ const openingWeave=new URLSearchParams(location.search).get('constellate')==='1';
  if(root.dataset.readingTheme==='night'||root.dataset.uiConstellate==='on'||openingWeave){
   for(const [id,properties] of Object.entries(NIGHT)){
    const layer=style.layers.find(l=>l.id===id);
@@ -87,7 +87,7 @@ const DAY={},NIGHT={'land':{'background-color':'#243750'},'water':{'fill-color':
  'roads':{'line-opacity':0},'elevation-tint':{'color-relief-opacity':0},'relief':{'hillshade-shadow-color':'#000000','hillshade-highlight-color':'#2a3550','hillshade-accent-color':'#0b1020','hillshade-exaggeration':.35}};
 let palette='day';
 function applyPalette(){
- if(!map||!ready)return;const want=(root.dataset.readingTheme==='night'||root.dataset.uiConstellate==='on'||(root.dataset.atlasBoot==='pending'&&new URLSearchParams(location.search).get('constellate')==='1'))?'night':'day';if(want===palette)return;palette=want;
+ if(!map||!ready)return;const want=(root.dataset.readingTheme==='night'||root.dataset.uiConstellate==='on'||new URLSearchParams(location.search).get('constellate')==='1')?'night':'day';if(want===palette)return;palette=want;
  for(const [id,props] of Object.entries(NIGHT)){if(!map.getLayer(id))continue;for(const [k,v] of Object.entries(props)){try{if(!(id in DAY))DAY[id]={};if(!(k in DAY[id]))DAY[id][k]=map.getPaintProperty(id,k);map.setPaintProperty(id,k,want==='night'?v:DAY[id][k]);}catch(e){}}}
  root.dataset.basemapPalette=want;
 }
