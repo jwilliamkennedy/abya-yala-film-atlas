@@ -29,6 +29,10 @@ JS=r"""() => {
   initialTerritories:document.documentElement.dataset.atlasInitialTerritories||null,
   territoryWash:getComputedStyle(document.documentElement).getPropertyValue('--territory-wash').trim(),
   shadingChecked:$('#layer-shading')?.checked??null,
+  connectionsChecked:$('#layer-connections')?.checked??null,
+  cinemaChecked:$('#layer-cinema')?.checked??null,
+  outlinesChecked:$('#layer-boundaries')?.checked??null,
+  inboundWorld:document.documentElement.dataset.atlasInboundWorld||null,
   unmappedClass:document.body.classList.contains('atlas-unmapped'),
   unmapParent:$('#atlas-unmap')?.parentElement?.className||null,
   unmapPressed:$('#atlas-unmap')?.getAttribute('aria-pressed')||null,
@@ -105,6 +109,8 @@ async def main():
       {'territories':'custom','territory-strength':33},
       {'unmapped':'1'}
     ]:report.append(await case(browser,engine,'map','index.html',390,persisted=state))
+   if engine=='webkit':
+    report.append(await case(browser,engine,'map','index.html#view=filmmakers&totals=0&shading=0&connections=0&outlines=1&world=1',390))
    await browser.close()
  failures=[]
  for item in report:
@@ -125,6 +131,11 @@ async def main():
     if v['territoryWash']!=expectedWash:failures.append((item['browser'],'territory wash flash',v['territoryWash'],expectedWash))
     if expectedMode=='off' and v['shadingChecked'] is True:failures.append((item['browser'],'Off checkbox flashed on'))
     if settings.get('reading-theme')=='night' and v['theme']!='night':failures.append((item['browser'],'night theme flashed paper',v['theme']))
+  if '#view=' in item['route']:
+   for v in seq:
+    if v['cinemaChecked'] is not False or v['shadingChecked'] is not False or v['connectionsChecked'] is not False or v['outlinesChecked'] is not True:
+     failures.append((item['browser'],'shared map toggles flashed',v['cinemaChecked'],v['shadingChecked'],v['connectionsChecked'],v['outlinesChecked']))
+    if v['inboundWorld']!='1':failures.append((item['browser'],'missing whole-world route',v['inboundWorld']))
   for v in seq:
    if v['unmapParent']!='view-toggles':failures.append((item['browser'],'Disappear map outside Layers',v['unmapParent']))
    if v['preparing']:failures.append((item['browser'],item['route'],item['name'],'obsolete loading text'))
