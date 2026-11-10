@@ -58,6 +58,18 @@ async function boot(){
  host=document.createElement('div');host.id='atlas-basemap';host.setAttribute('aria-hidden','true');
  svg.parentElement.insertBefore(host,svg);credit();
  let ml;try{const lib=await import(new URL('assets/maplibre/maplibre-gl.mjs',document.baseURI).href);ml=lib.default||lib;}catch(e){fail();return;}
+ // Set the actual initial palette before MapLibre paints its first frame.
+ // Retain the day values for correct subsequent mode switching.
+ const openingWeave=root.dataset.atlasBoot==='pending'&&new URLSearchParams(location.search).get('constellate')==='1';
+ if(root.dataset.readingTheme==='night'||root.dataset.uiConstellate==='on'||openingWeave){
+  for(const [id,properties] of Object.entries(NIGHT)){
+   const layer=style.layers.find(l=>l.id===id);
+   if(!layer?.paint)continue;
+   DAY[id]??={};
+   for(const [key,value] of Object.entries(properties)){DAY[id][key]=layer.paint[key];layer.paint[key]=value;}
+  }
+  palette='night';root.dataset.basemapPalette='night';
+ }
  try{map=new ml.Map({container:host,style,interactive:false,attributionControl:false,fadeDuration:0,renderWorldCopies:true,center:[-90,10],zoom:1.4,maxZoom:18,maxPitch:0,trackResize:false});}catch(e){fail();return;}
  map.on('load',()=>{ready=true;root.dataset.basemapState='ready';sync();applyPalette();});
  map.on('error',()=>{if(!ready&&++errors>6)fail();});
@@ -73,7 +85,7 @@ const DAY={},NIGHT={'land':{'background-color':'#243750'},'water':{'fill-color':
  'roads':{'line-opacity':0},'elevation-tint':{'color-relief-opacity':0},'relief':{'hillshade-shadow-color':'#000000','hillshade-highlight-color':'#2a3550','hillshade-accent-color':'#0b1020','hillshade-exaggeration':.35}};
 let palette='day';
 function applyPalette(){
- if(!map||!ready)return;const want=(root.dataset.readingTheme==='night'||root.dataset.uiConstellate==='on')?'night':'day';if(want===palette)return;palette=want;
+ if(!map||!ready)return;const want=(root.dataset.readingTheme==='night'||root.dataset.uiConstellate==='on'||(root.dataset.atlasBoot==='pending'&&new URLSearchParams(location.search).get('constellate')==='1'))?'night':'day';if(want===palette)return;palette=want;
  for(const [id,props] of Object.entries(NIGHT)){if(!map.getLayer(id))continue;for(const [k,v] of Object.entries(props)){try{if(!(id in DAY))DAY[id]={};if(!(k in DAY[id]))DAY[id][k]=map.getPaintProperty(id,k);map.setPaintProperty(id,k,want==='night'?v:DAY[id][k]);}catch(e){}}}
  root.dataset.basemapPalette=want;
 }
