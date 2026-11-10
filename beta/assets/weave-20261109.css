@@ -9,7 +9,10 @@ html[data-weave-stage="start"] #constellate-mode>*:not(#constellate-exit):not(sp
 html[data-weave-stage="start"] #weave-theme-web-toggle{order:1!important;margin-left:0!important}
 html[data-weave-web="1"] #weave-start{display:none!important}
 html[data-weave-stage="start"] #constellate-mode .weave-tool-group{order:0!important;margin-left:0!important}
-html[data-weave-stage] #weave-empty-hint{display:none!important}
+/* The previous engine introduction is superseded by #weave-start.
+   Do not reveal either it or an unfinished toolbar during initialization. */
+#weave-empty-hint{display:none!important}
+html:not([data-weave-stage]) body.is-constellating #constellate-mode{visibility:hidden!important}
 #weave-start{display:none}
 html[data-weave-stage="start"] #weave-start{display:block}
 #weave-start{position:absolute;z-index:30;left:50%;top:66px;transform:translateX(-50%);width:min(1000px,calc(100% - 48px));max-height:calc(100% - 110px);overflow:auto;

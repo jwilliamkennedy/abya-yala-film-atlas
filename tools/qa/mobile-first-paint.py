@@ -36,6 +36,9 @@ JS=r"""() => {
   basemapVisible:shown(basemap),synced:basemap?.dataset.cameraSynced||null,
   mapActions:$$('.map-actions>details').map(e=>e.id),
   preparing:document.body?.innerText.includes('Preparing the atlas')||!!(start&&shown(start)),
+  legacyIntroVisible:shown($('#weave-empty-hint')),
+  prematureConstellateToolbar:!!(document.body?.classList.contains('is-constellating')&&!document.documentElement.dataset.weaveStage&&shown($('#constellate-mode'))),
+  featuredExpanded:shown($('#featured-weave'))&&!$('#featured-weave')?.classList.contains('is-collapsed'),
   labels:labels.length,duplicateLabelPairs:[...new Set(doubles)].slice(0,12),sampleLabels:labels.slice(0,4)
  };
 }"""
@@ -96,6 +99,9 @@ async def main():
   if abs(h1-h0)>5:failures.append((item['browser'],item['route'],item['name'],'map height shift',h0,h1))
   for v in seq:
    if v['preparing']:failures.append((item['browser'],item['route'],item['name'],'obsolete loading text'))
+   if v['legacyIntroVisible']:failures.append((item['browser'],item['route'],item['name'],'old Constellate intro visible'))
+   if v['prematureConstellateToolbar']:failures.append((item['browser'],item['route'],item['name'],'old toolbar visible before stage ready'))
+   if v['featuredExpanded']:failures.append((item['browser'],item['route'],item['name'],'featured card expands before initialization'))
    if v['navCollisions']:failures.append((item['browser'],item['route'],item['name'],'nav collision',v['navCollisions']))
    if v['duplicateLabelPairs']:failures.append((item['browser'],item['route'],item['name'],'duplicate labels',v['duplicateLabelPairs']))
    if v['scrollWidth']>v['width']+2:failures.append((item['browser'],item['route'],item['name'],'horizontal overflow',v['scrollWidth']))
