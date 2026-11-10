@@ -1,0 +1,39 @@
+name: Mobile first-paint WebKit audit
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'tools/qa/mobile-first-paint.py'
+      - '.github/workflows/mobile-first-paint-qa.yml'
+      - 'assets/ui-20261109.css'
+      - 'assets/ui-20261109.js'
+      - 'assets/site-menu.css'
+      - 'menus-20261107.js'
+      - 'index.html'
+      - 'beta/index.html'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: mobile-first-paint-webkit
+  cancel-in-progress: true
+jobs:
+  webkit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install browser test dependencies
+        run: |
+          python3 -m pip install -q playwright==1.*
+          python3 -m playwright install --with-deps chromium webkit >/dev/null
+      - name: Run map + Constellate on two mobile browser engines
+        run: |
+          python3 -m http.server 8894 --bind 127.0.0.1 >/tmp/atlas-mobile-http.log 2>&1 &
+          sleep 2
+          python3 tools/qa/mobile-first-paint.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: atlas-mobile-first-paint
+          path: shots/
