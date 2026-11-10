@@ -103,7 +103,11 @@ function layers(){
  range.addEventListener('input',()=>{const v=+range.value;setStrength(v);if(!shading.checked){shading.checked=true;fire(shading,'change');}
   show(v===PRESET.soft?'soft':v===PRESET.strong?'strong':'custom');store.set('territories','custom');store.set('territory-strength',v);});
  shading.addEventListener('change',()=>{if(!shading.checked)show('off');});
- const mode=store.get('territories','strong'),saved=store.get('territory-strength',null),v=Object.prototype.hasOwnProperty.call(PRESET,mode)?PRESET[mode]:(Number.isFinite(saved)?saved:PRESET.strong);
+ // A shared view requesting shading=0 must beat an older stored Strong/Soft preference.
+ // The initial URL flag was captured before navigation.js rewrites the hash.
+ const savedMode=store.get('territories','strong');
+ const mode=root.dataset.atlasInboundShading==='off'?'off':savedMode;
+ const saved=store.get('territory-strength',null),v=Object.prototype.hasOwnProperty.call(PRESET,mode)?PRESET[mode]:(Number.isFinite(saved)?saved:PRESET.strong);
  range.value=v;setStrength(v);
  if(mode==='off')setMode('off',false);else{if(!shading.checked){shading.checked=true;fire(shading,'change');}show(mode);}
 }
