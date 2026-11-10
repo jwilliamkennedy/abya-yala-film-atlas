@@ -1,5 +1,5 @@
 /* Constellate 50 fixes: 2026-11-09. Only presentation; source data unchanged. */
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Canadian+Aboriginal:wght@400;600&family=Noto+Sans+Cherokee:wght@400;600&family=Noto+Sans+Osage:wght@400;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Canadian+Aboriginal:wght@400;600&family=Noto+Sans+Cherokee:wght@400;600&family=Noto+Sans+Osage&display=swap");
 /* 01 Restore the dark-sky background */
 body.is-theme-weaving .map-panel{background:#15283d!important}
 /* 02 Remove the noisy vignette */
