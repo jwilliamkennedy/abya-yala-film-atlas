@@ -4,6 +4,10 @@ on:
     branches: [main]
     paths:
       - '.github/workflows/mobile-webkit-visual.yml'
+      - 'index.html'
+      - 'beta/index.html'
+      - 'menus-20261107.js'
+      - 'assets/ui-20261109.js'
   workflow_dispatch:
 permissions:
   contents: read

@@ -28,7 +28,10 @@ JS=r"""() => {
   sheetRect:rect(sheet),sheetState:document.documentElement.dataset.sheet||null,
   uiReady:document.documentElement.dataset.atlasUi||null,theme:document.documentElement.dataset.readingTheme||null,
   weave:document.documentElement.dataset.weaveStage||null,
-  headerLang:$$('header #ui-lang').length,headerTheme:$$('header .ui-theme-toggle').length,
+  headerLang:$('header #ui-lang').length,headerTheme:$('header .ui-theme-toggle').length,
+  currentNav:$('header nav.primary [aria-current="page"]').map(x=>x.textContent.trim()),
+  randomHome:$('#random-entry')?.closest('.ui-index-more')?'more':'elsewhere',
+  zoomText:$('#zoom-reset')?.textContent.trim(),
   mapSvg:$$('svg#atlas').length,basemapCount:$$('#atlas-basemap').length,
   basemapVisible:shown(basemap),synced:basemap?.dataset.cameraSynced||null,
   mapActions:$$('.map-actions>details').map(e=>e.id),
@@ -96,6 +99,10 @@ async def main():
    if v['navCollisions']:failures.append((item['browser'],item['route'],item['name'],'nav collision',v['navCollisions']))
    if v['duplicateLabelPairs']:failures.append((item['browser'],item['route'],item['name'],'duplicate labels',v['duplicateLabelPairs']))
    if v['scrollWidth']>v['width']+2:failures.append((item['browser'],item['route'],item['name'],'horizontal overflow',v['scrollWidth']))
+   if v['randomHome']!='more':failures.append((item['browser'],item['route'],item['name'],'Surprise me displaced'))
+   if v['zoomText']!='Overview':failures.append((item['browser'],item['route'],item['name'],'Overview text changes'))
+   expected='Constellate' if item['name']=='constellate' else 'Map'
+   if v['currentNav']!=[expected]:failures.append((item['browser'],item['route'],item['name'],'active navigation',v['currentNav']))
  print('MOBILE_QA_FAILURES',json.dumps(failures,ensure_ascii=False),flush=True)
  with open('shots/mobile-first-paint.json','w') as fp:json.dump(report,fp,ensure_ascii=False,indent=2)
  if failures:raise AssertionError('Mobile geometry regression: '+str(failures[:8]))
