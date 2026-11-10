@@ -201,6 +201,8 @@
   if(!x||x.type!=='film')return false;
   if(drawThread)setDrawThread(false);
   if(reading)setRead(false);
+  // Following another film is navigation, not a pending connector action.
+  connecting=false;first=shiftFirst=dragLink=pointer=null;draft=draftKey=null;
   const old=existingWork(x);
   const membership=old&&S.current().threads.find(t=>t.items.includes(old.id));
   // A film already in any thread is a navigation target, not a duplicate addition.
