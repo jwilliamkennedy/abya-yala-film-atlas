@@ -80,7 +80,7 @@
     '<div class="tw-heading"><div><p class="tw-kicker">CONSTELLATE / RELATIONAL INDEX</p><h2>Follow the themes</h2><p>Each line joins two themes documented together in a film synopsis. Select a theme or a bridge to follow the films.</p></div>'+
     '<button id="tw-close" type="button" aria-label="Close theme network">×</button></div>'+
     '<div class="tw-top"><label for="tw-search">Find a theme</label><input id="tw-search" type="search" placeholder="Search themes…" autocomplete="off">'+
-    '<button id="tw-seed" type="button">Explore a woven example</button></div>'+
+    '<button id="tw-seed" type="button">Explore an example constellation</button></div>'+
     '<div id="tw-families" class="tw-families" role="group" aria-label="Theme families"></div>'+
     '<div class="tw-main"><div class="tw-graph-wrap"><div id="tw-mobile-list" class="tw-mobile-list" aria-label="Browse themes by name"></div><svg id="tw-graph" viewBox="0 0 720 550" role="group" aria-label="Interactive network of sourced themes and co-tagged films"></svg>'+
       '<p class="tw-graph-foot"><span id="tw-stat"></span> · Lines indicate co-tags, not cultural similarity. <button type="button" id="tw-all-links" aria-pressed="false">All bridges</button> <button type="button" id="tw-reset">Reset view</button></p></div>'+ 
@@ -229,12 +229,12 @@
    return '<article class="tw-film"><div class="tw-film-art">'+(image?'<img loading="lazy" src="'+esc(image)+'" alt="" onerror="this.hidden=true;this.parentElement.classList.add(\'no-art\')">':'')+'<span aria-hidden="true">'+esc(initials)+'</span></div>'+ 
     '<div class="tw-film-copy"><strong>'+esc(x.title)+'</strong><small>'+esc([x.maker,x.year].filter(Boolean).join(' · '))+'</small>'+
     (source?'<a href="'+esc(source)+'" target="_blank" rel="noopener noreferrer">Synopsis source ↗</a>':'<span class="tw-no-source">Atlas theme tag</span>')+'</div>'+
-    '<button type="button" data-film-id="'+esc(x.id)+'" aria-label="Follow '+esc(x.title)+' in your weave">Follow →</button></article>';
+    '<button type="button" data-film-id="'+esc(x.id)+'" aria-label="Follow '+esc(x.title)+' in your constellation">Follow →</button></article>';
   }).join('')+'</div>'+(total>unique.length?'<div class="tw-more-actions"><span class="tw-more-count">Showing '+unique.length+' of '+total+' films</span><button type="button" data-more-films>Show next '+Math.min(20,total-unique.length)+' films</button></div>':'');
  }
  function example(){
   var api=atlas(),s=store();if(!api||!s)return;
-  if(s.state.collections.length>=50){notice.textContent='Export or remove an old weave before creating a new one.';return;}
+  if(s.state.collections.length>=50){notice.textContent='Export or remove an old constellation before creating a new one.';return;}
   var all=[...nodeByName.values()];
   var candidates=[
    'Land Defense','Justice, Truth and Reconciliation','Linguistic Preservation',
@@ -248,7 +248,7 @@
   }
   chosen=chosen.slice(0,6);
   if(chosen.length<2){notice.textContent='More documented theme tags are needed before a sample can be built.';return;}
-  if(!s.create('Across themes · a sourced film constellation')){notice.textContent='Could not create a new weave.';return;}
+  if(!s.create('Across themes · a sourced film constellation')){notice.textContent='Could not create a new constellation.';return;}
   var c=s.current();c.note='An example for visual research. Each colored thread follows a theme assigned from a published film synopsis. Shared films cross between threads. Co-tagging is evidence of a catalog relationship, not evidence of cultural similarity, collaboration or a filmmaker endorsement. Read the film sources, then revise and annotate these paths.';
   var usedIds=new Set(),seenMakers=new Set(),colors=['star-bluewhite','star-blue','star-yellow','star-red','star-orange','star-white'];
   chosen.forEach(function(node,i){
@@ -284,7 +284,7 @@
    tries++;
    if(atlas()?.catalog&&store()&&document.getElementById('constellate-mode')){
     clearInterval(timer);
-    if(collect()&&markup()){var query=new URLSearchParams(location.search);var firstVisit=query.get('constellate')==='1'&&!store().current().items.length&&!query.has('weave')&&!location.hash.includes('weave=');if(query.get('theme-web')==='1'||firstVisit){atlas().open();show(true);}}
+    if(collect()&&markup()){var query=new URLSearchParams(location.search);var firstVisit=query.get('constellate')==='1'&&query.get('read')!=='1'&&query.get('play')!=='1'&&!store().current().items.length&&!query.has('weave')&&!location.hash.includes('weave=');if(query.get('theme-web')==='1'||firstVisit){atlas().open();show(true);}}
    }else if(tries>70)clearInterval(timer);
   },200);
  }
