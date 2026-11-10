@@ -82,6 +82,22 @@ async def main():
      for view in ('map','constellate'):
       report.append(await case(browser,engine,view,path,width))
    await browser.close()
+ failures=[]
+ for item in report:
+  if item.get('runnerError'):failures.append((item['browser'],item['route'],item['name'],'runtime error',item['runnerError']))
+  seq=[v for v in item['samples'] if v.get('phase') in ('dom','early','middle','settled')]
+  if len(seq)<4:failures.append((item['browser'],item['route'],item['name'],'missing phases'));continue
+  first,last=seq[0],seq[-1]
+  if first['sheetState']!='peek' or last['sheetState']!='peek':failures.append((item['browser'],item['route'],item['name'],'sheet state',first['sheetState'],last['sheetState']))
+  h0,h1=first['mapRect']['h'],last['mapRect']['h']
+  if abs(h1-h0)>5:failures.append((item['browser'],item['route'],item['name'],'map height shift',h0,h1))
+  for v in seq:
+   if v['preparing']:failures.append((item['browser'],item['route'],item['name'],'obsolete loading text'))
+   if v['navCollisions']:failures.append((item['browser'],item['route'],item['name'],'nav collision',v['navCollisions']))
+   if v['duplicateLabelPairs']:failures.append((item['browser'],item['route'],item['name'],'duplicate labels',v['duplicateLabelPairs']))
+   if v['scrollWidth']>v['width']+2:failures.append((item['browser'],item['route'],item['name'],'horizontal overflow',v['scrollWidth']))
+ print('MOBILE_QA_FAILURES',json.dumps(failures,ensure_ascii=False),flush=True)
  with open('shots/mobile-first-paint.json','w') as fp:json.dump(report,fp,ensure_ascii=False,indent=2)
+ if failures:raise AssertionError('Mobile geometry regression: '+str(failures[:8]))
  print('MOBILE_QA_DONE',len(report),'cases',flush=True)
 asyncio.run(main())

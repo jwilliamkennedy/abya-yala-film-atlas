@@ -3189,8 +3189,9 @@ header nav.primary .watch-link{font-family:var(--sans)!important;font-size:15px;
 :root[data-reading-theme=night] header nav.primary .watch-link{color:inherit}
 #sheet-handle{display:none}
 @media (max-width:760px){
-:root[data-sheet] body{overflow:hidden;height:100dvh}
-:root[data-sheet] main{display:block!important;height:calc(100dvh - var(--header-h,140px))!important;overflow:hidden}
+:root[data-sheet] body.atlas-page{overflow:hidden;height:100dvh;min-height:100dvh;display:flex;flex-direction:column}
+:root[data-sheet] body.atlas-page>header{flex:0 0 auto}
+:root[data-sheet] body.atlas-page>main{flex:1 1 auto!important;min-height:0!important;height:auto!important;display:block!important;overflow:hidden!important}
 :root[data-sheet] .map-panel{height:100%!important;min-height:0!important}
 :root[data-sheet] #index{position:fixed!important;left:0;right:0;bottom:0;top:auto!important;z-index:45;margin:0!important;width:auto!important;max-width:none!important;
   overflow-y:auto;overscroll-behavior:contain;background:var(--reading-paper,#eef0ec);border-radius:16px 16px 0 0;box-shadow:0 -10px 30px rgba(28,36,52,.2);transition:height .28s ease;padding-top:0!important}
