@@ -1,4 +1,27 @@
-<!DOCTYPE html><html lang="en" data-sheet="peek"><head><meta charset="utf-8"><script id="atlas-entry-mode">(()=>{const u=new URLSearchParams(location.search),r=document.documentElement;r.dataset.atlasEntry=u.get('constellate')==='1'?'constellate':'map';if(matchMedia('(max-width:760px)').matches)r.dataset.uiBar='split';})();</script><style id="atlas-menu-first-paint">
+<!DOCTYPE html><html lang="en" data-sheet="peek"><head><meta charset="utf-8"><script id="atlas-entry-mode">(()=>{
+ const u=new URLSearchParams(location.search),r=document.documentElement;
+ r.dataset.atlasEntry=u.get('constellate')==='1'?'constellate':'map';
+ if(matchMedia('(max-width:760px)').matches)r.dataset.uiBar='split';
+ // Match reading-theme.js and menus-20261107.js before painting.
+ const palette={
+  paper:{paper:'#eef0ec',ink:'#182028',muted:'#55616b',accent:'#9c3b26',wash:'#e2e6e0',line:'#c9d0c6'},
+  night:{paper:'#0f1830',ink:'#f2e8cf',muted:'#b9c1d6',accent:'#e08a6e',wash:'#1c2b48',line:'#33456a'}
+ };
+ let theme='paper',mode='strong',strength=41;
+ try{
+  if(localStorage.getItem('atlas-palette-pass')==='88'&&localStorage.getItem('atlas-reading-theme')==='night')theme='night';
+  const raw=localStorage.getItem('atlas-ui-territories');
+  if(raw!==null){const v=JSON.parse(raw);if(['off','soft','strong','custom'].includes(v))mode=v;}
+  const rawStrength=localStorage.getItem('atlas-ui-territory-strength');
+  if(rawStrength!==null){const v=JSON.parse(rawStrength);if(typeof v==='number'&&Number.isFinite(v))strength=Math.min(60,Math.max(8,v));}
+ }catch(e){}
+ if(mode==='strong')strength=41;
+ if(mode==='soft')strength=24;
+ r.dataset.readingTheme=theme;
+ r.dataset.atlasInitialTerritories=mode;
+ r.style.setProperty('--territory-wash',String(strength/100));
+ for(const [key,value]of Object.entries(palette[theme]))r.style.setProperty('--reading-'+key,value);
+})();</script><style id="atlas-menu-first-paint">
 /* Hide only the old four-control map menu until the final menu has been placed. */
 html:not([data-atlas-ui="ready"]) body.atlas-page .map-toolbar{visibility:hidden!important;pointer-events:none!important}
 body.atlas-page .map-toolbar .map-actions>button#world,
@@ -17,6 +40,8 @@ html[data-atlas-entry="map"]:not([data-atlas-ui="ready"]) body.atlas-page .map-p
  html[data-atlas-entry="map"] body.atlas-page .map-toolbar{visibility:visible!important}
  html[data-atlas-entry="map"]:not([data-atlas-ui="ready"]) body.atlas-page .map-toolbar{pointer-events:none!important}
 }
+/* Respect saved Off while geography is loading; later checkbox state owns visibility. */
+html[data-atlas-initial-territories="off"]:not([data-atlas-ui="ready"]) body.atlas-page #atlas .land-shading{visibility:hidden!important;pointer-events:none!important}
 /* Constellate's start card and theme web are authored asynchronously by separate modules.
    Neither the atlas map nor outdated tools should paint behind an unfinished entrance. */
 html[data-atlas-entry="constellate"]:not([data-weave-stage]) body.atlas-page .map-panel #atlas,
@@ -39,7 +64,7 @@ html[data-atlas-entry="constellate"] body.atlas-page .map-panel{background:#1528
 <a href="https://native-land.ca/maps/constellation" target="_blank" rel="noopener noreferrer">Native Land’s separate language constellation ↗</a>
 <button data-close-map-panel="map-info" class="map-panel-close">Close</button>
 </div></details></div></div>
-<svg id="atlas" tabindex="0" aria-describedby="map-help" role="group" aria-label="Land and cinema atlas. Move across land to read Indigenous names in the index margin. Tab to a name and press Enter to explore. All country totals are in the Country totals menu."></svg>
+<script id="atlas-preseed-layer-input">if(document.documentElement.dataset.atlasInitialTerritories==='off')document.getElementById('layer-shading').checked=false;</script><svg id="atlas" tabindex="0" aria-describedby="map-help" role="group" aria-label="Land and cinema atlas. Move across land to read Indigenous names in the index margin. Tab to a name and press Enter to explore. All country totals are in the Country totals menu."></svg>
 <div id="map-selection-focus" hidden role="status" aria-live="polite"><strong id="map-focus-name"></strong><span id="map-focus-basis"></span></div><div class="zoom" role="group" aria-label="Map controls"><button id="zoom-out" aria-label="Zoom out" title="Zoom out">−</button><output id="zoom-level" aria-label="Current zoom">1×</output><button id="zoom-in" aria-label="Zoom in" title="Zoom in">+</button><button id="zoom-selection" title="Fit the selected affiliation or country reference; keep the index" disabled="">Fit selection</button><button id="zoom-reset" aria-label="Map overview" title="Return to overview; keep the current selection and filters">Overview</button></div>
 <section id="map-films" hidden aria-label="Films in the selected filmmaker or land"><div class="map-films-heading"><button id="map-films-toggle" aria-expanded="false" aria-controls="map-film-cards" title="Expand or collapse film previews"><span id="map-films-label">Films</span><b id="map-films-count"></b><i aria-hidden="true">⌃</i></button><button id="map-films-all">Browse films →</button></div><div id="map-film-cards" hidden aria-label="Selected film previews"></div></section><p id="map-help" class="sr-only">Drag to pan. Scroll or pinch to zoom at the pointer. Plus and minus zoom; Home returns to overview. Fit selection locates the selected reference. Overview retains the index selection.</p>
 <footer class="map-footer"><span id="map-caption">Move across the land. Read its names in the margin.</span><span><a href="https://www.naturalearthdata.com/" target="_blank" rel="noopener noreferrer">Natural Earth</a> · Native Land Digital / MapMaker · 2023</span></footer>
