@@ -173,24 +173,31 @@ function mapPage(){
  /* map marks */
  /* Do not cache per-path visibility across map cameras. */
  /* longitude of a screen x, from two known points (the overlay is Web Mercator, so x is linear in longitude) */
- function lonAt(x){
-  try{var a=window.Atlas.screenPoint([-90,0]),b=window.Atlas.screenPoint([-89,0]);var dx=b[0]-a[0];if(!(dx>0))return null;return -90+(x-a[0])/dx;}catch(e){return null;}
+ // One projected longitude calibration per batch, rather than two Atlas
+ // projection calls for every territory path on every camera refresh.
+ function longitudeFrame(){
+  try{var rect=$('#atlas').getBoundingClientRect(),a=window.Atlas.screenPoint([-90,0]),b=window.Atlas.screenPoint([-89,0]),dx=b[0]-a[0];
+   return dx>0?{left:rect.left,x:a[0],dx:dx}:null;}catch(e){return null;}
  }
- function outside(p){
-  try{var svg=$('#atlas').getBoundingClientRect(),r=p.getBoundingClientRect();if(!r.width)return null;
-   var lon=lonAt((r.left+r.right)/2-svg.left);if(lon==null||!isFinite(lon))return null;
+ function outside(p,frame){
+  if(!frame)return null;
+  try{var r=p.getBoundingClientRect();if(!r.width)return null;
+   var lon=-90+((r.left+r.right)/2-frame.left-frame.x)/frame.dx;
+   if(!isFinite(lon))return null;
    lon=((lon+540)%360)-180;return lon>-25||lon<-179;}catch(e){return null;}
  }
  function marks(){
-  $$('#atlas .land-word').forEach(function(g){var n=+g.dataset.linkedCount||0;g.dataset.uiTier=n>=30?'1':n>=12?'2':n>=4?'3':'4';});
+  $$('#atlas .land-word').forEach(function(g){var n=+g.dataset.linkedCount||0,tier=n>=30?'1':n>=12?'2':n>=4?'3':'4';if(g.dataset.uiTier!==tier)g.dataset.uiTier=tier;});
   $$('#atlas .land-thumb').forEach(function(g){
    var img=g.querySelector('image.color')||g.querySelector('image');var src=img&&(img.getAttribute('href')||img.getAttribute('xlink:href'))||'';
    if(g.dataset.uiSrc===src)return;g.dataset.uiSrc=src;
    if(!src){delete g.dataset.uiOk;return;}
    g.dataset.uiOk='wait';var probe=new Image();probe.onload=function(){if(g.dataset.uiSrc===src)g.dataset.uiOk='1';};probe.onerror=function(){if(g.dataset.uiSrc===src)g.dataset.uiOk='0';};probe.src=src;
   });
+  var frame=longitudeFrame();
   $$('#atlas .nation-wash').forEach(function(p){
-   var out=outside(p);if(out==null)return;p.classList.toggle('ui-outside',out);
+   var out=outside(p,frame);if(out==null)return;
+   if(p.classList.contains('ui-outside')!==out)p.classList.toggle('ui-outside',out);
   });
  }
  /* map key: the play button */
@@ -229,13 +236,11 @@ function mapPage(){
   return n.nodeType===1&&(n.matches?.('.land-word,.land-thumb,.nation-wash')||!!n.querySelector?.('.land-word,.land-thumb,.nation-wash'));
  }
  indexMore();alphabetScroll();barHeight();zoomState();queueUpdate(true,true,true);keepList();
+ // Watch DOM structure without observing every SVG class/aria mutation.
+ // The separate narrow observers only watch stateful elements themselves.
  new MutationObserver(function(records){
   var full=false,map=false,state=false;
   for(var m of records){
-   if(m.type==='attributes'){
-    if(m.target===document.body||m.target.id==='constellate-mode')state=true;
-    continue;
-   }
    var target=m.target.nodeType===1?m.target:m.target.parentElement;
    if(target?.closest?.('#atlas')){
     if([].some.call(m.addedNodes,containsMapNode)||[].some.call(m.removedNodes,containsMapNode))map=true;
@@ -244,7 +249,9 @@ function mapPage(){
    if(full&&map&&state)break;
   }
   if(full||map||state)queueUpdate(full,map,state||full);
- }).observe(document.body,{subtree:true,childList:true,attributes:true,attributeFilter:['hidden','aria-pressed','aria-expanded','open','class']});
+ }).observe(document.body,{subtree:true,childList:true});
+ new MutationObserver(function(){queueUpdate(false,false,true);}).observe(document.body,{attributes:true,attributeFilter:['class']});
+ var modeNode=$('#constellate-mode');if(modeNode)new MutationObserver(function(){queueUpdate(false,false,true);}).observe(modeNode,{attributes:true,attributeFilter:['hidden','class']});
  var zl=$('#zoom-level');if(zl)new MutationObserver(zoomState).observe(zl,{childList:true,characterData:true,subtree:true});
  window.addEventListener('atlas-camera-change',function(){
   zoomState();clearTimeout(cameraTimer);
