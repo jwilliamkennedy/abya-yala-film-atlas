@@ -53,12 +53,17 @@ jobs:
                     pending:document.documentElement.dataset.atlasBoot==='pending',
                     hidden:getComputedStyle(document.querySelector('main')).visibility==='hidden',
                     mapNodes:document.querySelectorAll('#atlas').length,
-                    statusVisible:getComputedStyle(document.querySelector('#atlas-startup-status')).display!=='none'
+                    statusVisible:getComputedStyle(document.querySelector('#atlas-startup-status')).display!=='none',
+                    legacyDesktopItems:[...document.querySelector('.map-actions').children].filter(e=>e.matches('details,#world')).map(e=>e.id)
                   })""")
-                  assert before=={"pending":True,"hidden":True,"mapNodes":1,"statusVisible":True},(name,before)
+                  assert before["pending"] and before["hidden"] and before["mapNodes"]==1 and before["statusVisible"],(name,before)
+                  # The screenshot identifies the legacy FOUR-item desktop toolbar.
+                  # It is not a second map: World is still a fourth top-level control.
+                  assert before["legacyDesktopItems"]==["country-drawer","layers","world","map-info"],(name,before)
                   await page.wait_for_function("document.documentElement.dataset.atlasBoot==='ready'",timeout=30000)
                   after=await page.evaluate("""() => ({
                     menuPanels:document.querySelectorAll('.map-actions>details').length,
+                    topDesktopItems:[...document.querySelector('.map-actions').children].filter(e=>e.matches('details,#world')).map(e=>e.id),
                     mapNodes:document.querySelectorAll('#atlas').length,
                     baseNodes:document.querySelectorAll('#atlas-basemap').length,
                     toolbarNodes:document.querySelectorAll('.map-panel>.map-toolbar').length,
@@ -70,6 +75,7 @@ jobs:
                     stage:document.documentElement.dataset.weaveStage||null
                   })""")
                   assert after["toolbarNodes"]==1 and after["menuPanels"]==3,(name,after)
+                  assert after["topDesktopItems"]==["country-drawer","layers","map-info"],(name,after)
                   assert after["mapNodes"]==1 and after["baseNodes"]<=1,(name,after)
                   assert after["worldInLayers"] and after["keyReady"] and after["uiReady"] and after["visible"],(name,after)
                   if view=="constellate":
