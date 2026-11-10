@@ -1,0 +1,53 @@
+name: Mobile WebKit visual frames (diagnostic)
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/mobile-webkit-visual.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  frames:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          python3 -m pip install -q playwright==1.* pillow
+          python3 -m playwright install --with-deps webkit >/dev/null
+      - name: Observe real first and settled WebKit frames
+        run: |
+          python3 -m http.server 8896 --bind 127.0.0.1 >/tmp/atlas-visual.log 2>&1 &
+          sleep 2
+          cat > /tmp/mobile-frame.py <<'PY'
+          import asyncio,base64,io,json
+          from PIL import Image
+          from playwright.async_api import async_playwright
+          async def shoot(pg,name):
+            b=await pg.screenshot(animations='disabled',timeout=20000)
+            im=Image.open(io.BytesIO(b)).convert('RGB')
+            im.thumbnail((320,700))
+            out=io.BytesIO();im.save(out,format='JPEG',quality=49,optimize=True)
+            print('ATLAS_VISUAL_FRAME|'+name+'|'+base64.b64encode(out.getvalue()).decode('ascii'),flush=True)
+          async def main():
+            async with async_playwright() as p:
+              browser=await p.webkit.launch()
+              for kind in ('map','constellate'):
+                ctx=await browser.new_context(viewport={'width':390,'height':844},device_scale_factor=1,is_mobile=True,has_touch=True)
+                pg=await ctx.new_page()
+                errors=[];pg.on('pageerror',lambda e:errors.append(str(e)))
+                await pg.goto('http://127.0.0.1:8896/index.html'+('?constellate=1' if kind=='constellate' else ''),wait_until='domcontentloaded',timeout=90000)
+                try:await shoot(pg,kind+'-first')
+                except Exception as e:print('FRAME_ERROR',kind,'first',str(e)[:180])
+                await pg.wait_for_function("document.documentElement.dataset.atlasUi==='ready'",timeout=35000)
+                await pg.wait_for_timeout(1400)
+                try:await shoot(pg,kind+'-settled')
+                except Exception as e:print('FRAME_ERROR',kind,'settled',str(e)[:180])
+                info=await pg.evaluate("""() => ({sheet:document.documentElement.dataset.sheet,mapHeight:Math.round(document.querySelector('.map-panel').getBoundingClientRect().height),headerHeight:Math.round(document.querySelector('header').getBoundingClientRect().height),textNodes:document.querySelectorAll('#atlas .land-word-label').length,visible:[...document.querySelectorAll('.map-actions>details')].map(e=>e.id)})""")
+                print('ATLAS_VISUAL_METRIC',kind,json.dumps(info),'errors',json.dumps(errors[:3]),flush=True)
+                await ctx.close()
+              await browser.close()
+          asyncio.run(main())
+          PY
+          python3 /tmp/mobile-frame.py
