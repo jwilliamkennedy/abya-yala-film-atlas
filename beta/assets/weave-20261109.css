@@ -208,3 +208,10 @@ html[data-weave-stage="read"] #weave-read-panel>.constellate-actions button{min-
  html[data-weave-stage="read"] #weave-read-panel .weave-read-trail>summary{display:none!important}
  html[data-weave-stage="read"] #weave-read-panel .weave-read-thread{display:block!important}
 }
+
+
+/* Read must not inherit another mode's screen-covering dark layers. */
+html[data-weave-stage="read"] body.is-theme-weaving .map-panel::before,
+html[data-weave-stage="read"] body.is-theme-weaving .map-panel::after{display:none!important}
+html[data-weave-stage="read"] body.is-theme-weaving #atlas .weave-night-veil{display:none!important}
+html[data-weave-stage="read"] body #atlas-theme-web{display:none!important}
