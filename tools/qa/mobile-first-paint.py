@@ -26,6 +26,9 @@ JS=r"""() => {
   headingRect:rect(frame),navRects:nav,navCollisions:collisions,
   mainRect:rect($('main')),mapRect:rect(map),barRect:rect(bar),barVisible:shown(bar),
   sheetRect:rect(sheet),sheetState:document.documentElement.dataset.sheet||null,
+  initialTerritories:document.documentElement.dataset.atlasInitialTerritories||null,
+  territoryWash:getComputedStyle(document.documentElement).getPropertyValue('--territory-wash').trim(),
+  shadingChecked:$('#layer-shading')?.checked??null,
   uiReady:document.documentElement.dataset.atlasUi||null,theme:document.documentElement.dataset.readingTheme||null,
   weave:document.documentElement.dataset.weaveStage||null,
   headerLang:$('header #ui-lang').length,headerTheme:$('header .ui-theme-toggle').length,
@@ -43,8 +46,12 @@ JS=r"""() => {
  };
 }"""
 
-async def case(browser,engine,name,route,width):
+async def case(browser,engine,name,route,width,persisted=None):
  context=await browser.new_context(viewport={'width':width,'height':844},device_scale_factor=2,is_mobile=True,has_touch=True,locale='en-US')
+ if persisted:
+  keys={'territories':'atlas-ui-territories','territory-strength':'atlas-ui-territory-strength','reading-theme':'atlas-reading-theme','palette-pass':'atlas-palette-pass'}
+  values={keys[k]:(json.dumps(v) if k in ('territories','territory-strength') else str(v)) for k,v in persisted.items()}
+  await context.add_init_script('try{for(const [k,v] of Object.entries('+json.dumps(values)+'))localStorage.setItem(k,v);}catch(e){}')
  p=await context.new_page()
  errors=[]
  p.on('pageerror',lambda e:errors.append(str(e)[:240]))
@@ -68,8 +75,8 @@ async def case(browser,engine,name,route,width):
   if name=='map' and await p.locator('#layers').count():
    await p.locator('#layers>summary').click(timeout=5000)
    samples.append({'phase':'layers-open','open':await p.locator('#layers').evaluate('(x)=>x.open'),'inViewport':await p.locator('#layers>div').evaluate('(e)=>{const b=e.getBoundingClientRect();return b.left>=-1 && b.right<=innerWidth+1}')})
-  out={'name':name,'browser':engine,'width':width,'route':route,'samples':samples,'errors':errors[:12]}
- except Exception as e:out={'name':name,'browser':engine,'width':width,'route':route,'samples':samples,'errors':errors[:12], 'runnerError':str(e)[:450]}
+  out={'name':name,'browser':engine,'width':width,'route':route,'persisted':persisted,'samples':samples,'errors':errors[:12]}
+ except Exception as e:out={'name':name,'browser':engine,'width':width,'route':route,'persisted':persisted,'samples':samples,'errors':errors[:12], 'runnerError':str(e)[:450]}
  await context.close()
  print('MOBILE_QA_CASE',json.dumps({k:v for k,v in out.items() if k!='samples'},ensure_ascii=False),flush=True)
  for s in samples:
@@ -87,6 +94,12 @@ async def main():
     for path in ('index.html','beta/index.html'):
      for view in ('map','constellate'):
       report.append(await case(browser,engine,view,path,width))
+   if engine=='webkit':
+    for state in [
+      {'territories':'off'},
+      {'territories':'soft','reading-theme':'night','palette-pass':'88'},
+      {'territories':'custom','territory-strength':33}
+    ]:report.append(await case(browser,engine,'map','index.html',390,persisted=state))
    await browser.close()
  failures=[]
  for item in report:
@@ -97,6 +110,15 @@ async def main():
   if first['sheetState']!='peek' or last['sheetState']!='peek':failures.append((item['browser'],item['route'],item['name'],'sheet state',first['sheetState'],last['sheetState']))
   h0,h1=first['mapRect']['h'],last['mapRect']['h']
   if abs(h1-h0)>5:failures.append((item['browser'],item['route'],item['name'],'map height shift',h0,h1))
+  if item.get('persisted'):
+   settings=item['persisted']
+   expectedMode=settings['territories']
+   expectedWash={'strong':'0.41','soft':'0.24'}.get(expectedMode,'0.'+str(settings.get('territory-strength',41)))
+   for v in seq:
+    if v['initialTerritories']!=expectedMode:failures.append((item['browser'],'initial territory mode',v['initialTerritories'],expectedMode))
+    if v['territoryWash']!=expectedWash:failures.append((item['browser'],'territory wash flash',v['territoryWash'],expectedWash))
+    if expectedMode=='off' and v['shadingChecked'] is True:failures.append((item['browser'],'Off checkbox flashed on'))
+    if settings.get('reading-theme')=='night' and v['theme']!='night':failures.append((item['browser'],'night theme flashed paper',v['theme']))
   for v in seq:
    if v['preparing']:failures.append((item['browser'],item['route'],item['name'],'obsolete loading text'))
    if item['name']=='map' and not v['barVisible']:failures.append((item['browser'],item['route'],item['name'],'final map menu not visible'))
