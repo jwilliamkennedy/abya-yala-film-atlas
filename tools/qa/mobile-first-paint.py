@@ -29,7 +29,7 @@ JS=r"""() => {
   uiReady:document.documentElement.dataset.atlasUi||null,theme:document.documentElement.dataset.readingTheme||null,
   weave:document.documentElement.dataset.weaveStage||null,
   headerLang:$('header #ui-lang').length,headerTheme:$('header .ui-theme-toggle').length,
-  currentNav:$('header nav.primary [aria-current="page"]').map(x=>x.textContent.trim()),
+  currentNav:$$('header nav.primary [aria-current="page"]').map(x=>x.textContent.trim()),
   randomHome:$('#random-entry')?.closest('.ui-index-more')?'more':'elsewhere',
   zoomText:$('#zoom-reset')?.textContent.trim(),
   mapSvg:$$('svg#atlas').length,basemapCount:$$('#atlas-basemap').length,
