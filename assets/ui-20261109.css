@@ -340,3 +340,17 @@ html body #index .ui-alpha-shell #maker-alphabet,
 html body #index .ui-alpha-shell #film-alphabet{padding:2px 0!important;scrollbar-width:none!important;min-height:34px;align-items:center}
 #index .ui-alpha-shell .ui-alpha-arrow{height:30px!important;min-height:30px!important;padding:0!important;background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;line-height:1!important;align-self:center}
 #index .ui-alpha-shell .ui-alpha-arrow:hover:not(:disabled){background:transparent!important;color:var(--ui-accent)!important}
+
+/* Sidebar: remove redundant rules between search, A–Z and filters. */
+html body #index .index-command-bar,
+html body #index #maker-browser,
+html body #index #film-browser,
+html body #index .maker-browser-heading,
+html body #index .film-browser-heading,
+html body #index .index-control-row {
+ border-top:0!important;border-bottom:0!important;box-shadow:none!important;
+}
+html body #index .index-command-bar{padding-bottom:4px!important}
+html body #index #maker-browser,
+html body #index #film-browser{margin-top:0!important;margin-bottom:0!important}
+html body #index .index-control-row{margin-top:3px!important;padding-top:5px!important}
