@@ -99,6 +99,8 @@ async def main():
   if abs(h1-h0)>5:failures.append((item['browser'],item['route'],item['name'],'map height shift',h0,h1))
   for v in seq:
    if v['preparing']:failures.append((item['browser'],item['route'],item['name'],'obsolete loading text'))
+   if item['name']=='map' and not v['barVisible']:failures.append((item['browser'],item['route'],item['name'],'final map menu not visible'))
+   if item['name']=='constellate' and v['phase']=='dom' and v['barVisible']:failures.append((item['browser'],item['route'],item['name'],'constellate shows map menu while loading'))
    if v['legacyIntroVisible']:failures.append((item['browser'],item['route'],item['name'],'old Constellate intro visible'))
    if v['prematureConstellateToolbar']:failures.append((item['browser'],item['route'],item['name'],'old toolbar visible before stage ready'))
    if v['featuredExpanded']:failures.append((item['browser'],item['route'],item['name'],'featured card expands before initialization'))
