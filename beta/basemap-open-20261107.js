@@ -47,6 +47,8 @@ function sync(){
  const world=360*dx,lon=-90+(w/2-a[0])/dx,y=(a[1]-h/2)/(world/(2*Math.PI));
  const lat=Math.max(-85,Math.min(85,Math.atan(Math.sinh(y))*180/Math.PI));
  map.jumpTo({center:[((lon+540)%360)-180,lat],zoom:Math.log2(world/512)});
+ // Do not expose the tile map until its camera matches the Atlas SVG.
+ if(host)host.dataset.cameraSynced="true";
 }
 function credit(){
  const span=[...document.querySelectorAll('.map-footer span')].find(s=>/Natural Earth/.test(s.textContent));
