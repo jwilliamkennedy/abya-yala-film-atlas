@@ -46,8 +46,7 @@ body.is-theme-weaving #atlas .land-word:focus-visible{opacity:1!important}
 body.is-theme-weaving #atlas .land-word.selected{opacity:1!important}
 /* 23 Script-aware font fallback */
 body.is-theme-weaving #atlas .land-word-label,body.is-theme-weaving #atlas .land-word-label tspan{font-family:'Atlas Sans','Noto Sans Canadian Aboriginal','Noto Sans Cherokee','Noto Sans Osage','Arial Unicode MS',system-ui,sans-serif!important}
-/* 24 Keep map fonts compact */
-body.is-theme-weaving #atlas .land-word-label,body.is-theme-weaving #atlas .land-word-label tspan{font-size:14px!important}
+/* 24 Retain the map engine’s measured label size for collision avoidance. */
 /* 25 Regular-weight Unicode characters */
 body.is-theme-weaving #atlas .land-word-label,body.is-theme-weaving #atlas .land-word-label tspan{font-weight:500!important}
 /* 26 No synthesized italics on syllabics */
@@ -68,8 +67,7 @@ body.is-theme-weaving #atlas .land-word-label,body.is-theme-weaving #atlas .land
 body.is-theme-weaving #atlas .land-word-label{text-shadow:none!important}
 /* 34 Remove inherited text dim */
 body.is-theme-weaving #atlas .land-word-label,body.is-theme-weaving #atlas .land-word-label tspan{opacity:1!important}
-/* 35 Scale labels down on phones */
-@media(max-width:700px){body.is-theme-weaving #atlas .land-word-label,body.is-theme-weaving #atlas .land-word-label tspan{font-size:12px!important}}
+/* 35 Phone label sizes remain measured by the land label engine. */
 /* 36 Community bubbles smaller than land names */
 body.is-theme-weaving #atlas .land-bubble-label{font-size:11px!important;opacity:.77!important}
 /* 37 Country names less prominent */
