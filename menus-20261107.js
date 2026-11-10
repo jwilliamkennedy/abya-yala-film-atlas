@@ -29,10 +29,12 @@ function toolbar(){
    Surprise me joins the index tools beside Filters, Recent and Saved, because it opens an entry there. */
 function streamline(){
  const layersBox=$('#layers > div')||$('#layers > :not(summary)');const world=$('#world'),unmap=$('#atlas-unmap');
- if(layersBox&&!$('#view-control')&&(world||unmap)){
-  const fs=el('fieldset',{id:'view-control'},'<legend>View</legend><div class="view-toggles"></div>');
-  const row=fs.querySelector('.view-toggles');if(world)row.append(world);if(unmap)row.append(unmap);
-  layersBox.prepend(fs);
+ if(layersBox&&(world||unmap)){
+  // Render World in Layers from the HTML itself: there is no fourth menu item
+  // to flash on first paint. Move optional late-created controls idempotently.
+  let fs=$('#view-control');
+  if(!fs){fs=el('fieldset',{id:'view-control'},'<legend>View</legend><div class="view-toggles"></div>');layersBox.prepend(fs);}
+  const row=fs.querySelector('.view-toggles');if(row){if(world&&world.parentElement!==row)row.append(world);if(unmap&&unmap.parentElement!==row)row.append(unmap);}
  }
  const random=$('#random-entry'),saved=$('#toggle-saved');
  if(random&&saved&&random.parentElement!==saved.parentElement)saved.after(random);
