@@ -80,3 +80,25 @@ body.is-theme-weaving #constellate-graph .weave-cross-count {
  body.is-theme-weaving #atlas .land-word-label tspan {font-size:11.5px!important;stroke-width:1.25px!important}
  body.is-theme-weaving #constellate-graph .weave-cord {stroke-width:2.35!important}
 }
+
+/* Constellate is a night-sky canvas regardless of the reader's chosen day/night chrome.
+   Keep sky lettering light in both modes; give opaque card surfaces contrasting ink. */
+:root[data-reading-theme] body.is-theme-weaving #constellate-graph {
+ --weave-ocean:#111b34;--weave-ink:#f2e8cf;
+}
+:root[data-reading-theme] body.is-theme-weaving #constellate-graph text {
+ fill:#f2e8cf!important;stroke:#111b34!important;
+ stroke-width:1.5px;paint-order:stroke!important;
+}
+:root[data-reading-theme] body.is-theme-weaving #constellate-graph .constellate-card:not(:hover):not(:focus-within):not(.selected) text {
+ fill:#f2e8cf!important;stroke:#111b34!important;
+}
+:root[data-reading-theme] body.is-theme-weaving #constellate-graph .constellate-card:is(:hover,:focus-within,.selected) text {
+ fill:var(--ui-ink)!important;stroke:none!important;
+}
+:root[data-reading-theme] body.is-theme-weaving #constellate-graph .weave-stop text {
+ fill:#fff7e9!important;stroke:none!important;
+}
+:root[data-reading-theme] body.is-theme-weaving #constellate-graph .weave-thread-name-path {
+ fill:#f2e8cf!important;stroke:#071120!important;
+}
