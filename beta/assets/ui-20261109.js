@@ -207,18 +207,52 @@ function mapPage(){
  function constellate(){
   var mode=$('#constellate-mode');
   var on=!!(mode&&!mode.hidden&&mode.getBoundingClientRect().height>0);
-  root.dataset.uiConstellate=on?'on':'off';
-  var ml=$('header .map-link');if(ml){if(on)ml.removeAttribute('aria-current');else ml.setAttribute('aria-current','page');}
-  var cl=$('header .constellate-link');if(cl){if(on)cl.setAttribute('aria-current','page');else cl.removeAttribute('aria-current');}
+  var val=on?'on':'off';
+  if(root.dataset.uiConstellate!==val)root.dataset.uiConstellate=val;
+  var ml=$('header .map-link');if(ml&&on===(ml.getAttribute('aria-current')==='page')){if(on)ml.removeAttribute('aria-current');else ml.setAttribute('aria-current','page');}
+  var cl=$('header .constellate-link');if(cl&&on!==(cl.getAttribute('aria-current')==='page')){if(on)cl.setAttribute('aria-current','page');else cl.removeAttribute('aria-current');}
  }
- /* run */
- var raf=0;function soon(){if(raf)return;raf=requestAnimationFrame(function(){raf=0;zoomState();marks();placeholders();renameIn($('main'));keyWatch();constellate();});}
- indexMore();alphabetScroll();barHeight();zoomState();soon();keepList();
- new MutationObserver(soon).observe(document.body,{subtree:true,childList:true,attributes:true,attributeFilter:['hidden','aria-pressed','aria-expanded','open']});
+ /* Run only the work a change actually requires. Previously every DOM
+    mutation remeasured every SVG territory and traversed the entire page. */
+ var raf=0,fullDirty=true,mapDirty=true,stateDirty=true,cameraTimer=0;
+ function queueUpdate(full,map,state){
+  fullDirty=fullDirty||!!full;mapDirty=mapDirty||!!map;stateDirty=stateDirty||!!state;
+  if(raf)return;
+  raf=requestAnimationFrame(function(){
+   raf=0;
+   if(mapDirty){mapDirty=false;marks();}
+   if(fullDirty){fullDirty=false;placeholders();renameIn($('main'));keyWatch();}
+   if(stateDirty){stateDirty=false;constellate();}
+  });
+ }
+ function containsMapNode(n){
+  return n.nodeType===1&&(n.matches?.('.land-word,.land-thumb,.nation-wash')||!!n.querySelector?.('.land-word,.land-thumb,.nation-wash'));
+ }
+ indexMore();alphabetScroll();barHeight();zoomState();queueUpdate(true,true,true);keepList();
+ new MutationObserver(function(records){
+  var full=false,map=false,state=false;
+  for(var m of records){
+   if(m.type==='attributes'){
+    if(m.target===document.body||m.target.id==='constellate-mode')state=true;
+    continue;
+   }
+   var target=m.target.nodeType===1?m.target:m.target.parentElement;
+   if(target?.closest?.('#atlas')){
+    if([].some.call(m.addedNodes,containsMapNode)||[].some.call(m.removedNodes,containsMapNode))map=true;
+   }else if(target?.closest?.('.map-toolbar,#constellate-mode'))state=true;
+   else full=true;
+   if(full&&map&&state)break;
+  }
+  if(full||map||state)queueUpdate(full,map,state||full);
+ }).observe(document.body,{subtree:true,childList:true,attributes:true,attributeFilter:['hidden','aria-pressed','aria-expanded','open','class']});
  var zl=$('#zoom-level');if(zl)new MutationObserver(zoomState).observe(zl,{childList:true,characterData:true,subtree:true});
- window.addEventListener('atlas-camera-change',soon);
+ window.addEventListener('atlas-camera-change',function(){
+  zoomState();clearTimeout(cameraTimer);
+  cameraTimer=setTimeout(function(){queueUpdate(false,true,false);},140);
+ });
  document.addEventListener('click',function(e){if(e.target.closest('.entry-button,[data-adjacent-maker],[data-show-maker],[data-cross-maker]'))setTimeout(clearOfBar,450);},true);
- setTimeout(keepList,1500);setTimeout(soon,2500);
+ setTimeout(keepList,1500);
+ setTimeout(function(){queueUpdate(true,true,true);},2500);
 }
 
 function start(){
