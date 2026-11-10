@@ -131,7 +131,7 @@ async def main():
   first,last=seq[0],seq[-1]
   idle=next((v.get('mutations',{}) for v in item['samples'] if v.get('phase')=='idle-650ms'),{})
   if idle.get('childList',0)>120:failures.append((item['browser'],item['route'],item['name'],'continuous SVG mutation loop',idle['childList']))
-  if idle.get('attributes',0)>240:failures.append((item['browser'],item['route'],item['name'],'continuous SVG attribute loop',idle['attributes'])
+  if idle.get('attributes',0)>240:failures.append((item['browser'],item['route'],item['name'],'continuous SVG attribute loop',idle['attributes']))
   if first['sheetState']!='peek' or last['sheetState']!='peek':failures.append((item['browser'],item['route'],item['name'],'sheet state',first['sheetState'],last['sheetState']))
   h0,h1=first['mapRect']['h'],last['mapRect']['h']
   if abs(h1-h0)>5:failures.append((item['browser'],item['route'],item['name'],'map height shift',h0,h1))
