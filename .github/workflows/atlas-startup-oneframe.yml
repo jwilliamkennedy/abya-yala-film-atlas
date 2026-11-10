@@ -67,7 +67,9 @@ jobs:
                   assert before["baseMapGuard"],(name,before)
                   assert before["topItems"]==["country-drawer","layers","map-info"],(name,before)
                   assert before["worldInside"],(name,before)
-                  if not before["ready"]:assert before["menuHidden"],(name,before)
+                  # Mobile map begins with the correctly composed three-panel toolbar.
+                  # Constellate withholds its obsolete controls until the new start card exists.
+                  if not before["ready"] and view=="constellate":assert before["menuHidden"],(name,before)
                   await page.wait_for_function("document.documentElement.dataset.atlasUi==='ready'",timeout=30000)
                   after=await page.evaluate("""() => ({
                     menuPanels:document.querySelectorAll('.map-actions>details').length,
