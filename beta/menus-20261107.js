@@ -154,11 +154,15 @@ function indexPanel(){
 /* 7. Featured theme-weaving card starts as a small pill. */
 function featured(){
  const card=$('#featured-weave');if(!card){setTimeout(featured,800);return;}
- const setup=()=>{if(card.querySelector('.fw-pill'))return;
-  const pill=el('button',{type:'button',class:'fw-pill','aria-expanded':'false'},'<span aria-hidden="true">✦</span> Constellations');
-  const min=el('button',{type:'button',class:'fw-min','aria-label':'Minimize','title':'Minimize'},'–');
-  pill.onclick=()=>set(false);min.onclick=()=>set(true);card.prepend(pill);card.append(min);
-  set(store.get('featured-collapsed',true),false);};
+ const setup=()=>{
+  let pill=card.querySelector('.fw-pill'),min=card.querySelector('.fw-min');
+  if(!pill){pill=el('button',{type:'button',class:'fw-pill','aria-expanded':'false'},'<span aria-hidden="true">✦</span> Constellations');card.prepend(pill);}
+  if(!min){min=el('button',{type:'button',class:'fw-min','aria-label':'Minimize','title':'Minimize'},'–');card.append(min);}
+  if(card.dataset.featuredBound)return;
+  card.dataset.featuredBound='1';
+  pill.onclick=()=>set(false);min.onclick=()=>set(true);
+  set(store.get('featured-collapsed',true),false);
+ };
  const set=(collapsed,save=true)=>{card.classList.toggle('is-collapsed',collapsed);card.querySelector('.fw-pill')?.setAttribute('aria-expanded',String(!collapsed));if(save)store.set('featured-collapsed',collapsed);};
  setup();new MutationObserver(setup).observe(card,{childList:true});
 }
