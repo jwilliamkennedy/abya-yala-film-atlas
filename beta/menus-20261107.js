@@ -37,7 +37,7 @@ function streamline(){
   const row=fs.querySelector('.view-toggles');if(row){if(world&&world.parentElement!==row)row.append(world);if(unmap&&unmap.parentElement!==row)row.append(unmap);}
  }
  const random=$('#random-entry'),saved=$('#toggle-saved');
- if(random&&saved&&random.parentElement!==saved.parentElement)saved.after(random);
+ if(random&&saved&&!random.closest('.ui-index-more')&&random.parentElement!==saved.parentElement)saved.after(random);
  const reset=$('#zoom-reset');if(reset&&/Map overview/.test(reset.textContent))reset.textContent='Overview';
 }
 
