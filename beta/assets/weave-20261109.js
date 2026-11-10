@@ -151,12 +151,12 @@ function tick(){
  buildStart();buildGuide();labels();
  if(st==='start'){savedList();}
  guide(st);
- if(st==='build'){var th=thread(),len=th?th.items.length:0;if(len>=2&&len!==lastLen){setTimeout(function(){try{C().fit();}catch(e){}},350);}lastLen=len;}else lastLen=-1;
+ if(st==='build'){var th=thread(),len=th?th.items.length:0;if(len>=2&&lastLen<2){setTimeout(function(){if(root.dataset.weaveStage==='build'){try{C().fit();}catch(e){}}},350);}lastLen=len;}else lastLen=-1;
  if(st==='start'&&last!=='start'){var qn=$('#ws-film-q');if(qn&&window.innerWidth>760)setTimeout(function(){try{qn.focus({preventScroll:true});}catch(e){}},300);}
  last=st;
 }
 function start(){
- if(!window.AtlasConstellate||!window.AtlasCollections){setTimeout(start,300);return;}
+ if(!window.AtlasConstellate||!window.AtlasCollections){if((start.attempts=(start.attempts||0)+1)<=100)setTimeout(start,300);return;}
  tick();
  try{S().subscribe(function(){settle();});}catch(e){}
  var sg=$('#weave-suggest');if(sg)new MutationObserver(function(){labels();}).observe(sg,{childList:true,subtree:true});
