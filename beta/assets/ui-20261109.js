@@ -160,8 +160,8 @@ function mapPage(){
     }
     update();
    }
-   new MutationObserver(function(){requestAnimationFrame(track);}).observe(nav,{childList:true});
-   if(window.ResizeObserver)new ResizeObserver(update).observe(nav);
+   var tracking=false;new MutationObserver(function(){if(tracking)return;tracking=true;requestAnimationFrame(function(){tracking=false;track();});}).observe(nav,{childList:true,subtree:true,attributes:true,attributeFilter:['aria-pressed','class']});
+   if(window.ResizeObserver){var resize=new ResizeObserver(update);resize.observe(nav);resize.observe(shell);}else window.addEventListener('resize',update,{passive:true});
    requestAnimationFrame(track);
   });
  }
