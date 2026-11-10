@@ -8,6 +8,9 @@ html[data-reading-theme="night"][data-atlas-boot="pending"] body.atlas-page #atl
 (()=>{
  const root=document.documentElement,needsWeave=new URLSearchParams(location.search).get('constellate')==='1';
  function reveal(){if(root.dataset.atlasBoot==='pending')root.dataset.atlasBoot='ready';}
+ // Independent deadline: a stalled defer script, font or map tile cannot trap the UI.
+ // This starts immediately in the head, before DOMContentLoaded.
+ setTimeout(reveal,2400);
  document.addEventListener('DOMContentLoaded',()=>{
   let ended=false,timer;const started=performance.now();
   function check(){
