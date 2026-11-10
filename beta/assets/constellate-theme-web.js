@@ -277,7 +277,7 @@
   document.body.classList.toggle('is-theme-web-open',isOpen);
   if(isOpen){draw();searchBox.focus({preventScroll:true});}
  }
- window.addEventListener('resize',function(){if(isOpen)drawGraph();});
+ var resizeFrame=0;window.addEventListener('resize',function(){if(!isOpen||resizeFrame)return;resizeFrame=requestAnimationFrame(function(){resizeFrame=0;if(isOpen)drawGraph();});},{passive:true});
  function init(){
   var tries=0;
   var timer=setInterval(function(){
