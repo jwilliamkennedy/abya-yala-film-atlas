@@ -281,6 +281,9 @@ function headerNav(tries=0){
 whenReady(()=>{
  for(const step of [a11y,headerNav,sheet,watchMarks,selectionLinks,toolbar,closeRule,countries,layers,mapKey,indexPanel,featured,shortcuts,territoryFocus,streamline]){try{step();}catch(err){console.warn('UI pass step failed:',step.name,err);}}
  setTimeout(closeRule,1500);
+ // The legacy toolbar must have finished its relocation before first paint.
+ if($('#view-control')&&$('#visual-key')&&root.dataset.uiBar)root.dataset.atlasUi='ready';
+ else console.warn('Atlas toolbar still initializing');
 });
 })();
 
