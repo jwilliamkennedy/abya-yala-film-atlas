@@ -206,9 +206,9 @@ function territoryFocus(){
   let best=null;for(const it of items()){const b=it.b;if(pt.x<b.x||pt.x>b.x+b.width||pt.y<b.y||pt.y>b.y+b.height)continue;if(best&&it.a>=best.a)continue;
    try{if(it.p.isPointInFill(pt))best=it;}catch(err){}}
   return best?best.p.getAttribute('data-land'):null;};
- svg.addEventListener('pointermove',e=>{if(e.buttons)return;lastEvent=e;if(raf)return;raf=requestAnimationFrame(()=>{raf=0;const id=hit(lastEvent);if(id!==hoverLand){hoverLand=id;draw();}});},{capture:true});
+ svg.addEventListener('pointermove',e=>{if(e.buttons||e.pointerType==='touch')return;lastEvent=e;if(raf)return;raf=requestAnimationFrame(()=>{raf=0;const id=hit(lastEvent);if(id!==hoverLand){hoverLand=id;draw();}});},{capture:true});
  (svg.closest('.map-panel')||svg).addEventListener('pointerleave',()=>{if(hoverLand){hoverLand=null;draw();}});
- const later=()=>setTimeout(draw,60);
+ let focusTimer=0;const later=()=>{clearTimeout(focusTimer);focusTimer=setTimeout(draw,85);};
  addEventListener('atlas-camera-change',later);document.addEventListener('click',later);document.addEventListener('keyup',e=>{if(e.key==='Enter'||e.key==='Escape')later();});
  const t=tint();if(t)new MutationObserver(()=>{cache=null;later();}).observe(t,{childList:true,attributes:true,attributeFilter:['d','style']});
  draw();
@@ -225,10 +225,19 @@ function watchMarks(){
    const label=g.querySelector('text.land-word-label,text');if(!label)continue;let b;try{b=label.getBBox();}catch(err){continue;}
    if(!m){m=document.createElementNS(NS,'g');m.setAttribute('class','land-watch');const c=document.createElementNS(NS,'circle'),p=document.createElementNS(NS,'path');c.setAttribute('r','7');p.setAttribute('d','M-2.2,-3.6 L3.8,0 L-2.2,3.6 Z');m.append(c,p);
     const t=document.createElementNS(NS,'title');m.append(t);g.append(m);}
-   m.querySelector('title').textContent=n===1?'1 filmmaker here has a film you can watch':n+' filmmakers here have films you can watch';
-   m.setAttribute('transform',`translate(${b.x+b.width+11},${b.y+b.height/2})`);}};
+   const title=n===1?'1 filmmaker here has a film you can watch':n+' filmmakers here have films you can watch';
+   const caption=m.querySelector('title');if(caption.textContent!==title)caption.textContent=title;
+   const pos=`translate(${b.x+b.width+11},${b.y+b.height/2})`;
+   if(m.getAttribute('transform')!==pos)m.setAttribute('transform',pos);}};
  let t=0;const later=()=>{clearTimeout(t);t=setTimeout(mark,120);};
- new MutationObserver(later).observe(svg,{childList:true,subtree:true});addEventListener('atlas-camera-change',later);mark();
+ new MutationObserver(records=>{
+  if(records.some(rec=>{
+   const e=rec.target.nodeType===1?rec.target:rec.target.parentElement;
+   if(e?.closest?.('.land-watch,.territory-focus'))return false;
+   if(e?.matches?.('g.land-word,.land-word-label'))return true;
+   return [...rec.addedNodes,...rec.removedNodes].some(n=>n.nodeType===1&&(n.matches?.('g.land-word')||n.querySelector?.('g.land-word')));
+  }))later();
+ }).observe(svg,{childList:true,subtree:true});addEventListener('atlas-camera-change',later);mark();
 }
 
 /* 12. Selection bar: the filmmaker's permanent page, Cite and Correct. */
@@ -311,7 +320,7 @@ whenReady(()=>{
   if(d&&key!==last){const top=d.closest('article')||d;const h=bar?bar.offsetHeight:0;
    requestAnimationFrame(()=>{const y=top.getBoundingClientRect().top-index.getBoundingClientRect().top+index.scrollTop-h-8;if(Math.abs(index.scrollTop-y)>4)index.scrollTop=Math.max(0,y);});}
   last=key;};
- new MutationObserver(()=>requestAnimationFrame(sync)).observe(index,{childList:true,subtree:true});sync();
+ let syncRaf=0;new MutationObserver(()=>{if(syncRaf)return;syncRaf=requestAnimationFrame(()=>{syncRaf=0;sync();});}).observe(index,{childList:true,subtree:true});sync();
  // a film or filmmaker opened from a link: on phones, show its panel rather than leaving it folded under the map
  setTimeout(()=>{if(index.querySelector('.profile-dossier')&&matchMedia('(max-width:760px)').matches&&document.documentElement.dataset.sheet==='peek'){const h=document.querySelector('.sheet-handle, #sheet-handle, [data-sheet-handle]');document.documentElement.dataset.sheet='half';}},1500);
  // the filmmaker named under a film title opens them here in the atlas: say so
