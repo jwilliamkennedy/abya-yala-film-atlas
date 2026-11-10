@@ -29,6 +29,10 @@ JS=r"""() => {
   initialTerritories:document.documentElement.dataset.atlasInitialTerritories||null,
   territoryWash:getComputedStyle(document.documentElement).getPropertyValue('--territory-wash').trim(),
   shadingChecked:$('#layer-shading')?.checked??null,
+  unmappedClass:document.body.classList.contains('atlas-unmapped'),
+  unmapParent:$('#atlas-unmap')?.parentElement?.className||null,
+  unmapPressed:$('#atlas-unmap')?.getAttribute('aria-pressed')||null,
+  unmapText:$('#atlas-unmap')?.textContent.trim()||null,
   uiReady:document.documentElement.dataset.atlasUi||null,theme:document.documentElement.dataset.readingTheme||null,
   weave:document.documentElement.dataset.weaveStage||null,
   headerLang:$('header #ui-lang').length,headerTheme:$('header .ui-theme-toggle').length,
@@ -49,7 +53,7 @@ JS=r"""() => {
 async def case(browser,engine,name,route,width,persisted=None):
  context=await browser.new_context(viewport={'width':width,'height':844},device_scale_factor=2,is_mobile=True,has_touch=True,locale='en-US')
  if persisted:
-  keys={'territories':'atlas-ui-territories','territory-strength':'atlas-ui-territory-strength','reading-theme':'atlas-reading-theme','palette-pass':'atlas-palette-pass'}
+  keys={'territories':'atlas-ui-territories','territory-strength':'atlas-ui-territory-strength','reading-theme':'atlas-reading-theme','palette-pass':'atlas-palette-pass','unmapped':'atlas-unmapped'}
   values={keys[k]:(json.dumps(v) if k in ('territories','territory-strength') else str(v)) for k,v in persisted.items()}
   await context.add_init_script('try{for(const [k,v] of Object.entries('+json.dumps(values)+'))localStorage.setItem(k,v);}catch(e){}')
  p=await context.new_page()
@@ -98,7 +102,8 @@ async def main():
     for state in [
       {'territories':'off'},
       {'territories':'soft','reading-theme':'night','palette-pass':'88'},
-      {'territories':'custom','territory-strength':33}
+      {'territories':'custom','territory-strength':33},
+      {'unmapped':'1'}
     ]:report.append(await case(browser,engine,'map','index.html',390,persisted=state))
    await browser.close()
  failures=[]
@@ -112,14 +117,16 @@ async def main():
   if abs(h1-h0)>5:failures.append((item['browser'],item['route'],item['name'],'map height shift',h0,h1))
   if item.get('persisted'):
    settings=item['persisted']
-   expectedMode=settings['territories']
+   expectedMode=settings.get('territories','strong')
    expectedWash={'strong':'0.41','soft':'0.24'}.get(expectedMode,'0.'+str(settings.get('territory-strength',41)))
    for v in seq:
+    if settings.get('unmapped')=='1' and (not v['unmappedClass'] or v['unmapPressed']!='true' or v['unmapText']!='Return map'):failures.append((item['browser'],'saved Disappear map flashed',v['unmappedClass'],v['unmapPressed'],v['unmapText']))
     if v['initialTerritories']!=expectedMode:failures.append((item['browser'],'initial territory mode',v['initialTerritories'],expectedMode))
     if v['territoryWash']!=expectedWash:failures.append((item['browser'],'territory wash flash',v['territoryWash'],expectedWash))
     if expectedMode=='off' and v['shadingChecked'] is True:failures.append((item['browser'],'Off checkbox flashed on'))
     if settings.get('reading-theme')=='night' and v['theme']!='night':failures.append((item['browser'],'night theme flashed paper',v['theme']))
   for v in seq:
+   if v['unmapParent']!='view-toggles':failures.append((item['browser'],'Disappear map outside Layers',v['unmapParent']))
    if v['preparing']:failures.append((item['browser'],item['route'],item['name'],'obsolete loading text'))
    if item['name']=='map' and not v['barVisible']:failures.append((item['browser'],item['route'],item['name'],'final map menu not visible'))
    if item['name']=='constellate' and v['phase']=='dom' and v['barVisible']:failures.append((item['browser'],item['route'],item['name'],'constellate shows map menu while loading'))
