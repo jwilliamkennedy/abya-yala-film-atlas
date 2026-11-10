@@ -237,7 +237,7 @@ html body #constellate-mode #constellate-edit[aria-pressed="true"],html body #co
 #weave-empty-hint h2{font:400 36px/1.12 var(--ui-serif)!important;letter-spacing:-.015em;color:var(--ui-ink)!important}
 #weave-empty-hint .weave-intro-kicker{font:600 12px/1 var(--ui-sans)!important;letter-spacing:.12em;color:var(--ui-accent)!important}
 #weave-empty-hint .weave-intro-lede{font:400 16px/1.5 var(--ui-sans)!important;color:var(--ui-muted)!important}
-html[data-ui-constellate="on"] #atlas .land-shading{opacity:.5}
+html[data-ui-constellate="on"] #atlas .land-shading{opacity:1}
 
 /* ---------- Night ---------- */
 html[data-reading-theme="night"] body.atlas-page .map-panel{background:#0b1222}

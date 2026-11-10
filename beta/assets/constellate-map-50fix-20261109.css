@@ -1,0 +1,102 @@
+/* Constellate 50 fixes: 2026-11-09. Only presentation; source data unchanged. */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Canadian+Aboriginal:wght@400;600&family=Noto+Sans+Cherokee:wght@400;600&family=Noto+Sans+Osage:wght@400;600&display=swap");
+/* 01 Restore the dark-sky background */
+body.is-theme-weaving .map-panel{background:#15283d!important}
+/* 02 Remove the noisy vignette */
+body.is-theme-weaving .map-panel::before{background:radial-gradient(ellipse at center,transparent 65%,rgba(8,19,34,.16) 100%)!important}
+/* 03 Hide the opaque noise layer */
+body.is-theme-weaving .map-panel::after{display:none!important}
+/* 04 Stop the SVG blackout overlay */
+body.is-theme-weaving #atlas .weave-night-veil{display:none!important}
+/* 05 Recover map terrain in paper mode */
+:root:not([data-reading-theme=night]) body.is-theme-weaving #atlas-basemap{filter:brightness(1.06) saturate(1.13)!important}
+/* 06 Recover map terrain in night mode */
+:root[data-reading-theme=night] body.is-theme-weaving #atlas-basemap{filter:brightness(1.03) saturate(1.16)!important}
+/* 07 Stop dimming the entire land shading layer */
+html[data-ui-constellate=on] body #atlas .land-shading{opacity:1!important}
+/* 08 Un-dim shading even before UI state propagates */
+body.is-theme-weaving #atlas .land-shading{opacity:1!important}
+/* 09 Boost land wash ten percent */
+html[data-ui=1107] body #atlas .land-shading .nation-wash{fill-opacity:clamp(0,calc(var(--territory-wash,.36) * 1.10),.9)!important}
+/* 10 Preserve night wash's ten percent uplift */
+html[data-ui=1107][data-reading-theme=night] body #atlas .land-shading .nation-wash{fill-opacity:clamp(0,calc(var(--territory-wash,.36) * .935),.9)!important}
+/* 11 Subtle boundary strokes */
+body.is-theme-weaving #atlas .nation-wash{stroke-opacity:.62!important}
+/* 12 Keep boundaries hairline-thin */
+body.is-theme-weaving #atlas .nation-wash{stroke-width:.8px!important}
+/* 13 Basemap landshapes don't overpower territories */
+body.is-theme-weaving #atlas .land-shape{stroke-opacity:.16!important}
+/* 14 Make territory focus visible */
+body.is-theme-weaving #atlas .territory-focus-shape{stroke-opacity:.85!important}
+/* 15 Restore default land name opacity */
+body.is-theme-weaving #atlas .land-word{opacity:.82!important}
+/* 16 Prioritize high coverage names */
+html[data-ui-zoom=far] body.is-theme-weaving #atlas .land-word[data-ui-tier='1']{opacity:.97!important}
+/* 17 Keep midhigh coverage names legible */
+html[data-ui-zoom=far] body.is-theme-weaving #atlas .land-word[data-ui-tier='2']{opacity:.82!important}
+/* 18 Keep mid coverage names legible */
+html[data-ui-zoom=far] body.is-theme-weaving #atlas .land-word[data-ui-tier='3']{opacity:.65!important}
+/* 19 Do not disappear small communities */
+html[data-ui-zoom=far] body.is-theme-weaving #atlas .land-word[data-ui-tier='4']{opacity:.48!important}
+/* 20 Restore hover legibility */
+body.is-theme-weaving #atlas .land-word:hover{opacity:1!important}
+/* 21 Restore keyboard focus legibility */
+body.is-theme-weaving #atlas .land-word:focus-visible{opacity:1!important}
+/* 22 Restore selected land legibility */
+body.is-theme-weaving #atlas .land-word.selected{opacity:1!important}
+/* 23 Script-aware font fallback */
+body.is-theme-weaving #atlas .land-word-label,body.is-theme-weaving #atlas .land-word-label tspan{font-family:'Atlas Sans','Noto Sans Canadian Aboriginal','Noto Sans Cherokee','Noto Sans Osage','Arial Unicode MS',system-ui,sans-serif!important}
+/* 24 Keep map fonts compact */
+body.is-theme-weaving #atlas .land-word-label,body.is-theme-weaving #atlas .land-word-label tspan{font-size:14px!important}
+/* 25 Regular-weight Unicode characters */
+body.is-theme-weaving #atlas .land-word-label,body.is-theme-weaving #atlas .land-word-label tspan{font-weight:500!important}
+/* 26 No synthesized italics on syllabics */
+body.is-theme-weaving #atlas .land-word-label,body.is-theme-weaving #atlas .land-word-label tspan{font-style:normal!important}
+/* 27 Proper kerning for community names */
+body.is-theme-weaving #atlas .land-word-label,body.is-theme-weaving #atlas .land-word-label tspan{letter-spacing:0!important}
+/* 28 Ivory legible name fill */
+body.is-theme-weaving #atlas .land-word-label,body.is-theme-weaving #atlas .land-word-label tspan{fill:#f5eddb!important}
+/* 29 Neutral outline for map lettering */
+body.is-theme-weaving #atlas .land-word-label,body.is-theme-weaving #atlas .land-word-label tspan{stroke:#0c192e!important}
+/* 30 Thin outline preserves syllabic counters */
+body.is-theme-weaving #atlas .land-word-label,body.is-theme-weaving #atlas .land-word-label tspan{stroke-width:1.2px!important}
+/* 31 Don't overpaint delicate glyph edges */
+body.is-theme-weaving #atlas .land-word-label,body.is-theme-weaving #atlas .land-word-label tspan{stroke-opacity:.82!important}
+/* 32 Draw glyph contours after outline */
+body.is-theme-weaving #atlas .land-word-label,body.is-theme-weaving #atlas .land-word-label tspan{paint-order:stroke fill!important}
+/* 33 No heavy drop-shadow on text */
+body.is-theme-weaving #atlas .land-word-label{text-shadow:none!important}
+/* 34 Remove inherited text dim */
+body.is-theme-weaving #atlas .land-word-label,body.is-theme-weaving #atlas .land-word-label tspan{opacity:1!important}
+/* 35 Scale labels down on phones */
+@media(max-width:700px){body.is-theme-weaving #atlas .land-word-label,body.is-theme-weaving #atlas .land-word-label tspan{font-size:12px!important}}
+/* 36 Community bubbles smaller than land names */
+body.is-theme-weaving #atlas .land-bubble-label{font-size:11px!important;opacity:.77!important}
+/* 37 Country names less prominent */
+body.is-theme-weaving #atlas .country-label-name{font-size:11px!important;opacity:.7!important}
+/* 38 Country counters less prominent */
+body.is-theme-weaving #atlas .marker-count{font-size:10px!important;opacity:.7!important}
+/* 39 Remove false meridian warp */
+body.is-theme-weaving #constellate-graph .loom-warp{display:none!important}
+/* 40 Softer thread drop shadow */
+body.is-theme-weaving #constellate-graph .weave-thread-shadow{stroke-width:3px!important;stroke-opacity:.11!important;filter:none!important}
+/* 41 Dark outline behind thread strands */
+body.is-theme-weaving #constellate-graph .weave-thread-halo{stroke:#122239!important;stroke-width:4px!important;stroke-opacity:.8!important}
+/* 42 Reduce heavy gold strand weight */
+body.is-theme-weaving #constellate-graph .weave-cord{stroke-width:2.6px!important;stroke-opacity:.9!important}
+/* 43 Fine thread highlight */
+body.is-theme-weaving #constellate-graph .weave-ribbon-sheen{stroke-width:1.1px!important;stroke-opacity:.48!important}
+/* 44 Unselected threads recede */
+body.is-theme-weaving #constellate-graph .weave-thread.is-quiet{opacity:.38!important}
+/* 45 Dense thread set recedes further */
+body.is-theme-weaving #constellate-graph[data-density=dense] .weave-thread.is-quiet{opacity:.27!important}
+/* 46 Hover reactivates the selected path */
+body.is-theme-weaving #constellate-graph .weave-thread.is-quiet:hover{opacity:1!important}
+/* 47 Active thread takes precedence */
+body.is-theme-weaving #constellate-graph .weave-thread.is-active{opacity:1!important}
+/* 48 Make thread names legible and upright */
+body.is-theme-weaving #constellate-graph .weave-thread-name-path{font:600 12px/1.1 'Atlas Sans',system-ui,sans-serif!important;font-style:normal!important;stroke:#122239!important;stroke-width:2.2px!important}
+/* 49 Show verified art on film cards */
+body.is-theme-weaving #constellate-graph .constellate-card .weave-card-art{opacity:1!important;visibility:visible!important}
+/* 50 Preserve placeholder when detail art fails */
+#atlas-theme-web .tw-film-art.no-art img{display:none!important}

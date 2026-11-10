@@ -68,8 +68,8 @@ async function boot(){
  sync();visibility();
 }
 /* 2026-11-09: night palette for Starry night and while Constellate is open (ocean #070b16, land #121a2c). */
-const DAY={},NIGHT={'land':{'background-color':'#121a2c'},'water':{'fill-color':'#070b16'},'rivers':{'line-color':'#1d2a44'},
- 'cover-wood':{'fill-color':'#1a2640'},'cover-grass':{'fill-color':'#162036'},'cover-wet':{'fill-color':'#16223a'},'cover-sand':{'fill-color':'#1c2438'},'cover-ice':{'fill-color':'#26324d'},
+const DAY={},NIGHT={'land':{'background-color':'#243750'},'water':{'fill-color':'#101e31'},'rivers':{'line-color':'#4f6f91'},
+ 'cover-wood':{'fill-color':'#345365'},'cover-grass':{'fill-color':'#304c5b'},'cover-wet':{'fill-color':'#395971'},'cover-sand':{'fill-color':'#485d73'},'cover-ice':{'fill-color':'#64859b'},
  'roads':{'line-opacity':0},'elevation-tint':{'color-relief-opacity':0},'relief':{'hillshade-shadow-color':'#000000','hillshade-highlight-color':'#2a3550','hillshade-accent-color':'#0b1020','hillshade-exaggeration':.35}};
 let palette='day';
 function applyPalette(){
