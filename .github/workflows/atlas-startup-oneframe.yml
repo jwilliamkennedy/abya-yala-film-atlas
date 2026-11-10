@@ -76,7 +76,12 @@ jobs:
                     assert after["stage"] in ("start","build","read","play"),(name,after)
                     if after["baseNodes"]:assert after["palette"]=="night",(name,after)
                   assert not exceptions,(name,exceptions)
-                  await page.screenshot(path="shots/"+name+".png",animations="disabled",timeout=15000)
+                  # MapLibre/WebGL sometimes stalls Chromium screenshots on CI.
+                  # Assertions above determine correctness; screenshot is diagnostic only.
+                  try:
+                    await page.screenshot(path="shots/"+name+".png",animations="disabled",timeout=9000)
+                  except Exception as exc:
+                    print("NONFATAL_STARTUP_SCREENSHOT",name,str(exc)[:160])
                   report[name]={"before":before,"after":after}
                   await context.close()
               await browser.close()
