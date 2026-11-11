@@ -1,0 +1,98 @@
+/* Constellate control clarity — source-safe visual layer, November 2026.
+   Keep Build / Read / Play together at every screen size; do not alter map data. */
+
+/* Distinct primary modes, with a visible current mode. */
+html[data-weave-stage]:not([data-weave-stage="start"]) body.is-constellating #constellate-mode > :is(#constellate-edit,#constellate-read,#weave-play){
+  box-sizing:border-box;display:inline-flex!important;align-items:center;justify-content:center;
+  min-height:40px!important;height:40px!important;flex:0 0 auto;
+  padding:0 13px!important;margin:0!important;
+  font:600 14px/1.1 var(--ui-sans,system-ui,sans-serif)!important;
+  border:1px solid var(--reading-line,#c9d0c6)!important;
+  color:var(--reading-ink,#182028)!important;background:var(--reading-paper,#eef0ec)!important;
+  box-shadow:none!important;white-space:nowrap
+}
+html[data-weave-stage]:not([data-weave-stage="start"]) body.is-constellating #constellate-mode > #constellate-edit{
+  order:1!important;border-radius:9px 0 0 9px!important
+}
+html[data-weave-stage]:not([data-weave-stage="start"]) body.is-constellating #constellate-mode > #constellate-read{
+  order:2!important;border-left:0!important;border-right:0!important;border-radius:0!important
+}
+html[data-weave-stage]:not([data-weave-stage="start"]) body.is-constellating #constellate-mode > #weave-play{
+  order:3!important;border-radius:0 9px 9px 0!important
+}
+html[data-weave-stage]:not([data-weave-stage="start"]) body.is-constellating #constellate-mode > :is(#constellate-edit,#constellate-read)[aria-pressed="true"]{
+  background:var(--reading-ink,#182028)!important;color:var(--reading-paper,#eef0ec)!important;
+  border-color:var(--reading-ink,#182028)!important;box-shadow:none!important
+}
+html[data-weave-stage]:not([data-weave-stage="start"]) body.is-constellating #constellate-mode > :is(#constellate-edit,#constellate-read,#weave-play):focus-visible{
+  outline:2px solid var(--reading-accent,#9c3b26)!important;outline-offset:3px
+}
+/* Secondary actions live in one legible menu. */
+body.is-constellating #constellate-mode .weave-more-menu{
+  min-width:244px!important;max-height:min(66dvh,520px);overflow-y:auto!important;
+  overscroll-behavior:contain;padding:10px!important;scrollbar-width:thin
+}
+body.is-constellating #constellate-mode .weave-more-menu .weave-menu-heading{
+  display:block;margin:10px 8px 5px;min-height:0;font:700 11px/1.5 var(--ui-sans,system-ui,sans-serif)!important;
+  letter-spacing:.045em;text-transform:uppercase;color:var(--reading-muted,#55616b)
+}
+body.is-constellating #constellate-mode .weave-more-menu .weave-menu-manage[hidden]{display:none!important}
+body.is-constellating #constellate-mode .weave-more-menu button{
+  display:flex!important;justify-content:flex-start;align-items:center;
+  min-height:42px!important;width:100%;padding:9px 12px!important;
+  text-align:left;white-space:normal!important;line-height:1.25!important
+}
+body.is-constellating #constellate-mode .weave-more-menu button:focus-visible{
+  outline:2px solid var(--reading-accent,#9c3b26);outline-offset:1px
+}
+/* The reading path shows its position and keeps the navigation in view. */
+html[data-weave-stage="read"] #weave-read-panel .weave-read-progress{
+  display:block;width:100%;height:6px;margin:0 0 17px;border:0;border-radius:999px;
+  appearance:none;background:var(--reading-line,#c9d0c6);overflow:hidden
+}
+html[data-weave-stage="read"] #weave-read-panel .weave-read-progress::-webkit-progress-bar{background:var(--reading-line,#c9d0c6);border-radius:999px}
+html[data-weave-stage="read"] #weave-read-panel .weave-read-progress::-webkit-progress-value{background:var(--reading-accent,#9c3b26);border-radius:999px}
+html[data-weave-stage="read"] #weave-read-panel .weave-read-progress::-moz-progress-bar{background:var(--reading-accent,#9c3b26);border-radius:999px}
+html[data-weave-stage="read"] #weave-read-panel .weave-read-focus:focus{outline:none}
+html[data-weave-stage="read"] #weave-read-panel .weave-read-nav button[disabled]{opacity:.38;cursor:not-allowed}
+html[data-weave-stage="read"] #weave-read-panel .weave-read-nav button:not(:disabled):focus-visible{
+  outline:2px solid var(--reading-accent,#9c3b26);outline-offset:2px
+}
+/* Playback: visible pace selector and clear film count; layout survives zoom/mobile. */
+#weave-player .weave-player-controls{
+  display:flex;align-items:center;justify-content:center;flex-wrap:wrap;
+  gap:9px 12px;row-gap:5px;padding:8px 12px;
+  border-radius:8px;background:rgba(5,9,20,.88)
+}
+#weave-player .weave-play-speed{
+  display:inline-flex;align-items:center;gap:7px;white-space:nowrap;
+  font:13px/1.2 var(--ui-sans,system-ui,sans-serif);color:#f3eddd
+}
+#weave-player #weave-play-speed{
+  min-height:34px;padding:4px 7px;border:1px solid #9eacc9;border-radius:5px;
+  background:#15213a;color:#f3eddd;font:inherit;cursor:pointer
+}
+#weave-player #weave-play-progress{white-space:nowrap;font-size:13px}
+#weave-player .weave-player-controls button:focus-visible,
+#weave-player #weave-play-speed:focus-visible{outline:2px solid #e9d9ad;outline-offset:2px}
+@media(max-width:760px){
+  body.is-constellating #constellate-mode:has(.weave-more[open]){
+    overflow:visible!important;max-height:none!important
+  }
+  body.is-constellating #constellate-mode .weave-more-menu{
+    min-width:0!important;max-height:min(60dvh,480px)!important;
+    box-sizing:border-box;z-index:70!important
+  }
+  html[data-weave-stage]:not([data-weave-stage="start"]) body.is-constellating #constellate-mode > :is(#constellate-edit,#constellate-read,#weave-play){
+    height:38px!important;min-height:38px!important;padding:0 10px!important;font-size:13px!important
+  }
+  #weave-player .weave-player-controls{
+    left:8px;right:8px;bottom:8px;gap:4px 8px;padding:5px
+  }
+  #weave-player .weave-player-controls button{min-height:36px}
+  #weave-player .weave-title-card{bottom:112px!important;max-height:47%}
+  #weave-player .weave-play-speed{font-size:12px}
+}
+@media(prefers-reduced-motion:reduce){
+  #weave-player .weave-title-card{scroll-behavior:auto}
+}
