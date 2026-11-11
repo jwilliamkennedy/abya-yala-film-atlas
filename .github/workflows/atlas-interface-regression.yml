@@ -89,14 +89,14 @@ jobs:
                   state=await page.evaluate("""() => ({
                     href:location.href,allFooters:document.querySelectorAll('.map-footer').length,
                     mapSources:document.querySelectorAll('.map-footer .map-source-links').length,
-                    linked:document.querySelectorAll('.map-footer a[href="https://native-land.ca/maps/constellation"]').length,
+                    linked:document.querySelectorAll('.map-footer a[href="https://native-land.ca/"]').length,
                     text:document.querySelector('.map-footer')?.textContent?.slice(0,180)
                   })""")
                   print('FOOTER_DEBUG',label,json.dumps(state),flush=True)
                   if state['linked']!=1:
                     problems.append('Footer map link missing after Map Key click')
                   else:
-                    foot=page.locator('.map-footer a[href="https://native-land.ca/maps/constellation"]')
+                    foot=page.locator('.map-footer a[href="https://native-land.ca/"]')
                     await foot.evaluate("""a=>{window.__footerClicks=0;a.addEventListener('click',e=>{e.preventDefault();window.__footerClicks++});}""")
                     await page.locator('#map-info>summary').click(timeout=10000)
                     await foot.click(timeout=12000)
