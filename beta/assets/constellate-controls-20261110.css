@@ -130,7 +130,7 @@ body.is-constellating #constellate-mode .weave-more>summary:focus-visible{
 
 /* Two genuinely distinct actions: Build a constellation or Follow a sourced path.
    Presentation stays available from Follow, not as a competing top-level mode. */
-#constellate-mode > #weave-play[hidden]{display:none!important}
+html[data-weave-stage]:not([data-weave-stage="start"]) body.is-constellating #constellate-mode > #weave-play[hidden]{display:none!important}
 html[data-weave-stage]:not([data-weave-stage="start"]) body.is-constellating #constellate-mode > #constellate-read{
  border-right:1px solid var(--reading-line,#c9d0c6)!important;
  border-radius:0 9px 9px 0!important
