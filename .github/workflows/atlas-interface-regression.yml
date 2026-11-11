@@ -1,0 +1,146 @@
+name: Atlas Watch, Native Land links and Constellate controls QA
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'watch.html'
+      - 'beta/watch.html'
+      - 'index.html'
+      - 'beta/index.html'
+      - 'atlas-constellate62.js'
+      - 'beta/atlas-constellate62.js'
+      - 'assets/constellate-bar.js'
+      - 'beta/assets/constellate-bar.js'
+      - 'assets/constellate-controls-20261110.css'
+      - 'beta/assets/constellate-controls-20261110.css'
+      - '.github/workflows/atlas-interface-regression.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Chromium
+        run: |
+          python3 -m pip install -q playwright==1.*
+          python3 -m playwright install --with-deps chromium >/dev/null
+      - name: Verify themes, source-map clicks, reading and presentation
+        run: |
+          python3 -m http.server 8891 --bind 127.0.0.1 >/tmp/atlas-interface-qa.log 2>&1 &
+          sleep 2
+          mkdir -p shots
+          cat > /tmp/atlas-interface-regression.py <<'PY'
+          import asyncio,json,pathlib
+          from playwright.async_api import async_playwright
+          BASE='http://127.0.0.1:8891/'
+          async def main():
+            result={}
+            async with async_playwright() as playwright:
+              browser=await playwright.chromium.launch(args=['--use-angle=swiftshader','--enable-unsafe-swiftshader'])
+              for prefix,viewport in [('',{'width':1440,'height':900}),('beta/',{'width':390,'height':844})]:
+                label='main' if not prefix else 'beta-mobile'
+                ctx=await browser.new_context(viewport=viewport)
+                watch=await ctx.new_page()
+                errors=[]
+                watch.on('pageerror',lambda e:errors.append(str(e)))
+                await watch.goto(BASE+prefix+'watch.html',wait_until='domcontentloaded',timeout=90000)
+                await watch.wait_for_function("document.querySelector('#theme')?.options.length > 1",timeout=25000)
+                theme=await watch.evaluate("""() => ({
+                  selected:document.querySelectorAll('#theme').length,
+                  appearance:getComputedStyle(document.querySelector('#theme')).appearance,
+                  chevron:getComputedStyle(document.querySelector('.watch-theme-control'),'::after').content,
+                  themes:document.querySelector('#theme').options.length,
+                  sort:document.querySelector('#sort').options.length
+                })""")
+                assert theme['selected']==1 and theme['themes']>1 and theme['sort']==3,(label,theme)
+                assert theme['appearance']=='none' and theme['chevron'] not in ('none','normal'),(label,theme)
+                await watch.locator('#theme').select_option(index=1)
+                selected=await watch.locator('#theme').input_value()
+                assert selected,(label,theme)
+                assert not errors,(label,'watch',errors)
+                result[label+'-watch']=theme
+                await watch.close()
+                page=await ctx.new_page()
+                problems=[]
+                page.on('pageerror',lambda e:problems.append(str(e)))
+                await page.goto(BASE+prefix+'index.html',wait_until='domcontentloaded',timeout=90000)
+                await page.wait_for_function("document.documentElement.dataset.atlasUi==='ready'",timeout=45000)
+                await page.locator('#map-info>summary').click(timeout=12000)
+                dest=page.locator('#map-info a[href="https://native-land.ca/maps/constellation"]')
+                await dest.scroll_into_view_if_needed(timeout=10000)
+                await dest.evaluate("""a=>{window.__nativeClicks=0;a.addEventListener('click',e=>{e.preventDefault();window.__nativeClicks++});}""")
+                await dest.click(timeout=12000)
+                clicked=await page.evaluate('window.__nativeClicks')
+                assert clicked==1,(label,'map key link not receiving clicks',clicked)
+                if not prefix:
+                  foot=page.locator('.map-footer a[href="https://native-land.ca/maps/constellation"]')
+                  await foot.evaluate("""a=>{window.__footerClicks=0;a.addEventListener('click',e=>{e.preventDefault();window.__footerClicks++});}""")
+                  await page.locator('#map-info>summary').click(timeout=10000)
+                  await foot.click(timeout=12000)
+                  assert await page.evaluate('window.__footerClicks')==1, 'main footer link did not receive click'
+                await page.close()
+                page=await ctx.new_page()
+                page.on('pageerror',lambda e:problems.append(str(e)))
+                await page.goto(BASE+prefix+'index.html?constellate=1',wait_until='domcontentloaded',timeout=90000)
+                await page.wait_for_function("window.AtlasConstellate?.enabled && window.AtlasCollections?.current() && document.documentElement.dataset.atlasUi==='ready'",timeout=45000)
+                await page.evaluate("document.getElementById('weave-example').click()")
+                await page.wait_for_function("window.AtlasCollections.current().items.length>=3 && document.documentElement.dataset.weaveStage==='build'",timeout=30000)
+                modes=await page.evaluate("""()=>({
+                  edit:document.querySelector('#constellate-edit').parentElement.id,
+                  read:document.querySelector('#constellate-read').parentElement.id,
+                  play:document.querySelector('#weave-play').parentElement.id,
+                  count:window.AtlasCollections.current().items.length
+                })""")
+                assert [modes[x] for x in ['edit','read','play']]==['constellate-mode']*3,(label,modes)
+                await page.locator('#constellate-read').click(timeout=15000)
+                await page.locator('.weave-read-focus').wait_for(state='visible',timeout=15000)
+                progress=await page.evaluate("""()=>({
+                  stage:document.documentElement.dataset.weaveStage,
+                  bar:document.querySelector('.weave-read-progress')?.value,
+                  max:document.querySelector('.weave-read-progress')?.max,
+                  title:document.querySelector('.weave-read-focus h4')?.textContent
+                })""")
+                assert progress['stage']=='read' and progress['bar']==1 and progress['max']>=3,(label,progress)
+                await page.locator('#weave-read-next').click(timeout=12000)
+                nextstep=await page.evaluate("""()=>({
+                  bar:document.querySelector('.weave-read-progress')?.value,
+                  title:document.querySelector('.weave-read-focus h4')?.textContent
+                })""")
+                assert nextstep['bar']==2 and nextstep['title']!=progress['title'],(label,progress,nextstep)
+                await page.locator('#weave-play').click(timeout=15000)
+                await page.locator('#weave-player:not([hidden])').wait_for(timeout=12000)
+                await page.locator('#weave-play-speed').select_option('10000')
+                await page.locator('#weave-play-pause').click(timeout=12000)
+                await page.locator('#weave-play-next').click(timeout=12000)
+                play=await page.evaluate("""()=>({
+                  pace:document.querySelector('#weave-play-speed')?.value,
+                  progress:document.querySelector('#weave-play-progress')?.textContent,
+                  title:document.querySelector('#weave-play-title')?.textContent,
+                  visible:!document.querySelector('#weave-player')?.hidden
+                })""")
+                assert play['pace']=='10000' and play['visible'] and play['progress'].startswith('Film 2 of'),(label,play)
+                await page.locator('#weave-play-close').click(timeout=12000)
+                assert await page.locator('#weave-player').is_hidden(),(label,'player did not close')
+                if not prefix:
+                  await page.locator('#constellate-mode .weave-more>summary').click(timeout=10000)
+                  assert await page.locator('#constellate-mode .weave-more-menu #constellate-fit').is_visible()
+                assert not problems,(label,'map or constellation JS errors',problems[:8])
+                result[label+'-constellate']={'modes':modes,'reading':progress,'second':nextstep,'playing':play}
+                try:
+                  await page.screenshot(path=f'shots/{label}-constellate.png',timeout=10000,animations='disabled')
+                except Exception as e:print('NONFATAL_SCREENSHOT',label,str(e)[:120])
+                await ctx.close()
+              await browser.close()
+            pathlib.Path('shots/interface-regression.json').write_text(json.dumps(result,indent=2))
+            print('ATLAS_INTERFACE_REGRESSION_OK',json.dumps(result,ensure_ascii=False))
+          asyncio.run(main())
+          PY
+          python3 /tmp/atlas-interface-regression.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: atlas-interface-regression
+          path: shots/
