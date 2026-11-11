@@ -116,7 +116,13 @@ function layers(){
 function mapKey(){
  const panel=$('#map-info > div');if(!panel||$('#visual-key'))return;
  const notes=el('details',{class:'key-notes'},'<summary>Full notes</summary>');
- for(const n of [...panel.childNodes]){if(n.nodeType===1&&n.classList.contains('map-panel-close'))continue;notes.appendChild(n);}
+ /* The source maps are actionable references, not explanatory notes.
+    Keep their links outside the collapsed Full notes disclosure. */
+ const sources=panel.querySelector('.map-external-links');
+ for(const n of [...panel.childNodes]){
+  if(n.nodeType===1&&(n.classList.contains('map-panel-close')||n===sources))continue;
+  notes.appendChild(n);
+ }
  const sw=(svg)=>`<svg viewBox="0 0 40 22" width="40" height="22" aria-hidden="true">${svg}</svg>`;
  const rows=[
   [sw('<text x="1" y="17" font-family="Georgia, serif" font-size="17" fill="#182028">A</text><text x="17" y="17" font-family="Georgia, serif" font-size="10" fill="#182028">a</text><circle cx="33" cy="12" r="3.5" fill="#d59fa6" stroke="#f6f4e8" stroke-width="1.2"/>'),'<b>Land names.</b> Larger names have more linked filmmakers. Indigenous scripts are kept. Point to preview; select to open.'],
@@ -128,7 +134,7 @@ function mapKey(){
   [sw('<path d="M3 11 H37" stroke="#9c3b26" stroke-width="1.4" stroke-dasharray="4 5"/>'),'<b>Dashed line.</b> Catalog match awaiting review.']];
  const key=el('div',{id:'visual-key'},`<strong class="key-title">Map key</strong><ul>${rows.map(([s,t])=>`<li>${s}<span>${t}</span></li>`).join('')}</ul>
   <p class="key-shortcuts"><kbd>/</kbd> search · <kbd>C</kbd> countries · <kbd>L</kbd> layers · <kbd>K</kbd> key · <kbd>W</kbd> whole world · <kbd>S</kbd> surprise · <kbd>Esc</kbd> close</p>`);
- panel.prepend(key);key.after(notes);
+ if(sources){panel.prepend(sources);sources.after(key,notes);}else{panel.prepend(key);key.after(notes);}
 }
 
 /* 6. Index panel: say what search covers; show active filters as chips. */
