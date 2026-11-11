@@ -354,3 +354,31 @@ html body #index .index-command-bar{padding-bottom:4px!important}
 html body #index #maker-browser,
 html body #index #film-browser{margin-top:0!important;margin-bottom:0!important}
 html body #index .index-control-row{margin-top:3px!important;padding-top:5px!important}
+
+
+/* Source-map navigation, November 2026.
+   The footer is click-through for map gestures, but its actual links must receive clicks. */
+body.atlas-page .map-footer{z-index:7;pointer-events:none}
+body.atlas-page .map-footer a{
+  position:relative;z-index:1;display:inline-block;pointer-events:auto!important;
+  cursor:pointer;text-decoration:underline;text-underline-offset:3px;
+  touch-action:manipulation
+}
+body.atlas-page .map-footer a:hover,
+body.atlas-page #map-info .map-external-links a:hover{text-decoration-thickness:2px}
+body.atlas-page .map-footer a:focus-visible,
+body.atlas-page #map-info .map-external-links a:focus-visible{
+  outline:2px solid var(--reading-accent,#9c3b26);outline-offset:3px;border-radius:2px
+}
+body.atlas-page .map-toolbar:has(#map-info[open]){z-index:60}
+body.atlas-page #map-info[open]>div{
+  pointer-events:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch
+}
+body.atlas-page #map-info .map-external-links{
+  margin-top:14px;padding-top:10px;border-top:1px solid var(--reading-line,#c9d0c6)
+}
+body.atlas-page #map-info .map-external-links strong{display:block;font-size:13px;line-height:1.4}
+body.atlas-page #map-info .map-external-links a{
+  display:block;min-height:38px;padding:8px 0;position:relative;
+  pointer-events:auto;touch-action:manipulation;line-height:1.45
+}
