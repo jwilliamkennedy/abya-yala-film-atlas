@@ -348,3 +348,13 @@
 @media(max-width:380px){
  :root:not(#_) body.is-constellating #constellate-mode #weave-browse-films{display:none!important}
 }
+
+/* Dense Constellate: complete relationships, lighter secondary ribbons.
+   The numbered stops remain visible when film thumbnails are sampled. */
+#constellate-graph[data-density="dense"] .weave-thread-shadow{stroke-width:5;stroke-opacity:.09}
+#constellate-graph[data-density="dense"] .weave-thread-halo{stroke-width:5;stroke-opacity:.65}
+#constellate-graph[data-density="dense"] .weave-thread.is-active .weave-ribbon{stroke-width:3.4;stroke-opacity:.94}
+#constellate-graph[data-density="dense"] .weave-thread.is-quiet .weave-ribbon{stroke-width:1.9;stroke-opacity:.46}
+#constellate-graph[data-density="dense"] .weave-thread.is-quiet .weave-ribbon-sheen{stroke-opacity:.12}
+#constellate-graph[data-density="dense"] .weave-thread.is-quiet .weave-stop{opacity:.80}
+#constellate-graph[data-density="dense"] .weave-stop:not(.current):not(.selected)>circle:not(.weave-family-ring):not(.weave-crossing-ring){stroke-width:1.2}
