@@ -262,3 +262,9 @@ Selection criteria: (1) findability; (2) lower cognitive and DOM load; (3) rever
 ## Deliberately deferred
 
 No inferred identity or language, automatic similarity clustering, AI-authored relations, autoplay on choosing a theme, or sweeping reorganization of Build/Follow/Play. Future improvements should be measured against clarity and source fidelity rather than feature count.
+
+### Verification executed in this session
+
+- JavaScript syntax parsing passed for both core Constellate files and both Theme Web files after deployment.
+- An isolated test of the actual core film-results renderer passed for **48 initial results**, **96 after Show more**, **48 starting at M after an A–Z jump**, **258 results after excluding two on-thread titles**, **129 results with the sourced-image filter**, and **zero results with a recovery action**. This test uses a 260-title synthetic catalog and checks function behavior, not real browser layout.
+- A separate browser smoke-test workflow was added for desktop and mobile. Its execution result was not available for confirmation in this session; do **not** interpret its presence as a passing browser test.
