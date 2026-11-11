@@ -70,7 +70,6 @@ jobs:
                 await page.wait_for_function("document.documentElement.dataset.atlasUi==='ready'",timeout=45000)
                 await page.locator('#map-info>summary').click(timeout=12000)
                 dest=page.locator('#map-info a[href="https://native-land.ca/maps/constellation"]')
-                await dest.scroll_into_view_if_needed(timeout=10000)
                 debug=await page.evaluate("""() => {
                   const d=document.getElementById('map-info'),a=d.querySelector('a[href="https://native-land.ca/maps/constellation"]'),panel=d.querySelector('div');
                   const rect=x=>{const r=x.getBoundingClientRect();return {x:r.x,y:r.y,width:r.width,height:r.height}};
@@ -81,6 +80,7 @@ jobs:
                     parentRect:rect(panel),topHit:document.elementFromPoint(rect(a).x+5,rect(a).y+5)?.outerHTML?.slice(0,160)};
                 }""")
                 print('MAP_KEY_DEBUG',label,json.dumps(debug),flush=True)
+                await dest.scroll_into_view_if_needed(timeout=10000)
                 await dest.evaluate("""a=>{window.__nativeClicks=0;a.addEventListener('click',e=>{e.preventDefault();window.__nativeClicks++});}""")
                 await dest.click(timeout=12000)
                 clicked=await page.evaluate('window.__nativeClicks')
