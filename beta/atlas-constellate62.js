@@ -130,7 +130,7 @@
   // named cross-film connection instead of silently reordering that sequence.
   if(drawLast&&drawLast!==t.items.at(-1)&&drawLast!==id){
     const source=drawLast;
-    drawThread=false;drawLast=null;pointer=null;
+    setDrawThread(false);
     connectionForm({source,target:id,label:'',kind:'interpretation'});
     status('Name the direct film-to-film connection.');
     return;
