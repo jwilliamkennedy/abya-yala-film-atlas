@@ -79,7 +79,7 @@
    '<section id="atlas-theme-web" class="theme-web" hidden aria-label="Theme network within the atlas">'+
     '<div class="tw-heading"><div><p class="tw-kicker">CONSTELLATE / RELATIONAL INDEX</p><h2>Follow the themes</h2><p>Each line joins two themes documented together in a film synopsis. Select a theme or a bridge to follow the films.</p></div>'+
     '<button id="tw-close" type="button" aria-label="Close theme network">×</button></div>'+
-    '<div class="tw-top"><label for="tw-search">Find a theme</label><input id="tw-search" type="search" placeholder="Search themes…" autocomplete="off">'+
+    '<div class="tw-top"><label for="tw-search">Find a theme</label><input id="tw-search" type="search" placeholder="Search themes or families…" autocomplete="off">'+
     '<button id="tw-seed" type="button">Begin with 3 themed threads</button></div>'+
     '<div id="tw-families" class="tw-families" role="group" aria-label="Theme families"></div>'+
     '<div class="tw-main"><div class="tw-graph-wrap"><div id="tw-mobile-list" class="tw-mobile-list" aria-label="Browse themes by name"></div><svg id="tw-graph" viewBox="0 0 720 550" role="group" aria-label="Interactive network of sourced themes and co-tagged films"></svg>'+
@@ -113,7 +113,7 @@
    if(window.matchMedia('(max-width:700px)').matches)aside.scrollIntoView({block:'start',behavior:'instant'});
   });
   aside.addEventListener('click',function(e){
-   var b=e.target.closest('[data-open-term],[data-film-id],[data-start-term],[data-more-films]');if(!b)return;
+   var b=e.target.closest('[data-open-term],[data-film-id],[data-start-term],[data-more-films],[data-tw-reset]');if(!b)return;if(b.hasAttribute('data-tw-reset')){document.getElementById('tw-reset').click();searchBox.focus({preventScroll:true});return;}
     if(b.hasAttribute('data-more-films')){filmsShown+=8;detail();return;}
    if(b.dataset.openTerm){selected=b.dataset.openTerm;selectedPair='';search='';searchBox.value='';activeFamily='All themes';draw();return;}
    if(b.dataset.startTerm){
@@ -133,12 +133,12 @@
  }
  function visibleNodes(){
   var needle=canon(search),list=[...nodeByName.values()];
-  return list.filter(n=>(activeFamily==='All themes'||n.family===activeFamily)&&(!needle||canon(n.name).includes(needle)));
+  return list.filter(n=>(activeFamily==='All themes'||n.family===activeFamily)&&(!needle||canon(n.name).includes(needle)||canon(n.family).includes(needle)));
  }
  function draw(){
   if(!isOpen)return;
   var nodes=visibleNodes(),names=new Set(nodes.map(n=>n.name)),edges=graphLinks.filter(l=>names.has(l.source)&&names.has(l.target));
-  var caption=films.length+' tagged films · '+nodeByName.size+' attested themes · '+graphLinks.length+' documented co-tag bridges';
+  var caption=nodes.length+' matching themes · '+films.length+' tagged films · '+graphLinks.length+' sourced co-tag bridges';
    var linksButton=document.getElementById('tw-all-links');
    linksButton.hidden=edges.length<=(selected?55:(activeFamily==='All themes'&&!search?28:55));
    linksButton.textContent=showAllBridges?'Show strongest bridges':'Show all '+edges.length+' bridges';
@@ -148,7 +148,7 @@
   var mobile=document.getElementById('tw-mobile-list');
   mobile.innerHTML='<div class="tw-mobile-guide"><strong>Explore '+nodes.length+' themes</strong><button type="button" data-mobile-network>'+(root.classList.contains('tw-show-network')?'List of themes':'See the network diagram')+'</button></div>'+
    '<div class="tw-mobile-grid">'+nodes.map(function(n){return '<button type="button" data-mobile-term="'+esc(n.name)+'" aria-pressed="'+(selected===n.name)+'"><i style="background:'+esc(COLORS[n.family]||'#75838c')+'"></i><span>'+esc(n.name)+'</span><small>'+n.films.length+' films</small></button>';}).join('')+'</div>';
-  drawGraph(nodes,edges);detail();
+  drawGraph(nodes,edges);detail();if(!nodes.length){aside.innerHTML='<p class="tw-kicker">NO MATCHES</p><h3>No themes found</h3><p>Try a theme family (such as Knowledge), a shorter term, or reset the view.</p><button type="button" data-tw-reset>Clear theme search</button>';}
  }
  function drawGraph(provided,providedEdges){
   if(!isOpen)return;
@@ -176,10 +176,11 @@
   var related=new Set();
   if(selected){for(var e of edges)if(e.source===selected)related.add(e.target);else if(e.target===selected)related.add(e.source);}
   var dimTheme=function(n){return selected&&n!==selected&&!related.has(n);};
-  var ranked=edges.slice().sort(function(a,b){var pa=selected&&(a.source===selected||a.target===selected)?1000:0,pb=selected&&(b.source===selected||b.target===selected)?1000:0;return pb-pa||b.count-a.count;});
+  var scoped=selectedPair?edges.filter(function(l){return l.source+String.fromCharCode(31)+l.target===selectedPair;}):selected?edges.filter(function(l){return l.source===selected||l.target===selected;}):edges;
+   var ranked=scoped.slice().sort(function(a,b){var pa=selected&&(a.source===selected||a.target===selected)?1000:0,pb=selected&&(b.source===selected||b.target===selected)?1000:0;return pb-pa||b.count-a.count;});
    // The overview is intentionally legible: 28 strongest co-tag bridges, not a hairball.
    // Theme/family selection expands the relevant connections; All bridges is opt-in.
-   var limit=showAllBridges?edges.length:(selected?55:(activeFamily==='All themes'&&!search?28:55));
+   var limit=showAllBridges?scoped.length:(selected?Math.min(55,scoped.length):(activeFamily==='All themes'&&!search?28:55));
    var shown=ranked.slice(0,limit);
    if(selectedPair){
     var chosenBridge=edges.find(function(l){return l.source+'\u001f'+l.target===selectedPair;});
@@ -216,7 +217,7 @@
   }else if(entry){
    var rel=graphLinks.filter(l=>l.source===entry.name||l.target===entry.name).slice(0,12);
    aside.innerHTML='<p class="tw-kicker">'+esc(entry.family)+'</p><h3>'+esc(entry.name)+'</h3><p class="tw-claim">'+entry.films.length+' film'+(entry.films.length===1?'':'s')+' have this theme in the atlas. The tags originate in film descriptions; see each film’s synopsis source for the evidence.</p>'+
-    '<div class="tw-actions"><button class="tw-primary" type="button" data-start-term="'+esc(entry.name)+'">Create a '+esc(short(entry.name,24))+' thread</button></div>'+
+    '<div class="tw-actions"><button class="tw-primary" type="button" data-start-term="'+esc(entry.name)+'">Start with 6 films</button></div>'+
     (rel.length?'<h4>Bridges to other themes</h4><div class="tw-neighbors">'+rel.map(l=>{var term=l.source===entry.name?l.target:l.source;return '<button type="button" data-open-term="'+esc(term)+'">'+esc(term)+' <small>'+l.count+' shared film'+(l.count===1?'':'s')+'</small></button>';}).join('')+'</div>':'')+
     '<h4>Films tagged '+esc(entry.name)+'</h4>'+renderFilms(entry.films);
   }else{
