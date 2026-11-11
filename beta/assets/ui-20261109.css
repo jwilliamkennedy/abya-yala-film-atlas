@@ -382,3 +382,10 @@ body.atlas-page #map-info .map-external-links a{
   display:block;min-height:38px;padding:8px 0;position:relative;
   pointer-events:auto;touch-action:manipulation;line-height:1.45
 }
+
+/* Native Land Digital and other external map credits must be clickable on iOS, desktop and keyboard. */
+body.atlas-page .map-footer{z-index:18;pointer-events:none!important}
+body.atlas-page .map-footer .map-source-links{pointer-events:auto!important;position:relative;z-index:1}
+body.atlas-page .map-footer .map-source-links a{pointer-events:auto!important;touch-action:manipulation}
+body.atlas-page #map-info .map-external-links a,
+body.atlas-page #layers a{pointer-events:auto!important;touch-action:manipulation}
