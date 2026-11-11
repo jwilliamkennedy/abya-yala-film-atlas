@@ -163,9 +163,9 @@
   const onlyNew=$('#weave-discovery-unadded').checked,withArt=$('#weave-discovery-art').checked;
   const box=$('#constellate-results'),thread=S.activeThread(),noun=azTab==='film'?'films':'filmmakers';
   const all=azAll(azTab),membership=onlyNew?thread.items.join('|'):'';
-  const filterSignature=[azTab,q,order,onlyNew,withArt,thread.id,membership].join('|');
+  const filterSignature=[azTab,q,order,onlyNew,withArt,thread.id].join('|');
   if(filterSignature!==browseSignature){browsePageStart=0;browsePageLimit=48;browseSignature=filterSignature;}
-  const cacheKey=[filterSignature,browsePageStart,browsePageLimit].join('|');
+  const cacheKey=[filterSignature,membership,browsePageStart,browsePageLimit].join('|');
   if(cacheKey!==azKey){
    const oldScroll=box.scrollTop;
    const rank=x=>{
@@ -218,7 +218,7 @@
    if(remaining>0)html+='<button type="button" class="weave-results-more" data-results-more>Show '+Math.min(48,remaining)+' more '+noun+' · '+remaining+' remaining</button>';
    box.innerHTML=html;
    if(resetScroll)box.scrollTop=0;else box.scrollTop=oldScroll;
-   azKey=[filterSignature,browsePageStart,browsePageLimit].join('|');
+   azKey=[filterSignature,membership,browsePageStart,browsePageLimit].join('|');
    const start=page.length?browsePageStart+1:0,end=browsePageStart+page.length;
    const status='Showing '+start+'–'+end+' of '+found.length.toLocaleString()+' matching '+noun;
    $('#weave-discovery-count').textContent=status;
@@ -235,7 +235,7 @@
    b.title=has?'Open '+x.title+' on the map':'Add to '+thread.name;
    b.setAttribute('aria-label',has?'Open '+x.title+' on this thread':'Add '+x.title+' to '+thread.name);
   });
-  $('#weave-target-name').textContent=thread.name;
+  $('#weave-target-name').textContent=thread.name+' · '+thread.items.length+' cards';
   const opts=S.current().threads.map((t,i)=>'<option value="'+esc(t.id)+'"'+(t.id===S.current().activeThread?' selected':'')+'>'+ (i+1)+'. '+esc(t.name)+'</option>').join('');
   if($('#weave-target').innerHTML!==opts)$('#weave-target').innerHTML=opts;
   $('#weave-discovery-clear').disabled=!input.value&&!onlyNew&&!withArt&&order==='relevance';
@@ -392,7 +392,7 @@
     for(const x of batch){const own=existingWork(x);if(own)S.addToThread(own.id,t.id);else S.add(x,{threadId:t.id});}
     return true;
    });
-   if(ok){fit('quiet');status('Unfolded '+batch.length+' more films in “'+term+'.” Follow the thread, or unfold another group.');}
+   if(ok){status('Unfolded '+batch.length+' more films in “'+term+'.” Map position preserved; follow the thread or unfold another group.');}
   };
   $('#weave-theme-browse').onclick=()=>{
    setTab('add');
