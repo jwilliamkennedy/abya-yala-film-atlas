@@ -98,8 +98,8 @@
   chipRow.addEventListener('click',function(e){var b=e.target.closest('[data-family]');if(!b)return;activeFamily=b.dataset.family;selected='';selectedPair='';draw();});
   svg.addEventListener('click',function(e){
    var edge=e.target.closest('[data-bridge]'),node=e.target.closest('[data-term]');
-   if(edge){selectedPair=edge.dataset.bridge;selected='';detail();drawGraph();return;}
-   if(node){selected=node.dataset.term;selectedPair='';detail();drawGraph();return;}
+   if(edge){selectedPair=edge.dataset.bridge;selected='';draw();return;}
+   if(node){selected=node.dataset.term;selectedPair='';draw();return;}
   });
   svg.addEventListener('keydown',function(e){if(e.key!=='Enter'&&e.key!==' ')return;var el=e.target.closest('[data-term],[data-bridge]');if(el){e.preventDefault();el.dispatchEvent(new MouseEvent('click',{bubbles:true}));}});
   document.getElementById('tw-mobile-list').addEventListener('click',function(e){
@@ -109,7 +109,7 @@
     b.textContent=root.classList.contains('tw-show-network')?'List of themes':'See the network diagram';
     drawGraph();return;
    }
-   selected=b.dataset.mobileTerm;selectedPair='';drawGraph();detail();
+   selected=b.dataset.mobileTerm;selectedPair='';draw();
    if(window.matchMedia('(max-width:700px)').matches)aside.scrollIntoView({block:'start',behavior:'instant'});
   });
   aside.addEventListener('click',function(e){
@@ -140,8 +140,8 @@
   var nodes=visibleNodes(),names=new Set(nodes.map(n=>n.name)),edges=graphLinks.filter(l=>names.has(l.source)&&names.has(l.target));
   var caption=nodes.length+' matching themes · '+films.length+' tagged films · '+graphLinks.length+' sourced co-tag bridges';
    var linksButton=document.getElementById('tw-all-links');
-   linksButton.hidden=edges.length<=(selected?55:(activeFamily==='All themes'&&!search?28:55));
-   linksButton.textContent=showAllBridges?'Show strongest bridges':'Show all '+edges.length+' bridges';
+   var applicable=selectedPair?1:selected?edges.filter(l=>l.source===selected||l.target===selected).length:edges.length;linksButton.hidden=selectedPair||applicable<=(selected?55:(activeFamily==='All themes'&&!search?28:55));
+   linksButton.textContent=showAllBridges?'Show strongest bridges':'Show all '+applicable+' bridges';
    linksButton.setAttribute('aria-pressed',String(showAllBridges));
   document.getElementById('tw-stat').textContent=caption;
   chipRow.innerHTML=['All themes'].concat(families).map(f=>'<button type="button" data-family="'+esc(f)+'" aria-pressed="'+(f===activeFamily)+'"><i style="background:'+esc(COLORS[f]||'#667e8b')+'"></i>'+esc(f)+(f==='All themes'?'':' <small>'+[...nodeByName.values()].filter(x=>x.family===f).length+'</small>')+'</button>').join('');
