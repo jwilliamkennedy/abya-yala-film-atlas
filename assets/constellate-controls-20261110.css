@@ -96,3 +96,34 @@ html[data-weave-stage="read"] #weave-read-panel .weave-read-nav button:not(:disa
 @media(prefers-reduced-motion:reduce){
   #weave-player .weave-title-card{scroll-behavior:auto}
 }
+
+
+/* Film-to-film geometry: card thumbnails are the thread endpoints; dotted land leaders remain separate. */
+body.is-constellating #constellate-graph.weave-drawing-mode .constellate-card{
+ cursor:crosshair
+}
+body.is-constellating #constellate-graph.weave-drawing-mode .constellate-card .weave-card-art{
+ pointer-events:none
+}
+body.is-constellating #constellate-graph.weave-drawing-mode .constellate-card:hover > rect,
+body.is-constellating #constellate-graph.weave-drawing-mode .constellate-card:focus-visible > rect{
+ stroke:var(--reading-accent,#9c3b26)!important;stroke-width:2.3!important
+}
+body.is-constellating #constellate-graph.weave-drawing-mode .constellate-preview{
+ stroke:var(--reading-accent,#9c3b26)!important;
+ stroke-width:2.8!important;stroke-dasharray:7 5!important;
+ fill:none;pointer-events:none
+}
+body.is-constellating #constellate-graph .weave-leader{
+ stroke-dasharray:2 4;stroke-opacity:.28;pointer-events:none
+}
+/* Play is a third real mode, not an unselected action beside Build and Read. */
+html[data-weave-stage="play"] body.is-constellating #constellate-mode > #weave-play,
+body.is-constellating #constellate-mode > #weave-play[aria-pressed="true"]{
+ background:var(--reading-ink,#182028)!important;
+ color:var(--reading-paper,#eef0ec)!important;
+ border-color:var(--reading-ink,#182028)!important
+}
+body.is-constellating #constellate-mode .weave-more>summary:focus-visible{
+ outline:2px solid var(--reading-accent,#9c3b26);outline-offset:3px
+}
