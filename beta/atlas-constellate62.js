@@ -126,7 +126,20 @@
   const x=S.current().items.find(v=>v.id===id);
   if(!x||x.type==='concept'){status('Draw threads through film or filmmaker cards.');return;}
   const t=S.activeThread(),already=t.items.includes(id);
-  if(already&&t.items.at(-1)!==id){active=id;drawLast=t.items.at(-1)||null;renderGraph();status(x.title+' already appears earlier on this thread. Reorder it in the list, or continue from the last card.');return;}
+  // A thread is an ordered sequence. Drawing from an older thumbnail creates a
+  // named cross-film connection instead of silently reordering that sequence.
+  if(drawLast&&drawLast!==t.items.at(-1)&&drawLast!==id){
+    const source=drawLast;
+    drawThread=false;drawLast=null;pointer=null;
+    connectionForm({source,target:id,label:'',kind:'interpretation'});
+    status('Name the direct film-to-film connection.');
+    return;
+  }
+  if(already&&t.items.at(-1)!==id){
+    active=id;drawLast=id;pointer=null;renderGraph();
+    status('Starting at '+x.title+'. Select or drag to another thumbnail to name a direct connection.');
+    return;
+  }
   if(!already&&!transaction('Draw thread to '+x.title,()=>S.addToThread(id,t.id)))return;
   active=id;drawLast=id;pointer=null;context.hidden=inline.hidden=true;
   render();status((already?'Selected ':'Connected to ')+x.title+' · '+S.activeThread().items.length+' cards on '+t.name+'. Select the next card.');
