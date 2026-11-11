@@ -52,7 +52,7 @@ function sync(){
 }
 function credit(){
  const span=[...document.querySelectorAll('.map-footer span')].find(s=>/Natural Earth/.test(s.textContent));
- if(span)span.innerHTML=OSM+' · '+TERRAIN+' · Native Land Digital / MapMaker · 2023';
+ if(span)span.innerHTML=OSM+' · '+TERRAIN+' · <a href="https://native-land.ca/" target="_blank" rel="noopener noreferrer">Native Land Digital</a> (<a href="https://native-land.ca/maps" target="_blank" rel="noopener noreferrer">Maps</a>) / <a href="https://education.nationalgeographic.org/resource/mapmaker-indigenous-territories/" target="_blank" rel="noopener noreferrer">MapMaker</a> · 2023';
 }
 function visibility(){const g=document.querySelector('#atlas .geography');if(host)host.hidden=!!(g&&g.getAttribute('data-geography-visible')==='false');}
 async function boot(){
