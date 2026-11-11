@@ -99,6 +99,27 @@ main a[href^="http"]{color:var(--accent,var(--gold))}
 </style>
 <link rel="stylesheet" href="assets/site-menu.css?v=11"><script defer src="assets/site-menu.js?v=3"></script><script defer src="i18n-20261107.js?v=10"></script>
 <link rel="stylesheet" href="assets/ui-20261109.css?v=3"><script defer src="assets/ui-20261109.js?v=3"></script>
+<style id="watch-theme-chevron-fix">
+/* Watch: one deliberately drawn chevron, not a native arrow plus an icon. */
+.tools .watch-theme-control{position:relative;display:inline-flex;align-items:center;flex:1 1 210px;min-width:155px;max-width:100%}
+.tools .watch-theme-control #theme{
+  box-sizing:border-box;width:100%;max-width:100%;min-width:0;min-height:44px;height:44px;
+  padding:0 46px 0 16px!important;border:1px solid var(--line);border-radius:8px;
+  appearance:none!important;-webkit-appearance:none!important;-moz-appearance:none!important;
+  background-color:var(--bg)!important;background-image:none!important;
+  color:var(--ink);font:inherit;font-size:15px;line-height:1.25;cursor:pointer
+}
+.tools .watch-theme-control::after{
+  content:"";position:absolute;right:19px;top:50%;width:9px;height:9px;
+  border-right:2px solid var(--ink);border-bottom:2px solid var(--ink);
+  transform:translateY(-65%) rotate(45deg);pointer-events:none
+}
+.tools .watch-theme-control #theme:focus-visible{
+  outline:2px solid var(--accent);outline-offset:2px
+}
+.tools .watch-theme-control #theme:disabled{opacity:.55;cursor:not-allowed}
+@media(max-width:560px){.tools .watch-theme-control{flex:1 1 45%;min-width:145px}}
+</style>
 </head><body>
 <header><a class="brand" href="./"><svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><circle cx="30" cy="34" r="20" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="30" cy="34" r="8.5" fill="none" stroke="currentColor" stroke-width="2.6"/><path d="M30 14.5v6M30 47.5v6M10.5 34h6M43.5 34h6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" opacity=".5"/><path class="star" d="M49 7 L51.4 13.6 L58 16 L51.4 18.4 L49 25 L46.6 18.4 L40 16 L46.6 13.6 Z"/></svg><span>Indigenous Cinema Atlas<small>Abya Yala and Turtle Island</small></span></a>
 <nav class="primary" aria-label="Explore the atlas"><a href="about.html">About</a><a href="./">Map</a><a href="./?constellate=1">Constellate</a><a href="watch.html" aria-current="page">Watch</a><details class="more-menu"><summary>More</summary><div><a href="./#view=land">Land</a><a href="languages.html">Languages</a><a href="themes.html">Themes</a><a href="timeline.html">Timeline</a><span class="more-sep"></span><a href="screening.html" data-screen-count>Screening list</a><span class="more-sep"></span><a href="data.html">Data and downloads</a><a href="corrections.html">Suggest a correction</a></div></details></nav></header>
@@ -108,7 +129,7 @@ main a[href^="http"]{color:var(--accent,var(--gold))}
 <section id="now" aria-label="Player"><div class="frame"><iframe id="now-frame" title="Player" referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
 <div class="now-cap"><div><h2 id="now-title"></h2><p class="by" id="now-by"></p><p class="note" id="now-note"></p></div><button type="button" id="next" title="Play another film">Another film</button></div></section>
 <div class="tools"><input id="q" type="search" placeholder="Search films, filmmakers, peoples" aria-label="Search films">
-<select id="theme" aria-label="Theme"><option value="">All themes</option></select>
+<span class="watch-theme-control"><select id="theme" aria-label="Theme"><option value="">All themes</option></select></span>
 <select id="sort" aria-label="Order"><option value="maker">Filmmaker A–Z</option><option value="new">Newest first</option><option value="title">Title A–Z</option></select>
 <label class="check"><input id="here" type="checkbox"> Plays here</label><span class="count" id="count"></span></div>
 <ol id="list" aria-live="polite"></ol>
