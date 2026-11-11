@@ -38,7 +38,7 @@
   edit.title='Build: add films and draw connections';
   var read=document.getElementById('constellate-read');
   if(read)read.title='Follow: explore films, notes and sources one at a time';
-  play.title='Present: play the constellation film by film';
+  play.title='Play: move through the constellation film by film';
   var summary=more.querySelector('summary');
   if(summary)summary.title='Display, analysis, sharing and history tools';
   if(unmap&&unmap.parentNode!==menu){
