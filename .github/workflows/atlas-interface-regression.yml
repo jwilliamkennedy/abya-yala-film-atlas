@@ -9,6 +9,8 @@ on:
       - 'beta/index.html'
       - 'atlas-constellate62.js'
       - 'beta/atlas-constellate62.js'
+      - 'assets/constellate-theme-web.js'
+      - 'beta/assets/constellate-theme-web.js'
       - 'assets/constellate-thumbnails-20261108.css'
       - 'beta/assets/constellate-thumbnails-20261108.css'
       - 'assets/constellate-bar.js'
@@ -211,6 +213,20 @@ jobs:
                 assert dense['positioned']==dense['total'] and dense['hidden']>0,(label,'film positions lost when cards sampled',dense)
                 assert 2<=dense['cards']<dense['total'] and dense['runs']==1,(label,'dense ribbon breaks into disconnected segments',dense)
                 assert dense['startError'] is not None and dense['startError']<12 and dense['endError'] is not None and dense['endError']<12,(label,'dense ribbon detached from thumbnails',dense)
+                # Full Theme Web opens with a curated overview, not a 100+ edge hairball;
+                # its example should start with no more than three small threads.
+                await page.wait_for_function("document.getElementById('weave-theme-web-toggle')!==null",timeout=15000)
+                theme_web=await page.evaluate("""() => {
+                  const modal=document.getElementById('atlas-theme-web');
+                  if(modal.hidden)document.getElementById('weave-theme-web-toggle').click();
+                  const count=document.querySelectorAll('#tw-graph .tw-bridge').length;
+                  document.getElementById('tw-seed').click();
+                  const c=window.AtlasCollections.current();
+                  return {links:count,threads:c.threads.length,films:c.items.length,
+                    maxThread:Math.max(...c.threads.map(t=>t.items.length))};
+                }""")
+                assert 0<theme_web['links']<=28,(label,'full-theme overview is overcrowded',theme_web)
+                assert 2<=theme_web['threads']<=3 and theme_web['maxThread']<=4 and theme_web['films']<=12,(label,'example theme loadout too large',theme_web)
                 assert not problems,(label,'map or constellation JS errors',problems[:8])
                 result[label+'-constellate']={'modes':modes,'reading':progress,'second':nextstep,'playing':play}
                 try:
