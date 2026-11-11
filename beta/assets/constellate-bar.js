@@ -12,7 +12,7 @@
   var play=document.getElementById('weave-play'),share=document.getElementById('constellate-share');
   var undo=document.getElementById('constellate-undo'),redo=document.getElementById('constellate-redo'),group=bar.querySelector('.weave-tool-group');
   if(!menu||!more||!draw||!clear||!edit||!play||!share||!undo||!redo||!group)return false;
-  /* Build, Read and Play are modes, not tools hidden under Options.
+  /* Build and Follow are the visible modes; Present opens from Follow.
      Move only secondary sharing/history actions on compact screens. */
   if(edit.parentNode!==bar)bar.insertBefore(edit,draw);
   if(play.parentNode!==bar)bar.insertBefore(play,clear);
@@ -37,8 +37,8 @@
   bar.setAttribute('aria-label','Constellation modes and actions');
   edit.title='Build: add films and draw connections';
   var read=document.getElementById('constellate-read');
-  if(read)read.title='Read: follow the selected films, notes and sources';
-  play.title='Play: present the constellation film by film';
+  if(read)read.title='Follow: explore films, notes and sources one at a time';
+  play.title='Present: play the constellation film by film';
   var summary=more.querySelector('summary');
   if(summary)summary.title='Display, analysis, sharing and history tools';
   if(unmap&&unmap.parentNode!==menu){
