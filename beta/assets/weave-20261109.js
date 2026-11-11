@@ -125,7 +125,7 @@ function guide(st){
  else if(drawing){step='link';text='Click films on the map in the order the thread should run. Choose Done drawing to finish.';acts=[['draw','Done drawing']];}
  else if(n===0){step='add';text=total?('Add films to “'+t.name+'”: search, or use Draw thread to click films already on the map.'):'Add the first film: search, or click a film on the map.';acts=[['add','Add films'],total?['draw','Draw thread']:null];}
  else if(n===1){step='add';text='Add a second film. Films that share a documented theme with this one are listed below.';acts=[['suggest','See films that could come next'],['add','Search films']];}
- else{step='link';text='“'+t.name+'” runs through '+n+' films. Connect two films to say how they meet: answers, echoes, shares land, or your own words.';acts=[['connect','Connect two films'],['read','Read the constellation'],['add','Add films']];}
+ else{step='link';text='“'+t.name+'” · '+n+' films. Select two film cards to explain their connection.';acts=[['connect','Connect two films'],['read','Follow'],['add','Add films']];}
  $$('.wg-steps li',g).forEach(function(li){var order=['add','link','share'];var k=li.dataset.step===step?'is-now':(order.indexOf(li.dataset.step)<order.indexOf(step)?'is-done':'');if(li.className!==k)li.className=k;});
  var tx=$('.wg-text',g);if(tx.textContent!==text)tx.textContent=text;
  var html=acts.filter(Boolean).map(function(a,i){return '<button type="button" data-wg="'+a[0]+'" class="'+(i===0?'wg-primary':'')+'">'+a[1]+'</button>';}).join('');
