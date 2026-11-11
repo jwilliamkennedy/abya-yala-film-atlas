@@ -110,6 +110,15 @@ jobs:
                 page.on('pageerror',lambda e:problems.append(str(e)))
                 await page.goto(BASE+prefix+'index.html?constellate=1',wait_until='domcontentloaded',timeout=90000)
                 await page.wait_for_function("window.AtlasConstellate?.enabled && window.AtlasCollections?.current() && document.documentElement.dataset.atlasUi==='ready'",timeout=45000)
+                await page.wait_for_function("document.getElementById('ws-theme-q') && document.getElementById('ws-film-q')",timeout=20000)
+                searches=await page.evaluate("""() => {
+                  const theme=document.getElementById('ws-theme-q'),film=document.getElementById('ws-film-q'),
+                    chips=document.querySelector('#weave-start .ws-chips');
+                  return {themeAboveChips:!!(theme.compareDocumentPosition(chips)&Node.DOCUMENT_POSITION_FOLLOWING),
+                    themeY:theme.getBoundingClientRect().y,filmY:film.getBoundingClientRect().y};
+                }""")
+                assert searches['themeAboveChips'],(label,'theme search is below popular chips',searches)
+                if not prefix:assert abs(searches['themeY']-searches['filmY'])<24,(label,'theme and film searches not aligned',searches)
                 await page.evaluate("document.getElementById('weave-example').click()")
                 await page.wait_for_function("window.AtlasCollections.current().items.length>=3 && document.documentElement.dataset.weaveStage==='build'",timeout=30000)
                 modes=await page.evaluate("""()=>({
@@ -122,9 +131,22 @@ jobs:
                 modes_visible=await page.evaluate("""() => ({
                   build:document.querySelector('#constellate-edit').textContent,
                   follow:document.querySelector('#constellate-read').textContent,
-                  playHidden:getComputedStyle(document.querySelector('#weave-play')).display==='none'
+                  playVisible:getComputedStyle(document.querySelector('#weave-play')).display!=='none'
                 })""")
-                assert modes_visible=={'build':'Build','follow':'Follow','playHidden':True},(label,'redundant top-level presentation control',modes_visible)
+                assert modes_visible=={'build':'Build','follow':'Follow','playVisible':True},(label,'Play missing from toolbar',modes_visible)
+                # Help must open as a short anchored popover, not a screen-sized overlay.
+                await page.locator('#constellate-how > summary').click(timeout=12000)
+                help_state=await page.evaluate("""() => {
+                  const d=document.getElementById('constellate-how'),ol=d.querySelector('ol'),
+                    r=ol.getBoundingClientRect();
+                  return {open:d.open,items:ol.querySelectorAll(':scope > li').length,height:r.height,
+                    width:r.width,guide:document.getElementById('weave-guide')?.getBoundingClientRect().height};
+                }""")
+                assert help_state['open'] and help_state['items']==4 and 0<help_state['height']<365,(label,'Help popover obstructs interface',help_state)
+                assert help_state['guide'] is not None and help_state['guide']<120,(label,'Onboarding guide too tall',help_state)
+                await page.keyboard.press('Escape')
+                assert await page.locator('#constellate-how').evaluate('(d)=>!d.open'),(label,'Help Escape failed')
+                assert await page.evaluate("window.AtlasConstellate.enabled"),(label,'Help Escape closed the editor')
                 # Thread endpoints must be the visible film-card centers, not land pins.
                 geometry=await page.evaluate("""() => {
                   const c=window.AtlasCollections.current(),t=c.threads.find(t=>t.visible&&t.items.length>1);
@@ -159,7 +181,7 @@ jobs:
                   title:document.querySelector('.weave-read-focus h4')?.textContent
                 })""")
                 assert nextstep['bar']==2 and nextstep['title']!=progress['title'],(label,progress,nextstep)
-                await page.locator('#weave-follow-present').click(timeout=15000)
+                await page.locator('#weave-play').click(timeout=15000)
                 await page.locator('#weave-player:not([hidden])').wait_for(timeout=12000)
                 assert await page.locator('#weave-play').get_attribute('aria-pressed')=='true',(label,'Play mode not marked active')
                 await page.locator('#weave-play-speed').select_option('10000')
