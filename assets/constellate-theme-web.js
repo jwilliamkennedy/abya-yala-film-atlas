@@ -21,7 +21,7 @@
   'Expression and Representation':['Art, Craft and Making','Music and Performance','Self-Representation and Countering Stereotypes','Collective and Community Media','Indigenous Futurisms','Humor and Satire']
  };
  var nodeByName=new Map(),films=[],graphLinks=[],families=[],selected='',selectedPair='',activeFamily='All themes',search='',isOpen=false,view=null;
- var filmsShown=20,lastFilmView='',showAllBridges=false;
+ var filmsShown=8,lastFilmView='',showAllBridges=false;
  var NS='http://www.w3.org/2000/svg';
  var esc=function(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});};
  var canon=function(s){return String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();};
@@ -80,7 +80,7 @@
     '<div class="tw-heading"><div><p class="tw-kicker">CONSTELLATE / RELATIONAL INDEX</p><h2>Follow the themes</h2><p>Each line joins two themes documented together in a film synopsis. Select a theme or a bridge to follow the films.</p></div>'+
     '<button id="tw-close" type="button" aria-label="Close theme network">×</button></div>'+
     '<div class="tw-top"><label for="tw-search">Find a theme</label><input id="tw-search" type="search" placeholder="Search themes…" autocomplete="off">'+
-    '<button id="tw-seed" type="button">Explore an example constellation</button></div>'+
+    '<button id="tw-seed" type="button">Begin with 3 themed threads</button></div>'+
     '<div id="tw-families" class="tw-families" role="group" aria-label="Theme families"></div>'+
     '<div class="tw-main"><div class="tw-graph-wrap"><div id="tw-mobile-list" class="tw-mobile-list" aria-label="Browse themes by name"></div><svg id="tw-graph" viewBox="0 0 720 550" role="group" aria-label="Interactive network of sourced themes and co-tagged films"></svg>'+
       '<p class="tw-graph-foot"><span id="tw-stat"></span> · Lines indicate co-tags, not cultural similarity. <button type="button" id="tw-all-links" aria-pressed="false">All bridges</button> <button type="button" id="tw-reset">Reset view</button></p></div>'+ 
@@ -114,7 +114,7 @@
   });
   aside.addEventListener('click',function(e){
    var b=e.target.closest('[data-open-term],[data-film-id],[data-start-term],[data-more-films]');if(!b)return;
-    if(b.hasAttribute('data-more-films')){filmsShown+=20;detail();return;}
+    if(b.hasAttribute('data-more-films')){filmsShown+=8;detail();return;}
    if(b.dataset.openTerm){selected=b.dataset.openTerm;selectedPair='';search='';searchBox.value='';activeFamily='All themes';draw();return;}
    if(b.dataset.startTerm){
     show(false);atlas().themeThread(b.dataset.startTerm);
@@ -176,7 +176,16 @@
   var related=new Set();
   if(selected){for(var e of edges)if(e.source===selected)related.add(e.target);else if(e.target===selected)related.add(e.source);}
   var dimTheme=function(n){return selected&&n!==selected&&!related.has(n);};
-  var edgeLines=edges.slice().sort(function(a,b){var pa=selected&&(a.source===selected||a.target===selected)?1000:0,pb=selected&&(b.source===selected||b.target===selected)?1000:0;return pb-pa||b.count-a.count;}).slice(0,showAllBridges?edges.length:100).map(function(l){
+  var ranked=edges.slice().sort(function(a,b){var pa=selected&&(a.source===selected||a.target===selected)?1000:0,pb=selected&&(b.source===selected||b.target===selected)?1000:0;return pb-pa||b.count-a.count;});
+   // The overview is intentionally legible: 28 strongest co-tag bridges, not a hairball.
+   // Theme/family selection expands the relevant connections; All bridges is opt-in.
+   var limit=showAllBridges?edges.length:(selected?55:(activeFamily==='All themes'&&!search?28:55));
+   var shown=ranked.slice(0,limit);
+   if(selectedPair){
+    var chosenBridge=edges.find(function(l){return l.source+'\u001f'+l.target===selectedPair;});
+    if(chosenBridge&&!shown.includes(chosenBridge)){if(shown.length)shown.pop();shown.unshift(chosenBridge);}
+   }
+   var edgeLines=shown.map(function(l){
    var a=byId.get(l.source),b=byId.get(l.target);
    if(!a||!b)return '';
    var highlighted=selectedPair===(l.source+'\u001f'+l.target)||!!selected&&(l.source===selected||l.target===selected);
@@ -197,7 +206,7 @@
  }
  function detail(){
   var viewKey=selectedPair?'bridge:'+selectedPair:selected?'theme:'+selected:'home';
-  if(viewKey!==lastFilmView){lastFilmView=viewKey;filmsShown=20;}
+  if(viewKey!==lastFilmView){lastFilmView=viewKey;filmsShown=8;}
   var entry=nodeByName.get(selected),edge=selectedPair&&graphLinks.find(l=>l.source+'\u001f'+l.target===selectedPair);
   if(edge){
    var both=edge.films;
@@ -230,7 +239,7 @@
     '<div class="tw-film-copy"><strong>'+esc(x.title)+'</strong><small>'+esc([x.maker,x.year].filter(Boolean).join(' · '))+'</small>'+
     (source?'<a href="'+esc(source)+'" target="_blank" rel="noopener noreferrer">Synopsis source ↗</a>':'<span class="tw-no-source">Atlas theme tag</span>')+'</div>'+
     '<button type="button" data-film-id="'+esc(x.id)+'" aria-label="Follow '+esc(x.title)+' in your constellation">Follow →</button></article>';
-  }).join('')+'</div>'+(total>unique.length?'<div class="tw-more-actions"><span class="tw-more-count">Showing '+unique.length+' of '+total+' films</span><button type="button" data-more-films>Show next '+Math.min(20,total-unique.length)+' films</button></div>':'');
+  }).join('')+'</div>'+(total>unique.length?'<div class="tw-more-actions"><span class="tw-more-count">Showing '+unique.length+' of '+total+' films</span><button type="button" data-more-films>Show next '+Math.min(8,total-unique.length)+' films</button></div>':'');
  }
  function example(){
   var api=atlas(),s=store();if(!api||!s)return;
@@ -242,14 +251,14 @@
    'Memory and Oral History','Health and Healing','Women and Gender','Music and Performance'
   ];
   var chosen=[];
-  for(var name of candidates){var node=nodeByName.get(name);if(node&&node.films.length>=4)chosen.push(node);if(chosen.length>=6)break;}
-  if(chosen.length<4){
+  for(var name of candidates){var node=nodeByName.get(name);if(node&&node.films.length>=4)chosen.push(node);if(chosen.length>=3)break;}
+  if(chosen.length<3){
    for(var node of all.sort((a,b)=>b.films.length-a.films.length))if(!chosen.some(x=>x.name===node.name)&&node.films.length>=4)chosen.push(node);
   }
-  chosen=chosen.slice(0,6);
+  chosen=chosen.slice(0,3);
   if(chosen.length<2){notice.textContent='More documented theme tags are needed before a sample can be built.';return;}
   if(!s.create('Across themes · a sourced film constellation')){notice.textContent='Could not create a new constellation.';return;}
-  var c=s.current();c.note='An example for visual research. Each colored thread follows a theme assigned from a published film synopsis. Shared films cross between threads. Co-tagging is evidence of a catalog relationship, not evidence of cultural similarity, collaboration or a filmmaker endorsement. Read the film sources, then revise and annotate these paths.';
+  var c=s.current();c.note='An example for visual research. Each colored thread follows a theme assigned from a published film synopsis. Shared films cross between threads. Co-tagging is evidence of a catalog relationship, not evidence of cultural similarity, collaboration or a filmmaker endorsement. Read the film sources, then revise and annotate these paths. This starting selection is intentionally small; add new films and threads as your question develops.';
   var usedIds=new Set(),seenMakers=new Set(),colors=['star-bluewhite','star-blue','star-yellow','star-red','star-orange','star-white'];
   chosen.forEach(function(node,i){
    var t=i?s.createThread(node.name,'Sourced from the published film synopsis; interpret each transition rather than assuming affinity.',colors[i%colors.length]):c.threads[0].id;
@@ -261,7 +270,7 @@
     return bb-aa||(a.x.year||9999)-(b.x.year||9999);
    });
    var picks=[],local=new Set();
-   for(var f of ranked){if(local.has(f.x.record)||f.x.type!=='film')continue;local.add(f.x.record);picks.push(f);if(picks.length===8)break;}
+   for(var f of ranked){if(local.has(f.x.record)||f.x.type!=='film')continue;local.add(f.x.record);picks.push(f);if(picks.length===4)break;}
    for(var f of picks){var clean=s.item(f.x);if(!clean)continue;if(!c.items.some(x=>x.id===clean.id))c.items.push(clean);if(!thread.items.includes(clean.id))thread.items.push(clean.id);usedIds.add(clean.id);seenMakers.add(clean.record);}
   });
   c.activeThread=c.threads[0].id;c.selectedItem=null;s.save();
