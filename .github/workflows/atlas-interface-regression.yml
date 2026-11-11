@@ -115,6 +115,25 @@ jobs:
                   count:window.AtlasCollections.current().items.length
                 })""")
                 assert [modes[x] for x in ['edit','read','play']]==['constellate-mode']*3,(label,modes)
+                # Thread endpoints must be the visible film-card centers, not land pins.
+                geometry=await page.evaluate("""() => {
+                  const c=window.AtlasCollections.current(),t=c.threads.find(t=>t.visible&&t.items.length>1);
+                  if(!t)return {error:'no visible two-film thread'};
+                  const group=[...document.querySelectorAll('#constellate-graph [data-thread]')].find(g=>g.dataset.thread===t.id);
+                  const path=group?.querySelector('.weave-cord');
+                  const center=id=>{
+                    const g=[...document.querySelectorAll('#constellate-graph [data-constellate-node]')].find(g=>g.dataset.constellateNode===id);
+                    const rect=g?.querySelector('rect'),matrix=g?.transform.baseVal.consolidate()?.matrix;
+                    return matrix&&rect?{x:matrix.e+rect.width.baseVal.value/2,y:matrix.f+rect.height.baseVal.value/2}:null;
+                  };
+                  if(!path)return {error:'no ribbon for visible thread'};
+                  const start=center(t.items[0]),end=center(t.items.at(-1));
+                  if(!start||!end)return {error:'missing visible film card'};
+                  const p=path.getPointAtLength(0),q=path.getPointAtLength(path.getTotalLength());
+                  return {thread:t.name,startError:Math.hypot(start.x-p.x,start.y-p.y),
+                    endError:Math.hypot(end.x-q.x,end.y-q.y)};
+                }""")
+                assert not geometry.get('error') and geometry['startError']<12 and geometry['endError']<12,(label,'thread not connected to card thumbnails',geometry)
                 await page.locator('#constellate-read').click(timeout=15000)
                 await page.locator('.weave-read-focus').wait_for(state='visible',timeout=15000)
                 progress=await page.evaluate("""()=>({
@@ -132,6 +151,7 @@ jobs:
                 assert nextstep['bar']==2 and nextstep['title']!=progress['title'],(label,progress,nextstep)
                 await page.locator('#weave-play').click(timeout=15000)
                 await page.locator('#weave-player:not([hidden])').wait_for(timeout=12000)
+                assert await page.locator('#weave-play').get_attribute('aria-pressed')=='true',(label,'Play mode not marked active')
                 await page.locator('#weave-play-speed').select_option('10000')
                 await page.locator('#weave-play-pause').click(timeout=12000)
                 await page.locator('#weave-play-next').click(timeout=12000)
@@ -144,6 +164,7 @@ jobs:
                 assert play['pace']=='10000' and play['visible'] and play['progress'].startswith('Film 2 of'),(label,play)
                 await page.locator('#weave-play-close').click(timeout=12000)
                 assert await page.locator('#weave-player').is_hidden(),(label,'player did not close')
+                assert await page.locator('#weave-play').get_attribute('aria-pressed')=='false',(label,'Play mode remains pressed after closing')
                 if not prefix:
                   await page.locator('#constellate-mode .weave-more>summary').click(timeout=10000)
                   assert await page.locator('#constellate-mode .weave-more-menu #constellate-fit').is_visible()
