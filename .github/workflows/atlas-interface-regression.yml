@@ -9,6 +9,8 @@ on:
       - 'beta/index.html'
       - 'atlas-constellate62.js'
       - 'beta/atlas-constellate62.js'
+      - 'assets/constellate-thumbnails-20261108.css'
+      - 'beta/assets/constellate-thumbnails-20261108.css'
       - 'assets/constellate-bar.js'
       - 'beta/assets/constellate-bar.js'
       - 'assets/constellate-controls-20261110.css'
@@ -168,6 +170,36 @@ jobs:
                 if not prefix:
                   await page.locator('#constellate-mode .weave-more>summary').click(timeout=10000)
                   assert await page.locator('#constellate-mode .weave-more-menu #constellate-fit').is_visible()
+                # Dense thread regression: all film positions must remain on the ribbon
+                # even when only a readable sample of thumbnails is shown.
+                dense=await page.evaluate("""() => {
+                  const C=window.AtlasConstellate,choices=[...document.querySelectorAll('#weave-theme-start option')];
+                  const theme=choices.map(o=>o.value).find(v=>v&&C.themeFilms(v).length>=13);
+                  if(!theme)return {error:'no theme with at least 13 films'};
+                  C.themeThread(theme);
+                  document.querySelector('#weave-unmap').click();
+                  const c=window.AtlasCollections.current(),t=c.threads.find(t=>t.id===c.activeThread);
+                  const path=[...document.querySelectorAll('#constellate-graph [data-thread]')]
+                    .find(g=>g.dataset.thread===t.id)?.querySelector('.weave-cord');
+                  const positions=C.positions,graph=document.querySelector('#constellate-graph');
+                  const cards=[...graph.querySelectorAll('[data-constellate-node]')];
+                  const card=id=>cards.find(n=>n.dataset.constellateNode===id);
+                  const center=id=>{
+                    const g=card(id),rect=g?.querySelector('rect'),matrix=g?.transform.baseVal.consolidate()?.matrix;
+                    return matrix&&rect?{x:matrix.e+rect.width.baseVal.value/2,y:matrix.f+rect.height.baseVal.value/2}:null;
+                  };
+                  const first=center(t.items[0]),last=center(t.items.at(-1));
+                  const start=path?.getPointAtLength(0),end=path?.getPointAtLength(path.getTotalLength());
+                  return {theme,total:t.items.length,positioned:t.items.filter(id=>positions.has(id)).length,
+                    cards:cards.length,hidden:t.items.filter(id=>positions.has(id)&&!card(id)).length,
+                    runs:(path?.getAttribute('d')?.match(/M/g)||[]).length,
+                    startError:first&&start?Math.hypot(first.x-start.x,first.y-start.y):null,
+                    endError:last&&end?Math.hypot(last.x-end.x,last.y-end.y):null};
+                }""")
+                assert not dense.get('error') and dense['total']>=13,(label,'dense test setup',dense)
+                assert dense['positioned']==dense['total'] and dense['hidden']>0,(label,'film positions lost when cards sampled',dense)
+                assert 2<=dense['cards']<dense['total'] and dense['runs']==1,(label,'dense ribbon breaks into disconnected segments',dense)
+                assert dense['startError'] is not None and dense['startError']<12 and dense['endError'] is not None and dense['endError']<12,(label,'dense ribbon detached from thumbnails',dense)
                 assert not problems,(label,'map or constellation JS errors',problems[:8])
                 result[label+'-constellate']={'modes':modes,'reading':progress,'second':nextstep,'playing':play}
                 try:
