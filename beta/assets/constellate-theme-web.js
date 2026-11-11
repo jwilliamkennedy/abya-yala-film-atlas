@@ -83,7 +83,7 @@
     '<button id="tw-seed" type="button">Begin with 3 themed threads</button></div>'+
     '<div id="tw-families" class="tw-families" role="group" aria-label="Theme families"></div>'+
     '<div class="tw-main"><div class="tw-graph-wrap"><div id="tw-mobile-list" class="tw-mobile-list" aria-label="Browse themes by name"></div><svg id="tw-graph" viewBox="0 0 720 550" role="group" aria-label="Interactive network of sourced themes and co-tagged films"></svg>'+
-      '<p class="tw-graph-foot"><span id="tw-stat"></span> · Lines indicate co-tags, not cultural similarity. <button type="button" id="tw-all-links" aria-pressed="false">All bridges</button> <button type="button" id="tw-reset">Reset view</button></p></div>'+ 
+      '<p class="tw-graph-foot"><span id="tw-stat"></span> · Overview favors frequent co-tags, not cultural affinity or importance. <button type="button" id="tw-all-links" aria-pressed="false">All bridges</button> <button type="button" id="tw-reset">Reset view</button></p></div>'+ 
     '<aside id="tw-detail" class="tw-detail" aria-live="polite" aria-label="Selected theme and films"></aside></div>'+
     '<p id="tw-live" class="sr-only" role="status" aria-live="polite"></p>'+
    '</section>');
@@ -140,7 +140,7 @@
   var nodes=visibleNodes(),names=new Set(nodes.map(n=>n.name)),edges=graphLinks.filter(l=>names.has(l.source)&&names.has(l.target));
   var caption=films.length+' tagged films · '+nodeByName.size+' attested themes · '+graphLinks.length+' documented co-tag bridges';
    var linksButton=document.getElementById('tw-all-links');
-   linksButton.hidden=edges.length<=100;
+   linksButton.hidden=edges.length<=(selected?55:(activeFamily==='All themes'&&!search?28:55));
    linksButton.textContent=showAllBridges?'Show strongest bridges':'Show all '+edges.length+' bridges';
    linksButton.setAttribute('aria-pressed',String(showAllBridges));
   document.getElementById('tw-stat').textContent=caption;
