@@ -215,3 +215,19 @@ html[data-weave-stage="read"] body.is-theme-weaving .map-panel::before,
 html[data-weave-stage="read"] body.is-theme-weaving .map-panel::after{display:none!important}
 html[data-weave-stage="read"] body.is-theme-weaving #atlas .weave-night-veil{display:none!important}
 html[data-weave-stage="read"] body #atlas-theme-web{display:none!important}
+
+/* Search themes and search films begin at the same level.
+   Featured themes are suggestions beneath the search, never an obstacle above it. */
+#weave-start .ws-popular-label{
+  margin:1px 0 0!important;
+  color:var(--ui-muted,#59646c)!important;
+  font:600 11px/1.35 var(--ui-sans,system-ui,sans-serif)!important;
+  letter-spacing:.035em;text-transform:uppercase
+}
+#weave-start .ws-results:empty{display:none}
+#weave-start #ws-theme-q,#weave-start #ws-film-q{margin-top:0;flex:0 0 auto}
+@media(min-width:761px){
+  #weave-start .ws-paths>.ws-path:nth-child(-n+2)>p:first-of-type{
+    min-height:3.05em
+  }
+}
