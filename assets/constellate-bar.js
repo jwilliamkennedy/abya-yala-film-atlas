@@ -12,19 +12,35 @@
   var play=document.getElementById('weave-play'),share=document.getElementById('constellate-share');
   var undo=document.getElementById('constellate-undo'),redo=document.getElementById('constellate-redo'),group=bar.querySelector('.weave-tool-group');
   if(!menu||!more||!draw||!clear||!edit||!play||!share||!undo||!redo||!group)return false;
+  /* Build, Read and Play are modes, not tools hidden under Options.
+     Move only secondary sharing/history actions on compact screens. */
+  if(edit.parentNode!==bar)bar.insertBefore(edit,draw);
+  if(play.parentNode!==bar)bar.insertBefore(play,clear);
+  var manage=menu.querySelector('.weave-menu-manage');
+  if(!manage){
+   manage=document.createElement('small');
+   manage.className='weave-menu-heading weave-menu-manage';
+   manage.textContent='Share and history';
+   menu.append(manage);
+  }
+  manage.hidden=!compact.matches;
   if(compact.matches){
-   /* Make the most important actions visible: Draw, Find films, Read, Clear, Options, Exit. */
-   for(var button of [redo,undo,share,play,edit]){
-    if(button.parentNode!==menu)menu.prepend(button);
+   for(var button of [share,undo,redo]){
+    if(button.parentNode!==menu)menu.append(button);
    }
    undo.textContent='Undo';redo.textContent='Redo';
   }else{
    if(undo.parentNode!==group||redo.parentNode!==group)group.append(undo,redo);
    undo.textContent='↶';redo.textContent='↷';
-   if(edit.parentNode!==bar||edit.nextElementSibling!==draw)bar.insertBefore(edit,draw);
-   if(play.parentNode!==bar)bar.insertBefore(play,clear);
    if(share.parentNode!==bar)bar.insertBefore(share,clear);
   }
+  bar.setAttribute('aria-label','Constellation modes and actions');
+  edit.title='Build: add films and draw connections';
+  var read=document.getElementById('constellate-read');
+  if(read)read.title='Read: follow the selected films, notes and sources';
+  play.title='Play: present the constellation film by film';
+  var summary=more.querySelector('summary');
+  if(summary)summary.title='Display, analysis, sharing and history tools';
   if(unmap&&unmap.parentNode!==menu){
    var fit=document.getElementById('constellate-fit');menu.insertBefore(unmap,fit||menu.firstChild);
   }
