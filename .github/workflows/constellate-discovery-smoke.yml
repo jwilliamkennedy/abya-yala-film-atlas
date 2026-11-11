@@ -1,0 +1,125 @@
+name: Constellate discovery — desktop and mobile smoke
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'atlas-constellate62.js'
+      - 'beta/atlas-constellate62.js'
+      - 'assets/constellate-theme-web.js'
+      - 'beta/assets/constellate-theme-web.js'
+      - 'assets/constellate-controls-20261110.css'
+      - 'beta/assets/constellate-controls-20261110.css'
+      - 'index.html'
+      - 'beta/index.html'
+      - '.github/workflows/constellate-discovery-smoke.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  discovery:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Chromium
+        run: |
+          python3 -m pip install -q 'playwright==1.*'
+          python3 -m playwright install --with-deps chromium >/dev/null
+      - name: Check navigation, search, selection, focus and Play
+        run: |
+          python3 -m http.server 8983 --bind 127.0.0.1 >/tmp/constellate-discovery.log 2>&1 &
+          sleep 2
+          cat >/tmp/check-constellate-discovery.py <<'PY'
+          import asyncio,json
+          from playwright.async_api import async_playwright
+          ROOT='http://127.0.0.1:8983/'
+          async def verify(p,base,label):
+            errors=[]
+            p.on('pageerror',lambda err:errors.append(str(err)))
+            await p.goto(base+'index.html?constellate=1',wait_until='domcontentloaded',timeout=90000)
+            await p.wait_for_function('window.AtlasConstellate?.enabled && document.getElementById("weave-start") && window.AtlasCollections?.current()',timeout=55000)
+            beginning=await p.evaluate("""() => {
+              const q=document.querySelector('#ws-theme-q'), f=document.querySelector('#ws-film-q'),chips=document.querySelector('.ws-chips');
+              return {themeBeforeChips:!!(q.compareDocumentPosition(chips)&Node.DOCUMENT_POSITION_FOLLOWING),
+                themeY:q.getBoundingClientRect().top, filmY:f.getBoundingClientRect().top};
+            }""")
+            assert beginning['themeBeforeChips'],(label,'theme search must be above chips',beginning)
+            if label=='main-desktop':
+              assert abs(beginning['themeY']-beginning['filmY'])<30,(label,'searches are not parallel',beginning)
+            await p.evaluate("""() => window.AtlasConstellate.themeThread('Cosmology and Origin Stories')""")
+            await p.wait_for_function('window.AtlasCollections.current().items.length>=6',timeout=20000)
+            seed=await p.evaluate("""() => {
+              const s=window.AtlasCollections.current(),t=s.threads.find(t=>t.id===s.activeThread);
+              return {seed:t.items.length,playVisible:getComputedStyle(document.querySelector('#weave-play')).display!=='none',
+                thread:t.name};
+            }""")
+            assert seed['seed']==6 and seed['playVisible'],(label,'six-film starter or top-level Play failed',seed)
+            await p.locator('#weave-tab-add').click(timeout=12000)
+            await p.wait_for_function("document.querySelectorAll('#constellate-results .constellate-result').length>=30",timeout=15000)
+            search=await p.evaluate("""() => ({
+              shown:document.querySelectorAll('#constellate-results .constellate-result').length,
+              more:!!document.querySelector('[data-results-more]'),
+              status:document.querySelector('#weave-discovery-count')?.textContent,
+              focusButton:!!document.querySelector('#weave-focus-thread')
+            })""")
+            assert search['shown']==48 and search['more'] and search['focusButton'],(label,'first browsing page',search)
+            await p.locator('[data-results-more]').click(timeout=12000)
+            assert await p.locator('#constellate-results .constellate-result').count()==96,(label,'Show more pagination')
+            letter=await p.evaluate("""() => {
+              const b=[...document.querySelectorAll('#weave-az-letters button')].find(x=>!x.disabled&&x.dataset.azLetter!=='A');
+              if(!b)return null;
+              const value=b.dataset.azLetter;b.click();
+              const header=document.querySelector('#constellate-results .weave-az-letter')?.textContent;
+              return {value,header,shown:document.querySelectorAll('#constellate-results .constellate-result').length};
+            }""")
+            assert letter and letter['shown']<=48,(label,'A-Z on-demand navigation',letter)
+            await p.locator('#constellate-search').fill('veryunlikelyatlasfilmtermxyz',timeout=12000)
+            assert await p.locator('.weave-discovery-empty').count()==1,(label,'no-match recovery')
+            await p.locator('[data-discovery-reset]').click(timeout=12000)
+            assert await p.locator('#constellate-search').input_value()=='',(label,'search reset')
+            await p.locator('#weave-discovery-order').select_option('newest')
+            disabled=await p.evaluate("() => [...document.querySelectorAll('#weave-az-letters button')].every(b=>b.disabled)")
+            assert disabled,(label,'A-Z jump should be disabled outside alphabetical order')
+            await p.locator('#weave-discovery-order').select_option('relevance')
+            await p.locator('#weave-discovery-unadded').check()
+            assert await p.locator('#weave-discovery-count').inner_text(),(label,'filtered result count absent')
+            await p.locator('#weave-discovery-unadded').uncheck()
+            await p.locator('#weave-discovery-art').check()
+            assert await p.locator('#weave-discovery-count').inner_text(),(label,'image result count absent')
+            await p.locator('#weave-discovery-clear').click()
+            await p.locator('#weave-tab-thread').click()
+            await p.locator('#constellate-how>summary').click()
+            help_count=await p.locator('#constellate-how>ol>li').count()
+            assert help_count==4,(label,'Help should have four steps',help_count)
+            await p.keyboard.press('Escape')
+            assert not await p.locator('#constellate-how').evaluate('(x)=>x.open'),(label,'Help did not close')
+            await p.locator('#weave-play').click(timeout=12000)
+            await p.locator('#weave-player:not([hidden])').wait_for(timeout=12000)
+            await p.locator('#weave-play-close').click(timeout=12000)
+            await p.locator('#weave-theme-web-toggle').click(timeout=12000)
+            await p.locator('#atlas-theme-web:not([hidden])').wait_for(timeout=12000)
+            bridge_count=await p.locator('#tw-graph .tw-bridge').count()
+            assert bridge_count<=28,(label,'theme network overview too dense',bridge_count)
+            await p.locator('#tw-search').fill('Knowledge')
+            matching=await p.locator('#tw-graph .tw-node').count()
+            assert 1<=matching<=30,(label,'theme family search',matching)
+            await p.locator('#tw-search').fill('nonnativethemexyz123')
+            assert 'No themes found' in await p.locator('#tw-detail').inner_text(),(label,'no theme match state')
+            await p.locator('[data-tw-reset]').click()
+            assert await p.locator('#tw-search').input_value()=='',(label,'reset theme search')
+            assert not errors,(label,'JS page exceptions',errors[:7])
+            return {'label':label,'beginning':beginning,'seed':seed,'browser':search,'az':letter,'bridges':bridge_count,'family_matches':matching}
+          async def main():
+            result=[]
+            async with async_playwright() as p:
+              browser=await p.chromium.launch(args=['--use-angle=swiftshader','--enable-unsafe-swiftshader'])
+              for base,label,width,height in [(ROOT,'main-desktop',1440,900),(ROOT+'beta/','beta-mobile',390,844)]:
+                ctx=await browser.new_context(viewport={'width':width,'height':height},reduced_motion='reduce')
+                page=await ctx.new_page()
+                result.append(await verify(page,base,label))
+                await ctx.close()
+              await browser.close()
+            print('CONSTELLATE_DISCOVERY_PASS',json.dumps(result,ensure_ascii=False))
+          asyncio.run(main())
+          PY
+          python3 /tmp/check-constellate-discovery.py
