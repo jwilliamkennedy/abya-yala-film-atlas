@@ -215,7 +215,7 @@
     '<p class="tw-claim">Both tags occur on the same '+both.length+' film'+(both.length===1?'':'s')+'. This is a cataloguing bridge, not an assertion that the communities or makers are culturally identical.</p>'+
     '<div class="tw-actions"><button type="button" data-open-term="'+esc(edge.source)+'">Explore first theme</button><button type="button" data-open-term="'+esc(edge.target)+'">Explore second</button></div>'+renderFilms(both);
   }else if(entry){
-   var rel=graphLinks.filter(l=>l.source===entry.name||l.target===entry.name).slice(0,12);
+   var rel=graphLinks.filter(l=>l.source===entry.name||l.target===entry.name).sort((a,b)=>b.count-a.count).slice(0,12);
    aside.innerHTML='<p class="tw-kicker">'+esc(entry.family)+'</p><h3>'+esc(entry.name)+'</h3><p class="tw-claim">'+entry.films.length+' film'+(entry.films.length===1?'':'s')+' have this theme in the atlas. The tags originate in film descriptions; see each film’s synopsis source for the evidence.</p>'+
     '<div class="tw-actions"><button class="tw-primary" type="button" data-start-term="'+esc(entry.name)+'">Start with 6 films</button></div>'+
     (rel.length?'<h4>Bridges to other themes</h4><div class="tw-neighbors">'+rel.map(l=>{var term=l.source===entry.name?l.target:l.source;return '<button type="button" data-open-term="'+esc(term)+'">'+esc(term)+' <small>'+l.count+' shared film'+(l.count===1?'':'s')+'</small></button>';}).join('')+'</div>':'')+
