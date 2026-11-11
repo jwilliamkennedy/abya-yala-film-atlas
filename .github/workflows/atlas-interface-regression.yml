@@ -117,6 +117,12 @@ jobs:
                   count:window.AtlasCollections.current().items.length
                 })""")
                 assert [modes[x] for x in ['edit','read','play']]==['constellate-mode']*3,(label,modes)
+                modes_visible=await page.evaluate("""() => ({
+                  build:document.querySelector('#constellate-edit').textContent,
+                  follow:document.querySelector('#constellate-read').textContent,
+                  playHidden:getComputedStyle(document.querySelector('#weave-play')).display==='none'
+                })""")
+                assert modes_visible=={'build':'Build','follow':'Follow','playHidden':True},(label,'redundant top-level presentation control',modes_visible)
                 # Thread endpoints must be the visible film-card centers, not land pins.
                 geometry=await page.evaluate("""() => {
                   const c=window.AtlasCollections.current(),t=c.threads.find(t=>t.visible&&t.items.length>1);
@@ -151,7 +157,7 @@ jobs:
                   title:document.querySelector('.weave-read-focus h4')?.textContent
                 })""")
                 assert nextstep['bar']==2 and nextstep['title']!=progress['title'],(label,progress,nextstep)
-                await page.locator('#weave-play').click(timeout=15000)
+                await page.locator('#weave-follow-present').click(timeout=15000)
                 await page.locator('#weave-player:not([hidden])').wait_for(timeout=12000)
                 assert await page.locator('#weave-play').get_attribute('aria-pressed')=='true',(label,'Play mode not marked active')
                 await page.locator('#weave-play-speed').select_option('10000')
@@ -167,6 +173,7 @@ jobs:
                 await page.locator('#weave-play-close').click(timeout=12000)
                 assert await page.locator('#weave-player').is_hidden(),(label,'player did not close')
                 assert await page.locator('#weave-play').get_attribute('aria-pressed')=='false',(label,'Play mode remains pressed after closing')
+                assert await page.locator('#constellate-read').get_attribute('aria-pressed')=='true',(label,'Follow mode not restored after presenting')
                 if not prefix:
                   await page.locator('#constellate-mode .weave-more>summary').click(timeout=10000)
                   assert await page.locator('#constellate-mode .weave-more-menu #constellate-fit').is_visible()
@@ -177,6 +184,10 @@ jobs:
                   const theme=choices.map(o=>o.value).find(v=>v&&C.themeFilms(v).length>=13);
                   if(!theme)return {error:'no theme with at least 13 films'};
                   C.themeThread(theme);
+                  const c0=window.AtlasCollections.current(),first=c0.threads.find(t=>t.id===c0.activeThread);
+                  if(first.items.length!==6)return {error:'theme should start with six films',count:first.items.length};
+                  document.querySelector('#weave-theme-unfold')?.click();
+                  document.querySelector('#weave-theme-unfold')?.click();
                   document.querySelector('#weave-unmap').click();
                   const c=window.AtlasCollections.current(),t=c.threads.find(t=>t.id===c.activeThread);
                   const path=[...document.querySelectorAll('#constellate-graph [data-thread]')]
