@@ -28,6 +28,27 @@ jobs:
           import asyncio,json,os
           from playwright.async_api import async_playwright
           BASE='http://127.0.0.1:8789/beta/index.html?constellate=1&theme-web=1'
+          async def click_visible(page,selector):
+            # The live map moves continuously; a visible control need not
+            # satisfy Playwright's strict "stable" auto-click heuristic.
+            # Scroll into view, hit-test its centre, and use a real pointer.
+            await page.evaluate("""sel => {
+              const el=document.querySelector(sel);
+              if(!el)throw Error('Missing control: '+sel);
+              el.scrollIntoView({block:'center',inline:'nearest',behavior:'instant'});
+            }""",selector)
+            await page.wait_for_timeout(140)
+            position=await page.evaluate("""sel => {
+              const el=document.querySelector(sel),r=el.getBoundingClientRect(),
+                x=r.left+r.width/2,y=r.top+r.height/2,hit=document.elementFromPoint(x,y),
+                style=getComputedStyle(el);
+              return {x,y,width:r.width,height:r.height,hit:hit?.outerHTML.slice(0,180)||'',
+                accessible:style.display!=='none'&&style.visibility!=='hidden'&&
+                  r.width>1&&r.height>1&&x>=0&&x<innerWidth&&y>=0&&y<innerHeight&&
+                  !!hit&&(hit===el||el.contains(hit))};
+            }""",selector)
+            assert position['accessible'],('Control not pointer-accessible',selector,position)
+            await page.mouse.click(position['x'],position['y'])
           async def run():
             report={}
             async with async_playwright() as p:
@@ -54,7 +75,7 @@ jobs:
                 assert state['themes']>=10, f'too few theme nodes {state}'
                 assert state['links']>0, f'no sourced bridges {state}'
                 try:
-                  await page.screenshot(path=f'shots/theme-web-{name}.png',full_page=False,timeout=15000,animations='disabled')
+                  await page.screenshot(path=f'shots/theme-web-{name}.png',full_page=False,timeout=5000,animations='allow')
                 except Exception as ex: print('NONFATAL_SCREENSHOT_ERROR',name,str(ex)[:130])
                 await page.locator('#tw-graph [data-term]' if name=='desktop' else '#tw-mobile-list [data-mobile-term]').first.click()
                 await page.locator('#tw-detail .tw-films .tw-film').first.wait_for(timeout=10000)
@@ -82,7 +103,7 @@ jobs:
                   assert 4<=state['example']['items']<=12,state
                   assert not state['example']['visible'],state
                   try:
-                    await page.screenshot(path='shots/theme-web-example-desktop.png',full_page=False,timeout=15000,animations='disabled')
+                    await page.screenshot(path='shots/theme-web-example-desktop.png',full_page=False,timeout=5000,animations='allow')
                   except Exception as ex: print('NONFATAL_SCREENSHOT_ERROR',name,str(ex)[:130])
                 else:
                   await page.locator('#tw-mobile-list [data-mobile-network]').click()
@@ -117,16 +138,11 @@ jobs:
                 state['followed']=current
                 assert current, 'Theme-film selection did not open a destination card'
                 if await page.locator('#weave-suggest [data-weave-follow]').count():
-                  button=page.locator('#weave-suggest [data-weave-follow]').first
-                  await button.scroll_into_view_if_needed()
-                  if name=='mobile':
-                    await button.evaluate("""el => {
-                      const sc=el.closest('#constellate-popup');
-                      if(sc){const a=el.getBoundingClientRect(),p=sc.getBoundingClientRect();
-                        sc.scrollTop+=a.top-p.top-140;}
-                    }""")
-                    await page.wait_for_timeout(180)
-                  await button.click(timeout=15000)
+                  await click_visible(page,'#weave-suggest [data-weave-follow]')
+                  await page.wait_for_function("""oldTitle => {
+                    const title=document.querySelector('#constellate-context .weave-context-preview h3')?.textContent;
+                    return !!title&&title!==oldTitle;
+                  }""",arg=current,timeout=12000)
                   nxt=await page.locator('#constellate-context .weave-context-preview h3').inner_text()
                   assert nxt and nxt!=current, 'Follow did not move to the next film'
                   state['nextFilm']=nxt
