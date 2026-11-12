@@ -44,7 +44,7 @@ computed style (about 10,000 elements in all).
 identical, so any difference comes from the change being tested.
 
 Left out of the fingerprint on purpose: map tiles and their fallback land shapes (outside hosts are blocked in
-tests) and the small film stills beside land names (they rotate on a timer).
+tests), the small film stills beside land names (they rotate on a timer) and the status notice (it times out on its own).
 
 On GitHub, the workflow **Atlas browser suite** runs on every push that touches the site. It fails when a state is
 broken. It also compares the push with the one before it and puts the list of changes in the run summary; that
