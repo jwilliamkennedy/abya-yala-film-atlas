@@ -231,3 +231,15 @@ html[data-weave-stage="read"] body #atlas-theme-web{display:none!important}
     min-height:3.05em
   }
 }
+
+/* 2026-11-11: line key, phone cue, phone toolbar */
+#weave-line-key{margin:8px 0 2px;font:500 12px/1.5 'Atlas Sans',system-ui,sans-serif;color:var(--reading-muted,#5b6570)}
+#weave-line-key .wk{display:inline-block;width:26px;height:0;vertical-align:middle;margin:0 6px 2px 0;border-top:3px solid currentColor}
+#weave-line-key .wk-dream{border-top-style:dotted;margin-left:6px}
+#weave-line-key .wk-about{display:block;margin-top:3px;font-weight:400;opacity:.85}
+#weave-phone-cue{position:fixed;left:12px;right:12px;bottom:12px;z-index:60;min-height:46px;padding:10px 14px;border:0;border-radius:23px;background:#16233f;color:#f5eddb;font:600 14px/1.2 'Atlas Sans',system-ui,sans-serif;box-shadow:0 6px 18px rgba(0,0,0,.35)}
+#weave-phone-cue[hidden]{display:none}
+@media (max-width:700px){
+ #constellate-mode #weave-stepper{min-width:max-content;flex:0 0 auto}
+ #constellate-mode #weave-stepper small{min-width:2.6em;text-align:center}
+}
