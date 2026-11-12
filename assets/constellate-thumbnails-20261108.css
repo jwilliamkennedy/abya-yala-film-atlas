@@ -160,7 +160,7 @@
 }
 #constellate-graph .weave-thread.is-active .weave-ribbon{stroke-width:4.4}
 #constellate-graph .weave-thread.is-active .weave-ribbon-sheen{stroke-opacity:.46}
-#constellate-graph .weave-thread.is-quiet .weave-ribbon{stroke-opacity:.48;stroke-width:2.7}
+#constellate-graph .weave-thread.is-quiet .weave-ribbon{stroke-opacity:.86;stroke-width:2.7}
 #constellate-graph .weave-thread.is-quiet .weave-ribbon-sheen{stroke-opacity:.19}
 #constellate-graph .weave-thread.is-quiet .weave-thread-name{opacity:.7}
 #constellate-graph .weave-thread.is-focus .weave-ribbon{stroke-width:5.3;stroke-opacity:1}
@@ -354,7 +354,7 @@
 #constellate-graph[data-density="dense"] .weave-thread-shadow{stroke-width:5;stroke-opacity:.09}
 #constellate-graph[data-density="dense"] .weave-thread-halo{stroke-width:5;stroke-opacity:.65}
 #constellate-graph[data-density="dense"] .weave-thread.is-active .weave-ribbon{stroke-width:3.4;stroke-opacity:.94}
-#constellate-graph[data-density="dense"] .weave-thread.is-quiet .weave-ribbon{stroke-width:1.9;stroke-opacity:.46}
+#constellate-graph[data-density="dense"] .weave-thread.is-quiet .weave-ribbon{stroke-width:2.2;stroke-opacity:.8}
 #constellate-graph[data-density="dense"] .weave-thread.is-quiet .weave-ribbon-sheen{stroke-opacity:.12}
 #constellate-graph[data-density="dense"] .weave-thread.is-quiet .weave-stop{opacity:.80}
 #constellate-graph[data-density="dense"] .weave-stop:not(.current):not(.selected)>circle:not(.weave-family-ring):not(.weave-crossing-ring){stroke-width:1.2}

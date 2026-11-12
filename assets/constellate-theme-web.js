@@ -158,13 +158,21 @@
   // Stable thematic-family lanes preserve legible labels at all 30 nodes.
   // The network is a diagram of co-tags, not a geographic or semantic distance map.
   var orders=Object.keys(COLORS).filter(f=>nodes.some(n=>n.family===f));
+   var tallestFamily=Math.max(0,...orders.map(f=>nodes.filter(n=>n.family===f).length));
+   if(activeFamily==='All themes'&&!search&&orders.length>1){h=Math.max(h,120+tallestFamily*74);svg.setAttribute('viewBox','0 0 '+w+' '+h);}
+   // Keep spacing in screen pixels; scaling a taller viewBox into a fixed-height
+   // SVG would shrink the labels and restore their overlap.
+   var expanded=h>Math.max(440,Math.round(bounds.height||550))&&window.matchMedia('(min-width:701px)').matches;
+   svg.style.flex=expanded?'0 0 auto':'';
+   svg.style.height=expanded?h+'px':'';
+   svg.parentElement.style.overflowY=expanded?'auto':'';
   var laneMode=orders.length>1&&activeFamily==='All themes'&&!search;
   var placed=[],familyHeaders='';
   if(laneMode){
    var gap=w/orders.length;
    orders.forEach(function(f,col){
     var group=nodes.filter(n=>n.family===f).sort((a,b)=>b.films.length-a.films.length||a.name.localeCompare(b.name));
-    var step=(h-100)/Math.max(7,group.length);
+    var step=Math.max(74,(h-100)/Math.max(1,group.length));
     familyHeaders+='<text class="tw-family-head" x="'+(gap*(col+.5)).toFixed(1)+'" y="24" text-anchor="middle">'+esc(({'Land and Environment':'LAND','Sovereignty and Politics':'SOVEREIGNTY','Knowledge and Continuity':'KNOWLEDGE','Lives and Relations':'RELATIONS','Expression and Representation':'EXPRESSION'})[f]||short(f,15))+'</text>';
     group.forEach(function(n,row){placed.push({id:n.name,node:n,r:Math.min(22,6+Math.sqrt(n.films.length)*1.4),x:gap*(col+.5),y:65+step*(row+.5)});});
    });

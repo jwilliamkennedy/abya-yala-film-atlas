@@ -176,15 +176,14 @@ html[data-weave-stage]:not([data-weave-stage="start"]) body.is-constellating #co
   display:inline-flex!important;border-radius:0 9px 9px 0!important
 }
 
-/* The nine-item Help overlay competed with the sticky onboarding guide.
-   Keep the summary recognizable, and confine its four instructions to one small popover. */
+/* Help expands inside the dock, never behind the map or outside its scroll area. */
 body.is-constellating #constellate-popup .constellate-heading{
-  position:sticky!important;z-index:30!important;overflow:visible!important
+  position:sticky!important;z-index:30!important;overflow:visible!important;flex-wrap:wrap
 }
 body.is-constellating #constellate-popup .constellate-heading #constellate-how{
   position:relative!important;top:auto!important;right:auto!important;
-  flex:0 0 auto!important;z-index:31!important;
-  overflow:visible!important
+  flex:0 0 auto;z-index:31!important;
+  overflow:visible!important;min-width:0
 }
 body.is-constellating #constellate-popup #constellate-how>summary{
   box-sizing:border-box!important;display:inline-flex!important;
@@ -199,17 +198,19 @@ body.is-constellating #constellate-popup #constellate-how>summary{
 body.is-constellating #constellate-popup #constellate-how>summary:focus-visible{
   outline:2px solid var(--reading-accent,#9c3b26)!important;outline-offset:2px
 }
+body.is-constellating #constellate-popup .constellate-heading #constellate-how[open]{
+  flex:0 0 100%;width:100%;order:3;max-width:100%
+}
 body.is-constellating #constellate-popup .constellate-heading #constellate-how[open]>ol{
-  box-sizing:border-box!important;position:absolute!important;
-  top:calc(100% + 7px)!important;right:0!important;left:auto!important;
-  width:min(345px,calc(100vw - 36px))!important;
-  max-width:calc(100vw - 36px)!important;
+  box-sizing:border-box!important;position:static!important;
+   top:auto!important;right:auto!important;left:auto!important;
+   width:100%!important;max-width:100%!important;
   max-height:min(55dvh,350px)!important;overflow-y:auto!important;
   margin:0!important;padding:13px 16px 13px 35px!important;
   background:var(--reading-paper,#f9f7f1)!important;
   color:var(--reading-ink,#182028)!important;
   border:1px solid var(--reading-line,#c9d0c6)!important;border-radius:9px!important;
-  box-shadow:0 12px 34px rgba(0,0,0,.19)!important;
+  box-shadow:0 4px 16px rgba(0,0,0,.12)!important;
   font:13px/1.45 var(--ui-sans,system-ui,sans-serif)!important;
   z-index:32!important
 }
@@ -318,4 +319,91 @@ html[data-weave-stage="build"] body.is-theme-weaving #weave-guide .wg-actions bu
  #weave-discovery-tools label:first-child{flex:1 1 100%}
  #weave-discovery-tools select{flex:1 1 auto;max-width:none}
  .weave-discovery-hint{display:none}
+}
+
+
+/* Play's eyebrow is visible; the separate live announcement remains available. */
+#weave-player #weave-play-thread{
+  display:block;position:static;max-width:100%;white-space:normal;
+  overflow-wrap:anywhere;letter-spacing:.09em;text-transform:uppercase
+}
+/* Sticky headings should not obscure the first line of Follow. */
+#weave-read-panel{padding-top:12px;scroll-margin-top:58px}
+#weave-read-panel>h3{position:relative;z-index:1;margin-top:6px;line-height:1.25;overflow:visible;overflow-wrap:anywhere}
+/* Each filter label and its checkbox form an inseparable unit on narrow docks. */
+#weave-discovery-tools label{display:inline-flex;flex-wrap:nowrap;white-space:nowrap;flex-shrink:0}
+#weave-discovery-tools input[type="checkbox"]{display:inline-block;flex:0 0 16px;min-width:16px;margin:0}
+
+
+/* The legacy notice has a fixed top declaration; translate that same notice to
+   the map's bottom presentation strip without adding cascade priority. */
+body.is-constellating #atlas #weave-notice{
+  position:absolute;
+  transform:translate(-50%,calc(var(--weave-map-height,650px) - 160px));
+  text-align:center;
+  box-sizing:border-box;
+  pointer-events:none
+}
+
+
+/* Job 2: films without a mapped land appear in a rail, not at a country pin.
+   This is part of the existing map component, not a new overlay stylesheet. */
+#weave-offmap-rail[hidden]{display:none}
+body.is-constellating #weave-offmap-rail{
+  position:absolute;left:12px;right:12px;bottom:12px;z-index:19;
+  display:flex;align-items:center;gap:12px;min-width:0;
+  padding:9px 11px;box-sizing:border-box;border-radius:8px;
+  border:1px solid var(--reading-line,#c9d0c6);
+  background:var(--reading-paper,#f7f7f2);color:var(--reading-ink,#182028);
+  box-shadow:0 4px 16px rgba(8,20,31,.15);pointer-events:auto
+}
+#weave-offmap-rail .weave-offmap-heading{flex:0 0 108px;display:grid;gap:3px}
+#weave-offmap-rail .weave-offmap-heading strong{font:700 12px/1.1 var(--ui-sans,system-ui,sans-serif);white-space:nowrap}
+#weave-offmap-rail .weave-offmap-heading small{font:11px/1.2 var(--ui-sans,system-ui,sans-serif);color:var(--reading-muted,#53616b)}
+#weave-offmap-rail .weave-offmap-items{
+ display:flex;flex:1;min-width:0;gap:7px;overflow-x:auto;overflow-y:hidden;
+ overscroll-behavior-x:contain;scrollbar-width:thin;scroll-snap-type:x proximity
+}
+#weave-offmap-rail [data-offmap-item]{
+ box-sizing:border-box;display:inline-flex;align-items:center;gap:7px;
+ flex:0 0 162px;min-height:50px;padding:4px 6px;max-width:75%;
+ color:var(--reading-ink,#182028);background:var(--reading-wash,#eef1ed);
+ border:1px solid var(--reading-line,#c9d0c6);border-radius:6px;
+ text-align:left;cursor:pointer;scroll-snap-align:start
+}
+#weave-offmap-rail [data-offmap-item][aria-current="true"]{border-color:var(--reading-accent,#9c3b26);box-shadow:inset 0 0 0 1px var(--reading-accent,#9c3b26)}
+#weave-offmap-rail [data-offmap-item]:focus-visible{outline:2.5px solid var(--reading-accent,#9c3b26);outline-offset:-2px}
+#weave-offmap-rail [data-offmap-item] .weave-media-thumb{flex:0 0 34px;width:34px;height:36px;overflow:hidden}
+#weave-offmap-rail [data-offmap-item] .weave-offmap-copy{flex:1;min-width:0;display:grid;gap:3px}
+#weave-offmap-rail [data-offmap-item] .weave-offmap-copy b{
+  display:block;font:600 11px/1.2 var(--ui-sans,system-ui,sans-serif);
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap
+}
+#weave-offmap-rail [data-offmap-item] .weave-offmap-copy small{
+  font:10px/1.2 var(--ui-sans,system-ui,sans-serif);color:var(--reading-muted,#53616b);
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap
+}
+body.weave-playing #weave-offmap-rail{visibility:hidden;pointer-events:none}
+@media(max-width:680px){
+ body.is-constellating #weave-offmap-rail{left:7px;right:7px;bottom:7px;gap:7px;padding:6px;flex-wrap:wrap}
+ #weave-offmap-rail .weave-offmap-heading{display:flex;align-items:baseline;flex:0 0 100%;gap:8px}
+ #weave-offmap-rail [data-offmap-item]{flex-basis:148px}
+}
+
+
+/* Job 3: source and citation text must wrap inside the Follow/Share dock. */
+#weave-citation,#weave-read-panel .weave-read-note,#weave-read-panel .weave-read-connections,
+#weave-share-panel,#weave-read-panel .weave-prose{
+  overflow-wrap:anywhere;word-break:normal
+}
+.weave-connection-kind{display:inline;font-size:11px;font-weight:600;color:var(--reading-muted,#54626b)}
+#weave-order-list [data-note-edit]{
+  font:600 11px/1.2 var(--ui-sans,system-ui,sans-serif);
+  border:1px solid var(--reading-line,#c9d0c6);
+  border-radius:5px;padding:5px 7px;color:var(--reading-accent,#9c3b26);
+  white-space:nowrap;min-height:28px
+}
+#weave-order-list [data-note-edit]:focus-visible{outline:2px solid var(--reading-accent,#9c3b26);outline-offset:2px}
+@media(max-width:420px){
+  #weave-order-list .weave-order-move{flex-wrap:wrap;justify-content:flex-end}
 }
