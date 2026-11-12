@@ -570,7 +570,7 @@ html[data-weave-stage="start"] #constellate-popup{display:none!important}
 :root:not(#_):not(#__)[data-weave-stage="start"] body main{grid-template-columns:minmax(0,1fr)!important}
 :root:not(#_):not(#__)[data-weave-stage="start"] body .map-panel{grid-column:1/-1!important;width:auto!important}
 html[data-weave-stage="start"] .map-panel .zoom,html[data-weave-stage="start"] .map-toolbar .map-actions{visibility:hidden}
-html[data-weave-stage="start"] #constellate-mode>*:not(#constellate-exit):not(span:first-child):not(.weave-more):not(.weave-tool-group):not(#weave-theme-web-toggle){display:none!important}
+html[data-weave-stage="start"] #constellate-mode>*:not(#constellate-exit):not(span:first-child):not(.weave-more):not(.weave-tool-group):not(#weave-theme-web-toggle):not(.weave-skip-to-graph){display:none!important}
 html[data-weave-stage="start"] #weave-theme-web-toggle{order:1!important;margin-left:0!important}
 html[data-weave-web="1"] #weave-start{display:none!important}
 html[data-weave-stage="start"] #constellate-mode .weave-tool-group{order:0!important;margin-left:0!important}
