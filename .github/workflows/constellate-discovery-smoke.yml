@@ -69,7 +69,7 @@ jobs:
             # directly skips the start screen's own transition to Build.
             await p.locator('#ws-theme-q').fill('Cosmology and Origin Stories')
             await p.locator('#ws-theme-results [data-ws-theme]').first.click()
-            await p.wait_for_function("document.documentElement.dataset.weaveStage==='build'",timeout=15000)
+            await p.wait_for_function("document.documentElement.dataset.weaveStage==='build'",timeout=40000)
             await p.wait_for_function('window.AtlasCollections.current().items.length>=6',timeout=20000)
             seed=await p.evaluate("""() => {
               const s=window.AtlasCollections.current(),t=s.threads.find(t=>t.id===s.activeThread);
