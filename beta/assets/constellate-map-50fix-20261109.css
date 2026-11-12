@@ -120,3 +120,9 @@ body.is-theme-weaving #constellate-graph .weave-thread.is-focus .weave-cord.weav
 body.is-theme-weaving #constellate-graph .weave-thread-halo{stroke-width:7px!important;stroke-opacity:.55!important}
 body.is-theme-weaving #constellate-graph{background-image:radial-gradient(ellipse at 50% 46%,rgba(4,8,18,0) 55%,rgba(4,8,18,.46) 100%),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.09'/%3E%3C/svg%3E");background-size:auto,180px 180px}
 body.weave-unmapped #constellate-graph{background-image:none}
+
+/* 2026-11-11 (Claude): named stars when cards would overlap; thread names ride the middle of the thread */
+body.is-theme-weaving #constellate-graph .weave-star-label{font:600 12px/1 'Atlas Sans',system-ui,sans-serif;fill:#f5eddb;paint-order:stroke fill;stroke:#0c1426;stroke-width:3.4px;stroke-linejoin:round;cursor:pointer;letter-spacing:.01em}
+body.is-theme-weaving #constellate-graph .weave-star-label:hover{fill:#fff}
+body.is-theme-weaving #constellate-graph .weave-thread-name{font:italic 600 13px/1 'Atlas Serif',Georgia,serif;paint-order:stroke fill;stroke:#0c1426;stroke-width:4px;stroke-linejoin:round;letter-spacing:.02em}
+body.is-theme-weaving #constellate-graph .weave-star-label{pointer-events:bounding-box}
