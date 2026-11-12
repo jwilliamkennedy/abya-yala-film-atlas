@@ -1,7 +1,7 @@
 name: Atlas Watch, Native Land links and Constellate controls QA
 on:
   push:
-    branches: [main]
+    branches: [main, beta-to-main-20261112]
     paths:
       - 'watch.html'
       - 'beta/watch.html'
