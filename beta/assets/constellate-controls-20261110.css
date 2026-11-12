@@ -407,3 +407,22 @@ body.weave-playing #weave-offmap-rail{visibility:hidden;pointer-events:none}
 @media(max-width:420px){
   #weave-order-list .weave-order-move{flex-wrap:wrap;justify-content:flex-end}
 }
+
+
+/* Job 4: four counted selectors remain usable beside the existing search controls. */
+#weave-discovery-tools label.weave-discovery-facet{
+  flex:1 1 43%;min-width:134px;max-width:100%;
+  display:flex;align-items:center;justify-content:space-between;
+  white-space:normal;gap:6px
+}
+#weave-discovery-tools .weave-discovery-facet select{
+  min-width:0;flex:1 1 auto;max-width:100%;width:100%;
+  overflow:hidden;text-overflow:ellipsis
+}
+#weave-suggest .weave-theme-tags{
+  display:block;max-width:100%;overflow-wrap:anywhere;white-space:normal
+}
+@media(max-width:540px){
+  #weave-discovery-tools label.weave-discovery-facet{flex:1 1 100%;min-width:0}
+  #weave-discovery-tools .weave-discovery-facet select{min-height:36px}
+}
