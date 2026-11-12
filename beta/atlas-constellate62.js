@@ -96,7 +96,7 @@
  $('#constellate-search').insertAdjacentHTML('afterend','<div id="weave-discovery-tools" class="weave-discovery-tools"><label>Order <select id="weave-discovery-order" aria-label="Sort discovered films"><option value="relevance">Relevance / A–Z</option><option value="title">Title A–Z</option><option value="oldest">Oldest first</option><option value="newest">Newest first</option></select></label><label><input id="weave-discovery-unadded" type="checkbox"> Not on thread</label><label><input id="weave-discovery-art" type="checkbox"> With sourced image</label><label class="weave-discovery-facet">Country <select id="weave-discovery-country" aria-label="Filter by recorded country"><option value="">All countries</option></select></label><label class="weave-discovery-facet">Decade <select id="weave-discovery-decade" aria-label="Filter by decade"><option value="">All decades</option></select></label><label class="weave-discovery-facet">Form <select id="weave-discovery-form" aria-label="Filter by published film form"><option value="">All forms</option></select></label><label class="weave-discovery-facet">Length <select id="weave-discovery-length" aria-label="Filter by published film length"><option value="">All lengths</option></select></label><button type="button" id="weave-discovery-clear" aria-label="Clear film search and filters">Clear</button></div><p class="weave-discovery-hint">Search titles, filmmakers, peoples, places and themes. Press / to search; Esc clears.</p><p id="weave-discovery-count" role="status" aria-live="polite" class="weave-discovery-count"></p>');
  $('#weave-legend').insertAdjacentHTML('beforebegin','<div class="weave-focus-actions"><button id="weave-focus-thread" type="button" aria-pressed="false" title="Temporarily display only the selected thread; no saved content changes">Focus selected thread</button></div>');
   $('#weave-order').insertAdjacentHTML('beforeend','<section id="weave-theme-more" class="weave-theme-more" aria-label="Explore more films in this theme" hidden></section>');
- let enabled=false,reading=false,drawThread=false,drawLast=null,active=null,connecting=false,first=null,shiftFirst=null,pointer=null,drag=null,dragLink=null,suppress=null,busy=false,entry=null,draft=null,draftKey=null,frame=0,readIndex=0,orderDrag=null,pendingPicker=null,size={width:900,height:650},positions=new Map(),anchors=new Map(),offMapIds=new Set(),offMapSignature='',cameraBasePositions=new Map(),cameraBaseAnchors=new Map(),cameraBaseWarp=null;const histories=new Map(),known=new Map(S.state.collections.map(c=>[c.id,copy(c)]));
+ let enabled=false,reading=false,drawThread=false,drawLast=null,active=null,connecting=false,first=null,shiftFirst=null,pointer=null,drag=null,dragLink=null,suppress=null,busy=false,entry=null,draft=null,draftKey=null,frame=0,readIndex=0,orderDrag=null,pendingPicker=null,size={width:900,height:650},positions=new Map(),anchors=new Map(),offMapIds=new Set(),offMapSignature='',offMapActive='',offMapScrollSignature='',cameraBasePositions=new Map(),cameraBaseAnchors=new Map(),cameraBaseWarp=null;const histories=new Map(),known=new Map(S.state.collections.map(c=>[c.id,copy(c)]));
  const dimensions=()=>{const b=$('#atlas').getBoundingClientRect();size={width:b.width||900,height:b.height||650};$('#atlas').style.setProperty('--weave-map-height',size.height+'px');return size;},NW=()=>size.width<500?132:158,NH=42,top=()=>size.width<681?128:112;
  const snapshot=c=>{const x=copy(c);delete x.updatedAt;return x;};
  const clearNotice=()=>{clearTimeout(status.t);$('#weave-notice').hidden=true;$('#weave-notice').textContent='';};const status=message=>{$('#constellate-status').textContent=message;clearNotice();$('#weave-notice').textContent=message;$('#weave-notice').hidden=!message;if(message)status.t=setTimeout(clearNotice,4000);};
@@ -136,7 +136,7 @@
   const seen=new Set(),items=[];
   if(!unmapped)for(const t of visible)for(const id of t.items){
    if(seen.has(id))continue;const x=S.current().items.find(x=>x.id===id);
-   if(x?.type!=='film'||reference(x))continue;
+   if(x?.type!=='film'||anchor(x))continue;
    seen.add(id);items.push(x);
   }
   offMapIds=new Set(items.map(x=>x.id));
@@ -148,6 +148,16 @@
    offMapItems.querySelectorAll('[data-offmap-item]').forEach(b=>b.onclick=()=>choose(b.dataset.offmapItem));
   }
   offMapItems.querySelectorAll('[data-offmap-item]').forEach(b=>b.setAttribute('aria-current',String(b.dataset.offmapItem===active)));
+  // Reveal the selected off-map film when navigation advances; respect manual scrolling.
+  if(offMapActive!==active||signature!==offMapScrollSignature){
+   offMapActive=active;offMapScrollSignature=signature;
+   const selected=[...offMapItems.querySelectorAll('[data-offmap-item]')].find(b=>b.dataset.offmapItem===active);
+   if(selected){
+    const a=selected.getBoundingClientRect(),v=offMapItems.getBoundingClientRect();
+    if(a.left<v.left)offMapItems.scrollLeft-=v.left-a.left+8;
+    else if(a.right>v.right)offMapItems.scrollLeft+=a.right-v.right+8;
+   }
+  }
  }
  function offMapPoint(id){
   const b=[...offMapItems.querySelectorAll('[data-offmap-item]')].find(b=>b.dataset.offmapItem===id);
@@ -161,10 +171,10 @@
  function selectedItem(){const r=A.recordById(A.state.record);return r?raw.find(x=>x.record===r.id&&x.type===(A.state.film?'film':'maker')&&(!A.state.film||x.film===A.state.film)):null;}
  function existingWork(x){return S.current().items.find(i=>i.id===x.id||(x.type==='film'&&i.type==='film'&&key(i)===key(x)));}
  function add(x,threadId=S.current().activeThread){const existing=existingWork(x),beforeCount=S.current().items.length;let id=existing?.id;
-  const ok=transaction(existing?'Add card to thread':x.type==='concept'?'Add idea':'Add film',()=>{if(existing)return S.addToThread(existing.id,threadId);const saved=S.add(x,{threadId});id=S.current().selectedItem;if(saved&&x.type==='concept')S.position(id,{x:.42,y:.44});return saved;});if(!ok)return false;active=id;if(drawThread&&threadId===S.current().activeThread)drawLast=id;const item=S.current().items.find(x=>x.id===id),ref=item&&reference(item);if(ref){const a=anchor(item);if(beforeCount===0)A.focusLandOnMap(ref.id);else if(!a||a.x<0||a.x>size.width||a.y<100||a.y>size.height-60)fit();}render();status('Added to '+(S.current().threads.find(t=>t.id===threadId)?.name||'thread')+'.');return true;}
+  const ok=transaction(existing?'Add card to thread':x.type==='concept'?'Add idea':'Add film',()=>{if(existing)return S.addToThread(existing.id,threadId);const saved=S.add(x,{threadId});id=S.current().selectedItem;if(saved&&x.type==='concept')S.position(id,{x:.42,y:.44});return saved;});if(!ok)return false;active=id;if(drawThread&&threadId===S.current().activeThread)drawLast=id;const item=S.current().items.find(x=>x.id===id),ref=item&&reference(item);if(ref){const a=anchor(item);if(a){if(beforeCount===0)A.focusLandOnMap(ref.id);else if(a.x<0||a.x>size.width||a.y<100||a.y>size.height-60)fit();}}render();status('Added to '+(S.current().threads.find(t=>t.id===threadId)?.name||'thread')+'.');return true;}
  function fit(mode){
   const items=S.current().items.filter(x=>visibleItem(x.id)&&x.type!=='concept');
-  const ids=[...new Set(items.map(reference).filter(Boolean).map(r=>r.id))];
+  const ids=[...new Set(items.filter(x=>anchor(x)).map(x=>reference(x).id))];
   // Fit mapped territories only. Unmapped films stay in the rail, never at a
   // country's centre or an invented territorial coordinate.
   if(ids.length&&!unmapped)A.fitLandReferences(ids);
