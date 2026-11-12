@@ -411,3 +411,27 @@ body.atlas-page #index .adjacent-visible .adjacent-maker{
 body.atlas-page #index .adjacent-visible .adjacent-maker:focus-visible{
  outline:2px solid var(--reading-accent,#9c3b26);outline-offset:2px
 }
+
+/* ---------- Map page pass, 2026-11-11 (Claude) ---------- */
+/* stray system fonts brought into the interface face */
+header small,a.watch-link,.map-toolbar label,.map-toolbar span,.map-toolbar select,.map-toolbar button{font-family:var(--ui-sans)}
+/* territories: a fine darker edge keeps each shape legible at lower colour strength */
+:root[data-ui="1107"] body #atlas .land-shading .nation-wash{stroke:#31464f;stroke-opacity:.2;stroke-width:.55px}
+/* night: deeper, quieter territories; names with a dark edge instead of a pale glow */
+:root[data-ui="1107"][data-reading-theme=night] body #atlas .land-shading .nation-wash{fill-opacity:calc(var(--territory-wash,.36) * .6);stroke:#0b1226;stroke-opacity:.5}
+:root[data-reading-theme=night] #atlas .land-word .land-word-label{paint-order:stroke fill;stroke:#0d152b!important;stroke-width:3.2px!important;stroke-opacity:.92!important;text-shadow:none!important}
+/* night: lands with films are lights; the more filmmakers linked, the brighter */
+:root[data-reading-theme=night] #atlas .land-word:not([data-linked-count="0"]) .land-reference-dot{fill:#fff1cf!important;stroke:none!important;filter:drop-shadow(0 0 3px rgba(255,236,190,.95)) drop-shadow(0 0 9px rgba(255,208,130,.55))}
+:root[data-reading-theme=night] #atlas .land-word[data-ui-tier="1"] .land-reference-dot{r:5px;filter:drop-shadow(0 0 4px #fff) drop-shadow(0 0 14px rgba(255,208,130,.8))}
+:root[data-reading-theme=night] #atlas .land-word[data-ui-tier="2"] .land-reference-dot{r:4.2px}
+:root[data-reading-theme=night] #atlas .land-word[data-ui-tier="4"] .land-reference-dot{r:2.6px}
+/* Map key: the key first, the source maps after it, set closer */
+#map-info>div{display:flex;flex-direction:column}
+#map-info>div>#visual-key{order:1}
+#map-info>div>.key-notes{order:2}
+#map-info>div>.map-external-links{order:3;margin-top:14px;padding-top:12px;border-top:1px solid var(--ui-line);display:grid;gap:7px}
+#map-info>div>.map-external-links a{margin:0;padding:0;justify-self:start}
+/* selected name on the map: readable caption */
+#map-selection-focus span{font-size:12px;line-height:1.4}
+/* an image caption shows only when its image does */
+#index .entry-button .film-thumb:has(img[hidden])~.entry-copy .maker-thumbnail-caption,#index .entry-button .film-thumb:not(:has(img))~.entry-copy .maker-thumbnail-caption{display:none}

@@ -36,7 +36,7 @@ function landVoice(l){
  if(stamp!==voiceStamp){voiceStamp=stamp;voiceCounts.clear();voiceMaximum=1;for(const item of lands){const count=new Set(visibleLandLinks(item).map(e=>e.record)).size;voiceCounts.set(item.id,count);voiceMaximum=Math.max(voiceMaximum,count);}}
  const count=voiceCounts.get(l?.id)||0,t=Math.log1p(count)/Math.log1p(voiceMaximum);
  const fit=window.innerWidth<520?.82:window.innerWidth<1000?.9:1;
- return {count,t,map:Math.max(11,Math.round((count?13+9*t*t:11)*fit*10)/10),side:count?18+2*t:15,heading:count?24+2*t:20,weight:count?500+Math.round(80*t):400,tone:d3.interpolateRgb('#375e61','#293f48')(t)};
+ return {count,t,map:Math.max(11.5,Math.round((count?13.5+6*t*Math.sqrt(t):11.5)*fit*10)/10),side:count?18+2*t:15,heading:count?24+2*t:20,weight:count?500+Math.round(80*t):400,tone:d3.interpolateRgb('#375e61','#293f48')(t)};
 }
 function renderPanelControls(){
  if(!archive||!$('#active-filters'))return;
