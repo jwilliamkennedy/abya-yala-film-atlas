@@ -9,7 +9,11 @@ const names=[...window.ATLAS_NAMES_DATA.records,...(window.ATLAS_RESEARCH_ADDITI
 for(const f of territories){for(const rings of f.geometry.type==='Polygon'?[f.geometry.coordinates]:f.geometry.coordinates){if(d3.geoArea({type:'Polygon',coordinates:[rings[0]]})>2*Math.PI)rings[0].reverse();for(const h of rings.slice(1))if(d3.geoArea({type:'Polygon',coordinates:[h]})<2*Math.PI)h.reverse();}f.bounds=d3.geoBounds(f);let g=groupMap.get(f.properties.name);if(!g){g={id:String(f.id),name:f.properties.name,features:[]};groupMap.set(g.name,g);}g.features.push(f);byFeature.set(String(f.id),g);}
 const groups=[...groupMap.values()],lands=[],usedGroups=new Set(),groupToLand=new Map();
 // Exact spelling matches share one interface entry. No film affiliation is inferred.
-for(const n of names){const matches=groups.filter(g=>window.AtlasMapLabelLayout.sourceMatches(n.name,g.name));const item={id:n.id,name:n.name,aliases:[...new Set([...(n.aliases||[]),...matches.map(g=>g.name)])],supplied:n,groups:matches};lands.push(item);for(const g of matches){usedGroups.add(g.id);groupToLand.set(g.id,item);}}
+// NAME-074 is Jennifer Wickham's already-sourced Wet'suwet'en affiliation. Native Land
+// maps the same nation as “Wet’suwet’en Yintikh” (territory source ID 36103).
+// Join that existing polygon to the existing land ID; do not create a proxy pin.
+for(const n of names){const matches=groups.filter(g=>window.AtlasMapLabelLayout.sourceMatches(n.name,g.name)||
+  (n.id==='NAME-074'&&g.id==='36103'));const item={id:n.id,name:n.name,aliases:[...new Set([...(n.aliases||[]),...matches.map(g=>g.name)])],supplied:n,groups:matches};lands.push(item);for(const g of matches){usedGroups.add(g.id);groupToLand.set(g.id,item);}}
 for(const g of groups)if(!usedGroups.has(g.id)){const item={id:'LAND-'+g.id,name:g.name,aliases:[],supplied:null,groups:[g]};lands.push(item);groupToLand.set(g.id,item);}
 // A browsing group uses existing community references; no combined territorial boundary is created.
 const mayaMemberIds=new Set(['NAME-088','NAME-089','NAME-090','NAME-091','NAME-093','NAME-094','NAME-095','LAND-35926','LAND-35828','LAND-36628','LAND-35963']);
