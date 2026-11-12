@@ -168,8 +168,22 @@ async def run(pw, width, height, mobile, label):
     for _ in range(max(0, pub["films"] - 1)):
         await page.evaluate("document.querySelector('#weave-read-next')?.click()")
     last = await page.evaluate("document.querySelector('#weave-read-panel .weave-read-nav span')?.textContent.trim()")
-    check(last == str(pub["films"]) + " / " + str(pub["films"]),
+    check(last in ("Film " + str(pub["films"]) + " of " + str(pub["films"]),
+                   str(pub["films"]) + " / " + str(pub["films"])),
           "Follow cannot navigate to the final film", {"last": last, "films": pub["films"]})
+
+    # Play must progress through the same sequence, including Yintah.
+    await page.evaluate("""() => {
+      const S=window.AtlasCollections,C=window.AtlasConstellate;
+      const items=S.current().threads.filter(t=>t.visible).flatMap(t=>t.items);
+      C.play(items.indexOf('film:DIR-0103:FILM-0079'));
+    }""")
+    play_yintah = await page.evaluate("document.querySelector('#weave-play-title')?.textContent")
+    check(play_yintah == "Yintah", "Play cannot open Yintah", {"title": play_yintah})
+    await page.evaluate("document.querySelector('#weave-play-next').click()")
+    play_next = await page.evaluate("document.querySelector('#weave-play-title')?.textContent")
+    check(play_next == "Punalka", "Play cannot progress from Yintah to Punalka", {"title": play_next})
+    await page.evaluate("window.AtlasConstellate.stopPlay()")
 
     check(not errors, "script errors", errors[:5])
     await browser.close()
