@@ -12,7 +12,7 @@ The beta stays where it is, as the preview for the next round."""
 import os, sys, shutil, subprocess, pathlib, re
 
 KEEP = {'README.md', 'CITATION.cff', '.zenodo.json', '.nojekyll', '.gitignore', 'go.html'}
-KEEP_DIRS = ('.github/', 'tools/', 'beta/')
+KEEP_DIRS = ('.github/', 'tools/', 'beta/', 'docs/')
 TEXT = re.compile(r'\.(html|xml|js|css|json|txt|md|csv)$')
 
 def git_files():

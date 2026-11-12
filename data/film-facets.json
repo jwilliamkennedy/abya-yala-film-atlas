@@ -1,8 +1,9 @@
 {
  "title": "Indigenous Cinema Atlas · film facets",
- "generated": "2026-11-09",
+ "generated": "2026-11-12",
  "license": "See data.html",
- "films_on_public_map": 1558,
+ "films_on_public_map": 1559,
+ "film_entries": 1574,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -68,7 +69,7 @@
   ]
  },
  "language_authority": {
-  "source": "Glottolog (glottolog-cldf, fetched 2026-11-09)",
+  "source": "Glottolog (glottolog-cldf, fetched 2026-11-12)",
   "languages": [
    {
     "label": "Anishinaabemowin (Ojibwe)",
@@ -404,7 +405,7 @@
     "match": "exact",
     "indigenous": "no",
     "note": "",
-    "films": 20
+    "films": 21
    },
    {
     "label": "Portuguese",
@@ -1176,12 +1177,12 @@
      "name": "Jhonaton Gomes"
     },
     {
-     "id": "LEAD-20261011-006",
-     "name": "Sarah Brites"
+     "id": "DIR-0053",
+     "name": "Valmir G. Cabreira"
     },
     {
-     "id": "BETA8D-20261107-D09",
-     "name": "Valmir Gonçalves Cabreira"
+     "id": "LEAD-20261011-006",
+     "name": "Sarah Brites"
     },
     {
      "id": "QM-b28a904c25",
@@ -1214,10 +1215,6 @@
     {
      "id": "LEAD-20261011-006",
      "name": "Sarah Brites"
-    },
-    {
-     "id": "BETA8D-20261107-D09",
-     "name": "Valmir Gonçalves Cabreira"
     },
     {
      "id": "QM-b28a904c25",
@@ -6666,6 +6663,10 @@
     {
      "id": "DIR-0179",
      "name": "Amado Villafaña"
+    },
+    {
+     "id": "QM-970c76e39a",
+     "name": "Silvestre Gil Zarabata"
     }
    ],
    "languages": [
@@ -6679,11 +6680,18 @@
      "source": "https://www.retinalatina.org/peliculas/resistencia-en-la-linea-negra-amado-villafana/"
     }
    ],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Land Defense",
+    "Resistance Movements",
+    "Sovereignty and Self-Determination"
+   ],
+   "primary_theme": "Land Defense",
+   "families": [
+    "Land and Environment",
+    "Sovereignty and Politics"
+   ],
+   "form": "Documentary",
+   "length": "Feature"
   },
   "BETA30-20261106-F14": {
    "title": "Naboba, visión ancestral del agua del pueblo arhuaco",
@@ -7237,6 +7245,70 @@
    "form": null,
    "length": null
   },
+  "Q20261111-03-F1": {
+   "title": "Mujeres Umari. Tejedoras de historias y saberes",
+   "year": 2020,
+   "makers": [
+    {
+     "id": "DIR-0190",
+     "name": "Nelly Kuiru"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261111-04-F1": {
+   "title": "KIYEDECAGO (Mujer de la piña dulce)",
+   "year": 2021,
+   "makers": [
+    {
+     "id": "DIR-0190",
+     "name": "Nelly Kuiru"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261111-05-F1": {
+   "title": "Yarokamena. La resistencia",
+   "year": 2021,
+   "makers": [
+    {
+     "id": "DIR-0190",
+     "name": "Nelly Kuiru"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261111-06-F1": {
+   "title": "Ka+ Jairag+ma Iga+ (Lazos ancestrales)",
+   "year": 2022,
+   "makers": [
+    {
+     "id": "DIR-0190",
+     "name": "Nelly Kuiru"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "FILM-0137": {
    "title": "Jayeechimana'ana (Tierra de cantos)",
    "year": null,
@@ -7654,10 +7726,6 @@
     {
      "id": "DIR-0209",
      "name": "Elvis Rigoberto Caj Cojoc"
-    },
-    {
-     "id": "DIR-0362",
-     "name": "Elvis Caj"
     }
    ],
    "languages": [],
@@ -7714,7 +7782,7 @@
   },
   "DIR-0209-QM180a92": {
    "title": "Flor Blanca",
-   "year": null,
+   "year": 2014,
    "makers": [
     {
      "id": "DIR-0209",
@@ -7734,15 +7802,11 @@
   },
   "FILM-0163": {
    "title": "Ati't",
-   "year": null,
+   "year": 2023,
    "makers": [
     {
      "id": "DIR-0211",
      "name": "Tirza Yanira Ixmucané Saloj Oroxom"
-    },
-    {
-     "id": "NEW-edd193bd0a2d",
-     "name": "Tirza Ixmucané"
     }
    ],
    "languages": [],
@@ -9500,10 +9564,6 @@
    "title": "Marku Irekani = vivir juntos",
    "year": null,
    "makers": [
-    {
-     "id": "DIR-0241",
-     "name": "Rosalba López"
-    },
     {
      "id": "DIR-0241-B",
      "name": "Daniel Isidoro Morales"
@@ -13153,12 +13213,12 @@
    "length": null
   },
   "FILM-SRC-2023-00037": {
-   "title": "Nuestro hogar",
-   "year": 2014,
+   "title": "Home",
+   "year": null,
    "makers": [
     {
-     "id": "Q20261108-12",
-     "name": "Detsy Barrigón"
+     "id": "NEW-41297500b675",
+     "name": "Barry Bilinsky"
     }
    ],
    "languages": [],
@@ -13955,22 +14015,6 @@
    ],
    "form": "Experimental",
    "length": "Short"
-  },
-  "NEW-605d07d12a9f-F1": {
-   "title": "Pox, bebida sagrada",
-   "year": null,
-   "makers": [
-    {
-     "id": "NEW-605d07d12a9f",
-     "name": "Dolores Santiz"
-    }
-   ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
   },
   "NEW-4df03f9ddcb0-WORK-1": {
    "title": "Datrin (The Raven)",
@@ -17635,30 +17679,6 @@
    "form": null,
    "length": null
   },
-  "SA50-20261014-3aa4a6a794f3-WORK-01": {
-   "title": "Nhemongueta Kunhã Mbaraete",
-   "year": 2020,
-   "makers": [
-    {
-     "id": "SA50-20261014-3aa4a6a794f3",
-     "name": "Michele Kaiowá"
-    },
-    {
-     "id": "NEW-084a145f8fa7",
-     "name": "Graciela Guarani"
-    },
-    {
-     "id": "BETA30-20261106-D07",
-     "name": "Michele Perito Concianza Kaiowá"
-    }
-   ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
-  },
   "SA50-20261014-70978a9507b4-WORK-01": {
    "title": "Ãgawaraita",
    "year": 2022,
@@ -18486,6 +18506,54 @@
   "NEW-88392d09b0b8-WORK-1": {
    "title": "Los ancestros que aún nos habitan – Canto de la Selva",
    "year": 2023,
+   "makers": [
+    {
+     "id": "SA50-20261014-bdba8a2b66ca",
+     "name": "Gustavo Ulcué Campo"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261111-07-F1": {
+   "title": "Guerrera Ancestral",
+   "year": null,
+   "makers": [
+    {
+     "id": "SA50-20261014-bdba8a2b66ca",
+     "name": "Gustavo Ulcué Campo"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261111-08-F1": {
+   "title": "Kwesx Dxi'j (nuestro camino)",
+   "year": 2019,
+   "makers": [
+    {
+     "id": "SA50-20261014-bdba8a2b66ca",
+     "name": "Gustavo Ulcué Campo"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261111-09-F1": {
+   "title": "Yu’ Luuçx (hijos del agua)",
+   "year": 2016,
    "makers": [
     {
      "id": "SA50-20261014-bdba8a2b66ca",
@@ -20238,38 +20306,6 @@
    ],
    "form": "Documentary",
    "length": "Short"
-  },
-  "DIR-0362-W1031-2": {
-   "title": "Flor Blanca",
-   "year": 2014,
-   "makers": [
-    {
-     "id": "DIR-0362",
-     "name": "Elvis Caj"
-    }
-   ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
-  },
-  "DIR-0362-W1031-3": {
-   "title": "Melodía del Mar / Liremu Barana",
-   "year": 2020,
-   "makers": [
-    {
-     "id": "DIR-0362",
-     "name": "Elvis Caj"
-    }
-   ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
   },
   "RESEARCH-FILM-20261031-800-NEW-363": {
    "title": "He Moʻolelo Wahi Pana (A Storied Landscape)",
@@ -27034,6 +27070,26 @@
    "form": "Documentary",
    "length": "Feature"
   },
+  "NEW-084a145f8fa7-W1031-2": {
+   "title": "Nhemongueta Kunhã Mbaraete",
+   "year": 2020,
+   "makers": [
+    {
+     "id": "NEW-084a145f8fa7",
+     "name": "Graciela Guarani"
+    },
+    {
+     "id": "BETA30-20261106-D07",
+     "name": "Michele Perito Concianza Kaiowá"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "BETA30B-20261107-F13": {
    "title": "Kunhangue – Universo de um novo mundo",
    "year": 2020,
@@ -27073,22 +27129,6 @@
     {
      "id": "NEW-f51c22579e1e",
      "name": "Ariel Chalán"
-    }
-   ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
-  },
-  "NEW-edd193bd0a2d-QM3b9736": {
-   "title": "Ati’t",
-   "year": 2023,
-   "makers": [
-    {
-     "id": "NEW-edd193bd0a2d",
-     "name": "Tirza Ixmucané"
     }
    ],
    "languages": [],
@@ -27456,6 +27496,22 @@
    "form": null,
    "length": null
   },
+  "NEW-f3320a0ced3e-QM8b244b": {
+   "title": "Al besarte, Concepción",
+   "year": null,
+   "makers": [
+    {
+     "id": "NEW-f3320a0ced3e",
+     "name": "Rogelio Chicatti Villalobos"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": "Short"
+  },
   "NEW-fd8667e4a685-WORK-1": {
    "title": "A la niña que fui",
    "year": null,
@@ -27470,6 +27526,22 @@
    "primary_theme": null,
    "families": [],
    "form": null,
+   "length": null
+  },
+  "NEW-fd8667e4a685-QM147c35": {
+   "title": "Dos espíritus",
+   "year": null,
+   "makers": [
+    {
+     "id": "NEW-fd8667e4a685",
+     "name": "Dan Escárraga"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Hybrid",
    "length": null
   },
   "NEW-39933aa2c662-WORK-1": {
@@ -27503,6 +27575,22 @@
    "families": [],
    "form": null,
    "length": null
+  },
+  "NEW-39933aa2c662-QM69c560": {
+   "title": "Los niños del Mezquite",
+   "year": null,
+   "makers": [
+    {
+     "id": "NEW-39933aa2c662",
+     "name": "Rodrigo Martínez"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": "Feature"
   },
   "BETA-T1101-VEN-01-F1": {
    "title": "Wachikua: Nuestra historia",
@@ -28165,34 +28253,6 @@
      "source": "https://ellugarquehabitamos.org/nipi-utaiamun/"
     }
    ],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
-  },
-  "BETA30-20261106-F09": {
-   "title": "Rami Rami Kirani",
-   "year": 2023,
-   "makers": [
-    {
-     "id": "BETA30-20261106-D04",
-     "name": "Lira Mawapãi Huni Kuin"
-    },
-    {
-     "id": "BETA30-20261106-D05",
-     "name": "Luciana Tira Huni Kuin"
-    },
-    {
-     "id": "QM-5b6f874ea2",
-     "name": "Lira Mawapai HuniKui"
-    },
-    {
-     "id": "QM-b1d16e4857",
-     "name": "Luciana Tira HuniKui"
-    }
-   ],
-   "languages": [],
    "themes": [],
    "primary_theme": null,
    "families": [],
@@ -29960,6 +30020,22 @@
    "form": null,
    "length": null
   },
+  "Q20261108-12-F1": {
+   "title": "Nuestro hogar",
+   "year": 2014,
+   "makers": [
+    {
+     "id": "Q20261108-12",
+     "name": "Detsy Barrigón"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "Q20261108-13-F1": {
    "title": "Tramas y trascendencias",
    "year": 2013,
@@ -30015,22 +30091,6 @@
     {
      "id": "QM-6937cf7910",
      "name": "Miguel Valdés"
-    }
-   ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
-  },
-  "QM-97b718afc1-M1": {
-   "title": "Marku irekani / Vivir juntos",
-   "year": 2021,
-   "makers": [
-    {
-     "id": "QM-97b718afc1",
-     "name": "Rosalba López López"
     }
    ],
    "languages": [],
@@ -30643,6 +30703,201 @@
    "families": [],
    "form": null,
    "length": null
+  },
+  "QM-1249b8bc7b-M1": {
+   "title": "8 venado, garra jaguar",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "QM-1249b8bc7b",
+     "name": "María Conchita Díaz López"
+    }
+   ],
+   "languages": [
+    {
+     "label": "Spanish",
+     "as_credited": "Spanish",
+     "glottocode": "stan1288",
+     "iso639_3": "spa",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://www.imcine.gob.mx/media/2025/10/programacion_muestra_ecamc_2025.pdf"
+    }
+   ],
+   "themes": [
+    "Cosmology and Origin Stories",
+    "Memory and Oral History"
+   ],
+   "primary_theme": "Cosmology and Origin Stories",
+   "families": [
+    "Knowledge and Continuity"
+   ],
+   "form": "Fiction",
+   "length": "Feature"
+  },
+  "Q20261108-91-F1": {
+   "title": "La soledad",
+   "year": 2023,
+   "makers": [
+    {
+     "id": "QM-1249b8bc7b",
+     "name": "María Conchita Díaz López"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Kinship"
+   ],
+   "primary_theme": "Kinship",
+   "families": [
+    "Lives and Relations"
+   ],
+   "form": "Fiction",
+   "length": "Short"
+  },
+  "NEW-65d746d4dc9c-F1": {
+   "title": "Metzew (Energía)",
+   "year": 2023,
+   "makers": [
+    {
+     "id": "NEW-65d746d4dc9c",
+     "name": "Emma Carlota Cucul"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "NEW-65d746d4dc9c-F2": {
+   "title": "Komonil",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "NEW-65d746d4dc9c",
+     "name": "Emma Carlota Cucul"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261111-11-F1": {
+   "title": "Se’ K’o",
+   "year": null,
+   "makers": [
+    {
+     "id": "NEW-65d746d4dc9c",
+     "name": "Emma Carlota Cucul"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Feature"
+  },
+  "Q20261111-01-F1": {
+   "title": "Xàbò Mè'phàà: Na'ne Xuajen",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261111-01",
+     "name": "María Isaías Jerónimo Reyes"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261111-10-F1": {
+   "title": "Waklichishka",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "Q20261111-10",
+     "name": "Enoc Merino Santi"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QM-e66b46752b-M1": {
+   "title": "Nyehé: palabras que recogen esperanza",
+   "year": null,
+   "makers": [
+    {
+     "id": "QM-e66b46752b",
+     "name": "Doreli Rufina Carrillo"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "QM-5351722e3e-M1": {
+   "title": "Máteru Sikuiri (Otra piel)",
+   "year": null,
+   "makers": [
+    {
+     "id": "QM-5351722e3e",
+     "name": "Eduardo López González"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "QM-69de437cde-M1": {
+   "title": "La muda",
+   "year": null,
+   "makers": [
+    {
+     "id": "QM-69de437cde",
+     "name": "Graciela Villanueva"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": "Short"
+  },
+  "NEW-94635ab3c837-QM9028a1": {
+   "title": "Sonámbulo (Ne bezho kjinchi)",
+   "year": null,
+   "makers": [
+    {
+     "id": "NEW-94635ab3c837",
+     "name": "Rubén Alejandro Ramón Medellín"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": "Short"
   }
  }
 }
