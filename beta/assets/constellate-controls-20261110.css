@@ -337,8 +337,8 @@ html[data-weave-stage="build"] body.is-theme-weaving #weave-guide .wg-actions bu
 /* The legacy notice has a fixed top declaration; translate that same notice to
    the map's bottom presentation strip without adding cascade priority. */
 body.is-constellating #atlas #weave-notice{
-  position:fixed;
-  transform:translate(-50%,calc(100dvh - 160px));
+  position:absolute;
+  transform:translate(-50%,calc(var(--weave-map-height,650px) - 160px));
   text-align:center;
   box-sizing:border-box;
   pointer-events:none
