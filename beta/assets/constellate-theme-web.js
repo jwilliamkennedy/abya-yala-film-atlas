@@ -164,7 +164,7 @@
    var gap=w/orders.length;
    orders.forEach(function(f,col){
     var group=nodes.filter(n=>n.family===f).sort((a,b)=>b.films.length-a.films.length||a.name.localeCompare(b.name));
-    var step=(h-100)/Math.max(7,group.length);
+    var step=Math.max(74,(h-100)/Math.max(1,group.length));
     familyHeaders+='<text class="tw-family-head" x="'+(gap*(col+.5)).toFixed(1)+'" y="24" text-anchor="middle">'+esc(({'Land and Environment':'LAND','Sovereignty and Politics':'SOVEREIGNTY','Knowledge and Continuity':'KNOWLEDGE','Lives and Relations':'RELATIONS','Expression and Representation':'EXPRESSION'})[f]||short(f,15))+'</text>';
     group.forEach(function(n,row){placed.push({id:n.name,node:n,r:Math.min(22,6+Math.sqrt(n.films.length)*1.4),x:gap*(col+.5),y:65+step*(row+.5)});});
    });
