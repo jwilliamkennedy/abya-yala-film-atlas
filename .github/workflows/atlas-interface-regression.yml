@@ -182,6 +182,22 @@ jobs:
                 })""")
                 assert nextstep['bar']==2 and nextstep['title']!=progress['title'],(label,progress,nextstep)
                 await page.locator('#weave-play').click(timeout=15000)
+                await page.wait_for_timeout(250)
+                play_debug=await page.evaluate("""() => {
+                  const player=document.querySelector('#weave-player'),mp=document.querySelector('.map-panel'),
+                        toolbar=document.querySelector('#constellate-mode');
+                  return {stage:document.documentElement.dataset.weaveStage,body:document.body.className,
+                    playing:window.AtlasConstellate.playing,hidden:player?.hidden,
+                    playerDisplay:player&&getComputedStyle(player).display,playerRect:player?.getBoundingClientRect().toJSON(),
+                    mapDisplay:mp&&getComputedStyle(mp).display,
+                    mapRect:mp?.getBoundingClientRect().toJSON(),
+                    toolbarDisplay:toolbar&&getComputedStyle(toolbar).display,
+                    readPressed:document.querySelector('#constellate-read')?.getAttribute('aria-pressed'),
+                    playPressed:document.querySelector('#weave-play')?.getAttribute('aria-pressed'),
+                    progress:document.querySelector('#weave-play-progress')?.textContent
+                  };
+                }""")
+                print('PLAY_DEBUG',label,json.dumps(play_debug,ensure_ascii=False),flush=True)
                 await page.locator('#weave-player:not([hidden])').wait_for(timeout=12000)
                 assert await page.locator('#weave-play').get_attribute('aria-pressed')=='true',(label,'Play mode not marked active')
                 await page.locator('#weave-play-speed').select_option('10000')
