@@ -1,0 +1,44 @@
+/* Time dial (Claude, 2026-11-11) */
+.map-toolbar #td-toggle{appearance:none;border:0;background:transparent;color:inherit;font:600 13px/1 var(--ui-sans,system-ui,sans-serif);padding:0 12px;min-height:32px;border-radius:999px;cursor:pointer}
+.map-toolbar #td-toggle[aria-pressed=true]{background:var(--ui-ink,#182028);color:var(--ui-surface,#f6f7f4)}
+:root[data-reading-theme=night] .map-toolbar #td-toggle[aria-pressed=true]{background:#f3e9d2;color:#141c33}
+body.is-constellating #td-toggle{display:none}
+#td-bar{position:absolute;left:12px;right:12px;bottom:54px;z-index:24;display:grid;grid-template-columns:auto minmax(150px,auto) 1fr auto;align-items:center;gap:6px 18px;padding:12px 16px 10px;
+ background:var(--ui-surface,#f6f7f4);color:var(--ui-ink,#182028);border:1px solid var(--ui-line,#c9d0c6);border-radius:12px;box-shadow:var(--ui-shadow,0 10px 30px rgba(24,32,40,.12))}
+#td-bar[hidden]{display:none}
+#td-bar button{appearance:none;min-height:36px;padding:0 14px;border-radius:999px;border:1px solid var(--ui-line,#c9d0c6);background:transparent;color:inherit;font:600 13px/1 var(--ui-sans,system-ui,sans-serif);cursor:pointer}
+#td-bar #td-play{background:var(--ui-accent,#9c3b26);border-color:var(--ui-accent,#9c3b26);color:var(--ui-accent-ink,#fff);min-width:74px}
+#td-bar .td-read{display:grid;gap:2px}
+#td-bar #td-year{font:400 30px/1 var(--ui-serif,Georgia,serif);font-variant-numeric:tabular-nums;letter-spacing:.01em}
+#td-bar #td-count{font:500 12px/1.3 var(--ui-sans,system-ui,sans-serif);color:var(--ui-muted,#55616b);font-variant-numeric:tabular-nums}
+#td-bar .td-track{display:flex;align-items:center;gap:10px;font:500 12px/1 var(--ui-sans,system-ui,sans-serif);color:var(--ui-muted,#55616b);font-variant-numeric:tabular-nums}
+#td-bar input[type=range]{flex:1;min-width:0;height:28px;accent-color:var(--ui-accent,#9c3b26);cursor:pointer}
+#td-bar .td-note{grid-column:1/-1;margin:0;font:400 12px/1.4 var(--ui-sans,system-ui,sans-serif);color:var(--ui-muted,#55616b)}
+body.time-dial-on #featured-weave{display:none}
+/* lands not yet reached by the dial fall back; lands in their first years flare */
+body.time-dial-on #atlas .land-word{transition:opacity .35s ease}
+body.time-dial-on #atlas .land-word[data-td=dark]{opacity:.13!important}
+body.time-dial-on #atlas .land-word[data-td=dark] .maker-portrait,body.time-dial-on #atlas .land-word[data-td=dark] image{opacity:0}
+body.time-dial-on #atlas .nation-wash{transition:fill-opacity .35s ease}
+body.time-dial-on #atlas .land-shading .nation-wash[data-td=dark]{fill-opacity:.035!important;stroke-opacity:.08!important}
+body.time-dial-on #atlas .land-shading .nation-wash[data-td=new]{fill-opacity:.78!important;stroke-opacity:.6!important}
+body.time-dial-on #atlas .land-word[data-td=new] .land-word-label{fill:var(--ui-accent,#9c3b26)!important}
+body.time-dial-on #atlas .land-word[data-td=new] .land-reference-dot{fill:var(--ui-accent,#9c3b26)!important;stroke:#fff!important;r:5.5px}
+:root[data-reading-theme=night] body.time-dial-on #atlas .land-word[data-td=new] .land-word-label{fill:#ffe9b8!important}
+:root[data-reading-theme=night] body.time-dial-on #atlas .land-word[data-td=new] .land-reference-dot{fill:#fff!important;r:6px;filter:drop-shadow(0 0 5px #fff) drop-shadow(0 0 16px rgba(255,208,130,.95))!important}
+:root[data-reading-theme=night] body.time-dial-on #atlas .land-word[data-td=dark] .land-reference-dot{filter:none!important;fill:#5b6788!important}
+@media (max-width:700px){
+ #td-bar{grid-template-columns:auto 1fr auto;bottom:auto;top:58px;left:8px;right:8px;padding:10px 12px}
+ #td-bar .td-track{grid-column:1/-1;order:3}
+ #td-bar .td-note{display:none}
+ #td-bar #td-year{font-size:24px}
+}
+@media (prefers-reduced-motion:reduce){body.time-dial-on #atlas .land-word,body.time-dial-on #atlas .nation-wash{transition:none}}
+/* lands and territories with no dated film stay quiet throughout, so the dial's end state matches the map */
+body.time-dial-on #atlas .land-word[data-td=none]{opacity:.4!important}
+body.time-dial-on #atlas .land-shading .nation-wash[data-td=none]{fill-opacity:.1!important;stroke-opacity:.14!important}
+body.time-dial-on #atlas .land-thumb{transition:opacity .35s ease}
+body.time-dial-on #atlas .land-thumb[data-td=dark]{opacity:0!important}
+body.time-dial-on #atlas .land-thumb[data-td=none]{opacity:.35!important}
+.map-toolbar .map-actions #td-toggle[aria-pressed=true]{color:#f6f7f4!important}
+:root[data-reading-theme=night] .map-toolbar .map-actions #td-toggle[aria-pressed=true]{color:#141c33!important}
