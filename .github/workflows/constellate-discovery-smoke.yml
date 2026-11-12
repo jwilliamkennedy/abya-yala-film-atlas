@@ -46,7 +46,11 @@ jobs:
             assert beginning['themeBeforeChips'],(label,'theme search must be above chips',beginning)
             if label=='main-desktop':
               assert abs(beginning['themeY']-beginning['filmY'])<30,(label,'searches are not parallel',beginning)
-            await p.evaluate("""() => window.AtlasConstellate.themeThread('Cosmology and Origin Stories')""")
+            # Open a theme the way a first-time visitor does. Calling themeThread()
+            # directly skips the start screen's own transition to Build.
+            await p.locator('#ws-theme-q').fill('Cosmology and Origin Stories')
+            await p.locator('#ws-theme-results [data-ws-theme]').first.click()
+            await p.wait_for_function("document.documentElement.dataset.weaveStage==='build'",timeout=15000)
             await p.wait_for_function('window.AtlasCollections.current().items.length>=6',timeout=20000)
             seed=await p.evaluate("""() => {
               const s=window.AtlasCollections.current(),t=s.threads.find(t=>t.id===s.activeThread);
@@ -54,16 +58,6 @@ jobs:
                 thread:t.name};
             }""")
             assert seed['seed']==6 and seed['playVisible'],(label,'six-film starter or top-level Play failed',seed)
-            tab_state=await p.evaluate("""() => {
-              const e=document.querySelector('#weave-tab-add'),ed=document.querySelector('#weave-editor'),panel=document.querySelector('#constellate-popup'),r=e.getBoundingClientRect();
-              const cs=getComputedStyle(e),ps=getComputedStyle(panel),es=getComputedStyle(ed);
-              const center=document.elementFromPoint(r.x+r.width/2,r.y+r.height/2);
-              return {body:document.body.className,panel:{hidden:panel.hidden,display:ps.display,rect:panel.getBoundingClientRect().toJSON()},
-                editor:{hidden:ed.hidden,display:es.display,tab:ed.dataset.tab},
-                tab:{display:cs.display,visibility:cs.visibility,rect:r.toJSON(),html:e.outerHTML.slice(0,400)},
-                center:center?.outerHTML.slice(0,400),scroll:panel.scrollTop,window:[innerWidth,innerHeight]}
-            }""")
-            print('CONSTELLATE_TAB_STATE',label,json.dumps(tab_state,ensure_ascii=False),flush=True)
             await p.locator('#weave-tab-add').click(timeout=12000)
             await p.wait_for_function("document.querySelectorAll('#constellate-results .constellate-result').length>=30",timeout=15000)
             search=await p.evaluate("""() => ({
