@@ -21,6 +21,11 @@ on:
       - 'tools/qa/atlas-suite.py'
       - '.github/workflows/atlas-suite.yml'
   workflow_dispatch:
+    inputs:
+      compare_with:
+        description: 'Commit to compare against (default: the previous commit)'
+        required: false
+        default: 'HEAD~1'
 permissions:
   contents: read
 concurrency:
@@ -35,7 +40,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 2
+          fetch-depth: 30
       - name: Install Chromium
         run: |
           python3 -m pip install -q 'playwright==1.*'
@@ -49,7 +54,7 @@ jobs:
       - name: Did anything move since the previous push?
         if: always()
         run: |
-          git worktree add -q /tmp/prev HEAD~1 || exit 0
+          git worktree add -q /tmp/prev "${{ github.event.inputs.compare_with || 'HEAD~1' }}" || exit 0
           (cd /tmp/prev && python3 -m http.server 8984 --bind 127.0.0.1 >/tmp/prev.log 2>&1 &)
           sleep 2
           # the previous commit is measured with today's suite, in the same browser, so only the site differs
@@ -66,6 +71,7 @@ jobs:
           python3 tools/qa/atlas-suite.py compare /tmp/suite/prev-main /tmp/suite/now-main >/dev/null || status=1
           python3 tools/qa/atlas-suite.py compare /tmp/suite/prev-beta /tmp/suite/now-beta >/dev/null || status=1
           cat /tmp/suite/visual-report.md >> "$GITHUB_STEP_SUMMARY"
+          cat /tmp/suite/visual-report.md
           if [ "$status" = 1 ] && git log -1 --format=%B | grep -q '\[no-visual-change\]'; then
             echo "::error::This commit is marked [no-visual-change] but the page changed. See the run summary."
             exit 1
