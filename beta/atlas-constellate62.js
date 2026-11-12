@@ -81,7 +81,35 @@
  function existingWork(x){return S.current().items.find(i=>i.id===x.id||(x.type==='film'&&i.type==='film'&&key(i)===key(x)));}
  function add(x,threadId=S.current().activeThread){const existing=existingWork(x),beforeCount=S.current().items.length;let id=existing?.id;
   const ok=transaction(existing?'Add card to thread':x.type==='concept'?'Add idea':'Add film',()=>{if(existing)return S.addToThread(existing.id,threadId);const saved=S.add(x,{threadId});id=S.current().selectedItem;if(saved&&x.type==='concept')S.position(id,{x:.42,y:.44});return saved;});if(!ok)return false;active=id;if(drawThread&&threadId===S.current().activeThread)drawLast=id;const item=S.current().items.find(x=>x.id===id),ref=item&&reference(item);if(ref){const a=anchor(item);if(beforeCount===0)A.focusLandOnMap(ref.id);else if(!a||a.x<0||a.x>size.width||a.y<100||a.y>size.height-60)fit();}render();status('Added to '+(S.current().threads.find(t=>t.id===threadId)?.name||'thread')+'.');return true;}
- function fit(mode){const ids=[...new Set(S.current().items.filter(x=>visibleItem(x.id)).map(reference).filter(Boolean).map(r=>r.id))];if(ids.length)A.fitLandReferences(ids);renderGraph();if(mode!=='quiet')status(ids.length?'Fitted to the constellation’s land references.':'Ideas stay in your free arrangement.');}
+ function fit(mode){
+  const items=S.current().items.filter(x=>visibleItem(x.id)&&x.type!=='concept');
+  const refs=items.map(reference);
+  const ids=[...new Set(refs.filter(Boolean).map(r=>r.id))];
+  const countries=items.filter((x,i)=>!refs[i]).map(x=>x.record&&A.recordById(x.record)).filter(Boolean).map(r=>r.country&&A.countryByCode(r.country)).filter(c=>c&&Array.isArray(c.coordinates));
+  // A mapped feature fit alone leaves country-anchored members off camera. Use the
+  // atlas's own camera restoration when both kinds occur; no map data is changed.
+  if(countries.length&&!unmapped){
+   const coords=[...ids.map(id=>A.landMarkerReference(id)?.coordinates).filter(p=>p?.length===2),...countries.map(c=>c.coordinates)].filter(p=>p.every(Number.isFinite));
+   if(coords.length){
+    const lons=coords.map(p=>p[0]),lats=coords.map(p=>p[1]);
+    const center=[(Math.min(...lons)+Math.max(...lons))/2,(Math.min(...lats)+Math.max(...lats))/2];
+    const previous=A.captureState();
+    A.restoreStop({...previous,center});
+    dimensions();
+    const projected=coords.map(p=>A.screenPoint(p)).filter(p=>p&&p.every(Number.isFinite));
+    if(projected.length===coords.length){
+     const xs=projected.map(p=>p[0]),ys=projected.map(p=>p[1]);
+     const dx=Math.max(1,Math.max(...xs)-Math.min(...xs)),dy=Math.max(1,Math.max(...ys)-Math.min(...ys));
+     const maxW=Math.max(80,size.width-2*(NW()/2+32));
+     const maxH=Math.max(80,size.height-top()-NH-100);
+     const factor=Math.min(1,maxW/dx,maxH/dy);
+     if(factor<.995)A.restoreStop({...previous,center,scale:previous.scale*factor});
+    }
+   }
+  }else if(ids.length)A.fitLandReferences(ids);
+  renderGraph();
+  if(mode!=='quiet')status(items.length?'Fitted to the visible constellation.':'Ideas stay in your free arrangement.');
+ }
  function wrap(title){const lines=[''];for(const word of String(title).split(/\s+/)){if((lines.at(-1)+' '+word).trim().length>20&&lines.length<2)lines.push(word);else lines[lines.length-1]=(lines.at(-1)+' '+word).trim();}return lines.map(l=>l.length>23?l.slice(0,22)+'…':l);}
  let tpCache=new Map();function threadPoints(t,...rest){if(rest.length)return threadPointsRaw(t,...rest);if(!tpCache.has(t.id))tpCache.set(t.id,threadPointsRaw(t));return tpCache.get(t.id);}
  function threadPointsRaw(thread){const runs=[];let pts=[];const flush=()=>{if(pts.length)runs.push(curve(pts));pts=[];};for(const id of thread.items){const item=S.current().items.find(x=>x.id===id),p=positions.get(id);if(!p){flush();continue;}const prior=pts.at(-1);if(prior&&Math.hypot(p.x-prior.x,p.y-prior.y)<2)continue;pts.push({x:p.x,y:p.y});}flush();return runs;}
