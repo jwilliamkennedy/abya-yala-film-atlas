@@ -77,6 +77,24 @@ jobs:
                 assert focus['focused'] and float(focus['width'].replace('px',''))>=2.4 and focus['color'],(name,focus)
                 assert not errors,(name,errors[:6])
                 print('CONSTELLATE_KEYBOARD_PASS',name,json.dumps({'skip':setup,'focusedCard':focus}),flush=True)
+                if name=='desktop':
+                  yintah=await page.evaluate("""() => {
+                    const atlas=window.Atlas,engine=window.AtlasConstellate;
+                    const refs=atlas.recordLandReferences('DIR-0103');
+                    const marker=atlas.landMarkerReference('NAME-074');
+                    const film=engine.catalog.find(x=>x.record==='DIR-0103' && x.title==='Yintah');
+                    document.getElementById('weave-unmap').click();
+                    const followed=film ? engine.followFilm(film) : false;
+                    const anchor=film ? engine.anchors.get(film.id) : null;
+                    const position=film ? engine.positions.get(film.id) : null;
+                    const offmap=film && !!document.querySelector('[data-offmap-item="'+film.id+'"]');
+                    return {refs,marker,film:film&&{id:film.id,title:film.title,record:film.record},
+                      followed,anchor,position,offmap};
+                  }""")
+                  print('YINTAH_MAPPED_TEST',json.dumps(yintah,ensure_ascii=False),flush=True)
+                  assert yintah['film'] and yintah['followed'] and yintah['marker'],yintah
+                  assert any(r['id']=='NAME-074' and r['mapped'] for r in yintah['refs']),yintah
+                  assert yintah['anchor'] and yintah['position'] and not yintah['offmap'],yintah
                 await context.close()
               await browser.close()
           asyncio.run(main())
