@@ -389,3 +389,21 @@ body.weave-playing #weave-offmap-rail{visibility:hidden;pointer-events:none}
  #weave-offmap-rail .weave-offmap-heading{display:flex;align-items:baseline;flex:0 0 100%;gap:8px}
  #weave-offmap-rail [data-offmap-item]{flex-basis:148px}
 }
+
+
+/* Job 3: source and citation text must wrap inside the Follow/Share dock. */
+#weave-citation,#weave-read-panel .weave-read-note,#weave-read-panel .weave-read-connections,
+#weave-share-panel,#weave-read-panel .weave-prose{
+  overflow-wrap:anywhere;word-break:normal
+}
+.weave-connection-kind{display:inline;font-size:11px;font-weight:600;color:var(--reading-muted,#54626b)}
+#weave-order-list [data-note-edit]{
+  font:600 11px/1.2 var(--ui-sans,system-ui,sans-serif);
+  border:1px solid var(--reading-line,#c9d0c6);
+  border-radius:5px;padding:5px 7px;color:var(--reading-accent,#9c3b26);
+  white-space:nowrap;min-height:28px
+}
+#weave-order-list [data-note-edit]:focus-visible{outline:2px solid var(--reading-accent,#9c3b26);outline-offset:2px}
+@media(max-width:420px){
+  #weave-order-list .weave-order-move{flex-wrap:wrap;justify-content:flex-end}
+}
