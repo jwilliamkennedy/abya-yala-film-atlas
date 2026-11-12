@@ -1,0 +1,32 @@
+name: Constellate — first-visit checks
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'beta/**'
+      - 'tools/qa/constellate-first-visit.py'
+      - '.github/workflows/constellate-first-visit.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  first-visit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Chromium
+        run: |
+          python3 -m pip install -q 'playwright==1.*'
+          python3 -m playwright install --with-deps chromium >/dev/null
+      - name: Example, suggestions, Play, colours, share link (desktop and phone)
+        run: |
+          python3 -m http.server 8983 --bind 127.0.0.1 >/tmp/server.log 2>&1 &
+          sleep 2
+          mkdir -p /tmp/shots
+          python3 tools/qa/constellate-first-visit.py http://127.0.0.1:8983/beta/ /tmp/shots
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: constellate-first-visit
+          path: /tmp/shots
