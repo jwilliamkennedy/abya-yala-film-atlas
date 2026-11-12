@@ -52,7 +52,8 @@ FINGERPRINT = """(PROPS) => {
     text = text.replace(/\\s+/g, ' ').trim().slice(0, 60);
     const style = PROPS.map(k => short(cs.getPropertyValue(k)));
     const pseudo = ['::before', '::after'].map(s => { const c = getComputedStyle(e, s); return c.content === 'none' || c.content === 'normal' ? '' : [short(c.content), c.color, c.backgroundColor, c.width, c.height, c.opacity].join('|'); });
-    rows.push([key, [Math.round(r.x), Math.round(r.y), Math.round(r.width), Math.round(r.height)], text, style, pseudo]);
+    const box = tag === 'g' ? [0, 0, 0, 0] : [Math.round(r.x), Math.round(r.y), Math.round(r.width), Math.round(r.height)];   // an SVG group's box is only the union of its children, which are recorded themselves
+    rows.push([key, box, text, style, pseudo]);
   }
   return { rows, groups: Object.fromEntries(Object.entries(groups).filter(([, n]) => n > 8)), page: [document.documentElement.scrollWidth, innerWidth, innerHeight], body: document.body.className.split(/\\s+/).sort().join(' '), html: Object.fromEntries(Object.entries(document.documentElement.dataset)) };
 }"""
