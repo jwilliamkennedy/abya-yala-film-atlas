@@ -1,0 +1,1460 @@
+/* Constellate — one stylesheet (consolidated 2026-11-12).
+   Sections keep their original order, so later sections still override earlier ones.
+   Edit here; prefer changing a rule where it is defined over adding an override below it. */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Canadian+Aboriginal:wght@400;600&family=Noto+Sans+Cherokee:wght@400;600&family=Noto+Sans+Osage&display=swap");
+
+/* ================================================================
+   Film images and cards
+   (was assets/constellate-thumbnails-20261108.css)
+   ================================================================ */
+/* Constellate only: truthful film-image coverage and lightweight discovery controls.
+   Text tiles mark records without a sourced image; never substitute another work. */
+.constellate-result>.weave-media-thumb,
+#weave-suggest .constellate-result>.weave-media-thumb{
+ position:relative;display:flex;align-items:center;justify-content:center;
+ flex:0 0 52px;width:52px;height:43px;min-width:52px;
+ overflow:hidden;isolation:isolate;border-radius:4px;
+ border:1px solid var(--reading-line);background:var(--reading-wash);
+}
+.weave-media-thumb>img{
+ position:absolute;inset:0;display:block;width:100%!important;height:100%!important;
+ min-width:0!important;max-width:none!important;object-fit:cover!important;
+ background:#1b2c3c;z-index:2;
+}
+.weave-media-thumb.is-broken>img{display:none!important}
+.weave-media-placeholder{
+ position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;
+ align-items:center;gap:2px;text-align:center;
+ background:linear-gradient(148deg,var(--reading-wash) 0%,var(--reading-line) 100%);
+ color:var(--reading-accent);font:600 15px/1.05 "Atlas Sans",system-ui,sans-serif;
+}
+.weave-media-placeholder>b{font:600 16px/1 "Atlas Serif",Georgia,serif;letter-spacing:.04em}
+.weave-media-placeholder>small{
+ display:block!important;margin:0!important;font:500 9px/1 "Atlas Sans",system-ui,sans-serif!important;
+ letter-spacing:.035em;text-transform:uppercase;color:var(--reading-muted);
+}
+.weave-media-thumb.has-source:not(.is-broken)>.weave-media-placeholder{display:none}
+#constellate-popup .constellate-result>span:not(.weave-media-thumb){flex:1;min-width:0}
+#constellate-popup .constellate-result>.weave-media-thumb{flex:0 0 52px}
+.weave-media-note{margin:6px 0 4px!important;font:12px/1.4 "Atlas Sans",system-ui,sans-serif;color:var(--reading-muted)}
+#constellate-popup .constellate-heading h2{flex:1;min-width:0}
+#weave-find-films{
+ flex:none;min-height:34px;
+ border:1px solid var(--reading-line);
+ font:500 12px/1.2 "Atlas Sans",system-ui,sans-serif;
+ background:var(--reading-wash);color:var(--reading-accent);
+}
+#weave-find-films:hover,#weave-find-films:focus-visible{border-color:var(--reading-accent)}
+#constellate-how>summary{font-size:13px!important;text-decoration:underline;text-underline-offset:3px}
+.weave-read-thread li.has-art>.weave-media-thumb{
+ grid-column:1;grid-row:1 / span 6;width:64px;height:85px;min-width:64px;
+ align-self:start;justify-self:start;
+}
+.weave-read-thread li.has-art>.weave-media-thumb .weave-media-placeholder>b{font-size:21px}
+#weave-peek>.weave-media-thumb{flex:0 0 54px;
+}
+#weave-peek>.weave-media-thumb .weave-media-placeholder>b{font-size:20px}
+@media (max-width:700px){
+ #weave-find-films{min-height:40px}
+ .constellate-result>.weave-media-thumb{width:48px;height:42px;min-width:48px;flex-basis:48px}
+ .weave-media-note{font-size:11px}
+}
+@media(prefers-reduced-motion:reduce){
+ .weave-media-thumb *{animation:none!important;transition:none!important}
+}
+
+
+/* Constellate 8 Nov · opening editorial preview, single-ribbon graphics and quieter controls */
+#weave-empty-hint{
+ position:absolute;z-index:16;left:50%;top:47%;transform:translate(-50%,-50%);
+ width:min(548px,calc(100% - 42px));max-width:none;
+ max-height:calc(100% - 130px);box-sizing:border-box;
+ overflow:auto;padding:22px 25px 20px;text-align:left;
+ border:1px solid var(--reading-line);border-radius:12px;
+ background:var(--reading-paper);color:var(--reading-ink);
+ box-shadow:0 14px 55px #0a1e3150;
+ pointer-events:auto;overscroll-behavior:contain;
+}
+#weave-empty-hint[hidden]{display:none!important}
+#weave-empty-hint .weave-intro-kicker{
+ margin:0 0 8px;color:var(--reading-accent);
+ font:650 10px/1.3 "Atlas Sans",system-ui,sans-serif;
+ letter-spacing:.12em;text-transform:uppercase;
+}
+#weave-empty-hint h2{
+ font:400 clamp(25px,3vw,35px)/1.08 "Atlas Serif",Georgia,serif;
+ margin:0 0 7px;color:var(--reading-ink);
+}
+#weave-empty-hint .weave-intro-lede{
+ font:14px/1.48 "Atlas Sans",system-ui,sans-serif;
+ margin:0 0 17px;color:var(--reading-muted);max-width:480px;
+}
+#weave-empty-hint .weave-intro-films{
+ position:relative;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
+ gap:9px;align-items:stretch;margin:0 0 7px;padding:7px 0 1px;
+}
+#weave-empty-hint .weave-intro-films::before{
+ content:"";position:absolute;z-index:0;left:4%;right:4%;top:40px;
+ height:2px;background:linear-gradient(90deg,transparent,rgba(109,122,171,.65) 14%,rgba(109,122,171,.65) 86%,transparent);
+ pointer-events:none;
+}
+#weave-empty-hint .weave-intro-film{
+ position:relative;z-index:1;display:flex;flex-direction:column;align-items:stretch;
+ min-width:0;gap:4px;padding:6px 6px 8px;border:1px solid var(--reading-line);
+ border-radius:7px;background:var(--reading-paper);text-align:left;
+}
+#weave-empty-hint .weave-intro-film .weave-media-thumb{
+ display:block;width:100%;height:70px;position:relative;
+ overflow:hidden;border-radius:4px;background:var(--reading-wash);
+}
+#weave-empty-hint .weave-intro-film .weave-media-thumb>img{object-fit:cover!important}
+#weave-empty-hint .weave-intro-film strong{
+ display:-webkit-box;line-clamp:2;-webkit-line-clamp:2;-webkit-box-orient:vertical;
+ overflow:hidden;min-height:27px;color:var(--reading-ink);
+ font:600 11px/1.22 "Atlas Sans",system-ui,sans-serif;
+}
+#weave-empty-hint .weave-intro-film small{
+ display:block;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;
+ font:11px/1.3 "Atlas Sans",system-ui,sans-serif;color:var(--reading-muted);
+}
+#weave-empty-hint .weave-intro-label{
+ font:11px/1.4 "Atlas Sans",system-ui,sans-serif;
+ margin:3px 0 16px;color:var(--reading-muted);
+}
+#weave-empty-hint .weave-intro-actions{
+ display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin:0 0 15px;
+}
+#weave-empty-hint .weave-intro-actions button{
+ cursor:pointer;min-height:39px;padding:9px 13px;border-radius:5px;
+ border:1px solid var(--reading-accent);font:600 13px/1.3 "Atlas Sans",system-ui,sans-serif;
+ color:var(--reading-accent);background:var(--reading-paper);
+}
+#weave-empty-hint .weave-intro-actions #weave-example{
+ color:var(--reading-paper);background:var(--reading-accent);
+}
+#weave-empty-hint .weave-intro-actions button:disabled{opacity:.35;cursor:not-allowed}
+#weave-empty-hint .weave-intro-actions button:focus-visible,
+#weave-empty-hint #weave-hint-themes button:focus-visible{outline:2px solid var(--reading-accent);outline-offset:2px}
+#weave-empty-hint .weave-intro-themes{
+ border-top:1px solid var(--reading-line);padding-top:12px;
+}
+#weave-empty-hint .weave-intro-themes>span{
+ display:block;font:12px/1.3 "Atlas Sans",system-ui,sans-serif;
+ color:var(--reading-muted);margin-bottom:9px;
+}
+#weave-empty-hint #weave-hint-themes{
+ display:flex;align-items:center;gap:6px;flex-wrap:wrap;pointer-events:auto;
+}
+#weave-empty-hint #weave-hint-themes button{
+ cursor:pointer;min-height:30px;padding:6px 9px;
+ font:12px/1.2 "Atlas Sans",system-ui,sans-serif;color:var(--reading-ink);
+ background:var(--reading-wash);border:1px solid var(--reading-line);
+ border-radius:30px;
+}
+#weave-empty-hint #weave-hint-themes button small{color:var(--reading-muted);margin-left:4px}
+#weave-empty-hint #weave-hint-themes button:hover{border-color:var(--reading-accent)}
+/* Thematic routes are smooth, single strokes rather than simulated rope. */
+#constellate-graph .weave-thread-shadow{fill:none;stroke:#071526;stroke-width:8;stroke-opacity:.14}
+#constellate-graph .weave-thread-halo{
+ fill:none;stroke:var(--reading-paper);stroke-width:6.6;stroke-opacity:.88;
+}
+#constellate-graph .weave-thread .weave-ribbon{
+ fill:none;stroke-width:3.5;stroke-opacity:1;
+ stroke-linecap:round;stroke-linejoin:round;
+}
+#constellate-graph .weave-thread .weave-ribbon-sheen{
+ fill:none;stroke-width:1.1;stroke-opacity:.33;
+ stroke-linecap:round;stroke-linejoin:round;pointer-events:none;
+}
+#constellate-graph .weave-thread.is-active .weave-ribbon{stroke-width:4.4}
+#constellate-graph .weave-thread.is-active .weave-ribbon-sheen{stroke-opacity:.46}
+#constellate-graph .weave-thread.is-quiet .weave-ribbon{stroke-opacity:.86;stroke-width:2.7}
+#constellate-graph .weave-thread.is-quiet .weave-ribbon-sheen{stroke-opacity:.19}
+#constellate-graph .weave-thread.is-quiet .weave-thread-name{opacity:.7}
+#constellate-graph .weave-thread.is-focus .weave-ribbon{stroke-width:5.3;stroke-opacity:1}
+#constellate-graph .weave-thread .weave-ply,
+#constellate-graph .weave-cord-loop,#constellate-graph .weave-tassel{display:none!important}
+/* Documented and interpretive connections use distinct strokes. */
+#constellate-graph .constellate-edge.sourced-thread{stroke-dasharray:none;stroke-width:1.9;stroke-opacity:.88}
+#constellate-graph .constellate-edge.dream-thread{stroke-dasharray:3.5 5;stroke-width:1.4;stroke-opacity:.75}
+#constellate-graph .weave-crossing-ring{stroke-dasharray:3 4;stroke-width:1.25}
+/* Squared film-still chips are easier to distinguish from the circular thread knots. */
+#constellate-graph .constellate-card>rect:first-child{stroke-width:1.35}
+#constellate-graph .constellate-card rect.weave-chip-ring{
+ rx:5px;ry:5px;fill:none;stroke-width:1.3;
+}
+#constellate-graph .constellate-card>rect[width="32"]:not(.weave-chip-ring){
+ rx:5px;ry:5px;stroke:none;
+}
+#constellate-graph .constellate-card .weave-card-art{opacity:1}
+/* Header: make core actions legible; keep advanced layout within Options. */
+#constellate-mode .weave-options-label{display:inline;font:500 13px/1.2 "Atlas Sans",system-ui,sans-serif}
+#constellate-mode .weave-options-icon{display:none}
+#constellate-mode .weave-more>summary{min-height:32px}
+#constellate-popup .constellate-heading{
+ gap:7px;border-bottom:1px solid var(--reading-line);
+ padding-bottom:8px;
+}
+#constellate-popup .constellate-heading h2{font-size:23px;letter-spacing:-.01em}
+#weave-find-films{border-radius:5px;padding:6px 10px}
+#weave-peek{border-radius:9px;padding:12px;gap:12px;box-shadow:0 11px 35px #081e3442}
+#weave-peek>.weave-media-thumb{width:68px;height:80px;min-width:68px;flex-basis:68px;border-radius:5px}
+#weave-peek strong{font-size:15px;line-height:1.3}
+#weave-peek small{line-height:1.42}
+.weave-title-card .weave-play-art{
+ position:relative;display:block;flex:0 0 min(22%,165px);
+ width:min(22%,165px);height:120px;overflow:hidden;
+ background:#253248;border-radius:6px;border:1px solid #485b77;
+}
+.weave-title-card .weave-play-art img{
+ position:absolute;inset:0;width:100%!important;height:100%!important;
+ max-height:none!important;max-width:none!important;
+ object-fit:cover!important;display:block;
+}
+.weave-title-card .weave-play-art img[hidden]{display:none!important}
+.weave-title-card .weave-play-fallback{
+ display:flex;align-items:center;justify-content:center;
+ height:100%;width:100%;font:400 42px/1 Georgia,serif;
+ color:#e8d6ae;background:linear-gradient(135deg,#273a53,#0d182c);
+}
+.weave-title-card .weave-play-fallback[hidden]{display:none!important}
+@media(max-width:1000px){
+ #weave-empty-hint{padding:19px 19px 17px}
+ #weave-empty-hint .weave-intro-film .weave-media-thumb{height:57px}
+ #weave-empty-hint .weave-intro-films::before{top:34px}
+}
+@media(max-width:760px){
+ #constellate-mode .weave-options-label{display:none}
+ #constellate-mode .weave-options-icon{display:inline}
+ #weave-empty-hint{
+  top:48%;width:calc(100% - 24px);max-height:calc(100% - 105px);
+  padding:17px 15px 16px;border-radius:9px;
+ }
+ #weave-empty-hint .weave-intro-lede{font-size:13px}
+ #weave-empty-hint .weave-intro-films{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+ #weave-empty-hint .weave-intro-films::before{display:none}
+ #weave-empty-hint .weave-intro-film{padding:5px}
+ #weave-empty-hint .weave-intro-film .weave-media-thumb{height:58px}
+ #weave-empty-hint .weave-intro-film strong{min-height:0}
+ #weave-empty-hint .weave-intro-actions button{min-height:40px;font-size:12px}
+ #weave-peek{max-width:min(300px,calc(100% - 24px))}
+ .weave-title-card .weave-play-art{flex:0 0 76px;width:76px;height:96px}
+}
+@media(max-height:590px){
+ #weave-empty-hint{top:115px;transform:translateX(-50%);max-height:calc(100% - 140px)}
+}
+
+
+/* Film imagery continues into the thread order and selected film details. */
+#weave-order-list [data-order-select]{align-items:center;gap:9px}
+#weave-order-list [data-order-select]>.weave-media-thumb{
+ display:block;position:relative;flex:0 0 42px;width:42px;height:43px;min-width:42px;
+ border:1px solid var(--reading-line);border-radius:4px;overflow:hidden;
+ background:var(--reading-wash);
+}
+#weave-order-list [data-order-select]>.weave-media-thumb .weave-media-placeholder>b{font-size:13px}
+#weave-order-list [data-order-select]>.weave-media-thumb .weave-media-placeholder>small{font-size:8px!important}
+#weave-order-list [data-order-select]>span:not(.weave-media-thumb){flex:1;min-width:0}
+#constellate-context .weave-context-preview{
+ display:flex;align-items:center;gap:12px;
+ margin:4px 0 10px;min-width:0;
+}
+#constellate-context .weave-context-preview .weave-media-thumb{
+ position:relative;display:block;flex:0 0 72px;width:72px;height:68px;
+ min-width:72px;border:1px solid var(--reading-line);
+ background:var(--reading-wash);border-radius:5px;overflow:hidden;
+}
+#constellate-context .weave-context-preview h3{
+ margin:0;line-height:1.25;min-width:0;
+ font:500 19px/1.25 "Atlas Serif",Georgia,serif;
+ color:var(--reading-ink);
+}
+#constellate-context .weave-context-preview .weave-media-placeholder>b{font-size:20px}
+#constellate-context .weave-context-preview .weave-media-placeholder>small{font-size:10px!important}
+
+
+/* 8 Nov · Draw threads is the main interaction, not a hidden feature. */
+:root:not(#_) body.is-constellating #constellate-mode #weave-draw-thread{
+ font-weight:650!important;color:var(--reading-accent)!important;
+ background:color-mix(in srgb,var(--reading-accent) 9%,var(--reading-paper))!important;
+ border:1px solid color-mix(in srgb,var(--reading-accent) 32%,var(--reading-line))!important;
+ border-radius:7px!important;padding-inline:12px!important;white-space:nowrap;
+}
+:root:not(#_) body.is-constellating #constellate-mode #weave-draw-thread[aria-pressed="true"]{
+ background:var(--reading-accent)!important;color:var(--reading-paper)!important;
+}
+:root:not(#_) body.is-constellating #constellate-mode #constellate-clear{
+ margin-left:3px!important;color:#9a3b2c!important;
+ border:1px solid color-mix(in srgb,#9a3b2c 27%,var(--reading-line))!important;
+ border-radius:6px!important;padding-inline:10px!important;
+}
+:root[data-reading-theme="night"]:not(#_) body.is-constellating #constellate-mode #constellate-clear{
+ color:#f2b8a3!important;border-color:#b96d57!important;
+}
+#constellate-mode .weave-more-menu>.weave-menu-heading{
+ display:block;width:100%;max-width:none;white-space:normal;
+ margin:6px 0 1px;padding:8px 10px 3px;border-top:1px solid var(--reading-line);
+ color:var(--reading-muted);
+ font:700 10px/1.3 "Atlas Sans",system-ui,sans-serif;
+ letter-spacing:.085em;text-transform:uppercase;
+}
+#constellate-mode .weave-more-menu>.weave-menu-heading:first-child{border-top:0;margin-top:0}
+#constellate-mode .weave-more-menu>button:not(:last-child){
+ text-align:left;min-height:38px;
+}
+#constellate-graph.weave-drawing-mode .constellate-card:not(.concept),
+#constellate-graph.weave-drawing-mode .weave-connect-handle,
+#constellate-graph.weave-drawing-mode .weave-stop{cursor:crosshair!important}
+#constellate-graph.weave-drawing-mode .constellate-card.selected rect:first-child{
+ stroke:var(--reading-accent);stroke-width:3;
+}
+#constellate-graph.weave-drawing-mode .constellate-preview{
+ stroke:var(--reading-accent);stroke-opacity:.95;stroke-width:2.5;
+ stroke-dasharray:6 4;stroke-linecap:round;
+}
+#weave-draw-help{
+ display:flex;align-items:flex-start;justify-content:space-between;
+ gap:9px;padding:11px 10px;margin:9px 0 13px;
+ border:1px solid var(--reading-accent);border-radius:6px;
+ background:color-mix(in srgb,var(--reading-accent) 7%,var(--reading-paper));
+ color:var(--reading-ink);
+}
+#weave-draw-help[hidden]{display:none!important}
+#weave-draw-help span{
+ font:13px/1.45 "Atlas Sans",system-ui,sans-serif;min-width:0;
+}
+#weave-draw-help b{font-weight:700;color:var(--reading-accent)}
+#weave-draw-help button{
+ min-height:35px;flex:none;border:1px solid var(--reading-accent);
+ border-radius:5px;padding:6px 9px;color:var(--reading-accent);
+ background:var(--reading-paper);font:600 12px/1.2 "Atlas Sans",system-ui,sans-serif;
+}
+@media(max-width:1150px){
+ #constellate-mode #constellate-edit,
+ #constellate-mode #weave-play,
+ #constellate-mode #constellate-share{
+  /* These controls are moved into Options by constellate-bar.js, not hidden. */
+  order:0;
+ }
+}
+@media(max-width:760px){
+ :root:not(#_) body.is-constellating #constellate-mode:not([hidden]){
+  gap:1px!important;padding-inline:4px!important;
+ }
+ :root:not(#_) body.is-constellating #constellate-mode button,
+ :root:not(#_) body.is-constellating #constellate-mode .weave-more>summary{
+  padding-inline:6px!important;font-size:12px!important;
+ }
+ :root:not(#_) body.is-constellating #constellate-mode #weave-draw-thread{
+  padding-inline:7px!important;font-size:12px!important;
+ }
+ :root:not(#_) body.is-constellating #constellate-mode #constellate-clear{
+  padding-inline:6px!important;
+ }
+ #weave-draw-help{flex-wrap:wrap}
+}
+@media(max-width:380px){
+ :root:not(#_) body.is-constellating #constellate-mode #weave-browse-films{display:none!important}
+}
+
+/* Dense Constellate: complete relationships, lighter secondary ribbons.
+   The numbered stops remain visible when film thumbnails are sampled. */
+#constellate-graph[data-density="dense"] .weave-thread-shadow{stroke-width:5;stroke-opacity:.09}
+#constellate-graph[data-density="dense"] .weave-thread-halo{stroke-width:5;stroke-opacity:.65}
+#constellate-graph[data-density="dense"] .weave-thread.is-active .weave-ribbon{stroke-width:3.4;stroke-opacity:.94}
+#constellate-graph[data-density="dense"] .weave-thread.is-quiet .weave-ribbon{stroke-width:2.2;stroke-opacity:.8}
+#constellate-graph[data-density="dense"] .weave-thread.is-quiet .weave-ribbon-sheen{stroke-opacity:.12}
+#constellate-graph[data-density="dense"] .weave-thread.is-quiet .weave-stop{opacity:.80}
+#constellate-graph[data-density="dense"] .weave-stop:not(.current):not(.selected)>circle:not(.weave-family-ring):not(.weave-crossing-ring){stroke-width:1.2}
+
+/* ================================================================
+   Theme web
+   (was assets/constellate-theme-web.css)
+   ================================================================ */
+/* Film Atlas · Constellate / theme web (beta)
+   Source-led thematic navigation. The geography remains a reference, while concepts
+   have no invented coordinates. Styles are scoped to this optional lens. */
+/* The thematic lens takes the full map width; the regular editing dock returns on close.
+   This avoids competing search boxes and keeps the scholarly network readable. */
+body.atlas-page.is-theme-weaving.weave-dock-open.is-theme-web-open main{display:block!important;grid-template-columns:minmax(0,1fr)!important}
+body.is-theme-web-open #constellate-popup{display:none!important}
+body.is-theme-web-open .map-panel{width:100%!important;max-width:none!important}
+#weave-theme-web-toggle{
+ appearance:none;flex:0 0 auto;white-space:nowrap;
+ min-height:36px;padding:7px 11px;
+ border:1px solid var(--reading-line,#b5c3c9);border-radius:5px;
+ background:var(--reading-paper,#fff);color:var(--reading-accent,#254b65);
+ font:600 12px/1.2 "Atlas Sans",system-ui,sans-serif;cursor:pointer;
+}
+#weave-theme-web-toggle:hover,#weave-theme-web-toggle:focus-visible{
+ border-color:var(--reading-accent,#254b65);outline-offset:2px;
+}
+#weave-theme-web-toggle[aria-pressed="true"]{
+ background:var(--reading-accent,#254b65);color:var(--reading-paper,#fff);
+}
+#atlas-theme-web[hidden]{display:none!important}
+#atlas-theme-web{
+ position:absolute;z-index:35;inset:58px 12px 72px 12px;
+ display:flex;flex-direction:column;min-width:0;min-height:0;
+ border:1px solid var(--reading-line,#c4d0d3);border-radius:12px;
+ box-shadow:0 22px 70px #102b4055;
+ background:var(--reading-paper,#fbfbfa);color:var(--reading-ink,#182b36);
+ overflow:hidden;font-family:"Atlas Sans",system-ui,sans-serif;
+}
+#atlas-theme-web .tw-heading{
+ flex:none;display:flex;align-items:flex-start;justify-content:space-between;
+ gap:16px;padding:16px 20px 6px;
+}
+#atlas-theme-web .tw-kicker{
+ margin:0 0 4px;font:700 10px/1.3 "Atlas Sans",system-ui,sans-serif;
+ color:var(--reading-accent,#426480);letter-spacing:.13em;text-transform:uppercase;
+}
+#atlas-theme-web h2{margin:0 0 4px;font:400 clamp(24px,2.4vw,32px)/1.16 "Atlas Serif",Georgia,serif;letter-spacing:-.03em}
+#atlas-theme-web .tw-heading p:not(.tw-kicker){margin:0;max-width:650px;font:12px/1.4 "Atlas Sans",system-ui,sans-serif;color:var(--reading-muted,#566b74)}
+#tw-close{
+ appearance:none;background:none;border:1px solid var(--reading-line,#ccc);color:inherit;
+ border-radius:6px;cursor:pointer;min-width:36px;min-height:36px;font:24px/1 system-ui;
+}
+#tw-close:hover,#tw-close:focus-visible{border-color:var(--reading-accent,#264c61)}
+#atlas-theme-web .tw-top{
+ display:flex;flex:none;gap:9px;align-items:center;padding:8px 20px 7px;
+}
+#atlas-theme-web .tw-top label{font:600 12px "Atlas Sans",system-ui,sans-serif}
+#tw-search{flex:1;min-width:0;min-height:35px;font:13px/1.3 system-ui;border:1px solid var(--reading-line,#b5c3c9);border-radius:5px;padding:8px;background:var(--reading-paper,#fff);color:inherit}
+#tw-seed,.tw-primary{
+ appearance:none;border:1px solid #315771;background:#315771;color:white;cursor:pointer;
+ min-height:35px;padding:8px 11px;border-radius:5px;font:600 12px/1.25 system-ui;
+}
+#tw-seed:hover,.tw-primary:hover{filter:brightness(1.14)}
+#tw-families{display:flex;flex:none;align-items:center;gap:6px;flex-wrap:wrap;padding:4px 20px 12px}
+#tw-families button{
+ display:inline-flex;align-items:center;gap:6px;
+ border:1px solid var(--reading-line,#c1ccd0);border-radius:18px;
+ background:transparent;color:inherit;cursor:pointer;padding:6px 9px;
+ font:500 11px/1.2 "Atlas Sans",system-ui,sans-serif;
+}
+#tw-families button[aria-pressed="true"]{border-color:var(--reading-accent,#426480);box-shadow:inset 0 0 0 1px var(--reading-accent,#426480);background:var(--reading-wash,#edf2f3)}
+#tw-families i{display:inline-block;width:9px;height:9px;border-radius:50%}
+#tw-families small{opacity:.75}
+#atlas-theme-web .tw-main{
+ display:grid;grid-template-columns:minmax(0,1.65fr) minmax(235px,.9fr);
+ flex:1;min-height:0;border-top:1px solid var(--reading-line,#c6d0d4);
+}
+.tw-graph-wrap{min-width:0;min-height:0;display:flex;flex-direction:column;position:relative;background:var(--reading-wash,#f2f5f3);overflow:hidden}
+#tw-graph{width:100%;flex:1;min-height:0;display:block;touch-action:manipulation}
+#tw-graph .tw-edge{
+ stroke:var(--reading-muted,#728d9b);stroke-opacity:.15;cursor:pointer;
+ stroke-linecap:round;transition:stroke-opacity .15s;
+}
+#tw-graph .tw-edge:hover,#tw-graph .tw-edge:focus-visible,
+#tw-graph .tw-edge.is-related{stroke-opacity:.85;stroke:var(--reading-accent,#24496b)}
+#tw-graph .tw-edge.is-faded{stroke-opacity:.06}
+#tw-graph .tw-bridge{cursor:pointer;outline:none}
+#tw-graph .tw-edge-hit{pointer-events:stroke;cursor:pointer}
+#tw-graph .tw-bridge:hover .tw-edge,#tw-graph .tw-bridge:focus-visible .tw-edge{stroke-opacity:1;stroke:var(--reading-accent,#24496b)}
+#tw-graph .tw-bridge:focus-visible .tw-edge-hit{stroke:rgba(208,138,46,.35)}
+#tw-graph .tw-node{cursor:pointer;outline:none}
+#tw-graph .tw-ring{fill:none;stroke:var(--reading-paper,#fff);stroke-width:4;opacity:.9}
+#tw-graph .tw-node.is-chosen .tw-ring{stroke:var(--reading-accent,#234967);stroke-width:5}
+#tw-graph .tw-dot{stroke:var(--reading-paper,#fff);stroke-width:1.4}
+#tw-graph .tw-count{fill:white;font:700 13px/1 "Atlas Sans",system-ui,sans-serif;pointer-events:none}
+#tw-graph .tw-node-label{
+ fill:var(--reading-ink,#223743);stroke:var(--reading-wash,#f1f4f1);
+ stroke-width:3px;paint-order:stroke fill;
+ font:600 11px/1 "Atlas Sans",system-ui,sans-serif;pointer-events:none;
+}
+#tw-graph .tw-node:hover .tw-ring,#tw-graph .tw-node:focus-visible .tw-ring{stroke:#d58e31;stroke-width:5}
+#tw-graph .tw-node.is-faded{opacity:.3}
+#tw-graph .tw-family-head{
+ fill:var(--reading-muted,#546872);font:650 10px/1 "Atlas Sans",system-ui,sans-serif;
+ text-transform:uppercase;letter-spacing:.035em;pointer-events:none;
+}
+#tw-mobile-list{display:none}
+
+.tw-graph-foot{
+ flex:none;display:flex;align-items:center;flex-wrap:wrap;gap:6px;
+ margin:0;padding:8px 12px;border-top:1px solid var(--reading-line,#ccc);
+ background:var(--reading-paper,#fff);
+ font:10px/1.4 "Atlas Sans",system-ui,sans-serif;color:var(--reading-muted,#536d78);
+}
+#tw-reset,#tw-all-links{border:none;background:transparent;color:var(--reading-accent,#245479);cursor:pointer;text-decoration:underline;font:600 11px system-ui}
+#tw-all-links[aria-pressed="true"]{font-weight:750;text-decoration-thickness:2px}
+.tw-detail{
+ min-width:0;min-height:0;overflow:auto;overscroll-behavior:contain;
+ border-left:1px solid var(--reading-line,#c9d0d3);padding:16px 15px 24px;
+}
+.tw-detail h3{margin:0 0 9px;overflow-wrap:anywhere;font:400 23px/1.16 "Atlas Serif",Georgia,serif}
+.tw-detail h4{font:650 11px/1.35 "Atlas Sans",system-ui,sans-serif;color:var(--reading-muted,#52636f);text-transform:uppercase;letter-spacing:.07em;margin:14px 0 8px}
+.tw-claim,.tw-source-note{font:12px/1.5 "Atlas Sans",system-ui,sans-serif;color:var(--reading-muted,#536873);margin:0 0 12px}
+.tw-and{color:var(--reading-muted,#777);font:16px system-ui}
+.tw-actions{display:flex;flex-wrap:wrap;gap:7px;margin:10px 0 14px}
+.tw-actions button:not(.tw-primary){
+ background:var(--reading-wash,#f1f5f5);color:inherit;cursor:pointer;
+ border:1px solid var(--reading-line,#bdc7cb);border-radius:5px;
+ min-height:31px;padding:6px 9px;font:600 11px system-ui;
+}
+.tw-neighbors{display:flex;flex-wrap:wrap;gap:5px}
+.tw-neighbors button{display:flex;align-items:center;gap:5px;max-width:100%;flex-wrap:wrap;cursor:pointer;border:1px solid var(--reading-line,#c0cad0);background:transparent;color:inherit;border-radius:5px;padding:6px 8px;font:11px/1.2 system-ui;text-align:left}
+.tw-neighbors button:hover{background:var(--reading-wash,#edf2f3)}
+.tw-neighbors small{color:var(--reading-muted,#55717c);white-space:nowrap}
+.tw-films{display:flex;flex-direction:column}
+.tw-film{display:grid;grid-template-columns:48px minmax(0,1fr) auto;gap:8px;align-items:center;padding:8px 0;border-bottom:1px solid var(--reading-line,#cbd4d8)}
+.tw-film-art{position:relative;overflow:hidden;width:48px;height:44px;border-radius:4px;background:var(--reading-line,#cad4d5);display:flex;align-items:center;justify-content:center}
+.tw-film-art img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.tw-film-art span{font:600 19px Georgia,serif;color:var(--reading-ink,#1f3e50)}
+.tw-film-copy{min-width:0;display:flex;flex-direction:column;gap:2px}
+.tw-film-copy strong{font:600 12px/1.2 system-ui;overflow-wrap:anywhere}
+.tw-film-copy small,.tw-film-copy a,.tw-no-source{font:10px/1.25 system-ui;color:var(--reading-muted,#536873)}
+.tw-film-copy a{text-decoration:underline;text-underline-offset:2px;color:var(--reading-accent,#295b76)}
+.tw-film button{background:transparent;color:var(--reading-accent,#315771);border:1px solid var(--reading-line,#bfcbd2);border-radius:4px;cursor:pointer;min-height:32px;padding:6px;font:600 11px system-ui}
+.tw-film button:hover{border-color:var(--reading-accent,#315771)}
+.tw-more-count{font:11px/1.3 system-ui;color:var(--reading-muted,#596c77)}
+#atlas-theme-web button:focus-visible,#atlas-theme-web a:focus-visible,#atlas-theme-web input:focus-visible{outline:2px solid #d18b31;outline-offset:2px}
+.tw-more-actions{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;padding:13px 0 6px}
+.tw-more-actions button{min-height:38px;padding:8px 12px;border:1px solid var(--reading-accent,#315771);border-radius:5px;background:var(--reading-wash,#f1f5f5);color:var(--reading-accent,#315771);font:650 12px/1.2 "Atlas Sans",system-ui,sans-serif;cursor:pointer}
+.tw-more-actions button:hover{background:var(--reading-accent,#315771);color:var(--reading-paper,#fff)}
+@media(max-width:1120px){
+ #atlas-theme-web{inset:54px 9px 65px}
+ .tw-graph-wrap{min-height:350px}
+ #atlas-theme-web .tw-main{grid-template-columns:1fr minmax(215px,.8fr)}
+ #atlas-theme-web .tw-heading{padding:14px 15px 5px}
+ #atlas-theme-web .tw-top{padding:7px 15px}
+ #tw-families{padding:4px 15px 10px}
+}
+@media(max-width:700px){
+ #weave-theme-web-toggle{min-height:40px}
+ #atlas-theme-web{position:fixed;inset:72px 6px 9px;z-index:2500;border-radius:9px}
+ #atlas-theme-web .tw-main{display:flex;flex-direction:column;overflow-y:auto;scroll-behavior:smooth}
+ #atlas-theme-web .tw-heading{padding:12px 12px 4px}
+ #atlas-theme-web h2{font-size:25px}
+ #atlas-theme-web .tw-heading p:not(.tw-kicker){font-size:11px}
+ #atlas-theme-web .tw-top{flex-wrap:wrap;padding:7px 12px}
+ #tw-search{min-width:150px}
+ #tw-seed{width:100%;min-height:39px}
+ #tw-families{flex-wrap:nowrap;overflow-x:auto;overscroll-behavior-x:contain;padding:4px 12px 10px}
+ #tw-families button{white-space:nowrap}
+ .tw-graph-wrap{flex:0 0 auto;min-height:300px;height:320px;overflow:hidden}
+ #tw-graph{display:none}
+ #tw-mobile-list{display:block;min-height:0;height:calc(100% - 47px);overflow-y:auto;overscroll-behavior:contain;padding:9px 10px}
+ .tw-mobile-guide{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:9px}
+ .tw-mobile-guide strong{font:600 12px/1.2 system-ui}
+ .tw-mobile-guide button{border:1px solid var(--reading-line,#bdc7d0);background:var(--reading-paper,#fff);color:var(--reading-accent,#254f65);border-radius:4px;padding:7px 8px;font:600 11px system-ui;cursor:pointer}
+ .tw-mobile-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+ .tw-mobile-grid button{
+  min-width:0;display:grid;grid-template-columns:9px minmax(0,1fr);column-gap:6px;
+  align-items:center;min-height:51px;text-align:left;padding:7px 8px;
+  background:var(--reading-paper,#fff);color:var(--reading-ink,#243b47);
+  border:1px solid var(--reading-line,#c1ced0);border-radius:6px;cursor:pointer;
+ }
+ .tw-mobile-grid button[aria-pressed="true"]{border-color:var(--reading-accent,#235575);box-shadow:inset 0 0 0 1px var(--reading-accent,#235575)}
+ .tw-mobile-grid button i{display:block;width:8px;height:8px;border-radius:50%}
+ .tw-mobile-grid button span{font:600 11px/1.22 system-ui;overflow-wrap:anywhere}
+ .tw-mobile-grid button small{grid-column:2;color:var(--reading-muted,#596c76);font:10px/1.3 system-ui}
+ .tw-show-network .tw-graph-wrap{height:590px;min-height:590px;overflow-x:auto;overflow-y:hidden}
+ .tw-show-network #tw-graph{display:block;min-width:720px;width:720px;height:550px;min-height:550px}
+ .tw-show-network #tw-mobile-list{position:sticky;top:0;z-index:1;display:block;height:40px;min-height:40px;overflow:hidden;background:var(--reading-paper,#fff)}
+ .tw-show-network .tw-mobile-grid{display:none}
+ .tw-graph-foot{font-size:10px}
+ .tw-detail{overflow:visible;border-left:none;border-top:1px solid var(--reading-line,#ddd);padding:15px 14px 28px;scroll-margin-top:6px}
+}
+@media(prefers-reduced-motion:reduce){#tw-graph *,#atlas-theme-web *{transition:none!important;animation:none!important}}
+
+/* ================================================================
+   Stages, start card, guide, legend, rail
+   (was assets/weave-20261109.css)
+   ================================================================ */
+/* Constellate: a clearer way into weaving, 2026-11-09 (Claude). Pairs with weave-20261109.js. Uses the tokens in ui-20261109.css. */
+
+/* ---------- start: one card, nothing competing with it ---------- */
+html[data-weave-stage="start"] #constellate-popup{display:none!important}
+:root:not(#_):not(#__)[data-weave-stage="start"] body main{grid-template-columns:minmax(0,1fr)!important}
+:root:not(#_):not(#__)[data-weave-stage="start"] body .map-panel{grid-column:1/-1!important;width:auto!important}
+html[data-weave-stage="start"] .map-panel .zoom,html[data-weave-stage="start"] .map-toolbar .map-actions{visibility:hidden}
+html[data-weave-stage="start"] #constellate-mode>*:not(#constellate-exit):not(span:first-child):not(.weave-more):not(.weave-tool-group):not(#weave-theme-web-toggle){display:none!important}
+html[data-weave-stage="start"] #weave-theme-web-toggle{order:1!important;margin-left:0!important}
+html[data-weave-web="1"] #weave-start{display:none!important}
+html[data-weave-stage="start"] #constellate-mode .weave-tool-group{order:0!important;margin-left:0!important}
+/* The previous engine introduction is superseded by #weave-start.
+   Do not reveal either it or an unfinished toolbar during initialization. */
+#weave-empty-hint{display:none!important}
+html:not([data-weave-stage]) body.is-constellating #constellate-mode{visibility:hidden!important}
+#weave-start{display:none}
+html[data-weave-stage="start"] #weave-start{display:block}
+#weave-start{position:absolute;z-index:30;left:50%;top:66px;transform:translateX(-50%);width:min(1000px,calc(100% - 48px));max-height:calc(100% - 110px);overflow:auto;
+ background:var(--ui-surface);color:var(--ui-ink);border:1px solid var(--ui-line);border-radius:18px;box-shadow:var(--ui-shadow);padding:24px 28px 22px;font-family:var(--ui-sans)}
+#weave-start .ws-kicker{margin:0 0 8px;font:600 12px/1 var(--ui-sans);letter-spacing:.14em;text-transform:uppercase;color:var(--ui-accent)}
+#weave-start h2{margin:0 0 8px;font:400 34px/1.1 var(--ui-serif);letter-spacing:-.015em;color:var(--ui-ink)}
+#weave-start .ws-lede{margin:0 0 16px;max-width:62ch;font:400 16px/1.55 var(--ui-sans);color:var(--ui-muted)}
+#weave-start .ws-how{display:flex;flex-wrap:wrap;gap:6px 22px;list-style:none;margin:0 0 16px;padding:0;font:600 14px/1.2 var(--ui-sans);color:var(--ui-ink)}
+#weave-start .ws-how b{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--ui-ink);color:var(--ui-paper);font-size:12px;margin-right:6px}
+#weave-start .ws-paths{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+#weave-start .ws-path{border:1px solid var(--ui-line);border-radius:14px;padding:16px 16px 14px;background:var(--ui-paper);display:flex;flex-direction:column;min-width:0}
+#weave-start .ws-path h3{margin:0;font:400 21px/1.2 var(--ui-serif);color:var(--ui-ink)}
+#weave-start .ws-path p{margin:0;font:400 14px/1.45 var(--ui-sans);color:var(--ui-muted)}
+#weave-start .ws-chips{display:flex;flex-wrap:wrap;gap:6px}
+#weave-start .ws-chips button{font:600 13px/1 var(--ui-sans);color:var(--ui-ink);background:var(--ui-surface);border:1px solid var(--ui-line);border-radius:999px;padding:7px 10px;cursor:pointer}
+#weave-start .ws-chips button small{font-weight:400;color:var(--ui-muted);margin-left:2px}
+#weave-start .ws-chips button:hover,#weave-start .ws-chips button:focus-visible{border-color:var(--ui-ink);background:var(--ui-wash)}
+#weave-start select,#weave-start input[type="search"]{width:100%;box-sizing:border-box;font:400 15px/1.2 var(--ui-sans);color:var(--ui-ink);background:var(--ui-surface);border:1px solid var(--ui-line);border-radius:10px;padding:10px 12px;min-height:42px}
+#weave-start select{appearance:none;background:var(--ui-surface) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%2355616b' stroke-width='1.6'/%3E%3C/svg%3E") no-repeat right 12px center;padding-right:32px}
+#weave-start input[type="search"]:focus{outline:2px solid var(--ui-accent);outline-offset:1px;border-color:transparent}
+#weave-start .ws-results{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2px;max-height:240px;overflow:auto}
+#weave-start .ws-results button{display:block;width:100%;text-align:left;background:transparent;border:0;border-radius:8px;padding:8px 10px;cursor:pointer;color:var(--ui-ink)}
+#weave-start .ws-results button:hover,#weave-start .ws-results button:focus-visible{background:var(--ui-wash)}
+#weave-start .ws-results strong{display:block;font:400 16px/1.25 var(--ui-serif)}
+#weave-start .ws-results small{display:block;font:400 13px/1.3 var(--ui-sans);color:var(--ui-muted)}
+#weave-start .ws-none{font:400 14px/1.4 var(--ui-sans);color:var(--ui-muted);padding:6px 10px}
+#weave-start .ws-primary{align-self:flex-start;font:600 15px/1 var(--ui-sans);color:var(--ui-accent-ink);background:var(--ui-accent);border:1px solid var(--ui-accent);border-radius:999px;padding:12px 18px;cursor:pointer;margin-top:auto}
+#weave-start .ws-link{align-self:flex-start;font:600 14px/1.2 var(--ui-sans);color:var(--ui-accent);background:none;border:0;padding:4px 0;cursor:pointer}
+#weave-start .ws-saved{margin-top:16px;padding-top:14px;border-top:1px solid var(--ui-line);display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+#weave-start .ws-saved[hidden]{display:none}
+#weave-start .ws-saved label{font:600 14px/1 var(--ui-sans);color:var(--ui-ink)}
+#weave-start .ws-saved select{width:auto;min-width:260px}
+#weave-start .ws-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ---------- build: the guide at the top of the panel ---------- */
+#weave-guide{position:sticky;top:0;z-index:5;margin:4px 0 14px;padding:14px 14px 12px;border:1px solid var(--ui-line);border-radius:12px;background:var(--ui-surface);font-family:var(--ui-sans)}
+#weave-guide .wg-steps{display:flex;gap:4px;list-style:none;margin:0 0 10px;padding:0;counter-reset:wg}
+#weave-guide .wg-steps li{counter-increment:wg;flex:1;font:600 12px/1.2 var(--ui-sans);color:var(--ui-muted);padding-top:8px;border-top:3px solid var(--ui-line)}
+#weave-guide .wg-steps li::before{content:counter(wg) ' · '}
+#weave-guide .wg-steps li.is-done{color:var(--ui-ink);border-top-color:var(--ui-ink)}
+#weave-guide .wg-steps li.is-now{color:var(--ui-accent);border-top-color:var(--ui-accent)}
+#weave-guide .wg-text{margin:0 0 10px;font:400 14px/1.5 var(--ui-sans);color:var(--ui-ink)}
+#weave-guide .wg-actions{display:flex;flex-wrap:wrap;gap:6px}
+#weave-guide .wg-actions button{font:600 13px/1 var(--ui-sans);color:var(--ui-ink);background:transparent;border:1px solid var(--ui-line);border-radius:999px;padding:8px 12px;cursor:pointer}
+#weave-guide .wg-actions button.wg-primary{background:var(--ui-accent);border-color:var(--ui-accent);color:var(--ui-accent-ink)}
+html[data-weave-stage="play"] #weave-guide,html[data-weave-stage="read"] #weave-guide{display:none}
+
+/* ---------- toolbar: modes, then building tools (only while building), then the weave's own actions ---------- */
+#constellate-edit{order:1}#constellate-read{order:2}#weave-play{order:3}
+#weave-browse-films{order:5;margin-left:14px!important}#weave-draw-thread{order:6}#weave-theme-web-toggle{order:7}
+#constellate-mode .weave-tool-group{order:8;margin-left:10px}
+#constellate-share{order:10;margin-left:auto!important}
+#constellate-clear{order:11}
+#constellate-mode .weave-more{order:12}
+#constellate-exit{order:13}
+:root:not(#_):not(#__) #constellate-mode #constellate-clear{display:inline-flex!important;font:600 14px/1 var(--ui-sans)!important;color:var(--ui-accent)!important;background:transparent!important;border:1px solid color-mix(in srgb,var(--ui-accent) 45%,transparent)!important;border-radius:999px!important;padding:8px 12px!important}
+:root:not(#_):not(#__) #constellate-mode #constellate-clear:hover{background:color-mix(in srgb,var(--ui-accent) 10%,transparent)!important}
+:root:not(#_):not(#__)[data-weave-stage="start"] #constellate-mode #constellate-clear{display:none!important}
+html[data-weave-stage="read"] #weave-browse-films,html[data-weave-stage="read"] #weave-draw-thread,html[data-weave-stage="read"] #weave-theme-web-toggle,
+html[data-weave-stage="play"] #weave-browse-films,html[data-weave-stage="play"] #weave-draw-thread,html[data-weave-stage="play"] #weave-theme-web-toggle{display:none!important}
+
+/* ---------- the atlas stays behind the weave ---------- */
+html[data-weave-stage] #atlas .land-word{opacity:.32;transition:opacity .2s}
+html[data-weave-stage] #atlas .land-word:hover{opacity:.8}
+html[data-weave-stage] #atlas .land-watch,html[data-weave-stage] #atlas .land-thumb,html[data-weave-stage] #atlas .cinema-anchor,html[data-weave-stage] #atlas .anchor-leader{display:none!important}
+
+/* ---------- phones ---------- */
+@media (max-width:760px){
+ #weave-start{left:8px;right:8px;width:auto;transform:none;max-height:calc(100% - 76px);padding:20px 18px}
+ #weave-start h2{font-size:28px}
+ #weave-start .ws-paths{grid-template-columns:1fr}
+ #weave-start .ws-saved select{min-width:0;width:100%}
+}
+#weave-start .ws-example-films{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+#weave-start .ws-example-films .weave-intro-film{min-width:0;font:400 12px/1.3 var(--ui-sans);color:var(--ui-muted)}
+#weave-start .ws-example-films .weave-media-thumb{display:block;border-radius:6px;overflow:hidden;background:var(--ui-wash)}
+#weave-start .ws-example-films img{width:100%;height:100%;object-fit:cover;display:block}
+#weave-start .ws-example-films strong,#weave-start .ws-example-films b{color:var(--ui-ink)}
+#weave-start .ws-example-label{font:400 13px/1.3 var(--ui-sans)!important;color:var(--ui-muted)!important}
+/* connection and suggestion wording */
+#weave-guide .wg-text b{font-weight:600}
+@media (max-width:760px){#weave-start{top:58px}}
+#weave-start .ws-example-films .weave-media-thumb{position:relative!important;width:100%!important;height:auto!important}
+#weave-start .ws-example-films .weave-media-placeholder{position:absolute!important;inset:0!important;display:grid;place-items:center;align-content:center;font:400 18px/1 var(--ui-serif);color:var(--ui-muted)}
+#weave-start .ws-example-films .weave-media-placeholder small{font:600 10px/1 var(--ui-sans);letter-spacing:.08em;text-transform:uppercase}
+#weave-start .ws-example-films .weave-media-thumb.has-source:not(.is-broken) .weave-media-placeholder{display:none}
+#weave-start .ws-example-films .weave-media-thumb.is-broken img{display:none}
+#weave-start .ws-example-films .weave-intro-film>*:not(.weave-media-thumb){display:block;margin-top:4px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#weave-start .ws-example-films .weave-media-thumb{aspect-ratio:16/8!important}
+#weave-start .ws-path{gap:8px}
+/* phones while building: a shorter map, so the guide and the thread show beneath it without scrolling */
+@media (max-width:760px){
+ :root:not(#_)[data-weave-stage="build"] body.is-theme-weaving .map-panel{height:52dvh!important;min-height:300px!important;max-height:52dvh!important}
+ :root:not(#_)[data-weave-stage="build"] body.is-theme-weaving #constellate-popup{max-height:none!important}
+ #weave-guide{position:static}
+}
+
+/* Theme search and a link back to an existing authored weave. */
+#weave-start .ws-current{display:flex;align-items:center;flex-wrap:wrap;gap:8px 14px;margin-top:16px;padding:12px 0;border-top:1px solid var(--ui-line)}
+#weave-start .ws-current[hidden]{display:none}
+#weave-start .ws-current button{font:600 14px/1.2 var(--ui-sans);background:transparent;color:var(--ui-accent);border:0;cursor:pointer;padding:6px 0;text-decoration:underline;text-underline-offset:3px}
+#weave-start .ws-current-name{font:400 13px/1.35 var(--ui-sans);color:var(--ui-muted);overflow-wrap:anywhere}
+#weave-start #ws-theme-results{max-height:180px}
+/* The film card already carries its thumbnail: hovering it should not create a second floating thumbnail. */
+#weave-peek{max-width:260px;align-items:flex-start}
+#weave-peek>div{min-width:0}
+
+/* Respect the hidden attribute even though atlas.css gives the hover preview display:flex. */
+#weave-peek[hidden]{display:none!important}
+
+
+/* Read-stage repair, 2026-11-10. One film at a time, with complete path on demand. */
+html[data-weave-stage="read"] body.atlas-page.is-theme-weaving.weave-dock-open main{
+ display:grid!important;grid-template-columns:minmax(0,1fr) clamp(380px,39vw,610px)!important;
+}
+html[data-weave-stage="read"] body.is-theme-weaving #constellate-popup{
+ min-width:0;overflow-y:auto!important;overscroll-behavior-y:contain;
+ background:var(--reading-paper);color:var(--reading-ink);scroll-padding-top:70px;
+}
+html[data-weave-stage="read"] #weave-read-panel{min-width:0;padding-bottom:22px}
+html[data-weave-stage="read"] #weave-read-panel>h3{
+ font:500 clamp(21px,2vw,28px)/1.2 var(--ui-serif,Georgia,serif)!important;
+ margin:10px 0 8px!important;overflow-wrap:anywhere;
+}
+html[data-weave-stage="read"] .weave-read-nav{
+ display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:9px;
+ align-items:center;margin:16px 0;padding:10px 0;border-block:1px solid var(--reading-line);
+}
+html[data-weave-stage="read"] .weave-read-nav button{
+ min-height:42px!important;padding:8px!important;border:1px solid var(--reading-line);border-radius:5px;
+}
+html[data-weave-stage="read"] .weave-read-nav button:last-child{justify-self:end}
+html[data-weave-stage="read"] .weave-read-nav span{font-size:13px;white-space:nowrap;text-align:center}
+html[data-weave-stage="read"] .weave-read-focus{
+ padding:18px;border:1px solid var(--reading-line);border-radius:9px;
+ background:var(--reading-wash);margin:0 0 14px;min-width:0;
+}
+html[data-weave-stage="read"] .weave-read-focus-eyebrow{display:flex;align-items:center;gap:8px;font:600 12px/1.3 var(--ui-sans,system-ui,sans-serif);color:var(--reading-muted);margin-bottom:14px;letter-spacing:.02em}
+html[data-weave-stage="read"] .weave-read-thread-mark{display:inline-block;flex:none;width:11px;height:11px;border-radius:50%}
+html[data-weave-stage="read"] .weave-read-focus-main{display:grid;grid-template-columns:132px minmax(0,1fr);gap:16px;align-items:start}
+html[data-weave-stage="read"] .weave-read-focus-main .weave-media-thumb{
+ position:relative;display:block;width:132px;height:auto;aspect-ratio:4/5;overflow:hidden;border-radius:5px;background:var(--reading-line)
+}
+html[data-weave-stage="read"] .weave-read-focus-main .weave-media-thumb img{display:block;width:100%;height:100%;object-fit:cover}
+html[data-weave-stage="read"] .weave-read-focus-main .weave-media-placeholder{position:absolute;inset:0;display:grid;place-content:center;text-align:center;gap:9px;color:var(--reading-muted)}
+html[data-weave-stage="read"] .weave-read-focus-main .weave-media-thumb.has-source:not(.is-broken) .weave-media-placeholder{display:none}
+html[data-weave-stage="read"] .weave-read-focus-main .weave-media-thumb.is-broken img{display:none}
+html[data-weave-stage="read"] .weave-read-focus-copy{min-width:0}
+html[data-weave-stage="read"] .weave-read-focus-copy h4{
+ font:500 clamp(20px,2vw,26px)/1.2 var(--ui-serif,Georgia,serif)!important;
+ margin:0 0 9px!important;overflow-wrap:anywhere;
+}
+html[data-weave-stage="read"] .weave-read-focus-copy p{margin:5px 0;color:var(--reading-muted)}
+html[data-weave-stage="read"] .weave-read-focus .weave-read-maker{font-weight:600;color:var(--reading-ink)}
+html[data-weave-stage="read"] .weave-read-tags{font-size:13px;line-height:1.55;margin:16px 0}
+html[data-weave-stage="read"] .weave-read-tags strong{margin-right:5px}
+html[data-weave-stage="read"] .weave-read-connections{border-top:1px solid var(--reading-line);margin-top:14px;padding-top:8px}
+html[data-weave-stage="read"] .weave-read-connections h5{font-size:12px;margin:8px 0}
+html[data-weave-stage="read"] .weave-read-connections p{overflow-wrap:anywhere}
+html[data-weave-stage="read"] .weave-read-trail{border:1px solid var(--reading-line);border-radius:7px;padding:2px 12px;margin-bottom:14px}
+html[data-weave-stage="read"] .weave-read-trail>summary{font-size:14px;font-weight:600;min-height:44px;display:list-item;align-content:center}
+html[data-weave-stage="read"] .weave-read-trail .weave-read-thread{padding:4px 0 12px;border-top:1px solid var(--reading-line)}
+html[data-weave-stage="read"] .weave-read-empty{padding:22px 16px;border:1px solid var(--reading-line);border-radius:8px;margin-bottom:16px}
+html[data-weave-stage="read"] .weave-read-empty h4{margin:0 0 8px}
+html[data-weave-stage="read"] #weave-read-panel>.constellate-actions{gap:6px}
+html[data-weave-stage="read"] #weave-read-panel>.constellate-actions button{min-height:42px;padding:7px 10px}
+@media(max-width:900px){
+ html[data-weave-stage="read"] body.atlas-page.is-theme-weaving.weave-dock-open main{grid-template-columns:minmax(0,1fr) minmax(340px,43%)!important}
+}
+@media(max-width:760px){
+ html[data-weave-stage="read"] body.atlas-page.is-theme-weaving.weave-dock-open main{
+  height:auto!important;min-height:0!important;display:flex!important;flex-direction:column!important;
+ }
+ html[data-weave-stage="read"] body.is-theme-weaving .map-panel{
+  height:42dvh!important;min-height:270px!important;max-height:42dvh!important;
+ }
+ html[data-weave-stage="read"] body.is-theme-weaving #constellate-popup{
+  height:auto!important;max-height:none!important;overflow:visible!important;
+  width:100%!important;padding:14px 16px!important;
+ }
+ html[data-weave-stage="read"] .weave-read-focus{padding:14px}
+ html[data-weave-stage="read"] .weave-read-focus-main{grid-template-columns:92px minmax(0,1fr);gap:12px}
+ html[data-weave-stage="read"] .weave-read-focus-main .weave-media-thumb{width:92px}
+ html[data-weave-stage="read"] .weave-read-nav{gap:4px}
+ html[data-weave-stage="read"] .weave-read-nav button{font-size:12px!important;min-height:40px!important}
+ html[data-weave-stage="read"] .weave-read-nav span{font-size:11px}
+}
+@media print{
+ html[data-weave-stage="read"] #weave-read-panel .weave-read-focus,
+ html[data-weave-stage="read"] #weave-read-panel .weave-read-nav,
+ html[data-weave-stage="read"] #weave-read-panel .constellate-actions{display:none!important}
+ html[data-weave-stage="read"] #weave-read-panel .weave-read-trail{display:block!important;border:0}
+ html[data-weave-stage="read"] #weave-read-panel .weave-read-trail>summary{display:none!important}
+ html[data-weave-stage="read"] #weave-read-panel .weave-read-thread{display:block!important}
+}
+
+
+/* Read must not inherit another mode's screen-covering dark layers. */
+html[data-weave-stage="read"] body.is-theme-weaving .map-panel::before,
+html[data-weave-stage="read"] body.is-theme-weaving .map-panel::after{display:none!important}
+html[data-weave-stage="read"] body.is-theme-weaving #atlas .weave-night-veil{display:none!important}
+html[data-weave-stage="read"] body #atlas-theme-web{display:none!important}
+
+/* Search themes and search films begin at the same level.
+   Featured themes are suggestions beneath the search, never an obstacle above it. */
+#weave-start .ws-popular-label{
+  margin:1px 0 0!important;
+  color:var(--ui-muted,#59646c)!important;
+  font:600 11px/1.35 var(--ui-sans,system-ui,sans-serif)!important;
+  letter-spacing:.035em;text-transform:uppercase
+}
+#weave-start .ws-results:empty{display:none}
+#weave-start #ws-theme-q,#weave-start #ws-film-q{margin-top:0;flex:0 0 auto}
+@media(min-width:761px){
+  #weave-start .ws-paths>.ws-path:nth-child(-n+2)>p:first-of-type{
+    min-height:3.05em
+  }
+}
+
+/* 2026-11-11: line key, phone cue, phone toolbar */
+#weave-line-key{margin:8px 0 2px;font:500 12px/1.5 'Atlas Sans',system-ui,sans-serif;color:var(--reading-muted,#5b6570)}
+#weave-line-key .wk{display:inline-block;width:26px;height:0;vertical-align:middle;margin:0 6px 2px 0;border-top:3px solid currentColor}
+#weave-line-key .wk-dream{border-top-style:dotted;margin-left:6px}
+#weave-line-key .wk-about{display:block;margin-top:3px;font-weight:400;opacity:.85}
+#weave-phone-cue{position:fixed;left:12px;right:12px;bottom:12px;z-index:60;min-height:46px;padding:10px 14px;border:0;border-radius:23px;background:#16233f;color:#f5eddb;font:600 14px/1.2 'Atlas Sans',system-ui,sans-serif;box-shadow:0 6px 18px rgba(0,0,0,.35)}
+#weave-phone-cue[hidden]{display:none}
+@media (max-width:700px){
+ #constellate-mode #weave-stepper{min-width:max-content;flex:0 0 auto}
+ #constellate-mode #weave-stepper small{min-width:2.6em;text-align:center}
+}
+
+.ws-example-threads{list-style:none;margin:4px 0 10px;padding:0;display:grid;gap:6px}
+.ws-example-threads li{padding:9px 12px;border:1px solid var(--reading-line,#d5d9d2);border-radius:8px;font:500 15px/1.3 'Atlas Serif',Georgia,serif}
+/* closing card in Play has no film image: drop the empty frame */
+#weave-player .weave-play-art:has(#weave-play-image[hidden]):has(#weave-play-fallback[hidden]){display:none}
+/* 2026-11-11: Off the map rail: keep the film image inside its tile and the rail on a solid ground */
+#weave-offmap-rail{background:var(--reading-paper,#f6f7f4);border:1px solid var(--reading-line,#c9d0c6);border-radius:10px;overflow:hidden}
+#weave-offmap-rail [data-offmap-item] .weave-media-thumb{position:relative;border-radius:4px}
+#weave-offmap-rail [data-offmap-item] .weave-media-thumb img{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:cover}
+
+/* ================================================================
+   Map polish
+   (was assets/constellate-map-polish-20261109.css)
+   ================================================================ */
+/* Constellate map legibility, 2026-11-09.
+   Style-only presentation adjustment. The mapped lands, affiliations,
+   links, coordinates and Atlas data remain unmodified. */
+
+/* Ten percent stronger territory washes across both the regular map and
+   Constellate, relative to the reader's existing Layers slider. */
+:root[data-ui="1107"] body #atlas .land-shading .nation-wash {
+ fill-opacity: clamp(0, calc(var(--territory-wash, .36) * 1.10), .92);
+}
+:root[data-ui="1107"][data-reading-theme="night"] body #atlas .land-shading .nation-wash {
+ fill-opacity: clamp(0, calc(var(--territory-wash, .36) * .935), .92);
+}
+
+/* Subdued cartography with legible Indigenous names, rather than
+   zoom-driven giant italic labels and heavy dark outlines. */
+body.is-theme-weaving #atlas .land-word-label,
+body.is-theme-weaving #atlas .land-word-label tspan {
+ text-shadow: none !important;
+}
+body.is-theme-weaving #atlas .land-word:is(:hover,:focus-visible,.selected) {opacity:1!important}
+html[data-ui-zoom="far"] body.is-theme-weaving #atlas .land-word[data-ui-tier="1"] {opacity:.72!important}
+html[data-ui-zoom="far"] body.is-theme-weaving #atlas .land-word[data-ui-tier="2"] {opacity:.50!important}
+html[data-ui-zoom="far"] body.is-theme-weaving #atlas .land-word[data-ui-tier="3"] {opacity:.30!important}
+html[data-ui-zoom="far"] body.is-theme-weaving #atlas .land-word[data-ui-tier="4"] {opacity:.16!important}
+body.is-theme-weaving #atlas .country-label-name,
+body.is-theme-weaving #atlas .marker-count {font-size:11px!important;opacity:.6}
+body.is-theme-weaving #atlas-basemap {filter:brightness(.92) saturate(1.06)!important}
+:root[data-reading-theme="night"] body.is-theme-weaving #atlas-basemap {filter:brightness(.88) saturate(1.06)!important}
+
+/* The former longitudinal warp looked like rendering artifacts. Thread
+   paths now carry the visual metaphor, with the map left uncluttered. */
+body.is-theme-weaving #constellate-graph[data-density="dense"] .weave-thread.is-quiet {opacity:.27}
+body.is-theme-weaving #constellate-graph .weave-thread.is-quiet:is(:hover,:focus-within) {opacity:.94}
+body.is-theme-weaving #constellate-graph .weave-thread-name-path {
+ letter-spacing:0!important;stroke-opacity:.98!important;
+}
+body.is-theme-weaving #constellate-graph .weave-stop text {
+ font:700 10px/1 var(--ui-sans,system-ui,sans-serif)!important;
+ stroke:none!important;paint-order:normal!important;
+ fill:#fff7e9!important;
+}
+body.is-theme-weaving #constellate-graph .weave-cross-count {
+ stroke:#071120!important;stroke-width:2px!important;
+}
+@media(max-width:680px) {
+ body.is-theme-weaving #atlas .land-word-label,
+ body.is-theme-weaving #atlas .land-word-label tspan {stroke-width:1.25px!important}
+ body.is-theme-weaving #constellate-graph .weave-cord {stroke-width:2.35!important}
+}
+
+/* Constellate is a night-sky canvas regardless of the reader's chosen day/night chrome.
+   Keep sky lettering light in both modes; give opaque card surfaces contrasting ink. */
+:root[data-reading-theme] body.is-theme-weaving #constellate-graph {
+ --weave-ocean:#111b34;--weave-ink:#f2e8cf;
+}
+:root[data-reading-theme] body.is-theme-weaving #constellate-graph text {
+ fill:#f2e8cf!important;stroke:#111b34!important;
+ stroke-width:1.5px;paint-order:stroke!important;
+}
+:root[data-reading-theme] body.is-theme-weaving #constellate-graph .constellate-card:not(:hover):not(:focus-within):not(.selected) text {
+ fill:#f2e8cf!important;stroke:#111b34!important;
+}
+:root[data-reading-theme] body.is-theme-weaving #constellate-graph .constellate-card:is(:hover,:focus-within,.selected) text {
+ fill:var(--ui-ink)!important;stroke:none!important;
+}
+:root[data-reading-theme] body.is-theme-weaving #constellate-graph .weave-stop text {
+ fill:#fff7e9!important;stroke:none!important;
+}
+:root[data-reading-theme] body.is-theme-weaving #constellate-graph .weave-thread-name-path {
+ fill:#f2e8cf!important;stroke:#071120!important;
+}
+
+/* ================================================================
+   Night map, threads, stars, Night Loom
+   (was assets/constellate-map-50fix-20261109.css)
+   ================================================================ */
+/* Constellate 50 fixes: 2026-11-09. Only presentation; source data unchanged. */
+/* 01 Restore the dark-sky background */
+body.is-theme-weaving .map-panel{background:#15283d!important}
+/* 02 Remove the noisy vignette */
+body.is-theme-weaving .map-panel::before{background:radial-gradient(ellipse at center,transparent 65%,rgba(8,19,34,.16) 100%)!important}
+/* 03 Hide the opaque noise layer */
+body.is-theme-weaving .map-panel::after{display:none!important}
+/* 04 Stop the SVG blackout overlay */
+body.is-theme-weaving #atlas .weave-night-veil{display:none!important}
+/* 05 Recover map terrain in paper mode */
+:root:not([data-reading-theme=night]) body.is-theme-weaving #atlas-basemap{filter:brightness(1.06) saturate(1.13)!important}
+/* 06 Recover map terrain in night mode */
+:root[data-reading-theme=night] body.is-theme-weaving #atlas-basemap{filter:brightness(1.03) saturate(1.16)!important}
+/* 07 Stop dimming the entire land shading layer */
+html[data-ui-constellate=on] body #atlas .land-shading{opacity:1!important}
+/* 08 Un-dim shading even before UI state propagates */
+body.is-theme-weaving #atlas .land-shading{opacity:1!important}
+/* 09 Boost land wash ten percent */
+html[data-ui=1107] body #atlas .land-shading .nation-wash{fill-opacity:clamp(0,calc(var(--territory-wash,.36) * 1.10),.9)!important}
+/* 10 Preserve night wash's ten percent uplift */
+html[data-ui=1107][data-reading-theme=night] body #atlas .land-shading .nation-wash{fill-opacity:clamp(0,calc(var(--territory-wash,.36) * .935),.9)!important}
+/* 11 Subtle boundary strokes */
+body.is-theme-weaving #atlas .nation-wash{stroke-opacity:.62!important}
+/* 12 Keep boundaries hairline-thin */
+body.is-theme-weaving #atlas .nation-wash{stroke-width:.8px!important}
+/* 13 Basemap landshapes don't overpower territories */
+body.is-theme-weaving #atlas .land-shape{stroke-opacity:.16!important}
+/* 14 Make territory focus visible */
+body.is-theme-weaving #atlas .territory-focus-shape{stroke-opacity:.85!important}
+/* 15 Restore default land name opacity */
+body.is-theme-weaving #atlas .land-word{opacity:.5!important}
+/* 16 Prioritize high coverage names */
+html[data-ui-zoom=far] body.is-theme-weaving #atlas .land-word[data-ui-tier='1']{opacity:.62!important}
+/* 17 Keep midhigh coverage names legible */
+html[data-ui-zoom=far] body.is-theme-weaving #atlas .land-word[data-ui-tier='2']{opacity:.5!important}
+/* 18 Keep mid coverage names legible */
+html[data-ui-zoom=far] body.is-theme-weaving #atlas .land-word[data-ui-tier='3']{opacity:.4!important}
+/* 19 Do not disappear small communities */
+html[data-ui-zoom=far] body.is-theme-weaving #atlas .land-word[data-ui-tier='4']{opacity:.3!important}
+/* 20 Restore hover legibility */
+body.is-theme-weaving #atlas .land-word:hover{opacity:1!important}
+/* 21 Restore keyboard focus legibility */
+body.is-theme-weaving #atlas .land-word:focus-visible{opacity:1!important}
+/* 22 Restore selected land legibility */
+body.is-theme-weaving #atlas .land-word.selected{opacity:1!important}
+/* 23 Script-aware font fallback */
+body.is-theme-weaving #atlas .land-word-label,body.is-theme-weaving #atlas .land-word-label tspan{font-family:'Atlas Sans','Noto Sans Canadian Aboriginal','Noto Sans Cherokee','Noto Sans Osage','Arial Unicode MS',system-ui,sans-serif!important}
+/* 24 Retain the map engine’s measured label size for collision avoidance. */
+/* 25 Regular-weight Unicode characters */
+body.is-theme-weaving #atlas .land-word-label,body.is-theme-weaving #atlas .land-word-label tspan{font-weight:500!important}
+/* 26 No synthesized italics on syllabics */
+body.is-theme-weaving #atlas .land-word-label,body.is-theme-weaving #atlas .land-word-label tspan{font-style:normal!important}
+/* 27 Proper kerning for community names */
+body.is-theme-weaving #atlas .land-word-label,body.is-theme-weaving #atlas .land-word-label tspan{letter-spacing:0!important}
+/* 28 Ivory legible name fill */
+body.is-theme-weaving #atlas .land-word-label,body.is-theme-weaving #atlas .land-word-label tspan{fill:#f5eddb!important}
+/* 29 Neutral outline for map lettering */
+body.is-theme-weaving #atlas .land-word-label,body.is-theme-weaving #atlas .land-word-label tspan{stroke:#0c192e!important}
+/* 30 Thin outline preserves syllabic counters */
+body.is-theme-weaving #atlas .land-word-label,body.is-theme-weaving #atlas .land-word-label tspan{stroke-width:1.2px!important}
+/* 31 Don't overpaint delicate glyph edges */
+body.is-theme-weaving #atlas .land-word-label,body.is-theme-weaving #atlas .land-word-label tspan{stroke-opacity:.82!important}
+/* 32 Draw glyph contours after outline */
+body.is-theme-weaving #atlas .land-word-label,body.is-theme-weaving #atlas .land-word-label tspan{paint-order:stroke fill!important}
+/* 33 No heavy drop-shadow on text */
+body.is-theme-weaving #atlas .land-word-label{text-shadow:none!important}
+/* 34 Remove inherited text dim */
+body.is-theme-weaving #atlas .land-word-label,body.is-theme-weaving #atlas .land-word-label tspan{opacity:1!important}
+/* 35 Phone label sizes remain measured by the land label engine. */
+/* 36 Community bubbles smaller than land names */
+body.is-theme-weaving #atlas .land-bubble-label{font-size:11px!important;opacity:.77!important}
+/* 37 Country names less prominent */
+body.is-theme-weaving #atlas .country-label-name{font-size:11px!important;opacity:.7!important}
+/* 38 Country counters less prominent */
+body.is-theme-weaving #atlas .marker-count{font-size:10px!important;opacity:.7!important}
+/* 39 Remove false meridian warp */
+
+/* 40 Softer thread drop shadow */
+body.is-theme-weaving #constellate-graph .weave-thread-shadow{stroke-width:3px!important;stroke-opacity:.11!important;filter:none!important}
+/* 41 Dark outline behind thread strands */
+body.is-theme-weaving #constellate-graph .weave-thread-halo{stroke:#122239!important}
+/* 42 Reduce heavy gold strand weight */
+body.is-theme-weaving #constellate-graph .weave-cord{stroke-width:3.2px!important;stroke-opacity:.96!important}
+/* 43 Fine thread highlight */
+body.is-theme-weaving #constellate-graph .weave-ribbon-sheen{stroke-width:1.1px!important;stroke-opacity:.48!important}
+/* 44 Unselected threads recede */
+body.is-theme-weaving #constellate-graph .weave-thread.is-quiet{opacity:.8!important}
+/* 45 Dense thread set recedes further */
+body.is-theme-weaving #constellate-graph[data-density=dense] .weave-thread.is-quiet{opacity:.66!important}
+/* 46 Hover reactivates the selected path */
+body.is-theme-weaving #constellate-graph .weave-thread.is-quiet:hover{opacity:1!important}
+/* 47 Active thread takes precedence */
+body.is-theme-weaving #constellate-graph .weave-thread.is-active{opacity:1!important}
+/* 48 Make thread names legible and upright */
+body.is-theme-weaving #constellate-graph .weave-thread-name-path{font:600 12px/1.1 'Atlas Sans',system-ui,sans-serif!important;font-style:normal!important;stroke:#122239!important;stroke-width:2.2px!important}
+/* 49 Show verified art on film cards */
+body.is-theme-weaving #constellate-graph .constellate-card .weave-card-art{opacity:1!important;visibility:visible!important}
+/* 50 Preserve placeholder when detail art fails */
+#atlas-theme-web .tw-film-art.no-art img{display:none!important}
+
+/* 2026-11-11 (Claude): while Constellate is open the atlas steps back so threads lead.
+   Territory fills drop to about 60% of the reader's chosen strength; names stay readable on hover. */
+html[data-ui] body.is-theme-weaving #atlas .land-shading .nation-wash{fill-opacity:clamp(0,calc(var(--territory-wash,.36) * .62),.9)!important}
+body.weave-playing #atlas .land-word{opacity:.34!important}
+html[data-ui-zoom=far] body.weave-playing #atlas .land-word[data-ui-tier]{opacity:.3!important}
+body.weave-playing #atlas .land-word.selected{opacity:1!important}
+/* interpretive links: round dots, heavy enough to see; sourced links: solid */
+body.is-theme-weaving #constellate-graph .constellate-edge.dream-thread{stroke-dasharray:.1 7!important;stroke-linecap:round!important;stroke-width:3px!important;stroke-opacity:.95!important;opacity:1!important}
+body.is-theme-weaving #constellate-graph .constellate-edge.sourced-thread{stroke-width:2.4px!important;stroke-opacity:.95!important;opacity:1!important}
+body.is-theme-weaving #constellate-graph .constellate-edge-label{paint-order:stroke fill;stroke:#122239;stroke-width:3px;fill:#f5eddb}
+
+/* 2026-11-11 (Claude): Night Loom. Abstract weaving only: warp lines, braided strands, grain. No community's textile designs. */
+body.is-theme-weaving #constellate-graph .loom-warp path{fill:none;stroke:#8fa4d6;stroke-opacity:.13;stroke-width:.7px;vector-effect:non-scaling-stroke;pointer-events:none}
+body.is-theme-weaving #constellate-graph .weave-thread-glow{fill:none;stroke-width:8px;stroke-opacity:.26;stroke-linecap:round;filter:blur(3.2px);pointer-events:none}
+body.is-theme-weaving #constellate-graph .weave-cord.weave-strand{fill:none;stroke-width:1.5px!important;stroke-opacity:1!important;stroke-linecap:round;stroke-linejoin:round}
+body.is-theme-weaving #constellate-graph .weave-thread.is-quiet .weave-cord.weave-strand{stroke-width:1.2px!important}
+body.is-theme-weaving #constellate-graph .weave-thread.is-quiet .weave-thread-glow{stroke-opacity:.12}
+body.is-theme-weaving #constellate-graph .weave-thread.is-focus .weave-cord.weave-strand{stroke-width:1.9px!important}
+body.is-theme-weaving #constellate-graph .weave-thread-halo{stroke-width:7px!important;stroke-opacity:.55!important}
+body.is-theme-weaving #constellate-graph{background-image:radial-gradient(ellipse at 50% 46%,rgba(4,8,18,0) 55%,rgba(4,8,18,.46) 100%),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.09'/%3E%3C/svg%3E");background-size:auto,180px 180px}
+body.weave-unmapped #constellate-graph{background-image:none}
+
+/* 2026-11-11 (Claude): named stars when cards would overlap; thread names ride the middle of the thread */
+body.is-theme-weaving #constellate-graph .weave-star-label{font:600 12px/1 'Atlas Sans',system-ui,sans-serif;fill:#f5eddb;paint-order:stroke fill;stroke:#0c1426;stroke-width:3.4px;stroke-linejoin:round;cursor:pointer;letter-spacing:.01em}
+body.is-theme-weaving #constellate-graph .weave-star-label:hover{fill:#fff}
+body.is-theme-weaving #constellate-graph .weave-thread-name{font:italic 600 13px/1 'Atlas Serif',Georgia,serif;paint-order:stroke fill;stroke:#0c1426;stroke-width:4px;stroke-linejoin:round;letter-spacing:.02em}
+body.is-theme-weaving #constellate-graph .weave-star-label{pointer-events:bounding-box}
+
+/* ================================================================
+   Controls, filters, Off the map rail
+   (was assets/constellate-controls-20261110.css)
+   ================================================================ */
+/* Constellate control clarity — source-safe visual layer, November 2026.
+   Keep Build / Read / Play together at every screen size; do not alter map data. */
+
+/* Distinct primary modes, with a visible current mode. */
+html[data-weave-stage]:not([data-weave-stage="start"]) body.is-constellating #constellate-mode > :is(#constellate-edit,#constellate-read,#weave-play){
+  box-sizing:border-box;display:inline-flex!important;align-items:center;justify-content:center;
+  min-height:40px!important;height:40px!important;flex:0 0 auto;
+  padding:0 13px!important;margin:0!important;
+  font:600 14px/1.1 var(--ui-sans,system-ui,sans-serif)!important;
+  border:1px solid var(--reading-line,#c9d0c6)!important;
+  color:var(--reading-ink,#182028)!important;background:var(--reading-paper,#eef0ec)!important;
+  box-shadow:none!important;white-space:nowrap
+}
+html[data-weave-stage]:not([data-weave-stage="start"]) body.is-constellating #constellate-mode > #constellate-edit{
+  order:1!important;border-radius:9px 0 0 9px!important
+}
+html[data-weave-stage]:not([data-weave-stage="start"]) body.is-constellating #constellate-mode > #constellate-read{
+  order:2!important;border-left:0!important
+}
+html[data-weave-stage]:not([data-weave-stage="start"]) body.is-constellating #constellate-mode > #weave-play{
+  order:3!important
+}
+html[data-weave-stage]:not([data-weave-stage="start"]) body.is-constellating #constellate-mode > :is(#constellate-edit,#constellate-read)[aria-pressed="true"]{
+  background:var(--reading-ink,#182028)!important;color:var(--reading-paper,#eef0ec)!important;
+  border-color:var(--reading-ink,#182028)!important;box-shadow:none!important
+}
+html[data-weave-stage]:not([data-weave-stage="start"]) body.is-constellating #constellate-mode > :is(#constellate-edit,#constellate-read,#weave-play):focus-visible{
+  outline:2px solid var(--reading-accent,#9c3b26)!important;outline-offset:3px
+}
+/* Secondary actions live in one legible menu. */
+body.is-constellating #constellate-mode .weave-more-menu{
+  min-width:244px!important;max-height:min(66dvh,520px);overflow-y:auto!important;
+  overscroll-behavior:contain;padding:10px!important;scrollbar-width:thin
+}
+body.is-constellating #constellate-mode .weave-more-menu .weave-menu-heading{
+  display:block;margin:10px 8px 5px;min-height:0;font:700 11px/1.5 var(--ui-sans,system-ui,sans-serif)!important;
+  letter-spacing:.045em;text-transform:uppercase;color:var(--reading-muted,#55616b)
+}
+body.is-constellating #constellate-mode .weave-more-menu .weave-menu-manage[hidden]{display:none!important}
+body.is-constellating #constellate-mode .weave-more-menu button{
+  display:flex!important;justify-content:flex-start;align-items:center;
+  min-height:42px!important;width:100%;padding:9px 12px!important;
+  text-align:left;white-space:normal!important;line-height:1.25!important
+}
+body.is-constellating #constellate-mode .weave-more-menu button:focus-visible{
+  outline:2px solid var(--reading-accent,#9c3b26);outline-offset:1px
+}
+/* The reading path shows its position and keeps the navigation in view. */
+html[data-weave-stage="read"] #weave-read-panel .weave-read-progress{
+  display:block;width:100%;height:6px;margin:0 0 17px;border:0;border-radius:999px;
+  appearance:none;background:var(--reading-line,#c9d0c6);overflow:hidden
+}
+html[data-weave-stage="read"] #weave-read-panel .weave-read-progress::-webkit-progress-bar{background:var(--reading-line,#c9d0c6);border-radius:999px}
+html[data-weave-stage="read"] #weave-read-panel .weave-read-progress::-webkit-progress-value{background:var(--reading-accent,#9c3b26);border-radius:999px}
+html[data-weave-stage="read"] #weave-read-panel .weave-read-progress::-moz-progress-bar{background:var(--reading-accent,#9c3b26);border-radius:999px}
+html[data-weave-stage="read"] #weave-read-panel .weave-read-focus:focus{outline:none}
+html[data-weave-stage="read"] #weave-read-panel .weave-read-nav button[disabled]{opacity:.38;cursor:not-allowed}
+html[data-weave-stage="read"] #weave-read-panel .weave-read-nav button:not(:disabled):focus-visible{
+  outline:2px solid var(--reading-accent,#9c3b26);outline-offset:2px
+}
+/* Playback: visible pace selector and clear film count; layout survives zoom/mobile. */
+#weave-player .weave-player-controls{
+  display:flex;align-items:center;justify-content:center;flex-wrap:wrap;
+  gap:9px 12px;row-gap:5px;padding:8px 12px;
+  border-radius:8px;background:rgba(5,9,20,.88)
+}
+#weave-player .weave-play-speed{
+  display:inline-flex;align-items:center;gap:7px;white-space:nowrap;
+  font:13px/1.2 var(--ui-sans,system-ui,sans-serif);color:#f3eddd
+}
+#weave-player #weave-play-speed{
+  min-height:34px;padding:4px 7px;border:1px solid #9eacc9;border-radius:5px;
+  background:#15213a;color:#f3eddd;font:inherit;cursor:pointer
+}
+#weave-player #weave-play-progress{white-space:nowrap;font-size:13px}
+#weave-player .weave-player-controls button:focus-visible,
+#weave-player #weave-play-speed:focus-visible{outline:2px solid #e9d9ad;outline-offset:2px}
+@media(max-width:760px){
+  body.is-constellating #constellate-mode:has(.weave-more[open]){
+    overflow:visible!important;max-height:none!important
+  }
+  body.is-constellating #constellate-mode .weave-more-menu{
+    min-width:0!important;max-height:min(60dvh,480px)!important;
+    box-sizing:border-box;z-index:70!important
+  }
+  html[data-weave-stage]:not([data-weave-stage="start"]) body.is-constellating #constellate-mode > :is(#constellate-edit,#constellate-read,#weave-play){
+    height:38px!important;min-height:38px!important;padding:0 10px!important;font-size:13px!important
+  }
+  /* On phones the map panel can start below the fold. Anchor the letterbox
+     to the viewport so the Play controls, especially Close, remain reachable. */
+  body.weave-playing #weave-player{
+    position:fixed;inset:0;width:100vw;height:100dvh;min-height:0;max-height:100dvh;
+    overflow:hidden;z-index:50
+  }
+  #weave-player .weave-player-controls{
+    left:8px;right:8px;bottom:max(8px,env(safe-area-inset-bottom));gap:4px 8px;padding:5px
+  }
+  #weave-player .weave-player-controls button{min-height:36px}
+  #weave-player .weave-title-card{bottom:112px!important;max-height:47%}
+  #weave-player .weave-play-speed{font-size:12px}
+}
+@media(prefers-reduced-motion:reduce){
+  #weave-player .weave-title-card{scroll-behavior:auto}
+}
+
+
+/* Film-to-film geometry: card thumbnails are the thread endpoints; dotted land leaders remain separate. */
+body.is-constellating #constellate-graph.weave-drawing-mode .constellate-card{
+ cursor:crosshair
+}
+body.is-constellating #constellate-graph.weave-drawing-mode .constellate-card .weave-card-art{
+ pointer-events:none
+}
+body.is-constellating #constellate-graph.weave-drawing-mode .constellate-card:hover > rect,
+body.is-constellating #constellate-graph.weave-drawing-mode .constellate-card:focus-visible > rect{
+ stroke:var(--reading-accent,#9c3b26)!important;stroke-width:2.3!important
+}
+body.is-constellating #constellate-graph.weave-drawing-mode .constellate-preview{
+ stroke:var(--reading-accent,#9c3b26)!important;
+ stroke-width:2.8!important;stroke-dasharray:7 5!important;
+ fill:none;pointer-events:none
+}
+body.is-constellating #constellate-graph .weave-leader{
+ stroke-dasharray:2 4;stroke-opacity:.28;pointer-events:none
+}
+/* Play is a third real mode, not an unselected action beside Build and Read. */
+html[data-weave-stage="play"] body.is-constellating #constellate-mode > #weave-play,
+body.is-constellating #constellate-mode > #weave-play[aria-pressed="true"]{
+ background:var(--reading-ink,#182028)!important;
+ color:var(--reading-paper,#eef0ec)!important;
+ border-color:var(--reading-ink,#182028)!important
+}
+body.is-constellating #constellate-mode .weave-more>summary:focus-visible{
+ outline:2px solid var(--reading-accent,#9c3b26);outline-offset:3px
+}
+
+/* Two genuinely distinct actions: Build a constellation or Follow a sourced path.
+   Presentation stays available from Follow, not as a competing top-level mode. */
+html[data-weave-stage]:not([data-weave-stage="start"]) body.is-constellating #constellate-mode > #weave-play[hidden]{display:none!important}
+#weave-read-panel .weave-follow-present{
+ display:flex;flex-wrap:wrap;align-items:center;gap:7px 12px;
+ margin:10px 0 12px
+}
+#weave-read-panel .weave-follow-present button{
+ border:1px solid var(--reading-accent,#9c3b26);border-radius:6px;
+ background:var(--reading-paper,#f9f7f1);color:var(--reading-accent,#9c3b26);
+ padding:9px 12px;min-height:38px;font:600 13px/1.2 var(--ui-sans,system-ui,sans-serif);
+ cursor:pointer
+}
+#weave-read-panel .weave-follow-present button:hover,
+#weave-read-panel .weave-follow-present button:focus-visible{
+ outline:2px solid var(--reading-accent,#9c3b26);outline-offset:2px
+}
+#weave-read-panel .weave-follow-present span{
+ color:var(--reading-muted,#59646c);font:12px/1.35 var(--ui-sans,system-ui,sans-serif)
+}
+/* Large themes unfold by choice rather than consuming the entire map immediately. */
+#weave-theme-more[hidden]{display:none!important}
+#weave-theme-more{border-top:1px solid var(--reading-line,#c9d0c6);padding:13px 3px 7px;margin:14px 0 5px}
+#weave-theme-more p{margin:0 0 7px;font:600 13px/1.45 var(--ui-sans,system-ui,sans-serif)}
+#weave-theme-more .weave-theme-context{font-weight:400;font-size:12px;color:var(--reading-muted,#59646c)}
+#weave-theme-more .weave-theme-more-actions{display:flex;flex-wrap:wrap;gap:7px}
+#weave-theme-more button{
+ min-height:36px;border:1px solid var(--reading-line,#c9d0c6);
+ background:var(--reading-paper,#f9f7f1);color:var(--reading-ink,#182028);
+ border-radius:6px;padding:7px 11px;font:600 12px/1.3 var(--ui-sans,system-ui,sans-serif);
+ cursor:pointer
+}
+#weave-theme-more #weave-theme-unfold{background:var(--reading-ink,#182028);color:var(--reading-paper,#f9f7f1)}
+#weave-theme-more button:focus-visible{outline:2px solid var(--reading-accent,#9c3b26);outline-offset:2px}
+#weave-theme-more .weave-theme-complete{font-size:12px;color:var(--reading-muted,#59646c)}
+
+/* 2026-11-11: restore Build / Follow / Play as distinct visible modes. */
+html[data-weave-stage]:not([data-weave-stage="start"]) body.is-constellating #constellate-mode > #constellate-read{
+  border-radius:0!important;border-right:0!important
+}
+html[data-weave-stage]:not([data-weave-stage="start"]) body.is-constellating #constellate-mode > #weave-play{
+  display:inline-flex!important;border-radius:0 9px 9px 0!important
+}
+
+/* Help expands inside the dock, never behind the map or outside its scroll area. */
+body.is-constellating #constellate-popup .constellate-heading{
+  position:sticky!important;z-index:30!important;overflow:visible!important;flex-wrap:wrap
+}
+body.is-constellating #constellate-popup .constellate-heading #constellate-how{
+  position:relative!important;top:auto!important;right:auto!important;
+  flex:0 0 auto;z-index:31!important;
+  overflow:visible!important;min-width:0
+}
+body.is-constellating #constellate-popup #constellate-how>summary{
+  box-sizing:border-box!important;display:inline-flex!important;
+  align-items:center!important;justify-content:center!important;
+  width:auto!important;height:36px!important;min-width:54px!important;
+  padding:7px 10px!important;border:1px solid var(--reading-line,#c9d0c6)!important;
+  border-radius:8px!important;background:var(--reading-paper,#f9f7f1)!important;
+  color:var(--reading-ink,#182028)!important;text-decoration:none!important;
+  font:600 13px/1.15 var(--ui-sans,system-ui,sans-serif)!important;
+  cursor:pointer!important;list-style:none!important
+}
+body.is-constellating #constellate-popup #constellate-how>summary:focus-visible{
+  outline:2px solid var(--reading-accent,#9c3b26)!important;outline-offset:2px
+}
+body.is-constellating #constellate-popup .constellate-heading #constellate-how[open]{
+  flex:0 0 100%;width:100%;order:3;max-width:100%
+}
+body.is-constellating #constellate-popup .constellate-heading #constellate-how[open]>ol{
+  box-sizing:border-box!important;position:static!important;
+   top:auto!important;right:auto!important;left:auto!important;
+   width:100%!important;max-width:100%!important;
+  max-height:min(55dvh,350px)!important;overflow-y:auto!important;
+  margin:0!important;padding:13px 16px 13px 35px!important;
+  background:var(--reading-paper,#f9f7f1)!important;
+  color:var(--reading-ink,#182028)!important;
+  border:1px solid var(--reading-line,#c9d0c6)!important;border-radius:9px!important;
+  box-shadow:0 4px 16px rgba(0,0,0,.12)!important;
+  font:13px/1.45 var(--ui-sans,system-ui,sans-serif)!important;
+  z-index:32!important
+}
+body.is-constellating #constellate-popup #constellate-how[open]>ol li{
+  padding:0 0 7px!important;margin:0!important
+}
+body.is-constellating #constellate-popup #constellate-how[open]>ol li:last-child{padding-bottom:0!important}
+body.is-constellating #constellate-popup #constellate-how[open]>ol strong{
+  color:var(--reading-ink,#182028)!important
+}
+
+/* A compact contextual hint replaces the oversized duplicate three-step guide. */
+html[data-weave-stage="build"] body.is-theme-weaving #weave-guide{
+  position:static!important;z-index:1!important;
+  display:flex!important;flex-wrap:wrap!important;
+  align-items:center!important;justify-content:space-between!important;
+  gap:7px 12px!important;margin:3px 0 10px!important;
+  padding:9px 11px!important;border-radius:8px!important;box-shadow:none!important
+}
+html[data-weave-stage="build"] body.is-theme-weaving #weave-guide .wg-steps{display:none!important}
+html[data-weave-stage="build"] body.is-theme-weaving #weave-guide .wg-text{
+  flex:1 1 215px!important;margin:0!important;font-size:12.5px!important;line-height:1.4!important
+}
+html[data-weave-stage="build"] body.is-theme-weaving #weave-guide .wg-actions{
+  display:flex!important;flex:0 1 auto!important;gap:4px!important;margin:0!important
+}
+html[data-weave-stage="build"] body.is-theme-weaving #weave-guide .wg-actions button:not(:first-child){display:none!important}
+html[data-weave-stage="build"] body.is-theme-weaving #weave-guide .wg-actions button{
+  min-height:32px!important;padding:6px 10px!important;
+  border-radius:6px!important;font-size:12px!important
+}
+@media(max-width:760px){
+  body.is-constellating #constellate-popup .constellate-heading #constellate-how[open]>ol{
+    max-height:min(44dvh,260px)!important
+  }
+}
+
+/* Discovery pass: finite browse pages, clear search refinements, and contextual thread focus. */
+#weave-discovery-tools{
+ display:flex;align-items:center;flex-wrap:wrap;gap:6px 11px;
+ margin:9px 0 5px;padding:9px 0 7px;
+ border-bottom:1px solid var(--reading-line,#c9d0c6)
+}
+#weave-discovery-tools label{align-items:center;gap:6px;
+ color:var(--reading-ink,#182028);font:500 12px/1.25 var(--ui-sans,system-ui,sans-serif)
+}
+#weave-discovery-tools select{
+ box-sizing:border-box;min-height:35px;min-width:130px;max-width:180px;
+ padding:6px 8px;border:1px solid var(--reading-line,#c9d0c6);
+ border-radius:6px;background:var(--reading-paper,#f9f7f1);
+ color:var(--reading-ink,#182028);font:inherit
+}
+#weave-discovery-tools input[type="checkbox"]{width:16px;height:16px;accent-color:var(--reading-accent,#9c3b26)}
+#weave-discovery-clear{
+ margin-left:auto;min-height:35px;padding:6px 9px;border-radius:6px;
+ border:1px solid var(--reading-line,#c9d0c6);
+ background:var(--reading-paper,#f9f7f1);color:var(--reading-accent,#9c3b26);
+ font:600 12px/1.2 var(--ui-sans,system-ui,sans-serif)
+}
+#weave-discovery-clear:disabled{opacity:.4;cursor:default}
+.weave-discovery-hint,.weave-discovery-count{
+ margin:4px 0 5px!important;color:var(--reading-muted,#58636d);
+ font:12px/1.4 var(--ui-sans,system-ui,sans-serif)
+}
+.weave-discovery-count{font-weight:600;min-height:18px}
+#constellate-results .weave-results-more,
+#constellate-results .weave-results-home,
+#constellate-results .weave-discovery-empty button{
+ display:block;box-sizing:border-box;width:100%;min-height:41px;
+ margin:8px 0 12px;padding:9px;border-radius:7px;
+ border:1px solid var(--reading-line,#c9d0c6);
+ background:var(--reading-wash,#edf1ec);color:var(--reading-ink,#182028);
+ text-align:center;font:600 13px/1.3 var(--ui-sans,system-ui,sans-serif);cursor:pointer
+}
+#constellate-results .weave-results-more{border-color:var(--reading-accent,#9c3b26);color:var(--reading-accent,#9c3b26)}
+#constellate-results .weave-discovery-empty{padding:14px 10px}
+#constellate-results .weave-discovery-empty strong{font:600 15px/1.35 var(--ui-sans,system-ui,sans-serif)}
+#constellate-results .weave-discovery-empty p{font:13px/1.45 var(--ui-sans,system-ui,sans-serif);color:var(--reading-muted,#58636d)}
+#constellate-results [data-add-matching]{
+ position:sticky;top:0;z-index:2;display:block;box-sizing:border-box;
+ width:100%;padding:9px;border-radius:6px;
+ border:1px solid var(--reading-line,#c9d0c6);
+ background:var(--reading-paper,#f9f7f1);color:var(--reading-accent,#9c3b26)
+}
+.weave-focus-actions{display:flex;justify-content:flex-start;margin:0 0 5px}
+.weave-focus-actions button{
+ min-height:33px;padding:6px 10px;border-radius:6px;
+ border:1px solid var(--reading-line,#c9d0c6);
+ background:var(--reading-paper,#f9f7f1);color:var(--reading-accent,#9c3b26);
+ font:600 12px/1.2 var(--ui-sans,system-ui,sans-serif)
+}
+.weave-focus-actions button[aria-pressed="true"]{
+ border-color:var(--reading-accent,#9c3b26);
+ background:var(--reading-wash,#edf1ec)
+}
+.weave-focus-actions button[hidden]{display:none!important}
+#weave-discovery-tools :is(button,select,input):focus-visible,
+#constellate-results :is(button,a):focus-visible,
+.weave-focus-actions button:focus-visible{
+ outline:2px solid var(--reading-accent,#9c3b26);outline-offset:2px
+}
+@media(max-width:760px){
+ #weave-discovery-tools{gap:7px 9px}
+ #weave-discovery-tools label:first-child{flex:1 1 100%}
+ #weave-discovery-tools select{flex:1 1 auto;max-width:none}
+ .weave-discovery-hint{display:none}
+}
+
+
+/* Play's eyebrow is visible; the separate live announcement remains available. */
+#weave-player #weave-play-thread{
+  display:block;position:static;max-width:100%;white-space:normal;
+  overflow-wrap:anywhere;letter-spacing:.09em;text-transform:uppercase
+}
+/* Sticky headings should not obscure the first line of Follow. */
+#weave-read-panel{padding-top:12px;scroll-margin-top:58px}
+#weave-read-panel>h3{position:relative;z-index:1;margin-top:6px;line-height:1.25;overflow:visible;overflow-wrap:anywhere}
+/* Each filter label and its checkbox form an inseparable unit on narrow docks. */
+#weave-discovery-tools label{display:inline-flex;flex-wrap:nowrap;white-space:nowrap;flex-shrink:0}
+#weave-discovery-tools input[type="checkbox"]{display:inline-block;flex:0 0 16px;min-width:16px;margin:0}
+
+
+/* The legacy notice has a fixed top declaration; translate that same notice to
+   the map's bottom presentation strip without adding cascade priority. */
+body.is-constellating #atlas #weave-notice{
+  position:absolute;
+  transform:translate(-50%,calc(var(--weave-map-height,650px) - 160px));
+  text-align:center;
+  box-sizing:border-box;
+  pointer-events:none
+}
+
+
+/* Job 2: films without a mapped land appear in a rail, not at a country pin.
+   This is part of the existing map component, not a new overlay stylesheet. */
+body.is-constellating #weave-offmap-rail[hidden]{display:none}
+body.is-constellating #weave-offmap-rail{
+  position:absolute;left:12px;right:12px;bottom:12px;z-index:19;
+  display:flex;align-items:center;gap:12px;min-width:0;
+  padding:9px 11px;box-sizing:border-box;border-radius:8px;
+  border:1px solid var(--reading-line,#c9d0c6);
+  background:var(--reading-paper,#f7f7f2);color:var(--reading-ink,#182028);
+  box-shadow:0 4px 16px rgba(8,20,31,.15);pointer-events:auto
+}
+#weave-offmap-rail .weave-offmap-heading{flex:0 0 108px;display:grid;gap:3px}
+#weave-offmap-rail .weave-offmap-heading strong{font:700 12px/1.1 var(--ui-sans,system-ui,sans-serif);white-space:nowrap}
+#weave-offmap-rail .weave-offmap-heading small{font:11px/1.2 var(--ui-sans,system-ui,sans-serif);color:var(--reading-muted,#53616b)}
+#weave-offmap-rail .weave-offmap-items{
+ display:flex;flex:1;min-width:0;gap:7px;overflow-x:auto;overflow-y:hidden;
+ overscroll-behavior-x:contain;scrollbar-width:thin;scroll-snap-type:x proximity
+}
+#weave-offmap-rail [data-offmap-item]{
+ box-sizing:border-box;display:inline-flex;align-items:center;gap:7px;
+ flex:0 0 162px;min-height:50px;padding:4px 6px;max-width:75%;
+ color:var(--reading-ink,#182028);background:var(--reading-wash,#eef1ed);
+ border:1px solid var(--reading-line,#c9d0c6);border-radius:6px;
+ text-align:left;cursor:pointer;scroll-snap-align:start
+}
+#weave-offmap-rail [data-offmap-item][aria-current="true"]{border-color:var(--reading-accent,#9c3b26);box-shadow:inset 0 0 0 1px var(--reading-accent,#9c3b26)}
+#weave-offmap-rail [data-offmap-item]:focus-visible{outline:2.5px solid var(--reading-accent,#9c3b26);outline-offset:-2px}
+#weave-offmap-rail [data-offmap-item] .weave-media-thumb{flex:0 0 34px;width:34px;height:36px;overflow:hidden}
+#weave-offmap-rail [data-offmap-item] .weave-offmap-copy{flex:1;min-width:0;display:grid;gap:3px}
+#weave-offmap-rail [data-offmap-item] .weave-offmap-copy b{
+  display:block;font:600 11px/1.2 var(--ui-sans,system-ui,sans-serif);
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap
+}
+#weave-offmap-rail [data-offmap-item] .weave-offmap-copy small{
+  font:10px/1.2 var(--ui-sans,system-ui,sans-serif);color:var(--reading-muted,#53616b);
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap
+}
+body.weave-playing #weave-offmap-rail{visibility:hidden;pointer-events:none}
+@media(max-width:680px){
+ body.is-constellating #weave-offmap-rail{left:7px;right:7px;bottom:7px;gap:7px;padding:6px;flex-wrap:wrap}
+ #weave-offmap-rail .weave-offmap-heading{display:flex;align-items:baseline;flex:0 0 100%;gap:8px}
+ #weave-offmap-rail [data-offmap-item]{flex-basis:148px}
+}
+
+
+/* Job 3: source and citation text must wrap inside the Follow/Share dock. */
+#weave-citation,#weave-read-panel .weave-read-note,#weave-read-panel .weave-read-connections,
+#weave-share-panel,#weave-read-panel .weave-prose{
+  overflow-wrap:anywhere;word-break:normal
+}
+.weave-connection-kind{display:inline;font-size:11px;font-weight:600;color:var(--reading-muted,#54626b)}
+#weave-order-list [data-note-edit]{
+  font:600 11px/1.2 var(--ui-sans,system-ui,sans-serif);
+  border:1px solid var(--reading-line,#c9d0c6);
+  border-radius:5px;padding:5px 7px;color:var(--reading-accent,#9c3b26);
+  white-space:nowrap;min-height:28px
+}
+#weave-order-list [data-note-edit]:focus-visible{outline:2px solid var(--reading-accent,#9c3b26);outline-offset:2px}
+@media(max-width:420px){
+  #weave-order-list .weave-order-move{flex-wrap:wrap;justify-content:flex-end}
+}
+
+
+/* Job 4: four counted selectors remain usable beside the existing search controls. */
+#weave-discovery-tools label.weave-discovery-facet{
+  flex:1 1 43%;min-width:134px;max-width:100%;
+  display:flex;align-items:center;justify-content:space-between;
+  white-space:normal;gap:6px
+}
+#weave-discovery-tools .weave-discovery-facet select{
+  min-width:0;flex:1 1 auto;max-width:100%;width:100%;
+  overflow:hidden;text-overflow:ellipsis
+}
+#weave-suggest .weave-theme-tags{
+  display:block;max-width:100%;overflow-wrap:anywhere;white-space:normal
+}
+@media(max-width:540px){
+  #weave-discovery-tools label.weave-discovery-facet{flex:1 1 100%;min-width:0}
+  #weave-discovery-tools .weave-discovery-facet select{min-height:36px}
+}

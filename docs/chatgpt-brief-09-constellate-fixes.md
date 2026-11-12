@@ -2,6 +2,8 @@
 
 Claude ran the beta's Constellate in a real browser (desktop 1440×900 and phone 390×844) at commit `aa9a445`. The jobs below are for ChatGPT. Work in `beta/` only. Do them in order; Job 1 first, and push it before starting Job 2.
 
+**File names changed on 12 Nov 2026.** Constellate is now one script and one stylesheet: `beta/assets/constellate.js` and `beta/assets/constellate.css` (see `docs/constellate-module.md`). Wherever this brief names `atlas-constellate62.js`, `constellate-theme-web.js`, `constellate-controls-20261110.css`, `weave-20261109.*`, `constellate-bar.js` or a `constellate-map-*` stylesheet, edit the matching section of those two files instead. The rule against editing Claude's files no longer applies; the rule against adding overlay files does. Before each report, run `tools/qa/atlas-suite.py capture` against a local server; it must pass.
+
 **Ground rules**
 - Edit `beta/atlas-constellate62.js`, `beta/assets/constellate-theme-web.js`, `beta/assets/constellate-controls-20261110.css` and `beta/i18n-20261107.js`. Do not edit `assets/weave-20261109.js`, `assets/weave-20261109.css`, `assets/constellate-bar.js` or the `constellate-map-*` stylesheets; Claude is changing those.
 - Do not add a new overlay script or stylesheet. Fix each thing where it is defined. No new `!important`.
