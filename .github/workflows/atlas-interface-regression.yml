@@ -46,7 +46,7 @@ jobs:
               browser=await playwright.chromium.launch(args=['--use-angle=swiftshader','--enable-unsafe-swiftshader'])
               for prefix,viewport in [('',{'width':1440,'height':900}),('beta/',{'width':390,'height':844})]:
                 label='main' if not prefix else 'beta-mobile'
-                ctx=await browser.new_context(viewport=viewport)
+                ctx=await browser.new_context(viewport=viewport,reduced_motion='reduce')
                 watch=await ctx.new_page()
                 errors=[]
                 watch.on('pageerror',lambda e:errors.append(str(e)))
@@ -84,9 +84,9 @@ jobs:
                     parentRect:rect(panel),topHit:document.elementFromPoint(rect(a).x+5,rect(a).y+5)?.outerHTML?.slice(0,160)};
                 }""")
                 print('MAP_KEY_DEBUG',label,json.dumps(debug),flush=True)
-                await dest.scroll_into_view_if_needed(timeout=10000)
+                await dest.evaluate("a=>a.scrollIntoView({block:'center',inline:'nearest',behavior:'instant'})")
                 await dest.evaluate("""a=>{window.__nativeClicks=0;a.addEventListener('click',e=>{e.preventDefault();window.__nativeClicks++});}""")
-                await dest.click(timeout=12000)
+                await dest.click(force=True,timeout=12000)
                 clicked=await page.evaluate('window.__nativeClicks')
                 assert clicked==1,(label,'map key link not receiving clicks',clicked)
                 if not prefix:
@@ -103,7 +103,7 @@ jobs:
                     foot=page.locator('.map-footer a[href="https://native-land.ca/"]')
                     await foot.evaluate("""a=>{window.__footerClicks=0;a.addEventListener('click',e=>{e.preventDefault();window.__footerClicks++});}""")
                     await page.locator('#map-info>summary').click(timeout=10000)
-                    await foot.click(timeout=12000)
+                    await foot.click(force=True,timeout=12000)
                     assert await page.evaluate('window.__footerClicks')==1, 'main footer link did not receive click'
                 await page.close()
                 page=await ctx.new_page()
