@@ -176,15 +176,14 @@ html[data-weave-stage]:not([data-weave-stage="start"]) body.is-constellating #co
   display:inline-flex!important;border-radius:0 9px 9px 0!important
 }
 
-/* The nine-item Help overlay competed with the sticky onboarding guide.
-   Keep the summary recognizable, and confine its four instructions to one small popover. */
+/* Help expands inside the dock, never behind the map or outside its scroll area. */
 body.is-constellating #constellate-popup .constellate-heading{
-  position:sticky!important;z-index:30!important;overflow:visible!important
+  position:sticky!important;z-index:30!important;overflow:visible!important;flex-wrap:wrap
 }
 body.is-constellating #constellate-popup .constellate-heading #constellate-how{
   position:relative!important;top:auto!important;right:auto!important;
-  flex:0 0 auto!important;z-index:31!important;
-  overflow:visible!important
+  flex:0 0 auto;z-index:31!important;
+  overflow:visible!important;min-width:0
 }
 body.is-constellating #constellate-popup #constellate-how>summary{
   box-sizing:border-box!important;display:inline-flex!important;
@@ -199,17 +198,19 @@ body.is-constellating #constellate-popup #constellate-how>summary{
 body.is-constellating #constellate-popup #constellate-how>summary:focus-visible{
   outline:2px solid var(--reading-accent,#9c3b26)!important;outline-offset:2px
 }
+body.is-constellating #constellate-popup .constellate-heading #constellate-how[open]{
+  flex:0 0 100%;width:100%;order:3;max-width:100%
+}
 body.is-constellating #constellate-popup .constellate-heading #constellate-how[open]>ol{
-  box-sizing:border-box!important;position:absolute!important;
-  top:calc(100% + 7px)!important;right:0!important;left:auto!important;
-  width:min(345px,calc(100vw - 36px))!important;
-  max-width:calc(100vw - 36px)!important;
+  box-sizing:border-box!important;position:static!important;
+   top:auto!important;right:auto!important;left:auto!important;
+   width:100%!important;max-width:100%!important;
   max-height:min(55dvh,350px)!important;overflow-y:auto!important;
   margin:0!important;padding:13px 16px 13px 35px!important;
   background:var(--reading-paper,#f9f7f1)!important;
   color:var(--reading-ink,#182028)!important;
   border:1px solid var(--reading-line,#c9d0c6)!important;border-radius:9px!important;
-  box-shadow:0 12px 34px rgba(0,0,0,.19)!important;
+  box-shadow:0 4px 16px rgba(0,0,0,.12)!important;
   font:13px/1.45 var(--ui-sans,system-ui,sans-serif)!important;
   z-index:32!important
 }
