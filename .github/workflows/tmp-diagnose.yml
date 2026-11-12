@@ -1,0 +1,55 @@
+name: tmp diagnose (Claude)
+on:
+  workflow_dispatch:
+  push:
+    paths: ['.github/workflows/tmp-diagnose.yml']
+permissions:
+  contents: read
+jobs:
+  diag:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 30}
+      - run: |
+          python3 -m pip install -q 'playwright==1.*'
+          python3 -m playwright install --with-deps chromium >/dev/null
+          git worktree add -q /tmp/prev 321c202
+          python3 -m http.server 8983 --bind 127.0.0.1 >/dev/null 2>&1 &
+          (cd /tmp/prev && python3 -m http.server 8984 --bind 127.0.0.1 >/dev/null 2>&1 &)
+          sleep 2
+          cat >/tmp/diag.py <<'PY'
+          import asyncio, json
+          from playwright.async_api import async_playwright
+          async def go(b, root, tag, desktop_first):
+              ctx=await b.new_context(viewport={'width':1440,'height':900}); p=await ctx.new_page(); logs=[]
+              p.on('pageerror',lambda e:logs.append('PAGEERROR '+str(e)[:200]))
+              p.on('console',lambda m:logs.append('CONSOLE '+m.text[:160]) if m.type=='error' else None)
+              async def flow(base,w,h,label):
+                  await p.set_viewport_size({'width':w,'height':h})
+                  await p.goto(base+'index.html?constellate=1',wait_until='domcontentloaded',timeout=90000)
+                  await p.wait_for_function('window.AtlasConstellate?.enabled && document.getElementById("weave-start") && window.AtlasCollections?.current()',timeout=55000)
+                  pre=await p.evaluate("({stage:document.documentElement.dataset.weaveStage,items:window.AtlasCollections.current().items.length,startHidden:document.querySelector('#weave-start').hidden,cols:window.AtlasCollections.state.collections.length,fallback:document.querySelector('.geography')?.dataset.geographyFallback})")
+                  await p.locator('#ws-theme-q').fill('Cosmology and Origin Stories')
+                  await p.locator('#ws-theme-results [data-ws-theme]').first.click()
+                  trail=[]
+                  for i in range(16):
+                      await p.wait_for_timeout(1000)
+                      trail.append(await p.evaluate("[document.documentElement.dataset.weaveStage,window.AtlasCollections.current().items.length,!document.querySelector('#weave-start')||document.querySelector('#weave-start').hidden,document.body.className.replace('atlas-page relationship-cards','').trim().slice(0,70)]"))
+                      if trail[-1][0]=='build': break
+                  print('DIAG',tag,label,'pre',json.dumps(pre),'trail',json.dumps(trail[:3]+trail[-2:]),'logs',json.dumps(logs[-6:]),flush=True)
+              if desktop_first:
+                  await flow(root,1440,900,'main-desktop')
+              await flow(root+'beta/',390,844,'beta-mobile')
+              await ctx.close()
+          async def main():
+              async with async_playwright() as pw:
+                  b=await pw.chromium.launch(args=['--use-angle=swiftshader','--enable-unsafe-swiftshader'])
+                  for root,tag in [('http://127.0.0.1:8983/','NOW'),('http://127.0.0.1:8984/','PREV')]:
+                      await go(b,root,tag+'-after-desktop',True)
+                      await go(b,root,tag+'-fresh',False)
+                  await b.close()
+          asyncio.run(main())
+          PY
+          python3 /tmp/diag.py
