@@ -69,11 +69,17 @@ jobs:
                   await page.wait_for_timeout(2500)
                   state['example']=await page.evaluate("""() => ({
                     threads: window.AtlasCollections.current().threads.length,
+                    credits: window.AtlasCollections.current().threads.reduce((n,t)=>n+t.items.length,0),
+                    perThread: window.AtlasCollections.current().threads.map(t=>t.items.length),
                     items: window.AtlasCollections.current().items.length,
                     visible: !document.querySelector('#atlas-theme-web').hidden
                   })""")
-                  assert state['example']['threads']>=4,state
-                  assert state['example']['items']>=15,state
+                  # The UI intentionally seeds three threads with four film
+                  # credits each; unique films may be shared across threads.
+                  assert state['example']['threads']==3,state
+                  assert state['example']['perThread']==[4,4,4],state
+                  assert state['example']['credits']==12,state
+                  assert 4<=state['example']['items']<=12,state
                   assert not state['example']['visible'],state
                   try:
                     await page.screenshot(path='shots/theme-web-example-desktop.png',full_page=False,timeout=15000,animations='disabled')
