@@ -321,22 +321,10 @@ html[data-weave-stage="build"] body.is-theme-weaving #weave-guide .wg-actions bu
 }
 
 
-/* Job 1: keep the presentation free of navigation chrome from the one-bar layout. */
-:root[data-ui-bar="one"] body.weave-playing .map-panel .map-toolbar,
-:root[data-ui-bar="one"] body.weave-playing .map-panel .map-toolbar .zoom,
-:root[data-ui-bar="one"] body.weave-playing .map-panel .map-toolbar .map-actions{
-  display:none!important
-}
 /* Play's eyebrow is visible; the separate live announcement remains available. */
 #weave-player #weave-play-thread{
   display:block;position:static;max-width:100%;white-space:normal;
   overflow-wrap:anywhere;letter-spacing:.09em;text-transform:uppercase
-}
-/* Keep notices out of the cards and below the toolbar. */
-body.is-constellating #atlas #weave-notice{
-  position:absolute;top:auto!important;bottom:0!important;left:0!important;
-  right:0!important;transform:none!important;width:100%;
-  max-width:none;box-sizing:border-box;text-align:center;border-radius:0
 }
 /* Sticky headings should not obscure the first line of Follow. */
 #weave-read-panel{padding-top:12px;scroll-margin-top:58px}
