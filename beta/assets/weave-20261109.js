@@ -133,7 +133,67 @@ function guide(st){
 }
 
 /* ---------- labels ---------- */
+/* ---------- 2026-11-11: suggestions never offer a film that is already on the thread ---------- */
+var chip=function(v,n){v=String(v||'');return v.length>n?v.slice(0,n-1).replace(/\s+$/,'')+'…':v;};
+var tkey=function(x){return norm(x.title).replace(/[^a-z0-9]+/g,' ').trim()+'|'+(x.year||'');};
+var yr=function(x){var n=parseInt(x&&x.year,10);return n>1800&&n<2100?n:null;};
+function thumbHTML(x){var img='';try{img=C().sourceImage(x)||'';}catch(e){}
+ var ini=String(x.title||'').trim().split(/\s+/).slice(0,2).map(function(w){return Array.from(w)[0]||'';}).join('').toUpperCase()||'·';
+ return '<span class="weave-media-thumb'+(img?' has-source':'')+'" role="img" aria-label="'+(img?'Atlas film image':'No sourced image — title placeholder')+'">'+(img?'<img src="'+esc(img)+'" alt="" loading="lazy" decoding="async">':'')+'<span class="weave-media-placeholder" aria-hidden="true"><b>'+esc(ini)+'</b><small>Film</small></span></span>';}
+function suggest(){
+ var box=$('#weave-suggest');if(!box||box.hidden)return;
+ var c=current(),t=thread();if(!c||!t)return;
+ var head=$('.weave-suggest-head small',box);if(!head)return;
+ var onThread={},inWeave={};
+ c.items.forEach(function(x){if(x.type!=='film')return;inWeave[tkey(x)]=1;if(t.items.indexOf(x.id)>=0)onThread[tkey(x)]=1;});
+ var shown=head.textContent.trim();
+ var pool=c.items.filter(function(x){return x.type==='film'&&chip(x.title,45)===shown;});
+ var seed=pool.filter(function(x){return t.items.indexOf(x.id)>=0;})[0]||pool[0];
+ if(!seed)return;
+ var sig=[seed.id,t.id,t.items.join(',')].join('|');
+ if(box.dataset.wsSig===sig&&$('[data-ws-suggest]',box))return;
+ var want;try{want=C().terms(seed);}catch(e){return;}
+ var ly=yr(seed),seen={};
+ var picks=(C().catalog||[]).filter(function(x){return x.type==='film';}).map(function(x){
+   var k=tkey(x);if(k===tkey(seed)||onThread[k]||seen[k])return null;seen[k]=1;
+   var sh=C().terms(x).filter(function(m){return want.indexOf(m)>=0;});if(!sh.length)return null;
+   var y=yr(x);return {x:x,sh:sh,sc:sh.length*10+(inWeave[k]?4:0)-(ly&&y?Math.min(5,Math.abs(y-ly)/8):3)};
+ }).filter(Boolean).sort(function(a,b){return b.sc-a.sc||String(a.x.title).localeCompare(String(b.x.title));}).slice(0,6);
+ box.dataset.wsSig=sig;
+ box.innerHTML='<div class="weave-suggest-head" data-ws-suggest><h3>Films that could come next</h3><small>'+esc(shown)+'</small></div>'+
+  (picks.length?'<p class="weave-suggest-intro">Each shares a theme with this film in its published synopsis. Add next puts it on the thread.</p>'+picks.map(function(p){var x=p.x;
+    return '<div class="constellate-result weave-follow-result" draggable="true" data-drag-film="'+esc(x.id)+'">'+thumbHTML(x)+'<span><strong>'+esc(x.title)+'</strong><small>'+esc([x.maker,x.year].filter(Boolean).join(' · '))+'</small><small class="weave-theme-tags">Shares '+esc(p.sh.join(' · '))+'</small></span><button type="button" data-weave-follow="'+esc(x.id)+'" aria-label="Add '+esc(x.title)+' next on '+esc(t.name)+'">Add next</button></div>';}).join('')
+  :'<p class="weave-suggest-intro">Every film that shares a documented theme with this one is already on the thread. Use Add films to continue.</p>');
+}
+/* ---------- 2026-11-11: a new thread never repeats a colour already in use ---------- */
+var STAR_ORDER=['star-blue','star-yellow','star-red','star-bluewhite','star-orange','star-white'],lastThreadCount={};
+function distinctColours(){
+ var c=current();if(!c)return;var n=c.threads.length,was=lastThreadCount[c.id];lastThreadCount[c.id]=n;
+ if(was===undefined||n<=was)return;
+ var fresh=c.threads[n-1],used={};c.threads.slice(0,n-1).forEach(function(t){used[t.color]=1;});
+ if(!used[fresh.color])return;
+ var free=STAR_ORDER.filter(function(k){return !used[k];})[0];
+ if(free){fresh.color=free;try{S().save();}catch(e){}}
+}
+/* ---------- 2026-11-11: legend for the two kinds of line; phone cue for the selected film ---------- */
+function legendNote(){
+ var host=$('#weave-legend');if(!host||$('#weave-line-key'))return;
+ var p=document.createElement('p');p.id='weave-line-key';
+ p.innerHTML='<span class="wk wk-solid" aria-hidden="true"></span>Solid thread = sourced connection. <span class="wk wk-dream" aria-hidden="true"></span>Dream thread = interpretive connection. <span class="wk-about">The weaving here is abstract (lines, knots); it uses no community’s textile designs.</span>';
+ host.after(p);
+}
+function phoneCue(){
+ var ctx=$('#constellate-context'),small=window.matchMedia('(max-width:700px)').matches,cue=$('#weave-phone-cue');
+ var show=small&&root.dataset.weaveStage==='build'&&ctx&&!ctx.hidden;
+ if(!show){if(cue)cue.hidden=true;return;}
+ if(!cue){cue=document.createElement('button');cue.type='button';cue.id='weave-phone-cue';document.body.appendChild(cue);
+  cue.addEventListener('click',function(){var k=$('#constellate-context');if(k)k.scrollIntoView({block:'start',behavior:'smooth'});});}
+ var h=$('#constellate-context h3'),r=ctx.getBoundingClientRect();
+ cue.textContent=(h?chip(h.textContent,30):'Selected film')+' · details ↓';
+ cue.hidden=r.top<window.innerHeight-80&&r.bottom>0;
+}
 function labels(){
+ try{suggest();}catch(e){}
  var b=$('#weave-browse-films');if(b&&b.textContent.trim()==='Find films'){b.textContent='Add films';b.title='Search the atlas and add films to the active thread';}
  var tab=$('#weave-tab-add');if(tab&&tab.textContent.trim()==='Browse films')tab.textContent='Add films';
  var cl=$('#constellate-clear');if(cl&&cl.textContent.trim()==='Clear weave'){cl.textContent='Clear';}
@@ -151,13 +211,14 @@ function tick(){
  if(st)root.dataset.weaveStage=st;else delete root.dataset.weaveStage;
  var web=$('#atlas-theme-web');if(web&&!web.hidden)root.dataset.weaveWeb='1';else delete root.dataset.weaveWeb;
  if(!st)return;
- buildStart();buildGuide();labels();
+ buildStart();buildGuide();labels();try{distinctColours();legendNote();phoneCue();}catch(e){}
  if(st==='start'){savedList();}
  guide(st);
  if(st==='build'){var th=thread(),len=th?th.items.length:0;if(len>=2&&lastLen<2){setTimeout(function(){if(root.dataset.weaveStage==='build'){try{C().fit();}catch(e){}}},350);}lastLen=len;}else lastLen=-1;
  if(st==='start'&&last!=='start'){var qn=$('#ws-film-q');if(qn&&window.innerWidth>760)setTimeout(function(){try{qn.focus({preventScroll:true});}catch(e){}},300);}
  last=st;
 }
+window.addEventListener('scroll',function(){try{phoneCue();}catch(e){}},{passive:true});
 function start(){
  if(!window.AtlasConstellate||!window.AtlasCollections){if((start.attempts=(start.attempts||0)+1)<=100)setTimeout(start,300);return;}
  tick();

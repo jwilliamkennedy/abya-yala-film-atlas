@@ -44,7 +44,7 @@ body.is-theme-weaving #atlas-basemap {filter:brightness(.92) saturate(1.06)!impo
 
 /* The former longitudinal warp looked like rendering artifacts. Thread
    paths now carry the visual metaphor, with the map left uncluttered. */
-body.is-theme-weaving #constellate-graph .loom-warp {display:none!important}
+
 body.is-theme-weaving #constellate-graph .weave-thread-shadow {
  stroke-width:3.5!important;stroke-opacity:.14!important;filter:none!important;
 }
