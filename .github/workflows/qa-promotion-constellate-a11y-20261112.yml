@@ -52,12 +52,22 @@ jobs:
                 assert selected=='constellate-graph',(name,selected)
                 assert page.url==before,(name,'Skip changed the share address',before,page.url)
                 await page.wait_for_function("window.AtlasConstellate.catalog.filter(x=>x.type==='film').length > 1000",timeout=60000)
+                if name=='desktop':
+                  land=await page.evaluate("""() => {
+                    const a=window.Atlas;
+                    const refs=a.recordLandReferences('DIR-0103');
+                    return {maker:'DIR-0103',film:'FILM-0079',refs,
+                      marker:refs.map(r=>({id:r.id,point:a.landMarkerReference(r.id)}))};
+                  }""")
+                  print('YINTAH_LAND_DEBUG',json.dumps(land,ensure_ascii=False),flush=True)
                 await page.evaluate("window.AtlasConstellate.themeThread('Land Defense')")
                 await page.wait_for_function("window.AtlasCollections.current().items.length >= 6",timeout=25000)
-                # A theme can contain only unmapped films: expose card controls in No-map mode
-                # rather than treating an atlas-safe off-map rail as a broken node.
-                if await page.locator('#constellate-graph [data-constellate-node]').count()==0:
-                  await page.locator('#weave-unmap').click(force=True)
+                # When all films share a coordinate, the map uses named stars
+                # rather than cards. "Show every card" is the explicit testing mode.
+                await page.evaluate("""() => {
+                  document.getElementById('weave-cards-toggle').click();
+                  document.getElementById('weave-unmap').click();
+                }""")
                 await page.wait_for_function("document.querySelectorAll('#constellate-graph [data-constellate-node]').length>=1",timeout=30000)
                 focus=await page.locator('#constellate-graph [data-constellate-node]').first.evaluate("""el => {
                   el.focus({preventScroll:true});const style=getComputedStyle(el.querySelector('rect'));
