@@ -54,6 +54,16 @@ jobs:
                 thread:t.name};
             }""")
             assert seed['seed']==6 and seed['playVisible'],(label,'six-film starter or top-level Play failed',seed)
+            tab_state=await p.evaluate("""() => {
+              const e=document.querySelector('#weave-tab-add'),ed=document.querySelector('#weave-editor'),panel=document.querySelector('#constellate-popup'),r=e.getBoundingClientRect();
+              const cs=getComputedStyle(e),ps=getComputedStyle(panel),es=getComputedStyle(ed);
+              const center=document.elementFromPoint(r.x+r.width/2,r.y+r.height/2);
+              return {body:document.body.className,panel:{hidden:panel.hidden,display:ps.display,rect:panel.getBoundingClientRect().toJSON()},
+                editor:{hidden:ed.hidden,display:es.display,tab:ed.dataset.tab},
+                tab:{display:cs.display,visibility:cs.visibility,rect:r.toJSON(),html:e.outerHTML.slice(0,400)},
+                center:center?.outerHTML.slice(0,400),scroll:panel.scrollTop,window:[innerWidth,innerHeight]}
+            }""")
+            print('CONSTELLATE_TAB_STATE',label,json.dumps(tab_state,ensure_ascii=False),flush=True)
             await p.locator('#weave-tab-add').click(timeout=12000)
             await p.wait_for_function("document.querySelectorAll('#constellate-results .constellate-result').length>=30",timeout=15000)
             search=await p.evaluate("""() => ({
