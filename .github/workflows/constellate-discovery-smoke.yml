@@ -33,7 +33,7 @@ jobs:
           import asyncio,json
           from playwright.async_api import async_playwright
           ROOT='http://127.0.0.1:8983/'
-          async def verify(p,base,label):
+          async def verify(p,base,label,width,height):
             errors=[]
             p.on('pageerror',lambda err:errors.append(str(err)))
             await p.goto(base+'index.html?constellate=1',wait_until='domcontentloaded',timeout=90000)
@@ -68,7 +68,14 @@ jobs:
                 topAtTab:document.elementFromPoint(r.x+r.width/2,r.y+r.height/2)?.id||''};
             }""")
             print('DISCOVERY_BROWSE_STATE',label,json.dumps(state,ensure_ascii=False),flush=True)
-            await p.locator('#weave-tab-add').click(timeout=12000)
+            # Map camera redraws can prevent Playwright's stability heuristic
+            # from settling even while the tab is visibly hit-testable.
+            # A physical mouse click at its exposed centre still tests navigation.
+            r=state['tabRect']
+            assert state['tabDisplay']!='none' and state['editorDisplay']!='none' and state['topAtTab']=='weave-tab-add', (label,'Browse films is obstructed',state)
+            assert r['x']>=0 and r['right']<=width and r['y']>=0 and r['bottom']<=height,(label,'Browse films is outside viewport',state)
+            await p.mouse.click(r['x']+r['width']/2,r['y']+r['height']/2)
+            await p.wait_for_function("document.querySelector('#weave-editor')?.dataset.tab==='add'",timeout=8000)
             await p.wait_for_function("document.querySelectorAll('#constellate-results .constellate-result').length>=30",timeout=15000)
             search=await p.evaluate("""() => ({
               shown:document.querySelectorAll('#constellate-results .constellate-result').length,
@@ -124,12 +131,16 @@ jobs:
             await p.locator('#weave-play').click(timeout=12000)
             await p.locator('#weave-player:not([hidden])').wait_for(timeout=12000)
             play_state=await p.evaluate("""() => {
-              const e=document.querySelector('#weave-play-close'),p=document.querySelector('#weave-player');
-              return {button:e.getBoundingClientRect().toJSON(),player:p.getBoundingClientRect().toJSON(),
-                playerPos:getComputedStyle(p).position,display:getComputedStyle(e).display,innerHeight};
+              const e=document.querySelector('#weave-play-close'),p=document.querySelector('#weave-player'),r=e.getBoundingClientRect();
+              return {button:r.toJSON(),player:p.getBoundingClientRect().toJSON(),
+                playerPos:getComputedStyle(p).position,display:getComputedStyle(e).display,innerHeight,
+                topAtButton:document.elementFromPoint(r.x+r.width/2,r.y+r.height/2)?.id||''};
             }""")
             print('DISCOVERY_PLAY_STATE',label,json.dumps(play_state,ensure_ascii=False),flush=True)
-            await p.locator('#weave-play-close').click(timeout=12000)
+            b=play_state['button']
+            assert play_state['display']!='none' and b['y']>=0 and b['bottom']<=height and play_state['topAtButton']=='weave-play-close',(label,'Play Close is unreachable',play_state)
+            await p.mouse.click(b['x']+b['width']/2,b['y']+b['height']/2)
+            await p.wait_for_function("!document.body.classList.contains('weave-playing')",timeout=8000)
             await p.locator('#weave-theme-web-toggle').click(timeout=12000)
             await p.locator('#atlas-theme-web:not([hidden])').wait_for(timeout=12000)
             bridge_count=await p.locator('#tw-graph .tw-bridge').count()
@@ -150,7 +161,7 @@ jobs:
               for base,label,width,height in [(ROOT,'main-desktop',1440,900),(ROOT+'beta/','beta-mobile',390,844)]:
                 ctx=await browser.new_context(viewport={'width':width,'height':height},reduced_motion='reduce')
                 page=await ctx.new_page()
-                result.append(await verify(page,base,label))
+                result.append(await verify(page,base,label,width,height))
                 await ctx.close()
               await browser.close()
             print('CONSTELLATE_DISCOVERY_PASS',json.dumps(result,ensure_ascii=False))
