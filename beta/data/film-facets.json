@@ -1,9 +1,9 @@
 {
  "title": "Indigenous Cinema Atlas · film facets",
- "generated": "2026-11-11",
+ "generated": "2026-11-12",
  "license": "See data.html",
- "films_on_public_map": 1540,
- "film_entries": 1555,
+ "films_on_public_map": 1551,
+ "film_entries": 1566,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -69,7 +69,7 @@
   ]
  },
  "language_authority": {
-  "source": "Glottolog (glottolog-cldf, fetched 2026-11-11)",
+  "source": "Glottolog (glottolog-cldf, fetched 2026-11-12)",
   "languages": [
    {
     "label": "Anishinaabemowin (Ojibwe)",
@@ -7232,6 +7232,70 @@
   "FILM-0136": {
    "title": "Raa: Plantas de sabiduría para armonizar el mundo",
    "year": null,
+   "makers": [
+    {
+     "id": "DIR-0190",
+     "name": "Nelly Kuiru"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261111-03-F1": {
+   "title": "Mujeres Umari. Tejedoras de historias y saberes",
+   "year": 2020,
+   "makers": [
+    {
+     "id": "DIR-0190",
+     "name": "Nelly Kuiru"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261111-04-F1": {
+   "title": "KIYEDECAGO (Mujer de la piña dulce)",
+   "year": 2021,
+   "makers": [
+    {
+     "id": "DIR-0190",
+     "name": "Nelly Kuiru"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261111-05-F1": {
+   "title": "Yarokamena. La resistencia",
+   "year": 2021,
+   "makers": [
+    {
+     "id": "DIR-0190",
+     "name": "Nelly Kuiru"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261111-06-F1": {
+   "title": "Ka+ Jairag+ma Iga+ (Lazos ancestrales)",
+   "year": 2022,
    "makers": [
     {
      "id": "DIR-0190",
@@ -18442,6 +18506,54 @@
   "NEW-88392d09b0b8-WORK-1": {
    "title": "Los ancestros que aún nos habitan – Canto de la Selva",
    "year": 2023,
+   "makers": [
+    {
+     "id": "SA50-20261014-bdba8a2b66ca",
+     "name": "Gustavo Ulcué Campo"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261111-07-F1": {
+   "title": "Guerrera Ancestral",
+   "year": null,
+   "makers": [
+    {
+     "id": "SA50-20261014-bdba8a2b66ca",
+     "name": "Gustavo Ulcué Campo"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261111-08-F1": {
+   "title": "Kwesx Dxi'j (nuestro camino)",
+   "year": 2019,
+   "makers": [
+    {
+     "id": "SA50-20261014-bdba8a2b66ca",
+     "name": "Gustavo Ulcué Campo"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261111-09-F1": {
+   "title": "Yu’ Luuçx (hijos del agua)",
+   "year": 2016,
    "makers": [
     {
      "id": "SA50-20261014-bdba8a2b66ca",
@@ -30594,6 +30706,70 @@
    ],
    "form": "Fiction",
    "length": "Short"
+  },
+  "NEW-65d746d4dc9c-F1": {
+   "title": "Metzew (Energía)",
+   "year": 2023,
+   "makers": [
+    {
+     "id": "NEW-65d746d4dc9c",
+     "name": "Emma Carlota Cucul"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "NEW-65d746d4dc9c-F2": {
+   "title": "Komonil",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "NEW-65d746d4dc9c",
+     "name": "Emma Carlota Cucul"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261111-01-F1": {
+   "title": "Xàbò Mè'phàà: Na'ne Xuajen",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261111-01",
+     "name": "María Isaías Jerónimo Reyes"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261111-10-F1": {
+   "title": "Waklichishka",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "Q20261111-10",
+     "name": "Enoc Merino Santi"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
   }
  }
 }
