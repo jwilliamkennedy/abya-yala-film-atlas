@@ -2,8 +2,8 @@
 
 Each file here is one constellation with a short, stable address:
 
-    https://jwilliamkennedy.github.io/abya-yala-film-atlas/?c=<slug>          (opens in Follow)
-    https://jwilliamkennedy.github.io/abya-yala-film-atlas/?c=<slug>&play=1   (opens in Play)
+    https://jwilliamkennedy.github.io/abya-yala-film-atlas/beta/?c=<slug>          (opens in Follow)
+    https://jwilliamkennedy.github.io/abya-yala-film-atlas/beta/?c=<slug>&play=1   (opens in Play)
 
 - A file stores film and filmmaker IDs only. Titles, names and years are read from the atlas when the
   constellation opens, so a correction to a record reaches every constellation that uses it.
