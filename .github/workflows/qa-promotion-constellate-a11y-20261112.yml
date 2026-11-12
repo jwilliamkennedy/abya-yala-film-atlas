@@ -51,7 +51,9 @@ jobs:
                 selected=await page.evaluate("document.activeElement?.id")
                 assert selected=='constellate-graph',(name,selected)
                 assert page.url==before,(name,'Skip changed the share address',before,page.url)
+                await page.wait_for_function("window.AtlasConstellate.catalog.filter(x=>x.type==='film').length > 1000",timeout=60000)
                 await page.evaluate("window.AtlasConstellate.themeThread('Land Defense')")
+                await page.wait_for_function("window.AtlasCollections.current().items.length >= 6",timeout=25000)
                 await page.wait_for_function("document.querySelectorAll('#constellate-graph [data-constellate-node]').length>=1",timeout=30000)
                 focus=await page.locator('#constellate-graph [data-constellate-node]').first.evaluate("""el => {
                   el.focus({preventScroll:true});const style=getComputedStyle(el.querySelector('rect'));
