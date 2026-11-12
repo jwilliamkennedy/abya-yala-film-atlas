@@ -86,8 +86,14 @@ html[data-weave-stage="read"] #weave-read-panel .weave-read-nav button:not(:disa
   html[data-weave-stage]:not([data-weave-stage="start"]) body.is-constellating #constellate-mode > :is(#constellate-edit,#constellate-read,#weave-play){
     height:38px!important;min-height:38px!important;padding:0 10px!important;font-size:13px!important
   }
+  /* On phones the map panel can start below the fold. Anchor the letterbox
+     to the viewport so the Play controls, especially Close, remain reachable. */
+  body.weave-playing #weave-player{
+    position:fixed;inset:0;width:100vw;height:100dvh;min-height:0;max-height:100dvh;
+    overflow:hidden;z-index:50
+  }
   #weave-player .weave-player-controls{
-    left:8px;right:8px;bottom:8px;gap:4px 8px;padding:5px
+    left:8px;right:8px;bottom:max(8px,env(safe-area-inset-bottom));gap:4px 8px;padding:5px
   }
   #weave-player .weave-player-controls button{min-height:36px}
   #weave-player .weave-title-card{bottom:112px!important;max-height:47%}
@@ -348,7 +354,7 @@ body.is-constellating #atlas #weave-notice{
 
 /* Job 2: films without a mapped land appear in a rail, not at a country pin.
    This is part of the existing map component, not a new overlay stylesheet. */
-#weave-offmap-rail[hidden]{display:none}
+body.is-constellating #weave-offmap-rail[hidden]{display:none}
 body.is-constellating #weave-offmap-rail{
   position:absolute;left:12px;right:12px;bottom:12px;z-index:19;
   display:flex;align-items:center;gap:12px;min-width:0;
@@ -406,4 +412,23 @@ body.weave-playing #weave-offmap-rail{visibility:hidden;pointer-events:none}
 #weave-order-list [data-note-edit]:focus-visible{outline:2px solid var(--reading-accent,#9c3b26);outline-offset:2px}
 @media(max-width:420px){
   #weave-order-list .weave-order-move{flex-wrap:wrap;justify-content:flex-end}
+}
+
+
+/* Job 4: four counted selectors remain usable beside the existing search controls. */
+#weave-discovery-tools label.weave-discovery-facet{
+  flex:1 1 43%;min-width:134px;max-width:100%;
+  display:flex;align-items:center;justify-content:space-between;
+  white-space:normal;gap:6px
+}
+#weave-discovery-tools .weave-discovery-facet select{
+  min-width:0;flex:1 1 auto;max-width:100%;width:100%;
+  overflow:hidden;text-overflow:ellipsis
+}
+#weave-suggest .weave-theme-tags{
+  display:block;max-width:100%;overflow-wrap:anywhere;white-space:normal
+}
+@media(max-width:540px){
+  #weave-discovery-tools label.weave-discovery-facet{flex:1 1 100%;min-width:0}
+  #weave-discovery-tools .weave-discovery-facet select{min-height:36px}
 }

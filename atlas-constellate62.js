@@ -5,7 +5,7 @@
  const TH=window.ATLAS_THEMES_1103||{families:{},films:{}},FAM={},FAMC={'Land and Environment':['#2f7d46','#7fd39a'],'Sovereignty and Politics':['#a8392b','#ff8f7a'],'Knowledge and Continuity':['#6447a8','#b9a2ff'],'Lives and Relations':['#a86a0e','#ffc163'],'Expression and Representation':['#1f6f99','#7cc8f0']};for(const[f,ts]of Object.entries(TH.families))for(const t of ts)FAM[t]=f;
  {const old={'land defense':'Land Defense','sovereignty':'Sovereignty and Self-Determination','language return':'Linguistic Preservation','memory':'Memory and Oral History','kinship':'Kinship','gender':'Women and Gender','youth':'Youth','water':'Water','environmental change':'Environmental Change','migration':'Displacement and Migration','healing':'Health and Healing','archives':'Archives, Museums and Repatriation','urban life':'Urban Indigeneity'};for(const r of A.allRecords())for(const f of r.films){const d=TH.films[f.id];if(d){f.themes=d[0].map(term=>({term,source:'curator',family:FAM[term]}));f.primaryTheme=d[1];f.weaveForm=d[2];f.weaveLength=d[3];f.themeSource=d[4];}else if(Array.isArray(f.themes))f.themes=f.themes.filter(t=>t.source!=='curator'||old[t.term]||FAM[t.term]).map(t=>t.source==='curator'&&old[t.term]?{...t,term:old[t.term],family:FAM[old[t.term]]}:t);/* tags already in the current vocabulary (flat beta) are kept as they are */}}
  const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)],map=$('.map-panel'),main=$('main'),trigger=$('.constellate-link');if(!map||!trigger)return;
- const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])),copy=v=>JSON.parse(JSON.stringify(v)),norm=v=>String(v||'').normalize('NFD').replace(/\p{Diacritic}/gu,'').toLowerCase();
+ const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])),copy=v=>JSON.parse(JSON.stringify(v)),norm=v=>String(v||'').replace(/[’‘ʼꞌ`']/gu,"'").normalize('NFD').replace(/\p{Diacritic}/gu,'').toLowerCase();
  const palette={blue:['#175fac','#7db6e8'],orange:['#a64c00','#f0ab68'],teal:['#00735b','#70c9b0'],purple:['#7141a3','#c5a2e6'],rose:['#a23361','#efa0be'],olive:['#657114','#c2cc7b'],cyan:['#006c83','#74cee1'],red:['#ad3030','#ed9292']};
  Object.assign(palette,{indigo:['#175fac','#7f95f5'],achiote:['#a64c00','#ec8a3d'],jade:['#00735b','#4fbf98'],cochineal:['#a23361','#d8475e'],maize:['#80661c','#ebc867'],cotton:['#8a8170','#efe6d2']});// Beta 105: thread colors follow the colors of stars, blue to red; older weaves keep their order of colors.
  const STAR={"star-blue": ["#3a5bbf", "#8fb4ff"], "star-bluewhite": ["#5a72a8", "#cbd9ff"], "star-white": ["#6f7480", "#f2f4fb"], "star-yellow": ["#99700f", "#ffd35c"], "star-orange": ["#a8521a", "#ffa95a"], "star-red": ["#a8302c", "#ff6f5a"]};Object.assign(palette,STAR,{indigo:STAR['star-blue'],jade:STAR['star-bluewhite'],cotton:STAR['star-white'],maize:STAR['star-yellow'],achiote:STAR['star-orange'],cochineal:STAR['star-red'],midnight:STAR['star-blue'],ocean:STAR['star-bluewhite'],sky:STAR['star-bluewhite'],glacier:STAR['star-white']});const DYES=[['star-blue','Blue'],['star-bluewhite','Blue-white'],['star-white','White'],['star-yellow','Yellow'],['star-orange','Orange'],['star-red','Red']];
@@ -93,10 +93,10 @@
  map.insertAdjacentHTML('beforeend',`<section id="weave-player" aria-label="Play this constellation" hidden><div class="weave-player-controls"><button id="weave-play-prev" aria-label="Previous film">← Previous</button><button id="weave-play-pause">Play</button><span id="weave-play-progress" role="status" aria-live="polite"></span><label class="weave-play-speed" for="weave-play-speed">Pace <select id="weave-play-speed" aria-label="Time per film"><option value="4000">4s</option><option value="6000" selected>6s</option><option value="10000">10s</option></select></label><button id="weave-play-next" aria-label="Next film">Next →</button><button id="weave-play-close">Close ×</button></div><div class="weave-title-card"><span class="weave-play-art"><img id="weave-play-image" alt="" hidden><span id="weave-play-fallback" class="weave-play-fallback" role="img" aria-label="Title-based image placeholder">·</span></span><div><small id="weave-play-thread"></small><h2 id="weave-play-title"></h2><p id="weave-play-maker"></p><p id="weave-play-themes"></p><p id="weave-play-subtitle"></p></div></div></section>`);
  $('#constellate-graph').insertAdjacentHTML('afterend','<section id="weave-offmap-rail" hidden aria-label="Films whose land has not yet been mapped"><div class="weave-offmap-heading"><strong>Off the map</strong><small>Land not yet mapped</small></div><div class="weave-offmap-items" role="list" aria-label="Off the map films in thread order"></div></section>');
  const graph=$('#constellate-graph'),offMapRail=$('#weave-offmap-rail'),offMapItems=offMapRail.querySelector('.weave-offmap-items'),panel=$('#constellate-popup'),context=$('#constellate-context'),inline=$('#constellate-inline');
- $('#constellate-search').insertAdjacentHTML('afterend','<div id="weave-discovery-tools" class="weave-discovery-tools"><label>Order <select id="weave-discovery-order" aria-label="Sort discovered films"><option value="relevance">Relevance / A–Z</option><option value="title">Title A–Z</option><option value="oldest">Oldest first</option><option value="newest">Newest first</option></select></label><label><input id="weave-discovery-unadded" type="checkbox"> Not on thread</label><label><input id="weave-discovery-art" type="checkbox"> With sourced image</label><button type="button" id="weave-discovery-clear" aria-label="Clear film search and filters">Clear</button></div><p class="weave-discovery-hint">Search titles, filmmakers, peoples, places and themes. Press / to search; Esc clears.</p><p id="weave-discovery-count" role="status" aria-live="polite" class="weave-discovery-count"></p>');
+ $('#constellate-search').insertAdjacentHTML('afterend','<div id="weave-discovery-tools" class="weave-discovery-tools"><label>Order <select id="weave-discovery-order" aria-label="Sort discovered films"><option value="relevance">Relevance / A–Z</option><option value="title">Title A–Z</option><option value="oldest">Oldest first</option><option value="newest">Newest first</option></select></label><label><input id="weave-discovery-unadded" type="checkbox"> Not on thread</label><label><input id="weave-discovery-art" type="checkbox"> With sourced image</label><label class="weave-discovery-facet">Country <select id="weave-discovery-country" aria-label="Filter by recorded country"><option value="">All countries</option></select></label><label class="weave-discovery-facet">Decade <select id="weave-discovery-decade" aria-label="Filter by decade"><option value="">All decades</option></select></label><label class="weave-discovery-facet">Form <select id="weave-discovery-form" aria-label="Filter by published film form"><option value="">All forms</option></select></label><label class="weave-discovery-facet">Length <select id="weave-discovery-length" aria-label="Filter by published film length"><option value="">All lengths</option></select></label><button type="button" id="weave-discovery-clear" aria-label="Clear film search and filters">Clear</button></div><p class="weave-discovery-hint">Search titles, filmmakers, peoples, places and themes. Press / to search; Esc clears.</p><p id="weave-discovery-count" role="status" aria-live="polite" class="weave-discovery-count"></p>');
  $('#weave-legend').insertAdjacentHTML('beforebegin','<div class="weave-focus-actions"><button id="weave-focus-thread" type="button" aria-pressed="false" title="Temporarily display only the selected thread; no saved content changes">Focus selected thread</button></div>');
   $('#weave-order').insertAdjacentHTML('beforeend','<section id="weave-theme-more" class="weave-theme-more" aria-label="Explore more films in this theme" hidden></section>');
- let enabled=false,reading=false,drawThread=false,drawLast=null,active=null,connecting=false,first=null,shiftFirst=null,pointer=null,drag=null,dragLink=null,suppress=null,busy=false,entry=null,draft=null,draftKey=null,frame=0,readIndex=0,orderDrag=null,pendingPicker=null,size={width:900,height:650},positions=new Map(),anchors=new Map(),offMapIds=new Set(),offMapSignature='',cameraBasePositions=new Map(),cameraBaseAnchors=new Map(),cameraBaseWarp=null;const histories=new Map(),known=new Map(S.state.collections.map(c=>[c.id,copy(c)]));
+ let enabled=false,reading=false,drawThread=false,drawLast=null,active=null,connecting=false,first=null,shiftFirst=null,pointer=null,drag=null,dragLink=null,suppress=null,busy=false,entry=null,draft=null,draftKey=null,frame=0,readIndex=0,orderDrag=null,pendingPicker=null,size={width:900,height:650},positions=new Map(),anchors=new Map(),offMapIds=new Set(),offMapSignature='',offMapActive='',offMapScrollSignature='',cameraBasePositions=new Map(),cameraBaseAnchors=new Map(),cameraBaseWarp=null;const histories=new Map(),known=new Map(S.state.collections.map(c=>[c.id,copy(c)]));
  const dimensions=()=>{const b=$('#atlas').getBoundingClientRect();size={width:b.width||900,height:b.height||650};$('#atlas').style.setProperty('--weave-map-height',size.height+'px');return size;},NW=()=>size.width<500?132:158,NH=42,top=()=>size.width<681?128:112;
  const snapshot=c=>{const x=copy(c);delete x.updatedAt;return x;};
  const clearNotice=()=>{clearTimeout(status.t);$('#weave-notice').hidden=true;$('#weave-notice').textContent='';};const status=message=>{$('#constellate-status').textContent=message;clearNotice();$('#weave-notice').textContent=message;$('#weave-notice').hidden=!message;if(message)status.t=setTimeout(clearNotice,4000);};
@@ -136,7 +136,7 @@
   const seen=new Set(),items=[];
   if(!unmapped)for(const t of visible)for(const id of t.items){
    if(seen.has(id))continue;const x=S.current().items.find(x=>x.id===id);
-   if(x?.type!=='film'||reference(x))continue;
+   if(x?.type!=='film'||anchor(x))continue;
    seen.add(id);items.push(x);
   }
   offMapIds=new Set(items.map(x=>x.id));
@@ -148,6 +148,16 @@
    offMapItems.querySelectorAll('[data-offmap-item]').forEach(b=>b.onclick=()=>choose(b.dataset.offmapItem));
   }
   offMapItems.querySelectorAll('[data-offmap-item]').forEach(b=>b.setAttribute('aria-current',String(b.dataset.offmapItem===active)));
+  // Reveal the selected off-map film when navigation advances; respect manual scrolling.
+  if(offMapActive!==active||signature!==offMapScrollSignature){
+   offMapActive=active;offMapScrollSignature=signature;
+   const selected=[...offMapItems.querySelectorAll('[data-offmap-item]')].find(b=>b.dataset.offmapItem===active);
+   if(selected){
+    const a=selected.getBoundingClientRect(),v=offMapItems.getBoundingClientRect();
+    if(a.left<v.left)offMapItems.scrollLeft-=v.left-a.left+8;
+    else if(a.right>v.right)offMapItems.scrollLeft+=a.right-v.right+8;
+   }
+  }
  }
  function offMapPoint(id){
   const b=[...offMapItems.querySelectorAll('[data-offmap-item]')].find(b=>b.dataset.offmapItem===id);
@@ -161,10 +171,10 @@
  function selectedItem(){const r=A.recordById(A.state.record);return r?raw.find(x=>x.record===r.id&&x.type===(A.state.film?'film':'maker')&&(!A.state.film||x.film===A.state.film)):null;}
  function existingWork(x){return S.current().items.find(i=>i.id===x.id||(x.type==='film'&&i.type==='film'&&key(i)===key(x)));}
  function add(x,threadId=S.current().activeThread){const existing=existingWork(x),beforeCount=S.current().items.length;let id=existing?.id;
-  const ok=transaction(existing?'Add card to thread':x.type==='concept'?'Add idea':'Add film',()=>{if(existing)return S.addToThread(existing.id,threadId);const saved=S.add(x,{threadId});id=S.current().selectedItem;if(saved&&x.type==='concept')S.position(id,{x:.42,y:.44});return saved;});if(!ok)return false;active=id;if(drawThread&&threadId===S.current().activeThread)drawLast=id;const item=S.current().items.find(x=>x.id===id),ref=item&&reference(item);if(ref){const a=anchor(item);if(beforeCount===0)A.focusLandOnMap(ref.id);else if(!a||a.x<0||a.x>size.width||a.y<100||a.y>size.height-60)fit();}render();status('Added to '+(S.current().threads.find(t=>t.id===threadId)?.name||'thread')+'.');return true;}
+  const ok=transaction(existing?'Add card to thread':x.type==='concept'?'Add idea':'Add film',()=>{if(existing)return S.addToThread(existing.id,threadId);const saved=S.add(x,{threadId});id=S.current().selectedItem;if(saved&&x.type==='concept')S.position(id,{x:.42,y:.44});return saved;});if(!ok)return false;active=id;if(drawThread&&threadId===S.current().activeThread)drawLast=id;const item=S.current().items.find(x=>x.id===id),ref=item&&reference(item);if(ref){const a=anchor(item);if(a){if(beforeCount===0)A.focusLandOnMap(ref.id);else if(a.x<0||a.x>size.width||a.y<100||a.y>size.height-60)fit();}}render();status('Added to '+(S.current().threads.find(t=>t.id===threadId)?.name||'thread')+'.');return true;}
  function fit(mode){
   const items=S.current().items.filter(x=>visibleItem(x.id)&&x.type!=='concept');
-  const ids=[...new Set(items.map(reference).filter(Boolean).map(r=>r.id))];
+  const ids=[...new Set(items.filter(x=>anchor(x)).map(x=>reference(x).id))];
   // Fit mapped territories only. Unmapped films stay in the rail, never at a
   // country's centre or an invented territorial coordinate.
   if(ids.length&&!unmapped)A.fitLandReferences(ids);
@@ -270,27 +280,116 @@
  function resetBrowsePage(){
   browsePageStart=0;browsePageLimit=48;browseSignature='';azKey='';
  }
+
+ // Search only published records and mapped land names. Normalise punctuation
+ // but never infer Indigenous identity or a land from a surname or subject.
+ const searchLoose=v=>norm(v).replace(/['\u2010-\u2015\-]/g,'').replace(/\s+/g,' ').trim();
+ const wordTokens=v=>searchLoose(v).split(/[^\p{L}\p{N}]+/gu).filter(Boolean);
+ function oneEditOrSwap(a,b){
+  if(a.length<6||b.length<5||Math.abs(a.length-b.length)>1)return false;
+  if(a.length===b.length){
+   const diff=[];for(let i=0;i<a.length;i++)if(a[i]!==b[i])diff.push(i);
+   return diff.length===2&&diff[1]===diff[0]+1&&a[diff[0]]===b[diff[1]]&&a[diff[1]]===b[diff[0]];
+  }
+  const longer=a.length>b.length?a:b,shorter=a.length>b.length?b:a;
+  for(let i=0,j=0,skipped=false;i<longer.length;i++,j++){
+   if(longer[i]!==shorter[j]){if(skipped)return false;skipped=true;j--;}
+  }
+  return true;
+ }
+ const mappedNamesCache=new Map(),searchIndexCache=new Map();
+ function mappedLandNames(x){
+  if(!x?.record)return [];
+  if(!mappedNamesCache.has(x.record)){
+   const names=new Set();
+   for(const ref of A.recordLandReferences(x.record).filter(r=>r.mapped)){
+    if(ref.name)names.add(ref.name);
+    const land=A.landById?.(ref.id);
+    for(const name of [land?.name,...(Array.isArray(land?.aliases)?land.aliases:[]),land&&A.landDisplayName?.(land)])
+     if(typeof name==='string'&&name.trim())names.add(name.trim());
+   }
+   mappedNamesCache.set(x.record,[...names]);
+  }
+  return mappedNamesCache.get(x.record);
+ }
+ function indexedSearchFields(x){
+  if(!searchIndexCache.has(x.id)){
+   const r=x.record&&A.recordById(x.record),country=r?.country?A.countryByCode?.(r.country)?.name:'';
+   const fields=[x.title,x.maker,x.community,...mappedLandNames(x),x.year,country,...tags(x).flatMap(t=>[t.term,t.indigenousTerm,t.gloss,t.language])].filter(Boolean);
+   searchIndexCache.set(x.id,{fields:fields.map((v,i)=>({v:norm(v),plain:searchLoose(v),weight:i===0?0:i===1?2:i===2?4:i<3+mappedLandNames(x).length?5:9})),
+    tokens:[...new Set(fields.flatMap(wordTokens))]});
+  }
+  return searchIndexCache.get(x.id);
+ }
+ function matchSearch(x,q){
+  if(!q)return 0;
+  const ix=indexedSearchFields(x),plain=searchLoose(q);
+  let score=Infinity;
+  for(const f of ix.fields){
+   if(f.v===q)score=Math.min(score,f.weight);
+   else if(plain&&f.plain===plain)score=Math.min(score,5+f.weight);
+   else if(f.v.startsWith(q))score=Math.min(score,10+f.weight);
+   else if(f.v.includes(q))score=Math.min(score,20+f.weight);
+   else if(plain&&f.plain.includes(plain))score=Math.min(score,30+f.weight);
+  }
+  if(score!==Infinity)return score;
+  const tokens=wordTokens(q);
+  return tokens.length&&tokens.every(t=>ix.tokens.some(w=>w===t||oneEditOrSwap(t,w)))?50:Infinity;
+ }
+ const facetKinds=['country','decade','form','length'];
+ const facetSelect=k=>$('#weave-discovery-'+k);
+ const facetCache=new Map();
+ function facetValue(x,kind){
+  let value=facetCache.get(x.id);if(!value){
+   const r=x.record&&A.recordById(x.record),f=filmOf(x),yr=yearNum(x);
+   value={country:r?.country||'',decade:yr?String(Math.floor(yr/10)*10):'',
+          form:String(f?.weaveForm||''),length:String(f?.weaveLength||'')};
+   facetCache.set(x.id,value);
+  }
+  return value[kind];
+ }
+ const facetLabel=(kind,value)=>{
+  if(kind==='country')return A.countryByCode?.(value)?.name||value;
+  if(kind==='decade')return value+'s';
+  if(kind==='length')return ({S:'Short',M:'Mid-length',F:'Feature',R:'Series'})[value]||value;
+  return ({D:'Documentary',F:'Fiction',A:'Animation',E:'Experimental',H:'Hybrid',M:'Music Video'})[value]||value;
+ };
+ function selectedFacets(){return Object.fromEntries(facetKinds.map(k=>[k,facetSelect(k).value]));}
+ function passesFacets(x,selected,omit=''){return facetKinds.every(k=>k===omit||!selected[k]||facetValue(x,k)===selected[k]);}
+ function refreshFacetOptions(all,q,onlyNew,withArt,thread){
+  const chosen=selectedFacets();
+  for(const kind of facetKinds){
+   const select=facetSelect(kind),eligible=all.filter(x=>{
+    const own=onlyNew&&existingWork(x);
+    return !(own&&thread.items.includes(own.id))&&(!withArt||!!sourceImage(x))&&
+           passesFacets(x,chosen,kind)&&Number.isFinite(matchSearch(x,q));
+   });
+   const counts=new Map();
+   for(const x of eligible){const value=facetValue(x,kind);if(value)counts.set(value,(counts.get(value)||0)+1);}
+   const values=[...counts.keys()].sort((a,b)=>kind==='decade'?Number(a)-Number(b):facetLabel(kind,a).localeCompare(facetLabel(kind,b)));
+   if(chosen[kind]&&!counts.has(chosen[kind]))values.push(chosen[kind]);
+   const label=({country:'All countries',decade:'All decades',form:'All forms',length:'All lengths'})[kind];
+   const html='<option value="">'+label+' ('+eligible.length+')</option>'+
+     values.map(v=>'<option value="'+esc(v)+'">'+esc(facetLabel(kind,v))+' ('+(counts.get(v)||0)+')</option>').join('');
+   if(select.innerHTML!==html){select.innerHTML=html;select.value=chosen[kind];}
+  }
+ }
  function renderResults({resetScroll=false}={}){
   const input=$('#constellate-search'),q=norm(input.value).trim(),order=$('#weave-discovery-order').value;
   const onlyNew=$('#weave-discovery-unadded').checked,withArt=$('#weave-discovery-art').checked;
   const box=$('#constellate-results'),thread=S.activeThread(),noun=azTab==='film'?'films':'filmmakers';
   const all=azAll(azTab),membership=onlyNew?thread.items.join('|'):'';
-  const filterSignature=[azTab,q,order,onlyNew,withArt,thread.id].join('|');
+   refreshFacetOptions(all,q,onlyNew,withArt,thread);const facets=selectedFacets();
+  const filterSignature=[azTab,q,order,onlyNew,withArt,thread.id,...facetKinds.map(k=>facets[k])].join('|');
   if(filterSignature!==browseSignature){browsePageStart=0;browsePageLimit=48;browseSignature=filterSignature;}
   const cacheKey=[filterSignature,membership,browsePageStart,browsePageLimit].join('|');
   if(cacheKey!==azKey){
    const oldScroll=box.scrollTop;
-   const rank=x=>{
-    const title=norm(sortKey(x.title)),maker=norm(x.maker||''),community=norm(x.community||'');
-    return title.startsWith(q)?0:title.includes(q)?1:maker.includes(q)?2:community.includes(q)?3:4;
-   };
+   const rank=x=>matchSearch(x,q);
    let found=all.filter(x=>{
     if(onlyNew){const own=existingWork(x);if(own&&thread.items.includes(own.id))return false;}
     if(withArt&&!sourceImage(x))return false;
-    if(!q)return true;
-    const r=A.recordById(x.record),country=r?.country?A.countryByCode?.(r.country)?.name:'';
-    const values=[x.title,x.maker,x.community,x.year,country,...tags(x).flatMap(t=>[t.term,t.indigenousTerm,t.gloss,t.language])];
-    return norm(values.filter(Boolean).join(' ')).includes(q);
+    return passesFacets(x,facets)&&Number.isFinite(matchSearch(x,q));
    });
    if(order==='oldest'||order==='newest'){
     found=found.map((x,i)=>({x,i,y:yearNum(x)})).sort((a,b)=>((a.y==null)-(b.y==null))||
@@ -350,7 +449,7 @@
   $('#weave-target-name').textContent=thread.name+' · '+thread.items.length+' cards';
   const opts=S.current().threads.map((t,i)=>'<option value="'+esc(t.id)+'"'+(t.id===S.current().activeThread?' selected':'')+'>'+ (i+1)+'. '+esc(t.name)+'</option>').join('');
   if($('#weave-target').innerHTML!==opts)$('#weave-target').innerHTML=opts;
-  $('#weave-discovery-clear').disabled=!input.value&&!onlyNew&&!withArt&&order==='relevance';
+  $('#weave-discovery-clear').disabled=!input.value&&!onlyNew&&!withArt&&order==='relevance'&&!facetKinds.some(k=>facets[k]);
  }
 
  function renderLegend(){const c=S.current();const f=$('#weave-focus-thread');f.hidden=!focusThread&&c.threads.filter(t=>t.visible).length<2;f.setAttribute('aria-pressed',String(focusThread));f.textContent=focusThread?'Show all threads':'Focus selected thread';$('#weave-legend').innerHTML=c.threads.map((t,i)=>`<div class="weave-legend-row${t.id===c.activeThread?' active':''}"><label title="Show ${esc(t.name)}"><input type="checkbox" data-thread-visible="${esc(t.id)}"${t.visible?' checked':''}><span class="sr-only">Show thread</span></label><button data-thread-active="${esc(t.id)}" aria-pressed="${t.id===c.activeThread}"><i style="background:${color(t)}"></i><span>${i+1}. ${esc(t.name)}</span><small>${t.items.length}</small></button></div>`).join('');$('#weave-legend').querySelectorAll('[data-thread-visible]').forEach(el=>el.onchange=()=>transaction('Toggle thread',()=>{c.threads.find(t=>t.id===el.dataset.threadVisible).visible=el.checked;return S.save();}));$('#weave-legend').querySelectorAll('[data-thread-active]').forEach(b=>b.onclick=()=>{busy=true;c.activeThread=b.dataset.threadActive;S.save();busy=false;known.set(c.id,copy(c));render();if(active&&!context.hidden)showContext();});}
@@ -429,8 +528,8 @@
  function showPicker(x,button){$('.weave-add-menu')?.remove();const menu=document.createElement('div');menu.className='weave-add-menu';menu.setAttribute('role','group');menu.setAttribute('aria-label','Add to thread');const all=S.state.collections.flatMap(c=>c.threads.map(t=>({c,t})));menu.innerHTML=all.map(({c,t})=>`<button data-picker-weave="${esc(c.id)}" data-picker-thread="${esc(t.id)}">${esc(t.name)}<small>${esc(c.name)}</small></button>`).join('')+'<button data-picker-new>+ New thread</button>';button.after(menu);pendingPicker=x;menu.querySelectorAll('[data-picker-thread]').forEach(b=>b.onclick=()=>{const target=b.dataset.pickerWeave,threadId=b.dataset.pickerThread;if(S.current().id!==target){busy=true;S.activate(target);busy=false;}add(x,threadId);menu.remove();pendingPicker=null;status('Added to thread. Open Constellate to follow it.');});menu.querySelector('[data-picker-new]').onclick=()=>{open();reading=false;setRead(false);$('#weave-thread-form').hidden=false;$('#weave-thread-name').focus({preventScroll:true});menu.remove();};}
  trigger.setAttribute('aria-controls','constellate-popup');trigger.setAttribute('aria-expanded','false');trigger.addEventListener('click',e=>{e.preventDefault();open();setRead(false);});$('#constellate-edit').onclick=()=>{open();setRead(false);setTab('thread');};$('#constellate-close').onclick=close;$('#constellate-exit').onclick=()=>exit();$('#constellate-read').onclick=()=>{open();setRead(true);};$('#constellate-undo').onclick=undo;$('#constellate-redo').onclick=redo;$('#constellate-fit').onclick=fit;$('#constellate-share').onclick=showShare;
  $('#constellate-search').oninput=()=>{resetBrowsePage();renderResults({resetScroll:true});};
-  for(const id of ['weave-discovery-order','weave-discovery-unadded','weave-discovery-art'])$('#'+id).addEventListener('change',()=>{resetBrowsePage();renderResults({resetScroll:true});});
-  $('#weave-discovery-clear').onclick=()=>{$('#constellate-search').value='';$('#weave-discovery-order').value='relevance';$('#weave-discovery-unadded').checked=false;$('#weave-discovery-art').checked=false;resetBrowsePage();renderResults({resetScroll:true});$('#constellate-search').focus({preventScroll:true});};
+  for(const id of ['weave-discovery-order','weave-discovery-unadded','weave-discovery-art',...facetKinds.map(k=>'weave-discovery-'+k)])$('#'+id).addEventListener('change',()=>{resetBrowsePage();renderResults({resetScroll:true});});
+  $('#weave-discovery-clear').onclick=()=>{$('#constellate-search').value='';$('#weave-discovery-order').value='relevance';$('#weave-discovery-unadded').checked=false;$('#weave-discovery-art').checked=false;facetKinds.forEach(k=>facetSelect(k).value='');resetBrowsePage();renderResults({resetScroll:true});$('#constellate-search').focus({preventScroll:true});};
   $('#weave-focus-thread').onclick=()=>{focusThread=!focusThread;renderLegend();renderGraph();status(focusThread?'Showing '+S.activeThread().name+' only. Show all threads restores the full constellation.':'Showing every visible thread again.');};
  $('#weave-find-films').onclick=()=>{open();setTab('add');$('#constellate-search').focus({preventScroll:true});};$('#weave-browse-films').onclick=$('#weave-find-films').onclick;$('#weave-draw-thread').onclick=()=>setDrawThread(!drawThread);$('#weave-draw-done').onclick=()=>setDrawThread(false);
  const peek=$('#weave-peek');function showPeek(id,e,note=''){const x=S.current().items.find(x=>x.id===id);if(!x||drag||player){peek.hidden=true;return;}const ts=memberships(id);peek.innerHTML=`<div><strong>${esc(x.title)}</strong>${x.type!=='concept'?`<small>${esc([x.maker,x.year].filter(Boolean).join(' · '))}</small>`:''}<small class="weave-peek-land">${esc(landCaption(x))}</small>${note?`<p class="weave-peek-note">${esc(note)}</p>`:''}${ts.length?`<span class="weave-peek-threads">${ts.map(t=>`<i style="background:${color(t)}"></i>${esc(t.name)}`).join('<b>·</b>')}</span>`:''}</div>`;peek.hidden=false;const m=map.getBoundingClientRect(),w=peek.offsetWidth,h=peek.offsetHeight;let lx=e.clientX-m.left+16,ly=e.clientY-m.top+16;if(lx+w>m.width-8)lx=e.clientX-m.left-w-16;if(ly+h>m.height-8)ly=e.clientY-m.top-h-16;peek.style.left=Math.max(8,lx)+'px';peek.style.top=Math.max(8,ly)+'px';}
@@ -675,25 +774,64 @@ window.addEventListener('resize',finishCameraGraph);new MutationObserver(()=>{if
  $('#weave-example').onclick=createExample;
  $('#weave-intro-browse').onclick=()=>{setTab('add');$('#constellate-search').focus({preventScroll:true});};
  renderThemeStart();$('#weave-theme-start').onchange=e=>{const v=e.target.value;e.target.value='';if(v)themeThread(v);};$('#weave-empty-hint').addEventListener('click',e=>{const b=e.target.closest('[data-theme-thread]');if(b)themeThread(b.dataset.themeThread);});
- // Suggestions follow the selected film, not only the last card on a thread.
- // Every displayed relation must share a recorded atlas theme.
+
+ // Recommendations use published metadata only: synopsis themes, mapped land
+ // reference IDs, explicitly recorded people, director IDs, credited languages,
+ // and year. No geographic or identity inference from titles, surnames or plots.
+ const suggestCache=new Map(),genericPeople=/^(indigenous|first nations?|native american|aboriginal|intertribal|collective|unknown|not recorded)$/i;
+ function suggestEvidence(x){
+  if(!x||!x.record)return null;
+  if(!suggestCache.has(x.id)){
+   const r=A.recordById(x.record),film=filmOf(x),land=new Map(),people=new Map(),languages=new Map();
+   for(const ref of A.recordLandReferences(x.record).filter(ref=>ref.mapped&&ref.id))
+    land.set(ref.id,ref.name||'Mapped land');
+   for(const name of publishedValues(r?.community)){
+    if(!genericPeople.test(name.trim()))people.set(norm(name),name);
+   }
+   for(const name of publishedValues(film?.languages||film?.language))languages.set(norm(name),name);
+   suggestCache.set(x.id,{land,people,languages,makerId:x.record,year:yearNum(x),themes:new Set(terms(x))});
+  }
+  return suggestCache.get(x.id);
+ }
+ function suggestionBases(seed,x){
+  const a=suggestEvidence(seed),b=suggestEvidence(x);if(!a||!b)return {bases:[],themeCount:0,land:false,people:false,maker:false,language:false,decade:false};
+  const themes=[...b.themes].filter(term=>a.themes.has(term));
+  const land=[...a.land].find(([id])=>b.land.has(id));
+  const people=[...a.people].find(([name])=>b.people.has(name));
+  const language=[...a.languages].find(([name])=>b.languages.has(name));
+  const maker=!!(a.makerId&&a.makerId===b.makerId);
+  const decade=!!(a.year&&b.year&&Math.floor(a.year/10)===Math.floor(b.year/10));
+  const bases=[];
+  if(land)bases.push('Same mapped land: '+land[1]);
+  if(people)bases.push('Same people: '+people[1]);
+  if(maker)bases.push('Same filmmaker: '+seed.maker);
+  if(language)bases.push('Same published language: '+language[1]);
+  if(themes.length)bases.push('Shared synopsis theme: '+themes.slice(0,2).join(' · '));
+  if(decade)bases.push('Same decade: '+Math.floor(a.year/10)*10+'s');
+  return {bases,themeCount:themes.length,land:!!land,people:!!people,maker,language:!!language,decade};
+ }
  function renderSuggest(){
   const box=$('#weave-suggest'),c=S.current(),t=S.activeThread();
   const current=c.items.find(x=>x.id===active&&x.type==='film');
-  const last=[...t.items].reverse().map(id=>c.items.find(x=>x.id===id)).find(x=>x&&x.type==='film'&&terms(x).length);
+  const last=[...t.items].reverse().map(id=>c.items.find(x=>x.id===id)).find(x=>x&&x.type==='film');
   const seed=current||last;
   if(!seed){box.hidden=true;box.innerHTML='';return;}
-  const want=new Set(terms(seed)),ly=yearNum(seed);
+  const ly=yearNum(seed);
   const picks=azAll('film').filter(x=>key(x)!==key(seed)).map(x=>{
-   const shared=[...new Set(terms(x).filter(k=>want.has(k)))],y=yearNum(x),saved=existingWork(x);
+   const basis=suggestionBases(seed,x),y=yearNum(x),saved=existingWork(x);
    const sameThread=!!(saved&&t.items.includes(saved.id)),inWeave=!!saved;
-   return {x,shared,sameThread,inWeave,score:shared.length*10+(sameThread?22:inWeave?10:0)-(ly&&y?Math.min(5,Math.abs(y-ly)/8):3)};
-  }).filter(p=>p.shared.length).sort((a,b)=>b.score-a.score||Number(!!sourceImage(b.x))-Number(!!sourceImage(a.x))||azSort.compare(a.x.title,b.x.title)).slice(0,6);
+   // Keep existing on-thread/in-constellation preference; its ranking belongs to Claude.
+   const score=basis.themeCount*10+(basis.land?12:0)+(basis.people?9:0)+
+    (basis.maker?10:0)+(basis.language?7:0)+(basis.decade?3:0)+
+    (sameThread?22:inWeave?10:0)-(ly&&y?Math.min(5,Math.abs(y-ly)/8):3);
+   return {x,...basis,sameThread,inWeave,score};
+  }).filter(p=>p.bases.length).sort((a,b)=>b.score-a.score||
+   Number(!!sourceImage(b.x))-Number(!!sourceImage(a.x))||azSort.compare(a.x.title,b.x.title)).slice(0,6);
   box.hidden=false;
   box.innerHTML='<div class="weave-suggest-head"><h3>Follow another film</h3><small>'+esc(chipText(seed.title,45))+'</small></div>'+
-   (picks.length?'<p class="weave-suggest-intro">Documented connections through shared synopsis themes. Choose a film to move there.</p>'+
-    picks.map(({x,shared,sameThread,inWeave})=>'<div class="constellate-result weave-follow-result" draggable="true" data-drag-film="'+esc(x.id)+'">'+thumb(x)+'<span><strong>'+esc(x.title)+'</strong><small>'+esc([x.maker,x.year].filter(Boolean).join(' · '))+'</small><small class="weave-theme-tags">Shares '+esc(shared.join(' · '))+'</small></span><button type="button" data-weave-follow="'+esc(x.id)+'" aria-label="Follow to '+esc(x.title)+'">Follow →</button></div>').join('')
-   :'<p class="weave-suggest-intro">No further films share a documented theme with this title yet. Use Find films to continue.</p>');
+   (picks.length?'<p class="weave-suggest-intro">Possible next films, with their matching published atlas metadata. These are starting points for interpretation, not claims that the films share a story.</p>'+
+    picks.map(({x,bases})=>'<div class="constellate-result weave-follow-result" draggable="true" data-drag-film="'+esc(x.id)+'">'+thumb(x)+'<span><strong>'+esc(x.title)+'</strong><small>'+esc([x.maker,x.year].filter(Boolean).join(' · '))+'</small><small class="weave-theme-tags" title="'+esc(bases.join(' · '))+'">'+esc(bases.slice(0,2).join(' · '))+'</small></span><button type="button" data-weave-follow="'+esc(x.id)+'" aria-label="Follow to '+esc(x.title)+'">Follow →</button></div>').join('')
+   :'<p class="weave-suggest-intro">No next film matches the published land, people, director, language, year or synopsis themes recorded for this title. Use Find films to continue.</p>');
  }
  // drop on the cord inserts between knots
  function insertIndex(p){const t=S.activeThread(),pt=id=>{const x=S.current().items.find(y=>y.id===id);return x?.type==='concept'?positions.get(id):anchors.get(id);};let best=null,bd=26;for(let i=0;i<t.items.length-1;i++){const a=pt(t.items[i]),b=pt(t.items[i+1]);if(!a||!b)continue;for(const q of curve([{x:a.x,y:a.y},{x:b.x,y:b.y}])){const d=Math.hypot(q.x-p.x,q.y-p.y);if(d<bd){bd=d;best=i+1;}}}return best;}
