@@ -37,7 +37,7 @@ FINGERPRINT = """(PROPS) => {
   for (const e of document.body.querySelectorAll('*')) {
     const tag = e.tagName;
     if (tag === 'SCRIPT' || tag === 'STYLE' || tag === 'LINK' || tag === 'TEMPLATE') continue;
-    if (e.closest('#atlas-basemap, #land-thumb-layer, .geography .base')) continue;   // map tiles and their fallback land shapes; film stills that rotate on a timer
+    if (e.closest('#atlas-basemap, #land-thumb-layer, .geography .base, #weave-notice')) continue;   // map tiles and their fallback land shapes; film stills that rotate on a timer; the status notice that times out
     const r = e.getBoundingClientRect();
     if (r.width <= 0 || r.height <= 0) continue;
     if (r.bottom < -50 || r.top > vh + 400 || r.right < -50 || r.left > vw + 50) continue;
@@ -58,7 +58,7 @@ FINGERPRINT = """(PROPS) => {
   return { rows, groups: Object.fromEntries(Object.entries(groups).filter(([, n]) => n > 8)), page: [document.documentElement.scrollWidth, innerWidth, innerHeight], body: document.body.className.split(/\\s+/).sort().join(' '), html: Object.fromEntries(Object.entries(document.documentElement.dataset)) };
 }"""
 
-QUICK = """() => { let n = 0, s = 0; for (const e of document.body.querySelectorAll('*')) { if (e.closest('#atlas-basemap, #land-thumb-layer, .geography .base')) continue; const r = e.getBoundingClientRect(); if (r.width > 0 && r.height > 0) { n++; s += Math.round(r.x) * 3 + Math.round(r.y) * 7 + Math.round(r.width) + Math.round(r.height) * 5 + Math.round(parseFloat(getComputedStyle(e).opacity) * 100); } } return n + ':' + s; }"""
+QUICK = """() => { let n = 0, s = 0; for (const e of document.body.querySelectorAll('*')) { if (e.closest('#atlas-basemap, #land-thumb-layer, .geography .base, #weave-notice')) continue; const r = e.getBoundingClientRect(); if (r.width > 0 && r.height > 0) { n++; s += Math.round(r.x) * 3 + Math.round(r.y) * 7 + Math.round(r.width) + Math.round(r.height) * 5 + Math.round(parseFloat(getComputedStyle(e).opacity) * 100); } } return n + ':' + s; }"""
 
 SEED = """(() => { let s = 20261112; Math.random = () => { s = (s * 1664525 + 1013904223) % 4294967296; return s / 4294967296; }; })();"""
 
