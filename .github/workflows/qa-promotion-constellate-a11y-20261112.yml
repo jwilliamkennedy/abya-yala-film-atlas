@@ -80,3 +80,5 @@ jobs:
           fi
 
 # Rerun after first-visit autofocus guard.
+
+# Rerun after allowing skip link during the start stage.
