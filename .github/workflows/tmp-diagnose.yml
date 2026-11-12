@@ -21,15 +21,14 @@ jobs:
           sleep 2
           awk "/cat >\/tmp\/check-constellate-discovery.py <<'PY'/{f=1;next} /^ *PY\$/{f=0} f{print}" .github/workflows/constellate-discovery-smoke.yml | sed 's/^          //' > /tmp/ccd.py
           python3 - <<'PATCH'
+          import re
           s=open('/tmp/ccd.py').read()
-          a="""    await p.wait_for_function("document.documentElement.dataset.weaveStage==='build'",timeout=15000)"""
-          assert a in s
-          b="""    try:
-              await p.wait_for_function("document.documentElement.dataset.weaveStage==='build'",timeout=15000)
-          except Exception:
-              print('DIAG',label,await p.evaluate("JSON.stringify({stage:document.documentElement.dataset.weaveStage,items:window.AtlasCollections.current().items.length,threads:window.AtlasCollections.current().threads.map(t=>[t.name,t.items.length]),cols:window.AtlasCollections.state.collections.map(c=>[c.name,c.items.length]),startHidden:document.querySelector('#weave-start')?.hidden,body:document.body.className,reading:document.querySelector('#constellate-read')?.getAttribute('aria-pressed'),status:document.querySelector('#constellate-status')?.textContent,results:document.querySelector('#ws-theme-results')?.innerText.slice(0,120),hasThemeThread:typeof window.AtlasConstellate.themeThread,published:!!window.AtlasPublished,url:location.href.slice(0,120)})"),'ERRORS',errors,flush=True)
-              raise"""
-          s=s.replace(a,b.replace('\n          ','\n    ').replace('    try:','    try:',1))
+          m=re.search(r"""^( *)await p\.wait_for_function\("document\.documentElement\.dataset\.weaveStage==='build'",timeout=15000\)$""",s,re.M)
+          assert m
+          ind=m.group(1)
+          dump="JSON.stringify({stage:document.documentElement.dataset.weaveStage,items:window.AtlasCollections.current().items.length,threads:window.AtlasCollections.current().threads.map(t=>[t.name,t.items.length]),cols:window.AtlasCollections.state.collections.map(c=>[c.name,c.items.length]),startHidden:document.querySelector('#weave-start')?.hidden,body:document.body.className,reading:document.querySelector('#constellate-read')?.getAttribute('aria-pressed'),status:document.querySelector('#constellate-status')?.textContent,results:(document.querySelector('#ws-theme-results')?.innerText||'').slice(0,120),q:document.querySelector('#ws-theme-q')?.value,url:location.href.slice(0,120)})"
+          block=ind+"try:\n"+ind+"  "+m.group(0).strip()+"\n"+ind+"except Exception:\n"+ind+"  print('DIAG',label,await p.evaluate("+repr(dump)+"),'ERRORS',errors,flush=True)\n"+ind+"  raise"
+          s=s.replace(m.group(0),block)
           open('/tmp/ccd.py','w').write(s)
           PATCH
           sed -n 38,46p /tmp/ccd.py
