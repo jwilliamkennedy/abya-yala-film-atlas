@@ -1,0 +1,17 @@
+{
+ "example": "constellations-of-indigenous-cinema",
+ "constellations": [
+  {
+   "slug": "constellations-of-indigenous-cinema",
+   "name": "Constellations of Indigenous Cinema",
+   "author": "John Kennedy Godoy",
+   "updated": "2026-11-01",
+   "films": 8,
+   "threads": [
+    "Story-making",
+    "Remembrance",
+    "Land defense"
+   ]
+  }
+ ]
+}

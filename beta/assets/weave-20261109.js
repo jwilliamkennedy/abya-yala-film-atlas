@@ -71,7 +71,7 @@ function buildStart(){
  var src=$('#weave-intro-films'),lab=$('#weave-intro-label');if(src){$('.ws-example-films',sec).innerHTML=src.innerHTML;}if(lab)$('.ws-example-label',sec).textContent=lab.textContent;
  sec.addEventListener('click',function(e){
   var t=e.target.closest('[data-ws-theme]');if(t){showWelcome=false;C().themeThread(t.dataset.wsTheme);settle();return;}
-  if(e.target.closest('[data-ws-example]')){showWelcome=false;var b=$('#weave-example');if(b)b.click();settle();return;}
+  if(e.target.closest('[data-ws-example]')){showWelcome=false;var P=window.AtlasPublished,old=function(){var b=$('#weave-example');if(b)b.click();settle();};if(P&&P.example){P.open(P.example,'build').then(settle,old);}else old();return;}
   if(e.target.closest('[data-ws-continue]')){showWelcome=false;settle();return;}
   if(e.target.closest('[data-ws-web]')){var w=$('#weave-theme-web-toggle');if(w)w.click();return;}
   var f=e.target.closest('[data-ws-film]');if(f){var x=(FILMS||films()).find(function(v){return v.id===f.dataset.wsFilm;});if(x){showWelcome=false;C().add(x);var tab=$('#weave-tab-thread');if(tab)tab.click();settle();}}
@@ -192,6 +192,16 @@ function phoneCue(){
  cue.textContent=(h?chip(h.textContent,30):'Selected film')+' · details ↓';
  cue.hidden=r.top<window.innerHeight-80&&r.bottom>0;
 }
+/* 2026-11-11: the example is the published, hand-written constellation, not an automatic pick */
+function examplePreview(){
+ var P=window.AtlasPublished,sec=$('#weave-start');if(!P||!P.example||!sec||sec.dataset.wsExample)return;
+ var e=(P.list||[]).filter(function(x){return x.slug===P.example;})[0];if(!e)return;
+ sec.dataset.wsExample='1';
+ var path=$('[data-ws-example]',sec).closest('.ws-path'),p=$('p',path);
+ if(p)p.textContent=e.films+' films on '+e.threads.length+' threads, each line with its reason, to read and change.';
+ $('.ws-example-films',sec).innerHTML='<ul class="ws-example-threads">'+e.threads.map(function(t){return '<li>'+esc(t)+'</li>';}).join('')+'</ul>';
+ $('.ws-example-label',sec).textContent=e.name+(e.author?' · '+e.author:'');
+}
 function labels(){
  try{suggest();}catch(e){}
  var b=$('#weave-browse-films');if(b&&b.textContent.trim()==='Find films'){b.textContent='Add films';b.title='Search the atlas and add films to the active thread';}
@@ -211,7 +221,7 @@ function tick(){
  if(st)root.dataset.weaveStage=st;else delete root.dataset.weaveStage;
  var web=$('#atlas-theme-web');if(web&&!web.hidden)root.dataset.weaveWeb='1';else delete root.dataset.weaveWeb;
  if(!st)return;
- buildStart();buildGuide();labels();try{distinctColours();legendNote();phoneCue();}catch(e){}
+ buildStart();buildGuide();labels();try{examplePreview();}catch(e){}try{distinctColours();legendNote();phoneCue();}catch(e){}
  if(st==='start'){savedList();}
  guide(st);
  if(st==='build'){var th=thread(),len=th?th.items.length:0;if(len>=2&&lastLen<2){setTimeout(function(){if(root.dataset.weaveStage==='build'){try{C().fit();}catch(e){}}},350);}lastLen=len;}else lastLen=-1;

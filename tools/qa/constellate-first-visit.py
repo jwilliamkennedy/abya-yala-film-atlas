@@ -6,7 +6,8 @@ Runs the beta in a real browser and fails on the faults found in the 11 Nov revi
   3. Play hides the map controls and shows where you are;
   4. three theme threads get three different colours;
   5. the example's share link stays short enough to paste;
-  6. no script errors.
+  6. no script errors;
+  7. a published constellation opens at ?c=<slug> and is cited by that address.
 Usage: python3 tools/qa/constellate-first-visit.py [base-url] [screenshot-dir]
 Outside hosts are blocked so the result does not depend on tiles or hotlinked images.
 """
@@ -73,8 +74,9 @@ async def run(pw, width, height, mobile, label):
     # 5. share link
     await page.evaluate("document.querySelector('#constellate-share').click()")
     await page.wait_for_function("document.querySelector('#weave-url')?.value.length > 20", timeout=10000)
+    await page.wait_for_timeout(1800)
     n = await page.evaluate("document.querySelector('#weave-url').value.length")
-    check(n <= SHARE_LIMIT, f"share link for the three-film example is {n} characters (limit {SHARE_LIMIT})")
+    check(n <= SHARE_LIMIT, f"share link for the example is {n} characters (limit {SHARE_LIMIT})")
     await page.evaluate("document.querySelector('#constellate-edit').click()")
 
     # 4. colours
@@ -98,6 +100,17 @@ async def run(pw, width, height, mobile, label):
     check(bool(where), "Play shows no visible position (n of m)")
     await shot("3-play")
     await page.keyboard.press("Escape")
+
+    # 7. a published constellation opens by its short address and is cited by it
+    idx = await page.evaluate("fetch('constellations/index.json').then(r => r.json())")
+    slug = idx["constellations"][0]["slug"]
+    await page.goto(BASE + "?c=" + slug, wait_until="load", timeout=90000)
+    await page.wait_for_function("window.AtlasPublished?.current()", timeout=60000)
+    await page.evaluate("document.querySelector('#constellate-share').click()")
+    await page.wait_for_timeout(1800)
+    pub = await page.evaluate("({films: window.AtlasCollections.current().items.length, url: document.querySelector('#weave-url').value, cite: document.querySelector('#weave-citation').textContent})")
+    check(pub["films"] == idx["constellations"][0]["films"], "published constellation lost films", pub)
+    check(len(pub["url"]) < 160 and pub["url"] in pub["cite"], "published constellation is not cited by its short address", pub)
 
     check(not errors, "script errors", errors[:5])
     await browser.close()
