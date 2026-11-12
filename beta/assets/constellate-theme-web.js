@@ -158,6 +158,8 @@
   // Stable thematic-family lanes preserve legible labels at all 30 nodes.
   // The network is a diagram of co-tags, not a geographic or semantic distance map.
   var orders=Object.keys(COLORS).filter(f=>nodes.some(n=>n.family===f));
+   var tallestFamily=Math.max(0,...orders.map(f=>nodes.filter(n=>n.family===f).length));
+   if(activeFamily==='All themes'&&!search&&orders.length>1){h=Math.max(h,120+tallestFamily*74);svg.setAttribute('viewBox','0 0 '+w+' '+h);}
   var laneMode=orders.length>1&&activeFamily==='All themes'&&!search;
   var placed=[],familyHeaders='';
   if(laneMode){
