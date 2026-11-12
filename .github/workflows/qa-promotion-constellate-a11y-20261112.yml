@@ -78,3 +78,5 @@ jobs:
             git commit -m "Stage canonical beta Constellate keyboard fixes for root"
             git push origin HEAD:qa-promotion-constellate-a11y-20261112
           fi
+
+# Rerun after first-visit autofocus guard.
