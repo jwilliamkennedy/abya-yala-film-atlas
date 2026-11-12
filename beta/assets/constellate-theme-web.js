@@ -160,6 +160,12 @@
   var orders=Object.keys(COLORS).filter(f=>nodes.some(n=>n.family===f));
    var tallestFamily=Math.max(0,...orders.map(f=>nodes.filter(n=>n.family===f).length));
    if(activeFamily==='All themes'&&!search&&orders.length>1){h=Math.max(h,120+tallestFamily*74);svg.setAttribute('viewBox','0 0 '+w+' '+h);}
+   // Keep spacing in screen pixels; scaling a taller viewBox into a fixed-height
+   // SVG would shrink the labels and restore their overlap.
+   var expanded=h>Math.max(440,Math.round(bounds.height||550))&&window.matchMedia('(min-width:701px)').matches;
+   svg.style.flex=expanded?'0 0 auto':'';
+   svg.style.height=expanded?h+'px':'';
+   svg.parentElement.style.overflowY=expanded?'auto':'';
   var laneMode=orders.length>1&&activeFamily==='All themes'&&!search;
   var placed=[],familyHeaders='';
   if(laneMode){
