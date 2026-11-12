@@ -2,8 +2,8 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-12",
  "license": "See data.html",
- "films_on_public_map": 1551,
- "film_entries": 1566,
+ "films_on_public_map": 1559,
+ "film_entries": 1574,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -27496,6 +27496,22 @@
    "form": null,
    "length": null
   },
+  "NEW-f3320a0ced3e-QM8b244b": {
+   "title": "Al besarte, Concepción",
+   "year": null,
+   "makers": [
+    {
+     "id": "NEW-f3320a0ced3e",
+     "name": "Rogelio Chicatti Villalobos"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": "Short"
+  },
   "NEW-fd8667e4a685-WORK-1": {
    "title": "A la niña que fui",
    "year": null,
@@ -27510,6 +27526,22 @@
    "primary_theme": null,
    "families": [],
    "form": null,
+   "length": null
+  },
+  "NEW-fd8667e4a685-QM147c35": {
+   "title": "Dos espíritus",
+   "year": null,
+   "makers": [
+    {
+     "id": "NEW-fd8667e4a685",
+     "name": "Dan Escárraga"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Hybrid",
    "length": null
   },
   "NEW-39933aa2c662-WORK-1": {
@@ -27543,6 +27575,22 @@
    "families": [],
    "form": null,
    "length": null
+  },
+  "NEW-39933aa2c662-QM69c560": {
+   "title": "Los niños del Mezquite",
+   "year": null,
+   "makers": [
+    {
+     "id": "NEW-39933aa2c662",
+     "name": "Rodrigo Martínez"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": "Feature"
   },
   "BETA-T1101-VEN-01-F1": {
    "title": "Wachikua: Nuestra historia",
@@ -30739,6 +30787,22 @@
    "form": null,
    "length": null
   },
+  "Q20261111-11-F1": {
+   "title": "Se’ K’o",
+   "year": null,
+   "makers": [
+    {
+     "id": "NEW-65d746d4dc9c",
+     "name": "Emma Carlota Cucul"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Feature"
+  },
   "Q20261111-01-F1": {
    "title": "Xàbò Mè'phàà: Na'ne Xuajen",
    "year": null,
@@ -30770,6 +30834,70 @@
    "families": [],
    "form": null,
    "length": null
+  },
+  "QM-e66b46752b-M1": {
+   "title": "Nyehé: palabras que recogen esperanza",
+   "year": null,
+   "makers": [
+    {
+     "id": "QM-e66b46752b",
+     "name": "Doreli Rufina Carrillo"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "QM-5351722e3e-M1": {
+   "title": "Máteru Sikuiri (Otra piel)",
+   "year": null,
+   "makers": [
+    {
+     "id": "QM-5351722e3e",
+     "name": "Eduardo López González"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "QM-69de437cde-M1": {
+   "title": "La muda",
+   "year": null,
+   "makers": [
+    {
+     "id": "QM-69de437cde",
+     "name": "Graciela Villanueva"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": "Short"
+  },
+  "NEW-94635ab3c837-QM9028a1": {
+   "title": "Sonámbulo (Ne bezho kjinchi)",
+   "year": null,
+   "makers": [
+    {
+     "id": "NEW-94635ab3c837",
+     "name": "Rubén Alejandro Ramón Medellín"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": "Short"
   }
  }
 }
