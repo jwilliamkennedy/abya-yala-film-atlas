@@ -209,8 +209,8 @@ jobs:
                   const theme=choices.map(o=>o.value).find(v=>v&&C.themeFilms(v).length>=13);
                   if(!theme)return {error:'no theme with at least 13 films'};
                   C.themeThread(theme);
-                  const c0=window.AtlasCollections.current(),first=c0.threads.find(t=>t.id===c0.activeThread);
-                  if(first.items.length!==6)return {error:'theme should start with six films',count:first.items.length};
+                  const c0=window.AtlasCollections.current(),seedThread=c0.threads.find(t=>t.id===c0.activeThread);
+                  if(seedThread.items.length!==6)return {error:'theme should start with six films',count:seedThread.items.length};
                   document.querySelector('#weave-theme-unfold')?.click();
                   document.querySelector('#weave-theme-unfold')?.click();
                   document.querySelector('#weave-unmap').click();
