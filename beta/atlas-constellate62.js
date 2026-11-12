@@ -317,13 +317,14 @@
   let score=Infinity;
   for(const f of ix.fields){
    if(f.v===q)score=Math.min(score,f.weight);
-   else if(f.v.startsWith(q))score=Math.min(score,f.weight+1);
-   else if(f.v.includes(q))score=Math.min(score,f.weight+2);
-   else if(plain&&f.plain.includes(plain))score=Math.min(score,f.weight+3);
+   else if(plain&&f.plain===plain)score=Math.min(score,5+f.weight);
+   else if(f.v.startsWith(q))score=Math.min(score,10+f.weight);
+   else if(f.v.includes(q))score=Math.min(score,20+f.weight);
+   else if(plain&&f.plain.includes(plain))score=Math.min(score,30+f.weight);
   }
   if(score!==Infinity)return score;
   const tokens=wordTokens(q);
-  return tokens.length&&tokens.every(t=>ix.tokens.some(w=>w===t||oneEditOrSwap(t,w)))?25:Infinity;
+  return tokens.length&&tokens.every(t=>ix.tokens.some(w=>w===t||oneEditOrSwap(t,w)))?50:Infinity;
  }
  const facetKinds=['country','decade','form','length'];
  const facetSelect=k=>$('#weave-discovery-'+k);
