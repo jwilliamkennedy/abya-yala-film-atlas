@@ -1,0 +1,149 @@
+{
+ "format": "Indigenous Cinema Atlas published constellation",
+ "version": 1,
+ "slug": "constellations-of-indigenous-cinema",
+ "published": "2026-11-01",
+ "updated": "2026-11-01",
+ "weave": {
+  "name": "Constellations of Indigenous Cinema",
+  "author": "John Kennedy Godoy",
+  "note": "Three pathways through the atlas. Each line carries a short reason. Story-making and remembrance follow the examples in the project narrative; land defense is a working draft for review.",
+  "items": [
+   {
+    "type": "film",
+    "record": "DIR-0307",
+    "film": "PILOT-43-island-weights"
+   },
+   {
+    "type": "film",
+    "record": "DIR-0307",
+    "film": "PILOT-43-fainting-spells"
+   },
+   {
+    "type": "film",
+    "record": "DIR-0307",
+    "film": "PILOT-43-kicking-clouds"
+   },
+   {
+    "type": "film",
+    "record": "DIR-0247",
+    "film": "PILOT-43-mama"
+   },
+   {
+    "type": "film",
+    "record": "DIR-0059",
+    "film": "FILM-0247"
+   },
+   {
+    "type": "film",
+    "record": "DIR-0103",
+    "film": "FILM-0079"
+   },
+   {
+    "type": "film",
+    "record": "DIR-0173",
+    "film": "FILM-0113"
+   },
+   {
+    "type": "film",
+    "record": "SAB2-20261014-2501b24c169e",
+    "film": "SAB2-20261014-2501b24c169e-WORK-01"
+   }
+  ],
+  "threads": [
+   {
+    "id": "thread-first",
+    "name": "Story-making",
+    "description": "Films that make and remake stories of origin.",
+    "color": "maize",
+    "items": [
+     "film:DIR-0307:PILOT-43-island-weights",
+     "film:DIR-0307:PILOT-43-fainting-spells"
+    ],
+    "notes": {
+     "film:DIR-0307:PILOT-43-island-weights": "Draws on a Ho-Chunk creation story.",
+     "film:DIR-0307:PILOT-43-fainting-spells": "Imagines a myth around Xąwįska."
+    }
+   },
+   {
+    "id": "8cce37cc-acd9-45cf-8d7d-25686b3fc4a2",
+    "name": "Remembrance",
+    "description": "Intergenerational voice and family dialogue.",
+    "color": "indigo",
+    "items": [
+     "film:DIR-0307:PILOT-43-kicking-clouds",
+     "film:DIR-0247:PILOT-43-mama"
+    ],
+    "notes": {
+     "film:DIR-0307:PILOT-43-kicking-clouds": "Intergenerational voice.",
+     "film:DIR-0247:PILOT-43-mama": "Family dialogue."
+    }
+   },
+   {
+    "id": "45537419-c5ee-41a6-8cef-1f6cb9d5ade6",
+    "name": "Land defense",
+    "description": "Films made from inside struggles to protect land and water.",
+    "color": "cochineal",
+    "items": [
+     "film:DIR-0059:FILM-0247",
+     "film:DIR-0103:FILM-0079",
+     "film:DIR-0173:FILM-0113",
+     "film:SAB2-20261014-2501b24c169e:SAB2-20261014-2501b24c169e-WORK-01"
+    ],
+    "notes": {
+     "film:DIR-0059:FILM-0247": "Inside the 1990 Kanehsatà:ke resistance.",
+     "film:DIR-0103:FILM-0079": "Wet’suwet’en land defense, filmed from within.",
+     "film:DIR-0173:FILM-0113": "Punalka: el Alto Bío-Bío (1995), in Mapudungun, made with the Mapuche communication group Lulul Mawidha.",
+     "film:SAB2-20261014-2501b24c169e:SAB2-20261014-2501b24c169e-WORK-01": "Mapuche life and territory in Wallmapu."
+    }
+   }
+  ],
+  "links": [
+   {
+    "id": "dd0eeddc-74b0-4976-b5c6-661fe6d7cafe",
+    "source": "film:DIR-0307:PILOT-43-island-weights",
+    "target": "film:DIR-0307:PILOT-43-fainting-spells",
+    "label": "story-making",
+    "note": "The first draws on a Ho-Chunk creation story; the second imagines a myth around Xąwįska.",
+    "kind": "interpretation",
+    "sourceURL": ""
+   },
+   {
+    "id": "b500c746-fd82-4903-9ef7-5c2c723385c8",
+    "source": "film:DIR-0307:PILOT-43-kicking-clouds",
+    "target": "film:DIR-0247:PILOT-43-mama",
+    "label": "remembrance",
+    "note": "From Hopinka’s Kicking the Clouds toward Xun Sero’s Mamá, through intergenerational voice and family dialogue.",
+    "kind": "interpretation",
+    "sourceURL": ""
+   },
+   {
+    "id": "2326121a-2323-4b61-aa7d-9ac75b3a17b1",
+    "source": "film:DIR-0059:FILM-0247",
+    "target": "film:DIR-0103:FILM-0079",
+    "label": "land defense",
+    "note": "Two films made from inside struggles over unceded land, three decades apart.",
+    "kind": "interpretation",
+    "sourceURL": ""
+   },
+   {
+    "id": "ef89334c-90c6-4ed8-98dd-9ebef76e2472",
+    "source": "film:DIR-0103:FILM-0079",
+    "target": "film:DIR-0173:FILM-0113",
+    "label": "land defense",
+    "note": "Territory filmed by the people who live on it.",
+    "kind": "interpretation",
+    "sourceURL": ""
+   },
+   {
+    "id": "6821d1b8-8a1d-4ca4-9ec9-5d9326fd3f5b",
+    "source": "film:DIR-0173:FILM-0113",
+    "target": "film:SAB2-20261014-2501b24c169e:SAB2-20261014-2501b24c169e-WORK-01",
+    "label": "shares land",
+    "note": "Both films are made with Mapuche communities in Wallmapu.",
+    "kind": "interpretation",
+    "sourceURL": ""
+   }
+  ]
+ }
+}

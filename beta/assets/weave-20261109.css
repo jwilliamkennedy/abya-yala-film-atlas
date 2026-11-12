@@ -243,3 +243,8 @@ html[data-weave-stage="read"] body #atlas-theme-web{display:none!important}
  #constellate-mode #weave-stepper{min-width:max-content;flex:0 0 auto}
  #constellate-mode #weave-stepper small{min-width:2.6em;text-align:center}
 }
+
+.ws-example-threads{list-style:none;margin:4px 0 10px;padding:0;display:grid;gap:6px}
+.ws-example-threads li{padding:9px 12px;border:1px solid var(--reading-line,#d5d9d2);border-radius:8px;font:500 15px/1.3 'Atlas Serif',Georgia,serif}
+/* closing card in Play has no film image: drop the empty frame */
+#weave-player .weave-play-art:has(#weave-play-image[hidden]):has(#weave-play-fallback[hidden]){display:none}
