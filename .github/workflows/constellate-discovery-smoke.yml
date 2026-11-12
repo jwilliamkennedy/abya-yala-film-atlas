@@ -33,6 +33,25 @@ jobs:
           import asyncio,json
           from playwright.async_api import async_playwright
           ROOT='http://127.0.0.1:8983/'
+          async def press(p,selector):
+            # The continuously animated map can prevent Playwright's locator
+            # stability heuristic from settling. Scroll then hit-test and send
+            # a real pointer event to the exposed control.
+            await p.evaluate("""selector => {
+              const el=document.querySelector(selector);
+              if(!el)throw Error('Missing control: '+selector);
+              el.scrollIntoView({block:'center',inline:'nearest',behavior:'instant'});
+            }""",selector)
+            await p.wait_for_timeout(90)
+            data=await p.evaluate("""selector => {
+              const el=document.querySelector(selector),r=el.getBoundingClientRect(),
+                    x=r.left+r.width/2,y=r.top+r.height/2,hit=document.elementFromPoint(x,y),cs=getComputedStyle(el);
+              return {x,y,rect:r.toJSON(),hit:hit?.outerHTML.slice(0,180)||'',
+                visible:cs.display!=='none'&&cs.visibility!=='hidden'&&r.width>1&&r.height>1&&
+                x>=0&&x<innerWidth&&y>=0&&y<innerHeight&&!!hit&&(hit===el||el.contains(hit))};
+            }""",selector)
+            assert data['visible'],('Control is not pointer-accessible',selector,data)
+            await p.mouse.click(data['x'],data['y'])
           async def verify(p,base,label,width,height):
             errors=[]
             p.on('pageerror',lambda err:errors.append(str(err)))
@@ -84,7 +103,7 @@ jobs:
               focusButton:!!document.querySelector('#weave-focus-thread')
             })""")
             assert search['shown']==48 and search['more'] and search['focusButton'],(label,'first browsing page',search)
-            await p.locator('[data-results-more]').click(timeout=12000)
+            await press(p,'[data-results-more]')
             assert await p.locator('#constellate-results .constellate-result').count()==96,(label,'Show more pagination')
             letter=await p.evaluate("""() => {
               const b=[...document.querySelectorAll('#weave-az-letters button')].find(x=>!x.disabled&&x.dataset.azLetter!=='A');
@@ -96,39 +115,39 @@ jobs:
             assert letter and letter['shown']<=48,(label,'A-Z on-demand navigation',letter)
             await p.locator('#constellate-search').fill('veryunlikelyatlasfilmtermxyz',timeout=12000)
             assert await p.locator('.weave-discovery-empty').count()==1,(label,'no-match recovery')
-            await p.locator('[data-discovery-reset]').click(timeout=12000)
+            await press(p,'[data-discovery-reset]')
             assert await p.locator('#constellate-search').input_value()=='',(label,'search reset')
             await p.locator('#weave-discovery-order').select_option('newest')
             disabled=await p.evaluate("() => [...document.querySelectorAll('#weave-az-letters button')].every(b=>b.disabled)")
             assert disabled,(label,'A-Z jump should be disabled outside alphabetical order')
             await p.locator('#weave-discovery-order').select_option('relevance')
-            await p.locator('#weave-discovery-unadded').check()
+            await press(p,'#weave-discovery-unadded')
             assert await p.locator('#weave-discovery-count').inner_text(),(label,'filtered result count absent')
-            await p.locator('#weave-discovery-unadded').uncheck()
-            await p.locator('#weave-discovery-art').check()
+            await press(p,'#weave-discovery-unadded')
+            await press(p,'#weave-discovery-art')
             assert await p.locator('#weave-discovery-count').inner_text(),(label,'image result count absent')
-            await p.locator('#weave-discovery-clear').click()
+            await press(p,'#weave-discovery-clear')
             await p.locator('#constellate-search').fill('Cosmology')
-            await p.locator('[data-az-tab="maker"]').click()
+            await press(p,'[data-az-tab="maker"]')
             assert await p.locator('#constellate-search').input_value()=='Cosmology',(label,'search lost on tab switch')
-            await p.locator('[data-az-tab="film"]').click()
-            await p.locator('#weave-discovery-clear').click()
-            await p.locator('#weave-tab-thread').click()
+            await press(p,'[data-az-tab="film"]')
+            await press(p,'#weave-discovery-clear')
+            await press(p,'#weave-tab-thread')
             # A temporary thread focus changes no collection visibility or membership.
             await p.evaluate("""() => window.AtlasCollections.createThread('QA secondary thread','','star-red')""")
             await p.wait_for_function("document.querySelector('#weave-focus-thread')?.hidden===false",timeout=10000)
             before=await p.evaluate("() => window.AtlasCollections.current().threads.map(t=>({id:t.id,visible:t.visible,items:t.items.slice()}))")
-            await p.locator('#weave-focus-thread').click()
+            await press(p,'#weave-focus-thread')
             assert await p.locator('#weave-focus-thread').inner_text()=='Show all threads',(label,'focus action label')
             focused=await p.evaluate("() => window.AtlasCollections.current().threads.map(t=>({id:t.id,visible:t.visible,items:t.items.slice()}))")
             assert before==focused,(label,'focus mutated saved thread data')
-            await p.locator('#weave-focus-thread').click()
-            await p.locator('#constellate-how>summary').click()
+            await press(p,'#weave-focus-thread')
+            await press(p,'#constellate-how>summary')
             help_count=await p.locator('#constellate-how>ol>li').count()
             assert help_count==4,(label,'Help should have four steps',help_count)
             await p.keyboard.press('Escape')
             assert not await p.locator('#constellate-how').evaluate('(x)=>x.open'),(label,'Help did not close')
-            await p.locator('#weave-play').click(timeout=12000)
+            await press(p,'#weave-play')
             await p.locator('#weave-player:not([hidden])').wait_for(timeout=12000)
             play_state=await p.evaluate("""() => {
               const e=document.querySelector('#weave-play-close'),p=document.querySelector('#weave-player'),r=e.getBoundingClientRect();
@@ -141,7 +160,7 @@ jobs:
             assert play_state['display']!='none' and b['y']>=0 and b['bottom']<=height and play_state['topAtButton']=='weave-play-close',(label,'Play Close is unreachable',play_state)
             await p.mouse.click(b['x']+b['width']/2,b['y']+b['height']/2)
             await p.wait_for_function("!document.body.classList.contains('weave-playing')",timeout=8000)
-            await p.locator('#weave-theme-web-toggle').click(timeout=12000)
+            await press(p,'#weave-theme-web-toggle')
             await p.locator('#atlas-theme-web:not([hidden])').wait_for(timeout=12000)
             bridge_count=await p.locator('#tw-graph .tw-bridge').count()
             assert bridge_count<=28,(label,'theme network overview too dense',bridge_count)
@@ -150,7 +169,7 @@ jobs:
             assert 1<=matching<=30,(label,'theme family search',matching)
             await p.locator('#tw-search').fill('nonnativethemexyz123')
             assert 'No themes found' in await p.locator('#tw-detail').inner_text(),(label,'no theme match state')
-            await p.locator('[data-tw-reset]').click()
+            await press(p,'[data-tw-reset]')
             assert await p.locator('#tw-search').input_value()=='',(label,'reset theme search')
             assert not errors,(label,'JS page exceptions',errors[:7])
             return {'label':label,'beginning':beginning,'seed':seed,'browser':search,'az':letter,'bridges':bridge_count,'family_matches':matching}
