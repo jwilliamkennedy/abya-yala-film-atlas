@@ -86,8 +86,14 @@ html[data-weave-stage="read"] #weave-read-panel .weave-read-nav button:not(:disa
   html[data-weave-stage]:not([data-weave-stage="start"]) body.is-constellating #constellate-mode > :is(#constellate-edit,#constellate-read,#weave-play){
     height:38px!important;min-height:38px!important;padding:0 10px!important;font-size:13px!important
   }
+  /* On phones the map panel can start below the fold. Anchor the letterbox
+     to the viewport so the Play controls, especially Close, remain reachable. */
+  body.weave-playing #weave-player{
+    position:fixed;inset:0;width:100vw;height:100dvh;min-height:0;max-height:100dvh;
+    overflow:hidden;z-index:50
+  }
   #weave-player .weave-player-controls{
-    left:8px;right:8px;bottom:8px;gap:4px 8px;padding:5px
+    left:8px;right:8px;bottom:max(8px,env(safe-area-inset-bottom));gap:4px 8px;padding:5px
   }
   #weave-player .weave-player-controls button{min-height:36px}
   #weave-player .weave-title-card{bottom:112px!important;max-height:47%}
