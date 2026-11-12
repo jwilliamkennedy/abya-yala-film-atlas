@@ -2717,7 +2717,7 @@ header #atlas-browse{display:none!important}
 }
 #view-forward:disabled{visibility:hidden}
 .map-panel .zoom button:focus-visible{outline:2px solid var(--reading-accent,#9c3b26);outline-offset:-2px}
-#weave-notice{top:112px!important;bottom:auto!important;left:50%!important;right:auto!important;transform:translateX(-50%);max-width:min(440px,calc(100% - 32px))}
+#weave-notice{top:auto!important;bottom:14px!important;left:50%!important;right:auto!important;transform:translateX(-50%);max-width:min(440px,calc(100% - 32px))}
 #constellate-graph .constellate-edge-label{opacity:0;transition:opacity .15s ease}
 #constellate-graph g:hover>.constellate-edge-label,
 #constellate-graph g:focus>.constellate-edge-label{opacity:1}
