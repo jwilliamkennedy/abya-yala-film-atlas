@@ -112,6 +112,65 @@ async def run(pw, width, height, mobile, label):
     check(pub["films"] == idx["constellations"][0]["films"], "published constellation lost films", pub)
     check(len(pub["url"]) < 160 and pub["url"] in pub["cite"], "published constellation is not cited by its short address", pub)
 
+    # All published film credits must survive hydration and have a reachable surface.
+    # In particular, Yintah (FILM-0079) has a land name but may have no map marker.
+    await page.evaluate("window.AtlasConstellate.setRead(false)")
+    await page.wait_for_timeout(700)
+    coverage = await page.evaluate("""() => {
+      const S=window.AtlasCollections,C=window.AtlasConstellate,A=window.Atlas, c=S.current();
+      const surface=id=>{
+        const q=(s)=>[...document.querySelectorAll(s)].some(e=>e.getAttribute('data-weave-item')===id
+          ||e.getAttribute('data-weave-knot')===id||e.getAttribute('data-offmap-item')===id);
+        return q('#constellate-graph [data-weave-item]')||q('#constellate-graph .weave-star-label')
+          ||q('#weave-offmap-rail [data-offmap-item]');
+      };
+      const rows=c.items.filter(x=>x.type==='film').map(x=>{
+        const ref=C.reference(x), marker=ref&&A.landMarkerReference(ref.id);
+        return {id:x.id,title:x.title,inThread:c.threads.some(t=>t.items.includes(x.id)),
+          surface:surface(x.id),offmap:!!document.querySelector('#weave-offmap-rail [data-offmap-item="'+x.id+'"]'),
+          mapped:!!marker};
+      });
+      return {rows,railDisplay:getComputedStyle(document.querySelector('#weave-offmap-rail')).display};
+    }""")
+    check(len(coverage["rows"]) == pub["films"], "published credits lost on the map", coverage)
+    check(all(x["inThread"] and x["surface"] for x in coverage["rows"]),
+          "published film cannot be reached on the map or off-map rail", coverage)
+    yintah = next((x for x in coverage["rows"] if x["id"] == "film:DIR-0103:FILM-0079"), None)
+    check(yintah is not None, "Yintah was omitted from the published constellation")
+    if yintah is not None and not yintah["mapped"]:
+        check(yintah["offmap"], "Yintah has no land marker but is missing from Off the map", coverage)
+        check(coverage["railDisplay"] != "none", "Off the map rail is hidden while Yintah needs it", coverage)
+
+    # Hiding the rail in Disappear map must really remove it from the layout.
+    await page.evaluate("document.querySelector('#weave-unmap').click()")
+    hidden_rail = await page.evaluate("""() => {
+      const e=document.querySelector('#weave-offmap-rail');
+      return {hidden:e.hidden,display:getComputedStyle(e).display};
+    }""")
+    check(hidden_rail == {"hidden": True, "display": "none"},
+          "Off the map rail remains over the Disappear map view", hidden_rail)
+    await page.evaluate("document.querySelector('#weave-unmap').click()")
+
+    # The rail and all thread stops should survive selecting and reading Yintah.
+    await page.evaluate("window.AtlasConstellate.choose('film:DIR-0103:FILM-0079')")
+    selection = await page.evaluate("""() => ({
+      context: document.querySelector('#constellate-context')?.textContent||'',
+      selected: document.querySelector('#weave-offmap-rail [aria-current="true"]')?.dataset.offmapItem||''
+    })""")
+    check("Yintah" in selection["context"], "selecting Yintah did not open its context", selection)
+    await page.evaluate("window.AtlasConstellate.setRead(true)")
+    steps = await page.evaluate("""() => ({
+      count:document.querySelectorAll('#weave-read-panel [data-read-step]').length,
+      titles:[...document.querySelectorAll('#weave-read-panel [data-read-step]')].map(e=>e.textContent.trim())
+    })""")
+    check(steps["count"] == pub["films"] and any("Yintah" in t for t in steps["titles"]),
+          "Follow does not contain all published films, including Yintah", steps)
+    for _ in range(max(0, pub["films"] - 1)):
+        await page.evaluate("document.querySelector('#weave-read-next')?.click()")
+    last = await page.evaluate("document.querySelector('#weave-read-panel .weave-read-nav span')?.textContent.trim()")
+    check(last == str(pub["films"]) + " / " + str(pub["films"]),
+          "Follow cannot navigate to the final film", {"last": last, "films": pub["films"]})
+
     check(not errors, "script errors", errors[:5])
     await browser.close()
     return fails
