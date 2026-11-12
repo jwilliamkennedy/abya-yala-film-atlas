@@ -763,25 +763,64 @@ window.addEventListener('resize',finishCameraGraph);new MutationObserver(()=>{if
  $('#weave-example').onclick=createExample;
  $('#weave-intro-browse').onclick=()=>{setTab('add');$('#constellate-search').focus({preventScroll:true});};
  renderThemeStart();$('#weave-theme-start').onchange=e=>{const v=e.target.value;e.target.value='';if(v)themeThread(v);};$('#weave-empty-hint').addEventListener('click',e=>{const b=e.target.closest('[data-theme-thread]');if(b)themeThread(b.dataset.themeThread);});
- // Suggestions follow the selected film, not only the last card on a thread.
- // Every displayed relation must share a recorded atlas theme.
+
+ // Recommendations use published metadata only: synopsis themes, mapped land
+ // reference IDs, explicitly recorded people, director IDs, credited languages,
+ // and year. No geographic or identity inference from titles, surnames or plots.
+ const suggestCache=new Map(),genericPeople=/^(indigenous|first nations?|native american|aboriginal|intertribal|collective|unknown|not recorded)$/i;
+ function suggestEvidence(x){
+  if(!x||!x.record)return null;
+  if(!suggestCache.has(x.id)){
+   const r=A.recordById(x.record),film=filmOf(x),land=new Map(),people=new Map(),languages=new Map();
+   for(const ref of A.recordLandReferences(x.record).filter(ref=>ref.mapped&&ref.id))
+    land.set(ref.id,ref.name||'Mapped land');
+   for(const name of publishedValues(r?.community)){
+    if(!genericPeople.test(name.trim()))people.set(norm(name),name);
+   }
+   for(const name of publishedValues(film?.languages||film?.language))languages.set(norm(name),name);
+   suggestCache.set(x.id,{land,people,languages,makerId:x.record,year:yearNum(x),themes:new Set(terms(x))});
+  }
+  return suggestCache.get(x.id);
+ }
+ function suggestionBases(seed,x){
+  const a=suggestEvidence(seed),b=suggestEvidence(x);if(!a||!b)return {bases:[],themeCount:0,land:false,people:false,maker:false,language:false,decade:false};
+  const themes=[...b.themes].filter(term=>a.themes.has(term));
+  const land=[...a.land].find(([id])=>b.land.has(id));
+  const people=[...a.people].find(([name])=>b.people.has(name));
+  const language=[...a.languages].find(([name])=>b.languages.has(name));
+  const maker=!!(a.makerId&&a.makerId===b.makerId);
+  const decade=!!(a.year&&b.year&&Math.floor(a.year/10)===Math.floor(b.year/10));
+  const bases=[];
+  if(land)bases.push('Same mapped land: '+land[1]);
+  if(people)bases.push('Same people: '+people[1]);
+  if(maker)bases.push('Same filmmaker: '+seed.maker);
+  if(language)bases.push('Same published language: '+language[1]);
+  if(themes.length)bases.push('Shared synopsis theme: '+themes.slice(0,2).join(' · '));
+  if(decade)bases.push('Same decade: '+Math.floor(a.year/10)*10+'s');
+  return {bases,themeCount:themes.length,land:!!land,people:!!people,maker,language:!!language,decade};
+ }
  function renderSuggest(){
   const box=$('#weave-suggest'),c=S.current(),t=S.activeThread();
   const current=c.items.find(x=>x.id===active&&x.type==='film');
-  const last=[...t.items].reverse().map(id=>c.items.find(x=>x.id===id)).find(x=>x&&x.type==='film'&&terms(x).length);
+  const last=[...t.items].reverse().map(id=>c.items.find(x=>x.id===id)).find(x=>x&&x.type==='film');
   const seed=current||last;
   if(!seed){box.hidden=true;box.innerHTML='';return;}
-  const want=new Set(terms(seed)),ly=yearNum(seed);
+  const ly=yearNum(seed);
   const picks=azAll('film').filter(x=>key(x)!==key(seed)).map(x=>{
-   const shared=[...new Set(terms(x).filter(k=>want.has(k)))],y=yearNum(x),saved=existingWork(x);
+   const basis=suggestionBases(seed,x),y=yearNum(x),saved=existingWork(x);
    const sameThread=!!(saved&&t.items.includes(saved.id)),inWeave=!!saved;
-   return {x,shared,sameThread,inWeave,score:shared.length*10+(sameThread?22:inWeave?10:0)-(ly&&y?Math.min(5,Math.abs(y-ly)/8):3)};
-  }).filter(p=>p.shared.length).sort((a,b)=>b.score-a.score||Number(!!sourceImage(b.x))-Number(!!sourceImage(a.x))||azSort.compare(a.x.title,b.x.title)).slice(0,6);
+   // Keep existing on-thread/in-constellation preference; its ranking belongs to Claude.
+   const score=basis.themeCount*10+(basis.land?12:0)+(basis.people?9:0)+
+    (basis.maker?10:0)+(basis.language?7:0)+(basis.decade?3:0)+
+    (sameThread?22:inWeave?10:0)-(ly&&y?Math.min(5,Math.abs(y-ly)/8):3);
+   return {x,...basis,sameThread,inWeave,score};
+  }).filter(p=>p.bases.length).sort((a,b)=>b.score-a.score||
+   Number(!!sourceImage(b.x))-Number(!!sourceImage(a.x))||azSort.compare(a.x.title,b.x.title)).slice(0,6);
   box.hidden=false;
   box.innerHTML='<div class="weave-suggest-head"><h3>Follow another film</h3><small>'+esc(chipText(seed.title,45))+'</small></div>'+
-   (picks.length?'<p class="weave-suggest-intro">Documented connections through shared synopsis themes. Choose a film to move there.</p>'+
-    picks.map(({x,shared,sameThread,inWeave})=>'<div class="constellate-result weave-follow-result" draggable="true" data-drag-film="'+esc(x.id)+'">'+thumb(x)+'<span><strong>'+esc(x.title)+'</strong><small>'+esc([x.maker,x.year].filter(Boolean).join(' · '))+'</small><small class="weave-theme-tags">Shares '+esc(shared.join(' · '))+'</small></span><button type="button" data-weave-follow="'+esc(x.id)+'" aria-label="Follow to '+esc(x.title)+'">Follow →</button></div>').join('')
-   :'<p class="weave-suggest-intro">No further films share a documented theme with this title yet. Use Find films to continue.</p>');
+   (picks.length?'<p class="weave-suggest-intro">Possible next films, with their matching published atlas metadata. These are starting points for interpretation, not claims that the films share a story.</p>'+
+    picks.map(({x,bases})=>'<div class="constellate-result weave-follow-result" draggable="true" data-drag-film="'+esc(x.id)+'">'+thumb(x)+'<span><strong>'+esc(x.title)+'</strong><small>'+esc([x.maker,x.year].filter(Boolean).join(' · '))+'</small><small class="weave-theme-tags" title="'+esc(bases.join(' · '))+'">'+esc(bases.slice(0,2).join(' · '))+'</small></span><button type="button" data-weave-follow="'+esc(x.id)+'" aria-label="Follow to '+esc(x.title)+'">Follow →</button></div>').join('')
+   :'<p class="weave-suggest-intro">No next film matches the published land, people, director, language, year or synopsis themes recorded for this title. Use Find films to continue.</p>');
  }
  // drop on the cord inserts between knots
  function insertIndex(p){const t=S.activeThread(),pt=id=>{const x=S.current().items.find(y=>y.id===id);return x?.type==='concept'?positions.get(id):anchors.get(id);};let best=null,bd=26;for(let i=0;i<t.items.length-1;i++){const a=pt(t.items[i]),b=pt(t.items[i+1]);if(!a||!b)continue;for(const q of curve([{x:a.x,y:a.y},{x:b.x,y:b.y}])){const d=Math.hypot(q.x-p.x,q.y-p.y);if(d<bd){bd=d;best=i+1;}}}return best;}
