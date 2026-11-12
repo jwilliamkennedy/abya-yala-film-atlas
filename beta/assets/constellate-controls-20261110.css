@@ -332,3 +332,14 @@ html[data-weave-stage="build"] body.is-theme-weaving #weave-guide .wg-actions bu
 /* Each filter label and its checkbox form an inseparable unit on narrow docks. */
 #weave-discovery-tools label{display:inline-flex;flex-wrap:nowrap;white-space:nowrap;flex-shrink:0}
 #weave-discovery-tools input[type="checkbox"]{display:inline-block;flex:0 0 16px;min-width:16px;margin:0}
+
+
+/* The legacy notice has a fixed top declaration; translate that same notice to
+   the map's bottom presentation strip without adding cascade priority. */
+body.is-constellating #atlas #weave-notice{
+  position:fixed;
+  transform:translate(-50%,calc(100dvh - 160px));
+  text-align:center;
+  box-sizing:border-box;
+  pointer-events:none
+}
