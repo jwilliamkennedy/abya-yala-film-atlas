@@ -8,8 +8,8 @@ on:
       - 'beta/index.html'
       - 'menus-20261107.js'
       - 'assets/ui-20261109.js'
-      - 'assets/weave-20261109.css'
-      - 'featured82.js'
+      - 'assets/constellate.css'
+      - 'assets/constellate.js'
   workflow_dispatch:
 permissions:
   contents: read

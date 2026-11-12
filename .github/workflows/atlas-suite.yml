@@ -1,0 +1,78 @@
+name: Atlas browser suite
+# 1. Works: drives the main site and the beta through 23 states (Map, time dial, search, a filmmaker,
+#    Constellate in every mode, phone) and fails on script errors or broken behaviour.
+# 2. Looks the same: fingerprints every visible element and compares this push with the one before it.
+#    The comparison is always reported in the run summary. It fails the run only when the commit message
+#    says [no-visual-change], which is how a refactor proves it moved nothing.
+on:
+  push:
+    branches: [main]
+    paths:
+      - '*.html'
+      - '*.js'
+      - '*.css'
+      - 'assets/**'
+      - 'constellations/**'
+      - 'beta/*.html'
+      - 'beta/*.js'
+      - 'beta/*.css'
+      - 'beta/assets/**'
+      - 'beta/constellations/**'
+      - 'tools/qa/atlas-suite.py'
+      - '.github/workflows/atlas-suite.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: atlas-suite-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  suite:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    env:
+      SUITE_JOBS: '2'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - name: Install Chromium
+        run: |
+          python3 -m pip install -q 'playwright==1.*'
+          python3 -m playwright install --with-deps chromium >/dev/null
+      - name: Does it work? (main site and beta)
+        run: |
+          python3 -m http.server 8983 --bind 127.0.0.1 >/tmp/now.log 2>&1 &
+          sleep 2
+          python3 tools/qa/atlas-suite.py capture http://127.0.0.1:8983/ /tmp/suite/now-main --shots
+          python3 tools/qa/atlas-suite.py capture http://127.0.0.1:8983/beta/ /tmp/suite/now-beta --shots
+      - name: Did anything move since the previous push?
+        if: always()
+        run: |
+          git worktree add -q /tmp/prev HEAD~1 || exit 0
+          (cd /tmp/prev && python3 -m http.server 8984 --bind 127.0.0.1 >/tmp/prev.log 2>&1 &)
+          sleep 2
+          # the previous commit is measured with today's suite, in the same browser, so only the site differs
+          python3 tools/qa/atlas-suite.py capture http://127.0.0.1:8984/ /tmp/suite/prev-main || true
+          python3 tools/qa/atlas-suite.py capture http://127.0.0.1:8984/beta/ /tmp/suite/prev-beta || true
+          status=0
+          {
+            echo "## Main site: this push compared with the previous one"; echo '```'
+            python3 tools/qa/atlas-suite.py compare /tmp/suite/prev-main /tmp/suite/now-main --limit=8 | cut -c1-240 | head -150 || status=1
+            echo '```'; echo "## Beta: this push compared with the previous one"; echo '```'
+            python3 tools/qa/atlas-suite.py compare /tmp/suite/prev-beta /tmp/suite/now-beta --limit=8 | cut -c1-240 | head -150 || status=1
+            echo '```'
+          } > /tmp/suite/visual-report.md
+          python3 tools/qa/atlas-suite.py compare /tmp/suite/prev-main /tmp/suite/now-main >/dev/null || status=1
+          python3 tools/qa/atlas-suite.py compare /tmp/suite/prev-beta /tmp/suite/now-beta >/dev/null || status=1
+          cat /tmp/suite/visual-report.md >> "$GITHUB_STEP_SUMMARY"
+          if [ "$status" = 1 ] && git log -1 --format=%B | grep -q '\[no-visual-change\]'; then
+            echo "::error::This commit is marked [no-visual-change] but the page changed. See the run summary."
+            exit 1
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: atlas-suite
+          path: /tmp/suite
+          retention-days: 14

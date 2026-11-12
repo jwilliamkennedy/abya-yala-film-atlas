@@ -3,12 +3,12 @@ on:
   push:
     branches: [main]
     paths:
-      - 'atlas-constellate62.js'
-      - 'beta/atlas-constellate62.js'
-      - 'assets/constellate-theme-web.js'
-      - 'beta/assets/constellate-theme-web.js'
-      - 'assets/constellate-controls-20261110.css'
-      - 'beta/assets/constellate-controls-20261110.css'
+      - 'assets/constellate.js'
+      - 'beta/assets/constellate.js'
+      - 'assets/constellate.js'
+      - 'beta/assets/constellate.js'
+      - 'assets/constellate.css'
+      - 'beta/assets/constellate.css'
       - 'index.html'
       - 'beta/index.html'
       - '.github/workflows/constellate-discovery-smoke.yml'

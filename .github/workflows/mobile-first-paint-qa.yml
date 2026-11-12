@@ -9,8 +9,8 @@ on:
       - 'assets/ui-20261109.js'
       - 'assets/site-menu.css'
       - 'menus-20261107.js'
-      - 'assets/weave-20261109.css'
-      - 'featured82.js'
+      - 'assets/constellate.css'
+      - 'assets/constellate.js'
       - 'index.html'
       - 'beta/index.html'
   workflow_dispatch:
