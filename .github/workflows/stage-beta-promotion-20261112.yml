@@ -1,0 +1,29 @@
+name: Stage a canonical beta-to-main promotion
+on:
+  push:
+    branches: [beta-to-main-20261112]
+    paths:
+      - '.github/workflows/stage-beta-promotion-20261112.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  stage:
+    if: github.ref == 'refs/heads/beta-to-main-20261112'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Promote beta and rewrite beta URLs without altering beta itself
+        run: |
+          python3 tools/promote_beta.py /tmp/atlas-promotion-archive --apply
+          if git diff --cached --quiet; then
+            echo "Staged root already matches canonical beta."
+          else
+            git config user.name "atlas-promotion-bot"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git commit -m "Canonicalize promoted beta pages, filmmaker citations and sitemap"
+            git push origin HEAD:beta-to-main-20261112
+          fi
