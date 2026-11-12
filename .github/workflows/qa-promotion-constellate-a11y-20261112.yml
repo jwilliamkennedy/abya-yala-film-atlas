@@ -1,0 +1,80 @@
+name: "QA and canonical promotion: Constellate keyboard navigation"
+on:
+  push:
+    branches: [qa-promotion-constellate-a11y-20261112]
+    paths: ['.github/workflows/qa-promotion-constellate-a11y-20261112.yml']
+permissions:
+  contents: write
+jobs:
+  verify-and-stage:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Install Chromium and check syntax
+        run: |
+          node --check beta/assets/constellate.js
+          python3 -m pip install -q 'playwright==1.*'
+          python3 -m playwright install --with-deps chromium >/dev/null
+      - name: Test real keyboard focus and skip link on desktop and phone
+        run: |
+          python3 -m http.server 8983 --bind 127.0.0.1 >/tmp/atlas-a11y.log 2>&1 &
+          sleep 2
+          cat >/tmp/atlas-a11y-check.py <<'PY'
+          import asyncio,json
+          from playwright.async_api import async_playwright
+          async def main():
+            async with async_playwright() as p:
+              browser=await p.chromium.launch(args=['--use-angle=swiftshader','--enable-unsafe-swiftshader'])
+              for name,view in [('desktop',{'width':1440,'height':900}),('mobile',{'width':390,'height':844})]:
+                context=await browser.new_context(viewport=view,reduced_motion='reduce')
+                page=await context.new_page()
+                errors=[]
+                page.on('pageerror',lambda e:errors.append(str(e)))
+                await page.goto('http://127.0.0.1:8983/beta/index.html?constellate=1',wait_until='domcontentloaded',timeout=90000)
+                await page.wait_for_function("window.AtlasConstellate?.enabled&&document.querySelector('#constellate-mode:not([hidden])')",timeout=55000)
+                setup=await page.evaluate("""() => {
+                  const toolbar=document.getElementById('constellate-mode');
+                  const graph=document.getElementById('constellate-graph');
+                  const skip=toolbar.querySelector('.weave-skip-to-graph');
+                  return {next:toolbar.firstElementChild===skip,tabindex:graph.getAttribute('tabindex'),
+                    follows:!!(toolbar.compareDocumentPosition(graph)&Node.DOCUMENT_POSITION_FOLLOWING),
+                    skipText:skip.textContent.trim(),initialHash:location.hash};
+                }""")
+                assert setup['next'] and setup['tabindex']=='0' and setup['follows'],(name,setup)
+                link=page.locator('#constellate-mode .weave-skip-to-graph')
+                await link.focus()
+                before=page.url
+                await page.keyboard.press('Enter')
+                selected=await page.evaluate("document.activeElement?.id")
+                assert selected=='constellate-graph',(name,selected)
+                assert page.url==before,(name,'Skip changed the share address',before,page.url)
+                await page.evaluate("window.AtlasConstellate.themeThread('Land Defense')")
+                await page.wait_for_function("document.querySelectorAll('#constellate-graph [data-constellate-node]').length>=1",timeout=30000)
+                focus=await page.locator('#constellate-graph [data-constellate-node]').first.evaluate("""el => {
+                  el.focus({preventScroll:true});const style=getComputedStyle(el.querySelector('rect'));
+                  return {focused:document.activeElement===el,stroke:style.stroke,
+                    width:style.strokeWidth,color:el.style.getPropertyValue('--weave-focus-color')};
+                }""")
+                assert focus['focused'] and float(focus['width'].replace('px',''))>=2.4 and focus['color'],(name,focus)
+                assert not errors,(name,errors[:6])
+                print('CONSTELLATE_KEYBOARD_PASS',name,json.dumps({'skip':setup,'focusedCard':focus}),flush=True)
+                await context.close()
+              await browser.close()
+          asyncio.run(main())
+          PY
+          python3 /tmp/atlas-a11y-check.py
+      - name: Mandatory complete Atlas suite capture on beta
+        run: |
+          python3 tools/qa/atlas-suite.py capture http://127.0.0.1:8983/beta/ /tmp/after
+      - name: Stage promoted root using the existing release script
+        run: |
+          python3 tools/promote_beta.py /tmp/atlas-a11y-archive --apply
+          if ! git diff --cached --quiet; then
+            git config user.name "atlas-promotion-bot"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git commit -m "Stage canonical beta Constellate keyboard fixes for root"
+            git push origin HEAD:qa-promotion-constellate-a11y-20261112
+          fi
