@@ -2675,7 +2675,7 @@ body.selection-held #index .index-command-bar{display:grid;grid-template-columns
 body.selection-held #index .index-command-bar>*{grid-column:1/-1}
 body.selection-held #index .index-command-bar>nav.view-history{grid-column:1;grid-row:1;border-bottom:0;margin:0;padding-bottom:6px}
 body.selection-held #index .index-command-bar>.index-control-row{grid-column:2;grid-row:1;border:0;margin:0;padding:0 0 6px}
-body.selection-held #index #view-forward:disabled{visibility:hidden}
+
 :root:not([data-reading-theme="night"]) .atlas-ledger{color:var(--reading-muted)}
 :root:not([data-reading-theme="night"]) .atlas-ledger b{color:var(--reading-ink)}
 :root:not([data-reading-theme="night"]) .atlas-ledger span+span{border-left-color:var(--reading-line)}
@@ -2715,7 +2715,7 @@ body.selection-held #index #view-forward:disabled{visibility:hidden}
 @media (min-width:681px){
 header #atlas-browse{display:none!important}
 }
-#view-forward:disabled{visibility:hidden}
+
 .map-panel .zoom button:focus-visible{outline:2px solid var(--reading-accent,#9c3b26);outline-offset:-2px}
 #weave-notice{top:auto!important;bottom:14px!important;left:50%!important;right:auto!important;transform:translateX(-50%);max-width:min(440px,calc(100% - 32px))}
 #constellate-graph .constellate-edge-label{opacity:0;transition:opacity .15s ease}
@@ -3099,7 +3099,7 @@ body.weave-unmapped #atlas-basemap{opacity:0;visibility:hidden}
 :root[data-ui="1107"] .map-panel .zoom button{padding:0 11px}
 :root[data-ui="1107"] .map-panel .zoom #zoom-in,
 :root[data-ui="1107"] .map-panel .zoom #zoom-out{min-width:34px;font-size:17px!important}
-:root[data-ui="1107"] #view-back:disabled{display:none!important}
+
 :root[data-ui="1107"] #maker-alphabet{display:flex!important;flex-wrap:wrap!important;overflow:visible;gap:2px 2px;padding-bottom:4px;grid-template-columns:none!important}
 :root[data-ui="1107"] #maker-alphabet button{flex:0 0 auto;min-width:30px!important;height:32px!important;font-size:13px!important}
 :root[data-ui="1107"] #search-relay button{font-size:13px!important;min-height:30px}
@@ -3415,8 +3415,8 @@ body.atlas-dossier.no-refs .index-header{display:none!important}
 #index .viewing-route.play-here,
 #index .viewing-route.play-here span{color:var(--ui-ink)!important;font-weight:600}
 body.atlas-dossier .index-command-bar>:is(.index-control-row,.index-topline,#index-tools,#exploration-trail){display:none!important}
-body.atlas-dossier .index-command-bar>.view-history:not(:has(button:not([disabled]))){display:none!important}
-body.atlas-dossier .index-command-bar{grid-template-rows:none!important;row-gap:4px!important}
+
+body.atlas-dossier .index-command-bar{row-gap:4px!important}
 body.atlas-dossier #selection-summary{display:flex!important;flex-wrap:wrap;align-items:center;gap:4px 18px!important;min-height:44px}
 body.atlas-dossier #selection-summary .sel-links{gap:4px 18px}
 body.atlas-dossier #selection-summary #clear-context{margin-left:auto}
