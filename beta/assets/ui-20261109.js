@@ -87,7 +87,22 @@ function placeholders(scope){
 }
 
 /* ---------- map page ---------- */
+function landTint(){
+ /* Opening a land, or a filmmaker of that land, lends the panel that land's territory colour. */
+ var queued=false,last='';
+ function apply(){queued=false;
+  var held=document.body.classList.contains('selection-held'),dot=held&&document.querySelector('#atlas .land-word.selected .land-reference-dot'),c=dot&&dot.getAttribute('fill')||'';
+  if(!/^#[0-9a-f]{6}$/i.test(c))c='';
+  if(c===last)return;last=c;
+  if(c)document.body.style.setProperty('--land',c);else document.body.style.removeProperty('--land');
+  document.body.classList.toggle('land-tinted',!!c);}
+ function queue(){if(queued)return;queued=true;requestAnimationFrame(function(){setTimeout(apply,60);});}
+ new MutationObserver(queue).observe(document.body,{attributes:true,attributeFilter:['class']});
+ var sum=$('#selection-summary');if(sum)new MutationObserver(queue).observe(sum,{childList:true,subtree:true,characterData:true});
+ queue();
+}
 function mapPage(){
+ landTint();
  window.AtlasFitCap=10;
  /* Esc closes menus and panels first, never the list underneath them */
  window.addEventListener('keydown',function(e){
