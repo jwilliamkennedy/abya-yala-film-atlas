@@ -89,8 +89,8 @@ body.atlas-page .map-panel{background:var(--ui-wash)}
 #index .view-switch button{font:600 14px/1 var(--ui-sans)!important;letter-spacing:.01em;color:var(--ui-muted)!important;background:transparent!important;border:0!important;border-radius:999px!important;padding:9px 16px!important;min-height:34px;cursor:pointer;box-shadow:none!important;text-decoration:none!important}
 #index .view-switch button:hover{color:var(--ui-ink)!important}
 #index .view-switch button[aria-pressed="true"]{background:var(--ui-ink)!important;color:var(--ui-paper)!important}
-#index .view-history:not(:has(button:not([disabled]):not([hidden]))){display:none!important}
-#index .view-history button[disabled]{display:none!important}
+
+
 #index .view-history button{font:400 14px/1 var(--ui-sans)!important;color:var(--ui-muted)!important}
 #index .index-topline{display:none!important} /* the view switch names the list */
 #index .search{background:var(--ui-surface)!important;border:1px solid var(--ui-line)!important;border-radius:10px!important;padding:0 12px!important;min-height:44px;box-shadow:none!important}
@@ -435,19 +435,23 @@ header small,a.watch-link,.map-toolbar label,.map-toolbar span,.map-toolbar sele
 #map-selection-focus span{font-size:12px;line-height:1.4}
 /* an image caption shows only when its image does */
 #index .entry-button .film-thumb:has(img[hidden])~.entry-copy .maker-thumbnail-caption,#index .entry-button .film-thumb:not(:has(img))~.entry-copy .maker-thumbnail-caption{display:none}
-/* ---------- Filmmaker open: one header row, the name once (2026-11-12, Claude) ----------
-   While a filmmaker is open the browsing tools (alphabet, search chip) step aside; Back or Close brings them back.
-   The :root:not(#_) prefix and !important are needed to outrank earlier passes on these same elements. */
-@media (min-width:701px){
- :root:not(#_) body.profile-open.has-record #index .index-command-bar{display:grid!important;grid-template-columns:auto 1fr auto!important;align-items:center;gap:10px 14px}
- :root:not(#_) body.profile-open.has-record #index .index-command-bar>nav.view-history{grid-column:1!important;grid-row:1!important;margin:0!important;padding:0!important;border:0!important}
- :root:not(#_) body.profile-open.has-record #index .index-command-bar>nav.view-history button{white-space:nowrap;min-width:max-content}
- :root:not(#_) body.profile-open.has-record #index .index-command-bar>.view-switch{grid-column:2/-1!important;grid-row:1!important;justify-self:start;margin:0!important}
- :root:not(#_) body.profile-open.has-record #index #maker-browser,
- :root:not(#_) body.profile-open.has-record #index #active-context,
- :root:not(#_) body.profile-open.has-record #index #selection-summary .selection-label{display:none!important}
- :root:not(#_) body.profile-open.has-record #index #selection-summary:not([hidden]){display:contents!important}
- :root:not(#_) body.profile-open.has-record #index #selection-summary>#clear-context{grid-column:3;grid-row:2;justify-self:end;margin:0!important}
- :root:not(#_) body.profile-open.has-record #index #selection-summary>#selection-locate{grid-column:1/3;grid-row:2;justify-self:start;margin:0!important}
- :root:not(#_) body.profile-open.has-record #index #selection-summary>.sel-links{grid-column:1/-1;grid-row:3;width:auto!important;flex-basis:auto!important;margin:0!important}
-}
+/* ---------- Stable panel header (2026-11-12, Claude) ----------
+   The same rows in the same places in every tab and state, on every screen width:
+     1  Back · Forward (greyed when there is nowhere to go, never hidden)      More list tools
+     2  Filmmakers | Films | Land
+     3  what is open: its name once, Show on map and Close, its links */
+#index .index-command-bar{display:grid;grid-template-columns:1fr auto;grid-template-rows:48px;align-items:center;column-gap:12px}
+#index .index-command-bar>*{grid-column:1/-1}
+#index .index-command-bar>nav.view-history{grid-column:1;grid-row:1!important;order:0!important;display:flex;justify-content:flex-start;gap:22px;min-height:40px;margin:0!important;padding:0!important;border:0!important}
+#index .index-command-bar>.index-control-row{grid-column:2;grid-row:1;border:0;margin:0;padding:0;max-height:48px}
+@media (min-width:701px){:root:not(#_) #index .index-command-bar>.view-switch{grid-row:2!important;order:0!important;justify-self:start;align-self:start;margin:4px 0 8px!important}}
+#index .view-history button{white-space:nowrap}
+#index .view-history button:disabled{opacity:.38;cursor:default}
+/* the open filmmaker's name lives in the header, so the list row that repeats it steps aside, with the browsing tools */
+body.profile-open.has-record #index .entry.selected>.entry-button,
+body.profile-open.has-record #index #maker-browser,
+body.profile-open.has-record #index #active-context{display:none!important}
+/* a one-page film list needs no pager */
+#index #film-pages:has(#films-prev:disabled):has(#films-next:disabled){display:none}
+/* the closed tools drawer drew a second line under the tabs */
+#index .index-command-bar>#index-tools:not([open]){border:0!important}
