@@ -984,13 +984,13 @@ body.is-theme-weaving #constellate-graph .weave-cord{stroke-width:3.2px!importan
 /* 43 Fine thread highlight */
 body.is-theme-weaving #constellate-graph .weave-ribbon-sheen{stroke-width:1.1px!important;stroke-opacity:.48!important}
 /* 44 Unselected threads recede */
-body.is-theme-weaving #constellate-graph .weave-thread.is-quiet{opacity:.8!important}
+body.is-theme-weaving #constellate-graph:not(.weave-play-focus) .weave-thread.is-quiet{opacity:.8!important}
 /* 45 Dense thread set recedes further */
-body.is-theme-weaving #constellate-graph[data-density=dense] .weave-thread.is-quiet{opacity:.66!important}
+body.is-theme-weaving #constellate-graph[data-density=dense]:not(.weave-play-focus) .weave-thread.is-quiet{opacity:.66!important}
 /* 46 Hover reactivates the selected path */
 body.is-theme-weaving #constellate-graph .weave-thread.is-quiet:hover{opacity:1!important}
 /* 47 Active thread takes precedence */
-body.is-theme-weaving #constellate-graph .weave-thread.is-active{opacity:1!important}
+body.is-theme-weaving #constellate-graph:not(.weave-play-focus) .weave-thread.is-active{opacity:1!important}
 /* 48 Make thread names legible and upright */
 body.is-theme-weaving #constellate-graph .weave-thread-name-path{font:600 12px/1.1 'Atlas Sans',system-ui,sans-serif!important;font-style:normal!important;stroke:#122239!important;stroke-width:2.2px!important}
 /* 49 Show verified art on film cards */
@@ -1001,7 +1001,7 @@ body.is-theme-weaving #constellate-graph .constellate-card .weave-card-art{opaci
 /* 2026-11-11 (Claude): while Constellate is open the atlas steps back so threads lead.
    Territory fills drop to about 60% of the reader's chosen strength; names stay readable on hover. */
 html[data-ui] body.is-theme-weaving #atlas .land-shading .nation-wash{fill-opacity:clamp(0,calc(var(--territory-wash,.36) * .62),.9)!important}
-body.weave-playing #atlas .land-word{opacity:.34!important}
+body.weave-playing #atlas .land-word{opacity:.55!important}
 html[data-ui-zoom=far] body.weave-playing #atlas .land-word[data-ui-tier]{opacity:.3!important}
 body.weave-playing #atlas .land-word.selected{opacity:1!important}
 /* interpretive links: round dots, heavy enough to see; sourced links: solid */
@@ -1481,3 +1481,15 @@ body.weave-playing #weave-offmap-rail{visibility:hidden;pointer-events:none}
   #weave-discovery-tools label.weave-discovery-facet{flex:1 1 100%;min-width:0}
   #weave-discovery-tools .weave-discovery-facet select{min-height:36px}
 }
+/* ── Play at night ─────────────────────────────────────────────────────────
+   In Play the lands go to dusk and the film is the light: a pool of light sits on the
+   current film (set by playLight() in constellate.js), its thread is drawn in its night
+   dye, the other threads recede, and the label on the map is the land's name. */
+body.weave-playing:not(.weave-unmapped) #constellate-graph.weave-play-focus{background:radial-gradient(circle 360px at var(--play-x,50%) var(--play-y,42%),rgba(6,10,24,0) 0,rgba(6,10,24,.16) 34%,rgba(6,10,24,.8) 100%)}
+#constellate-graph.weave-play-focus .weave-thread:not(.is-focus){opacity:.2}
+#constellate-graph.weave-play-focus .weave-stop.current{filter:drop-shadow(0 0 6px rgba(255,238,190,.95)) drop-shadow(0 0 20px rgba(255,214,130,.6))}
+#constellate-graph.weave-play-focus .constellate-card.selected>:not(.weave-land-caption){display:none!important}
+:root[data-reading-theme] body.is-theme-weaving #constellate-graph.weave-play-focus .constellate-card.selected .weave-land-caption{font:italic 500 20px/1 var(--ui-serif,Georgia,serif)!important;font-family:var(--ui-serif,Georgia),'Noto Sans Canadian Aboriginal','Noto Sans Cherokee','Noto Sans Osage',serif!important;fill:#fff4d6!important;paint-order:stroke fill;stroke:#070c1a!important;stroke-width:4.5px!important;stroke-linejoin:round;text-anchor:middle}
+body.is-theme-weaving #constellate-graph.weave-play-focus .constellate-edge{opacity:.3!important}
+body.weave-playing:not(.weave-unmapped) .map-panel{background:#0c1629!important}
+@media (max-width:700px){:root[data-reading-theme] body.is-theme-weaving #constellate-graph.weave-play-focus .constellate-card.selected .weave-land-caption{font-size:16px!important}}
