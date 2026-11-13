@@ -126,6 +126,7 @@ function mapKey(){
  const sw=(svg)=>`<svg viewBox="0 0 40 22" width="40" height="22" aria-hidden="true">${svg}</svg>`;
  const rows=[
   [sw('<text x="1" y="17" font-family="Georgia, serif" font-size="17" fill="#182028">A</text><text x="17" y="17" font-family="Georgia, serif" font-size="10" fill="#182028">a</text><circle cx="33" cy="12" r="3.5" fill="#d59fa6" stroke="#f6f4e8" stroke-width="1.2"/>'),'<b>Land names.</b> Larger names have more linked filmmakers. Indigenous scripts are kept. Point to preview; select to open.'],
+  [sw('<circle cx="12" cy="11" r="4" fill="#d59fa6" stroke="#f6f4e8" stroke-width="1.2"/><rect x="22" y="4" width="15" height="14" rx="2" fill="#d59fa6" fill-opacity=".5"/>'),'<b>Dot beside a name.</b> The colour of that land’s territory on the map.'],
   [sw('<rect x="3" y="3" width="34" height="16" rx="2" fill="#94cbb0" fill-opacity=".36" stroke="#5b8a74" stroke-opacity=".75"/>'),'<b>Territory.</b> Native Land Digital / MapMaker reference (2023), not a definitive boundary. Strength is in Layers.'],
   [sw('<rect x="3" y="3" width="34" height="16" rx="2" fill="#94cbb0" fill-opacity=".36" stroke="#2f5547" stroke-width="2"/>'),'<b>Outlined territory.</b> The one under your pointer, or the land you selected.'],
   [sw('<circle cx="20" cy="11" r="9" fill="#5b5148"/><circle cx="20" cy="11" r="9" fill="none" stroke="#e9d9ad" stroke-opacity=".8"/>'),'<b>Picture at a land.</b> A still or portrait for a linked filmmaker.'],
