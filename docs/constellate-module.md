@@ -27,11 +27,29 @@ What the consolidation did not do: the stylesheet still has 365 `!important` dec
 sections still override one another and `atlas.css`. Removing them safely is a separate job; the suite below is
 what makes it possible.
 
+## Trace a line (13 Nov 2026)
+
+In Build, **Trace a line** (toolbar, and the first row of the start screen; `?constellate=1&trace=1` opens it
+directly) lets a visitor drag a line across the map. Every land the line passes through that has films in the atlas
+joins the line in the order it is crossed, its territory brightening as the line enters it. On release a card lists
+the lands in order with their film counts; lands can be unticked; one button threads one film from each kept land
+(its most recent dated film), another threads all of them when there are 80 or fewer.
+
+- A land is "crossed" when the line passes inside its territory shape in the atlas's own territory layer
+  (`#atlas .nation-wash[data-land]`), or within 14 px of its marker. Only mapped land references already attached
+  to a film are used; nothing is inferred from names, languages or countries.
+- Each film in the thread is pinned to the land it was gathered from, so it sits on that land even when the film has
+  other mapped references.
+- The thread's name is `first land → last land`; its description says how it was made.
+- Code: the `Trace a line` block in the core section of `constellate.js` (`startTrace`, `traceSample`, `lineThread`)
+  and the block of the same name in `constellate.css`. API: `AtlasConstellate.trace()`, `.stopTrace()`, `.tracing`.
+- Not built yet: a keyboard way to draw (choose a first and last land), translations, and an entry on the Map page.
+
 ## The browser suite
 
-`tools/qa/atlas-suite.py` drives the site through 23 states in a real browser: the Map page (day, night, Map key,
+`tools/qa/atlas-suite.py` drives the site through 25 states in a real browser: the Map page (day, night, Map key,
 Layers, search, a filmmaker, the time dial), Constellate (start card, Follow, Build, a selected film, Add films,
-Share, Play, Theme web, three threads, no map, night) and four phone states.
+Share, Play, Theme web, three threads, no map, night, a traced line) and five phone states.
 
 In each state it checks behaviour, and it records a fingerprint: every visible element's position, size, text and
 computed style (about 10,000 elements in all).

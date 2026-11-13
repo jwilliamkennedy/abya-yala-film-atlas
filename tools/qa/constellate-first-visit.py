@@ -89,6 +89,42 @@ async def run(pw, width, height, mobile, label):
     await page.goto(BASE + "?constellate=1", wait_until="load", timeout=90000)
     await page.wait_for_function("window.AtlasConstellate?.enabled && document.querySelector('#weave-start')", timeout=60000)
 
+    # 0b. Trace a line: from the start screen, a drag across the map gathers lands in the order
+    # crossed, and the thread holds one film from each kept land, pinned to that land, in that order.
+    await page.wait_for_selector("[data-ws-trace]", state="visible", timeout=20000)
+    await page.wait_for_timeout(600)
+    box = await page.evaluate("(() => { const e = document.querySelector('[data-ws-trace]'); e.scrollIntoView({ block: 'center' }); const b = e.getBoundingClientRect(); return [b.x + b.width / 2, b.y + b.height / 2]; })()")
+    await page.mouse.click(box[0], box[1])
+    await page.wait_for_function("window.AtlasConstellate.tracing === true", timeout=8000)
+    await page.wait_for_timeout(1200)
+    await page.keyboard.press("Escape")
+    check(not await page.evaluate("window.AtlasConstellate.tracing"), "Escape did not leave Trace a line")
+    await page.evaluate("window.AtlasConstellate.trace()")
+    await page.wait_for_timeout(800)
+    through = await page.evaluate("""() => { const A = window.Atlas, C = window.AtlasConstellate, s = document.querySelector('#atlas').getBoundingClientRect(), l = document.querySelector('#weave-trace-layer').getBoundingClientRect();
+      const ids = [...new Set(C.catalog.filter(x => x.type === 'film' && x.record).flatMap(x => A.recordLandReferences(x.record).filter(r => r.mapped).map(r => r.id)))];
+      const ms = ids.map(id => A.landMarkerReference(id)).filter(Boolean).map(k => ({ x: k.x + s.left, y: k.y + s.top })).filter(k => k.x > l.left + 12 && k.x < l.right - 12 && k.y > l.top + 70 && k.y < l.bottom - 12).sort((a, b) => a.y - b.y);
+      return [ms[0], ms[Math.floor(ms.length / 2)], ms[ms.length - 1]]; }""")
+    await page.mouse.move(through[0]["x"], through[0]["y"] - 10)
+    await page.mouse.down()
+    for q in through:
+        await page.mouse.move(q["x"], q["y"], steps=16)
+    await page.mouse.up()
+    await page.wait_for_selector("#weave-trace-layer .wt-result:not([hidden])", timeout=8000)
+    kept = await page.evaluate("""() => { const boxes = [...document.querySelectorAll('.wt-result [data-wt-land]')], step = Math.max(1, Math.floor(boxes.length / 3));
+      boxes.forEach((b, i) => { if (i % step || i / step >= 3) b.click(); });
+      return boxes.filter(b => b.checked).map(b => b.closest('li').querySelector('span').textContent); }""")
+    check(len(kept) >= 2, "a line across the map gathered fewer than two lands", kept)
+    await page.click(".wt-result [data-wt=one]")
+    await page.wait_for_function("!window.AtlasConstellate.tracing && window.AtlasCollections.current().items.length >= 2", timeout=10000)
+    made = await page.evaluate("""() => { const S = window.AtlasCollections, C = window.AtlasConstellate, c = S.current(), t = S.activeThread();
+      return { lands: t.items.map(id => C.reference(c.items.find(x => x.id === id))?.name), lit: document.querySelectorAll('#atlas .nation-wash.trace-lit').length, stage: document.documentElement.dataset.weaveStage }; }""")
+    in_order = [n for n in kept if n in made["lands"]]
+    check(made["lands"] == in_order and len(made["lands"]) >= 2 and made["lit"] == 0 and made["stage"] == "build", "the traced thread is not one film per kept land, in line order", {"kept": kept, "made": made})
+    await page.evaluate("localStorage.clear()")
+    await page.goto(BASE + "?constellate=1", wait_until="load", timeout=90000)
+    await page.wait_for_function("window.AtlasConstellate?.enabled && document.querySelector('#weave-start')", timeout=60000)
+
     # 1. the example
     await page.click("[data-ws-example]")
     await page.wait_for_function("window.AtlasCollections.current().items.length >= 3", timeout=20000)
