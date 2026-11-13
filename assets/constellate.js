@@ -1668,9 +1668,9 @@ function phoneCue(){
 }
 /* 2026-11-11: the example is the published, hand-written constellation, not an automatic pick */
 function examplePreview(){
- var P=window.AtlasPublished,sec=$('#weave-start');if(!P||!P.example||!sec||sec.dataset.wsExample)return;
+ var P=window.AtlasPublished,sec=$('#weave-start');if(!P||!P.example||!sec||sec.dataset.wsPublished)return;
  var e=(P.list||[]).filter(function(x){return x.slug===P.example;})[0];if(!e)return;
- sec.dataset.wsExample='1';
+ sec.dataset.wsPublished='1';
  var path=$('[data-ws-example]',sec).closest('.ws-path'),p=$('p',path);
  if(p)p.textContent=e.films+' films on '+e.threads.length+' threads, each line with its reason, to read and change.';
  $('.ws-example-films',sec).innerHTML='<ul class="ws-example-threads">'+e.threads.map(function(t){return '<li>'+esc(t)+'</li>';}).join('')+'</ul>';

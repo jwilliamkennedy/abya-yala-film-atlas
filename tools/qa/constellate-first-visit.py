@@ -48,6 +48,38 @@ async def run(pw, width, height, mobile, label):
     await page.goto(BASE + "?constellate=1", wait_until="load", timeout=90000)
     await page.wait_for_function("window.AtlasConstellate?.enabled && document.querySelector('#weave-start')", timeout=60000)
 
+    # 0. the start screen: a real click on each control does that control's job and nothing else.
+    # (On 11-13 Nov every click in the start screen opened the example; scripted clicks did not show it.)
+    async def start_state():
+        return await page.evaluate("""() => ({ open: getComputedStyle(document.querySelector('#weave-start')).display !== 'none',
+          films: window.AtlasCollections.current().items.length, threads: window.AtlasCollections.current().threads.map(t => t.name) })""")
+    for sel, name in [("#ws-theme-q", "theme search"), ("#ws-film-q", "film search"), ("#weave-start h2", "heading"), ("#ws-theme-all", "All themes list")]:
+        box = await page.evaluate("(s) => { const b = document.querySelector(s).getBoundingClientRect(); return [b.x + b.width / 2, b.y + b.height / 2]; }", sel)
+        await page.mouse.click(box[0], box[1])
+        await page.wait_for_timeout(700)
+        st = await start_state()
+        check(st["open"] and st["films"] == 0, f"clicking the {name} on the start screen opened something", st)
+    if fails:
+        await browser.close()
+        return fails
+    await page.evaluate("document.querySelector('#ws-theme-all').blur()")
+    await page.fill("#ws-theme-q", "water")
+    await page.wait_for_timeout(400)
+    await page.click("#ws-theme-results [data-ws-theme]")
+    await page.wait_for_function("window.AtlasCollections.current().items.length >= 1", timeout=20000)
+    st = await start_state()
+    check(any("water" in t.lower() for t in st["threads"]) and "Story-making" not in st["threads"], "theme search did not start that theme's thread", st)
+    await page.evaluate("localStorage.clear()")
+    await page.goto(BASE + "?constellate=1", wait_until="load", timeout=90000)
+    await page.wait_for_function("window.AtlasConstellate?.enabled && document.querySelector('#weave-start')", timeout=60000)
+    await page.select_option("#ws-theme-all", index=3)
+    await page.wait_for_function("window.AtlasCollections.current().items.length >= 1", timeout=20000)
+    st = await start_state()
+    check(len(st["threads"]) == 1 and st["threads"][0] not in ("Story-making", "First thread"), "choosing from All themes did not start that theme's thread", st)
+    await page.evaluate("localStorage.clear()")
+    await page.goto(BASE + "?constellate=1", wait_until="load", timeout=90000)
+    await page.wait_for_function("window.AtlasConstellate?.enabled && document.querySelector('#weave-start')", timeout=60000)
+
     # 1. the example
     await page.click("[data-ws-example]")
     await page.wait_for_function("window.AtlasCollections.current().items.length >= 3", timeout=20000)
