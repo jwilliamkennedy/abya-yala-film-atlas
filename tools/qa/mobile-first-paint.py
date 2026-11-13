@@ -82,12 +82,17 @@ async def case(browser,engine,name,route,width,persisted=None):
     except Exception as e:print('NONFATAL_MOBILE_SCREENSHOT',engine,width,name,str(e)[:110])
   # Detect map DOM feedback loops after animations and initial geography settle.
   idle=await p.evaluate("""async () => {
-   const root=document.querySelector('#atlas'),counts={attributes:0,childList:0};
-   if(!root)return counts;
-   const obs=new MutationObserver(records=>{for(const r of records){if(r.type in counts)counts[r.type]++;}});
-   obs.observe(root,{attributes:true,childList:true,subtree:true});
-   await new Promise(resolve=>setTimeout(resolve,650));
-   obs.disconnect();return counts;
+   // A loop keeps going; one late redraw on a cold start does not. Measure two windows back to back
+   // and report the quieter one, so a single redraw that lands in the first window is not called a loop.
+   const root=document.querySelector('#atlas');
+   if(!root)return {attributes:0,childList:0};
+   const windowCount=async()=>{const counts={attributes:0,childList:0};
+    const obs=new MutationObserver(records=>{for(const r of records){if(r.type in counts)counts[r.type]++;}});
+    obs.observe(root,{attributes:true,childList:true,subtree:true});
+    await new Promise(resolve=>setTimeout(resolve,650));
+    obs.disconnect();return counts;};
+   const first=await windowCount(),second=await windowCount();
+   return {attributes:Math.min(first.attributes,second.attributes),childList:Math.min(first.childList,second.childList),first,second};
   }""")
   samples.append({'phase':'idle-650ms','mutations':idle})
   # Interaction: menu, sheet, and touch target sizes
