@@ -1565,8 +1565,8 @@ function buildStart(){
 }
 function savedList(){
  var box=$('#weave-start .ws-saved');if(!box)return;var c=current(),ws=weavesSaved().filter(function(w){return !c||w.id!==c.id;});
- var old=$('#weave-start .ws-current');if(old){old.hidden=!(c&&c.items.length);var label=$('.ws-current-name',old);if(label&&c)label.textContent=c.name;}
- box.hidden=!ws.length;if(!ws.length)return;
+ var old=$('#weave-start .ws-current');if(old){var oh=!(c&&c.items.length);if(old.hidden!==oh)old.hidden=oh;var label=$('.ws-current-name',old);if(label&&c&&label.textContent!==c.name)label.textContent=c.name;}
+ if(box.hidden!==!ws.length)box.hidden=!ws.length;if(!ws.length)return;
  var sel=$('#ws-saved-select',box);if(!sel)return;
   var html='<option value="">Choose a constellation…</option>'+ws.map(function(w){return '<option value="'+esc(w.id)+'">'+esc(w.name)+' · '+w.items.length+' film'+(w.items.length===1?'':'s')+'</option>';}).join('');
   if(sel.innerHTML!==html){var previous=sel.value;sel.innerHTML=html;if(previous&&[].some.call(sel.options,function(o){return o.value===previous;}))sel.value=previous;}
@@ -1692,8 +1692,9 @@ var last='',lastLen=-1;
 function settle(){setTimeout(tick,80);setTimeout(tick,500);}
 function tick(){
  var st=stage();
- if(st)root.dataset.weaveStage=st;else delete root.dataset.weaveStage;
- var web=$('#atlas-theme-web');if(web&&!web.hidden)root.dataset.weaveWeb='1';else delete root.dataset.weaveWeb;
+ /* tick() runs after every class/hidden change on the page, so it must write only what has changed: an unconditional write here re-triggers it on every frame. */
+ if((root.dataset.weaveStage||'')!==st){if(st)root.dataset.weaveStage=st;else delete root.dataset.weaveStage;}
+ var web=$('#atlas-theme-web'),webOn=!!(web&&!web.hidden);if((root.dataset.weaveWeb==='1')!==webOn){if(webOn)root.dataset.weaveWeb='1';else delete root.dataset.weaveWeb;}
  if(!st)return;
  buildStart();buildGuide();labels();try{examplePreview();}catch(e){}try{distinctColours();legendNote();phoneCue();}catch(e){}
  if(st==='start'){savedList();}

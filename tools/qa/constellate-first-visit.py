@@ -48,6 +48,15 @@ async def run(pw, width, height, mobile, label):
     await page.goto(BASE + "?constellate=1", wait_until="load", timeout=90000)
     await page.wait_for_function("window.AtlasConstellate?.enabled && document.querySelector('#weave-start')", timeout=60000)
 
+    # 0a. an idle start screen stays idle. (Until 13 Nov a sync routine rewrote unchanged values, which
+    # re-triggered itself on every frame; pages never settled and slow machines timed out.)
+    await page.wait_for_timeout(2500)
+    idle = await page.evaluate("""async () => { let n = 0;
+      const o = new MutationObserver(ms => { for (const m of ms) if (!(m.target.closest && m.target.closest('#land-thumb-layer'))) n++; });
+      o.observe(document.documentElement, { subtree: true, childList: true, attributes: true, characterData: true });
+      await new Promise(r => setTimeout(r, 2000)); o.disconnect(); return n; }""")
+    check(idle < 30, f"the idle start screen changed the page {idle} times in 2 seconds")
+
     # 0. the start screen: a real click on each control does that control's job and nothing else.
     # (On 11-13 Nov every click in the start screen opened the example; scripted clicks did not show it.)
     async def start_state():
