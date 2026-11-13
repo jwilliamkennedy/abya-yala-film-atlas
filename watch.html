@@ -59,12 +59,6 @@ h1{margin:0 0 6px}.lede{font-size:17px;color:var(--muted);margin:0 0 18px}
 #next:hover{border-color:var(--ink)}
 .tools{gap:10px 12px}
 .tools select{font:inherit;font-size:14px;height:38px;padding:0 10px;border:1px solid var(--line);border-radius:4px;background:var(--bg);color:var(--ink);max-width:100%}
-/* Keep the theme filter's downward chevron visible across browsers. */
-.watch-theme-control{position:relative;display:inline-flex;min-width:0;max-width:100%}
-.watch-theme-control #theme{appearance:none;-webkit-appearance:none;padding-right:32px;width:100%;cursor:pointer}
-.watch-theme-control::after{content:"";position:absolute;right:13px;top:50%;width:7px;height:7px;border-right:1.75px solid var(--ink);border-bottom:1.75px solid var(--ink);transform:translateY(-72%) rotate(45deg);pointer-events:none}
-.watch-theme-control:focus-within{border-radius:4px;outline:2px solid var(--accent);outline-offset:2px}
-
 #q{height:38px}
 #list{margin-top:4px}
 #list>li{display:grid;grid-template-columns:44px 1fr;gap:4px 14px;align-items:start;padding:12px 0}
@@ -114,7 +108,7 @@ main a[href^="http"]{color:var(--accent,var(--gold))}
 <section id="now" aria-label="Player"><div class="frame"><iframe id="now-frame" title="Player" referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
 <div class="now-cap"><div><h2 id="now-title"></h2><p class="by" id="now-by"></p><p class="note" id="now-note"></p></div><button type="button" id="next" title="Play another film">Another film</button></div></section>
 <div class="tools"><input id="q" type="search" placeholder="Search films, filmmakers, peoples" aria-label="Search films">
-<span class="watch-theme-control"><select id="theme" aria-label="Theme"><option value="">All themes</option></select></span>
+<select id="theme" aria-label="Theme"><option value="">All themes</option></select>
 <select id="sort" aria-label="Order"><option value="maker">Filmmaker A–Z</option><option value="new">Newest first</option><option value="title">Title A–Z</option></select>
 <label class="check"><input id="here" type="checkbox"> Plays here</label><span class="count" id="count"></span></div>
 <ol id="list" aria-live="polite"></ol>
