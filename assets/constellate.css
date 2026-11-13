@@ -280,6 +280,7 @@
  border:1px solid color-mix(in srgb,var(--reading-accent) 32%,var(--reading-line))!important;
  border-radius:7px!important;padding-inline:12px!important;white-space:nowrap;
 }
+:root:not(#_) body.is-constellating #constellate-mode #weave-trace[aria-pressed="true"],
 :root:not(#_) body.is-constellating #constellate-mode #weave-draw-thread[aria-pressed="true"]{
  background:var(--reading-accent)!important;color:var(--reading-paper)!important;
 }
@@ -1493,3 +1494,41 @@ body.weave-playing:not(.weave-unmapped) #constellate-graph.weave-play-focus{back
 body.is-theme-weaving #constellate-graph.weave-play-focus .constellate-edge{opacity:.3!important}
 body.weave-playing:not(.weave-unmapped) .map-panel{background:#0c1629!important}
 @media (max-width:700px){:root[data-reading-theme] body.is-theme-weaving #constellate-graph.weave-play-focus .constellate-card.selected .weave-land-caption{font-size:16px!important}}
+/* ── Trace a line ──────────────────────────────────────────────────────────
+   A drawing layer over the map (startTrace() in constellate.js). The line is light with a dark
+   casing so it reads on day and night maps; crossed territories brighten as the line enters them. */
+#weave-trace-layer{position:absolute;inset:0;z-index:18;touch-action:none;cursor:crosshair;-webkit-user-select:none;user-select:none}
+#weave-trace-layer[hidden]{display:none}
+#weave-trace-layer svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+#weave-trace-layer .wt-casing{fill:none;stroke:rgba(7,12,26,.62);stroke-width:8;stroke-linecap:round;stroke-linejoin:round}
+#weave-trace-layer .wt-line{fill:none;stroke:#ffe6a3;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 0 6px rgba(255,214,130,.9))}
+#weave-trace-layer .wt-dots circle{fill:#fff7e0;stroke:#070c1a;stroke-width:1.5}
+#weave-trace-layer .wt-hint{position:absolute;left:50%;top:64px;transform:translateX(-50%);margin:0;width:max-content;max-width:min(92%,660px);padding:9px 18px;border-radius:999px;background:rgba(7,12,26,.9);color:#fff4d6;font-size:14px;font-weight:500;line-height:1.35;text-align:center;pointer-events:none}
+#weave-trace-layer .wt-hint:empty{display:none}
+#weave-trace-layer .wt-result{position:absolute;right:16px;top:112px;width:min(340px,calc(100% - 32px));max-height:calc(100% - 132px);display:flex;flex-direction:column;box-sizing:border-box;padding:16px 18px;border:1px solid rgba(24,32,40,.2);border-radius:14px;background:#f6f7f4;color:#182028;box-shadow:0 18px 50px rgba(4,8,18,.45);cursor:default}
+#weave-trace-layer .wt-result[hidden]{display:none}
+#weave-trace-layer .wt-eyebrow{margin:0;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#9c3a22}
+#weave-trace-layer .wt-result h3{margin:4px 0 10px;font-family:var(--ui-serif,Georgia,serif);font-size:24px;font-weight:500;line-height:1.15;color:#182028}
+#weave-trace-layer .wt-result ol{flex:1 1 auto;min-height:0;overflow:auto;margin:0;padding:0;list-style:none;counter-reset:wt;border-top:1px solid rgba(24,32,40,.14)}
+#weave-trace-layer .wt-result li{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:7px 0;border-bottom:1px solid rgba(24,32,40,.1);font-size:14.5px;counter-increment:wt}
+#weave-trace-layer .wt-result li label{display:flex;align-items:baseline;gap:9px;min-width:0;cursor:pointer}
+#weave-trace-layer .wt-result li input{flex:none;width:15px;height:15px;margin:0;accent-color:#9c3a22;transform:translateY(2px)}
+#weave-trace-layer .wt-result li:has(input:not(:checked)) span{color:#8a9299;text-decoration:line-through}
+#weave-trace-layer .wt-long{margin:0 0 10px;padding:8px 10px;border-radius:8px;background:#efe6d2;font-size:13px;line-height:1.4;color:#182028}
+#weave-trace-layer .wt-actions button[hidden]{display:none}
+#weave-trace-layer .wt-actions button:disabled{opacity:.45;cursor:default}
+#weave-trace-layer .wt-result li small{flex:none;color:#55606a;font-size:12.5px}
+#weave-trace-layer .wt-note{margin:10px 0 12px;font-size:12.5px;line-height:1.45;color:#55606a}
+#weave-trace-layer .wt-actions{display:flex;flex-wrap:wrap;gap:8px}
+#weave-trace-layer .wt-actions button{min-height:38px;padding:0 13px;border:1px solid rgba(24,32,40,.28);border-radius:8px;background:transparent;color:#182028;font:inherit;font-size:13.5px;cursor:pointer}
+#weave-trace-layer .wt-actions .wt-primary{flex:1 1 100%;min-height:42px;border-color:#9c3a22;background:#9c3a22;color:#fff;font-weight:600}
+#weave-trace-layer .wt-actions button:focus-visible{outline:2.5px solid #1d4e89;outline-offset:2px}
+body.weave-tracing #atlas .land-shading .nation-wash.trace-lit{--territory-wash:1.5;stroke:#ffe6a3!important;stroke-opacity:1!important;stroke-width:1.3px!important}
+
+#weave-start .ws-trace{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;margin:0 0 14px;padding:10px 14px;border-radius:12px;background:color-mix(in srgb,var(--ui-accent) 7%,transparent);font:400 14px/1.4 var(--ui-sans);color:var(--ui-ink)}
+#weave-start .ws-trace button{flex:none;font:600 14px/1 var(--ui-sans);color:var(--ui-accent);background:var(--ui-paper,#f6f7f4);border:1px solid var(--ui-accent);border-radius:999px;padding:10px 16px;cursor:pointer}
+#weave-start .ws-trace button:hover{background:var(--ui-accent);color:var(--ui-accent-ink)}
+@media (max-width:700px){#weave-trace-layer .wt-result{left:8px;right:8px;top:auto;bottom:8px;width:auto;max-height:62%}#weave-trace-layer .wt-hint{top:auto;bottom:14px;border-radius:14px}#weave-trace-layer.has-result .wt-hint{display:none}}
+#weave-trace{order:5}
+html[data-weave-stage="play"] #weave-trace,html[data-weave-stage="read"] #weave-trace{display:none!important}
+#weave-trace-layer.has-result{cursor:default}

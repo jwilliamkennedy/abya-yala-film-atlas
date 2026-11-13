@@ -192,6 +192,35 @@ async def con_build(page, base):
     need(drawn == 3, "Build should draw three threads", drawn)
 
 
+async def trace_line(page):
+    """Trace a line: a real mouse drag across the map must gather lands in order."""
+    await page.evaluate("document.querySelector('#weave-trace').click()")
+    await page.wait_for_function("window.AtlasConstellate.tracing === true", timeout=8000)
+    # Draw through three land markers (northernmost, middle, southernmost on screen), so the line is on land in any view.
+    through = await page.evaluate("""() => { const A = window.Atlas, C = window.AtlasConstellate, s = document.querySelector('#atlas').getBoundingClientRect(), l = document.querySelector('#weave-trace-layer').getBoundingClientRect();
+      const ids = [...new Set(C.catalog.filter(x => x.type === 'film' && x.record).flatMap(x => A.recordLandReferences(x.record).filter(r => r.mapped).map(r => r.id)))];
+      const ms = ids.map(id => A.landMarkerReference(id)).filter(Boolean).map(k => ({ x: k.x + s.left, y: k.y + s.top })).filter(k => k.x > l.left + 12 && k.x < l.right - 12 && k.y > l.top + 70 && k.y < l.bottom - 12).sort((a, b) => a.y - b.y || a.x - b.x);
+      return [ms[0], ms[Math.floor(ms.length / 2)], ms[ms.length - 1]]; }""")
+    await page.mouse.move(through[0]["x"], through[0]["y"] - 10)
+    await page.mouse.down()
+    for q in through:
+        await page.mouse.move(q["x"], q["y"], steps=16)
+    await page.mouse.up()
+    await page.wait_for_selector("#weave-trace-layer .wt-result:not([hidden])", timeout=8000)
+    info = await page.evaluate("({ lands: document.querySelectorAll('.wt-result [data-wt-land]').length, lit: document.querySelectorAll('#atlas .nation-wash.trace-lit').length, one: document.querySelector('.wt-result [data-wt=one]').textContent })")
+    need(info["lands"] >= 2 and info["lit"] >= 2, "a line drawn across the map gathered fewer than two lands", info)
+
+
+async def con_trace(page, base):
+    await con_build(page, base)
+    await trace_line(page)
+
+
+async def phone_trace(page, base):
+    await phone_build(page, base)
+    await trace_line(page)
+
+
 async def con_select(page, base):
     await con_build(page, base)
     await settle(page)
@@ -288,8 +317,8 @@ SCENARIOS = [
     ("constellate-add-films", DESKTOP, con_add), ("constellate-share", DESKTOP, con_share),
     ("constellate-play", DESKTOP, con_play), ("constellate-theme-web", DESKTOP, con_themeweb),
     ("constellate-three-threads", DESKTOP, con_threads), ("constellate-no-map", DESKTOP, con_unmapped),
-    ("constellate-night", DESKTOP, con_night),
-    ("phone-map", PHONE, phone_map), ("phone-follow", PHONE, phone_follow), ("phone-build", PHONE, phone_build),
+    ("constellate-night", DESKTOP, con_night), ("constellate-trace", DESKTOP, con_trace),
+    ("phone-map", PHONE, phone_map), ("phone-follow", PHONE, phone_follow), ("phone-build", PHONE, phone_build), ("phone-trace", PHONE, phone_trace),
     ("phone-dial", PHONE, phone_dial),
 ]
 
