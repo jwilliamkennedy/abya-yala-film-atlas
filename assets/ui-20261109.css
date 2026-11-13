@@ -455,3 +455,8 @@ body.profile-open.has-record #index #active-context{display:none!important}
 #index #film-pages:has(#films-prev:disabled):has(#films-next:disabled){display:none}
 /* the closed tools drawer drew a second line under the tabs */
 #index .index-command-bar>#index-tools:not([open]){border:0!important}
+/* Land tint: the open land's territory colour marks the panel (rule, dot, active tab). Set by landTint() in ui-20261109.js. */
+body.land-tinted #index .index-command-bar{box-shadow:inset 0 -3px 0 var(--land)!important;transition:box-shadow .25s}
+body.land-tinted #index .view-switch button[aria-pressed="true"]{background:var(--land)!important;color:#182028!important}
+body.land-tinted #index #selection-path::before{content:"";display:inline-block;width:10px;height:10px;margin-right:8px;border-radius:50%;background:var(--land);box-shadow:0 0 0 1px rgba(24,32,40,.28)}
+body.land-tinted #map-selection-focus{border-left-color:var(--land)!important;box-shadow:inset 4px 0 0 var(--land),0 4px 16px rgba(16,45,56,.15)!important}
