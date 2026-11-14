@@ -2,8 +2,8 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-14",
  "license": "See data.html",
- "films_on_public_map": 1620,
- "film_entries": 1633,
+ "films_on_public_map": 1619,
+ "film_entries": 1624,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -863,7 +863,7 @@
    "form": null,
    "length": null
   },
-  "BETA25-20261105-06-FILM1": {
+  "BETA25-20261105-24-FILM1": {
    "title": "Mundurukuyü: A Floresta das Mulheres Peixe",
    "year": 2025,
    "makers": [
@@ -888,12 +888,12 @@
    "length": null
   },
   "FILM-0015": {
-   "title": "Bicicletas de Nhanderú",
-   "year": null,
+   "title": "Bicicletas de Nhanderu",
+   "year": 2011,
    "makers": [
     {
-     "id": "DIR-0014",
-     "name": "Ariel Kuaray Ortega"
+     "id": "DIR-0045",
+     "name": "Patrícia Ferreira Pará Yxapy"
     }
    ],
    "languages": [],
@@ -1125,32 +1125,16 @@
    "length": "Feature"
   },
   "FILM-0027": {
-   "title": "Ava Yvy Vera - A terra do povo do raio (The Land of the Lightning People)",
+   "title": "Ava Yvy Vera – A Terra do Povo do Raio",
    "year": 2016,
    "makers": [
     {
-     "id": "DIR-0021",
-     "name": "Dulcídio Gomes"
+     "id": "LEAD-20261011-006",
+     "name": "Sarah Brites"
     },
     {
-     "id": "DIR-0022",
-     "name": "Edina Ximenes"
-    },
-    {
-     "id": "DIR-0023",
-     "name": "Genito Gomes"
-    },
-    {
-     "id": "DIR-0030",
-     "name": "Jhonaton Gomes"
-    },
-    {
-     "id": "DIR-0031",
-     "name": "Jhonn Nara Gomes"
-    },
-    {
-     "id": "DIR-0053",
-     "name": "Valmir G. Cabreira"
+     "id": "QM-b28a904c25",
+     "name": "Joilson Brites"
     }
    ],
    "languages": [],
@@ -1197,11 +1181,18 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Food Sovereignty",
+    "Youth",
+    "Land Defense"
+   ],
+   "primary_theme": "Food Sovereignty",
+   "families": [
+    "Land and Environment",
+    "Lives and Relations"
+   ],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "DIR-0023-QMec1bce": {
    "title": "Ava Yvy Pyte Ygua (People from the Heart of the Earth)",
@@ -1862,11 +1853,15 @@
   },
   "FILM-0054": {
    "title": "Nhemongueta Kunhã Mbaraete",
-   "year": null,
+   "year": 2020,
    "makers": [
     {
-     "id": "DIR-0045",
-     "name": "Patrícia Ferreira Pará Yxapy"
+     "id": "NEW-084a145f8fa7",
+     "name": "Graciela Guarani"
+    },
+    {
+     "id": "BETA30-20261106-D07",
+     "name": "Michele Perito Concianza Kaiowá"
     }
    ],
    "languages": [],
@@ -1939,28 +1934,6 @@
    "primary_theme": "Women and Gender",
    "families": [
     "Expression and Representation",
-    "Lives and Relations"
-   ],
-   "form": "Documentary",
-   "length": "Feature"
-  },
-  "DIR-0045-W1031-8": {
-   "title": "Bicicletas de Nhanderu",
-   "year": 2011,
-   "makers": [
-    {
-     "id": "DIR-0045",
-     "name": "Patrícia Ferreira Pará Yxapy"
-    }
-   ],
-   "languages": [],
-   "themes": [
-    "Cosmology and Origin Stories",
-    "Kinship"
-   ],
-   "primary_theme": "Cosmology and Origin Stories",
-   "families": [
-    "Knowledge and Continuity",
     "Lives and Relations"
    ],
    "form": "Documentary",
@@ -4853,7 +4826,7 @@
    "form": "Fiction",
    "length": "Feature"
   },
-  "FILM-0085": {
+  "DIR-0138-F1": {
    "title": "Ste. Anne",
    "year": 2021,
    "makers": [
@@ -10340,32 +10313,22 @@
    "length": null
   },
   "FILM-0214": {
-   "title": "Muu Palaa: La abuela mar",
-   "year": null,
+   "title": "Muu Palaa – La abuela mar",
+   "year": 2020,
    "makers": [
     {
-     "id": "DIR-0253",
-     "name": "Olowaili Green"
+     "id": "NEW-0f17e286a91a",
+     "name": "Luzbeidy Monterrosa Atencio"
     }
    ],
-   "languages": [
-    {
-     "label": "Wayuunaiki",
-     "as_credited": "Wayuunaiki",
-     "glottocode": "wayu1243",
-     "iso639_3": "guc",
-     "match": "exact",
-     "indigenous": true,
-     "source": "https://www.retinalatina.org/peliculas/muu-palaa-la-abuela-mar-olowaili-green-luzbeidy-monterrosa/"
-    }
-   ],
+   "languages": [],
    "themes": [],
    "primary_theme": null,
    "families": [],
    "form": null,
    "length": null
   },
-  "BETA30-20261106-F27": {
+  "BETA30-20261106-F18": {
    "title": "Cuidar la tierra",
    "year": 2020,
    "makers": [
@@ -13045,38 +13008,19 @@
   },
   "NEW-50f72e3ea718-WORK-1": {
    "title": "Allison Goes Berry Picking",
-   "year": 2024,
+   "year": null,
    "makers": [
     {
-     "id": "NEW-50f72e3ea718",
-     "name": "Allison Anderson"
+     "id": "NEW-7dfb26bc8667",
+     "name": "Georgette McLeod"
     }
    ],
-   "languages": [
-    {
-     "label": "Hän",
-     "as_credited": "Hän",
-     "glottocode": "hann1241",
-     "iso639_3": "haa",
-     "match": "exact",
-     "indigenous": true,
-     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/"
-    },
-    {
-     "label": "English",
-     "as_credited": "English",
-     "glottocode": "stan1293",
-     "iso639_3": "eng",
-     "match": "exact",
-     "indigenous": false,
-     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/"
-    }
-   ],
+   "languages": [],
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": "Documentary",
-   "length": "Short"
+   "form": null,
+   "length": null
   },
   "NEW-1f8a8f87fd75-WORK-1": {
    "title": "Ni racaladxe’",
@@ -13684,29 +13628,19 @@
   },
   "NEW-3965b06822b5-WORK-1": {
    "title": "Kimotiwin: The Act of Stealing",
-   "year": 2023,
+   "year": null,
    "makers": [
     {
-     "id": "NEW-3965b06822b5",
-     "name": "Caeleigh Lightning"
+     "id": "NEW-38fb59d07d8f",
+     "name": "Keara Lightning"
     }
    ],
-   "languages": [
-    {
-     "label": "English",
-     "as_credited": "English",
-     "glottocode": "stan1293",
-     "iso639_3": "eng",
-     "match": "exact",
-     "indigenous": false,
-     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/"
-    }
-   ],
+   "languages": [],
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": "Animation",
-   "length": "Short"
+   "form": null,
+   "length": null
   },
   "NEW-60305ce10147-WORK-1": {
    "title": "Manoá – A Lenda das Queixadas",
@@ -14701,22 +14635,6 @@
    "form": "Experimental",
    "length": "Feature"
   },
-  "NEW-7dfb26bc8667-WORK-1": {
-   "title": "Allison Goes Berry Picking",
-   "year": null,
-   "makers": [
-    {
-     "id": "NEW-7dfb26bc8667",
-     "name": "Georgette McLeod"
-    }
-   ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
-  },
   "NEW-15d5f34b0dd7-WORK-1": {
    "title": "Taxi the Empties",
    "year": 2026,
@@ -15380,22 +15298,6 @@
    "form": "Documentary",
    "length": "Short"
   },
-  "NEW-38fb59d07d8f-WORK-1": {
-   "title": "Kimotiwin: The Act of Stealing",
-   "year": null,
-   "makers": [
-    {
-     "id": "NEW-38fb59d07d8f",
-     "name": "Keara Lightning"
-    }
-   ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
-  },
   "FILM-SRC-2023-00014": {
    "title": "pî-kiwîk",
    "year": null,
@@ -15492,21 +15394,28 @@
    "form": null,
    "length": null
   },
-  "NEW-9d43ec46ed5e-WORK-1": {
+  "RESEARCH-FILM-20261031-800-NEW-363": {
    "title": "He Moʻolelo Wahi Pana (A Storied Landscape)",
-   "year": null,
+   "year": 2025,
    "makers": [
     {
-     "id": "NEW-9d43ec46ed5e",
-     "name": "Kuʻulei Keakealani"
+     "id": "DIR-0363",
+     "name": "Kapena Liu"
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Memory and Oral History",
+    "Cosmology and Origin Stories",
+    "Kinship"
+   ],
+   "primary_theme": "Memory and Oral History",
+   "families": [
+    "Knowledge and Continuity",
+    "Lives and Relations"
+   ],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "NEW-c65e17478a98-WORK-1": {
    "title": "Defend the Sacred",
@@ -15757,22 +15666,6 @@
    "form": null,
    "length": null
   },
-  "RESEARCH-FILM-20261031-0013-01": {
-   "title": "Muu Palaa – La abuela mar",
-   "year": 2020,
-   "makers": [
-    {
-     "id": "NEW-0f17e286a91a",
-     "name": "Luzbeidy Monterrosa Atencio"
-    }
-   ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
-  },
   "Q20261113-54-F1": {
    "title": "Ako’yolowaa (Cubrirse el alma)",
    "year": null,
@@ -16000,11 +15893,11 @@
   },
   "NEW-f6c274cb3b76-WORK-1": {
    "title": "My Friend Saabe",
-   "year": null,
+   "year": 2024,
    "makers": [
     {
-     "id": "NEW-f6c274cb3b76",
-     "name": "Morningstar Derosier"
+     "id": "NEW-49dd86e44af1",
+     "name": "Victoria Anderson-Gardner"
     }
    ],
    "languages": [],
@@ -16130,11 +16023,11 @@
   },
   "NEW-bd42ac361cc5-WORK-1": {
    "title": "The Wandering Soul",
-   "year": null,
+   "year": 2024,
    "makers": [
     {
-     "id": "NEW-bd42ac361cc5",
-     "name": "Noel-Leigh Cockney"
+     "id": "DIR-0354",
+     "name": "Henna Taylor"
     }
    ],
    "languages": [],
@@ -17059,22 +16952,6 @@
    "form": null,
    "length": null
   },
-  "RESEARCH-FILM-20261031-800-0020": {
-   "title": "My Friend Saabe",
-   "year": 2024,
-   "makers": [
-    {
-     "id": "NEW-49dd86e44af1",
-     "name": "Victoria Anderson-Gardner"
-    }
-   ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
-  },
   "TOUR-0004": {
    "title": "Namid",
    "year": 2021,
@@ -17771,7 +17648,7 @@
    "form": "Documentary",
    "length": "Short"
   },
-  "LEAD-20261014-014-WORK-01": {
+  "LEAD-20261014-015-WORK-01": {
    "title": "RAMI RAMI KIRANI",
    "year": 2024,
    "makers": [
@@ -17892,7 +17769,7 @@
    "form": "Documentary",
    "length": null
   },
-  "LEAD-20261014-018-WORK-01": {
+  "SA50-20261014-15029d374c29-WORK-01": {
    "title": "Das Crianças Ikpeng para o Mundo",
    "year": 2001,
    "makers": [
@@ -17989,7 +17866,7 @@
    "form": null,
    "length": null
   },
-  "BETA30-20261106-F23": {
+  "BETA30-20261106-F22": {
    "title": "Nosso modo de lutar",
    "year": 2024,
    "makers": [
@@ -18087,7 +17964,7 @@
    "form": null,
    "length": null
   },
-  "SA50-20261014-f4921804930d-WORK-01": {
+  "SA50-20261014-a2d92d5747d7-WORK-01": {
    "title": "A História do Monstro Khátpy",
    "year": null,
    "makers": [
@@ -18127,7 +18004,7 @@
    "form": null,
    "length": null
   },
-  "SA50-20261014-8926e0d57678-WORK-01": {
+  "SA50-20261014-7dabd75f6399-WORK-01": {
    "title": "Mokoi Tekoá, Petei Jeguatá — Duas aldeias, uma caminhada",
    "year": 2008,
    "makers": [
@@ -18262,7 +18139,7 @@
    "form": null,
    "length": null
   },
-  "SA50-20261014-6e4c85b67329-WORK-01": {
+  "SAB2-20261014-1578a82f9243-WORK-01": {
    "title": "Kinja Iakaha — Um Dia na Aldeia",
    "year": 2003,
    "makers": [
@@ -18757,7 +18634,7 @@
    "form": null,
    "length": null
   },
-  "SA50-20261014-ee843eab0a8c-WORK-01": {
+  "SA50-20261014-b63039162853-WORK-01": {
    "title": "Mapukutran",
    "year": 2014,
    "makers": [
@@ -19025,7 +18902,7 @@
    "form": null,
    "length": null
   },
-  "SAB2-20261014-5b6dc34f3c55-WORK-01": {
+  "SAB2-20261014-df9a2b0fb783-WORK-01": {
    "title": "Posse do cacique Bepunu",
    "year": 2022,
    "makers": [
@@ -19045,7 +18922,7 @@
    "form": null,
    "length": null
   },
-  "SAB2-20261014-e3499178f69e-WORK-01": {
+  "SAB2-20261014-bcdd867e2132-WORK-01": {
    "title": "Memória nas coisas do vovô",
    "year": 2022,
    "makers": [
@@ -19065,7 +18942,7 @@
    "form": null,
    "length": null
   },
-  "NEW-4ab5dc39b865-WORK-1": {
+  "NEW-2dbd042e305f-WORK-1": {
    "title": "A Chegada dos Mêbengôkre na Terra",
    "year": null,
    "makers": [
@@ -19312,7 +19189,7 @@
    "form": null,
    "length": "Short"
   },
-  "SAB2-20261014-d4648c3d7db1-WORK-01": {
+  "SAB2-20261014-9d9b915c58da-WORK-01": {
    "title": "Fág kar segsó tánh: gufó u sí ag tú — A araucária e a gralha azul: uma história dos antigos kaingang",
    "year": 2024,
    "makers": [
@@ -20106,26 +19983,6 @@
    "form": null,
    "length": null
   },
-  "RESEARCH-FILM-006-02": {
-   "title": "Ava Yvy Vera – A Terra do Povo do Raio",
-   "year": 2016,
-   "makers": [
-    {
-     "id": "LEAD-20261011-006",
-     "name": "Sarah Brites"
-    },
-    {
-     "id": "QM-b28a904c25",
-     "name": "Joilson Brites"
-    }
-   ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
-  },
   "Q20261112-03-F1": {
    "title": "El camino de las mariposas",
    "year": null,
@@ -20428,7 +20285,7 @@
    "form": null,
    "length": null
   },
-  "RESEARCH-FILM-20261031-0065-01": {
+  "RESEARCH-FILM-20261031-0066-01": {
    "title": "Ka’a zar ukyze wà – Os donos da floresta em perigo",
    "year": 2019,
    "makers": [
@@ -20638,22 +20495,6 @@
    "form": "Fiction",
    "length": "Short"
   },
-  "RESEARCH-FILM-20261031-800-NEW-354": {
-   "title": "The Wandering Soul",
-   "year": 2024,
-   "makers": [
-    {
-     "id": "DIR-0354",
-     "name": "Henna Taylor"
-    }
-   ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
-  },
   "RESEARCH-FILM-20261031-800-NEW-355": {
    "title": "River of Spirits",
    "year": 2025,
@@ -20769,29 +20610,6 @@
    "form": "Documentary",
    "length": "Short"
   },
-  "RESEARCH-FILM-20261031-800-NEW-363": {
-   "title": "He Moʻolelo Wahi Pana (A Storied Landscape)",
-   "year": 2025,
-   "makers": [
-    {
-     "id": "DIR-0363",
-     "name": "Kapena Liu"
-    }
-   ],
-   "languages": [],
-   "themes": [
-    "Memory and Oral History",
-    "Cosmology and Origin Stories",
-    "Kinship"
-   ],
-   "primary_theme": "Memory and Oral History",
-   "families": [
-    "Knowledge and Continuity",
-    "Lives and Relations"
-   ],
-   "form": null,
-   "length": "Short"
-  },
   "FILM-SRC-0366": {
    "title": "Dear Stephen King, instead of using Indian Burial Grounds in your books, have you thought of using European Burial Grounds?",
    "year": 2023,
@@ -20808,7 +20626,7 @@
    "form": null,
    "length": null
   },
-  "FILM-SRC-0370": {
+  "DIR-0370-F1": {
    "title": "Ancestral Threads",
    "year": 2023,
    "makers": [
@@ -20831,7 +20649,7 @@
    "form": "Documentary",
    "length": "Short"
   },
-  "FILM-SRC-0381": {
+  "FILM-SRC-0382": {
    "title": "Ni Wapiten – I see",
    "year": 2022,
    "makers": [
@@ -20851,7 +20669,7 @@
    "form": null,
    "length": null
   },
-  "FILM-SRC-0383": {
+  "DIR-0383-F1": {
    "title": "Follow",
    "year": 2023,
    "makers": [
@@ -20867,7 +20685,7 @@
    "form": null,
    "length": null
   },
-  "FILM-SRC-0387": {
+  "DIR-0387-F1": {
    "title": "Nisihkason Lex",
    "year": 2022,
    "makers": [
@@ -24707,7 +24525,7 @@
    "form": null,
    "length": null
   },
-  "NEW-7a1ad96c1468-WORK-3": {
+  "NEW-4c89eb1eecae-WORK-6": {
    "title": "Saludos desde el pueblo que dice no a la minería",
    "year": 2015,
    "makers": [
@@ -27512,26 +27330,6 @@
    "form": "Documentary",
    "length": "Feature"
   },
-  "NEW-084a145f8fa7-W1031-2": {
-   "title": "Nhemongueta Kunhã Mbaraete",
-   "year": 2020,
-   "makers": [
-    {
-     "id": "NEW-084a145f8fa7",
-     "name": "Graciela Guarani"
-    },
-    {
-     "id": "BETA30-20261106-D07",
-     "name": "Michele Perito Concianza Kaiowá"
-    }
-   ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
-  },
   "BETA30B-20261107-F13": {
    "title": "Kunhangue – Universo de um novo mundo",
    "year": 2020,
@@ -28278,7 +28076,7 @@
    "form": null,
    "length": null
   },
-  "BETA25-20261105-04-FILM1": {
+  "BETA25-20261105-05-FILM1": {
    "title": "Waska: The Forest Is My Family",
    "year": 2024,
    "makers": [
