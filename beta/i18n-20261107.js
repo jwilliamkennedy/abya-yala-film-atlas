@@ -111,6 +111,7 @@ const T=[["Continue exploring","Seguir explorando","Continuar explorando","Pours
 ['Or start from a theme','O empieza por un tema','Ou comece por um tema','Ou partez d’un thème'],['← Previous','← Anterior','← Anterior','← Précédent'],
 ['Next →','Siguiente →','Próximo →','Suivant →'],['Close ×','Cerrar ×','Fechar ×','Fermer ×'],['Constellations','Constelaciones','Constelações','Constellations'],
 ['Theme-weaving','Tejido de temas','Tecelagem de temas','Tissage de thèmes'],
+['Story, memory, land','Relato, memoria, tierra','Relato, memória, terra','Récit, mémoire, terre'],
 ['Constellations of Indigenous Cinema','Constelaciones del cine indígena','Constelações do cinema indígena','Constellations du cinéma autochtone'],
 ['Play the weave','Reproducir el tejido','Reproduzir a tecelagem','Dérouler le tissage'],['Read it','Leerlo','Ler','Le lire'],
 ['← Back','← Atrás','← Voltar','← Retour'],['Forward →','Adelante →','Avançar →','Avancer →'],['Map ↑','Mapa ↑','Mapa ↑','Carte ↑'],

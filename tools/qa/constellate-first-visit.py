@@ -262,6 +262,26 @@ async def run(pw, width, height, mobile, label):
     check(play_next == "Punalka", "Play cannot progress from Yintah to Punalka", {"title": play_next})
     await page.evaluate("window.AtlasConstellate.stopPlay()")
 
+    # Leaving and clearing do only what they say (13 Nov): × on the start screen and Clear both leave an empty Build.
+    stage = lambda: page.evaluate("document.documentElement.dataset.weaveStage")
+    await page.evaluate("window.AtlasConstellate.setRead(false)")
+    await page.click("#constellate-clear")
+    await page.wait_for_timeout(900)
+    check(await stage() == "build", "Clear left Build", await stage())
+    await page.evaluate("localStorage.clear()")
+    await page.goto(BASE + "?constellate=1", wait_until="load", timeout=90000)
+    await page.wait_for_selector("#weave-start [data-ws-close]", state="visible", timeout=60000)
+    await page.click("#weave-start [data-ws-close]")
+    await page.wait_for_timeout(700)
+    check(await stage() == "build", "× on the start screen did not close it", await stage())
+    # The Map page offers a thread from an open land.
+    await page.goto(BASE, wait_until="load", timeout=90000)
+    await page.wait_for_timeout(3500)
+    await page.evaluate("document.querySelector('#atlas .land-word[data-ui-tier]').dispatchEvent(new MouseEvent('click',{bubbles:true}))")
+    await page.wait_for_selector("[data-land-thread]", timeout=15000)
+    await page.click("[data-land-thread]")
+    await page.wait_for_function("window.AtlasConstellate.enabled && window.AtlasCollections.activeThread().items.length >= 1", timeout=15000)
+
     check(not errors, "script errors", errors[:5])
     await browser.close()
     return fails

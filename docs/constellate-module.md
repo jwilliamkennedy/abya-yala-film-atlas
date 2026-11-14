@@ -43,6 +43,17 @@ Gather (Add films, Draw a line, Theme web, a theme or film on the start screen),
 the order the thread runs; Say why two films connect: a note on one pair), Present (Follow, Play, Share). Add films
 is a toggle: it shows the search, and a second press returns to the thread.
 
+## Ways in and out (13 Nov 2026)
+
+- The start screen has an × (and Escape) that closes it and leaves an empty Build.
+- Clear clears at once and stays in Build; Undo, beside it, restores. Once a constellation has had films in this
+  visit, emptying it never sends you back to the start screen; the start screen shows on entering Constellate with
+  an empty constellation.
+- The example card's thread names open the example in Follow at that thread's first film.
+- On the Map page, an open land offers **Make a thread from this land →**: Constellate opens with a thread named for
+  the land, the most recent film by each of its filmmakers (up to eight), pinned to that land.
+- While drawing a line, one finger draws and two fingers move or pinch the map (touches are handed to the map's zoom).
+
 ## Draw a line (13 Nov 2026; first called Trace a line)
 
 In Build, **Draw a line** (toolbar, and the first row of the start screen; `?constellate=1&trace=1` opens it
