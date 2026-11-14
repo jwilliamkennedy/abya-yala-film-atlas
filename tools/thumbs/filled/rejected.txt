@@ -24,3 +24,45 @@ MIRROR-FILMOGRAPHY-20261107-059	Professor Norman Cornett	image is a portrait of 
 FILM-SRC-2023-00040	N’xaxaitkw	site banner
 TOUR-FILM-00438	Tussle	site banner
 SAB2-20261014-2a23090377cc-WORK-01	Segundo	festival banner
+
+# 2026-11-14, filmmakers H–Z, first pass (credit-page share images)
+BETA25-20261105-17-FILM1	Meu Corpo Território – Uma Performance Originária	event photo
+NEW-e00d7fdda37e-WORK-1	Elotinopopare, o córrego do povo Umutina Balatiponé que secou	portrait
+NEW-aed3afdd4997-WORK-1	Auntie Chuck (Native Lab project)	cohort grid
+NEW-186446e535fd-WORK-1	Intergenerational Climate Activism (Witness project)	portrait grid
+Q20261114-03-F1	Unsettled	cast photo
+Q20261113-83-F1	Yvy Pyte - Heart of the Earth	portrait of the filmmaker
+Q20261108-66-F1	My Roommate Makayla	portrait
+SAB2-20261014-8a01174c17a2-WORK-01	Jabuayenam — Cuando la palabra comienza a sanar	site banner
+NEW-41e12a1d4ebd-WORK-1	Tides of Tradition	portrait
+DIR-0111-F1	The Dancing Cop	portrait
+SAB2-20261014-7c02eedcb51c-WORK-01	Chimindi Ath’epa / Visión de Chimindi	festival banner
+BETA30B-20261107-F16	Escuela de Paliiawain	event photo
+DIR-0235-QMa1cff4	Conoce, crea y baila	portrait of another filmmaker
+DIR-0235-QM2690c9	Por la vida	portrait
+Q20261108-78-F1	Body Stories: Together	membership banner
+SAB2-20261014-9d9b915c58da-WORK-01	Fág kar segsó tánh: gufó u sí ag tú — A araucária e a gralha azul: uma história dos antigos kaingang	award banner
+QM-ff5a5485f3-M1	Jurijri	not clearly from the film
+NEW-11d2e0d50c24-WORK-1	Two Brothers	portrait
+NEW-25205c351598-WORK-1	Casa dos espíritos – Xapiripë Yanopë	not clearly from the film
+NEW-f60277eedca1-WORK-2	Lumalali Niwani	award photo
+NEW-f60277eedca1-WORK-1	Wachari	news photo
+NEW-97e35c60f73d-F1	The Guest	site banner
+DIR-0240-QMa811c2	Koo / Serpiente	festival photo
+DIR-0254-QMd8514f	Héroe Transparente	screening photo
+LEAD-20261011-012-QM2111e9	Warmis, guardianas del agua	portrait grid
+NEW-c19ea52bb394-WORK-1	In My Shoes	portrait grid
+QM-be5968b3d5-M1	Primera marcha villera trans plurinacional	news photo
+BETA6-20261107-F02	Məca	festival banner
+NEW-642461aaa016-WORK-1	Homelands	funding graphic
+SAB2-20261014-f6a74f246121-WORK-01	Pukllay	site banner
+Q20261108-64-F1	Talking Stones: The Cherokee Syllabary Cave	site card
+NEW-b066165d7a41-WORK-1	Toyol kajal / Noosfera	festival banner
+NEW-94635ab3c837-QM9028a1	Sonámbulo (Ne bezho kjinchi)	production photo
+SAB2-20261014-d01cc04817cc-WORK-01	Kikinyari	news photo
+DIR-0143-W1031-5	Maria Tallchief	portrait of a public figure
+NEW-796258423fc1-WORK-2	Oré Payayá	news photo
+Q20261108-48-F1	Radio Bingo	festival banner
+NEW-e3d853b3284b-WORK-1	Huaka'i (Native Lab project)	cohort grid
+Q20261108-45-F1	Definition of Resilience, Episode 2: “Identity”	festival banner
+Q20261113-91-F1	Nichimal Son - Música que florece	portrait
