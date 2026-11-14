@@ -1679,3 +1679,5 @@ body.weave-tracing.trace-themed #atlas .land-word:not(.trace-theme){opacity:.22!
 #constellate-mode #constellate-clear:hover:not(:disabled){background:var(--ui-wash)}
 #index .reading-context-actions .land-thread{color:var(--ui-ink)}
 @media (min-width:701px){#weave-trace-layer.is-browse .wt-mode{bottom:58px}}
+/* phones: the Draw controls fit the screen (14 Nov fix) */
+@media (max-width:700px){#weave-trace-layer .wt-mode{left:8px;right:8px;transform:none;gap:4px}#weave-trace-layer .wt-mode button{padding:0 10px}#weave-trace-layer .wt-mode .wt-theme-pick{flex:1 1 auto;min-width:0;max-width:none}#weave-trace-layer .wt-switch{padding:0 2px}}
