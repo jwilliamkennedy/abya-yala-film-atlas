@@ -1,7 +1,7 @@
 """One header menu for every page of the beta except the map itself (which builds the same menu in menus-20261107.js).
 Same items, same order, same words as the map: About · Map · Constellate · Watch · More
 (Browse: Land, Languages, Themes, Timeline · Your list: Screening list · About the data: Data and downloads,
-Suggest a correction). Filmmakers, Films and Land are switched inside the map's sidebar (2026-11-09).
+Resources, Suggest a correction). Filmmakers, Films and Land are switched inside the map's sidebar (2026-11-09).
 Also loads the shared interface layer (assets/ui-20261109.css and .js) after site-menu.css. The current page is marked. Safe to run again.
 usage: python3 tools/pages/nav.py beta"""
 import sys, re, pathlib
@@ -9,7 +9,7 @@ import sys, re, pathlib
 TOP = [('About', 'about.html'), ('Map', './'), ('Constellate', './?constellate=1'), ('Watch', 'watch.html')]
 MORE = [[('Land', './#view=land'), ('Languages', 'languages.html'), ('Themes', 'themes.html'), ('Timeline', 'timeline.html')],
         [('Screening list', 'screening.html')],
-        [('Data and downloads', 'data.html'), ('Suggest a correction', 'corrections.html')]]
+        [('Data and downloads', 'data.html'), ('Resources', 'resources.html'), ('Suggest a correction', 'corrections.html')]]
 # the map's own mark, drawn in the page's ink (the same icon on every page, in light and night themes)
 MARK = ('<svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><circle cx="30" cy="34" r="20" fill="none" '
         'stroke="currentColor" stroke-width="3"/><circle cx="30" cy="34" r="8.5" fill="none" stroke="currentColor" stroke-width="2.6"/>'
@@ -80,7 +80,7 @@ def main(root):
         else:
             new = new.replace('</head>', CSS + '\n</head>', 1)
         # shared stylesheets last, after the page's own styles and site-nav-css, so the shared layer wins the cascade
-        new = new.replace('</head>', f'<link rel="stylesheet" href="{up}assets/site-menu.css?v=11"><script defer src="{up}assets/site-menu.js?v=3"></script><script defer src="{up}i18n-20261107.js?v=10"></script>\n</head>', 1)
+        new = new.replace('</head>', f'<link rel="stylesheet" href="{up}assets/site-menu.css?v=11"><script defer src="{up}assets/site-menu.js?v=3"></script><script defer src="{up}i18n-20261107.js?v=14"></script>\n</head>', 1)
         new = new.replace('</head>', f'<link rel="stylesheet" href="{up}assets/ui-20261109.css?v=3"><script defer src="{up}assets/ui-20261109.js?v=3"></script>\n</head>', 1)
         if new != t:
             f.write_text(new, encoding='utf-8'); n += 1
