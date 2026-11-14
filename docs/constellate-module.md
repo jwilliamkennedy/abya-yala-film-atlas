@@ -30,16 +30,22 @@ what makes it possible.
 ## The toolbar (13 Nov 2026)
 
 One row in four groups: the constellation's name; **Build | Follow** as one switch with **Play** as the one filled
-button; the building tools (**Add films · Draw thread · Trace a line · Theme web**, Build only); and **Undo · Redo ·
+button; the building tools (**Add films · Link films · Draw a line · Theme web**, Build only); and **Undo · Redo ·
 Share · Options · Exit**. Clear sits beside Undo, in the accent colour; it asks first and Undo restores. The bar measures itself and
 steps down only while it overflows: full labels, then short tool labels, then Share/Undo/Redo into Options, then the
 tools on a second row (phones). The structure is set by `place()` in the "Constellate toolbar" section of
 `constellate.js`; every style for `#constellate-mode` is the "Constellate toolbar" block at the end of
 `constellate.css`. The 175 older toolbar rules in `atlas.css`, `ui-20261109.css` and `constellate.css` were removed.
 
-## Trace a line (13 Nov 2026)
+## How the tools divide the work
 
-In Build, **Trace a line** (toolbar, and the first row of the start screen; `?constellate=1&trace=1` opens it
+Gather (Add films, Draw a line, Theme web, a theme or film on the start screen), Connect (Link films: click cards in
+the order the thread runs; Say why two films connect: a note on one pair), Present (Follow, Play, Share). Add films
+is a toggle: it shows the search, and a second press returns to the thread.
+
+## Draw a line (13 Nov 2026; first called Trace a line)
+
+In Build, **Draw a line** (toolbar, and the first row of the start screen; `?constellate=1&trace=1` opens it
 directly) lets a visitor drag a line across the map. Every land the line passes through that has films in the atlas
 joins the line in the order it is crossed, its territory brightening as the line enters it. On release a card lists
 the lands in order with their film counts; lands can be unticked; one button threads one film from each kept land
@@ -53,6 +59,7 @@ the lands in order with their film counts; lands can be unticked; one button thr
 - The thread's name is `first land → last land`; its description says how it was made.
 - Code: the `Trace a line` block in the core section of `constellate.js` (`startTrace`, `traceSample`, `lineThread`)
   and the block of the same name in `constellate.css`. API: `AtlasConstellate.trace()`, `.stopTrace()`, `.tracing`.
+- While drawing, the scroll wheel still zooms the map, and a **Draw / Move map** switch at the bottom lets the map be dragged; land names stop catching the pointer so a drag on them moves the map.
 - Not built yet: a keyboard way to draw (choose a first and last land), translations, and an entry on the Map page.
 
 ## The browser suite
