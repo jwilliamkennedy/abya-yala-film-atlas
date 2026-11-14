@@ -2,8 +2,8 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-14",
  "license": "See data.html",
- "films_on_public_map": 1579,
- "film_entries": 1594,
+ "films_on_public_map": 1608,
+ "film_entries": 1623,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -7848,6 +7848,22 @@
    "form": null,
    "length": null
   },
+  "DIR-0213-QM595b89": {
+   "title": "Estrella de Tlalpujahua, en mazahua yo cuidé",
+   "year": null,
+   "makers": [
+    {
+     "id": "DIR-0213",
+     "name": "Alfredo Guzmán Cayetano"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
   "FILM-0167": {
    "title": "Majt'anil : el legado",
    "year": null,
@@ -7979,6 +7995,22 @@
    "form": "Documentary",
    "length": "Short"
   },
+  "DIR-0217-QMbe3768": {
+   "title": "¿Quién es Me'Lupe?",
+   "year": null,
+   "makers": [
+    {
+     "id": "DIR-0217",
+     "name": "Aracely Méndez"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
   "FILM-0171": {
    "title": "El arte de limpiar",
    "year": null,
@@ -8087,6 +8119,38 @@
    "form": null,
    "length": null
   },
+  "DIR-0219-QM62be59": {
+   "title": "Japingua",
+   "year": null,
+   "makers": [
+    {
+     "id": "DIR-0219",
+     "name": "Celina Yunuen Manuel Piñón"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "DIR-0219-QMd5727c": {
+   "title": "Para curarnos el paisaje herido",
+   "year": null,
+   "makers": [
+    {
+     "id": "DIR-0219",
+     "name": "Celina Yunuen Manuel Piñón"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
   "FILM-0173": {
    "title": "Huachinango rojo (Behua Xiñá')",
    "year": 2023,
@@ -8107,6 +8171,22 @@
    ],
    "form": "Documentary",
    "length": "Short"
+  },
+  "DIR-0220-QMfb5294": {
+   "title": "El telar de Hilaria",
+   "year": null,
+   "makers": [
+    {
+     "id": "DIR-0220",
+     "name": "Cinthya Lizbeth Toledo Cabrera"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": null
   },
   "FILM-0174": {
    "title": "Se escucha el viento",
@@ -8238,6 +8318,38 @@
    "primary_theme": null,
    "families": [],
    "form": null,
+   "length": null
+  },
+  "DIR-0222-QMc779d2": {
+   "title": "Monumentos vivientes",
+   "year": null,
+   "makers": [
+    {
+     "id": "DIR-0222",
+     "name": "Dante Cerano Bautista"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261113-56-F1": {
+   "title": "K’úrátsekwa Tsïtsïkiisti (La vergüenza es una flor)",
+   "year": null,
+   "makers": [
+    {
+     "id": "DIR-0222",
+     "name": "Dante Cerano Bautista"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
    "length": null
   },
   "FILM-0177": {
@@ -8468,6 +8580,38 @@
    "primary_theme": null,
    "families": [],
    "form": null,
+   "length": null
+  },
+  "Q20261113-55-F1": {
+   "title": "Tajimol",
+   "year": null,
+   "makers": [
+    {
+     "id": "DIR-0226",
+     "name": "Humberto Gómez Pérez"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "Q20261113-59-F1": {
+   "title": "Jvabajom-Músico",
+   "year": null,
+   "makers": [
+    {
+     "id": "DIR-0226",
+     "name": "Humberto Gómez Pérez"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
    "length": null
   },
   "FILM-0183": {
@@ -9714,6 +9858,22 @@
    ],
    "form": "Fiction",
    "length": "Short"
+  },
+  "DIR-0245-QM6ed92c": {
+   "title": "La raíz de mi ombligo",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "DIR-0245",
+     "name": "Xóchitl Enríquez Mendoza"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
   },
   "FILM-0207": {
    "title": "Sueños que migran",
@@ -12834,6 +12994,22 @@
    "form": "Documentary",
    "length": "Short"
   },
+  "NEW-1f8a8f87fd75-QMf95332": {
+   "title": "Se elige",
+   "year": null,
+   "makers": [
+    {
+     "id": "NEW-1f8a8f87fd75",
+     "name": "Alma Yoari Cizaña López"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "NEW-c8924ed69b8e-WORK-1": {
    "title": "XO RAD Magical",
    "year": 2019,
@@ -14142,6 +14318,22 @@
    "form": null,
    "length": null
   },
+  "NEW-797d6554404b-QMc84d69": {
+   "title": "Marte al anochecer",
+   "year": null,
+   "makers": [
+    {
+     "id": "NEW-797d6554404b",
+     "name": "Edgar Noé Sajcabún Mux"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "NEW-72e611292227-WORK-1": {
    "title": "América",
    "year": null,
@@ -14668,6 +14860,22 @@
    "primary_theme": null,
    "families": [],
    "form": null,
+   "length": null
+  },
+  "Q20261113-53-F1": {
+   "title": "Mu Kar: mi raíz",
+   "year": null,
+   "makers": [
+    {
+     "id": "NEW-f82421999862",
+     "name": "Irati Dojura Landa Yagarí"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
    "length": null
   },
   "NEW-be50361fffae-WORK-1": {
@@ -15491,6 +15699,22 @@
    "primary_theme": null,
    "families": [],
    "form": null,
+   "length": null
+  },
+  "Q20261113-54-F1": {
+   "title": "Ako’yolowaa (Cubrirse el alma)",
+   "year": null,
+   "makers": [
+    {
+     "id": "NEW-0f17e286a91a",
+     "name": "Luzbeidy Monterrosa Atencio"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
    "length": null
   },
   "NEW-4b48761bbc57-WORK-1": {
@@ -19764,6 +19988,22 @@
    "form": null,
    "length": null
   },
+  "PILOT-43-ANA-TSUYEB-QM11043c": {
+   "title": "Kolel (Sanar)",
+   "year": null,
+   "makers": [
+    {
+     "id": "PILOT-43-ANA-TSUYEB",
+     "name": "Ana Ts’uyeb"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
   "RESEARCH-FILM-004-01": {
    "title": "Pohã Re’yi",
    "year": 2020,
@@ -19796,9 +20036,93 @@
    "form": null,
    "length": null
   },
+  "LEAD-20261011-010-QMa826df": {
+   "title": "No Muevan Mis Raíces",
+   "year": null,
+   "makers": [
+    {
+     "id": "LEAD-20261011-010",
+     "name": "Joan Emily Ruiz Icedo"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Land Defense"
+   ],
+   "primary_theme": "Land Defense",
+   "families": [
+    "Land and Environment"
+   ],
+   "form": null,
+   "length": null
+  },
+  "Q20261112-01-F1": {
+   "title": "Sein Zare and the God Particle",
+   "year": null,
+   "makers": [
+    {
+     "id": "LEAD-20261011-011",
+     "name": "Gunzareiman Villafaña Torres"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "LEAD-20261011-011-QM4e4ea9": {
+   "title": "Las hijas de Naboba",
+   "year": null,
+   "makers": [
+    {
+     "id": "LEAD-20261011-011",
+     "name": "Gunzareiman Villafaña Torres"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
   "LEAD-20261011-015-W1031-1": {
    "title": "La niña del arpa",
    "year": 2017,
+   "makers": [
+    {
+     "id": "LEAD-20261011-015",
+     "name": "Leyzer Chiquin"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": null
+  },
+  "Q20261113-52-F1": {
+   "title": "El sueño del toro, el caballo y la serpiente",
+   "year": null,
+   "makers": [
+    {
+     "id": "LEAD-20261011-015",
+     "name": "Leyzer Chiquin"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": null
+  },
+  "Q20261113-57-F1": {
+   "title": "El buceo de las ranas",
+   "year": null,
    "makers": [
     {
      "id": "LEAD-20261011-015",
@@ -19832,6 +20156,22 @@
    ],
    "form": "Documentary",
    "length": "Short"
+  },
+  "LEAD-20261011-020-QMddfd49": {
+   "title": "Caminares que germinan en la jícara sagrada",
+   "year": null,
+   "makers": [
+    {
+     "id": "LEAD-20261011-020",
+     "name": "Norma Delia Robles Carrillo"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
   },
   "RESEARCH-FILM-20261031-0001-01": {
    "title": "Kvpalme – El Origen",
@@ -24879,6 +25219,22 @@
    "form": null,
    "length": null
   },
+  "NEW-b066165d7a41-QM60aa8d": {
+   "title": "Ch'ulel (espíritu)",
+   "year": null,
+   "makers": [
+    {
+     "id": "NEW-b066165d7a41",
+     "name": "Rosa Amelia Hernández Gómez"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": null
+  },
   "NEW-9569183a3b9f-WORK-1": {
    "title": "Nenek",
    "year": 2014,
@@ -27560,6 +27916,22 @@
    "form": "Hybrid",
    "length": null
   },
+  "Q20261113-58-F1": {
+   "title": "Como la Tierra",
+   "year": null,
+   "makers": [
+    {
+     "id": "NEW-fd8667e4a685",
+     "name": "Dan Escárraga"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
   "NEW-39933aa2c662-WORK-1": {
    "title": "Atrapaluz",
    "year": null,
@@ -29697,6 +30069,22 @@
    "form": "Documentary",
    "length": "Short"
   },
+  "LEAD-20261011-012-QM902a2e": {
+   "title": "Jichi, en busca del guardián de las aguas",
+   "year": null,
+   "makers": [
+    {
+     "id": "LEAD-20261011-012",
+     "name": "Paola Gabriela Quispe Quispe"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": null
+  },
   "QM-525e464677-M1": {
    "title": "Os espíritos só entendem o nosso idioma",
    "year": 2019,
@@ -30995,6 +31383,38 @@
    "form": "Documentary",
    "length": null
   },
+  "NEW-665eb6a5ccee-QM7c02fe": {
+   "title": "La piedra de los Binnigulaza",
+   "year": null,
+   "makers": [
+    {
+     "id": "NEW-665eb6a5ccee",
+     "name": "Jorge Ángel Pérez"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "NEW-665eb6a5ccee-QMc6e740": {
+   "title": "Los monstruos que devoran la tierra",
+   "year": null,
+   "makers": [
+    {
+     "id": "NEW-665eb6a5ccee",
+     "name": "Jorge Ángel Pérez"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
   "QM-6f2cbe3bfe-M1": {
    "title": "Danzando con demonios",
    "year": null,
@@ -31139,6 +31559,22 @@
    "form": "Documentary",
    "length": null
   },
+  "QM-4b9f5b2e83-M3": {
+   "title": "Maaya Ko’olelo’ob: Muuk’",
+   "year": null,
+   "makers": [
+    {
+     "id": "QM-4b9f5b2e83",
+     "name": "Yaremi Chan"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
   "LEAD-20261011-014-QM0e9ecc": {
    "title": "Kuankua Pi",
    "year": null,
@@ -31223,6 +31659,38 @@
      "source": "https://www.imcine.gob.mx/media/2024/7/muestra_ecamc_sedes.pdf"
     }
    ],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "DIR-0375-QM2678b1": {
+   "title": "Lay taygui, nuestra lengua",
+   "year": null,
+   "makers": [
+    {
+     "id": "DIR-0375",
+     "name": "Dennis Noel López Sosa"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "Q20261113-51-F1": {
+   "title": "Snichimal abtelal (Las flores del trabajo)",
+   "year": null,
+   "makers": [
+    {
+     "id": "QM-6a17e3a86d",
+     "name": "Ana María Vázquez Hernández"
+    }
+   ],
+   "languages": [],
    "themes": [],
    "primary_theme": null,
    "families": [],
