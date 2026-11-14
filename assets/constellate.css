@@ -1607,3 +1607,6 @@ html[data-weave-stage="read"] .weave-read-focus-main .weave-media-thumb{width:92
  #weave-start .ws-themes button,#weave-start .ws-popular button,#weave-start [data-ws-theme]{min-height:36px}
  #atlas-theme-web .tw-top button,#atlas-theme-web .tw-families button{min-height:34px}
 }
+/* an empty thread description invites one */
+#weave-order-summary .cm-desc-empty{display:block;padding:0;border:0;background:none;color:var(--ui-muted);font:italic 400 15px/1.4 var(--ui-serif,Georgia,serif);text-align:left;cursor:text}
+#weave-order-summary .cm-desc-empty:hover{color:var(--ui-accent)}
