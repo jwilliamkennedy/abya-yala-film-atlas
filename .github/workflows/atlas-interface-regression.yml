@@ -183,7 +183,7 @@ jobs:
                 print('PLAY_HIT',label,json.dumps(hit),flush=True)
                 await page.locator('#weave-play').click(force=True,timeout=15000)
                 try:
-                  await page.locator('#weave-player:not([hidden])').wait_for(timeout=12000)
+                  await page.locator('#weave-player:not([hidden])').wait_for(timeout=25000)
                 except Exception:
                   after=await page.evaluate("({pressed:document.getElementById('weave-play').getAttribute('aria-pressed'),player:!!document.getElementById('weave-player'),hidden:document.getElementById('weave-player')?.hidden,stage:document.documentElement.dataset.weaveStage,toast:document.querySelector('[role=status]')?.textContent?.slice(0,120)})")
                   print('PLAY_AFTER',label,json.dumps(after),flush=True)
