@@ -66,3 +66,5 @@ Q20261108-48-F1	Radio Bingo	festival banner
 NEW-e3d853b3284b-WORK-1	Huaka'i (Native Lab project)	cohort grid
 Q20261108-45-F1	Definition of Resilience, Episode 2: “Identity”	festival banner
 Q20261113-91-F1	Nichimal Son - Música que florece	portrait
+Q20261114-02-F4	A Good Game	site banner
+DIR-0142-W1031-4	The Haudenosaunee Canoe Journey	site banner
