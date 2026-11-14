@@ -46,6 +46,17 @@ def reference_globals(base_globals, records, all_ids=None, keep_record_arrays=Fa
         ref[k] = scrub(v, hidden) if hidden else v
     return ref
 
+# Provenance is written in the atlas's own neutral terms: tools used in research are not named in public data (14 Nov 2026).
+NEUTRAL = [('Claude (thin-countries pass)', 'Atlas research (thin-countries pass)'),
+           ('ChatGPT research mirror', 'Atlas research note')]
+
+
+def neutral(text):
+    for a, b in NEUTRAL:
+        text = text.replace(a, b)
+    return text
+
+
 INTERNAL_WORDS = re.compile(r'research lead|pending|audit|verif|workbook|queue|staged|mirror|import|fill\b|recorded with the film', re.I)
 
 def public(records):
@@ -112,7 +123,7 @@ def write(records, countries, meta, owned, base_globals, edges=None, keep_record
            + 'Object.assign(window.ATLAS_FILM_EXPLORATION,' + json.dumps(owned.get('ATLAS_FILM_EXPLORATION', {}), ensure_ascii=False, separators=(',', ':')) + ');\n'
            + 'Object.assign(window.ATLAS_THEMES_1103.films,' + json.dumps(owned.get('ATLAS_THEMES_1103', {}), ensure_ascii=False, separators=(',', ':')) + ');\n'
            + (js('ATLAS_FACETS', facets) if facets is not None else ''))
-    (B / 'atlas-data.js').write_text(txt, encoding='utf-8')
+    (B / 'atlas-data.js').write_text(neutral(txt), encoding='utf-8')
     page()
     return {'atlas-data.js MB': round((B / 'atlas-data.js').stat().st_size / 1e6, 2)}
 
