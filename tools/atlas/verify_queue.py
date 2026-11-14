@@ -84,7 +84,7 @@ def main(path, out, leads=False):
     report = []
     for r in todo:
         a, name, title = v(r.get('queue_action')), v(r.get('name')), v(r.get('title'))
-        res = {'row': r['_row'], 'action': a, 'filmmaker_id': v(r.get('filmmaker_id')), 'name': name, 'film_id': v(r.get('film_id')), 'title': title, 'checks': {}}
+        res = {'row': r['_row'], 'qid': v(r.get('qid')), 'action': a, 'filmmaker_id': v(r.get('filmmaker_id')), 'name': name, 'film_id': v(r.get('film_id')), 'title': title, 'checks': {}}
         if a == 'add filmmaker':
             src, quote = v(r.get('source_1_url')), v(r.get('source_1_quote'))
             t = text_of(src) if src else ''
@@ -114,12 +114,12 @@ def main(path, out, leads=False):
                     checks[c] = found
             res['checks']['evidence'] = {'url': src, **checks, 'fetch': t[:20] if t.startswith('__') else 'ok'}
         report.append(res)
-        print(res['row'], a, name, '|', title, '|', {k: {kk: vv for kk, vv in c.items() if kk not in ('context', 'url')} for k, c in res['checks'].items()}, flush=True)
+        print(res['qid'] or res['row'], a, name, '|', title, '|', {k: {kk: vv for kk, vv in c.items() if kk not in ('context', 'url')} for k, c in res['checks'].items()}, flush=True)
     json.dump(report, open(f'{out}/verify.json', 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
     with open(f'{out}/verify.md', 'w', encoding='utf-8') as fh:
         fh.write(f'# Queue check · {len(report)} rows\n\n')
         for res in report:
-            fh.write(f"## Row {res['row']} · {res['action']} · {res['name']} · {res['title']}\n")
+            fh.write(f"## {res['qid'] or 'Row ' + str(res['row'])} · {res['action']} · {res['name']} · {res['title']}\n")
             for k, c in res['checks'].items():
                 fh.write(f"- **{k}** {c.get('url','')}\n  - " + ', '.join(f'{kk}: {vv}' for kk, vv in c.items() if kk not in ('url', 'context')) + '\n')
                 if c.get('context'):
