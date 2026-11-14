@@ -1,4 +1,4 @@
-/* Beta interface pass, 2026-11-07 (Claude).
+/* Beta interface pass, 2026-11-07.
    Territories: stronger washes with Off / Soft / Strong + strength, and an outline for the territory under the pointer or the land selected.
    Menus: one map toolbar, drawers docked under it, one close rule (Esc, click outside or ×), Countries find/sort/regions,
    a visual map key, visible filter chips, a collapsible featured card and single-key shortcuts.

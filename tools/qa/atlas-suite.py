@@ -1,4 +1,4 @@
-"""Atlas browser suite (Claude, 2026-11-12).
+"""Atlas browser suite (2026-11-12).
 
 Drives the site through its main states in a real browser and does two things in each:
   * checks that it works (hard failures: script errors, missing controls, wrong counts, page overflow on a phone);

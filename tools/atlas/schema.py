@@ -2,7 +2,7 @@
 
 Design (agreed 8 Nov 2026): one row per film credit; a filmmaker's columns repeat on each of their rows and must
 agree (filmmaker_id is the key). A filmmaker with no films has one row with the film columns blank.
-Sheets: Published (what the beta shows), Queue (proposals: ChatGPT writes only here), Lists (hidden: vocabularies).
+Sheets: Published (what the beta shows), Queue (proposals: intake writes only here), Lists (hidden: vocabularies).
 
 Exact round trip: the hidden machine columns keep the original record / film as JSON. When a cell still shows
 what the original renders to, the original value is kept unchanged; when a cell was edited (or the row is new),

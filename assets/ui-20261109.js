@@ -1,4 +1,4 @@
-/* Interface pass, 2026-11-09 (Claude). Loaded last, on every page.
+/* Interface pass, 2026-11-09. Loaded last, on every page.
    Every page: a theme button beside the language selector (moon / sun), and the chosen theme applied before paint.
    Map page only: the list stays open (Esc closes menus, not the list); Recent, Save view, Copy link and Surprise me
    share one ⋯ menu; a selected filmmaker scrolls clear of the sticky bar; country markers and play buttons wait until
