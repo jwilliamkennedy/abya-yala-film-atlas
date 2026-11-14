@@ -18,7 +18,7 @@ SKIP = re.compile(r'facebook\.|instagram\.|twitter\.|x\.com|tiktok\.|linkedin\.|
 
 def bing(q):
     r = requests.get('https://www.bing.com/search', params={'q': q, 'setlang': 'en'}, headers=C.UA, timeout=20)
-    return [html.unescape(u) for u in re.findall(r'<li class="b_algo"[^>]*>.*?<a[^>]+href="(https?://[^"]+)"', r.text, re.S)]
+    return [html.unescape(u) for u in re.findall(r'<li class="b_algo[^"]*"[^>]*>.*?<a[^>]+href="(https?://[^"]+)"', r.text, re.S)]
 
 def ddg(q):
     r = requests.post('https://html.duckduckgo.com/html/', data={'q': q}, headers=C.UA, timeout=20)
@@ -31,24 +31,37 @@ def ddg(q):
     return out
 
 def search(q):
+    res = []
     for f in (bing, ddg):
         try:
-            res = [u for u in f(q) if not SKIP.search(u)]
-            if res: return res
+            res += [u for u in f(q) if not SKIP.search(u)]
         except Exception:
             pass
-        time.sleep(1)
-    return []
+    return list(dict.fromkeys(res))
+
+def head_names_title(url, title):
+    # the page's own title (or og:title) must carry the film's title: a filmmaker's biography or a
+    # filmography page names many films in its text, but its title is the person's name
+    try:
+        r = requests.get(url, headers=C.UA, timeout=20)
+        heads = re.findall(r'<title[^>]*>(.*?)</title>|property=["\']og:title["\'][^>]+content=["\']([^"\']+)', r.text, re.S | re.I)
+        head = C.fold(' '.join(a + b for a, b in heads))
+        ws = C.words(title)
+        return sum(w in head for w in ws) >= max(1, len(ws) - 1)
+    except Exception:
+        return False
 
 def one(row):
     tried = []
     urls = ([row['film_source']] if (row.get('film_source') or '').startswith('http') else [])
     first = (row['filmmaker'] or '').split(';')[0].strip()
     title = re.split(r'\s[/=]\s|\s\(', row['title'])[0].strip()
-    urls += search(f'"{title}" {first} film')[:6]
+    urls += search(f'"{title}" {first}')[:8]
     last = None
     for u in dict.fromkeys(urls):
         o, im = C.one(dict(row, film_source=u))
+        if o['check'] == 'ok' and not head_names_title(o['image_page'], row['title']):
+            o['check'], im = 'page title is not the film', None
         tried.append(f"{o['check'][:20]} {u[:60]}")
         if o['check'] == 'ok':
             o['tried'] = ' | '.join(tried); return o, im
