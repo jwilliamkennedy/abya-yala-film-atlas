@@ -2,8 +2,8 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-14",
  "license": "See data.html",
- "films_on_public_map": 1619,
- "film_entries": 1624,
+ "films_on_public_map": 1665,
+ "film_entries": 1670,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -3131,6 +3131,22 @@
    "form": null,
    "length": null
   },
+  "DIR-0063-F1": {
+   "title": "Racing Waters",
+   "year": 2026,
+   "makers": [
+    {
+     "id": "DIR-0063",
+     "name": "Asia Youngman"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Series"
+  },
   "DIR-0064-F1": {
    "title": "Three Thousand",
    "year": 2017,
@@ -4282,6 +4298,38 @@
    "form": "Documentary",
    "length": "Feature"
   },
+  "DIR-0115-F1": {
+   "title": "Telling Our Story",
+   "year": 2023,
+   "makers": [
+    {
+     "id": "DIR-0115",
+     "name": "Kim O'Bomsawin"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Series"
+  },
+  "DIR-0115-F2": {
+   "title": "Go North!",
+   "year": 2026,
+   "makers": [
+    {
+     "id": "DIR-0115",
+     "name": "Kim O'Bomsawin"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Series"
+  },
   "FILM-0082": {
    "title": "Wilfred Buck",
    "year": null,
@@ -4420,6 +4468,54 @@
    "form": null,
    "length": null
   },
+  "DIR-0119-F1": {
+   "title": "Coyote’s Crazy Smart Science Show",
+   "year": 2017,
+   "makers": [
+    {
+     "id": "DIR-0119",
+     "name": "Loretta Todd"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Series"
+  },
+  "DIR-0119-F2": {
+   "title": "Tansi! Nehiyawetan",
+   "year": null,
+   "makers": [
+    {
+     "id": "DIR-0119",
+     "name": "Loretta Todd"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Series"
+  },
+  "DIR-0119-F3": {
+   "title": "Skye and Chang",
+   "year": 2015,
+   "makers": [
+    {
+     "id": "DIR-0119",
+     "name": "Loretta Todd"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "DIR-0121-W1031-1": {
    "title": "Before Tomorrow",
    "year": 2008,
@@ -4530,6 +4626,22 @@
    "families": [],
    "form": null,
    "length": null
+  },
+  "DIR-0124-F2": {
+   "title": "Bones of Crows",
+   "year": 2023,
+   "makers": [
+    {
+     "id": "DIR-0124",
+     "name": "Marie Clements"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Series"
   },
   "RESEARCH-FILM-20261031-800-0021": {
    "title": "Embers of Queer Joy",
@@ -5336,6 +5448,70 @@
    "form": "Fiction",
    "length": "Feature"
   },
+  "DIR-0150-F1": {
+   "title": "Pour toi Flora",
+   "year": 2022,
+   "makers": [
+    {
+     "id": "DIR-0150",
+     "name": "Sonia Bonspille Boileau"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Series"
+  },
+  "DIR-0150-F2": {
+   "title": "Mouki",
+   "year": 2009,
+   "makers": [
+    {
+     "id": "DIR-0150",
+     "name": "Sonia Bonspille Boileau"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Series"
+  },
+  "DIR-0150-F3": {
+   "title": "Vitamine C",
+   "year": 2016,
+   "makers": [
+    {
+     "id": "DIR-0150",
+     "name": "Sonia Bonspille Boileau"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Series"
+  },
+  "DIR-0150-F4": {
+   "title": "Skindigenous",
+   "year": 2016,
+   "makers": [
+    {
+     "id": "DIR-0150",
+     "name": "Sonia Bonspille Boileau"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Series"
+  },
   "DIR-0152-F1": {
    "title": "Sol",
    "year": null,
@@ -5972,6 +6148,54 @@
    "families": [],
    "form": null,
    "length": null
+  },
+  "DIR-0158-F1": {
+   "title": "Mohawk Girls",
+   "year": 2014,
+   "makers": [
+    {
+     "id": "DIR-0158",
+     "name": "Tracey Deer"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Series"
+  },
+  "DIR-0158-F2": {
+   "title": "Cashing In",
+   "year": null,
+   "makers": [
+    {
+     "id": "DIR-0158",
+     "name": "Tracey Deer"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Series"
+  },
+  "DIR-0158-F3": {
+   "title": "Hudson & Rex",
+   "year": null,
+   "makers": [
+    {
+     "id": "DIR-0158",
+     "name": "Tracey Deer"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Series"
   },
   "DIR-0159-F1": {
    "title": "Portraits from a Fire",
@@ -10818,6 +11042,22 @@
    "form": "Fiction",
    "length": null
   },
+  "DIR-0271-F1": {
+   "title": "Dark Winds",
+   "year": 2022,
+   "makers": [
+    {
+     "id": "DIR-0271",
+     "name": "Chris Eyre"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Series"
+  },
   "DIR-0273-F1": {
    "title": "Native America (season 2)",
    "year": null,
@@ -11730,6 +11970,54 @@
    "form": null,
    "length": null
   },
+  "DIR-0308-F1": {
+   "title": "Reservation Dogs",
+   "year": 2021,
+   "makers": [
+    {
+     "id": "DIR-0308",
+     "name": "Sterlin Harjo"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Series"
+  },
+  "DIR-0308-F2": {
+   "title": "The Lowdown",
+   "year": 2025,
+   "makers": [
+    {
+     "id": "DIR-0308",
+     "name": "Sterlin Harjo"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Series"
+  },
+  "DIR-0308-F3": {
+   "title": "The Magicians",
+   "year": null,
+   "makers": [
+    {
+     "id": "DIR-0308",
+     "name": "Sterlin Harjo"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Series"
+  },
   "DIR-0309-F1": {
    "title": "Doing the Sheep Good",
    "year": 2013,
@@ -12396,6 +12684,22 @@
    ],
    "form": "Fiction",
    "length": "Feature"
+  },
+  "DIR-0331-F1": {
+   "title": "Echo",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "DIR-0331",
+     "name": "Sydney Freeland"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Series"
   },
   "FILM-0272": {
    "title": "This Is the Way We Rise",
@@ -31628,6 +31932,438 @@
    "families": [],
    "form": "Documentary",
    "length": null
+  },
+  "Q20261114-01-F1": {
+   "title": "Little Bird",
+   "year": 2023,
+   "makers": [
+    {
+     "id": "Q20261114-01",
+     "name": "Zoe Hopkins"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Series"
+  },
+  "Q20261114-01-F2": {
+   "title": "Don't Even",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "Q20261114-01",
+     "name": "Zoe Hopkins"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Series"
+  },
+  "Q20261114-01-F3": {
+   "title": "North of North",
+   "year": 2025,
+   "makers": [
+    {
+     "id": "Q20261114-01",
+     "name": "Zoe Hopkins"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Series"
+  },
+  "Q20261114-01-F4": {
+   "title": "Run the Burbs",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261114-01",
+     "name": "Zoe Hopkins"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Series"
+  },
+  "Q20261114-01-F5": {
+   "title": "Small Achievable Goals",
+   "year": 2025,
+   "makers": [
+    {
+     "id": "Q20261114-01",
+     "name": "Zoe Hopkins"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Series"
+  },
+  "Q20261114-01-F6": {
+   "title": "Sullivan's Crossing",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261114-01",
+     "name": "Zoe Hopkins"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Series"
+  },
+  "Q20261114-01-F7": {
+   "title": "Law & Order Toronto: Criminal Intent",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261114-01",
+     "name": "Zoe Hopkins"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Series"
+  },
+  "Q20261114-02-F1": {
+   "title": "The Journey",
+   "year": 2008,
+   "makers": [
+    {
+     "id": "Q20261114-02",
+     "name": "Jason Brennan"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Series"
+  },
+  "Q20261114-02-F2": {
+   "title": "Hit the Ice",
+   "year": 2013,
+   "makers": [
+    {
+     "id": "Q20261114-02",
+     "name": "Jason Brennan"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Series"
+  },
+  "Q20261114-02-F3": {
+   "title": "Pursuing the Flame",
+   "year": 2011,
+   "makers": [
+    {
+     "id": "Q20261114-02",
+     "name": "Jason Brennan"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Series"
+  },
+  "Q20261114-02-F4": {
+   "title": "A Good Game",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "Q20261114-02",
+     "name": "Jason Brennan"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Series"
+  },
+  "Q20261114-02-F5": {
+   "title": "Pulse",
+   "year": 2022,
+   "makers": [
+    {
+     "id": "Q20261114-02",
+     "name": "Jason Brennan"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Series"
+  },
+  "Q20261114-03-F1": {
+   "title": "Unsettled",
+   "year": 2021,
+   "makers": [
+    {
+     "id": "Q20261114-03",
+     "name": "Jennifer Podemski"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Series"
+  },
+  "Q20261114-03-F2": {
+   "title": "Future History",
+   "year": 2018,
+   "makers": [
+    {
+     "id": "Q20261114-03",
+     "name": "Jennifer Podemski"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Series"
+  },
+  "Q20261114-03-F3": {
+   "title": "The Young and the Rezless",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261114-03",
+     "name": "Jennifer Podemski"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Series"
+  },
+  "Q20261114-03-F4": {
+   "title": "The Seventh Generation",
+   "year": 1999,
+   "makers": [
+    {
+     "id": "Q20261114-03",
+     "name": "Jennifer Podemski"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Series"
+  },
+  "Q20261114-04-F1": {
+   "title": "Treaty Road",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "Q20261114-04",
+     "name": "Candy Renae Fox"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Series"
+  },
+  "Q20261114-04-F2": {
+   "title": "Amplify",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261114-04",
+     "name": "Candy Renae Fox"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Series"
+  },
+  "Q20261114-04-F3": {
+   "title": "The Other Side",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261114-04",
+     "name": "Candy Renae Fox"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Series"
+  },
+  "Q20261114-04-F4": {
+   "title": "Big Brother Canada",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261114-04",
+     "name": "Candy Renae Fox"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Series"
+  },
+  "Q20261114-04-F5": {
+   "title": "ZARQA",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261114-04",
+     "name": "Candy Renae Fox"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Series"
+  },
+  "Q20261114-05-F1": {
+   "title": "Wapos Bay",
+   "year": 2005,
+   "makers": [
+    {
+     "id": "Q20261114-05",
+     "name": "Dennis Jackson"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Series"
+  },
+  "Q20261114-06-F1": {
+   "title": "Arnattaujuup Unikkaaqtuaqtangit",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261114-06",
+     "name": "Germaine Arnaktauyok"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Series"
+  },
+  "Q20261114-07-F1": {
+   "title": "Working It Out Together",
+   "year": 2014,
+   "makers": [
+    {
+     "id": "Q20261114-07",
+     "name": "Angie-Pepper O'Bomsawin"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Series"
+  },
+  "Q20261114-07-F3": {
+   "title": "Little Big Community",
+   "year": 2023,
+   "makers": [
+    {
+     "id": "Q20261114-07",
+     "name": "Angie-Pepper O'Bomsawin"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Series"
+  },
+  "Q20261114-07-F4": {
+   "title": "Forensic Factor: A New Era",
+   "year": 2025,
+   "makers": [
+    {
+     "id": "Q20261114-07",
+     "name": "Angie-Pepper O'Bomsawin"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Series"
+  },
+  "Q20261114-07-F5": {
+   "title": "Warrior Up!",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "Q20261114-07",
+     "name": "Angie-Pepper O'Bomsawin"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Series"
   }
  }
 }
