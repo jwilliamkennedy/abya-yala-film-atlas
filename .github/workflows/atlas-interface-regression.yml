@@ -179,8 +179,15 @@ jobs:
                   title:document.querySelector('.weave-read-focus h4')?.textContent
                 })""")
                 assert nextstep['bar']==2 and nextstep['title']!=progress['title'],(label,progress,nextstep)
+                hit=await page.evaluate("(()=>{const b=document.getElementById('weave-play'),r=b.getBoundingClientRect(),h=document.elementFromPoint(r.x+r.width/2,r.y+r.height/2);return {rect:[Math.round(r.x),Math.round(r.y),Math.round(r.width),Math.round(r.height)],onPlay:h===b||b.contains(h),hit:h&&(h.id||String(h.className||'').slice(0,80)||h.tagName),bar:document.getElementById('constellate-mode')?.className,stage:document.documentElement.dataset.weaveStage}})()")
+                print('PLAY_HIT',label,json.dumps(hit),flush=True)
                 await page.locator('#weave-play').click(force=True,timeout=15000)
-                await page.locator('#weave-player:not([hidden])').wait_for(timeout=12000)
+                try:
+                  await page.locator('#weave-player:not([hidden])').wait_for(timeout=12000)
+                except Exception:
+                  after=await page.evaluate("({pressed:document.getElementById('weave-play').getAttribute('aria-pressed'),player:!!document.getElementById('weave-player'),hidden:document.getElementById('weave-player')?.hidden,stage:document.documentElement.dataset.weaveStage,toast:document.querySelector('[role=status]')?.textContent?.slice(0,120)})")
+                  print('PLAY_AFTER',label,json.dumps(after),flush=True)
+                  raise
                 assert await page.locator('#weave-play').get_attribute('aria-pressed')=='true',(label,'Play mode not marked active')
                 await page.locator('#weave-play-speed').select_option('10000')
                 await page.locator('#weave-play-pause').click(force=True,timeout=12000)
