@@ -1899,3 +1899,27 @@ try{(function(){
  function start(){var idx=document.getElementById('index');if(!idx)return;new MutationObserver(function(){add();}).observe(idx,{childList:true,subtree:true});add();}
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start,{once:true});else start();
 })();}catch(error){console.error('Constellate section failed: land thread',error);}
+
+/* ================================================================
+   Side panel header (13 Nov 2026): the constellation itself heads the panel.
+   [constellation ▾] [+] [Details] [?] [×]; the word "Constellate" stays for screen readers.
+   ================================================================ */
+try{(function(){
+ 'use strict';
+ function tidy(){
+  var h=document.querySelector('#constellate-popup .constellate-heading'),col=document.querySelector('#constellate-popup .constellate-collection');
+  if(!h||!col)return false;
+  if(col.parentElement!==h)h.insertBefore(col,document.getElementById('constellate-how')||document.getElementById('constellate-close'));
+  h.classList.add('cp-tidy');
+  var ws=document.getElementById('weave-settings');if(ws&&!ws.querySelector(':scope>.cp-pop')){var pop=document.createElement('div');pop.className='cp-pop';[].slice.call(ws.children).forEach(function(c){if(c.tagName!=='SUMMARY')pop.appendChild(c);});ws.appendChild(pop);}
+  var nb=document.getElementById('constellate-new');
+  if(nb&&!nb.dataset.cp){nb.dataset.cp='1';nb.innerHTML='<span aria-hidden="true">+</span><span class="sr-only">New constellation</span>';nb.title='Start a new constellation';}
+  var ds=document.querySelector('#weave-settings>summary');
+  if(ds&&!ds.dataset.cp){ds.dataset.cp='1';ds.innerHTML='<svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10.8 2.6l2.6 2.6-7.6 7.6H3.2v-2.6z"/></svg><span class="sr-only">Details</span>';ds.title='Details: title, author, introduction, import, delete';}
+  var hs=document.querySelector('#constellate-how>summary');
+  if(hs&&!hs.dataset.cp){hs.dataset.cp='1';hs.innerHTML='<span aria-hidden="true">?</span><span class="sr-only">Help</span>';hs.title='How Constellate works';}
+  return true;
+ }
+ function start(){if(tidy())return;var o=new MutationObserver(function(){if(tidy())o.disconnect();});o.observe(document.body,{childList:true,subtree:true});setTimeout(function(){o.disconnect();},20000);}
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start,{once:true});else start();
+})();}catch(error){console.error('Constellate section failed: panel header',error);}

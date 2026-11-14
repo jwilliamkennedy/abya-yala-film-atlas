@@ -31,12 +31,12 @@ co = {f['id']: rs for f, r, rs in merged.values()}
 decades = {}
 for f, r in dated: decades.setdefault(f['year'] // 10 * 10, []).append((f, r))
 mx = max(len(v) for v in decades.values())
-bars = ''.join(f'<a href="#d{k}" title="{len(decades[k])} films in the {k}s"><span style="height:{max(2, round(130 * len(decades[k]) / mx))}px"></span>{k}s</a>' for k in sorted(decades))
+bars = ''.join(f'<a href="#d{k}" title="{len(decades[k])} film{'' if len(decades[k]) == 1 else 's'} in the {k}s"><span style="height:{max(2, round(130 * len(decades[k]) / mx))}px"></span>{k}s</a>' for k in sorted(decades))
 def row(f, r):
     return (f'<li><span class="y">{f["year"]}</span><span><a class="t" href="maker/{esc(r["id"])}.html#{esc(f["id"])}">{esc(f["title"])}</a>'
             f'<small>{esc(", ".join(x["name"] for x in co.get(f["id"], [r])))}{" · " + esc(r["nation"].split(";")[0]) if r["nation"] else ""}</small></span>'
             f'<button type="button" class="scr" data-screen data-fid="{esc(f["id"])}" data-rid="{esc(r["id"])}" data-title="{esc(f["title"])}" data-year="{f["year"]}" data-maker="{esc(", ".join(x["name"] for x in co.get(f["id"], [r])))}" data-page="maker/{esc(r["id"])}.html#{esc(f["id"])}" data-watch="{esc((f["watch"] or [""])[0])}">＋ Screening list</button></li>')
-secs = ''.join(f'<h2 id="d{k}">{k}s <small>{len(decades[k])} films</small></h2><ol class="tl">' + ''.join(row(f, r) for f, r in sorted(decades[k], key=lambda x: (x[0]['year'], x[0]['title'].lower()))) + '</ol>' for k in sorted(decades))
+secs = ''.join(f'<h2 id="d{k}">{k}s <small>{len(decades[k])} film{'' if len(decades[k]) == 1 else 's'}</small></h2><ol class="tl">' + ''.join(row(f, r) for f, r in sorted(decades[k], key=lambda x: (x[0]['year'], x[0]['title'].lower()))) + '</ol>' for k in sorted(decades))
 write('timeline.html', 'Timeline · Indigenous Cinema Atlas', f'{len(dated)} dated films by Indigenous filmmakers, by decade.',
       EXTRA_CSS + f'<h1>Timeline</h1><p class="who">{len(dated)} dated films on the public map, by decade. {len([x for x in films if not isinstance(x[0]["year"], int)])} more film credits have no year recorded yet.</p><nav class="bars" aria-label="Films per decade">{bars}</nav>{secs}')
 write('screening.html', 'Screening list · Indigenous Cinema Atlas', 'Your screening list of films from the Indigenous Cinema Atlas.', EXTRA_CSS + '''
