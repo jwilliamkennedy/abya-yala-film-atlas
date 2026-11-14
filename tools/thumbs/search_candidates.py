@@ -58,6 +58,34 @@ def head_names_title(url, title):
     except Exception:
         return False
 
+import hashlib, io
+from PIL import Image
+VIDEO = re.compile(r'(youtube\.com/watch|youtu\.be/|vimeo\.com/\d)')
+
+def video(row, url):
+    # a video page is the film itself: use the platform's own title and thumbnail (oEmbed)
+    api = ('https://www.youtube.com/oembed?format=json&url=' if 'youtu' in url else 'https://vimeo.com/api/oembed.json?width=1280&url=')
+    out = dict(row, image_url='', image_page='', check='', w='', h='', sha='')
+    try:
+        j = requests.get(api + urllib.parse.quote(url, safe=''), headers=C.UA, timeout=20).json()
+    except Exception:
+        out['check'] = 'video lookup failed'; return out, None
+    head = C.fold(j.get('title', '') + ' ' + j.get('author_name', ''))
+    ws = C.words(row['title'])
+    if sum(w in head for w in ws) < max(1, len(ws) - 1):
+        out['check'] = 'video is not the film'; return out, None
+    img = j.get('thumbnail_url', '')
+    if 'ytimg' in img: img = re.sub(r'/[a-z]*default\.jpg', '/hqdefault.jpg', img)
+    try:
+        r = requests.get(img, headers=C.UA, timeout=20); r.raise_for_status()
+        im = Image.open(io.BytesIO(r.content)); im.load()
+    except Exception:
+        out['check'] = 'image failed'; return out, None
+    if im.width < 320:
+        out['check'] = f'too small ({im.width}px)'; return out, None
+    out.update(image_url=img, image_page=url, w=im.width, h=im.height, sha=hashlib.sha1(r.content).hexdigest()[:12], check='ok')
+    return out, im.convert('RGB')
+
 def one(row):
     tried = []
     urls = ([row['film_source']] if (row.get('film_source') or '').startswith('http') else [])
@@ -66,8 +94,11 @@ def one(row):
     urls += search(f'"{title}" {first}')[:8]
     last = None
     for u in dict.fromkeys(urls):
-        o, im = C.one(dict(row, film_source=u))
-        if o['check'] == 'ok' and not head_names_title(o['image_page'], row['title']):
+        if VIDEO.search(u):
+            o, im = video(row, u)
+        else:
+            o, im = C.one(dict(row, film_source=u))
+        if o['check'] == 'ok' and not VIDEO.search(u) and not head_names_title(o['image_page'], row['title']):
             o['check'], im = 'page title is not the film', None
         tried.append(f"{o['check'][:20]} {u[:60]}")
         if o['check'] == 'ok':
@@ -79,7 +110,7 @@ def one(row):
 def main(src, outdir):
     rows = list(csv.DictReader(open(src, encoding='utf-8')))
     os.makedirs(outdir, exist_ok=True)
-    with ThreadPoolExecutor(6) as ex:
+    with ThreadPoolExecutor(4) as ex:
         res = list(ex.map(one, rows))
     count = {}
     for o, _ in res:
