@@ -1610,3 +1610,10 @@ html[data-weave-stage="read"] .weave-read-focus-main .weave-media-thumb{width:92
 /* an empty thread description invites one */
 #weave-order-summary .cm-desc-empty{display:block;padding:0;border:0;background:none;color:var(--ui-muted);font:italic 400 15px/1.4 var(--ui-serif,Georgia,serif);text-align:left;cursor:text}
 #weave-order-summary .cm-desc-empty:hover{color:var(--ui-accent)}
+/* Draw on the Map page (13 Nov): the same line, for browsing; lands open on the map; one button makes a thread */
+body.is-constellating #map-draw-line{display:none!important}
+#map-draw-line[aria-pressed="true"]{background:var(--ui-ink)!important;color:var(--ui-paper)!important}
+#weave-trace-layer .wt-result .wt-open{padding:0;border:0;background:none;color:#182028;font:inherit;text-align:left;cursor:pointer;text-decoration:underline;text-decoration-color:rgba(24,32,40,.25);text-underline-offset:3px}
+#weave-trace-layer .wt-result .wt-open:hover{color:#9c3a22;text-decoration-color:currentColor}
+#weave-trace-layer .wt-result li:has(input:not(:checked)) .wt-open{color:#8a9299;text-decoration:line-through}
+@media (max-width:700px){#weave-trace-layer.is-browse .wt-result{top:8px;bottom:auto;max-height:58%}#weave-trace-layer.is-browse .wt-mode{bottom:auto;top:8px}#weave-trace-layer.is-browse.has-result .wt-mode{display:none}#weave-trace-layer.is-browse .wt-hint{top:56px;bottom:auto}}

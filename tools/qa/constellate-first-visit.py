@@ -277,6 +277,14 @@ async def run(pw, width, height, mobile, label):
     # The Map page offers a thread from an open land.
     await page.goto(BASE, wait_until="load", timeout=90000)
     await page.wait_for_timeout(3500)
+    # Draw on the Map page draws without entering Constellate; Escape ends it.
+    await page.click("#map-draw-line")
+    await page.wait_for_timeout(500)
+    st = await page.evaluate("[window.AtlasConstellate.tracing, window.AtlasConstellate.enabled]")
+    check(st == [True, False], "Draw on the Map page did not start a line on the map", st)
+    await page.keyboard.press("Escape")
+    await page.wait_for_timeout(300)
+    check(not await page.evaluate("window.AtlasConstellate.tracing"), "Escape did not end drawing on the Map page")
     await page.evaluate("document.querySelector('#atlas .land-word[data-ui-tier]').dispatchEvent(new MouseEvent('click',{bubbles:true}))")
     await page.wait_for_selector("[data-land-thread]", timeout=15000)
     await page.click("[data-land-thread]")
