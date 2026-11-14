@@ -20,3 +20,5 @@ NEW-796258423fc1-WORK-2	Oré Payayá	news photo
 DIR-0209-QM180a92	Flor Blanca	newspaper logo
 NEW-75f92529652d-WORK-1	C. N. Infierno: por un turismo sostenible	screening photo
 Q20261114-06-F1	Arnattaujuup Unikkaaqtuaqtangit	funding graphic
+MIRROR-FILMOGRAPHY-20261107-059	Professor Norman Cornett	image is a portrait of the film’s subject; left out
+FILM-SRC-2023-00040	N’xaxaitkw	site banner
