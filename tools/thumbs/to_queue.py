@@ -1,8 +1,8 @@
 """Add the checked film images in tools/thumbs/filled/ to the Queue of atlas.xlsx as "correct" rows.
 
 usage: python3 tools/thumbs/to_queue.py <atlas.xlsx> [--write]
-Without --write it only reports. Each row targets one film (one row per filmmaker of a co-directed film)
-and fills only the image cells, so merge.py leaves every other cell of that film as it is. Rows go in as "new": mark the ones you accept "accepted",
+Without --write it only reports. Each row is a copy of the film's Published row (one per filmmaker of a co-directed film)
+with only the image cells changed, as INTAKE asks. Rows go in as "new": mark the ones you accept "accepted",
 then run tools/atlas/merge.py as usual. Films that already have an image in Published, or already have a
 Queue row for the same image, are skipped. Also writes tools/thumbs/queue_images.csv (the same rows)."""
 import csv, glob, os, sys
@@ -53,8 +53,23 @@ def main():
     print(f'{len(new)} rows for the checked images; {len(new) - len(add)} skipped (image already in Published or already queued); {len(add)} to add')
     if '--write' not in sys.argv:
         print('dry run: add --write to change the workbook'); return
+    # INTAKE: a "correct" row is a copy of the Published row with only the wrong cells changed. The filmmaker
+    # columns must agree with any other Queue row for the same filmmaker, so they are taken from the newest such row.
+    maker = [c for c in QUEUE_COLS if c in qh and c not in ('maker_json', 'film_json')]
+    maker = maker[maker.index('filmmaker_id'):maker.index('film_id')]
+    pubrow = {(wp.cell(r, ph['film_id']).value, wp.cell(r, ph['filmmaker_id']).value): r for r in range(3, wp.max_row + 1)}
+    qmaker = {wq.cell(r, qh['filmmaker_id']).value: r for r in range(3, wq.max_row + 1) if wq.cell(r, qh['filmmaker_id']).value}
     for r in add:
+        pr = pubrow.get((r['film_id'], r['filmmaker_id']))
+        if pr is None:
+            print('not in Published, skipped:', r['film_id'], r['filmmaker_id']); continue
         n = wq.max_row + 1
+        for c, i in ph.items():
+            if c in qh and c not in ('maker_json', 'film_json'):
+                wq.cell(n, qh[c]).value = wp.cell(pr, i).value
+        if r['filmmaker_id'] in qmaker:
+            for c in maker:
+                wq.cell(n, qh[c]).value = wq.cell(qmaker[r['filmmaker_id']], qh[c]).value
         for c, v in r.items():
             if c in qh: wq.cell(n, qh[c]).value = v
     wb.save(sys.argv[1])
