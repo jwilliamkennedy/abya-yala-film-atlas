@@ -70,3 +70,6 @@ Q20261114-02-F4	A Good Game	site banner
 DIR-0142-W1031-4	The Haudenosaunee Canoe Journey	site banner
 NEW-98c6d3129c01-WORK-1	Our Sisters in Spirit	crew photo
 DIR-0334-F2	I Am Thy Weapon	series banner
+Q20261113-86-F1	When They Were Here	site logo
+NEW-1f5e6be85b8a-WORK-1	Kinaaldá: Navajo Rite of Passage	video player screenshot
+DIR-0122-F3	Exposed Nerves	festival logo
