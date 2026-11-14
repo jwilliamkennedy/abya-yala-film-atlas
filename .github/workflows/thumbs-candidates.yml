@@ -1,0 +1,20 @@
+name: Film image candidates
+on:
+  workflow_dispatch:
+  push:
+    paths: ['tools/thumbs/missing_*.csv', 'tools/thumbs/candidates.py']
+jobs:
+  candidates:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: pip install -q requests pillow
+      - name: Find images on each film's credit page
+        run: |
+          for f in tools/thumbs/missing_*.csv; do
+            n=$(basename "$f" .csv); python3 tools/thumbs/candidates.py "$f" "out/$n"
+          done
+      - uses: actions/upload-artifact@v4
+        with:
+          name: image-candidates
+          path: out
