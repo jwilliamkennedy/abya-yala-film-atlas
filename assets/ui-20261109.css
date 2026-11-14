@@ -220,18 +220,18 @@ html[data-reading-theme="night"] #atlas .land-shading{opacity:.8}
 #index .land-chip-row,#index .land-languages,#index [class*="nation-chips"]{display:flex!important;flex-wrap:nowrap!important;overflow-x:auto;scrollbar-width:thin;mask-image:linear-gradient(90deg,#000 88%,transparent)}
 
 /* ---------- Constellate ---------- */
-#constellate-mode{display:flex;align-items:center;gap:4px;flex-wrap:nowrap}
-#constellate-mode>span:first-child{font:400 16px/1 var(--ui-serif);color:var(--ui-ink);margin-right:10px;white-space:nowrap}
-#constellate-edit{order:1}#constellate-read{order:2}#weave-play{order:3}
-#weave-draw-thread{order:5;margin-left:14px!important}#weave-browse-films{order:6}#weave-theme-web-toggle{order:7}
-#constellate-mode .weave-tool-group{order:8;margin-left:10px}
-#constellate-share{order:10;margin-left:auto!important}#constellate-mode .weave-more{order:11}#constellate-exit{order:12}
-#constellate-edit,#constellate-read,#weave-play{border-radius:0!important;border:1px solid var(--ui-line)!important;background:var(--ui-surface)!important;color:var(--ui-muted)!important;font:600 14px/1 var(--ui-sans)!important;padding:9px 14px!important;margin:0!important}
-#constellate-edit{border-radius:999px 0 0 999px!important}#weave-play{border-radius:0 999px 999px 0!important}
-#constellate-read{border-left:0!important;border-right:0!important}
-html body #constellate-mode #constellate-edit[aria-pressed="true"],html body #constellate-mode #constellate-read[aria-pressed="true"]{background:var(--ui-ink)!important;color:var(--ui-paper)!important;border-color:var(--ui-ink)!important}
-#constellate-mode button,#constellate-mode .weave-more>summary{font-family:var(--ui-sans)!important}
-#constellate-exit{border:1px solid var(--ui-line)!important;border-radius:999px!important}
+
+
+
+
+
+
+
+
+
+
+
+
 #weave-find-films{display:none!important} /* Find films stays in the top bar */
 #constellate-title{font:400 var(--t-title)/1.1 var(--ui-serif)!important;letter-spacing:-.01em;color:var(--ui-ink)!important}
 #weave-empty-hint h2{font:400 36px/1.12 var(--ui-serif)!important;letter-spacing:-.015em;color:var(--ui-ink)!important}
@@ -272,9 +272,9 @@ body:not(.atlas-page) main a[href^="http"]{color:var(--ui-accent)}
  body.atlas-page main{grid-template-columns:1fr!important}
  #index .view-switch{width:100%}
  #index .view-switch button{flex:1}
- #constellate-mode{overflow-x:auto;scrollbar-width:none}
- #constellate-exit{order:-1!important;margin-right:6px}
- #constellate-mode>span:first-child{display:none}
+ 
+ 
+ 
  #weave-empty-hint .weave-intro-films>*:nth-child(n+3),#weave-empty-hint [class*="intro-films"]>*:nth-child(n+3){display:none}
  #weave-empty-hint h2{font-size:28px!important}
 }
@@ -317,8 +317,8 @@ html[data-reading-theme="night"] body:not(.atlas-page) :is(h1,h2,h3,h4,p,li,td,t
 html[data-reading-theme="night"] body:not(.atlas-page) :is(.muted,.meta,small,.crumb,.lands,.aka,.fm){color:var(--ui-muted)!important}
 html[data-reading-theme="night"] body:not(.atlas-page) :is(input,select,textarea,button){background-color:var(--ui-surface);color:var(--ui-ink);border-color:var(--ui-line)}
 html[data-reading-theme="night"] body:not(.atlas-page) :is(.cite,.card,table,pre,code){background-color:var(--ui-surface)!important;color:var(--ui-ink)!important;border-color:var(--ui-line)!important}
-:root:not(#_):not(#__) #constellate-mode #constellate-edit[aria-pressed="true"],:root:not(#_):not(#__) #constellate-mode #constellate-read[aria-pressed="true"]{background:var(--ui-ink)!important;color:var(--ui-paper)!important;border-color:var(--ui-ink)!important}
-:root:not(#_):not(#__) #constellate-mode #constellate-edit[aria-pressed="false"],:root:not(#_):not(#__) #constellate-mode #constellate-read[aria-pressed="false"],:root:not(#_):not(#__) #constellate-mode #weave-play{background:var(--ui-surface)!important;color:var(--ui-ink)!important}
+
+
 :root:not(#_) #index #selection-summary #selection-path *{white-space:nowrap!important;word-break:normal!important;width:auto!important;display:inline!important}
 :root:not(#_) #index #selection-summary:not([hidden]){flex-wrap:wrap!important}
 :root:not(#_) #index #selection-summary .sel-links:empty{display:none!important}

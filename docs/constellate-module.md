@@ -27,6 +27,16 @@ What the consolidation did not do: the stylesheet still has 365 `!important` dec
 sections still override one another and `atlas.css`. Removing them safely is a separate job; the suite below is
 what makes it possible.
 
+## The toolbar (13 Nov 2026)
+
+One row in four groups: the constellation's name; **Build | Follow** as one switch with **Play** as the one filled
+button; the building tools (**Add films · Draw thread · Trace a line · Theme web**, Build only); and **Undo · Redo ·
+Share · Options · Exit**. Clear is at the foot of Options under "This constellation". The bar measures itself and
+steps down only while it overflows: full labels, then short tool labels, then Share/Undo/Redo into Options, then the
+tools on a second row (phones). The structure is set by `place()` in the "Constellate toolbar" section of
+`constellate.js`; every style for `#constellate-mode` is the "Constellate toolbar" block at the end of
+`constellate.css`. The 175 older toolbar rules in `atlas.css`, `ui-20261109.css` and `constellate.css` were removed.
+
 ## Trace a line (13 Nov 2026)
 
 In Build, **Trace a line** (toolbar, and the first row of the start screen; `?constellate=1&trace=1` opens it

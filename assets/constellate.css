@@ -188,9 +188,9 @@
 }
 #constellate-graph .constellate-card .weave-card-art{opacity:1}
 /* Header: make core actions legible; keep advanced layout within Options. */
-#constellate-mode .weave-options-label{display:inline;font:500 13px/1.2 "Atlas Sans",system-ui,sans-serif}
-#constellate-mode .weave-options-icon{display:none}
-#constellate-mode .weave-more>summary{min-height:32px}
+
+
+
 #constellate-popup .constellate-heading{
  gap:7px;border-bottom:1px solid var(--reading-line);
  padding-bottom:8px;
@@ -224,8 +224,8 @@
  #weave-empty-hint .weave-intro-films::before{top:34px}
 }
 @media(max-width:760px){
- #constellate-mode .weave-options-label{display:none}
- #constellate-mode .weave-options-icon{display:inline}
+ 
+ 
  #weave-empty-hint{
   top:48%;width:calc(100% - 24px);max-height:calc(100% - 105px);
   padding:17px 15px 16px;border-radius:9px;
@@ -274,35 +274,13 @@
 
 
 /* 8 Nov · Draw threads is the main interaction, not a hidden feature. */
-:root:not(#_) body.is-constellating #constellate-mode #weave-draw-thread{
- font-weight:650!important;color:var(--reading-accent)!important;
- background:color-mix(in srgb,var(--reading-accent) 9%,var(--reading-paper))!important;
- border:1px solid color-mix(in srgb,var(--reading-accent) 32%,var(--reading-line))!important;
- border-radius:7px!important;padding-inline:12px!important;white-space:nowrap;
-}
-:root:not(#_) body.is-constellating #constellate-mode #weave-trace[aria-pressed="true"],
-:root:not(#_) body.is-constellating #constellate-mode #weave-draw-thread[aria-pressed="true"]{
- background:var(--reading-accent)!important;color:var(--reading-paper)!important;
-}
-:root:not(#_) body.is-constellating #constellate-mode #constellate-clear{
- margin-left:3px!important;color:#9a3b2c!important;
- border:1px solid color-mix(in srgb,#9a3b2c 27%,var(--reading-line))!important;
- border-radius:6px!important;padding-inline:10px!important;
-}
-:root[data-reading-theme="night"]:not(#_) body.is-constellating #constellate-mode #constellate-clear{
- color:#f2b8a3!important;border-color:#b96d57!important;
-}
-#constellate-mode .weave-more-menu>.weave-menu-heading{
- display:block;width:100%;max-width:none;white-space:normal;
- margin:6px 0 1px;padding:8px 10px 3px;border-top:1px solid var(--reading-line);
- color:var(--reading-muted);
- font:700 10px/1.3 "Atlas Sans",system-ui,sans-serif;
- letter-spacing:.085em;text-transform:uppercase;
-}
-#constellate-mode .weave-more-menu>.weave-menu-heading:first-child{border-top:0;margin-top:0}
-#constellate-mode .weave-more-menu>button:not(:last-child){
- text-align:left;min-height:38px;
-}
+
+
+
+
+
+
+
 #constellate-graph.weave-drawing-mode .constellate-card:not(.concept),
 #constellate-graph.weave-drawing-mode .weave-connect-handle,
 #constellate-graph.weave-drawing-mode .weave-stop{cursor:crosshair!important}
@@ -330,33 +308,15 @@
  border-radius:5px;padding:6px 9px;color:var(--reading-accent);
  background:var(--reading-paper);font:600 12px/1.2 "Atlas Sans",system-ui,sans-serif;
 }
-@media(max-width:1150px){
- #constellate-mode #constellate-edit,
- #constellate-mode #weave-play,
- #constellate-mode #constellate-share{
-  /* These controls are moved into Options by constellate-bar.js, not hidden. */
-  order:0;
- }
-}
+
 @media(max-width:760px){
- :root:not(#_) body.is-constellating #constellate-mode:not([hidden]){
-  gap:1px!important;padding-inline:4px!important;
- }
- :root:not(#_) body.is-constellating #constellate-mode button,
- :root:not(#_) body.is-constellating #constellate-mode .weave-more>summary{
-  padding-inline:6px!important;font-size:12px!important;
- }
- :root:not(#_) body.is-constellating #constellate-mode #weave-draw-thread{
-  padding-inline:7px!important;font-size:12px!important;
- }
- :root:not(#_) body.is-constellating #constellate-mode #constellate-clear{
-  padding-inline:6px!important;
- }
+ 
+ 
+ 
+ 
  #weave-draw-help{flex-wrap:wrap}
 }
-@media(max-width:380px){
- :root:not(#_) body.is-constellating #constellate-mode #weave-browse-films{display:none!important}
-}
+
 
 /* Dense Constellate: complete relationships, lighter secondary ribbons.
    The numbered stops remain visible when film thumbnails are sampled. */
@@ -380,19 +340,9 @@
 body.atlas-page.is-theme-weaving.weave-dock-open.is-theme-web-open main{display:block!important;grid-template-columns:minmax(0,1fr)!important}
 body.is-theme-web-open #constellate-popup{display:none!important}
 body.is-theme-web-open .map-panel{width:100%!important;max-width:none!important}
-#weave-theme-web-toggle{
- appearance:none;flex:0 0 auto;white-space:nowrap;
- min-height:36px;padding:7px 11px;
- border:1px solid var(--reading-line,#b5c3c9);border-radius:5px;
- background:var(--reading-paper,#fff);color:var(--reading-accent,#254b65);
- font:600 12px/1.2 "Atlas Sans",system-ui,sans-serif;cursor:pointer;
-}
-#weave-theme-web-toggle:hover,#weave-theme-web-toggle:focus-visible{
- border-color:var(--reading-accent,#254b65);outline-offset:2px;
-}
-#weave-theme-web-toggle[aria-pressed="true"]{
- background:var(--reading-accent,#254b65);color:var(--reading-paper,#fff);
-}
+
+
+
 #atlas-theme-web[hidden]{display:none!important}
 #atlas-theme-web{
  position:absolute;z-index:35;inset:58px 12px 72px 12px;
@@ -523,7 +473,7 @@ body.is-theme-web-open .map-panel{width:100%!important;max-width:none!important}
  #tw-families{padding:4px 15px 10px}
 }
 @media(max-width:700px){
- #weave-theme-web-toggle{min-height:40px}
+ 
  #atlas-theme-web{position:fixed;inset:72px 6px 9px;z-index:2500;border-radius:9px}
  #atlas-theme-web .tw-main{display:flex;flex-direction:column;overflow-y:auto;scroll-behavior:smooth}
  #atlas-theme-web .tw-heading{padding:12px 12px 4px}
@@ -571,14 +521,14 @@ html[data-weave-stage="start"] #constellate-popup{display:none!important}
 :root:not(#_):not(#__)[data-weave-stage="start"] body main{grid-template-columns:minmax(0,1fr)!important}
 :root:not(#_):not(#__)[data-weave-stage="start"] body .map-panel{grid-column:1/-1!important;width:auto!important}
 html[data-weave-stage="start"] .map-panel .zoom,html[data-weave-stage="start"] .map-toolbar .map-actions{visibility:hidden}
-html[data-weave-stage="start"] #constellate-mode>*:not(#constellate-exit):not(span:first-child):not(.weave-more):not(.weave-tool-group):not(#weave-theme-web-toggle):not(.weave-skip-to-graph){display:none!important}
-html[data-weave-stage="start"] #weave-theme-web-toggle{order:1!important;margin-left:0!important}
+
+
 html[data-weave-web="1"] #weave-start{display:none!important}
-html[data-weave-stage="start"] #constellate-mode .weave-tool-group{order:0!important;margin-left:0!important}
+
 /* The previous engine introduction is superseded by #weave-start.
    Do not reveal either it or an unfinished toolbar during initialization. */
 #weave-empty-hint{display:none!important}
-html:not([data-weave-stage]) body.is-constellating #constellate-mode{visibility:hidden!important}
+
 #weave-start{display:none}
 html[data-weave-stage="start"] #weave-start{display:block}
 #weave-start{position:absolute;z-index:30;left:50%;top:66px;transform:translateX(-50%);width:min(1000px,calc(100% - 48px));max-height:calc(100% - 110px);overflow:auto;
@@ -627,18 +577,17 @@ html[data-weave-stage="start"] #weave-start{display:block}
 html[data-weave-stage="play"] #weave-guide,html[data-weave-stage="read"] #weave-guide{display:none}
 
 /* ---------- toolbar: modes, then building tools (only while building), then the weave's own actions ---------- */
-#constellate-edit{order:1}#constellate-read{order:2}#weave-play{order:3}
-#weave-browse-films{order:5;margin-left:14px!important}#weave-draw-thread{order:6}#weave-theme-web-toggle{order:7}
-#constellate-mode .weave-tool-group{order:8;margin-left:10px}
-#constellate-share{order:10;margin-left:auto!important}
-#constellate-clear{order:11}
-#constellate-mode .weave-more{order:12}
-#constellate-exit{order:13}
-:root:not(#_):not(#__) #constellate-mode #constellate-clear{display:inline-flex!important;font:600 14px/1 var(--ui-sans)!important;color:var(--ui-accent)!important;background:transparent!important;border:1px solid color-mix(in srgb,var(--ui-accent) 45%,transparent)!important;border-radius:999px!important;padding:8px 12px!important}
-:root:not(#_):not(#__) #constellate-mode #constellate-clear:hover{background:color-mix(in srgb,var(--ui-accent) 10%,transparent)!important}
-:root:not(#_):not(#__)[data-weave-stage="start"] #constellate-mode #constellate-clear{display:none!important}
-html[data-weave-stage="read"] #weave-browse-films,html[data-weave-stage="read"] #weave-draw-thread,html[data-weave-stage="read"] #weave-theme-web-toggle,
-html[data-weave-stage="play"] #weave-browse-films,html[data-weave-stage="play"] #weave-draw-thread,html[data-weave-stage="play"] #weave-theme-web-toggle{display:none!important}
+
+
+
+
+
+
+
+
+
+
+
 
 /* ---------- the atlas stays behind the weave ---------- */
 html[data-weave-stage] #atlas .land-word{opacity:.32;transition:opacity .2s}
@@ -805,10 +754,7 @@ html[data-weave-stage="read"] body #atlas-theme-web{display:none!important}
 #weave-line-key .wk-about{display:block;margin-top:3px;font-weight:400;opacity:.85}
 #weave-phone-cue{position:fixed;left:12px;right:12px;bottom:12px;z-index:60;min-height:46px;padding:10px 14px;border:0;border-radius:23px;background:#16233f;color:#f5eddb;font:600 14px/1.2 'Atlas Sans',system-ui,sans-serif;box-shadow:0 6px 18px rgba(0,0,0,.35)}
 #weave-phone-cue[hidden]{display:none}
-@media (max-width:700px){
- #constellate-mode #weave-stepper{min-width:max-content;flex:0 0 auto}
- #constellate-mode #weave-stepper small{min-width:2.6em;text-align:center}
-}
+
 
 .ws-example-threads{list-style:none;margin:4px 0 10px;padding:0;display:grid;gap:6px}
 .ws-example-threads li{padding:9px 12px;border:1px solid var(--reading-line,#d5d9d2);border-radius:8px;font:500 15px/1.3 'Atlas Serif',Georgia,serif}
@@ -1035,49 +981,18 @@ body.is-theme-weaving #constellate-graph .weave-star-label{pointer-events:boundi
    Keep Build / Read / Play together at every screen size; do not alter map data. */
 
 /* Distinct primary modes, with a visible current mode. */
-html[data-weave-stage]:not([data-weave-stage="start"]) body.is-constellating #constellate-mode > :is(#constellate-edit,#constellate-read,#weave-play){
-  box-sizing:border-box;display:inline-flex!important;align-items:center;justify-content:center;
-  min-height:40px!important;height:40px!important;flex:0 0 auto;
-  padding:0 13px!important;margin:0!important;
-  font:600 14px/1.1 var(--ui-sans,system-ui,sans-serif)!important;
-  border:1px solid var(--reading-line,#c9d0c6)!important;
-  color:var(--reading-ink,#182028)!important;background:var(--reading-paper,#eef0ec)!important;
-  box-shadow:none!important;white-space:nowrap
-}
-html[data-weave-stage]:not([data-weave-stage="start"]) body.is-constellating #constellate-mode > #constellate-edit{
-  order:1!important;border-radius:9px 0 0 9px!important
-}
-html[data-weave-stage]:not([data-weave-stage="start"]) body.is-constellating #constellate-mode > #constellate-read{
-  order:2!important;border-left:0!important
-}
-html[data-weave-stage]:not([data-weave-stage="start"]) body.is-constellating #constellate-mode > #weave-play{
-  order:3!important
-}
-html[data-weave-stage]:not([data-weave-stage="start"]) body.is-constellating #constellate-mode > :is(#constellate-edit,#constellate-read)[aria-pressed="true"]{
-  background:var(--reading-ink,#182028)!important;color:var(--reading-paper,#eef0ec)!important;
-  border-color:var(--reading-ink,#182028)!important;box-shadow:none!important
-}
-html[data-weave-stage]:not([data-weave-stage="start"]) body.is-constellating #constellate-mode > :is(#constellate-edit,#constellate-read,#weave-play):focus-visible{
-  outline:2px solid var(--reading-accent,#9c3b26)!important;outline-offset:3px
-}
+
+
+
+
+
+
 /* Secondary actions live in one legible menu. */
-body.is-constellating #constellate-mode .weave-more-menu{
-  min-width:244px!important;max-height:min(66dvh,520px);overflow-y:auto!important;
-  overscroll-behavior:contain;padding:10px!important;scrollbar-width:thin
-}
-body.is-constellating #constellate-mode .weave-more-menu .weave-menu-heading{
-  display:block;margin:10px 8px 5px;min-height:0;font:700 11px/1.5 var(--ui-sans,system-ui,sans-serif)!important;
-  letter-spacing:.045em;text-transform:uppercase;color:var(--reading-muted,#55616b)
-}
-body.is-constellating #constellate-mode .weave-more-menu .weave-menu-manage[hidden]{display:none!important}
-body.is-constellating #constellate-mode .weave-more-menu button{
-  display:flex!important;justify-content:flex-start;align-items:center;
-  min-height:42px!important;width:100%;padding:9px 12px!important;
-  text-align:left;white-space:normal!important;line-height:1.25!important
-}
-body.is-constellating #constellate-mode .weave-more-menu button:focus-visible{
-  outline:2px solid var(--reading-accent,#9c3b26);outline-offset:1px
-}
+
+
+
+
+
 /* The reading path shows its position and keeps the navigation in view. */
 html[data-weave-stage="read"] #weave-read-panel .weave-read-progress{
   display:block;width:100%;height:6px;margin:0 0 17px;border:0;border-radius:999px;
@@ -1109,16 +1024,9 @@ html[data-weave-stage="read"] #weave-read-panel .weave-read-nav button:not(:disa
 #weave-player .weave-player-controls button:focus-visible,
 #weave-player #weave-play-speed:focus-visible{outline:2px solid #e9d9ad;outline-offset:2px}
 @media(max-width:760px){
-  body.is-constellating #constellate-mode:has(.weave-more[open]){
-    overflow:visible!important;max-height:none!important
-  }
-  body.is-constellating #constellate-mode .weave-more-menu{
-    min-width:0!important;max-height:min(60dvh,480px)!important;
-    box-sizing:border-box;z-index:70!important
-  }
-  html[data-weave-stage]:not([data-weave-stage="start"]) body.is-constellating #constellate-mode > :is(#constellate-edit,#constellate-read,#weave-play){
-    height:38px!important;min-height:38px!important;padding:0 10px!important;font-size:13px!important
-  }
+  
+  
+  
   /* On phones the map panel can start below the fold. Anchor the letterbox
      to the viewport so the Play controls, especially Close, remain reachable. */
   body.weave-playing #weave-player{
@@ -1180,19 +1088,12 @@ body.is-constellating #constellate-graph .weave-leader{
  stroke-dasharray:2 4;stroke-opacity:.28;pointer-events:none
 }
 /* Play is a third real mode, not an unselected action beside Build and Read. */
-html[data-weave-stage="play"] body.is-constellating #constellate-mode > #weave-play,
-body.is-constellating #constellate-mode > #weave-play[aria-pressed="true"]{
- background:var(--reading-ink,#182028)!important;
- color:var(--reading-paper,#eef0ec)!important;
- border-color:var(--reading-ink,#182028)!important
-}
-body.is-constellating #constellate-mode .weave-more>summary:focus-visible{
- outline:2px solid var(--reading-accent,#9c3b26);outline-offset:3px
-}
+
+
 
 /* Two genuinely distinct actions: Build a constellation or Follow a sourced path.
    Presentation stays available from Follow, not as a competing top-level mode. */
-html[data-weave-stage]:not([data-weave-stage="start"]) body.is-constellating #constellate-mode > #weave-play[hidden]{display:none!important}
+
 #weave-read-panel .weave-follow-present{
  display:flex;flex-wrap:wrap;align-items:center;gap:7px 12px;
  margin:10px 0 12px
@@ -1227,12 +1128,8 @@ html[data-weave-stage]:not([data-weave-stage="start"]) body.is-constellating #co
 #weave-theme-more .weave-theme-complete{font-size:12px;color:var(--reading-muted,#59646c)}
 
 /* 2026-11-11: restore Build / Follow / Play as distinct visible modes. */
-html[data-weave-stage]:not([data-weave-stage="start"]) body.is-constellating #constellate-mode > #constellate-read{
-  border-radius:0!important;border-right:0!important
-}
-html[data-weave-stage]:not([data-weave-stage="start"]) body.is-constellating #constellate-mode > #weave-play{
-  display:inline-flex!important;border-radius:0 9px 9px 0!important
-}
+
+
 
 /* Help expands inside the dock, never behind the map or outside its scroll area. */
 body.is-constellating #constellate-popup .constellate-heading{
@@ -1503,9 +1400,9 @@ body.weave-playing:not(.weave-unmapped) .map-panel{background:#0c1629!important}
 #weave-trace-layer .wt-casing{fill:none;stroke:rgba(7,12,26,.62);stroke-width:8;stroke-linecap:round;stroke-linejoin:round}
 #weave-trace-layer .wt-line{fill:none;stroke:#ffe6a3;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 0 6px rgba(255,214,130,.9))}
 #weave-trace-layer .wt-dots circle{fill:#fff7e0;stroke:#070c1a;stroke-width:1.5}
-#weave-trace-layer .wt-hint{position:absolute;left:50%;top:64px;transform:translateX(-50%);margin:0;width:max-content;max-width:min(92%,660px);padding:9px 18px;border-radius:999px;background:rgba(7,12,26,.9);color:#fff4d6;font-size:14px;font-weight:500;line-height:1.35;text-align:center;pointer-events:none}
+#weave-trace-layer .wt-hint{position:absolute;left:50%;top:12px;transform:translateX(-50%);margin:0;width:max-content;max-width:min(92%,660px);padding:9px 18px;border-radius:999px;background:rgba(7,12,26,.9);color:#fff4d6;font-size:14px;font-weight:500;line-height:1.35;text-align:center;pointer-events:none}
 #weave-trace-layer .wt-hint:empty{display:none}
-#weave-trace-layer .wt-result{position:absolute;right:16px;top:112px;width:min(340px,calc(100% - 32px));max-height:calc(100% - 132px);display:flex;flex-direction:column;box-sizing:border-box;padding:16px 18px;border:1px solid rgba(24,32,40,.2);border-radius:14px;background:#f6f7f4;color:#182028;box-shadow:0 18px 50px rgba(4,8,18,.45);cursor:default}
+#weave-trace-layer .wt-result{position:absolute;right:16px;top:60px;width:min(340px,calc(100% - 32px));max-height:calc(100% - 80px);display:flex;flex-direction:column;box-sizing:border-box;padding:16px 18px;border:1px solid rgba(24,32,40,.2);border-radius:14px;background:#f6f7f4;color:#182028;box-shadow:0 18px 50px rgba(4,8,18,.45);cursor:default}
 #weave-trace-layer .wt-result[hidden]{display:none}
 #weave-trace-layer .wt-eyebrow{margin:0;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#9c3a22}
 #weave-trace-layer .wt-result h3{margin:4px 0 10px;font-family:var(--ui-serif,Georgia,serif);font-size:24px;font-weight:500;line-height:1.15;color:#182028}
@@ -1529,6 +1426,103 @@ body.weave-tracing #atlas .land-shading .nation-wash.trace-lit{--territory-wash:
 #weave-start .ws-trace button{flex:none;font:600 14px/1 var(--ui-sans);color:var(--ui-accent);background:var(--ui-paper,#f6f7f4);border:1px solid var(--ui-accent);border-radius:999px;padding:10px 16px;cursor:pointer}
 #weave-start .ws-trace button:hover{background:var(--ui-accent);color:var(--ui-accent-ink)}
 @media (max-width:700px){#weave-trace-layer .wt-result{left:8px;right:8px;top:auto;bottom:8px;width:auto;max-height:62%}#weave-trace-layer .wt-hint{top:auto;bottom:14px;border-radius:14px}#weave-trace-layer.has-result .wt-hint{display:none}}
-#weave-trace{order:5}
-html[data-weave-stage="play"] #weave-trace,html[data-weave-stage="read"] #weave-trace{display:none!important}
+
+
 #weave-trace-layer.has-result{cursor:default}
+
+/* ══ Constellate toolbar (13 Nov 2026) ═══════════════════════════════════════════════════════
+   The only rules for #constellate-mode; the older ones in atlas.css, ui-20261109.css and above
+   were removed so this block can stay plain. Structure is set by place() in constellate.js:
+     .cm-id (name) · .cm-modes (.cm-seg Build|Follow, Play) · #weave-stepper · .cm-tools · .cm-end
+   Tokens: --ui-paper/--ui-surface/--ui-wash/--ui-ink/--ui-line/--ui-accent change with the night theme. */
+#constellate-mode[hidden]{display:none}
+html:not([data-weave-stage]) body.is-constellating #constellate-mode{visibility:hidden}
+body.weave-playing #constellate-mode{display:none!important}
+body:has(#constellate-mode .weave-more[open]) #weave-notice{display:none}
+#constellate-mode{container:cmbar/inline-size;position:absolute;top:0;left:0;right:0;z-index:25;box-sizing:border-box;display:flex;align-items:center;gap:10px;height:52px;padding:0 12px 0 16px;
+ background:color-mix(in srgb,var(--ui-paper) 94%,transparent);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid var(--ui-line);box-shadow:0 6px 18px rgba(12,20,32,.07);
+ color:var(--ui-ink);font:500 13.5px/1 var(--ui-sans)}
+#constellate-mode .cm-group{display:flex;align-items:center;gap:4px;min-width:0}
+#constellate-mode .cm-id{flex:0 1 auto;min-width:0;max-width:300px}
+#constellate-mode .cm-id>span{display:block;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;font:500 16px/1.2 var(--ui-serif,Georgia,serif);color:var(--ui-ink);letter-spacing:.005em}
+#constellate-mode .cm-modes{flex:none;gap:8px}
+#constellate-mode .cm-tools{flex:none;margin-left:6px;padding-left:12px;border-left:1px solid var(--ui-line)}
+#constellate-mode .cm-end{flex:none;margin-left:auto}
+#constellate-mode .weave-tool-group{display:flex;align-items:center;gap:2px;margin-right:4px}
+#constellate-mode .weave-tool-group:empty{display:none}
+
+/* every control: one height, one radius, one type */
+#constellate-mode button,#constellate-mode .weave-more>summary{appearance:none;box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;gap:7px;height:34px;min-height:34px;margin:0;padding:0 11px;
+ border:1px solid transparent;border-radius:8px;background:transparent;color:var(--ui-ink);font:500 13.5px/1 var(--ui-sans);letter-spacing:0;white-space:nowrap;cursor:pointer;box-shadow:none;transition:background .15s,color .15s,border-color .15s}
+#constellate-mode button:hover:not(:disabled),#constellate-mode .weave-more>summary:hover{background:var(--ui-wash)}
+#constellate-mode button:focus-visible,#constellate-mode .weave-more>summary:focus-visible{outline:2.5px solid var(--ui-accent);outline-offset:2px}
+#constellate-mode button:disabled{opacity:.34;cursor:default}
+#constellate-mode .cm-ico{flex:none;width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+
+/* modes: Build | Follow is one switch; Play is the one filled button */
+#constellate-mode .cm-seg{display:flex;padding:3px;gap:2px;border-radius:10px;background:var(--ui-wash)}
+#constellate-mode .cm-seg>button{height:30px;min-height:30px;padding:0 14px;border-radius:7px;color:var(--ui-muted);font-weight:600}
+#constellate-mode .cm-seg>button:hover:not([aria-pressed="true"]){background:color-mix(in srgb,var(--ui-ink) 7%,transparent);color:var(--ui-ink)}
+#constellate-mode .cm-seg>button[aria-pressed="true"]{background:var(--ui-surface);color:var(--ui-ink);box-shadow:0 1px 2px rgba(12,20,32,.16),0 0 0 1px color-mix(in srgb,var(--ui-ink) 10%,transparent)}
+#constellate-mode #weave-play{padding:0 15px 0 12px;border-radius:999px;background:var(--ui-accent);border-color:var(--ui-accent);color:#fff;font-weight:600}
+#constellate-mode #weave-play:hover{background:color-mix(in srgb,var(--ui-accent) 86%,#000)}
+#constellate-mode #weave-play .cm-ico{width:13px;height:13px}
+
+/* tools: same weight; the one in use is inked */
+#constellate-mode .cm-tools>button[aria-pressed="true"],#constellate-mode .cm-tools>button[aria-expanded="true"]{background:var(--ui-ink);border-color:var(--ui-ink);color:var(--ui-paper)}
+#constellate-mode .cm-tools>button[hidden]{display:none}
+
+/* stepper (a card is selected in Build) */
+#constellate-mode #weave-stepper{display:flex;align-items:center;gap:2px;flex:none;padding:0 4px;border-radius:999px;background:var(--ui-wash)}
+#constellate-mode #weave-stepper[hidden]{display:none}
+#constellate-mode #weave-stepper button{width:30px;height:30px;min-height:30px;padding:0;border-radius:999px;font-size:18px}
+#constellate-mode #weave-step-pos{min-width:42px;text-align:center;font:600 12.5px/1 var(--ui-sans);font-variant-numeric:tabular-nums;color:var(--ui-ink)}
+
+/* end: history as icons, Share, Options, Exit */
+#constellate-mode .weave-tool-group>button{width:34px;padding:0}
+#constellate-mode .weave-tool-group .cm-label,#constellate-mode .weave-more>summary .cm-label{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+#constellate-mode .weave-more{position:relative}
+#constellate-mode .weave-more>summary{width:34px;padding:0;list-style:none}
+#constellate-mode .weave-more>summary::-webkit-details-marker{display:none}
+#constellate-mode .weave-more[open]>summary{background:var(--ui-wash);border-color:var(--ui-line)}
+#constellate-mode #constellate-exit{margin-left:4px;padding:0 12px 0 10px;border-color:var(--ui-line)}
+#constellate-mode #constellate-exit .cm-ico{width:13px;height:13px}
+
+/* Options menu */
+#constellate-mode .weave-more-menu{position:absolute;right:0;top:calc(100% + 8px);z-index:40;box-sizing:border-box;display:flex;flex-direction:column;width:260px;max-height:min(70vh,560px);overflow-y:auto;overscroll-behavior:contain;padding:6px;
+ border:1px solid var(--ui-line);border-radius:12px;background:var(--ui-surface);box-shadow:0 18px 44px rgba(8,14,26,.24)}
+#constellate-mode .weave-more-menu .weave-menu-heading{display:block;margin:8px 10px 4px;font:600 10.5px/1.2 var(--ui-sans);letter-spacing:.12em;text-transform:uppercase;color:var(--ui-muted)}
+#constellate-mode .weave-more-menu .weave-menu-heading:first-child{margin-top:4px}
+#constellate-mode .weave-more-menu button{justify-content:flex-start;width:100%;height:36px;min-height:36px;padding:0 10px;border-radius:7px;font-weight:500;text-align:left}
+#constellate-mode .weave-more-menu button:not(:has(.cm-ico)){padding-left:33px}
+#constellate-mode .weave-more-menu button[aria-pressed="true"]::after{content:"✓";margin-left:auto;font-weight:700;color:var(--ui-accent)}
+#constellate-mode .weave-more-menu .cm-h-this{margin-top:10px;padding-top:10px;border-top:1px solid var(--ui-line)}
+#constellate-mode .weave-more-menu #constellate-clear{color:var(--ui-accent)}
+#constellate-mode .weave-more-menu #constellate-clear:hover{background:color-mix(in srgb,var(--ui-accent) 10%,transparent)}
+
+/* stages: Start shows the name, Theme web, Options and Exit; Follow drops the tools */
+html[data-weave-stage="start"] #constellate-mode .cm-modes,
+html[data-weave-stage="start"] #constellate-mode .cm-tools>:not(#weave-theme-web-toggle),
+html[data-weave-stage="start"] #constellate-mode #constellate-share,
+html[data-weave-stage="start"] #constellate-mode .weave-tool-group>button:disabled{display:none}
+html[data-weave-stage="start"] #constellate-mode .cm-tools{border-left:0;padding-left:0}
+html[data-weave-stage="read"] #constellate-mode .cm-tools{display:none}
+
+/* narrower bars: classes set by place() after measuring (cm-short, cm-compact, cm-narrow, cm-notitle) */
+#constellate-mode.cm-notitle .cm-id{display:none}
+#constellate-mode.cm-short .cm-tools .cm-b{display:none}
+#constellate-mode.cm-short .cm-tools>button{padding:0 9px}
+#constellate-mode.cm-narrow{flex-wrap:wrap;align-content:center;height:auto;min-height:48px;padding:6px 8px;row-gap:6px;column-gap:6px}
+#constellate-mode.cm-narrow .cm-id{display:none}
+#constellate-mode.cm-narrow .cm-seg>button{padding:0 12px}
+#constellate-mode.cm-narrow #weave-play{padding:0 12px 0 10px}
+#constellate-mode.cm-narrow #constellate-exit .cm-label{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+#constellate-mode.cm-narrow #constellate-exit{width:34px;padding:0;margin-left:0}
+#constellate-mode.cm-narrow .cm-tools{order:9;flex:1 0 100%;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px;margin:0;padding:6px 0 0;border-left:0;border-top:1px solid var(--ui-line)}
+html[data-weave-stage="read"] #constellate-mode.cm-narrow .cm-tools,html[data-weave-stage="start"] #constellate-mode.cm-narrow .cm-tools{display:none}
+#constellate-mode.cm-narrow .cm-tools>button{flex-direction:column;gap:4px;height:46px;min-height:46px;padding:4px 2px;font-size:11.5px;font-weight:600}
+#constellate-mode.cm-narrow .cm-tools .cm-b{display:inline}
+#constellate-mode.cm-narrow .cm-tools .cm-ico{width:18px;height:18px}
+#constellate-mode.cm-narrow #weave-stepper button{width:26px}
+#constellate-mode.cm-narrow #weave-step-pos{min-width:34px}
+@media (max-width:700px){#constellate-mode .weave-more-menu{position:fixed;left:8px;right:8px;top:auto;bottom:8px;width:auto;max-height:70vh}}
