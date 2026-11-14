@@ -2,8 +2,8 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-14",
  "license": "See data.html",
- "films_on_public_map": 1608,
- "film_entries": 1623,
+ "films_on_public_map": 1632,
+ "film_entries": 1647,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -1246,6 +1246,74 @@
    "primary_theme": null,
    "families": [],
    "form": null,
+   "length": null
+  },
+  "Q20261113-81-F1": {
+   "title": "Poha Rey'i - The Family of Remedies",
+   "year": null,
+   "makers": [
+    {
+     "id": "DIR-0023",
+     "name": "Genito Gomes"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261113-82-F1": {
+   "title": "Guahui Guyra Kuera - Charm of the Birds",
+   "year": null,
+   "makers": [
+    {
+     "id": "DIR-0023",
+     "name": "Genito Gomes"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261113-83-F1": {
+   "title": "Yvy Pyte - Heart of the Earth",
+   "year": null,
+   "makers": [
+    {
+     "id": "DIR-0023",
+     "name": "Genito Gomes"
+    },
+    {
+     "id": "QM-748e73232d",
+     "name": "Jhon Nara Gomes"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Experimental",
+   "length": null
+  },
+  "Q20261113-85-F1": {
+   "title": "Yvy Pãi Ne'e Aty Guasu (Kaiowá Land, the Speech of the Great Assembly)",
+   "year": null,
+   "makers": [
+    {
+     "id": "DIR-0023",
+     "name": "Genito Gomes"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
    "length": null
   },
   "FILM-0030": {
@@ -6593,6 +6661,38 @@
    "form": "Documentary",
    "length": "Feature"
   },
+  "Q20261113-101-F1": {
+   "title": "Ŋa Hinarere (Los hijos)",
+   "year": 2026,
+   "makers": [
+    {
+     "id": "DIR-0175",
+     "name": "Leonardo Pakarati"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "Q20261113-102-F1": {
+   "title": "Tao'a",
+   "year": 2025,
+   "makers": [
+    {
+     "id": "DIR-0175",
+     "name": "Leonardo Pakarati"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
   "FILM-0100": {
    "title": "AVANGA",
    "year": null,
@@ -7800,6 +7900,22 @@
    "form": null,
    "length": "Short"
   },
+  "Q20261113-89-F1": {
+   "title": "Volveremos",
+   "year": null,
+   "makers": [
+    {
+     "id": "DIR-0209",
+     "name": "Elvis Rigoberto Caj Cojoc"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
   "FILM-0163": {
    "title": "Ati't",
    "year": 2023,
@@ -7862,6 +7978,22 @@
    "primary_theme": null,
    "families": [],
    "form": "Documentary",
+   "length": null
+  },
+  "Q20261112-09-F1": {
+   "title": "Dueto Charanda",
+   "year": null,
+   "makers": [
+    {
+     "id": "DIR-0213",
+     "name": "Alfredo Guzmán Cayetano"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
    "length": null
   },
   "FILM-0167": {
@@ -8025,6 +8157,22 @@
    "primary_theme": null,
    "families": [],
    "form": null,
+   "length": null
+  },
+  "Q20261113-94-F1": {
+   "title": "La gráfica fugitiva",
+   "year": null,
+   "makers": [
+    {
+     "id": "DIR-0218",
+     "name": "Blanca Martínez Castillo"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
    "length": null
   },
   "FILM-0172": {
@@ -8840,6 +8988,29 @@
    "form": null,
    "length": null
   },
+  "Q20261112-09-F2": {
+   "title": "Ñuuyii (Tierra)",
+   "year": 2026,
+   "makers": [
+    {
+     "id": "DIR-0229",
+     "name": "Itandehui Jansen"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Kinship",
+    "Displacement and Migration",
+    "Youth"
+   ],
+   "primary_theme": "Kinship",
+   "families": [
+    "Lives and Relations",
+    "Sovereignty and Politics"
+   ],
+   "form": "Fiction",
+   "length": "Short"
+  },
   "FILM-0186": {
    "title": "Nixíí - Bastón de mando",
    "year": null,
@@ -9443,6 +9614,38 @@
    "form": null,
    "length": null
   },
+  "DIR-0235-QM2690c9": {
+   "title": "Por la vida",
+   "year": null,
+   "makers": [
+    {
+     "id": "DIR-0235",
+     "name": "María Sojob"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "DIR-0235-QM1b8d6a": {
+   "title": "Riox, Palabra florida",
+   "year": null,
+   "makers": [
+    {
+     "id": "DIR-0235",
+     "name": "María Sojob"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "FILM-0197": {
    "title": "Mudubina",
    "year": null,
@@ -9704,6 +9907,38 @@
    "form": null,
    "length": null
   },
+  "DIR-0240-QM5d4cea": {
+   "title": "Sókó",
+   "year": null,
+   "makers": [
+    {
+     "id": "DIR-0240",
+     "name": "Nicolás Rojas"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": null
+  },
+  "Q20261113-98-F1": {
+   "title": "Tuyuku (Ahuehuete)",
+   "year": 2018,
+   "makers": [
+    {
+     "id": "DIR-0240",
+     "name": "Nicolás Rojas"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
   "FILM-0201": {
    "title": "Marku Irekani = vivir juntos",
    "year": null,
@@ -9919,6 +10154,22 @@
    ],
    "form": "Documentary",
    "length": "Feature"
+  },
+  "Q20261113-91-F1": {
+   "title": "Nichimal Son - Música que florece",
+   "year": 2018,
+   "makers": [
+    {
+     "id": "DIR-0246",
+     "name": "Xun Pérez Pérez"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
   },
   "FILM-0208": {
    "title": "De aspecto indígena",
@@ -11777,6 +12028,22 @@
    "form": null,
    "length": null
   },
+  "Q20261113-90-F1": {
+   "title": "SHE CRIED THAT DAY",
+   "year": null,
+   "makers": [
+    {
+     "id": "DIR-0311",
+     "name": "Tracy Rector"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
   "FILM-0233": {
    "title": "Itam Hakim, Hopiit",
    "year": 1985,
@@ -12248,6 +12515,22 @@
    "primary_theme": null,
    "families": [],
    "form": null,
+   "length": null
+  },
+  "Q20261113-88-F1": {
+   "title": "Bannaba (Beyond)",
+   "year": null,
+   "makers": [
+    {
+     "id": "DIR-0328",
+     "name": "Duiren Wagua"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
    "length": null
   },
   "FILM-0251": {
@@ -15715,6 +15998,38 @@
    "primary_theme": null,
    "families": [],
    "form": "Documentary",
+   "length": null
+  },
+  "NEW-0f17e286a91a-QM059d4c": {
+   "title": "Aipa’a – Yem",
+   "year": null,
+   "makers": [
+    {
+     "id": "NEW-0f17e286a91a",
+     "name": "Luzbeidy Monterrosa Atencio"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261113-99-F1": {
+   "title": "La danza del perdón",
+   "year": null,
+   "makers": [
+    {
+     "id": "NEW-0f17e286a91a",
+     "name": "Luzbeidy Monterrosa Atencio"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
    "length": null
   },
   "NEW-4b48761bbc57-WORK-1": {
@@ -29012,6 +29327,22 @@
    "form": "Documentary",
    "length": "Short"
   },
+  "QM-234cb393b5-M2": {
+   "title": "Grietas",
+   "year": null,
+   "makers": [
+    {
+     "id": "QM-234cb393b5",
+     "name": "Alberto Flores Vilca"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
   "QM-6c1fe38e88-M1": {
    "title": "Corte Pelo",
    "year": 2025,
@@ -30085,6 +30416,22 @@
    "form": "Fiction",
    "length": null
   },
+  "LEAD-20261011-012-QM3a5251": {
+   "title": "Cuando florezca el chuño",
+   "year": null,
+   "makers": [
+    {
+     "id": "LEAD-20261011-012",
+     "name": "Paola Gabriela Quispe Quispe"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "QM-525e464677-M1": {
    "title": "Os espíritos só entendem o nosso idioma",
    "year": 2019,
@@ -30538,6 +30885,22 @@
    "primary_theme": null,
    "families": [],
    "form": null,
+   "length": null
+  },
+  "Q20261113-87-F1": {
+   "title": "Untitled Freedmen Film",
+   "year": null,
+   "makers": [
+    {
+     "id": "QM-8ade5da1ed",
+     "name": "Colleen Thurston"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
    "length": null
   },
   "QM-46e5bc5c8e-M1": {
@@ -31688,6 +32051,38 @@
     {
      "id": "QM-6a17e3a86d",
      "name": "Ana María Vázquez Hernández"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "LEAD-20261011-009-QM22cf67": {
+   "title": "Biñíi Dhxizáa (Retoños del zapoteco)",
+   "year": null,
+   "makers": [
+    {
+     "id": "LEAD-20261011-009",
+     "name": "Mónica del Carmen"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "Q20261113-86-F1": {
+   "title": "When They Were Here",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261113-80",
+     "name": "Ivy MacDonald"
     }
    ],
    "languages": [],
