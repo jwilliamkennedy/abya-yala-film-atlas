@@ -1,0 +1,28 @@
+{
+ "open_1x": {
+  "basemap": "open",
+  "state": "ready",
+  "zoom": "1\u00d7"
+ },
+ "open_6x": {
+  "basemap": "open",
+  "state": "ready",
+  "zoom": "6.1\u00d7"
+ },
+ "open_23x": {
+  "basemap": "open",
+  "state": "ready",
+  "zoom": "1\u00d7"
+ },
+ "hover_shapes": 1,
+ "hover_at": [
+  -100,
+  45
+ ],
+ "relief_23x": {
+  "basemap": null,
+  "state": null,
+  "zoom": "23\u00d7"
+ },
+ "pageerrors": []
+}
