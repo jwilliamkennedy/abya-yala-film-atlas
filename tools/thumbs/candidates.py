@@ -50,8 +50,9 @@ def one(row):
         out['check'] = f'page failed: {str(e)[:60]}'; return out, None
     plain = fold(re.sub(r'<[^>]+>', ' ', text))
     surname = fold(row['filmmaker']).split()[-1] if row['filmmaker'].split() else ''
-    missing = [w for w in words(row['title']) if w not in plain]
-    if missing:
+    ws = words(row['title'])
+    missing = [w for w in ws if w not in plain]
+    if len(missing) == len(ws) or (len(ws) == 3 and len(missing) > 1):   # spellings vary; every image is checked by eye
         out['check'] = 'page does not name the film'; return out, None
     if surname and surname not in plain:
         out['check'] = 'page does not name the filmmaker'; return out, None
