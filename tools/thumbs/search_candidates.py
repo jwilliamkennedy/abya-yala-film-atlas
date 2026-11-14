@@ -92,6 +92,7 @@ def one(row):
     first = (row['filmmaker'] or '').split(';')[0].strip()
     title = re.split(r'\s[/=]\s|\s\(', row['title'])[0].strip()
     urls += search(f'"{title}" {first}')[:8]
+    urls += [u for u in search(f'"{title}" {first} vimeo OR youtube') if VIDEO.search(u)][:4]
     last = None
     for u in dict.fromkeys(urls):
         if VIDEO.search(u):

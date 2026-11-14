@@ -25,7 +25,7 @@ def words(title):
 def page(url):
     r = requests.get(url, headers=UA, timeout=25, allow_redirects=True)
     r.raise_for_status()
-    if 'html' not in r.headers.get('content-type', 'text/html'):
+    if 'html' not in r.headers.get('content-type', 'text/html') and not r.text.lstrip()[:200].lower().startswith(('<!doctype html', '<html')):
         raise ValueError('not html')
     return r.url, r.text
 
