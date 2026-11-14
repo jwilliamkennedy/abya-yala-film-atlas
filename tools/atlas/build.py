@@ -219,6 +219,12 @@ def build(path, state_path, check_only=False):
             else:
                 f = {k: copy.deepcopy(v) for k, v in fj.items() if not k.startswith('_')}
                 fb, pos = f, fj['_pos']
+            # A Queue 'correct' action may unify co-directed film IDs without rewriting
+            # the hidden film_json. The visible Published film_id is authoritative.
+            # Preserve all other film metadata from the original machine record.
+            if cellnorm(row.get('film_id')) != cellnorm(f.get('id')):
+                f['id'] = cellnorm(row['film_id'])
+                stats['edited cells'] += bool(fj)
             for col, field in FILM_FIELD.items():
                 v = fb.get(field) if fj else None
                 if col in NUMERIC and fj and _same_number(row.get(col), v):
