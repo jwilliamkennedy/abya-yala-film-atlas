@@ -640,9 +640,6 @@ html[data-weave-stage] #atlas .land-watch,html[data-weave-stage] #atlas .land-th
 
 
 /* Read-stage repair, 2026-11-10. One film at a time, with complete path on demand. */
-html[data-weave-stage="read"] body.atlas-page.is-theme-weaving.weave-dock-open main{
- display:grid!important;grid-template-columns:minmax(0,1fr) clamp(380px,39vw,610px)!important;
-}
 html[data-weave-stage="read"] body.is-theme-weaving #constellate-popup{
  min-width:0;overflow-y:auto!important;overscroll-behavior-y:contain;
  background:var(--reading-paper);color:var(--reading-ink);scroll-padding-top:70px;
@@ -667,7 +664,7 @@ html[data-weave-stage="read"] .weave-read-focus{
 }
 html[data-weave-stage="read"] .weave-read-focus-eyebrow{display:flex;align-items:center;gap:8px;font:600 12px/1.3 var(--ui-sans,system-ui,sans-serif);color:var(--reading-muted);margin-bottom:14px;letter-spacing:.02em}
 html[data-weave-stage="read"] .weave-read-thread-mark{display:inline-block;flex:none;width:11px;height:11px;border-radius:50%}
-html[data-weave-stage="read"] .weave-read-focus-main{display:grid;grid-template-columns:132px minmax(0,1fr);gap:16px;align-items:start}
+html[data-weave-stage="read"] .weave-read-focus-main{display:grid;grid-template-columns:92px minmax(0,1fr);gap:12px;align-items:start}
 html[data-weave-stage="read"] .weave-read-focus-main .weave-media-thumb{
  position:relative;display:block;width:132px;height:auto;aspect-ratio:4/5;overflow:hidden;border-radius:5px;background:var(--reading-line)
 }
@@ -695,7 +692,7 @@ html[data-weave-stage="read"] .weave-read-empty h4{margin:0 0 8px}
 html[data-weave-stage="read"] #weave-read-panel>.constellate-actions{gap:6px}
 html[data-weave-stage="read"] #weave-read-panel>.constellate-actions button{min-height:42px;padding:7px 10px}
 @media(max-width:900px){
- html[data-weave-stage="read"] body.atlas-page.is-theme-weaving.weave-dock-open main{grid-template-columns:minmax(0,1fr) minmax(340px,43%)!important}
+ 
 }
 @media(max-width:760px){
  html[data-weave-stage="read"] body.atlas-page.is-theme-weaving.weave-dock-open main{
@@ -1513,7 +1510,6 @@ html[data-weave-stage="start"] #constellate-mode .cm-tools>:not(#weave-theme-web
 html[data-weave-stage="start"] #constellate-mode #constellate-share,
 html[data-weave-stage="start"] #constellate-mode .weave-tool-group>button:disabled{display:none}
 html[data-weave-stage="start"] #constellate-mode .cm-tools{border-left:0;padding-left:0}
-html[data-weave-stage="read"] #constellate-mode .cm-tools{display:none}
 
 /* narrower bars: classes set by place() after measuring (cm-short, cm-compact, cm-narrow, cm-notitle) */
 #constellate-mode.cm-notitle .cm-id{display:none}
@@ -1529,7 +1525,7 @@ html[data-weave-stage="read"] #constellate-mode .cm-tools{display:none}
 #constellate-mode.cm-narrow #constellate-exit .cm-label{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
 #constellate-mode.cm-narrow #constellate-exit{width:34px;padding:0;margin-left:0}
 #constellate-mode.cm-narrow .cm-tools{order:9;flex:1 0 100%;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px;margin:0;padding:6px 0 0;border-left:0;border-top:1px solid var(--ui-line)}
-html[data-weave-stage="read"] #constellate-mode.cm-narrow .cm-tools,html[data-weave-stage="start"] #constellate-mode.cm-narrow .cm-tools{display:none}
+html[data-weave-stage="start"] #constellate-mode.cm-narrow .cm-tools{display:none}
 #constellate-mode.cm-narrow .cm-tools>button{flex-direction:column;gap:4px;height:46px;min-height:46px;padding:4px 2px;font-size:11.5px;font-weight:600}
 #constellate-mode.cm-narrow .cm-tools .cm-b{display:inline}
 #constellate-mode.cm-narrow .cm-tools .cm-ico{width:18px;height:18px}
@@ -1594,3 +1590,13 @@ body.weave-tracing #atlas .land-word,body.weave-tracing #atlas .land-word *{poin
 :root:not(#_):not(#__) #constellate-popup .cp-tidy #weave-settings{position:static!important}
 :root:not(#_):not(#__) #constellate-popup .cp-tidy #weave-settings>.cp-pop{position:absolute;left:0;right:0;top:58px;z-index:30;box-sizing:border-box;display:flex;flex-direction:column;gap:6px;padding:14px;border:1px solid var(--ui-line);border-radius:12px;background:var(--ui-surface);box-shadow:0 18px 44px rgba(8,14,26,.22)}
 :root:not(#_):not(#__) #constellate-popup .cp-tidy #weave-settings>.cp-pop>*{position:static!important;width:auto!important;max-width:none!important;margin:0!important}
+/* The toolbar is the same in Build and Read (13 Nov): no name in the bar (the panel heads with it), tools always shown */
+#constellate-mode .cm-id{display:none!important}
+/* Share: a popover under the Share button (or Options when Share is inside it); a sheet on phones */
+#weave-share-panel.cm-pop{position:fixed!important;z-index:70;width:min(380px,calc(100vw - 16px));max-height:min(75vh,620px);overflow:auto;box-sizing:border-box;margin:0!important;padding:18px 18px 16px!important;border:1px solid var(--ui-line);border-radius:14px;background:var(--ui-surface);box-shadow:0 22px 54px rgba(8,14,26,.28)}
+#weave-share-panel.cm-pop[hidden]{display:none!important}
+#weave-share-panel .cm-pop-close{position:absolute;top:8px;right:8px;width:32px;height:32px;display:inline-flex;align-items:center;justify-content:center;padding:0;border:0;border-radius:8px;background:transparent;color:var(--ui-ink);font:400 22px/1 var(--ui-sans);cursor:pointer}
+#weave-share-panel .cm-pop-close:hover{background:var(--ui-wash)}
+@media (max-width:700px){#weave-share-panel.cm-pop{width:auto}}
+/* Read keeps the same panel width as Build, so the map and the toolbar do not shift between modes (13 Nov) */
+html[data-weave-stage="read"] .weave-read-focus-main .weave-media-thumb{width:92px}
