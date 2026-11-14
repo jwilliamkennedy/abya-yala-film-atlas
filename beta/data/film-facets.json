@@ -2,8 +2,8 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-14",
  "license": "See data.html",
- "films_on_public_map": 1703,
- "film_entries": 1708,
+ "films_on_public_map": 1704,
+ "film_entries": 1709,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -16843,6 +16843,22 @@
    ],
    "form": null,
    "length": "Short"
+  },
+  "Q20261114-98-F10": {
+   "title": "Puka Urpi",
+   "year": 2025,
+   "makers": [
+    {
+     "id": "NEW-df0d54c464f8",
+     "name": "Segundo Fuérez"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": "Feature"
   },
   "NEW-7c78fdbe16c7-WORK-1": {
    "title": "The Orange Flower",
