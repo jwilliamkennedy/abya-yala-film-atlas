@@ -31,7 +31,7 @@ what makes it possible.
 
 One row in four groups: the constellation's name; **Build | Follow** as one switch with **Play** as the one filled
 button; the building tools (**Add films · Draw thread · Trace a line · Theme web**, Build only); and **Undo · Redo ·
-Share · Options · Exit**. Clear is at the foot of Options under "This constellation". The bar measures itself and
+Share · Options · Exit**. Clear sits beside Undo, in the accent colour; it asks first and Undo restores. The bar measures itself and
 steps down only while it overflows: full labels, then short tool labels, then Share/Undo/Redo into Options, then the
 tools on a second row (phones). The structure is set by `place()` in the "Constellate toolbar" section of
 `constellate.js`; every style for `#constellate-mode` is the "Constellate toolbar" block at the end of
