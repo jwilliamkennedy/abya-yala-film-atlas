@@ -1681,3 +1681,5 @@ body.weave-tracing.trace-themed #atlas .land-word:not(.trace-theme){opacity:.22!
 @media (min-width:701px){#weave-trace-layer.is-browse .wt-mode{bottom:58px}}
 /* phones: the Draw controls fit the screen (14 Nov fix) */
 @media (max-width:700px){#weave-trace-layer .wt-mode{left:8px;right:8px;transform:none;gap:4px}#weave-trace-layer .wt-mode button{padding:0 10px}#weave-trace-layer .wt-mode .wt-theme-pick{flex:1 1 auto;min-width:0;max-width:none}#weave-trace-layer .wt-switch{padding:0 2px}}
+/* Draw result on phones: the whole card scrolls so every land crossed is listed, not two squeezed rows */
+@media (max-width:700px){#weave-trace-layer .wt-result{top:8px;left:8px;right:8px;width:auto;max-height:calc(100% - 16px);display:block;overflow:auto;-webkit-overflow-scrolling:touch}#weave-trace-layer .wt-result ol{max-height:none;overflow:visible}#weave-trace-layer .wt-actions{position:sticky;bottom:-16px;margin:0 -18px -16px;padding:10px 18px 14px;background:#f8f6f2;border-top:1px solid rgba(38,35,28,.12)}}
