@@ -460,3 +460,21 @@ body.land-tinted #index .index-command-bar{box-shadow:inset 0 -3px 0 var(--land)
 body.land-tinted #index .view-switch button[aria-pressed="true"]{background:var(--land)!important;color:#182028!important}
 body.land-tinted #index #selection-path::before{content:"";display:inline-block;width:10px;height:10px;margin-right:8px;border-radius:50%;background:var(--land);box-shadow:0 0 0 1px rgba(24,32,40,.28)}
 body.land-tinted #map-selection-focus{border-left-color:var(--land)!important;box-shadow:inset 4px 0 0 var(--land),0 4px 16px rgba(16,45,56,.15)!important}
+/* ---------- Friction pass (13 Nov 2026) ----------
+   A–Z: every letter visible, in rows, instead of a strip that scrolls behind arrows. */
+:root:not(#_) #index .ui-alpha-shell{display:block!important}
+:root:not(#_) #index .ui-alpha-shell>.ui-alpha-arrow{display:none!important}
+:root:not(#_) #index .ui-alpha-shell>#maker-alphabet,:root:not(#_) #index .ui-alpha-shell>#film-alphabet{display:grid!important;grid-template-columns:repeat(auto-fill,minmax(29px,1fr))!important;gap:2px!important;overflow:visible!important;width:100%!important;mask-image:none!important;-webkit-mask-image:none!important;padding:2px 0!important;min-height:0!important}
+:root:not(#_) #index .ui-alpha-shell>nav>button{min-width:0!important;width:auto!important;height:30px!important;min-height:30px!important;margin:0!important;padding:0!important}
+@media (max-width:700px){
+ /* A–Z on phones: one row you swipe, with thumb-sized letters (rows would push the land's name off screen) */
+ :root:not(#_) #index .ui-alpha-shell>#maker-alphabet,:root:not(#_) #index .ui-alpha-shell>#film-alphabet{display:flex!important;overflow-x:auto!important;scrollbar-width:none!important;gap:2px!important;scroll-snap-type:x proximity}
+ :root:not(#_) #index .ui-alpha-shell>nav>button{flex:0 0 36px!important;width:36px!important;height:36px!important;min-height:36px!important;scroll-snap-align:start}
+ /* the view tabs sit in the flow of the sheet instead of floating over Close and Show map */
+ :root:not(#_) #index .index-command-bar>.view-switch{position:static!important;inset:auto!important;transform:none!important;width:auto!important;margin:0 0 6px!important}
+ /* Back and Forward as arrows so the list tools fit on one line */
+ :root:not(#_) #index nav.view-history button{font-size:0!important;width:36px!important;min-width:36px!important;padding:0!important}
+ :root:not(#_) #index nav.view-history #view-back::before{content:"←";font-size:18px}
+ :root:not(#_) #index nav.view-history #view-forward::before{content:"→";font-size:18px}
+ :root:not(#_) #index .index-command-bar>nav.view-history{gap:4px!important}
+}

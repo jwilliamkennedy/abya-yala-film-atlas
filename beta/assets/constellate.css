@@ -1600,3 +1600,10 @@ body.weave-tracing #atlas .land-word,body.weave-tracing #atlas .land-word *{poin
 @media (max-width:700px){#weave-share-panel.cm-pop{width:auto}}
 /* Read keeps the same panel width as Build, so the map and the toolbar do not shift between modes (13 Nov) */
 html[data-weave-stage="read"] .weave-read-focus-main .weave-media-thumb{width:92px}
+/* Friction pass (13 Nov 2026): phone tap sizes; drawing leaves the map's source links usable */
+@media (max-width:700px){
+ :root:not(#_):not(#__) #constellate-popup .cp-tidy #constellate-close{width:36px!important;min-width:36px!important}
+ #constellate-mode.cm-narrow #weave-stepper button{width:32px;height:32px;min-height:32px}
+ #weave-start .ws-themes button,#weave-start .ws-popular button,#weave-start [data-ws-theme]{min-height:36px}
+ #atlas-theme-web .tw-top button,#atlas-theme-web .tw-families button{min-height:34px}
+}

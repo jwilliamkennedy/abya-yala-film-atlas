@@ -797,7 +797,7 @@ function stopPlay(){if(!player)return;playThread=null;pausePlay(true);player.hid
  function traceMoving(on){const el=traceUI();if(on)traceUnline();el.classList.toggle('is-moving',!!on);el.querySelectorAll('[data-wtm]').forEach(b=>b.setAttribute('aria-pressed',String((b.dataset.wtm==='move')===!!on)));if(!el.classList.contains('has-result'))el.querySelector('.wt-hint').textContent=on?'Drag to move the map, scroll to zoom. Choose Draw when you are ready.':'Drag a line across the map. The lands it crosses give their films.';}
  function traceClear(){document.querySelectorAll('#atlas .nation-wash.trace-lit').forEach(w=>w.classList.remove('trace-lit'));}
  function traceReset(){const el=traceUI();traceClear();trace={drawing:false,pts:[],lands:[],seen:new Set(),filmIds:new Set(),skip:new Set()};el.querySelector('.wt-casing').setAttribute('d','');el.querySelector('.wt-line').setAttribute('d','');el.querySelector('.wt-dots').innerHTML='';el.querySelector('.wt-result').hidden=true;el.classList.remove('has-result');el.classList.remove('is-moving');el.querySelectorAll('[data-wtm]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.wtm==='draw')));el.querySelector('.wt-hint').textContent=(matchMedia('(pointer:coarse)').matches?'Draw with one finger; move or zoom the map with two.':'Drag a line across the map. The lands it crosses give their films. Scroll to zoom; Move map to pan.');}
- function startTrace(){if(!enabled)open();setRead(false);if(drawThread)setDrawThread(false);const el=traceUI();document.body.classList.add('weave-tracing');el.hidden=false;el.style.top=($('#constellate-mode')?.offsetHeight||0)+'px';$('#weave-trace')?.setAttribute('aria-pressed','true');traceReset();}
+ function startTrace(){if(!enabled)open();setRead(false);if(drawThread)setDrawThread(false);if(innerWidth<700)scrollTo({top:0,behavior:'instant'});const el=traceUI();document.body.classList.add('weave-tracing');el.hidden=false;el.style.top=($('#constellate-mode')?.offsetHeight||0)+'px';{const ft=document.querySelector('.map-panel .map-footer');el.style.bottom=(ft&&ft.offsetParent?ft.offsetHeight:0)+'px';}$('#weave-trace')?.setAttribute('aria-pressed','true');traceReset();}
  function stopTrace(){if(!trace)return;const el=$('#weave-trace-layer');traceClear();trace=null;if(el)el.hidden=true;document.body.classList.remove('weave-tracing');$('#weave-trace')?.setAttribute('aria-pressed','false');}
  function traceBegin(e){traceReset();const el=traceUI(),box=el.getBoundingClientRect(),index=landFilms(),cand=[],marks=[];
   for(const w of document.querySelectorAll('#atlas .nation-wash[data-land]')){const land=index.get(w.dataset.land);if(land)cand.push({land,path:w});}
@@ -1833,7 +1833,7 @@ function legendNote(){
 }
 function phoneCue(){
  var ctx=$('#constellate-context'),small=window.matchMedia('(max-width:700px)').matches,cue=$('#weave-phone-cue');
- var show=small&&root.dataset.weaveStage==='build'&&ctx&&!ctx.hidden;
+ var show=small&&root.dataset.weaveStage==='build'&&ctx&&!ctx.hidden&&ctx.getBoundingClientRect().top>innerHeight-64;
  if(!show){if(cue)cue.hidden=true;return;}
  if(!cue){cue=document.createElement('button');cue.type='button';cue.id='weave-phone-cue';document.body.appendChild(cue);
   cue.addEventListener('click',function(){var k=$('#constellate-context');if(k)k.scrollIntoView({block:'start',behavior:'smooth'});});}
