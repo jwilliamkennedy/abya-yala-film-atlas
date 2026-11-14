@@ -80,6 +80,10 @@ the lands in order with their film counts; lands can be unticked; one button thr
 - While drawing, the scroll wheel still zooms the map, and a **Draw / Move map** switch at the bottom lets the map be dragged; land names stop catching the pointer so a drag on them moves the map.
 - On the Map page, **Draw** (beside Layers) draws the same line without entering Constellate: the crossed lands are
   listed in order, each opens on the map, and one button makes a thread (which opens Constellate).
+- A theme picker sits beside Draw / Move map and in the result card: with a theme chosen, only films tagged with it
+  count, only lands that have them light, and the thread is named '<theme> · first land → last land'. It can be
+  changed before or after drawing.
+- The result card is minimal: count, theme, lands with their counts, actions, and 'Territories: Native Land Digital'.
 - Not built yet: a keyboard way to draw (choose a first and last land), translations, and an entry on the Map page.
 
 ## The browser suite
