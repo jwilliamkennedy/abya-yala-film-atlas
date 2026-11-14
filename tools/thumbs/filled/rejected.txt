@@ -68,3 +68,5 @@ Q20261108-45-F1	Definition of Resilience, Episode 2: “Identity”	festival ban
 Q20261113-91-F1	Nichimal Son - Música que florece	portrait
 Q20261114-02-F4	A Good Game	site banner
 DIR-0142-W1031-4	The Haudenosaunee Canoe Journey	site banner
+NEW-98c6d3129c01-WORK-1	Our Sisters in Spirit	crew photo
+DIR-0334-F2	I Am Thy Weapon	series banner
