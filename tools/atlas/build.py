@@ -316,7 +316,7 @@ def build(path, state_path, check_only=False):
                 pub_row['credit'] = c.split(' — ', 1)[0]
             if bake.INTERNAL_WORDS.search(cellnorm(row.get('language_note'))) or '.csv' in cellnorm(row.get('language_note')):
                 pub_row['language_note'] = ''
-            w.writerow([cellnorm(pub_row.get(c)) for c in cols])
+            w.writerow([bake.neutral(cellnorm(pub_row.get(c))) for c in cols])
     print(' | '.join(f'{k} {v}' for k, v in stats.items()), '| land-link edits', len(land_edits), '|', sizes)
 
 if __name__ == '__main__':

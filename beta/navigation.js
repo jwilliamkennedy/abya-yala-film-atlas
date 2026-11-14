@@ -33,17 +33,31 @@ window.ATLAS_ON_MAP=window.ATLAS_ON_MAP||new Set(['Map Ready']);
   st.branchPage=Math.max(0,Math.min(10000,Number(p.get('connectionsPage'))||1)-1);st.connections=p.get('connections')!=='0';st.cinema=p.get('totals')!=='0';st.boundaries=p.get('outlines')==='1';st.shading=p.get('shading')!=='0';st.worksOpen=p.get('works')!=='0';
   st.center=null;st.scale=null;st.returnContext=st.crossReturn=null;return st;
  }
+ /* Back and Forward say where they go (14 Nov 2026): each step's label is kept per history position for this tab. */
+ let labels={};try{labels=JSON.parse(sessionStorage.getItem('atlas-nav-labels')||'{}')||{};}catch{}
+ function describe(st){try{
+  const rec=st.record&&api.recordById(st.record),film=rec&&st.film&&rec.films.find(f=>f.id===st.film);
+  if(film)return film.title;if(rec)return rec.name;
+  const land=st.land&&api.landById(st.land);if(land)return land.name||land.label||'Land';
+  const c=(st.country||st.landCountry)&&api.countryByCode(st.country||st.landCountry);if(c)return c.name;
+  const q=(st.queries?.[st.view]||'').trim();if(q)return '“'+q.slice(0,24)+'”';
+  return {filmmakers:'Filmmakers',films:'Films',land:'Lands'}[st.view]||'Map';}catch{return '';}}
+ function remember(st){labels[position]=describe(st);try{sessionStorage.setItem('atlas-nav-labels',JSON.stringify(labels));}catch{}}
+ const clip=t=>t.length>22?t.slice(0,21).trim()+'…':t;
  function controls(){
   $('#view-back').disabled=travelling||position<=0;$('#view-forward').disabled=travelling||position>=farthest;
+  {const b=labels[position-1],f=labels[position+1],bk=$('#view-back'),fw=$('#view-forward');
+   bk.textContent='← '+(b&&position>0?clip(b):'Back');bk.title=b&&position>0?'Back to '+b:'Back';bk.setAttribute('aria-label',bk.title);
+   fw.textContent=(f&&position<farthest?clip(f):'Forward')+' →';fw.title=f&&position<farthest?'Forward to '+f:'Forward';fw.setAttribute('aria-label',fw.title);}
   $('#clear-search').hidden=!api.state.queries[api.state.view].trim();
   if(!$('#view-link-fallback').hidden)$('#view-link').value=location.href;
  }
  function snapshot(){return {...api.captureState(),indexScroll:$('#index').scrollTop,pageScroll:window.scrollY};}
  function commit(mode='push'){
   if(applying||window.AtlasConstellate?.enabled||(!window.AtlasConstellate&&new URLSearchParams(location.search).has('weave')))return;const st=snapshot(),hash=route(st);controls();
-  if(hash===location.hash){history.replaceState({atlas:st,atlasIndex:position},'',location.href);return;}
+  if(hash===location.hash){history.replaceState({atlas:st,atlasIndex:position},'',location.href);remember(st);controls();return;}
   try{if(mode!=='replace'){position++;farthest=position;}history[mode==='replace'?'replaceState':'pushState']({atlas:st,atlasIndex:position},'',location.pathname+location.search+hash);}catch{}
-  controls();
+  remember(st);controls();
  }
  function preserve(){if(!applying&&!travelling)history.replaceState({atlas:snapshot(),atlasIndex:position},'',location.href);}
  function queue(mode='push'){
