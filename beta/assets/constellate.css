@@ -1500,6 +1500,13 @@ body:has(#constellate-mode .weave-more[open]) #weave-notice{display:none}
 #constellate-mode .weave-more-menu #constellate-clear{color:var(--ui-accent)}
 #constellate-mode .weave-more-menu #constellate-clear:hover{background:color-mix(in srgb,var(--ui-accent) 10%,transparent)}
 
+/* Clear: in the bar, beside Undo, in the accent colour; it asks before clearing */
+#constellate-mode #constellate-clear{color:var(--ui-accent);margin-right:2px}
+#constellate-mode #constellate-clear:hover:not(:disabled){background:color-mix(in srgb,var(--ui-accent) 11%,transparent)}
+#constellate-mode.cm-compact #constellate-clear{width:34px;padding:0}
+#constellate-mode.cm-compact #constellate-clear .cm-label{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+html[data-weave-stage="start"] #constellate-mode #constellate-clear{display:none}
+
 /* stages: Start shows the name, Theme web, Options and Exit; Follow drops the tools */
 html[data-weave-stage="start"] #constellate-mode .cm-modes,
 html[data-weave-stage="start"] #constellate-mode .cm-tools>:not(#weave-theme-web-toggle),
@@ -1510,6 +1517,9 @@ html[data-weave-stage="read"] #constellate-mode .cm-tools{display:none}
 
 /* narrower bars: classes set by place() after measuring (cm-short, cm-compact, cm-narrow, cm-notitle) */
 #constellate-mode.cm-notitle .cm-id{display:none}
+#constellate-mode.cm-tight #constellate-share,#constellate-mode.cm-tight #constellate-exit{width:34px;padding:0;margin-left:0}
+#constellate-mode.cm-tight #constellate-share .cm-label,#constellate-mode.cm-tight #constellate-exit .cm-label{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+#constellate-mode.cm-tight #constellate-exit .cm-ico{width:15px;height:15px}
 #constellate-mode.cm-short .cm-tools .cm-b{display:none}
 #constellate-mode.cm-short .cm-tools>button{padding:0 9px}
 #constellate-mode.cm-narrow{flex-wrap:wrap;align-content:center;height:auto;min-height:48px;padding:6px 8px;row-gap:6px;column-gap:6px}
@@ -1526,3 +1536,13 @@ html[data-weave-stage="read"] #constellate-mode.cm-narrow .cm-tools,html[data-we
 #constellate-mode.cm-narrow #weave-stepper button{width:26px}
 #constellate-mode.cm-narrow #weave-step-pos{min-width:34px}
 @media (max-width:700px){#constellate-mode .weave-more-menu{position:fixed;left:8px;right:8px;top:auto;bottom:8px;width:auto;max-height:70vh}}
+
+/* ══ Add films filters (13 Nov 2026): a two-column grid. Order across the top; the two tick boxes on one row;
+   Country · Decade and Form · Length as labelled pairs; Clear at the end. */
+#constellate-popup #weave-discovery-tools{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px 12px!important;align-items:end;margin:10px 0 6px}
+#constellate-popup #weave-discovery-tools>label{display:flex!important;flex-direction:column;align-items:stretch;gap:4px;min-width:0!important;margin:0!important;flex:none!important;white-space:normal!important;font:600 11px/1.2 var(--ui-sans);letter-spacing:.06em;text-transform:uppercase;color:var(--ui-muted)}
+#constellate-popup #weave-discovery-tools>label:first-child{grid-column:1/-1}
+#constellate-popup #weave-discovery-tools>label:has(input[type="checkbox"]){flex-direction:row!important;align-items:center;gap:8px;min-height:32px;font:500 13.5px/1.2 var(--ui-sans);letter-spacing:0;text-transform:none;color:var(--ui-ink);cursor:pointer}
+#constellate-popup #weave-discovery-tools input[type="checkbox"]{flex:0 0 16px!important;width:16px!important;height:16px!important;margin:0!important;accent-color:var(--ui-accent)}
+#constellate-popup #weave-discovery-tools select{width:100%!important;max-width:none!important;min-width:0!important;height:36px;min-height:36px!important;margin:0!important;font:400 13.5px/1.2 var(--ui-sans);letter-spacing:0;text-transform:none;color:var(--ui-ink)}
+#constellate-popup #weave-discovery-tools #weave-discovery-clear{grid-column:2;justify-self:end;height:32px;min-height:32px;padding:0 12px;border:1px solid var(--ui-line);border-radius:8px;background:transparent;color:var(--ui-accent);font:600 13px/1 var(--ui-sans)}

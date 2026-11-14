@@ -1135,15 +1135,15 @@ try{
 try{
 /* Constellate toolbar (13 Nov 2026). One row, four groups, the same everywhere:
      [constellation name] [Build | Follow] [▶ Play] | [Add films · Draw thread · Trace a line · Theme web] ...... [↶ ↷ Share ⋯ Exit]
-   Building tools show only in Build. Clear lives at the foot of Options (it asks first, and Undo restores).
+   Building tools show only in Build. Clear sits beside Undo (it asks first, and Undo restores).
    When the bar is narrow, Share, Undo and Redo move into Options; on phones the tools take a second row.
    All toolbar styling is the "Constellate toolbar" block at the end of constellate.css. */
 (function(){
  'use strict';
  /* Fitting: try the fullest layout first and step down only while the bar overflows:
-    full → short tool labels → Share/Undo/Redo into Options → tools on a second row (phones). */
- var LEVELS=[[],['cm-short'],['cm-compact'],['cm-compact','cm-short'],['cm-compact','cm-narrow']];
- var ALL=['cm-short','cm-compact','cm-narrow','cm-notitle'];
+    full → Share and Exit as icons → short tool labels → Share/Undo/Redo into Options → tools on a second row (phones). */
+ var LEVELS=[[],['cm-tight'],['cm-tight','cm-short'],['cm-compact','cm-tight'],['cm-compact','cm-tight','cm-short'],['cm-compact','cm-narrow']];
+ var ALL=['cm-tight','cm-short','cm-compact','cm-narrow','cm-notitle'];
  function svg(d){return '<svg class="cm-ico" viewBox="0 0 16 16" aria-hidden="true" focusable="false">'+d+'</svg>';}
  var DOT='fill="currentColor" stroke="none"';
  var ICON={
@@ -1211,14 +1211,14 @@ try{
    function arrange(narrow){
     var items=[layout,unmap,fit,timeline,atlasT,cards,analysis,compare];
     if(narrow){order(hist,[]);items=items.concat([shareHead,share,undo,redo]);}else{order(hist,[undo,redo]);shareHead.remove();}
-    items=items.concat([thisHead,clear]);
+    thisHead.remove();
     order(menu,items);
-    order(end,narrow?[more,exit]:[hist,share,more,exit]);
+    order(end,narrow?[clear,more,exit]:[clear,hist,share,more,exit]);
    }
    order(bar,[skip,id,modes,stepper,tools,end]);
    dress(play,ICON.play,'Play');dress(browse,ICON.add,'Add films',3);dress(draw,ICON.draw,'Draw thread',4);dress(trace,ICON.trace,'Trace a line',5);
    if(web)dress(web,ICON.web,'Theme web',5);
-   dress(undo,ICON.undo,'Undo');dress(redo,ICON.redo,'Redo');dress(share,ICON.share,'Share');dress(exit,ICON.exit,'Exit');dress(clear,ICON.clear,'Clear this constellation…');
+   dress(undo,ICON.undo,'Undo');dress(redo,ICON.redo,'Redo');dress(share,ICON.share,'Share');dress(exit,ICON.exit,'Exit');dress(clear,ICON.clear,'Clear');clear.title='Clear this constellation (it asks first, and Undo restores it)';
    if(unmap)dress(unmap,ICON.view,'Disappear map');
    var summary=more.querySelector('summary');
    if(summary&&!summary.dataset.cm){summary.dataset.cm='1';summary.innerHTML=ICON.more+'<span class="cm-label">Options</span>';}
