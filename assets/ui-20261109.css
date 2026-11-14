@@ -21,8 +21,8 @@
 
 /* ---------- Tokens ---------- */
 html:root{
- --ui-paper:#f1ebe2;--ui-surface:#f7f3ec;--ui-wash:#eae1d4;--ui-line:#d0ccc6;--ui-ink:#2a251d;--ui-muted:#6c6251;
- --ui-accent:#6b4a30;--ui-accent-ink:#ffffff;--ui-maize:#d9a640;--ui-sage:#3e6b58;--ui-shadow:0 10px 30px rgba(42,37,29,.12),0 1px 2px rgba(42,37,29,.08);
+ --ui-paper:#f3f1e9;--ui-surface:#f8f6f2;--ui-wash:#ede9de;--ui-line:#d0cec6;--ui-ink:#26231c;--ui-muted:#6b6559;
+ --ui-accent:#3f5466;--ui-accent-ink:#ffffff;--ui-maize:#d9a640;--ui-sage:#3e6b58;--ui-shadow:0 10px 30px rgba(38,35,28,.12),0 1px 2px rgba(38,35,28,.08);
  --ui-sans:'Atlas Sans',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
  --ui-serif:'Atlas Text Serif','Noto Serif','Noto Sans Canadian Aboriginal','Noto Sans Cherokee','Noto Sans Osage',Georgia,serif;
  /* type scale */
@@ -154,7 +154,7 @@ html[data-reading-theme="night"] #index select,html[data-reading-theme="night"] 
 #index input[type="checkbox"],#layers input[type="checkbox"],.map-actions input[type="checkbox"]{accent-color:var(--ui-accent)}
 
 /* ---------- Map toolbar and panels ---------- */
-.map-panel .zoom,.map-toolbar .map-actions{background:var(--ui-surface)!important;border:1px solid var(--ui-line)!important;box-shadow:0 2px 10px rgba(42,37,29,.08)!important;border-radius:999px!important}
+.map-panel .zoom,.map-toolbar .map-actions{background:var(--ui-surface)!important;border:1px solid var(--ui-line)!important;box-shadow:0 2px 10px rgba(38,35,28,.08)!important;border-radius:999px!important}
 .map-panel .zoom button,.map-toolbar .map-actions>details>summary,.map-toolbar .map-actions>button{font:600 14px/1 var(--ui-sans)!important;color:var(--ui-ink)!important}
 #zoom-level{display:none!important}
 #zoom-selection[disabled],#zoom-selection:disabled{display:none!important}
@@ -368,14 +368,14 @@ body.atlas-page .map-footer a:hover,
 body.atlas-page #map-info .map-external-links a:hover{text-decoration-thickness:2px}
 body.atlas-page .map-footer a:focus-visible,
 body.atlas-page #map-info .map-external-links a:focus-visible{
-  outline:2px solid var(--reading-accent,#6b4a30);outline-offset:3px;border-radius:2px
+  outline:2px solid var(--reading-accent,#3f5466);outline-offset:3px;border-radius:2px
 }
 body.atlas-page .map-toolbar:has(#map-info[open]){z-index:60}
 body.atlas-page #map-info[open]>div{
   pointer-events:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch
 }
 body.atlas-page #map-info .map-external-links{
-  margin-top:14px;padding-top:10px;border-top:1px solid var(--reading-line,#d0ccc6)
+  margin-top:14px;padding-top:10px;border-top:1px solid var(--reading-line,#d0cec6)
 }
 body.atlas-page #map-info .map-external-links strong{display:block;font-size:13px;line-height:1.4}
 body.atlas-page #map-info .map-external-links a{
@@ -392,24 +392,24 @@ body.atlas-page #layers a{pointer-events:auto!important;touch-action:manipulatio
 
 
 /* Relational discovery belongs to the Atlas interface, not a mismatched oversized chapter heading. */
-body.atlas-page #index .adjacent-visible{margin-top:22px;padding-top:16px;border-top:1px solid var(--reading-line,#d0ccc6)}
+body.atlas-page #index .adjacent-visible{margin-top:22px;padding-top:16px;border-top:1px solid var(--reading-line,#d0cec6)}
 body.atlas-page #index .adjacent-visible > h3{
   margin:0 0 7px!important;
   font:600 16px/1.3 var(--ui-sans,"Atlas Sans",system-ui,sans-serif)!important;
   letter-spacing:0!important;text-transform:none!important;
-  color:var(--reading-ink,#2a251d)!important
+  color:var(--reading-ink,#26231c)!important
 }
 body.atlas-page #index .adjacent-visible > p.meta{
   margin:0 0 12px!important;max-width:58ch;
   font:400 13px/1.55 var(--ui-sans,"Atlas Sans",system-ui,sans-serif)!important;
-  color:var(--reading-muted,#6c6251)!important
+  color:var(--reading-muted,#6b6559)!important
 }
 body.atlas-page #index .adjacent-visible .adjacent-maker{
   padding:12px 13px!important;min-height:60px;border-radius:6px;
-  border:1px solid var(--reading-line,#d0ccc6);background:var(--reading-wash,#eae1d4)
+  border:1px solid var(--reading-line,#d0cec6);background:var(--reading-wash,#ede9de)
 }
 body.atlas-page #index .adjacent-visible .adjacent-maker:focus-visible{
- outline:2px solid var(--reading-accent,#6b4a30);outline-offset:2px
+ outline:2px solid var(--reading-accent,#3f5466);outline-offset:2px
 }
 
 /* ---------- Map page pass, 2026-11-11 ---------- */
@@ -456,8 +456,8 @@ body.profile-open.has-record #index #active-context{display:none!important}
 /* the closed tools drawer drew a second line under the tabs */
 #index .index-command-bar>#index-tools:not([open]){border:0!important}
 /* Land tint: the open land's territory colour marks the panel (rule, dot, active tab). Set by landTint() in ui-20261109.js. */
-body.land-tinted #index .view-switch button[aria-pressed="true"]{background:var(--land)!important;color:#2a251d!important}
-body.land-tinted #index #selection-path::before{content:"";display:inline-block;width:10px;height:10px;margin-right:8px;border-radius:50%;background:var(--land);box-shadow:0 0 0 1px rgba(42,37,29,.28)}
+body.land-tinted #index .view-switch button[aria-pressed="true"]{background:var(--land)!important;color:#26231c!important}
+body.land-tinted #index #selection-path::before{content:"";display:inline-block;width:10px;height:10px;margin-right:8px;border-radius:50%;background:var(--land);box-shadow:0 0 0 1px rgba(38,35,28,.28)}
 body.land-tinted #map-selection-focus{border-left-color:var(--land)!important;box-shadow:inset 4px 0 0 var(--land),0 4px 16px rgba(16,45,56,.15)!important}
 /* ---------- Friction pass (13 Nov 2026) ----------
    A–Z: every letter visible, in rows, instead of a strip that scrolls behind arrows. */
