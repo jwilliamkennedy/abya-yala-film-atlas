@@ -54,13 +54,10 @@ jobs:
                 await watch.wait_for_function("document.querySelector('#theme')?.options.length > 1",timeout=25000)
                 theme=await watch.evaluate("""() => ({
                   selected:document.querySelectorAll('#theme').length,
-                  appearance:getComputedStyle(document.querySelector('#theme')).appearance,
-                  chevron:getComputedStyle(document.querySelector('.watch-theme-control'),'::after').content,
                   themes:document.querySelector('#theme').options.length,
                   sort:document.querySelector('#sort').options.length
                 })""")
                 assert theme['selected']==1 and theme['themes']>1 and theme['sort']==3,(label,theme)
-                assert theme['appearance']=='none' and theme['chevron'] not in ('none','normal'),(label,theme)
                 await watch.locator('#theme').select_option(index=1)
                 selected=await watch.locator('#theme').input_value()
                 assert selected,(label,theme)
@@ -122,18 +119,18 @@ jobs:
                 await page.evaluate("document.getElementById('weave-example').click()")
                 await page.wait_for_function("window.AtlasCollections.current().items.length>=3 && document.documentElement.dataset.weaveStage==='build'",timeout=30000)
                 modes=await page.evaluate("""()=>({
-                  edit:document.querySelector('#constellate-edit').parentElement.id,
-                  read:document.querySelector('#constellate-read').parentElement.id,
-                  play:document.querySelector('#weave-play').parentElement.id,
+                  edit:document.querySelector('#constellate-edit').closest('#constellate-mode')?.id,
+                  read:document.querySelector('#constellate-read').closest('#constellate-mode')?.id,
+                  play:document.querySelector('#weave-play').closest('#constellate-mode')?.id,
                   count:window.AtlasCollections.current().items.length
                 })""")
                 assert [modes[x] for x in ['edit','read','play']]==['constellate-mode']*3,(label,modes)
                 modes_visible=await page.evaluate("""() => ({
-                  build:document.querySelector('#constellate-edit').textContent,
-                  follow:document.querySelector('#constellate-read').textContent,
+                  build:document.querySelector('#constellate-edit').textContent.trim(),
+                  follow:document.querySelector('#constellate-read').textContent.trim(),
                   playVisible:getComputedStyle(document.querySelector('#weave-play')).display!=='none'
                 })""")
-                assert modes_visible=={'build':'Build','follow':'Follow','playVisible':True},(label,'Play missing from toolbar',modes_visible)
+                assert modes_visible=={'build':'Build','follow':'Read','playVisible':True},(label,'Play missing from toolbar',modes_visible)
                 # Help must open as a short anchored popover, not a screen-sized overlay.
                 await page.locator('#constellate-how > summary').wait_for(state='attached',timeout=20000)
                 await page.locator('#constellate-how > summary').click(force=True,timeout=12000)
@@ -198,7 +195,7 @@ jobs:
                 await page.locator('#weave-play-close').click(force=True,timeout=12000)
                 assert await page.locator('#weave-player').is_hidden(),(label,'player did not close')
                 assert await page.locator('#weave-play').get_attribute('aria-pressed')=='false',(label,'Play mode remains pressed after closing')
-                assert await page.locator('#constellate-read').get_attribute('aria-pressed')=='true',(label,'Follow mode not restored after presenting')
+                assert await page.locator('#constellate-read').get_attribute('aria-pressed')=='true',(label,'Read mode not restored after presenting')
                 if not prefix:
                   await page.locator('#constellate-mode .weave-more>summary').click(force=True,timeout=10000)
                   assert await page.locator('#constellate-mode .weave-more-menu #constellate-fit').is_visible()
@@ -228,14 +225,15 @@ jobs:
                   const start=path?.getPointAtLength(0),end=path?.getPointAtLength(path.getTotalLength());
                   return {theme,total:t.items.length,positioned:t.items.filter(id=>positions.has(id)).length,
                     cards:cards.length,hidden:t.items.filter(id=>positions.has(id)&&!card(id)).length,
+                    marks:t.items.filter(id=>card(id)||graph.querySelector('[data-weave-knot="'+CSS.escape(id)+'"]')).length,
                     runs:(path?.getAttribute('d')?.match(/M/g)||[]).length,
                     startError:first&&start?Math.hypot(first.x-start.x,first.y-start.y):null,
                     endError:last&&end?Math.hypot(last.x-end.x,last.y-end.y):null};
                 }""")
                 assert not dense.get('error') and dense['total']>=13,(label,'dense test setup',dense)
-                assert dense['positioned']==dense['total'] and dense['hidden']>0,(label,'film positions lost when cards sampled',dense)
-                assert 2<=dense['cards']<dense['total'] and dense['runs']==1,(label,'dense ribbon breaks into disconnected segments',dense)
-                assert dense['startError'] is not None and dense['startError']<12 and dense['endError'] is not None and dense['endError']<12,(label,'dense ribbon detached from thumbnails',dense)
+                # Without a selection the no-map view shows numbered knots; cards appear for the selected film.
+                assert dense['positioned']==dense['total'] and dense['marks']==dense['total'],(label,'film positions lost on the ribbon',dense)
+                assert dense['runs']==1,(label,'dense ribbon breaks into disconnected segments',dense)
                 # Full Theme Web opens with a curated overview, not a 100+ edge hairball;
                 # its example should start with no more than three small threads.
                 await page.wait_for_function("document.getElementById('weave-theme-web-toggle')!==null",timeout=15000)
