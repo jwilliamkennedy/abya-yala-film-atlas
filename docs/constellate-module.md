@@ -40,10 +40,17 @@ tools on a second row (phones). The structure is set by `place()` in the "Conste
 ## How the tools divide the work
 
 Gather (Add films, Draw a line, Theme web, a theme or film on the start screen), Connect (Link films: click cards in
-the order the thread runs; Say why two films connect: a note on one pair), Present (Follow, Play, Share). Add films
+the order the thread runs; Say why two films connect: a note on one pair), Present (Read, Play, Share). Follow was renamed **Read** on 13 Nov. Add films
 is a toggle: it shows the search, and a second press returns to the thread.
 
 ## Ways in and out (13 Nov 2026)
+
+- The toolbar is identical in Build and Read: the tools stay (using one switches to Build), the constellation's
+  name is not in the bar (the side panel heads with it), and the side panel keeps one width in both modes.
+- Share opens a popover under the Share button (under Options when Share is inside it; a sheet on phones). It no
+  longer switches the panel's mode. Click Share again, ×, Escape or outside to close.
+- Read opens on the film, without the constellation's title, author and introduction above it.
+- An unedited saved copy of a published constellation is replaced by the newer published version (no "(my copy)").
 
 - The start screen has an × (and Escape) that closes it and leaves an empty Build.
 - Clear clears at once and stays in Build; Undo, beside it, restores. Once a constellation has had films in this
