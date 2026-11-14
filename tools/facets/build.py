@@ -168,8 +168,8 @@ def page(path, title, desc, body):
     h = re.sub(r'<title>.*?</title>', f'<title>{esc(title)} · Indigenous Cinema Atlas</title>', head, flags=re.S)
     h = re.sub(r'<meta name="description" content="[^"]*"', f'<meta name="description" content="{esc(desc)}"', h)
     h = h.replace('href="../', 'href="').replace('src="../', 'src="')
-    h = h.replace('</head>', '<style>.facet-list{list-style:none;padding:0;margin:0}.facet-list>li{padding:14px 0;border-bottom:1px solid rgba(24,32,40,.14)}'
-                  '.facet-list h2{font:400 22px/1.2 Georgia,serif;margin:0 0 4px}.facet-list .codes{font-size:13px;color:#55616b}.facet-list ol{margin:8px 0 0;padding-left:18px;font-size:15px}'
+    h = h.replace('</head>', '<style>.facet-list{list-style:none;padding:0;margin:0}.facet-list>li{padding:14px 0;border-bottom:1px solid rgba(42,37,29,.14)}'
+                  '.facet-list h2{font:400 22px/1.2 Georgia,serif;margin:0 0 4px}.facet-list .codes{font-size:13px;color:#6c6251}.facet-list ol{margin:8px 0 0;padding-left:18px;font-size:15px}'
                   '.facet-list ol li{margin:3px 0}.jump{display:flex;flex-wrap:wrap;gap:6px 14px;margin:14px 0 6px;font-size:14px}.fam{margin-top:30px}</style></head>')
     open(f'{BETA}/{path}', 'w', encoding='utf-8').write(h + '<main>' + body + foot.replace('href="../', 'href="').replace('src="../', 'src="'))
 def film_li(fid, e):
