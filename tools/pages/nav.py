@@ -80,8 +80,8 @@ def main(root):
         else:
             new = new.replace('</head>', CSS + '\n</head>', 1)
         # shared stylesheets last, after the page's own styles and site-nav-css, so the shared layer wins the cascade
-        new = new.replace('</head>', f'<link rel="stylesheet" href="{up}assets/site-menu.css?v=11"><script defer src="{up}assets/site-menu.js?v=3"></script><script defer src="{up}i18n-20261107.js?v=14"></script>\n</head>', 1)
-        new = new.replace('</head>', f'<link rel="stylesheet" href="{up}assets/ui-20261109.css?v=3"><script defer src="{up}assets/ui-20261109.js?v=3"></script>\n</head>', 1)
+        new = new.replace('</head>', f'<link rel="stylesheet" href="{up}assets/site-menu.css?v=12"><script defer src="{up}assets/site-menu.js?v=3"></script><script defer src="{up}i18n-20261107.js?v=14"></script>\n</head>', 1)
+        new = new.replace('</head>', f'<link rel="stylesheet" href="{up}assets/ui-20261109.css?v=4"><script defer src="{up}assets/ui-20261109.js?v=3"></script>\n</head>', 1)
         if new != t:
             f.write_text(new, encoding='utf-8'); n += 1
     print('header menu written on', n, 'pages')
