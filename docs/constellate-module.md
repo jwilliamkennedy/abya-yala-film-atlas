@@ -78,6 +78,8 @@ the lands in order with their film counts; lands can be unticked; one button thr
 - Code: the `Trace a line` block in the core section of `constellate.js` (`startTrace`, `traceSample`, `lineThread`)
   and the block of the same name in `constellate.css`. API: `AtlasConstellate.trace()`, `.stopTrace()`, `.tracing`.
 - While drawing, the scroll wheel still zooms the map, and a **Draw / Move map** switch at the bottom lets the map be dragged; land names stop catching the pointer so a drag on them moves the map.
+- On the Map page, **Draw** (beside Layers) draws the same line without entering Constellate: the crossed lands are
+  listed in order, each opens on the map, and one button makes a thread (which opens Constellate).
 - Not built yet: a keyboard way to draw (choose a first and last land), translations, and an entry on the Map page.
 
 ## The browser suite
