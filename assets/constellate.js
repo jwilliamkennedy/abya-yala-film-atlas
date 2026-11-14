@@ -1026,7 +1026,7 @@ function stopPlay(){if(!player)return;playThread=null;pausePlay(true);player.hid
  window.AtlasConstellate={open,browse,close,exit,undo,redo,fit,add,followFilm,showPicker,setRead,shareURL,citation,csvExport,jsonExport,choose,startLink,reference,tags,play:playWeave,stopPlay,pausePlay,playStep,get playing(){return !!player},get enabled(){return enabled},get positions(){return new Map(positions)},get anchors(){return new Map(anchors)},get catalog(){return catalog},themeFilms,themeThread,trace:startTrace,stopTrace,get tracing(){return !!trace},terms,sourceImage,get view(){return{k:1,x:0,y:0}}};
  // Share snapshots are additive: never replace a newer local weave with an old link.
  try{const u=new URL(inbound),payload=new URLSearchParams(u.hash.slice(1)).get('weave');if(payload){if(payload.length>100000)throw Error('Share link is too large. Import JSON instead.');const b64=s=>s.replace(/-/g,'+').replace(/_/g,'/');let raw;if(payload[0]==='z'){const bin=atob(b64(payload.slice(1))),bytes=Uint8Array.from(bin,c=>c.charCodeAt(0));raw=JSON.parse(await new Response(new Blob([bytes]).stream().pipeThrough(new DecompressionStream('deflate-raw'))).text());}else raw=JSON.parse(decodeURIComponent(escape(atob(b64(payload)))));if(raw.version!==2||!raw.weave)throw Error('Unsupported constellation link.');const fingerprint=String([...payload].reduce((h,c)=>Math.imul(h^c.charCodeAt(0),16777619),2166136261)>>>0);busy=true;S.importWeave(raw.weave,fingerprint);restorePersistedAnnotations({...raw.weave,id:S.current().id});S.save();busy=false;known.set(S.current().id,copy(S.current()));open();setRead(u.searchParams.get('read')==='1');fit();if(u.searchParams.get('play')==='1')playWeave();}else if(u.searchParams.get('constellate')==='1'){const id=u.searchParams.get('weave');if(id&&S.state.collections.some(c=>c.id===id)){busy=true;S.activate(id);busy=false;}open();setRead(u.searchParams.get('read')==='1');if(u.searchParams.get('play')==='1')playWeave();}}catch(err){busy=false;open();status('Could not open share link: '+err.message);}
-})().catch(e=>console.error('Theme-weaving could not open',e));
+})().catch(e=>console.error('Constellate could not open',e));
 ;
 
 /* ================================================================
@@ -1113,12 +1113,12 @@ try{
  const href=mode=>'./?c=constellations-of-indigenous-cinema'+(mode==='play'?'&play=1':'');
  const panel=document.querySelector('.map-panel');if(!panel||document.querySelector('#featured-weave'))return;
  const initiallyCollapsed=(()=>{try{return localStorage.getItem('atlas-ui-featured-collapsed')!=='false'}catch{return true}})();
- panel.insertAdjacentHTML('beforeend',`<aside id="featured-weave" class="${initiallyCollapsed?'is-collapsed':''}" aria-label="Featured theme-weaving">
+ panel.insertAdjacentHTML('beforeend',`<aside id="featured-weave" class="${initiallyCollapsed?'is-collapsed':''}" aria-label="Featured constellation">
   <button type="button" class="fw-pill" aria-expanded="${String(!initiallyCollapsed)}"><span aria-hidden="true">✦</span> Constellations</button>
-  <p class="fw-eyebrow">Theme-weaving</p>
+  <p class="fw-eyebrow">Featured constellation</p>
   <h2>Constellations of Indigenous Cinema</h2>
   <ul><li><i style="--dye:#ffd35c"></i>Story-making</li><li><i style="--dye:#8fb4ff"></i>Remembrance</li><li><i style="--dye:#ff6f5a"></i>Land defense</li></ul>
-  <p class="fw-actions"><a class="fw-play" href="${href('play')}">Play the weave <span aria-hidden="true">▸</span></a><a href="${href('read')}">Read it</a><a href="about.html">About</a></p>
+  <p class="fw-actions"><a class="fw-play" href="${href('play')}">Play it <span aria-hidden="true">▸</span></a><a href="${href('read')}">Read it</a><a href="about.html">About</a></p>
   <button class="fw-close" aria-label="Hide">×</button></aside>`);
  const card=document.querySelector('#featured-weave');
  let dismissed=false;try{dismissed=localStorage.getItem('fw-hidden')==='1';}catch{}
