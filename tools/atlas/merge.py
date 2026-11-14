@@ -1,4 +1,4 @@
-"""Move accepted Queue rows into Published (Claude runs this after checking each row against its source).
+"""Move accepted Queue rows into Published (run after checking each row against its source).
 
 usage: python3 tools/atlas/merge.py <atlas.xlsx>
   queue_status "accepted" rows are applied, then marked "merged" (they stay in the Queue as the record of the change):
@@ -63,7 +63,7 @@ def main(path):
                     wp.cell(n, P[c]).value = wp.cell(existing, P[c]).value
                 wp.cell(n, P['maker_json']).value = None
             if not existing and wp.cell(n, P['status']).value not in ON_MAP:
-                # accepted = identity sourced and directing credit sourced (checked by Claude against both pages)
+                # accepted = identity sourced and directing credit sourced (checked against both pages)
                 wp.cell(n, P['status']).value = 'Discovery · directing credit sourced'
                 wp.cell(n, P['review_status']).value = 'Credit sourced; identity from source'
             applied['added'] += 1

@@ -514,7 +514,7 @@ body.is-theme-web-open .map-panel{width:100%!important;max-width:none!important}
    Stages, start card, guide, legend, rail
    (was assets/weave-20261109.css)
    ================================================================ */
-/* Constellate: a clearer way into weaving, 2026-11-09 (Claude). Pairs with weave-20261109.js. Uses the tokens in ui-20261109.css. */
+/* Constellate: a clearer way into weaving, 2026-11-09. Pairs with weave-20261109.js. Uses the tokens in ui-20261109.css. */
 
 /* ---------- start: one card, nothing competing with it ---------- */
 html[data-weave-stage="start"] #constellate-popup{display:none!important}
@@ -945,7 +945,7 @@ body.is-theme-weaving #constellate-graph .constellate-card .weave-card-art{opaci
 /* 50 Preserve placeholder when detail art fails */
 #atlas-theme-web .tw-film-art.no-art img{display:none!important}
 
-/* 2026-11-11 (Claude): while Constellate is open the atlas steps back so threads lead.
+/* 2026-11-11: while Constellate is open the atlas steps back so threads lead.
    Territory fills drop to about 60% of the reader's chosen strength; names stay readable on hover. */
 html[data-ui] body.is-theme-weaving #atlas .land-shading .nation-wash{fill-opacity:clamp(0,calc(var(--territory-wash,.36) * .62),.9)!important}
 body.weave-playing #atlas .land-word{opacity:.55!important}
@@ -956,7 +956,7 @@ body.is-theme-weaving #constellate-graph .constellate-edge.dream-thread{stroke-d
 body.is-theme-weaving #constellate-graph .constellate-edge.sourced-thread{stroke-width:2.4px!important;stroke-opacity:.95!important;opacity:1!important}
 body.is-theme-weaving #constellate-graph .constellate-edge-label{paint-order:stroke fill;stroke:#122239;stroke-width:3px;fill:#f5eddb}
 
-/* 2026-11-11 (Claude): Night Loom. Abstract weaving only: warp lines, braided strands, grain. No community's textile designs. */
+/* 2026-11-11: Night Loom. Abstract weaving only: warp lines, braided strands, grain. No community's textile designs. */
 body.is-theme-weaving #constellate-graph .loom-warp path{fill:none;stroke:#8fa4d6;stroke-opacity:.13;stroke-width:.7px;vector-effect:non-scaling-stroke;pointer-events:none}
 body.is-theme-weaving #constellate-graph .weave-thread-glow{fill:none;stroke-width:8px;stroke-opacity:.26;stroke-linecap:round;filter:blur(3.2px);pointer-events:none}
 body.is-theme-weaving #constellate-graph .weave-cord.weave-strand{fill:none;stroke-width:1.5px!important;stroke-opacity:1!important;stroke-linecap:round;stroke-linejoin:round}
@@ -967,7 +967,7 @@ body.is-theme-weaving #constellate-graph .weave-thread-halo{stroke-width:7px!imp
 body.is-theme-weaving #constellate-graph{background-image:radial-gradient(ellipse at 50% 46%,rgba(4,8,18,0) 55%,rgba(4,8,18,.46) 100%),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.09'/%3E%3C/svg%3E");background-size:auto,180px 180px}
 body.weave-unmapped #constellate-graph{background-image:none}
 
-/* 2026-11-11 (Claude): named stars when cards would overlap; thread names ride the middle of the thread */
+/* 2026-11-11: named stars when cards would overlap; thread names ride the middle of the thread */
 body.is-theme-weaving #constellate-graph .weave-star-label{font:600 12px/1 'Atlas Sans',system-ui,sans-serif;fill:#f5eddb;paint-order:stroke fill;stroke:#0c1426;stroke-width:3.4px;stroke-linejoin:round;cursor:pointer;letter-spacing:.01em}
 body.is-theme-weaving #constellate-graph .weave-star-label:hover{fill:#fff}
 body.is-theme-weaving #constellate-graph .weave-thread-name{font:italic 600 13px/1 'Atlas Serif',Georgia,serif;paint-order:stroke fill;stroke:#0c1426;stroke-width:4px;stroke-linejoin:round;letter-spacing:.02em}

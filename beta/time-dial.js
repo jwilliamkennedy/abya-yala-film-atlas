@@ -1,4 +1,4 @@
-/* Time dial (Claude, 2026-11-11). Map page only.
+/* Time dial (2026-11-11). Map page only.
    Drag the dial and each land lights up from the year of the earliest dated film by a filmmaker linked to it.
    Uses the atlas's own records: Atlas.lands, Atlas.landLinks(land) and each film's year. Films with no year
    recorded are left out of the dial and counted in its note. ?dial=1993 opens the map with the dial at that year. */

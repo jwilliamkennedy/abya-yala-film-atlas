@@ -1,4 +1,4 @@
-/* Time dial (Claude, 2026-11-11) */
+/* Time dial (2026-11-11) */
 .map-toolbar #td-toggle{appearance:none;border:0;background:transparent;color:inherit;font:600 13px/1 var(--ui-sans,system-ui,sans-serif);padding:0 12px;min-height:32px;border-radius:999px;cursor:pointer}
 .map-toolbar #td-toggle[aria-pressed=true]{background:var(--ui-ink,#182028);color:var(--ui-surface,#f6f7f4)}
 :root[data-reading-theme=night] .map-toolbar #td-toggle[aria-pressed=true]{background:#f3e9d2;color:#141c33}

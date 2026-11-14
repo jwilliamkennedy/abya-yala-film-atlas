@@ -1,4 +1,4 @@
-"""Constellate: what a first-time visitor sees (Claude, 2026-11-11).
+"""Constellate: what a first-time visitor sees (2026-11-11).
 
 Runs the beta in a real browser and fails on the faults found in the 11 Nov review:
   1. the example opens with a visible thread;

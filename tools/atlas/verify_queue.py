@@ -7,7 +7,7 @@ For every Queue row with queue_status "new" and an action other than "lead":
   credit    (add filmmaker / add film): the film_source page names the film and the filmmaker
   evidence  (correct): the evidence_url page contains what the row adds (language, year, title words)
 Pages are read as text (HTML or PDF). Nothing is changed in the workbook: the report (verify.md, verify.json)
-is what Claude reads before accepting a row."""
+is what the reviewer reads before accepting a row."""
 import sys, os, re, io, json, unicodedata, collections
 import requests
 from openpyxl import load_workbook

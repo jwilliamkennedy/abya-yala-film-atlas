@@ -1,4 +1,4 @@
-/* Interface pass, 2026-11-09 (Claude), loaded last on every page.
+/* Interface pass, 2026-11-09, loaded last on every page.
    One token set (day and night), two typefaces (Karla for the interface, Noto Serif for names, titles and map labels),
    a seven-step type scale with nothing under 12px, a pages-only header, a calmer sidebar, consistent panels,
    one image placeholder, quieter map marks at the opening view, and the phone layout.
@@ -412,7 +412,7 @@ body.atlas-page #index .adjacent-visible .adjacent-maker:focus-visible{
  outline:2px solid var(--reading-accent,#9c3b26);outline-offset:2px
 }
 
-/* ---------- Map page pass, 2026-11-11 (Claude) ---------- */
+/* ---------- Map page pass, 2026-11-11 ---------- */
 /* stray system fonts brought into the interface face */
 header small,a.watch-link,.map-toolbar label,.map-toolbar span,.map-toolbar select,.map-toolbar button{font-family:var(--ui-sans)}
 /* territories: a fine darker edge keeps each shape legible at lower colour strength */
@@ -435,7 +435,7 @@ header small,a.watch-link,.map-toolbar label,.map-toolbar span,.map-toolbar sele
 #map-selection-focus span{font-size:12px;line-height:1.4}
 /* an image caption shows only when its image does */
 #index .entry-button .film-thumb:has(img[hidden])~.entry-copy .maker-thumbnail-caption,#index .entry-button .film-thumb:not(:has(img))~.entry-copy .maker-thumbnail-caption{display:none}
-/* ---------- Stable panel header (2026-11-12, Claude) ----------
+/* ---------- Stable panel header (2026-11-12) ----------
    The same rows in the same places in every tab and state, on every screen width:
      1  Back · Forward (greyed when there is nowhere to go, never hidden)      More list tools
      2  Filmmakers | Films | Land
