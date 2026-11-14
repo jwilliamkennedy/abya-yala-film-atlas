@@ -481,3 +481,6 @@ body.land-tinted #map-selection-focus{border-left-color:var(--land)!important;bo
 :root:not(#_) #index #reading-margin{border-top:0!important;padding-top:6px}
 :root:not(#_) #index #reading-margin #reference-disclosure:not([open]){border-bottom:0!important}
 :root:not(#_) #index #reading-margin .reading-reference{border-top:0!important}
+
+/* Phone tap size for the small row buttons (Screening list, Copy citation). */
+@media (max-width:700px){:root:not(#_) button.scr,:root:not(#_) button[data-copy]{min-height:36px;padding-top:6px;padding-bottom:6px}}
