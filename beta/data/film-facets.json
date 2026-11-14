@@ -2,8 +2,8 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-14",
  "license": "See data.html",
- "films_on_public_map": 1627,
- "film_entries": 1641,
+ "films_on_public_map": 1620,
+ "film_entries": 1633,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -1156,19 +1156,18 @@
    "languages": [],
    "themes": [
     "Land Defense",
-    "Sovereignty and Self-Determination",
-    "Kinship"
+    "Resistance Movements",
+    "Sovereignty and Self-Determination"
    ],
    "primary_theme": "Land Defense",
    "families": [
     "Land and Environment",
-    "Lives and Relations",
     "Sovereignty and Politics"
    ],
    "form": "Documentary",
    "length": "Feature"
   },
-  "DIR-0021-QMae9084": {
+  "BETA11D-20261107-F02": {
    "title": "Ava Marangatu",
    "year": 2016,
    "makers": [
@@ -1218,11 +1217,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Land Defense"
+   ],
+   "primary_theme": "Land Defense",
+   "families": [
+    "Land and Environment"
+   ],
+   "form": "Documentary",
+   "length": "Short"
   },
   "Q20261113-81-F1": {
    "title": "Poha Rey'i - The Family of Remedies",
@@ -6833,7 +6836,7 @@
   },
   "FILM-0123": {
    "title": "Sukujula Tei (Stories of My Mother)",
-   "year": null,
+   "year": 2022,
    "makers": [
     {
      "id": "DIR-0182",
@@ -6881,22 +6884,6 @@
     {
      "id": "DIR-0184",
      "name": "Leiqui Uriana Henríquez"
-    }
-   ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
-  },
-  "DIR-0182-QM1e6bc8": {
-   "title": "SŪKŪJULA TEI (Relatos de mi madre)",
-   "year": 2022,
-   "makers": [
-    {
-     "id": "DIR-0182",
-     "name": "David Hernández Palmar"
     }
    ],
    "languages": [],
@@ -7057,22 +7044,6 @@
   "DIR-0184-QM1887ec": {
    "title": "Jikiru’u Ko’ooikaa – La memoria de la avispa",
    "year": null,
-   "makers": [
-    {
-     "id": "DIR-0184",
-     "name": "Leiqui Uriana Henríquez"
-    }
-   ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
-  },
-  "DIR-0184-QM495fff": {
-   "title": "Ser un ser humano",
-   "year": 2011,
    "makers": [
     {
      "id": "DIR-0184",
@@ -8900,22 +8871,6 @@
    "form": "Fiction",
    "length": "Feature"
   },
-  "DIR-0229-QMffa3dd": {
-   "title": "Itu Ninu",
-   "year": null,
-   "makers": [
-    {
-     "id": "DIR-0229",
-     "name": "Itandehui Jansen"
-    }
-   ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
-  },
   "Q20261112-09-F2": {
    "title": "Ñuuyii (Tierra)",
    "year": 2026,
@@ -9513,10 +9468,6 @@
     {
      "id": "DIR-0235",
      "name": "María Sojob"
-    },
-    {
-     "id": "PILOT-43-ANA-TSUYEB",
-     "name": "Ana Ts’uyeb"
     }
    ],
    "languages": [],
@@ -9969,22 +9920,6 @@
    ],
    "form": null,
    "length": "Short"
-  },
-  "DIR-0243-QM286be9": {
-   "title": "Leaw amangoch tinden nop ikoods (La vida de una familia ikoods)",
-   "year": 1988,
-   "makers": [
-    {
-     "id": "DIR-0243",
-     "name": "Teófila Palafox Herranz"
-    }
-   ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
   },
   "FILM-0206": {
    "title": "La Baláhna",
@@ -10556,7 +10491,7 @@
    "form": null,
    "length": null
   },
-  "DIR-0262-QM99e00c": {
+  "BETA30B-20261107-F08": {
    "title": "Yana-Wara",
    "year": 2023,
    "makers": [
@@ -13046,36 +12981,6 @@
    "form": "Hybrid",
    "length": "Short"
   },
-  "NEW-514e349bd362-WORK-1": {
-   "title": "The Prince and the Pauper",
-   "year": 2025,
-   "makers": [
-    {
-     "id": "NEW-514e349bd362",
-     "name": "Alex Nystrom"
-    },
-    {
-     "id": "NEW-a0c5fd50f188",
-     "name": "Tai Leclaire"
-    }
-   ],
-   "languages": [
-    {
-     "label": "English",
-     "as_credited": "English",
-     "glottocode": "stan1293",
-     "iso639_3": "eng",
-     "match": "exact",
-     "indigenous": false,
-     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/"
-    }
-   ],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": "Fiction",
-   "length": "Short"
-  },
   "FILM-SRC-2023-00044": {
    "title": "Four Nights and a Fire",
    "year": null,
@@ -13205,30 +13110,6 @@
    "form": null,
    "length": null
   },
-  "NEW-c8924ed69b8e-WORK-1": {
-   "title": "XO RAD Magical",
-   "year": 2019,
-   "makers": [
-    {
-     "id": "NEW-c8924ed69b8e",
-     "name": "Amanda Roy"
-    },
-    {
-     "id": "NEW-9aa0b951017b",
-     "name": "Chris Grant"
-    }
-   ],
-   "languages": [],
-   "themes": [
-    "Health and Healing"
-   ],
-   "primary_theme": "Health and Healing",
-   "families": [
-    "Lives and Relations"
-   ],
-   "form": "Experimental",
-   "length": null
-  },
   "NEW-d2ab78a4b919-WORK-1": {
    "title": "W7éyle (moon’s wife)",
    "year": 2025,
@@ -13236,10 +13117,6 @@
     {
      "id": "NEW-d2ab78a4b919",
      "name": "Amanda Wandler"
-    },
-    {
-     "id": "NEW-f63c5d67dd80",
-     "name": "Kira Doxtator"
     }
    ],
    "languages": [
@@ -13992,6 +13869,26 @@
    "families": [],
    "form": null,
    "length": null
+  },
+  "NEW-9aa0b951017b-WORK-1": {
+   "title": "XO RAD Magical",
+   "year": 2019,
+   "makers": [
+    {
+     "id": "NEW-9aa0b951017b",
+     "name": "Chris Grant"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Health and Healing"
+   ],
+   "primary_theme": "Health and Healing",
+   "families": [
+    "Lives and Relations"
+   ],
+   "form": "Animation",
+   "length": "Short"
   },
   "TOUR-FILM-00438": {
    "title": "Tussle",
@@ -15448,10 +15345,6 @@
     {
      "id": "NEW-ff0e80bc0b40",
      "name": "Katia Ferderber"
-    },
-    {
-     "id": "NEW-49dd86e44af1",
-     "name": "Victoria Anderson-Gardner"
     }
    ],
    "languages": [
@@ -15979,7 +15872,7 @@
    "form": null,
    "length": null
   },
-  "NEW-ec20b11d6f81-QM8c0997": {
+  "BETA30B-20261107-F18": {
    "title": "Rebeldías y esperanzas",
    "year": 2005,
    "makers": [
@@ -16660,12 +16553,12 @@
    "length": "Short"
   },
   "FILM-SRC-2023-00032": {
-   "title": "NANGULVI",
-   "year": null,
+   "title": "Nangulvi",
+   "year": 2023,
    "makers": [
     {
-     "id": "NEW-df0d54c464f8",
-     "name": "Segundo Fuérez"
+     "id": "NEW-72d1f9f5e205",
+     "name": "Wayra Ana Velásquez"
     }
    ],
    "languages": [],
@@ -17047,6 +16940,32 @@
    "form": "Fiction",
    "length": "Short"
   },
+  "NEW-a0c5fd50f188-WORK-1": {
+   "title": "The Prince and the Pauper",
+   "year": 2025,
+   "makers": [
+    {
+     "id": "NEW-a0c5fd50f188",
+     "name": "Tai Leclaire"
+    }
+   ],
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/"
+    }
+   ],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": "Short"
+  },
   "FILM-SRC-2023-00012": {
    "title": "Headdress",
    "year": null,
@@ -17223,22 +17142,6 @@
    "families": [],
    "form": "Documentary",
    "length": "Short"
-  },
-  "NEW-72d1f9f5e205-QM543bf7": {
-   "title": "Nangulvi",
-   "year": 2023,
-   "makers": [
-    {
-     "id": "NEW-72d1f9f5e205",
-     "name": "Wayra Ana Velásquez"
-    }
-   ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
   },
   "NEW-c74dcc05c3f0-WORK-1": {
    "title": "Boca Vieja",
@@ -18165,32 +18068,16 @@
    "length": "Short"
   },
   "NEW-990e9a76f225-WORK-2": {
-   "title": "Yuri uxëatima thë – A Pesca com Timbó",
-   "year": 2023,
-   "makers": [
-    {
-     "id": "SA50-20261014-59f87a2e3ce5",
-     "name": "Aida Harika Yanomami"
-    },
-    {
-     "id": "SA50-20261014-3646d5d9be66",
-     "name": "Edmar Tokorino Yanomami"
-    }
-   ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
-  },
-  "SA50-20261014-0eb675abc594-QM30550d": {
    "title": "Yuri u xëatima thë – A Pesca com Timbó",
    "year": 2023,
    "makers": [
     {
      "id": "SA50-20261014-0eb675abc594",
      "name": "Roseane Yariana Yanomami"
+    },
+    {
+     "id": "SA50-20261014-3646d5d9be66",
+     "name": "Edmar Tokorino Yanomami"
     }
    ],
    "languages": [],
@@ -18798,7 +18685,7 @@
    "form": null,
    "length": null
   },
-  "SA50-20261014-e4fb233d3bf0-QMb4c904": {
+  "BETA30-20261106-F19": {
    "title": "La tentación del Nixhixh, el espíritu del bosque",
    "year": 2016,
    "makers": [
@@ -20233,18 +20120,11 @@
     }
    ],
    "languages": [],
-   "themes": [
-    "Land Defense",
-    "Resistance Movements",
-    "Sovereignty and Self-Determination"
-   ],
-   "primary_theme": "Land Defense",
-   "families": [
-    "Land and Environment",
-    "Sovereignty and Politics"
-   ],
-   "form": "Documentary",
-   "length": "Feature"
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
   },
   "Q20261112-03-F1": {
    "title": "El camino de las mariposas",
@@ -22365,22 +22245,6 @@
    "form": null,
    "length": null
   },
-  "NEW-2ac6ea06b9ef-WORK-1": {
-   "title": "Mundurukuyü – A Floresta das Mulheres Peixe",
-   "year": null,
-   "makers": [
-    {
-     "id": "NEW-2ac6ea06b9ef",
-     "name": "Coletivo Daje Kepap Epy"
-    }
-   ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
-  },
   "NEW-6875ae2b8b4c-WORK-1": {
    "title": "Ava Yvy Pyte Ygua – Povo do Coração da Terra",
    "year": null,
@@ -23838,22 +23702,6 @@
    "families": [
     "Lives and Relations"
    ],
-   "form": null,
-   "length": "Short"
-  },
-  "NEW-5c493398e7b1-QMbef502": {
-   "title": "Mamu Kataiat",
-   "year": 2017,
-   "makers": [
-    {
-     "id": "NEW-5c493398e7b1",
-     "name": "Valerie Kaltush"
-    }
-   ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
    "form": null,
    "length": "Short"
   },
