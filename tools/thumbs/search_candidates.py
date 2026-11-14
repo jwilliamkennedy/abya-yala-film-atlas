@@ -30,13 +30,20 @@ def ddg(q):
         if u.startswith('http'): out.append(u)
     return out
 
+def mojeek(q):
+    r = requests.get('https://www.mojeek.com/search', params={'q': q}, headers=C.UA, timeout=20)
+    return [html.unescape(u) for u in re.findall(r'<a[^>]+class="ob"[^>]+href="(https?://[^"]+)"', r.text)]
+
+STATS = {}
 def search(q):
     res = []
-    for f in (bing, ddg):
+    for f in (bing, ddg, mojeek):
         try:
-            res += [u for u in f(q) if not SKIP.search(u)]
-        except Exception:
-            pass
+            got = f(q)
+        except Exception as e:
+            got = []
+        STATS.setdefault(f.__name__, []).append(len(got))
+        res += [u for u in got if not SKIP.search(u)]
     return list(dict.fromkeys(res))
 
 def head_names_title(url, title):
@@ -80,6 +87,7 @@ def main(src, outdir):
     for o, _ in res:
         if o['check'] == 'ok' and count[o['sha']] > 1: o['check'] = 'same image as another film (banner)'
     C.write(rows, res, outdir, extra=['tried'])
+    print('SEARCH RESULTS PER ENGINE (mean):', {k: round(sum(v) / max(1, len(v)), 1) for k, v in STATS.items()})
 
 if __name__ == '__main__':
     main(*sys.argv[1:3])
