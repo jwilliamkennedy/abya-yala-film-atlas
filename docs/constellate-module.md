@@ -102,3 +102,12 @@ tests), the small film stills beside land names (they rotate on a timer) and the
 On GitHub, the workflow **Atlas browser suite** runs on every push that touches the site. It fails when a state is
 broken. It also compares the push with the one before it and puts the list of changes in the run summary; that
 comparison fails the run only when the commit message contains `[no-visual-change]`.
+
+## Friction audit (13 Nov 2026)
+
+`tools/qa/friction-audit.py [base-url]` walks the main journey on desktop and phone and lists covered, cut-off,
+too-small and clipped controls. Fixed in the first pass: phone view tabs floated over Close and Show map (now in the
+sheet's flow); the phone list tools ran off the right edge (Back and Forward are arrows on phones); a hint strip
+covered "All films" and Previous/Next under a selected card (it now shows only while the details are below the
+screen); the A–Z strip scrolled behind arrows (rows on desktop, a swipeable row of 36px letters on phones); phone
+tap targets under 30px (panel ×, stepper, theme chips); drawing a line blocked the map's source links.

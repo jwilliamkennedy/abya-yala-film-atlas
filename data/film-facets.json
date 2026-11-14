@@ -1,9 +1,9 @@
 {
  "title": "Indigenous Cinema Atlas · film facets",
- "generated": "2026-11-13",
+ "generated": "2026-11-14",
  "license": "See data.html",
- "films_on_public_map": 1559,
- "film_entries": 1574,
+ "films_on_public_map": 1579,
+ "film_entries": 1594,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -69,7 +69,7 @@
   ]
  },
  "language_authority": {
-  "source": "Glottolog (glottolog-cldf, fetched 2026-11-13)",
+  "source": "Glottolog (glottolog-cldf, fetched 2026-11-14)",
   "languages": [
    {
     "label": "Anishinaabemowin (Ojibwe)",
@@ -405,7 +405,7 @@
     "match": "exact",
     "indigenous": "no",
     "note": "",
-    "films": 21
+    "films": 22
    },
    {
     "label": "Portuguese",
@@ -19780,6 +19780,22 @@
    "form": null,
    "length": null
   },
+  "Q20261112-03-F1": {
+   "title": "El camino de las mariposas",
+   "year": null,
+   "makers": [
+    {
+     "id": "LEAD-20261011-010",
+     "name": "Joan Emily Ruiz Icedo"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "LEAD-20261011-015-W1031-1": {
    "title": "La niña del arpa",
    "year": 2017,
@@ -30898,6 +30914,320 @@
    "families": [],
    "form": "Fiction",
    "length": "Short"
+  },
+  "QM-6ccf088fdc-M1": {
+   "title": "He visto caer la lluvia",
+   "year": null,
+   "makers": [
+    {
+     "id": "QM-6ccf088fdc",
+     "name": "Abraham Avíla Quintero"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "LEAD-20261011-023-QM21155a": {
+   "title": "Kondoy: Los nuevos caminos de la nación Ayuuk",
+   "year": null,
+   "makers": [
+    {
+     "id": "LEAD-20261011-023",
+     "name": "Antonio Jesús Sánchez Felipe (Ish Tejk)"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "LEAD-20261011-025-QM56bf92": {
+   "title": "Sueños contradictorios",
+   "year": null,
+   "makers": [
+    {
+     "id": "LEAD-20261011-025",
+     "name": "Bernardino de Jesús López de la Cruz"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": null
+  },
+  "NEW-4a3766c88a25-QM0e3d6e": {
+   "title": "Antes había… entre la agonía del vuelo y el canto",
+   "year": null,
+   "makers": [
+    {
+     "id": "NEW-4a3766c88a25",
+     "name": "Eloísa Juárez Romero"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "NEW-665eb6a5ccee-QM47a524": {
+   "title": "Binigula’sa’: los antiguos zapotecas",
+   "year": null,
+   "makers": [
+    {
+     "id": "NEW-665eb6a5ccee",
+     "name": "Jorge Ángel Pérez"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "QM-6f2cbe3bfe-M1": {
+   "title": "Danzando con demonios",
+   "year": null,
+   "makers": [
+    {
+     "id": "QM-6f2cbe3bfe",
+     "name": "José Gilberto Mercado"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "NEW-5234fdc3fab5-QM8dced7": {
+   "title": "MEE´NËN KAXË´ËJKËN JËNJËËJTY TËJKJËËJTY / Nacer en el corazón de la casa-fuego",
+   "year": null,
+   "makers": [
+    {
+     "id": "NEW-5234fdc3fab5",
+     "name": "Lilia Heber Pérez Díaz"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QM-694989d5c4-M1": {
+   "title": "Poch Vaquero",
+   "year": null,
+   "makers": [
+    {
+     "id": "QM-694989d5c4",
+     "name": "Luis Augusto Quijano Espinoza (Luis Kies)"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": null
+  },
+  "LEAD-20261011-021-QMed0703": {
+   "title": "Del mar al volcán",
+   "year": null,
+   "makers": [
+    {
+     "id": "LEAD-20261011-021",
+     "name": "Mariana Yareth Hernández Cortés"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "LEAD-20261011-019-QM596367": {
+   "title": "Benda Yuuze",
+   "year": null,
+   "makers": [
+    {
+     "id": "LEAD-20261011-019",
+     "name": "Nisaguie Abril Flores Cruz"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": null
+  },
+  "QM-b188b1371d-M2": {
+   "title": "Tsajtsikan in ichtakayojmej (Secretos para gritar)",
+   "year": null,
+   "makers": [
+    {
+     "id": "QM-b188b1371d",
+     "name": "Romeo De Paz"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "NEW-e5a5fc385de7-QMc2c9fc": {
+   "title": "Gu Juk gio Gu Yooxi' (P)&(F)",
+   "year": null,
+   "makers": [
+    {
+     "id": "NEW-e5a5fc385de7",
+     "name": "Selene Yuridia Galindo Cumplido"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "NEW-ab671ab16445-QMb63fe4": {
+   "title": "Escribí mi nombre en la selva",
+   "year": null,
+   "makers": [
+    {
+     "id": "NEW-ab671ab16445",
+     "name": "Sinhué Ascona Mora"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QM-4b9f5b2e83-M1": {
+   "title": "K baakelo’on | Nuestros huesos",
+   "year": null,
+   "makers": [
+    {
+     "id": "QM-4b9f5b2e83",
+     "name": "Yaremi Chan"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "LEAD-20261011-014-QM0e9ecc": {
+   "title": "Kuankua Pi",
+   "year": null,
+   "makers": [
+    {
+     "id": "LEAD-20261011-014",
+     "name": "Yuli Guanga Ortiz"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "QM-ec0a41166c-M1": {
+   "title": "Yuyarisun",
+   "year": null,
+   "makers": [
+    {
+     "id": "QM-ec0a41166c",
+     "name": "Erika Roxana Huachaca Tello"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "LEAD-20261011-016-QMe71298": {
+   "title": "Wawa Pampay",
+   "year": null,
+   "makers": [
+    {
+     "id": "LEAD-20261011-016",
+     "name": "Franz Ronny Quispe Fernández"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": null
+  },
+  "QM-1188c14584-M1": {
+   "title": "Ser muxe´",
+   "year": null,
+   "makers": [
+    {
+     "id": "QM-1188c14584",
+     "name": "Juan Ernesto Regalado Morales"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261113-01-F1": {
+   "title": "A través de Tola",
+   "year": 2023,
+   "makers": [
+    {
+     "id": "Q20261113-01",
+     "name": "Casandra Casasola"
+    }
+   ],
+   "languages": [
+    {
+     "label": "Spanish",
+     "as_credited": "Spanish",
+     "glottocode": "stan1288",
+     "iso639_3": "spa",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://www.imcine.gob.mx/media/2024/7/muestra_ecamc_sedes.pdf"
+    }
+   ],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
   }
  }
 }
