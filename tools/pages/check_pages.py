@@ -5,7 +5,7 @@ usage: python3 tools/pages/check_pages.py http://127.0.0.1:8765/beta/ [chromium 
 import sys, asyncio
 from playwright.async_api import async_playwright
 
-PAGES = ['index.html', 'about.html', 'watch.html', 'languages.html', 'themes.html', 'timeline.html', 'screening.html',
+PAGES = ['index.html', 'about.html', 'resources.html', 'watch.html', 'languages.html', 'themes.html', 'timeline.html', 'screening.html',
          'data.html', 'corrections.html', 'maker/index.html', 'maker/DIR-0059.html']
 WIDTHS = [(1440, 900), (1000, 800), (390, 844)]
 TOLERANCE = 4  # px

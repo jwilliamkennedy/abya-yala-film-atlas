@@ -141,6 +141,6 @@ body = (f'<h1>Filmmakers A–Z</h1><p class="who">{len(pages)} filmmakers on the
         '<script>(()=>{const q=document.getElementById("q");q.oninput=()=>{const t=q.value.trim().toLowerCase();for(const li of document.querySelectorAll("ul.dir li"))li.hidden=!!t&&!li.dataset.q.includes(t);'
         'for(const h of document.querySelectorAll("main h2")){const ul=h.nextElementSibling;const any=[...ul.children].some(li=>!li.hidden);h.hidden=ul.hidden=!any;}};})();</script>')
 open(os.path.join(out, 'maker', 'index.html'), 'w', encoding='utf-8').write(page('Filmmakers A–Z · Indigenous Cinema Atlas', f'{len(pages)} Indigenous filmmakers on the atlas, A to Z.', body, 1))
-urls = [f'{BASE}/', f'{BASE}/about.html', f'{BASE}/watch.html', f'{BASE}/maker/'] + [f'{BASE}/maker/{r["id"]}.html' for r in pages]
+urls = [f'{BASE}/', f'{BASE}/about.html', f'{BASE}/resources.html', f'{BASE}/watch.html', f'{BASE}/maker/'] + [f'{BASE}/maker/{r["id"]}.html' for r in pages]
 open(os.path.join(out, 'sitemap.xml'), 'w').write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' + ''.join(f'<url><loc>{esc(u)}</loc><lastmod>{TODAY}</lastmod></url>' for u in urls) + '</urlset>\n')
 print('pages', len(pages), '+ index + sitemap')
