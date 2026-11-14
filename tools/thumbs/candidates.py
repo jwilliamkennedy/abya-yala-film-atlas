@@ -84,22 +84,25 @@ def main(src, outdir):
     for o, _ in res:
         if o['check'] == 'ok' and count[o['sha']] > 1:
             o['check'] = 'same image as another film (banner)'
-    cols = list(rows[0].keys()) + ['image_url', 'image_page', 'check', 'w', 'h', 'sha']
+    write(rows, res, outdir)
+
+def write(rows, res, outdir, extra=()):
+    cols = list(rows[0].keys()) + ['image_url', 'image_page', 'check', 'w', 'h', 'sha'] + list(extra)
     with open(os.path.join(outdir, 'candidates.csv'), 'w', newline='', encoding='utf-8') as f:
         w = csv.DictWriter(f, fieldnames=cols, extrasaction='ignore'); w.writeheader()
         for o, _ in res: w.writerow(o)
     ok = [(o, im) for o, im in res if o['check'] == 'ok']
     font = ImageFont.load_default()
-    tw, th, per = 240, 150, 40
+    tw, th, per, cols_n = 200, 125, 60, 6
     for s in range(0, len(ok), per):
         chunk = ok[s:s + per]
-        sheet = Image.new('RGB', (5 * (tw + 8) + 8, ((len(chunk) + 4) // 5) * (th + 34) + 8), 'white')
+        sheet = Image.new('RGB', (cols_n * (tw + 8) + 8, ((len(chunk) + cols_n - 1) // cols_n) * (th + 34) + 8), 'white')
         d = ImageDraw.Draw(sheet)
         for i, (o, im) in enumerate(chunk):
-            x, y = 8 + (i % 5) * (tw + 8), 8 + (i // 5) * (th + 34)
+            x, y = 8 + (i % cols_n) * (tw + 8), 8 + (i // cols_n) * (th + 34)
             t = im.copy(); t.thumbnail((tw, th)); sheet.paste(t, (x, y))
-            d.text((x, y + th + 2), f"#{o['n']} {o['title'][:34]}", fill='black', font=font)
-            d.text((x, y + th + 16), o['filmmaker'][:38], fill='#555', font=font)
+            d.text((x, y + th + 2), f"#{o['n']} {o['title'][:28]}", fill='black', font=font)
+            d.text((x, y + th + 16), o['filmmaker'][:32], fill='#555', font=font)
         sheet.save(os.path.join(outdir, f'sheet-{s // per + 1}.jpg'), quality=82)
     from collections import Counter
     print('CANDIDATES', dict(Counter(o['check'].split(':')[0].split(' (')[0] for o, _ in res)))
