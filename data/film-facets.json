@@ -2,8 +2,8 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-14",
  "license": "See data.html",
- "films_on_public_map": 1632,
- "film_entries": 1647,
+ "films_on_public_map": 1627,
+ "film_entries": 1641,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -1126,8 +1126,16 @@
   },
   "FILM-0027": {
    "title": "Ava Yvy Vera - A terra do povo do raio (The Land of the Lightning People)",
-   "year": null,
+   "year": 2016,
    "makers": [
+    {
+     "id": "DIR-0021",
+     "name": "Dulcídio Gomes"
+    },
+    {
+     "id": "DIR-0022",
+     "name": "Edina Ximenes"
+    },
     {
      "id": "DIR-0023",
      "name": "Genito Gomes"
@@ -1179,38 +1187,6 @@
     {
      "id": "DIR-0053",
      "name": "Valmir G. Cabreira"
-    },
-    {
-     "id": "LEAD-20261011-006",
-     "name": "Sarah Brites"
-    },
-    {
-     "id": "QM-b28a904c25",
-     "name": "Joilson Brites"
-    }
-   ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
-  },
-  "DIR-0021-QMa30a08": {
-   "title": "Ava Yvy Vera – A Terra do Povo do Raio",
-   "year": 2016,
-   "makers": [
-    {
-     "id": "DIR-0021",
-     "name": "Dulcídio Gomes"
-    },
-    {
-     "id": "DIR-0023",
-     "name": "Genito Gomes"
-    },
-    {
-     "id": "DIR-0030",
-     "name": "Jhonaton Gomes"
     },
     {
      "id": "LEAD-20261011-006",
@@ -2133,22 +2109,6 @@
    ],
    "form": null,
    "length": "Feature"
-  },
-  "DIR-0056-QMe38030": {
-   "title": "Já Me Transformei em Imagem",
-   "year": 2008,
-   "makers": [
-    {
-     "id": "DIR-0056",
-     "name": "Zezinho Yube"
-    }
-   ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
   },
   "FILM-0061": {
    "title": "Fire Song",
@@ -7208,7 +7168,7 @@
   },
   "FILM-B25B-20": {
    "title": "La casa del viento",
-   "year": 2026,
+   "year": 2025,
    "makers": [
     {
      "id": "DIR-0187",
@@ -7273,22 +7233,6 @@
    "families": [],
    "form": "Documentary",
    "length": "Series"
-  },
-  "DIR-0187-QMe5b47a": {
-   "title": "Apotnojushi: la casa del viento",
-   "year": 2025,
-   "makers": [
-    {
-     "id": "DIR-0187",
-     "name": "Marbel Ina Vanegas Jusayu"
-    }
-   ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
   },
   "DIR-0187-QM392ad4": {
    "title": "Jintüikai – El niño",
@@ -8198,7 +8142,7 @@
   },
   "DIR-0219-W1031-2": {
    "title": "Mintzita, paisajes y respiraciones interferidos",
-   "year": 2024,
+   "year": 2023,
    "makers": [
     {
      "id": "DIR-0219",
@@ -8216,23 +8160,7 @@
     "Knowledge and Continuity",
     "Land and Environment"
    ],
-   "form": "Documentary",
-   "length": null
-  },
-  "BETA30B-20261107-F20": {
-   "title": "Mintsita, paisajes y respiraciones interferidos",
-   "year": 2023,
-   "makers": [
-    {
-     "id": "DIR-0219",
-     "name": "Celina Yunuen Manuel Piñón"
-    }
-   ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
+   "form": "Experimental",
    "length": null
   },
   "BETA30B-20261107-F21": {
@@ -9249,22 +9177,6 @@
      "source": "https://ojodeaguacomunicacion.org/poder-pal-pueblo/"
     }
    ],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
-  },
-  "DIR-0230-QMa4ce7f": {
-   "title": "Voces del agua",
-   "year": 2021,
-   "makers": [
-    {
-     "id": "DIR-0230",
-     "name": "José Luis Matías Alonso"
-    }
-   ],
-   "languages": [],
    "themes": [],
    "primary_theme": null,
    "families": [],
@@ -14585,22 +14497,6 @@
    "form": null,
    "length": "Short"
   },
-  "NEW-797d6554404b-F9": {
-   "title": "El camino es largo",
-   "year": 2016,
-   "makers": [
-    {
-     "id": "NEW-797d6554404b",
-     "name": "Edgar Noé Sajcabún Mux"
-    }
-   ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
-  },
   "NEW-797d6554404b-QMc84d69": {
    "title": "Marte al anochecer",
    "year": null,
@@ -17668,10 +17564,6 @@
     {
      "id": "LEAD-20261008-007",
      "name": "Sani Montahuano"
-    },
-    {
-     "id": "LEAD-20261008-008",
-     "name": "Nase Lino Sumpinanch"
     }
    ],
    "languages": [],
@@ -18274,7 +18166,7 @@
   },
   "NEW-990e9a76f225-WORK-2": {
    "title": "Yuri uxëatima thë – A Pesca com Timbó",
-   "year": null,
+   "year": 2023,
    "makers": [
     {
      "id": "SA50-20261014-59f87a2e3ce5",
@@ -18292,21 +18184,13 @@
    "form": null,
    "length": null
   },
-  "SA50-20261014-59f87a2e3ce5-QM30550d": {
+  "SA50-20261014-0eb675abc594-QM30550d": {
    "title": "Yuri u xëatima thë – A Pesca com Timbó",
    "year": 2023,
    "makers": [
     {
-     "id": "SA50-20261014-59f87a2e3ce5",
-     "name": "Aida Harika Yanomami"
-    },
-    {
      "id": "SA50-20261014-0eb675abc594",
      "name": "Roseane Yariana Yanomami"
-    },
-    {
-     "id": "SA50-20261014-3646d5d9be66",
-     "name": "Edmar Tokorino Yanomami"
     }
    ],
    "languages": [],
@@ -20334,6 +20218,33 @@
    "families": [],
    "form": null,
    "length": null
+  },
+  "RESEARCH-FILM-006-02": {
+   "title": "Ava Yvy Vera – A Terra do Povo do Raio",
+   "year": 2016,
+   "makers": [
+    {
+     "id": "LEAD-20261011-006",
+     "name": "Sarah Brites"
+    },
+    {
+     "id": "QM-b28a904c25",
+     "name": "Joilson Brites"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Land Defense",
+    "Resistance Movements",
+    "Sovereignty and Self-Determination"
+   ],
+   "primary_theme": "Land Defense",
+   "families": [
+    "Land and Environment",
+    "Sovereignty and Politics"
+   ],
+   "form": "Documentary",
+   "length": "Feature"
   },
   "Q20261112-03-F1": {
    "title": "El camino de las mariposas",
@@ -22604,10 +22515,6 @@
    "title": "Thutalinãnsu",
    "year": 2025,
    "makers": [
-    {
-     "id": "NEW-e00d7fdda37e",
-     "name": "Helena Corezomaé"
-    },
     {
      "id": "NEW-e00d7fdda37e",
      "name": "Helena Corezomaé"
@@ -27827,7 +27734,7 @@
   },
   "NEW-551fa83631f3-WORK-1": {
    "title": "Ñaa´nudoo´naa. Mujer que es escuchada",
-   "year": null,
+   "year": 2025,
    "makers": [
     {
      "id": "NEW-551fa83631f3",
@@ -27861,22 +27768,6 @@
     "Lives and Relations"
    ],
    "form": "Animation",
-   "length": null
-  },
-  "NEW-551fa83631f3-QM22bf13": {
-   "title": "Ñaa' ñuudoo' naa. Mujer que es escuchada",
-   "year": 2025,
-   "makers": [
-    {
-     "id": "NEW-551fa83631f3",
-     "name": "Yerid López Barrera"
-    }
-   ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
    "length": null
   },
   "NEW-11d2e0d50c24-WORK-1": {
