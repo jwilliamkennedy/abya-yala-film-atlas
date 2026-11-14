@@ -1546,3 +1546,18 @@ html[data-weave-stage="read"] #constellate-mode.cm-narrow .cm-tools,html[data-we
 #constellate-popup #weave-discovery-tools input[type="checkbox"]{flex:0 0 16px!important;width:16px!important;height:16px!important;margin:0!important;accent-color:var(--ui-accent)}
 #constellate-popup #weave-discovery-tools select{width:100%!important;max-width:none!important;min-width:0!important;height:36px;min-height:36px!important;margin:0!important;font:400 13.5px/1.2 var(--ui-sans);letter-spacing:0;text-transform:none;color:var(--ui-ink)}
 #constellate-popup #weave-discovery-tools #weave-discovery-clear{grid-column:2;justify-self:end;height:32px;min-height:32px;padding:0 12px;border:1px solid var(--ui-line);border-radius:8px;background:transparent;color:var(--ui-accent);font:600 13px/1 var(--ui-sans)}
+/* Draw a line: Draw / Move map switch (bottom centre); in Move the layer lets the map through */
+#weave-trace-layer .wt-mode{position:absolute;left:50%;bottom:18px;transform:translateX(-50%);display:flex;gap:2px;padding:3px;border-radius:999px;background:rgba(7,12,26,.9);box-shadow:0 8px 24px rgba(4,8,18,.35);cursor:default}
+#weave-trace-layer .wt-mode button{height:34px;padding:0 16px;border:0;border-radius:999px;background:transparent;color:#d8deea;font:600 13.5px/1 var(--ui-sans);cursor:pointer}
+#weave-trace-layer .wt-mode button[aria-pressed="true"]{background:#ffe6a3;color:#182028}
+#weave-trace-layer .wt-mode button:focus-visible{outline:2.5px solid #ffe6a3;outline-offset:2px}
+#weave-trace-layer.is-moving{pointer-events:none;cursor:auto}
+#weave-trace-layer.is-moving svg{visibility:hidden}
+#weave-trace-layer.is-moving .wt-mode,#weave-trace-layer.is-moving .wt-result,#weave-trace-layer.is-moving .wt-hint{pointer-events:auto}
+#weave-trace-layer.is-moving .wt-hint{pointer-events:none}
+@media (max-width:700px){#weave-trace-layer.has-result .wt-mode{display:none}}
+/* Add films: the search box shows itself when the toolbar button is used */
+#constellate-search.cm-flash{animation:cm-flash 1.1s ease-out}
+@keyframes cm-flash{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--ui-accent) 55%,transparent)}100%{box-shadow:0 0 0 10px transparent}}
+#constellate-mode .cm-tools>#weave-browse-films[aria-pressed="false"]{background:transparent;border-color:transparent;color:var(--ui-ink)}
+body.weave-tracing #atlas .land-word,body.weave-tracing #atlas .land-word *{pointer-events:none}
