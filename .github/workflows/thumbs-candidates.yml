@@ -1,4 +1,6 @@
 name: Film image candidates
+permissions:
+  contents: write
 on:
   workflow_dispatch:
   push:
@@ -14,7 +16,10 @@ jobs:
           for f in tools/thumbs/missing_*.csv; do
             n=$(basename "$f" .csv); python3 tools/thumbs/candidates.py "$f" "out/$n"
           done
-      - uses: actions/upload-artifact@v4
-        with:
-          name: image-candidates
-          path: out
+      - name: Publish the results to the ci-thumbs branch (not deployed)
+        run: |
+          cd out
+          git init -q -b ci-thumbs
+          git config user.name "github-actions"; git config user.email "github-actions@users.noreply.github.com"
+          git add . && git commit -q -m "Film image candidates ${GITHUB_SHA::7}"
+          git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" ci-thumbs
