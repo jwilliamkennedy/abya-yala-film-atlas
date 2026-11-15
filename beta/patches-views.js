@@ -310,6 +310,7 @@ if(main&&index&&!main.querySelector('.index-resizer')){
   h.setAttribute('role','separator'); h.setAttribute('aria-orientation','vertical'); h.setAttribute('aria-valuemin',String(MIN));
   h.setAttribute('aria-label','Resize the index panel');
   main.appendChild(h);
+  h.setAttribute('aria-valuemax',String(max()));h.setAttribute('aria-valuenow',String(Math.round(index.getBoundingClientRect().width)||440));
   try{const w=+localStorage.getItem(KEY); if(w) set(w);}catch(e){}
   let id=null,x0=0,w0=0;
   h.addEventListener('pointerdown',e=>{if(e.button!==0)return;id=e.pointerId;h.setPointerCapture(id);x0=e.clientX;w0=index.getBoundingClientRect().width;h.classList.add('dragging');root.classList.add('index-resizing');e.preventDefault();});
