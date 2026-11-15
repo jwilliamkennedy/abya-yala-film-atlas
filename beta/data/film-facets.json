@@ -1,9 +1,9 @@
 {
  "title": "Indigenous Cinema Atlas · film facets",
- "generated": "2026-11-14",
+ "generated": "2026-11-15",
  "license": "See data.html",
- "films_on_public_map": 1704,
- "film_entries": 1709,
+ "films_on_public_map": 1706,
+ "film_entries": 1711,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -69,7 +69,7 @@
   ]
  },
  "language_authority": {
-  "source": "Glottolog (glottolog-cldf, fetched 2026-11-14)",
+  "source": "Glottolog (glottolog-cldf, fetched 2026-11-15)",
   "languages": [
    {
     "label": "Anishinaabemowin (Ojibwe)",
@@ -32348,6 +32348,38 @@
    "families": [],
    "form": "Documentary",
    "length": null
+  },
+  "BETA25-20261105-23-FILM1": {
+   "title": "Óscar",
+   "year": 2010,
+   "makers": [
+    {
+     "id": "DIR-0375",
+     "name": "Dennis Noel López Sosa"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "FILM-B25B-15": {
+   "title": "Ajá",
+   "year": 2022,
+   "makers": [
+    {
+     "id": "DIR-0375",
+     "name": "Dennis Noel López Sosa"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
   },
   "DIR-0375-QM2678b1": {
    "title": "Lay taygui, nuestra lengua",
