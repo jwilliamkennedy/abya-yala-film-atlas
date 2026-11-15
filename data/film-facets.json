@@ -2,8 +2,8 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-15",
  "license": "See data.html",
- "films_on_public_map": 2085,
- "film_entries": 2096,
+ "films_on_public_map": 2114,
+ "film_entries": 2126,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -393,7 +393,7 @@
     "match": "exact",
     "indigenous": "no",
     "note": "",
-    "films": 76
+    "films": 85
    },
    {
     "label": "Spanish",
@@ -5485,6 +5485,10 @@
     {
      "id": "DIR-0107",
      "name": "Jules Koostachin"
+    },
+    {
+     "id": "QM-0bcc197085",
+     "name": "Jules Arita Koostachin"
     }
    ],
    "languages": [],
@@ -5580,6 +5584,136 @@
     }
    ],
    "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-854-F1": {
+   "title": "Miss Chief's Praying Hands",
+   "year": 2019,
+   "makers": [
+    {
+     "id": "DIR-0112",
+     "name": "Kent Monkman"
+    }
+   ],
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://vtape.org/video?vi=9222"
+    }
+   ],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-854-F2": {
+   "title": "Casualties of Modernity",
+   "year": 2015,
+   "makers": [
+    {
+     "id": "DIR-0112",
+     "name": "Kent Monkman"
+    }
+   ],
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://vtape.org/video?vi=8462"
+    }
+   ],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-854-F3": {
+   "title": "Miss Chief of Hearts",
+   "year": 2015,
+   "makers": [
+    {
+     "id": "DIR-0112",
+     "name": "Kent Monkman"
+    }
+   ],
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://vtape.org/video?vi=8380"
+    }
+   ],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-854-F4": {
+   "title": "Miss Chief: Justice of the Piece",
+   "year": 2013,
+   "makers": [
+    {
+     "id": "DIR-0112",
+     "name": "Kent Monkman"
+    }
+   ],
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://vtape.org/video?vi=7962"
+    }
+   ],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-854-F5": {
+   "title": "Mary",
+   "year": 2011,
+   "makers": [
+    {
+     "id": "DIR-0112",
+     "name": "Kent Monkman"
+    }
+   ],
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://vtape.org/video?vi=7421"
+    }
+   ],
    "themes": [],
    "primary_theme": null,
    "families": [],
@@ -11891,7 +12025,7 @@
   },
   "FILM-0180": {
    "title": "Ánimas (Spirits)",
-   "year": null,
+   "year": 2023,
    "makers": [
     {
      "id": "DIR-0224",
@@ -11899,11 +12033,17 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Memory and Oral History",
+    "Resistance Movements"
+   ],
+   "primary_theme": "Resistance Movements",
+   "families": [
+    "Knowledge and Continuity",
+    "Sovereignty and Politics"
+   ],
+   "form": "Experimental",
+   "length": "Short"
   },
   "FILM-0181": {
    "title": "3 días, 3 años",
@@ -16512,6 +16652,102 @@
    ],
    "form": "Documentary",
    "length": "Short"
+  },
+  "Q20261115-851-F1": {
+   "title": "Flat Rocks",
+   "year": 2017,
+   "makers": [
+    {
+     "id": "DIR-0341",
+     "name": "Courtney Montour"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-851-F2": {
+   "title": "Sex Spirit Strength",
+   "year": 2015,
+   "makers": [
+    {
+     "id": "DIR-0341",
+     "name": "Courtney Montour"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-851-F3": {
+   "title": "Mohawk Ironworkers",
+   "year": 2016,
+   "makers": [
+    {
+     "id": "DIR-0341",
+     "name": "Courtney Montour"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Series"
+  },
+  "Q20261115-851-F4": {
+   "title": "Working It Out Together",
+   "year": 2016,
+   "makers": [
+    {
+     "id": "DIR-0341",
+     "name": "Courtney Montour"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Series"
+  },
+  "Q20261115-851-F5": {
+   "title": "Dream Big",
+   "year": 2015,
+   "makers": [
+    {
+     "id": "DIR-0341",
+     "name": "Courtney Montour"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Series"
+  },
+  "Q20261115-851-F6": {
+   "title": "Skindigenous",
+   "year": null,
+   "makers": [
+    {
+     "id": "DIR-0341",
+     "name": "Courtney Montour"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Series"
   },
   "FILM-0282": {
    "title": "Sugarcane",
@@ -39709,6 +39945,350 @@
      "match": "exact",
      "indigenous": false,
      "source": "https://vtape.org/artist?ai=1002"
+    }
+   ],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-850-F1": {
+   "title": "Angela's Shadow",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "QM-0bcc197085",
+     "name": "Jules Arita Koostachin"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-850-F2": {
+   "title": "WaaPaKe (Tomorrow)",
+   "year": 2023,
+   "makers": [
+    {
+     "id": "QM-0bcc197085",
+     "name": "Jules Arita Koostachin"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-850-F3": {
+   "title": "Chubby Cree",
+   "year": null,
+   "makers": [
+    {
+     "id": "QM-0bcc197085",
+     "name": "Jules Arita Koostachin"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-850-F4": {
+   "title": "Broken Angel",
+   "year": null,
+   "makers": [
+    {
+     "id": "QM-0bcc197085",
+     "name": "Jules Arita Koostachin"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-850-F5": {
+   "title": "MisTik",
+   "year": null,
+   "makers": [
+    {
+     "id": "QM-0bcc197085",
+     "name": "Jules Arita Koostachin"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-850-F6": {
+   "title": "KaYaMenTa: Sharing Truths about Menopause",
+   "year": 2020,
+   "makers": [
+    {
+     "id": "QM-0bcc197085",
+     "name": "Jules Arita Koostachin"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-850-F7": {
+   "title": "Butterfly Monument: A Tribute to Shannen Koostachin",
+   "year": 2017,
+   "makers": [
+    {
+     "id": "QM-0bcc197085",
+     "name": "Jules Arita Koostachin"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-850-F8": {
+   "title": "NiiSoTeWak: Two Bodies, One Heart",
+   "year": 2017,
+   "makers": [
+    {
+     "id": "QM-0bcc197085",
+     "name": "Jules Arita Koostachin"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-850-F9": {
+   "title": "OshKiKiShiKaw: A New Day",
+   "year": 2019,
+   "makers": [
+    {
+     "id": "QM-0bcc197085",
+     "name": "Jules Arita Koostachin"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-850-F10": {
+   "title": "OChiSkwaCho",
+   "year": 2018,
+   "makers": [
+    {
+     "id": "QM-0bcc197085",
+     "name": "Jules Arita Koostachin"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-850-F11": {
+   "title": "APishKweShiMon",
+   "year": 2017,
+   "makers": [
+    {
+     "id": "QM-0bcc197085",
+     "name": "Jules Arita Koostachin"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-850-F12": {
+   "title": "AskiBoyz — Episode Eleven / Takastepanichikewin Peyakoshap",
+   "year": 2016,
+   "makers": [
+    {
+     "id": "QM-0bcc197085",
+     "name": "Jules Arita Koostachin"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-850-F13": {
+   "title": "Without Words",
+   "year": 2015,
+   "makers": [
+    {
+     "id": "QM-0bcc197085",
+     "name": "Jules Arita Koostachin"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-850-F14": {
+   "title": "Lands Enchanted — Traces of the Transformers",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "QM-0bcc197085",
+     "name": "Jules Arita Koostachin"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-850-F15": {
+   "title": "Moosemeat & Marmalade",
+   "year": null,
+   "makers": [
+    {
+     "id": "QM-0bcc197085",
+     "name": "Jules Arita Koostachin"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Series"
+  },
+  "Q20261115-853-F1": {
+   "title": "Palace",
+   "year": 2008,
+   "makers": [
+    {
+     "id": "Q20261115-853",
+     "name": "Richard Story"
+    }
+   ],
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://vtape.org/video?vi=6649"
+    }
+   ],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-853-F2": {
+   "title": "Elusive",
+   "year": 2004,
+   "makers": [
+    {
+     "id": "Q20261115-853",
+     "name": "Richard Story"
+    }
+   ],
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://vtape.org/video?vi=5646"
+    }
+   ],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-853-F3": {
+   "title": "Echo Lake",
+   "year": 2000,
+   "makers": [
+    {
+     "id": "Q20261115-853",
+     "name": "Richard Story"
+    }
+   ],
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://vtape.org/video?vi=5798"
+    }
+   ],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-853-F4": {
+   "title": "Some Letters to a Young Poet",
+   "year": 1993,
+   "makers": [
+    {
+     "id": "Q20261115-853",
+     "name": "Richard Story"
+    }
+   ],
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://vtape.org/video?vi=5455"
     }
    ],
    "themes": [],
