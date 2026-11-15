@@ -105,9 +105,7 @@ function layers(){
  shading.addEventListener('change',()=>{if(!shading.checked)show('off');});
  // A shared view requesting shading=0 must beat an older stored Strong/Soft preference.
  // The initial URL flag was captured before navigation.js rewrites the hash.
- // 2026-11-15: the default became Soft; an older stored Strong is reset once.
- try{if(!localStorage.getItem('atlas-territories-v2')){localStorage.setItem('atlas-territories-v2','1');if(store.get('territories',null)==='strong')store.set('territories','soft');}}catch(e){}
- const savedMode=store.get('territories','soft');
+  const savedMode=store.get('territories','soft');
  const mode=root.dataset.atlasInboundShading==='off'?'off':savedMode;
  const saved=store.get('territory-strength',null),v=Object.prototype.hasOwnProperty.call(PRESET,mode)?PRESET[mode]:(Number.isFinite(saved)?saved:PRESET.strong);
  range.value=v;setStrength(v);
