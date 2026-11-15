@@ -110,7 +110,7 @@ for r in P:
 # Distinct works, counted the way the map's Films list groups them (2026-11-09): credits sharing a film ID are one work;
 # copies of the same title from different filmmakers are one work when their years agree, or when one year is missing and
 # the title is long enough to be distinctive; "Title / Translation" or "Title: subtitle" matches "Title" when the years agree.
-# (beta/artwork-presentation59.js and beta/films-merge-20261107.js.) Facet entries above stay one per film ID.
+# (beta/patches-catalog.js, sections artwork-presentation59.js and films-merge-20261107.js.) Facet entries above stay one per film ID.
 def count_works(records):
     by_id, groups = {}, []
     for r in records:
