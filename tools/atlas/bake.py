@@ -5,7 +5,7 @@
                            images, watch links, theme tags, and the film tags the filters use
   beta/index.html          made to load it (plus the Native Land shapes and territory-fixes.js) instead of any layers
 
-Normally called by tools/atlas/build.py (from atlas.xlsx). For the one-time identity test it can bake a captured
+Normally called by tools/atlas/build.py (from the atlas CSV files). For the one-time identity test it can bake a captured
 state directly:  python3 tools/atlas/bake.py <state.json> --all-records   (never commit that output: it holds leads)."""
 import json, re, sys, pathlib
 
@@ -111,7 +111,7 @@ def write(records, countries, meta, owned, base_globals, edges=None, keep_record
     if edges is not None:
         ref['ATLAS_LAND_CROSSINDEX'] = dict(ref['ATLAS_LAND_CROSSINDEX'], edges=scrub(edges, hidden))
     th_base = base_globals.get('ATLAS_THEMES_1103', {})
-    head = ('/* The atlas data: built by tools/atlas/build.py from atlas.xlsx (private research repository). Edit the workbook, not this file.\n'
+    head = ('/* The atlas data: built by tools/atlas/build.py from the atlas master (private research repository). Change the atlas through its Queue, not this file.\n'
             '   1. reference tables (land names and links, country index, verification notes; frozen 8 Nov 2026 from the layered beta)\n'
             '   2. filmmakers and films (Published sheet)  3. images, watch links, theme tags  4. film tags for filters (languages, themes, form, length) */\n')
     txt = (head + ''.join(js(k, ref[k]) for k in sorted(ref))

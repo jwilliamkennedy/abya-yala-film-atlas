@@ -1,6 +1,6 @@
-"""Check atlas.xlsx. Used by build.py before anything is written, and by the research repo's workflow on every push.
+"""Check the atlas (master + Queue CSV files). Used by build.py before anything is written, and by the research repo's Queue check on every commit.
 
-usage: python3 tools/atlas/check.py <atlas.xlsx>
+usage: python3 tools/atlas/check.py <atlas folder>
 Errors stop the build; notes are printed for review. Rules:
   Published  filmmaker_id on every row; film_id unique; a filmmaker's columns agree on all of their rows;
              status is one of the map statuses; entity, form, length, themes, languages and country codes come from the

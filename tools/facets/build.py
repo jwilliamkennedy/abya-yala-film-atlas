@@ -1,6 +1,6 @@
 """Build the atlas's film facets: one documented store for languages, themes, form and length, with a source per value.
 
-Run by tools/atlas/build.py (since 8 Nov 2026 the inputs come from atlas.xlsx):
+Run by tools/atlas/build.py (the inputs come from the atlas master):
 usage: python3 tools/facets/build.py <records json> <beta dir> --themes <themes json> --js-out <path>
 Inputs  : the published records (languages from the workbook's language columns), the theme tags (workbook theme columns),
           tools/facets/languages_authority.csv (checked against Glottolog; the workbook's Lists sheet carries the same list).
@@ -12,7 +12,7 @@ Outputs : beta/data/film-facets.csv   one row per film, field and value, with co
 """
 import csv, json, re, sys, glob, html, datetime, os, unicodedata, collections
 PUB, BETA = sys.argv[1], sys.argv[2].rstrip('/')
-# optional: --themes <json {families, films}> (theme tags as built from atlas.xlsx), --js-out <path> (where the map's copy goes)
+# optional: --themes <json {families, films}> (theme tags as built from the atlas master), --js-out <path> (where the map's copy goes)
 OPT = {sys.argv[i]: sys.argv[i + 1] for i in range(3, len(sys.argv) - 1, 2)}
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TODAY = datetime.date.today().isoformat()
@@ -74,7 +74,7 @@ for r in P:
         def add(field, value, code='', source='', basis=''):
             rows.append({'film_id': fid, 'title': f['title'], 'year': f.get('year') or '', 'field': field, 'value': value, 'code': code, 'source_url': source, 'basis': basis})
         # languages
-        if f.get('languageLabels'):  # atlas.xlsx (Published sheet): the language store since 8 Nov 2026
+        if f.get('languageLabels'):  # the atlas master: the language store since 8 Nov 2026
             raw, lsrc, basis = f['languageLabels'], f.get('languageSource', ''), (f.get('languageNote') if f.get('languageNote') and not re.search(r'\.csv|fill\b|atlas\.xlsx|in the atlas', f.get('languageNote')) else 'recorded with the film')
         elif fid in FILLED:
             raw, lsrc, part = FILLED[fid]; basis = 'checked against the source page'
