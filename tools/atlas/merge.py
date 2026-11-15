@@ -1,13 +1,13 @@
 """Move accepted Queue rows into Published (run after checking each row against its source).
 
-usage: python3 tools/atlas/merge.py <atlas.xlsx>
+usage: python3 tools/atlas/merge.py <atlas folder (CSV files; see atlasio.py)>
   queue_status "accepted" rows are applied, then marked "merged" (they stay in the Queue as the record of the change):
     add filmmaker / add film / lead   the row is appended to Published (a lead becomes published)
     correct   queue_target = a film_id: that film's row takes the Queue row's cells;
               queue_target = a filmmaker_id: the filmmaker columns of all their rows take the Queue row's values
     remove    the target rows leave Published and are copied back into the Queue (status "removed"): nothing is deleted
 Machine columns of Published rows are kept, so unchanged values stay exact. Writes the Published fingerprint
-(atlas/PUBLISHED.sha256) that the check uses to spot edits made outside this step."""
+(atlas/master/PUBLISHED.sha256) that the check uses to spot edits made outside this step."""
 import sys, hashlib, json, datetime, copy
 from openpyxl import load_workbook
 sys.path.insert(0, __import__('os').path.dirname(__file__))
@@ -20,15 +20,15 @@ def fingerprint(ws):
     return h.hexdigest()
 
 def main(path):
-    import build, check
-    wbv = load_workbook(path, data_only=True)
+    import build, check, atlasio
+    wbv = atlasio.load(path)
     pub_rows = build.read_sheet(wbv['Published'], PUBLISHED_COLS)
     q_rows = build.read_sheet(wbv['Queue'], QUEUE_COLS)
     errs, _ = check.check_queue(q_rows, wbv, pub_rows)
     bad_rows = {int(n) for e in errs for grp in __import__('re').findall(r'rows? ([\d, ]+)', e) for n in __import__('re').findall(r'\d+', grp)}
     for e in errs:
         print('not merged:', e)
-    wb = load_workbook(path)
+    wb = atlasio.load(path)
     wp, wq = wb['Published'], wb['Queue']
     ph = [c.value for c in wp[2]]; qh = [c.value for c in wq[2]]
     P = {h: i + 1 for i, h in enumerate(ph) if h}; Q = {h: i + 1 for i, h in enumerate(qh) if h}
@@ -114,9 +114,9 @@ def main(path):
         wq.cell(n, Q['queue_target']).value = vals.get('film_id') or vals.get('filmmaker_id')
         wq.cell(n, Q['proposed_on']).value = today; wq.cell(n, Q['review_note']).value = f'Removed from Published {today}; restore by setting queue_action "lead" or "add film" and status "accepted".'
     wp.protection.sheet = True
-    wb.save(path)
-    fp = fingerprint(load_workbook(path, read_only=True)['Published'])
-    open(__import__('os').path.join(__import__('os').path.dirname(path), 'PUBLISHED.sha256'), 'w').write(fp + '\n')
+    atlasio.save(wb, path)
+    fp = fingerprint(atlasio.load(path)['Published'])
+    open(atlasio.fp_path(path), 'w').write(fp + '\n')
     print(applied, '| Published fingerprint', fp[:12])
 
 if __name__ == '__main__':

@@ -1,6 +1,6 @@
-"""Build the beta's data from atlas.xlsx (Published sheet), after checking the workbook.
+"""Build the beta's data from the atlas (the Published CSV files in atlas/master), after checking it.
 
-usage: python3 tools/atlas/build.py <atlas.xlsx> <reference state.json> [--check-only]
+usage: python3 tools/atlas/build.py <atlas folder> <reference state.json> [--check-only]
   1. Checks the workbook (tools/atlas/check.py rules): stops on any error, writes nothing.
   2. Rebuilds every record and film from the Published rows. Cells that still show the original keep the original value
      exactly; edited cells and new rows are read from the cells.
@@ -148,7 +148,8 @@ def watch_index(records, explore, facets=None):
     return len(items), sum(1 for i in items if any(l['embed'] for l in i['links']))
 
 def build(path, state_path, check_only=False):
-    wb = load_workbook(path, data_only=True)
+    import atlasio
+    wb = atlasio.load(path)
     state = json.load(open(state_path, encoding='utf-8'))
     pub = read_sheet(wb['Published'], PUBLISHED_COLS)
     errors, warnings = check.check_published(pub, wb)

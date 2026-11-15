@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
-# Rebuild everything the beta serves from atlas.xlsx, in order:
-#   atlas.xlsx (Published) -> beta/atlas-data.js + film tags + Languages / Themes pages   (tools/atlas/build.py)
+# Rebuild everything the beta serves from the atlas (CSV files), in order:
+#   atlas/master (Published) -> beta/atlas-data.js + film tags + Languages / Themes pages   (tools/atlas/build.py)
 #   -> public.json from the loaded beta -> filmmaker pages + sitemap -> timeline + screening list -> data page and CSVs
-# usage: tools/rebuild_pages.sh <atlas.xlsx> <snapshot.json> <beta url served locally, e.g. http://127.0.0.1:8765/beta/index.html> [chrome path]
-# (atlas.xlsx and the snapshot live in the private research repository, under atlas/)
+# usage: tools/rebuild_pages.sh <atlas folder> <snapshot.json> <beta url served locally, e.g. http://127.0.0.1:8765/beta/index.html> [chrome path]
+# (the atlas folder and the snapshot live in the private research repository, under atlas/)
 set -euo pipefail
 cd "$(dirname "$0")/.."
 BASE=https://jwilliamkennedy.github.io/abya-yala-film-atlas/beta

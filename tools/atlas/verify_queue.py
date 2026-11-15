@@ -1,6 +1,6 @@
 """Check Queue proposals against their own sources (runs on a GitHub runner, which can reach the web).
 
-usage: python3 tools/atlas/verify_queue.py <atlas.xlsx> <out dir> [--leads]
+usage: python3 tools/atlas/verify_queue.py <atlas folder> <out dir> [--leads]
 --leads: check "lead" rows instead (identity quote and credit page), to find leads ready for review; nothing changes
 For every Queue row with queue_status "new" and an action other than "lead":
   identity  (add filmmaker): the source_1_url page contains the source_1_quote and the filmmaker's name
@@ -73,7 +73,8 @@ def surname_hit(text, name):
 
 def main(path, out, leads=False):
     os.makedirs(out, exist_ok=True)
-    wb = load_workbook(path, data_only=True)
+    import atlasio
+    wb = atlasio.load(path)
     rows = build.read_sheet(wb['Queue'], QUEUE_COLS)
     v = build.cellnorm
     if leads:
