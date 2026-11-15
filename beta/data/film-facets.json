@@ -1345,6 +1345,10 @@
      "name": "Dulcídio Gomes"
     },
     {
+     "id": "DIR-0022",
+     "name": "Edina Ximenes"
+    },
+    {
      "id": "DIR-0023",
      "name": "Genito Gomes"
     },
@@ -2262,6 +2266,26 @@
    "form": "Documentary",
    "length": "Feature"
   },
+  "Q20261114-87-F5": {
+   "title": "Troca de Olhares (Ashaninka / HuniKuĩ)",
+   "year": 2009,
+   "makers": [
+    {
+     "id": "DIR-0055",
+     "name": "Wewito Piyãko"
+    },
+    {
+     "id": "DIR-0056",
+     "name": "Zezinho Yube"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
+  },
   "FILM-0060": {
    "title": "Já Me Transformei em Imagem (Ma Ê Dami Xina)",
    "year": 2008,
@@ -2376,22 +2400,6 @@
   },
   "Q20261114-87-F4": {
    "title": "Bimi, mestra dos kenes",
-   "year": 2009,
-   "makers": [
-    {
-     "id": "DIR-0056",
-     "name": "Zezinho Yube"
-    }
-   ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": "Documentary",
-   "length": "Short"
-  },
-  "Q20261114-87-F5": {
-   "title": "Troca de Olhares (Ashaninka / HuniKuĩ)",
    "year": 2009,
    "makers": [
     {
