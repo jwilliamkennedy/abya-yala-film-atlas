@@ -21,8 +21,8 @@
 
 /* ---------- Tokens ---------- */
 html:root{
- --ui-paper:#f3f1e9;--ui-surface:#f8f6f2;--ui-wash:#ede9de;--ui-line:#d0cec6;--ui-ink:#26231c;--ui-muted:#6b6559;
- --ui-accent:#3f5466;--ui-accent-ink:#ffffff;--ui-maize:#d9a640;--ui-sage:#3e6b58;--ui-shadow:0 10px 30px rgba(38,35,28,.12),0 1px 2px rgba(38,35,28,.08);
+ --ui-paper:#ede3cf;--ui-surface:#f4ecdc;--ui-wash:#e5d8bf;--ui-line:#cfc0a2;--ui-ink:#1d2433;--ui-muted:#6b6559;
+ --ui-accent:#1f3557;--ui-accent-ink:#ffffff;--ui-maize:#d9a640;--ui-sage:#3e6b58;--ui-shadow:0 10px 30px rgba(29,36,51,.12),0 1px 2px rgba(29,36,51,.08);
  --ui-sans:'Atlas Sans',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
  --ui-serif:'Atlas Text Serif','Noto Serif','Noto Sans Canadian Aboriginal','Noto Sans Cherokee','Noto Sans Osage',Georgia,serif;
  /* type scale */
@@ -154,7 +154,7 @@ html[data-reading-theme="night"] #index select,html[data-reading-theme="night"] 
 #index input[type="checkbox"],#layers input[type="checkbox"],.map-actions input[type="checkbox"]{accent-color:var(--ui-accent)}
 
 /* ---------- Map toolbar and panels ---------- */
-.map-panel .zoom,.map-toolbar .map-actions{background:var(--ui-surface)!important;border:1px solid var(--ui-line)!important;box-shadow:0 2px 10px rgba(38,35,28,.08)!important;border-radius:999px!important}
+.map-panel .zoom,.map-toolbar .map-actions{background:var(--ui-surface)!important;border:1px solid var(--ui-line)!important;box-shadow:0 2px 10px rgba(29,36,51,.08)!important;border-radius:999px!important}
 .map-panel .zoom button,.map-toolbar .map-actions>details>summary,.map-toolbar .map-actions>button{font:600 14px/1 var(--ui-sans)!important;color:var(--ui-ink)!important}
 #zoom-level{display:none!important}
 #zoom-selection[disabled],#zoom-selection:disabled{display:none!important}
@@ -368,14 +368,14 @@ body.atlas-page .map-footer a:hover,
 body.atlas-page #map-info .map-external-links a:hover{text-decoration-thickness:2px}
 body.atlas-page .map-footer a:focus-visible,
 body.atlas-page #map-info .map-external-links a:focus-visible{
-  outline:2px solid var(--reading-accent,#3f5466);outline-offset:3px;border-radius:2px
+  outline:2px solid var(--reading-accent,#1f3557);outline-offset:3px;border-radius:2px
 }
 body.atlas-page .map-toolbar:has(#map-info[open]){z-index:60}
 body.atlas-page #map-info[open]>div{
   pointer-events:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch
 }
 body.atlas-page #map-info .map-external-links{
-  margin-top:14px;padding-top:10px;border-top:1px solid var(--reading-line,#d0cec6)
+  margin-top:14px;padding-top:10px;border-top:1px solid var(--reading-line,#cfc0a2)
 }
 body.atlas-page #map-info .map-external-links strong{display:block;font-size:13px;line-height:1.4}
 body.atlas-page #map-info .map-external-links a{
@@ -392,12 +392,12 @@ body.atlas-page #layers a{pointer-events:auto!important;touch-action:manipulatio
 
 
 /* Relational discovery belongs to the Atlas interface, not a mismatched oversized chapter heading. */
-body.atlas-page #index .adjacent-visible{margin-top:22px;padding-top:16px;border-top:1px solid var(--reading-line,#d0cec6)}
+body.atlas-page #index .adjacent-visible{margin-top:22px;padding-top:16px;border-top:1px solid var(--reading-line,#cfc0a2)}
 body.atlas-page #index .adjacent-visible > h3{
   margin:0 0 7px!important;
   font:600 16px/1.3 var(--ui-sans,"Atlas Sans",system-ui,sans-serif)!important;
   letter-spacing:0!important;text-transform:none!important;
-  color:var(--reading-ink,#26231c)!important
+  color:var(--reading-ink,#1d2433)!important
 }
 body.atlas-page #index .adjacent-visible > p.meta{
   margin:0 0 12px!important;max-width:58ch;
@@ -406,10 +406,10 @@ body.atlas-page #index .adjacent-visible > p.meta{
 }
 body.atlas-page #index .adjacent-visible .adjacent-maker{
   padding:12px 13px!important;min-height:60px;border-radius:6px;
-  border:1px solid var(--reading-line,#d0cec6);background:var(--reading-wash,#ede9de)
+  border:1px solid var(--reading-line,#cfc0a2);background:var(--reading-wash,#e5d8bf)
 }
 body.atlas-page #index .adjacent-visible .adjacent-maker:focus-visible{
- outline:2px solid var(--reading-accent,#3f5466);outline-offset:2px
+ outline:2px solid var(--reading-accent,#1f3557);outline-offset:2px
 }
 
 /* ---------- Map page pass, 2026-11-11 ---------- */
@@ -456,8 +456,8 @@ body.profile-open.has-record #index #active-context{display:none!important}
 /* the closed tools drawer drew a second line under the tabs */
 #index .index-command-bar>#index-tools:not([open]){border:0!important}
 /* Land tint: the open land's territory colour marks the panel (rule, dot, active tab). Set by landTint() in ui-20261109.js. */
-body.land-tinted #index .view-switch button[aria-pressed="true"]{background:var(--land)!important;color:#26231c!important}
-body.land-tinted #index #selection-path::before{content:"";display:inline-block;width:10px;height:10px;margin-right:8px;border-radius:50%;background:var(--land);box-shadow:0 0 0 1px rgba(38,35,28,.28)}
+body.land-tinted #index .view-switch button[aria-pressed="true"]{background:var(--land)!important;color:#1d2433!important}
+body.land-tinted #index #selection-path::before{content:"";display:inline-block;width:10px;height:10px;margin-right:8px;border-radius:50%;background:var(--land);box-shadow:0 0 0 1px rgba(29,36,51,.28)}
 body.land-tinted #map-selection-focus{border-left-color:var(--land)!important;box-shadow:inset 4px 0 0 var(--land),0 4px 16px rgba(16,45,56,.15)!important}
 /* ---------- Friction pass (13 Nov 2026) ----------
    A–Z: every letter visible, in rows, instead of a strip that scrolls behind arrows. */
@@ -484,3 +484,34 @@ body.land-tinted #map-selection-focus{border-left-color:var(--land)!important;bo
 
 /* Phone tap size for the small row buttons (Screening list, Copy citation). */
 @media (max-width:700px){:root:not(#_) button.scr,:root:not(#_) button[data-copy]{min-height:36px;padding-top:6px;padding-bottom:6px}}
+
+/* ---- Index panel (2026-11-15): drag its left edge to resize; a tidier selection header ---- */
+@media (min-width:761px){
+ :root:not(#_):not(#__) body.atlas-page main{grid-template-columns:minmax(0,1fr) var(--index-w,440px)!important;position:relative}
+ .index-resizer{position:absolute;top:0;bottom:0;right:calc(var(--index-w,440px) - 6px);width:12px;cursor:col-resize;z-index:40;touch-action:none}
+ .index-resizer::after{content:"";position:absolute;top:50%;left:4px;width:4px;height:48px;margin-top:-24px;border-radius:2px;background:var(--ui-line);opacity:.7;transition:opacity .15s,background .15s}
+ .index-resizer:hover::after,.index-resizer.dragging::after,.index-resizer:focus-visible::after{opacity:1;background:var(--ui-accent)}
+ .index-resizer:focus-visible{outline:2px solid var(--ui-accent);outline-offset:-2px}
+ html.index-resizing,html.index-resizing *{cursor:col-resize!important;user-select:none!important}
+}
+@media (max-width:760px){.index-resizer{display:none!important}}
+:root:not(#_):not(#__) #index #view-forward:disabled{display:none!important}
+:root:not(#_):not(#__) #index #selection-summary:not([hidden]){display:grid!important;grid-template-columns:minmax(0,1fr) auto auto!important;align-items:start!important;gap:10px 8px!important}
+:root:not(#_):not(#__) #index #selection-summary .selection-label{grid-column:1!important;grid-row:1!important;min-width:0!important}
+:root:not(#_):not(#__) #index #selection-summary #selection-locate{grid-column:2!important;grid-row:1!important;margin:0!important}
+:root:not(#_):not(#__) #index #selection-summary #clear-context{grid-column:3!important;grid-row:1!important;margin:0!important}
+:root:not(#_):not(#__) #index #selection-summary #selection-locate,:root:not(#_):not(#__) #index #selection-summary #clear-context{min-height:32px!important;padding:5px 12px!important;font-size:var(--t-small)!important;white-space:nowrap!important}
+:root:not(#_):not(#__) #index #selection-summary .sel-links{grid-column:1 / -1!important;grid-row:2!important;display:flex!important;flex-wrap:wrap!important;gap:6px 16px!important;margin:0!important}
+:root:not(#_):not(#__) #index #selection-summary .sel-links>*{white-space:nowrap!important}
+:root:not(#_):not(#__) #index #film-browser.single-page .film-browser-heading,:root:not(#_):not(#__) #index #film-browser.single-page .ui-alpha-shell,:root:not(#_):not(#__) #index #film-browser.single-page #film-pages{display:none!important}
+:root:not(#_):not(#__) #index #reading-context .reading-context-actions{display:flex!important;flex-wrap:wrap!important;gap:6px 18px!important;grid-template-columns:none!important}
+:root:not(#_):not(#__) #index #reading-context .reading-context-actions>button{width:auto!important;white-space:nowrap!important;text-align:left!important}
+:root:not(#_):not(#__) #index #selection-summary .selection-label{display:flex!important;flex-wrap:wrap!important;align-items:center!important;column-gap:8px!important}
+:root:not(#_):not(#__) #index #selection-summary .selection-label::before,:root:not(#_):not(#__) #index #selection-summary #selection-name::before{display:inline-block!important;flex:none!important}
+:root:not(#_):not(#__) #index #selection-summary #selection-path{flex-basis:100%!important}
+:root:not(#_):not(#__) #index #selection-summary #selection-path{display:flex!important;align-items:center!important;gap:8px!important;flex-wrap:nowrap!important}
+:root:not(#_):not(#__) #index #selection-summary #selection-path>*{display:inline!important;margin:0!important}
+:root:not(#_):not(#__) #index #reading-context .reading-context-actions{justify-content:flex-start!important}
+:root:not(#_):not(#__) #index #selection-summary #selection-path{min-width:0!important;max-width:100%!important;overflow:visible!important}
+:root:not(#_):not(#__) #index #selection-summary #selection-path>*{flex:1 1 auto!important;min-width:0!important;white-space:normal!important;overflow:visible!important;text-overflow:clip!important;overflow-wrap:anywhere!important}
+:root:not(#_):not(#__) #index #reading-context .reading-context-actions>button{font-size:var(--t-small)!important}
