@@ -2218,7 +2218,7 @@ body.atlas-page .palette-choice>summary{min-height:28px}
 :root[data-reading-theme=night] .map-panel{background:#426e94}
 .geography .base .land-shape,
 :root[data-reading-theme=night] .geography .base .land-shape{fill:#7b9985!important;fill-opacity:.08;stroke:#536f81;stroke-opacity:.3;stroke-width:.6;vector-effect:non-scaling-stroke}
-.geography[data-geography-fallback=true][data-geography-visible=true] .base .land-shape{fill:#e3e5e7!important;fill-opacity:1!important;stroke:#a7bfd0;stroke-opacity:.65;stroke-width:.8}
+.geography[data-geography-fallback=true][data-geography-visible=true] .base .land-shape{fill:#d9dbdd!important;fill-opacity:1!important;stroke:#a7bfd0;stroke-opacity:.65;stroke-width:.8}
 .geography[data-geography-fallback=true][data-geography-visible=true] .natural-earth-image{visibility:hidden}
 
 /* ── from constellate59.css ── */

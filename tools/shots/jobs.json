@@ -1,57 +1,12 @@
 [
  {
-  "name": "stone_map",
+  "name": "stone_map_darker",
   "path": "beta/index.html",
   "viewport": [
    1440,
    900
   ],
   "settle": 15000,
-  "steps": []
- },
- {
-  "name": "stone_map_zoom",
-  "path": "beta/index.html#view=land",
-  "viewport": [
-   1440,
-   900
-  ],
-  "settle": 15000,
-  "steps": [
-   {
-    "eval": "(()=>{const m=window.AtlasOpenBasemap&&AtlasOpenBasemap.map;})()",
-    "wait": 500
-   }
-  ]
- },
- {
-  "name": "stone_about",
-  "path": "beta/about.html",
-  "viewport": [
-   1440,
-   900
-  ],
-  "settle": 4000,
-  "steps": []
- },
- {
-  "name": "stone_maker",
-  "path": "beta/maker/DIR-0092.html",
-  "viewport": [
-   1440,
-   900
-  ],
-  "settle": 4000,
-  "steps": []
- },
- {
-  "name": "stone_watch",
-  "path": "beta/watch.html",
-  "viewport": [
-   1440,
-   900
-  ],
-  "settle": 5000,
   "steps": []
  }
 ]
