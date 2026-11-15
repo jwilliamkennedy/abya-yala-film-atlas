@@ -515,3 +515,12 @@ body.land-tinted #map-selection-focus{border-left-color:var(--land)!important;bo
 :root:not(#_):not(#__) #index #selection-summary #selection-path{min-width:0!important;max-width:100%!important;overflow:visible!important}
 :root:not(#_):not(#__) #index #selection-summary #selection-path>*{flex:1 1 auto!important;min-width:0!important;white-space:normal!important;overflow:visible!important;text-overflow:clip!important;overflow-wrap:anywhere!important}
 :root:not(#_):not(#__) #index #reading-context .reading-context-actions>button{font-size:var(--t-small)!important}
+/* ---- Header counts (2026-11-15): stacked and aligned with the index panel's left edge; they follow its width ---- */
+@media (min-width:1200px){
+ :root:not(#_):not(#__) body.atlas-page header{position:relative!important}
+ :root:not(#_):not(#__) body.atlas-page header>.atlas-ledger{position:absolute!important;left:max(800px,calc(100% - var(--index-w,440px) + 24px))!important;top:50%!important;transform:translateY(-50%)!important;margin:0!important;display:flex!important;flex-direction:column!important;align-items:flex-start!important;gap:6px!important}
+ :root:not(#_):not(#__) body.atlas-page header>.atlas-ledger span{padding:0!important;border:0!important;margin:0!important;white-space:nowrap!important}
+ :root:not(#_):not(#__) body.atlas-page header>.atlas-ledger span::before,:root:not(#_):not(#__) body.atlas-page header>.atlas-ledger span::after{content:none!important}
+ :root:not(#_):not(#__) body.atlas-page header>.atlas-ledger b{font-size:19px!important}
+ :root:not(#_):not(#__) body.atlas-page header>.ui-header-tools{margin-left:auto!important}
+}
