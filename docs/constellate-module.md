@@ -6,9 +6,9 @@
 |---|---|
 | `assets/constellate.js` | All Constellate behaviour, in seven sections in their original order: embedded view; engine (state, map drawing, panel, Follow, Play, share); published constellations (`?c=slug`); the featured constellation; the toolbar's Options menu; Theme web; stages, start card, guide box, suggestions and legend. |
 | `assets/constellate.css` | All Constellate styling, in six sections in their original order: film images and cards; Theme web; stages and start card; map polish; night map, threads, stars and Night Loom; controls, filters and the Off the map rail. |
-| `collections-store.js` | The saved-constellations store. Separate because the Saved lists on the Map page use it too. |
-| `theme-tags62.js` | Theme data. |
-| `weave-route62.js` | One line that records the incoming address before the atlas rewrites it; it has to run first. |
+| `patches-collections.js` (section `collections-store.js`) | The saved-constellations store. Separate because the Saved lists on the Map page use it too. |
+| `patches-catalog.js` (section `theme-tags62.js`) | Theme data. |
+| `patches-catalog.js` (section `weave-route62.js`) | One line that records the incoming address before the atlas rewrites it; it has to run before `encounters.js`. |
 | `constellations/` | Published constellations. |
 
 These files replaced, and no longer exist: `constellation-embed.js`, `atlas-constellate62.js`, `constellations.js`,
