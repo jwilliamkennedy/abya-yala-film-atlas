@@ -2,8 +2,8 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-15",
  "license": "See data.html",
- "films_on_public_map": 1710,
- "film_entries": 1715,
+ "films_on_public_map": 1727,
+ "film_entries": 1734,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -405,7 +405,7 @@
     "match": "exact",
     "indigenous": "no",
     "note": "",
-    "films": 28
+    "films": 29
    },
    {
     "label": "Portuguese",
@@ -513,7 +513,7 @@
     "match": "exact",
     "indigenous": "yes",
     "note": "",
-    "films": 1
+    "films": 2
    },
    {
     "label": "Chinuk Wawa",
@@ -6927,6 +6927,10 @@
     {
      "id": "QM-970c76e39a",
      "name": "Silvestre Gil Zarabata"
+    },
+    {
+     "id": "QM-ac94920cb7",
+     "name": "Saúl Gil Nacoguí"
     }
    ],
    "languages": [
@@ -7335,6 +7339,10 @@
     {
      "id": "DIR-0187",
      "name": "Marbel Ina Vanegas Jusayu"
+    },
+    {
+     "id": "Q20261112-11",
+     "name": "Marbel Vanegas Jusayu"
     }
    ],
    "languages": [],
@@ -33156,6 +33164,330 @@
    "families": [],
    "form": "Documentary",
    "length": null
+  },
+  "QM-ff8a1995d3-M1": {
+   "title": "Oc ni temiki (Sigo soñando)",
+   "year": 2025,
+   "makers": [
+    {
+     "id": "QM-ff8a1995d3",
+     "name": "Misael Alva"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261112-11-F1": {
+   "title": "Pawa",
+   "year": 2026,
+   "makers": [
+    {
+     "id": "Q20261112-11",
+     "name": "Marbel Vanegas Jusayu"
+    }
+   ],
+   "languages": [
+    {
+     "label": "Spanish",
+     "as_credited": "Spanish",
+     "glottocode": "stan1288",
+     "iso639_3": "spa",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://ficcifestival.com/sites/default/files/2026-05/Catalogo_Oficial_FICCI_65.pdf"
+    }
+   ],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": "Short"
+  },
+  "Q20261112-11-F2": {
+   "title": "Apotnojushi La casa del viento",
+   "year": 2026,
+   "makers": [
+    {
+     "id": "Q20261112-11",
+     "name": "Marbel Vanegas Jusayu"
+    }
+   ],
+   "languages": [
+    {
+     "label": "Wayuunaiki",
+     "as_credited": "Wayuunaiki",
+     "glottocode": "wayu1243",
+     "iso639_3": "guc",
+     "match": "exact",
+     "indigenous": true,
+     "source": "https://ficcifestival.com/sites/default/files/2026-05/Catalogo_Oficial_FICCI_65.pdf"
+    }
+   ],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261112-11-F4": {
+   "title": "Buscando las marcas del Asho’ojushi",
+   "year": 2025,
+   "makers": [
+    {
+     "id": "Q20261112-11",
+     "name": "Marbel Vanegas Jusayu"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Feature"
+  },
+  "Q20261114-84-F2": {
+   "title": "Tsõ Reptuna Ró Hã",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261114-84",
+     "name": "Emília Pewa’u Top’Tiro"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": "Short"
+  },
+  "Q20261114-85-F1": {
+   "title": "Saiti Munuti: Cantos e Encantos",
+   "year": 2025,
+   "makers": [
+    {
+     "id": "Q20261114-85",
+     "name": "Nedina Yawanawa"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261114-73-F1": {
+   "title": "Asentamiento",
+   "year": 2015,
+   "makers": [
+    {
+     "id": "Q20261114-73",
+     "name": "Seba Calfuqueo"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Experimental",
+   "length": "Short"
+  },
+  "Q20261114-73-F2": {
+   "title": "Mapu Kufüll",
+   "year": 2020,
+   "makers": [
+    {
+     "id": "Q20261114-73",
+     "name": "Seba Calfuqueo"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": "Short"
+  },
+  "Q20261114-96-F1": {
+   "title": "Kuzen",
+   "year": 2016,
+   "makers": [
+    {
+     "id": "Q20261114-72",
+     "name": "Leonel Iván Lienlaf Lienlaf"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Experimental",
+   "length": "Short"
+  },
+  "Q20261114-70-F1": {
+   "title": "Indigo",
+   "year": 2014,
+   "makers": [
+    {
+     "id": "Q20261114-69",
+     "name": "Bracken Hanuse Corlett"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": "Short"
+  },
+  "Q20261114-70-F2": {
+   "title": "Mia’",
+   "year": 2015,
+   "makers": [
+    {
+     "id": "Q20261114-69",
+     "name": "Bracken Hanuse Corlett"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": "Short"
+  },
+  "Q20261114-69-F1": {
+   "title": "Ghost Food",
+   "year": 2017,
+   "makers": [
+    {
+     "id": "Q20261114-69",
+     "name": "Bracken Hanuse Corlett"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": "Short"
+  },
+  "Q20261114-64-F1": {
+   "title": "Ukaliq and Kalla Go Fishing",
+   "year": 2017,
+   "makers": [
+    {
+     "id": "Q20261114-64",
+     "name": "Nadia Mike"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": "Short"
+  },
+  "Q20261114-64-F2": {
+   "title": "Kimmirut Race",
+   "year": 2022,
+   "makers": [
+    {
+     "id": "Q20261114-64",
+     "name": "Nadia Mike"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261114-64-F3": {
+   "title": "Anaana’s Tent Season 1",
+   "year": 2018,
+   "makers": [
+    {
+     "id": "Q20261114-64",
+     "name": "Nadia Mike"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": "Series"
+  },
+  "Q20261114-64-F4": {
+   "title": "Tundra Friends",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261114-64",
+     "name": "Nadia Mike"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": "Series"
+  },
+  "Q20261114-65-F1": {
+   "title": "Beach Heart",
+   "year": 2022,
+   "makers": [
+    {
+     "id": "Q20261114-65",
+     "name": "Glenn Gear"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": "Short"
+  },
+  "Q20261114-33-F1": {
+   "title": "Warmin Arupa: Barranderas – Trabajo por Alimentos",
+   "year": 1993,
+   "makers": [
+    {
+     "id": "Q20261114-33",
+     "name": "Margarita Elvira Yupanqui"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261114-30-F1": {
+   "title": "Cleaning’s a Cakewalk",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "Q20261114-30",
+     "name": "Ryan Begay"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": "Short"
   }
  }
 }
