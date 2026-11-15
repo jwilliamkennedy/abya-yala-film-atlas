@@ -7,12 +7,13 @@ tools the atlas folder (e.g. atlas/); a path ending in .xlsx still opens a workb
   <atlas>/master/filmmakers*.csv     one row per filmmaker (the filmmaker columns), by name
   <atlas>/master/films*.csv          one row per credit: row (its order), filmmaker_id, film columns, by filmmaker name
   <atlas>/master/lists.csv           the Lists sheet, cell for cell
-  <atlas>/master/machine.csv         filmmaker_id, film_id, maker_json, film_json (do not edit)
   <atlas>/master/PUBLISHED.sha256    fingerprint of Published, written by the merge
   <atlas>/queue/proposals*.csv       open proposals (new, needs more, accepted), by name
   <atlas>/queue/leads*.csv           open leads, by name
   <atlas>/queue/history-merged*.csv, history-removed*.csv, history-rejected*.csv   the record, by name
-  <atlas>/queue/machine.csv          qid, maker_json, film_json (do not edit)
+  <atlas>/legacy/                    old-site values the build still carries (nobody edits these):
+      published-json.csv  filmmaker_id, film_id, maker_json, film_json;  queue-json.csv  qid, maker_json, film_json;
+      snapshot-2026-11-08.json  the frozen reference tables (land names and links, countries, verification notes)
 
 Every file people open stays under GitHub's 1 MB file-view limit (connectors cannot open larger files). A file covers a
 range of names by their first two letters: "leads-a-l.csv" is names from A to L, "proposals.csv" is every name. When a
@@ -34,6 +35,12 @@ LIMIT = 700 * 1024
 RANGE = r'(?:-([a-z]{1,2})-([a-z]{1,2}))?'
 QUEUE_FILE = re.compile(r'^(proposals|leads|history(?:-[a-z]+)?)' + RANGE + r'\.csv$')
 csv.field_size_limit(10 ** 8)
+
+def legacy(path, name):
+    """Old-site files: atlas/legacy/<name>, or where they were kept before 15 Nov 2026."""
+    new = os.path.join(path, 'legacy', name)
+    old = {'published-json.csv': ('master', 'machine.csv'), 'queue-json.csv': ('queue', 'machine.csv')}[name]
+    return new if os.path.exists(new) or not os.path.exists(os.path.join(path, *old)) else os.path.join(path, *old)
 
 def is_folder(path):
     return os.path.isdir(os.path.join(path, 'master'))
@@ -157,7 +164,7 @@ def master_rows(path):
             makers[m['filmmaker_id']] = m
     for f in files_of(d, 'films'):
         films += read(f'{d}/{f}')
-    mach = {(m['filmmaker_id'], m['film_id']): m for m in read(f'{d}/machine.csv')}
+    mach = {(m['filmmaker_id'], m['film_id']): m for m in read(legacy(path, 'published-json.csv'))}
     missing = sorted({f['filmmaker_id'] for f in films} - set(makers))
     unused = sorted(set(makers) - {f['filmmaker_id'] for f in films})
     if missing or unused:
@@ -192,7 +199,7 @@ def queue_rows(path, makers, film_makers=None):
             r = {k: (v or '').strip() for k, v in r.items() if k}
             if any(r.get(c) for c in QCOLS if c != 'qid'):
                 rows.append(r)
-    mach = {m['qid']: m for m in read(f'{d}/machine.csv')}
+    mach = {m['qid']: m for m in read(legacy(path, 'queue-json.csv'))}
     seen, nxt = set(), max([qnum(r.get('qid')) or 0 for r in rows] + [0]) + 1
     for r in rows:                               # blank or repeated ids get the next number
         if not qnum(r.get('qid')) or r['qid'] in seen:
@@ -290,7 +297,11 @@ def save(wb, path):
     files['filmmakers'] = write_split(d, 'filmmakers', MAKER_COLS, list(makers.values()), lambda m: key(m['name']))
     files['films'] = write_split(d, 'films', ['row', 'filmmaker_id'] + FILM_COLS, pub,
                                  lambda r: key(makers[r['filmmaker_id']]['name']))
-    write(f'{d}/machine.csv', ['filmmaker_id', 'film_id'] + MACH, pub)
+    os.makedirs(os.path.join(path, 'legacy'), exist_ok=True)
+    for old in (f'{d}/machine.csv', f'{q}/machine.csv'):
+        if os.path.exists(old):
+            os.remove(old)
+    write(legacy(path, 'published-json.csv'), ['filmmaker_id', 'film_id'] + MACH, pub)
     with open(f'{d}/lists.csv', 'w', newline='', encoding='utf-8') as fh:
         w = csv.writer(fh, lineterminator='\n')
         for r in wb['Lists'].iter_rows(values_only=True):
@@ -312,7 +323,7 @@ def save(wb, path):
         m = QUEUE_FILE.match(f)
         if m and m.group(1) not in groups:
             os.remove(os.path.join(q, f))
-    write(f'{q}/machine.csv', ['qid'] + MACH, [r for r in queue if r.get('maker_json') or r.get('film_json')])
+    write(legacy(path, 'queue-json.csv'), ['qid'] + MACH, [r for r in queue if r.get('maker_json') or r.get('film_json')])
     return files
 
 if __name__ == '__main__':
