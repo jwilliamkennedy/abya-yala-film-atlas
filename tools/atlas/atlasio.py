@@ -179,7 +179,7 @@ def master_rows(path):
         lists = list(csv.reader(fh))
     return rows, lists
 
-def queue_rows(path, makers):
+def queue_rows(path, makers, film_makers=None):
     d = os.path.join(path, 'queue')
     rows = []
     for f in sorted(os.listdir(d)):
@@ -203,6 +203,13 @@ def queue_rows(path, makers):
         # add film rows may leave the filmmaker columns blank: they are copied from Published
         if r.get('queue_action') == 'add film' and r.get('queue_target') in makers and not r.get('name'):
             r.update(makers[r['queue_target']])
+        # correct and remove rows may leave filmmaker_id blank: it is the target, or the target film's only director
+        if r.get('queue_action') in ('correct', 'remove') and not r.get('filmmaker_id'):
+            t = r.get('queue_target', '')
+            if t in makers:
+                r['filmmaker_id'] = t
+            elif len(set((film_makers or {}).get(t, []))) == 1:
+                r['filmmaker_id'] = film_makers[t][0]
         r.update({c: mach.get(r['qid'], {}).get(c, '') for c in MACH})
     return rows
 
@@ -222,7 +229,10 @@ def load(path):
     makers = {}
     for r in pub:
         makers.setdefault(r['filmmaker_id'], {c: r.get(c, '') for c in MAKER_COLS})
-    queue = queue_rows(path, makers)
+    film_makers = {}
+    for r in pub:
+        film_makers.setdefault(r['film_id'], []).append(r['filmmaker_id'])
+    queue = queue_rows(path, makers, film_makers)
     wb = Workbook(); wb.remove(wb.active)
     sheet(wb, 'Published', PUBLISHED_COLS, pub, number)
     sheet(wb, 'Queue', QUEUE_COLS + ['qid'], queue,
