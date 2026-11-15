@@ -71,7 +71,7 @@ try{(function(){
 /* ==== reading-theme.js ==== */
 try{(function(){
 'use strict';
-(()=>{const themes={paper:{name:'Sage & cochineal',paper:'#f3f1e9',ink:'#26231c',muted:'#6b6559',accent:'#3f5466',wash:'#ede9de',line:'#d0cec6'},night:{name:'Starry night',paper:'#0f1830',ink:'#f2e8cf',muted:'#b9c1d6',accent:'#e08a6e',wash:'#1c2b48',line:'#33456a'}};let active='paper';try{if(themes[localStorage.getItem('atlas-reading-theme')])active=localStorage.getItem('atlas-reading-theme');}catch{}
+(()=>{const themes={paper:{name:'Sage & cochineal',paper:'#eceef0',ink:'#1e2124',muted:'#5d6267',accent:'#3f5466',wash:'#e3e5e8',line:'#c9cbcd'},night:{name:'Starry night',paper:'#0f1830',ink:'#f2e8cf',muted:'#b9c1d6',accent:'#e08a6e',wash:'#1c2b48',line:'#33456a'}};let active='paper';try{if(themes[localStorage.getItem('atlas-reading-theme')])active=localStorage.getItem('atlas-reading-theme');}catch{}
  try{if(localStorage.getItem('atlas-palette-pass')!=='88'){active='paper';localStorage.setItem('atlas-reading-theme','paper');localStorage.setItem('atlas-palette-pass','88');}}catch{}
  function apply(id,persist=false){if(!themes[id])return;active=id;const t=themes[id];document.documentElement.dataset.readingTheme=id;for(const k of ['paper','ink','muted','accent','wash','line'])document.documentElement.style.setProperty('--reading-'+k,t[k]);document.querySelectorAll('[data-reading-theme-choice]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.readingThemeChoice===id)));if(persist)try{localStorage.setItem('atlas-reading-theme',id);}catch{}const label=document.querySelector('#palette-choice-label');if(label)label.textContent=t.name;}
  apply(active);
