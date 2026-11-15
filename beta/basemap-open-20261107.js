@@ -31,7 +31,7 @@ const style={version:8,
   {id:'cover-sand',type:'fill',source:'omt','source-layer':'landcover',filter:['==',['get','class'],'sand'],paint:{'fill-color':'#efece3','fill-opacity':.5}},
   {id:'cover-ice',type:'fill',source:'omt','source-layer':'landcover',filter:['==',['get','class'],'ice'],paint:{'fill-color':'#fcfcfb','fill-opacity':.9}},
   {id:'relief',type:'hillshade',source:'dem',paint:{'hillshade-exaggeration':.5,'hillshade-shadow-color':'#4b4336','hillshade-highlight-color':'#fffdf3','hillshade-accent-color':'#5a5040','hillshade-illumination-direction':315}},
-  {id:'water',type:'fill',source:'omt','source-layer':'water',paint:{'fill-color':'#a7bfd0'}},
+  {id:'water',type:'fill',source:'omt','source-layer':'water',paint:{'fill-color':'#94afc4'}},
   {id:'rivers',type:'line',source:'omt','source-layer':'waterway',minzoom:4,paint:{'line-color':'#8eabc0','line-opacity':.9,'line-width':['interpolate',['linear'],['zoom'],4,.35,8,.9,12,1.8]}},
   {id:'roads',type:'line',source:'omt','source-layer':'transportation',minzoom:6,filter:['in',['get','class'],['literal',['motorway','trunk','primary']]],paint:{'line-color':'#fbfaf6','line-opacity':.5,'line-width':['interpolate',['linear'],['zoom'],6,.3,10,1,14,2.2]}}
  ]};
