@@ -126,16 +126,15 @@ def check_queue(rows, wb, published_rows):
     return errors, notes
 
 if __name__ == '__main__':
-    from openpyxl import load_workbook
-    import build
-    wb = load_workbook(sys.argv[1], data_only=True)
+    import build, atlasio
+    wb = atlasio.load(sys.argv[1])
     pub = build.read_sheet(wb['Published'], PUBLISHED_COLS)
     q = build.read_sheet(wb['Queue'], QUEUE_COLS)
     e1, n1 = check_published(pub, wb)
     import os, merge
-    fp_file = os.path.join(os.path.dirname(os.path.abspath(sys.argv[1])), 'PUBLISHED.sha256')
+    fp_file = atlasio.fp_path(sys.argv[1])
     if os.path.exists(fp_file):
-        fp = merge.fingerprint(load_workbook(sys.argv[1], read_only=True)['Published'])
+        fp = merge.fingerprint(wb['Published'])
         if fp != open(fp_file).read().strip():
             e1.append('Published was changed outside the merge step. Proposals go in the Queue; only tools/atlas/merge.py changes Published.')
     e2, n2 = check_queue(q, wb, pub)
