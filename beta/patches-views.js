@@ -328,3 +328,44 @@ const tidy=()=>{const s=document.getElementById('film-browser'),pg=document.getE
   s.classList.toggle('single-page',pg.options.length<=1&&!lettered);};
 if(index){new MutationObserver(tidy).observe(index,{subtree:true,childList:true,attributes:true,attributeFilter:['aria-pressed']});tidy();}
 }).call(window);}catch(e){setTimeout(function(){throw e;});}
+
+/* ==== pinch-zoom.js (2026-11-15) ==== */
+try{(function(){
+'use strict';
+// Pinch to zoom the map everywhere on the map panel, never the page.
+// · Chrome/Firefox/Edge send a trackpad pinch as ctrl+wheel: over the map's own controls and cards it used to
+//   zoom the whole page; it is now handed to the map.
+// · Safari (Mac trackpad, and iPhone/iPad when the pinch starts on a control) sends gesture events instead of
+//   ctrl+wheel: they used to zoom the page; they now zoom the map about the pinch centre.
+// Touch pinches that start on the map itself are already handled by the map (d3) and are left alone.
+const panel=document.querySelector('.map-panel'),atlas=document.getElementById('atlas');
+if(!panel||!atlas)return;
+const forward=(x,y,deltaY)=>atlas.dispatchEvent(new WheelEvent('wheel',{bubbles:true,cancelable:true,clientX:x,clientY:y,deltaY,deltaMode:0,ctrlKey:true}));
+panel.addEventListener('wheel',e=>{
+  if(!e.ctrlKey||atlas.contains(e.target)||!e.isTrusted)return;
+  e.preventDefault();e.stopImmediatePropagation();forward(e.clientX,e.clientY,e.deltaY);
+},{passive:false,capture:true});
+let touches=0,last=1;
+document.addEventListener('touchstart',e=>{touches=e.touches.length;},{capture:true,passive:true});
+document.addEventListener('touchend',e=>{touches=e.touches.length;},{capture:true,passive:true});
+document.addEventListener('touchcancel',e=>{touches=e.touches.length;},{capture:true,passive:true});
+const inPanel=e=>panel.contains(e.target);
+const handledByMap=()=>touches>=2;// touch pinches: the map's own handler, or the relay below
+// A two-finger pinch that starts on a control or card over the map (outside the map's own surface) is relayed to the map.
+const dist=(a,b)=>Math.hypot(a.clientX-b.clientX,a.clientY-b.clientY);let relay=null;
+panel.addEventListener('touchstart',e=>{if(e.touches.length===2&&!atlas.contains(e.target)){relay={d:dist(e.touches[0],e.touches[1])};}},{passive:true});
+panel.addEventListener('touchmove',e=>{if(!relay||e.touches.length!==2)return;e.preventDefault();
+  const [a,b]=e.touches,d=dist(a,b),ratio=d/(relay.d||d);relay.d=d;if(!isFinite(ratio)||ratio<=0||Math.abs(ratio-1)<.002)return;
+  forward((a.clientX+b.clientX)/2,(a.clientY+b.clientY)/2,-Math.log2(ratio)/.018);},{passive:false});
+const relayEnd=e=>{if(e.touches.length<2)relay=null;};
+panel.addEventListener('touchend',relayEnd,{passive:true});panel.addEventListener('touchcancel',relayEnd,{passive:true});
+panel.addEventListener('gesturestart',e=>{if(!inPanel(e))return;e.preventDefault();last=e.scale||1;},{passive:false});
+panel.addEventListener('gesturechange',e=>{
+  if(!inPanel(e))return;e.preventDefault();if(handledByMap(e)){last=e.scale||1;return;}
+  const s=e.scale||1,ratio=s/(last||1);last=s;if(!isFinite(ratio)||ratio<=0||Math.abs(ratio-1)<.001)return;
+  // the map turns ctrl+wheel into zoom as 2^(-deltaY*0.018): solve for the deltaY that gives this ratio
+  const r=atlas.getBoundingClientRect(),x=e.clientX||r.left+r.width/2,y=e.clientY||r.top+r.height/2;
+  forward(x,y,-Math.log2(ratio)/.018);
+},{passive:false});
+panel.addEventListener('gestureend',e=>{if(inPanel(e))e.preventDefault();last=1;},{passive:false});
+}).call(window);}catch(e){setTimeout(function(){throw e;});}

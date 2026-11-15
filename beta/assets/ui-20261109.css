@@ -532,3 +532,5 @@ body.land-tinted #map-selection-focus{border-left-color:var(--land)!important;bo
 :root:not(#_):not(#__) header .brand-title small,:root:not(#_):not(#__) header .brand small{font-family:var(--ui-sans)!important}
 :root:not(#_):not(#__) header :is(nav,.site-nav) :is(a,summary){font-family:var(--ui-sans)!important;font-size:15px!important}
 :root:not([data-reading-theme=night]) #atlas .land-word .land-reference-dot{fill:var(--ui-ink)!important;fill-opacity:.5;stroke:none!important}
+/* pinch over the map's controls and cards zooms the map, not the page (one-finger scrolling still works) */
+body.atlas-page .map-panel,body.atlas-page .map-panel :not(#atlas,#atlas *){touch-action:pan-x pan-y}
