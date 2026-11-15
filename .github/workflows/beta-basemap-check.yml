@@ -55,7 +55,7 @@ jobs:
                   # hover a territory at the 6x view, then open Layers at overview
                   await run(pg, base, 'hover_6x', 0)
                   for _ in range(3):
-                      await pg.click('#zoom-in'); await pg.wait_for_timeout(900)
+                      await pg.evaluate("document.getElementById('zoom-in').click()"); await pg.wait_for_timeout(900)
                   await pg.wait_for_timeout(5000)
                   box = await pg.evaluate("(()=>{const r=document.getElementById('atlas').getBoundingClientRect();return [r.x,r.y,r.width,r.height]})()")
                   out['hover_shapes'] = 0
