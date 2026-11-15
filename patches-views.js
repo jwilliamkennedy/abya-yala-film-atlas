@@ -369,3 +369,27 @@ panel.addEventListener('gesturechange',e=>{
 },{passive:false});
 panel.addEventListener('gestureend',e=>{if(inPanel(e))e.preventDefault();last=1;},{passive:false});
 }).call(window);}catch(e){setTimeout(function(){throw e;});}
+
+/* ==== minimal-pass.js (2026-11-15) ==== */
+try{(function(){
+'use strict';
+// One map toolbar: a Constellations button joins the toolbar and opens the featured-constellation card.
+const addProxy=(tries)=>{const actions=document.querySelector('.map-toolbar .map-actions'),weave=document.getElementById('featured-weave');
+if(!actions||!weave){if(tries<60)setTimeout(()=>addProxy(tries+1),250);return;}
+if(!actions.querySelector('.fw-proxy')){
+  const pill=weave.querySelector('.fw-pill');
+  const b=document.createElement('button');b.type='button';b.className='fw-proxy';b.innerHTML='<span aria-hidden="true">✦</span> Constellations';
+  const sync=()=>b.setAttribute('aria-expanded',String(!weave.classList.contains('is-collapsed')));
+  b.addEventListener('click',()=>{(weave.querySelector('.fw-pill')||pill)?.click();setTimeout(sync,50);});
+  new MutationObserver(sync).observe(weave,{attributes:true,attributeFilter:['class']});sync();
+  actions.appendChild(b);
+}};
+addProxy(0);
+// Index rows: a picture that fails to load leaves no initials box; the picture's film moves into the tooltip.
+const index=document.getElementById('index');
+if(index){
+  index.addEventListener('error',e=>{const t=e.target;if(t.tagName==='IMG'){const th=t.closest('.film-thumb');if(th)th.classList.add('no-art');}},true);
+  const tidy=()=>{for(const c of index.querySelectorAll('.entry .maker-thumbnail-caption:not([data-moved])')){c.dataset.moved='1';const btn=c.closest('.entry-button');if(btn&&!btn.title)btn.title=c.textContent.trim();}};
+  new MutationObserver(tidy).observe(index,{subtree:true,childList:true});tidy();
+}
+}).call(window);}catch(e){setTimeout(function(){throw e;});}

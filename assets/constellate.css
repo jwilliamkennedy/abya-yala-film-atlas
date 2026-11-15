@@ -1683,3 +1683,10 @@ body.weave-tracing.trace-themed #atlas .land-word:not(.trace-theme){opacity:.22!
 @media (max-width:700px){#weave-trace-layer .wt-mode{left:8px;right:8px;transform:none;gap:4px}#weave-trace-layer .wt-mode button{padding:0 10px}#weave-trace-layer .wt-mode .wt-theme-pick{flex:1 1 auto;min-width:0;max-width:none}#weave-trace-layer .wt-switch{padding:0 2px}}
 /* Draw result on phones: the whole card scrolls so every land crossed is listed, not two squeezed rows */
 @media (max-width:700px){#weave-trace-layer .wt-result{top:8px;left:8px;right:8px;width:auto;max-height:calc(100% - 16px);display:block;overflow:auto;-webkit-overflow-scrolling:touch}#weave-trace-layer .wt-result ol{max-height:none;overflow:visible}#weave-trace-layer .wt-actions{position:sticky;bottom:-16px;margin:0 -18px -16px;padding:10px 18px 14px;background:#f4f5f6;border-top:1px solid rgba(28,39,48,.12)}}
+
+/* ── Flat start screen (2026-11-15): no cards inside the card; spacing separates the three ways in ── */
+html body #weave-start .ws-paths{gap:36px!important}
+html body #weave-start .ws-path{border:0!important;background:transparent!important;box-shadow:none!important;padding:0!important}
+html body #weave-start .ws-trace{background:transparent!important;padding:0!important;border:0!important}
+html body #weave-start .ws-how b{background:var(--ui-accent)!important;color:var(--ui-accent-ink)!important}
+html body #weave-start .ws-current,html body #weave-start .ws-saved{border-width:1px 0 0!important;border-radius:0!important;background:transparent!important}
