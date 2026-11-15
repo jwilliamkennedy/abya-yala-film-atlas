@@ -2,8 +2,8 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-15",
  "license": "See data.html",
- "films_on_public_map": 1710,
- "film_entries": 1715,
+ "films_on_public_map": 1816,
+ "film_entries": 1823,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -405,7 +405,7 @@
     "match": "exact",
     "indigenous": "no",
     "note": "",
-    "films": 28
+    "films": 30
    },
    {
     "label": "Portuguese",
@@ -513,7 +513,7 @@
     "match": "exact",
     "indigenous": "yes",
     "note": "",
-    "films": 1
+    "films": 2
    },
    {
     "label": "Chinuk Wawa",
@@ -585,7 +585,7 @@
     "match": "group",
     "indigenous": "yes",
     "note": "Credits say huave without a variety",
-    "films": 1
+    "films": 2
    },
    {
     "label": "Innu-aimun",
@@ -714,6 +714,54 @@
    ],
    "form": "Documentary",
    "length": "Feature"
+  },
+  "Q20261114-97-F1": {
+   "title": "Bocamina",
+   "year": 2019,
+   "makers": [
+    {
+     "id": "DIR-0007",
+     "name": "Miguel Hilari"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261114-97-F2": {
+   "title": "Cerro Saturno",
+   "year": 2022,
+   "makers": [
+    {
+     "id": "DIR-0007",
+     "name": "Miguel Hilari"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261114-97-F3": {
+   "title": "Después de un incendio",
+   "year": 2023,
+   "makers": [
+    {
+     "id": "DIR-0007",
+     "name": "Miguel Hilari"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
   },
   "FILM-0009": {
    "title": "Qulqi chaleco : Chaleco de plata = Vest made of money",
@@ -976,6 +1024,111 @@
    "form": "Documentary",
    "length": "Feature"
   },
+  "Q20261114-92-F1": {
+   "title": "Nós e a cidade",
+   "year": 2009,
+   "makers": [
+    {
+     "id": "DIR-0014",
+     "name": "Ariel Kuaray Ortega"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "FILM-0056": {
+   "title": "Tava - A Casa de Pedra",
+   "year": null,
+   "makers": [
+    {
+     "id": "DIR-0045",
+     "name": "Patrícia Ferreira Pará Yxapy"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Cosmology and Origin Stories",
+    "Memory and Oral History"
+   ],
+   "primary_theme": "Cosmology and Origin Stories",
+   "families": [
+    "Knowledge and Continuity"
+   ],
+   "form": "Documentary",
+   "length": "Feature"
+  },
+  "FILM-0053": {
+   "title": "Mbya Mirim",
+   "year": null,
+   "makers": [
+    {
+     "id": "DIR-0045",
+     "name": "Patrícia Ferreira Pará Yxapy"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "FILM-0055": {
+   "title": "No caminho com Mario",
+   "year": null,
+   "makers": [
+    {
+     "id": "DIR-0045",
+     "name": "Patrícia Ferreira Pará Yxapy"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Youth"
+   ],
+   "primary_theme": "Youth",
+   "families": [
+    "Lives and Relations"
+   ],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261114-92-F5": {
+   "title": "Mbyá rembiapó nhemombe'u / Arte Mbyá-Guarani e suas histórias",
+   "year": 2015,
+   "makers": [
+    {
+     "id": "DIR-0014",
+     "name": "Ariel Kuaray Ortega"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261114-92-F6": {
+   "title": "Xadalu e o jaguaretê",
+   "year": 2019,
+   "makers": [
+    {
+     "id": "DIR-0014",
+     "name": "Ariel Kuaray Ortega"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
   "FILM-0018": {
    "title": "Ayani por Ayani",
    "year": 2010,
@@ -1124,6 +1277,38 @@
    "form": "Documentary",
    "length": "Feature"
   },
+  "Q20261114-89-F3": {
+   "title": "Pi’õnhitsi: Mulheres Xavante sem Nome",
+   "year": 2009,
+   "makers": [
+    {
+     "id": "DIR-0020",
+     "name": "Divino Tserewahú"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "Q20261114-89-F5": {
+   "title": "Divino: sua Alma, sua Lente",
+   "year": 2025,
+   "makers": [
+    {
+     "id": "DIR-0020",
+     "name": "Divino Tserewahú"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
+  },
   "FILM-0027": {
    "title": "Ava Yvy Vera – A Terra do Povo do Raio",
    "year": 2016,
@@ -1158,6 +1343,10 @@
     {
      "id": "DIR-0021",
      "name": "Dulcídio Gomes"
+    },
+    {
+     "id": "DIR-0022",
+     "name": "Edina Ximenes"
     },
     {
      "id": "DIR-0023",
@@ -1835,22 +2024,6 @@
    "form": null,
    "length": null
   },
-  "FILM-0053": {
-   "title": "Mbya Mirim",
-   "year": null,
-   "makers": [
-    {
-     "id": "DIR-0045",
-     "name": "Patrícia Ferreira Pará Yxapy"
-    }
-   ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
-  },
   "FILM-0054": {
    "title": "Nhemongueta Kunhã Mbaraete",
    "year": 2020,
@@ -1872,47 +2045,6 @@
    "primary_theme": "Women and Gender",
    "families": [
     "Lives and Relations"
-   ],
-   "form": "Documentary",
-   "length": "Feature"
-  },
-  "FILM-0055": {
-   "title": "No caminho com Mario",
-   "year": null,
-   "makers": [
-    {
-     "id": "DIR-0045",
-     "name": "Patrícia Ferreira Pará Yxapy"
-    }
-   ],
-   "languages": [],
-   "themes": [
-    "Youth"
-   ],
-   "primary_theme": "Youth",
-   "families": [
-    "Lives and Relations"
-   ],
-   "form": "Documentary",
-   "length": "Short"
-  },
-  "FILM-0056": {
-   "title": "Tava - A Casa de Pedra",
-   "year": null,
-   "makers": [
-    {
-     "id": "DIR-0045",
-     "name": "Patrícia Ferreira Pará Yxapy"
-    }
-   ],
-   "languages": [],
-   "themes": [
-    "Cosmology and Origin Stories",
-    "Memory and Oral History"
-   ],
-   "primary_theme": "Cosmology and Origin Stories",
-   "families": [
-    "Knowledge and Continuity"
    ],
    "form": "Documentary",
    "length": "Feature"
@@ -1954,6 +2086,118 @@
    "families": [],
    "form": null,
    "length": null
+  },
+  "Q20261114-88-F5": {
+   "title": "Agahü: O Sal do Xingu",
+   "year": 2021,
+   "makers": [
+    {
+     "id": "DIR-0052",
+     "name": "Takumã Kuikuro"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261114-88-F7": {
+   "title": "Kugihe Kuêgü: A Hiper Doença",
+   "year": 2020,
+   "makers": [
+    {
+     "id": "DIR-0052",
+     "name": "Takumã Kuikuro"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261114-88-F8": {
+   "title": "Jogos Mundiais Indígenas",
+   "year": 2015,
+   "makers": [
+    {
+     "id": "DIR-0052",
+     "name": "Takumã Kuikuro"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261114-88-F9": {
+   "title": "Pandemia e Fake News no Alto Xingu",
+   "year": 2021,
+   "makers": [
+    {
+     "id": "DIR-0052",
+     "name": "Takumã Kuikuro"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261114-88-F10": {
+   "title": "Incêndios florestais no Alto Xingu MT",
+   "year": 2022,
+   "makers": [
+    {
+     "id": "DIR-0052",
+     "name": "Takumã Kuikuro"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261114-88-F11": {
+   "title": "Kuikuro Response to Covid-19 in Xingu",
+   "year": 2020,
+   "makers": [
+    {
+     "id": "DIR-0052",
+     "name": "Takumã Kuikuro"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261114-88-F12": {
+   "title": "Takumã Kuikuro: Covid-19 Brazil - An Amazonian perspective",
+   "year": 2021,
+   "makers": [
+    {
+     "id": "DIR-0052",
+     "name": "Takumã Kuikuro"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
   },
   "FILM-0032": {
    "title": "Antônio e Piti",
@@ -2022,6 +2266,26 @@
    "form": "Documentary",
    "length": "Feature"
   },
+  "Q20261114-87-F5": {
+   "title": "Troca de Olhares (Ashaninka / HuniKuĩ)",
+   "year": 2009,
+   "makers": [
+    {
+     "id": "DIR-0055",
+     "name": "Wewito Piyãko"
+    },
+    {
+     "id": "DIR-0056",
+     "name": "Zezinho Yube"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
+  },
   "FILM-0060": {
    "title": "Já Me Transformei em Imagem (Ma Ê Dami Xina)",
    "year": 2008,
@@ -2085,6 +2349,70 @@
    ],
    "form": null,
    "length": "Feature"
+  },
+  "Q20261114-87-F1": {
+   "title": "Xinã Bena, Novos Tempos",
+   "year": 2006,
+   "makers": [
+    {
+     "id": "DIR-0056",
+     "name": "Zezinho Yube"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "Q20261114-87-F2": {
+   "title": "Manã Bai, a história do meu pai",
+   "year": 2006,
+   "makers": [
+    {
+     "id": "DIR-0056",
+     "name": "Zezinho Yube"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261114-87-F3": {
+   "title": "Katxa Nawá",
+   "year": 2008,
+   "makers": [
+    {
+     "id": "DIR-0056",
+     "name": "Zezinho Yube"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261114-87-F4": {
+   "title": "Bimi, mestra dos kenes",
+   "year": 2009,
+   "makers": [
+    {
+     "id": "DIR-0056",
+     "name": "Zezinho Yube"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
   },
   "FILM-0061": {
    "title": "Fire Song",
@@ -3004,6 +3332,38 @@
    "form": "Fiction",
    "length": "Short"
   },
+  "Q20261114-68-F1": {
+   "title": "Inuit High Kick",
+   "year": 2009,
+   "makers": [
+    {
+     "id": "DIR-0060",
+     "name": "Alethea Arnaquq-Baril"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Experimental",
+   "length": "Short"
+  },
+  "Q20261114-68-F4": {
+   "title": "Tunniit: Retracing the Lines of Inuit Tattoos",
+   "year": 2011,
+   "makers": [
+    {
+     "id": "DIR-0060",
+     "name": "Alethea Arnaquq-Baril"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
   "FILM-0064": {
    "title": "Fast Horse",
    "year": null,
@@ -3098,6 +3458,142 @@
    ],
    "form": "Animation",
    "length": "Short"
+  },
+  "Q20261114-70-F1": {
+   "title": "Indigo",
+   "year": 2014,
+   "makers": [
+    {
+     "id": "DIR-0062",
+     "name": "Amanda Strong"
+    },
+    {
+     "id": "Q20261114-69",
+     "name": "Bracken Hanuse Corlett"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": "Short"
+  },
+  "Q20261114-70-F2": {
+   "title": "Mia’",
+   "year": 2015,
+   "makers": [
+    {
+     "id": "DIR-0062",
+     "name": "Amanda Strong"
+    },
+    {
+     "id": "Q20261114-69",
+     "name": "Bracken Hanuse Corlett"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": "Short"
+  },
+  "Q20261114-70-F3": {
+   "title": "Four Faces of the Moon",
+   "year": 2016,
+   "makers": [
+    {
+     "id": "DIR-0062",
+     "name": "Amanda Strong"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": "Short"
+  },
+  "Q20261114-70-F4": {
+   "title": "How to Steal a Canoe",
+   "year": 2016,
+   "makers": [
+    {
+     "id": "DIR-0062",
+     "name": "Amanda Strong"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Music Video",
+   "length": "Short"
+  },
+  "Q20261114-70-F5": {
+   "title": "Hipster Headdress",
+   "year": 2016,
+   "makers": [
+    {
+     "id": "DIR-0062",
+     "name": "Amanda Strong"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": null
+  },
+  "Q20261114-70-F6": {
+   "title": "Biidaaban (The Dawn Comes)",
+   "year": 2017,
+   "makers": [
+    {
+     "id": "DIR-0062",
+     "name": "Amanda Strong"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": "Short"
+  },
+  "Q20261114-70-F7": {
+   "title": "Haboolm Ksinaalgat (Soul Catcher)",
+   "year": null,
+   "makers": [
+    {
+     "id": "DIR-0062",
+     "name": "Amanda Strong"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": "Short"
+  },
+  "Q20261114-70-F8": {
+   "title": "Molly of Denali",
+   "year": null,
+   "makers": [
+    {
+     "id": "DIR-0062",
+     "name": "Amanda Strong"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": "Series"
   },
   "FILM-SRC-2023-00003": {
    "title": "I’m Just Here for the Riot",
@@ -3641,6 +4137,86 @@
    "form": "Fiction",
    "length": "Feature"
   },
+  "Q20261114-71-F1": {
+   "title": "Spin",
+   "year": 2003,
+   "makers": [
+    {
+     "id": "DIR-0082",
+     "name": "Danis Goulet"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
+  },
+  "Q20261114-71-F2": {
+   "title": "Divided by Zero",
+   "year": 2006,
+   "makers": [
+    {
+     "id": "DIR-0082",
+     "name": "Danis Goulet"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
+  },
+  "Q20261114-71-F3": {
+   "title": "Wapawekka",
+   "year": 2010,
+   "makers": [
+    {
+     "id": "DIR-0082",
+     "name": "Danis Goulet"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
+  },
+  "Q20261114-71-F4": {
+   "title": "Barefoot",
+   "year": 2012,
+   "makers": [
+    {
+     "id": "DIR-0082",
+     "name": "Danis Goulet"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
+  },
+  "Q20261114-71-F5": {
+   "title": "Wakening",
+   "year": 2013,
+   "makers": [
+    {
+     "id": "DIR-0082",
+     "name": "Danis Goulet"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
+  },
   "FILM-0074": {
    "title": "Aki",
    "year": null,
@@ -4058,7 +4634,7 @@
   },
   "FILM-0079": {
    "title": "Yintah",
-   "year": null,
+   "year": 2024,
    "makers": [
     {
      "id": "DIR-0103",
@@ -4384,6 +4960,74 @@
    "families": [],
    "form": null,
    "length": null
+  },
+  "Q20261114-66-F4": {
+   "title": "Reservation Soldiers",
+   "year": 2007,
+   "makers": [
+    {
+     "id": "DIR-0118",
+     "name": "Lisa Jackson"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "Q20261114-66-F8": {
+   "title": "Indictment: The Crimes of Shelly Chartier",
+   "year": 2017,
+   "makers": [
+    {
+     "id": "DIR-0118",
+     "name": "Lisa Jackson"
+    },
+    {
+     "id": "NEW-c46238144cea",
+     "name": "Shane Belcourt"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "Q20261114-66-F10": {
+   "title": "How a People Live",
+   "year": 2013,
+   "makers": [
+    {
+     "id": "DIR-0118",
+     "name": "Lisa Jackson"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "Q20261114-66-F12": {
+   "title": "Restoration",
+   "year": 2016,
+   "makers": [
+    {
+     "id": "DIR-0118",
+     "name": "Lisa Jackson"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
   },
   "FILM-SRC-NFB-00062": {
    "title": "The Learning Path",
@@ -6745,9 +7389,269 @@
    "form": null,
    "length": null
   },
+  "Q20261114-96-F2": {
+   "title": "Chi Rutran Amulniei ñi Nutram",
+   "year": 2016,
+   "makers": [
+    {
+     "id": "DIR-0170",
+     "name": "Francisco Huichaqueo Pérez"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261114-96-F3": {
+   "title": "Antilef, la caída del sol",
+   "year": 2009,
+   "makers": [
+    {
+     "id": "DIR-0170",
+     "name": "Francisco Huichaqueo Pérez"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261114-96-F4": {
+   "title": "Lo clandestino del paisaje",
+   "year": 2008,
+   "makers": [
+    {
+     "id": "DIR-0170",
+     "name": "Francisco Huichaqueo Pérez"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Experimental",
+   "length": "Short"
+  },
+  "Q20261114-96-F5": {
+   "title": "Mapocho Videopintura",
+   "year": 2007,
+   "makers": [
+    {
+     "id": "DIR-0170",
+     "name": "Francisco Huichaqueo Pérez"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Experimental",
+   "length": null
+  },
+  "Q20261114-96-F6": {
+   "title": "Gente Pájaro",
+   "year": 2007,
+   "makers": [
+    {
+     "id": "DIR-0170",
+     "name": "Francisco Huichaqueo Pérez"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Experimental",
+   "length": null
+  },
+  "Q20261114-96-F7": {
+   "title": "Vogos-Neoprén",
+   "year": 2006,
+   "makers": [
+    {
+     "id": "DIR-0170",
+     "name": "Francisco Huichaqueo Pérez"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": "Short"
+  },
+  "Q20261114-96-F8": {
+   "title": "El jardín del mudo",
+   "year": 2006,
+   "makers": [
+    {
+     "id": "DIR-0170",
+     "name": "Francisco Huichaqueo Pérez"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": "Short"
+  },
+  "Q20261114-96-F9": {
+   "title": "Vogos Illuminati",
+   "year": 2006,
+   "makers": [
+    {
+     "id": "DIR-0170",
+     "name": "Francisco Huichaqueo Pérez"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": "Short"
+  },
+  "Q20261114-96-F10": {
+   "title": "Ses errati",
+   "year": 2006,
+   "makers": [
+    {
+     "id": "DIR-0170",
+     "name": "Francisco Huichaqueo Pérez"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": "Short"
+  },
+  "Q20261114-96-F11": {
+   "title": "Saeta 1986",
+   "year": 2005,
+   "makers": [
+    {
+     "id": "DIR-0170",
+     "name": "Francisco Huichaqueo Pérez"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Experimental",
+   "length": "Short"
+  },
+  "Q20261114-96-F12": {
+   "title": "Palmer Cortez",
+   "year": 2005,
+   "makers": [
+    {
+     "id": "DIR-0170",
+     "name": "Francisco Huichaqueo Pérez"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": "Short"
+  },
+  "Q20261114-96-F13": {
+   "title": "Altrove semilla",
+   "year": 2005,
+   "makers": [
+    {
+     "id": "DIR-0170",
+     "name": "Francisco Huichaqueo Pérez"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Experimental",
+   "length": "Short"
+  },
+  "Q20261114-96-F14": {
+   "title": "Cadenza",
+   "year": 2005,
+   "makers": [
+    {
+     "id": "DIR-0170",
+     "name": "Francisco Huichaqueo Pérez"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": "Short"
+  },
+  "Q20261114-96-F15": {
+   "title": "Pájaro mudo",
+   "year": 2004,
+   "makers": [
+    {
+     "id": "DIR-0170",
+     "name": "Francisco Huichaqueo Pérez"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": "Short"
+  },
+  "Q20261114-96-F16": {
+   "title": "Guernica",
+   "year": 2004,
+   "makers": [
+    {
+     "id": "DIR-0170",
+     "name": "Francisco Huichaqueo Pérez"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": "Short"
+  },
+  "Q20261114-96-F1": {
+   "title": "Kuzen",
+   "year": 2016,
+   "makers": [
+    {
+     "id": "DIR-0170",
+     "name": "Francisco Huichaqueo Pérez"
+    },
+    {
+     "id": "Q20261114-72",
+     "name": "Leonel Iván Lienlaf Lienlaf"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Experimental",
+   "length": "Short"
+  },
   "FILM-0113": {
    "title": "Punalka",
-   "year": null,
+   "year": 1995,
    "makers": [
     {
      "id": "DIR-0173",
@@ -6927,6 +7831,10 @@
     {
      "id": "QM-970c76e39a",
      "name": "Silvestre Gil Zarabata"
+    },
+    {
+     "id": "QM-ac94920cb7",
+     "name": "Saúl Gil Nacoguí"
     }
    ],
    "languages": [
@@ -7335,6 +8243,10 @@
     {
      "id": "DIR-0187",
      "name": "Marbel Ina Vanegas Jusayu"
+    },
+    {
+     "id": "Q20261112-11",
+     "name": "Marbel Vanegas Jusayu"
     }
    ],
    "languages": [],
@@ -7679,6 +8591,22 @@
    "families": [],
    "form": null,
    "length": null
+  },
+  "Q20261114-35-F1": {
+   "title": "Corazón de la Tierra (Allpamamapak Shunku)",
+   "year": null,
+   "makers": [
+    {
+     "id": "DIR-0196",
+     "name": "Alberto Muenala"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": "Feature"
   },
   "FILM-0146": {
    "title": "Helena from Sarayaku (Helena Sarayaku Manta)",
@@ -10875,6 +11803,22 @@
    "form": "Documentary",
    "length": "Short"
   },
+  "Q20261114-27-F1": {
+   "title": "Kenji",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "DIR-0268",
+     "name": "Billy Luther"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "FILM-0225": {
    "title": "Fukry",
    "year": 2019,
@@ -12595,7 +13539,17 @@
      "name": "Duiren Wagua"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "Spanish",
+     "as_credited": "Spanish",
+     "glottocode": "stan1288",
+     "iso639_3": "spa",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://www.iffigoa.org/international-cinema/bila_burba"
+    }
+   ],
    "themes": [
     "Resistance Movements",
     "Sovereignty and Self-Determination",
@@ -12905,6 +13859,22 @@
    "form": "Documentary",
    "length": "Feature"
   },
+  "Q20261114-24-F1": {
+   "title": "Medicine Ball",
+   "year": 2026,
+   "makers": [
+    {
+     "id": "DIR-0336",
+     "name": "Leya Hale"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "FILM-0277": {
    "title": "Your Name Isn’t English",
    "year": 2018,
@@ -13049,6 +14019,22 @@
    ],
    "form": "Documentary",
    "length": "Short"
+  },
+  "Q20261114-25-F1": {
+   "title": "Tentsítewahkwe",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "DIR-0340",
+     "name": "Katsitsionni Fox"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
   },
   "FILM-0281": {
    "title": "Mary Two-Axe Earley: I Am Indian Again",
@@ -13638,6 +14624,22 @@
    "form": "Documentary",
    "length": "Short"
   },
+  "Q20261114-26-F1": {
+   "title": "Ivikkisartoq Kingulleq (The Last Grass Seamstress)",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "NEW-7d388cd4363a",
+     "name": "Arina Kleist"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
   "NEW-73f9e534b2d7-WORK-1": {
    "title": "Sukkaillutit Uqaruk (Say It Slowly)",
    "year": 2026,
@@ -13988,6 +14990,42 @@
    "form": null,
    "length": "Short"
   },
+  "Q20261114-86-F1": {
+   "title": "Jepotá",
+   "year": null,
+   "makers": [
+    {
+     "id": "NEW-60305ce10147",
+     "name": "Carlos Papá"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": "Feature"
+  },
+  "LEAD-20261014-001-WORK-01": {
+   "title": "LEVIATHAN Episode 8",
+   "year": 2023,
+   "makers": [
+    {
+     "id": "NEW-60305ce10147",
+     "name": "Carlos Papá"
+    },
+    {
+     "id": "LEAD-20261014-001",
+     "name": "Cristine Takuá"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Experimental",
+   "length": null
+  },
   "NEW-658f62cb5309-WORK-1": {
    "title": "Raised by the Canoe",
    "year": 2026,
@@ -14189,6 +15227,22 @@
   "NEW-dc37f3bd7a6d-FD1": {
    "title": "Bloodlines",
    "year": 2014,
+   "makers": [
+    {
+     "id": "NEW-dc37f3bd7a6d",
+     "name": "Christopher Nataanii Cegielski"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261114-28-F1": {
+   "title": "Place Where I Belong",
+   "year": 2024,
    "makers": [
     {
      "id": "NEW-dc37f3bd7a6d",
@@ -16977,6 +18031,70 @@
    "form": "Documentary",
    "length": "Feature"
   },
+  "Q20261114-67-F1": {
+   "title": "Tkaronto",
+   "year": 2007,
+   "makers": [
+    {
+     "id": "NEW-c46238144cea",
+     "name": "Shane Belcourt"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": "Feature"
+  },
+  "Q20261114-67-F2": {
+   "title": "Red Rover",
+   "year": null,
+   "makers": [
+    {
+     "id": "NEW-c46238144cea",
+     "name": "Shane Belcourt"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": "Feature"
+  },
+  "Q20261114-67-F3": {
+   "title": "Kaha:wi – The Cycle of Life",
+   "year": 2014,
+   "makers": [
+    {
+     "id": "NEW-c46238144cea",
+     "name": "Shane Belcourt"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "Q20261114-67-F4": {
+   "title": "Urban Native Girl",
+   "year": 2016,
+   "makers": [
+    {
+     "id": "NEW-c46238144cea",
+     "name": "Shane Belcourt"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Series"
+  },
   "NEW-ea9c6fdc5105-WORK-1": {
    "title": "Gâteau Girl (Pussy Pussy Pussy)",
    "year": 2024,
@@ -17893,22 +19011,6 @@
    ],
    "form": null,
    "length": "Short"
-  },
-  "LEAD-20261014-001-WORK-01": {
-   "title": "LEVIATHAN Episode 8",
-   "year": 2023,
-   "makers": [
-    {
-     "id": "LEAD-20261014-001",
-     "name": "Cristine Takuá"
-    }
-   ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": "Experimental",
-   "length": null
   },
   "LEAD-20261014-002-WORK-01": {
    "title": "Fique Viva",
@@ -20273,6 +21375,38 @@
    "form": null,
    "length": null
   },
+  "Q20261114-91-F1": {
+   "title": "Superación",
+   "year": 2010,
+   "makers": [
+    {
+     "id": "SAB2-20261014-98fc41053bfb",
+     "name": "Delia Yujra Chura"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": "Short"
+  },
+  "Q20261114-91-F2": {
+   "title": "Atipxawi",
+   "year": 2012,
+   "makers": [
+    {
+     "id": "SAB2-20261014-98fc41053bfb",
+     "name": "Delia Yujra Chura"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": "Short"
+  },
   "SAB2-20261014-e03894ef67c1-WORK-01": {
    "title": "Katary / Stand Up",
    "year": 2015,
@@ -20445,6 +21579,70 @@
    "primary_theme": null,
    "families": [],
    "form": null,
+   "length": null
+  },
+  "Q20261114-34-F1": {
+   "title": "Luchando por Nuestros Derechos – El Juicio por el Caso Peaje Quino",
+   "year": 2012,
+   "makers": [
+    {
+     "id": "SAB2-20261014-2501b24c169e",
+     "name": "Gerardo Berrocal"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "Q20261114-34-F2": {
+   "title": "Lafkenmapu Ñi Dungun",
+   "year": 2007,
+   "makers": [
+    {
+     "id": "SAB2-20261014-2501b24c169e",
+     "name": "Gerardo Berrocal"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "Q20261114-34-F3": {
+   "title": "KVKAÑWE – Pewenche Adkvnugvn (Quinquen – Autonomía Pehuenche)",
+   "year": 2010,
+   "makers": [
+    {
+     "id": "SAB2-20261014-2501b24c169e",
+     "name": "Gerardo Berrocal"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "Q20261114-34-F4": {
+   "title": "Lifko Mapu – Territorio de Aguas Limpias",
+   "year": 2010,
+   "makers": [
+    {
+     "id": "SAB2-20261014-2501b24c169e",
+     "name": "Gerardo Berrocal"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
    "length": null
   },
   "SAB2-20261014-a5b0a2b0a0f8-WORK-01": {
@@ -20707,6 +21905,27 @@
    "form": "Fiction",
    "length": null
   },
+  "LEAD-20261011-015-W1031-2": {
+   "title": "La sombra de la casa",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "LEAD-20261011-015",
+     "name": "Leyzer Chiquin"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Youth",
+    "Kinship"
+   ],
+   "primary_theme": "Youth",
+   "families": [
+    "Lives and Relations"
+   ],
+   "form": "Fiction",
+   "length": "Short"
+  },
   "Q20261113-52-F1": {
    "title": "El sueño del toro, el caballo y la serpiente",
    "year": null,
@@ -20823,6 +22042,70 @@
    "families": [],
    "form": null,
    "length": null
+  },
+  "Q20261114-90-F1": {
+   "title": "Todo lo que necesito, lo tengo a mi alrededor",
+   "year": 2022,
+   "makers": [
+    {
+     "id": "LEAD-20261031-0001",
+     "name": "Escuela de Cine y Comunicación Mapuche del Aylla Rewe Budi"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261114-90-F2": {
+   "title": "Feyentuafiyiñ Bafkence Kimvn (Valoremos el conocimiento de la Gente del Mar)",
+   "year": 2021,
+   "makers": [
+    {
+     "id": "LEAD-20261031-0001",
+     "name": "Escuela de Cine y Comunicación Mapuche del Aylla Rewe Budi"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261114-90-F3": {
+   "title": "Taiñ Rvpv (Nuestro camino)",
+   "year": 2020,
+   "makers": [
+    {
+     "id": "LEAD-20261031-0001",
+     "name": "Escuela de Cine y Comunicación Mapuche del Aylla Rewe Budi"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261114-90-F4": {
+   "title": "Pewmayiñ (Soñemos)",
+   "year": 2017,
+   "makers": [
+    {
+     "id": "LEAD-20261031-0001",
+     "name": "Escuela de Cine y Comunicación Mapuche del Aylla Rewe Budi"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": "Short"
   },
   "RESEARCH-FILM-20261031-0006-01": {
    "title": "Jiru luiai",
@@ -21048,6 +22331,22 @@
   "RESEARCH-FILM-20261031-800-NEW-348": {
    "title": "An Ode For Leviticus",
    "year": 2024,
+   "makers": [
+    {
+     "id": "DIR-0348",
+     "name": "Montana Cypress"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261114-23-F1": {
+   "title": "Becoming Buffalo",
+   "year": 2025,
    "makers": [
     {
      "id": "DIR-0348",
@@ -21297,6 +22596,22 @@
    "families": [],
    "form": null,
    "length": null
+  },
+  "Q20261114-29-F1": {
+   "title": "Pow!",
+   "year": 2025,
+   "makers": [
+    {
+     "id": "DIR-0366",
+     "name": "Joey Clift"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": "Short"
   },
   "DIR-0370-F1": {
    "title": "Ancestral Threads",
@@ -28396,6 +29711,38 @@
    "form": "Documentary",
    "length": "Short"
   },
+  "Q20261108-90-F1": {
+   "title": "Angoch tanomb / Una boda antigua",
+   "year": 1985,
+   "makers": [
+    {
+     "id": "NEW-8f08db910567",
+     "name": "Elvira Palafox Herranz"
+    }
+   ],
+   "languages": [
+    {
+     "label": "Huave",
+     "as_credited": "Huave",
+     "glottocode": "huav1256",
+     "iso639_3": "",
+     "match": "group",
+     "indigenous": true,
+     "source": "https://www.gob.mx/inpi/agenda/ciclo-de-cine-historias-de-mujeres-realizadoras-indigenas"
+    }
+   ],
+   "themes": [
+    "Memory and Oral History",
+    "Kinship"
+   ],
+   "primary_theme": "Memory and Oral History",
+   "families": [
+    "Knowledge and Continuity",
+    "Lives and Relations"
+   ],
+   "form": null,
+   "length": "Short"
+  },
   "NEW-f3320a0ced3e-WORK-1": {
    "title": "No te arrugues cuero viejo",
    "year": null,
@@ -28416,7 +29763,7 @@
     "Knowledge and Continuity"
    ],
    "form": "Documentary",
-   "length": null
+   "length": "Short"
   },
   "NEW-f3320a0ced3e-WORK-2": {
    "title": "Xhárdonix Xha",
@@ -28474,6 +29821,28 @@
    "primary_theme": null,
    "families": [],
    "form": "Animation",
+   "length": "Short"
+  },
+  "Q20261112-04-F1": {
+   "title": "No temas a la oscuridad",
+   "year": 2019,
+   "makers": [
+    {
+     "id": "NEW-f3320a0ced3e",
+     "name": "Rogelio Chicatti Villalobos"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Art, Craft and Making",
+    "Memory and Oral History"
+   ],
+   "primary_theme": "Art, Craft and Making",
+   "families": [
+    "Expression and Representation",
+    "Knowledge and Continuity"
+   ],
+   "form": "Documentary",
    "length": "Short"
   },
   "NEW-fd8667e4a685-WORK-1": {
@@ -32949,6 +34318,22 @@
    "form": "Documentary",
    "length": "Series"
   },
+  "Q20261114-99-F1": {
+   "title": "Spirit Talker",
+   "year": 2020,
+   "makers": [
+    {
+     "id": "Q20261114-07",
+     "name": "Angie-Pepper O'Bomsawin"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Series"
+  },
   "Q20261114-09-F1": {
    "title": "Wapos Bay: Lights, Camera, Action!",
    "year": 2008,
@@ -33013,6 +34398,134 @@
    "form": "Animation",
    "length": null
   },
+  "Q20261114-74-F1": {
+   "title": "Understanding the Law: The Coat",
+   "year": 1999,
+   "makers": [
+    {
+     "id": "Q20261114-13",
+     "name": "Diane Obomsawin"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": "Short"
+  },
+  "Q20261114-74-F2": {
+   "title": "Understanding the Law: The Worm",
+   "year": 2000,
+   "makers": [
+    {
+     "id": "Q20261114-13",
+     "name": "Diane Obomsawin"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": "Short"
+  },
+  "Q20261114-74-F3": {
+   "title": "Elbow Room (Distances)",
+   "year": 2002,
+   "makers": [
+    {
+     "id": "Q20261114-13",
+     "name": "Diane Obomsawin"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": "Short"
+  },
+  "Q20261114-74-F4": {
+   "title": "Here and There (Ici par ici)",
+   "year": 2006,
+   "makers": [
+    {
+     "id": "Q20261114-13",
+     "name": "Diane Obomsawin"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": "Short"
+  },
+  "Q20261114-74-F5": {
+   "title": "Vistas: Walk-in-the-Forest",
+   "year": 2009,
+   "makers": [
+    {
+     "id": "Q20261114-13",
+     "name": "Diane Obomsawin"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": "Short"
+  },
+  "Q20261114-74-F6": {
+   "title": "Kaspar (Inspired by the Life of Kaspar Hauser)",
+   "year": 2012,
+   "makers": [
+    {
+     "id": "Q20261114-13",
+     "name": "Diane Obomsawin"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": "Short"
+  },
+  "Q20261114-74-F7": {
+   "title": "La forêt",
+   "year": 2014,
+   "makers": [
+    {
+     "id": "Q20261114-13",
+     "name": "Diane Obomsawin"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": "Short"
+  },
+  "Q20261114-74-F10": {
+   "title": "Transatlantic (The One-Minute Memoir segment)",
+   "year": 2020,
+   "makers": [
+    {
+     "id": "Q20261114-13",
+     "name": "Diane Obomsawin"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": null
+  },
   "Q20261114-14-F1": {
    "title": "Shaman",
    "year": 2017,
@@ -33044,6 +34557,38 @@
    "families": [],
    "form": "Animation",
    "length": "Series"
+  },
+  "Q20261114-75-F1": {
+   "title": "The Importance of Dreaming",
+   "year": 2017,
+   "makers": [
+    {
+     "id": "Q20261114-16",
+     "name": "Tara Audibert"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": "Short"
+  },
+  "Q20261114-75-F2": {
+   "title": "I Am the Warrior: A Residential School Story",
+   "year": 2021,
+   "makers": [
+    {
+     "id": "Q20261114-16",
+     "name": "Tara Audibert"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": "Short"
   },
   "Q20261114-17-F1": {
    "title": "Nunavut Animation Lab: Qalupalik",
@@ -33156,6 +34701,282 @@
    "families": [],
    "form": "Documentary",
    "length": null
+  },
+  "QM-ff8a1995d3-M1": {
+   "title": "Oc ni temiki (Sigo soñando)",
+   "year": 2025,
+   "makers": [
+    {
+     "id": "QM-ff8a1995d3",
+     "name": "Misael Alva"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261112-11-F1": {
+   "title": "Pawa",
+   "year": 2026,
+   "makers": [
+    {
+     "id": "Q20261112-11",
+     "name": "Marbel Vanegas Jusayu"
+    }
+   ],
+   "languages": [
+    {
+     "label": "Spanish",
+     "as_credited": "Spanish",
+     "glottocode": "stan1288",
+     "iso639_3": "spa",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://ficcifestival.com/sites/default/files/2026-05/Catalogo_Oficial_FICCI_65.pdf"
+    }
+   ],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": "Short"
+  },
+  "Q20261112-11-F2": {
+   "title": "Apotnojushi La casa del viento",
+   "year": 2026,
+   "makers": [
+    {
+     "id": "Q20261112-11",
+     "name": "Marbel Vanegas Jusayu"
+    }
+   ],
+   "languages": [
+    {
+     "label": "Wayuunaiki",
+     "as_credited": "Wayuunaiki",
+     "glottocode": "wayu1243",
+     "iso639_3": "guc",
+     "match": "exact",
+     "indigenous": true,
+     "source": "https://ficcifestival.com/sites/default/files/2026-05/Catalogo_Oficial_FICCI_65.pdf"
+    }
+   ],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261112-11-F4": {
+   "title": "Buscando las marcas del Asho’ojushi",
+   "year": 2025,
+   "makers": [
+    {
+     "id": "Q20261112-11",
+     "name": "Marbel Vanegas Jusayu"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Feature"
+  },
+  "Q20261114-84-F2": {
+   "title": "Tsõ Reptuna Ró Hã",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261114-84",
+     "name": "Emília Pewa’u Top’Tiro"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": "Short"
+  },
+  "Q20261114-85-F1": {
+   "title": "Saiti Munuti: Cantos e Encantos",
+   "year": 2025,
+   "makers": [
+    {
+     "id": "Q20261114-85",
+     "name": "Nedina Yawanawa"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261114-73-F1": {
+   "title": "Asentamiento",
+   "year": 2015,
+   "makers": [
+    {
+     "id": "Q20261114-73",
+     "name": "Seba Calfuqueo"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Experimental",
+   "length": "Short"
+  },
+  "Q20261114-73-F2": {
+   "title": "Mapu Kufüll",
+   "year": 2020,
+   "makers": [
+    {
+     "id": "Q20261114-73",
+     "name": "Seba Calfuqueo"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": "Short"
+  },
+  "Q20261114-69-F1": {
+   "title": "Ghost Food",
+   "year": 2017,
+   "makers": [
+    {
+     "id": "Q20261114-69",
+     "name": "Bracken Hanuse Corlett"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": "Short"
+  },
+  "Q20261114-64-F1": {
+   "title": "Ukaliq and Kalla Go Fishing",
+   "year": 2017,
+   "makers": [
+    {
+     "id": "Q20261114-64",
+     "name": "Nadia Mike"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": "Short"
+  },
+  "Q20261114-64-F2": {
+   "title": "Kimmirut Race",
+   "year": 2022,
+   "makers": [
+    {
+     "id": "Q20261114-64",
+     "name": "Nadia Mike"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261114-64-F3": {
+   "title": "Anaana’s Tent Season 1",
+   "year": 2018,
+   "makers": [
+    {
+     "id": "Q20261114-64",
+     "name": "Nadia Mike"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": "Series"
+  },
+  "Q20261114-64-F4": {
+   "title": "Tundra Friends",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261114-64",
+     "name": "Nadia Mike"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": "Series"
+  },
+  "Q20261114-65-F1": {
+   "title": "Beach Heart",
+   "year": 2022,
+   "makers": [
+    {
+     "id": "Q20261114-65",
+     "name": "Glenn Gear"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": "Short"
+  },
+  "Q20261114-33-F1": {
+   "title": "Warmin Arupa: Barranderas – Trabajo por Alimentos",
+   "year": 1993,
+   "makers": [
+    {
+     "id": "Q20261114-33",
+     "name": "Margarita Elvira Yupanqui"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261114-30-F1": {
+   "title": "Cleaning’s a Cakewalk",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "Q20261114-30",
+     "name": "Ryan Begay"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": "Short"
   }
  }
 }
