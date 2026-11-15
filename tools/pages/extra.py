@@ -13,7 +13,7 @@ EXTRA_CSS = '''<style>.bars{display:flex;align-items:flex-end;gap:6px;height:150
 .bars a span{width:100%;background:var(--accent);opacity:.75;border-radius:2px 2px 0 0;min-height:2px}.bars a:hover span{opacity:1}
 .tl{list-style:none;padding:0;margin:0}.tl li{display:grid;grid-template-columns:52px 1fr auto;gap:2px 12px;padding:9px 0;border-bottom:1px solid var(--line);align-items:baseline}
 .tl .y{color:var(--muted);font-size:14px}.tl .t{font:400 18px/1.3 var(--serif);color:var(--ink);border:0}.tl small{display:block;color:var(--muted);font-size:13px;grid-column:2/3}
-.scr{font:inherit;font-size:12px;border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:999px;padding:1px 10px;cursor:pointer;white-space:nowrap}.scr[aria-pressed=true]{background:var(--ink);color:var(--bg)}
+.scr{font:inherit;font-size:12px;border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:999px;padding:1px 10px;cursor:pointer;white-space:nowrap}.scr[aria-pressed=true]{background:var(--ui-accent,#3d6178);color:var(--ui-accent-ink,#fff)}
 #list li{grid-template-columns:28px 1fr auto}#list textarea{grid-column:2/4;width:100%;font:inherit;font-size:14px;padding:6px 8px;border:1px solid var(--line);border-radius:4px;background:transparent;color:var(--ink);min-height:38px}
 .mv{border:0;background:none;color:var(--muted);cursor:pointer;font-size:14px;padding:0 4px}</style>'''
 films = []

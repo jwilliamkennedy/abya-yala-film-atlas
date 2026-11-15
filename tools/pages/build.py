@@ -12,7 +12,7 @@ def sortkey(s):
     return re.sub(r'^[^a-z0-9]+', '', unicodedata.normalize('NFD', s or '').encode('ascii', 'ignore').decode().lower())
 
 CSS = '''
-:root{--ink:#1e2124;--muted:#5d6267;--accent:#3f5466;--line:rgba(30,33,36,.15);--bg:#eceef0;--card:#e4e5e6;--serif:Georgia,'Times New Roman',serif;--sans:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,Roboto,Arial,sans-serif}
+:root{--ink:#1c2730;--muted:#56636d;--accent:#3f5466;--line:rgba(28,39,48,.15);--bg:#eceef0;--card:#e4e5e6;--serif:var(--ui-serif,Georgia,serif);--sans:var(--ui-sans,system-ui,sans-serif)}
 @media (prefers-color-scheme:dark){:root{--ink:#efe6d2;--muted:#a9b3c8;--accent:#e9d9ad;--line:rgba(233,217,173,.22);--bg:#0e1729;--card:#15213a}}
 *{box-sizing:border-box}html,body{margin:0;background:var(--bg);color:var(--ink)}body{font:400 16px/1.6 var(--sans)}
 a{color:var(--accent);text-decoration:none;border-bottom:1px solid var(--line)}a:hover,a:focus-visible{border-color:var(--accent)}
@@ -24,12 +24,12 @@ main{max-width:860px;margin:0 auto;padding:30px clamp(16px,4vw,32px) 64px}
 .crumb{font-size:13px;color:var(--muted);margin:0}h1{font:400 clamp(30px,4vw,42px)/1.12 var(--serif);margin:6px 0 6px}
 .who{font-size:17px;margin:0}.lands{color:var(--muted);font-size:14px;margin:4px 0 0}.aka{color:var(--muted);font-size:14px;margin:2px 0 0}
 .actions{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 6px}.actions a,.actions button{font:inherit;font-size:14px;min-height:34px;padding:5px 14px;border:1px solid var(--line);border-radius:999px;background:transparent;color:var(--ink);cursor:pointer;display:inline-flex;align-items:center}
-.actions .primary{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.actions .primary{background:var(--ui-accent,#3d6178);color:var(--ui-accent-ink,#fff);border-color:var(--ui-accent,#3d6178)}
 h2{font:400 22px/1.2 var(--serif);margin:32px 0 8px}h2 small{font:13px var(--sans);color:var(--muted)}
 ol.films{list-style:none;margin:0;padding:0}ol.films li{display:grid;grid-template-columns:120px 1fr;gap:4px 16px;padding:14px 0;border-bottom:1px solid var(--line);scroll-margin-top:16px}
 ol.films li:target{background:var(--card)}.thumb{width:120px;aspect-ratio:16/10;object-fit:cover;background:var(--card);border-radius:3px;display:block}
 .noimg{width:120px;aspect-ratio:16/10;background:var(--card);border-radius:3px;display:flex;align-items:center;justify-content:center;font:28px var(--serif);color:var(--muted)}
-.ft{font:400 19px/1.3 var(--serif);margin:0}.ft small{font:13px var(--sans);color:var(--muted);margin-left:8px}.tags{display:flex;flex-wrap:wrap;gap:4px;margin:6px 0 0}.tags span{font-size:11.5px;border:1px solid var(--line);border-radius:999px;padding:1px 8px;color:var(--muted)}.thumbln{border:0;display:block}.fm{font-size:14px;color:var(--muted);margin:2px 0 0}.fl{font-size:13px;margin:4px 0 0;display:flex;flex-wrap:wrap;gap:4px 14px;align-items:center}.scr{font:inherit;font-size:12px;border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:999px;padding:1px 10px;cursor:pointer}.scr[aria-pressed=true]{background:var(--ink);color:var(--bg)}
+.ft{font:400 19px/1.3 var(--serif);margin:0}.ft small{font:13px var(--sans);color:var(--muted);margin-left:8px}.tags{display:flex;flex-wrap:wrap;gap:4px;margin:6px 0 0}.tags span{font-size:11.5px;border:1px solid var(--line);border-radius:999px;padding:1px 8px;color:var(--muted)}.thumbln{border:0;display:block}.fm{font-size:14px;color:var(--muted);margin:2px 0 0}.fl{font-size:13px;margin:4px 0 0;display:flex;flex-wrap:wrap;gap:4px 14px;align-items:center}.scr{font:inherit;font-size:12px;border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:999px;padding:1px 10px;cursor:pointer}.scr[aria-pressed=true]{background:var(--ui-accent,#3d6178);color:var(--ui-accent-ink,#fff)}
 ul.src{padding-left:18px;font-size:14px}ul.src li{margin:4px 0}
 .cite{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:12px 16px;font-size:14px}.cite p{margin:6px 0}.cite b{font-weight:600}
 .cite button{font:inherit;font-size:12px;border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:999px;padding:2px 10px;cursor:pointer;margin-left:6px}

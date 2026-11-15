@@ -17,7 +17,7 @@ CSS = '''<style id="site-nav-css">
 /* the header sits exactly where the map's does: brand at left, the menu right after it, same sizes */
 header{display:flex!important;flex-wrap:nowrap!important;justify-content:flex-start!important;align-items:center!important;gap:24px!important;padding:10px 28px!important;min-height:94px;box-sizing:border-box}
 header .brand{display:flex;align-items:center;gap:22px!important;flex:none;border:0;color:var(--ink)}
-header .brand>span{font:400 30px/1.1 Georgia,'Times New Roman',serif!important;letter-spacing:-.035em;color:var(--ink)}
+header .brand>span{font:400 30px/1.1 var(--ui-serif,Georgia,serif)!important;letter-spacing:-.035em;color:var(--ink)}
 header .brand small{display:block;font:500 11px/1.4 var(--sans,system-ui,sans-serif)!important;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-top:6px!important}
 header nav.primary{flex-wrap:nowrap!important;gap:0 20px!important}
 header nav.primary>a,header nav.primary .more-menu summary{font:400 15px/1 var(--sans,system-ui,sans-serif)!important;letter-spacing:normal;height:44px;display:flex;align-items:center;padding:0 2px!important;opacity:1}
@@ -77,8 +77,8 @@ def main(root):
         else:
             new = new.replace('</head>', CSS + '\n</head>', 1)
         # shared stylesheets last, after the page's own styles and site-nav-css, so the shared layer wins the cascade
-        new = new.replace('</head>', f'<link rel="stylesheet" href="{up}assets/site-menu.css?v=14"><script defer src="{up}assets/site-menu.js?v=3"></script><script defer src="{up}i18n-20261107.js?v=14"></script>\n</head>', 1)
-        new = new.replace('</head>', f'<link rel="stylesheet" href="{up}assets/ui-20261109.css?v=6"><script defer src="{up}assets/ui-20261109.js?v=3"></script>\n</head>', 1)
+        new = new.replace('</head>', f'<link rel="stylesheet" href="{up}assets/site-menu.css?v=15"><script defer src="{up}assets/site-menu.js?v=3"></script><script defer src="{up}i18n-20261107.js?v=14"></script>\n</head>', 1)
+        new = new.replace('</head>', f'<link rel="stylesheet" href="{up}assets/ui-20261109.css?v=7"><script defer src="{up}assets/ui-20261109.js?v=3"></script>\n</head>', 1)
         if new != t:
             f.write_text(new, encoding='utf-8'); n += 1
     print('header menu written on', n, 'pages')

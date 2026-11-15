@@ -1,6 +1,31 @@
 [
  {
-  "name": "ex_about",
+  "name": "p_map",
+  "path": "beta/index.html",
+  "viewport": [
+   1440,
+   900
+  ],
+  "settle": 15000,
+  "steps": []
+ },
+ {
+  "name": "p_map_select",
+  "path": "beta/index.html",
+  "viewport": [
+   1440,
+   900
+  ],
+  "settle": 15000,
+  "steps": [
+   {
+    "eval": "(()=>{const a=[...document.querySelectorAll('#atlas .land-word')].find(g=>/Maya/.test(g.textContent));a&&a.querySelector('rect').dispatchEvent(new MouseEvent('click',{bubbles:true}));})()",
+    "wait": 3000
+   }
+  ]
+ },
+ {
+  "name": "p_about",
   "path": "beta/about.html",
   "viewport": [
    1440,
@@ -10,7 +35,17 @@
   "steps": []
  },
  {
-  "name": "ex_const",
+  "name": "p_maker",
+  "path": "beta/maker/DIR-0092.html",
+  "viewport": [
+   1440,
+   900
+  ],
+  "settle": 4000,
+  "steps": []
+ },
+ {
+  "name": "p_const",
   "path": "beta/constellation.html",
   "viewport": [
    1440,
@@ -20,53 +55,18 @@
   "steps": []
  },
  {
-  "name": "ex_data",
-  "path": "beta/data.html",
-  "viewport": [
-   1440,
-   900
-  ],
-  "settle": 4000,
-  "steps": []
- },
- {
-  "name": "ex_timeline",
-  "path": "beta/timeline.html",
-  "viewport": [
-   1440,
-   900
-  ],
-  "settle": 8000,
-  "steps": []
- },
- {
-  "name": "ex_themes",
-  "path": "beta/themes.html",
-  "viewport": [
-   1440,
-   900
-  ],
-  "settle": 5000,
-  "steps": []
- },
- {
-  "name": "ex_mobile",
+  "name": "p_night",
   "path": "beta/index.html",
   "viewport": [
-   390,
-   844
+   1440,
+   900
   ],
   "settle": 15000,
-  "steps": []
- },
- {
-  "name": "ex_maker_mobile",
-  "path": "beta/maker/DIR-0092.html",
-  "viewport": [
-   390,
-   844
-  ],
-  "settle": 4000,
-  "steps": []
+  "steps": [
+   {
+    "eval": "document.querySelector('#theme-toggle,.theme-toggle,[aria-label*=theme i],[aria-label*=dark i]')?.click()",
+    "wait": 3000
+   }
+  ]
  }
 ]
