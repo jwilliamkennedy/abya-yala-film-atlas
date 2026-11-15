@@ -1,7 +1,17 @@
 [
  {
-  "name": "oat_A_current",
+  "name": "stone_map",
   "path": "beta/index.html",
+  "viewport": [
+   1440,
+   900
+  ],
+  "settle": 15000,
+  "steps": []
+ },
+ {
+  "name": "stone_map_zoom",
+  "path": "beta/index.html#view=land",
   "viewport": [
    1440,
    900
@@ -9,69 +19,39 @@
   "settle": 15000,
   "steps": [
    {
-    "eval": "(()=>{const R=document.documentElement.style;for(const [k,v] of [['--ui-paper','#f3f1e9'],['--ui-surface','#f8f6f2'],['--ui-wash','#ede9de'],['--ui-line','#d0cec6'],['--paper','#f3f1e9'],['--panel','#f8f6f2'],['--reading-paper','#f3f1e9'],['--reading-wash','#ede9de']])R.setProperty(k,v,'important');const m=window.AtlasOpenBasemap&&AtlasOpenBasemap.map;if(m){m.setPaintProperty('land','background-color','#ebe8df');m.setPaintProperty('elevation-tint','color-relief-color',['interpolate',['linear'],['elevation'],-50,'#ebe8df',0,'#ebe8df',500,'#ebe8df',1000,'#ede9de',1600,'#d2cdc2',2400,'#c2bcb4',3200,'#b5b0a9',4200,'#d7d6d3',5200,'#f6f6f5']);}})()",
-    "wait": 4000
+    "eval": "(()=>{const m=window.AtlasOpenBasemap&&AtlasOpenBasemap.map;})()",
+    "wait": 500
    }
   ]
  },
  {
-  "name": "oat_B_lighter",
-  "path": "beta/index.html",
+  "name": "stone_about",
+  "path": "beta/about.html",
   "viewport": [
    1440,
    900
   ],
-  "settle": 15000,
-  "steps": [
-   {
-    "eval": "(()=>{const R=document.documentElement.style;for(const [k,v] of [['--ui-paper','#f7f3ea'],['--ui-surface','#fbf8f2'],['--ui-wash','#efe9dc'],['--ui-line','#d8d1c2'],['--paper','#f7f3ea'],['--panel','#fbf8f2'],['--reading-paper','#f7f3ea'],['--reading-wash','#efe9dc']])R.setProperty(k,v,'important');const m=window.AtlasOpenBasemap&&AtlasOpenBasemap.map;if(m){m.setPaintProperty('land','background-color','#f1ece0');m.setPaintProperty('elevation-tint','color-relief-color',['interpolate',['linear'],['elevation'],-50,'#f1ece0',0,'#f1ece0',500,'#f1ece0',1000,'#efe9dc',1600,'#d2cdc2',2400,'#c2bcb4',3200,'#b5b0a9',4200,'#d7d6d3',5200,'#f6f6f5']);}})()",
-    "wait": 4000
-   }
-  ]
+  "settle": 4000,
+  "steps": []
  },
  {
-  "name": "oat_C_oat",
-  "path": "beta/index.html",
+  "name": "stone_maker",
+  "path": "beta/maker/DIR-0092.html",
   "viewport": [
    1440,
    900
   ],
-  "settle": 15000,
-  "steps": [
-   {
-    "eval": "(()=>{const R=document.documentElement.style;for(const [k,v] of [['--ui-paper','#f1eadb'],['--ui-surface','#f6f1e6'],['--ui-wash','#e8dfcc'],['--ui-line','#d3c7b0'],['--paper','#f1eadb'],['--panel','#f6f1e6'],['--reading-paper','#f1eadb'],['--reading-wash','#e8dfcc']])R.setProperty(k,v,'important');const m=window.AtlasOpenBasemap&&AtlasOpenBasemap.map;if(m){m.setPaintProperty('land','background-color','#e9e0cd');m.setPaintProperty('elevation-tint','color-relief-color',['interpolate',['linear'],['elevation'],-50,'#e9e0cd',0,'#e9e0cd',500,'#e9e0cd',1000,'#e8dfcc',1600,'#d2cdc2',2400,'#c2bcb4',3200,'#b5b0a9',4200,'#d7d6d3',5200,'#f6f6f5']);}})()",
-    "wait": 4000
-   }
-  ]
+  "settle": 4000,
+  "steps": []
  },
  {
-  "name": "oat_D_darker",
-  "path": "beta/index.html",
+  "name": "stone_watch",
+  "path": "beta/watch.html",
   "viewport": [
    1440,
    900
   ],
-  "settle": 15000,
-  "steps": [
-   {
-    "eval": "(()=>{const R=document.documentElement.style;for(const [k,v] of [['--ui-paper','#ebe2cf'],['--ui-surface','#f2ebdc'],['--ui-wash','#e2d6bf'],['--ui-line','#cbbd9f'],['--paper','#ebe2cf'],['--panel','#f2ebdc'],['--reading-paper','#ebe2cf'],['--reading-wash','#e2d6bf']])R.setProperty(k,v,'important');const m=window.AtlasOpenBasemap&&AtlasOpenBasemap.map;if(m){m.setPaintProperty('land','background-color','#dfd3bb');m.setPaintProperty('elevation-tint','color-relief-color',['interpolate',['linear'],['elevation'],-50,'#dfd3bb',0,'#dfd3bb',500,'#dfd3bb',1000,'#e2d6bf',1600,'#d2cdc2',2400,'#c2bcb4',3200,'#b5b0a9',4200,'#d7d6d3',5200,'#f6f6f5']);}})()",
-    "wait": 4000
-   }
-  ]
- },
- {
-  "name": "oat_E_toasted",
-  "path": "beta/index.html",
-  "viewport": [
-   1440,
-   900
-  ],
-  "settle": 15000,
-  "steps": [
-   {
-    "eval": "(()=>{const R=document.documentElement.style;for(const [k,v] of [['--ui-paper','#e4d8c1'],['--ui-surface','#ece3d0'],['--ui-wash','#dbcdb1'],['--ui-line','#c2b190'],['--paper','#e4d8c1'],['--panel','#ece3d0'],['--reading-paper','#e4d8c1'],['--reading-wash','#dbcdb1']])R.setProperty(k,v,'important');const m=window.AtlasOpenBasemap&&AtlasOpenBasemap.map;if(m){m.setPaintProperty('land','background-color','#d4c5a6');m.setPaintProperty('elevation-tint','color-relief-color',['interpolate',['linear'],['elevation'],-50,'#d4c5a6',0,'#d4c5a6',500,'#d4c5a6',1000,'#dbcdb1',1600,'#d2cdc2',2400,'#c2bcb4',3200,'#b5b0a9',4200,'#d7d6d3',5200,'#f6f6f5']);}})()",
-    "wait": 4000
-   }
-  ]
+  "settle": 5000,
+  "steps": []
  }
 ]

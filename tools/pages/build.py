@@ -12,7 +12,7 @@ def sortkey(s):
     return re.sub(r'^[^a-z0-9]+', '', unicodedata.normalize('NFD', s or '').encode('ascii', 'ignore').decode().lower())
 
 CSS = '''
-:root{--ink:#26231c;--muted:#6b6559;--accent:#3f5466;--line:rgba(38,35,28,.15);--bg:#f3f1e9;--card:#e8e7e2;--serif:Georgia,'Times New Roman',serif;--sans:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,Roboto,Arial,sans-serif}
+:root{--ink:#1e2124;--muted:#5d6267;--accent:#3f5466;--line:rgba(30,33,36,.15);--bg:#eceef0;--card:#e4e5e6;--serif:Georgia,'Times New Roman',serif;--sans:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,Roboto,Arial,sans-serif}
 @media (prefers-color-scheme:dark){:root{--ink:#efe6d2;--muted:#a9b3c8;--accent:#e9d9ad;--line:rgba(233,217,173,.22);--bg:#0e1729;--card:#15213a}}
 *{box-sizing:border-box}html,body{margin:0;background:var(--bg);color:var(--ink)}body{font:400 16px/1.6 var(--sans)}
 a{color:var(--accent);text-decoration:none;border-bottom:1px solid var(--line)}a:hover,a:focus-visible{border-color:var(--accent)}

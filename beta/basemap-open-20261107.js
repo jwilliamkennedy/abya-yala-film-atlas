@@ -22,18 +22,18 @@ const style={version:8,
   dem:{type:'raster-dem',tiles:['https://tiles.mapterhorn.com/{z}/{x}/{y}.webp'],tileSize:512,maxzoom:12,encoding:'terrarium'}
  },
  layers:[
-  {id:'land',type:'background',paint:{'background-color':'#ebe8df'}},
+  {id:'land',type:'background',paint:{'background-color':'#e4e5e6'}},
   {id:'elevation-tint',type:'color-relief',source:'dem',paint:{'color-relief-opacity':.92,'color-relief-color':['interpolate',['linear'],['elevation'],
-    -50,'#d9ddd3',0,'#d9ddd2',150,'#dcdfd3',500,'#e1e1d5',1000,'#dfdcd0',1600,'#d2cdc2',2400,'#c2bcb4',3200,'#b5b0a9',4200,'#d7d6d3',5200,'#f6f6f5']}},
-  {id:'cover-wood',type:'fill',source:'omt','source-layer':'landcover',filter:['==',['get','class'],'wood'],paint:{'fill-color':'#cfd0c1','fill-opacity':['interpolate',['linear'],['zoom'],1,.18,6,.28,10,.34]}},
-  {id:'cover-grass',type:'fill',source:'omt','source-layer':'landcover',filter:['==',['get','class'],'grass'],paint:{'fill-color':'#e1dfd2','fill-opacity':.22}},
-  {id:'cover-wet',type:'fill',source:'omt','source-layer':'landcover',filter:['==',['get','class'],'wetland'],paint:{'fill-color':'#cdd6da','fill-opacity':.35}},
-  {id:'cover-sand',type:'fill',source:'omt','source-layer':'landcover',filter:['==',['get','class'],'sand'],paint:{'fill-color':'#efece3','fill-opacity':.5}},
-  {id:'cover-ice',type:'fill',source:'omt','source-layer':'landcover',filter:['==',['get','class'],'ice'],paint:{'fill-color':'#fcfcfb','fill-opacity':.9}},
-  {id:'relief',type:'hillshade',source:'dem',paint:{'hillshade-exaggeration':.5,'hillshade-shadow-color':'#4b4336','hillshade-highlight-color':'#fffdf3','hillshade-accent-color':'#5a5040','hillshade-illumination-direction':315}},
+    -50,'#d5d8db',0,'#d5d7da',150,'#d6d9dc',500,'#dadbdc',1000,'#d6d7d9',1600,'#c8cacc',2400,'#babbbc',3200,'#aeafb0',4200,'#d4d5d6',5200,'#f5f5f6']}},
+  {id:'cover-wood',type:'fill',source:'omt','source-layer':'landcover',filter:['==',['get','class'],'wood'],paint:{'fill-color':'#c7c8ca','fill-opacity':['interpolate',['linear'],['zoom'],1,.18,6,.28,10,.34]}},
+  {id:'cover-grass',type:'fill',source:'omt','source-layer':'landcover',filter:['==',['get','class'],'grass'],paint:{'fill-color':'#d8d9db','fill-opacity':.22}},
+  {id:'cover-wet',type:'fill',source:'omt','source-layer':'landcover',filter:['==',['get','class'],'wetland'],paint:{'fill-color':'#d0d3d7','fill-opacity':.35}},
+  {id:'cover-sand',type:'fill',source:'omt','source-layer':'landcover',filter:['==',['get','class'],'sand'],paint:{'fill-color':'#e8e9ea','fill-opacity':.5}},
+  {id:'cover-ice',type:'fill',source:'omt','source-layer':'landcover',filter:['==',['get','class'],'ice'],paint:{'fill-color':'#fbfbfc','fill-opacity':.9}},
+  {id:'relief',type:'hillshade',source:'dem',paint:{'hillshade-exaggeration':.5,'hillshade-shadow-color':'#3b4046','hillshade-highlight-color':'#fffdf3','hillshade-accent-color':'#464d54','hillshade-illumination-direction':315}},
   {id:'water',type:'fill',source:'omt','source-layer':'water',paint:{'fill-color':'#5f8199'}},
   {id:'rivers',type:'line',source:'omt','source-layer':'waterway',minzoom:4,paint:{'line-color':'#5f8199','line-opacity':.9,'line-width':['interpolate',['linear'],['zoom'],4,.35,8,.9,12,1.8]}},
-  {id:'roads',type:'line',source:'omt','source-layer':'transportation',minzoom:6,filter:['in',['get','class'],['literal',['motorway','trunk','primary']]],paint:{'line-color':'#fbfaf6','line-opacity':.5,'line-width':['interpolate',['linear'],['zoom'],6,.3,10,1,14,2.2]}}
+  {id:'roads',type:'line',source:'omt','source-layer':'transportation',minzoom:6,filter:['in',['get','class'],['literal',['motorway','trunk','primary']]],paint:{'line-color':'#f8f8f9','line-opacity':.5,'line-width':['interpolate',['linear'],['zoom'],6,.3,10,1,14,2.2]}}
  ]};
 
 let svg=null,host=null,map=null,ready=false,failed=false,errors=0;
