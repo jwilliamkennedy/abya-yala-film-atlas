@@ -1,7 +1,7 @@
 /* One menu for every page of the atlas (the map and all other pages load this same file).
    Same icon, same items, same More menu: it opens under its own word, closes on a second press,
    on a press anywhere else, on Escape and when you choose an item. */
-:root:not(#_) header .brand .brand-mark{display:block;width:30px;height:30px;flex:none;color:var(--reading-ink,var(--ink,#26231c))}
+:root:not(#_) header .brand .brand-mark{display:block;width:30px;height:30px;flex:none;color:var(--reading-ink,var(--ink,#1c2730))}
 :root:not(#_) header .brand .brand-mark .star{fill:var(--reading-accent,var(--accent,#3f5466))}
 :root[data-reading-theme=night]:not(#_) header .brand .brand-mark{color:#e9d9ad}
 :root[data-reading-theme=night]:not(#_) header .brand .brand-mark .star{fill:#ebc867}
@@ -17,8 +17,8 @@
 :root:not(#_) header nav.primary .more-menu>div{
  position:absolute!important;top:calc(100% + 4px)!important;left:-12px!important;right:auto!important;bottom:auto!important;z-index:80;
  display:flex!important;flex-direction:column;min-width:0;width:240px;box-sizing:border-box;padding:6px!important;margin:0;
- background:var(--reading-paper,var(--bg,#f3f2ef))!important;border:1px solid color-mix(in srgb,currentColor 18%,transparent)!important;
- border-radius:8px!important;box-shadow:0 12px 32px rgba(20,28,36,.16)!important;color:var(--reading-ink,var(--ink,#26231c))}
+ background:var(--reading-paper,var(--bg,#f0f1f2))!important;border:1px solid color-mix(in srgb,currentColor 18%,transparent)!important;
+ border-radius:8px!important;box-shadow:0 12px 32px rgba(20,28,36,.16)!important;color:var(--reading-ink,var(--ink,#1c2730))}
 :root:not(#_) header nav.primary .more-menu>div a{
  display:block;padding:9px 12px!important;border:0!important;border-radius:5px;box-shadow:none!important;white-space:nowrap;
  font:400 15px/1.25 var(--sans,system-ui,-apple-system,'Segoe UI',sans-serif)!important;letter-spacing:normal!important;
@@ -68,7 +68,7 @@
 :root:not(#_) header .more-settings .palette-options i{width:28px;height:24px;font-size:12px}
 /* the map's utilities row takes no room until it has something to show */
 @media (max-width:760px){:root:not(#_) header nav.atlas-utilities{display:contents!important}}
-:root:not(#_) header nav.primary .more-menu>summary{color:var(--ui-ink,var(--reading-ink,var(--ink,#26231c)))!important;opacity:1}
+:root:not(#_) header nav.primary .more-menu>summary{color:var(--ui-ink,var(--reading-ink,var(--ink,#1c2730)))!important;opacity:1}
 :root:not(#_) header .ui-lang .visually-hidden{position:absolute!important;width:1px!important;height:1px!important;overflow:hidden!important;clip:rect(0 0 0 0)!important;white-space:nowrap!important;padding:0!important;margin:-1px!important;border:0!important}
 /* laptop widths (761–1000px): brand and language on the first row, the menu on its own row below, on every page */
 @media (max-width:1000px) and (min-width:761px){

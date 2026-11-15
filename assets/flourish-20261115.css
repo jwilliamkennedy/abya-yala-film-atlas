@@ -1,0 +1,39 @@
+/* Flourishes (2026-11-15): opening title card, header mark drawing itself, projector light on the selection */
+
+/* opening title card */
+#atlas-intro{position:fixed;inset:0;z-index:10000;display:grid;place-items:center;background:#5f8199;color:#f4ecdc;cursor:pointer;transition:opacity .9s ease,visibility 0s .9s}
+#atlas-intro.leaving{opacity:0;visibility:hidden;pointer-events:none}
+#atlas-intro .intro-inner{display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 16px;transition:transform .9s ease}
+#atlas-intro.leaving .intro-inner{transform:scale(1.04)}
+#atlas-intro .intro-mark{width:128px;height:128px;margin-bottom:22px;overflow:visible}
+#atlas-intro .i-lens{stroke:#f4ecdc;stroke-dasharray:315;stroke-dashoffset:315;transform:rotate(-90deg);transform-origin:60px 60px;animation:fl-draw 1s .1s cubic-bezier(.6,0,.3,1) forwards}
+#atlas-intro .i-meridian{stroke:#dfd3bb;stroke-dasharray:140;stroke-dashoffset:140;animation:fl-draw .8s .55s ease-out forwards}
+#atlas-intro .i-dot{fill:#f4ecdc;opacity:0;transform-origin:62px 60px;transform:scale(.2);animation:fl-pop .35s 1.25s ease-out forwards}
+#atlas-intro .intro-title{margin:0;font:400 clamp(30px,5vw,52px)/1.05 var(--serif,Georgia),serif;letter-spacing:-.01em;opacity:0;transform:translateY(8px);animation:fl-rise .7s .85s ease-out forwards}
+#atlas-intro .intro-sub{margin:10px 0 0;font:600 12px/1.2 var(--ui-sans,system-ui),sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#e3d8c2;opacity:0;animation:fl-rise .7s 1.05s ease-out forwards}
+#atlas-intro .intro-counts{display:flex;gap:28px;margin:30px 0 0;font:500 15px/1.2 var(--ui-sans,system-ui),sans-serif;color:#e8dfcc;opacity:0;transition:opacity .4s}
+#atlas-intro.counting .intro-counts{opacity:1}
+#atlas-intro .intro-counts b{display:inline-block;min-width:3.2ch;text-align:right;font:400 30px/1 var(--serif,Georgia),serif;color:#fff8ea;font-variant-numeric:tabular-nums;margin-right:2px}
+#atlas-intro .intro-counts i{font-style:normal}
+#atlas-intro .intro-skip{position:absolute;right:20px;bottom:20px;padding:8px 14px;border:1px solid rgba(244,236,220,.5);border-radius:999px;background:transparent;color:#f4ecdc;font:500 13px/1 var(--ui-sans,system-ui),sans-serif;cursor:pointer}
+#atlas-intro .intro-skip:hover,#atlas-intro .intro-skip:focus-visible{background:rgba(244,236,220,.14);outline:none}
+@keyframes fl-draw{to{stroke-dashoffset:0}}
+@keyframes fl-pop{to{opacity:1;transform:scale(1)}}
+@keyframes fl-rise{to{opacity:1;transform:none}}
+
+/* the header mark draws itself (map page, once per visit) */
+:root[data-mark-draw] header .brand-mark>circle:first-of-type{stroke-dasharray:315;stroke-dashoffset:315;transform:rotate(-90deg);transform-origin:60px 60px;animation:fl-draw 1s .15s cubic-bezier(.6,0,.3,1) forwards}
+:root[data-mark-draw] header .brand-mark .meridian{stroke-dasharray:140;stroke-dashoffset:140;animation:fl-draw .8s .6s ease-out forwards}
+:root[data-mark-draw] header .brand-mark>circle:last-of-type{opacity:0;animation:fl-show .3s 1.3s forwards}
+@keyframes fl-show{to{opacity:1}}
+
+/* projector light under the selected place or land */
+#atlas .projector-glow{transform-box:fill-box;transform-origin:center;mix-blend-mode:multiply;animation:fl-light-on .5s ease-out,fl-breathe 3.2s .5s ease-in-out infinite alternate}
+:root[data-reading-theme=night] #atlas .projector-glow{mix-blend-mode:screen}
+@keyframes fl-light-on{from{opacity:0;transform:scale(.4)}to{opacity:1;transform:scale(1)}}
+@keyframes fl-breathe{from{opacity:1}to{opacity:.7}}
+
+@media (prefers-reduced-motion:reduce){
+ #atlas-intro{display:none}
+ #atlas .projector-glow{animation:none}
+}
