@@ -10,11 +10,8 @@ TOP = [('About', 'about.html'), ('Map', './'), ('Constellate', './?constellate=1
 MORE = [[('Land', './#view=land'), ('Languages', 'languages.html'), ('Themes', 'themes.html'), ('Timeline', 'timeline.html')],
         [('Screening list', 'screening.html')],
         [('Data and downloads', 'data.html'), ('Resources', 'resources.html'), ('Suggest a correction', 'corrections.html')]]
-# the map's own mark, drawn in the page's ink (the same icon on every page, in light and night themes)
-MARK = ('<svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><circle cx="30" cy="34" r="20" fill="none" '
-        'stroke="currentColor" stroke-width="3"/><circle cx="30" cy="34" r="8.5" fill="none" stroke="currentColor" stroke-width="2.6"/>'
-        '<path d="M30 14.5v6M30 47.5v6M10.5 34h6M43.5 34h6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" opacity=".5"/>'
-        '<path class="star" d="M49 7 L51.4 13.6 L58 16 L51.4 18.4 L49 25 L46.6 18.4 L40 16 L46.6 13.6 Z"/></svg>')
+# the atlas mark (lens and meridian, 2026-11-15), drawn in the page's ink (the same icon on every page, in light and night themes)
+MARK = ('<svg class="brand-mark" viewBox="0 0 120 120" aria-hidden="true" focusable="false"><circle cx="60" cy="60" r="50" fill="none" stroke="currentColor" stroke-width="7"/><path class="meridian" d="M44 16 C66 30 50 46 62 60 C74 74 56 88 66 104" fill="none" stroke="#5f8199" stroke-width="8" stroke-linecap="round"/><circle cx="62" cy="60" r="7" fill="currentColor"/></svg>')
 
 CSS = '''<style id="site-nav-css">
 /* the header sits exactly where the map's does: brand at left, the menu right after it, same sizes */
