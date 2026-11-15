@@ -1,4 +1,4 @@
-"""atlas.xlsx: the columns, how each cell is written from a record, and how it is read back.
+"""The atlas (master and Queue CSV files; the atlas.xlsx download): the columns, how each cell is written from a record, and how it is read back.
 
 Design (agreed 8 Nov 2026): one row per film credit; a filmmaker's columns repeat on each of their rows and must
 agree (filmmaker_id is the key). A filmmaker with no films has one row with the film columns blank.
