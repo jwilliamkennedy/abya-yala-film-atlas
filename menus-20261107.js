@@ -107,7 +107,7 @@ function layers(){
  // The initial URL flag was captured before navigation.js rewrites the hash.
   const savedMode=store.get('territories','soft');
  const mode=root.dataset.atlasInboundShading==='off'?'off':savedMode;
- const saved=store.get('territory-strength',null),v=Object.prototype.hasOwnProperty.call(PRESET,mode)?PRESET[mode]:(Number.isFinite(saved)?saved:PRESET.strong);
+ const saved=store.get('territory-strength',null),v=Object.prototype.hasOwnProperty.call(PRESET,mode)?PRESET[mode]:(Number.isFinite(saved)?saved:PRESET.soft);
  range.value=v;setStrength(v);
  if(mode==='off')setMode('off',false);else{if(!shading.checked){shading.checked=true;fire(shading,'change');}show(mode);}
 }
