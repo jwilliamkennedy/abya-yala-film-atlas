@@ -143,7 +143,7 @@ async def main():
   if item.get('persisted'):
    settings=item['persisted']
    expectedMode=settings.get('territories','soft')
-   expectedWash={'strong':'0.41','soft':'0.28'}.get(expectedMode,'0.'+str(settings.get('territory-strength',41)))
+   expectedWash={'strong':'0.41','soft':'0.28'}.get(expectedMode,'0.'+str(settings.get('territory-strength',28)))
    for v in seq:
     if settings.get('unmapped')=='1' and (not v['unmappedClass'] or v['unmapPressed']!='true' or v['unmapText']!='Return map'):failures.append((item['browser'],'saved Disappear map flashed',v['unmappedClass'],v['unmapPressed'],v['unmapText']))
     if v['initialTerritories']!=expectedMode:failures.append((item['browser'],'initial territory mode',v['initialTerritories'],expectedMode))
