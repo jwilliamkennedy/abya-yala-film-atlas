@@ -292,3 +292,38 @@ document.addEventListener('pointerdown',e=>{for(const d of document.querySelecto
  new MutationObserver(add).observe(list,{childList:true,subtree:true});add();})();
 
 }).call(window);}catch(e){setTimeout(function(){throw e;});}
+
+/* ==== index-panel.js (2026-11-15) ==== */
+try{(function(){
+'use strict';
+// Drag the index panel's left edge to make it wider or narrower (desktop). The width is remembered in this browser;
+// double-click the edge to reset. Arrow keys move it too, when the edge has focus.
+const KEY='atlas-index-width', MIN=320, root=document.documentElement;
+const main=document.querySelector('body.atlas-page main'), index=document.getElementById('index');
+if(main&&index&&!main.querySelector('.index-resizer')){
+  const max=()=>Math.max(MIN,Math.min(900,Math.round(innerWidth*0.7)));
+  const h=document.createElement('div');
+  const set=w=>{w=Math.round(Math.max(MIN,Math.min(max(),w)));root.style.setProperty('--index-w',w+'px');h.setAttribute('aria-valuenow',String(w));return w;};
+  const save=w=>{try{localStorage.setItem(KEY,String(Math.round(w)));}catch(e){}};
+  const relayout=()=>window.dispatchEvent(new Event('resize'));
+  h.className='index-resizer'; h.tabIndex=0; h.title='Drag to resize · double-click to reset';
+  h.setAttribute('role','separator'); h.setAttribute('aria-orientation','vertical'); h.setAttribute('aria-valuemin',String(MIN));
+  h.setAttribute('aria-label','Resize the index panel');
+  main.appendChild(h);
+  try{const w=+localStorage.getItem(KEY); if(w) set(w);}catch(e){}
+  let id=null,x0=0,w0=0;
+  h.addEventListener('pointerdown',e=>{if(e.button!==0)return;id=e.pointerId;h.setPointerCapture(id);x0=e.clientX;w0=index.getBoundingClientRect().width;h.classList.add('dragging');root.classList.add('index-resizing');e.preventDefault();});
+  h.addEventListener('pointermove',e=>{if(id===e.pointerId)set(w0+(x0-e.clientX));});
+  const end=()=>{if(id===null)return;id=null;h.classList.remove('dragging');root.classList.remove('index-resizing');save(index.getBoundingClientRect().width);relayout();};
+  h.addEventListener('pointerup',end); h.addEventListener('pointercancel',end);
+  h.addEventListener('dblclick',()=>{root.style.removeProperty('--index-w');try{localStorage.removeItem(KEY);}catch(e){}relayout();});
+  h.addEventListener('keydown',e=>{const step=e.shiftKey?80:24,w=index.getBoundingClientRect().width;
+    if(e.key==='ArrowLeft')save(set(w+step));else if(e.key==='ArrowRight')save(set(w-step));else return;e.preventDefault();relayout();});
+  addEventListener('resize',()=>{const v=parseInt(root.style.getPropertyValue('--index-w'),10);if(v&&v>max())set(max());});
+}
+// A film list that fits on one page needs no A–Z letters or pager (unless a letter is the reason it is short).
+const tidy=()=>{const s=document.getElementById('film-browser'),pg=document.getElementById('films-page-select');if(!s||!pg)return;
+  const lettered=[...s.querySelectorAll('[data-film-letter]')].some(b=>b.getAttribute('aria-pressed')==='true'&&b.dataset.filmLetter!=='');
+  s.classList.toggle('single-page',pg.options.length<=1&&!lettered);};
+if(index){new MutationObserver(tidy).observe(index,{subtree:true,childList:true,attributes:true,attributeFilter:['aria-pressed']});tidy();}
+}).call(window);}catch(e){setTimeout(function(){throw e;});}
