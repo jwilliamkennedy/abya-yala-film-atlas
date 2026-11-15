@@ -125,14 +125,14 @@ function mapKey(){
  }
  const sw=(svg)=>`<svg viewBox="0 0 40 22" width="40" height="22" aria-hidden="true">${svg}</svg>`;
  const rows=[
-  [sw('<text x="1" y="17" font-family="Georgia, serif" font-size="17" fill="#1d2433">A</text><text x="17" y="17" font-family="Georgia, serif" font-size="10" fill="#1d2433">a</text><circle cx="33" cy="12" r="3.5" fill="#d59fa6" stroke="#f6f4e8" stroke-width="1.2"/>'),'<b>Land names.</b> Larger names have more linked filmmakers. Indigenous scripts are kept. Point to preview; select to open.'],
+  [sw('<text x="1" y="17" font-family="Georgia, serif" font-size="17" fill="#26231c">A</text><text x="17" y="17" font-family="Georgia, serif" font-size="10" fill="#26231c">a</text><circle cx="33" cy="12" r="3.5" fill="#d59fa6" stroke="#f6f4e8" stroke-width="1.2"/>'),'<b>Land names.</b> Larger names have more linked filmmakers. Indigenous scripts are kept. Point to preview; select to open.'],
   [sw('<circle cx="12" cy="11" r="4" fill="#d59fa6" stroke="#f6f4e8" stroke-width="1.2"/><rect x="22" y="4" width="15" height="14" rx="2" fill="#d59fa6" fill-opacity=".5"/>'),'<b>Dot beside a name.</b> The colour of that land’s territory on the map.'],
   [sw('<rect x="3" y="3" width="34" height="16" rx="2" fill="#94cbb0" fill-opacity=".36" stroke="#5b8a74" stroke-opacity=".75"/>'),'<b>Territory.</b> Native Land Digital / MapMaker reference (2023), not a definitive boundary. Strength is in Layers.'],
   [sw('<rect x="3" y="3" width="34" height="16" rx="2" fill="#94cbb0" fill-opacity=".36" stroke="#2f5547" stroke-width="2"/>'),'<b>Outlined territory.</b> The one under your pointer, or the land you selected.'],
   [sw('<circle cx="20" cy="11" r="9" fill="#5b5148"/><circle cx="20" cy="11" r="9" fill="none" stroke="#e9d9ad" stroke-opacity=".8"/>'),'<b>Picture at a land.</b> A still or portrait for a linked filmmaker.'],
   [sw('<path d="M8 17 L28 6" stroke="#c44934" stroke-opacity=".6"/><circle cx="8" cy="17" r="4.5" fill="#e4c16d" stroke="#fff7de" stroke-width="1.5"/>'),'<b>Country marker.</b> Opens that country’s filmmakers and films. Counts don’t establish identity, citizenship or residence.'],
-  [sw('<path d="M3 11 H37" stroke="#1f3557" stroke-width="1.6"/>'),'<b>Solid line.</b> Affiliation with a source.'],
-  [sw('<path d="M3 11 H37" stroke="#1f3557" stroke-width="1.4" stroke-dasharray="4 5"/>'),'<b>Dashed line.</b> Catalog match awaiting review.']];
+  [sw('<path d="M3 11 H37" stroke="#3f5466" stroke-width="1.6"/>'),'<b>Solid line.</b> Affiliation with a source.'],
+  [sw('<path d="M3 11 H37" stroke="#3f5466" stroke-width="1.4" stroke-dasharray="4 5"/>'),'<b>Dashed line.</b> Catalog match awaiting review.']];
  const key=el('div',{id:'visual-key'},`<strong class="key-title">Map key</strong><ul>${rows.map(([s,t])=>`<li>${s}<span>${t}</span></li>`).join('')}</ul>
   <p class="key-shortcuts"><kbd>/</kbd> search · <kbd>C</kbd> countries · <kbd>L</kbd> layers · <kbd>K</kbd> key · <kbd>W</kbd> whole world · <kbd>S</kbd> surprise · <kbd>Esc</kbd> close</p>`);
  if(sources){panel.prepend(sources);sources.after(key,notes);}else{panel.prepend(key);key.after(notes);}
