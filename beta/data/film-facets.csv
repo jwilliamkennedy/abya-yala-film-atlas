@@ -388,12 +388,12 @@ FILM-0077,File Under Miscellaneous,,length,Short,,https://en.wikipedia.org/wiki/
 FILM-0078,Nalujuk Night,,theme,Cosmology and Origin Stories,Knowledge and Continuity,https://www.themoviedb.org/movie/881902,tagged from a published synopsis; primary theme
 FILM-0078,Nalujuk Night,,form,Documentary,,https://www.themoviedb.org/movie/881902,from the published synopsis
 FILM-0078,Nalujuk Night,,length,Short,,https://www.themoviedb.org/movie/881902,from the published synopsis
-FILM-0079,Yintah,,theme,Land Defense,Land and Environment,https://www.themoviedb.org/movie/1242947,tagged from a published synopsis; primary theme
-FILM-0079,Yintah,,theme,Extractivism,Land and Environment,https://www.themoviedb.org/movie/1242947,tagged from a published synopsis
-FILM-0079,Yintah,,theme,Resistance Movements,Sovereignty and Politics,https://www.themoviedb.org/movie/1242947,tagged from a published synopsis
-FILM-0079,Yintah,,theme,Sovereignty and Self-Determination,Sovereignty and Politics,https://www.themoviedb.org/movie/1242947,tagged from a published synopsis
-FILM-0079,Yintah,,form,Documentary,,https://www.themoviedb.org/movie/1242947,from the published synopsis
-FILM-0079,Yintah,,length,Feature,,https://www.themoviedb.org/movie/1242947,from the published synopsis
+FILM-0079,Yintah,2024,theme,Land Defense,Land and Environment,https://www.themoviedb.org/movie/1242947,tagged from a published synopsis; primary theme
+FILM-0079,Yintah,2024,theme,Extractivism,Land and Environment,https://www.themoviedb.org/movie/1242947,tagged from a published synopsis
+FILM-0079,Yintah,2024,theme,Resistance Movements,Sovereignty and Politics,https://www.themoviedb.org/movie/1242947,tagged from a published synopsis
+FILM-0079,Yintah,2024,theme,Sovereignty and Self-Determination,Sovereignty and Politics,https://www.themoviedb.org/movie/1242947,tagged from a published synopsis
+FILM-0079,Yintah,2024,form,Documentary,,https://www.themoviedb.org/movie/1242947,from the published synopsis
+FILM-0079,Yintah,2024,length,Feature,,https://www.themoviedb.org/movie/1242947,from the published synopsis
 DIR-0105-W1031-3,"Brother, I Cry",2020,theme,Health and Healing,Lives and Relations,https://www.themoviedb.org/movie/740746,tagged from a published synopsis; primary theme
 DIR-0105-W1031-3,"Brother, I Cry",2020,theme,Kinship,Lives and Relations,https://www.themoviedb.org/movie/740746,tagged from a published synopsis
 DIR-0105-W1031-3,"Brother, I Cry",2020,theme,Women and Gender,Lives and Relations,https://www.themoviedb.org/movie/740746,tagged from a published synopsis
@@ -678,11 +678,11 @@ Q20261114-96-F16,Guernica,2004,form,Animation,,https://cinechile.cl/persona/fran
 Q20261114-96-F16,Guernica,2004,length,Short,,https://cinechile.cl/persona/francisco-huichaqueo/,"normalised from the recorded form ""Animated short"""
 Q20261114-96-F1,Kuzen,2016,form,Experimental,,https://cinechile.cl/pelicula/kuzen/,"normalised from the recorded form ""Experimental short"""
 Q20261114-96-F1,Kuzen,2016,length,Short,,https://cinechile.cl/pelicula/kuzen/,"normalised from the recorded form ""Experimental short"""
-FILM-0113,Punalka,,theme,Extractivism,Land and Environment,https://www.themoviedb.org/movie/1147631,tagged from a published synopsis; primary theme
-FILM-0113,Punalka,,theme,Water,Land and Environment,https://www.themoviedb.org/movie/1147631,tagged from a published synopsis
-FILM-0113,Punalka,,theme,Land Defense,Land and Environment,https://www.themoviedb.org/movie/1147631,tagged from a published synopsis
-FILM-0113,Punalka,,form,Documentary,,https://www.themoviedb.org/movie/1147631,from the published synopsis
-FILM-0113,Punalka,,length,Short,,https://www.themoviedb.org/movie/1147631,from the published synopsis
+FILM-0113,Punalka,1995,theme,Extractivism,Land and Environment,https://www.themoviedb.org/movie/1147631,tagged from a published synopsis; primary theme
+FILM-0113,Punalka,1995,theme,Water,Land and Environment,https://www.themoviedb.org/movie/1147631,tagged from a published synopsis
+FILM-0113,Punalka,1995,theme,Land Defense,Land and Environment,https://www.themoviedb.org/movie/1147631,tagged from a published synopsis
+FILM-0113,Punalka,1995,form,Documentary,,https://www.themoviedb.org/movie/1147631,from the published synopsis
+FILM-0113,Punalka,1995,length,Short,,https://www.themoviedb.org/movie/1147631,from the published synopsis
 FILM-0117,Te Kuhane o te Tupuna (The Spirit of the Ancestors),,theme,"Archives, Museums and Repatriation",Knowledge and Continuity,https://www.themoviedb.org/movie/422034,tagged from a published synopsis; primary theme
 FILM-0117,Te Kuhane o te Tupuna (The Spirit of the Ancestors),,theme,Memory and Oral History,Knowledge and Continuity,https://www.themoviedb.org/movie/422034,tagged from a published synopsis
 FILM-0117,Te Kuhane o te Tupuna (The Spirit of the Ancestors),,theme,Elders and Knowledge,Knowledge and Continuity,https://www.themoviedb.org/movie/422034,tagged from a published synopsis
@@ -1152,6 +1152,7 @@ FILM-0245,Spirit Emulsion,2022,theme,Cosmology and Origin Stories,Knowledge and 
 FILM-0245,Spirit Emulsion,2022,theme,Health and Healing,Lives and Relations,https://www.themoviedb.org/movie/946809,tagged from a published synopsis
 FILM-0245,Spirit Emulsion,2022,form,Experimental,,https://www.themoviedb.org/movie/946809,from the published synopsis
 FILM-0245,Spirit Emulsion,2022,length,Short,,https://www.themoviedb.org/movie/946809,from the published synopsis
+FILM-0246,Bila Burba,2023,language,Spanish,stan1288,https://www.iffigoa.org/international-cinema/bila_burba,"IFFI Goa film catalogue lists Dulegaya (also Spanish); Dulegaya not present in current Lists language authority, pending vocabulary review."
 FILM-0246,Bila Burba,2023,theme,Resistance Movements,Sovereignty and Politics,https://www.themoviedb.org/movie/1200517,tagged from a published synopsis; primary theme
 FILM-0246,Bila Burba,2023,theme,Sovereignty and Self-Determination,Sovereignty and Politics,https://www.themoviedb.org/movie/1200517,tagged from a published synopsis
 FILM-0246,Bila Burba,2023,theme,Memory and Oral History,Knowledge and Continuity,https://www.themoviedb.org/movie/1200517,tagged from a published synopsis
@@ -2476,6 +2477,7 @@ Q20261108-90-F1,Angoch tanomb / Una boda antigua,1985,length,Short,,https://www.
 NEW-f3320a0ced3e-WORK-1,No te arrugues cuero viejo,,theme,"Art, Craft and Making",Expression and Representation,https://www.themoviedb.org/movie/1637530?language=es-MX,tagged from a published synopsis; primary theme
 NEW-f3320a0ced3e-WORK-1,No te arrugues cuero viejo,,theme,Memory and Oral History,Knowledge and Continuity,https://www.themoviedb.org/movie/1637530?language=es-MX,tagged from a published synopsis
 NEW-f3320a0ced3e-WORK-1,No te arrugues cuero viejo,,form,Documentary,,https://www.themoviedb.org/movie/1637530?language=es-MX,from the published synopsis
+NEW-f3320a0ced3e-WORK-1,No te arrugues cuero viejo,,length,Short,,https://www.themoviedb.org/movie/1637530?language=es-MX,from the published synopsis
 NEW-f3320a0ced3e-WORK-2,Xhárdonix Xha,,theme,LGBTQIA2S,Lives and Relations,https://www.themoviedb.org/movie/1309784,tagged from a published synopsis; primary theme
 NEW-f3320a0ced3e-WORK-2,Xhárdonix Xha,,theme,Music and Performance,Expression and Representation,https://www.themoviedb.org/movie/1309784,tagged from a published synopsis
 NEW-f3320a0ced3e-WORK-2,Xhárdonix Xha,,length,Short,,https://www.themoviedb.org/movie/1309784,from the published synopsis
