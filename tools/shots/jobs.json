@@ -1,12 +1,72 @@
 [
  {
-  "name": "stone_map_darker",
-  "path": "beta/index.html",
+  "name": "ex_about",
+  "path": "beta/about.html",
   "viewport": [
    1440,
    900
   ],
+  "settle": 4000,
+  "steps": []
+ },
+ {
+  "name": "ex_const",
+  "path": "beta/constellation.html",
+  "viewport": [
+   1440,
+   900
+  ],
+  "settle": 12000,
+  "steps": []
+ },
+ {
+  "name": "ex_data",
+  "path": "beta/data.html",
+  "viewport": [
+   1440,
+   900
+  ],
+  "settle": 4000,
+  "steps": []
+ },
+ {
+  "name": "ex_timeline",
+  "path": "beta/timeline.html",
+  "viewport": [
+   1440,
+   900
+  ],
+  "settle": 8000,
+  "steps": []
+ },
+ {
+  "name": "ex_themes",
+  "path": "beta/themes.html",
+  "viewport": [
+   1440,
+   900
+  ],
+  "settle": 5000,
+  "steps": []
+ },
+ {
+  "name": "ex_mobile",
+  "path": "beta/index.html",
+  "viewport": [
+   390,
+   844
+  ],
   "settle": 15000,
+  "steps": []
+ },
+ {
+  "name": "ex_maker_mobile",
+  "path": "beta/maker/DIR-0092.html",
+  "viewport": [
+   390,
+   844
+  ],
+  "settle": 4000,
   "steps": []
  }
 ]
