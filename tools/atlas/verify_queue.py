@@ -82,6 +82,14 @@ def main(path, out, leads=False):
                 and v(r.get('source_1_url')).startswith('http') and v(r.get('source_1_quote'))]
     else:
         todo = [r for r in rows if v(r.get('queue_status')) == 'new' and v(r.get('queue_action')) not in ('lead', '')]
+    # open every page the rows cite, 12 at a time, before checking (the checks below read from this cache)
+    urls = set()
+    for r in todo:
+        urls.add(v(r.get('source_1_url')))
+        urls.update(u.strip() for u in re.split(r'\s\|\s|;\s', (v(r.get('film_source')) or '') + ' | ' + (v(r.get('evidence_url')) or '')))
+    from concurrent.futures import ThreadPoolExecutor
+    with ThreadPoolExecutor(12) as ex:
+        list(ex.map(text_of, sorted(u for u in urls if u.startswith('http'))))
     report = []
     for r in todo:
         a, name, title = v(r.get('queue_action')), v(r.get('name')), v(r.get('title'))
