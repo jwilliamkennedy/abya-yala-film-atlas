@@ -52,6 +52,9 @@ def nav(depth, current):
 
 def main(root):
     root = pathlib.Path(root)
+    import hashlib
+    ver = lambda name: hashlib.sha1((root / 'assets' / name).read_bytes()).hexdigest()[:8] if (root / 'assets' / name).exists() else '1'
+    V = {k: ver(k) for k in ('site-menu.css', 'site-menu.js', 'ui-20261109.css', 'ui-20261109.js')}
     n = 0
     for f in root.rglob('*.html'):
         rel = f.relative_to(root)
@@ -77,8 +80,8 @@ def main(root):
         else:
             new = new.replace('</head>', CSS + '\n</head>', 1)
         # shared stylesheets last, after the page's own styles and site-nav-css, so the shared layer wins the cascade
-        new = new.replace('</head>', f'<link rel="stylesheet" href="{up}assets/site-menu.css?v=15"><script defer src="{up}assets/site-menu.js?v=3"></script><script defer src="{up}i18n-20261107.js?v=14"></script>\n</head>', 1)
-        new = new.replace('</head>', f'<link rel="stylesheet" href="{up}assets/ui-20261109.css?v=7"><script defer src="{up}assets/ui-20261109.js?v=3"></script>\n</head>', 1)
+        new = new.replace('</head>', f'<link rel="stylesheet" href="{up}assets/site-menu.css?v={V["site-menu.css"]}"><script defer src="{up}assets/site-menu.js?v={V["site-menu.js"]}"></script><script defer src="{up}i18n-20261107.js?v=14"></script>\n</head>', 1)
+        new = new.replace('</head>', f'<link rel="stylesheet" href="{up}assets/ui-20261109.css?v={V["ui-20261109.css"]}"><script defer src="{up}assets/ui-20261109.js?v={V["ui-20261109.js"]}"></script>\n</head>', 1)
         if new != t:
             f.write_text(new, encoding='utf-8'); n += 1
     print('header menu written on', n, 'pages')
