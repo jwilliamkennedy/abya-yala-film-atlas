@@ -2,8 +2,8 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-16",
  "license": "See data.html",
- "films_on_public_map": 2225,
- "film_entries": 2240,
+ "films_on_public_map": 2228,
+ "film_entries": 2243,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -273,7 +273,7 @@
     "match": "group",
     "indigenous": "yes",
     "note": "Kichwa names the Ecuadorian Quechua varieties",
-    "films": 2
+    "films": 3
    },
    {
     "label": "Lakota",
@@ -2202,6 +2202,38 @@
   "Q20261114-88-F12": {
    "title": "Takumã Kuikuro: Covid-19 Brazil - An Amazonian perspective",
    "year": 2021,
+   "makers": [
+    {
+     "id": "DIR-0052",
+     "name": "Takumã Kuikuro"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261114-88-F1": {
+   "title": "As Hiper-Mulheres",
+   "year": 2011,
+   "makers": [
+    {
+     "id": "DIR-0052",
+     "name": "Takumã Kuikuro"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Feature"
+  },
+  "Q20261114-88-F2": {
+   "title": "Karioka",
+   "year": 2014,
    "makers": [
     {
      "id": "DIR-0052",
@@ -22133,6 +22165,32 @@
    "families": [],
    "form": "Fiction",
    "length": "Feature"
+  },
+  "NEW-df0d54c464f8-F2": {
+   "title": "Kuychi Pucha",
+   "year": 2014,
+   "makers": [
+    {
+     "id": "NEW-df0d54c464f8",
+     "name": "Segundo Fuérez"
+    }
+   ],
+   "languages": [
+    {
+     "label": "Kichwa",
+     "as_credited": "Kichwa",
+     "glottocode": "colo1257",
+     "iso639_3": "",
+     "match": "group",
+     "indigenous": true,
+     "source": "https://miradanativa.org/pelicula/kuychi-pucha-2/"
+    }
+   ],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": null
   },
   "NEW-7c78fdbe16c7-WORK-1": {
    "title": "The Orange Flower",
