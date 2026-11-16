@@ -2,8 +2,8 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-16",
  "license": "See data.html",
- "films_on_public_map": 2228,
- "film_entries": 2243,
+ "films_on_public_map": 2233,
+ "film_entries": 2252,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -393,7 +393,7 @@
     "match": "exact",
     "indigenous": "no",
     "note": "",
-    "films": 85
+    "films": 89
    },
    {
     "label": "Spanish",
@@ -18537,6 +18537,14 @@
     {
      "id": "NEW-7dfb26bc8667",
      "name": "Georgette McLeod"
+    },
+    {
+     "id": "Q20261115-905",
+     "name": "Allison Anderson"
+    },
+    {
+     "id": "Q20261115-906",
+     "name": "Georgette McLoed"
     }
    ],
    "languages": [],
@@ -21665,6 +21673,10 @@
    "makers": [
     {
      "id": "NEW-7b37398372f9",
+     "name": "Nina Paninnguaq Skydsbjerg"
+    },
+    {
+     "id": "Q20261115-901",
      "name": "Nina Paninnguaq Skydsbjerg"
     }
    ],
@@ -42232,6 +42244,198 @@
    "primary_theme": null,
    "families": [],
    "form": "Animation",
+   "length": null
+  },
+  "Q20261115-766-F1": {
+   "title": "The Original Summit: Journey to the Sacred Uprising",
+   "year": 2002,
+   "makers": [
+    {
+     "id": "Q20261115-766",
+     "name": "Rebeka Tabobondung"
+    },
+    {
+     "id": "Q20261115-767",
+     "name": "Adrian Kahgee"
+    }
+   ],
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://vtape.org/video?vi=5123"
+    }
+   ],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-902-F1": {
+   "title": "Midnight Migrations: Wëdzey Tąy (Caribou Trails)",
+   "year": 2026,
+   "makers": [
+    {
+     "id": "Q20261115-902",
+     "name": "Darcy Tara McDiarmid"
+    }
+   ],
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/"
+    }
+   ],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-903-F1": {
+   "title": "Nivingajuliat",
+   "year": 2026,
+   "makers": [
+    {
+     "id": "Q20261115-903",
+     "name": "Shelby Lisk"
+    }
+   ],
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/"
+    }
+   ],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-904-F1": {
+   "title": "The Woman Who Married A Bear",
+   "year": 2025,
+   "makers": [
+    {
+     "id": "Q20261115-904",
+     "name": "Kaa,Laa Mary Goddard"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-907-F1": {
+   "title": "E.V. Savage",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "Q20261115-907",
+     "name": "Stevie-Ray Strangling Wolf"
+    },
+    {
+     "id": "Q20261115-908",
+     "name": "Shelby Strangling Wolf"
+    }
+   ],
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/"
+    }
+   ],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-909-F1": {
+   "title": "Legend of Fry-Roti: Rise of the Dough",
+   "year": 2025,
+   "makers": [
+    {
+     "id": "Q20261115-909",
+     "name": "Sabrina Saleha"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-910-F1": {
+   "title": "Saq Nikté y El Espíritu de la Máscara",
+   "year": 2025,
+   "makers": [
+    {
+     "id": "Q20261115-910",
+     "name": "Ester Weiner"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-911-F1": {
+   "title": "Txirin, o batismo do gavião",
+   "year": 2017,
+   "makers": [
+    {
+     "id": "Q20261115-911",
+     "name": "Isaka Mateus Huni Kuĩ"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261108-15-F1": {
+   "title": "Mi Manchi",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261108-15",
+     "name": "Danalys Rodríguez"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
    "length": null
   }
  }
