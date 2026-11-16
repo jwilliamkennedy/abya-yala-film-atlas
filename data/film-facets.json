@@ -1,9 +1,9 @@
 {
  "title": "Indigenous Cinema Atlas · film facets",
- "generated": "2026-11-15",
+ "generated": "2026-11-16",
  "license": "See data.html",
- "films_on_public_map": 2114,
- "film_entries": 2126,
+ "films_on_public_map": 2140,
+ "film_entries": 2154,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -69,7 +69,7 @@
   ]
  },
  "language_authority": {
-  "source": "Glottolog (glottolog-cldf, fetched 2026-11-15)",
+  "source": "Glottolog (glottolog-cldf, fetched 2026-11-16)",
   "languages": [
    {
     "label": "Anishinaabemowin (Ojibwe)",
@@ -3620,6 +3620,22 @@
    "form": "Documentary",
    "length": null
   },
+  "Q20261114-68-F2": {
+   "title": "Nunavut Animation Lab: Lumaajuuq",
+   "year": 2010,
+   "makers": [
+    {
+     "id": "DIR-0060",
+     "name": "Alethea Arnaquq-Baril"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": "Short"
+  },
   "FILM-0064": {
    "title": "Fast Horse",
    "year": null,
@@ -3850,6 +3866,38 @@
    "families": [],
    "form": "Animation",
    "length": "Series"
+  },
+  "DIR-0062-QM21bc34": {
+   "title": "Molly of Denali – There is Pele",
+   "year": 2025,
+   "makers": [
+    {
+     "id": "DIR-0062",
+     "name": "Amanda Strong"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "DIR-0062-F1": {
+   "title": "Molly of Denali: Episode 505, There is Pele",
+   "year": 2025,
+   "makers": [
+    {
+     "id": "DIR-0062",
+     "name": "Amanda Strong"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
   },
   "FILM-SRC-2023-00003": {
    "title": "I’m Just Here for the Riot",
@@ -4780,6 +4828,38 @@
   "Q20261114-71-F5": {
    "title": "Wakening",
    "year": 2013,
+   "makers": [
+    {
+     "id": "DIR-0082",
+     "name": "Danis Goulet"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
+  },
+  "Q20261114-71-F6": {
+   "title": "I Got Heart",
+   "year": 2013,
+   "makers": [
+    {
+     "id": "DIR-0082",
+     "name": "Danis Goulet"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
+  },
+  "Q20261114-71-F7": {
+   "title": "2167: The Hunt",
+   "year": 2017,
    "makers": [
     {
      "id": "DIR-0082",
@@ -5915,6 +5995,134 @@
    "form": null,
    "length": "Short"
   },
+  "Q20261114-66-F1": {
+   "title": "Suckerfish",
+   "year": 2004,
+   "makers": [
+    {
+     "id": "DIR-0118",
+     "name": "Lisa Jackson"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Experimental",
+   "length": "Short"
+  },
+  "Q20261114-66-F2": {
+   "title": "The Visit",
+   "year": 2009,
+   "makers": [
+    {
+     "id": "DIR-0118",
+     "name": "Lisa Jackson"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": "Short"
+  },
+  "Q20261114-66-F3": {
+   "title": "Pushing the Line: Art Without Reservations",
+   "year": 2009,
+   "makers": [
+    {
+     "id": "DIR-0118",
+     "name": "Lisa Jackson"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Feature"
+  },
+  "Q20261114-66-F5": {
+   "title": "Pow.Wow.Wow",
+   "year": 2011,
+   "makers": [
+    {
+     "id": "DIR-0118",
+     "name": "Lisa Jackson"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Music Video",
+   "length": null
+  },
+  "Q20261114-66-F6": {
+   "title": "Parkdale",
+   "year": 2011,
+   "makers": [
+    {
+     "id": "DIR-0118",
+     "name": "Lisa Jackson"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": "Short"
+  },
+  "Q20261114-66-F7": {
+   "title": "Snare",
+   "year": 2013,
+   "makers": [
+    {
+     "id": "DIR-0118",
+     "name": "Lisa Jackson"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Experimental",
+   "length": "Short"
+  },
+  "Q20261114-66-F9": {
+   "title": "The Dust Bowl",
+   "year": 2016,
+   "makers": [
+    {
+     "id": "DIR-0118",
+     "name": "Lisa Jackson"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Experimental",
+   "length": "Short"
+  },
+  "Q20261114-66-F11": {
+   "title": "Lichen",
+   "year": 2019,
+   "makers": [
+    {
+     "id": "DIR-0118",
+     "name": "Lisa Jackson"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Experimental",
+   "length": null
+  },
   "FILM-SRC-NFB-00062": {
    "title": "The Learning Path",
    "year": null,
@@ -6895,6 +7103,22 @@
    ],
    "form": "Fiction",
    "length": "Feature"
+  },
+  "RESEARCH-FILM-20261031-800-0032": {
+   "title": "Levers",
+   "year": 2025,
+   "makers": [
+    {
+     "id": "DIR-0138",
+     "name": "Rhayne Vermette"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
   },
   "DIR-0142-W1031-1": {
    "title": "Legend of the Storm",
@@ -10389,6 +10613,22 @@
    "form": null,
    "length": null
   },
+  "DIR-0182-QM974878": {
+   "title": "Owners of the Water: Conflict and Collaboration Over Rivers",
+   "year": 2008,
+   "makers": [
+    {
+     "id": "DIR-0182",
+     "name": "David Hernández Palmar"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "FILM-0126": {
    "title": "El viaje mítico de Sain y el Duende Akalakui",
    "year": null,
@@ -13841,6 +14081,22 @@
    "form": null,
    "length": null
   },
+  "DIR-0249-QM35814c": {
+   "title": "Pobo’tzu’ / Noche blanca",
+   "year": 2021,
+   "makers": [
+    {
+     "id": "DIR-0249",
+     "name": "Yollotl Alvarado"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "FILM-0213": {
    "title": "Burwa Dii Ebo (The Wind and the Water)",
    "year": 2008,
@@ -15752,6 +16008,70 @@
    "form": null,
    "length": "Short"
   },
+  "Q20261114-36-F1": {
+   "title": "Johnny Turn to God",
+   "year": 2022,
+   "makers": [
+    {
+     "id": "DIR-0322",
+     "name": "Samuel López"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261114-36-F2": {
+   "title": "Walking in These Shoes",
+   "year": 2022,
+   "makers": [
+    {
+     "id": "DIR-0322",
+     "name": "Samuel López"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261114-36-F3": {
+   "title": "The Sugarcane / El Cañaveral",
+   "year": 2013,
+   "makers": [
+    {
+     "id": "DIR-0322",
+     "name": "Samuel López"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Feature"
+  },
+  "Q20261114-36-F4": {
+   "title": "Our Faces Our Stories",
+   "year": 2009,
+   "makers": [
+    {
+     "id": "DIR-0322",
+     "name": "Samuel López"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
+  },
   "FILM-0241": {
    "title": "Garifuna in Peril",
    "year": 2012,
@@ -16096,6 +16416,10 @@
    "title": "The Queen’s Flowers",
    "year": 2024,
    "makers": [
+    {
+     "id": "DIR-0332",
+     "name": "Ciara Lacy"
+    },
     {
      "id": "DIR-0332",
      "name": "Ciara Lacy"
@@ -17574,6 +17898,10 @@
    "title": "Deneege Leł Ghu Kk’ots’eedeneeyh Te Heł Hoozoonh Ts’e Denots’edeneeyh",
    "year": 2026,
    "makers": [
+    {
+     "id": "NEW-0c03bd75e69a",
+     "name": "Brittany Woods-Orrison"
+    },
     {
      "id": "NEW-0c03bd75e69a",
      "name": "Brittany Woods-Orrison"
@@ -19186,6 +19514,10 @@
     {
      "id": "NEW-39a09ddff30e",
      "name": "Jett Kowalchuk"
+    },
+    {
+     "id": "NEW-39a09ddff30e",
+     "name": "Jett Kowalchuk"
     }
    ],
    "languages": [],
@@ -20444,10 +20776,30 @@
    "form": "Experimental",
    "length": "Short"
   },
+  "NEW-12fd187d7673-QMb97639": {
+   "title": "Sally's Bravery",
+   "year": 2025,
+   "makers": [
+    {
+     "id": "NEW-12fd187d7673",
+     "name": "Roxanne Lauzon"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "NEW-7feb9c9ffe82-WORK-1": {
    "title": "Mann’s Sparks",
    "year": 2024,
    "makers": [
+    {
+     "id": "NEW-7feb9c9ffe82",
+     "name": "Ryland Walker Knight"
+    },
     {
      "id": "NEW-7feb9c9ffe82",
      "name": "Ryland Walker Knight"
@@ -25123,6 +25475,22 @@
   "BETA30B-20261107-F25": {
    "title": "Native and American",
    "year": 2017,
+   "makers": [
+    {
+     "id": "DIR-0349",
+     "name": "Brit Hensel"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "DIR-0349-QMf4888f": {
+   "title": "ᎤᏕᏲᏅ (What They’ve Been Taught)",
+   "year": 2022,
    "makers": [
     {
      "id": "DIR-0349",
@@ -33418,6 +33786,22 @@
    "form": null,
    "length": "Short"
   },
+  "BETA25-20261105-18-QMd9c74b": {
+   "title": "El Cielo Recuerda el Fin",
+   "year": 2020,
+   "makers": [
+    {
+     "id": "BETA25-20261105-18",
+     "name": "Isis Catrin"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "BETA25-20261105-19-FILM1": {
    "title": "Chew Müley (Dónde está)",
    "year": 2025,
@@ -33533,6 +33917,22 @@
   "BETA30B-20261107-F19": {
    "title": "Relentless: The MHA Nation's Battle Against The Opioid Epidemic Part I",
    "year": 2021,
+   "makers": [
+    {
+     "id": "BETA25-20261105-21",
+     "name": "Justin Deegan"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "BETA25-20261105-21-QM4cbf63": {
+   "title": "Another Scar of Genocide: Diabetes in Indian Country",
+   "year": 2019,
    "makers": [
     {
      "id": "BETA25-20261105-21",
@@ -37387,6 +37787,22 @@
    "form": "Animation",
    "length": null
   },
+  "Q20261114-76-F1": {
+   "title": "Maq and the Spirit of the Woods",
+   "year": 2006,
+   "makers": [
+    {
+     "id": "Q20261114-12",
+     "name": "Phyllis Grant"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": "Short"
+  },
   "Q20261114-13-F1": {
    "title": "I Don't Love You Anymore",
    "year": 2026,
@@ -37610,6 +38026,22 @@
    "families": [],
    "form": "Animation",
    "length": null
+  },
+  "Q20261114-74-F8": {
+   "title": "I Like Girls (J’aime les filles)",
+   "year": 2016,
+   "makers": [
+    {
+     "id": "Q20261114-13",
+     "name": "Diane Obomsawin"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": "Short"
   },
   "Q20261114-14-F1": {
    "title": "Shaman",
@@ -37885,6 +38317,22 @@
    "primary_theme": null,
    "families": [],
    "form": "Animation",
+   "length": "Short"
+  },
+  "Q20261114-84-F1": {
+   "title": "Originárias",
+   "year": 2022,
+   "makers": [
+    {
+     "id": "Q20261114-84",
+     "name": "Emília Pewa’u Top’Tiro"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
    "length": "Short"
   },
   "Q20261114-85-F1": {
@@ -40295,6 +40743,22 @@
    "primary_theme": null,
    "families": [],
    "form": null,
+   "length": null
+  },
+  "Q20261114-15-F1": {
+   "title": "Tule",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "Q20261114-15",
+     "name": "Jocelyn Garcia"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
    "length": null
   }
  }
