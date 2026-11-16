@@ -591,3 +591,8 @@ body.atlas-page .map-toolbar .fw-proxy:hover,body.atlas-page .map-toolbar .fw-pr
 :root:not(#_):not(#__) body.atlas-page #featured-weave .fw-min{right:40px!important}
 :root:not(#_):not(#__) body.atlas-page #featured-weave .fw-close:hover,:root:not(#_):not(#__) body.atlas-page #featured-weave .fw-min:hover{background:var(--ui-wash)!important;color:var(--ui-ink)!important}
 :root:not(#_):not(#__) body.atlas-page #featured-weave .fw-actions a:not(.fw-play){border:0!important;box-shadow:none!important;text-decoration:none!important;background:none!important}
+/* A–Z on one line instead of three (desktop) */
+@media (min-width:761px){
+ :root:not(#_):not(#__) #index :is(#maker-alphabet,#film-alphabet){grid-template-columns:repeat(27,minmax(0,1fr))!important;gap:0!important;row-gap:0!important}
+ :root:not(#_):not(#__) #index :is(#maker-alphabet,#film-alphabet) button{min-width:0!important;width:auto!important;height:26px!important;min-height:26px!important;padding:0!important;font-size:12px!important;border-radius:6px!important}
+}
