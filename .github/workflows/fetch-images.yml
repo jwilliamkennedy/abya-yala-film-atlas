@@ -1,0 +1,26 @@
+# Downloads the openly licensed images listed in tools/images/fetch.json, crops them, and commits them to beta/assets/img/.
+name: Fetch open images
+on:
+  push:
+    branches: [main]
+    paths: ['tools/images/fetch.json']
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: fetch-images
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - run: pip install -q requests pillow
+      - run: mkdir -p beta/assets/img && python3 tools/images/fetch.py tools/images/fetch.json
+      - name: Commit the images
+        run: |
+          git config user.name "Atlas images"; git config user.email github-actions@users.noreply.github.com
+          git add beta/assets/img
+          if git diff --cached --quiet; then echo "No change."; exit 0; fi
+          git commit -q -m "Beta images: fetched and cropped from tools/images/fetch.json"
+          for i in 1 2 3; do git push -q && break; git pull -q --rebase; done
