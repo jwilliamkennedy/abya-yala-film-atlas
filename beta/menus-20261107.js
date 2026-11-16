@@ -176,7 +176,7 @@ function featured(){
  };
  /* 2026-11-15: – shrinks the card to one line (+ restores it); × and the toolbar button close it. */
  const mini=on=>{card.classList.toggle('is-min',on);const m=card.querySelector('.fw-min');if(m){m.textContent=on?'+':'–';m.setAttribute('aria-label',on?'Expand':'Minimize');m.title=on?'Expand':'Minimize';m.setAttribute('aria-expanded',String(!on));}};
- const set=(collapsed,save=true)=>{if(!collapsed)mini(false);card.classList.toggle('is-collapsed',collapsed);card.querySelector('.fw-pill')?.setAttribute('aria-expanded',String(!collapsed));if(save)store.set('featured-collapsed',collapsed);};
+ const set=(collapsed,save=true)=>{if(!collapsed)mini(false);if(save){card.__userOpen=!collapsed;}card.classList.toggle('is-collapsed',collapsed);card.dispatchEvent(new Event('fw-change'));card.querySelector('.fw-pill')?.setAttribute('aria-expanded',String(!collapsed));if(save)store.set('featured-collapsed',collapsed);};
  setup();new MutationObserver(setup).observe(card,{childList:true});
 }
 
