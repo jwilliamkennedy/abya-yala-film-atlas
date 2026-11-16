@@ -1,6 +1,6 @@
 """One header menu for every page of the beta except the map itself (which builds the same menu in menus-20261107.js).
 Same items, same order, same words as the map: About · Map · Constellate · Watch · More
-(Browse: Languages, Themes, Timeline · Your list: Screening list · About the data: Data and downloads,
+(Browse: Languages, Themes, Timeline · Your list: Screening list · About the data: Data, Reuse, and CARE,
 Resources, Suggest a correction). Filmmakers, Films and Land are switched inside the map's sidebar (2026-11-09).
 Also loads the shared interface layer (assets/ui-20261109.css and .js) after site-menu.css. The current page is marked. Safe to run again.
 usage: python3 tools/pages/nav.py beta"""
@@ -9,7 +9,7 @@ import sys, re, pathlib
 TOP = [('About', 'about.html'), ('Map', './'), ('Constellate', './?constellate=1'), ('Watch', 'watch.html')]
 MORE = [[('Languages', 'languages.html'), ('Themes', 'themes.html'), ('Timeline', 'timeline.html')],
         [('Screening list', 'screening.html')],
-        [('Data and downloads', 'data.html'), ('Resources', 'resources.html'), ('Suggest a correction', 'corrections.html')]]
+        [('Data, Reuse, and CARE', 'data.html'), ('Resources', 'resources.html'), ('Suggest a correction', 'corrections.html')]]
 # the atlas mark (lens and meridian, 2026-11-15), drawn in the page's ink (the same icon on every page, in light and night themes)
 MARK = ('<svg class="brand-mark" viewBox="0 0 120 120" aria-hidden="true" focusable="false"><circle cx="60" cy="60" r="50" fill="none" stroke="currentColor" stroke-width="7"/><path class="meridian" d="M44 16 C66 30 50 46 62 60 C74 74 56 88 66 104" fill="none" stroke="#5f8199" stroke-width="8" stroke-linecap="round"/><circle cx="62" cy="60" r="7" fill="currentColor"/></svg>')
 
