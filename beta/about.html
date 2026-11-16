@@ -58,7 +58,11 @@ p{margin:0 0 16px}
 .bib li{padding-left:2em;text-indent:-2em;margin:0 0 12px;font-size:.92em;line-height:1.55}
 .credit{margin-top:56px;padding-top:20px;border-top:1px solid var(--line);font-size:.84em;color:var(--muted)}
 html{scroll-behavior:smooth}@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
-@media (prefers-reduced-motion: reduce){</style>
+@media (prefers-reduced-motion: reduce){.land-band{position:relative;margin:0;height:clamp(150px,24vw,330px);overflow:hidden;background:var(--line);border-bottom:1px solid var(--line)}
+.land-band img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 55%}
+.land-band figcaption{position:absolute;right:10px;bottom:8px;font-size:11.5px;line-height:1.3;color:#fff;background:rgba(0,0,0,.42);padding:3px 8px;border-radius:999px}
+.land-band figcaption a{color:inherit}
+</style>
 <script defer src="assets/counter.js"></script>
 <style id="site-nav-css">
 /* the header sits exactly where the map's does: brand at left, the menu right after it, same sizes */
@@ -88,6 +92,7 @@ main a[href^="http"]{color:var(--accent,var(--gold))}
 </head>
 <body>
 <header><a class="brand" href="./"><svg class="brand-mark" viewBox="0 0 120 120" aria-hidden="true" focusable="false"><circle cx="60" cy="60" r="50" fill="none" stroke="currentColor" stroke-width="7"/><path class="meridian" d="M44 16 C66 30 50 46 62 60 C74 74 56 88 66 104" fill="none" stroke="#5f8199" stroke-width="8" stroke-linecap="round"/><circle cx="62" cy="60" r="7" fill="currentColor"/></svg><span>Indigenous Cinema Atlas<small>Abya Yala and Turtle Island</small></span></a><nav class="primary" aria-label="Explore the atlas"><a href="about.html" aria-current="page">About</a><a href="./">Map</a><a href="./?constellate=1">Constellate</a><a href="watch.html">Watch</a><details class="more-menu"><summary>More</summary><div><a href="./#view=land">Land</a><a href="languages.html">Languages</a><a href="themes.html">Themes</a><a href="timeline.html">Timeline</a><span class="more-sep"></span><a href="screening.html" data-screen-count>Screening list</a><span class="more-sep"></span><a href="data.html">Data and downloads</a><a href="resources.html">Resources</a><a href="corrections.html">Suggest a correction</a></div></details></nav></header>
+<figure class="land-band"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Tikal_Temple_IV_panorama.jpg/2560px-Tikal_Temple_IV_panorama.jpg" srcset="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Tikal_Temple_IV_panorama.jpg/1280px-Tikal_Temple_IV_panorama.jpg 1280w, https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Tikal_Temple_IV_panorama.jpg/2560px-Tikal_Temple_IV_panorama.jpg 2560w" sizes="100vw" alt="Forest canopy at Tikal, Petén, seen from Temple IV, with temple tops rising above the trees." decoding="async" fetchpriority="high"><figcaption>Tikal, Petén. Photo: <a href="https://commons.wikimedia.org/wiki/File:Tikal_Temple_IV_panorama.jpg">Simon Burchell</a>, <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a></figcaption></figure>
 <main>
 <nav class="eyebrow pair" aria-label="About pages"><a href="about.html" aria-current="page">About the atlas</a><a href="resources.html">Resources</a></nav>
 <h1>Mapping Indigenous cinema through land and relation</h1>
