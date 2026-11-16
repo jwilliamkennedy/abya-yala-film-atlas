@@ -14,8 +14,8 @@ ALLOWED = {
     'atlas': {'master', 'queue', 'legacy', 'INTAKE.md', 'README.md'},
     'atlas/legacy': {'published-json.csv', 'queue-json.csv', 'snapshot-2026-11-08.json', 'README.md'},
     '.github': {'workflows', 'atlas'},
-    '.github/workflows': {'queue-check.yml', 'publish-beta.yml', 'leads-verify.yml', 'pages-fetch.yml'},
-    '.github/atlas': {'workbook-template.xlsx', 'fetch-list.txt'},
+    '.github/workflows': {'queue-check.yml', 'publish-beta.yml', 'leads-verify.yml', 'pages-fetch.yml', 'queue-push.yml'},
+    '.github/atlas': {'workbook-template.xlsx', 'fetch-list.txt', 'push-request.txt'},
 }
 PATTERNS = {
     'atlas/master': re.compile(r'^((filmmakers|films)(-[a-z]{1,2}-[a-z]{1,2})?\.csv|lists\.csv|PUBLISHED\.sha256|README\.md)$'),
