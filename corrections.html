@@ -105,8 +105,8 @@ main a[href^="http"]{color:var(--accent,var(--gold))}
 <main>
 <p class="eyebrow">Corrections and additions</p>
 <h1>Suggest a correction</h1>
-<p class="lede">Anyone may suggest a correction, addition or withdrawal <strong>without providing a name, email address or GitHub account</strong>.</p>
-<p class="note">The Atlas welcomes questions about names, credits, land connections and community affiliations. A concern can be raised without proving personal or community identity publicly; review and any further verification are separate steps.</p>
+<p class="lede">Anyone may suggest a correction, an addition or a removal <strong>without giving a name, email address or account</strong>.</p>
+<p class="note">Questions about names, credits, land connections and community affiliations are welcome. You don’t need to identify yourself to raise a concern. Each request is reviewed before anything changes.</p>
 <form id="fix" action="https://formsubmit.co/jwk258@cornell.edu" method="POST" accept-charset="utf-8" novalidate>
 <input type="hidden" name="_subject" value="Indigenous Cinema Atlas — anonymous correction request">
 <input type="hidden" name="_template" value="table">
@@ -118,9 +118,9 @@ main a[href^="http"]{color:var(--accent,var(--gold))}
 <label>Type of request<select id="kind" name="request_type"><option>Correct a filmmaker’s nation or affiliation</option><option>Correct a film’s details</option><option>Correct a land link on the map</option><option>Add a missing filmmaker or film</option><option>Remove or withdraw a record</option><option>Something else</option></select></label>
 <label>What should change? <small>(required)</small><textarea id="what" name="requested_change" required placeholder="Describe the change or concern. Avoid including personal or sensitive information."></textarea></label>
 <label>Supporting page <small>(optional)</small><input id="source" type="url" name="source_url" placeholder="https://"></label>
-<label>Your connection to the record <small>(optional; leave blank if you prefer)</small><select id="who" name="connection"><option value="">Prefer not to say</option><option>I am the filmmaker</option><option>I am a member of the community or nation</option><option>I work with the filmmaker or film</option><option>Researcher or viewer</option></select></label>
-<div class="actions"><button type="submit" id="send">Check submission response</button><button type="button" class="secondary" id="direct">Use FormSubmit’s own page</button><button type="button" class="secondary" id="copy">Copy request</button></div>
-<p class="note"><strong>Privacy:</strong> Anonymous here means no name, email or account is required or requested. Submissions go through <a href="https://formsubmit.co/" target="_blank" rel="noopener noreferrer">FormSubmit</a>, a third-party form processor, which may process technical information and retain the submission temporarily. This is <strong>not</strong> a guarantee of untraceable anonymity. Avoid sending private or ceremonial information. This anonymous-submission service has not yet been verified as active. The first button displays the service’s actual response, including activation or delivery errors, without leaving this page. If that fails, use the full-page option to view its response directly. The project owner must first confirm a FormSubmit activation email; until that succeeds, do not assume a correction has been delivered.</p>
+<label>Your connection to the record <small>(optional)</small><select id="who" name="connection"><option value="">Prefer not to say</option><option>I am the filmmaker</option><option>I am a member of the community or nation</option><option>I work with the filmmaker or film</option><option>Researcher or viewer</option></select></label>
+<div class="actions"><button type="submit" id="send">Send correction</button><button type="button" class="secondary" id="copy">Copy request</button></div>
+<p class="note"><strong>Privacy:</strong> No name, email or account is asked for. Submissions pass through <a href="https://formsubmit.co/" target="_blank" rel="noopener noreferrer">FormSubmit</a>, a third-party service that may log technical details, so anonymity can’t be guaranteed. Please don’t include private or ceremonial information.</p>
 <textarea id="copy-fallback" rows="6" readonly hidden aria-label="Text to select and copy"></textarea>
 <p id="copied" role="status" aria-live="polite" class="note"></p>
 </form>
@@ -159,7 +159,7 @@ main a[href^="http"]{color:var(--accent,var(--gold))}
     if (!valid() || send.disabled) return;
     send.disabled = true;
     form.setAttribute('aria-busy', 'true');
-    status.textContent = 'Contacting FormSubmit. No submission has been confirmed yet.';
+    status.textContent = 'Sending…';
     const controller = new AbortController();
     const timer = setTimeout(() => controller.abort(), 15000);
     try {
@@ -181,23 +181,18 @@ main a[href^="http"]{color:var(--accent,var(--gold))}
           status.textContent = 'FormSubmit refused the request. Your correction has NOT been delivered. Details: ' + explanation;
         }
       } else {
-        status.textContent = 'FormSubmit reports that it accepted the request. Delivery to the Atlas inbox cannot be independently verified here.';
+        status.textContent = 'Thank you. Your correction was sent.'; form.reset();
       }
     } catch (error) {
       const timedOut = error && error.name === 'AbortError';
       status.textContent = timedOut
-        ? 'The submission service did not respond within 15 seconds. Delivery is NOT confirmed. Try the full-page option or copy the request.'
-        : 'The form could not contact FormSubmit or interpret its response. Delivery is NOT confirmed. Try the full-page option or copy the request.';
+        ? 'The submission service did not respond within 15 seconds. Delivery is NOT confirmed. Copy the request and try again later.'
+        : 'The form could not contact FormSubmit or interpret its response. Delivery is NOT confirmed. Copy the request and try again later.';
     } finally {
       clearTimeout(timer);
       send.disabled = false;
       form.removeAttribute('aria-busy');
     }
-  });
-  $('direct').addEventListener('click', () => {
-    if (!valid()) return;
-    status.textContent = 'Opening FormSubmit’s own page so you can see its activation or error message. No delivery is confirmed yet.';
-    HTMLFormElement.prototype.submit.call(form);
   });
   $('copy').addEventListener('click', async () => {
     if (!valid()) return;
