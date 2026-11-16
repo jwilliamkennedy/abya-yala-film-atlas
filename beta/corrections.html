@@ -105,17 +105,22 @@ main a[href^="http"]{color:var(--accent,var(--gold))}
 <main>
 <p class="eyebrow">Corrections and additions</p>
 <h1>Suggest a correction</h1>
-<p class="lede">Filmmakers, communities and researchers can correct a record, request withdrawal, or suggest something missing. A private route is available; GitHub is optional.</p>
-<p class="note"><strong>Filmmakers and communities:</strong> you may challenge an affiliation, land connection or description without posting a public explanation. Requests for withdrawal and disputed identifications will be reviewed with care; please indicate your connection if you wish.</p>
-<form id="fix" novalidate>
-<label>About which filmmaker, film or land?<input id="about" name="about" required placeholder="e.g. a filmmaker’s name or a film title"></label>
-<label>What kind of change?<select id="kind"><option>Correct a filmmaker’s nation or affiliation</option><option>Correct a film’s details</option><option>Correct a land link on the map</option><option>Add a missing filmmaker or film</option><option>Remove or withdraw a record</option><option>Something else</option></select></label>
-<label>What should change?<textarea id="what" required placeholder="Describe the correction or request"></textarea></label>
-<label>Source <small>(optional; filmmakers and community members do not need a public URL to raise a concern)</small><input id="source" type="url" placeholder="https://"></label>
-<label>Your connection to the record <small>(optional)</small><select id="who"><option value="">Prefer not to say</option><option>I am the filmmaker</option><option>I am a member of the community or nation</option><option>I work with the filmmaker or film</option><option>Researcher or viewer</option></select></label>
-<div class="actions"><button type="submit">Compose private email</button><button type="button" class="secondary" id="public">Open public GitHub issue</button><button type="button" class="secondary" id="copy">Copy request</button></div>
-<p class="note">The private option opens a draft in your email app addressed to <a href="mailto:John.Kennedy@colorado.edu">John.Kennedy@colorado.edu</a>. <strong>Nothing is submitted or stored by this page.</strong> You must send the email yourself. If your email app does not open, copy the request and email it manually. Public GitHub issues require an account and are visible to everyone; do not post sensitive information there.</p>
-<textarea id="copy-fallback" rows="6" readonly hidden aria-label="Request text to select and copy"></textarea>
+<p class="lede">Anyone may suggest a correction, addition or withdrawal <strong>without providing a name, email address or GitHub account</strong>.</p>
+<p class="note">The Atlas welcomes questions about names, credits, land connections and community affiliations. A concern can be raised without proving personal or community identity publicly; review and any further verification are separate steps.</p>
+<form id="fix" action="https://formsubmit.co/John.Kennedy@colorado.edu" method="POST" accept-charset="utf-8" novalidate>
+<input type="hidden" name="_subject" value="Indigenous Cinema Atlas — anonymous correction request">
+<input type="hidden" name="_template" value="table">
+<input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none">
+<input type="hidden" id="record" name="atlas_record">
+<input type="hidden" id="page" name="atlas_page">
+<label>Which filmmaker, film or land? <small>(required)</small><input id="about" name="record_name" required placeholder="Filmmaker, film or land name"></label>
+<label>Type of request<select id="kind" name="request_type"><option>Correct a filmmaker’s nation or affiliation</option><option>Correct a film’s details</option><option>Correct a land link on the map</option><option>Add a missing filmmaker or film</option><option>Remove or withdraw a record</option><option>Something else</option></select></label>
+<label>What should change? <small>(required)</small><textarea id="what" name="requested_change" required placeholder="Describe the change or concern. Avoid including personal or sensitive information."></textarea></label>
+<label>Supporting page <small>(optional)</small><input id="source" type="url" name="source_url" placeholder="https://"></label>
+<label>Your connection to the record <small>(optional; leave blank if you prefer)</small><select id="who" name="connection"><option value="">Prefer not to say</option><option>I am the filmmaker</option><option>I am a member of the community or nation</option><option>I work with the filmmaker or film</option><option>Researcher or viewer</option></select></label>
+<div class="actions"><button type="submit">Submit without a name or email</button><button type="button" class="secondary" id="email">Compose private email</button><button type="button" class="secondary" id="copy">Copy request</button></div>
+<p class="note"><strong>Privacy:</strong> Anonymous here means no name, email or account is required or requested. Submissions go through <a href="https://formsubmit.co/" target="_blank" rel="noopener noreferrer">FormSubmit</a>, a third-party form processor, which may process technical information and retain the submission temporarily. This is <strong>not</strong> a guarantee of untraceable anonymity. Avoid sending private or ceremonial information. The project owner must activate this service by confirming a first-use email; delivery cannot be guaranteed until that step is complete. You can use the email option instead.</p>
+<textarea id="copy-fallback" rows="6" readonly hidden aria-label="Text to select and copy"></textarea>
 <p id="copied" role="status" aria-live="polite" class="note"></p>
 </form>
 </main>
@@ -124,43 +129,37 @@ main a[href^="http"]{color:var(--accent,var(--gold))}
   const q=new URLSearchParams(location.search), $=id=>document.getElementById(id), status=$('copied');
   if(q.get('about')) $('about').value=q.get('about');
   if(q.get('kind')) for(const o of $('kind').options) if(o.text.toLowerCase().includes(q.get('kind').toLowerCase())) { $('kind').value=o.text; break; }
+  $('record').value=q.get('record')||'';
+  $('page').value=q.get('page')||'';
   const message=()=>[
     'About: '+$('about').value.trim(),
     'Request: '+$('kind').value,
-    '',
-    'What should change:',
-    $('what').value.trim(),
-    '',
-    'Source: '+($('source').value.trim()||'(none given)'),
+    'What should change: '+$('what').value.trim(),
+    'Source: '+($('source').value.trim()||'(not supplied)'),
     'Connection: '+($('who').value||'Prefer not to say'),
-    q.get('record')?'Record: '+q.get('record'):'',
-    q.get('page')?'Page: '+q.get('page'):''
+    $('record').value?'Record: '+$('record').value:'',
+    $('page').value?'Page: '+$('page').value:''
   ].filter(Boolean).join('\n');
   const valid=()=>{
-    if(!$('about').value.trim()) { status.textContent='Please identify a film, filmmaker or land.'; $('about').focus(); return false; }
-    if(!$('what').value.trim()) { status.textContent='Please describe what should change.'; $('what').focus(); return false; }
-    if($('source').value.trim()&&!$('source').checkValidity()) { status.textContent='Please enter a complete source URL or leave that field blank.'; $('source').focus(); return false; }
-    status.textContent=''; return true;
+    if(!$('about').value.trim()){status.textContent='Identify the filmmaker, film or land.';$('about').focus();return false;}
+    if(!$('what').value.trim()){status.textContent='Describe your concern or requested change.';$('what').focus();return false;}
+    if($('source').value.trim()&&!$('source').checkValidity()){status.textContent='Use a complete source URL or leave the source blank.';$('source').focus();return false;}
+    status.textContent='';return true;
   };
   $('fix').addEventListener('submit',e=>{
-    e.preventDefault(); if(!valid())return;
-    const subject='Indigenous Cinema Atlas: '+$('kind').value+' — '+$('about').value.trim().slice(0,70);
-    status.textContent='An email draft should open. Your request has not been sent by this page.';
-    location.href='mailto:John.Kennedy@colorado.edu?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(message());
+    if(!valid()){e.preventDefault();return;}
+    status.textContent='Submitting through FormSubmit. This page cannot confirm delivery.';
   });
-  $('public').addEventListener('click',()=>{
+  $('email').addEventListener('click',()=>{
     if(!valid())return;
-    const u=new URL('https://github.com/jwilliamkennedy/abya-yala-film-atlas/issues/new');
-    u.searchParams.set('title','Correction: '+$('about').value.trim().slice(0,90));
-    u.searchParams.set('body','About: '+$('about').value.trim()+'\nRequest type: '+$('kind').value+'\n\nThis issue will be public. Add only details you are comfortable sharing publicly. For a private explanation, use the email option on the Atlas corrections page.');
-    window.open(u.href,'_blank','noopener');
-    status.textContent='Review the public GitHub draft before publishing it. Your private explanation was not copied into this draft.';
+    const subject='Indigenous Cinema Atlas: '+$('kind').value+' — '+$('about').value.trim().slice(0,64);
+    location.href='mailto:John.Kennedy@colorado.edu?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(message());
+    status.textContent='An email draft should open; it has not been sent by the website.';
   });
   $('copy').addEventListener('click',async()=>{
     if(!valid())return;
-    const request=message();
-    try { if(!navigator.clipboard||!navigator.clipboard.writeText)throw new Error('Clipboard unavailable'); await navigator.clipboard.writeText(request); status.textContent='Request copied. Paste it into an email to John.Kennedy@colorado.edu.'; }
-    catch(e) { const field=$('copy-fallback');field.hidden=false;field.value=request;field.focus();field.select();status.textContent='Select and copy the text above, then email it to John.Kennedy@colorado.edu.'; }
+    try { if(!navigator.clipboard||!navigator.clipboard.writeText)throw Error('Clipboard unavailable'); await navigator.clipboard.writeText(message()); status.textContent='Request copied.'; }
+    catch(e) { const field=$('copy-fallback');field.hidden=false;field.value=message();field.focus();field.select();status.textContent='Select and copy the request above.'; }
   });
 })();
 </script>
