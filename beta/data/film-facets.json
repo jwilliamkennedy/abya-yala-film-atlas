@@ -2,8 +2,8 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-16",
  "license": "See data.html",
- "films_on_public_map": 2337,
- "film_entries": 2356,
+ "films_on_public_map": 2348,
+ "film_entries": 2367,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -16438,6 +16438,102 @@
   "DIR-0277-F1": {
    "title": "Ramona",
    "year": 1928,
+   "makers": [
+    {
+     "id": "DIR-0277",
+     "name": "Edwin Carewe"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-956-F1": {
+   "title": "The Girl of the Golden West",
+   "year": 1923,
+   "makers": [
+    {
+     "id": "DIR-0277",
+     "name": "Edwin Carewe"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-956-F2": {
+   "title": "Mighty Lak' a Rose",
+   "year": 1923,
+   "makers": [
+    {
+     "id": "DIR-0277",
+     "name": "Edwin Carewe"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-956-F3": {
+   "title": "Joanna",
+   "year": 1925,
+   "makers": [
+    {
+     "id": "DIR-0277",
+     "name": "Edwin Carewe"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-956-F4": {
+   "title": "Resurrection",
+   "year": 1927,
+   "makers": [
+    {
+     "id": "DIR-0277",
+     "name": "Edwin Carewe"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-956-F5": {
+   "title": "Revenge",
+   "year": 1928,
+   "makers": [
+    {
+     "id": "DIR-0277",
+     "name": "Edwin Carewe"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-956-F6": {
+   "title": "Evangeline",
+   "year": 1929,
    "makers": [
     {
      "id": "DIR-0277",
@@ -44295,6 +44391,86 @@
     {
      "id": "Q20261115-952",
      "name": "Wallace W. Fox"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-951-F1": {
+   "title": "The Bishop of the Ozarks",
+   "year": 1923,
+   "makers": [
+    {
+     "id": "Q20261115-951",
+     "name": "Finis Fox"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-951-F2": {
+   "title": "The Man Between",
+   "year": 1923,
+   "makers": [
+    {
+     "id": "Q20261115-951",
+     "name": "Finis Fox"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-951-F3": {
+   "title": "Tipped Off",
+   "year": 1923,
+   "makers": [
+    {
+     "id": "Q20261115-951",
+     "name": "Finis Fox"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-951-F4": {
+   "title": "Bag and Baggage",
+   "year": 1923,
+   "makers": [
+    {
+     "id": "Q20261115-951",
+     "name": "Finis Fox"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-951-F5": {
+   "title": "A Woman Who Sinned",
+   "year": 1924,
+   "makers": [
+    {
+     "id": "Q20261115-951",
+     "name": "Finis Fox"
     }
    ],
    "languages": [],
