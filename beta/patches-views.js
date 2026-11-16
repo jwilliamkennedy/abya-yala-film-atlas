@@ -380,7 +380,7 @@ if(!actions.querySelector('.fw-proxy')){
   const pill=weave.querySelector('.fw-pill');
   const b=document.createElement('button');b.type='button';b.className='fw-proxy';b.innerHTML='<span aria-hidden="true">✦</span> Constellations';
   const sync=()=>b.setAttribute('aria-expanded',String(!weave.classList.contains('is-collapsed')));
-  b.addEventListener('click',()=>{(weave.querySelector('.fw-pill')||pill)?.click();setTimeout(sync,50);});
+  b.addEventListener('click',()=>{const open=!weave.classList.contains('is-collapsed');(open?weave.querySelector('.fw-min'):(weave.querySelector('.fw-pill')||pill))?.click();setTimeout(sync,50);});
   new MutationObserver(sync).observe(weave,{attributes:true,attributeFilter:['class']});sync();
   actions.appendChild(b);
 }};
