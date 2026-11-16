@@ -1,6 +1,6 @@
 
 <h1>Data, care, and reuse</h1>
-<p class="who">A minimal downloadable filmography of {{FILM_CREDITS}} film-director credits. The file contains only film titles and filmmaker names and known film years.</p>
+<p class="who">A minimal downloadable filmography of {{FILM_CREDITS}} film-director credits. The file contains only film titles, known film years and filmmaker names.</p>
 <section id="care-downloads" style="margin:24px 0;padding:16px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
 <h2 style="margin-top:0">The CARE Principles and the limits of a filmography</h2>
 <p>While the Indigenous Cinema Atlas is guided by CARE principles, there are limits and tensions between those principles and the information the website makes public. Many of the catalogues, search results, festivals and institutions from which filmographic records are assembled are not themselves CARE-informed. Their descriptions may reproduce histories of classification, exclusion and appropriation.</p>
