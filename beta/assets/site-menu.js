@@ -9,6 +9,7 @@
   /* the map's theme setting lives at the foot of More; the language selector stays at the top right of the header */
   function settle(){
     var more=document.querySelector('header .more-menu>div');if(!more)return;
+    var label=more.querySelector('a[href$="data.html"]');if(label&&label.textContent.trim()==='Data and downloads')label.textContent='Data, Reuse, and CARE';
     var lang=null,theme=document.querySelector('header .palette-choice>.palette-options');
     if(!lang&&!theme)return;
     var box=more.querySelector('.more-settings');
