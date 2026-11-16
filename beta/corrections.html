@@ -119,48 +119,102 @@ main a[href^="http"]{color:var(--accent,var(--gold))}
 <label>What should change? <small>(required)</small><textarea id="what" name="requested_change" required placeholder="Describe the change or concern. Avoid including personal or sensitive information."></textarea></label>
 <label>Supporting page <small>(optional)</small><input id="source" type="url" name="source_url" placeholder="https://"></label>
 <label>Your connection to the record <small>(optional; leave blank if you prefer)</small><select id="who" name="connection"><option value="">Prefer not to say</option><option>I am the filmmaker</option><option>I am a member of the community or nation</option><option>I work with the filmmaker or film</option><option>Researcher or viewer</option></select></label>
-<div class="actions"><button type="submit">Submit without a name or email</button><button type="button" class="secondary" id="email">Compose private email</button><button type="button" class="secondary" id="copy">Copy request</button></div>
-<p class="note"><strong>Privacy:</strong> Anonymous here means no name, email or account is required or requested. Submissions go through <a href="https://formsubmit.co/" target="_blank" rel="noopener noreferrer">FormSubmit</a>, a third-party form processor, which may process technical information and retain the submission temporarily. This is <strong>not</strong> a guarantee of untraceable anonymity. Avoid sending private or ceremonial information. This form requires a one-time email activation by the site owner before submissions can be delivered. Once you submit, FormSubmit should display an activation or confirmation page. If nothing happens, try the email option instead. No submission is confirmed until FormSubmit accepts it.</p>
+<div class="actions"><button type="submit" id="send">Check submission response</button><button type="button" class="secondary" id="direct">Use FormSubmit’s own page</button><button type="button" class="secondary" id="email">Compose private email</button><button type="button" class="secondary" id="copy">Copy request</button></div>
+<p class="note"><strong>Privacy:</strong> Anonymous here means no name, email or account is required or requested. Submissions go through <a href="https://formsubmit.co/" target="_blank" rel="noopener noreferrer">FormSubmit</a>, a third-party form processor, which may process technical information and retain the submission temporarily. This is <strong>not</strong> a guarantee of untraceable anonymity. Avoid sending private or ceremonial information. This anonymous-submission service has not yet been verified as active. The first button displays the service’s actual response, including activation or delivery errors, without leaving this page. If that fails, use the full-page option to view its response directly. The project owner must first confirm a FormSubmit activation email; until that succeeds, do not assume a correction has been delivered.</p>
 <textarea id="copy-fallback" rows="6" readonly hidden aria-label="Text to select and copy"></textarea>
 <p id="copied" role="status" aria-live="polite" class="note"></p>
 </form>
 </main>
 <script>
 (() => {
-  const q=new URLSearchParams(location.search), $=id=>document.getElementById(id), status=$('copied');
-  if(q.get('about')) $('about').value=q.get('about');
-  if(q.get('kind')) for(const o of $('kind').options) if(o.text.toLowerCase().includes(q.get('kind').toLowerCase())) { $('kind').value=o.text; break; }
-  $('record').value=q.get('record')||'';
-  $('page').value=q.get('page')||'';
-  const message=()=>[
-    'About: '+$('about').value.trim(),
-    'Request: '+$('kind').value,
-    'What should change: '+$('what').value.trim(),
-    'Source: '+($('source').value.trim()||'(not supplied)'),
-    'Connection: '+($('who').value||'Prefer not to say'),
-    $('record').value?'Record: '+$('record').value:'',
-    $('page').value?'Page: '+$('page').value:''
+  const q = new URLSearchParams(location.search);
+  const $ = id => document.getElementById(id);
+  const form = $('fix'), status = $('copied'), send = $('send');
+  if (q.get('about')) $('about').value = q.get('about');
+  if (q.get('kind')) for (const o of $('kind').options) {
+    if (o.text.toLowerCase().includes(q.get('kind').toLowerCase())) { $('kind').value=o.text; break; }
+  }
+  $('record').value = q.get('record') || '';
+  $('page').value = q.get('page') || '';
+  const message = () => [
+    'About: ' + $('about').value.trim(),
+    'Request: ' + $('kind').value,
+    'What should change: ' + $('what').value.trim(),
+    'Source: ' + ($('source').value.trim() || '(not supplied)'),
+    'Connection: ' + ($('who').value || 'Prefer not to say'),
+    $('record').value ? 'Record: ' + $('record').value : '',
+    $('page').value ? 'Page: ' + $('page').value : ''
   ].filter(Boolean).join('\n');
-  const valid=()=>{
-    if(!$('about').value.trim()){status.textContent='Identify the filmmaker, film or land.';$('about').focus();return false;}
-    if(!$('what').value.trim()){status.textContent='Describe your concern or requested change.';$('what').focus();return false;}
-    if($('source').value.trim()&&!$('source').checkValidity()){status.textContent='Use a complete source URL or leave the source blank.';$('source').focus();return false;}
-    status.textContent='';return true;
+  const valid = () => {
+    if (!$('about').value.trim()) {status.textContent='Identify the filmmaker, film or land.';$('about').focus();return false;}
+    if (!$('what').value.trim()) {status.textContent='Describe your concern or requested change.';$('what').focus();return false;}
+    if ($('source').value.trim() && !$('source').checkValidity()) {status.textContent='Use a complete source URL or leave the source blank.';$('source').focus();return false;}
+    return true;
   };
-  $('fix').addEventListener('submit',e=>{
-    if(!valid()){e.preventDefault();return;}
-    status.textContent='Opening FormSubmit to process your request. Please follow its confirmation or activation instructions. This page cannot verify delivery.';
+  // FormSubmit's normal POST navigates away before we can see its response. The
+  // documented AJAX endpoint instead reports whether it accepted or refused a
+  // submission. Its "success" value can be the STRING "false".
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    if (!valid() || send.disabled) return;
+    send.disabled = true;
+    form.setAttribute('aria-busy', 'true');
+    status.textContent = 'Contacting FormSubmit. No submission has been confirmed yet.';
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), 15000);
+    try {
+      const fields = Object.fromEntries(new FormData(form).entries());
+      const response = await fetch('https://formsubmit.co/ajax/John.Kennedy@colorado.edu', {
+        method: 'POST',
+        headers: { 'Content-Type':'application/json', 'Accept':'application/json' },
+        body: JSON.stringify(fields),
+        signal: controller.signal
+      });
+      const body = await response.json();
+      if (!response.ok || String(body.success).toLowerCase() !== 'true') {
+        const explanation = typeof body.message === 'string' && body.message.trim()
+          ? body.message.trim()
+          : 'The submission service did not accept the request.';
+        if (/activat/i.test(explanation)) {
+          status.textContent = 'FormSubmit says the receiving address must be activated. It may have requested an activation email, but delivery has not been verified. Your correction was NOT delivered. Details: ' + explanation;
+        } else {
+          status.textContent = 'FormSubmit refused the request. Your correction has NOT been delivered. Details: ' + explanation;
+        }
+      } else {
+        status.textContent = 'FormSubmit reports that it accepted the request. Delivery to the Atlas inbox cannot be independently verified here.';
+      }
+    } catch (error) {
+      const timedOut = error && error.name === 'AbortError';
+      status.textContent = timedOut
+        ? 'The submission service did not respond within 15 seconds. Delivery is NOT confirmed. Try the full-page option or copy the request.'
+        : 'The form could not contact FormSubmit or interpret its response. Delivery is NOT confirmed. Try the full-page option or copy the request.';
+    } finally {
+      clearTimeout(timer);
+      send.disabled = false;
+      form.removeAttribute('aria-busy');
+    }
   });
-  $('email').addEventListener('click',()=>{
-    if(!valid())return;
-    const subject='Indigenous Cinema Atlas: '+$('kind').value+' — '+$('about').value.trim().slice(0,64);
-    location.href='mailto:John.Kennedy@colorado.edu?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(message());
-    status.textContent='An email draft should open; it has not been sent by the website.';
+  $('direct').addEventListener('click', () => {
+    if (!valid()) return;
+    status.textContent = 'Opening FormSubmit’s own page so you can see its activation or error message. No delivery is confirmed yet.';
+    HTMLFormElement.prototype.submit.call(form);
   });
-  $('copy').addEventListener('click',async()=>{
-    if(!valid())return;
-    try { if(!navigator.clipboard||!navigator.clipboard.writeText)throw Error('Clipboard unavailable'); await navigator.clipboard.writeText(message()); status.textContent='Request copied.'; }
-    catch(e) { const field=$('copy-fallback');field.hidden=false;field.value=message();field.focus();field.select();status.textContent='Select and copy the request above.'; }
+  $('email').addEventListener('click', () => {
+    if (!valid()) return;
+    const subject = 'Indigenous Cinema Atlas: ' + $('kind').value + ' — ' + $('about').value.trim().slice(0,64);
+    location.href = 'mailto:John.Kennedy@colorado.edu?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(message());
+    status.textContent = 'An email draft should open; it has not been sent by the website.';
+  });
+  $('copy').addEventListener('click', async () => {
+    if (!valid()) return;
+    try {
+      if (!navigator.clipboard || !navigator.clipboard.writeText) throw Error('Clipboard unavailable');
+      await navigator.clipboard.writeText(message());
+      status.textContent = 'Request copied.';
+    } catch (error) {
+      const field=$('copy-fallback'); field.hidden=false; field.value=message();
+      field.focus(); field.select(); status.textContent='Select and copy the request above.';
+    }
   });
 })();
 </script>
