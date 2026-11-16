@@ -569,3 +569,5 @@ body.atlas-page .map-toolbar .fw-proxy:hover,body.atlas-page .map-toolbar .fw-pr
 :root:not(#_):not(#__) #index .maker-dossier .maker-facts dd{margin:2px 0 0!important}
 :root:not(#_):not(#__) #index .maker-dossier .dossier-evidence{margin-top:10px!important}
 :root:not(#_):not(#__) #index .entry.selected .maker-dossier{padding-left:9px!important;padding-right:9px!important}
+/* the people already show in the header after the name */
+:root:not(#_):not(#__) #index .maker-dossier .maker-identity{display:none!important}
