@@ -152,9 +152,9 @@ main a[href^="http"]{color:var(--accent,var(--gold))}
     if(!valid())return;
     const u=new URL('https://github.com/jwilliamkennedy/abya-yala-film-atlas/issues/new');
     u.searchParams.set('title','Correction: '+$('about').value.trim().slice(0,90));
-    u.searchParams.set('body',message());
+    u.searchParams.set('body','About: '+$('about').value.trim()+'\nRequest type: '+$('kind').value+'\n\nThis issue will be public. Add only details you are comfortable sharing publicly. For a private explanation, use the email option on the Atlas corrections page.');
     window.open(u.href,'_blank','noopener');
-    status.textContent='Review the public GitHub draft before publishing it.';
+    status.textContent='Review the public GitHub draft before publishing it. Your private explanation was not copied into this draft.';
   });
   $('copy').addEventListener('click',async()=>{
     if(!valid())return;
