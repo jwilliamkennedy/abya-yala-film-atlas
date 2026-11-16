@@ -58,7 +58,7 @@ try{(function(){
 'use strict';
 // Screen-space placement keeps names inside the visible part of their source geometry.
 window.AtlasMapLabelLayout=(()=>{
- const baseName=s=>String(s||'').replace(/\s*\([^)]*\)\s*/g,' ').trim().normalize('NFD').replace(/[’‘ʻʼ`]/g,"'").replace(/\p{Diacritic}/gu,'').toLowerCase();
+ const baseCache=new Map(),baseName=s=>{const k=String(s||'');let v=baseCache.get(k);if(v===undefined){v=k.replace(/\s*\([^)]*\)\s*/g,' ').trim().normalize('NFD').replace(/[’‘ʻʼ`]/g,"'").replace(/\p{Diacritic}/gu,'').toLowerCase();baseCache.set(k,v);}return v;};
  function sourceMatches(name,source){
   const a=baseName(name),b=baseName(source);
   // The source explicitly lists Binnizá among its names; this is a spelling relay, not an affiliation inference.

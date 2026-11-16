@@ -140,7 +140,7 @@ if(new URLSearchParams(location.search).get('constellation-embed')==='1'){
  function undo(){const h=history(),x=h.undo.pop();if(x){h.redo.push(x);restoreSnapshot(x.before);status('Undid '+x.label.toLowerCase()+'.');}}
  function redo(){const h=history(),x=h.redo.pop();if(x){h.undo.push(x);restoreSnapshot(x.after);status('Redid '+x.label.toLowerCase()+'.');}}
  function updateHistory(){const h=history();$('#constellate-undo').disabled=!h.undo.length;$('#constellate-redo').disabled=!h.redo.length;$('#constellate-undo').title=h.undo.length?'Undo '+h.undo.at(-1).label.toLowerCase():'Nothing to undo';$('#constellate-redo').title=h.redo.length?'Redo '+h.redo.at(-1).label.toLowerCase():'Nothing to redo';}
- function restoreAtlas(value){A.restoreStop(copy(value));const{center,scale,zoom,...st}=copy(value);Object.assign(A.state,st);A.refresh();}
+ function restoreAtlas(value){const go=()=>{A.restoreStop(copy(value));const{center,scale,zoom,...st}=copy(value);Object.assign(A.state,st);A.refresh();};if(A.holdMapMarkers)A.holdMapMarkers(go);else go();}
  function relayout(){if(!enabled)return;const view=A.captureState();document.body.classList.toggle('weave-dock-open',!panel.hidden||document.body.classList.contains('weave-browsing'));restoreAtlas(view);dimensions();renderGraph();}
  function open(){const opening=!enabled;document.body.classList.remove('weave-browsing');if(!enabled){entry={state:copy(A.captureState()),scroll:$('#index').scrollTop,url:location.href,x:window.scrollX||0,y:window.scrollY||0};enabled=true;window.AtlasFitCap=8;document.body.classList.add('is-constellating','is-theme-weaving');graph.hidden=false;graph.removeAttribute('hidden');$('#constellate-mode').hidden=false;}
   panel.hidden=false;trigger.setAttribute('aria-expanded','true');A.closeWorkspacePanels();relayout();render();updateAddress();if(opening&&S.current().items.some(x=>x.type!=='concept'))requestAnimationFrame(()=>requestAnimationFrame(()=>{if(enabled&&!unmapped&&!player)fit('quiet');}));}
@@ -1107,7 +1107,7 @@ try{
    if(!r||(x.type==='film'&&!f)){missing.push(id);return;}
    items.push({type:x.type,record:x.record,film:x.film||null,title:x.type==='film'?f.title:r.name,maker:r.name,year:f?f.year:''});
   });
-  return {weave:{id:'pub-'+doc.slug,name:w.name,author:w.author,note:w.note,items:items,threads:w.threads||[],links:w.links||[]},missing:missing};
+  return {weave:{id:'pub-'+doc.slug,name:w.name,author:w.author,note:w.note,items:items,threads:w.threads||[],links:w.links||[],pins:w.pins||{}},missing:missing};
  }
  function content(c){return JSON.stringify([c.name,c.author,c.note,(c.threads||[]).map(function(t){return [t.name,t.description,t.items,t.notes];}),(c.links||[]).map(function(l){return [l.source,l.target,l.label,l.note,l.kind,l.sourceURL];})]);}
  function open(slug,mode){
@@ -1735,7 +1735,8 @@ function buildStart(){
   if(et){showWelcome=false;var P2=window.AtlasPublished,name=et.dataset.wsExampleThread;
    var go=function(){try{var S2=S(),c=S2.current(),t=c.threads.find(function(x){return x.name.toLowerCase()===name.toLowerCase();});if(t){c.activeThread=t.id;S2.save();C().setRead(true);var first=c.items.find(function(x){return x.id===t.items[0];});if(first)setTimeout(function(){var step=[].find.call(document.querySelectorAll('#weave-read-panel [data-read-step]'),function(b){return b.textContent.trim()===String(first.title).trim();});if(step)step.click();},120);}}catch(err){}settle();};
    if(P2&&P2.example)P2.open(P2.example,'read').then(function(){setTimeout(go,300);},go);else go();return;}
-  if(e.target.closest('[data-ws-example]')){showWelcome=false;var P=window.AtlasPublished,old=function(){var b=$('#weave-example');if(b)b.click();settle();};if(P&&P.example){P.open(P.example,'build').then(settle,old);}else old();return;}
+  if(e.target.closest('[data-ws-example]')){showWelcome=false;var P=window.AtlasPublished,old=function(){var b=$('#weave-example');if(b)b.click();settle();};if(P&&P.example){P.open(P.example,'read').then(settle,old);}else old();return;}
+  var sm=e.target.closest('[data-ws-sample]');if(sm){showWelcome=false;var P3=window.AtlasPublished;if(P3)P3.open(sm.dataset.wsSample,'read').then(settle,settle);return;}
   if(e.target.closest('[data-ws-close]')){showWelcome=false;keepBuild=true;settle();return;}
   if(e.target.closest('[data-ws-continue]')){showWelcome=false;settle();return;}
   if(e.target.closest('[data-ws-trace]')){showWelcome=false;C().trace();settle();return;}
@@ -1864,8 +1865,10 @@ function examplePreview(){
  var e=(P.list||[]).filter(function(x){return x.slug===P.example;})[0];if(!e)return;
  sec.dataset.wsPublished='1';
  var path=$('[data-ws-example]',sec).closest('.ws-path'),p=$('p',path);
- if(p)p.textContent=e.films+' films on '+e.threads.length+' threads, by '+(e.author||'the atlas')+'. Open it, or start at one thread:';
- $('.ws-example-films',sec).innerHTML='<ul class="ws-example-threads">'+e.threads.map(function(t){return '<li><button type="button" data-ws-example-thread="'+esc(t)+'">'+esc(t)+'<span aria-hidden="true">→</span></button></li>';}).join('')+'</ul>';
+ if(p)p.textContent=e.name+': '+e.films+' films on '+e.threads.length+' threads, by '+(e.author||'the atlas')+'.';
+ var more=(P.list||[]).filter(function(x){return x.slug!==P.example;}),box=$('.ws-example-films',sec),main=$('[data-ws-example]',sec);
+ if(main&&box)path.insertBefore(main,box);
+ box.innerHTML=more.length?'<p class="ws-popular-label">Or one made with a single tool</p><ul class="ws-example-threads">'+more.map(function(m){return '<li><button type="button" data-ws-sample="'+esc(m.slug)+'">'+esc(m.name)+'<span aria-hidden="true">→</span></button></li>';}).join('')+'</ul>':'';
  $('.ws-example-label',sec).textContent='';
 }
 function labels(){

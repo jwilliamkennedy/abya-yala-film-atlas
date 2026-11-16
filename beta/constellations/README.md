@@ -13,3 +13,8 @@ Each file here is one constellation with a short, stable address:
 - Only John publishes here. A reader who opens a published constellation gets a copy in their own
   browser; their edits never change this file.
 - `index.json` › `example` names the constellation that "Open the example" loads.
+- A file may carry `pins`: for a film gathered from one land (a land thread or a drawn line), the land it sits on.
+- Three samples are made with one tool each and carry no interpretation: `one-theme-water` (Start from a theme),
+  `one-land-wayuu` (a thread from one land) and `one-line-misak-wallmapu` (Draw a line). The start screen lists every
+  constellation in `index.json` other than the example under "Or one made with a single tool". To refresh one, make it
+  again with the same tool and replace its file.
