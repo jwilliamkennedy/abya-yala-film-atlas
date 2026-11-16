@@ -22,7 +22,7 @@ header{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-betw
 nav.primary{display:flex;flex-wrap:wrap;gap:4px 20px}nav.primary a{color:var(--ink);border:0;font-size:15px;padding:6px 0}
 main{max-width:860px;margin:0 auto;padding:30px clamp(16px,4vw,32px) 64px}
 .crumb{font-size:13px;color:var(--muted);margin:0}h1{font:400 clamp(30px,4vw,42px)/1.12 var(--serif);margin:6px 0 6px}
-.who{font-size:17px;margin:0}.lands{color:var(--muted);font-size:14px;margin:4px 0 0}.aka{color:var(--muted);font-size:14px;margin:2px 0 0}
+.who{font-size:17px;margin:0}.lands{color:var(--muted);font-size:14px;margin:4px 0 0}.aka{color:var(--muted);font-size:14px;margin:2px 0 0}.unverified{font-size:14px;margin:8px 0 0;padding:6px 10px;border-left:3px solid var(--muted);color:var(--muted)}
 .actions{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 6px}.actions a,.actions button{font:inherit;font-size:14px;min-height:34px;padding:5px 14px;border:1px solid var(--line);border-radius:999px;background:transparent;color:var(--ink);cursor:pointer;display:inline-flex;align-items:center}
 .actions .primary{background:var(--ui-accent,#3d6178);color:var(--ui-accent-ink,#fff);border-color:var(--ui-accent,#3d6178)}
 h2{font:400 22px/1.2 var(--serif);margin:32px 0 8px}h2 small{font:13px var(--sans);color:var(--muted)}
@@ -110,6 +110,7 @@ for r in data:
     movies = [{k: v for k, v in m.items() if v} for m in movies]
     body = (f'<p class="crumb"><a href="./">Filmmakers A–Z</a></p><h1>{esc(nm)}</h1>'
             + (f'<p class="who">{esc(who)}</p>' if who else '')
+            + ('<p class="unverified">Ancestral affiliation unverified: the only sources describe ancestry in third-party words. Not shown on the map by default.</p>' if r.get('unverified') else '')
             + (f'<p class="lands">Land references on the atlas: {esc(", ".join(r["lands"]))}</p>' if r['lands'] else '')
             + (f'<p class="aka">Also credited as {esc(", ".join(r["aliases"]))}</p>' if r['aliases'] else '')
             + f'<div class="actions"><a class="primary" href="../#view=filmmakers&amp;maker={esc(r["id"])}">Open on the map</a><a href="{esc(correct)}">Suggest a correction</a></div>'
