@@ -2,8 +2,8 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-16",
  "license": "See data.html",
- "films_on_public_map": 2350,
- "film_entries": 2369,
+ "films_on_public_map": 2351,
+ "film_entries": 2370,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -44511,6 +44511,26 @@
    "families": [],
    "form": null,
    "length": null
+  },
+  "Q20261115-966-F1": {
+   "title": "Travelling College",
+   "year": 1968,
+   "makers": [
+    {
+     "id": "Q20261115-966",
+     "name": "Indian Film Crew"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Collective and Community Media"
+   ],
+   "primary_theme": "Collective and Community Media",
+   "families": [
+    "Expression and Representation"
+   ],
+   "form": "Documentary",
+   "length": "Short"
   }
  }
 }
