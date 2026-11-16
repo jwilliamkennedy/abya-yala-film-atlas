@@ -35,9 +35,9 @@ const go=()=>{if(r.dataset.mapReveal!=='pending')return;r.dataset.mapReveal='rea
 const check=()=>{const b=window.AtlasOpenBasemap;const base=r.dataset.basemapTiles==='ready'||r.dataset.basemapState==='failed'||(b&&b.active===false);if(base&&r.dataset.atlasUi==='ready')go()};
 new MutationObserver(check).observe(r,{attributes:true,attributeFilter:['data-atlas-ui','data-basemap-state','data-basemap-tiles']});
 addEventListener('DOMContentLoaded',()=>setTimeout(check,0));setTimeout(go,4500)})();</script><style id="atlas-menu-first-paint">
-html[data-atlas-entry="map"][data-map-reveal="pending"] body.atlas-page .map-panel :is(#atlas-basemap,#atlas){opacity:0!important}
-html[data-atlas-entry="map"][data-map-reveal="ready"] body.atlas-page .map-panel :is(#atlas-basemap,#atlas){transition:opacity .4s ease-out!important}
-@media (prefers-reduced-motion: reduce){html[data-map-reveal="ready"] body.atlas-page .map-panel :is(#atlas-basemap,#atlas){transition:none!important}}
+html[data-atlas-entry="map"][data-map-reveal="pending"] body.atlas-page .map-panel :is(#atlas-basemap,#atlas,.zoom){opacity:0!important}
+html[data-atlas-entry="map"][data-map-reveal="ready"] body.atlas-page .map-panel :is(#atlas-basemap,#atlas,.zoom){transition:opacity .4s ease-out!important}
+@media (prefers-reduced-motion: reduce){html[data-map-reveal="ready"] body.atlas-page .map-panel :is(#atlas-basemap,#atlas,.zoom){transition:none!important}}
 
 /* Hide only the old four-control map menu until the final menu has been placed. */
 html:not([data-atlas-ui="ready"]) body.atlas-page .map-toolbar{visibility:hidden!important;pointer-events:none!important}
