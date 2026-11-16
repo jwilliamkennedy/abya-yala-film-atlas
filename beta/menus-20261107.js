@@ -171,10 +171,12 @@ function featured(){
   if(!min){min=el('button',{type:'button',class:'fw-min','aria-label':'Minimize','title':'Minimize'},'–');card.append(min);}
   if(card.dataset.featuredBound)return;
   card.dataset.featuredBound='1';
-  pill.onclick=()=>set(false);min.onclick=()=>set(true);
+  pill.onclick=()=>set(false);min.onclick=()=>mini(!card.classList.contains('is-min'));card.__fwSet=set;
   set(store.get('featured-collapsed',true),false);
  };
- const set=(collapsed,save=true)=>{card.classList.toggle('is-collapsed',collapsed);card.querySelector('.fw-pill')?.setAttribute('aria-expanded',String(!collapsed));if(save)store.set('featured-collapsed',collapsed);};
+ /* 2026-11-15: – shrinks the card to one line (+ restores it); × and the toolbar button close it. */
+ const mini=on=>{card.classList.toggle('is-min',on);const m=card.querySelector('.fw-min');if(m){m.textContent=on?'+':'–';m.setAttribute('aria-label',on?'Expand':'Minimize');m.title=on?'Expand':'Minimize';m.setAttribute('aria-expanded',String(!on));}};
+ const set=(collapsed,save=true)=>{if(!collapsed)mini(false);card.classList.toggle('is-collapsed',collapsed);card.querySelector('.fw-pill')?.setAttribute('aria-expanded',String(!collapsed));if(save)store.set('featured-collapsed',collapsed);};
  setup();new MutationObserver(setup).observe(card,{childList:true});
 }
 

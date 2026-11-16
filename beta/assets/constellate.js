@@ -1177,7 +1177,7 @@ try{
  const card=document.querySelector('#featured-weave');
  const dismissed=false;try{localStorage.removeItem('fw-hidden');}catch{}
  /* 2026-11-15: × closes the card back to the toolbar button (it no longer hides it for good). */
- card.querySelector('.fw-close').onclick=()=>{const m=card.querySelector('.fw-min');if(m)m.click();else card.classList.add('is-collapsed');};
+ card.querySelector('.fw-close').onclick=()=>{if(card.__fwSet)card.__fwSet(true);else card.classList.add('is-collapsed');};
  function update(){const busy=/(maker|film|land|community|country)=/.test(location.hash)||document.body.classList.contains('is-theme-weaving')||document.body.classList.contains('weave-playing')||document.body.classList.contains('selection-held');card.hidden=dismissed||busy;}
  addEventListener('hashchange',update);new MutationObserver(update).observe(document.body,{attributes:true,attributeFilter:['class']});update();
 })();

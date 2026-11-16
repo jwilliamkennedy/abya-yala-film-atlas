@@ -596,3 +596,11 @@ body.atlas-page .map-toolbar .fw-proxy:hover,body.atlas-page .map-toolbar .fw-pr
  :root:not(#_):not(#__) #index :is(#maker-alphabet,#film-alphabet){grid-template-columns:repeat(27,minmax(0,1fr))!important;gap:0!important;row-gap:0!important}
  :root:not(#_):not(#__) #index :is(#maker-alphabet,#film-alphabet) button{min-width:0!important;width:auto!important;height:26px!important;min-height:26px!important;padding:0!important;font-size:12px!important;border-radius:6px!important}
 }
+
+/* 2026-11-15: featured constellation minimized to one line. */
+:root:not(#_):not(#__) body.atlas-page #featured-weave.is-min:not(.is-collapsed){width:auto!important;max-width:min(360px,calc(100% - 24px))!important;padding:9px 78px 9px 16px!important;display:flex!important;align-items:center!important;gap:14px!important}
+:root:not(#_):not(#__) body.atlas-page #featured-weave.is-min :is(.fw-eyebrow,ul,.fw-pill,.fw-actions a:not(.fw-play)){display:none!important}
+:root:not(#_):not(#__) body.atlas-page #featured-weave.is-min h2{margin:0!important;font-size:16px!important;white-space:nowrap!important}
+:root:not(#_):not(#__) body.atlas-page #featured-weave.is-min .fw-actions{border-top:0!important;padding-top:0!important}
+:root:not(#_):not(#__) body.atlas-page #featured-weave.is-min .fw-actions a.fw-play{padding:6px 12px!important}
+:root:not(#_):not(#__) body.atlas-page #featured-weave.is-min :is(.fw-min,.fw-close){top:50%!important;transform:translateY(-50%)!important}

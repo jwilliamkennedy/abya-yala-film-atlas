@@ -73,7 +73,7 @@ async function boot(){
   palette='night';root.dataset.basemapPalette='night';
  }
  try{map=new ml.Map({container:host,style,interactive:false,attributionControl:false,fadeDuration:0,renderWorldCopies:true,center:[-90,10],zoom:1.4,maxZoom:18,maxPitch:0,trackResize:false});}catch(e){fail();return;}
- map.on('load',()=>{ready=true;root.dataset.basemapState='ready';sync();applyPalette();});
+ map.on('load',()=>{ready=true;root.dataset.basemapState='ready';sync();applyPalette();const tiles=()=>{root.dataset.basemapTiles='ready'};map.once('idle',tiles);setTimeout(tiles,2500);});
  map.on('error',()=>{if(!ready&&++errors>6)fail();});
  setTimeout(()=>{if(!ready)fail();},20000);
  new ResizeObserver(()=>{map.resize();sync();}).observe(svg);
