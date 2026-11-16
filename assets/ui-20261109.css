@@ -550,3 +550,10 @@ body.atlas-page .map-toolbar .fw-proxy:hover,body.atlas-page .map-toolbar .fw-pr
 #index .entry .maker-thumbnail-caption{display:none!important}
 
 #territory-control [data-mode].is-on,#territory-control [data-mode][aria-checked="true"]{background:var(--ui-accent)!important;color:var(--ui-accent-ink)!important;border-color:var(--ui-accent)!important}
+/* selection path (land › filmmaker › film) wraps by word, never by letter; with a long path the buttons drop below it */
+:root:not(#_):not(#__) #index #selection-summary #selection-path{flex-wrap:wrap!important;row-gap:2px!important}
+:root:not(#_):not(#__) #index #selection-summary #selection-path>*{flex:0 1 auto!important;overflow-wrap:normal!important;word-break:normal!important}
+:root:not(#_):not(#__) #index #selection-summary:has(#selection-path>:nth-child(3)) .selection-label{grid-column:1 / -1!important;grid-row:1!important}
+:root:not(#_):not(#__) #index #selection-summary:has(#selection-path>:nth-child(3)) #selection-locate{grid-column:2!important;grid-row:2!important}
+:root:not(#_):not(#__) #index #selection-summary:has(#selection-path>:nth-child(3)) #clear-context{grid-column:3!important;grid-row:2!important}
+:root:not(#_):not(#__) #index #selection-summary:has(#selection-path>:nth-child(3)) .sel-links{grid-row:3!important}
