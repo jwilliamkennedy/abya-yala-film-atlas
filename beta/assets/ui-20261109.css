@@ -607,3 +607,10 @@ body.atlas-page .map-toolbar .fw-proxy:hover,body.atlas-page .map-toolbar .fw-pr
 
 /* 2026-11-15: in Constellate the map toolbar keeps its pill; the Constellations button is not needed there. */
 :root:not(#_):not(#__) body.atlas-page:is(.is-theme-weaving,.is-constellating) .map-toolbar .fw-proxy,:root[data-ui-constellate=on]:not(#_):not(#__) body.atlas-page .map-toolbar .fw-proxy{display:none!important}
+
+/* 2026-11-15: after resizing the panel the map eases out, re-lays itself out once, and fades back in. */
+html[data-map-settle] body.atlas-page .map-panel :is(#atlas,#atlas-basemap){transition:opacity .14s ease-in}
+html[data-map-settle="out"] body.atlas-page .map-panel :is(#atlas,#atlas-basemap){opacity:0!important}
+html[data-map-settle="in"] body.atlas-page .map-panel :is(#atlas,#atlas-basemap){transition:opacity .3s ease-out}
+html.index-resizing body.atlas-page .map-panel{overflow:hidden}
+@media (prefers-reduced-motion: reduce){html[data-map-settle] body.atlas-page .map-panel :is(#atlas,#atlas-basemap){transition:none}}
