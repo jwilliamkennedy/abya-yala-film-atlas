@@ -4,7 +4,7 @@ from playwright.async_api import async_playwright
 JS = '''()=>{const A=window.Atlas,on=window.ATLAS_ON_MAP,M=window.ATLAS_PROFILE_MEDIA||{};const WATCH=/watch|full film|stream|viewing|ver pelicula|ver filme/i,NOT=/trailer|teaser|preview/i;
 const lands=id=>{try{return [...new Set((A.recordLandReferences?A.recordLandReferences(id):[]).map(l=>l&&(A.landDisplayName?A.landDisplayName(l):l.name)).filter(Boolean))]}catch(e){return []}};
 return A.allRecords().filter(r=>on.has(r.status)).map(r=>({id:r.id,name:r.name,aliases:(r.aliases||[]).map(a=>typeof a==='string'?a:a&&a.name).filter(Boolean),
- nation:r.nation||r.community||'',country:r.countryName||'',status:r.status,lands:lands(r.id),
+ nation:r.nation||r.community||'',country:r.countryName||'',status:r.status,unverified:/ancestral affiliation unverified/i.test(r.affiliation||''),lands:lands(r.id),
  sources:(Array.isArray(r.sources)?r.sources:[]).filter(s=>s&&s.url).map(s=>({url:s.url,type:s.type||'',evidence:s.evidence||''})).slice(0,12),
  films:(r.films||[]).map(f=>{const m=M[f.id];let routes=[];try{routes=A.viewingRoutes(f)||[]}catch(e){}
   const fa=((window.ATLAS_FACETS||{}).films||{})[f.id]||{};
