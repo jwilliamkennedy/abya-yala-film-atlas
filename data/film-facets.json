@@ -2,8 +2,8 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-16",
  "license": "See data.html",
- "films_on_public_map": 2243,
- "film_entries": 2262,
+ "films_on_public_map": 2351,
+ "film_entries": 2370,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -273,7 +273,7 @@
     "match": "group",
     "indigenous": "yes",
     "note": "Kichwa names the Ecuadorian Quechua varieties",
-    "films": 3
+    "films": 10
    },
    {
     "label": "Lakota",
@@ -405,7 +405,7 @@
     "match": "exact",
     "indigenous": "no",
     "note": "",
-    "films": 34
+    "films": 35
    },
    {
     "label": "Portuguese",
@@ -465,7 +465,7 @@
     "match": "exact",
     "indigenous": "yes",
     "note": "",
-    "films": 3
+    "films": 4
    },
    {
     "label": "Ika (Arhuaco)",
@@ -513,7 +513,7 @@
     "match": "exact",
     "indigenous": "yes",
     "note": "",
-    "films": 2
+    "films": 3
    },
    {
     "label": "Chinuk Wawa",
@@ -762,6 +762,22 @@
    "families": [],
    "form": "Documentary",
    "length": "Short"
+  },
+  "Q20261114-97-F4": {
+   "title": "Prophecies",
+   "year": null,
+   "makers": [
+    {
+     "id": "DIR-0007",
+     "name": "Miguel Hilari"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
   },
   "FILM-0009": {
    "title": "Qulqi chaleco : Chaleco de plata = Vest made of money",
@@ -1145,6 +1161,22 @@
    "form": "Documentary",
    "length": null
   },
+  "Q20261114-92-F7": {
+   "title": "Nhe’ẽ kuery jogueru teri / Nossos espíritos seguem chegando",
+   "year": 2021,
+   "makers": [
+    {
+     "id": "DIR-0014",
+     "name": "Ariel Kuaray Ortega"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
+  },
   "FILM-0018": {
    "title": "Ayani por Ayani",
    "year": 2010,
@@ -1324,6 +1356,54 @@
    "families": [],
    "form": "Documentary",
    "length": "Short"
+  },
+  "Q20261114-89-F1": {
+   "title": "Hepariidub’radá: Obrigado Irmão",
+   "year": 1998,
+   "makers": [
+    {
+     "id": "DIR-0020",
+     "name": "Divino Tserewahú"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261114-89-F2": {
+   "title": "Meruntikupainikonman: Vamos à luta",
+   "year": 2002,
+   "makers": [
+    {
+     "id": "DIR-0020",
+     "name": "Divino Tserewahú"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261114-89-F4": {
+   "title": "Abdzé Wede’Õ – Vírus não tem cura?",
+   "year": 2021,
+   "makers": [
+    {
+     "id": "DIR-0020",
+     "name": "Divino Tserewahú"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
   },
   "FILM-0027": {
    "title": "Ava Yvy Vera – A Terra do Povo do Raio",
@@ -2234,6 +2314,54 @@
   "Q20261114-88-F2": {
    "title": "Karioka",
    "year": 2014,
+   "makers": [
+    {
+     "id": "DIR-0052",
+     "name": "Takumã Kuikuro"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261114-88-F3": {
+   "title": "ETE London: Londres como uma aldeia",
+   "year": 2017,
+   "makers": [
+    {
+     "id": "DIR-0052",
+     "name": "Takumã Kuikuro"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261114-88-F4": {
+   "title": "Território Pequi",
+   "year": 2021,
+   "makers": [
+    {
+     "id": "DIR-0052",
+     "name": "Takumã Kuikuro"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261114-88-F6": {
+   "title": "Kagaiha Atipügü",
+   "year": 2012,
    "makers": [
     {
      "id": "DIR-0052",
@@ -3668,6 +3796,22 @@
    "form": "Animation",
    "length": "Short"
   },
+  "Q20261114-68-F3": {
+   "title": "Seven Sins: Sloth",
+   "year": 2011,
+   "makers": [
+    {
+     "id": "DIR-0060",
+     "name": "Alethea Arnaquq-Baril"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": "Short"
+  },
   "FILM-0064": {
    "title": "Fast Horse",
    "year": null,
@@ -5017,21 +5161,13 @@
    "form": null,
    "length": null
   },
-  "Q20261115-83-F1": {
-   "title": "Karai Kuery Meme",
-   "year": 2022,
+  "DIR-0083-ITNEVERHAPPENED-1997": {
+   "title": "It Never Happened...",
+   "year": 1997,
    "makers": [
     {
-     "id": "Q20261115-83",
-     "name": "Ará Claudia"
-    },
-    {
-     "id": "Q20261115-84",
-     "name": "Kerexu Silva"
-    },
-    {
-     "id": "Q20261115-85",
-     "name": "Yvá Aquiles"
+     "id": "DIR-0083",
+     "name": "Darlene Naponse"
     }
    ],
    "languages": [],
@@ -5039,7 +5175,7 @@
    "primary_theme": null,
    "families": [],
    "form": null,
-   "length": "Short"
+   "length": null
   },
   "Q20261115-83-F2": {
    "title": "Black Water Creek",
@@ -5836,6 +5972,38 @@
    "form": null,
    "length": null
   },
+  "QW-WAPI-V269206604": {
+   "title": "FEMMES NOURRICIÈRES",
+   "year": 2018,
+   "makers": [
+    {
+     "id": "DIR-0100",
+     "name": "Jani Bellefleur-Kaltush"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QW-WAPI-V300533888": {
+   "title": "NATSHISHKATUAT AUASSAT (UAPISHKA)",
+   "year": 2018,
+   "makers": [
+    {
+     "id": "DIR-0100",
+     "name": "Jani Bellefleur-Kaltush"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "FILM-0077": {
    "title": "File Under Miscellaneous",
    "year": null,
@@ -6005,6 +6173,22 @@
   "Q20261115-243-F1": {
    "title": "To the Rescue",
    "year": null,
+   "makers": [
+    {
+     "id": "DIR-0106",
+     "name": "Joseph Lazare"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": "Short"
+  },
+  "Q20261115-241-F1": {
+   "title": "Good Looking",
+   "year": 2007,
    "makers": [
     {
      "id": "DIR-0106",
@@ -7289,6 +7473,38 @@
    "form": "Documentary",
    "length": "Short"
   },
+  "Q20261115-408-F15": {
+   "title": "Rougarou",
+   "year": 2014,
+   "makers": [
+    {
+     "id": "DIR-0126",
+     "name": "Marjorie Beaucage"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Experimental",
+   "length": "Short"
+  },
+  "Q20261115-408-F18": {
+   "title": "Returning to Spirit: A Residential School Reconciliation Program",
+   "year": null,
+   "makers": [
+    {
+     "id": "DIR-0126",
+     "name": "Marjorie Beaucage"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
   "RESEARCH-FILM-20261031-800-0021": {
    "title": "Embers of Queer Joy",
    "year": 2025,
@@ -8031,6 +8247,22 @@
   "Q20261115-91-F19": {
    "title": "R Seymore Goes North",
    "year": 2011,
+   "makers": [
+    {
+     "id": "DIR-0138",
+     "name": "Rhayne Vermette"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-91-F4": {
+   "title": "Smoke",
+   "year": 2019,
    "makers": [
     {
      "id": "DIR-0138",
@@ -9198,6 +9430,22 @@
    "form": "Animation",
    "length": "Short"
   },
+  "Q20261115-223-F1": {
+   "title": "The Traveling Medicine Show 3: Transformation",
+   "year": 2014,
+   "makers": [
+    {
+     "id": "DIR-0155",
+     "name": "Terril Calder"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": "Short"
+  },
   "FILM-0092": {
    "title": "Êmîcêtôcêt: Many Bloodlines",
    "year": null,
@@ -10009,7 +10257,7 @@
   },
   "FILM-0095": {
    "title": "The Ballad of Crowfoot",
-   "year": null,
+   "year": 1968,
    "makers": [
     {
      "id": "DIR-0163",
@@ -10028,6 +10276,40 @@
     "Knowledge and Continuity"
    ],
    "form": "Music Video",
+   "length": "Short"
+  },
+  "Q20261115-953-F1": {
+   "title": "These Are My People...",
+   "year": 1969,
+   "makers": [
+    {
+     "id": "DIR-0163",
+     "name": "Willie Dunn"
+    },
+    {
+     "id": "DIR-0292",
+     "name": "Mike Kanentakeron Mitchell"
+    },
+    {
+     "id": "Q20261115-953",
+     "name": "Roy Daniels"
+    },
+    {
+     "id": "Q20261115-954",
+     "name": "Barbara Wilson"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Collective and Community Media",
+    "Sovereignty and Self-Determination"
+   ],
+   "primary_theme": "Collective and Community Media",
+   "families": [
+    "Expression and Representation",
+    "Sovereignty and Politics"
+   ],
+   "form": "Documentary",
    "length": "Short"
   },
   "DIR-0164-F1": {
@@ -11542,6 +11824,28 @@
    "form": "Documentary",
    "length": null
   },
+  "Q20261112-09-F3": {
+   "title": "Ŋa Hinarere",
+   "year": 2025,
+   "makers": [
+    {
+     "id": "DIR-0175",
+     "name": "Leonardo Pakarati"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Archives, Museums and Repatriation",
+    "Memory and Oral History",
+    "Elders and Knowledge"
+   ],
+   "primary_theme": "Archives, Museums and Repatriation",
+   "families": [
+    "Knowledge and Continuity"
+   ],
+   "form": "Documentary",
+   "length": "Feature"
+  },
   "FILM-0100": {
    "title": "AVANGA",
    "year": null,
@@ -11825,6 +12129,70 @@
    "form": null,
    "length": null
   },
+  "DIR-0182-QMfdf4b6": {
+   "title": "Wounmainkat (Nuestra Tierra)",
+   "year": 2008,
+   "makers": [
+    {
+     "id": "DIR-0182",
+     "name": "David Hernández Palmar"
+    },
+    {
+     "id": "DIR-0184",
+     "name": "Leiqui Uriana Henríquez"
+    },
+    {
+     "id": "DIR-0188",
+     "name": "Miguel Ramírez Boscán"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "DIR-0182-QM4dff6f": {
+   "title": "Mujeres indígenas y otras formas de sabiduría",
+   "year": 2010,
+   "makers": [
+    {
+     "id": "DIR-0182",
+     "name": "David Hernández Palmar"
+    },
+    {
+     "id": "DIR-0188",
+     "name": "Miguel Ramírez Boscán"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261112-11-F4": {
+   "title": "Buscando las marcas del Asho’ojushi",
+   "year": 2025,
+   "makers": [
+    {
+     "id": "DIR-0182",
+     "name": "David Hernández Palmar"
+    },
+    {
+     "id": "Q20261112-11",
+     "name": "Marbel Vanegas Jusayu"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Feature"
+  },
   "FILM-0126": {
    "title": "El viaje mítico de Sain y el Duende Akalakui",
    "year": null,
@@ -11989,6 +12357,38 @@
    "form": null,
    "length": null
   },
+  "DIR-0184-QM8ccdea": {
+   "title": "El Hospital",
+   "year": 2005,
+   "makers": [
+    {
+     "id": "DIR-0184",
+     "name": "Leiqui Uriana Henríquez"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "DIR-0184-QMb170d7": {
+   "title": "Magnolia del mar",
+   "year": 2018,
+   "makers": [
+    {
+     "id": "DIR-0184",
+     "name": "Leiqui Uriana Henríquez"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "FILM-0132": {
    "title": "Na Misak = Yo, un Misak=I, a Misak",
    "year": 2017,
@@ -12019,6 +12419,22 @@
    "primary_theme": null,
    "families": [],
    "form": null,
+   "length": null
+  },
+  "DIR-0186-F1": {
+   "title": "Yalo Poñinkau (Mariposa Negra)",
+   "year": 2021,
+   "makers": [
+    {
+     "id": "DIR-0186",
+     "name": "Luis Tróchez Tunubalá"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
    "length": null
   },
   "FILM-0134": {
@@ -12143,6 +12559,22 @@
   },
   "DIR-0187-QM392ad4": {
    "title": "Jintüikai – El niño",
+   "year": null,
+   "makers": [
+    {
+     "id": "DIR-0187",
+     "name": "Marbel Ina Vanegas Jusayu"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "DIR-0187-QM953b3c": {
+   "title": "Tatuaje wayuu",
    "year": null,
    "makers": [
     {
@@ -12322,6 +12754,32 @@
    "primary_theme": null,
    "families": [],
    "form": null,
+   "length": null
+  },
+  "DIR-0193-F1": {
+   "title": "Origen y significado de la Mochila Wayuu",
+   "year": 2020,
+   "makers": [
+    {
+     "id": "DIR-0193",
+     "name": "Sergio Brito Epinayú"
+    }
+   ],
+   "languages": [
+    {
+     "label": "Wayuunaiki",
+     "as_credited": "Wayuunaiki",
+     "glottocode": "wayu1243",
+     "iso639_3": "guc",
+     "match": "exact",
+     "indigenous": true,
+     "source": "https://miradanativa.org/pelicula/origen-y-significado-de-la-mochila-wayuu-2/"
+    }
+   ],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
    "length": null
   },
   "FILM-0141": {
@@ -12783,6 +13241,22 @@
    "form": "Documentary",
    "length": null
   },
+  "DIR-0209-QM6a5a94": {
+   "title": "Atardecer",
+   "year": null,
+   "makers": [
+    {
+     "id": "DIR-0209",
+     "name": "Elvis Rigoberto Caj Cojoc"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "FILM-0163": {
    "title": "Ati't",
    "year": 2023,
@@ -13187,6 +13661,22 @@
    "form": "Animation",
    "length": null
   },
+  "DIR-0220-QM2fd9c0": {
+   "title": "Huachinango rojo",
+   "year": null,
+   "makers": [
+    {
+     "id": "DIR-0220",
+     "name": "Cinthya Lizbeth Toledo Cabrera"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "FILM-0174": {
    "title": "Se escucha el viento",
    "year": null,
@@ -13445,7 +13935,7 @@
   },
   "FILM-0179": {
    "title": "Tiemperos del Antropoceno: TEWAME TIYOLICHA KAWITL",
-   "year": null,
+   "year": 2022,
    "makers": [
     {
      "id": "DIR-0224",
@@ -13453,11 +13943,16 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Displacement and Migration",
+    "Borders"
+   ],
+   "primary_theme": "Displacement and Migration",
+   "families": [
+    "Sovereignty and Politics"
+   ],
+   "form": "Experimental",
+   "length": "Short"
   },
   "FILM-0180": {
    "title": "Ánimas (Spirits)",
@@ -13502,6 +13997,22 @@
    ],
    "form": "Documentary",
    "length": "Short"
+  },
+  "DIR-0225-QM9e045a": {
+   "title": "Me Sacramento",
+   "year": null,
+   "makers": [
+    {
+     "id": "DIR-0225",
+     "name": "Florencia Gómez Sántiz"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
   },
   "FILM-0182": {
    "title": "Ch'ul be, Senda sagrada",
@@ -14270,6 +14781,22 @@
    "form": "Documentary",
    "length": "Short"
   },
+  "DIR-0233-QM8c14c8": {
+   "title": "Mare",
+   "year": null,
+   "makers": [
+    {
+     "id": "DIR-0233",
+     "name": "Luna Marán"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "FILM-0193": {
    "title": "Kárapani Tsínharhini",
    "year": 2018,
@@ -14463,6 +14990,10 @@
     {
      "id": "DIR-0235",
      "name": "María Sojob"
+    },
+    {
+     "id": "PILOT-43-ANA-TSUYEB",
+     "name": "Ana Ts’uyeb"
     }
    ],
    "languages": [],
@@ -15422,6 +15953,22 @@
    "form": null,
    "length": null
   },
+  "DIR-0254-QM31a099": {
+   "title": "Burwa dii ebo (El viento y el agua)",
+   "year": 2008,
+   "makers": [
+    {
+     "id": "DIR-0254",
+     "name": "Orgún Wagua"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "FILM-0221": {
    "title": "Wiñaypacha (Eternity)",
    "year": 2017,
@@ -15904,6 +16451,102 @@
    "form": null,
    "length": null
   },
+  "Q20261115-956-F1": {
+   "title": "The Girl of the Golden West",
+   "year": 1923,
+   "makers": [
+    {
+     "id": "DIR-0277",
+     "name": "Edwin Carewe"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-956-F2": {
+   "title": "Mighty Lak' a Rose",
+   "year": 1923,
+   "makers": [
+    {
+     "id": "DIR-0277",
+     "name": "Edwin Carewe"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-956-F3": {
+   "title": "Joanna",
+   "year": 1925,
+   "makers": [
+    {
+     "id": "DIR-0277",
+     "name": "Edwin Carewe"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-956-F4": {
+   "title": "Resurrection",
+   "year": 1927,
+   "makers": [
+    {
+     "id": "DIR-0277",
+     "name": "Edwin Carewe"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-956-F5": {
+   "title": "Revenge",
+   "year": 1928,
+   "makers": [
+    {
+     "id": "DIR-0277",
+     "name": "Edwin Carewe"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-956-F6": {
+   "title": "Evangeline",
+   "year": 1929,
+   "makers": [
+    {
+     "id": "DIR-0277",
+     "name": "Edwin Carewe"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "DIR-0285-F1": {
    "title": "Rabbit Stories",
    "year": 2023,
@@ -15976,7 +16619,7 @@
   },
   "FILM-0227": {
    "title": "You Are on Indian Land",
-   "year": null,
+   "year": 1969,
    "makers": [
     {
      "id": "DIR-0292",
@@ -16643,6 +17286,22 @@
    "families": [],
    "form": null,
    "length": null
+  },
+  "Q20261115-240-F1": {
+   "title": "HuyHuy (Trade)",
+   "year": 2013,
+   "makers": [
+    {
+     "id": "DIR-0307",
+     "name": "Sky Hopinka"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": "Short"
   },
   "FILM-0232": {
    "title": "Love and Fury",
@@ -19370,6 +20029,22 @@
    "form": "Experimental",
    "length": "Short"
   },
+  "NEW-ed3c2611e1a6-QM5f2a88": {
+   "title": "River Bank (Pō-Kehgeh)",
+   "year": 2023,
+   "makers": [
+    {
+     "id": "NEW-ed3c2611e1a6",
+     "name": "Charine Pilar Gonzales"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "NEW-dc664128300b-WORK-1": {
    "title": "Confluence",
    "year": 2025,
@@ -19574,6 +20249,22 @@
    ],
    "form": "Documentary",
    "length": "Short"
+  },
+  "NEW-3793ef943e83-QMf68a2a": {
+   "title": "Rufina mujer de barro",
+   "year": null,
+   "makers": [
+    {
+     "id": "NEW-3793ef943e83",
+     "name": "Concepción Vásquez"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
   },
   "NEW-14e5329ab65b-WORK-1": {
    "title": "Guia Toó (Powerful Mountain)",
@@ -21465,6 +22156,22 @@
    "form": null,
    "length": null
   },
+  "NEW-ec20b11d6f81-QM83967f": {
+   "title": "Llanthupi munakuy (Quererse en las sombras)",
+   "year": 2001,
+   "makers": [
+    {
+     "id": "NEW-ec20b11d6f81",
+     "name": "Marcelina Cárdenas Sausa"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "NEW-2d4188cc6b1c-F1": {
    "title": "Ekbeh",
    "year": 2023,
@@ -22258,6 +22965,204 @@
    "primary_theme": null,
    "families": [],
    "form": "Fiction",
+   "length": null
+  },
+  "NEW-df0d54c464f8-F1": {
+   "title": "Yaku Wiki (Lágrimas del agua)",
+   "year": 2009,
+   "makers": [
+    {
+     "id": "NEW-df0d54c464f8",
+     "name": "Segundo Fuérez"
+    }
+   ],
+   "languages": [
+    {
+     "label": "Kichwa",
+     "as_credited": "Kichwa",
+     "glottocode": "colo1257",
+     "iso639_3": "",
+     "match": "group",
+     "indigenous": true,
+     "source": "https://miradanativa.org/pelicula/yaku-wiki-lagrimas-del-agua/"
+    }
+   ],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": null
+  },
+  "NEW-df0d54c464f8-F3": {
+   "title": "Wayta Sisagu: Flor de Clavel",
+   "year": 2015,
+   "makers": [
+    {
+     "id": "NEW-df0d54c464f8",
+     "name": "Segundo Fuérez"
+    }
+   ],
+   "languages": [
+    {
+     "label": "Kichwa",
+     "as_credited": "Kichwa",
+     "glottocode": "colo1257",
+     "iso639_3": "",
+     "match": "group",
+     "indigenous": true,
+     "source": "https://miradanativa.org/pelicula/wayta-sisagu-flor-de-clavel/"
+    }
+   ],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": null
+  },
+  "NEW-df0d54c464f8-F4": {
+   "title": "Wawa de Pan",
+   "year": 2022,
+   "makers": [
+    {
+     "id": "NEW-df0d54c464f8",
+     "name": "Segundo Fuérez"
+    }
+   ],
+   "languages": [
+    {
+     "label": "Kichwa",
+     "as_credited": "Kichwa",
+     "glottocode": "colo1257",
+     "iso639_3": "",
+     "match": "group",
+     "indigenous": true,
+     "source": "https://miradanativa.org/pelicula/wawa-de-pan-2/"
+    }
+   ],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": null
+  },
+  "NEW-df0d54c464f8-F5": {
+   "title": "Colada Morada",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "NEW-df0d54c464f8",
+     "name": "Segundo Fuérez"
+    }
+   ],
+   "languages": [
+    {
+     "label": "Kichwa",
+     "as_credited": "Kichwa",
+     "glottocode": "colo1257",
+     "iso639_3": "",
+     "match": "group",
+     "indigenous": true,
+     "source": "https://miradanativa.org/pelicula/colada-morada-2/"
+    }
+   ],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": null
+  },
+  "NEW-df0d54c464f8-F6": {
+   "title": "Pampa Ruraykuna: Agricultura",
+   "year": 2017,
+   "makers": [
+    {
+     "id": "NEW-df0d54c464f8",
+     "name": "Segundo Fuérez"
+    }
+   ],
+   "languages": [
+    {
+     "label": "Kichwa",
+     "as_credited": "Kichwa",
+     "glottocode": "colo1257",
+     "iso639_3": "",
+     "match": "group",
+     "indigenous": true,
+     "source": "https://miradanativa.org/pelicula/pampa-ruraykuna-agricultura-2/"
+    }
+   ],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
+  },
+  "NEW-df0d54c464f8-F7": {
+   "title": "Warmi Pukllay: Fútbol femenino",
+   "year": 2011,
+   "makers": [
+    {
+     "id": "NEW-df0d54c464f8",
+     "name": "Segundo Fuérez"
+    }
+   ],
+   "languages": [
+    {
+     "label": "Kichwa",
+     "as_credited": "Kichwa",
+     "glottocode": "colo1257",
+     "iso639_3": "",
+     "match": "group",
+     "indigenous": true,
+     "source": "https://miradanativa.org/pelicula/warmi-pukllay-futbol-femenino/"
+    }
+   ],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
+  },
+  "NEW-df0d54c464f8-F8": {
+   "title": "Llakta Mikuy: Chaki Tanta (Pan de pata de oveja)",
+   "year": 2017,
+   "makers": [
+    {
+     "id": "NEW-df0d54c464f8",
+     "name": "Segundo Fuérez"
+    }
+   ],
+   "languages": [
+    {
+     "label": "Kichwa",
+     "as_credited": "Kichwa",
+     "glottocode": "colo1257",
+     "iso639_3": "",
+     "match": "group",
+     "indigenous": true,
+     "source": "https://miradanativa.org/pelicula/llakta-mikuy-chaki-tanta-pan-de-pata-de-oveja/"
+    }
+   ],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "NEW-df0d54c464f8-F9": {
+   "title": "Juegos Tradicionales: Kuchiku",
+   "year": 2019,
+   "makers": [
+    {
+     "id": "NEW-df0d54c464f8",
+     "name": "Segundo Fuérez"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
    "length": null
   },
   "NEW-7c78fdbe16c7-WORK-1": {
@@ -23630,6 +24535,22 @@
   "LEAD-20261014-016-QM0c12db": {
    "title": "Re-Existências",
    "year": 2026,
+   "makers": [
+    {
+     "id": "LEAD-20261014-016",
+     "name": "Natália Tupi"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "LEAD-20261014-016-QM8484f9": {
+   "title": "Pequeno Sol",
+   "year": 2021,
    "makers": [
     {
      "id": "LEAD-20261014-016",
@@ -25112,6 +26033,10 @@
     {
      "id": "SAB2-20261014-e3499178f69e",
      "name": "Matsipaya Waurá Txucarramãe"
+    },
+    {
+     "id": "SAB2-20261014-bcdd867e2132",
+     "name": "Kokokaroti Txukahamãe Metuktire"
     }
    ],
    "languages": [],
@@ -25801,6 +26726,22 @@
    "form": "Fiction",
    "length": "Short"
   },
+  "Q20261114-91-F3": {
+   "title": "Jikisiña Chuymampi",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "SAB2-20261014-98fc41053bfb",
+     "name": "Delia Yujra Chura"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
+  },
   "SAB2-20261014-e03894ef67c1-WORK-01": {
    "title": "Katary / Stand Up",
    "year": 2015,
@@ -26026,6 +26967,156 @@
   "Q20261114-34-F4": {
    "title": "Lifko Mapu – Territorio de Aguas Limpias",
    "year": 2010,
+   "makers": [
+    {
+     "id": "SAB2-20261014-2501b24c169e",
+     "name": "Gerardo Berrocal"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "SAB2-20261014-2501b24c169e-F1": {
+   "title": "CHEWKEPVLLV, Recuperación Territorial en el Aylla Rewe Budi",
+   "year": 2013,
+   "makers": [
+    {
+     "id": "SAB2-20261014-2501b24c169e",
+     "name": "Gerardo Berrocal"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "SAB2-20261014-2501b24c169e-F2": {
+   "title": "TRANGOL, La Recuperación",
+   "year": 2013,
+   "makers": [
+    {
+     "id": "SAB2-20261014-2501b24c169e",
+     "name": "Gerardo Berrocal"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "SAB2-20261014-2501b24c169e-F3": {
+   "title": "ELUWUN, Camilo Catrillanca",
+   "year": 2018,
+   "makers": [
+    {
+     "id": "SAB2-20261014-2501b24c169e",
+     "name": "Gerardo Berrocal"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "SAB2-20261014-2501b24c169e-F4": {
+   "title": "Portawe Lelfvn, Territorio Espiritual de la Vida Mapuche",
+   "year": 2016,
+   "makers": [
+    {
+     "id": "SAB2-20261014-2501b24c169e",
+     "name": "Gerardo Berrocal"
+    },
+    {
+     "id": "Q20261114-60",
+     "name": "ADKIMVN – Cine y Comunicación Mapuche"
+    }
+   ],
+   "languages": [
+    {
+     "label": "Mapudungun",
+     "as_credited": "Mapudungun",
+     "glottocode": "mapu1245",
+     "iso639_3": "arn",
+     "match": "exact",
+     "indigenous": true,
+     "source": "https://miradanativa.org/pelicula/portawe-lelfvn-territorio-espiritual-de-la-vida-mapuche/"
+    }
+   ],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "SAB2-20261014-2501b24c169e-F5": {
+   "title": "Inkaleyiñ Taiñ Kalafken (Defendamos el lago Kalafken)",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "SAB2-20261014-2501b24c169e",
+     "name": "Gerardo Berrocal"
+    },
+    {
+     "id": "Q20261114-60",
+     "name": "ADKIMVN – Cine y Comunicación Mapuche"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "SAB2-20261014-2501b24c169e-F6": {
+   "title": "Mawizache ñi Zugun, La Voz de la Gente de las Montañas",
+   "year": 2020,
+   "makers": [
+    {
+     "id": "SAB2-20261014-2501b24c169e",
+     "name": "Gerardo Berrocal"
+    },
+    {
+     "id": "Q20261114-60",
+     "name": "ADKIMVN – Cine y Comunicación Mapuche"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "SAB2-20261014-2501b24c169e-F7": {
+   "title": "Admongen, Vida Mapuche en Wallmapu. Ep. 3: Luis Tori, Werken",
+   "year": 2017,
+   "makers": [
+    {
+     "id": "SAB2-20261014-2501b24c169e",
+     "name": "Gerardo Berrocal"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "SAB2-20261014-2501b24c169e-F8": {
+   "title": "Admongen: Mapuche Life in Wallmapu. Ep. 5: David Nahuelhual, Werken",
+   "year": 2017,
    "makers": [
     {
      "id": "SAB2-20261014-2501b24c169e",
@@ -26501,6 +27592,38 @@
    "form": "Fiction",
    "length": "Short"
   },
+  "LEAD-20261031-0001-F3": {
+   "title": "Lafken ñi az",
+   "year": 2016,
+   "makers": [
+    {
+     "id": "LEAD-20261031-0001",
+     "name": "Escuela de Cine y Comunicación Mapuche del Aylla Rewe Budi"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "LEAD-20261031-0001-F4": {
+   "title": "Chumechi ñi xipapan nafiu flanders",
+   "year": 2016,
+   "makers": [
+    {
+     "id": "LEAD-20261031-0001",
+     "name": "Escuela de Cine y Comunicación Mapuche del Aylla Rewe Budi"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": null
+  },
   "RESEARCH-FILM-20261031-0006-01": {
    "title": "Jiru luiai",
    "year": 2024,
@@ -26564,6 +27687,118 @@
    "families": [],
    "form": "Documentary",
    "length": "Short"
+  },
+  "Q20261112-24-F3": {
+   "title": "Ajaw, Corazón del Cielo y la Tierra",
+   "year": 2025,
+   "makers": [
+    {
+     "id": "LEAD-20261031-0007",
+     "name": "Mariano Estrada"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "LEAD-20261031-0007-F1": {
+   "title": "Lo’Hil K’in (Fiesta de burla)",
+   "year": 1998,
+   "makers": [
+    {
+     "id": "LEAD-20261031-0007",
+     "name": "Mariano Estrada"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "LEAD-20261031-0007-F2": {
+   "title": "Mujer Indígena: la vida olvidada",
+   "year": 2003,
+   "makers": [
+    {
+     "id": "LEAD-20261031-0007",
+     "name": "Mariano Estrada"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "LEAD-20261031-0007-F3": {
+   "title": "La muerte del Sueño Antiguo",
+   "year": 2005,
+   "makers": [
+    {
+     "id": "LEAD-20261031-0007",
+     "name": "Mariano Estrada"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "LEAD-20261031-0007-F4": {
+   "title": "Cuando las tormentas llegan",
+   "year": 2013,
+   "makers": [
+    {
+     "id": "LEAD-20261031-0007",
+     "name": "Mariano Estrada"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "LEAD-20261031-0007-F5": {
+   "title": "Nescafé: abono orgánico",
+   "year": 1999,
+   "makers": [
+    {
+     "id": "LEAD-20261031-0007",
+     "name": "Mariano Estrada"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "LEAD-20261031-0007-F6": {
+   "title": "IXIM, el maíz y nosotros los tzeltales",
+   "year": 2022,
+   "makers": [
+    {
+     "id": "LEAD-20261031-0007",
+     "name": "Mariano Estrada"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
   },
   "RESEARCH-FILM-20261031-0054-01": {
    "title": "The Best Days Are Ahead of Us",
@@ -28250,6 +29485,22 @@
     "Expression and Representation"
    ],
    "form": "Documentary",
+   "length": null
+  },
+  "NEW-404adfd15bcf-WORK-1": {
+   "title": "El tiempo del nvÿo",
+   "year": null,
+   "makers": [
+    {
+     "id": "NEW-404adfd15bcf",
+     "name": "Arnaldo Lencinas"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
    "length": null
   },
   "NEW-e6377662fe82-WORK-1": {
@@ -30445,6 +31696,26 @@
    "form": null,
    "length": "Short"
   },
+  "NEW-6760b53e0843-WORK-1": {
+   "title": "Pain'rep reojache paiche | El buen vivir, vivir en paz",
+   "year": 2021,
+   "makers": [
+    {
+     "id": "NEW-6760b53e0843",
+     "name": "Arley Valencia Piranga"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Elders and Knowledge"
+   ],
+   "primary_theme": "Elders and Knowledge",
+   "families": [
+    "Knowledge and Continuity"
+   ],
+   "form": "Documentary",
+   "length": "Short"
+  },
   "NEW-2424973e2e86-WORK-1": {
    "title": "Amapola, solución o destrucción (TV series)",
    "year": 1992,
@@ -30727,6 +31998,10 @@
     {
      "id": "NEW-35815ec235b0",
      "name": "Eduardo Say"
+    },
+    {
+     "id": "Q20261108-14",
+     "name": "Heidy Raymundo Bacá"
     }
    ],
    "languages": [],
@@ -31428,6 +32703,22 @@
    "form": "Documentary",
    "length": "Short"
   },
+  "NEW-59dd1aa256aa-QM33a0b3": {
+   "title": "Mi no lugar",
+   "year": null,
+   "makers": [
+    {
+     "id": "NEW-59dd1aa256aa",
+     "name": "Isis Ahumada"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "NEW-c2055a72bb3e-WORK-1": {
    "title": "Nkwí nayà tónko: compromiso de palabra",
    "year": 2016,
@@ -31707,6 +32998,22 @@
   "NEW-656112f6f1c6-WORK-3": {
    "title": "K'evujel ta jteklum (Song of Our Land)",
    "year": 2004,
+   "makers": [
+    {
+     "id": "NEW-656112f6f1c6",
+     "name": "Pedro Daniel López López"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "NEW-656112f6f1c6-QMa73e03": {
+   "title": "El encargo de los dioses",
+   "year": null,
    "makers": [
     {
      "id": "NEW-656112f6f1c6",
@@ -34121,6 +35428,26 @@
    "form": null,
    "length": null
   },
+  "NEW-4b43cfbe178e-QMbadf25": {
+   "title": "Nichimal Tseb / Mujer florida",
+   "year": null,
+   "makers": [
+    {
+     "id": "NEW-4b43cfbe178e",
+     "name": "Dolores Sántiz Gómez"
+    },
+    {
+     "id": "NEW-605d07d12a9f",
+     "name": "Dolores Santiz"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "NEW-2d38018d40a3-WORK-1": {
    "title": "Oc ni temiki (sigo soñando)",
    "year": null,
@@ -34693,7 +36020,7 @@
   },
   "NEW-f3320a0ced3e-WORK-2": {
    "title": "Xhárdonix Xha",
-   "year": null,
+   "year": 2023,
    "makers": [
     {
      "id": "NEW-f3320a0ced3e",
@@ -34710,7 +36037,7 @@
     "Expression and Representation",
     "Lives and Relations"
    ],
-   "form": null,
+   "form": "Documentary",
    "length": "Short"
   },
   "NEW-f3320a0ced3e-WORK-3": {
@@ -35291,6 +36618,54 @@
    "form": null,
    "length": null
   },
+  "BETA25-20261105-14-QM8bda0a": {
+   "title": "Povos indígenas – prevenção contra a Covid-19",
+   "year": 2020,
+   "makers": [
+    {
+     "id": "BETA25-20261105-14",
+     "name": "Marcelo Tinguy"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "BETA25-20261105-14-QMb7bb33": {
+   "title": "Estamos na Luta",
+   "year": 2019,
+   "makers": [
+    {
+     "id": "BETA25-20261105-14",
+     "name": "Marcelo Tinguy"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "BETA25-20261105-14-QM1b9660": {
+   "title": "Cabeça Seca",
+   "year": 2021,
+   "makers": [
+    {
+     "id": "BETA25-20261105-14",
+     "name": "Marcelo Tinguy"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "BETA25-20261105-15-FILM1": {
    "title": "Tiró e a Onça",
    "year": 2026,
@@ -35534,6 +36909,22 @@
   "BETA30-20261106-F02": {
    "title": "Ju´gthe´we´sx yu ´cenxi dxiij – Camino de la medicina ancestral",
    "year": 2021,
+   "makers": [
+    {
+     "id": "BETA30-20261106-D01",
+     "name": "Frank William Cayapur Delgado"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "BETA30-20261106-D01-QMfe8e2c": {
+   "title": "Kiwe Thé, Mujer sabedora",
+   "year": 2020,
    "makers": [
     {
      "id": "BETA30-20261106-D01",
@@ -35859,6 +37250,22 @@
   "BETA8D-20261107-F01": {
    "title": "Guairaka’i ja – O dono da lontra",
    "year": 2012,
+   "makers": [
+    {
+     "id": "BETA8D-20261107-D01",
+     "name": "Werá Alexandre"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "BETA8D-20261107-D01-QM68f2c9": {
+   "title": "Kunhangue: a criação do universo",
+   "year": null,
    "makers": [
     {
      "id": "BETA8D-20261107-D01",
@@ -37131,38 +38538,6 @@
    "form": "Documentary",
    "length": "Short"
   },
-  "DIR-0188-QMfdf4b6": {
-   "title": "Wounmainkat (Nuestra Tierra)",
-   "year": 2008,
-   "makers": [
-    {
-     "id": "DIR-0188",
-     "name": "Miguel Ramírez Boscán"
-    }
-   ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
-  },
-  "DIR-0188-QM4dff6f": {
-   "title": "Mujeres indígenas y otras formas de sabiduría",
-   "year": 2010,
-   "makers": [
-    {
-     "id": "DIR-0188",
-     "name": "Miguel Ramírez Boscán"
-    }
-   ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
-  },
   "DIR-0188-F3": {
    "title": "Manifiesto Wayúu",
    "year": 2019,
@@ -38217,6 +39592,54 @@
    "form": null,
    "length": null
   },
+  "Q20261112-98-F1": {
+   "title": "Body Stories: Suraj & Julieta",
+   "year": 2021,
+   "makers": [
+    {
+     "id": "Q20261108-78",
+     "name": "Mariluz Guerra"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Music Video",
+   "length": "Short"
+  },
+  "Q20261112-98-F2": {
+   "title": "Primordial Kankurwa",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "Q20261108-78",
+     "name": "Mariluz Guerra"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261112-98-F3": {
+   "title": "The Power of Music & Film: Introducing 'Body Stories: Marta & Fidel'",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "Q20261108-78",
+     "name": "Mariluz Guerra"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
+  },
   "QM-1249b8bc7b-M1": {
    "title": "8 venado, garra jaguar",
    "year": 2024,
@@ -38809,6 +40232,22 @@
   "DIR-0375-QM2678b1": {
    "title": "Lay taygui, nuestra lengua",
    "year": null,
+   "makers": [
+    {
+     "id": "DIR-0375",
+     "name": "Dennis Noel López Sosa"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "Q20261114-95-F1": {
+   "title": "Lay Pijedá, nuestro pueblo",
+   "year": 2022,
    "makers": [
     {
      "id": "DIR-0375",
@@ -39626,6 +41065,22 @@
    "form": "Animation",
    "length": "Short"
   },
+  "Q20261114-74-F9": {
+   "title": "The Organ Eater",
+   "year": 2019,
+   "makers": [
+    {
+     "id": "Q20261114-13",
+     "name": "Diane Obomsawin"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": "Short"
+  },
   "Q20261114-14-F1": {
    "title": "Shaman",
    "year": 2017,
@@ -39870,22 +41325,6 @@
    "form": "Documentary",
    "length": "Short"
   },
-  "Q20261112-11-F4": {
-   "title": "Buscando las marcas del Asho’ojushi",
-   "year": 2025,
-   "makers": [
-    {
-     "id": "Q20261112-11",
-     "name": "Marbel Vanegas Jusayu"
-    }
-   ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": "Documentary",
-   "length": "Feature"
-  },
   "Q20261114-84-F2": {
    "title": "Tsõ Reptuna Ró Hã",
    "year": null,
@@ -40046,9 +41485,41 @@
    "form": "Animation",
    "length": "Series"
   },
+  "Q20261114-64-F5": {
+   "title": "Mia and the Monsters",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261114-64",
+     "name": "Nadia Mike"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": "Series"
+  },
   "Q20261114-65-F1": {
    "title": "Beach Heart",
    "year": 2022,
+   "makers": [
+    {
+     "id": "Q20261114-65",
+     "name": "Glenn Gear"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": "Short"
+  },
+  "Q20261114-65-F2": {
+   "title": "Kablunât: Legend of the Origin of the White People",
+   "year": 2016,
    "makers": [
     {
      "id": "Q20261114-65",
@@ -42614,6 +44085,451 @@
    "primary_theme": null,
    "families": [],
    "form": null,
+   "length": "Short"
+  },
+  "Q20261115-83-F1": {
+   "title": "Karai Kuery Meme",
+   "year": 2022,
+   "makers": [
+    {
+     "id": "Q20261115-83",
+     "name": "Ará Claudia"
+    },
+    {
+     "id": "Q20261115-84",
+     "name": "Kerexu Silva"
+    },
+    {
+     "id": "Q20261115-85",
+     "name": "Yvá Aquiles"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
+  },
+  "QM-28726b21cb-M1": {
+   "title": "Elegimos dignidad",
+   "year": 2022,
+   "makers": [
+    {
+     "id": "QM-28726b21cb",
+     "name": "Andrea Ixchíu"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QM-4c97dec0cc-M1": {
+   "title": "A 515 años",
+   "year": 2007,
+   "makers": [
+    {
+     "id": "QM-4c97dec0cc",
+     "name": "Cipriano Zavala"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Land Defense",
+    "Resistance Movements",
+    "Justice, Truth and Reconciliation"
+   ],
+   "primary_theme": "Land Defense",
+   "families": [
+    "Land and Environment",
+    "Sovereignty and Politics"
+   ],
+   "form": null,
+   "length": "Short"
+  },
+  "Q20261111-02-F1": {
+   "title": "Somos pueblo",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261111-02",
+     "name": "Rocío Gómez Semanate"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261111-02-F2": {
+   "title": "Trenzando vida",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261111-02",
+     "name": "Rocío Gómez Semanate"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261111-02-F3": {
+   "title": "Manuela 1945",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261111-02",
+     "name": "Rocío Gómez Semanate"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261111-02-F4": {
+   "title": "Kitu Kara",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261111-02",
+     "name": "Rocío Gómez Semanate"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261111-02-F5": {
+   "title": "La Yumba",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261111-02",
+     "name": "Rocío Gómez Semanate"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261114-61-F1": {
+   "title": "Palabras de las hijas del Mayab",
+   "year": 2018,
+   "makers": [
+    {
+     "id": "Q20261114-61",
+     "name": "Asociación Maya Uk’ux B’e"
+    }
+   ],
+   "languages": [
+    {
+     "label": "Spanish",
+     "as_credited": "Spanish",
+     "glottocode": "stan1288",
+     "iso639_3": "spa",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://miradanativa.org/pelicula/palabras-de-las-hijas-del-mayab/"
+    }
+   ],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "Q20261114-83-F1": {
+   "title": "Yawá – A história do povo Yawanawá",
+   "year": 2004,
+   "makers": [
+    {
+     "id": "Q20261114-83",
+     "name": "Joaquim Tashka Yawanawá"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "Q20261115-955-F1": {
+   "title": "Loon Lake",
+   "year": 1969,
+   "makers": [
+    {
+     "id": "Q20261115-955",
+     "name": "Tom O’Connor"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "Q20261115-950-F1": {
+   "title": "De raza azteca",
+   "year": 1921,
+   "makers": [
+    {
+     "id": "Q20261115-950",
+     "name": "Guillermo Calles Guerrero"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-950-F2": {
+   "title": "El indio yaqui",
+   "year": 1926,
+   "makers": [
+    {
+     "id": "Q20261115-950",
+     "name": "Guillermo Calles Guerrero"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-950-F3": {
+   "title": "Raza de bronce",
+   "year": 1927,
+   "makers": [
+    {
+     "id": "Q20261115-950",
+     "name": "Guillermo Calles Guerrero"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-950-F4": {
+   "title": "Sol de gloria",
+   "year": 1928,
+   "makers": [
+    {
+     "id": "Q20261115-950",
+     "name": "Guillermo Calles Guerrero"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-958-F1": {
+   "title": "Dios y ley",
+   "year": 1930,
+   "makers": [
+    {
+     "id": "Q20261115-950",
+     "name": "Guillermo Calles Guerrero"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-958-F2": {
+   "title": "Regeneración",
+   "year": 1930,
+   "makers": [
+    {
+     "id": "Q20261115-950",
+     "name": "Guillermo Calles Guerrero"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-952-F1": {
+   "title": "The Bandit's Son",
+   "year": 1927,
+   "makers": [
+    {
+     "id": "Q20261115-952",
+     "name": "Wallace W. Fox"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-952-F2": {
+   "title": "Driftin' Sands",
+   "year": 1928,
+   "makers": [
+    {
+     "id": "Q20261115-952",
+     "name": "Wallace W. Fox"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-952-F3": {
+   "title": "The Riding Renegade",
+   "year": 1928,
+   "makers": [
+    {
+     "id": "Q20261115-952",
+     "name": "Wallace W. Fox"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-951-F1": {
+   "title": "The Bishop of the Ozarks",
+   "year": 1923,
+   "makers": [
+    {
+     "id": "Q20261115-951",
+     "name": "Finis Fox"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-951-F2": {
+   "title": "The Man Between",
+   "year": 1923,
+   "makers": [
+    {
+     "id": "Q20261115-951",
+     "name": "Finis Fox"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-951-F3": {
+   "title": "Tipped Off",
+   "year": 1923,
+   "makers": [
+    {
+     "id": "Q20261115-951",
+     "name": "Finis Fox"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-951-F4": {
+   "title": "Bag and Baggage",
+   "year": 1923,
+   "makers": [
+    {
+     "id": "Q20261115-951",
+     "name": "Finis Fox"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-951-F5": {
+   "title": "A Woman Who Sinned",
+   "year": 1924,
+   "makers": [
+    {
+     "id": "Q20261115-951",
+     "name": "Finis Fox"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-966-F1": {
+   "title": "Travelling College",
+   "year": 1968,
+   "makers": [
+    {
+     "id": "Q20261115-966",
+     "name": "Indian Film Crew"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Collective and Community Media"
+   ],
+   "primary_theme": "Collective and Community Media",
+   "families": [
+    "Expression and Representation"
+   ],
+   "form": "Documentary",
    "length": "Short"
   }
  }

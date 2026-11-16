@@ -538,8 +538,8 @@ body.atlas-page .map-panel,body.atlas-page .map-panel :not(#atlas,#atlas *){touc
 /* ── Minimal pass (2026-11-15): one map toolbar, cleaner index rows ── */
 @media (min-width:761px){
  :root:not(#_):not([data-ui-constellate=on]) body.atlas-page:not(.is-theme-weaving) .map-panel .map-toolbar{right:auto!important;width:auto!important;gap:0!important;align-items:center!important;pointer-events:auto!important;padding:3px 6px!important;background:var(--ui-surface)!important;border:1px solid var(--ui-line)!important;border-radius:999px!important;box-shadow:0 2px 10px rgba(28,39,48,.08)!important}
- :root:not(#_) body.atlas-page .map-panel .map-toolbar>.zoom,:root:not(#_) body.atlas-page .map-panel .map-toolbar>.map-actions{background:transparent!important;border:0!important;box-shadow:none!important;padding:0!important;margin:0!important;height:auto!important;backdrop-filter:none!important}
- :root:not(#_) body.atlas-page .map-panel .map-toolbar>.map-actions{border-left:1px solid var(--ui-line)!important;border-radius:0!important;margin-left:6px!important;padding-left:6px!important}
+ :root:not(#_):not([data-ui-constellate=on]) body.atlas-page:not(.is-theme-weaving) .map-panel .map-toolbar>.zoom,:root:not(#_):not([data-ui-constellate=on]) body.atlas-page:not(.is-theme-weaving) .map-panel .map-toolbar>.map-actions{background:transparent!important;border:0!important;box-shadow:none!important;padding:0!important;margin:0!important;height:auto!important;backdrop-filter:none!important}
+ :root:not(#_):not([data-ui-constellate=on]) body.atlas-page:not(.is-theme-weaving) .map-panel .map-toolbar>.map-actions{border-left:1px solid var(--ui-line)!important;border-radius:0!important;margin-left:6px!important;padding-left:6px!important}
  :root:not(#_) body.atlas-page #featured-weave.is-collapsed{display:none!important}
  :root:not(#_) body.atlas-page .map-toolbar .fw-proxy{display:inline-flex!important}
 }
@@ -591,3 +591,29 @@ body.atlas-page .map-toolbar .fw-proxy:hover,body.atlas-page .map-toolbar .fw-pr
 :root:not(#_):not(#__) body.atlas-page #featured-weave .fw-min{right:40px!important}
 :root:not(#_):not(#__) body.atlas-page #featured-weave .fw-close:hover,:root:not(#_):not(#__) body.atlas-page #featured-weave .fw-min:hover{background:var(--ui-wash)!important;color:var(--ui-ink)!important}
 :root:not(#_):not(#__) body.atlas-page #featured-weave .fw-actions a:not(.fw-play){border:0!important;box-shadow:none!important;text-decoration:none!important;background:none!important}
+/* A–Z on two lines (desktop) */
+@media (min-width:761px){
+ :root:not(#_):not(#__) #index :is(#maker-alphabet,#film-alphabet){grid-template-columns:repeat(14,minmax(0,1fr))!important;gap:3px 2px!important}
+ :root:not(#_):not(#__) #index :is(#maker-alphabet,#film-alphabet) button{min-width:0!important;width:auto!important;height:31px!important;min-height:31px!important;padding:0!important;font-size:14px!important;border-radius:7px!important}
+}
+
+/* 2026-11-15: featured constellation minimized to one line. */
+:root:not(#_):not(#__) body.atlas-page #featured-weave.is-min:not(.is-collapsed){width:auto!important;max-width:min(360px,calc(100% - 24px))!important;padding:9px 78px 9px 16px!important;display:flex!important;align-items:center!important;gap:14px!important}
+:root:not(#_):not(#__) body.atlas-page #featured-weave.is-min :is(.fw-eyebrow,ul,.fw-pill,.fw-actions a:not(.fw-play)){display:none!important}
+:root:not(#_):not(#__) body.atlas-page #featured-weave.is-min h2{margin:0!important;font-size:16px!important;white-space:nowrap!important}
+:root:not(#_):not(#__) body.atlas-page #featured-weave.is-min .fw-actions{border-top:0!important;padding-top:0!important}
+:root:not(#_):not(#__) body.atlas-page #featured-weave.is-min .fw-actions a.fw-play{padding:6px 12px!important}
+:root:not(#_):not(#__) body.atlas-page #featured-weave.is-min :is(.fw-min,.fw-close){top:50%!important;transform:translateY(-50%)!important}
+
+/* 2026-11-15: in Constellate the map toolbar keeps its pill; the Constellations button is not needed there. */
+:root:not(#_):not(#__) body.atlas-page:is(.is-theme-weaving,.is-constellating) .map-toolbar .fw-proxy,:root[data-ui-constellate=on]:not(#_):not(#__) body.atlas-page .map-toolbar .fw-proxy{display:none!important}
+
+/* 2026-11-15: after resizing the panel the map eases out, re-lays itself out once, and fades back in. */
+html[data-map-settle] body.atlas-page .map-panel :is(#atlas,#atlas-basemap){transition:opacity .14s ease-in}
+html[data-map-settle="out"] body.atlas-page .map-panel :is(#atlas,#atlas-basemap){opacity:0!important}
+html[data-map-settle="in"] body.atlas-page .map-panel :is(#atlas,#atlas-basemap){transition:opacity .3s ease-out}
+html.index-resizing body.atlas-page .map-panel{overflow:hidden}
+@media (prefers-reduced-motion: reduce){html[data-map-settle] body.atlas-page .map-panel :is(#atlas,#atlas-basemap){transition:none}}
+
+/* 2026-11-15: a collapsed featured card is only its pill (the card polish above must not reopen it on phones). */
+:root:not(#_):not(#__):not(#___) body.atlas-page #featured-weave.is-collapsed>:not(.fw-pill){display:none!important}
