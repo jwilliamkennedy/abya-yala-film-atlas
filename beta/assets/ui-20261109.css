@@ -614,3 +614,6 @@ html[data-map-settle="out"] body.atlas-page .map-panel :is(#atlas,#atlas-basemap
 html[data-map-settle="in"] body.atlas-page .map-panel :is(#atlas,#atlas-basemap){transition:opacity .3s ease-out}
 html.index-resizing body.atlas-page .map-panel{overflow:hidden}
 @media (prefers-reduced-motion: reduce){html[data-map-settle] body.atlas-page .map-panel :is(#atlas,#atlas-basemap){transition:none}}
+
+/* 2026-11-15: a collapsed featured card is only its pill (the card polish above must not reopen it on phones). */
+:root:not(#_):not(#__):not(#___) body.atlas-page #featured-weave.is-collapsed>:not(.fw-pill){display:none!important}
