@@ -1175,10 +1175,13 @@ try{
   <p class="fw-actions"><a class="fw-play" href="${href('play')}">Play it <span aria-hidden="true">▸</span></a><a href="${href('read')}">Read it</a><a href="about.html">About</a></p>
   <button class="fw-close" aria-label="Hide">×</button></aside>`);
  const card=document.querySelector('#featured-weave');
- let dismissed=false;try{dismissed=localStorage.getItem('fw-hidden')==='1';}catch{}
- card.querySelector('.fw-close').onclick=()=>{dismissed=true;try{localStorage.setItem('fw-hidden','1');}catch{};update();};
- function update(){const busy=/(maker|film|land|community|country)=/.test(location.hash)||document.body.classList.contains('is-theme-weaving')||document.body.classList.contains('weave-playing')||document.body.classList.contains('selection-held');card.hidden=dismissed||busy;}
- addEventListener('hashchange',update);new MutationObserver(update).observe(document.body,{attributes:true,attributeFilter:['class']});update();
+ const dismissed=false;try{localStorage.removeItem('fw-hidden');}catch{}
+ /* 2026-11-15: × closes the card back to the toolbar button (it no longer hides it for good). */
+ card.querySelector('.fw-close').onclick=()=>{if(card.__fwSet)card.__fwSet(true);else card.classList.add('is-collapsed');};
+ function update(){const busy=/(maker|film|land|community|country)=/.test(location.hash)||document.body.classList.contains('is-theme-weaving')||document.body.classList.contains('weave-playing')||document.body.classList.contains('selection-held');card.hidden=dismissed||(busy&&!card.__userOpen);}
+ /* 2026-11-15: opening it from the toolbar shows it even while a filmmaker or land is selected. */
+ card.addEventListener('fw-change',update);
+ addEventListener('hashchange',()=>{card.__userOpen=false;update();});new MutationObserver(update).observe(document.body,{attributes:true,attributeFilter:['class']});update();
 })();
 ;
 
