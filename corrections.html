@@ -107,7 +107,7 @@ main a[href^="http"]{color:var(--accent,var(--gold))}
 <h1>Suggest a correction</h1>
 <p class="lede">Anyone may suggest a correction, addition or withdrawal <strong>without providing a name, email address or GitHub account</strong>.</p>
 <p class="note">The Atlas welcomes questions about names, credits, land connections and community affiliations. A concern can be raised without proving personal or community identity publicly; review and any further verification are separate steps.</p>
-<form id="fix" action="https://formsubmit.co/John.Kennedy@colorado.edu" method="POST" accept-charset="utf-8" novalidate>
+<form id="fix" action="https://formsubmit.co/jwk258@cornell.edu" method="POST" accept-charset="utf-8" novalidate>
 <input type="hidden" name="_subject" value="Indigenous Cinema Atlas — anonymous correction request">
 <input type="hidden" name="_template" value="table">
 <input type="hidden" name="_url" value="https://jwilliamkennedy.github.io/abya-yala-film-atlas/corrections.html">
@@ -119,7 +119,7 @@ main a[href^="http"]{color:var(--accent,var(--gold))}
 <label>What should change? <small>(required)</small><textarea id="what" name="requested_change" required placeholder="Describe the change or concern. Avoid including personal or sensitive information."></textarea></label>
 <label>Supporting page <small>(optional)</small><input id="source" type="url" name="source_url" placeholder="https://"></label>
 <label>Your connection to the record <small>(optional; leave blank if you prefer)</small><select id="who" name="connection"><option value="">Prefer not to say</option><option>I am the filmmaker</option><option>I am a member of the community or nation</option><option>I work with the filmmaker or film</option><option>Researcher or viewer</option></select></label>
-<div class="actions"><button type="submit" id="send">Check submission response</button><button type="button" class="secondary" id="direct">Use FormSubmit’s own page</button><button type="button" class="secondary" id="email">Compose private email</button><button type="button" class="secondary" id="copy">Copy request</button></div>
+<div class="actions"><button type="submit" id="send">Check submission response</button><button type="button" class="secondary" id="direct">Use FormSubmit’s own page</button><button type="button" class="secondary" id="copy">Copy request</button></div>
 <p class="note"><strong>Privacy:</strong> Anonymous here means no name, email or account is required or requested. Submissions go through <a href="https://formsubmit.co/" target="_blank" rel="noopener noreferrer">FormSubmit</a>, a third-party form processor, which may process technical information and retain the submission temporarily. This is <strong>not</strong> a guarantee of untraceable anonymity. Avoid sending private or ceremonial information. This anonymous-submission service has not yet been verified as active. The first button displays the service’s actual response, including activation or delivery errors, without leaving this page. If that fails, use the full-page option to view its response directly. The project owner must first confirm a FormSubmit activation email; until that succeeds, do not assume a correction has been delivered.</p>
 <textarea id="copy-fallback" rows="6" readonly hidden aria-label="Text to select and copy"></textarea>
 <p id="copied" role="status" aria-live="polite" class="note"></p>
@@ -164,7 +164,7 @@ main a[href^="http"]{color:var(--accent,var(--gold))}
     const timer = setTimeout(() => controller.abort(), 15000);
     try {
       const fields = Object.fromEntries(new FormData(form).entries());
-      const response = await fetch('https://formsubmit.co/ajax/John.Kennedy@colorado.edu', {
+      const response = await fetch('https://formsubmit.co/ajax/jwk258@cornell.edu', {
         method: 'POST',
         headers: { 'Content-Type':'application/json', 'Accept':'application/json' },
         body: JSON.stringify(fields),
@@ -198,12 +198,6 @@ main a[href^="http"]{color:var(--accent,var(--gold))}
     if (!valid()) return;
     status.textContent = 'Opening FormSubmit’s own page so you can see its activation or error message. No delivery is confirmed yet.';
     HTMLFormElement.prototype.submit.call(form);
-  });
-  $('email').addEventListener('click', () => {
-    if (!valid()) return;
-    const subject = 'Indigenous Cinema Atlas: ' + $('kind').value + ' — ' + $('about').value.trim().slice(0,64);
-    location.href = 'mailto:John.Kennedy@colorado.edu?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(message());
-    status.textContent = 'An email draft should open; it has not been sent by the website.';
   });
   $('copy').addEventListener('click', async () => {
     if (!valid()) return;
