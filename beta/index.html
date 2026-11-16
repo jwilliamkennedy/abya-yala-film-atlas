@@ -30,11 +30,19 @@
  r.style.setProperty('--territory-wash',String(strength/100));
  for(const [key,value]of Object.entries(palette[theme]))r.style.setProperty('--reading-'+key,value);
 })();</script><script id="atlas-map-reveal">/* 2026-11-15: the map appears once, when its tiles and labels are ready (4.5 s at most), instead of in layers. */
+(()=>{const r=document.documentElement;if(r.dataset.atlasEntry!=='constellate')return;r.dataset.weaveReveal='pending';
+/* Constellate: wait for the stage, the tiles and the camera fit, then fade in once (5 s at most). */
+let t=0;const go=()=>{if(r.dataset.weaveReveal!=='pending')return;r.dataset.weaveReveal='ready';setTimeout(()=>{r.dataset.weaveReveal='done'},700)};
+const check=()=>{const b=window.AtlasOpenBasemap;const base=r.dataset.basemapTiles==='ready'||r.dataset.basemapState==='failed'||(b&&b.active===false);if(r.dataset.weaveStage&&base&&!t)t=setTimeout(go,700)};
+new MutationObserver(check).observe(r,{attributes:true,attributeFilter:['data-weave-stage','data-basemap-state','data-basemap-tiles']});
+addEventListener('DOMContentLoaded',()=>setTimeout(check,0));setTimeout(go,5000)})();
 (()=>{const r=document.documentElement;if(r.dataset.atlasEntry!=='map')return;r.dataset.mapReveal='pending';
 const go=()=>{if(r.dataset.mapReveal!=='pending')return;r.dataset.mapReveal='ready';setTimeout(()=>{r.dataset.mapReveal='done'},700)};
 const check=()=>{const b=window.AtlasOpenBasemap;const base=r.dataset.basemapTiles==='ready'||r.dataset.basemapState==='failed'||(b&&b.active===false);if(base&&r.dataset.atlasUi==='ready')go()};
 new MutationObserver(check).observe(r,{attributes:true,attributeFilter:['data-atlas-ui','data-basemap-state','data-basemap-tiles']});
 addEventListener('DOMContentLoaded',()=>setTimeout(check,0));setTimeout(go,4500)})();</script><style id="atlas-menu-first-paint">
+html[data-atlas-entry="constellate"][data-weave-reveal="pending"] body.atlas-page :is(.map-panel #atlas,.map-panel #atlas-basemap,.map-panel .map-toolbar,.map-panel .zoom,#weave-editor){opacity:0!important}
+html[data-atlas-entry="constellate"][data-weave-reveal="ready"] body.atlas-page :is(.map-panel #atlas,.map-panel #atlas-basemap,.map-panel .map-toolbar,.map-panel .zoom,#weave-editor){transition:opacity .4s ease-out!important}
 html[data-atlas-entry="map"]:not([data-atlas-ui="ready"]) body.atlas-page #index :is(.index-header,#index-list,.reading-utilities){opacity:0!important}
 html[data-atlas-entry="map"][data-map-reveal] body.atlas-page #index :is(.index-header,#index-list,.reading-utilities){transition:opacity .3s ease-out}
 html[data-atlas-entry="map"][data-map-reveal="pending"] body.atlas-page .map-panel :is(#atlas-basemap,#atlas,.zoom,.map-toolbar){opacity:0!important}
@@ -80,7 +88,7 @@ html[data-atlas-entry="constellate"] body.atlas-page .map-panel{background:#1528
 <script defer src="patches-views.js?v=9"></script><script src="menus-20261107.js?v=40" defer></script><script src="i18n-20261107.js?v=14" defer></script><script defer src="assets/counter.js"></script>
 <script defer src="assets/screening.js"></script>
 <link rel="stylesheet" href="assets/site-menu.css?v=15">
-<link rel="stylesheet" href="assets/ui-20261109.css?v=38"><script id="atlas-flourish-mode">(()=>{const r=document.documentElement,u=new URLSearchParams(location.search);let seen=null,drawn=null;try{seen=localStorage.getItem('atlas-intro-seen');drawn=sessionStorage.getItem('atlas-mark-drawn');sessionStorage.setItem('atlas-mark-drawn','1');}catch{}
+<link rel="stylesheet" href="assets/ui-20261109.css?v=39"><script id="atlas-flourish-mode">(()=>{const r=document.documentElement,u=new URLSearchParams(location.search);let seen=null,drawn=null;try{seen=localStorage.getItem('atlas-intro-seen');drawn=sessionStorage.getItem('atlas-mark-drawn');sessionStorage.setItem('atlas-mark-drawn','1');}catch{}
 const still=matchMedia('(prefers-reduced-motion: reduce)').matches,bot=navigator.webdriver;
 if(u.get('intro')==='1'||(!still&&!bot&&!seen&&!location.hash&&!location.search))r.dataset.intro='1';else if(!still&&!bot&&!drawn)r.dataset.markDraw='1';})();</script><link rel="stylesheet" href="assets/flourish-20261115.css?v=1">
 <link rel="stylesheet" href="assets/time-dial.css?v=6">
