@@ -50,3 +50,27 @@ body = (f'<h1>Data</h1><p class="who">Download the public atlas as spreadsheets.
         '<p>Found an error? <a href="corrections.html">Suggest a correction</a>.</p>')
 open(os.path.join(out, 'data.html'), 'w', encoding='utf-8').write(head.replace('Filmmakers A–Z · Indigenous Cinema Atlas', 'Data · Indigenous Cinema Atlas').replace('href="../', 'href="').replace('src="../', 'src="') + '<main>' + body.replace('<table class="dict">','<style>.dict{border-collapse:collapse;width:100%;font-size:15px;margin:10px 0 20px}.dict th,.dict td{text-align:left;vertical-align:top;padding:9px 10px 9px 0;border-bottom:1px solid var(--line)}.dict td:first-child{white-space:nowrap;padding-right:16px}</style><table class="dict">') + '</main></body></html>')
 print('films rows', films_n, 'filmmakers', len(d))
+
+# CARE-limited public download. The film facets and detailed internal exports above
+# are preserved for the Atlas build; only the names/year file is offered on data.html.
+# This postprocessing must run AFTER the original data page build on each beta publish.
+from pathlib import Path
+with open(os.path.join(out, 'data', 'atlas-names.csv'), 'w', newline='', encoding='utf-8-sig') as fh:
+    names = csv.writer(fh)
+    names.writerow(['film_title', 'year', 'filmmaker'])
+    for maker in d:
+        for film in maker['films']:
+            year = film.get('year')
+            year = year if isinstance(year, int) and 1800 <= year <= 2100 else ''
+            def safe_text(value):
+                v = str(value or '')
+                # Protect spreadsheet users from formula execution on CSV open.
+                return "'" + v if v.startswith(('=', '+', '-', '@', '\t', '\r')) else v
+            names.writerow([safe_text(film['title']), year, safe_text(maker['name'])])
+body_template = Path(__file__).with_name('data-care-body.htmlfrag').read_text(encoding='utf-8')
+assert body_template.count('{{FILM_CREDITS}}') == 2, 'CARE data page template count markers missing'
+care_body = body_template.replace('{{FILM_CREDITS}}', f'{films_n:,}')
+head, _ = page.split('<main>', 1)
+head = head.replace('Filmmakers A–Z · Indigenous Cinema Atlas', 'Data · Indigenous Cinema Atlas').replace('href="../', 'href="').replace('src="../', 'src="')
+Path(os.path.join(out, 'data.html')).write_text(head + '<main>' + care_body + '</main></body></html>', encoding='utf-8')
+print('CARE names/year export', films_n, 'credits; publication page regenerated')
