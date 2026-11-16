@@ -1,13 +1,13 @@
 """One header menu for every page of the beta except the map itself (which builds the same menu in menus-20261107.js).
 Same items, same order, same words as the map: About · Map · Constellate · Watch · More
-(Browse: Land, Languages, Themes, Timeline · Your list: Screening list · About the data: Data and downloads,
+(Browse: Languages, Themes, Timeline · Your list: Screening list · About the data: Data and downloads,
 Resources, Suggest a correction). Filmmakers, Films and Land are switched inside the map's sidebar (2026-11-09).
 Also loads the shared interface layer (assets/ui-20261109.css and .js) after site-menu.css. The current page is marked. Safe to run again.
 usage: python3 tools/pages/nav.py beta"""
 import sys, re, pathlib
 
 TOP = [('About', 'about.html'), ('Map', './'), ('Constellate', './?constellate=1'), ('Watch', 'watch.html')]
-MORE = [[('Land', './#view=land'), ('Languages', 'languages.html'), ('Themes', 'themes.html'), ('Timeline', 'timeline.html')],
+MORE = [[('Languages', 'languages.html'), ('Themes', 'themes.html'), ('Timeline', 'timeline.html')],
         [('Screening list', 'screening.html')],
         [('Data and downloads', 'data.html'), ('Resources', 'resources.html'), ('Suggest a correction', 'corrections.html')]]
 # the atlas mark (lens and meridian, 2026-11-15), drawn in the page's ink (the same icon on every page, in light and night themes)
