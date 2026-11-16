@@ -1,0 +1,126 @@
+{
+ "format": "Indigenous Cinema Atlas published constellation",
+ "version": 1,
+ "slug": "one-line-misak-wallmapu",
+ "published": "2026-11-16",
+ "updated": "2026-11-16",
+ "weave": {
+  "name": "One line: Misak → Wallmapu",
+  "author": "Indigenous Cinema Atlas",
+  "note": "Made with Draw a line: a line drawn down the Andes, with one film from each land it crosses, in the order it crosses them.",
+  "items": [
+   {
+    "type": "film",
+    "record": "DIR-0186",
+    "film": "DIR-0186-F1"
+   },
+   {
+    "type": "film",
+    "record": "SAB2-20261014-c2d53dea271f",
+    "film": "SAB2-20261014-c2d53dea271f-WORK-01"
+   },
+   {
+    "type": "film",
+    "record": "NEW-df0d54c464f8",
+    "film": "NEW-df0d54c464f8-WORK-1"
+   },
+   {
+    "type": "film",
+    "record": "SA50-20261014-b13c85277547",
+    "film": "Q20261112-10-F4"
+   },
+   {
+    "type": "film",
+    "record": "LEAD-20261031-0006",
+    "film": "RESEARCH-FILM-20261031-0006-01"
+   },
+   {
+    "type": "film",
+    "record": "NEW-0031c6469e76",
+    "film": "NEW-0031c6469e76-WORK-1"
+   },
+   {
+    "type": "film",
+    "record": "NEW-df0d54c464f8",
+    "film": "Q20261114-98-F10"
+   },
+   {
+    "type": "film",
+    "record": "SA50-20261014-50ce6a02e8f9",
+    "film": "SA50-20261014-50ce6a02e8f9-WORK-01"
+   },
+   {
+    "type": "film",
+    "record": "SAB2-20261014-f9aad6391fe4",
+    "film": "NEW-293955d2b25c-WORK-2"
+   },
+   {
+    "type": "film",
+    "record": "NEW-4870cf62f977",
+    "film": "NEW-4870cf62f977-WORK-1"
+   },
+   {
+    "type": "film",
+    "record": "NEW-f51c22579e1e",
+    "film": "NEW-f51c22579e1e-WORK-1"
+   },
+   {
+    "type": "film",
+    "record": "SAB2-20261014-47c6606cc6ca",
+    "film": "SAB2-20261014-47c6606cc6ca-WORK-01"
+   },
+   {
+    "type": "film",
+    "record": "NEW-f64866092029",
+    "film": "NEW-f64866092029-WORK-1"
+   },
+   {
+    "type": "film",
+    "record": "NEW-948f2ac8df47",
+    "film": "NEW-948f2ac8df47-WORK-3"
+   }
+  ],
+  "threads": [
+   {
+    "id": "thread-first",
+    "name": "Misak → Wallmapu",
+    "description": "One film from each land a line down the Andes crosses, in the order it crosses them.",
+    "color": "star-blue",
+    "items": [
+     "film:DIR-0186:DIR-0186-F1",
+     "film:SAB2-20261014-c2d53dea271f:SAB2-20261014-c2d53dea271f-WORK-01",
+     "film:NEW-df0d54c464f8:NEW-df0d54c464f8-WORK-1",
+     "film:SA50-20261014-b13c85277547:Q20261112-10-F4",
+     "film:LEAD-20261031-0006:RESEARCH-FILM-20261031-0006-01",
+     "film:NEW-0031c6469e76:NEW-0031c6469e76-WORK-1",
+     "film:NEW-df0d54c464f8:Q20261114-98-F10",
+     "film:SA50-20261014-50ce6a02e8f9:SA50-20261014-50ce6a02e8f9-WORK-01",
+     "film:SAB2-20261014-f9aad6391fe4:NEW-293955d2b25c-WORK-2",
+     "film:NEW-4870cf62f977:NEW-4870cf62f977-WORK-1",
+     "film:NEW-f51c22579e1e:NEW-f51c22579e1e-WORK-1",
+     "film:SAB2-20261014-47c6606cc6ca:SAB2-20261014-47c6606cc6ca-WORK-01",
+     "film:NEW-f64866092029:NEW-f64866092029-WORK-1",
+     "film:NEW-948f2ac8df47:NEW-948f2ac8df47-WORK-3"
+    ],
+    "notes": {}
+   }
+  ],
+  "links": [],
+  "pins": {
+   "film:DIR-0186:DIR-0186-F1": "NAME-144",
+   "film:SAB2-20261014-c2d53dea271f:SAB2-20261014-c2d53dea271f-WORK-01": "LAND-33681",
+   "film:NEW-df0d54c464f8:NEW-df0d54c464f8-WORK-1": "LAND-33230",
+   "film:SA50-20261014-b13c85277547:Q20261112-10-F4": "LAND-33671",
+   "film:LEAD-20261031-0006:RESEARCH-FILM-20261031-0006-01": "LAND-33668",
+   "film:NEW-0031c6469e76:NEW-0031c6469e76-WORK-1": "LAND-33669",
+   "film:NEW-df0d54c464f8:Q20261114-98-F10": "LAND-33219",
+   "film:SA50-20261014-50ce6a02e8f9:SA50-20261014-50ce6a02e8f9-WORK-01": "LAND-33241",
+   "film:SAB2-20261014-f9aad6391fe4:NEW-293955d2b25c-WORK-2": "LAND-33592",
+   "film:NEW-4870cf62f977:NEW-4870cf62f977-WORK-1": "LAND-33594",
+   "film:NEW-f51c22579e1e:NEW-f51c22579e1e-WORK-1": "LAND-33593",
+   "film:SAB2-20261014-47c6606cc6ca:SAB2-20261014-47c6606cc6ca-WORK-01": "LAND-36672",
+   "film:NEW-f64866092029:NEW-f64866092029-WORK-1": "LAND-35950",
+   "film:NEW-948f2ac8df47:NEW-948f2ac8df47-WORK-3": "NAME-124"
+  }
+ }
+}

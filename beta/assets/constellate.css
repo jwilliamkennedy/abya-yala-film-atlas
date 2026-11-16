@@ -1690,3 +1690,7 @@ html body #weave-start .ws-path{border:0!important;background:transparent!import
 html body #weave-start .ws-trace{background:transparent!important;padding:0!important;border:0!important}
 html body #weave-start .ws-how b{background:var(--ui-accent)!important;color:var(--ui-accent-ink)!important}
 html body #weave-start .ws-current,html body #weave-start .ws-saved{border-width:1px 0 0!important;border-radius:0!important;background:transparent!important}
+/* The Map page's panel grip has no panel to resize on the start screen or in Play. */
+html[data-weave-stage="start"] .index-resizer,body.weave-playing .index-resizer{display:none!important}
+#weave-start .ws-path [data-ws-example]{margin:2px 0 14px}
+#weave-start .ws-example-films{display:block}
