@@ -168,6 +168,7 @@ try{(function(){
  addEventListener('pagehide',remember);document.addEventListener('visibilitychange',()=>{if(document.hidden)remember();});
  const imageFor=id=>pick.has(id)&&pick.get(id)&&!dark.has(pick.get(id).src)?pick.get(id):repick(id,pick.has(id)?undefined:last[id]);
 
+ const ranks=new Map(),rank=id=>{if(!ranks.has(id))ranks.set(id,Math.random());return ranks.get(id);};
  const NS='http://www.w3.org/2000/svg';
  // Duotone at rest (deep indigo to warm cream), full colour when you engage with the land.
  function ensureDefs(svg){if(svg.querySelector('#land-thumb-clip'))return;const defs=svg.querySelector('defs')||svg.insertBefore(document.createElementNS(NS,'defs'),svg.firstChild);
@@ -186,7 +187,8 @@ try{(function(){
   // Overview shows only the lands with the most filmmakers; more appear as you zoom in.
   const eligible=words.filter(g=>{const d=g.__data__;if(!d?.id||+(g.style.opacity||1)<.35||!usable(d.id).length)return false;const map=d.voice?.map||12,count=d.voice?.count||0;
    return k<1.35?true:k<2.2?(count>=2||map>=18):count>=1;}).sort((a,b)=>(b.__data__.voice?.count||0)-(a.__data__.voice?.count||0));
-  const shown=k<1.35?eligible.slice(0,6):eligible;
+  // Overview: six lands drawn at random from across the map on each visit (fixed while the page is open).
+  const shown=k<1.35?eligible.slice().sort((a,b)=>rank(a.__data__.id)-rank(b.__data__.id)):eligible;
   // One size for every circle at a given zoom.
   const size=Math.round(Math.min(64,34*Math.pow(Math.max(1,k),.4)));
   const hit=box=>placed.some(b=>box.x<b.x+b.w&&box.x+box.w>b.x&&box.y<b.y+b.h&&box.y+box.h>b.y);
@@ -194,6 +196,7 @@ try{(function(){
    const d=g.__data__,[gx,gy]=tf(g);let x,y;
    // Always to the left of the name, centred on it.
    try{const bb=g.querySelector('.land-word-label').getBBox(),dot=g.querySelector('.land-reference-dot'),left=Math.min(bb.x,dot?+dot.getAttribute('cx')-4:bb.x);x=left-8-size;y=bb.y+bb.height/2-size/2;}catch{continue;}
+   if(k<1.35&&placed.length>=6)break;
    const box={x:gx+x-2,y:gy+y-2,w:size+4,h:size+4};if(hit(box))continue;placed.push(box);
    const c=imageFor(d.id);if(!c)continue;
    seen.add(d.id);
@@ -305,7 +308,12 @@ if(main&&index&&!main.querySelector('.index-resizer')){
   const h=document.createElement('div');
   const set=w=>{w=Math.round(Math.max(MIN,Math.min(max(),w)));root.style.setProperty('--index-w',w+'px');h.setAttribute('aria-valuenow',String(w));return w;};
   const save=w=>{try{localStorage.setItem(KEY,String(Math.round(w)));}catch(e){}};
-  const relayout=()=>window.dispatchEvent(new Event('resize'));
+  // 2026-11-15: the map holds still while the panel is dragged, then settles once (no layer-by-layer readjusting).
+  const layers=()=>[...document.querySelectorAll('.map-panel #atlas,.map-panel #atlas-basemap')];
+  const freeze=()=>layers().forEach(el=>{const r=el.getBoundingClientRect();el.style.setProperty('width',r.width+'px','important');el.style.setProperty('height',r.height+'px','important');});
+  const thaw=()=>layers().forEach(el=>{el.style.removeProperty('width');el.style.removeProperty('height');});
+  let settleT=0;
+  const relayout=()=>{clearTimeout(settleT);root.dataset.mapSettle='out';settleT=setTimeout(()=>{thaw();window.dispatchEvent(new Event('resize'));settleT=setTimeout(()=>{root.dataset.mapSettle='in';settleT=setTimeout(()=>{delete root.dataset.mapSettle;},400);},320);},140);};
   h.className='index-resizer'; h.tabIndex=0; h.title='Drag to resize · double-click to reset';
   h.setAttribute('role','separator'); h.setAttribute('aria-orientation','vertical'); h.setAttribute('aria-valuemin',String(MIN));
   h.setAttribute('aria-label','Resize the index panel');
@@ -313,13 +321,13 @@ if(main&&index&&!main.querySelector('.index-resizer')){
   h.setAttribute('aria-valuemax',String(max()));h.setAttribute('aria-valuenow',String(Math.round(index.getBoundingClientRect().width)||440));
   try{const w=+localStorage.getItem(KEY); if(w) set(w);}catch(e){}
   let id=null,x0=0,w0=0;
-  h.addEventListener('pointerdown',e=>{if(e.button!==0)return;id=e.pointerId;h.setPointerCapture(id);x0=e.clientX;w0=index.getBoundingClientRect().width;h.classList.add('dragging');root.classList.add('index-resizing');e.preventDefault();});
+  h.addEventListener('pointerdown',e=>{if(e.button!==0)return;id=e.pointerId;h.setPointerCapture(id);x0=e.clientX;w0=index.getBoundingClientRect().width;freeze();h.classList.add('dragging');root.classList.add('index-resizing');e.preventDefault();});
   h.addEventListener('pointermove',e=>{if(id===e.pointerId)set(w0+(x0-e.clientX));});
   const end=()=>{if(id===null)return;id=null;h.classList.remove('dragging');root.classList.remove('index-resizing');save(index.getBoundingClientRect().width);relayout();};
   h.addEventListener('pointerup',end); h.addEventListener('pointercancel',end);
-  h.addEventListener('dblclick',()=>{root.style.removeProperty('--index-w');try{localStorage.removeItem(KEY);}catch(e){}relayout();});
+  h.addEventListener('dblclick',()=>{freeze();root.style.removeProperty('--index-w');try{localStorage.removeItem(KEY);}catch(e){}relayout();});
   h.addEventListener('keydown',e=>{const step=e.shiftKey?80:24,w=index.getBoundingClientRect().width;
-    if(e.key==='ArrowLeft')save(set(w+step));else if(e.key==='ArrowRight')save(set(w-step));else return;e.preventDefault();relayout();});
+    if(e.key!=='ArrowLeft'&&e.key!=='ArrowRight')return;freeze();if(e.key==='ArrowLeft')save(set(w+step));else save(set(w-step));e.preventDefault();relayout();});
   addEventListener('resize',()=>{const v=parseInt(root.style.getPropertyValue('--index-w'),10);if(v&&v>max())set(max());});
 }
 // A film list that fits on one page needs no A–Z letters or pager (unless a letter is the reason it is short).
