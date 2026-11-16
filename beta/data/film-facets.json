@@ -2,8 +2,8 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-16",
  "license": "See data.html",
- "films_on_public_map": 2140,
- "film_entries": 2154,
+ "films_on_public_map": 2222,
+ "film_entries": 2237,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -4293,6 +4293,70 @@
    "form": "Documentary",
    "length": "Feature"
   },
+  "Q20261115-92-F1": {
+   "title": "Keepers of the Fire",
+   "year": 1994,
+   "makers": [
+    {
+     "id": "DIR-0074",
+     "name": "Christine Welsh"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-92-F2": {
+   "title": "The Story of the Coast Salish Knitters",
+   "year": 2000,
+   "makers": [
+    {
+     "id": "DIR-0074",
+     "name": "Christine Welsh"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-92-F3": {
+   "title": "Kuper Island: Return to the Healing Circle",
+   "year": 1998,
+   "makers": [
+    {
+     "id": "DIR-0074",
+     "name": "Christine Welsh"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-92-F4": {
+   "title": "The Thinking Garden",
+   "year": 2017,
+   "makers": [
+    {
+     "id": "DIR-0074",
+     "name": "Christine Welsh"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "FILM-0070": {
    "title": "Now Is the Time",
    "year": null,
@@ -4921,6 +4985,246 @@
    "form": null,
    "length": null
   },
+  "Q20261115-83-F1": {
+   "title": "It Never Happened...",
+   "year": 1997,
+   "makers": [
+    {
+     "id": "DIR-0083",
+     "name": "Darlene Naponse"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-83-F2": {
+   "title": "Black Water Creek",
+   "year": 1998,
+   "makers": [
+    {
+     "id": "DIR-0083",
+     "name": "Darlene Naponse"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-83-F3": {
+   "title": "Abandoned Houses on the Reservation",
+   "year": 2000,
+   "makers": [
+    {
+     "id": "DIR-0083",
+     "name": "Darlene Naponse"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-83-F4": {
+   "title": "$4 Indian",
+   "year": 2001,
+   "makers": [
+    {
+     "id": "DIR-0083",
+     "name": "Darlene Naponse"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-83-F5": {
+   "title": "Waiting for the Ice to Melt",
+   "year": 2003,
+   "makers": [
+    {
+     "id": "DIR-0083",
+     "name": "Darlene Naponse"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-83-F6": {
+   "title": "Storing",
+   "year": 2004,
+   "makers": [
+    {
+     "id": "DIR-0083",
+     "name": "Darlene Naponse"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-83-F7": {
+   "title": "hiberNATION",
+   "year": 2005,
+   "makers": [
+    {
+     "id": "DIR-0083",
+     "name": "Darlene Naponse"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-83-F8": {
+   "title": "The Post",
+   "year": 2006,
+   "makers": [
+    {
+     "id": "DIR-0083",
+     "name": "Darlene Naponse"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-83-F9": {
+   "title": "Cyclic Roots",
+   "year": 2007,
+   "makers": [
+    {
+     "id": "DIR-0083",
+     "name": "Darlene Naponse"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-83-F10": {
+   "title": "Every Emotion Costs",
+   "year": 2010,
+   "makers": [
+    {
+     "id": "DIR-0083",
+     "name": "Darlene Naponse"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-83-F11": {
+   "title": "She Is Water",
+   "year": 2017,
+   "makers": [
+    {
+     "id": "DIR-0083",
+     "name": "Darlene Naponse"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-83-F12": {
+   "title": "Falls Around Her",
+   "year": 2018,
+   "makers": [
+    {
+     "id": "DIR-0083",
+     "name": "Darlene Naponse"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-83-F13": {
+   "title": "Places to Gather and Learn",
+   "year": 2018,
+   "makers": [
+    {
+     "id": "DIR-0083",
+     "name": "Darlene Naponse"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-83-F14": {
+   "title": "Tantoo Cardinal",
+   "year": 2020,
+   "makers": [
+    {
+     "id": "DIR-0083",
+     "name": "Darlene Naponse"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-83-F15": {
+   "title": "Stellar",
+   "year": 2022,
+   "makers": [
+    {
+     "id": "DIR-0083",
+     "name": "Darlene Naponse"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "DIR-0085-F1": {
    "title": "Polar Sun",
    "year": 2016,
@@ -5001,6 +5305,122 @@
    ],
    "form": "Documentary",
    "length": "Feature"
+  },
+  "Q20261115-85-F1": {
+   "title": "The Body Remembers When the World Broke Open",
+   "year": 2019,
+   "makers": [
+    {
+     "id": "DIR-0087",
+     "name": "Elle-Máijá Tailfeathers"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-85-F2": {
+   "title": "c̓əsnaʔəm, the city before the city",
+   "year": 2017,
+   "makers": [
+    {
+     "id": "DIR-0087",
+     "name": "Elle-Máijá Tailfeathers"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-85-F3": {
+   "title": "A Red Girl's Reasoning",
+   "year": 2012,
+   "makers": [
+    {
+     "id": "DIR-0087",
+     "name": "Elle-Máijá Tailfeathers"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-85-F4": {
+   "title": "Bloodland",
+   "year": 2011,
+   "makers": [
+    {
+     "id": "DIR-0087",
+     "name": "Elle-Máijá Tailfeathers"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-85-F5": {
+   "title": "Versaearcolonion",
+   "year": 2017,
+   "makers": [
+    {
+     "id": "DIR-0087",
+     "name": "Elle-Máijá Tailfeathers"
+    },
+    {
+     "id": "Q20261115-86",
+     "name": "Chandra Melting Tallow"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-85-F6": {
+   "title": "Under Your Always Light",
+   "year": 2017,
+   "makers": [
+    {
+     "id": "DIR-0087",
+     "name": "Elle-Máijá Tailfeathers"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Music Video",
+   "length": null
+  },
+  "Q20261115-94-F1": {
+   "title": "Naked Island - Detention",
+   "year": 2017,
+   "makers": [
+    {
+     "id": "DIR-0087",
+     "name": "Elle-Máijá Tailfeathers"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
   },
   "FILM-SRC-NFB-00060": {
    "title": "Patrick Ross",
@@ -6270,6 +6690,22 @@
    "form": null,
    "length": null
   },
+  "Q20261115-100-F1": {
+   "title": "Tia and Piujuq",
+   "year": 2018,
+   "makers": [
+    {
+     "id": "DIR-0120",
+     "name": "Lucy Tulugarjuk"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "DIR-0121-W1031-1": {
    "title": "Before Tomorrow",
    "year": 2008,
@@ -6383,6 +6819,166 @@
   },
   "DIR-0124-F2": {
    "title": "Bones of Crows",
+   "year": 2023,
+   "makers": [
+    {
+     "id": "DIR-0124",
+     "name": "Marie Clements"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Series"
+  },
+  "Q20261115-98-F1": {
+   "title": "Jesus Indian",
+   "year": 2010,
+   "makers": [
+    {
+     "id": "DIR-0124",
+     "name": "Marie Clements"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-98-F2": {
+   "title": "The Language of Love",
+   "year": 2012,
+   "makers": [
+    {
+     "id": "DIR-0124",
+     "name": "Marie Clements"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-98-F3": {
+   "title": "Pilgrims",
+   "year": 2013,
+   "makers": [
+    {
+     "id": "DIR-0124",
+     "name": "Marie Clements"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-98-F4": {
+   "title": "Ballads Not Bullets: Tom Jackson",
+   "year": 2014,
+   "makers": [
+    {
+     "id": "DIR-0124",
+     "name": "Marie Clements"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-98-F5": {
+   "title": "Number 14",
+   "year": 2015,
+   "makers": [
+    {
+     "id": "DIR-0124",
+     "name": "Marie Clements"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-98-F6": {
+   "title": "Looking at Edward Curtis in the Pacific Northwest",
+   "year": 2018,
+   "makers": [
+    {
+     "id": "DIR-0124",
+     "name": "Marie Clements"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-98-F7": {
+   "title": "Red Snow",
+   "year": 2019,
+   "makers": [
+    {
+     "id": "DIR-0124",
+     "name": "Marie Clements"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-98-F8": {
+   "title": "Lay Down Your Heart",
+   "year": 2022,
+   "makers": [
+    {
+     "id": "DIR-0124",
+     "name": "Marie Clements"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-98-F9": {
+   "title": "How We Stand",
+   "year": 2026,
+   "makers": [
+    {
+     "id": "DIR-0124",
+     "name": "Marie Clements"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-98-F10": {
+   "title": "Bones of Crows: The Series",
    "year": 2023,
    "makers": [
     {
@@ -7120,6 +7716,294 @@
    "form": null,
    "length": null
   },
+  "Q20261115-91-F1": {
+   "title": "A Black Screen Too",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "DIR-0138",
+     "name": "Rhayne Vermette"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-91-F2": {
+   "title": "The Nightside of the Sky",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "DIR-0138",
+     "name": "Rhayne Vermette"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-91-F3": {
+   "title": "Episode 5",
+   "year": 2022,
+   "makers": [
+    {
+     "id": "DIR-0138",
+     "name": "Rhayne Vermette"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-91-F5": {
+   "title": "Suzanne Ciani on Letterman",
+   "year": 2017,
+   "makers": [
+    {
+     "id": "DIR-0138",
+     "name": "Rhayne Vermette"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-91-F6": {
+   "title": "Domus",
+   "year": 2017,
+   "makers": [
+    {
+     "id": "DIR-0138",
+     "name": "Rhayne Vermette"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-91-F7": {
+   "title": "Les Châssis de Lourdes",
+   "year": 2016,
+   "makers": [
+    {
+     "id": "DIR-0138",
+     "name": "Rhayne Vermette"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-91-F8": {
+   "title": "U.F.O.",
+   "year": 2016,
+   "makers": [
+    {
+     "id": "DIR-0138",
+     "name": "Rhayne Vermette"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-91-F9": {
+   "title": "Scene Missing",
+   "year": 2015,
+   "makers": [
+    {
+     "id": "DIR-0138",
+     "name": "Rhayne Vermette"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-91-F10": {
+   "title": "ROB WHAT",
+   "year": 2015,
+   "makers": [
+    {
+     "id": "DIR-0138",
+     "name": "Rhayne Vermette"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-91-F11": {
+   "title": "Turin",
+   "year": 2015,
+   "makers": [
+    {
+     "id": "DIR-0138",
+     "name": "Rhayne Vermette"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-91-F12": {
+   "title": "Extraits d’une famille",
+   "year": 2015,
+   "makers": [
+    {
+     "id": "DIR-0138",
+     "name": "Rhayne Vermette"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-91-F13": {
+   "title": "Black Rectangle",
+   "year": 2013,
+   "makers": [
+    {
+     "id": "DIR-0138",
+     "name": "Rhayne Vermette"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-91-F14": {
+   "title": "Full of Fire",
+   "year": 2013,
+   "makers": [
+    {
+     "id": "DIR-0138",
+     "name": "Rhayne Vermette"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-91-F15": {
+   "title": "J. Werier",
+   "year": 2012,
+   "makers": [
+    {
+     "id": "DIR-0138",
+     "name": "Rhayne Vermette"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-91-F16": {
+   "title": "take my word",
+   "year": 2012,
+   "makers": [
+    {
+     "id": "DIR-0138",
+     "name": "Rhayne Vermette"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-91-F17": {
+   "title": "Tudor Village: A One Shot Deal",
+   "year": 2012,
+   "makers": [
+    {
+     "id": "DIR-0138",
+     "name": "Rhayne Vermette"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-91-F18": {
+   "title": "Tricks are for Kiddo",
+   "year": 2012,
+   "makers": [
+    {
+     "id": "DIR-0138",
+     "name": "Rhayne Vermette"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-91-F19": {
+   "title": "R Seymore Goes North",
+   "year": 2011,
+   "makers": [
+    {
+     "id": "DIR-0138",
+     "name": "Rhayne Vermette"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "DIR-0142-W1031-1": {
    "title": "Legend of the Storm",
    "year": 2015,
@@ -7220,6 +8104,22 @@
    ],
    "form": "Fiction",
    "length": "Short"
+  },
+  "Q20261115-101-F1": {
+   "title": "Enhior'hén:ne",
+   "year": 2018,
+   "makers": [
+    {
+     "id": "DIR-0142",
+     "name": "Roxann Whitebean"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
   },
   "DIR-0143-W1031-1": {
    "title": "Pepper's Pow Wow",
@@ -7752,6 +8652,38 @@
    "form": null,
    "length": null
   },
+  "Q20261115-95-F1": {
+   "title": "Sweet Blood",
+   "year": 2009,
+   "makers": [
+    {
+     "id": "DIR-0147",
+     "name": "Shirley Cheechoo"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-95-F2": {
+   "title": "In Shadow",
+   "year": 2003,
+   "makers": [
+    {
+     "id": "DIR-0147",
+     "name": "Shirley Cheechoo"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "FILM-0089": {
    "title": "Siksikakowan: The Blackfoot Man",
    "year": null,
@@ -7897,6 +8829,22 @@
    "form": "Documentary",
    "length": "Series"
   },
+  "Q20261115-99-F1": {
+   "title": "Rustic Oracle",
+   "year": 2019,
+   "makers": [
+    {
+     "id": "DIR-0150",
+     "name": "Sonia Bonspille Boileau"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "DIR-0152-F1": {
    "title": "Sol",
    "year": null,
@@ -7991,6 +8939,70 @@
    ],
    "form": "Fiction",
    "length": "Feature"
+  },
+  "Q20261115-93-F1": {
+   "title": "Two Worlds Colliding",
+   "year": 2004,
+   "makers": [
+    {
+     "id": "DIR-0154",
+     "name": "Tasha Hubbard"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-93-F2": {
+   "title": "Birth of a Family",
+   "year": 2017,
+   "makers": [
+    {
+     "id": "DIR-0154",
+     "name": "Tasha Hubbard"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-93-F3": {
+   "title": "7 Minutes",
+   "year": 2016,
+   "makers": [
+    {
+     "id": "DIR-0154",
+     "name": "Tasha Hubbard"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-93-F4": {
+   "title": "Buffalo Calling",
+   "year": 2013,
+   "makers": [
+    {
+     "id": "DIR-0154",
+     "name": "Tasha Hubbard"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
   },
   "FILM-SRC-2023-00043": {
    "title": "A Bear Named Jesus",
@@ -8617,6 +9629,150 @@
   "MIRROR-FILMOGRAPHY-20261107-034": {
    "title": "Lessons in Baby Dyke Theory",
    "year": 1995,
+   "makers": [
+    {
+     "id": "DIR-0157",
+     "name": "TJ Cuthand"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-84-F1": {
+   "title": "Redacted",
+   "year": 2025,
+   "makers": [
+    {
+     "id": "DIR-0157",
+     "name": "TJ Cuthand"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-84-F2": {
+   "title": "13 Eggs",
+   "year": 2022,
+   "makers": [
+    {
+     "id": "DIR-0157",
+     "name": "TJ Cuthand"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-84-F3": {
+   "title": "Discretion",
+   "year": 2021,
+   "makers": [
+    {
+     "id": "DIR-0157",
+     "name": "TJ Cuthand"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-84-F4": {
+   "title": "Processing Racism Table",
+   "year": 2021,
+   "makers": [
+    {
+     "id": "DIR-0157",
+     "name": "TJ Cuthand"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Experimental",
+   "length": null
+  },
+  "Q20261115-84-F5": {
+   "title": "Woman Dress",
+   "year": 2019,
+   "makers": [
+    {
+     "id": "DIR-0157",
+     "name": "TJ Cuthand"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-84-F6": {
+   "title": "Extractions",
+   "year": 2019,
+   "makers": [
+    {
+     "id": "DIR-0157",
+     "name": "TJ Cuthand"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-84-F7": {
+   "title": "Devout and Out: Susan",
+   "year": 2019,
+   "makers": [
+    {
+     "id": "DIR-0157",
+     "name": "TJ Cuthand"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-84-F8": {
+   "title": "Manipulation/Dictation",
+   "year": 1999,
+   "makers": [
+    {
+     "id": "DIR-0157",
+     "name": "TJ Cuthand"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-84-F9": {
+   "title": "Earth Flesh",
+   "year": 1997,
    "makers": [
     {
      "id": "DIR-0157",
@@ -27696,6 +28852,86 @@
    "form": "Documentary",
    "length": "Feature"
   },
+  "Q20261115-97-F1": {
+   "title": "I'tusto: To Rise Again",
+   "year": 2000,
+   "makers": [
+    {
+     "id": "NEW-d78c92028675",
+     "name": "Barb Cranmer"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-97-F2": {
+   "title": "Gwishalaayt: The Spirit Wraps Around You",
+   "year": 2001,
+   "makers": [
+    {
+     "id": "NEW-d78c92028675",
+     "name": "Barb Cranmer"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-97-F3": {
+   "title": "'Namegan's Om Dlu'wans Awinagwisex: We Are One With the Land",
+   "year": 2009,
+   "makers": [
+    {
+     "id": "NEW-d78c92028675",
+     "name": "Barb Cranmer"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-97-F4": {
+   "title": "Potlatch: To Give",
+   "year": 2011,
+   "makers": [
+    {
+     "id": "NEW-d78c92028675",
+     "name": "Barb Cranmer"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-97-F5": {
+   "title": "Our Voices, Our Stories",
+   "year": null,
+   "makers": [
+    {
+     "id": "NEW-d78c92028675",
+     "name": "Barb Cranmer"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "NEW-efb16e33eb64-WORK-1": {
    "title": "Freddy",
    "year": null,
@@ -27813,6 +29049,102 @@
    ],
    "form": "Documentary",
    "length": "Short"
+  },
+  "Q20261115-96-F1": {
+   "title": "Minqon Minqon: Wosqotomn Elsonwagon",
+   "year": 1990,
+   "makers": [
+    {
+     "id": "NEW-a9177b3cd41d",
+     "name": "Catherine Anne Martin"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-96-F2": {
+   "title": "Kwa'nu'te': Micmac and Maliseet Artists",
+   "year": 1991,
+   "makers": [
+    {
+     "id": "NEW-a9177b3cd41d",
+     "name": "Catherine Anne Martin"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-96-F3": {
+   "title": "Spirit Wind",
+   "year": 2000,
+   "makers": [
+    {
+     "id": "NEW-a9177b3cd41d",
+     "name": "Catherine Anne Martin"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-96-F4": {
+   "title": "The Spirit of Annie Mae",
+   "year": 2002,
+   "makers": [
+    {
+     "id": "NEW-a9177b3cd41d",
+     "name": "Catherine Anne Martin"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-96-F5": {
+   "title": "Little Boy Who Lived with Muini'skw",
+   "year": 2004,
+   "makers": [
+    {
+     "id": "NEW-a9177b3cd41d",
+     "name": "Catherine Anne Martin"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-96-F6": {
+   "title": "Bringing Annie Mae Home",
+   "year": 2006,
+   "makers": [
+    {
+     "id": "NEW-a9177b3cd41d",
+     "name": "Catherine Anne Martin"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
   },
   "NEW-742064a2a245-WORK-1": {
    "title": "Call Me Crazy One More Time",
