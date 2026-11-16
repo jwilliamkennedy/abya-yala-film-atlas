@@ -2,8 +2,8 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-16",
  "license": "See data.html",
- "films_on_public_map": 2222,
- "film_entries": 2237,
+ "films_on_public_map": 2225,
+ "film_entries": 2240,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -405,7 +405,7 @@
     "match": "exact",
     "indigenous": "no",
     "note": "",
-    "films": 30
+    "films": 33
    },
    {
     "label": "Portuguese",
@@ -14240,11 +14240,16 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Women and Gender",
+    "Kinship"
+   ],
+   "primary_theme": "Women and Gender",
+   "families": [
+    "Lives and Relations"
+   ],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "DIR-0234-W1031-2": {
    "title": "Ana",
@@ -22521,6 +22526,54 @@
    "families": [],
    "form": null,
    "length": null
+  },
+  "Q20261115-404-F1": {
+   "title": "Re-covering and Remembering",
+   "year": 2020,
+   "makers": [
+    {
+     "id": "NEW-790b3156f35a",
+     "name": "Steven Thomas Davies"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
+  },
+  "Q20261115-404-F2": {
+   "title": "Written In My Blood",
+   "year": 2016,
+   "makers": [
+    {
+     "id": "NEW-790b3156f35a",
+     "name": "Steven Thomas Davies"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
+  },
+  "Q20261115-404-F3": {
+   "title": "Discovery Island",
+   "year": 2012,
+   "makers": [
+    {
+     "id": "NEW-790b3156f35a",
+     "name": "Steven Thomas Davies"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
   },
   "NEW-699df72682cb-F1": {
    "title": "The Strange Case of Bunny Weequod",
@@ -37003,7 +37056,17 @@
      "name": "Cristian Conejo"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "Spanish",
+     "as_credited": "Spanish",
+     "glottocode": "stan1288",
+     "iso639_3": "spa",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://ficcali.com/pelicula/namtrik-fogones-linguisticos/"
+    }
+   ],
    "themes": [],
    "primary_theme": null,
    "families": [],
@@ -37019,7 +37082,17 @@
      "name": "Alex Rufino"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "Spanish",
+     "as_credited": "Spanish",
+     "glottocode": "stan1288",
+     "iso639_3": "spa",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://ficcali.com/pelicula/muiyukuna-relatos-de-la-chagra-viva/"
+    }
+   ],
    "themes": [],
    "primary_theme": null,
    "families": [],
@@ -37035,7 +37108,17 @@
      "name": "Pedro Jajoy"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "Spanish",
+     "as_credited": "Spanish",
+     "glottocode": "stan1288",
+     "iso639_3": "spa",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://ficcali.com/pelicula/pueblo-viejo-guardianes-de-la-montana/"
+    }
+   ],
    "themes": [],
    "primary_theme": null,
    "families": [],
