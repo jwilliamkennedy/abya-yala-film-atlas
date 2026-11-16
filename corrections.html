@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="referrer" content="no-referrer">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Suggest a correction · Indigenous Cinema Atlas</title>
 <meta name="description" content="Suggest a correction or an addition to the Indigenous Cinema Atlas.">
 <meta property="og:title" content="Suggest a correction · Indigenous Cinema Atlas"><meta property="og:image" content="https://jwilliamkennedy.github.io/abya-yala-film-atlas/assets/og-atlas.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image"><link rel="icon" href="assets/icon88.svg" type="image/svg+xml">
@@ -110,6 +110,7 @@ main a[href^="http"]{color:var(--accent,var(--gold))}
 <form id="fix" action="https://formsubmit.co/John.Kennedy@colorado.edu" method="POST" accept-charset="utf-8" novalidate>
 <input type="hidden" name="_subject" value="Indigenous Cinema Atlas — anonymous correction request">
 <input type="hidden" name="_template" value="table">
+<input type="hidden" name="_url" value="https://jwilliamkennedy.github.io/abya-yala-film-atlas/corrections.html">
 <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none">
 <input type="hidden" id="record" name="atlas_record">
 <input type="hidden" id="page" name="atlas_page">
@@ -119,7 +120,7 @@ main a[href^="http"]{color:var(--accent,var(--gold))}
 <label>Supporting page <small>(optional)</small><input id="source" type="url" name="source_url" placeholder="https://"></label>
 <label>Your connection to the record <small>(optional; leave blank if you prefer)</small><select id="who" name="connection"><option value="">Prefer not to say</option><option>I am the filmmaker</option><option>I am a member of the community or nation</option><option>I work with the filmmaker or film</option><option>Researcher or viewer</option></select></label>
 <div class="actions"><button type="submit">Submit without a name or email</button><button type="button" class="secondary" id="email">Compose private email</button><button type="button" class="secondary" id="copy">Copy request</button></div>
-<p class="note"><strong>Privacy:</strong> Anonymous here means no name, email or account is required or requested. Submissions go through <a href="https://formsubmit.co/" target="_blank" rel="noopener noreferrer">FormSubmit</a>, a third-party form processor, which may process technical information and retain the submission temporarily. This is <strong>not</strong> a guarantee of untraceable anonymity. Avoid sending private or ceremonial information. The project owner must activate this service by confirming a first-use email; delivery cannot be guaranteed until that step is complete. You can use the email option instead.</p>
+<p class="note"><strong>Privacy:</strong> Anonymous here means no name, email or account is required or requested. Submissions go through <a href="https://formsubmit.co/" target="_blank" rel="noopener noreferrer">FormSubmit</a>, a third-party form processor, which may process technical information and retain the submission temporarily. This is <strong>not</strong> a guarantee of untraceable anonymity. Avoid sending private or ceremonial information. This form requires a one-time email activation by the site owner before submissions can be delivered. Once you submit, FormSubmit should display an activation or confirmation page. If nothing happens, try the email option instead. No submission is confirmed until FormSubmit accepts it.</p>
 <textarea id="copy-fallback" rows="6" readonly hidden aria-label="Text to select and copy"></textarea>
 <p id="copied" role="status" aria-live="polite" class="note"></p>
 </form>
@@ -148,7 +149,7 @@ main a[href^="http"]{color:var(--accent,var(--gold))}
   };
   $('fix').addEventListener('submit',e=>{
     if(!valid()){e.preventDefault();return;}
-    status.textContent='Submitting through FormSubmit. This page cannot confirm delivery.';
+    status.textContent='Opening FormSubmit to process your request. Please follow its confirmation or activation instructions. This page cannot verify delivery.';
   });
   $('email').addEventListener('click',()=>{
     if(!valid())return;
