@@ -2,8 +2,8 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-16",
  "license": "See data.html",
- "films_on_public_map": 2233,
- "film_entries": 2252,
+ "films_on_public_map": 2243,
+ "film_entries": 2262,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -405,7 +405,7 @@
     "match": "exact",
     "indigenous": "no",
     "note": "",
-    "films": 33
+    "films": 34
    },
    {
     "label": "Portuguese",
@@ -5018,12 +5018,20 @@
    "length": null
   },
   "Q20261115-83-F1": {
-   "title": "It Never Happened...",
-   "year": 1997,
+   "title": "Karai Kuery Meme",
+   "year": 2022,
    "makers": [
     {
-     "id": "DIR-0083",
-     "name": "Darlene Naponse"
+     "id": "Q20261115-83",
+     "name": "Ará Claudia"
+    },
+    {
+     "id": "Q20261115-84",
+     "name": "Kerexu Silva"
+    },
+    {
+     "id": "Q20261115-85",
+     "name": "Yvá Aquiles"
     }
    ],
    "languages": [],
@@ -5031,7 +5039,7 @@
    "primary_theme": null,
    "families": [],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "Q20261115-83-F2": {
    "title": "Black Water Creek",
@@ -21783,6 +21791,54 @@
    "form": null,
    "length": null
   },
+  "Q20261115-87-F1": {
+   "title": "Ibirapitanga",
+   "year": 2022,
+   "makers": [
+    {
+     "id": "NEW-5cafd747b4da",
+     "name": "Olinda Wanderley"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Experimental",
+   "length": "Short"
+  },
+  "Q20261115-87-F2": {
+   "title": "O parto",
+   "year": null,
+   "makers": [
+    {
+     "id": "NEW-5cafd747b4da",
+     "name": "Olinda Wanderley"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Experimental",
+   "length": "Short"
+  },
+  "Q20261115-87-F3": {
+   "title": "Mulheres que Alimentam",
+   "year": 2018,
+   "makers": [
+    {
+     "id": "NEW-5cafd747b4da",
+     "name": "Olinda Wanderley"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "NEW-5b6f10a24b2e-WORK-1": {
    "title": "pîķîwî",
    "year": null,
@@ -28709,6 +28765,22 @@
    "form": null,
    "length": null
   },
+  "NEW-32fca726475f-WORK-1": {
+   "title": "Ama mba'é Taba Ama",
+   "year": null,
+   "makers": [
+    {
+     "id": "NEW-32fca726475f",
+     "name": "Nádia Akawã Tupinambá"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
   "NEW-231f4cf29b1a-WORK-1": {
    "title": "Hekura",
    "year": null,
@@ -30330,6 +30402,32 @@
    "families": [],
    "form": null,
    "length": null
+  },
+  "NEW-7f915b9c6e06-WORK-1": {
+   "title": "Tuwün",
+   "year": null,
+   "makers": [
+    {
+     "id": "NEW-7f915b9c6e06",
+     "name": "Kiyen Clavería Aguas"
+    }
+   ],
+   "languages": [
+    {
+     "label": "Spanish",
+     "as_credited": "Spanish",
+     "glottocode": "stan1288",
+     "iso639_3": "spa",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://kelluwunmedia.com/tuwun-3/"
+    }
+   ],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
   },
   "NEW-50b79cedd696-WORK-1": {
    "title": "Atánquez, historias de La Piragua",
@@ -42437,6 +42535,86 @@
    "families": [],
    "form": null,
    "length": null
+  },
+  "Q20261115-81-F1": {
+   "title": "Aiku’é",
+   "year": 2017,
+   "makers": [
+    {
+     "id": "Q20261115-81",
+     "name": "Zahy Tentehar"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-81-F2": {
+   "title": "Karaiw a'e wà (Os civilizados)",
+   "year": 2022,
+   "makers": [
+    {
+     "id": "Q20261115-81",
+     "name": "Zahy Tentehar"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Experimental",
+   "length": null
+  },
+  "Q20261115-81-F3": {
+   "title": "Ureipy",
+   "year": 2023,
+   "makers": [
+    {
+     "id": "Q20261115-81",
+     "name": "Zahy Tentehar"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-82-F1": {
+   "title": "Thakhi",
+   "year": 2020,
+   "makers": [
+    {
+     "id": "Q20261115-82",
+     "name": "Natali Condori Mamani"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "Q20261115-82-F2": {
+   "title": "Jayankiri",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261115-82",
+     "name": "Natali Condori Mamani"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
   }
  }
 }
