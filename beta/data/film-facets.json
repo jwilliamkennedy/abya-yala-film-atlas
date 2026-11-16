@@ -2,8 +2,8 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-16",
  "license": "See data.html",
- "films_on_public_map": 2348,
- "film_entries": 2367,
+ "films_on_public_map": 2350,
+ "film_entries": 2369,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -44339,6 +44339,38 @@
   "Q20261115-950-F4": {
    "title": "Sol de gloria",
    "year": 1928,
+   "makers": [
+    {
+     "id": "Q20261115-950",
+     "name": "Guillermo Calles Guerrero"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-958-F1": {
+   "title": "Dios y ley",
+   "year": 1930,
+   "makers": [
+    {
+     "id": "Q20261115-950",
+     "name": "Guillermo Calles Guerrero"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261115-958-F2": {
+   "title": "Regeneración",
+   "year": 1930,
    "makers": [
     {
      "id": "Q20261115-950",
