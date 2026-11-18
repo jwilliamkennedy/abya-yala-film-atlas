@@ -149,7 +149,24 @@ const T=[["Continue exploring","Seguir explorando","Continuar explorando","Pours
 ['Zoom in','Acercar','Aproximar','Zoom avant'],['Zoom out','Alejar','Afastar','Zoom arrière'],['Close','Cerrar','Fechar','Fermer'],['Minimize','Minimizar','Minimizar','Réduire'],
 ['Preview land · select to explore · drag to pan','Vista previa de la tierra · selecciona para explorar · arrastra para mover','Prévia da terra · selecione para explorar · arraste para mover','Aperçu du territoire · sélectionnez pour explorer · faites glisser pour déplacer'],
 ['. Native Land Digital · overlapping territorial references.','. Native Land Digital · referencias territoriales superpuestas.','. Native Land Digital · referências territoriais sobrepostas.','. Native Land Digital · références territoriales qui se chevauchent.'],
-['Close (Esc)','Cerrar (Esc)','Fechar (Esc)','Fermer (Esc)'],['Director','Dirección','Direção','Réalisation'],['Interface language','Idioma de la interfaz','Idioma da interface','Langue de l’interface']
+['Close (Esc)','Cerrar (Esc)','Fechar (Esc)','Fermer (Esc)'],['Director','Dirección','Direção','Réalisation'],['Interface language','Idioma de la interfaz','Idioma da interface','Langue de l’interface'],
+ ["Draw","Trazar","Traçar","Tracer"],
+ ["Time","Tiempo","Tempo","Temps"],
+ ["Move","Mover","Mover","Déplacer"],
+ ["Pause","Pausar","Pausar","Pause"],
+ ["Draw a line","Trazar una línea","Traçar uma linha","Tracer une ligne"],
+ ["Draw again","Volver a trazar","Traçar novamente","Tracer de nouveau"],
+ ["Draw or move the map","Trazar o mover el mapa","Traçar ou mover o mapa","Tracer ou déplacer la carte"],
+ ["Draw across lands · scroll to zoom","Traza por los territorios · desplaza para ampliar","Trace pelos territórios · role para ampliar","Tracez à travers les territoires · faites défiler pour zoomer"],
+ ["Drag to move · Draw when ready","Arrastra para mover · traza cuando quieras","Arraste para mover · trace quando quiser","Faites glisser pour déplacer · tracez quand vous voulez"],
+ ["One finger draws · two move","Un dedo traza · dos mueven","Um dedo traça · dois movem","Un doigt trace · deux déplacent"],
+ ["Theme to draw","Tema del trazo","Tema do traçado","Thème du tracé"],
+ ["Lands crossed by your line","Territorios atravesados por tu línea","Territórios atravessados pela sua linha","Territoires traversés par votre ligne"],
+ ["Draw a line across the map: the lands it crosses are listed in order, and can become a thread","Traza una línea en el mapa: los territorios que atraviese se enumerarán en orden y podrán formar un hilo","Trace uma linha no mapa: os territórios atravessados serão listados em ordem e poderão formar um fio","Tracez une ligne sur la carte : les territoires traversés seront listés dans l’ordre et pourront former un fil"],
+ ["Draw a line across the map; the lands it crosses give their films","Traza una línea en el mapa; los territorios atravesados aportan sus películas","Trace uma linha no mapa; os territórios atravessados oferecem seus filmes","Tracez une ligne sur la carte ; les territoires traversés apportent leurs films"],
+ ["Time dial","Control temporal","Seletor temporal","Curseur temporel"],
+ ["See when each land’s first film appears","Ver cuándo aparece la primera película vinculada a cada territorio","Veja quando aparece o primeiro filme vinculado a cada território","Voir quand apparaît le premier film lié à chaque territoire"],
+ ["Close the time dial","Cerrar el control temporal","Fechar o seletor temporal","Fermer le curseur temporel"]
 ];
 const IDX={es:1,pt:2,fr:3};
 const DICT={};for(const row of T)DICT[row[0]]=row;
@@ -165,7 +182,10 @@ const PAT=[
  [/^([\d,]+) filmmakers linked to ([\d,]+) land entries$/,['$1 cineastas vinculados a $2 tierras','$1 cineastas vinculados a $2 terras','$1 cinéastes liés à $2 territoires']],
  [/^([\d,]+) entries$/,['$1 entradas','$1 entradas','$1 entrées']],
  [/^([\d,]+) films$/,['$1 películas','$1 filmes','$1 films']],
- [/^Film language|^Any language/,null]
+ [/^Film language|^Any language/,null],
+ [/^Before ([\d,]+)$/,["Antes de $1","Antes de $1","Avant $1"]],
+ [/^([\d,]+) films · ([\d,]+) of ([\d,]+) lands$/,["$1 películas · $2 de $3 territorios","$1 filmes · $2 de $3 territórios","$1 films · $2 territoires sur $3"]],
+ [/^A land lights up in the year of the earliest dated film by a filmmaker linked to it\. ([\d,]+) films have no year recorded yet and are not counted\.$/,["Un territorio se ilumina en el año de la primera película fechada de un cineasta vinculado a él. $1 películas aún no tienen año registrado y no se cuentan.","Um território se ilumina no ano do primeiro filme datado de um cineasta a ele vinculado. $1 filmes ainda não têm ano registrado e não são contados.","Un territoire s’éclaire à l’année du premier film daté d’un cinéaste qui lui est lié. $1 films n’ont pas encore d’année enregistrée et ne sont pas comptés."]]
 ];
 let lang='en';
 try{lang=new URLSearchParams(location.search).get('lang')||localStorage.getItem('atlas-ui-lang')||'en';}catch(e){}
@@ -201,7 +221,7 @@ function textNode(n){
 }
 function attrs(e){
  if(e.closest(SKIP))return;
- for(const a of ['placeholder','aria-label','title','label']){if(!e.hasAttribute(a))continue;
+ for(const a of ['placeholder','aria-label','aria-valuetext','title','label']){if(!e.hasAttribute(a))continue;
   let m=origAttr.get(e);if(!m){m={};origAttr.set(e,m);}const cur=e.getAttribute(a);
   if(m[a]===undefined||(cur!==m[a]&&cur!==m['_'+a]))m[a]=cur;
   if(lang==='en'){if(cur!==m[a])e.setAttribute(a,m[a]);continue;}
@@ -212,8 +232,8 @@ function walk(root){
  if(root.nodeType===3){textNode(root);return;}
  if(root.nodeType!==1)return;
  const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);let n;while((n=w.nextNode()))textNode(n);
- if(root.matches?.('[placeholder],[aria-label],[title],optgroup[label]'))attrs(root);
- root.querySelectorAll?.('[placeholder],[aria-label],[title],optgroup[label]').forEach(attrs);
+ if(root.matches?.('[placeholder],[aria-label],[aria-valuetext],[title],optgroup[label]'))attrs(root);
+ root.querySelectorAll?.('[placeholder],[aria-label],[aria-valuetext],[title],optgroup[label]').forEach(attrs);
 }
 let pending=new Set(),raf=0;
 const mo=new MutationObserver(list=>{for(const m of list){if(m.type==='characterData')pending.add(m.target);else if(m.type==='attributes')pending.add(m.target);else m.addedNodes.forEach(x=>pending.add(x));}
@@ -229,7 +249,7 @@ function switcher(){
  wrap.innerHTML=`<span class="visually-hidden">Interface language</span><select id="ui-lang" aria-label="Interface language">${Object.entries(LANGS).map(([k,v])=>`<option value="${k}" lang="${k}">${k.toUpperCase()} · ${v}</option>`).join('')}</select>`;
  nav.after(wrap);const sel=wrap.querySelector('select');sel.value=lang;sel.addEventListener('change',()=>apply(sel.value));
 }
-function start(){switcher();mo.observe(document.body,{subtree:true,childList:true,characterData:true,attributes:true,attributeFilter:['placeholder','aria-label','title','label']});if(lang!=='en')apply(lang);
+function start(){switcher();mo.observe(document.body,{subtree:true,childList:true,characterData:true,attributes:true,attributeFilter:['placeholder','aria-label','aria-valuetext','title','label']});if(lang!=='en')apply(lang);
  setTimeout(()=>{switcher();if(lang!=='en')walk(document.body);},2500);}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start,{once:true});else start();
 window.AtlasI18n={set:apply,get:()=>lang};
