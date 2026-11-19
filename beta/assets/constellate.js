@@ -243,7 +243,7 @@ if(new URLSearchParams(location.search).get('constellation-embed')==='1'){
   /* star names keep clear of thread names, and a film whose land is off-screen shows no name at the map edge (its thread still runs to the edge) */starBoxes=starMode?visibleThreads.map(t=>{const m=threadMid(t),w=Math.min(40,t.name.length)*7.4+10;return m?[m.x-w/2,m.y-26,m.x+w/2,m.y-4]:null;}).filter(Boolean):[];const onScreen=a=>a&&a.x>=0&&a.x<=size.width&&a.y>=top()&&a.y<=size.height;const nodes=S.current().items.map((x,i)=>{const p=positions.get(x.id),a=anchors.get(x.id);if(!p||(!unmapped&&offMapIds.has(x.id)))return '';if(shown&&!shown.has(x.id))return starMode&&x.type!=='concept'&&visibleItem(x.id)&&(unmapped||onScreen(a))?starLabel(x,p):'';const image=sourceImage(x),pict=x.type!=='concept',member=memberships(x.id),t=stepInfo(x.id)?.t,land=a?.name||'Idea';return `<g class="weave-item" data-weave-item="${esc(x.id)}">${p.edge?`<path class="weave-edge-arrow" d="M${p.x-6},${p.y-31} l6,-8 l6,8 z" fill="${color(t||S.activeThread())}" aria-hidden="true"><title>Thread continues beyond visible map</title></path>`:''}${a?`<line class="weave-leader" x1="${a.x}" y1="${a.y}" x2="${p.x}" y2="${p.y}"/>${t?'':`<circle class="weave-land-pin" cx="${a.x}" cy="${a.y}" r="5" fill="${color(t||S.activeThread())}" data-land-pin="${esc(a.id)}"><title>${esc(a.name)}</title></circle>`}`:''}<g class="constellate-card${x.type==='concept'?' concept':' pinned'}${active===x.id||first===x.id||shiftFirst===x.id?' selected':''}" data-constellate-node="${esc(x.id)}" data-land="${esc(a?.id||'')}" transform="translate(${p.x-NW()/2},${p.y-NH/2})" style="--weave-focus-color:${color(t||S.activeThread())}" tabindex="0" role="button" aria-label="${esc(x.title)}. ${esc(land)}. ${a?'Drag or use arrow keys to offset this label; its land pin stays fixed.':'Idea: drag freely.'}"><rect width="${NW()}" height="${NH}" rx="5"/>${pict?`<rect x="5" y="5" width="32" height="32" rx="5" style="fill:${color(t||S.activeThread())};fill-opacity:.19;stroke:none"/><text x="21" y="25" text-anchor="middle" font-size="11" font-weight="600" fill="var(--reading-ink)">${esc(initials(x).slice(0,2))}</text>${image?`<clipPath id="weave-chip-${i}"><rect x="5" y="5" width="32" height="32" rx="5"/></clipPath><image class="weave-card-art" href="${esc(image)}" onerror="this.style.display='none'" x="5" y="5" width="32" height="32" preserveAspectRatio="xMidYMid slice" clip-path="url(#weave-chip-${i})"/>`:''}<rect class="weave-chip-ring" x="5" y="5" width="32" height="32" rx="5" stroke="${color(t||S.activeThread())}"/>`:''}<text class="weave-chip-title" x="${pict?43:11}" y="19">${esc(chipText(x.title,pict?16:21))}</text><text class="weave-land-caption" x="${player?NW()/2+(lw=>Math.max(8+lw-p.x,Math.min(size.width-8-lw-p.x,0)))(Math.min(64,land.length)*(size.width<700?4:5.2)):pict?43:11}" y="${player?NH/2+37:32}">${esc(chipText(land,player?64:pict?20:25))}</text><path class="weave-film-star" d="M0,-6 L2,-2 L6,0 L2,2 L0,6 L-2,2 L-6,0 L-2,-2Z" transform="translate(3,3)"/><circle class="weave-connect-handle" data-connect-handle="${esc(x.id)}" cx="${NW()-9}" cy="${NH/2}" r="6" role="button" tabindex="0" aria-label="Connect from ${esc(x.title)}"/>${knotRings(x.id,NW()-24,NH/2)}<title>${esc(x.title)} · ${esc(land)} · ${esc(member.map(t=>t.name).join(' / '))}</title></g></g>`;}).join('');
   const warp=unmapped?'':loomWarp();$('#weave-empty-hint').hidden=!!S.current().items.length||!!player;graph.innerHTML=`<g id="constellate-world"><g class="loom-warp" aria-hidden="true">${warp}</g>${unmapped?relAxis():''}${threads}${edges}<path id="constellate-preview" class="constellate-preview"/>${nodes}</g>`;cameraBasePositions=new Map([...positions].map(([id,p])=>[id,{...p}]));cameraBaseAnchors=new Map([...anchors].map(([id,p])=>[id,{...p}]));const wa=A.screenPoint([-120,30]),wb=A.screenPoint([-80,30]);cameraBaseWarp=wa?.every(Number.isFinite)&&wb?.every(Number.isFinite)?{a:wa,b:wb}:null;renderPreview();}
  function renderPreview(){const line=$('#constellate-preview'),source=dragLink?.source||(drawThread?drawLast:null)||first||shiftFirst,a=source&&positions.get(source);if(!line)return;if(!a||(!drawThread&&!connecting&&!dragLink&&!shiftFirst)){line.setAttribute('d','');return;}const b=pointer||{x:a.x+45,y:a.y-25};line.setAttribute('d',`M${a.x},${a.y}Q${(a.x+b.x)/2},${(a.y+b.y)/2-35} ${b.x},${b.y}`);}
- function cancelConnect(){connecting=false;first=shiftFirst=pointer=dragLink=null;draftKey=null;draft=null;}
+ function cancelConnect(){if(inline.querySelector('[data-cancel-pair]'))inline.hidden=true;connecting=false;first=shiftFirst=pointer=dragLink=null;draftKey=null;draft=null;}
  function setDrawThread(on){
   drawThread=!!on;drawLast=null;
   pointer=null;cancelConnect();
@@ -265,7 +265,24 @@ if(new URLSearchParams(location.search).get('constellation-embed')==='1'){
   active=id;drawLast=id;pointer=null;context.hidden=inline.hidden=true;
   render();status((already?'Selected ':'Connected to ')+x.title+' · '+S.activeThread().items.length+' cards on '+t.name+'. Select the next card.');
  }
- function startLink(id=null){drawThread=false;drawLast=null;reading=false;connecting=true;first=id;shiftFirst=null;pointer=null;inline.hidden=context.hidden=true;open();render();status(id?'Choose another card.':'Choose the first card.');}
+ function pickConnectionTarget(id){
+  const items=S.current().items,source=items.find(x=>x.id===id);
+  if(!source)return;
+  const others=items.filter(x=>x.id!==id);
+  panel.querySelector('.constellate-heading').after(inline);
+  inline.hidden=false;
+  inline.innerHTML='<h3>Connect</h3><strong>'+esc(source.title)+'</strong>'+
+   (others.length?'<label for="weave-connect-target">Choose the other card</label><select id="weave-connect-target"><option value="">Select a card…</option>'+
+    others.map(x=>'<option value="'+esc(x.id)+'">'+esc([x.title,x.maker].filter(Boolean).join(' · '))+'</option>').join('')+'</select>':
+    '<p>Add another card to make a connection.</p>')+
+   '<button type="button" data-cancel-pair>Cancel</button>';
+  const picker=inline.querySelector('select');
+  if(picker)picker.onchange=()=>{if(picker.value)choose(picker.value);};
+  const cancel=inline.querySelector('[data-cancel-pair]');
+  cancel.onclick=()=>{cancelConnect();choose(id);$('#constellate-start-link')?.focus();};
+  (picker||cancel).focus();
+ }
+ function startLink(id=null){drawThread=false;drawLast=null;reading=false;connecting=true;first=id;shiftFirst=null;pointer=null;inline.hidden=context.hidden=true;open();render();if(id)pickConnectionTarget(id);status(id?'Choose another card.':'Choose the first card.');}
  function choose(id,{shift=false,threadId}={}){if(drawThread&&!shift){drawStep(id);return;}const previousThread=S.activeThread().id;
   if(!shift&&!connecting){
    const t=memberships(id).find(t=>t.id===threadId)||stepInfo(id)?.t;
@@ -277,7 +294,7 @@ if(new URLSearchParams(location.search).get('constellation-embed')==='1'){
    activateThread(t?.id);
   }
   active=id;if(shift){if(!shiftFirst){shiftFirst=id;first=null;connecting=false;renderGraph();status('Shift-click another card.');return;}if(shiftFirst===id)return;const source=shiftFirst;shiftFirst=null;connectionForm({source,target:id,label:'',kind:'interpretation'});return;}
-  if(connecting){if(!first){first=id;renderGraph();$('#constellate-mode span').textContent='Choose another card';status('Choose another card.');return;}if(first===id){status('Choose a different card.');return;}const source=first;connecting=false;first=pointer=null;connectionForm({source,target:id,label:'',kind:'interpretation'});status('Name this connection.');return;}if(previousThread!==S.activeThread().id)render();else renderGraph();showContext();}
+  if(connecting){if(!first){first=id;renderGraph();pickConnectionTarget(id);$('#constellate-mode span').textContent='Choose another card';status('Choose another card.');return;}if(first===id){status('Choose a different card.');return;}const source=first;connecting=false;first=pointer=null;connectionForm({source,target:id,label:'',kind:'interpretation'});status('Name this connection.');return;}if(previousThread!==S.activeThread().id)render();else renderGraph();showContext();}
  function showContext(){if(reading)setRead(false);setTab('thread');const x=S.current().items.find(x=>x.id===active);if(!x)return;openDock();if(!selPushed&&enabled){try{window.history.pushState({...(window.history.state||{}),weaveSelection:true},'',location.href);selPushed=true;}catch{}}if(!phone.matches)requestAnimationFrame(()=>context.hidden||context.scrollIntoView({block:'nearest',behavior:motion.matches?'auto':'smooth'}));inline.hidden=true;const member=memberships(x.id),noteThread=stepInfo(x.id)?.t||S.activeThread(),refs=references(x),r=reference(x),links=S.current().links.filter(l=>l.source===x.id||l.target===x.id);context.hidden=false;context.innerHTML=`${stepNav(x)}${crossings(x.id)}<div class="weave-context-preview">${thumb(x)}<h3>${esc(x.title)}</h3></div>${terms(x).length?`<p class="weave-context-themes">${esc(terms(x).join(' · '))}${filmOf(x)?.themeSource?` · <a href="${esc(filmOf(x).themeSource)}" target="_blank" rel="noopener noreferrer">synopsis ↗</a>`:''}</p>`:''}${x.maker?`<p>${esc(x.maker)}</p>`:''}<p class="weave-placement">${x.type==='concept'?'Freely placed idea':r?esc(r.name)+(r.status==='sourced'?'':' · catalog link'):'Land not indexed · kept off the map'}</p><div class="constellate-actions"><button id="constellate-start-link">Connect</button>${x.record?'<button id="constellate-view">View '+(x.film?'film':'filmmaker')+'</button>':''}<button id="constellate-remove">Remove card</button></div><h4>${member.length>1?'Knot · crossing threads':'Thread membership'}</h4><div class="weave-memberships">${S.current().threads.map(t=>`<label><input type="checkbox" data-member-thread="${esc(t.id)}" ${t.items.includes(x.id)?'checked':''}><i style="background:${color(t)}"></i>${esc(t.name)}</label>`).join('')}</div>${refs.length>1?`<label for="weave-pin-reference">Land marker</label><select id="weave-pin-reference">${refs.map(ref=>`<option value="${esc(ref.id)}"${ref.id===r?.id?' selected':''}>${esc(ref.name)}</option>`).join('')}</select>`:''}<label for="weave-card-note">Note on ${esc(noteThread.name)} <small>shown on the thread just before this film</small></label><textarea id="weave-card-note" rows="3" maxlength="10000">${esc(noteThread.notes[x.id]||'')}</textarea>${links.length?'<h4>Connections</h4>'+links.map(l=>`<button class="weave-note-link" data-edit-connection="${esc(l.id)}">${esc(l.label)}</button>${l.note?`<p>${esc(l.note)}</p>`:''}`).join(''):''}`;
   context.querySelectorAll('[data-weave-step]').forEach(b=>b.onclick=()=>stepBy(+b.dataset.weaveStep));context.querySelector('[data-weave-back]').onclick=backToList;updateStepper();renderOrder();$('#constellate-start-link').onclick=()=>startLink(x.id);$('#constellate-view')?.addEventListener('click',()=>{exit({restore:false});x.film?A.openProfileFilm(x.record,x.film):A.selectRecord(x.record);});$('#constellate-remove').onclick=()=>{transaction('Remove card',()=>S.remove(x.id));active=null;context.hidden=true;};context.querySelectorAll('[data-member-thread]').forEach(input=>input.onchange=()=>{transaction('Edit thread membership',()=>input.checked?S.addToThread(x.id,input.dataset.memberThread):S.removeFromThread(x.id,input.dataset.memberThread));showContext();});$('#weave-pin-reference')?.addEventListener('change',e=>{transaction('Choose land reference',()=>{S.current().pins[x.id]=e.target.value;return S.save();});A.focusLandOnMap(e.target.value);showContext();});$('#weave-card-note').onchange=e=>transaction('Edit thread note',()=>S.threadNote(noteThread.id,x.id,e.target.value));context.querySelectorAll('[data-edit-connection]').forEach(b=>b.onclick=()=>connectionForm(S.current().links.find(l=>l.id===b.dataset.editConnection)));}
  function openDock(){document.body.classList.remove('weave-browsing');if(panel.hidden){panel.hidden=false;trigger.setAttribute('aria-expanded','true');relayout();}}
@@ -292,18 +309,12 @@ if(new URLSearchParams(location.search).get('constellation-embed')==='1'){
  })){inline.hidden=true;draft=draftKey=null;active=link.target;showContext();status('Connection saved.');}};inline.querySelectorAll('[data-quick-label]').forEach(b=>b.onclick=()=>{
   const label=b.dataset.quickLabel;
   $('#constellate-link-label').value=label;
-  if(['shares land','shares language','same collective'].includes(label)){
-   if(atlasConfirms({...link,label})){
-    $('#constellate-link-kind').value='atlas-record';
-    $('#constellate-link-form').dispatchEvent(new Event('submit',{bubbles:true,cancelable:true}));
-   }else{
-    $('#constellate-link-kind').value='interpretation';
-    $('#constellate-link-form details').open=true;
-    $('#constellate-link-note').focus({preventScroll:true});
-    status('Not confirmed by the published atlas record. Explain or source this interpretation.');
-   }
-  }else $('#constellate-link-form').dispatchEvent(new Event('submit',{bubbles:true,cancelable:true}));
- });$('#constellate-cancel-link').onclick=()=>{inline.hidden=true;draft=draftKey=null;};$('#constellate-remove-link')?.addEventListener('click',()=>{transaction('Remove connection',()=>S.removeLink(link.id));inline.hidden=true;draft=draftKey=null;});renderGraph();const head=$('#constellate-popup .constellate-heading');if(head&&head.nextElementSibling!==inline)head.after(inline);inline.scrollIntoView({block:'nearest'});$('#constellate-popup').scrollTop=0;$('#constellate-link-label').focus({preventScroll:true});}
+  const needsEvidence=['shares land','shares language','same collective'].includes(label);
+  const confirmed=needsEvidence&&atlasConfirms({...link,label});
+  $('#constellate-link-kind').value=confirmed?'atlas-record':'interpretation';
+  if(needsEvidence&&!confirmed)inline.querySelector('details').open=true;
+  $('#constellate-link-label').focus({preventScroll:true});
+ });$('#constellate-cancel-link').onclick=()=>{inline.hidden=true;draft=draftKey=null;if(!link.id){choose(link.source);$('#constellate-start-link')?.focus();}};$('#constellate-remove-link')?.addEventListener('click',()=>{transaction('Remove connection',()=>S.removeLink(link.id));inline.hidden=true;draft=draftKey=null;});renderGraph();const head=$('#constellate-popup .constellate-heading');if(head&&head.nextElementSibling!==inline)head.after(inline);inline.scrollIntoView({block:'nearest'});$('#constellate-popup').scrollTop=0;$('#constellate-link-label').focus({preventScroll:true});}
 
  function resetBrowsePage(){
   browsePageStart=0;browsePageLimit=48;browseSignature='';azKey='';
@@ -1200,7 +1211,7 @@ try{
   var end=document.querySelector('#weave-play-thread'),sub=document.querySelector('#weave-play-subtitle');
   if(end&&sub&&/^constellation complete$/i.test(end.textContent.trim())&&sub.textContent!==citation(o))sub.textContent=citation(o);
  }
- var api=window.AtlasPublished={open:open,urlFor:urlFor,example:'',list:[],index:loadIndex,current:published};
+ var api=window.AtlasPublished={load:load,open:open,urlFor:urlFor,example:'',list:[],index:loadIndex,current:published};
  document.addEventListener('click',function(e){
   if(e.target.closest&&e.target.closest('#constellate-share,#weave-share-mode,#weave-play,#weave-play-next,#weave-play-pause'))[150,600,1400].forEach(function(t){setTimeout(cite,t);});
   var copy=e.target.closest&&e.target.closest('#weave-copy-citation');
@@ -1775,13 +1786,13 @@ function buildStart(){
    '<section class="ws-path"><h3>Start from a theme</h3><p>Every film on the thread shares the theme, taken from its published synopsis.</p>'+
     '<label class="ws-sr" for="ws-theme-q">Search themes</label><input id="ws-theme-q" type="search" autocomplete="off" placeholder="Search themes…">'+
     '<ul class="ws-results" id="ws-theme-results" aria-live="polite"></ul>'+
-    '<p class="ws-popular-label">Popular themes</p>'+
+    '<p class="ws-popular-label">Most frequently tagged themes</p>'+
     '<div class="ws-chips">'+top.map(function(t){return '<button type="button" data-ws-theme="'+esc(t.name)+'">'+esc(t.name)+' <small>'+t.n+'</small></button>';}).join('')+'</div>'+ 
     '<label class="ws-sr" for="ws-theme-all">All themes</label><select id="ws-theme-all"><option value="">All 30 themes…</option>'+all.map(function(t){return '<option value="'+esc(t.name)+'">'+esc(t.name)+' ('+t.n+')</option>';}).join('')+'</select></section>'+
    '<section class="ws-path"><h3>Start from a film</h3><p>Choose one film. Films that share a documented theme with it are suggested next.</p>'+
     '<label class="ws-sr" for="ws-film-q">Search a film or filmmaker</label><input id="ws-film-q" type="search" autocomplete="off" placeholder="Search a film or filmmaker…">'+
     '<ul id="ws-film-results" class="ws-results" aria-live="polite"></ul></section>'+
-   '<section class="ws-path"><h3>See an example</h3><p>Three films that share a theme, already connected, to read and change.</p><div class="ws-example-films"></div><p class="ws-example-label"></p>'+
+   '<section class="ws-path"><h3>See an example</h3><p>Open a published constellation.</p><div class="ws-example-films"></div><p class="ws-example-label"></p>'+
     '<button type="button" class="ws-primary" data-ws-example>Open the example</button>'+
     '<button type="button" class="ws-link" data-ws-web>Or explore the theme web →</button></section>'+
   '</div>'+
@@ -1920,10 +1931,28 @@ function phoneCue(){
  cue.hidden=r.top<window.innerHeight-80&&r.bottom>0;
 }
 /* 2026-11-11: the example is the published, hand-written constellation, not an automatic pick */
+async function welcomePair(P,sec){
+ const doc=await P.load(P.example),weave=doc.weave;
+ const thread=weave.threads.find(t=>t.name==='Remembrance');
+ if(!thread)return;
+ const ids=thread.items.slice(0,2),films=ids.map(id=>{
+  const entry=weave.items.find(x=>x.type==='film'&&'film:'+x.record+':'+x.film===id);
+  const maker=entry&&window.Atlas.recordById(entry.record);
+  const film=maker?.films.find(f=>f.id===entry.film);
+  return film&&{...entry,title:film.title,maker:maker.name};
+ });
+ const link=weave.links.find(l=>l.source===ids[0]&&l.target===ids[1]);
+ if(films.length!==2||films.some(f=>!f)||!link?.note)return;
+ const box=document.createElement('details');box.className='ws-pair';
+ box.innerHTML='<summary>'+films.map(f=>'<span class="ws-pair-film">'+thumbHTML(f)+'<span><strong>'+esc(f.title)+'</strong><small>'+esc(f.maker)+'</small></span></span>').join('<span aria-hidden="true">→</span>')+'<span class="ws-pair-action">Why this pairing?</span></summary>'+
+  '<p>'+esc(link.note)+'</p><small>'+esc(weave.author)+'</small> <button type="button" data-ws-example-thread="'+esc(thread.name)+'">Read this thread</button>';
+ $('#weave-start-title',sec).after(box);
+}
 function examplePreview(){
  var P=window.AtlasPublished,sec=$('#weave-start');if(!P||!P.example||!sec||sec.dataset.wsPublished)return;
  var e=(P.list||[]).filter(function(x){return x.slug===P.example;})[0];if(!e)return;
  sec.dataset.wsPublished='1';
+ welcomePair(P,sec).catch(()=>{});
  var path=$('[data-ws-example]',sec).closest('.ws-path'),p=$('p',path);
  if(p)p.textContent=e.name+': '+e.films+' films on '+e.threads.length+' threads, by '+(e.author||'the atlas')+'.';
  var more=(P.list||[]).filter(function(x){return x.slug!==P.example;}),box=$('.ws-example-films',sec),main=$('[data-ws-example]',sec);
