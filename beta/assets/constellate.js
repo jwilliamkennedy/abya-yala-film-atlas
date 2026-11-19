@@ -242,8 +242,20 @@ if(new URLSearchParams(location.search).get('constellation-embed')==='1'){
   const edges=S.current().links.map(l=>{const a=positions.get(l.source),b=positions.get(l.target);if(!a||!b)return '';return `<g data-constellate-edge="${esc(l.id)}" role="button" tabindex="0" aria-label="${(l.sourceURL||l.kind==='atlas-record')?'Source linked':'Interpretation'}: ${esc(l.label)}"><path class="constellate-edge-hit" d="M${a.x},${a.y}Q${(a.x+b.x)/2},${(a.y+b.y)/2-38} ${b.x},${b.y}"/><path class="constellate-edge ${(l.sourceURL||l.kind==='atlas-record')?'sourced-thread':'dream-thread'}" d="M${a.x},${a.y}Q${(a.x+b.x)/2},${(a.y+b.y)/2-38} ${b.x},${b.y}"/><text class="constellate-edge-label" x="${(a.x+b.x)/2}" y="${(a.y+b.y)/2-24}" text-anchor="middle">${esc(l.label.slice(0,32))}</text></g>`;}).join('');
   /* star names keep clear of thread names, and a film whose land is off-screen shows no name at the map edge (its thread still runs to the edge) */starBoxes=starMode?visibleThreads.map(t=>{const m=threadMid(t),w=Math.min(40,t.name.length)*7.4+10;return m?[m.x-w/2,m.y-26,m.x+w/2,m.y-4]:null;}).filter(Boolean):[];const onScreen=a=>a&&a.x>=0&&a.x<=size.width&&a.y>=top()&&a.y<=size.height;const nodes=S.current().items.map((x,i)=>{const p=positions.get(x.id),a=anchors.get(x.id);if(!p||(!unmapped&&offMapIds.has(x.id)))return '';if(shown&&!shown.has(x.id))return starMode&&x.type!=='concept'&&visibleItem(x.id)&&(unmapped||onScreen(a))?starLabel(x,p):'';const image=sourceImage(x),pict=x.type!=='concept',member=memberships(x.id),t=stepInfo(x.id)?.t,land=a?.name||'Idea';return `<g class="weave-item" data-weave-item="${esc(x.id)}">${p.edge?`<path class="weave-edge-arrow" d="M${p.x-6},${p.y-31} l6,-8 l6,8 z" fill="${color(t||S.activeThread())}" aria-hidden="true"><title>Thread continues beyond visible map</title></path>`:''}${a?`<line class="weave-leader" x1="${a.x}" y1="${a.y}" x2="${p.x}" y2="${p.y}"/>${t?'':`<circle class="weave-land-pin" cx="${a.x}" cy="${a.y}" r="5" fill="${color(t||S.activeThread())}" data-land-pin="${esc(a.id)}"><title>${esc(a.name)}</title></circle>`}`:''}<g class="constellate-card${x.type==='concept'?' concept':' pinned'}${active===x.id||first===x.id||shiftFirst===x.id?' selected':''}" data-constellate-node="${esc(x.id)}" data-land="${esc(a?.id||'')}" transform="translate(${p.x-NW()/2},${p.y-NH/2})" style="--weave-focus-color:${color(t||S.activeThread())}" tabindex="0" role="button" aria-label="${esc(x.title)}. ${esc(land)}. ${a?'Drag or use arrow keys to offset this label; its land pin stays fixed.':'Idea: drag freely.'}"><rect width="${NW()}" height="${NH}" rx="5"/>${pict?`<rect x="5" y="5" width="32" height="32" rx="5" style="fill:${color(t||S.activeThread())};fill-opacity:.19;stroke:none"/><text x="21" y="25" text-anchor="middle" font-size="11" font-weight="600" fill="var(--reading-ink)">${esc(initials(x).slice(0,2))}</text>${image?`<clipPath id="weave-chip-${i}"><rect x="5" y="5" width="32" height="32" rx="5"/></clipPath><image class="weave-card-art" href="${esc(image)}" onerror="this.style.display='none'" x="5" y="5" width="32" height="32" preserveAspectRatio="xMidYMid slice" clip-path="url(#weave-chip-${i})"/>`:''}<rect class="weave-chip-ring" x="5" y="5" width="32" height="32" rx="5" stroke="${color(t||S.activeThread())}"/>`:''}<text class="weave-chip-title" x="${pict?43:11}" y="19">${esc(chipText(x.title,pict?16:21))}</text><text class="weave-land-caption" x="${player?NW()/2+(lw=>Math.max(8+lw-p.x,Math.min(size.width-8-lw-p.x,0)))(Math.min(64,land.length)*(size.width<700?4:5.2)):pict?43:11}" y="${player?NH/2+37:32}">${esc(chipText(land,player?64:pict?20:25))}</text><path class="weave-film-star" d="M0,-6 L2,-2 L6,0 L2,2 L0,6 L-2,2 L-6,0 L-2,-2Z" transform="translate(3,3)"/><circle class="weave-connect-handle" data-connect-handle="${esc(x.id)}" cx="${NW()-9}" cy="${NH/2}" r="6" role="button" tabindex="0" aria-label="Connect from ${esc(x.title)}"/>${knotRings(x.id,NW()-24,NH/2)}<title>${esc(x.title)} · ${esc(land)} · ${esc(member.map(t=>t.name).join(' / '))}</title></g></g>`;}).join('');
   const warp=unmapped?'':loomWarp();$('#weave-empty-hint').hidden=!!S.current().items.length||!!player;graph.innerHTML=`<g id="constellate-world"><g class="loom-warp" aria-hidden="true">${warp}</g>${unmapped?relAxis():''}${threads}${edges}<path id="constellate-preview" class="constellate-preview"/>${nodes}</g>`;cameraBasePositions=new Map([...positions].map(([id,p])=>[id,{...p}]));cameraBaseAnchors=new Map([...anchors].map(([id,p])=>[id,{...p}]));const wa=A.screenPoint([-120,30]),wb=A.screenPoint([-80,30]);cameraBaseWarp=wa?.every(Number.isFinite)&&wb?.every(Number.isFinite)?{a:wa,b:wb}:null;renderPreview();}
- function renderPreview(){const line=$('#constellate-preview'),source=dragLink?.source||(drawThread?drawLast:null)||first||shiftFirst,a=source&&positions.get(source);if(!line)return;if(!a||(!drawThread&&!connecting&&!dragLink&&!shiftFirst)){line.setAttribute('d','');return;}const b=pointer||{x:a.x+45,y:a.y-25};line.setAttribute('d',`M${a.x},${a.y}Q${(a.x+b.x)/2},${(a.y+b.y)/2-35} ${b.x},${b.y}`);}
- function cancelConnect(){if(inline.querySelector('[data-cancel-pair]'))inline.hidden=true;connecting=false;first=shiftFirst=pointer=dragLink=null;draftKey=null;draft=null;}
+ function renderPreview(){
+   const line=$('#constellate-preview'),source=dragLink?.source||(drawThread?drawLast:null)||first||shiftFirst,a=source&&positions.get(source);
+   graph.classList.toggle('weave-pair-dragging',!!dragLink);
+   const snap=dragLink&&pointer?targetAt(pointer,dragLink.source):null;
+   graph.querySelectorAll('.weave-drop-target').forEach(el=>el.classList.remove('weave-drop-target'));
+   if(snap)graph.querySelectorAll('[data-constellate-node],[data-weave-knot]').forEach(el=>{
+    if(el.dataset.constellateNode===snap||el.dataset.weaveKnot===snap)el.classList.add('weave-drop-target');
+   });
+   if(!line)return;
+   if(!a||(!drawThread&&!connecting&&!dragLink&&!shiftFirst)){line.setAttribute('d','');return;}
+   const b=(snap&&positions.get(snap))||pointer||{x:a.x+45,y:a.y-25};
+   line.setAttribute('d','M'+a.x+','+a.y+'Q'+((a.x+b.x)/2)+','+((a.y+b.y)/2-35)+' '+b.x+','+b.y);
+  }
+  function cancelConnect(){if(inline.querySelector('[data-cancel-pair]'))inline.hidden=true;connecting=false;first=shiftFirst=pointer=dragLink=null;draftKey=null;draft=null;}
  function setDrawThread(on){
   drawThread=!!on;drawLast=null;
   pointer=null;cancelConnect();
@@ -266,23 +278,31 @@ if(new URLSearchParams(location.search).get('constellation-embed')==='1'){
   render();status((already?'Selected ':'Connected to ')+x.title+' · '+S.activeThread().items.length+' cards on '+t.name+'. Select the next card.');
  }
  function pickConnectionTarget(id){
-  const items=S.current().items,source=items.find(x=>x.id===id);
-  if(!source)return;
-  const others=items.filter(x=>x.id!==id);
-  panel.querySelector('.constellate-heading').after(inline);
-  inline.hidden=false;
-  inline.innerHTML='<h3>Connect</h3><strong>'+esc(source.title)+'</strong>'+
-   (others.length?'<label for="weave-connect-target">Choose the other card</label><select id="weave-connect-target"><option value="">Select a card…</option>'+
-    others.map(x=>'<option value="'+esc(x.id)+'">'+esc([x.title,x.maker].filter(Boolean).join(' · '))+'</option>').join('')+'</select>':
-    '<p>Add another card to make a connection.</p>')+
-   '<button type="button" data-cancel-pair>Cancel</button>';
-  const picker=inline.querySelector('select');
-  if(picker)picker.onchange=()=>{if(picker.value)choose(picker.value);};
-  const cancel=inline.querySelector('[data-cancel-pair]');
-  cancel.onclick=()=>{cancelConnect();choose(id);$('#constellate-start-link')?.focus();};
-  (picker||cancel).focus();
- }
- function startLink(id=null){drawThread=false;drawLast=null;reading=false;connecting=true;first=id;shiftFirst=null;pointer=null;inline.hidden=context.hidden=true;open();render();if(id)pickConnectionTarget(id);status(id?'Choose another card.':'Choose the first card.');}
+   const items=S.current().items,source=items.find(x=>x.id===id);
+   if(!source)return;
+   const thread=memberships(id).find(t=>t.id===S.activeThread().id)||S.activeThread();
+   const others=items.filter(x=>x.id!==id);
+   const here=others.filter(x=>thread.items.includes(x.id));
+   const elsewhere=others.filter(x=>!thread.items.includes(x.id));
+   const option=x=>'<option value="'+esc(x.id)+'">'+esc([x.title,x.maker].filter(Boolean).join(' · '))+'</option>';
+   const groups=(here.length?'<optgroup label="On this thread · '+esc(thread.name)+'">'+here.map(option).join('')+'</optgroup>':'')+
+    (elsewhere.length?'<optgroup label="Elsewhere in this constellation">'+elsewhere.map(option).join('')+'</optgroup>':'');
+   panel.querySelector('.constellate-heading').after(inline);
+   inline.hidden=false;
+   inline.innerHTML='<h3>Connect two cards</h3><div class="weave-pair-origin">'+thumb(source)+
+    '<div class="weave-pair-origin-copy"><small>From · '+esc(thread.name)+'</small><strong>'+esc(source.title)+'</strong>'+
+    '<span>'+esc([source.maker,source.year].filter(Boolean).join(' · '))+'</span></div></div>'+
+    (others.length?'<label for="weave-connect-target">Connect to</label><select id="weave-connect-target"><option value="">Choose a different card…</option>'+groups+'</select>':
+     '<p>Add another card to make a connection.</p>')+
+    '<p class="weave-pair-hint">Or drag the small connector on a film card onto another visible card on the map.</p>'+
+    '<button type="button" data-cancel-pair>Cancel</button>';
+   const picker=inline.querySelector('select');
+   if(picker)picker.onchange=()=>{if(picker.value)choose(picker.value);};
+   const cancel=inline.querySelector('[data-cancel-pair]');
+   cancel.onclick=()=>{cancelConnect();choose(id);$('#constellate-start-link')?.focus();};
+   (picker||cancel).focus();
+  }
+  function startLink(id=null){drawThread=false;drawLast=null;reading=false;connecting=true;first=id;shiftFirst=null;pointer=null;inline.hidden=context.hidden=true;open();render();if(id)pickConnectionTarget(id);status(id?'Choose another card.':'Choose the first card.');}
  function choose(id,{shift=false,threadId}={}){if(drawThread&&!shift){drawStep(id);return;}const previousThread=S.activeThread().id;
   if(!shift&&!connecting){
    const t=memberships(id).find(t=>t.id===threadId)||stepInfo(id)?.t;
@@ -636,7 +656,11 @@ async function showShare(){const sp=$('#weave-share-panel');if(sp.classList.cont
  panel.addEventListener('click',e=>{const follow=e.target.closest('[data-weave-follow]');if(follow){const target=catalogById.get(follow.dataset.weaveFollow);if(target)followFilm(target);return;}if(e.target.closest('[data-add-matching]')){addMany(lastFound.slice(0,6).sort((a,b)=>(yearNum(a)||9999)-(yearNum(b)||9999)),'up to six matching films');return;}if(e.target.closest('[data-results-more]')){browsePageLimit+=48;azKey='';renderResults();return;}if(e.target.closest('[data-results-home]')){browsePageStart=0;browsePageLimit=48;azKey='';renderResults({resetScroll:true});return;}if(e.target.closest('[data-discovery-reset]')){$('#weave-discovery-clear').click();return;}const pick=e.target.closest('[data-compare-pick]');if(pick){const x=S.current().items.find(y=>y.id===pick.dataset.comparePick),ref=x&&reference(x);if(ref)A.focusLandOnMap(ref.id);if(x)choose(x.id);return;}if(e.target.closest('[data-compare-close]')){$('#weave-compare').hidden=true;return;}const af=e.target.closest('[data-add-films]');if(af){const r=A.recordById(af.dataset.addFilms);if(r){const works=r.films.map(f=>catalogById.get('film:'+r.id+':'+f.id)||catalog.find(x=>x.type==='film'&&x.credits?.some(c=>c.record===r.id&&c.film===f.id))).filter(Boolean),seen=new Set(),list=works.filter(x=>!seen.has(key(x))&&seen.add(key(x))).sort((a,b)=>(parseInt(a.year)||9999)-(parseInt(b.year)||9999));const fresh=list.filter(x=>{const own=existingWork(x);return !own||!S.activeThread().items.includes(own.id);});if(fresh.length)addMany(fresh.slice(0,6),'films by '+r.name);else status(r.name+' has no remaining films to add to this thread.');if(fresh.length>6)status('Added the first six films by '+r.name+'. Search this filmmaker again to add more.');}return;}const b=e.target.closest('[data-constellate-add]');if(b){const x=catalog.find(x=>x.id===b.dataset.constellateAdd);if(x){const own=existingWork(x);if(own&&S.activeThread().items.includes(own.id)){const r=reference(own);if(r)A.focusLandOnMap(r.id);choose(own.id);}else add(x);}}if(e.target.closest('[data-cancel-form]'))$('#constellate-new-form').hidden=true;if(e.target.closest('[data-cancel-thread]')){$('#weave-thread-form').hidden=true;pendingPicker=null;}});
  $('#weave-order-list').addEventListener('dragstart',e=>{const li=e.target.closest('[data-thread-position]');if(li){orderDrag=+li.dataset.threadPosition;e.dataTransfer?.setData('text/plain',String(orderDrag));}});$('#weave-order-list').addEventListener('dragover',e=>{if(e.target.closest('[data-thread-position]'))e.preventDefault();});$('#weave-order-list').addEventListener('drop',e=>{const li=e.target.closest('[data-thread-position]');if(li&&orderDrag!==null){e.preventDefault();transaction('Reorder thread',()=>S.reorderThread(S.current().activeThread,orderDrag,+li.dataset.threadPosition));orderDrag=null;}});
  function local(e){const b=$('#atlas').getBoundingClientRect();return{x:e.clientX-b.left,y:e.clientY-b.top};}
- function targetAt(p,source){return [...positions].reverse().find(([id,q])=>id!==source&&Math.abs(p.x-q.x)<=NW()/2+6&&Math.abs(p.y-q.y)<=NH/2+6)?.[0];}
+ function targetAt(p,source){
+   // A drop must land on a rendered card or named knot, never an invisible film.
+   const shown=new Set([...graph.querySelectorAll('[data-constellate-node],[data-weave-knot]')].map(n=>n.dataset.constellateNode||n.dataset.weaveKnot));
+   return [...positions].reverse().find(([id,q])=>id!==source&&shown.has(id)&&Math.abs(p.x-q.x)<=NW()/2+6&&Math.abs(p.y-q.y)<=NH/2+6)?.[0];
+  }
  graph.addEventListener('pointerdown',e=>{const handle=e.target.closest('[data-connect-handle]'),n=e.target.closest('[data-constellate-node]');if(e.button||!n)return;e.preventDefault();e.stopPropagation();const id=n.dataset.constellateNode,p=positions.get(id);if(handle){dragLink={source:id};pointer=local(e);connecting=false;first=shiftFirst=null;renderPreview();}else if(drawThread){e.preventDefault();return;}else if(unmapped&&S.current().items.find(y=>y.id===id)?.type!=='concept'){suppress=null;}else{const x=S.current().items.find(x=>x.id===id),i=S.current().items.indexOf(x);drag={id,start:local(e),base:p,offset:{...offsetFor(x,i)},originalOffset:{...offsetFor(x,i)},point:{x:p.x/size.width,y:p.y/size.height},concept:x.type==='concept',moved:false,shift:e.shiftKey};}graph.setPointerCapture?.(e.pointerId);});
  graph.addEventListener('pointermove',e=>{const p=local(e);if(dragLink){pointer=p;renderPreview();return;}if(!drag)return;const dx=p.x-drag.start.x,dy=p.y-drag.start.y;if(Math.abs(dx)+Math.abs(dy)<=5&&!drag.moved)return;drag.moved=true;drag.offset={dx:drag.originalOffset.dx+dx,dy:drag.originalOffset.dy+dy};drag.point={x:(drag.base.x+dx)/size.width,y:(drag.base.y+dy)/size.height};renderGraph();});
  graph.addEventListener('pointerup',e=>{if(dragLink){const source=dragLink.source,target=targetAt(local(e),source);dragLink=null;pointer=null;suppress={id:source,until:Date.now()+400};if(target){if(drawThread){drawLast=null;drawStep(source);drawStep(target);}else connectionForm({source,target,label:'',kind:'interpretation'});}else{renderPreview();status('Drag the handle onto another card.');}return;}if(!drag)return;const d=drag;drag=null;suppress={id:d.id,until:Date.now()+400};if(d.moved){transaction(d.concept?'Move idea':'Move label',()=>d.concept?S.position(d.id,d.point):S.offset(d.id,d.offset));status('Placement saved.');}else choose(d.id,{shift:d.shift||e.shiftKey});});graph.addEventListener('pointercancel',()=>{drag=dragLink=null;pointer=null;renderGraph();});
