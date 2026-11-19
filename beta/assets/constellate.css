@@ -1701,7 +1701,7 @@ html[data-weave-stage="start"] .index-resizer,body.weave-playing .index-resizer{
 #weave-start .ws-pair{margin:10px 0 14px;color:var(--reading-ink)}
 #weave-start .ws-pair summary{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;cursor:pointer}
 #weave-start .ws-pair-film{display:inline-flex;gap:7px;align-items:center;max-width:100%}
-#weave-start .ws-pair-film .weave-media-thumb{width:48px;height:36px;flex:none;overflow:hidden}
+#weave-start .ws-pair-film .weave-media-thumb{position:relative;display:block;width:48px;height:36px;flex:none;overflow:hidden}
 #weave-start .ws-pair-film img{width:100%;height:100%;object-fit:cover}
 #weave-start .ws-pair-film small{display:block}
 #weave-start .ws-pair-action{text-decoration:underline;text-underline-offset:.2em}
