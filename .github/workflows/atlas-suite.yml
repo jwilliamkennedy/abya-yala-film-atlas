@@ -49,8 +49,8 @@ jobs:
         run: |
           python3 -m http.server 8983 --bind 127.0.0.1 >/tmp/now.log 2>&1 &
           sleep 2
-          python3 tools/qa/atlas-suite.py capture http://127.0.0.1:8983/ /tmp/suite/now-main --shots --only constellate-build,phone-build
-          python3 tools/qa/atlas-suite.py capture http://127.0.0.1:8983/beta/ /tmp/suite/now-beta --shots --only constellate-build,constellate-connect,phone-build,phone-connect
+          python3 tools/qa/atlas-suite.py capture http://127.0.0.1:8983/ /tmp/suite/now-main --shots --only=constellate-build,phone-build
+          python3 tools/qa/atlas-suite.py capture http://127.0.0.1:8983/beta/ /tmp/suite/now-beta --shots --only=constellate-build,constellate-connect,phone-build,phone-connect
       - name: Did anything move since the previous push?
         if: always()
         run: |
@@ -58,8 +58,8 @@ jobs:
           (cd /tmp/prev && python3 -m http.server 8984 --bind 127.0.0.1 >/tmp/prev.log 2>&1 &)
           sleep 2
           # the previous commit is measured with today's suite, in the same browser, so only the site differs
-          python3 tools/qa/atlas-suite.py capture http://127.0.0.1:8984/ /tmp/suite/prev-main --only constellate-build,phone-build || true
-          python3 tools/qa/atlas-suite.py capture http://127.0.0.1:8984/beta/ /tmp/suite/prev-beta --only constellate-build,constellate-connect,phone-build,phone-connect || true
+          python3 tools/qa/atlas-suite.py capture http://127.0.0.1:8984/ /tmp/suite/prev-main --only=constellate-build,phone-build || true
+          python3 tools/qa/atlas-suite.py capture http://127.0.0.1:8984/beta/ /tmp/suite/prev-beta --only=constellate-build,constellate-connect,phone-build,phone-connect || true
           status=0
           {
             echo "## Main site: this push compared with the previous one"; echo '```'
