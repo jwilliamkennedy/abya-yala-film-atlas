@@ -245,9 +245,11 @@ async def run(pw, width, height, mobile, label):
     for _ in range(max(0, pub["films"] - 1)):
         await page.evaluate("document.querySelector('#weave-read-next')?.click()")
     last = await page.evaluate("document.querySelector('#weave-read-panel .weave-read-nav span')?.textContent.trim()")
-    check(last in ("Film " + str(pub["films"]) + " of " + str(pub["films"]),
-                   str(pub["films"]) + " / " + str(pub["films"])),
-          "Follow cannot navigate to the final film", {"last": last, "films": pub["films"]})
+    expected = await page.evaluate("""() => {
+      const t = window.AtlasCollections.current().threads.filter(t => t.visible && t.items.length).at(-1);
+      return t.items.length + ' / ' + t.items.length + ' · ' + t.name;
+    }""")
+    check(last == expected, "Read did not reach the final stop on the final thread", last)
 
     # Play must progress through the same sequence, including Yintah.
     await page.evaluate("""() => {
@@ -261,6 +263,31 @@ async def run(pw, width, height, mobile, label):
     play_next = await page.evaluate("document.querySelector('#weave-play-title')?.textContent")
     check(play_next == "Punalka", "Play cannot progress from Yintah to Punalka", {"title": play_next})
     await page.evaluate("window.AtlasConstellate.stopPlay()")
+
+    # Give Mamá two positions and two different notes in this browser's copy.
+    routes = await page.evaluate("""() => {
+      const store = window.AtlasCollections;
+      const [story, memory] = store.current().threads;
+      const id = memory.items[1];
+      store.addToThread(id, story.id);
+      store.threadNote(story.id, id, 'Crossing test');
+      return [story.id, memory.id, id];
+    }""")
+    story, memory, film = routes
+    label = page.locator(f'[data-read-thread="{memory}"]')
+    await label.focus()
+    await label.press("Enter")
+    await page.locator(f'[data-thread="{memory}"] [data-weave-knot="{film}"]').first.dispatch_event("click")
+    title = page.locator(".weave-read-focus h4")
+    check(await title.text_content() == "Mamá", "Map selection in Read missed Mamá")
+    await page.locator(f'.weave-read-focus [data-switch-thread="{story}"]').click()
+    check(await title.text_content() == "Mamá", "Switching threads lost the crossing film")
+    check("Crossing test" in await page.locator(".weave-read-focus").inner_text(), "Wrong thread note at crossing")
+    await page.evaluate("document.querySelector('#weave-play').click()")
+    check(await page.locator("#weave-play-title").text_content() == "Mamá", "Play restarted at the first film")
+    await page.evaluate("window.AtlasConstellate.stopPlay()")
+    await page.locator("#weave-read-prev").click()
+    check("Fainting Spells" in await title.inner_text(), "Previous followed the wrong thread")
 
     # Leaving and clearing do only what they say (13 Nov): × on the start screen and Clear both leave an empty Build.
     stage = lambda: page.evaluate("document.documentElement.dataset.weaveStage")

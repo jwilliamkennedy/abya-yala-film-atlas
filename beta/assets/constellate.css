@@ -1694,3 +1694,6 @@ html body #weave-start .ws-current,html body #weave-start .ws-saved{border-width
 html[data-weave-stage="start"] .index-resizer,body.weave-playing .index-resizer{display:none!important}
 #weave-start .ws-path [data-ws-example]{margin:2px 0 14px}
 #weave-start .ws-example-films{display:block}
+
+#constellate-graph [data-read-thread]{pointer-events:bounding-box;cursor:pointer}
+#constellate-graph [data-read-thread]:focus-visible{outline:2px solid currentColor}
