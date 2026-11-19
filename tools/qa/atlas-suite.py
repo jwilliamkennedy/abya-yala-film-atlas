@@ -274,6 +274,44 @@ async def con_threads(page, base):
     need(len(set(colours)) == 3, "three theme threads should have three colours", colours)
 
 
+async def con_connect(page, base):
+    """Connect keeps the origin visible, groups destinations, and opens on the right tab."""
+    await con_build(page, base)
+    expected = await page.evaluate("""() => {
+      const c = window.AtlasCollections.current();
+      const thread = c.threads.find(t => t.items.length > 1);
+      if (!thread) return null;
+      const from = c.items.find(x => x.id === thread.items[0]);
+      const before = c.links.length;
+      window.AtlasConstellate.startLink(from.id);
+      return { name: from.title, target: thread.items[1], before };
+    }""")
+    need(expected is not None, "published example has no pair to connect")
+    await page.wait_for_selector("#weave-connect-target", state="visible", timeout=7000)
+    info = await page.evaluate("""() => ({
+      name: document.querySelector('#constellate-inline .weave-pair-origin-copy strong')?.textContent,
+      picture: !!document.querySelector('#constellate-inline .weave-pair-origin .weave-media-thumb'),
+      groups: [...document.querySelectorAll('#weave-connect-target optgroup')].map(o => o.label),
+      tab: document.querySelector('#weave-editor')?.dataset.tab,
+      guideHidden: getComputedStyle(document.querySelector('#weave-guide')).display === 'none'
+    })""")
+    need(info["name"] == expected["name"] and info["picture"], "Connect lost the origin title or atlas image placeholder", info)
+    need(any(g.startswith("On this thread") for g in info["groups"]), "On-this-thread destinations are not grouped", info)
+    need(any("Elsewhere in this constellation" in g for g in info["groups"]), "Other-thread destinations are not grouped", info)
+    need(info["tab"] == "thread" and info["guideHidden"], "Connect is lost behind the editor or guide", info)
+    await page.select_option("#weave-connect-target", expected["target"])
+    await page.wait_for_selector("#constellate-link-form", state="visible", timeout=7000)
+    await page.evaluate("document.querySelector('#constellate-cancel-link').click()")
+    count = await page.evaluate("window.AtlasCollections.current().links.length")
+    need(count == expected["before"], "Cancelling Connect unexpectedly saved a link", count)
+
+
+async def phone_connect(page, base):
+    await con_connect(page, base)
+    await settle(page)
+    await no_overflow(page)
+
+
 async def con_unmapped(page, base):
     await con_build(page, base)
     await page.evaluate("document.querySelector('#weave-unmap').click()")
@@ -313,12 +351,12 @@ SCENARIOS = [
     ("map-layers", DESKTOP, map_layers), ("map-search", DESKTOP, map_search), ("map-filmmaker", DESKTOP, map_record),
     ("map-dial-1995", DESKTOP, map_dial), ("map-dial-closed", DESKTOP, dial_closed),
     ("constellate-start", DESKTOP, con_start), ("constellate-follow", DESKTOP, con_follow),
-    ("constellate-build", DESKTOP, con_build), ("constellate-selected", DESKTOP, con_select),
+    ("constellate-build", DESKTOP, con_build), ("constellate-connect", DESKTOP, con_connect), ("constellate-selected", DESKTOP, con_select),
     ("constellate-add-films", DESKTOP, con_add), ("constellate-share", DESKTOP, con_share),
     ("constellate-play", DESKTOP, con_play), ("constellate-theme-web", DESKTOP, con_themeweb),
     ("constellate-three-threads", DESKTOP, con_threads), ("constellate-no-map", DESKTOP, con_unmapped),
     ("constellate-night", DESKTOP, con_night), ("constellate-trace", DESKTOP, con_trace),
-    ("phone-map", PHONE, phone_map), ("phone-follow", PHONE, phone_follow), ("phone-build", PHONE, phone_build), ("phone-trace", PHONE, phone_trace),
+    ("phone-map", PHONE, phone_map), ("phone-follow", PHONE, phone_follow), ("phone-build", PHONE, phone_build), ("phone-connect", PHONE, phone_connect), ("phone-trace", PHONE, phone_trace),
     ("phone-dial", PHONE, phone_dial),
 ]
 
