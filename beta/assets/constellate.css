@@ -1084,6 +1084,24 @@ body.is-constellating #constellate-graph.weave-drawing-mode .constellate-preview
 body.is-constellating #constellate-graph .weave-leader{
  stroke-dasharray:2 4;stroke-opacity:.28;pointer-events:none
 }
+/* During film-to-film dragging, expose possible destinations and snap visibly to the chosen one. */
+#constellate-graph.weave-pair-dragging .constellate-card:not(.selected)>rect:first-child{
+ stroke:var(--reading-muted,#718391)!important;stroke-width:1.8!important;stroke-dasharray:4 4
+}
+#constellate-graph.weave-pair-dragging .constellate-card.weave-drop-target>rect:first-child{
+ stroke:var(--reading-accent,#7db6e8)!important;stroke-width:3.8!important;
+ stroke-dasharray:none!important;filter:drop-shadow(0 0 5px rgba(195,221,255,.78))
+}
+#constellate-graph.weave-pair-dragging [data-weave-knot].weave-drop-target circle{
+ stroke:var(--reading-accent,#7db6e8)!important;stroke-width:3.5!important
+}
+#constellate-graph.weave-pair-dragging .weave-star-label.weave-drop-target{
+ fill:#fff!important;stroke-width:5px!important
+}
+#constellate-graph.weave-pair-dragging .constellate-preview{
+ stroke:var(--reading-accent,#7db6e8)!important;stroke-width:3!important;
+ stroke-dasharray:6 4!important;stroke-linecap:round;fill:none;pointer-events:none
+}
 /* Play is a third real mode, not an unselected action beside Build and Read. */
 
 
@@ -1347,6 +1365,33 @@ body.weave-playing #weave-offmap-rail{visibility:hidden;pointer-events:none}
   overflow-wrap:anywhere;word-break:normal
 }
 .weave-connection-kind{display:inline;font-size:11px;font-weight:600;color:var(--reading-muted,#54626b)}
+/* Connect is a short, focused task, not another pane stacked under all the building tools. */
+#constellate-popup:has(#constellate-inline:not([hidden])) :is(
+ #weave-guide,#constellate-how,.constellate-collection,#weave-settings,
+ .weave-thread-heading,#weave-thread-form,#weave-draw-help,#weave-legend,
+ #weave-order,#weave-suggest,#weave-compare,.weave-browse,
+ #constellate-detail,#constellate-context
+){display:none!important}
+#constellate-popup:has(#constellate-inline:not([hidden])) #weave-editor>.constellate-actions{display:none!important}
+#constellate-popup:has(#constellate-inline:not([hidden])) :is(.weave-tabs,#weave-find-films){display:none!important}
+#constellate-inline .weave-pair-origin{
+ display:flex;align-items:center;gap:12px;min-width:0;
+ margin:10px 0 15px;padding:10px;
+ border:1px solid var(--reading-line,#c6ccd1);border-radius:8px;
+ background:var(--reading-wash,#f3f5f7)
+}
+#constellate-inline .weave-pair-origin>.weave-media-thumb{
+ position:relative;display:block;flex:0 0 68px;width:68px;height:58px;
+ overflow:hidden;border-radius:5px;border:1px solid var(--reading-line,#c6ccd1)
+}
+#constellate-inline .weave-pair-origin-copy{display:flex;flex-direction:column;min-width:0;gap:3px}
+#constellate-inline .weave-pair-origin-copy :is(strong,small,span){overflow-wrap:anywhere}
+#constellate-inline .weave-pair-origin-copy small,
+#constellate-inline .weave-pair-origin-copy span,
+#constellate-inline .weave-pair-hint{color:var(--reading-muted,#54626b);font-size:12px}
+#constellate-inline .weave-pair-origin-copy strong{font-size:15px;line-height:1.2}
+#constellate-inline .weave-pair-hint{line-height:1.45;margin:12px 0 4px}
+
 #weave-order-list [data-note-edit]{
   font:600 11px/1.2 var(--ui-sans,system-ui,sans-serif);
   border:1px solid var(--reading-line,#c6ccd1);
