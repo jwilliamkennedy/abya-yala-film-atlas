@@ -1,4 +1,4 @@
-name: Constellate pairing branch smoke
+name: Atlas browser suite
 # 1. Works: drives the main site and the beta through 23 states (Map, time dial, search, a filmmaker,
 #    Constellate in every mode, phone) and fails on script errors or broken behaviour.
 # 2. Looks the same: fingerprints every visible element and compares this push with the one before it.
@@ -6,7 +6,7 @@ name: Constellate pairing branch smoke
 #    says [no-visual-change], which is how a refactor proves it moved nothing.
 on:
   push:
-    branches: [main, fix/constellate-pairing-20261119]
+    branches: [main]
     paths:
       - '*.html'
       - '*.js'
@@ -29,7 +29,7 @@ on:
 permissions:
   contents: read
 concurrency:
-  group: atlas-suite-pairing-${{ github.ref }}
+  group: atlas-suite-${{ github.ref }}
   cancel-in-progress: true
 jobs:
   suite:
@@ -49,8 +49,8 @@ jobs:
         run: |
           python3 -m http.server 8983 --bind 127.0.0.1 >/tmp/now.log 2>&1 &
           sleep 2
-          python3 tools/qa/atlas-suite.py capture http://127.0.0.1:8983/ /tmp/suite/now-main --shots --only=constellate-build,phone-build
-          python3 tools/qa/atlas-suite.py capture http://127.0.0.1:8983/beta/ /tmp/suite/now-beta --shots --only=constellate-build,constellate-connect,phone-build,phone-connect
+          python3 tools/qa/atlas-suite.py capture http://127.0.0.1:8983/ /tmp/suite/now-main --shots
+          python3 tools/qa/atlas-suite.py capture http://127.0.0.1:8983/beta/ /tmp/suite/now-beta --shots
       - name: Did anything move since the previous push?
         if: always()
         run: |
@@ -58,8 +58,8 @@ jobs:
           (cd /tmp/prev && python3 -m http.server 8984 --bind 127.0.0.1 >/tmp/prev.log 2>&1 &)
           sleep 2
           # the previous commit is measured with today's suite, in the same browser, so only the site differs
-          python3 tools/qa/atlas-suite.py capture http://127.0.0.1:8984/ /tmp/suite/prev-main --only=constellate-build,phone-build || true
-          python3 tools/qa/atlas-suite.py capture http://127.0.0.1:8984/beta/ /tmp/suite/prev-beta --only=constellate-build,constellate-connect,phone-build,phone-connect || true
+          python3 tools/qa/atlas-suite.py capture http://127.0.0.1:8984/ /tmp/suite/prev-main || true
+          python3 tools/qa/atlas-suite.py capture http://127.0.0.1:8984/beta/ /tmp/suite/prev-beta || true
           status=0
           {
             echo "## Main site: this push compared with the previous one"; echo '```'
