@@ -6,7 +6,7 @@ name: Atlas browser suite
 #    says [no-visual-change], which is how a refactor proves it moved nothing.
 on:
   push:
-    branches: [main]
+    branches: [main, fix/constellate-pairing-20261119]
     paths:
       - '*.html'
       - '*.js'
