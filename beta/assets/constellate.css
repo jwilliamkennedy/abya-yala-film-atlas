@@ -1373,6 +1373,7 @@ body.weave-playing #weave-offmap-rail{visibility:hidden;pointer-events:none}
  #constellate-detail,#constellate-context
 ){display:none!important}
 #constellate-popup:has(#constellate-inline:not([hidden])) #weave-editor>.constellate-actions{display:none!important}
+#constellate-popup:has(#constellate-inline:not([hidden])) :is(.weave-tabs,#weave-find-films){display:none!important}
 #constellate-inline .weave-pair-origin{
  display:flex;align-items:center;gap:12px;min-width:0;
  margin:10px 0 15px;padding:10px;
