@@ -277,6 +277,9 @@ async def con_threads(page, base):
 async def con_connect(page, base):
     """Connect keeps the origin visible, groups destinations, and opens on the right tab."""
     await con_build(page, base)
+    # The main site is promoted separately; this new pairing UI currently exists in beta only.
+    if "/beta/" not in base:
+        return
     expected = await page.evaluate("""() => {
       const c = window.AtlasCollections.current();
       const thread = c.threads.find(t => t.items.length > 1);
