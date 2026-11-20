@@ -12,6 +12,36 @@
     "Remembrance",
     "Land defense"
    ]
+  },
+  {
+   "slug": "one-theme-water",
+   "name": "One theme: Water",
+   "author": "Indigenous Cinema Atlas",
+   "updated": "2026-11-16",
+   "films": 6,
+   "threads": [
+    "Water"
+   ]
+  },
+  {
+   "slug": "one-land-wayuu",
+   "name": "One land: Wayúu",
+   "author": "Indigenous Cinema Atlas",
+   "updated": "2026-11-16",
+   "films": 8,
+   "threads": [
+    "Wayúu"
+   ]
+  },
+  {
+   "slug": "one-line-misak-wallmapu",
+   "name": "One line: Misak → Wallmapu",
+   "author": "Indigenous Cinema Atlas",
+   "updated": "2026-11-16",
+   "films": 14,
+   "threads": [
+    "Misak → Wallmapu"
+   ]
   }
  ]
 }

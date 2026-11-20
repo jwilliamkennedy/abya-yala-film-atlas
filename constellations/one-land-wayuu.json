@@ -1,0 +1,84 @@
+{
+ "format": "Indigenous Cinema Atlas published constellation",
+ "version": 1,
+ "slug": "one-land-wayuu",
+ "published": "2026-11-16",
+ "updated": "2026-11-16",
+ "weave": {
+  "name": "One land: Wayúu",
+  "author": "Indigenous Cinema Atlas",
+  "note": "Made from one land on the map: the most recent film by each of eight filmmakers with a mapped reference to Wayúu land.",
+  "items": [
+   {
+    "type": "film",
+    "record": "DIR-0182",
+    "film": "Q20261112-11-F4"
+   },
+   {
+    "type": "film",
+    "record": "DIR-0187",
+    "film": "FILM-B25B-20"
+   },
+   {
+    "type": "film",
+    "record": "NEW-0031c6469e76",
+    "film": "NEW-0031c6469e76-WORK-1"
+   },
+   {
+    "type": "film",
+    "record": "DIR-0183",
+    "film": "BETA30B-20261107-F01"
+   },
+   {
+    "type": "film",
+    "record": "DIR-0193",
+    "film": "DIR-0193-F1"
+   },
+   {
+    "type": "film",
+    "record": "SA50-20261014-14e876264d18",
+    "film": "SA50-20261014-14e876264d18-WORK-01"
+   },
+   {
+    "type": "film",
+    "record": "DIR-0184",
+    "film": "DIR-0184-QMb170d7"
+   },
+   {
+    "type": "film",
+    "record": "SAB2-20261014-f1d1b424934d",
+    "film": "SAB2-20261014-f1d1b424934d-WORK-01"
+   }
+  ],
+  "threads": [
+   {
+    "id": "thread-first",
+    "name": "Wayúu",
+    "description": "The most recent film by each of eight filmmakers with a mapped reference to Wayúu land.",
+    "color": "star-blue",
+    "items": [
+     "film:DIR-0182:Q20261112-11-F4",
+     "film:DIR-0187:FILM-B25B-20",
+     "film:NEW-0031c6469e76:NEW-0031c6469e76-WORK-1",
+     "film:DIR-0183:BETA30B-20261107-F01",
+     "film:DIR-0193:DIR-0193-F1",
+     "film:SA50-20261014-14e876264d18:SA50-20261014-14e876264d18-WORK-01",
+     "film:DIR-0184:DIR-0184-QMb170d7",
+     "film:SAB2-20261014-f1d1b424934d:SAB2-20261014-f1d1b424934d-WORK-01"
+    ],
+    "notes": {}
+   }
+  ],
+  "links": [],
+  "pins": {
+   "film:DIR-0182:Q20261112-11-F4": "LAND-35837",
+   "film:DIR-0187:FILM-B25B-20": "LAND-35837",
+   "film:NEW-0031c6469e76:NEW-0031c6469e76-WORK-1": "LAND-35837",
+   "film:DIR-0183:BETA30B-20261107-F01": "LAND-35837",
+   "film:DIR-0193:DIR-0193-F1": "LAND-35837",
+   "film:SA50-20261014-14e876264d18:SA50-20261014-14e876264d18-WORK-01": "LAND-35837",
+   "film:DIR-0184:DIR-0184-QMb170d7": "LAND-35837",
+   "film:SAB2-20261014-f1d1b424934d:SAB2-20261014-f1d1b424934d-WORK-01": "LAND-35837"
+  }
+ }
+}

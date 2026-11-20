@@ -1,0 +1,63 @@
+{
+ "format": "Indigenous Cinema Atlas published constellation",
+ "version": 1,
+ "slug": "one-theme-water",
+ "published": "2026-11-16",
+ "updated": "2026-11-16",
+ "weave": {
+  "name": "One theme: Water",
+  "author": "Indigenous Cinema Atlas",
+  "note": "Made with Start from a theme: films tagged Water from their published synopses.",
+  "items": [
+   {
+    "type": "film",
+    "record": "NEW-921ff74244e5",
+    "film": "NEW-921ff74244e5-WORK-1"
+   },
+   {
+    "type": "film",
+    "record": "NEW-6d73018c2cfc",
+    "film": "NEW-6d73018c2cfc-WORK-5"
+   },
+   {
+    "type": "film",
+    "record": "LEAD-20261008-004",
+    "film": "REVIEWFILM-20261008-004-02"
+   },
+   {
+    "type": "film",
+    "record": "LEAD-20261011-012",
+    "film": "LEAD-20261011-012-QM2111e9"
+   },
+   {
+    "type": "film",
+    "record": "LEAD-20261008-008",
+    "film": "REVIEWFILM-20261008-008-01"
+   },
+   {
+    "type": "film",
+    "record": "NEW-c2f732e6e7d6",
+    "film": "NEW-c2f732e6e7d6-WORK-1"
+   }
+  ],
+  "threads": [
+   {
+    "id": "thread-first",
+    "name": "Water",
+    "description": "Films tagged Water from their published synopses.",
+    "color": "star-bluewhite",
+    "items": [
+     "film:NEW-921ff74244e5:NEW-921ff74244e5-WORK-1",
+     "film:NEW-6d73018c2cfc:NEW-6d73018c2cfc-WORK-5",
+     "film:LEAD-20261008-004:REVIEWFILM-20261008-004-02",
+     "film:LEAD-20261011-012:LEAD-20261011-012-QM2111e9",
+     "film:LEAD-20261008-008:REVIEWFILM-20261008-008-01",
+     "film:NEW-c2f732e6e7d6:NEW-c2f732e6e7d6-WORK-1"
+    ],
+    "notes": {}
+   }
+  ],
+  "links": [],
+  "pins": {}
+ }
+}
