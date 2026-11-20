@@ -1,0 +1,36 @@
+name: Promote approved beta to main
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/atlas/promote-request.txt'
+permissions:
+  contents: write
+concurrency:
+  group: atlas-promote-beta-main
+  cancel-in-progress: false
+jobs:
+  promote:
+    if: github.repository == 'jwilliamkennedy/abya-yala-film-atlas'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+      - name: Copy beta to main using audited promoter
+        run: |
+          python3 tools/promote_beta.py /tmp/atlas-promotion-archive --apply
+          git diff --check
+          echo "Summary of changed paths:"
+          git diff --cached --stat | tail -n 45
+      - name: Commit and push main site
+        run: |
+          if git diff --cached --quiet; then
+            echo 'Beta already matches main site'
+            exit 0
+          fi
+          git config user.name 'atlas-promotion-bot'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'Promote approved beta to main site (2026-11-19)'
+          git push origin HEAD:main
