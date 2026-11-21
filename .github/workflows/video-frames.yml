@@ -1,0 +1,26 @@
+name: Source-linked film video thumbnails
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'tools/thumbs/video_missing_*.csv'
+permissions:
+  contents: write
+jobs:
+  video:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install image checker
+        run: pip install -q requests pillow
+      - name: Inspect filmed video thumbnail art from official watch URLs
+        run: |
+          python3 tools/thumbs/video_candidates.py tools/thumbs/video_missing_20261120.csv out
+      - name: Write nonpublic research report to research branch
+        run: |
+          cd out
+          git init -q -b ci-video-thumbs
+          git config user.name github-actions
+          git config user.email github-actions@users.noreply.github.com
+          git add . && git commit -q -m "Source video frame research ${GITHUB_SHA::7}"
+          git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" ci-video-thumbs
