@@ -118,7 +118,7 @@ def inspect(row):
    except Exception:continue
   if not foundim:raise ValueError('image failed or undersized')
   score,url,typ,im,blob=foundim[0]
-  info.update(check='candidate',image_url=url,image_page=base,image_credit=urllib.parse.urlsplit(res.url).hostname or '',w=str(im.width),h=str(im.height),sha=hashlib.sha1(blob).hexdigest()[:15],score=str(score),kind=typ,reason=('dedicated film page' if dedicated else 'title-linked image on shared page'),alternate=foundim[1][1] if len(foundim)>1 else '')
+  info.update(check='candidate',image_url=url,image_page=base,image_credit=urllib.parse.urlsplit(base).hostname or '',w=str(im.width),h=str(im.height),sha=hashlib.sha1(blob).hexdigest()[:15],score=str(score),kind=typ,reason=('dedicated film page' if dedicated else 'title-linked image on shared page'),alternate=foundim[1][1] if len(foundim)>1 else '')
   return info,im.convert('RGB')
  except Exception as e:
   info['check']='held';info['reason']=str(e)[:110];return info,None
