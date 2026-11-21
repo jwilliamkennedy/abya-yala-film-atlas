@@ -1,0 +1,34 @@
+name: Inline film still discovery
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'tools/thumbs/detail_missing_*.csv'
+      - 'tools/thumbs/detail_candidates.py'
+permissions:
+  contents: write
+concurrency:
+  group: atlas-film-detail-image-research
+  cancel-in-progress: false
+jobs:
+  detail:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: pip install -q requests pillow beautifulsoup4
+      - name: Scan named film pages for unique inline images
+        run: |
+          shopt -s nullglob
+          files=(tools/thumbs/detail_missing_*.csv)
+          for f in "${files[@]}"; do
+            n=$(basename "$f" .csv)
+            python3 tools/thumbs/detail_candidates.py "$f" "out/$n"
+          done
+      - name: Store review candidates outside published beta
+        run: |
+          cd out
+          git init -q -b ci-detailthumbs
+          git config user.name github-actions
+          git config user.email github-actions@users.noreply.github.com
+          git add . && git commit -q -m "Inline film image candidates ${GITHUB_SHA::7}"
+          git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" ci-detailthumbs
