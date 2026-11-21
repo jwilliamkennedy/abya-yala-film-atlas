@@ -1,0 +1,33 @@
+name: Vtape film still candidates
+permissions:
+  contents: write
+on:
+  workflow_dispatch:
+  push:
+    paths: ['tools/thumbs/vtape_missing_*.csv', 'tools/thumbs/vtape_candidates.py']
+concurrency:
+  group: atlas-vtape-stills
+  cancel-in-progress: false
+jobs:
+  candidates:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: pip install -q requests pillow beautifulsoup4
+      - name: Match films to individual Vtape catalogue pages and film stills
+        run: |
+          shopt -s nullglob
+          files=(tools/thumbs/vtape_missing_*.csv)
+          if [ ${#files[@]} -eq 0 ]; then echo "No input files"; exit 0; fi
+          for f in "${files[@]}"; do
+            n=$(basename "$f" .csv)
+            python3 tools/thumbs/vtape_candidates.py "$f" "out/$n"
+          done
+      - name: Save only candidate reports to the non-publication branch
+        run: |
+          cd out
+          git init -q -b ci-vtape
+          git config user.name github-actions
+          git config user.email github-actions@users.noreply.github.com
+          git add . && git commit -q -m "Vtape film image candidates ${GITHUB_SHA::7}"
+          git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" ci-vtape
