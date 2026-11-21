@@ -1,0 +1,192 @@
+n,filmmaker,filmmaker_id,film_id,title,year,film_source
+1,Humberto Gómez Pérez,DIR-0226,BETA30B-20261107-F04,Vayijeletik,2015,https://moreliafilmfest.com/ii-laboratorio-de-desarrollo-de-proyectos-cinematograficos-para-cineastas-indigenas-y
+2,Humberto Gómez Pérez,DIR-0226,BETA30B-20261107-F05,Jvobtik,2018,https://moreliafilmfest.com/ii-laboratorio-de-desarrollo-de-proyectos-cinematograficos-para-cineastas-indigenas-y
+3,Humberto Gómez Pérez,DIR-0226,BETA30B-20261107-F06,Ñichim Chab,2021,https://moreliafilmfest.com/ii-laboratorio-de-desarrollo-de-proyectos-cinematograficos-para-cineastas-indigenas-y
+4,Aracely Méndez,DIR-0217,DIR-0217-QMbe3768,¿Quién es Me'Lupe?,,https://moreliafilmfest.com/ii-laboratorio-de-desarrollo-de-proyectos-cinematograficos-para-cineastas-indigenas-y
+5,Dante Cerano Bautista,DIR-0222,DIR-0222-QMc779d2,Monumentos vivientes,,https://moreliafilmfest.com/ii-laboratorio-de-desarrollo-de-proyectos-cinematograficos-para-cineastas-indigenas-y
+6,Leyzer Chiquin,LEAD-20261011-015,Q20261113-52-F1,"El sueño del toro, el caballo y la serpiente",,https://moreliafilmfest.com/ii-laboratorio-de-desarrollo-de-proyectos-cinematograficos-para-cineastas-indigenas-y
+7,Irati Dojura Landa Yagarí,NEW-f82421999862,Q20261113-53-F1,Mu Kar: mi raíz,,https://moreliafilmfest.com/ii-laboratorio-de-desarrollo-de-proyectos-cinematograficos-para-cineastas-indigenas-y
+8,Luzbeidy Monterrosa Atencio,NEW-0f17e286a91a,Q20261113-54-F1,Ako’yolowaa (Cubrirse el alma),,https://moreliafilmfest.com/ii-laboratorio-de-desarrollo-de-proyectos-cinematograficos-para-cineastas-indigenas-y
+9,Humberto Gómez Pérez,DIR-0226,Q20261113-55-F1,Tajimol,,https://moreliafilmfest.com/ii-laboratorio-de-desarrollo-de-proyectos-cinematograficos-para-cineastas-indigenas-y
+10,Dante Cerano Bautista,DIR-0222,Q20261113-56-F1,K’úrátsekwa Tsïtsïkiisti (La vergüenza es una flor),,https://moreliafilmfest.com/ii-laboratorio-de-desarrollo-de-proyectos-cinematograficos-para-cineastas-indigenas-y
+11,Luzbeidy Monterrosa Atencio,NEW-0f17e286a91a,Q20261113-99-F1,La danza del perdón,,https://moreliafilmfest.com/ii-laboratorio-de-desarrollo-de-proyectos-cinematograficos-para-cineastas-indigenas-y
+12,Paola Gabriela Quispe Quispe,LEAD-20261011-012,LEAD-20261011-012-QM902a2e,"Jichi, en busca del guardián de las aguas",,https://moreliafilmfest.com/ii-laboratorio-de-desarrollo-de-proyectos-cinematograficos-para-cineastas-indigenas-y
+13,Mónica del Carmen,LEAD-20261011-009,LEAD-20261011-009-QM22cf67,Biñíi Dhxizáa (Retoños del zapoteco),,https://moreliafilmfest.com/ii-laboratorio-de-desarrollo-de-proyectos-cinematograficos-para-cineastas-indigenas-y
+14,Werá Alexandre,BETA8D-20261107-D01,BETA8D-20261107-D01-QM68f2c9,Kunhangue: a criação do universo,,https://moreliafilmfest.com/ii-laboratorio-de-desarrollo-de-proyectos-cinematograficos-para-cineastas-indigenas-y
+15,Shelley Niro,DIR-0146,Q20261115-760-F1,It Starts With a Whisper,1993,https://femfilm.ca/director_search.php?director=shelley-niro&lang=e
+16,Shelley Niro,DIR-0146,Q20261115-760-F2,Overweight with Crooked Teeth,1997,https://femfilm.ca/director_search.php?director=shelley-niro&lang=e
+17,Shelley Niro,DIR-0146,Q20261115-760-F3,Honey Moccasin,1998,https://femfilm.ca/director_search.php?director=shelley-niro&lang=e
+18,Shelley Niro,DIR-0146,Q20261115-760-F4,Skywoman with Us,2002,https://femfilm.ca/director_search.php?director=shelley-niro&lang=e
+19,Shelley Niro,DIR-0146,Q20261115-760-F5,The Shirt,,https://femfilm.ca/director_search.php?director=shelley-niro&lang=e
+20,Shelley Niro,DIR-0146,Q20261115-760-F6,Suite: INDIAN,2005,https://femfilm.ca/director_search.php?director=shelley-niro&lang=e
+21,Shelley Niro,DIR-0146,Q20261115-760-F7,Tree,2006,https://femfilm.ca/director_search.php?director=shelley-niro&lang=e
+22,Shelley Niro,DIR-0146,Q20261115-760-F8,Hunger,,https://femfilm.ca/director_search.php?director=shelley-niro&lang=e
+23,Shelley Niro,DIR-0146,Q20261115-760-F9,rechargin',2007,https://femfilm.ca/director_search.php?director=shelley-niro&lang=e
+24,Shelley Niro,DIR-0146,Q20261115-760-F10,The Flying Head,2008,https://femfilm.ca/director_search.php?director=shelley-niro&lang=e
+25,Shelley Niro,DIR-0146,Q20261115-760-F11,Kissed by Lightning,2009,https://femfilm.ca/director_search.php?director=shelley-niro&lang=e
+26,Shelley Niro,DIR-0146,Q20261115-760-F12,Robert's Paintings,2011,https://femfilm.ca/director_search.php?director=shelley-niro&lang=e
+27,Shelley Niro,DIR-0146,Q20261115-760-F13,Niagara,2015,https://femfilm.ca/director_search.php?director=shelley-niro&lang=e
+28,Shelley Niro,DIR-0146,Q20261115-760-F14,"Tekahionwake, Pauline",,https://femfilm.ca/director_search.php?director=shelley-niro&lang=e
+29,Jules Arita Koostachin,QM-0bcc197085,QM-0bcc197085-M1,NiiMisSak: Sisters in Film,2024,https://juleskoostachin.com/contact
+30,Jules Arita Koostachin,QM-0bcc197085,Q20261115-850-F1,Angela's Shadow,2024,https://juleskoostachin.com/contact
+31,Jules Arita Koostachin,QM-0bcc197085,Q20261115-850-F3,Chubby Cree,,https://juleskoostachin.com/contact
+32,Jules Arita Koostachin,QM-0bcc197085,Q20261115-850-F4,Broken Angel,,https://juleskoostachin.com/contact
+33,Jules Arita Koostachin,QM-0bcc197085,Q20261115-850-F5,MisTik,,https://juleskoostachin.com/contact
+34,Jules Arita Koostachin,QM-0bcc197085,Q20261115-850-F6,KaYaMenTa: Sharing Truths about Menopause,2020,https://juleskoostachin.com/contact
+35,Jules Arita Koostachin,QM-0bcc197085,Q20261115-850-F8,"NiiSoTeWak: Two Bodies, One Heart",2017,https://juleskoostachin.com/contact
+36,Jules Arita Koostachin,QM-0bcc197085,Q20261115-850-F9,OshKiKiShiKaw: A New Day,2019,https://juleskoostachin.com/contact
+37,Jules Arita Koostachin,QM-0bcc197085,Q20261115-850-F10,OChiSkwaCho,2018,https://juleskoostachin.com/contact
+38,Jules Arita Koostachin,QM-0bcc197085,Q20261115-850-F15,Moosemeat & Marmalade,,https://juleskoostachin.com/contact
+39,Antonio Jesús Sánchez Felipe (Ish Tejk),LEAD-20261011-023,LEAD-20261011-023-QM21155a,Kondoy: Los nuevos caminos de la nación Ayuuk,,https://moreliafilmfest.com/laboratorio-desarrollo-proyectos-cineastas-indigenas-afrodescendientes-mx-2025
+40,Bernardino de Jesús López de la Cruz,LEAD-20261011-025,LEAD-20261011-025-QM56bf92,Sueños contradictorios,,https://moreliafilmfest.com/laboratorio-desarrollo-proyectos-cineastas-indigenas-afrodescendientes-mx-2025
+41,Luis Augusto Quijano Espinoza (Luis Kies),QM-694989d5c4,QM-694989d5c4-M1,Poch Vaquero,,https://moreliafilmfest.com/laboratorio-desarrollo-proyectos-cineastas-indigenas-afrodescendientes-mx-2025
+42,Celina Yunuen Manuel Piñón,DIR-0219,DIR-0219-QMd5727c,Para curarnos el paisaje herido,,https://moreliafilmfest.com/laboratorio-desarrollo-proyectos-cineastas-indigenas-afrodescendientes-mx-2025
+43,Mariana Yareth Hernández Cortés,LEAD-20261011-021,LEAD-20261011-021-QMed0703,Del mar al volcán,,https://moreliafilmfest.com/laboratorio-desarrollo-proyectos-cineastas-indigenas-afrodescendientes-mx-2025
+44,Nisaguie Abril Flores Cruz,LEAD-20261011-019,LEAD-20261011-019-QM596367,Benda Yuuze,,https://moreliafilmfest.com/laboratorio-desarrollo-proyectos-cineastas-indigenas-afrodescendientes-mx-2025
+45,Yaremi Chan,QM-4b9f5b2e83,QM-4b9f5b2e83-M1,K baakelo’on | Nuestros huesos,,https://moreliafilmfest.com/laboratorio-desarrollo-proyectos-cineastas-indigenas-afrodescendientes-mx-2025
+46,Norma Delia Robles Carrillo,LEAD-20261011-020,LEAD-20261011-020-QMddfd49,Caminares que germinan en la jícara sagrada,,https://moreliafilmfest.com/laboratorio-desarrollo-proyectos-cineastas-indigenas-afrodescendientes-mx-2025
+47,Yaremi Chan,QM-4b9f5b2e83,QM-4b9f5b2e83-M3,Maaya Ko’olelo’ob: Muuk’,,https://moreliafilmfest.com/laboratorio-desarrollo-proyectos-cineastas-indigenas-afrodescendientes-mx-2025
+48,Lisa Jackson,DIR-0118,Q20261114-66-F1,Suckerfish,2004,https://imaginenative.org/artists/lisa-jackson/
+49,Lisa Jackson,DIR-0118,Q20261114-66-F2,The Visit,2009,https://imaginenative.org/artists/lisa-jackson/
+50,Lisa Jackson,DIR-0118,Q20261114-66-F3,Pushing the Line: Art Without Reservations,2009,https://imaginenative.org/artists/lisa-jackson/
+51,Lisa Jackson,DIR-0118,Q20261114-66-F5,Pow.Wow.Wow,2011,https://imaginenative.org/artists/lisa-jackson/
+52,Lisa Jackson,DIR-0118,Q20261114-66-F6,Parkdale,2011,https://imaginenative.org/artists/lisa-jackson/
+53,Lisa Jackson,DIR-0118,Q20261114-66-F7,Snare,2013,https://imaginenative.org/artists/lisa-jackson/
+54,Lisa Jackson,DIR-0118,Q20261114-66-F9,The Dust Bowl,2016,https://imaginenative.org/artists/lisa-jackson/
+55,Lisa Jackson,DIR-0118,Q20261114-66-F11,Lichen,2019,https://imaginenative.org/artists/lisa-jackson/
+56,Alayna Eagle Shield,NEW-e030bb22b5f6,NEW-e030bb22b5f6-WORK-1,Verbs in Lakota,,https://www.blockmuseum.northwestern.edu/cinema/2016/the-other-51-native-american-women-directors-presented-by-the-first-nations-film-and-video-festival.html
+57,Marilyn Thomas,NEW-c541530fe485,NEW-c541530fe485-WORK-1,Shi-shi-etko,,https://www.blockmuseum.northwestern.edu/cinema/2016/the-other-51-native-american-women-directors-presented-by-the-first-nations-film-and-video-festival.html
+58,Missy Whiteman,NEW-be2a94b99404,NEW-be2a94b99404-WORK-1,Nawa Giizhiigong,,https://www.blockmuseum.northwestern.edu/cinema/2016/the-other-51-native-american-women-directors-presented-by-the-first-nations-film-and-video-festival.html
+59,Pamela J. Peters,NEW-1df461cd9fc4,NEW-1df461cd9fc4-WORK-1,Legacy of Exiled NDNz,,https://www.blockmuseum.northwestern.edu/cinema/2016/the-other-51-native-american-women-directors-presented-by-the-first-nations-film-and-video-festival.html
+60,Valerie Hughes,NEW-373228f5e85f,NEW-373228f5e85f-WORK-1,Sunny Winter Day,,https://www.blockmuseum.northwestern.edu/cinema/2016/the-other-51-native-american-women-directors-presented-by-the-first-nations-film-and-video-festival.html
+61,Diane Obomsawin,Q20261114-13,Q20261115-226-F1,L’abominable microbe,1992,https://www.oboro.net/en/exhibition/obom/
+62,Diane Obomsawin,Q20261114-13,Q20261115-227-F1,Ma rencontre avec Marianne Faithful et un enfant orignal,1995,https://www.oboro.net/en/exhibition/obom/
+63,Diane Obomsawin,Q20261114-13,Q20261115-228-F1,Une lettre de l’Australie,1995,https://www.oboro.net/en/exhibition/obom/
+64,Diane Obomsawin,Q20261114-13,Q20261115-229-F1,Canard à l’orange,,https://www.oboro.net/en/exhibition/obom/
+65,Diane Obomsawin,Q20261114-13,Q20261115-230-F1,Le 26 septembre à l’atelier,1997,https://www.oboro.net/en/exhibition/obom/
+66,Genito Gomes,DIR-0023,Q20261113-81-F1,Poha Rey'i - The Family of Remedies,,https://www.firelightmedia.tv/filmmakers/genito-gomes
+67,Genito Gomes,DIR-0023,Q20261113-82-F1,Guahui Guyra Kuera - Charm of the Birds,,https://www.firelightmedia.tv/filmmakers/genito-gomes
+68,Genito Gomes,DIR-0023,Q20261113-83-F1,Yvy Pyte - Heart of the Earth,,https://www.firelightmedia.tv/filmmakers/genito-gomes
+69,Jhon Nara Gomes,QM-748e73232d,Q20261113-83-F1,Yvy Pyte - Heart of the Earth,,https://www.firelightmedia.tv/filmmakers/genito-gomes
+70,Roxann Whitebean,DIR-0142,DIR-0142-W1031-1,Legend of the Storm,2015,https://en.wikipedia.org/wiki/Roxann_Whitebean
+71,Roxann Whitebean,DIR-0142,DIR-0142-W1031-2,Thunder Blanket,2016,https://en.wikipedia.org/wiki/Roxann_Whitebean
+72,Roxann Whitebean,DIR-0142,DIR-0142-W1031-3,Karihwanoron: Precious Things,2017,https://en.wikipedia.org/wiki/Roxann_Whitebean
+73,Roxann Whitebean,DIR-0142,DIR-0142-W1031-4,The Haudenosaunee Canoe Journey,2020,https://en.wikipedia.org/wiki/Roxann_Whitebean
+74,Alejandro Noza,SA50-20261014-5b89d6283a0d,SA50-20261014-5b89d6283a0d-WORK-01,El grito de la selva / Cry of the Forest,2008,https://www.augsburg.edu/filmseries/2012/03/02/condor-meets-eagle-three-night-film-festival/
+75,María Morales Tarqui,SA50-20261014-9b1d14fcc4b5,SA50-20261014-9b1d14fcc4b5-WORK-01,Venciendo el miedo / Conquering Fear,2004,https://www.augsburg.edu/filmseries/2012/03/02/condor-meets-eagle-three-night-film-festival/
+76,Nicolás Ipamo,SA50-20261014-e4fb233d3bf0,SA50-20261014-5b89d6283a0d-WORK-01,El grito de la selva / Cry of the Forest,2008,https://www.augsburg.edu/filmseries/2012/03/02/condor-meets-eagle-three-night-film-festival/
+77,Jack Hardy,DIR-0421,WAP-FILM-00421,Fishing with Jack,2024,https://ridm.ca/fr/festival-2025/programmation/wapikoni
+78,Jim Matlock,DIR-0422,WAP-FILM-00422,IV.ISO:NA.IR__,2024,https://ridm.ca/fr/festival-2025/programmation/wapikoni
+79,Marylène Houle,DIR-0423,WAP-FILM-00423,Phoenix,2025,https://ridm.ca/fr/festival-2025/programmation/wapikoni
+80,Delia Yujra Chura,SAB2-20261014-98fc41053bfb,Q20261114-91-F1,Superación,2010,https://bsj.pitt.edu/ojs/bsj/article/download/363/1635
+81,Delia Yujra Chura,SAB2-20261014-98fc41053bfb,Q20261114-91-F2,Atipxawi,2012,https://bsj.pitt.edu/ojs/bsj/article/download/363/1635
+82,Delia Yujra Chura,SAB2-20261014-98fc41053bfb,Q20261114-91-F3,Jikisiña Chuymampi,2024,https://bsj.pitt.edu/ojs/bsj/article/download/363/1635
+83,Phil Lucas,DIR-0299,DIR-0299-W1031-1,Images of Indians,1979,https://en.wikipedia.org/wiki/Phil_Lucas
+84,Phil Lucas,DIR-0299,DIR-0299-W1031-2,Honor of All,1987,https://en.wikipedia.org/wiki/Phil_Lucas
+85,Phil Lucas,DIR-0299,DIR-0299-W1031-3,Healing the Nation,1993,https://en.wikipedia.org/wiki/Phil_Lucas
+86,Nadia Mike,Q20261114-64,Q20261114-64-F3,Anaana’s Tent Season 1,2018,https://taqqut.com/category/films/
+87,Nadia Mike,Q20261114-64,Q20261114-64-F4,Tundra Friends,,https://taqqut.com/category/films/
+88,Nadia Mike,Q20261114-64,Q20261114-64-F5,Mia and the Monsters,,https://taqqut.com/category/films/
+89,Wallace W. Fox,Q20261115-952,Q20261115-952-F1,The Bandit's Son,1927,https://www.sassyflix.com/person/89692-wallace-fox
+90,Wallace W. Fox,Q20261115-952,Q20261115-952-F2,Driftin' Sands,1928,https://www.sassyflix.com/person/89692-wallace-fox
+91,Wallace W. Fox,Q20261115-952,Q20261115-952-F3,The Riding Renegade,1928,https://www.sassyflix.com/person/89692-wallace-fox
+92,Bih Kezo,NEW-434940552bf4,NEW-434940552bf4-WORK-1,Ulapa Taka'a: criança sabida,2020,https://skabmagovat.fi/en/director/bih-kezo/
+93,Bih Kezo,NEW-434940552bf4,NEW-434940552bf4-WORK-2,Piny Pyta: a força de nossa medicina,2021,https://skabmagovat.fi/en/director/bih-kezo/
+94,Gerardo Berrocal,SAB2-20261014-2501b24c169e,RESEARCH-FILM-20261031-0002-01,"REWE NGUIÑIWE, Aylla Rewe Budi",2014,https://miradanativa.org/pelicula/rewe-nguiniwe-aylla-rewe-budi/
+95,Juan Rain,LEAD-20261031-0003,RESEARCH-FILM-20261031-0002-01,"Rewe Nguiñiwe, Aylla Rewe Budi",2014,https://miradanativa.org/pelicula/rewe-nguiniwe-aylla-rewe-budi/
+96,Ana Ts’uyeb,PILOT-43-ANA-TSUYEB,PILOT-43-ANA-TSUYEB-QM9f1fbc,Andares en la infancia,2018,https://ellugarquehabitamos.org/genero-y-disidencias-cine/
+97,Ana Ts’uyeb,PILOT-43-ANA-TSUYEB,PILOT-43-ANA-TSUYEB-QM5960a0,Deconstrucción orgánica,2018,https://ellugarquehabitamos.org/genero-y-disidencias-cine/
+98,Eva Melina Ruiz,NEW-7a1ad96c1468,NEW-7a1ad96c1468-WORK-1,Buscando mi vida,2016,https://www.filmoteca.unam.mx/ciclo-de-cine-integrado-por-producciones-de-distintas-comunidades-del-pais/
+99,Eva Melina Ruiz,NEW-7a1ad96c1468,NEW-7a1ad96c1468-WORK-2,Palabras por la vida,2015,https://www.filmoteca.unam.mx/ciclo-de-cine-integrado-por-producciones-de-distintas-comunidades-del-pais/
+100,Leonel Iván Lienlaf Lienlaf,Q20261114-72,Q20261114-96-F1,Kuzen,2016,https://cinechile.cl/pelicula/kuzen/
+101,Francisco Huichaqueo Pérez,DIR-0170,Q20261114-96-F1,Kuzen,2016,https://cinechile.cl/pelicula/kuzen/
+102,De Andre Makakoa Takahashi,Q20261114-49,Q20261114-49-F1,Noho'ana Farm,2025,https://hiff.org/hiff45-shorts-grid/
+103,Ricky-Thomas Serikawa,Q20261114-31,Q20261114-31-F1,Twisted Braid,2025,https://hiff.org/hiff45-shorts-grid/
+104,Elle-Máijá Tailfeathers,DIR-0087,Q20261115-85-F3,A Red Girl's Reasoning,2012,https://femfilm.ca/director_search.php?director=elle-maija-tailfeathers&lang=e
+105,Elle-Máijá Tailfeathers,DIR-0087,Q20261115-94-F1,Naked Island - Detention,2017,https://femfilm.ca/director_search.php?director=elle-maija-tailfeathers&lang=e
+106,Divino Tserewahú,DIR-0020,Q20261114-89-F1,Hepariidub’radá: Obrigado Irmão,1998,https://econtents.sbu.unicamp.br/inpec/index.php/proa/article/download/16506/11258/42120
+107,Divino Tserewahú,DIR-0020,Q20261114-89-F2,Meruntikupainikonman: Vamos à luta,2002,https://econtents.sbu.unicamp.br/inpec/index.php/proa/article/download/16506/11258/42120
+108,Sani Montahuano,LEAD-20261008-007,REVIEWFILM-20261008-007-01,Tuku,2021,https://amazonia.vistprojects.com/talleres/
+109,Sani Montahuano,LEAD-20261008-007,REVIEWFILM-20261008-007-02,Shun,2021,https://amazonia.vistprojects.com/talleres/
+110,María Sojob,DIR-0235,DIR-0235-QM2690c9,Por la vida,,https://www.firelightmedia.tv/filmmakers/maria-sojob
+111,María Sojob,DIR-0235,DIR-0235-QM1b8d6a,"Riox, Palabra florida",,https://www.firelightmedia.tv/filmmakers/maria-sojob
+112,Zacharias Kunuk,DIR-0165,Q20261115-651-F6,Inuit Cree Reconciliation,2013,https://vtape.org/video?vi=8803
+113,Neil Diamond,DIR-0133,Q20261115-651-F6,Inuit Cree Reconciliation,2013,https://vtape.org/video?vi=8803
+114,Alexandre Pankararu,NEW-7185cd45c3f6,NEW-7185cd45c3f6-WORK-1,O rio tem dono,2012,https://narrativasindigenas.ensp.fiocruz.br/rede/alexandre-pankararu/
+115,Amos Scott,NEW-5f50a0036382,NEW-5f50a0036382-WORK-1,Dene: A Journey,,https://www.adzestudios.com/about/
+116,Bryson Chun,NEW-a102df026e33,NEW-a102df026e33-WORK-1,Poi Dogs (Native Lab project),2021,https://www.sundance.org/blogs/sundance-institute-names-20-fellows-across-feature-film-directors-and-screenwriters-labs-native-lab-3/
+117,Colton Willier,NEW-01a3564b2b5b,NEW-01a3564b2b5b-WORK-1,Shirtnami,,https://www.rednationff.com/shirtnami/
+118,Dolores Sántiz Gómez,NEW-4b43cfbe178e,NEW-4b43cfbe178e-WORK-1,Nichimal Tseb,,https://nvinoticiaschiapas.com/cultura/08/01/2025/137557/
+119,Ervin Chartrand,DIR-0088,FILM-SRC-NFB-00060,Patrick Ross,,https://www.nfb.ca/film/patrick_ross/
+120,Helena Corezomaé,NEW-e00d7fdda37e,NEW-e00d7fdda37e-WORK-1,"Elotinopopare, o córrego do povo Umutina Balatiponé que secou",,https://outraspalavras.net/?p=3080611
+121,Jennifer Kilabuk,NEW-186446e535fd,NEW-186446e535fd-WORK-1,Intergenerational Climate Activism (Witness project),2024,https://skabmagovat.fi/nine-arctic-indigenous-filmmakers-selected-for-witness-2024-film-training-and-mentorship-program/
+122,José Luis Matías Alonso,DIR-0230,FILM-B25B-02,Poder pal pueblo,2017,https://ojodeaguacomunicacion.org/poder-pal-pueblo/
+123,Lily Baniwa,LEAD-20261008-011,REVIEWFILM-20261008-011-01,Lithipokoroda,2022,https://katahirine.org.br/ela/lily-baniwa/
+124,Damián Dositelo Martínez Vásquez,DIR-0221,DIR-0221-QMe072e9,Susurros del Ipx Yukp,2023,https://sic.cultura.gob.mx/ficha.php?table=produccion_cine&table_id=14050
+125,Brett McLaurin,NEW-607ce0eaac4a,NEW-607ce0eaac4a-WORK-1,Fight or Flight,2024,https://evenementswapikoni.ca/fight-or-flight
+126,Cristian Conejo,Q20261108-02,Q20261108-02-F1,"Namtrik, fogones lingüísticos",2025,https://ficcali.com/pelicula/namtrik-fogones-linguisticos/
+127,Eva Melina Ruiz,NEW-7a1ad96c1468,NEW-4c89eb1eecae-WORK-6,Saludos desde el pueblo que dice no a la minería,2015,https://ojodeaguacomunicacion.org/saludos-desde-el-pueblo-que-dice-no-a-la-mineria/
+128,Alcibíades Rodríguez,QM-577ad2c826,QM-577ad2c826-F1,Nurdargana,2024,https://cinemateca.univalle.edu.co/extension/itemlist/user/747-usuariogestionpaginaswebcinemateca?start=30
+129,Jackie Traverse,DIR-0099,DIR-0099-F1,Butterfly,2007,https://en.wikipedia.org/wiki/Jackie_Traverse
+130,Ajuawak Kapashesit,LEAD-20261031-0055,LEAD-20261031-0055-F1,Carrying the Fire,2021,https://ictnews.org/news/emerging-filmmaker-moves-from-acting-to-directing/
+131,Escuela de Cine y Comunicación Mapuche del Aylla Rewe Budi,LEAD-20261031-0001,LEAD-20261031-0001-F1,Ñvmineyiñ Kimvn – Recogiendo el Conocimiento,2018,https://cinechile.cl/pelicula/nvmineyin-kimvn-recogiendo-el-conocimiento/
+132,Jorge Ángel Pérez,NEW-665eb6a5ccee,NEW-665eb6a5ccee-QM7c02fe,La piedra de los Binnigulaza,,https://archivo.municipiospuebla.mx/nota/2024-01-04/puebla/apoyar%C3%A1-imcine-cortometraje-de-cinco-se%C3%B1ores-en-ajalpan-puebla
+133,Leonardo Pakarati,DIR-0175,Q20261113-101-F1,Ŋa Hinarere (Los hijos),2026,https://cinetecanacional.gob.cl/eventos/wunelfe-tinku-hermano-sagrado-na-hinarere/
+134,Loretta Todd,DIR-0119,DIR-0119-F2,Tansi! Nehiyawetan,,https://directors.ca/directors/loretta-todd/
+135,Jonathan Elliott,NEW-2f13bf985833,NEW-2f13bf985833-F1,Her Water Drum,2018,https://www.jonbelliott.com/her-water-drum
+136,Emília Pewa’u Top’Tiro,Q20261114-84,Q20261114-84-F2,Tsõ Reptuna Ró Hã,,https://www.semana7.com.br/variedade/1-mostra-olhares-xavante-celebra-resistencia-e-protagonismo-do-cinema-indigena-em-barra-do-garcas/80921
+137,Francisco Huichaqueo Pérez,DIR-0170,Q20261114-96-F6,Gente Pájaro,2007,https://cinechile.cl/pelicula/gente-pajaro/
+138,Carlos Papá,NEW-60305ce10147,LEAD-20261014-001-WORK-01,LEVIATHAN Episode 8,2023,https://www.anitaekman.com/new-page-1
+139,Lisa Jackson,DIR-0118,Q20261114-66-F4,Reservation Soldiers,2007,https://sd57.libguides.com/iedc/videos
+140,Angie-Pepper O'Bomsawin,Q20261114-07,Q20261114-99-F1,Spirit Talker,2020,https://www.aptn.ca/programs/spirit-talker/
+141,ʻĀina Paikai,Q20261114-32,Q20261114-32-F1,Hawaiian Soul,2020,https://www.hawaiiansoulmovie.com/about
+142,Christen Marquez,Q20261114-51,Q20261114-51-F1,E Haku Inoa: To Weave a Name,2012,https://www.firelightmedia.tv/filmmakers/christen-marquez
+143,Bryson Chun,NEW-a102df026e33,Q20261114-93-F1,Ka Piko,2017,https://cinema.usc.edu/news/article.cfm?id=58348
+144,Lurline Wailana McGregor,Q20261114-58,Q20261114-58-F2,Reality Show: A Video Diary of Joy Harjo,,https://www.joyharjo.com/videos/joy-harjos-reality-show
+145,Erin Lau,NEW-4a265d56f02e,Q20261114-63-F2,Kuʻu ʻĀina Aloha - My Beloved Country,,https://www.hawaiiwomeninfilmmaking.org/reelwahine
+146,Kevin Lee Burton,Q20261115-401,Q20261115-401-F2,S.E.C.K.,2009,https://vtape.org/video?vi=7964
+147,Jobie Weetaluktuk,Q20261115-501,Q20261115-501-F2,Umiaq Skin Boat,2008,https://www.nativelynx.qc.ca/en/portraits-of-filmmakers/jobie-weetaluktuk/
+148,Dana Claxton,DIR-0081,Q20261115-770-F14,The Red Paper,1996,https://vtape.org/video?vi=4288
+149,Courtney Montour,DIR-0341,Q20261115-851-F3,Mohawk Ironworkers,2016,https://mediaspace.nfb.ca/epk/mary-two-axe-earley-i-am-indian-again/
+150,Diane Obomsawin,Q20261114-13,Q20261114-74-F8,I Like Girls (J’aime les filles),2016,https://collection.nfb.ca/film/i_like_girls
+151,Catherine Anne Martin,NEW-a9177b3cd41d,Q20261115-96-F5,Little Boy Who Lived with Muini'skw,2004,https://www.msvu.ca/academics/bachelor-of-arts-ba/womens-studies/nancys-chair-in-womens-studies/past-chairs/
+152,Kiyen Clavería Aguas,NEW-7f915b9c6e06,NEW-7f915b9c6e06-WORK-1,Tuwün,,https://kelluwunmedia.com/tuwun-3/
+153,Charine Pilar Gonzales,NEW-ed3c2611e1a6,NEW-ed3c2611e1a6-QM5f2a88,River Bank (Pō-Kehgeh),2023,https://www.sundance.org/blogs/meet-the-2024-sundance-institute-directors-screenwriters-and-native-lab-fellows/
+154,Escuela de Cine y Comunicación Mapuche del Aylla Rewe Budi,LEAD-20261031-0001,LEAD-20261031-0001-F3,Lafken ñi az,2016,https://miradanativa.org/pelicula/lafken-ni-az/
+155,Diane Obomsawin,Q20261114-13,Q20261114-74-F9,The Organ Eater,2019,https://canada-culture.org/en/event/diane-obomsawin/
+156,Finis Fox,Q20261115-951,Q20261115-951-F3,Tipped Off,1923,https://en.wikipedia.org/wiki/Tipped_Off_(1923_film)
+157,Mara Rocío Collinao,SAB2-20261014-27c2f0794ff0,SAB2-20261014-27c2f0794ff0-WORK-01,Neyen Mapu. El llamado del Lanín,2025,https://www.rtnweb.gob.ar/neyen-mapu/
+158,Merlane Tiriyó,LEAD-20261014-020,LEAD-20261014-020-WORK-01,Encantadas,2018,https://katahirine.org.br/ela/merlane-tiriyo/
+159,Myriam Landry,BETA-T1101-CAN-01,BETA-T1101-CAN-01-F1,W8linaktegw ta niona,2022,https://rpff.ca/2023/program/shorts-1/
+160,Ritchie Hemphill,NEW-642461aaa016,NEW-642461aaa016-WORK-1,Homelands,,https://iso-bea.ca/news-events/2025/04/10/iso-2024-25-production-recipients/
+161,Sandra Sunrising Osawa,DIR-0143,DIR-0143-W1031-4,Lighting the Seventh Fire,1995,https://en.wikipedia.org/wiki/Sandra_Osawa
+162,Tito Catacora,SAB2-20261014-a167facb5a9c,BETA30B-20261107-F10,Ch’allaña Uru,2014,https://festivaldelima.com/2024/pelicula/los-indomables/
+163,Yacewara Pataxó,LEAD-20261014-006,LEAD-20261014-006-WORK-01,Fala Sincera,2023,https://katahirine.org.br/ela/yacewara-pataxo/
+164,Ysaí Muñoz Bueno,SA50-20261014-fb0a064f4eff,SA50-20261014-fb0a064f4eff-WORK-01,El Buen Vivir — El buen gobierno propio (season 2),,https://daupara.com/perfil/ysai-munoz-bueno
+165,Natália Tupi,LEAD-20261014-016,LEAD-20261014-016-QM0c12db,Re-Existências,2026,https://museudasculturasindigenas.org.br/programacao/pre-estreia-do-programa-re-existencias-com-kena-marubo-fernando-beda-e-natalia-tupi/
+166,Yaasib Vázquez Colmenares,NEW-bc62a137e896,NEW-bc62a137e896-WORK-1,Yubán (Tierra viva),2011,https://sic.cultura.gob.mx/ficha.php?table=produccion_cine&table_id=4359
+167,Narriman Kauane,NEW-a0f4a440a4b9,NEW-a0f4a440a4b9-WORK-1,Wadja,2024,https://thulseaudiovisual.com.br/wadja/
+168,Peshawn Bread,NEW-f829db7cc228,NEW-f829db7cc228-F1,The Daily Life of Mistress Red,,https://nativemaxmagazine.com/peshawn-bread-mistress-red/
+169,Susan Avingaq,DIR-0152,DIR-0152-F1,Sol,,https://en.wikipedia.org/wiki/Susan_Avingaq
+170,Rory Crittenden,Q20261108-64,Q20261108-64-F1,Talking Stones: The Cherokee Syllabary Cave,2020,https://rorycrittenden.carrd.co/
+171,María Conchita Díaz López,QM-1249b8bc7b,QM-1249b8bc7b-M1,"8 venado, garra jaguar",2024,https://ntcd.mx/noticias-el-imcine-impulsa-inclusion-cineastas-indigenas-afrodescendientes-traves-ecamc-2022
+172,Paola Gabriela Quispe Quispe,LEAD-20261011-012,LEAD-20261011-012-QM3a5251,Cuando florezca el chuño,,https://awasqa.org/author/paolaquispe/
+173,Sterlin Harjo,DIR-0308,DIR-0308-F1,Reservation Dogs,2021,https://imaginenative.org/artists/sterlin-harjo/
+174,Samia Maldonado,Q20261114-21,Q20261114-21-F1,Mindalae,,https://cinemateca.casadelacultura.gob.ec/cgi-bin/koha/opac-detail.pl?biblionumber=2261&shelfbrowse_itemnumber=2273
+175,Miguel Hilari,DIR-0007,Q20261114-97-F1,Bocamina,2019,https://www.miguelhilari.com/films/bocamina
+176,Scott W. Kekama Amona,Q20261114-37,Q20261114-37-F1,"E Mālama Pono, Willy Boy",2022,https://www.piccom.org/programs/e-malama-pono-willy-boy
+177,Nāʻālehu Anthony,Q20261114-57,Q20261114-57-F1,Papa Mau: The Wayfinder,,https://www.piccom.org/programs/papa-mau-the-wayfinder
+178,Terril Calder,DIR-0155,Q20261115-218-F1,Canned Meat,2009,https://www.marfafilmfestival.com/2010-program
+179,Skawennati,Q20261115-301,Q20261115-301-F4,TimeTraveller™ Episode 04,,https://vimeo.com/24922796
+180,Skawennati,Q20261115-301,Q20261115-301-F16,"80 Minutes, 80 Movies, 80s Music",1999,https://www.cinemamoderne.com/en/films/details/film-pop-xox-wants-to-be-a-pop-star/
+181,Marjorie Beaucage,DIR-0126,Q20261115-408-F8,Our Living Treasures,1994,https://vtape.org/video?vi=2642
+182,Zacharias Kunuk,DIR-0165,Q20261115-650-F17,My Father's Land (Ataatama Nunanga),2014,https://vtape.org/artist?ai=1670
+183,Richard Story,Q20261115-853,Q20261115-853-F3,Echo Lake,2000,https://vtape.org/video?vi=5798
+184,Rhayne Vermette,DIR-0138,Q20261115-91-F5,Suzanne Ciani on Letterman,2017,https://mubi.com/fr/notebook/posts/an-impossible-being-rhayne-vermette-discusses-ste-anne
+185,Marie Clements,DIR-0124,Q20261115-98-F6,Looking at Edward Curtis in the Pacific Northwest,2018,https://www.femfilm.ca/film_search.php?film=clements-looking&lang=e
+186,Steven Thomas Davies,NEW-790b3156f35a,Q20261115-404-F2,Written In My Blood,2016,https://vtape.org/video?vi=8892
+187,Orgún Wagua,DIR-0254,DIR-0254-QM31a099,Burwa dii ebo (El viento y el agua),2008,https://ifnotusthenwho.me/who/orgun-wagua/
+188,Segundo Fuérez,NEW-df0d54c464f8,NEW-df0d54c464f8-F3,Wayta Sisagu: Flor de Clavel,2015,https://miradanativa.org/pelicula/wayta-sisagu-flor-de-clavel/
+189,Mariano Estrada,LEAD-20261031-0007,LEAD-20261031-0007-F1,Lo’Hil K’in (Fiesta de burla),1998,https://miradanativa.org/pelicula/lohil-kin-fiesta-de-burla/
+190,Sergio Brito Epinayú,DIR-0193,DIR-0193-F1,Origen y significado de la Mochila Wayuu,2020,https://miradanativa.org/pelicula/origen-y-significado-de-la-mochila-wayuu-2/
+191,Marjorie Beaucage,DIR-0126,Q20261115-408-F18,Returning to Spirit: A Residential School Reconciliation Program,,https://iportal.usask.ca/person/107325
