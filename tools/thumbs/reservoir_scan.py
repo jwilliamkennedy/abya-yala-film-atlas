@@ -5,6 +5,7 @@ import csv, hashlib, html, io, os, re, sys, unicodedata, urllib.parse
 from collections import Counter
 from concurrent.futures import ThreadPoolExecutor
 import requests
+from functools import lru_cache
 from bs4 import BeautifulSoup
 from PIL import Image, ImageDraw, ImageFont
 STOP=set("a an and are at as be by del de da do dos das di du el la las les los le of on the from in for with y con para por que una uno un film pelicula movie cinema cine filme documentary short feature production festival images picture image pic photo photograph foto fotografia thumbnail cover poster still frame media video title work official review id".split())
@@ -28,7 +29,7 @@ def plausible_page(title,url,soup):
  metas=' '.join(x.get('content','') for x in soup.select('meta[property="og:title"],meta[name="twitter:title"]'))
  strong=max(coverage(w,h),coverage(w,page_title),coverage(w,metas))>=.72
  dedicated=(strong and url_title_match(title,url)) or (
-  strong and bool(re.search(r'/(pelicula|films?|movie|videos?|programs?|obra|product|projects?|shorts?|works?)/|film_search\\.php|\\?vi=',url,re.I))
+  strong and bool(re.search(r'/(pelicula|films?|movie|videos?|programs?|obra|product|projects?|shorts?|works?)/|film_search\.php|\?vi=',url,re.I))
  )
  plain=soup.get_text(' ',strip=True)
  visible=coverage(w,plain)>=.6
@@ -73,22 +74,31 @@ def image_urls(base,soup,title):
   v=source.get('srcset',source.get('data-srcset',''))
   if v:push(v.split(',')[-1].strip().split()[0],source,typ="picture",weight=2)
  return sorted(((score,url,typ) for url,(score,typ) in opts.items()),reverse=True)[:14]
+@lru_cache(maxsize=1000)
+def fetch_page(url):
+ r=requests.get(url,headers=UA,timeout=16,allow_redirects=True)
+ r.raise_for_status()
+ if not ('html' in r.headers.get('content-type','text/html')):raise ValueError('non-html source')
+ return r.url,r.text
+@lru_cache(maxsize=1600)
+def fetch_image(url):
+ r=requests.get(url,headers=UA,timeout=13,allow_redirects=True)
+ r.raise_for_status()
+ return r.content
 def inspect(row):
  info=dict(row,check='',image_url='',image_page='',image_credit='',w='',h='',sha='',score='',kind='',reason='',alternate='')
  src=(row.get('film_source') or '').strip()
  if not src.startswith('http'):info['check']='no film page';return info,None
  try:
-  res=requests.get(src,headers=UA,timeout=16,allow_redirects=True)
-  res.raise_for_status()
-  if not ('html' in res.headers.get('content-type','text/html')):raise ValueError('non-html source')
-  soup=BeautifulSoup(res.text,'html.parser')
-  dedicated,found=plausible_page(row.get('title',''),res.url,soup)
+  base,page_text=fetch_page(src)
+  soup=BeautifulSoup(page_text,'html.parser')
+  dedicated,found=plausible_page(row.get('title',''),base,soup)
   if not found:raise ValueError('film title absent')
   text=signature(soup.get_text(' ',strip=True))
   who=terms(row.get('filmmaker',''))
   last=who[-1] if who else ''
   if last and last not in text:raise ValueError('director not named')
-  options=image_urls(res.url,soup,row['title'])
+  options=image_urls(base,soup,row['title'])
   if not options:raise ValueError('no image candidates')
   # Pages about multiple films require image-level title/caption matching.
   candidates=[(score,url,typ) for score,url,typ in options if (dedicated and score>=-8) or (not dedicated and score>=26)]
@@ -99,17 +109,16 @@ def inspect(row):
   for score,url,typ in candidates[:8]:
    if not dedicated and score<26:continue
    try:
-    imr=requests.get(url,headers=UA,timeout=13,allow_redirects=True)
-    imr.raise_for_status()
-    im=Image.open(io.BytesIO(imr.content));im.load()
+    imgbytes=fetch_image(url)
+    im=Image.open(io.BytesIO(imgbytes));im.load()
     if im.width<320 or im.height<180 or im.width/im.height>4 or im.width/im.height<.27:continue
     if im.entropy()<2.0:continue
-    foundim.append((score,url,typ,im,imr.content))
+    foundim.append((score,url,typ,im,imgbytes))
     if len(foundim)>=2:break
    except Exception:continue
   if not foundim:raise ValueError('image failed or undersized')
   score,url,typ,im,blob=foundim[0]
-  info.update(check='candidate',image_url=url,image_page=res.url,image_credit=urllib.parse.urlsplit(res.url).hostname or '',w=str(im.width),h=str(im.height),sha=hashlib.sha1(blob).hexdigest()[:15],score=str(score),kind=typ,reason=('dedicated film page' if dedicated else 'title-linked image on shared page'),alternate=foundim[1][1] if len(foundim)>1 else '')
+  info.update(check='candidate',image_url=url,image_page=base,image_credit=urllib.parse.urlsplit(res.url).hostname or '',w=str(im.width),h=str(im.height),sha=hashlib.sha1(blob).hexdigest()[:15],score=str(score),kind=typ,reason=('dedicated film page' if dedicated else 'title-linked image on shared page'),alternate=foundim[1][1] if len(foundim)>1 else '')
   return info,im.convert('RGB')
  except Exception as e:
   info['check']='held';info['reason']=str(e)[:110];return info,None
