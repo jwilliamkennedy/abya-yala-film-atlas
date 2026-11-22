@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - 'tools/atlas/check.py'
+      - 'tools/atlas/auto_accept.py'
       - 'tools/atlas/schema.py'
       - 'tools/atlas/test_check_validation.py'
       - '.github/workflows/atlas-validation-tests.yml'
