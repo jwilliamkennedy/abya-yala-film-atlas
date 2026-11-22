@@ -2,8 +2,8 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-22",
  "license": "See data.html",
- "films_on_public_map": 2380,
- "film_entries": 2402,
+ "films_on_public_map": 2420,
+ "film_entries": 2442,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -28888,6 +28888,10 @@
     {
      "id": "DIR-0404",
      "name": "Sipi Flamand"
+    },
+    {
+     "id": "QW-1ba11ee9f7",
+     "name": "Élisa Moar"
     }
    ],
    "languages": [],
@@ -31567,6 +31571,14 @@
     {
      "id": "NEW-3cea8585a05f",
      "name": "Raymond Caplin"
+    },
+    {
+     "id": "QM-c50af7e035",
+     "name": "Christopher Grégoire-Gabriel"
+    },
+    {
+     "id": "NEW-7a0ae4211bd9",
+     "name": "Craig Commanda"
     }
    ],
    "languages": [],
@@ -41785,6 +41797,150 @@
    "form": "Animation",
    "length": null
   },
+  "Q20261121-101-F1": {
+   "title": "NGÜRU KA WILLIÑ (FOX AND OTTER)",
+   "year": 2022,
+   "makers": [
+    {
+     "id": "Q20261114-73",
+     "name": "Seba Calfuqueo"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": null
+  },
+  "Q20261121-101-F2": {
+   "title": "TRAY TRAY KO",
+   "year": 2022,
+   "makers": [
+    {
+     "id": "Q20261114-73",
+     "name": "Seba Calfuqueo"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Hybrid",
+   "length": null
+  },
+  "Q20261121-101-F3": {
+   "title": "Las quilas (The Quilas)",
+   "year": 2021,
+   "makers": [
+    {
+     "id": "Q20261114-73",
+     "name": "Seba Calfuqueo"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Hybrid",
+   "length": null
+  },
+  "Q20261121-101-F4": {
+   "title": "Kowkülen (Liquid Being)",
+   "year": 2020,
+   "makers": [
+    {
+     "id": "Q20261114-73",
+     "name": "Seba Calfuqueo"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Experimental",
+   "length": null
+  },
+  "Q20261121-101-F5": {
+   "title": "Buscando a Marcela Calfuqueo",
+   "year": 2018,
+   "makers": [
+    {
+     "id": "Q20261114-73",
+     "name": "Seba Calfuqueo"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Experimental",
+   "length": null
+  },
+  "Q20261121-101-F6": {
+   "title": "Welu Kumplipe",
+   "year": 2018,
+   "makers": [
+    {
+     "id": "Q20261114-73",
+     "name": "Seba Calfuqueo"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Hybrid",
+   "length": null
+  },
+  "Q20261121-101-F7": {
+   "title": "Nunca serás un Weye (You Will Never Be a Weye)",
+   "year": 2015,
+   "makers": [
+    {
+     "id": "Q20261114-73",
+     "name": "Seba Calfuqueo"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Hybrid",
+   "length": null
+  },
+  "Q20261121-101-F8": {
+   "title": "Alka Domo",
+   "year": 2017,
+   "makers": [
+    {
+     "id": "Q20261114-73",
+     "name": "Seba Calfuqueo"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Hybrid",
+   "length": null
+  },
+  "Q20261121-103-F1": {
+   "title": "Tantas veces apümngeiñ",
+   "year": 2016,
+   "makers": [
+    {
+     "id": "Q20261114-73",
+     "name": "Seba Calfuqueo"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Experimental",
+   "length": null
+  },
   "Q20261114-69-F1": {
    "title": "Ghost Food",
    "year": 2017,
@@ -45073,6 +45229,506 @@
    "families": [],
    "form": "Documentary",
    "length": "Short"
+  },
+  "QW-WAPI-V290774117": {
+   "title": "Among the forest",
+   "year": 2017,
+   "makers": [
+    {
+     "id": "QM-be1e434921",
+     "name": "Oqim Nicholas"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QW-WAPI-V577319145": {
+   "title": "Remnants",
+   "year": 2019,
+   "makers": [
+    {
+     "id": "QM-be1e434921",
+     "name": "Oqim Nicholas"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QW-WAPI-V234585079": {
+   "title": "Beautiful",
+   "year": 2017,
+   "makers": [
+    {
+     "id": "QM-ad90326a2e",
+     "name": "Kesley Arrow Saulis"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QW-WAPI-V363330811": {
+   "title": "Home",
+   "year": 2019,
+   "makers": [
+    {
+     "id": "QM-ad90326a2e",
+     "name": "Kesley Arrow Saulis"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QW-WAPI-V252562901": {
+   "title": "Idle No More",
+   "year": 2017,
+   "makers": [
+    {
+     "id": "QM-b53bfdf7c7",
+     "name": "Ginger Cote"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QW-WAPI-V193430709": {
+   "title": "Heather's Words",
+   "year": 2016,
+   "makers": [
+    {
+     "id": "QM-b53bfdf7c7",
+     "name": "Ginger Cote"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QW-WAPI-V231424903": {
+   "title": "Mitshishuss",
+   "year": 2017,
+   "makers": [
+    {
+     "id": "QM-c50af7e035",
+     "name": "Christopher Grégoire-Gabriel"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QW-WAPI-V189786645": {
+   "title": "Down the Rabbit Hole",
+   "year": 2016,
+   "makers": [
+    {
+     "id": "QM-c50af7e035",
+     "name": "Christopher Grégoire-Gabriel"
+    },
+    {
+     "id": "NEW-7a0ae4211bd9",
+     "name": "Craig Commanda"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QW-WAPI-V227204563": {
+   "title": "Ne ka mista ishpentenemek",
+   "year": 2017,
+   "makers": [
+    {
+     "id": "QM-53928afbd3",
+     "name": "Jean-Charles Piétacho"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QW-WAPI-V176882631": {
+   "title": "ESHE MUNUATEMAN",
+   "year": 2016,
+   "makers": [
+    {
+     "id": "QM-53928afbd3",
+     "name": "Jean-Charles Piétacho"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QW-WAPI-V220343957": {
+   "title": "Ocimokw!! (Allez-vous-en!!)",
+   "year": 2017,
+   "makers": [
+    {
+     "id": "QM-77f51e7d60",
+     "name": "Mathis Ottawa"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QW-WAPI-V181966100": {
+   "title": "PONSKIWON",
+   "year": 2016,
+   "makers": [
+    {
+     "id": "QM-77f51e7d60",
+     "name": "Mathis Ottawa"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QW-WAPI-V180204147": {
+   "title": "BATAILLES",
+   "year": 2016,
+   "makers": [
+    {
+     "id": "NEW-45305b12eace",
+     "name": "Karen Pinette Fontaine"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QW-WAPI-V189786503": {
+   "title": "Un matin",
+   "year": 2016,
+   "makers": [
+    {
+     "id": "NEW-45305b12eace",
+     "name": "Karen Pinette Fontaine"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QW-WAPI-V277532984": {
+   "title": "Dernier train",
+   "year": 2018,
+   "makers": [
+    {
+     "id": "NEW-45305b12eace",
+     "name": "Karen Pinette Fontaine"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QW-WAPI-Yo7CoWfWvrUQ": {
+   "title": "Langue Leçons",
+   "year": 2019,
+   "makers": [
+    {
+     "id": "NEW-45305b12eace",
+     "name": "Karen Pinette Fontaine"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QW-WAPI-V185493399": {
+   "title": "Macrocosmic",
+   "year": 2016,
+   "makers": [
+    {
+     "id": "NEW-7a0ae4211bd9",
+     "name": "Craig Commanda"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QW-WAPI-Y2i_I0McYhg8": {
+   "title": "Full Circle",
+   "year": 2019,
+   "makers": [
+    {
+     "id": "NEW-7a0ae4211bd9",
+     "name": "Craig Commanda"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QW-WAPI-V159385977": {
+   "title": "Kevin Papatie Panama",
+   "year": 2016,
+   "makers": [
+    {
+     "id": "DIR-0114",
+     "name": "Kevin Papatie"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QW-WAPI-V178395223": {
+   "title": "Trente-Cinq",
+   "year": 2016,
+   "makers": [
+    {
+     "id": "DIR-0114",
+     "name": "Kevin Papatie"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QW-WAPI-V158421063": {
+   "title": "KUPANISHKUEU",
+   "year": 2016,
+   "makers": [
+    {
+     "id": "QW-85e90677bb",
+     "name": "Mélodie Jourdain-Michel"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QW-WAPI-V201737391": {
+   "title": "Kuujjuaq",
+   "year": 2016,
+   "makers": [
+    {
+     "id": "QW-2647e1555f",
+     "name": "Sammy Gadbois"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QW-WAPI-V204019814": {
+   "title": "KUUJJUAQ HOCKEY",
+   "year": 2016,
+   "makers": [
+    {
+     "id": "QW-2647e1555f",
+     "name": "Sammy Gadbois"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QW-WAPI-V323281942": {
+   "title": "I CREATED MEMORIES",
+   "year": 2018,
+   "makers": [
+    {
+     "id": "QW-2647e1555f",
+     "name": "Sammy Gadbois"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QW-WAPI-V181966096": {
+   "title": "LETTRE À MON PASSÉ",
+   "year": 2016,
+   "makers": [
+    {
+     "id": "QW-5572d48ed7",
+     "name": "Mélina Quitich-Niquay"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QW-WAPI-V189787203": {
+   "title": "Onicka",
+   "year": 2016,
+   "makers": [
+    {
+     "id": "QW-5572d48ed7",
+     "name": "Mélina Quitich-Niquay"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QW-WAPI-V280785978": {
+   "title": "NOTCIMIK",
+   "year": 2018,
+   "makers": [
+    {
+     "id": "QW-5572d48ed7",
+     "name": "Mélina Quitich-Niquay"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QW-WAPI-YaI0b1METWms": {
+   "title": "Metaperotin",
+   "year": 2019,
+   "makers": [
+    {
+     "id": "QW-5572d48ed7",
+     "name": "Mélina Quitich-Niquay"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QW-WAPI-V161213916": {
+   "title": "NACIMIENTOS",
+   "year": 2016,
+   "makers": [
+    {
+     "id": "QW-8780df084b",
+     "name": "Analicia López"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QW-WAPI-V161213258": {
+   "title": "VIVIR CON LA TIERRA",
+   "year": 2016,
+   "makers": [
+    {
+     "id": "QW-8780df084b",
+     "name": "Analicia López"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QW-WAPI-V552937225": {
+   "title": "Pubertad",
+   "year": 2019,
+   "makers": [
+    {
+     "id": "QW-8780df084b",
+     "name": "Analicia López"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
   }
  }
 }
