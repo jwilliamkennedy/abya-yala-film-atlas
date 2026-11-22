@@ -2,8 +2,8 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-22",
  "license": "See data.html",
- "films_on_public_map": 2376,
- "film_entries": 2395,
+ "films_on_public_map": 2380,
+ "film_entries": 2402,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -25342,6 +25342,38 @@
    "form": null,
    "length": null
   },
+  "Q20261121-100-F1": {
+   "title": "Paktara",
+   "year": 2014,
+   "makers": [
+    {
+     "id": "SA50-20261014-50ce6a02e8f9",
+     "name": "Patricia Yallico"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
+  },
+  "Q20261121-100-F2": {
+   "title": "El rumor del ocaso",
+   "year": 2015,
+   "makers": [
+    {
+     "id": "SA50-20261014-50ce6a02e8f9",
+     "name": "Patricia Yallico"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
+  },
   "SA50-20261014-2c84e403308f-WORK-01": {
    "title": "Frecuencia Sinangoe",
    "year": 2022,
@@ -44475,6 +44507,22 @@
    "form": null,
    "length": null
   },
+  "Q20261121-06-F1": {
+   "title": "Cho Ukayib’al / Mirada profunda",
+   "year": 2019,
+   "makers": [
+    {
+     "id": "QM-28726b21cb",
+     "name": "Andrea Ixchíu"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
+  },
   "QM-4c97dec0cc-M1": {
    "title": "A 515 años",
    "year": 2007,
@@ -44956,6 +45004,70 @@
      "source": "https://www.kffk.de/filme/kehlkopfgesang-in-kangirsuk-throat-singing-in-kangirsuk/"
     }
    ],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261121-05-F1": {
+   "title": "Seres de niebla: Cristina Chiquín, fotoperiodista",
+   "year": 2018,
+   "makers": [
+    {
+     "id": "Q20261121-05",
+     "name": "Colectiva Lemow"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261121-05-F2": {
+   "title": "Seres de niebla: Aurora Chaj, cantautora",
+   "year": 2018,
+   "makers": [
+    {
+     "id": "Q20261121-05",
+     "name": "Colectiva Lemow"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261121-05-F3": {
+   "title": "Seres de niebla: Galilea Monroy, activista y defensora de los derechos humanos LGTBIQ+",
+   "year": 2018,
+   "makers": [
+    {
+     "id": "Q20261121-05",
+     "name": "Colectiva Lemow"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261121-05-F4": {
+   "title": "Seres de niebla: Gilberta Jiménez, activista y defensora de la tierra",
+   "year": 2018,
+   "makers": [
+    {
+     "id": "Q20261121-05",
+     "name": "Colectiva Lemow"
+    }
+   ],
+   "languages": [],
    "themes": [],
    "primary_theme": null,
    "families": [],
