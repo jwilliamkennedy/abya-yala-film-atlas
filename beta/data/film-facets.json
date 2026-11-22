@@ -2,8 +2,8 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-22",
  "license": "See data.html",
- "films_on_public_map": 2422,
- "film_entries": 2444,
+ "films_on_public_map": 2425,
+ "film_entries": 2447,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -25372,6 +25372,54 @@
    "primary_theme": null,
    "families": [],
    "form": null,
+   "length": "Short"
+  },
+  "Q20261121-130-F1": {
+   "title": "Ñukanchikpa (De nosotras)",
+   "year": 2016,
+   "makers": [
+    {
+     "id": "SA50-20261014-50ce6a02e8f9",
+     "name": "Patricia Yallico"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Experimental",
+   "length": "Short"
+  },
+  "Q20261121-130-F2": {
+   "title": "Jaylli",
+   "year": 2013,
+   "makers": [
+    {
+     "id": "SA50-20261014-50ce6a02e8f9",
+     "name": "Patricia Yallico"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261121-130-F3": {
+   "title": "Munay",
+   "year": 2012,
+   "makers": [
+    {
+     "id": "SA50-20261014-50ce6a02e8f9",
+     "name": "Patricia Yallico"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
    "length": "Short"
   },
   "SA50-20261014-2c84e403308f-WORK-01": {
