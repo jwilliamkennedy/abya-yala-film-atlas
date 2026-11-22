@@ -2117,6 +2117,10 @@ Q20261112-22-F2,Territorios y Voces Indígenas,2021,length,Series,,https://clacp
 Q20261112-22-F3,Somos Originarios,2018,form,Documentary,,https://clacpifilm.org/2023/2023esp.html,"normalised from the recorded form ""Documentary series"""
 Q20261112-22-F3,Somos Originarios,2018,length,Series,,https://clacpifilm.org/2023/2023esp.html,"normalised from the recorded form ""Documentary series"""
 Q20261112-22-F4,Ya'ja,2018,form,Hybrid,,https://clacpifilm.org/2023/2023esp.html,"normalised from the recorded form ""Docufiction"""
+Q20261121-93-F1,"Nasa Yuwe, la lengua madre",2019,theme,Linguistic Preservation,Knowledge and Continuity,https://aicacolectivo.com/nasa-yuwe-la-lengua-madre,tagged from a published synopsis; primary theme
+Q20261121-93-F1,"Nasa Yuwe, la lengua madre",2019,theme,Urban Indigeneity,Lives and Relations,https://aicacolectivo.com/nasa-yuwe-la-lengua-madre,tagged from a published synopsis
+Q20261121-93-F1,"Nasa Yuwe, la lengua madre",2019,form,Documentary,,https://aicacolectivo.com/nasa-yuwe-la-lengua-madre,from the published synopsis
+Q20261121-93-F1,"Nasa Yuwe, la lengua madre",2019,length,Short,,https://aicacolectivo.com/nasa-yuwe-la-lengua-madre,from the published synopsis
 Q20261112-10-F2,"Hampi Mama, Mujeres Medicina",2022,language,Spanish,stan1288,https://daupara.com/obra/hampi-mama-mujeres-medicina-,recorded with the film
 Q20261112-10-F2,"Hampi Mama, Mujeres Medicina",2022,form,Documentary,,https://daupara.com/obra/hampi-mama-mujeres-medicina-,"normalised from the recorded form ""Documentary web-series episode"""
 Q20261112-10-F2,"Hampi Mama, Mujeres Medicina",2022,length,Series,,https://daupara.com/obra/hampi-mama-mujeres-medicina-,"normalised from the recorded form ""Documentary web-series episode"""
@@ -3188,6 +3192,7 @@ Q20261114-65-F1,Beach Heart,2022,form,Animation,,https://www.inuitartfoundation.
 Q20261114-65-F1,Beach Heart,2022,length,Short,,https://www.inuitartfoundation.org/inuit-art-quarterly/iaq-online/9-inuit-and-sami-directed-films-to-catch-at-imaginenative,"normalised from the recorded form ""Experimental animated short"""
 Q20261114-65-F2,Kablunât: Legend of the Origin of the White People,2016,form,Animation,,https://shiftingforms.ca/,"normalised from the recorded form ""Experimental animated short"""
 Q20261114-65-F2,Kablunât: Legend of the Origin of the White People,2016,length,Short,,https://shiftingforms.ca/,"normalised from the recorded form ""Experimental animated short"""
+Q20261121-404-F1,Ikuma Siku,2005,form,Animation,,https://repertoire.cinema.mcc.gouv.qc.ca/director/glenn-gear/,"normalised from the recorded form ""Animation"""
 Q20261114-33-F1,Warmin Arupa: Barranderas – Trabajo por Alimentos,1993,form,Documentary,,https://americanindian.si.edu/sites/1/files/pdf/festival/1995.pdf,"normalised from the recorded form ""News / documentary short"""
 Q20261114-33-F1,Warmin Arupa: Barranderas – Trabajo por Alimentos,1993,length,Short,,https://americanindian.si.edu/sites/1/files/pdf/festival/1995.pdf,"normalised from the recorded form ""News / documentary short"""
 Q20261114-30-F1,Cleaning’s a Cakewalk,2024,form,Fiction,,https://santafefilmfestival.com/index/film/cleanings-a-cakewalk/,"normalised from the recorded form ""Live-action narrative short"""
@@ -3322,7 +3327,17 @@ Q20261121-05-F4,"Seres de niebla: Gilberta Jiménez, activista y defensora de la
 Q20261121-05-F4,"Seres de niebla: Gilberta Jiménez, activista y defensora de la tierra",2018,length,Short,,https://agendaculturalguatemala.wordpress.com/2021/03/01/cine-guatemala-directoras/,"normalised from the recorded form ""Documentary short / video portrait"""
 Q20261121-105-F1,Kokom,2014,form,Experimental,,https://www.panorama-cinema.com/V2/article.php?categorie=5&id=1028&imprimer=,"normalised from the recorded form ""Experimental short"""
 Q20261121-105-F1,Kokom,2014,length,Short,,https://www.panorama-cinema.com/V2/article.php?categorie=5&id=1028&imprimer=,"normalised from the recorded form ""Experimental short"""
+Q20261121-105-F2,Entre l’arbre et l’écorce,2008,form,Experimental,,https://ctvm.info/12-courts-metrages-produits-par-wapikoni-mobile-pour-cloturer-la-2eme-edition-de-cine-vert/,"normalised from the recorded form ""Experimental short"""
+Q20261121-105-F2,Entre l’arbre et l’écorce,2008,length,Short,,https://ctvm.info/12-courts-metrages-produits-par-wapikoni-mobile-pour-cloturer-la-2eme-edition-de-cine-vert/,"normalised from the recorded form ""Experimental short"""
 Q20261121-104-F1,WAPIKONI (Fleur),2017,form,Experimental,,https://vimeo.com/220353064,"normalised from the recorded form ""Experimental short"""
 Q20261121-104-F1,WAPIKONI (Fleur),2017,length,Short,,https://vimeo.com/220353064,"normalised from the recorded form ""Experimental short"""
 Q20261121-185-F1,Chemu am Mapuche pigeiñ (¿Por qué nos llamamos Mapuche?),2001,form,Documentary,,https://cinechile.cl/pelicula/chemu-am-mapuche-pigein-por-que-nos-llamamos-mapuche/,"normalised from the recorded form ""Documentary short"""
 Q20261121-185-F1,Chemu am Mapuche pigeiñ (¿Por qué nos llamamos Mapuche?),2001,length,Short,,https://cinechile.cl/pelicula/chemu-am-mapuche-pigein-por-que-nos-llamamos-mapuche/,"normalised from the recorded form ""Documentary short"""
+QM-8fbf0f0978-M1,Jisk’a Pacha (Pequeño Tiempo),2020,language,Aymara,nucl1667,https://forestry.ubc.ca/folil-trafun-lunch-showcase-sept-22/,recorded with the film
+QM-8fbf0f0978-M1,Jisk’a Pacha (Pequeño Tiempo),2020,form,Fiction,,https://forestry.ubc.ca/folil-trafun-lunch-showcase-sept-22/,"normalised from the recorded form ""Fiction"""
+QM-44e78904a4-M1,Ãjãlí Numã: o jogo de cabeça dos Manoki e Mỹky,2023,theme,Women and Gender,Lives and Relations,https://lisa.fflch.usp.br/node/13020,tagged from a published synopsis; primary theme
+QM-44e78904a4-M1,Ãjãlí Numã: o jogo de cabeça dos Manoki e Mỹky,2023,form,Documentary,,https://lisa.fflch.usp.br/node/13020,from the published synopsis
+QM-44e78904a4-M1,Ãjãlí Numã: o jogo de cabeça dos Manoki e Mỹky,2023,length,Feature,,https://lisa.fflch.usp.br/node/13020,from the published synopsis
+QM-61cf19b25a-M1,Levante Pela Terra,2022,theme,Land Defense,Land and Environment,https://ecofalante.org.br/filme/levante-pela-terra,tagged from a published synopsis; primary theme
+QM-61cf19b25a-M1,Levante Pela Terra,2022,form,Documentary,,https://ecofalante.org.br/filme/levante-pela-terra,from the published synopsis
+QM-61cf19b25a-M1,Levante Pela Terra,2022,length,Short,,https://ecofalante.org.br/filme/levante-pela-terra,from the published synopsis

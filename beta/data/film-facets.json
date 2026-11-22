@@ -2,8 +2,8 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-22",
  "license": "See data.html",
- "films_on_public_map": 2447,
- "film_entries": 2469,
+ "films_on_public_map": 2461,
+ "film_entries": 2484,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -453,7 +453,7 @@
     "match": "group",
     "indigenous": "yes",
     "note": "Credits name Aymara without a variety; aym is the ISO macrolanguage code",
-    "films": 4
+    "films": 5
    },
    {
     "label": "Mapudungun",
@@ -12591,6 +12591,22 @@
    "primary_theme": null,
    "families": [],
    "form": "Fiction",
+   "length": null
+  },
+  "DIR-0186-QM059d4c": {
+   "title": "Aipa’a – Yem",
+   "year": 2022,
+   "makers": [
+    {
+     "id": "DIR-0186",
+     "name": "Luis Tróchez Tunubalá"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
    "length": null
   },
   "FILM-0134": {
@@ -25288,6 +25304,22 @@
    "form": null,
    "length": null
   },
+  "Q20261121-77-F1": {
+   "title": "Kuwyry kango ã me toro – A Festa da Mandioca",
+   "year": 2016,
+   "makers": [
+    {
+     "id": "SA50-20261014-4b9d7e4d7903",
+     "name": "Bepunu Kayapó"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "SA50-20261014-4f512b86ac9a-WORK-01": {
    "title": "Mokuka karõ",
    "year": 2023,
@@ -26162,6 +26194,28 @@
    "families": [],
    "form": null,
    "length": null
+  },
+  "Q20261121-93-F1": {
+   "title": "Nasa Yuwe, la lengua madre",
+   "year": 2019,
+   "makers": [
+    {
+     "id": "SA50-20261014-5ff80cdd44af",
+     "name": "Yaid Ferley Bolaños Díaz"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Linguistic Preservation",
+    "Urban Indigeneity"
+   ],
+   "primary_theme": "Linguistic Preservation",
+   "families": [
+    "Knowledge and Continuity",
+    "Lives and Relations"
+   ],
+   "form": "Documentary",
+   "length": "Short"
   },
   "SA50-20261014-e399048bf7e6-WORK-01": {
    "title": "Escuchar la palabra de los Mayores",
@@ -29115,6 +29169,22 @@
    "form": null,
    "length": null
   },
+  "Q20261121-80-F1": {
+   "title": "Coyote's Canoe",
+   "year": 2020,
+   "makers": [
+    {
+     "id": "DIR-0398",
+     "name": "Gloria Morgan"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "WAP-2026-NEW399": {
    "title": "Ulu",
    "year": 2018,
@@ -31941,6 +32011,10 @@
     {
      "id": "NEW-7a0ae4211bd9",
      "name": "Craig Commanda"
+    },
+    {
+     "id": "QW-76fc9bb018",
+     "name": "Naomi Condo"
     }
    ],
    "languages": [],
@@ -32472,6 +32546,22 @@
   "NEW-8c72a5a58254-WORK-1": {
    "title": "Kaashama, la course à l'identité",
    "year": 1993,
+   "makers": [
+    {
+     "id": "NEW-8c72a5a58254",
+     "name": "Maurice Tiouka"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "NEW-8c72a5a58254-WORK-2": {
+   "title": "Yasalgon",
+   "year": 1986,
    "makers": [
     {
      "id": "NEW-8c72a5a58254",
@@ -42489,6 +42579,22 @@
    "form": "Animation",
    "length": "Short"
   },
+  "Q20261121-404-F1": {
+   "title": "Ikuma Siku",
+   "year": 2005,
+   "makers": [
+    {
+     "id": "Q20261114-65",
+     "name": "Glenn Gear"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": null
+  },
   "Q20261114-33-F1": {
    "title": "Warmin Arupa: Barranderas – Trabajo por Alimentos",
    "year": 1993,
@@ -45933,6 +46039,10 @@
     {
      "id": "NEW-7a0ae4211bd9",
      "name": "Craig Commanda"
+    },
+    {
+     "id": "QW-76fc9bb018",
+     "name": "Naomi Condo"
     }
    ],
    "languages": [],
@@ -45977,6 +46087,22 @@
   "Q20261121-105-F1": {
    "title": "Kokom",
    "year": 2014,
+   "makers": [
+    {
+     "id": "DIR-0114",
+     "name": "Kevin Papatie"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Experimental",
+   "length": "Short"
+  },
+  "Q20261121-105-F2": {
+   "title": "Entre l’arbre et l’écorce",
+   "year": 2008,
    "makers": [
     {
      "id": "DIR-0114",
@@ -46197,6 +46323,152 @@
    "families": [],
    "form": "Documentary",
    "length": "Short"
+  },
+  "QM-8fbf0f0978-M1": {
+   "title": "Jisk’a Pacha (Pequeño Tiempo)",
+   "year": 2020,
+   "makers": [
+    {
+     "id": "QM-8fbf0f0978",
+     "name": "Jhonny Marino"
+    }
+   ],
+   "languages": [
+    {
+     "label": "Aymara",
+     "as_credited": "Aymara",
+     "glottocode": "nucl1667",
+     "iso639_3": "aym",
+     "match": "group",
+     "indigenous": true,
+     "source": "https://forestry.ubc.ca/folil-trafun-lunch-showcase-sept-22/"
+    }
+   ],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": null
+  },
+  "QM-44e78904a4-M1": {
+   "title": "Ãjãlí Numã: o jogo de cabeça dos Manoki e Mỹky",
+   "year": 2023,
+   "makers": [
+    {
+     "id": "QM-44e78904a4",
+     "name": "Tipuici Manoki"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Women and Gender"
+   ],
+   "primary_theme": "Women and Gender",
+   "families": [
+    "Lives and Relations"
+   ],
+   "form": "Documentary",
+   "length": "Feature"
+  },
+  "QM-61cf19b25a-M1": {
+   "title": "Levante Pela Terra",
+   "year": 2022,
+   "makers": [
+    {
+     "id": "QM-61cf19b25a",
+     "name": "Marcelo Cuhexê Krahô"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Land Defense"
+   ],
+   "primary_theme": "Land Defense",
+   "families": [
+    "Land and Environment"
+   ],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "QW-WAPI-V237674919": {
+   "title": "Bag on My Head",
+   "year": 2017,
+   "makers": [
+    {
+     "id": "QM-ae131bb780",
+     "name": "Keith Whiteduck"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QW-WAPI-V174866418": {
+   "title": "Commanduck",
+   "year": 2016,
+   "makers": [
+    {
+     "id": "QM-ae131bb780",
+     "name": "Keith Whiteduck"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QW-WAPI-V233502621": {
+   "title": "Poden (Allumer le feu)",
+   "year": 2017,
+   "makers": [
+    {
+     "id": "QM-1d36cb0606",
+     "name": "Donald Wabanonik"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QW-WAPI-V280363534": {
+   "title": "Pijiw",
+   "year": 2018,
+   "makers": [
+    {
+     "id": "QM-1d36cb0606",
+     "name": "Donald Wabanonik"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QW-WAPI-V179948790": {
+   "title": "I Am l'NU",
+   "year": 2016,
+   "makers": [
+    {
+     "id": "QW-76fc9bb018",
+     "name": "Naomi Condo"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
   }
  }
 }
