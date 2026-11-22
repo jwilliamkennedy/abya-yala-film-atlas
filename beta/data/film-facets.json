@@ -2,8 +2,8 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-22",
  "license": "See data.html",
- "films_on_public_map": 2552,
- "film_entries": 2568,
+ "films_on_public_map": 2586,
+ "film_entries": 2600,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -5244,6 +5244,10 @@
     {
      "id": "DIR-0083",
      "name": "Darlene Naponse"
+    },
+    {
+     "id": "Q20261122-128",
+     "name": "Jamie Lee Reardon"
     }
    ],
    "languages": [],
@@ -31860,6 +31864,14 @@
     {
      "id": "NEW-3277b4b6fce3",
      "name": "Dawn Lavell-Harvard"
+    },
+    {
+     "id": "Q20261122-102",
+     "name": "Jeannette Corbiere Lavell"
+    },
+    {
+     "id": "Q20261122-103",
+     "name": "Pam Palmater"
     }
    ],
    "languages": [],
@@ -32590,6 +32602,10 @@
     {
      "id": "NEW-642461aaa016",
      "name": "Ritchie Hemphill"
+    },
+    {
+     "id": "NEW-8b4953f2fb96",
+     "name": "Colleen Hemphill"
     }
    ],
    "languages": [],
@@ -42013,6 +42029,10 @@
     {
      "id": "Q20261114-06",
      "name": "Germaine Arnaktauyok"
+    },
+    {
+     "id": "Q20261122-129",
+     "name": "Amber Fradsham"
     }
    ],
    "languages": [],
@@ -48129,6 +48149,614 @@
    "primary_theme": null,
    "families": [],
    "form": null,
+   "length": null
+  },
+  "NEW-05ae6e0810d1-F1": {
+   "title": "Baie James",
+   "year": null,
+   "makers": [
+    {
+     "id": "NEW-05ae6e0810d1",
+     "name": "Ernest Webb"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "NEW-05ae6e0810d1-F2": {
+   "title": "Reclaim My Skin",
+   "year": null,
+   "makers": [
+    {
+     "id": "NEW-05ae6e0810d1",
+     "name": "Ernest Webb"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "NEW-05ae6e0810d1-F3": {
+   "title": "In the Name of Science",
+   "year": null,
+   "makers": [
+    {
+     "id": "NEW-05ae6e0810d1",
+     "name": "Ernest Webb"
+    },
+    {
+     "id": "Q20261122-123",
+     "name": "Brittany LeBorgne"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "NEW-a8dd13433f82-F1": {
+   "title": "ETTHÉN / along the caribou fence",
+   "year": null,
+   "makers": [
+    {
+     "id": "NEW-a8dd13433f82",
+     "name": "Takaiya Blaney"
+    },
+    {
+     "id": "NEW-559f0b940da7",
+     "name": "Victoria Redsun"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": null
+  },
+  "NEW-eadaecaac7e7-F1": {
+   "title": "Smudge The Blades",
+   "year": null,
+   "makers": [
+    {
+     "id": "NEW-eadaecaac7e7",
+     "name": "Dylan Morin"
+    },
+    {
+     "id": "NEW-b684ae51b534",
+     "name": "Hayley Morin"
+    },
+    {
+     "id": "Q20261122-100",
+     "name": "Joshua Jackson"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": null
+  },
+  "NEW-b684ae51b534-F2": {
+   "title": "Under The Arbor",
+   "year": null,
+   "makers": [
+    {
+     "id": "NEW-b684ae51b534",
+     "name": "Hayley Morin"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "Q20261122-101-F1": {
+   "title": "Turtle Island Tap",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261122-101",
+     "name": "Ehren Thomas"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "NEW-04763136c133-F1": {
+   "title": "Everlasting",
+   "year": null,
+   "makers": [
+    {
+     "id": "NEW-04763136c133",
+     "name": "Amanda Lickers"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "NEW-5f6b8e7166f7-F1": {
+   "title": "Unremembered",
+   "year": null,
+   "makers": [
+    {
+     "id": "NEW-5f6b8e7166f7",
+     "name": "Ryan R. Black"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": null
+  },
+  "Q20261122-104-F1": {
+   "title": "Born Warriors",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261122-104",
+     "name": "Sam Karney"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "Q20261122-104-F2": {
+   "title": "Red River Gold Season 2",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261122-104",
+     "name": "Sam Karney"
+    },
+    {
+     "id": "NEW-515490cd69b8",
+     "name": "Doug Cuthand"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "Q20261122-105-F1": {
+   "title": "Chums Iii",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261122-105",
+     "name": "Eric Jackson"
+    },
+    {
+     "id": "Q20261122-106",
+     "name": "Justina Neepin"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": null
+  },
+  "Q20261122-106-F2": {
+   "title": "Taken Season Five",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261122-106",
+     "name": "Justina Neepin"
+    },
+    {
+     "id": "Q20261122-116",
+     "name": "Dinae Robinson"
+    },
+    {
+     "id": "Q20261122-117",
+     "name": "Ivana Yellowback"
+    },
+    {
+     "id": "Q20261122-118",
+     "name": "Jessica Landry"
+    },
+    {
+     "id": "NEW-76e65370c0d7",
+     "name": "Lisa Meeches"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "Q20261122-107-F1": {
+   "title": "Coldspotters: Westcoast Most Haunted",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261122-107",
+     "name": "Mike Gosselin"
+    },
+    {
+     "id": "Q20261122-108",
+     "name": "Shirley McLean"
+    },
+    {
+     "id": "Q20261122-109",
+     "name": "Tania Koenig-Gauchier"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "NEW-ca8eb43b4d92-F1": {
+   "title": "Counting Coup (Northland Tales)",
+   "year": null,
+   "makers": [
+    {
+     "id": "NEW-ca8eb43b4d92",
+     "name": "Gitz Crazyboy"
+    },
+    {
+     "id": "NEW-24be25be6429",
+     "name": "Ryan Moccasin"
+    },
+    {
+     "id": "NEW-da8fa380aeff",
+     "name": "Tito Ybarra"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "NEW-669e4ab27168-F1": {
+   "title": "Guardians Of The Land",
+   "year": null,
+   "makers": [
+    {
+     "id": "NEW-669e4ab27168",
+     "name": "Alexandre Bacon"
+    },
+    {
+     "id": "NEW-eed2c3977423",
+     "name": "Brad Gros-Louis"
+    },
+    {
+     "id": "Q20261122-110",
+     "name": "Florent Vollant"
+    },
+    {
+     "id": "Q20261122-111",
+     "name": "Olivia Ike"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "NEW-eed2c3977423-F2": {
+   "title": "Nish",
+   "year": null,
+   "makers": [
+    {
+     "id": "NEW-eed2c3977423",
+     "name": "Brad Gros-Louis"
+    },
+    {
+     "id": "NEW-eee787badfa3",
+     "name": "Isabelle Picard"
+    },
+    {
+     "id": "Q20261122-114",
+     "name": "Julie O’Bomsawin"
+    },
+    {
+     "id": "Q20261122-115",
+     "name": "Menahan O’Bomsawin"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": null
+  },
+  "Q20261122-112-F1": {
+   "title": "Kiiq!",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261122-112",
+     "name": "Jaypeetee Arnakak"
+    },
+    {
+     "id": "Q20261122-113",
+     "name": "Nadia Sammurtok"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": null
+  },
+  "Q20261122-112-F2": {
+   "title": "Uqalimaaqatigiikta",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261122-112",
+     "name": "Jaypeetee Arnakak"
+    },
+    {
+     "id": "Q20261114-08",
+     "name": "Monica Ittusardjuat"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": null
+  },
+  "NEW-76e65370c0d7-F2": {
+   "title": "Stevie and the Sacred Animals",
+   "year": null,
+   "makers": [
+    {
+     "id": "NEW-76e65370c0d7",
+     "name": "Lisa Meeches"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": null
+  },
+  "NEW-edab932ec5cb-F1": {
+   "title": "Qirngaqtuq – Fierce Prayers",
+   "year": null,
+   "makers": [
+    {
+     "id": "NEW-edab932ec5cb",
+     "name": "Nataq Ungalaaq"
+    },
+    {
+     "id": "Q20261122-119",
+     "name": "Robyn Angilirq"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "NEW-c65bda6a5d3a-F1": {
+   "title": "Secret History: Lore And Legends",
+   "year": null,
+   "makers": [
+    {
+     "id": "NEW-c65bda6a5d3a",
+     "name": "Julian Black Antelope"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "NEW-a878a9f3f9af-F1": {
+   "title": "Supernaturals",
+   "year": null,
+   "makers": [
+    {
+     "id": "NEW-a878a9f3f9af",
+     "name": "Claudia Skunk"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "Q20261122-120-F1": {
+   "title": "A Life Less Empty",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261122-120",
+     "name": "Sera Lys McArthur"
+    },
+    {
+     "id": "Q20261122-121",
+     "name": "Rueben Martell"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": null
+  },
+  "Q20261122-122-F1": {
+   "title": "Ancestral Beasts",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261122-122",
+     "name": "Tim Riedel"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": null
+  },
+  "Q20261122-124-F1": {
+   "title": "Cryptid",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261122-124",
+     "name": "Alex Vance"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": null
+  },
+  "Q20261122-125-F1": {
+   "title": "Deb’s Return",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261122-125",
+     "name": "Kerriann Cardinal"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "Q20261122-126-F1": {
+   "title": "Kiviuq Iguttarjuarlu (Kiviuq and the Bee Woman)",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261122-126",
+     "name": "Jamesie Fournier"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": null
+  },
+  "Q20261122-127-F1": {
+   "title": "Acting Good Season 4",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261122-127",
+     "name": "Tina Keeper"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": null
+  },
+  "Q20261122-130-F1": {
+   "title": "Le feu sacré",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261122-130",
+     "name": "Simon Villeneuve"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": null
+  },
+  "Q20261122-131-F1": {
+   "title": "Maui and Elvis",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261122-131",
+     "name": "Camille Beaudoin"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": null
+  },
+  "DIR-0151-F1": {
+   "title": "North of North Season 2",
+   "year": null,
+   "makers": [
+    {
+     "id": "DIR-0151",
+     "name": "Stacey Aglok MacDonald"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
    "length": null
   }
  }
