@@ -1,5 +1,6 @@
 """Check the beta before it is pushed: every kind of page loads without a script error, and the header (brand,
-menu, More, language) sits in the same place on every page at desktop, laptop and phone widths.
+menu, More, language) sits in the same place on every page at desktop, laptop and phone widths. At 901px and wider the left rail
+(assets/rail-20261121.js) takes the header's place, so there the rail must be present, in the same place, with the same items.
 Exits 1 with the differences if not. Needs the beta served locally (as for dump.py).
 usage: python3 tools/pages/check_pages.py http://127.0.0.1:8765/beta/ [chromium path]"""
 import sys, asyncio
@@ -13,7 +14,9 @@ TOLERANCE = 4  # px
 JS = '''() => { const r = s => { const e = document.querySelector(s); if (!e) return null; const c = e.getBoundingClientRect();
   return [Math.round(c.x), Math.round(c.y)]; };
   return { brand: r('header .brand'), nav: r('header nav.primary'), more: r('header .more-menu summary'),
-           items: [...document.querySelectorAll('header nav.primary > a, header nav.primary > button')].map(e => e.textContent.trim()).join('|') }; }'''
+           items: [...document.querySelectorAll('header nav.primary > a, header nav.primary > button')].map(e => e.textContent.trim()).join('|'),
+           rail: r('#atlas-rail .rail-item[data-rail="map"]'),
+           railItems: [...document.querySelectorAll('#atlas-rail .rail-item .full')].map(e => e.textContent.trim()).join('|') }; }'''
 
 async def main(base, chrome=None):
     problems = []
@@ -35,8 +38,16 @@ async def main(base, chrome=None):
                     problems.append(f'{w}px {page}: script error: {errors[0][:160]}')
                 if not got['nav'] or not got['more']:
                     problems.append(f'{w}px {page}: header menu missing'); continue
+                if w >= 901 and not got['rail']:
+                    problems.append(f'{w}px {page}: left rail missing'); continue
                 if ref is None:
                     ref = (page, got); continue
+                if w >= 901:
+                    a, c = ref[1]['rail'], got['rail']
+                    if abs(a[0] - c[0]) > TOLERANCE or abs(a[1] - c[1]) > TOLERANCE:
+                        problems.append(f'{w}px {page}: rail at {c}, on {ref[0]} at {a}')
+                    if got['railItems'] != ref[1]['railItems']:
+                        problems.append(f'{w}px {page}: rail items differ: {got["railItems"]} vs {ref[1]["railItems"]}')
                 for k in ('brand', 'nav', 'more'):
                     a, c = ref[1][k], got[k]
                     if a and c and (abs(a[0] - c[0]) > TOLERANCE or abs(a[1] - c[1]) > TOLERANCE):

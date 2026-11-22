@@ -4,7 +4,11 @@
 (()=>{'use strict';
 const LANGS={en:'English',es:'Español',pt:'Português',fr:'Français'};
 // [English, Español, Português, Français]
-const T=[["Why this pairing?", "¿Por qué estas dos películas?", "Por que estes dois filmes?", "Pourquoi ces deux films ?"],
+const T=[["Lands","Tierras","Terras","Territoires"],["Search","Buscar","Buscar","Rechercher"],["Indexes","Índices","Índices","Index"],
+["Your atlas","Tu atlas","Seu atlas","Votre atlas"],["The project","El proyecto","O projeto","Le projet"],["Data and CARE","Datos y CARE","Dados e CARE","Données et CARE"],
+["Screening","Proyección","Exibição","Projection"],["Collapse menu","Contraer el menú","Recolher o menu","Réduire le menu"],["Expand menu","Expandir el menú","Expandir o menu","Développer le menu"],
+["Atlas menu","Menú del atlas","Menu do atlas","Menu de l’atlas"],
+["Why this pairing?", "¿Por qué estas dos películas?", "Por que estes dois filmes?", "Pourquoi ces deux films ?"],
 ["Read this thread", "Leer este hilo", "Ler este fio", "Lire ce fil"],
 ["Choose the other card", "Elige la otra ficha", "Escolha a outra ficha", "Choisissez l’autre fiche"],
 ["Select a card…", "Selecciona una ficha…", "Selecione uma ficha…", "Sélectionnez une fiche…"],

@@ -2,7 +2,9 @@
 Same items, same order, same words as the map: About · Map · Constellate · Watch · More
 (Browse: Languages, Themes, Timeline · Your list: Screening list · About the data: Data, Reuse, and CARE,
 Resources, Suggest a correction). Filmmakers, Films and Land are switched inside the map's sidebar (2026-11-09).
-Also loads the shared interface layer (assets/ui-20261109.css and .js) after site-menu.css. The current page is marked. Safe to run again.
+Also loads the shared interface layer (assets/ui-20261109.css and .js) after site-menu.css, and last of all the left rail
+(assets/rail-20261121.css and .js, 2026-11-21), which replaces this header at 901px and wider; the header stays in the page for phones
+and for the rail to draw on. The current page is marked. Safe to run again.
 usage: python3 tools/pages/nav.py beta"""
 import sys, re, pathlib
 
@@ -37,6 +39,9 @@ main a:not([href^="http"]):not(.primary):hover{border-bottom-color:var(--ink)}
 main a[href^="http"]{color:var(--accent,var(--gold))}
 </style>'''
 
+# sets html[data-rail] before first paint, so pages do not jump when the rail takes the header's place
+RAIL_EARLY = '''<script id="rail-early">(function(){var d=document.documentElement,p=null;if(!matchMedia('(min-width:901px)').matches)return;try{p=localStorage.getItem('atlas-rail')}catch(e){}d.setAttribute('data-rail',p||(innerWidth<1440||/[?&]constellate=1/.test(location.search)?'compact':'full'))})()</script>'''
+
 JS = '''<script id="site-nav-js">document.addEventListener('click',function(e){document.querySelectorAll('details.more-menu[open]').forEach(function(d){if(!d.contains(e.target))d.open=false;});});
 document.addEventListener('keydown',function(e){if(e.key==='Escape')document.querySelectorAll('details.more-menu[open]').forEach(function(d){d.open=false;d.querySelector('summary').focus();});});</script>'''
 
@@ -54,7 +59,7 @@ def main(root):
     root = pathlib.Path(root)
     import hashlib
     ver = lambda name: hashlib.sha1((root / 'assets' / name).read_bytes()).hexdigest()[:8] if (root / 'assets' / name).exists() else '1'
-    V = {k: ver(k) for k in ('site-menu.css', 'site-menu.js', 'ui-20261109.css', 'ui-20261109.js')}
+    V = {k: ver(k) for k in ('site-menu.css', 'site-menu.js', 'ui-20261109.css', 'ui-20261109.js', 'rail-20261121.css', 'rail-20261121.js')}
     n = 0
     for f in root.rglob('*.html'):
         rel = f.relative_to(root)
@@ -75,13 +80,15 @@ def main(root):
         new = re.sub(r'<link rel="stylesheet" href="(?:\.\./)*assets/ui-20261109\.css[^"]*"><script defer src="(?:\.\./)*assets/ui-20261109\.js[^"]*"></script>\n', '', new)
         new = re.sub(r'<main.*</main>', lambda m: re.sub(r'(<a [^>]*href="https?://[^"]*"[^>]*>)([^<]*?)</a>',
                      lambda a: a.group(0) if '\u2197' in a.group(2) or not a.group(2).strip() else f'{a.group(1)}{a.group(2)} \u2197</a>', m.group(0)), new, count=1, flags=re.S)
+        new = re.sub(r'<script id="rail-early">.*?</script><link rel="stylesheet" href="(?:\.\./)*assets/rail-20261121\.css[^"]*"><script defer src="(?:\.\./)*assets/rail-20261121\.js[^"]*"></script>\n', '', new, flags=re.S)
         if 'id="site-nav-css"' in new:
             new = re.sub(r'<style id="site-nav-css">.*?</style>', lambda m: CSS, new, flags=re.S)
         else:
             new = new.replace('</head>', CSS + '\n</head>', 1)
         # shared stylesheets last, after the page's own styles and site-nav-css, so the shared layer wins the cascade
-        new = new.replace('</head>', f'<link rel="stylesheet" href="{up}assets/site-menu.css?v={V["site-menu.css"]}"><script defer src="{up}assets/site-menu.js?v={V["site-menu.js"]}"></script><script defer src="{up}i18n-20261107.js?v=14"></script>\n</head>', 1)
+        new = new.replace('</head>', f'<link rel="stylesheet" href="{up}assets/site-menu.css?v={V["site-menu.css"]}"><script defer src="{up}assets/site-menu.js?v={V["site-menu.js"]}"></script><script defer src="{up}i18n-20261107.js?v=17"></script>\n</head>', 1)
         new = new.replace('</head>', f'<link rel="stylesheet" href="{up}assets/ui-20261109.css?v={V["ui-20261109.css"]}"><script defer src="{up}assets/ui-20261109.js?v={V["ui-20261109.js"]}"></script>\n</head>', 1)
+        new = new.replace('</head>', f'{RAIL_EARLY}<link rel="stylesheet" href="{up}assets/rail-20261121.css?v={V["rail-20261121.css"]}"><script defer src="{up}assets/rail-20261121.js?v={V["rail-20261121.js"]}"></script>\n</head>', 1)
         if new != t:
             f.write_text(new, encoding='utf-8'); n += 1
     print('header menu written on', n, 'pages')
