@@ -69,7 +69,12 @@ jobs:
                 page.on('pageerror',lambda e:problems.append(str(e)))
                 await page.goto(BASE+prefix+'index.html',wait_until='domcontentloaded',timeout=90000)
                 await page.wait_for_function("document.documentElement.dataset.atlasUi==='ready'",timeout=45000)
-                await page.locator('#map-info>summary').click(force=True,timeout=12000)
+                # the key opens from the top bar on the main site, and from inside Layers where the beta has moved it
+                if await page.locator('#layers-key').count():
+                    await page.locator('#layers>summary').click(force=True,timeout=12000)
+                    await page.locator('#layers-key').click(force=True,timeout=12000)
+                else:
+                    await page.locator('#map-info>summary').click(force=True,timeout=12000)
                 dest=page.locator('#map-info a[href="https://native-land.ca/maps/constellation"]')
                 debug=await page.evaluate("""() => {
                   const d=document.getElementById('map-info'),a=d.querySelector('a[href="https://native-land.ca/maps/constellation"]'),panel=d.querySelector('div');
@@ -99,7 +104,10 @@ jobs:
                   else:
                     foot=page.locator('.map-footer a[href="https://native-land.ca/"]')
                     await foot.evaluate("""a=>{window.__footerClicks=0;a.addEventListener('click',e=>{e.preventDefault();window.__footerClicks++});}""")
-                    await page.locator('#map-info>summary').click(force=True,timeout=10000)
+                    if await page.locator('#layers-key').count():
+                        await page.evaluate("document.querySelector('#map-info').open=false")
+                    else:
+                        await page.locator('#map-info>summary').click(force=True,timeout=10000)
                     await foot.click(force=True,timeout=12000)
                     assert await page.evaluate('window.__footerClicks')==1, 'main footer link did not receive click'
                 await page.close()

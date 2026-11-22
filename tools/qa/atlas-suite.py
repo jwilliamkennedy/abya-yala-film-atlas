@@ -124,7 +124,11 @@ async def map_night(page, base):
 
 async def map_key(page, base):
     await map_home(page, base)
-    await page.click(".map-toolbar summary:has-text('Map key')")
+    if await page.locator("#layers-key").count():  # the key opens from inside Layers once it has moved there
+        await page.click("#layers > summary")
+        await page.click("#layers-key")
+    else:
+        await page.click(".map-toolbar summary:has-text('Map key')")
     await page.wait_for_selector("#map-info #visual-key", state="visible", timeout=8000)
     order = await page.evaluate("() => { const k = document.querySelector('#visual-key').getBoundingClientRect().top, s = document.querySelector('#map-info .map-external-links').getBoundingClientRect().top; return [k, s]; }")
     need(order[0] < order[1], "Map key: the key no longer comes before the source links", order)

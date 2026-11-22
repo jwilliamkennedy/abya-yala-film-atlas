@@ -78,38 +78,39 @@ function countries(){
  apply();
 }
 
-/* 4. Layers: one Territories control; clearer names. */
+/* 4. Layers: one Territories control; clearer names.
+   22 Nov 2026: territories are always shown, Soft or Strong (no Off, no strength slider). The Basemap switch is gone:
+   Disappear map is the one control that hides the map. Map key opens from here instead of from the top bar. */
 const PRESET={soft:28,strong:41};
 function setStrength(v){root.style.setProperty('--territory-wash',String(v/100));}
 function layers(){
  const shading=$('#layer-shading'),bounds=$('#layer-boundaries'),geo=$('#layer-geography');if(!shading||$('#territory-control'))return;
  const relabel=(input,text)=>{const l=input?.closest('label');if(!l)return;for(const n of [...l.childNodes])if(n.nodeType===3)n.remove();l.append(' '+text);};
- relabel(geo,'Basemap');relabel(bounds,'Outline every territory');relabel($('#layer-cinema'),'Country markers');
+ relabel(bounds,'Outline every territory');relabel($('#layer-cinema'),'Country markers');
+ if(geo){const l=geo.closest('label');if(l)l.hidden=true;if(!geo.checked){geo.checked=true;fire(geo,'change');}}
  const shadingLabel=shading.closest('label');shadingLabel.hidden=true;
  const box=el('fieldset',{id:'territory-control'},`<legend>Territories</legend>
   <div class="territory-modes" role="radiogroup" aria-label="Territory colour">
-   <button type="button" role="radio" data-mode="off">Off</button><button type="button" role="radio" data-mode="soft">Soft</button><button type="button" role="radio" data-mode="strong">Strong</button></div>
-  <label class="territory-strength">Strength <input id="territory-strength" type="range" min="8" max="60" step="1"></label>
+   <button type="button" role="radio" data-mode="soft">Soft</button><button type="button" role="radio" data-mode="strong">Strong</button></div>
   <p class="territory-note">Native Land Digital / MapMaker references, not definitive boundaries.</p>`);
  shadingLabel.before(box);
- const range=$('#territory-strength');
- const show=mode=>{for(const b of box.querySelectorAll('[data-mode]')){const on=b.dataset.mode===mode;b.setAttribute('aria-checked',String(on));b.classList.toggle('is-on',on);}range.disabled=mode==='off';};
- const setMode=(mode,save=true)=>{
-  const want=mode!=='off';if(shading.checked!==want){shading.checked=want;fire(shading,'change');}
-  if(mode in PRESET){range.value=PRESET[mode];setStrength(PRESET[mode]);}
-  show(mode);if(save){store.set('territories',mode);store.set('territory-strength',+range.value);}
+ const show=mode=>{for(const b of box.querySelectorAll('[data-mode]')){const on=b.dataset.mode===mode;b.setAttribute('aria-checked',String(on));b.classList.toggle('is-on',on);}};
+ const setMode=(mode,save=true)=>{if(!(mode in PRESET))mode='soft';
+  if(!shading.checked){shading.checked=true;fire(shading,'change');}
+  setStrength(PRESET[mode]);show(mode);if(save){store.set('territories',mode);store.set('territory-strength',PRESET[mode]);}
  };
  box.querySelectorAll('[data-mode]').forEach(b=>b.addEventListener('click',()=>setMode(b.dataset.mode)));
- range.addEventListener('input',()=>{const v=+range.value;setStrength(v);if(!shading.checked){shading.checked=true;fire(shading,'change');}
-  show(v===PRESET.soft?'soft':v===PRESET.strong?'strong':'custom');store.set('territories','custom');store.set('territory-strength',v);});
- shading.addEventListener('change',()=>{if(!shading.checked)show('off');});
- // A shared view requesting shading=0 must beat an older stored Strong/Soft preference.
- // The initial URL flag was captured before navigation.js rewrites the hash.
-  const savedMode=store.get('territories','soft');
- const mode=root.dataset.atlasInboundShading==='off'?'off':savedMode;
- const saved=store.get('territory-strength',null),v=Object.prototype.hasOwnProperty.call(PRESET,mode)?PRESET[mode]:(Number.isFinite(saved)?saved:PRESET.soft);
- range.value=v;setStrength(v);
- if(mode==='off')setMode('off',false);else{if(!shading.checked){shading.checked=true;fire(shading,'change');}show(mode);}
+ // whatever else unticks the hidden box (an old shared link, a restored view), the territories come back
+ shading.addEventListener('change',()=>{if(!shading.checked){shading.checked=true;fire(shading,'change');}});
+ const savedMode=store.get('territories','soft'),saved=store.get('territory-strength',null);
+ setMode(savedMode==='strong'||(savedMode==='custom'&&Number.isFinite(saved)&&saved>=35)?'strong':'soft',false);
+ const info=$('#map-info'),panel=$('#layers > div');
+ if(info&&panel&&!$('#layers-key')){
+  info.querySelector('summary')?.style.setProperty('display','none','important');
+  const b=el('button',{type:'button',id:'layers-key',class:'layers-key'},'Map key');
+  (panel.querySelector('.layers-credit')||panel.lastElementChild).before(b);
+  b.addEventListener('click',()=>{$('#layers').open=false;info.open=true;});
+ }
 }
 
 /* 5. Map key: a visual key first, the full notes folded below. */
@@ -127,7 +128,7 @@ function mapKey(){
  const rows=[
   [sw('<text x="1" y="17" font-family="Georgia, serif" font-size="17" fill="#1c2730">A</text><text x="17" y="17" font-family="Georgia, serif" font-size="10" fill="#1c2730">a</text><circle cx="33" cy="12" r="3.5" fill="#d59fa6" stroke="#edeff1" stroke-width="1.2"/>'),'<b>Land names.</b> Larger names have more linked filmmakers. Indigenous scripts are kept. Point to preview; select to open.'],
   [sw('<circle cx="12" cy="11" r="4" fill="#d59fa6" stroke="#edeff1" stroke-width="1.2"/><rect x="22" y="4" width="15" height="14" rx="2" fill="#d59fa6" fill-opacity=".5"/>'),'<b>Dot beside a name.</b> The colour of that land’s territory on the map.'],
-  [sw('<rect x="3" y="3" width="34" height="16" rx="2" fill="#94cbb0" fill-opacity=".36" stroke="#5b8a74" stroke-opacity=".75"/>'),'<b>Territory.</b> Native Land Digital / MapMaker reference (2023), not a definitive boundary. Strength is in Layers.'],
+  [sw('<rect x="3" y="3" width="34" height="16" rx="2" fill="#94cbb0" fill-opacity=".36" stroke="#5b8a74" stroke-opacity=".75"/>'),'<b>Territory.</b> Native Land Digital / MapMaker reference (2023), not a definitive boundary. Soft or Strong is in Layers.'],
   [sw('<rect x="3" y="3" width="34" height="16" rx="2" fill="#94cbb0" fill-opacity=".36" stroke="#2f5547" stroke-width="2"/>'),'<b>Outlined territory.</b> The one under your pointer, or the land you selected.'],
   [sw('<circle cx="20" cy="11" r="9" fill="#4c5157"/><circle cx="20" cy="11" r="9" fill="none" stroke="#e9d9ad" stroke-opacity=".8"/>'),'<b>Picture at a land.</b> A still or portrait for a linked filmmaker.'],
   [sw('<path d="M8 17 L28 6" stroke="#c44934" stroke-opacity=".6"/><circle cx="8" cy="17" r="4.5" fill="#e4c16d" stroke="#fff7de" stroke-width="1.5"/>'),'<b>Country marker.</b> Opens that country’s filmmakers and films. Counts don’t establish identity, citizenship or residence.'],

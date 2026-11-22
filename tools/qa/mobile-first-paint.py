@@ -29,6 +29,7 @@ JS=r"""() => {
   initialTerritories:document.documentElement.dataset.atlasInitialTerritories||null,
   territoryWash:getComputedStyle(document.documentElement).getPropertyValue('--territory-wash').trim(),
   shadingChecked:$('#layer-shading')?.checked??null,
+  territoriesAlways:document.documentElement.dataset.atlasTerritories||null,
   territorySelected:$('#territory-control [aria-checked="true"]')?.dataset.mode||null,
   connectionsChecked:$('#layer-connections')?.checked??null,
   cinemaChecked:$('#layer-cinema')?.checked??null,
@@ -124,9 +125,10 @@ async def main():
       {'territories':'soft','reading-theme':'night','palette-pass':'88'},
       {'territories':'custom','territory-strength':33},
       {'unmapped':'1'}
-    ]:report.append(await case(browser,engine,'map','index.html',390,persisted=state))
+    ]:
+     for path in ('index.html','beta/index.html'):report.append(await case(browser,engine,'map',path,390,persisted=state))
    if engine=='webkit':
-    report.append(await case(browser,engine,'map','index.html#view=filmmakers&totals=0&shading=0&connections=0&outlines=1&world=1',390))
+    for path in ('index.html','beta/index.html'):report.append(await case(browser,engine,'map',path+'#view=filmmakers&totals=0&shading=0&connections=0&outlines=1&world=1',390))
    await browser.close()
  failures=[]
  for item in report:
@@ -143,6 +145,10 @@ async def main():
   if item.get('persisted'):
    settings=item['persisted']
    expectedMode=settings.get('territories','soft')
+   # Since 22 Nov 2026 a page that sets data-atlas-territories="always" has no Off: an old "off" opens Soft,
+   # and a hand-set strength opens the nearer of Soft and Strong.
+   always=any(v.get('territoriesAlways')=='always' for v in seq)
+   if always:expectedMode='strong' if expectedMode=='strong' or (expectedMode=='custom' and settings.get('territory-strength',28)>=35) else 'soft'
    expectedWash={'strong':'0.41','soft':'0.28'}.get(expectedMode,'0.'+str(settings.get('territory-strength',28)))
    for v in seq:
     if settings.get('unmapped')=='1' and (not v['unmappedClass'] or v['unmapPressed']!='true' or v['unmapText']!='Return map'):failures.append((item['browser'],'saved Disappear map flashed',v['unmappedClass'],v['unmapPressed'],v['unmapText']))
@@ -152,7 +158,8 @@ async def main():
     if settings.get('reading-theme')=='night' and v['theme']!='night':failures.append((item['browser'],'night theme flashed paper',v['theme']))
   if '#view=' in item['route']:
    for v in seq:
-    if v['cinemaChecked'] is not False or v['shadingChecked'] is not False or v['connectionsChecked'] is not False or v['outlinesChecked'] is not True:
+    wantShading=v.get('territoriesAlways')=='always'  # territories stay on even when an old link says shading=0
+    if v['cinemaChecked'] is not False or v['shadingChecked'] is not wantShading or v['connectionsChecked'] is not False or v['outlinesChecked'] is not True:
      failures.append((item['browser'],'shared map toggles flashed',v['cinemaChecked'],v['shadingChecked'],v['connectionsChecked'],v['outlinesChecked']))
     if v['inboundWorld']!='1':failures.append((item['browser'],'missing whole-world route',v['inboundWorld']))
   for v in seq:

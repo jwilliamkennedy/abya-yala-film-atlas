@@ -186,8 +186,8 @@ function tabCounts(){
 }
 /* M2 a dot on Layers when the map differs from its usual layers */
 function layersChanged(){
- const L=$('#layers');if(!L)return;const on=id=>!!$('#'+id)?.checked,w=$('#world'),r=$('#territory-strength');
- const changed=!on('layer-connections')||!on('layer-cinema')||!on('layer-geography')||on('layer-boundaries')||(w&&w.getAttribute('aria-pressed')==='true')||(r&&Math.abs(+r.value-28)>2);
+ const L=$('#layers');if(!L)return;const on=id=>!!$('#'+id)?.checked,w=$('#world'),strong=!!$('#territory-control [data-mode="strong"].is-on');
+ const changed=!on('layer-connections')||!on('layer-cinema')||on('layer-boundaries')||(w&&w.getAttribute('aria-pressed')==='true')||strong;
  L.classList.toggle('is-changed',changed);const s=L.querySelector('summary');if(s)s.title=changed?'Layers (changed from the usual view)':'Choose what is visible on the map';
 }
 function pass(){if(!root.dataset.rail||!onMap)return;captionZoom();tabCounts();layersChanged();}
