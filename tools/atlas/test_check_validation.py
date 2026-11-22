@@ -133,9 +133,9 @@ class AtlasQueueValidationTest(unittest.TestCase):
 class AutoAcceptSerializationTest(unittest.TestCase):
     def test_preserves_original_csv_quoting_and_multiline_records(self):
         source = (
-            'qid,queue_action,queue_status,review_note\\n'
-            'Q000001,lead,accepted,"A multiline, \\"quoted\\" note\\nnext line"\\n'
-            'Q000002,correct,new,Unchanged\\n'
+            'qid,queue_action,queue_status,review_note\n'
+            'Q000001,lead,accepted,"A multiline, \"quoted\" note\nnext line"\n'
+            'Q000002,correct,new,Unchanged\n'
         )
         fields, header, records = auto_accept.csv_with_original_spans(source)
         self.assertEqual(fields, ['qid', 'queue_action', 'queue_status', 'review_note'])
@@ -150,10 +150,10 @@ class AutoAcceptSerializationTest(unittest.TestCase):
             csv_path = os.path.join(temp, 'queue', 'proposals.csv')
             verify_path = os.path.join(temp, 'verify.json')
             original = (
-                'qid,queue_action,queue_status,proposed_by,review_note\\n'
-                'Q000001,correct,accepted,Claude,"Keep, this protected \\"quoted\\" note\\nand its next line"\\n'
+                'qid,queue_action,queue_status,proposed_by,review_note\n'
+                'Q000001,correct,accepted,Claude,"Keep, this protected \"quoted\" note\nand its next line"\n'
             )
-            unreviewed = 'Q000002,correct,new,ChatGPT,Original note\\n'
+            unreviewed = 'Q000002,correct,new,ChatGPT,Original note\n'
             with open(csv_path, 'w', encoding='utf-8', newline='') as file:
                 file.write(original + unreviewed)
             with open(verify_path, 'w', encoding='utf-8') as file:
