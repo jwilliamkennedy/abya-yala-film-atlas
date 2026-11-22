@@ -2,8 +2,8 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-22",
  "license": "See data.html",
- "films_on_public_map": 2601,
- "film_entries": 2615,
+ "films_on_public_map": 2600,
+ "film_entries": 2614,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -41229,22 +41229,6 @@
    "families": [],
    "form": "Fiction",
    "length": "Short"
-  },
-  "QM-6ccf088fdc-M1": {
-   "title": "He visto caer la lluvia",
-   "year": null,
-   "makers": [
-    {
-     "id": "QM-6ccf088fdc",
-     "name": "Abraham Avíla Quintero"
-    }
-   ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
   },
   "LEAD-20261011-023-QM21155a": {
    "title": "Kondoy: Los nuevos caminos de la nación Ayuuk",
