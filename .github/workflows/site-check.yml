@@ -1,0 +1,821 @@
+name: Site check
+# One run per push, with every browser check of the site as a job (22 Nov 2026). Until then each check was its own
+# workflow, so one push started seven runs to read. Each job below is the old workflow's job, unchanged:
+#   browser-suite            was atlas-suite.yml (drives main and beta through their states; fails on script errors)
+#   watch-links-controls     was atlas-interface-regression.yml
+#   first-paint              was atlas-startup-oneframe.yml
+#   mobile-first-paint       was mobile-first-paint-qa.yml
+#   constellate-first-visit  was constellate-first-visit.yml
+#   constellate-discovery    was constellate-discovery-smoke.yml
+#   theme-web                was constellate-theme-web-qa.yml
+# A newer push cancels the run in progress. Start it by hand from the Actions tab at any time.
+on:
+  push:
+    branches: [main]
+    paths:
+      - '*.html'
+      - '*.js'
+      - '*.css'
+      - 'assets/**'
+      - 'constellations/**'
+      - 'beta/**'
+      - 'tools/qa/**'
+      - '.github/workflows/site-check.yml'
+  workflow_dispatch:
+    inputs:
+      compare_with:
+        description: 'Browser suite: commit to compare against (default: the previous commit)'
+        required: false
+        default: 'HEAD~1'
+permissions:
+  contents: read
+concurrency:
+  group: site-check-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  browser-suite:
+    name: "Browser suite (map, Constellate, phone; main and beta)"
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    env:
+      SUITE_JOBS: '2'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 30
+      - name: Install Chromium
+        run: |
+          python3 -m pip install -q 'playwright==1.*'
+          python3 -m playwright install --with-deps chromium >/dev/null
+      - name: Does it work? (main site and beta)
+        run: |
+          python3 -m http.server 8983 --bind 127.0.0.1 >/tmp/now.log 2>&1 &
+          sleep 2
+          python3 tools/qa/atlas-suite.py capture http://127.0.0.1:8983/ /tmp/suite/now-main --shots
+          python3 tools/qa/atlas-suite.py capture http://127.0.0.1:8983/beta/ /tmp/suite/now-beta --shots
+      - name: Did anything move since the previous push?
+        if: always()
+        run: |
+          git worktree add -q /tmp/prev "${{ github.event.inputs.compare_with || 'HEAD~1' }}" || exit 0
+          (cd /tmp/prev && python3 -m http.server 8984 --bind 127.0.0.1 >/tmp/prev.log 2>&1 &)
+          sleep 2
+          # the previous commit is measured with today's suite, in the same browser, so only the site differs
+          python3 tools/qa/atlas-suite.py capture http://127.0.0.1:8984/ /tmp/suite/prev-main || true
+          python3 tools/qa/atlas-suite.py capture http://127.0.0.1:8984/beta/ /tmp/suite/prev-beta || true
+          status=0
+          {
+            echo "## Main site: this push compared with the previous one"; echo '```'
+            python3 tools/qa/atlas-suite.py compare /tmp/suite/prev-main /tmp/suite/now-main --limit=8 | cut -c1-240 | head -150 || status=1
+            echo '```'; echo "## Beta: this push compared with the previous one"; echo '```'
+            python3 tools/qa/atlas-suite.py compare /tmp/suite/prev-beta /tmp/suite/now-beta --limit=8 | cut -c1-240 | head -150 || status=1
+            echo '```'
+          } > /tmp/suite/visual-report.md
+          python3 tools/qa/atlas-suite.py compare /tmp/suite/prev-main /tmp/suite/now-main >/dev/null || status=1
+          python3 tools/qa/atlas-suite.py compare /tmp/suite/prev-beta /tmp/suite/now-beta >/dev/null || status=1
+          cat /tmp/suite/visual-report.md >> "$GITHUB_STEP_SUMMARY"
+          cat /tmp/suite/visual-report.md
+          if [ "$status" = 1 ] && git log -1 --format=%B | grep -q '\[no-visual-change\]'; then
+            echo "::error::This commit is marked [no-visual-change] but the page changed. See the run summary."
+            exit 1
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: atlas-suite
+          path: /tmp/suite
+          retention-days: 14
+  watch-links-controls:
+    name: "Watch, Native Land links and Constellate controls"
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Chromium
+        run: |
+          python3 -m pip install -q playwright==1.*
+          python3 -m playwright install --with-deps chromium >/dev/null
+      - name: Verify themes, source-map clicks, reading and presentation
+        run: |
+          python3 -m http.server 8891 --bind 127.0.0.1 >/tmp/atlas-interface-qa.log 2>&1 &
+          sleep 2
+          mkdir -p shots
+          cat > /tmp/atlas-interface-regression.py <<'PY'
+          import asyncio,json,pathlib
+          from playwright.async_api import async_playwright
+          BASE='http://127.0.0.1:8891/'
+          async def main():
+            result={}
+            async with async_playwright() as playwright:
+              browser=await playwright.chromium.launch(args=['--use-angle=swiftshader','--enable-unsafe-swiftshader'])
+              for prefix,viewport in [('',{'width':1440,'height':900}),('beta/',{'width':390,'height':844})]:
+                label='main' if not prefix else 'beta-mobile'
+                ctx=await browser.new_context(viewport=viewport,reduced_motion='reduce')
+                watch=await ctx.new_page()
+                errors=[]
+                watch.on('pageerror',lambda e:errors.append(str(e)))
+                await watch.goto(BASE+prefix+'watch.html',wait_until='domcontentloaded',timeout=90000)
+                await watch.wait_for_function("document.querySelector('#theme')?.options.length > 1",timeout=25000)
+                theme=await watch.evaluate("""() => ({
+                  selected:document.querySelectorAll('#theme').length,
+                  themes:document.querySelector('#theme').options.length,
+                  sort:document.querySelector('#sort').options.length
+                })""")
+                assert theme['selected']==1 and theme['themes']>1 and theme['sort']==3,(label,theme)
+                await watch.locator('#theme').select_option(index=1)
+                selected=await watch.locator('#theme').input_value()
+                assert selected,(label,theme)
+                assert not errors,(label,'watch',errors)
+                result[label+'-watch']=theme
+                await watch.close()
+                page=await ctx.new_page()
+                problems=[]
+                page.on('pageerror',lambda e:problems.append(str(e)))
+                await page.goto(BASE+prefix+'index.html',wait_until='domcontentloaded',timeout=90000)
+                await page.wait_for_function("document.documentElement.dataset.atlasUi==='ready'",timeout=45000)
+                # the key opens from the top bar on the main site, and from inside Layers where the beta has moved it
+                if await page.locator('#layers-key').count():
+                    await page.locator('#layers>summary').click(force=True,timeout=12000)
+                    await page.locator('#layers-key').click(force=True,timeout=12000)
+                else:
+                    await page.locator('#map-info>summary').click(force=True,timeout=12000)
+                dest=page.locator('#map-info a[href="https://native-land.ca/maps/constellation"]')
+                debug=await page.evaluate("""() => {
+                  const d=document.getElementById('map-info'),a=d.querySelector('a[href="https://native-land.ca/maps/constellation"]'),panel=d.querySelector('div');
+                  const rect=x=>{const r=x.getBoundingClientRect();return {x:r.x,y:r.y,width:r.width,height:r.height}};
+                  return {opened:d.open,stage:document.documentElement.dataset.atlasUi,aria:d.querySelector('summary').getAttribute('aria-expanded'),
+                    toolbar:getComputedStyle(document.querySelector('.map-toolbar')).visibility,details:getComputedStyle(d).display,
+                    panel:getComputedStyle(panel).display,panelVisibility:getComputedStyle(panel).visibility,
+                    link:getComputedStyle(a).display,linkVisibility:getComputedStyle(a).visibility,rect:rect(a),
+                    parentRect:rect(panel),topHit:document.elementFromPoint(rect(a).x+5,rect(a).y+5)?.outerHTML?.slice(0,160)};
+                }""")
+                print('MAP_KEY_DEBUG',label,json.dumps(debug),flush=True)
+                await dest.evaluate("a=>a.scrollIntoView({block:'center',inline:'nearest',behavior:'instant'})")
+                await dest.evaluate("""a=>{window.__nativeClicks=0;a.addEventListener('click',e=>{e.preventDefault();window.__nativeClicks++});}""")
+                await dest.click(force=True,timeout=12000)
+                clicked=await page.evaluate('window.__nativeClicks')
+                assert clicked==1,(label,'map key link not receiving clicks',clicked)
+                if not prefix:
+                  state=await page.evaluate("""() => ({
+                    href:location.href,allFooters:document.querySelectorAll('.map-footer').length,
+                    mapSources:document.querySelectorAll('.map-footer .map-source-links').length,
+                    linked:document.querySelectorAll('.map-footer a[href="https://native-land.ca/"]').length,
+                    text:document.querySelector('.map-footer')?.textContent?.slice(0,180)
+                  })""")
+                  print('FOOTER_DEBUG',label,json.dumps(state),flush=True)
+                  if state['linked']!=1:
+                    problems.append('Footer map link missing after Map Key click')
+                  else:
+                    foot=page.locator('.map-footer a[href="https://native-land.ca/"]')
+                    await foot.evaluate("""a=>{window.__footerClicks=0;a.addEventListener('click',e=>{e.preventDefault();window.__footerClicks++});}""")
+                    if await page.locator('#layers-key').count():
+                        await page.evaluate("document.querySelector('#map-info').open=false")
+                    else:
+                        await page.locator('#map-info>summary').click(force=True,timeout=10000)
+                    await foot.click(force=True,timeout=12000)
+                    assert await page.evaluate('window.__footerClicks')==1, 'main footer link did not receive click'
+                await page.close()
+                page=await ctx.new_page()
+                page.on('pageerror',lambda e:problems.append(str(e)))
+                await page.goto(BASE+prefix+'index.html?constellate=1',wait_until='domcontentloaded',timeout=90000)
+                await page.wait_for_function("window.AtlasConstellate?.enabled && window.AtlasCollections?.current() && document.documentElement.dataset.atlasUi==='ready'",timeout=45000)
+                await page.wait_for_function("document.getElementById('ws-theme-q') && document.getElementById('ws-film-q')",timeout=20000)
+                searches=await page.evaluate("""() => {
+                  const theme=document.getElementById('ws-theme-q'),film=document.getElementById('ws-film-q'),
+                    chips=document.querySelector('#weave-start .ws-chips');
+                  return {themeAboveChips:!!(theme.compareDocumentPosition(chips)&Node.DOCUMENT_POSITION_FOLLOWING),
+                    themeY:theme.getBoundingClientRect().y,filmY:film.getBoundingClientRect().y};
+                }""")
+                assert searches['themeAboveChips'],(label,'theme search is below popular chips',searches)
+                if not prefix:assert abs(searches['themeY']-searches['filmY'])<24,(label,'theme and film searches not aligned',searches)
+                await page.evaluate("document.getElementById('weave-example').click()")
+                await page.wait_for_function("window.AtlasCollections.current().items.length>=3 && document.documentElement.dataset.weaveStage==='build'",timeout=30000)
+                modes=await page.evaluate("""()=>({
+                  edit:document.querySelector('#constellate-edit').closest('#constellate-mode')?.id,
+                  read:document.querySelector('#constellate-read').closest('#constellate-mode')?.id,
+                  play:document.querySelector('#weave-play').closest('#constellate-mode')?.id,
+                  count:window.AtlasCollections.current().items.length
+                })""")
+                assert [modes[x] for x in ['edit','read','play']]==['constellate-mode']*3,(label,modes)
+                modes_visible=await page.evaluate("""() => ({
+                  build:document.querySelector('#constellate-edit').textContent.trim(),
+                  follow:document.querySelector('#constellate-read').textContent.trim(),
+                  playVisible:getComputedStyle(document.querySelector('#weave-play')).display!=='none'
+                })""")
+                assert modes_visible=={'build':'Build','follow':'Read','playVisible':True},(label,'Play missing from toolbar',modes_visible)
+                # Help must open as a short anchored popover, not a screen-sized overlay.
+                await page.locator('#constellate-how > summary').wait_for(state='attached',timeout=20000)
+                await page.locator('#constellate-how > summary').click(force=True,timeout=12000)
+                help_state=await page.evaluate("""() => {
+                  const d=document.getElementById('constellate-how'),ol=d.querySelector('ol'),
+                    r=ol.getBoundingClientRect();
+                  return {open:d.open,items:ol.querySelectorAll(':scope > li').length,height:r.height,
+                    width:r.width,guide:document.getElementById('weave-guide')?.getBoundingClientRect().height};
+                }""")
+                assert help_state['open'] and help_state['items']==4 and 0<help_state['height']<365,(label,'Help popover obstructs interface',help_state)
+                assert help_state['guide'] is not None and help_state['guide']<120,(label,'Onboarding guide too tall',help_state)
+                await page.keyboard.press('Escape')
+                assert await page.locator('#constellate-how').evaluate('(d)=>!d.open'),(label,'Help Escape failed')
+                assert await page.evaluate("window.AtlasConstellate.enabled"),(label,'Help Escape closed the editor')
+                # Thread endpoints must be the visible film-card centers, not land pins.
+                geometry=await page.evaluate("""() => {
+                  const c=window.AtlasCollections.current(),t=c.threads.find(t=>t.visible&&t.items.length>1);
+                  if(!t)return {error:'no visible two-film thread'};
+                  const group=[...document.querySelectorAll('#constellate-graph [data-thread]')].find(g=>g.dataset.thread===t.id);
+                  const path=group?.querySelector('.weave-cord');
+                  const center=id=>{
+                    const g=[...document.querySelectorAll('#constellate-graph [data-constellate-node]')].find(g=>g.dataset.constellateNode===id);
+                    const rect=g?.querySelector('rect'),matrix=g?.transform.baseVal.consolidate()?.matrix;
+                    return matrix&&rect?{x:matrix.e+rect.width.baseVal.value/2,y:matrix.f+rect.height.baseVal.value/2}:null;
+                  };
+                  if(!path)return {error:'no ribbon for visible thread'};
+                  const start=center(t.items[0]),end=center(t.items.at(-1));
+                  if(!start||!end)return {error:'missing visible film card'};
+                  const p=path.getPointAtLength(0),q=path.getPointAtLength(path.getTotalLength());
+                  return {thread:t.name,startError:Math.hypot(start.x-p.x,start.y-p.y),
+                    endError:Math.hypot(end.x-q.x,end.y-q.y)};
+                }""")
+                assert not geometry.get('error') and geometry['startError']<12 and geometry['endError']<12,(label,'thread not connected to card thumbnails',geometry)
+                await page.locator('#constellate-read').click(force=True,timeout=15000)
+                await page.locator('.weave-read-focus').wait_for(state='visible',timeout=15000)
+                progress=await page.evaluate("""()=>({
+                  stage:document.documentElement.dataset.weaveStage,
+                  bar:document.querySelector('.weave-read-progress')?.value,
+                  max:document.querySelector('.weave-read-progress')?.max,
+                  title:document.querySelector('.weave-read-focus h4')?.textContent
+                })""")
+                assert progress['stage']=='read' and progress['bar']==1 and progress['max']>=3,(label,progress)
+                await page.locator('#weave-read-next').click(force=True,timeout=12000)
+                nextstep=await page.evaluate("""()=>({
+                  bar:document.querySelector('.weave-read-progress')?.value,
+                  title:document.querySelector('.weave-read-focus h4')?.textContent
+                })""")
+                assert nextstep['bar']==2 and nextstep['title']!=progress['title'],(label,progress,nextstep)
+                hit=await page.evaluate("(()=>{const b=document.getElementById('weave-play'),r=b.getBoundingClientRect(),h=document.elementFromPoint(r.x+r.width/2,r.y+r.height/2);return {rect:[Math.round(r.x),Math.round(r.y),Math.round(r.width),Math.round(r.height)],onPlay:h===b||b.contains(h),hit:h&&(h.id||String(h.className||'').slice(0,80)||h.tagName),bar:document.getElementById('constellate-mode')?.className,stage:document.documentElement.dataset.weaveStage}})()")
+                print('PLAY_HIT',label,json.dumps(hit),flush=True)
+                await page.locator('#weave-play').click(force=True,timeout=15000)
+                try:
+                  await page.locator('#weave-player:not([hidden])').wait_for(timeout=25000)
+                except Exception:
+                  after=await page.evaluate("({pressed:document.getElementById('weave-play').getAttribute('aria-pressed'),player:!!document.getElementById('weave-player'),hidden:document.getElementById('weave-player')?.hidden,stage:document.documentElement.dataset.weaveStage,toast:document.querySelector('[role=status]')?.textContent?.slice(0,120)})")
+                  print('PLAY_AFTER',label,json.dumps(after),flush=True)
+                  raise
+                assert await page.locator('#weave-play').get_attribute('aria-pressed')=='true',(label,'Play mode not marked active')
+                await page.locator('#weave-play-speed').select_option('10000')
+                await page.locator('#weave-play-pause').click(force=True,timeout=12000)
+                started=await page.evaluate("({progress:document.querySelector('#weave-play-progress')?.textContent||'',title:document.querySelector('#weave-play-title')?.textContent||'',last:document.querySelector('#weave-play-next')?.disabled})")
+                await page.locator('#weave-play-next').click(force=True,timeout=12000)
+                play=await page.evaluate("""()=>({
+                  pace:document.querySelector('#weave-play-speed')?.value,
+                  progress:document.querySelector('#weave-play-progress')?.textContent,
+                  title:document.querySelector('#weave-play-title')?.textContent,
+                  visible:!document.querySelector('#weave-player')?.hidden
+                })""")
+                # Play opens on the card being read, so Next moves one film past where Play began (not always to "2 of").
+                assert play['pace']=='10000' and play['visible'] and started['title'] and (started['last'] or (play['title']!=started['title'] and play['progress']!=started['progress'])),(label,started,play)
+                await page.locator('#weave-play-close').click(force=True,timeout=12000)
+                assert await page.locator('#weave-player').is_hidden(),(label,'player did not close')
+                assert await page.locator('#weave-play').get_attribute('aria-pressed')=='false',(label,'Play mode remains pressed after closing')
+                assert await page.locator('#constellate-read').get_attribute('aria-pressed')=='true',(label,'Read mode not restored after presenting')
+                if not prefix:
+                  await page.locator('#constellate-mode .weave-more>summary').click(force=True,timeout=10000)
+                  assert await page.locator('#constellate-mode .weave-more-menu #constellate-fit').is_visible()
+                # Dense thread regression: all film positions must remain on the ribbon
+                # even when only a readable sample of thumbnails is shown.
+                dense=await page.evaluate("""() => {
+                  const C=window.AtlasConstellate,choices=[...document.querySelectorAll('#weave-theme-start option')];
+                  const theme=choices.map(o=>o.value).find(v=>v&&C.themeFilms(v).length>=13);
+                  if(!theme)return {error:'no theme with at least 13 films'};
+                  C.themeThread(theme);
+                  const c0=window.AtlasCollections.current(),seedThread=c0.threads.find(t=>t.id===c0.activeThread);
+                  if(seedThread.items.length!==6)return {error:'theme should start with six films',count:seedThread.items.length};
+                  document.querySelector('#weave-theme-unfold')?.click();
+                  document.querySelector('#weave-theme-unfold')?.click();
+                  document.querySelector('#weave-unmap').click();
+                  const c=window.AtlasCollections.current(),t=c.threads.find(t=>t.id===c.activeThread);
+                  const path=[...document.querySelectorAll('#constellate-graph [data-thread]')]
+                    .find(g=>g.dataset.thread===t.id)?.querySelector('.weave-cord');
+                  const positions=C.positions,graph=document.querySelector('#constellate-graph');
+                  const cards=[...graph.querySelectorAll('[data-constellate-node]')];
+                  const card=id=>cards.find(n=>n.dataset.constellateNode===id);
+                  const center=id=>{
+                    const g=card(id),rect=g?.querySelector('rect'),matrix=g?.transform.baseVal.consolidate()?.matrix;
+                    return matrix&&rect?{x:matrix.e+rect.width.baseVal.value/2,y:matrix.f+rect.height.baseVal.value/2}:null;
+                  };
+                  const first=center(t.items[0]),last=center(t.items.at(-1));
+                  const start=path?.getPointAtLength(0),end=path?.getPointAtLength(path.getTotalLength());
+                  return {theme,total:t.items.length,positioned:t.items.filter(id=>positions.has(id)).length,
+                    cards:cards.length,hidden:t.items.filter(id=>positions.has(id)&&!card(id)).length,
+                    marks:t.items.filter(id=>card(id)||graph.querySelector('[data-weave-knot="'+CSS.escape(id)+'"]')).length,
+                    runs:(path?.getAttribute('d')?.match(/M/g)||[]).length,
+                    startError:first&&start?Math.hypot(first.x-start.x,first.y-start.y):null,
+                    endError:last&&end?Math.hypot(last.x-end.x,last.y-end.y):null};
+                }""")
+                assert not dense.get('error') and dense['total']>=13,(label,'dense test setup',dense)
+                # Without a selection the no-map view shows numbered knots; cards appear for the selected film.
+                assert dense['positioned']==dense['total'] and dense['marks']==dense['total'],(label,'film positions lost on the ribbon',dense)
+                assert dense['runs']==1,(label,'dense ribbon breaks into disconnected segments',dense)
+                # Full Theme Web opens with a curated overview, not a 100+ edge hairball;
+                # its example should start with no more than three small threads.
+                await page.wait_for_function("document.getElementById('weave-theme-web-toggle')!==null",timeout=15000)
+                theme_web=await page.evaluate("""() => {
+                  const modal=document.getElementById('atlas-theme-web');
+                  if(modal.hidden)document.getElementById('weave-theme-web-toggle').click();
+                  const count=document.querySelectorAll('#tw-graph .tw-bridge').length;
+                  document.getElementById('tw-seed').click();
+                  const c=window.AtlasCollections.current();
+                  return {links:count,threads:c.threads.length,films:c.items.length,
+                    maxThread:Math.max(...c.threads.map(t=>t.items.length))};
+                }""")
+                assert 0<theme_web['links']<=28,(label,'full-theme overview is overcrowded',theme_web)
+                assert 2<=theme_web['threads']<=3 and theme_web['maxThread']<=4 and theme_web['films']<=12,(label,'example theme loadout too large',theme_web)
+                assert not problems,(label,'map or constellation JS errors',problems[:8])
+                result[label+'-constellate']={'modes':modes,'reading':progress,'second':nextstep,'playing':play}
+                try:
+                  await page.screenshot(path=f'shots/{label}-constellate.png',timeout=10000,animations='disabled')
+                except Exception as e:print('NONFATAL_SCREENSHOT',label,str(e)[:120])
+                await ctx.close()
+              await browser.close()
+            pathlib.Path('shots/interface-regression.json').write_text(json.dumps(result,indent=2))
+            print('ATLAS_INTERFACE_REGRESSION_OK',json.dumps(result,ensure_ascii=False))
+          asyncio.run(main())
+          PY
+          python3 /tmp/atlas-interface-regression.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: atlas-interface-regression
+          path: shots/
+  first-paint:
+    name: "First paint and single map"
+    runs-on: ubuntu-latest
+    timeout-minutes: 17
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Chromium
+        run: |
+          pip install -q playwright==1.*
+          python3 -m playwright install --with-deps chromium >/dev/null
+      - name: Verify no legacy menu or premature map appears
+        run: |
+          python3 -m http.server 8809 --bind 127.0.0.1 >/tmp/atlas-startup.log 2>&1 &
+          sleep 2
+          mkdir -p shots
+          cat > /tmp/atlas-first-paint-qa.py <<'PY'
+          import asyncio,json,pathlib
+          for filename in ('index.html','beta/index.html'):
+            html=pathlib.Path(filename).read_text()
+            assert html.index('id="view-control"')<html.index('id="jump-index"'), filename
+            assert html.count('id="world"')==1,filename
+          from playwright.async_api import async_playwright
+          BASE="http://127.0.0.1:8809/"
+          async def main():
+            report={}
+            async with async_playwright() as playwright:
+              browser=await playwright.chromium.launch(args=["--use-angle=swiftshader","--enable-unsafe-swiftshader"])
+              for path in ("index.html","beta/index.html"):
+                for view in ("map","constellate"):
+                  name=path.replace("/","-")+"-"+view
+                  context=await browser.new_context(viewport={"width":1440,"height":900})
+                  page=await context.new_page()
+                  exceptions=[]
+                  page.on("pageerror",lambda exc:exceptions.append(str(exc)))
+                  async def delay_world(route):
+                    await asyncio.sleep(2)
+                    await route.continue_()
+                  await page.route("**/assets/world-50m.json",delay_world)
+                  url=BASE+path+("?constellate=1" if view=="constellate" else "")
+                  await page.goto(url,wait_until="domcontentloaded",timeout=90000)
+                  before=await page.evaluate("""() => ({
+                    ready:document.documentElement.dataset.atlasUi==='ready',
+                    menuHidden:getComputedStyle(document.querySelector('.map-toolbar')).visibility==='hidden',
+                    mapVisible:getComputedStyle(document.querySelector('main')).visibility==='visible',
+                    mapNodes:document.querySelectorAll('#atlas').length,
+                    baseMapGuard:(() => {const n=document.querySelector('#atlas-basemap');return !n||n.dataset.cameraSynced==='true'||getComputedStyle(n).visibility==='hidden';})(),
+                    toolbarNodes:document.querySelectorAll('.map-panel .map-toolbar').length,
+                    topItems:[...document.querySelector('.map-actions').children].filter(e=>e.matches('details,#world')).map(e=>e.id),
+                    worldInside:!!document.querySelector('#view-control #world')
+                  })""")
+                  assert before["mapVisible"] and before["mapNodes"]==1 and before["toolbarNodes"]==1,(name,before)
+                  assert before["baseMapGuard"],(name,before)
+                  assert before["topItems"]==["country-drawer","layers","map-info"],(name,before)
+                  assert before["worldInside"],(name,before)
+                  # Mobile map begins with the correctly composed three-panel toolbar.
+                  # Constellate withholds its obsolete controls until the new start card exists.
+                  if not before["ready"] and view=="constellate":assert before["menuHidden"],(name,before)
+                  await page.wait_for_function("document.documentElement.dataset.atlasUi==='ready'",timeout=30000)
+                  after=await page.evaluate("""() => ({
+                    menuPanels:document.querySelectorAll('.map-actions>details').length,
+                    topDesktopItems:[...document.querySelector('.map-actions').children].filter(e=>e.matches('details,#world')).map(e=>e.id),
+                    mapNodes:document.querySelectorAll('#atlas').length,
+                    baseNodes:document.querySelectorAll('#atlas-basemap').length,
+                    toolbarNodes:document.querySelectorAll('.map-panel>.map-toolbar').length,
+                    worldInLayers:!!document.querySelector('#view-control #world'),
+                    keyReady:!!document.querySelector('#visual-key'),
+                    uiReady:document.documentElement.dataset.atlasUi==='ready',
+                    toolbarVisible:getComputedStyle(document.querySelector('.map-toolbar')).visibility==='visible',
+                    basemapGuard:(() => {const n=document.querySelector('#atlas-basemap');return !n||n.dataset.cameraSynced==='true'||getComputedStyle(n).visibility==='hidden';})(),
+                    mapSynced:document.querySelector('#atlas-basemap')?.dataset.cameraSynced||null,
+                    visible:getComputedStyle(document.querySelector('main')).visibility==='visible',
+                    palette:document.documentElement.dataset.basemapPalette||null,
+                    stage:document.documentElement.dataset.weaveStage||null
+                  })""")
+                  assert after["toolbarNodes"]==1 and after["menuPanels"]==3,(name,after)
+                  assert after["topDesktopItems"]==["country-drawer","layers","map-info"],(name,after)
+                  assert after["mapNodes"]==1 and after["baseNodes"]<=1,(name,after)
+                  assert after["basemapGuard"],(name,after)
+                  assert after["worldInLayers"] and after["keyReady"] and after["uiReady"] and after["visible"] and after["toolbarVisible"],(name,after)
+                  if view=="constellate":
+                    assert after["stage"] in ("start","build","read","play"),(name,after)
+                    if after["baseNodes"]:assert after["palette"]=="night",(name,after)
+                  assert not exceptions,(name,exceptions)
+                  # MapLibre/WebGL sometimes stalls Chromium screenshots on CI.
+                  # Assertions above determine correctness; screenshot is diagnostic only.
+                  try:
+                    await page.screenshot(path="shots/"+name+".png",animations="disabled",timeout=9000)
+                  except Exception as exc:
+                    print("NONFATAL_STARTUP_SCREENSHOT",name,str(exc)[:160])
+                  report[name]={"before":before,"after":after}
+                  await context.close()
+              await browser.close()
+            with open("shots/startup-report.json","w") as fp:json.dump(report,fp,indent=2)
+            print("ATLAS_FIRST_PAINT_QA_OK",json.dumps(report))
+          asyncio.run(main())
+          PY
+          python3 /tmp/atlas-first-paint-qa.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: atlas-first-paint-qa
+          path: shots/
+  mobile-first-paint:
+    name: "Mobile first paint (WebKit)"
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install browser test dependencies
+        run: |
+          python3 -m pip install -q playwright==1.*
+          python3 -m playwright install --with-deps chromium webkit >/dev/null
+      - name: Run map + Constellate on two mobile browser engines
+        run: |
+          python3 -m http.server 8894 --bind 127.0.0.1 >/tmp/atlas-mobile-http.log 2>&1 &
+          sleep 2
+          python3 tools/qa/mobile-first-paint.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: atlas-mobile-first-paint
+          path: shots/
+  constellate-first-visit:
+    name: "Constellate first visit"
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Chromium
+        run: |
+          python3 -m pip install -q 'playwright==1.*'
+          python3 -m playwright install --with-deps chromium >/dev/null
+      - name: Example, suggestions, Play, colours, share link (desktop and phone)
+        run: |
+          python3 -m http.server 8983 --bind 127.0.0.1 >/tmp/server.log 2>&1 &
+          sleep 2
+          mkdir -p /tmp/shots
+          python3 tools/qa/constellate-first-visit.py http://127.0.0.1:8983/beta/ /tmp/shots
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: constellate-first-visit
+          path: /tmp/shots
+  constellate-discovery:
+    name: "Constellate discovery, desktop and phone"
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Chromium
+        run: |
+          python3 -m pip install -q 'playwright==1.*'
+          python3 -m playwright install --with-deps chromium >/dev/null
+      - name: Check navigation, search, selection, focus and Play
+        run: |
+          python3 -m http.server 8983 --bind 127.0.0.1 >/tmp/constellate-discovery.log 2>&1 &
+          sleep 2
+          cat >/tmp/check-constellate-discovery.py <<'PY'
+          import asyncio,json
+          from playwright.async_api import async_playwright
+          ROOT='http://127.0.0.1:8983/'
+          async def press(p,selector):
+            # The continuously animated map can prevent Playwright's locator
+            # stability heuristic from settling. Scroll then hit-test and send
+            # a real pointer event to the exposed control.
+            await p.evaluate("""selector => {
+              const el=document.querySelector(selector);
+              if(!el)throw Error('Missing control: '+selector);
+              el.scrollIntoView({block:'center',inline:'nearest',behavior:'instant'});
+            }""",selector)
+            await p.wait_for_timeout(90)
+            data=await p.evaluate("""selector => {
+              const el=document.querySelector(selector),r=el.getBoundingClientRect(),
+                    x=r.left+r.width/2,y=r.top+r.height/2,hit=document.elementFromPoint(x,y),cs=getComputedStyle(el);
+              return {x,y,rect:r.toJSON(),hit:hit?.outerHTML.slice(0,180)||'',
+                visible:cs.display!=='none'&&cs.visibility!=='hidden'&&r.width>1&&r.height>1&&
+                x>=0&&x<innerWidth&&y>=0&&y<innerHeight&&!!hit&&(hit===el||el.contains(hit))};
+            }""",selector)
+            assert data['visible'],('Control is not pointer-accessible',selector,data)
+            await p.mouse.click(data['x'],data['y'])
+          async def verify(p,base,label,width,height):
+            errors=[]
+            p.on('pageerror',lambda err:errors.append(str(err)))
+            await p.goto(base+'index.html?constellate=1',wait_until='domcontentloaded',timeout=90000)
+            await p.wait_for_function('window.AtlasConstellate?.enabled && document.getElementById("weave-start") && window.AtlasCollections?.current()',timeout=55000)
+            beginning=await p.evaluate("""() => {
+              const q=document.querySelector('#ws-theme-q'), f=document.querySelector('#ws-film-q'),chips=document.querySelector('.ws-chips');
+              return {themeBeforeChips:!!(q.compareDocumentPosition(chips)&Node.DOCUMENT_POSITION_FOLLOWING),
+                themeY:q.getBoundingClientRect().top, filmY:f.getBoundingClientRect().top};
+            }""")
+            assert beginning['themeBeforeChips'],(label,'theme search must be above chips',beginning)
+            if label=='main-desktop':
+              assert abs(beginning['themeY']-beginning['filmY'])<30,(label,'searches are not parallel',beginning)
+            # Open a theme the way a first-time visitor does. Calling themeThread()
+            # directly skips the start screen's own transition to Build.
+            await p.locator('#ws-theme-q').fill('Cosmology and Origin Stories')
+            await p.locator('#ws-theme-results [data-ws-theme]').first.click()
+            try:
+              await p.wait_for_function("document.documentElement.dataset.weaveStage==='build'",timeout=40000)
+            except Exception:
+              # Say what the page was doing, so a timeout here explains itself.
+              print('DISCOVERY_STAGE_STUCK',label,json.dumps(await p.evaluate("""() => ({stage:document.documentElement.dataset.weaveStage||'',
+                films:window.AtlasCollections.current().items.length, threads:window.AtlasCollections.current().threads.map(t=>[t.name,t.items.length]),
+                start:getComputedStyle(document.querySelector('#weave-start')).display, results:document.querySelectorAll('#ws-theme-results [data-ws-theme]').length,
+                query:document.querySelector('#ws-theme-q')?.value, focus:document.activeElement?.id||document.activeElement?.tagName, body:document.body.className})""")))
+              raise
+            await p.wait_for_function('window.AtlasCollections.current().items.length>=6',timeout=20000)
+            seed=await p.evaluate("""() => {
+              const s=window.AtlasCollections.current(),t=s.threads.find(t=>t.id===s.activeThread);
+              return {seed:t.items.length,playVisible:getComputedStyle(document.querySelector('#weave-play')).display!=='none',
+                thread:t.name};
+            }""")
+            assert seed['seed']==6 and seed['playVisible'],(label,'six-film starter or top-level Play failed',seed)
+            state=await p.evaluate("""() => {
+              const tab=document.querySelector('#weave-tab-add'),panel=document.querySelector('#constellate-popup'),
+                    ed=document.querySelector('#weave-editor'),r=tab.getBoundingClientRect();
+              return {stage:document.documentElement.dataset.weaveStage,body:document.body.className,
+                tabRect:r.toJSON(),tabDisplay:getComputedStyle(tab).display,
+                panelDisplay:getComputedStyle(panel).display,editorDisplay:getComputedStyle(ed).display,
+                panelHidden:panel.hidden,editorHidden:ed.hidden,
+                topAtTab:document.elementFromPoint(r.x+r.width/2,r.y+r.height/2)?.id||''};
+            }""")
+            print('DISCOVERY_BROWSE_STATE',label,json.dumps(state,ensure_ascii=False),flush=True)
+            # Map camera redraws can prevent Playwright's stability heuristic
+            # from settling even while the tab is visibly hit-testable.
+            # A physical mouse click at its exposed centre still tests navigation.
+            r=state['tabRect']
+            assert state['tabDisplay']!='none' and state['editorDisplay']!='none' and state['topAtTab']=='weave-tab-add', (label,'Browse films is obstructed',state)
+            assert r['x']>=0 and r['right']<=width and r['y']>=0 and r['bottom']<=height,(label,'Browse films is outside viewport',state)
+            await p.mouse.click(r['x']+r['width']/2,r['y']+r['height']/2)
+            await p.wait_for_function("document.querySelector('#weave-editor')?.dataset.tab==='add'",timeout=8000)
+            await p.wait_for_function("document.querySelectorAll('#constellate-results .constellate-result').length>=30",timeout=15000)
+            search=await p.evaluate("""() => ({
+              shown:document.querySelectorAll('#constellate-results .constellate-result').length,
+              more:!!document.querySelector('[data-results-more]'),
+              status:document.querySelector('#weave-discovery-count')?.textContent,
+              focusButton:!!document.querySelector('#weave-focus-thread')
+            })""")
+            assert search['shown']==48 and search['more'] and search['focusButton'],(label,'first browsing page',search)
+            await press(p,'[data-results-more]')
+            assert await p.locator('#constellate-results .constellate-result').count()==96,(label,'Show more pagination')
+            letter=await p.evaluate("""() => {
+              const b=[...document.querySelectorAll('#weave-az-letters button')].find(x=>!x.disabled&&x.dataset.azLetter!=='A');
+              if(!b)return null;
+              const value=b.dataset.azLetter;b.click();
+              const header=document.querySelector('#constellate-results .weave-az-letter')?.textContent;
+              return {value,header,shown:document.querySelectorAll('#constellate-results .constellate-result').length};
+            }""")
+            assert letter and letter['shown']<=48,(label,'A-Z on-demand navigation',letter)
+            await p.locator('#constellate-search').fill('veryunlikelyatlasfilmtermxyz',timeout=12000)
+            assert await p.locator('.weave-discovery-empty').count()==1,(label,'no-match recovery')
+            await press(p,'[data-discovery-reset]')
+            assert await p.locator('#constellate-search').input_value()=='',(label,'search reset')
+            await p.locator('#weave-discovery-order').select_option('newest')
+            disabled=await p.evaluate("() => [...document.querySelectorAll('#weave-az-letters button')].every(b=>b.disabled)")
+            assert disabled,(label,'A-Z jump should be disabled outside alphabetical order')
+            await p.locator('#weave-discovery-order').select_option('relevance')
+            await press(p,'#weave-discovery-unadded')
+            assert await p.locator('#weave-discovery-count').inner_text(),(label,'filtered result count absent')
+            await press(p,'#weave-discovery-unadded')
+            await press(p,'#weave-discovery-art')
+            assert await p.locator('#weave-discovery-count').inner_text(),(label,'image result count absent')
+            await press(p,'#weave-discovery-clear')
+            await p.locator('#constellate-search').fill('Cosmology')
+            await press(p,'[data-az-tab="maker"]')
+            assert await p.locator('#constellate-search').input_value()=='Cosmology',(label,'search lost on tab switch')
+            await press(p,'[data-az-tab="film"]')
+            await press(p,'#weave-discovery-clear')
+            await press(p,'#weave-tab-thread')
+            # A temporary thread focus changes no collection visibility or membership.
+            await p.evaluate("""() => window.AtlasCollections.createThread('QA secondary thread','','star-red')""")
+            await p.wait_for_function("document.querySelector('#weave-focus-thread')?.hidden===false",timeout=10000)
+            before=await p.evaluate("() => window.AtlasCollections.current().threads.map(t=>({id:t.id,visible:t.visible,items:t.items.slice()}))")
+            await press(p,'#weave-focus-thread')
+            assert await p.locator('#weave-focus-thread').inner_text()=='Show all threads',(label,'focus action label')
+            focused=await p.evaluate("() => window.AtlasCollections.current().threads.map(t=>({id:t.id,visible:t.visible,items:t.items.slice()}))")
+            assert before==focused,(label,'focus mutated saved thread data')
+            await press(p,'#weave-focus-thread')
+            await press(p,'#constellate-how>summary')
+            help_count=await p.locator('#constellate-how>ol>li').count()
+            assert help_count==4,(label,'Help should have four steps',help_count)
+            await p.keyboard.press('Escape')
+            assert not await p.locator('#constellate-how').evaluate('(x)=>x.open'),(label,'Help did not close')
+            await press(p,'#weave-play')
+            await p.locator('#weave-player:not([hidden])').wait_for(timeout=12000)
+            play_state=await p.evaluate("""() => {
+              const e=document.querySelector('#weave-play-close'),p=document.querySelector('#weave-player'),r=e.getBoundingClientRect();
+              return {button:r.toJSON(),player:p.getBoundingClientRect().toJSON(),
+                playerPos:getComputedStyle(p).position,display:getComputedStyle(e).display,innerHeight,
+                topAtButton:document.elementFromPoint(r.x+r.width/2,r.y+r.height/2)?.id||''};
+            }""")
+            print('DISCOVERY_PLAY_STATE',label,json.dumps(play_state,ensure_ascii=False),flush=True)
+            b=play_state['button']
+            assert play_state['display']!='none' and b['y']>=0 and b['bottom']<=height and play_state['topAtButton']=='weave-play-close',(label,'Play Close is unreachable',play_state)
+            await p.mouse.click(b['x']+b['width']/2,b['y']+b['height']/2)
+            await p.wait_for_function("!document.body.classList.contains('weave-playing')",timeout=8000)
+            await press(p,'#weave-theme-web-toggle')
+            await p.locator('#atlas-theme-web:not([hidden])').wait_for(timeout=12000)
+            bridge_count=await p.locator('#tw-graph .tw-bridge').count()
+            assert bridge_count<=28,(label,'theme network overview too dense',bridge_count)
+            await p.locator('#tw-search').fill('Knowledge')
+            matching=await p.locator('#tw-graph .tw-node').count()
+            assert 1<=matching<=30,(label,'theme family search',matching)
+            await p.locator('#tw-search').fill('nonnativethemexyz123')
+            assert 'No themes found' in await p.locator('#tw-detail').inner_text(),(label,'no theme match state')
+            await press(p,'[data-tw-reset]')
+            assert await p.locator('#tw-search').input_value()=='',(label,'reset theme search')
+            assert not errors,(label,'JS page exceptions',errors[:7])
+            return {'label':label,'beginning':beginning,'seed':seed,'browser':search,'az':letter,'bridges':bridge_count,'family_matches':matching}
+          async def main():
+            result=[]
+            async with async_playwright() as p:
+              browser=await p.chromium.launch(args=['--use-angle=swiftshader','--enable-unsafe-swiftshader'])
+              for base,label,width,height in [(ROOT,'main-desktop',1440,900),(ROOT+'beta/','beta-mobile',390,844)]:
+                ctx=await browser.new_context(viewport={'width':width,'height':height},reduced_motion='reduce')
+                page=await ctx.new_page()
+                result.append(await verify(page,base,label,width,height))
+                await ctx.close()
+              await browser.close()
+            print('CONSTELLATE_DISCOVERY_PASS',json.dumps(result,ensure_ascii=False))
+          asyncio.run(main())
+          PY
+          python3 /tmp/check-constellate-discovery.py
+  theme-web:
+    name: "Constellate theme web (beta)"
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          pip install -q playwright==1.*
+          python3 -m playwright install --with-deps chromium >/dev/null
+      - name: Exercise live Constellate controls on desktop and phone
+        run: |
+          python3 -m http.server 8789 --bind 127.0.0.1 >/tmp/atlas-qa-web.log 2>&1 &
+          sleep 2
+          mkdir -p shots
+          cat > /tmp/atlas-theme-web-smoke.py <<'PY'
+          import asyncio,json,os
+          from playwright.async_api import async_playwright
+          BASE='http://127.0.0.1:8789/beta/index.html?constellate=1&theme-web=1'
+          async def click_visible(page,selector):
+            # The live map moves continuously; a visible control need not
+            # satisfy Playwright's strict "stable" auto-click heuristic.
+            # Scroll into view, hit-test its centre, and use a real pointer.
+            await page.evaluate("""sel => {
+              const el=document.querySelector(sel);
+              if(!el)throw Error('Missing control: '+sel);
+              el.scrollIntoView({block:'center',inline:'nearest',behavior:'instant'});
+            }""",selector)
+            await page.wait_for_timeout(140)
+            position=await page.evaluate("""sel => {
+              const el=document.querySelector(sel),r=el.getBoundingClientRect(),
+                x=r.left+r.width/2,y=r.top+r.height/2,hit=document.elementFromPoint(x,y),
+                style=getComputedStyle(el);
+              return {x,y,width:r.width,height:r.height,hit:hit?.outerHTML.slice(0,180)||'',
+                accessible:style.display!=='none'&&style.visibility!=='hidden'&&
+                  r.width>1&&r.height>1&&x>=0&&x<innerWidth&&y>=0&&y<innerHeight&&
+                  !!hit&&(hit===el||el.contains(hit))};
+            }""",selector)
+            assert position['accessible'],('Control not pointer-accessible',selector,position)
+            await page.mouse.click(position['x'],position['y'])
+          async def run():
+            report={}
+            async with async_playwright() as p:
+              b=await p.chromium.launch(args=['--use-angle=swiftshader','--enable-unsafe-swiftshader'])
+              for name,viewport in [('desktop',{'width':1440,'height':900}),('mobile',{'width':390,'height':844})]:
+                ctx=await b.new_context(viewport=viewport,device_scale_factor=1,locale='en-US')
+                page=await ctx.new_page()
+                errors=[]
+                page.on('pageerror',lambda e:errors.append(str(e)))
+                await page.goto(BASE,wait_until='domcontentloaded',timeout=90000)
+                await page.locator('#weave-theme-web-toggle').wait_for(state='visible',timeout=90000)
+                await page.locator('#atlas-theme-web:not([hidden])').wait_for(timeout=20000)
+                if name=='desktop':
+                  await page.locator('#tw-graph [data-term]').first.wait_for(timeout=15000)
+                else:
+                  await page.locator('#tw-mobile-list [data-mobile-term]').first.wait_for(timeout=15000)
+                state=await page.evaluate("""() => ({
+                  themes: document.querySelectorAll('#tw-graph [data-term]').length,
+                  links: document.querySelectorAll('#tw-graph [data-bridge]').length,
+                  panels: document.querySelectorAll('#atlas-theme-web:not([hidden])').length,
+                  filmCatalog: window.AtlasConstellate.catalog.filter(x=>x.type==='film').length,
+                  filteredSource: document.querySelectorAll('#tw-detail a[href^="http"]').length
+                })""")
+                assert state['themes']>=10, f'too few theme nodes {state}'
+                assert state['links']>0, f'no sourced bridges {state}'
+                try:
+                  await page.screenshot(path=f'shots/theme-web-{name}.png',full_page=False,timeout=5000,animations='allow')
+                except Exception as ex: print('NONFATAL_SCREENSHOT_ERROR',name,str(ex)[:130])
+                await page.locator('#tw-graph [data-term]' if name=='desktop' else '#tw-mobile-list [data-mobile-term]').first.click()
+                await page.locator('#tw-detail .tw-films .tw-film').first.wait_for(timeout=10000)
+                state['selected']=await page.locator('#tw-detail h3').inner_text()
+                state['synopsisLinks']=await page.locator('#tw-detail a[href^="http"]').count()
+                await page.locator('#tw-search').fill('memory')
+                state['searchNodes']=await page.locator('#tw-graph [data-term]').count()
+                assert state['searchNodes']>=1, f'search failed {state}'
+                await page.locator('#tw-search').fill('')
+                if name=='desktop':
+                  await page.locator('#tw-seed').click()
+                  await page.wait_for_timeout(2500)
+                  state['example']=await page.evaluate("""() => ({
+                    threads: window.AtlasCollections.current().threads.length,
+                    credits: window.AtlasCollections.current().threads.reduce((n,t)=>n+t.items.length,0),
+                    perThread: window.AtlasCollections.current().threads.map(t=>t.items.length),
+                    items: window.AtlasCollections.current().items.length,
+                    visible: !document.querySelector('#atlas-theme-web').hidden
+                  })""")
+                  # The UI intentionally seeds three threads with four film
+                  # credits each; unique films may be shared across threads.
+                  assert state['example']['threads']==3,state
+                  assert state['example']['perThread']==[4,4,4],state
+                  assert state['example']['credits']==12,state
+                  assert 4<=state['example']['items']<=12,state
+                  assert not state['example']['visible'],state
+                  try:
+                    await page.screenshot(path='shots/theme-web-example-desktop.png',full_page=False,timeout=5000,animations='allow')
+                  except Exception as ex: print('NONFATAL_SCREENSHOT_ERROR',name,str(ex)[:130])
+                else:
+                  await page.locator('#tw-mobile-list [data-mobile-network]').click()
+                  assert await page.locator('#tw-graph').is_visible(), 'mobile network option not visible'
+                  await page.locator('#tw-mobile-list [data-mobile-network]').click()
+                  assert await page.locator('#tw-mobile-list [data-mobile-term]').first.is_visible()
+                  await page.locator('#tw-close').click()
+                  assert await page.locator('#atlas-theme-web').is_hidden()
+                # Regression: a thematic link must MOVE to the selected film and
+                # clicking Follow must update the open card, not just add silently.
+                if await page.locator('#atlas-theme-web').is_hidden():
+                  await page.locator('#weave-theme-web-toggle').click()
+                if name=='desktop':
+                  await page.locator('#tw-graph [data-term]').first.click()
+                else:
+                  await page.locator('#tw-mobile-list [data-mobile-term]').first.click()
+                await page.locator('#tw-detail [data-film-id]').first.wait_for(timeout=12000)
+                destination=await page.locator('#tw-detail [data-film-id]').first.get_attribute('data-film-id')
+                await page.locator('#tw-detail [data-film-id]').first.click()
+                debug=await page.evaluate("""() => {
+                  const c=document.querySelector('#constellate-context'),p=document.querySelector('#constellate-popup');
+                  return {contextHidden:c?.hidden,contextDisplay:c&&getComputedStyle(c).display,
+                    popupHidden:p?.hidden,editorHidden:document.querySelector('#weave-editor')?.hidden,
+                    editorTab:document.querySelector('#weave-editor')?.dataset.tab,
+                    preview:c?.querySelector('.weave-context-preview h3')?.textContent,
+                    selected:window.AtlasCollections.current().selectedItem,
+                    count:window.AtlasCollections.current().items.length};
+                }""")
+                print('FOLLOW_DEBUG',name,json.dumps(debug),errors[:3])
+                await page.locator('#constellate-context').wait_for(state='visible',timeout=12000)
+                current=await page.locator('#constellate-context .weave-context-preview h3').inner_text()
+                state['followed']=current
+                assert current, 'Theme-film selection did not open a destination card'
+                if await page.locator('#weave-suggest [data-weave-follow]').count():
+                  await click_visible(page,'#weave-suggest [data-weave-follow]')
+                  await page.wait_for_function("""oldTitle => {
+                    const title=document.querySelector('#constellate-context .weave-context-preview h3')?.textContent;
+                    return !!title&&title!==oldTitle;
+                  }""",arg=current,timeout=12000)
+                  nxt=await page.locator('#constellate-context .weave-context-preview h3').inner_text()
+                  assert nxt and nxt!=current, 'Follow did not move to the next film'
+                  state['nextFilm']=nxt
+                assert not errors, f'Navigation raised page errors: {errors}'
+                state['pageerrors']=errors[:12]
+                report[name]=state
+                await ctx.close()
+              await b.close()
+            with open('shots/theme-web-qa.json','w') as f:json.dump(report,f,indent=2)
+            print('CONSTELLATE_THEME_WEB_QA_OK',json.dumps(report,ensure_ascii=False))
+          asyncio.run(run())
+          PY
+          python3 /tmp/atlas-theme-web-smoke.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: constellate-theme-web-qa
+          path: shots/
