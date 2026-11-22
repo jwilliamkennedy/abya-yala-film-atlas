@@ -1,2 +1,5 @@
 2026-11-21
 Requested by atlas owner: promote current beta/ to published root using tools/promote_beta.py; preserve beta and private research Queue. Left rail, basemap alignment fix, Link films thread, interface pass.
+
+2026-11-22
+Requested by atlas owner: promote current beta/ to published root using tools/promote_beta.py; preserve beta and private research Queue. Trace, Layers (territories always on, Map key inside), Saved page, About tabs, Timeline and Time links, Watch with related films.
