@@ -38,7 +38,7 @@ function assignEarthTones(world){const geometry=world.objects.countries.geometri
 function landVoice(l){
  const stamp=s.scope+'|'+JSON.stringify(s.filters);
  if(stamp!==voiceStamp){voiceStamp=stamp;voiceCounts.clear();voiceMaximum=1;for(const item of lands){const count=new Set(visibleLandLinks(item).map(e=>e.record)).size;voiceCounts.set(item.id,count);voiceMaximum=Math.max(voiceMaximum,count);}}
- const hemispheric=!!l?.groups?.some(g=>g.features.some(f=>f.properties.hemispheric)),count=hemispheric?voiceMaximum+1:voiceCounts.get(l?.id)||0,t=Math.min(1,Math.log1p(count)/Math.log1p(voiceMaximum));
+ const count=voiceCounts.get(l?.id)||0,t=Math.log1p(count)/Math.log1p(voiceMaximum);
  const fit=window.innerWidth<520?.82:window.innerWidth<1000?.9:1;
  return {count,t,map:Math.max(11.5,Math.round((count?13.5+6*t*Math.sqrt(t):11.5)*fit*10)/10),side:count?18+2*t:15,heading:count?24+2*t:20,weight:count?500+Math.round(80*t):400,tone:d3.interpolateRgb('#375e61','#293f48')(t)};
 }
@@ -243,7 +243,7 @@ function publicAffiliation(v){v=String(v||'').trim();return !v||NOTE_RE.test(v)?
 const watchMemo=new WeakMap();function canWatch(f){if(!watchMemo.has(f)){let v=false;try{v=viewingRoutes(f).some(l=>viewingLabel(l)==='Watch');}catch{}watchMemo.set(f,v);}return watchMemo.get(f);}
 const recordHay=new WeakMap();
 function recordMatches(r,q){if(!q)return true;let h=recordHay.get(r);if(h===undefined){h=norm([r.name,...(r.aliases||[]),r.countryName,r.country,r.community,biographyById(r.id)?.affiliation,...(edgesByRecord.get(r.id)||[]).map(e=>landById(e.land)?.name)].join(' '));recordHay.set(r,h);}return h.includes(q);}
-function lookup(p){return territories.filter(f=>{if(f.properties.hemispheric)return false;const [[w,a],[e,b]]=f.bounds;return p[1]>=a&&p[1]<=b&&(w<=e?p[0]>=w&&p[0]<=e:p[0]>=w||p[0]<=e)&&d3.geoContains(f,p);});}
+function lookup(p){return territories.filter(f=>{const [[w,a],[e,b]]=f.bounds;return p[1]>=a&&p[1]<=b&&(w<=e?p[0]>=w&&p[0]<=e:p[0]>=w||p[0]<=e)&&d3.geoContains(f,p);});}
 function landHits(p){const result=[...new Set(lookup(p).map(f=>groupToLand.get(byFeature.get(String(f.id)).id)))];const guatemala=features.find(f=>String(f.id)==='320');if(guatemala&&d3.geoContains(guatemala,p))result.unshift(lands.find(l=>l.name==='Iximulew'));return result;}
 function landGeometry(l){return l.groups.flatMap(g=>g.features);}
 const countryRelay=window.ATLAS_COUNTRY_RELAY?.countries||[];
@@ -645,7 +645,7 @@ const communityCentres=new Map();
 function communityCentre(c){if(!communityCentres.has(c.id)){const g=byFeature.get(c.land);communityCentres.set(c.id,g?d3.geoCentroid({type:'FeatureCollection',features:g.features}):null);}return communityCentres.get(c.id);}
 function constellationTip(d){if(s.tipPinned||hoverIsBlocked())return;const el=$('#map-tip'),l=d.type==='land'&&lands.find(l=>l.id===d.id),r=d.type==='director'&&recordById(d.id);el.innerHTML=d.type==='cluster'?`<strong>${d.members.length} nearby land references</strong><p>${d.members.slice(0,5).map(n=>esc(n.name)).join(' · ')}</p><small class="tip-action">Select to zoom and separate</small>`:l?`<div class="tip-eyebrow">LAND / COMMUNITY REFERENCE</div><strong>${esc(l.name)}</strong><p>${visibleLandLinks(l).length} linked filmmakers</p><small class="tip-basis">${l.groups.length?'Source-map reference point; not a filmmaker’s location.':'No mapped area. This reference remains available in the index.'}</small><small class="tip-action">Select to reveal linked filmmakers${s.plane==='map'?' and branches':''}</small>`:`<div class="tip-eyebrow">FILMMAKER</div><strong>${esc(r.name)}</strong><p>${esc(biographyById(r.id)?.affiliation||r.community||'Affiliation unconfirmed')}</p><small class="tip-basis">${(edgesByRecord.get(r.id)||[]).length} land links. Curves indicate sourced or provisional affiliations.</small><small class="tip-action">Select for lands, films and sources</small>`;el.hidden=false;el.classList.remove('pinned');el.style.left=Math.max(12,Math.min(width-304,d.x+18))+'px';el.style.top=Math.max(95,Math.min(height-310,d.y+18))+'px';}
 const landCentres=new Map(),landCentresInside=new Map();
-function landCentre(l){if(!landCentres.has(l.id)){const fs=landGeometry(l);landCentres.set(l.id,fs.length?(fs.find(f=>f.properties.labelAt)?.properties.labelAt||d3.geoCentroid({type:'FeatureCollection',features:fs})):null);}return landCentres.get(l.id);}
+function landCentre(l){if(!landCentres.has(l.id)){const fs=landGeometry(l);landCentres.set(l.id,fs.length?d3.geoCentroid({type:'FeatureCollection',features:fs}):null);}return landCentres.get(l.id);}
 
 const weaveReferenceCoordinates=new Map();
 function recordLandReferences(id){return (edgesByRecord.get(id)||[]).map(e=>({id:e.land,name:landDisplayName(landById(e.land)),status:e.status,basis:e.basis,source:e.source||'',mapped:!!landById(e.land)?.groups.length})).filter(e=>e.name).sort((a,b)=>Number(b.status==='sourced')-Number(a.status==='sourced')||Number(/wallmapu/i.test(b.name))-Number(/wallmapu/i.test(a.name)));}
