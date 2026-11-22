@@ -2,8 +2,8 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-22",
  "license": "See data.html",
- "films_on_public_map": 2595,
- "film_entries": 2609,
+ "films_on_public_map": 2599,
+ "film_entries": 2613,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -48254,6 +48254,10 @@
     {
      "id": "Q20261122-101",
      "name": "Ehren Thomas"
+    },
+    {
+     "id": "Q20261122-132",
+     "name": "Tim Hill"
     }
    ],
    "languages": [],
@@ -48286,6 +48290,10 @@
     {
      "id": "NEW-5f6b8e7166f7",
      "name": "Ryan R. Black"
+    },
+    {
+     "id": "NEW-7a7adbdebf61",
+     "name": "John Wapioke"
     }
    ],
    "languages": [],
@@ -48422,6 +48430,10 @@
     {
      "id": "NEW-da8fa380aeff",
      "name": "Tito Ybarra"
+    },
+    {
+     "id": "NEW-aa7b502a59d5",
+     "name": "Dakota Ray Hebert"
     }
    ],
    "languages": [],
@@ -48894,6 +48906,70 @@
     {
      "id": "DIR-0297",
      "name": "Patricia Loew"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "NEW-28f7d379e3b0-F1": {
+   "title": "Pitago Stop",
+   "year": null,
+   "makers": [
+    {
+     "id": "NEW-28f7d379e3b0",
+     "name": "Eve Ringuette"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": null
+  },
+  "NEW-345633c1eab8-F1": {
+   "title": "Tzinquaw Opera",
+   "year": null,
+   "makers": [
+    {
+     "id": "NEW-345633c1eab8",
+     "name": "Harold C. Joe"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "DIR-0386-F1": {
+   "title": "Heart Like a Pow Wow",
+   "year": null,
+   "makers": [
+    {
+     "id": "DIR-0386",
+     "name": "Chief Lady Bird"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "DIR-0197-F1": {
+   "title": "Bronx Llaktamanta",
+   "year": null,
+   "makers": [
+    {
+     "id": "DIR-0197",
+     "name": "Doris Loayza"
     }
    ],
    "languages": [],
