@@ -1,9 +1,9 @@
 {
  "title": "Indigenous Cinema Atlas · film facets",
- "generated": "2026-11-21",
+ "generated": "2026-11-22",
  "license": "See data.html",
- "films_on_public_map": 2351,
- "film_entries": 2370,
+ "films_on_public_map": 2357,
+ "film_entries": 2376,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -69,7 +69,7 @@
   ]
  },
  "language_authority": {
-  "source": "Glottolog (glottolog-cldf, fetched 2026-11-21)",
+  "source": "Glottolog (glottolog-cldf, fetched 2026-11-22)",
   "languages": [
    {
     "label": "Anishinaabemowin (Ojibwe)",
@@ -1768,6 +1768,106 @@
    ],
    "form": "Documentary",
    "length": "Feature"
+  },
+  "Q20261121-71-F1": {
+   "title": "Xokxop pet",
+   "year": 2009,
+   "makers": [
+    {
+     "id": "DIR-0028",
+     "name": "Isael Maxakali"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "Q20261121-72-F1": {
+   "title": "Yãmîy",
+   "year": 2011,
+   "makers": [
+    {
+     "id": "DIR-0028",
+     "name": "Isael Maxakali"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "Q20261121-73-F1": {
+   "title": "Quando os yãmiy vêm dançar conosco",
+   "year": 2012,
+   "makers": [
+    {
+     "id": "DIR-0028",
+     "name": "Isael Maxakali"
+    },
+    {
+     "id": "DIR-0051",
+     "name": "Sueli Maxakali"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "Q20261121-74-F1": {
+   "title": "Kotkuphi",
+   "year": 2012,
+   "makers": [
+    {
+     "id": "DIR-0028",
+     "name": "Isael Maxakali"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "Q20261121-75-F1": {
+   "title": "Xupapoynãg",
+   "year": 2012,
+   "makers": [
+    {
+     "id": "DIR-0028",
+     "name": "Isael Maxakali"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "Q20261121-76-F1": {
+   "title": "Mîmãnãm: mõgmõka xi xûnîm",
+   "year": 2012,
+   "makers": [
+    {
+     "id": "DIR-0028",
+     "name": "Isael Maxakali"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
   },
   "FILM-0037": {
    "title": "A história do monstro Kátpy (rep.)",
