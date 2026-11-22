@@ -2,8 +2,8 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-22",
  "license": "See data.html",
- "films_on_public_map": 2533,
- "film_entries": 2553,
+ "films_on_public_map": 2544,
+ "film_entries": 2560,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -393,7 +393,7 @@
     "match": "exact",
     "indigenous": "no",
     "note": "",
-    "films": 91
+    "films": 88
    },
    {
     "label": "Spanish",
@@ -429,7 +429,7 @@
     "match": "exact",
     "indigenous": "no",
     "note": "",
-    "films": 2
+    "films": 3
    },
    {
     "label": "Vietnamese",
@@ -513,7 +513,7 @@
     "match": "exact",
     "indigenous": "yes",
     "note": "",
-    "films": 3
+    "films": 2
    },
    {
     "label": "Chinuk Wawa",
@@ -876,7 +876,7 @@
    "length": null
   },
   "FILM-0013": {
-   "title": "Guardiões da Memória (rep.)",
+   "title": "Guardiões da Memória",
    "year": null,
    "makers": [
     {
@@ -6175,6 +6175,10 @@
     {
      "id": "DIR-0103",
      "name": "Jennifer Wickham"
+    },
+    {
+     "id": "DIR-0070",
+     "name": "Brenda Michell"
     }
    ],
    "languages": [],
@@ -6333,10 +6337,6 @@
     {
      "id": "DIR-0107",
      "name": "Jules Koostachin"
-    },
-    {
-     "id": "QM-0bcc197085",
-     "name": "Jules Arita Koostachin"
     }
    ],
    "languages": [],
@@ -6397,10 +6397,6 @@
     {
      "id": "DIR-0107",
      "name": "Jules Koostachin"
-    },
-    {
-     "id": "QM-0bcc197085",
-     "name": "Jules Arita Koostachin"
     }
    ],
    "languages": [],
@@ -6417,10 +6413,6 @@
     {
      "id": "DIR-0107",
      "name": "Jules Koostachin"
-    },
-    {
-     "id": "QM-0bcc197085",
-     "name": "Jules Arita Koostachin"
     }
    ],
    "languages": [],
@@ -6437,10 +6429,6 @@
     {
      "id": "DIR-0107",
      "name": "Jules Koostachin"
-    },
-    {
-     "id": "QM-0bcc197085",
-     "name": "Jules Arita Koostachin"
     }
    ],
    "languages": [],
@@ -6457,10 +6445,6 @@
     {
      "id": "DIR-0107",
      "name": "Jules Koostachin"
-    },
-    {
-     "id": "QM-0bcc197085",
-     "name": "Jules Arita Koostachin"
     }
    ],
    "languages": [],
@@ -6477,10 +6461,6 @@
     {
      "id": "DIR-0107",
      "name": "Jules Koostachin"
-    },
-    {
-     "id": "QM-0bcc197085",
-     "name": "Jules Arita Koostachin"
     }
    ],
    "languages": [],
@@ -6497,10 +6477,6 @@
     {
      "id": "DIR-0107",
      "name": "Jules Koostachin"
-    },
-    {
-     "id": "QM-0bcc197085",
-     "name": "Jules Arita Koostachin"
     }
    ],
    "languages": [],
@@ -6517,10 +6493,6 @@
     {
      "id": "DIR-0107",
      "name": "Jules Koostachin"
-    },
-    {
-     "id": "QM-0bcc197085",
-     "name": "Jules Arita Koostachin"
     }
    ],
    "languages": [],
@@ -6537,10 +6509,6 @@
     {
      "id": "DIR-0107",
      "name": "Jules Koostachin"
-    },
-    {
-     "id": "QM-0bcc197085",
-     "name": "Jules Arita Koostachin"
     }
    ],
    "languages": [],
@@ -6557,10 +6525,6 @@
     {
      "id": "DIR-0107",
      "name": "Jules Koostachin"
-    },
-    {
-     "id": "QM-0bcc197085",
-     "name": "Jules Arita Koostachin"
     }
    ],
    "languages": [],
@@ -6577,10 +6541,6 @@
     {
      "id": "DIR-0107",
      "name": "Jules Koostachin"
-    },
-    {
-     "id": "QM-0bcc197085",
-     "name": "Jules Arita Koostachin"
     }
    ],
    "languages": [],
@@ -6597,10 +6557,6 @@
     {
      "id": "DIR-0107",
      "name": "Jules Koostachin"
-    },
-    {
-     "id": "QM-0bcc197085",
-     "name": "Jules Arita Koostachin"
     }
    ],
    "languages": [],
@@ -6617,10 +6573,6 @@
     {
      "id": "DIR-0107",
      "name": "Jules Koostachin"
-    },
-    {
-     "id": "QM-0bcc197085",
-     "name": "Jules Arita Koostachin"
     }
    ],
    "languages": [],
@@ -6637,10 +6589,6 @@
     {
      "id": "DIR-0107",
      "name": "Jules Koostachin"
-    },
-    {
-     "id": "QM-0bcc197085",
-     "name": "Jules Arita Koostachin"
     }
    ],
    "languages": [],
@@ -6657,10 +6605,6 @@
     {
      "id": "DIR-0107",
      "name": "Jules Koostachin"
-    },
-    {
-     "id": "QM-0bcc197085",
-     "name": "Jules Arita Koostachin"
     }
    ],
    "languages": [],
@@ -11630,10 +11574,6 @@
     {
      "id": "DIR-0167",
      "name": "Zoe Leigh Hopkins"
-    },
-    {
-     "id": "Q20261114-01",
-     "name": "Zoe Hopkins"
     }
    ],
    "languages": [],
@@ -11650,10 +11590,6 @@
     {
      "id": "DIR-0167",
      "name": "Zoe Leigh Hopkins"
-    },
-    {
-     "id": "Q20261114-01",
-     "name": "Zoe Hopkins"
     }
    ],
    "languages": [],
@@ -11670,10 +11606,6 @@
     {
      "id": "DIR-0167",
      "name": "Zoe Leigh Hopkins"
-    },
-    {
-     "id": "Q20261114-01",
-     "name": "Zoe Hopkins"
     }
    ],
    "languages": [],
@@ -11690,10 +11622,6 @@
     {
      "id": "DIR-0167",
      "name": "Zoe Leigh Hopkins"
-    },
-    {
-     "id": "Q20261114-01",
-     "name": "Zoe Hopkins"
     }
    ],
    "languages": [],
@@ -11710,10 +11638,6 @@
     {
      "id": "DIR-0167",
      "name": "Zoe Leigh Hopkins"
-    },
-    {
-     "id": "Q20261114-01",
-     "name": "Zoe Hopkins"
     }
    ],
    "languages": [],
@@ -11730,10 +11654,6 @@
     {
      "id": "DIR-0167",
      "name": "Zoe Leigh Hopkins"
-    },
-    {
-     "id": "Q20261114-01",
-     "name": "Zoe Hopkins"
     }
    ],
    "languages": [],
@@ -11750,10 +11670,6 @@
     {
      "id": "DIR-0167",
      "name": "Zoe Leigh Hopkins"
-    },
-    {
-     "id": "Q20261114-01",
-     "name": "Zoe Hopkins"
     }
    ],
    "languages": [],
@@ -12818,10 +12734,6 @@
     {
      "id": "DIR-0187",
      "name": "Marbel Ina Vanegas Jusayu"
-    },
-    {
-     "id": "Q20261112-11",
-     "name": "Marbel Vanegas Jusayu"
     }
    ],
    "languages": [],
@@ -13098,10 +13010,6 @@
     {
      "id": "DIR-0187",
      "name": "Marbel Ina Vanegas Jusayu"
-    },
-    {
-     "id": "Q20261112-11",
-     "name": "Marbel Vanegas Jusayu"
     }
    ],
    "languages": [],
@@ -13118,10 +13026,6 @@
     {
      "id": "DIR-0187",
      "name": "Marbel Ina Vanegas Jusayu"
-    },
-    {
-     "id": "Q20261112-11",
-     "name": "Marbel Vanegas Jusayu"
     }
    ],
    "languages": [],
@@ -14866,6 +14770,22 @@
   "Q20261113-59-F1": {
    "title": "Jvabajom-Músico",
    "year": null,
+   "makers": [
+    {
+     "id": "DIR-0226",
+     "name": "Humberto Gómez Pérez"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "Q20261121-09-F1": {
+   "title": "Sat yelov jlumal (Rostros de mi pueblo)",
+   "year": 2015,
    "makers": [
     {
      "id": "DIR-0226",
@@ -16665,6 +16585,30 @@
    "families": [],
    "form": null,
    "length": null
+  },
+  "Q20261121-701-F1": {
+   "title": "Galu Dugbis – La memoria de las abuelas",
+   "year": 2020,
+   "makers": [
+    {
+     "id": "DIR-0253",
+     "name": "Olowaili Green"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Art, Craft and Making",
+    "Memory and Oral History",
+    "Women and Gender"
+   ],
+   "primary_theme": "Art, Craft and Making",
+   "families": [
+    "Expression and Representation",
+    "Knowledge and Continuity",
+    "Lives and Relations"
+   ],
+   "form": "Documentary",
+   "length": "Short"
   },
   "DIR-0254-QMd8514f": {
    "title": "Héroe Transparente",
@@ -19028,10 +18972,6 @@
     {
      "id": "DIR-0332",
      "name": "Ciara Lacy"
-    },
-    {
-     "id": "DIR-0332",
-     "name": "Ciara Lacy"
     }
    ],
    "languages": [],
@@ -19971,10 +19911,6 @@
      "name": "Georgette McLeod"
     },
     {
-     "id": "Q20261115-905",
-     "name": "Allison Anderson"
-    },
-    {
      "id": "Q20261115-906",
      "name": "Georgette McLoed"
     }
@@ -20531,10 +20467,6 @@
    "title": "Deneege Leł Ghu Kk’ots’eedeneeyh Te Heł Hoozoonh Ts’e Denots’edeneeyh",
    "year": 2026,
    "makers": [
-    {
-     "id": "NEW-0c03bd75e69a",
-     "name": "Brittany Woods-Orrison"
-    },
     {
      "id": "NEW-0c03bd75e69a",
      "name": "Brittany Woods-Orrison"
@@ -21221,7 +21153,7 @@
   },
   "NEW-7314e3db4581-WORK-1": {
    "title": "Midnight Migrations: Wëdzey Tąy (Caribou Trails)",
-   "year": null,
+   "year": 2026,
    "makers": [
     {
      "id": "NEW-7314e3db4581",
@@ -22195,10 +22127,6 @@
     {
      "id": "NEW-39a09ddff30e",
      "name": "Jett Kowalchuk"
-    },
-    {
-     "id": "NEW-39a09ddff30e",
-     "name": "Jett Kowalchuk"
     }
    ],
    "languages": [],
@@ -22390,7 +22318,7 @@
   },
   "NEW-2f279d2a517d-WORK-1": {
    "title": "The Woman Who Married A Bear",
-   "year": null,
+   "year": 2025,
    "makers": [
     {
      "id": "NEW-2f279d2a517d",
@@ -23137,7 +23065,7 @@
   },
   "NEW-baceba5380b8-WORK-1": {
    "title": "Sally’s Bravery",
-   "year": null,
+   "year": 2025,
    "makers": [
     {
      "id": "NEW-baceba5380b8",
@@ -23205,10 +23133,6 @@
    "makers": [
     {
      "id": "NEW-7b37398372f9",
-     "name": "Nina Paninnguaq Skydsbjerg"
-    },
-    {
-     "id": "Q20261115-901",
      "name": "Nina Paninnguaq Skydsbjerg"
     }
    ],
@@ -23561,30 +23485,10 @@
    "form": "Experimental",
    "length": "Short"
   },
-  "NEW-12fd187d7673-QMb97639": {
-   "title": "Sally's Bravery",
-   "year": 2025,
-   "makers": [
-    {
-     "id": "NEW-12fd187d7673",
-     "name": "Roxanne Lauzon"
-    }
-   ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
-  },
   "NEW-7feb9c9ffe82-WORK-1": {
    "title": "Mann’s Sparks",
    "year": 2024,
    "makers": [
-    {
-     "id": "NEW-7feb9c9ffe82",
-     "name": "Ryland Walker Knight"
-    },
     {
      "id": "NEW-7feb9c9ffe82",
      "name": "Ryland Walker Knight"
@@ -24223,7 +24127,7 @@
   },
   "NEW-e0d12f4753ec-WORK-1": {
    "title": "Nivingajuliat",
-   "year": null,
+   "year": 2026,
    "makers": [
     {
      "id": "NEW-e0d12f4753ec",
@@ -24247,7 +24151,7 @@
   },
   "NEW-100aff5071ee-WORK-1": {
    "title": "E.V. Savage",
-   "year": null,
+   "year": 2024,
    "makers": [
     {
      "id": "NEW-100aff5071ee",
@@ -34718,22 +34622,6 @@
    "form": null,
    "length": null
   },
-  "NEW-d4429a8a4dbb-WORK-1": {
-   "title": "Reventar los hilos",
-   "year": 2020,
-   "makers": [
-    {
-     "id": "NEW-d4429a8a4dbb",
-     "name": "Selene Galindo"
-    }
-   ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
-  },
   "NEW-4c89eb1eecae-WORK-1": {
    "title": "Nuevo amanecer",
    "year": 2004,
@@ -36755,22 +36643,6 @@
    "form": null,
    "length": null
   },
-  "NEW-4cece503d728-WORK-2": {
-   "title": "Dadjira De (Nuestra casa)",
-   "year": null,
-   "makers": [
-    {
-     "id": "NEW-4cece503d728",
-     "name": "Iván Jaripio"
-    }
-   ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
-  },
   "NEW-4cece503d728-F1": {
    "title": "Identidad",
    "year": 2017,
@@ -36886,10 +36758,6 @@
     {
      "id": "NEW-2d38018d40a3",
      "name": "Misael Alva Alva"
-    },
-    {
-     "id": "QM-ff8a1995d3",
-     "name": "Misael Alva"
     }
    ],
    "languages": [],
@@ -41616,6 +41484,22 @@
    "form": "Experimental",
    "length": null
   },
+  "NEW-e5a5fc385de7-NEW-d4429a8a4dbb-WORK-1": {
+   "title": "Reventar los hilos",
+   "year": 2020,
+   "makers": [
+    {
+     "id": "NEW-e5a5fc385de7",
+     "name": "Selene Yuridia Galindo Cumplido"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "NEW-ab671ab16445-QMb63fe4": {
    "title": "Escribí mi nombre en la selva",
    "year": null,
@@ -42702,32 +42586,6 @@
    "form": "Documentary",
    "length": null
   },
-  "Q20261112-11-F2": {
-   "title": "Apotnojushi La casa del viento",
-   "year": 2026,
-   "makers": [
-    {
-     "id": "Q20261112-11",
-     "name": "Marbel Vanegas Jusayu"
-    }
-   ],
-   "languages": [
-    {
-     "label": "Wayuunaiki",
-     "as_credited": "Wayuunaiki",
-     "glottocode": "wayu1243",
-     "iso639_3": "guc",
-     "match": "exact",
-     "indigenous": true,
-     "source": "https://ficcifestival.com/sites/default/files/2026-05/Catalogo_Oficial_FICCI_65.pdf"
-    }
-   ],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": "Documentary",
-   "length": "Short"
-  },
   "Q20261114-84-F2": {
    "title": "Tsõ Reptuna Ró Hã",
    "year": null,
@@ -43115,6 +42973,22 @@
   "Q20261121-404-F1": {
    "title": "Ikuma Siku",
    "year": 2005,
+   "makers": [
+    {
+     "id": "Q20261114-65",
+     "name": "Glenn Gear"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": null
+  },
+  "Q20261121-96-F1": {
+   "title": "Cry of the Loup-garou",
+   "year": 2014,
    "makers": [
     {
      "id": "Q20261114-65",
@@ -45050,22 +44924,6 @@
    "form": null,
    "length": null
   },
-  "Q20261115-850-F2": {
-   "title": "WaaPaKe (Tomorrow)",
-   "year": 2023,
-   "makers": [
-    {
-     "id": "QM-0bcc197085",
-     "name": "Jules Arita Koostachin"
-    }
-   ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
-  },
   "Q20261115-853-F1": {
    "title": "Palace",
    "year": 2008,
@@ -45208,104 +45066,6 @@
      "match": "exact",
      "indigenous": false,
      "source": "https://vtape.org/video?vi=5123"
-    }
-   ],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
-  },
-  "Q20261115-902-F1": {
-   "title": "Midnight Migrations: Wëdzey Tąy (Caribou Trails)",
-   "year": 2026,
-   "makers": [
-    {
-     "id": "Q20261115-902",
-     "name": "Darcy Tara McDiarmid"
-    }
-   ],
-   "languages": [
-    {
-     "label": "English",
-     "as_credited": "English",
-     "glottocode": "stan1293",
-     "iso639_3": "eng",
-     "match": "exact",
-     "indigenous": false,
-     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/"
-    }
-   ],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
-  },
-  "Q20261115-903-F1": {
-   "title": "Nivingajuliat",
-   "year": 2026,
-   "makers": [
-    {
-     "id": "Q20261115-903",
-     "name": "Shelby Lisk"
-    }
-   ],
-   "languages": [
-    {
-     "label": "English",
-     "as_credited": "English",
-     "glottocode": "stan1293",
-     "iso639_3": "eng",
-     "match": "exact",
-     "indigenous": false,
-     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/"
-    }
-   ],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
-  },
-  "Q20261115-904-F1": {
-   "title": "The Woman Who Married A Bear",
-   "year": 2025,
-   "makers": [
-    {
-     "id": "Q20261115-904",
-     "name": "Kaa,Laa Mary Goddard"
-    }
-   ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
-  },
-  "Q20261115-907-F1": {
-   "title": "E.V. Savage",
-   "year": 2024,
-   "makers": [
-    {
-     "id": "Q20261115-907",
-     "name": "Stevie-Ray Strangling Wolf"
-    },
-    {
-     "id": "Q20261115-908",
-     "name": "Shelby Strangling Wolf"
-    }
-   ],
-   "languages": [
-    {
-     "label": "English",
-     "as_credited": "English",
-     "glottocode": "stan1293",
-     "iso639_3": "eng",
-     "match": "exact",
-     "indigenous": false,
-     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/"
     }
    ],
    "themes": [],
@@ -46913,26 +46673,6 @@
    "form": "Documentary",
    "length": "Feature"
   },
-  "QM-61cf19b25a-M1": {
-   "title": "Levante Pela Terra",
-   "year": 2022,
-   "makers": [
-    {
-     "id": "QM-61cf19b25a",
-     "name": "Marcelo Cuhexê Krahô"
-    }
-   ],
-   "languages": [],
-   "themes": [
-    "Land Defense"
-   ],
-   "primary_theme": "Land Defense",
-   "families": [
-    "Land and Environment"
-   ],
-   "form": "Documentary",
-   "length": "Short"
-  },
   "QW-WAPI-V237674919": {
    "title": "Bag on My Head",
    "year": 2017,
@@ -47984,6 +47724,235 @@
    "primary_theme": null,
    "families": [],
    "form": "Documentary",
+   "length": null
+  },
+  "QW-WAPI-V1125209423": {
+   "title": "Mon héritage",
+   "year": 2025,
+   "makers": [
+    {
+     "id": "QM-100b5b21bc",
+     "name": "Gertrude Pinette"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QW-WAPI-V277532898": {
+   "title": "D'où je viens",
+   "year": 2018,
+   "makers": [
+    {
+     "id": "QM-100b5b21bc",
+     "name": "Gertrude Pinette"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QW-WAPI-V223614656": {
+   "title": "Nitatumishkuau Nutaupan",
+   "year": 2017,
+   "makers": [
+    {
+     "id": "QM-3581a7ad22",
+     "name": "Marc-Antoine Ishpatao"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QW-WAPI-V339599297": {
+   "title": "Nutashkuaniu Shipu - la rivière Nutashkuan",
+   "year": 2019,
+   "makers": [
+    {
+     "id": "QM-3581a7ad22",
+     "name": "Marc-Antoine Ishpatao"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261121-07-F1": {
+   "title": "El entretejido de la vida de don Eulalio",
+   "year": 2016,
+   "makers": [
+    {
+     "id": "Q20261121-07",
+     "name": "Jonatan Alberto Maas Chuc"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "Q20261121-08-F1": {
+   "title": "U muuk’il in t’aan (La fuerza de mi voz)",
+   "year": 2016,
+   "makers": [
+    {
+     "id": "Q20261121-08",
+     "name": "Paloma Jesús Cituk Andueza"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "Q20261121-16-F1": {
+   "title": "L’Innu du futur",
+   "year": 2021,
+   "makers": [
+    {
+     "id": "Q20261121-16",
+     "name": "Stéphane Nepton"
+    }
+   ],
+   "languages": [
+    {
+     "label": "French",
+     "as_credited": "French",
+     "glottocode": "stan1290",
+     "iso639_3": "fra",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://2024.fcvq.ca/programmation/20-ans-de-recit-au-coeur-des-premiers-peuples-wapikoni-2024-09-11-14h30"
+    }
+   ],
+   "themes": [
+    "Urban Indigeneity"
+   ],
+   "primary_theme": "Urban Indigeneity",
+   "families": [
+    "Lives and Relations"
+   ],
+   "form": "Experimental",
+   "length": "Short"
+  },
+  "Q20261121-703-F1": {
+   "title": "Guardianes de semilla",
+   "year": 2020,
+   "makers": [
+    {
+     "id": "QM-bd85298ce6",
+     "name": "Jorge Mauricio Telpiz Quitiaquez"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Food Sovereignty",
+    "Health and Healing",
+    "Land Defense"
+   ],
+   "primary_theme": "Food Sovereignty",
+   "families": [
+    "Land and Environment",
+    "Lives and Relations"
+   ],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261122-70-F1": {
+   "title": "Spirit Of The Bluebird",
+   "year": 2011,
+   "makers": [
+    {
+     "id": "Q20261122-70",
+     "name": "Jesse Gouchey"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": null
+  },
+  "Q20261122-71-F1": {
+   "title": "Treading Water: Plight of the Manitoba First Nation Flood Evacuees",
+   "year": 2014,
+   "makers": [
+    {
+     "id": "Q20261122-71",
+     "name": "Jérémie Wookey"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "Q20261122-72-F1": {
+   "title": "The Routes",
+   "year": 2014,
+   "makers": [
+    {
+     "id": "Q20261122-72",
+     "name": "James McDougall"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": null
+  },
+  "Q20261122-73-F1": {
+   "title": "Sedna, Empress of the Sea",
+   "year": 2022,
+   "makers": [
+    {
+     "id": "Q20261122-73",
+     "name": "Jerry Thevenet"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": null
+  },
+  "Q20261122-74-F1": {
+   "title": "Sometimes",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261122-74",
+     "name": "Tommy Pico"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
    "length": null
   }
  }
