@@ -1,2 +1,2 @@
-2026-11-19
-Requested by atlas owner: promote current beta/ to published root using tools/promote_beta.py; preserve beta and private research Queue.
+2026-11-21
+Requested by atlas owner: promote current beta/ to published root using tools/promote_beta.py; preserve beta and private research Queue. Left rail, basemap alignment fix, Link films thread, interface pass.
