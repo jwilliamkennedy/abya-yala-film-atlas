@@ -2,8 +2,8 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-22",
  "license": "See data.html",
- "films_on_public_map": 2585,
- "film_entries": 2599,
+ "films_on_public_map": 2595,
+ "film_entries": 2609,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -48741,6 +48741,166 @@
    "primary_theme": null,
    "families": [],
    "form": "Fiction",
+   "length": null
+  },
+  "DIR-0084-F1": {
+   "title": "Sweet Summer Pow Wow",
+   "year": 2025,
+   "makers": [
+    {
+     "id": "DIR-0084",
+     "name": "Darrell Dennis"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": null
+  },
+  "DIR-0076-F1": {
+   "title": "Land Use",
+   "year": 1993,
+   "makers": [
+    {
+     "id": "DIR-0076",
+     "name": "Cleo Reece"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "DIR-0141-F1": {
+   "title": "We Have Stories: Women in Fish",
+   "year": 2013,
+   "makers": [
+    {
+     "id": "DIR-0141",
+     "name": "Rosemary Georgeson"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "DIR-0293-F1": {
+   "title": "Heartbeat Drumbeat",
+   "year": 1986,
+   "makers": [
+    {
+     "id": "DIR-0293",
+     "name": "Mona Smith"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "DIR-0128-F1": {
+   "title": "Nanapush et la tortue",
+   "year": 2013,
+   "makers": [
+    {
+     "id": "DIR-0128",
+     "name": "Melissa Mollen Dupuis"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "DIR-0128-F2": {
+   "title": "Nitanish – À ma fille",
+   "year": 2015,
+   "makers": [
+    {
+     "id": "DIR-0128",
+     "name": "Melissa Mollen Dupuis"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "DIR-0128-F3": {
+   "title": "Respecter la roue",
+   "year": 2016,
+   "makers": [
+    {
+     "id": "DIR-0128",
+     "name": "Melissa Mollen Dupuis"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "DIR-0297-F1": {
+   "title": "Sacred Stick",
+   "year": 2013,
+   "makers": [
+    {
+     "id": "DIR-0297",
+     "name": "Patricia Loew"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "DIR-0297-F2": {
+   "title": "Naanan Nimiseyug (My Five Sisters)",
+   "year": 2012,
+   "makers": [
+    {
+     "id": "DIR-0297",
+     "name": "Patricia Loew"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "DIR-0297-F3": {
+   "title": "After The Storm",
+   "year": 2010,
+   "makers": [
+    {
+     "id": "DIR-0297",
+     "name": "Patricia Loew"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
    "length": null
   }
  }
