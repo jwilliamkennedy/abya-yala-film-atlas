@@ -104,7 +104,7 @@ function counts(){
  if(led){const n=[...led.querySelectorAll('b')].map(b=>b.textContent.trim()).filter(Boolean);if(n.length>=2){c=[n[0],n[1]];store.set('atlas-counts',JSON.stringify(c));}}
  if(!c){try{c=JSON.parse(store.get('atlas-counts'))}catch(e){}}
  if(!c||c.length<2)return;
- $('[data-rail-n="films"]',nav).textContent=c[0];$('[data-rail-n="makers"]',nav).textContent=c[1];$('.rail-count',nav).hidden=false;
+ setT('[data-rail-n="films"]',c[0]);setT('[data-rail-n="makers"]',c[1]);$('.rail-count',nav).hidden=false;
 }
 function listCount(){
  if(!onMap)return;const rc=$('#result-count');if(!rc)return;
@@ -119,9 +119,11 @@ function sync(){
  if(!nav)return;const cur=current(),compact=root.dataset.rail==='compact';
  nav.querySelectorAll('.rail-item[data-rail]').forEach(a=>{if(a.dataset.rail===cur)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');});
  const t=$('.rail-toggle',nav);t.setAttribute('aria-expanded',String(!compact));t.title=compact?'Expand menu':'Collapse menu';t.setAttribute('aria-label',t.title);
- $('.rail-lang b',nav).textContent=(root.lang||'en').slice(0,2).toUpperCase();
- const sc=$('body>header [data-screen-count]'),n=sc&&(sc.textContent.match(/\d+/)||[''])[0];$('[data-rail-n="screening"]',nav).textContent=n&&n!=='0'?n:'';
+ setT('.rail-lang b',(root.lang||'en').slice(0,2).toUpperCase());
+ const sc=$('body>header [data-screen-count]'),n=sc&&(sc.textContent.match(/\d+/)||[''])[0];setT('[data-rail-n="screening"]',n&&n!=='0'?n:'');
 }
+
+function setT(sel,v){const e=nav&&$(sel,nav);if(e&&e.textContent!==String(v))e.textContent=v;}
 
 function mount(){
  if(!nav)build();
