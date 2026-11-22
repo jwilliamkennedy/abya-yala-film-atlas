@@ -2,8 +2,8 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-22",
  "license": "See data.html",
- "films_on_public_map": 2586,
- "film_entries": 2600,
+ "films_on_public_map": 2585,
+ "film_entries": 2599,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -48110,22 +48110,6 @@
     {
      "id": "QW-d8e090dd3e",
      "name": "Jack Belhumeur"
-    }
-   ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
-  },
-  "QW-95582aac09-F1": {
-   "title": "It's Me, Landon",
-   "year": 2018,
-   "makers": [
-    {
-     "id": "QW-95582aac09",
-     "name": "Landon Moise"
     }
    ],
    "languages": [],
