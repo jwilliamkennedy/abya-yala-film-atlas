@@ -100,9 +100,13 @@ def link_of(l):
     m = re.match(r'Official Wapikoni film page: (\S+)', note)
     return {'label': l.get('title') or 'Watch', 'url': m.group(1) if m else l['url'], 'note': '' if m else note, 'embed': embed_of(l['url'])}
 
-def watch_index(records, explore, facets=None):
-    """beta/watch-data.js: every published film with a link to watch the whole film (not a trailer)."""
+def watch_index(records, explore, facets=None, media=None, countries=None, families=None):
+    """beta/watch-data.js: every published film with a link to watch the whole film (not a trailer).
+    Each film also carries what the Watch page's shelves and A–Z need: the filmmakers' countries (c), the theme families of
+    its themes (fam), Short or Feature (len) and the atlas's own image of the film (img), when there is one."""
     items, seen = [], {}
+    fam_of = {t: fam for fam, ts in (families or {}).items() for t in ts}
+    names = {c['code']: c['name'] for c in (countries or []) if c.get('code') and c.get('name')}
     for r in records:
         if r.get('status') not in ON_MAP:
             continue
@@ -119,16 +123,28 @@ def watch_index(records, explore, facets=None):
             if not links:
                 continue
             maker = {'id': r['id'], 'name': r['name'], 'people': re.sub(r'\s+(director|filmmaker|artist)$', '', r.get('nation') or r.get('community') or '', flags=re.I)}
+            codes = [c for c in (r.get('countryCodes') or []) if c in names]
             if f['id'] in seen:
                 it = seen[f['id']]
                 if r['id'] not in [m['id'] for m in it['makers']]:
                     it['makers'].append(maker)
+                    it['c'] = list(dict.fromkeys((it.get('c') or []) + codes)) or it.get('c')
                 continue
             it = {'fid': f['id'], 't': f['title'], 'y': f.get('year') or None, 'makers': [maker],
                   'links': [link_of(l) for l in links]}
             tags = ((facets or {}).get('films') or {}).get(f['id']) or {}
             if tags.get('t'):
                 it['th'] = tags['t']
+                fams = list(dict.fromkeys(fam_of[t] for t in tags['t'] if t in fam_of))
+                if fams:
+                    it['fam'] = fams
+            if codes:
+                it['c'] = codes
+            if tags.get('n') in ('Short', 'Feature'):
+                it['len'] = tags['n'][0]
+            img = ((media or {}).get(f['id']) or {}).get('image')
+            if img:
+                it['img'] = img
             facts = [tags.get('f') or f.get('weaveForm') or '', tags.get('n') or '',
                      ', '.join(f['languageLabels']) if isinstance(f.get('languageLabels'), list) else (f.get('languages') or '')]
             if any(facts):
@@ -136,7 +152,7 @@ def watch_index(records, explore, facets=None):
             seen[f['id']] = it
             items.append(it)
     head = '/* Built by tools/atlas/build.py from the Published sheet: films by filmmakers on the atlas that can be watched in full. */\n'
-    pathlib.Path('beta/watch-data.js').write_text(head + 'window.ATLAS_WATCH=' + json.dumps({'films': items}, ensure_ascii=False, separators=(',', ':')) + ';\n', encoding='utf-8')
+    pathlib.Path('beta/watch-data.js').write_text(head + 'window.ATLAS_WATCH=' + json.dumps({'films': items, 'countries': {c: names[c] for c in sorted({c for i in items for c in i.get('c') or []})}}, ensure_ascii=False, separators=(',', ':')) + ';\n', encoding='utf-8')
     # Remove obsolete Watch-page count sentence during automatic beta rebuilds,
     # including when a concurrent site checkout still contains the old template.
     watch_page=pathlib.Path('beta/watch.html')
@@ -300,7 +316,8 @@ def build(path, state_path, check_only=False):
     all_ids = [r['id'] for r in state['records']] + [f['id'] for r in state['records'] for f in r['films']]
     facets = film_tags(records, owned['ATLAS_THEMES_1103'], state['globals'].get('ATLAS_THEMES_1103', {}).get('families', {}))
     sizes = bake.write(records, state['countries'], state['meta'], owned, state['globals'], edges=edges, all_ids=all_ids, facets=facets)
-    nw, ne = watch_index(records, {**{k: v for k, v in state['globals'].get('ATLAS_FILM_EXPLORATION', {}).items()}, **owned['ATLAS_FILM_EXPLORATION']}, facets)
+    nw, ne = watch_index(records, {**{k: v for k, v in state['globals'].get('ATLAS_FILM_EXPLORATION', {}).items()}, **owned['ATLAS_FILM_EXPLORATION']}, facets,
+                         owned['ATLAS_PROFILE_MEDIA'], state['countries'], state['globals'].get('ATLAS_THEMES_1103', {}).get('families', {}))
     print(f'  watch: {nw} films, {ne} playable on the page')
     out = pathlib.Path('beta/data/atlas-published.csv')
     with open(out, 'w', newline='', encoding='utf-8') as fh:
