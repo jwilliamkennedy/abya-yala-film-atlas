@@ -2,8 +2,8 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-22",
  "license": "See data.html",
- "films_on_public_map": 2425,
- "film_entries": 2447,
+ "films_on_public_map": 2427,
+ "film_entries": 2449,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -11815,6 +11815,22 @@
    "families": [],
    "form": "Experimental",
    "length": "Short"
+  },
+  "Q20261121-186-F1": {
+   "title": "Santos Chávez, camino de la luna y el sol hacia el Lai Antü",
+   "year": 2020,
+   "makers": [
+    {
+     "id": "DIR-0170",
+     "name": "Francisco Huichaqueo Pérez"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Experimental",
+   "length": null
   },
   "FILM-0113": {
    "title": "Punalka",
@@ -45809,6 +45825,22 @@
    "families": [],
    "form": null,
    "length": null
+  },
+  "Q20261121-185-F1": {
+   "title": "Chemu am Mapuche pigeiñ (¿Por qué nos llamamos Mapuche?)",
+   "year": 2001,
+   "makers": [
+    {
+     "id": "Q20261121-185",
+     "name": "Sofía Painequeo Tragnolao"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
   }
  }
 }
