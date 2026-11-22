@@ -32,7 +32,15 @@ def check_rows(rows, L, sheet, statuses, errors, notes):
     for r in rows:
         where = f"{sheet} row {r['_row']}"
         if not v(r.get('filmmaker_id')):
-            errors.append(f'{where}: filmmaker_id is empty')
+            directors = r.get('_target_directors') or []
+            if sheet == 'Queue' and len(directors) > 1:
+                errors.append(
+                    f"{where}: filmmaker_id is empty for co-directed film "
+                    f"{v(r.get('queue_target'))}; make a correct row for each "
+                    f"director ({', '.join(directors)})"
+                )
+            else:
+                errors.append(f'{where}: filmmaker_id is empty')
             continue
         by_maker[v(r['filmmaker_id'])].append(r)
         if statuses and v(r.get('status')) not in statuses:
@@ -70,17 +78,49 @@ def check_rows(rows, L, sheet, statuses, errors, notes):
         if new_film and not v(r.get('film_source')):
             errors.append(f'{where}: new film has no film_source (the page that credits the director)')
     for mid, rs in by_maker.items():
+        # A Queue correct/remove row is a PATCH, not a second filmmaker
+        # biography. In particular, a sparse film correction has only its
+        # filmmaker_id set, and its blank maker fields mean "leave unchanged".
+        # Compare actual filmmaker records strictly, including blank values.
+        full = [r for r in rs if sheet != 'Queue'
+                or v(r.get('queue_action')) not in ('correct', 'remove')]
         for c in MAKER_COLS:
-            vals = {v(r.get(c)) for r in rs}
+            vals = {v(r.get(c)) for r in full}
             if len(vals) > 1:
-                errors.append(f"{sheet}: filmmaker {mid} has different {c} on rows {', '.join(str(r['_row']) for r in rs)} — make them agree")
+                errors.append(
+                    f"{sheet}: filmmaker {mid} has different {c} on rows "
+                    f"{', '.join(str(r['_row']) for r in full)} — make them agree"
+                )
+
+        # Multiple corrections to the filmmaker itself may touch different
+        # fields. Empty cells are not modifications, but two *nonempty*
+        # proposed values for the same field must not contradict one another.
+        patches = [r for r in rs if sheet == 'Queue'
+                   and v(r.get('queue_action')) == 'correct'
+                   and v(r.get('queue_target')) == mid]
+        for c in MAKER_COLS:
+            values = {v(r.get(c)) for r in patches if v(r.get(c))}
+            if len(values) > 1:
+                errors.append(
+                    f"{sheet}: filmmaker {mid} has conflicting corrections "
+                    f"to {c} on rows {', '.join(str(r['_row']) for r in patches)}"
+                )
         mj = [r for r in rs if v(r.get('maker_json'))]
         if len(mj) > 1:
             errors.append(f"{sheet}: filmmaker {mid} has machine data on more than one row ({', '.join(str(r['_row']) for r in mj)})")
-        if not mj and not v(rs[0].get('source_1_url')) and v(rs[0].get('queue_action')) not in ('correct', 'remove', 'lead'):
-            errors.append(f"{sheet} row {rs[0]['_row']}: new filmmaker {mid} has no source_1_url (the page that names their people)")
-        elif not v(rs[0].get('source_1_url')):
-            notes.append(f'{sheet}: {mid} has no source listed')
+
+        if full:
+            # A lead may lack an affiliation source; a proposed new
+            # filmmaker may not. Film corrections do not introduce a maker.
+            newcomers = [r for r in full if v(r.get('queue_action')) == 'add filmmaker']
+            missing = next((r for r in newcomers if not v(r.get('source_1_url'))), None)
+            if sheet == 'Queue' and missing and not v(missing.get('maker_json')):
+                errors.append(
+                    f"{sheet} row {missing['_row']}: new filmmaker {mid} "
+                    f"has no source_1_url (the page that names their people)"
+                )
+            elif not v(full[0].get('source_1_url')):
+                notes.append(f'{sheet}: {mid} has no source listed')
     return by_maker
 
 def check_published(rows, wb):
@@ -98,18 +138,34 @@ def check_queue(rows, wb, published_rows):
     errors, notes = [], []
     L = lists_of(wb)
     rows = [r for r in rows if v(r.get('queue_status')) not in ('merged', 'removed', 'rejected')]  # history rows are not re-checked
-    for r in rows:
-        r['_queue'] = True
-    check_rows(rows, L, 'Queue', None, errors, notes)
     pub_makers = {v(r.get('filmmaker_id')) for r in published_rows}
     pub_films = {v(r.get('film_id')) for r in published_rows if v(r.get('film_id'))}
+    film_directors = collections.defaultdict(set)
+    for p in published_rows:
+        if v(p.get('film_id')) and v(p.get('filmmaker_id')):
+            film_directors[v(p['film_id'])].add(v(p['filmmaker_id']))
+
+    valid_rows = []
     for r in rows:
         where = f"Queue row {r['_row']}"
         a, s = v(r.get('queue_action')), v(r.get('queue_status'))
-        if a not in QUEUE_ACTIONS:
-            errors.append(f'{where}: queue_action "{a}" (use one of {QUEUE_ACTIONS})')
-        if s not in QUEUE_STATUSES:
-            errors.append(f'{where}: queue_status "{s}" (use one of {QUEUE_STATUSES})')
+        # Malformed CSV continuations can land in action/status columns.
+        # Flag the root error once; inspecting their shifted fields as if
+        # they were real data produces dozens of false diagnoses.
+        if a not in QUEUE_ACTIONS or s not in QUEUE_STATUSES:
+            errors.append(
+                f'{where}: malformed Queue action/status ({a!r}, {s!r}); '
+                'inspect CSV quoting and column alignment'
+            )
+            continue
+        r['_queue'] = True
+        r['_target_directors'] = sorted(film_directors.get(v(r.get('queue_target')), ()))
+        valid_rows.append(r)
+
+    check_rows(valid_rows, L, 'Queue', None, errors, notes)
+    for r in valid_rows:
+        where = f"Queue row {r['_row']}"
+        a, s = v(r.get('queue_action')), v(r.get('queue_status'))
         if a in ('add filmmaker', 'add film', 'correct') and not v(r.get('evidence_url')):
             errors.append(f'{where}: {a} needs an evidence_url')
         if a != 'lead' and not v(r.get('proposed_by')):
