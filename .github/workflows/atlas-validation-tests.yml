@@ -1,0 +1,23 @@
+name: Atlas Queue validation regression tests
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'tools/atlas/check.py'
+      - 'tools/atlas/schema.py'
+      - 'tools/atlas/test_check_validation.py'
+      - '.github/workflows/atlas-validation-tests.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check-validation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run Queue validation regression tests
+        run: python3 -m unittest discover -s tools/atlas -p 'test_check_validation.py' -v
