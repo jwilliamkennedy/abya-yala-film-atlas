@@ -1751,3 +1751,13 @@ html[data-weave-stage="start"] .index-resizer,body.weave-playing .index-resizer{
 #weave-start .ws-pair-film small{display:block}
 #weave-start .ws-pair-action{text-decoration:underline;text-underline-offset:.2em}
 #weave-start .ws-pair p{max-width:65ch}
+
+/* Link films (2026-11-21): while linking, the thread being built is drawn above the cards, so each click visibly extends
+   it; its stops carry the order. It never takes clicks, so every card stays clickable. The step guide at the top of the
+   panel and the toolbar button are the two ways out; the third box in the thread list is not shown. */
+#constellate-graph g.weave-thread.is-linking,#constellate-graph g.weave-thread.is-linking *{pointer-events:none!important}
+#constellate-graph g.weave-thread.is-linking .weave-cord{stroke-width:3.2px!important;opacity:1!important}
+#constellate-graph g.weave-thread.is-linking .weave-thread-halo{opacity:.9!important}
+#constellate-graph g.weave-thread.is-linking .weave-stop{opacity:1!important}
+#constellate-graph g.weave-thread.is-linking .weave-thread-name{display:none}
+body.is-constellating #weave-draw-help{display:none!important}
