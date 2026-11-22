@@ -2,8 +2,8 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-22",
  "license": "See data.html",
- "films_on_public_map": 2467,
- "film_entries": 2490,
+ "films_on_public_map": 2471,
+ "film_entries": 2494,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -273,7 +273,7 @@
     "match": "group",
     "indigenous": "yes",
     "note": "Kichwa names the Ecuadorian Quechua varieties",
-    "films": 10
+    "films": 11
    },
    {
     "label": "Lakota",
@@ -405,7 +405,7 @@
     "match": "exact",
     "indigenous": "no",
     "note": "",
-    "films": 36
+    "films": 37
    },
    {
     "label": "Portuguese",
@@ -13348,6 +13348,65 @@
    "form": null,
    "length": null
   },
+  "Q20261122-376-F1": {
+   "title": "Sapara una nación que sueña en Resistencia",
+   "year": null,
+   "makers": [
+    {
+     "id": "DIR-0206",
+     "name": "Miguel Imbaquingo"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261121-248-F1": {
+   "title": "Piatúa Resiste",
+   "year": 2019,
+   "makers": [
+    {
+     "id": "DIR-0206",
+     "name": "Miguel Imbaquingo"
+    }
+   ],
+   "languages": [
+    {
+     "label": "Kichwa",
+     "as_credited": "Kichwa",
+     "glottocode": "colo1257",
+     "iso639_3": "",
+     "match": "group",
+     "indigenous": true,
+     "source": "https://www.indifest.org/piatua-resiste-2/"
+    },
+    {
+     "label": "Spanish",
+     "as_credited": "Spanish",
+     "glottocode": "stan1288",
+     "iso639_3": "spa",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://www.indifest.org/piatua-resiste-2/"
+    }
+   ],
+   "themes": [
+    "Water",
+    "Land Defense",
+    "Extractivism",
+    "Resistance Movements"
+   ],
+   "primary_theme": "Water",
+   "families": [
+    "Land and Environment",
+    "Sovereignty and Politics"
+   ],
+   "form": "Documentary",
+   "length": "Short"
+  },
   "FILM-0160": {
    "title": "Uqaxikbe = CrossingPaths",
    "year": 2024,
@@ -25559,6 +25618,27 @@
    "families": [],
    "form": null,
    "length": null
+  },
+  "Q20261122-444-F1": {
+   "title": "Aún hay Esperanza",
+   "year": null,
+   "makers": [
+    {
+     "id": "SA50-20261014-cbcef9a56096",
+     "name": "Jimmy Piaguaje"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Environmental Change",
+    "Extractivism"
+   ],
+   "primary_theme": "Environmental Change",
+   "families": [
+    "Land and Environment"
+   ],
+   "form": null,
+   "length": "Short"
   },
   "SA50-20261014-50ce6a02e8f9-WORK-01": {
    "title": "Sacha Warmi",
@@ -46611,6 +46691,28 @@
     "Lives and Relations"
    ],
    "form": "Experimental",
+   "length": "Short"
+  },
+  "Q20261122-445-F1": {
+   "title": "João Ahezomae",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261122-445",
+     "name": "Joscelio Onizokaece"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Memory and Oral History",
+    "Music and Performance"
+   ],
+   "primary_theme": "Memory and Oral History",
+   "families": [
+    "Expression and Representation",
+    "Knowledge and Continuity"
+   ],
+   "form": null,
    "length": "Short"
   }
  }
