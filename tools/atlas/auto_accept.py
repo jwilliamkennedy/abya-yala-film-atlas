@@ -27,6 +27,31 @@ def why(c, keys, label):
     missing = [k.replace('_found', '') for k in keys if not c.get(k)]
     return f'the {label} page does not show the ' + ' or the '.join(missing)
 
+def csv_with_original_spans(raw):
+    """Parse RFC 4180 records while retaining every source byte verbatim.
+
+    A prior bug rewrote *all* Queue rows, cascading corruption in historic
+    multiline source and review fields. Only records changed by the source
+    review should be serialized again; accepted and historic bytes are sacred.
+    """
+    stream = io.StringIO(raw, newline='')
+    reader = csv.reader(stream, strict=True)
+    header = next(reader, None)
+    if header is None:
+        return [], '', []
+    head_source = raw[:stream.tell()]
+    entries = []
+    start = stream.tell()
+    for cells in reader:
+        end = stream.tell()
+        # Preserve pre-existing fragments verbatim; never auto-repair or
+        # normalize one while deciding a different row.
+        data = dict(zip(header, cells)) if len(cells) == len(header) else None
+        entries.append({'data': data, 'raw': raw[start:end]})
+        start = end
+    return header, head_source, entries
+
+
 def main(atlas, verify_path):
     today = datetime.date.today().isoformat()
     V = {x['qid']: x.get('checks', {}) for x in json.load(open(verify_path, encoding='utf-8'))}
@@ -43,14 +68,14 @@ def main(atlas, verify_path):
     tally = {'accepted': 0, 'needs more': 0}
     for path in sorted(glob.glob(os.path.join(atlas, 'queue', 'proposals*.csv'))):
         raw = open(path, encoding='utf-8', newline='').read()
-        rows = list(csv.DictReader(io.StringIO(raw)))
-        if not rows:
+        fields, header_source, entries = csv_with_original_spans(raw)
+        if not entries:
             continue
-        fields = list(rows[0].keys())
         nl = '\r\n' if '\r\n' in raw[:5000] else '\n'
         changed = False
-        for r in rows:
-            if r.get('queue_status') != 'new' or r['qid'] not in V:
+        for entry in entries:
+            r = entry['data']
+            if r is None or r.get('queue_status') != 'new' or r['qid'] not in V:
                 continue
             c, act, problems = V[r['qid']], r.get('queue_action'), []
             if act == 'add filmmaker':
@@ -79,14 +104,18 @@ def main(atlas, verify_path):
             note = f'Auto-check {today}: ' + ('; '.join(problems) + '.' if problems else 'sources confirmed (identity quote and credit on the cited pages).')
             r['queue_status'] = status
             r['review_note'] = (note + ' ' + (r.get('review_note') or '')).strip()
+            # Re-encode this one reviewed row, not every other CSV record.
+            # A single misplaced comma/quote elsewhere cannot be amplified.
+            buf = io.StringIO(newline='')
+            writer = csv.writer(buf, lineterminator=nl)
+            writer.writerow([r.get(col, '') for col in fields])
+            entry['raw'] = buf.getvalue()
             tally[status] += 1
             changed = True
         if changed:
-            out = io.StringIO()
-            w = csv.DictWriter(out, fieldnames=fields, lineterminator=nl)
-            w.writeheader()
-            w.writerows(rows)
-            open(path, 'w', encoding='utf-8', newline='').write(out.getvalue())
+            updated = header_source + ''.join(entry['raw'] for entry in entries)
+            with open(path, 'w', encoding='utf-8', newline='') as fh:
+                fh.write(updated)
     print(json.dumps(tally))
 
 if __name__ == '__main__':
