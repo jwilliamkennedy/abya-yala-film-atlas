@@ -108,7 +108,7 @@ html[data-rail="compact"] #atlas-rail .rail-tools .rail-toggle{grid-column:1/-1;
 :root:not(#_):not(#__)[data-rail][data-ui-constellate="off"] body.atlas-page .map-toolbar .map-actions>button.fw-proxy{background:var(--atlas-chip)!important;color:var(--atlas-chip-ink)!important;margin-left:8px!important;padding:8px 15px!important}
 /* zoom: a small stack at the top right of the map, clear of cards and credits (moved there by rail-20261121.js) */
 :root:not(#_):not(#__)[data-rail] .map-panel>.rail-zoom{position:absolute!important;inset:24px 16px auto auto!important;z-index:40;display:flex!important;flex-direction:column;gap:0!important;width:40px!important;height:auto!important;
- padding:0!important;margin:0!important;border:0!important;border-radius:12px!important;background:var(--ui-surface)!important;box-shadow:0 1px 2px rgba(20,35,45,.12),0 8px 24px rgba(20,35,45,.10)!important}
+ padding:0!important;margin:0!important;border:0!important;border-radius:12px!important;overflow:visible!important;background:var(--ui-surface)!important;box-shadow:0 1px 2px rgba(20,35,45,.12),0 8px 24px rgba(20,35,45,.10)!important}
 :root:not(#_):not(#__)[data-rail] .map-panel>.rail-zoom>#zoom-level{display:none!important}
 :root:not(#_):not(#__)[data-rail] .map-panel>.rail-zoom>button{display:grid!important;place-items:center;width:40px!important;height:40px!important;min-width:0!important;padding:0!important;margin:0!important;
  border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;color:var(--ui-ink)!important;font-size:18px!important}
@@ -153,3 +153,6 @@ html[data-rail="compact"] #atlas-rail .rail-tools .rail-toggle{grid-column:1/-1;
 :root:not(#_):not(#__)[data-rail] #index .rail-list-count:empty{display:none}
 :root:not(#_):not(#__)[data-rail] #index .has-rail-count>strong{display:none!important}
 html:not([data-rail]) .rail-list-count{display:none}
+
+/* the map is dragged, never text-selected: a drag that starts on a land name, a thumbnail or a marker pans the map */
+svg#atlas,svg#atlas text{-webkit-user-select:none;user-select:none}

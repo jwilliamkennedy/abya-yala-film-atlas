@@ -89,11 +89,14 @@ function adoptControls(){
  adopt($('body>header .ui-theme-toggle'),tools,toggle);
  zoomHome();
 }
+/* the zoom buttons float at the map's top right while the rail is mounted; they go back exactly where they came from
+   (the top bar on desktop, or wherever the phone layout keeps them), and only if the rail moved them */
+let zoomFrom=null;
 function zoomHome(){
- if(!onMap)return;const out=$('#zoom-out'),z=out&&out.parentElement,mp=$('.map-panel'),bar=$('.map-toolbar');if(!z||!mp||!bar)return;
+ if(!onMap)return;const out=$('#zoom-out'),z=out&&out.parentElement,mp=$('.map-panel');if(!z||!mp)return;
  const float=!!root.dataset.rail&&!constellating();
- if(float&&z.parentElement!==mp){z.classList.add('rail-zoom');mp.appendChild(z);}
- if(!float&&z.parentElement===mp){z.classList.remove('rail-zoom');bar.insertBefore(z,bar.firstChild);}
+ if(float){if(!z.classList.contains('rail-zoom')){zoomFrom=[z.parentElement,z.nextSibling];z.classList.add('rail-zoom');}if(z.parentElement!==mp)mp.appendChild(z);}
+ if(!float&&z.classList.contains('rail-zoom')){z.classList.remove('rail-zoom');const [p,n]=zoomFrom||[];if(p&&p.isConnected&&p!==mp)p.insertBefore(z,n&&n.parentNode===p?n:null);zoomFrom=null;}
 }
 
 function counts(){
