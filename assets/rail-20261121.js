@@ -10,17 +10,15 @@ const HOME=src?new URL('../',src).href:new URL('./',location.href).href;
 const rel=location.href.split(/[?#]/)[0].replace(HOME,'');
 const onMap=rel===''||rel==='index.html';
 const PAGE={'watch.html':'watch','themes.html':'themes','languages.html':'languages','timeline.html':'timeline','screening.html':'screening',
- 'about.html':'about','resources.html':'about','data.html':'data','corrections.html':'correct'};
+ 'about.html':'about','resources.html':'about','data.html':'about','corrections.html':'correct'};
 
 /* key, words, short word for the collapsed rail, address */
 const MENU=[
  ['map','Map','Map',''],['lands','Lands','Lands',''],['constellate','Constellate','Constellate','?constellate=1'],['watch','Watch','Watch','watch.html'],
  'Indexes',
  ['themes','Themes','Themes','themes.html'],['languages','Languages','Languages','languages.html'],['timeline','Timeline','Timeline','timeline.html'],
- 'Your atlas',
- ['saved','Saved','Saved',''],['screening','Screening list','Screening','screening.html'],
- 'The project',
- ['about','About','About','about.html'],['data','Data and CARE','Data','data.html']
+ '',
+ ['screening','Saved','Saved','screening.html'],['about','About','About','about.html']
 ];
 const ICON={
  search:'<circle cx="10.5" cy="10.5" r="6"/><path d="m15 15 5 5"/>',
@@ -31,8 +29,7 @@ const ICON={
  themes:'<path d="M3.5 12.2V4.5h7.7l9.3 9.3-7.7 7.7z"/><circle cx="8" cy="9" r="1.2"/>',
  languages:'<path d="M4 5h16v11h-9l-4.5 4v-4H4z"/><path d="M8 9h8M8 12.3h5"/>',
  timeline:'<path d="M3 18h18M7 18v-6M12 18V8M17 18v-4"/><circle cx="7" cy="10.2" r="1.7"/><circle cx="12" cy="6.2" r="1.7"/><circle cx="17" cy="12.2" r="1.7"/>',
- saved:'<path d="M6.5 4h11v16.5l-5.5-4-5.5 4z"/>',
- screening:'<path d="M4 6.5h10M4 12h8M4 17.5h6"/><path d="m16 12.5 5 3-5 3z"/>',
+ screening:'<path d="M6.5 4h11v16.5l-5.5-4-5.5 4z"/>',
  about:'<circle cx="12" cy="12" r="8.5"/><path d="M12 11v5.5M12 7.6v.2"/>',
  data:'<ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v12c0 1.7 3.1 3 7 3s7-1.3 7-3V6M5 12c0 1.7 3.1 3 7 3s7-1.3 7-3"/>',
  correct:'<path d="M4 20l1-4.2L15.8 5l3.2 3.2L8.2 19z"/><path d="m13.8 7 3.2 3.2"/>',
@@ -76,6 +73,9 @@ function act(k){
  if(k==='search'){const s=$('#search');if(s)s.focus();}
  if(k==='lands'){const b=$('.view-switch [data-view="land"]');if(b)b.click();}
  if(k==='saved'){const b=$('#toggle-saved');if(b)b.click();}
+ if(k==='time'){const b=$('#td-toggle');if(b&&b.getAttribute('aria-pressed')!=='true')b.click();}
+ /* arriving from the Saved page to reopen one saved map view */
+ if(/^saved:\d+$/.test(k)){const b=$('[data-saved="'+k.slice(6)+'"]');if(b)b.click();}
  sync();
 }
 
@@ -158,6 +158,8 @@ function goHome(){
  const f=$('.view-switch [data-view="filmmakers"]');if(f&&f.getAttribute('aria-pressed')!=='true')f.click();
  setTimeout(()=>{const r=$('#zoom-reset');if(r)r.click();},120);
 }
+/* a link on another page can ask the map to do one thing on arrival: <a href="./" data-atlas-do="time"> */
+document.addEventListener('click',e=>{const a=e.target.closest&&e.target.closest('a[data-atlas-do]');if(a)flag.set(a.dataset.atlasDo);},true);
 document.addEventListener('click',e=>{const a=e.target.closest&&e.target.closest('#atlas-rail [data-rail="map"]');if(!a||!onMap||constellating()||landView())return;e.preventDefault();e.stopImmediatePropagation();goHome();},true);
 document.addEventListener('keydown',e=>{
  if(!root.dataset.rail)return;
@@ -186,8 +188,8 @@ function tabCounts(){
 }
 /* M2 a dot on Layers when the map differs from its usual layers */
 function layersChanged(){
- const L=$('#layers');if(!L)return;const on=id=>!!$('#'+id)?.checked,w=$('#world'),r=$('#territory-strength');
- const changed=!on('layer-connections')||!on('layer-cinema')||!on('layer-geography')||on('layer-boundaries')||(w&&w.getAttribute('aria-pressed')==='true')||(r&&Math.abs(+r.value-28)>2);
+ const L=$('#layers');if(!L)return;const on=id=>!!$('#'+id)?.checked,w=$('#world'),strong=!!$('#territory-control [data-mode="strong"].is-on');
+ const changed=!on('layer-connections')||!on('layer-cinema')||on('layer-boundaries')||(w&&w.getAttribute('aria-pressed')==='true')||strong;
  L.classList.toggle('is-changed',changed);const s=L.querySelector('summary');if(s)s.title=changed?'Layers (changed from the usual view)':'Choose what is visible on the map';
 }
 function pass(){if(!root.dataset.rail||!onMap)return;captionZoom();tabCounts();layersChanged();}

@@ -1,6 +1,6 @@
 label,also_credited_as,glottocode,glottolog_name,glottolog_level,iso639_3,match,indigenous,note,films
 Anishinaabemowin (Ojibwe),Ojibwe; Ojibway; Anishinaabemowin,ojib1241,Ojibwa,family,,group,yes,Credits name the language without a regional variety,2
-Atikamekw,,atik1240,Atikamekw,language,atj,exact,yes,,1
+Atikamekw,,atik1240,Atikamekw,language,atj,exact,yes,,3
 Ayuujk (Mixe),Ayuujk / Mixe; Ayuujk; Mixe,mixe1286,Mixe,family,,group,yes,Credits name Ayuujk without a variety,1
 Blackfoot,,siks1238,Siksika,language,bla,exact,yes,,2
 Cherokee,,cher1273,Cherokee,language,chr,exact,yes,,1
@@ -12,10 +12,10 @@ Diné (Navajo),Diné; Navajo; Diné Bizaad,nava1243,Navajo,language,nav,exact,ye
 Garifuna,,gari1256,Garifuna,language,cab,exact,yes,,1
 Haida,,haid1248,Haida,family,hai,group,yes,,1
 Hän,,hann1241,Han,language,haa,exact,yes,,1
-Inuktitut,,east2534,Eastern Canadian Inuktitut,language,ike,probable,yes,Inuktitut in Canadian credits usually names the eastern variety,17
+Inuktitut,,east2534,Eastern Canadian Inuktitut,language,ike,probable,yes,Inuktitut in Canadian credits usually names the eastern variety,18
 Iñupiaq,Inupiaq,inup1234,Alaskan Inupiaq,family,ipk,group,yes,,1
 Kalaallisut,Kalaallisut (Greenlandic); Greenlandic,kala1399,Kalaallisut,language,kal,exact,yes,,2
-Kichwa,,colo1257,Colombia-Ecuador Quechua,family,,group,yes,Kichwa names the Ecuadorian Quechua varieties,10
+Kichwa,,colo1257,Colombia-Ecuador Quechua,family,,group,yes,Kichwa names the Ecuadorian Quechua varieties,11
 Lakota,,lako1247,Lakota,language,lkt,exact,yes,,0
 Mohawk,Kanien’kéha,moha1258,Mohawk,language,moh,exact,yes,,3
 Nlakapamuxcheen,,thom1243,Thompson,language,thp,exact,yes,,1
@@ -25,17 +25,17 @@ Secwépemctsín,Secwepemctsín; Secwepemctsin; Shuswap,shus1248,Shuswap,language
 Taíno,Taíno dialect of Island Arawak Wahiyani,tain1254,Taino,language,tnq,exact,yes,,1
 Tewa,,tewa1261,Tewa,family,,group,yes,,1
 Tupí,,,,,,unresolved,yes,Tupí names several Tupian languages; the credit does not say which,1
-English,,stan1293,English,language,eng,exact,no,,89
-Spanish,Español,stan1288,Spanish,language,spa,exact,no,,36
+English,,stan1293,English,language,eng,exact,no,,88
+Spanish,Español,stan1288,Spanish,language,spa,exact,no,,42
 Portuguese,Português,port1283,Portuguese,language,por,exact,no,,1
-French,Français,stan1290,French,language,fra,exact,no,,2
+French,Français,stan1290,French,language,fra,exact,no,,3
 Vietnamese,,viet1252,Vietnamese,language,vie,exact,no,,1
 Aymara,Aimara; Aymara,nucl1667,Central-Southern Aymara,family,aym,group,yes,Credits name Aymara without a variety; aym is the ISO macrolanguage code,5
-Mapudungun,Mapuche language; la lengua del pueblo mapuche,mapu1245,Mapudungun,language,arn,exact,yes,,4
+Mapudungun,Mapuche language; la lengua del pueblo mapuche,mapu1245,Mapudungun,language,arn,exact,yes,,10
 Ika (Arhuaco),Arhuaco; Ika; Iku,arhu1242,Arhuaco,language,arh,exact,yes,,3
 Me'phaa (Tlapanec),Me’phaa; Me' phaa (Tlapaneco); Tlapanec; Tlapaneco,meph1234,Mephaa,family,,group,yes,Credits name Me'phaa without a variety,1
 Tsotsil (Tzotzil),Tzotzil; Tsotsil,tzot1259,Tzotzil,language,tzo,exact,yes,,2
-Wayuunaiki,Wayuu,wayu1243,Wayuu,language,guc,exact,yes,,3
+Wayuunaiki,Wayuu,wayu1243,Wayuu,language,guc,exact,yes,,2
 Chinuk Wawa,Chinook Jargon; chinuk wawa,chin1492,Chinook-based pidgin,family,chn,group,yes,Glottolog separates the pidgin and the creolized Grand Ronde variety (chin1272); credits do not say which,1
 Shuar,,shua1257,Shuar,language,jiv,exact,yes,,1
 Siekopai,Secoya; Siekopai,seco1241,Secoya,language,sey,exact,yes,,1

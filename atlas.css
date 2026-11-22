@@ -3120,6 +3120,8 @@ body.weave-unmapped #atlas-basemap{opacity:0;visibility:hidden}
 #territory-control .territory-modes button+button{border-left:1px solid var(--reading-line,#c6ccd1)}
 #territory-control .territory-modes button.is-on{background:var(--ink,#1c2730);color:#edeef0}
 #territory-control .territory-strength{display:flex;align-items:center;gap:10px;font-size:13px;margin-top:10px}
+#layers .layers-key{display:inline-flex;align-items:center;margin:12px 0 2px;font:inherit;font-size:13px;min-height:32px;padding:0 14px;border:1px solid var(--reading-line,#c6ccd1);border-radius:999px;background:transparent;color:inherit;cursor:pointer}
+#layers .layers-key:hover,#layers .layers-key:focus-visible{border-color:currentColor}
 #territory-control .territory-strength input{flex:1}
 #territory-control .territory-note{font-size:12px;color:var(--muted,#56636d);margin:8px 0 0}
 #layers label{font-size:14px}

@@ -33,3 +33,18 @@
   function start(){if(wire())return;var mo=new MutationObserver(function(){if(wire())mo.disconnect();});mo.observe(document.documentElement,{childList:true,subtree:true});setTimeout(function(){mo.disconnect();},15000);}
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start,{once:true});else start();
 })();
+
+/* About, Data and CARE, and Resources read as one About: the same three tabs at the top of each page (22 Nov 2026). */
+(function(){
+  var pages=[['about.html','About'],['data.html','Data and CARE'],['resources.html','Resources']];
+  var here=location.pathname.split('/').pop()||'index.html';
+  if(!pages.some(function(p){return p[0]===here;}))return;
+  function start(){
+    var main=document.querySelector('main');if(!main||document.querySelector('.about-tabs'))return;
+    var nav=document.createElement('nav');nav.className='about-tabs';nav.setAttribute('aria-label','About the atlas');
+    nav.innerHTML=pages.map(function(p){return '<a href="'+p[0]+'"'+(p[0]===here?' aria-current="page"':'')+'>'+p[1]+'</a>';}).join('');
+    /* About and Resources already carried a two-link strip; the three tabs take its place */
+    var old=main.querySelector('nav.eyebrow.pair');if(old)old.replaceWith(nav);else main.insertBefore(nav,main.firstChild);
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start,{once:true});else start();
+})();
