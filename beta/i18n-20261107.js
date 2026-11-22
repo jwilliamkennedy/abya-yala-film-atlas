@@ -4,7 +4,8 @@
 (()=>{'use strict';
 const LANGS={en:'English',es:'Español',pt:'Português',fr:'Français'};
 // [English, Español, Português, Français]
-const T=[["Lands","Tierras","Terras","Territoires"],["Search","Buscar","Buscar","Rechercher"],["Indexes","Índices","Índices","Index"],
+const T=[["Layers (changed from the usual view)","Capas (cambiadas respecto a la vista habitual)","Camadas (alteradas em relação à vista habitual)","Calques (modifiés par rapport à la vue habituelle)"],
+["Lands","Tierras","Terras","Territoires"],["Search","Buscar","Buscar","Rechercher"],["Indexes","Índices","Índices","Index"],
 ["Your atlas","Tu atlas","Seu atlas","Votre atlas"],["The project","El proyecto","O projeto","Le projet"],["Data and CARE","Datos y CARE","Dados e CARE","Données et CARE"],
 ["Screening","Proyección","Exibição","Projection"],["Collapse menu","Contraer el menú","Recolher o menu","Réduire le menu"],["Expand menu","Expandir el menú","Expandir o menu","Développer le menu"],
 ["Atlas menu","Menú del atlas","Menu do atlas","Menu de l’atlas"],

@@ -144,5 +144,55 @@ function start(){
  /* arriving from another page's Search, Lands or Saved */
  if(onMap){const todo=flag.take();if(todo){let tries=0;const go=()=>{if(root.dataset.atlasUi==='ready'||++tries>40){if(!constellating())act(todo);}else setTimeout(go,150);};go();}}
 }
-if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start,{once:true});else start();
+
+/* ===== Interface pass, 2026-11-21 (evening) ===== */
+const norm=t=>String(t||'').normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
+const typing=e=>{const t=e.target;return t&&(t.isContentEditable||/^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName));};
+/* N1 Map in the rail, when you are already on the map, goes home: clears the selection and search, shows Overview */
+function goHome(){
+ const q=$('#search');if(q&&q.value){const c=$('#clear-search');if(c)c.click();}
+ const cc=$('#clear-context');if(cc&&!cc.hidden)cc.click();
+ if(document.body.classList.contains('selection-held')){const b=$('#view-back');if(b&&!b.disabled)b.click();}
+ const f=$('.view-switch [data-view="filmmakers"]');if(f&&f.getAttribute('aria-pressed')!=='true')f.click();
+ setTimeout(()=>{const r=$('#zoom-reset');if(r)r.click();},120);
+}
+document.addEventListener('click',e=>{const a=e.target.closest&&e.target.closest('#atlas-rail [data-rail="map"]');if(!a||!onMap||constellating()||landView())return;e.preventDefault();e.stopImmediatePropagation();goHome();},true);
+document.addEventListener('keydown',e=>{
+ if(!root.dataset.rail)return;
+ /* N2 "/" on any page goes to the map's search (the map page handles its own) */
+ if(e.key==='/'&&!onMap&&!typing(e)&&!e.metaKey&&!e.ctrlKey&&!e.altKey){e.preventDefault();flag.set('search');location.href=HOME;return;}
+ /* N3 Esc leaves Link films, Draw a line, and the map's Draw */
+ if(e.key==='Escape'){for(const s of ['#weave-draw-thread','#weave-trace','#map-draw-line']){const b=$(s);if(b&&b.getAttribute('aria-pressed')==='true'&&b.offsetParent){b.click();e.preventDefault();return;}}}
+ /* N5 up and down arrows move through the list; Enter opens (it is a button) */
+ if((e.key==='ArrowDown'||e.key==='ArrowUp')&&e.target.closest&&e.target.closest('#index-list .entry-button')){
+  const all=[...document.querySelectorAll('#index-list .entry-button')].filter(b=>b.offsetParent),i=all.indexOf(e.target.closest('.entry-button'));
+  const n=all[i+(e.key==='ArrowDown'?1:-1)];if(n){e.preventDefault();n.focus();n.scrollIntoView({block:'nearest'});}
+ }
+});
+/* N4 the land's caption on the map zooms to it */
+function captionZoom(){
+ const cap=$('#map-selection-focus'),z=$('#zoom-selection');if(!cap||!z)return;
+ const can=!cap.hidden&&!z.disabled&&!!$('#map-focus-name')?.textContent.trim();cap.classList.toggle('is-zoomable',can);
+ if(can){cap.setAttribute('tabindex','0');cap.setAttribute('role','button');cap.title=z.title||'Zoom to selection';}else{cap.removeAttribute('tabindex');cap.removeAttribute('role');}
+ if(!cap.dataset.railZoom){cap.dataset.railZoom='1';const go=e=>{if(!cap.classList.contains('is-zoomable'))return;if(e.type==='keydown'&&e.key!=='Enter'&&e.key!==' ')return;e.preventDefault();z.click();};cap.addEventListener('click',go);cap.addEventListener('keydown',go);}
+}
+/* M1 counts on the tabs, from the totals the rail already shows */
+function tabCounts(){
+ let c=null;try{c=JSON.parse(store.get('atlas-counts'))}catch(e){}if(!c)return;
+ const f=$('.view-switch [data-view="filmmakers"]'),m=$('.view-switch [data-view="films"]');
+ if(f&&f.dataset.railN!==c[1])f.dataset.railN=c[1];if(m&&m.dataset.railN!==c[0])m.dataset.railN=c[0];
+}
+/* M2 a dot on Layers when the map differs from its usual layers */
+function layersChanged(){
+ const L=$('#layers');if(!L)return;const on=id=>!!$('#'+id)?.checked,w=$('#world'),r=$('#territory-strength');
+ const changed=!on('layer-connections')||!on('layer-cinema')||!on('layer-geography')||on('layer-boundaries')||(w&&w.getAttribute('aria-pressed')==='true')||(r&&Math.abs(+r.value-28)>2);
+ L.classList.toggle('is-changed',changed);const s=L.querySelector('summary');if(s)s.title=changed?'Layers (changed from the usual view)':'Choose what is visible on the map';
+}
+function pass(){if(!root.dataset.rail||!onMap)return;captionZoom();tabCounts();layersChanged();}
+const passStart=()=>{pass();const mo=new MutationObserver(()=>{clearTimeout(passStart.t);passStart.t=setTimeout(pass,80);});
+ ['#map-selection-focus','#layers','#zoom-selection','.view-switch'].forEach(s=>{const e=$(s);if(e)mo.observe(e,{subtree:true,attributes:true,childList:true,characterData:true});});
+ document.addEventListener('change',e=>{if(e.target.closest&&e.target.closest('#layers'))setTimeout(pass,60);});document.addEventListener('click',e=>{if(e.target.closest&&e.target.closest('#layers,#world'))setTimeout(pass,120);});
+ setTimeout(pass,1500);};
+
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>{start();passStart();},{once:true});else{start();passStart();}
 })();
