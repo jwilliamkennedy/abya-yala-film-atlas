@@ -8,7 +8,9 @@ name: Site check
 #   constellate-first-visit  was constellate-first-visit.yml
 #   constellate-discovery    was constellate-discovery-smoke.yml
 #   theme-web                was constellate-theme-web-qa.yml
-# A newer push cancels the run in progress. Start it by hand from the Actions tab at any time.
+# A run in progress always finishes; if several pushes arrive meanwhile, only the latest runs next (cancelling
+# meant the whole run waited about five minutes for the browser suite to stop, and with frequent pushes no run
+# ever finished). Start it by hand from the Actions tab at any time.
 on:
   push:
     branches: [main]
@@ -31,7 +33,7 @@ permissions:
   contents: read
 concurrency:
   group: site-check-${{ github.ref }}
-  cancel-in-progress: true
+  cancel-in-progress: false
 jobs:
   browser-suite:
     name: "Browser suite (map, Constellate, phone; main and beta)"
