@@ -2,8 +2,8 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-22",
  "license": "See data.html",
- "films_on_public_map": 2360,
- "film_entries": 2379,
+ "films_on_public_map": 2365,
+ "film_entries": 2384,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -18549,6 +18549,22 @@
    "form": "Fiction",
    "length": "Feature"
   },
+  "Q20261121-90-F1": {
+   "title": "Little Chief",
+   "year": 2020,
+   "makers": [
+    {
+     "id": "DIR-0333",
+     "name": "Erica Tremblay"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "FILM-0274": {
    "title": "Inyanka Sni",
    "year": 2018,
@@ -30766,6 +30782,38 @@
    "form": "Experimental",
    "length": "Short"
   },
+  "Q20261121-84-F1": {
+   "title": "Thieves of Children",
+   "year": null,
+   "makers": [
+    {
+     "id": "NEW-742064a2a245",
+     "name": "Danielle Vandale"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261121-85-F1": {
+   "title": "Berry Breast",
+   "year": null,
+   "makers": [
+    {
+     "id": "NEW-742064a2a245",
+     "name": "Danielle Vandale"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "NEW-3277b4b6fce3-WORK-1": {
    "title": "Until Our Hearts Are on the Ground",
    "year": null,
@@ -38263,6 +38311,22 @@
    "form": null,
    "length": null
   },
+  "Q20261121-81-F1": {
+   "title": "Transition",
+   "year": 2022,
+   "makers": [
+    {
+     "id": "QM-c2135168d9",
+     "name": "Irène-Kimberley Valin-Awashish"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "QM-b302bb15b4-M1": {
    "title": "Kaushunekan",
    "year": 2023,
@@ -44682,6 +44746,22 @@
     "Expression and Representation"
    ],
    "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261121-99-F1": {
+   "title": "Nous nous soulèverons",
+   "year": 2015,
+   "makers": [
+    {
+     "id": "Q20261121-99",
+     "name": "Natasha Kanapé Fontaine"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Experimental",
    "length": "Short"
   }
  }
