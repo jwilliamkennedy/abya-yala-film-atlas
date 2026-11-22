@@ -2,8 +2,8 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-22",
  "license": "See data.html",
- "films_on_public_map": 2548,
- "film_entries": 2564,
+ "films_on_public_map": 2549,
+ "film_entries": 2565,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -47961,6 +47961,34 @@
   },
   "DIR-0198-F1": {
    "title": "Hagamos El Curare",
+   "year": null,
+   "makers": [
+    {
+     "id": "DIR-0198",
+     "name": "Elisa Enqueri"
+    },
+    {
+     "id": "DIR-0200",
+     "name": "Jonathan Enqueri"
+    },
+    {
+     "id": "DIR-0205",
+     "name": "Marcia Enqueri"
+    },
+    {
+     "id": "DIR-0207",
+     "name": "Ramon Uboye Gaba"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "DIR-0198-F2": {
+   "title": "Yendo a Cacería",
    "year": null,
    "makers": [
     {
