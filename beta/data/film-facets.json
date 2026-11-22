@@ -2,8 +2,8 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-22",
  "license": "See data.html",
- "films_on_public_map": 2471,
- "film_entries": 2494,
+ "films_on_public_map": 2476,
+ "film_entries": 2499,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -237,7 +237,7 @@
     "match": "probable",
     "indigenous": "yes",
     "note": "Inuktitut in Canadian credits usually names the eastern variety",
-    "films": 17
+    "films": 18
    },
    {
     "label": "Iñupiaq",
@@ -393,7 +393,7 @@
     "match": "exact",
     "indigenous": "no",
     "note": "",
-    "films": 89
+    "films": 91
    },
    {
     "label": "Spanish",
@@ -22557,6 +22557,26 @@
    "form": "Hybrid",
    "length": "Short"
   },
+  "Q20261121-20-F1": {
+   "title": "Micta",
+   "year": 2012,
+   "makers": [
+    {
+     "id": "NEW-33a7a2f9023e",
+     "name": "Meky Ottawa"
+    },
+    {
+     "id": "QW-1ba11ee9f7",
+     "name": "Élisa Moar"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Experimental",
+   "length": null
+  },
   "NEW-2652d494da73-WORK-1": {
    "title": "The Moth",
    "year": null,
@@ -29902,6 +29922,32 @@
    "primary_theme": null,
    "families": [],
    "form": null,
+   "length": null
+  },
+  "Q20261121-22-F1": {
+   "title": "TRANSMISSION_01_34-OD",
+   "year": 2017,
+   "makers": [
+    {
+     "id": "DIR-0422",
+     "name": "Jim Matlock"
+    }
+   ],
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://vimeo.com/220502362"
+    }
+   ],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Experimental",
    "length": null
   },
   "WAP-FILM-00423": {
@@ -46713,6 +46759,85 @@
     "Knowledge and Continuity"
    ],
    "form": null,
+   "length": "Short"
+  },
+  "Q20261121-21-F1": {
+   "title": "Inuktitut Dialects in the 21st Century",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261121-21",
+     "name": "Ulivia Uviluk"
+    }
+   ],
+   "languages": [
+    {
+     "label": "Inuktitut",
+     "as_credited": "Inuktitut",
+     "glottocode": "east2534",
+     "iso639_3": "ike",
+     "match": "probable",
+     "indigenous": true,
+     "source": "https://mothertongue.si.edu/2022-program.html"
+    },
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://mothertongue.si.edu/2022-program.html"
+    }
+   ],
+   "themes": [
+    "Linguistic Preservation"
+   ],
+   "primary_theme": "Linguistic Preservation",
+   "families": [
+    "Knowledge and Continuity"
+   ],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261121-21-F2": {
+   "title": "Wearing My Culture",
+   "year": 2018,
+   "makers": [
+    {
+     "id": "Q20261121-21",
+     "name": "Ulivia Uviluk"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Art, Craft and Making"
+   ],
+   "primary_theme": "Art, Craft and Making",
+   "families": [
+    "Expression and Representation"
+   ],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261121-21-F3": {
+   "title": "Not Just a Missing or Murdered Aboriginal Woman",
+   "year": 2019,
+   "makers": [
+    {
+     "id": "Q20261121-21",
+     "name": "Ulivia Uviluk"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "MMIWG2S"
+   ],
+   "primary_theme": "MMIWG2S",
+   "families": [
+    "Sovereignty and Politics"
+   ],
+   "form": "Documentary",
    "length": "Short"
   }
  }

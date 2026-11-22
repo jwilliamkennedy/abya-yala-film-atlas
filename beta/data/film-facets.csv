@@ -1785,6 +1785,7 @@ FILM-SRC-2023-00046,Grape Soda in the Parking Lot,,theme,Linguistic Preservation
 FILM-SRC-2023-00046,Grape Soda in the Parking Lot,,theme,Kinship,Lives and Relations,https://www.themoviedb.org/movie/1102759,tagged from a published synopsis
 FILM-SRC-2023-00046,Grape Soda in the Parking Lot,,form,Hybrid,,https://www.themoviedb.org/movie/1102759,from the published synopsis
 FILM-SRC-2023-00046,Grape Soda in the Parking Lot,,length,Short,,https://www.themoviedb.org/movie/1102759,from the published synopsis
+Q20261121-20-F1,Micta,2012,form,Experimental,,https://2024.fcvq.ca/programmation/20-ans-de-recit-au-coeur-des-premiers-peuples-wapikoni-2024-09-11-14h30,"normalised from the recorded form ""Experimental"""
 NEW-2652d494da73-WORK-1,The Moth,,theme,Extractivism,Land and Environment,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,tagged from a published synopsis; primary theme
 NEW-2652d494da73-WORK-1,The Moth,,theme,Land Defense,Land and Environment,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,tagged from a published synopsis
 NEW-2652d494da73-WORK-1,The Moth,,theme,Women and Gender,Lives and Relations,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,tagged from a published synopsis
@@ -2361,6 +2362,8 @@ QW-WAPI-V989620017,Tihchion',2024,theme,More-than-Human Relations,Land and Envir
 WAP-FILM-00417,Broken Reflexions,2023,theme,Health and Healing,Lives and Relations,https://www.themoviedb.org/movie/1323186,tagged from a published synopsis; primary theme
 WAP-FILM-00417,Broken Reflexions,2023,form,Documentary,,https://www.themoviedb.org/movie/1323186,from the published synopsis
 WAP-FILM-00417,Broken Reflexions,2023,length,Short,,https://www.themoviedb.org/movie/1323186,from the published synopsis
+Q20261121-22-F1,TRANSMISSION_01_34-OD,2017,language,English,stan1293,https://vimeo.com/220502362,recorded with the film
+Q20261121-22-F1,TRANSMISSION_01_34-OD,2017,form,Experimental,,https://vimeo.com/220502362,"normalised from the recorded form ""Experimental"""
 WAP-FILM-00424,"Ruby, la petite fourmi",2024,theme,Kinship,Lives and Relations,https://www.themoviedb.org/movie/1572224,tagged from a published synopsis; primary theme
 WAP-FILM-00424,"Ruby, la petite fourmi",2024,theme,Memory and Oral History,Knowledge and Continuity,https://www.themoviedb.org/movie/1572224,tagged from a published synopsis
 WAP-FILM-00424,"Ruby, la petite fourmi",2024,length,Short,,https://www.themoviedb.org/movie/1572224,from the published synopsis
@@ -3379,3 +3382,14 @@ Q20261121-15-F1,Wamin (La pomme),2017,length,Short,,https://2024.fcvq.ca/program
 Q20261122-445-F1,João Ahezomae,,theme,Memory and Oral History,Knowledge and Continuity,https://iberculturaviva.org/conheca-os-selecionados-no-concurso-de-curtas-comunidades-linguisticas-identidade-e-salvaguarda/,tagged from a published synopsis; primary theme
 Q20261122-445-F1,João Ahezomae,,theme,Music and Performance,Expression and Representation,https://iberculturaviva.org/conheca-os-selecionados-no-concurso-de-curtas-comunidades-linguisticas-identidade-e-salvaguarda/,tagged from a published synopsis
 Q20261122-445-F1,João Ahezomae,,length,Short,,https://iberculturaviva.org/conheca-os-selecionados-no-concurso-de-curtas-comunidades-linguisticas-identidade-e-salvaguarda/,from the published synopsis
+Q20261121-21-F1,Inuktitut Dialects in the 21st Century,,language,Inuktitut,east2534,https://mothertongue.si.edu/2022-program.html,recorded with the film
+Q20261121-21-F1,Inuktitut Dialects in the 21st Century,,language,English,stan1293,https://mothertongue.si.edu/2022-program.html,recorded with the film
+Q20261121-21-F1,Inuktitut Dialects in the 21st Century,,theme,Linguistic Preservation,Knowledge and Continuity,https://mothertongue.si.edu/2022-program.html,tagged from a published synopsis; primary theme
+Q20261121-21-F1,Inuktitut Dialects in the 21st Century,,form,Documentary,,https://mothertongue.si.edu/2022-program.html,from the published synopsis
+Q20261121-21-F1,Inuktitut Dialects in the 21st Century,,length,Short,,https://mothertongue.si.edu/2022-program.html,from the published synopsis
+Q20261121-21-F2,Wearing My Culture,2018,theme,"Art, Craft and Making",Expression and Representation,https://nativespiritfestival.festivee.com/wearing-my-culture,tagged from a published synopsis; primary theme
+Q20261121-21-F2,Wearing My Culture,2018,form,Documentary,,https://nativespiritfestival.festivee.com/wearing-my-culture,from the published synopsis
+Q20261121-21-F2,Wearing My Culture,2018,length,Short,,https://nativespiritfestival.festivee.com/wearing-my-culture,from the published synopsis
+Q20261121-21-F3,Not Just a Missing or Murdered Aboriginal Woman,2019,theme,MMIWG2S,Sovereignty and Politics,https://www.inuitartfoundation.org/profiles/artist/Ulivia-Uviluk,tagged from a published synopsis; primary theme
+Q20261121-21-F3,Not Just a Missing or Murdered Aboriginal Woman,2019,form,Documentary,,https://www.inuitartfoundation.org/profiles/artist/Ulivia-Uviluk,from the published synopsis
+Q20261121-21-F3,Not Just a Missing or Murdered Aboriginal Woman,2019,length,Short,,https://www.inuitartfoundation.org/profiles/artist/Ulivia-Uviluk,from the published synopsis
