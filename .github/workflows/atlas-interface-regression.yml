@@ -191,6 +191,7 @@ jobs:
                 assert await page.locator('#weave-play').get_attribute('aria-pressed')=='true',(label,'Play mode not marked active')
                 await page.locator('#weave-play-speed').select_option('10000')
                 await page.locator('#weave-play-pause').click(force=True,timeout=12000)
+                started=await page.evaluate("({progress:document.querySelector('#weave-play-progress')?.textContent||'',title:document.querySelector('#weave-play-title')?.textContent||'',last:document.querySelector('#weave-play-next')?.disabled})")
                 await page.locator('#weave-play-next').click(force=True,timeout=12000)
                 play=await page.evaluate("""()=>({
                   pace:document.querySelector('#weave-play-speed')?.value,
@@ -198,7 +199,8 @@ jobs:
                   title:document.querySelector('#weave-play-title')?.textContent,
                   visible:!document.querySelector('#weave-player')?.hidden
                 })""")
-                assert play['pace']=='10000' and play['visible'] and '2 of' in play['progress'],(label,play)
+                # Play opens on the card being read, so Next moves one film past where Play began (not always to "2 of").
+                assert play['pace']=='10000' and play['visible'] and started['title'] and (started['last'] or (play['title']!=started['title'] and play['progress']!=started['progress'])),(label,started,play)
                 await page.locator('#weave-play-close').click(force=True,timeout=12000)
                 assert await page.locator('#weave-player').is_hidden(),(label,'player did not close')
                 assert await page.locator('#weave-play').get_attribute('aria-pressed')=='false',(label,'Play mode remains pressed after closing')
