@@ -44,9 +44,14 @@ function sync(){
  const r=svg.getBoundingClientRect(),w=r.width,h=r.height;if(!w||!h)return;
  let a,b;try{a=window.Atlas.screenPoint([-90,0]);b=window.Atlas.screenPoint([-89,0]);}catch(e){return;}if(!a||!b)return;
  const dx=b[0]-a[0];if(!(dx>0)||!isFinite(dx))return;
- const world=360*dx,lon=-90+(w/2-a[0])/dx,y=(a[1]-h/2)/(world/(2*Math.PI));
- const lat=Math.max(-85,Math.min(85,Math.atan(Math.sinh(y))*180/Math.PI));
- map.jumpTo({center:[((lon+540)%360)-180,lat],zoom:Math.log2(world/512)});
+ const world=360*dx,R=world/(2*Math.PI),lon=-90+(w/2-a[0])/dx,y=(a[1]-h/2)/R;
+ let lat=Math.atan(Math.sinh(y))*180/Math.PI;
+ // The tile map cannot centre itself beyond 85 degrees. When the middle of the window lies past the top or bottom edge of
+ // the world (World view on a tall window), centre on the 85-degree line instead and use padding to put that line where
+ // the atlas draws it.
+ const pad={top:0,bottom:0,left:0,right:0};
+ if(Math.abs(lat)>85){lat=Math.sign(lat)*85;const d=a[1]-R*Math.log(Math.tan(Math.PI/4+lat*Math.PI/360))-h/2;if(d>0)pad.top=Math.min(2*d,h-2);else pad.bottom=Math.min(-2*d,h-2);}
+ map.jumpTo({center:[((lon+540)%360)-180,lat],zoom:Math.log2(world/512),padding:pad});
  // Do not expose the tile map until its camera matches the Atlas SVG.
  if(host)host.dataset.cameraSynced="true";
 }
@@ -72,7 +77,10 @@ async function boot(){
   }
   palette='night';root.dataset.basemapPalette='night';
  }
- try{map=new ml.Map({container:host,style,interactive:false,attributionControl:false,fadeDuration:0,renderWorldCopies:true,center:[-90,10],zoom:1.4,maxZoom:18,maxPitch:0,trackResize:false});}catch(e){fail();return;}
+ try{// The tile map only ever follows the atlas camera, so its own camera limits are switched off: left on, they stop it at the
+ // top and bottom edges of the world and refuse a world smaller than the window, while the names and territories drawn
+ // above keep moving, and the two layers part company (dragging north or south to the edge; World view).
+ map=new ml.Map({container:host,style,interactive:false,attributionControl:false,fadeDuration:0,renderWorldCopies:true,center:[-90,10],zoom:1.4,minZoom:-2,maxZoom:18,maxPitch:0,trackResize:false,transformConstrain:(center,zoom)=>({center,zoom})});}catch(e){fail();return;}
  map.on('load',()=>{ready=true;root.dataset.basemapState='ready';sync();applyPalette();const tiles=()=>{root.dataset.basemapTiles='ready'};map.once('idle',tiles);setTimeout(tiles,2500);});
  map.on('error',()=>{if(!ready&&++errors>6)fail();});
  setTimeout(()=>{if(!ready)fail();},20000);

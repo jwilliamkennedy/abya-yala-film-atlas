@@ -1,13 +1,155 @@
 [
  {
-  "name": "p_map",
+  "name": "sync_overview",
   "path": "beta/index.html",
   "viewport": [
    1440,
    900
   ],
   "settle": 15000,
-  "steps": []
+  "steps": [
+   {
+    "eval": "(()=>{const map=window.AtlasOpenBasemap&&window.AtlasOpenBasemap.map;if(!map)return 'no basemap';const svg=document.querySelector('svg#atlas'),host=document.querySelector('#atlas-basemap');const ctm=svg.getScreenCTM(),hr=host.getBoundingClientRect();let m=[0,0];for(const ll of [[-99.1,19.4],[-74,40.7],[-70.6,-33.4],[-45,70]]){const p=window.Atlas.screenPoint(ll);const sp=svg.createSVGPoint();sp.x=p[0];sp.y=p[1];const c=sp.matrixTransform(ctm);const q=map.project(ll);const d=[Math.round(c.x-(hr.x+q.x)),Math.round(c.y-(hr.y+q.y))];if(Math.hypot(...d)>Math.hypot(...m))m=d}return 'layers are '+m[0]+','+m[1]+' px from the basemap; equator at y='+Math.round(window.Atlas.screenPoint([-90,0])[1])})()",
+    "as": "alignment",
+    "wait": 500
+   }
+  ]
+ },
+ {
+  "name": "sync_dragged_north",
+  "path": "beta/index.html",
+  "viewport": [
+   1440,
+   900
+  ],
+  "settle": 12000,
+  "steps": [
+   {
+    "eval": "(async()=>{const svg=document.querySelector('svg#atlas');const r=svg.getBoundingClientRect();const x=r.x+r.width*.6,y=r.y+r.height*(.3);const sleep=t=>new Promise(f=>setTimeout(f,t));for(let z=0;z<0;z++){document.querySelector('#zoom-out').click();await sleep(500)}const ev=(t,el,cy)=>el.dispatchEvent(new MouseEvent(t,{bubbles:true,cancelable:true,view:window,clientX:x,clientY:cy,button:0,buttons:t==='mouseup'?0:1}));for(let k=0;k<2;k++){ev('mousedown',svg,y);for(let i=1;i<=10;i++){ev('mousemove',window,y+(300)*i/10);await sleep(20)}ev('mouseup',window,y+(300));await sleep(500)}return 1})()",
+    "wait": 9000
+   },
+   {
+    "eval": "(()=>{const map=window.AtlasOpenBasemap&&window.AtlasOpenBasemap.map;if(!map)return 'no basemap';const svg=document.querySelector('svg#atlas'),host=document.querySelector('#atlas-basemap');const ctm=svg.getScreenCTM(),hr=host.getBoundingClientRect();let m=[0,0];for(const ll of [[-99.1,19.4],[-74,40.7],[-70.6,-33.4],[-45,70]]){const p=window.Atlas.screenPoint(ll);const sp=svg.createSVGPoint();sp.x=p[0];sp.y=p[1];const c=sp.matrixTransform(ctm);const q=map.project(ll);const d=[Math.round(c.x-(hr.x+q.x)),Math.round(c.y-(hr.y+q.y))];if(Math.hypot(...d)>Math.hypot(...m))m=d}return 'layers are '+m[0]+','+m[1]+' px from the basemap; equator at y='+Math.round(window.Atlas.screenPoint([-90,0])[1])})()",
+    "as": "alignment",
+    "wait": 500
+   }
+  ]
+ },
+ {
+  "name": "sync_zoomed_out_dragged_north",
+  "path": "beta/index.html",
+  "viewport": [
+   1440,
+   900
+  ],
+  "settle": 12000,
+  "steps": [
+   {
+    "eval": "(async()=>{const svg=document.querySelector('svg#atlas');const r=svg.getBoundingClientRect();const x=r.x+r.width*.6,y=r.y+r.height*(.3);const sleep=t=>new Promise(f=>setTimeout(f,t));for(let z=0;z<2;z++){document.querySelector('#zoom-out').click();await sleep(500)}const ev=(t,el,cy)=>el.dispatchEvent(new MouseEvent(t,{bubbles:true,cancelable:true,view:window,clientX:x,clientY:cy,button:0,buttons:t==='mouseup'?0:1}));for(let k=0;k<2;k++){ev('mousedown',svg,y);for(let i=1;i<=10;i++){ev('mousemove',window,y+(300)*i/10);await sleep(20)}ev('mouseup',window,y+(300));await sleep(500)}return 1})()",
+    "wait": 9000
+   },
+   {
+    "eval": "(()=>{const map=window.AtlasOpenBasemap&&window.AtlasOpenBasemap.map;if(!map)return 'no basemap';const svg=document.querySelector('svg#atlas'),host=document.querySelector('#atlas-basemap');const ctm=svg.getScreenCTM(),hr=host.getBoundingClientRect();let m=[0,0];for(const ll of [[-99.1,19.4],[-74,40.7],[-70.6,-33.4],[-45,70]]){const p=window.Atlas.screenPoint(ll);const sp=svg.createSVGPoint();sp.x=p[0];sp.y=p[1];const c=sp.matrixTransform(ctm);const q=map.project(ll);const d=[Math.round(c.x-(hr.x+q.x)),Math.round(c.y-(hr.y+q.y))];if(Math.hypot(...d)>Math.hypot(...m))m=d}return 'layers are '+m[0]+','+m[1]+' px from the basemap; equator at y='+Math.round(window.Atlas.screenPoint([-90,0])[1])})()",
+    "as": "alignment",
+    "wait": 500
+   }
+  ]
+ },
+ {
+  "name": "sync_dragged_south",
+  "path": "beta/index.html",
+  "viewport": [
+   1440,
+   900
+  ],
+  "settle": 12000,
+  "steps": [
+   {
+    "eval": "(async()=>{const svg=document.querySelector('svg#atlas');const r=svg.getBoundingClientRect();const x=r.x+r.width*.6,y=r.y+r.height*(.75);const sleep=t=>new Promise(f=>setTimeout(f,t));for(let z=0;z<0;z++){document.querySelector('#zoom-out').click();await sleep(500)}const ev=(t,el,cy)=>el.dispatchEvent(new MouseEvent(t,{bubbles:true,cancelable:true,view:window,clientX:x,clientY:cy,button:0,buttons:t==='mouseup'?0:1}));for(let k=0;k<3;k++){ev('mousedown',svg,y);for(let i=1;i<=10;i++){ev('mousemove',window,y+(-320)*i/10);await sleep(20)}ev('mouseup',window,y+(-320));await sleep(500)}return 1})()",
+    "wait": 9000
+   },
+   {
+    "eval": "(()=>{const map=window.AtlasOpenBasemap&&window.AtlasOpenBasemap.map;if(!map)return 'no basemap';const svg=document.querySelector('svg#atlas'),host=document.querySelector('#atlas-basemap');const ctm=svg.getScreenCTM(),hr=host.getBoundingClientRect();let m=[0,0];for(const ll of [[-99.1,19.4],[-74,40.7],[-70.6,-33.4],[-45,70]]){const p=window.Atlas.screenPoint(ll);const sp=svg.createSVGPoint();sp.x=p[0];sp.y=p[1];const c=sp.matrixTransform(ctm);const q=map.project(ll);const d=[Math.round(c.x-(hr.x+q.x)),Math.round(c.y-(hr.y+q.y))];if(Math.hypot(...d)>Math.hypot(...m))m=d}return 'layers are '+m[0]+','+m[1]+' px from the basemap; equator at y='+Math.round(window.Atlas.screenPoint([-90,0])[1])})()",
+    "as": "alignment",
+    "wait": 500
+   }
+  ]
+ },
+ {
+  "name": "sync_world",
+  "path": "beta/index.html",
+  "viewport": [
+   1440,
+   900
+  ],
+  "settle": 12000,
+  "steps": [
+   {
+    "eval": "document.querySelector('#world').click()",
+    "wait": 10000
+   },
+   {
+    "eval": "(()=>{const map=window.AtlasOpenBasemap&&window.AtlasOpenBasemap.map;if(!map)return 'no basemap';const svg=document.querySelector('svg#atlas'),host=document.querySelector('#atlas-basemap');const ctm=svg.getScreenCTM(),hr=host.getBoundingClientRect();let m=[0,0];for(const ll of [[-99.1,19.4],[-74,40.7],[-70.6,-33.4],[-45,70]]){const p=window.Atlas.screenPoint(ll);const sp=svg.createSVGPoint();sp.x=p[0];sp.y=p[1];const c=sp.matrixTransform(ctm);const q=map.project(ll);const d=[Math.round(c.x-(hr.x+q.x)),Math.round(c.y-(hr.y+q.y))];if(Math.hypot(...d)>Math.hypot(...m))m=d}return 'layers are '+m[0]+','+m[1]+' px from the basemap; equator at y='+Math.round(window.Atlas.screenPoint([-90,0])[1])})()",
+    "as": "alignment",
+    "wait": 500
+   }
+  ]
+ },
+ {
+  "name": "sync_phone_world",
+  "path": "beta/index.html",
+  "viewport": [
+   390,
+   844
+  ],
+  "mobile": true,
+  "settle": 12000,
+  "steps": [
+   {
+    "eval": "document.querySelector('#world').click()",
+    "wait": 10000
+   },
+   {
+    "eval": "(()=>{const map=window.AtlasOpenBasemap&&window.AtlasOpenBasemap.map;if(!map)return 'no basemap';const svg=document.querySelector('svg#atlas'),host=document.querySelector('#atlas-basemap');const ctm=svg.getScreenCTM(),hr=host.getBoundingClientRect();let m=[0,0];for(const ll of [[-99.1,19.4],[-74,40.7],[-70.6,-33.4],[-45,70]]){const p=window.Atlas.screenPoint(ll);const sp=svg.createSVGPoint();sp.x=p[0];sp.y=p[1];const c=sp.matrixTransform(ctm);const q=map.project(ll);const d=[Math.round(c.x-(hr.x+q.x)),Math.round(c.y-(hr.y+q.y))];if(Math.hypot(...d)>Math.hypot(...m))m=d}return 'layers are '+m[0]+','+m[1]+' px from the basemap; equator at y='+Math.round(window.Atlas.screenPoint([-90,0])[1])})()",
+    "as": "alignment",
+    "wait": 500
+   }
+  ]
+ },
+ {
+  "name": "sync_main_dragged_north",
+  "path": "index.html",
+  "viewport": [
+   1440,
+   900
+  ],
+  "settle": 12000,
+  "steps": [
+   {
+    "eval": "(async()=>{const svg=document.querySelector('svg#atlas');const r=svg.getBoundingClientRect();const x=r.x+r.width*.6,y=r.y+r.height*(.3);const sleep=t=>new Promise(f=>setTimeout(f,t));for(let z=0;z<0;z++){document.querySelector('#zoom-out').click();await sleep(500)}const ev=(t,el,cy)=>el.dispatchEvent(new MouseEvent(t,{bubbles:true,cancelable:true,view:window,clientX:x,clientY:cy,button:0,buttons:t==='mouseup'?0:1}));for(let k=0;k<2;k++){ev('mousedown',svg,y);for(let i=1;i<=10;i++){ev('mousemove',window,y+(300)*i/10);await sleep(20)}ev('mouseup',window,y+(300));await sleep(500)}return 1})()",
+    "wait": 9000
+   },
+   {
+    "eval": "(()=>{const map=window.AtlasOpenBasemap&&window.AtlasOpenBasemap.map;if(!map)return 'no basemap';const svg=document.querySelector('svg#atlas'),host=document.querySelector('#atlas-basemap');const ctm=svg.getScreenCTM(),hr=host.getBoundingClientRect();let m=[0,0];for(const ll of [[-99.1,19.4],[-74,40.7],[-70.6,-33.4],[-45,70]]){const p=window.Atlas.screenPoint(ll);const sp=svg.createSVGPoint();sp.x=p[0];sp.y=p[1];const c=sp.matrixTransform(ctm);const q=map.project(ll);const d=[Math.round(c.x-(hr.x+q.x)),Math.round(c.y-(hr.y+q.y))];if(Math.hypot(...d)>Math.hypot(...m))m=d}return 'layers are '+m[0]+','+m[1]+' px from the basemap; equator at y='+Math.round(window.Atlas.screenPoint([-90,0])[1])})()",
+    "as": "alignment",
+    "wait": 500
+   }
+  ]
+ },
+ {
+  "name": "panel_narrow",
+  "path": "beta/index.html",
+  "viewport": [
+   1440,
+   900
+  ],
+  "settle": 9000,
+  "steps": [
+   {
+    "eval": "(()=>{try{localStorage.setItem('atlas-index-width','320')}catch(e){};location.reload()})()",
+    "wait": 12000
+   }
+  ]
  },
  {
   "name": "p_map_select",
@@ -20,52 +162,7 @@
   "steps": [
    {
     "eval": "(()=>{const a=[...document.querySelectorAll('#atlas .land-word')].find(g=>/Maya/.test(g.textContent));a&&a.querySelector('rect').dispatchEvent(new MouseEvent('click',{bubbles:true}));})()",
-    "wait": 3000
-   }
-  ]
- },
- {
-  "name": "p_about",
-  "path": "beta/about.html",
-  "viewport": [
-   1440,
-   900
-  ],
-  "settle": 4000,
-  "steps": []
- },
- {
-  "name": "p_maker",
-  "path": "beta/maker/DIR-0092.html",
-  "viewport": [
-   1440,
-   900
-  ],
-  "settle": 4000,
-  "steps": []
- },
- {
-  "name": "p_const",
-  "path": "beta/constellation.html",
-  "viewport": [
-   1440,
-   900
-  ],
-  "settle": 12000,
-  "steps": []
- },
- {
-  "name": "p_night",
-  "path": "beta/index.html",
-  "viewport": [
-   1440,
-   900
-  ],
-  "settle": 15000,
-  "steps": [
-   {
-    "eval": "document.querySelector('#theme-toggle,.theme-toggle,[aria-label*=theme i],[aria-label*=dark i]')?.click()",
-    "wait": 3000
+    "wait": 6000
    }
   ]
  }
