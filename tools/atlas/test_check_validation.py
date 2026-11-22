@@ -3,8 +3,14 @@
 Run: python3 -m unittest discover -s tools/atlas -p 'test_check_validation.py' -v
 """
 import unittest
+import csv
+import io
+import json
+import os
+import tempfile
 from unittest.mock import patch
 import check
+import auto_accept
 
 
 L = {
@@ -122,6 +128,43 @@ class AtlasQueueValidationTest(unittest.TestCase):
             published(_row=4, nation='Other Nation', film_id='FILM-2'),
         ], L, 'Published', None, errors, notes)
         self.assertTrue(any('different nation' in e for e in errors), errors)
+
+
+class AutoAcceptSerializationTest(unittest.TestCase):
+    def test_preserves_original_csv_quoting_and_multiline_records(self):
+        source = (
+            'qid,queue_action,queue_status,review_note\\n'
+            'Q000001,lead,accepted,"A multiline, \\"quoted\\" note\\nnext line"\\n'
+            'Q000002,correct,new,Unchanged\\n'
+        )
+        fields, header, records = auto_accept.csv_with_original_spans(source)
+        self.assertEqual(fields, ['qid', 'queue_action', 'queue_status', 'review_note'])
+        self.assertEqual(header + ''.join(r['raw'] for r in records), source)
+        self.assertEqual(records[0]['data']['queue_status'], 'accepted')
+        self.assertEqual(records[1]['data']['queue_status'], 'new')
+
+    def test_one_accepted_row_is_never_reserialized(self):
+        with tempfile.TemporaryDirectory() as temp:
+            os.makedirs(os.path.join(temp, 'queue'))
+            os.makedirs(os.path.join(temp, 'master'))
+            csv_path = os.path.join(temp, 'queue', 'proposals.csv')
+            verify_path = os.path.join(temp, 'verify.json')
+            original = (
+                'qid,queue_action,queue_status,proposed_by,review_note\\n'
+                'Q000001,correct,accepted,Claude,"Keep, this protected \\"quoted\\" note\\nand its next line"\\n'
+            )
+            unreviewed = 'Q000002,correct,new,ChatGPT,Original note\\n'
+            with open(csv_path, 'w', encoding='utf-8', newline='') as file:
+                file.write(original + unreviewed)
+            with open(verify_path, 'w', encoding='utf-8') as file:
+                json.dump([{'qid': 'Q000002',
+                            'checks': {'evidence': {'fetch': 'ok'}}}], file)
+            auto_accept.main(temp, verify_path)
+            with open(csv_path, encoding='utf-8', newline='') as file:
+                updated = file.read()
+            self.assertTrue(updated.startswith(original), updated)
+            self.assertIn('Q000002,correct,accepted,ChatGPT,', updated)
+            self.assertNotEqual(updated, original + unreviewed)
 
 
 if __name__ == '__main__':
