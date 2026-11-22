@@ -2,8 +2,8 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-22",
  "license": "See data.html",
- "films_on_public_map": 2485,
- "film_entries": 2505,
+ "films_on_public_map": 2507,
+ "film_entries": 2527,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -10627,6 +10627,10 @@
     {
      "id": "DIR-0300",
      "name": "Ramona Emerson"
+    },
+    {
+     "id": "DIR-0286",
+     "name": "Kelly Byars"
     }
    ],
    "languages": [],
@@ -14216,6 +14220,10 @@
     {
      "id": "DIR-0217",
      "name": "Aracely Méndez"
+    },
+    {
+     "id": "QM-fdd3000c6f",
+     "name": "Norma Aracely Méndez Gómez"
     }
    ],
    "languages": [],
@@ -31406,6 +31414,10 @@
     {
      "id": "NEW-fe2d1df151b6",
      "name": "Viviane Jag Fej Farias"
+    },
+    {
+     "id": "QM-fb4b33fd5d",
+     "name": "Amallia Brandolff"
     }
    ],
    "languages": [],
@@ -47165,6 +47177,398 @@
    ],
    "form": "Documentary",
    "length": "Short"
+  },
+  "Q20261122-01-F1": {
+   "title": "Glen Riege 20 WP",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261122-01",
+     "name": "Tanis Parenteau"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261122-02-F1": {
+   "title": "Iiná",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261122-02",
+     "name": "Lonnie Begaye"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261122-03-F1": {
+   "title": "More than Water",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261122-03",
+     "name": "Leslie Halfmoon"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261122-04-F1": {
+   "title": "Nampeyo American Modernist",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261122-04",
+     "name": "Steve LaRance"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261122-05-F1": {
+   "title": "Nihunavea: My Heart, My Center",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261122-05",
+     "name": "Sandra Hernandez"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261122-06-F1": {
+   "title": "Reservation Redemption",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261122-06",
+     "name": "Brenda Fisher"
+    },
+    {
+     "id": "Q20261122-07",
+     "name": "Blake Pickens"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261122-08-F1": {
+   "title": "Respected by Her People",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261122-08",
+     "name": "Sonya Oberly"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261122-09-F1": {
+   "title": "Spirit Plate with Pyet DeSpain",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261122-09",
+     "name": "Charles Perry"
+    },
+    {
+     "id": "Q20261122-10",
+     "name": "Pyet DeSpain"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261122-11-F1": {
+   "title": "Story Pole",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261122-11",
+     "name": "Darrell Hillaire"
+    },
+    {
+     "id": "Q20261122-12",
+     "name": "Noelani Auguston"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261122-13-F1": {
+   "title": "Stroke: The Circle of Healing",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261122-13",
+     "name": "Jaime Tafoya"
+    },
+    {
+     "id": "Q20261122-14",
+     "name": "Jack Kohler"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261122-15-F1": {
+   "title": "The Love for the Game",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261122-15",
+     "name": "Josiah W. Jones"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261122-16-F1": {
+   "title": "The Revolution of Virgil Ortiz",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261122-16",
+     "name": "Virgil Ortiz"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "DIR-0270-F1": {
+   "title": "Under the Battle Tipi",
+   "year": null,
+   "makers": [
+    {
+     "id": "DIR-0270",
+     "name": "Charles Boots Kennedye"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261122-17-F1": {
+   "title": "#MMIW: Search for Truth",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261122-17",
+     "name": "Amanda Erickson"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "NEW-96a391c360a1-F1": {
+   "title": "Ownership",
+   "year": null,
+   "makers": [
+    {
+     "id": "NEW-96a391c360a1",
+     "name": "Keanu Jones"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261122-18-F1": {
+   "title": "Coming In",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261122-18",
+     "name": "Sarah Liese"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "Q20261122-19-F1": {
+   "title": "If You Look Under There You’ll Find It",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261122-19",
+     "name": "Olivia Camfield"
+    },
+    {
+     "id": "Q20261122-20",
+     "name": "Woodrow Hunt"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "NEW-746053d844bb-N1": {
+   "title": "Ñimikan",
+   "year": null,
+   "makers": [
+    {
+     "id": "NEW-746053d844bb",
+     "name": "Ailin Piren Huenaiuen"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "QM-1ffe049337-M1": {
+   "title": "Primero, sueño",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "QM-1ffe049337",
+     "name": "Socorro Lira"
+    },
+    {
+     "id": "QM-085ffe787c",
+     "name": "Andrés Lira"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QM-5653b660e1-N1": {
+   "title": "Jme Jtamol - Partera",
+   "year": 2022,
+   "makers": [
+    {
+     "id": "QM-5653b660e1",
+     "name": "Anastacia Lopez"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QM-ee51d60945-M1": {
+   "title": "Yby Katu",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "QM-ee51d60945",
+     "name": "Kaylany Cordeiro"
+    },
+    {
+     "id": "QM-42780a2069",
+     "name": "Jessé Carlos"
+    },
+    {
+     "id": "QM-79fc91a0d7",
+     "name": "Ladivan Soares"
+    },
+    {
+     "id": "QM-ef5a681714",
+     "name": "Geyson Fernandes"
+    },
+    {
+     "id": "QM-1850f635d3",
+     "name": "Rodrigo Sena"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QM-1850f635d3-N2": {
+   "title": "Mukunã – Aprendiz de Pajé",
+   "year": 2025,
+   "makers": [
+    {
+     "id": "QM-1850f635d3",
+     "name": "Rodrigo Sena"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
   }
  }
 }
