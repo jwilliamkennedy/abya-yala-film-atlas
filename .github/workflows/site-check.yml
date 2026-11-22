@@ -263,9 +263,11 @@ jobs:
                   raise
                 assert await page.locator('#weave-play').get_attribute('aria-pressed')=='true',(label,'Play mode not marked active')
                 await page.locator('#weave-play-speed').select_option('10000')
-                await page.locator('#weave-play-pause').click(force=True,timeout=12000)
+                # The player's buttons are pressed by script: on a runner the map redraws in software while Play flies, and a
+                # mouse click waited past its 12 s limit to scroll the button into view (it was already a forced click).
+                await page.locator('#weave-play-pause').dispatch_event('click')
                 started=await page.evaluate("({progress:document.querySelector('#weave-play-progress')?.textContent||'',title:document.querySelector('#weave-play-title')?.textContent||'',last:document.querySelector('#weave-play-next')?.disabled})")
-                await page.locator('#weave-play-next').click(force=True,timeout=12000)
+                await page.locator('#weave-play-next').dispatch_event('click')
                 play=await page.evaluate("""()=>({
                   pace:document.querySelector('#weave-play-speed')?.value,
                   progress:document.querySelector('#weave-play-progress')?.textContent,
@@ -274,7 +276,7 @@ jobs:
                 })""")
                 # Play opens on the card being read, so Next moves one film past where Play began (not always to "2 of").
                 assert play['pace']=='10000' and play['visible'] and started['title'] and (started['last'] or (play['title']!=started['title'] and play['progress']!=started['progress'])),(label,started,play)
-                await page.locator('#weave-play-close').click(force=True,timeout=12000)
+                await page.locator('#weave-play-close').dispatch_event('click')
                 assert await page.locator('#weave-player').is_hidden(),(label,'player did not close')
                 assert await page.locator('#weave-play').get_attribute('aria-pressed')=='false',(label,'Play mode remains pressed after closing')
                 assert await page.locator('#constellate-read').get_attribute('aria-pressed')=='true',(label,'Read mode not restored after presenting')
@@ -553,7 +555,7 @@ jobs:
                 start:getComputedStyle(document.querySelector('#weave-start')).display, results:document.querySelectorAll('#ws-theme-results [data-ws-theme]').length,
                 query:document.querySelector('#ws-theme-q')?.value, focus:document.activeElement?.id||document.activeElement?.tagName, body:document.body.className})""")))
               raise
-            await p.wait_for_function('window.AtlasCollections.current().items.length>=6',timeout=20000)
+            await p.wait_for_function('window.AtlasCollections.current().items.length>=6',timeout=45000)  # 20 s was not always enough on a runner
             seed=await p.evaluate("""() => {
               const s=window.AtlasCollections.current(),t=s.threads.find(t=>t.id===s.activeThread);
               return {seed:t.items.length,playVisible:getComputedStyle(document.querySelector('#weave-play')).display!=='none',

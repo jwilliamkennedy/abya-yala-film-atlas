@@ -6,6 +6,7 @@ on:
       - '.github/atlas/promote-request.txt'
 permissions:
   contents: write
+  actions: write   # to start Site check on the promoted commit
 concurrency:
   group: atlas-promote-beta-main
   cancel-in-progress: false
@@ -32,5 +33,10 @@ jobs:
           fi
           git config user.name 'atlas-promotion-bot'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git commit -m 'Promote approved beta to main site (2026-11-19)'
+          git commit -m "Promote approved beta to main site ($(date -u +%F))"
           git push origin HEAD:main
+      - name: Start Site check on the promoted main site
+        # A push made with this workflow's own token does not start other workflows, so the check is started here.
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run site-check.yml --repo "$GITHUB_REPOSITORY" --ref main
