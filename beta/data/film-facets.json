@@ -2,8 +2,8 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-22",
  "license": "See data.html",
- "films_on_public_map": 2544,
- "film_entries": 2560,
+ "films_on_public_map": 2548,
+ "film_entries": 2564,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -16545,6 +16545,10 @@
     {
      "id": "BETA30-20261106-D08",
      "name": "Marly Cáceres Uncacía"
+    },
+    {
+     "id": "QM-bd85298ce6",
+     "name": "Jorge Mauricio Telpiz Quitiaquez"
     }
    ],
    "languages": [],
@@ -47953,6 +47957,94 @@
    "primary_theme": null,
    "families": [],
    "form": null,
+   "length": null
+  },
+  "DIR-0198-F1": {
+   "title": "Hagamos El Curare",
+   "year": null,
+   "makers": [
+    {
+     "id": "DIR-0198",
+     "name": "Elisa Enqueri"
+    },
+    {
+     "id": "DIR-0200",
+     "name": "Jonathan Enqueri"
+    },
+    {
+     "id": "DIR-0205",
+     "name": "Marcia Enqueri"
+    },
+    {
+     "id": "DIR-0207",
+     "name": "Ramon Uboye Gaba"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "QM-84aac61794-F1": {
+   "title": "Crónicas de una Lucha por el Ecosistema",
+   "year": null,
+   "makers": [
+    {
+     "id": "QM-84aac61794",
+     "name": "Juan Catín"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "DIR-0252-F1": {
+   "title": "Sitio Ancestral",
+   "year": null,
+   "makers": [
+    {
+     "id": "DIR-0252",
+     "name": "Kibian Duque"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "DIR-0054-F1": {
+   "title": "A Origem do Povo Khisetje",
+   "year": null,
+   "makers": [
+    {
+     "id": "DIR-0054",
+     "name": "Wengroni Suyá"
+    },
+    {
+     "id": "DIR-0035",
+     "name": "Khahrãndidji Tapayuna"
+    },
+    {
+     "id": "QM-9464309221",
+     "name": "Kokokahratxi Sompré Suyá"
+    },
+    {
+     "id": "DIR-0043",
+     "name": "Samantha Ngaikurwâtxi Suiá"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
    "length": null
   }
  }
