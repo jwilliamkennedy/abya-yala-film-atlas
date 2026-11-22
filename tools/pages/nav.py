@@ -10,8 +10,8 @@ import sys, re, pathlib
 
 TOP = [('About', 'about.html'), ('Map', './'), ('Constellate', './?constellate=1'), ('Watch', 'watch.html')]
 MORE = [[('Languages', 'languages.html'), ('Themes', 'themes.html'), ('Timeline', 'timeline.html')],
-        [('Screening list', 'screening.html')],
-        [('Data, Reuse, and CARE', 'data.html'), ('Resources', 'resources.html'), ('Suggest a correction', 'corrections.html')]]
+        [('Saved', 'screening.html')],
+        [('Suggest a correction', 'corrections.html')]]   # Data and CARE, and Resources, are tabs at the top of About
 # the atlas mark (lens and meridian, 2026-11-15), drawn in the page's ink (the same icon on every page, in light and night themes)
 MARK = ('<svg class="brand-mark" viewBox="0 0 120 120" aria-hidden="true" focusable="false"><circle cx="60" cy="60" r="50" fill="none" stroke="currentColor" stroke-width="7"/><path class="meridian" d="M44 16 C66 30 50 46 62 60 C74 74 56 88 66 104" fill="none" stroke="#5f8199" stroke-width="8" stroke-linecap="round"/><circle cx="62" cy="60" r="7" fill="currentColor"/></svg>')
 
@@ -86,7 +86,7 @@ def main(root):
         else:
             new = new.replace('</head>', CSS + '\n</head>', 1)
         # shared stylesheets last, after the page's own styles and site-nav-css, so the shared layer wins the cascade
-        new = new.replace('</head>', f'<link rel="stylesheet" href="{up}assets/site-menu.css?v={V["site-menu.css"]}"><script defer src="{up}assets/site-menu.js?v={V["site-menu.js"]}"></script><script defer src="{up}i18n-20261107.js?v=20"></script>\n</head>', 1)
+        new = new.replace('</head>', f'<link rel="stylesheet" href="{up}assets/site-menu.css?v={V["site-menu.css"]}"><script defer src="{up}assets/site-menu.js?v={V["site-menu.js"]}"></script><script defer src="{up}i18n-20261107.js?v=21"></script>\n</head>', 1)
         new = new.replace('</head>', f'<link rel="stylesheet" href="{up}assets/ui-20261109.css?v={V["ui-20261109.css"]}"><script defer src="{up}assets/ui-20261109.js?v={V["ui-20261109.js"]}"></script>\n</head>', 1)
         new = new.replace('</head>', f'{RAIL_EARLY}<link rel="stylesheet" href="{up}assets/rail-20261121.css?v={V["rail-20261121.css"]}"><script defer src="{up}assets/rail-20261121.js?v={V["rail-20261121.js"]}"></script>\n</head>', 1)
         if new != t:

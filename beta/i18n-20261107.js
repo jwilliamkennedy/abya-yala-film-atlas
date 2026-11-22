@@ -4,7 +4,13 @@
 (()=>{'use strict';
 const LANGS={en:'English',es:'Español',pt:'Português',fr:'Français'};
 // [English, Español, Português, Français]
-const T=[["Layers (changed from the usual view)","Capas (cambiadas respecto a la vista habitual)","Camadas (alteradas em relação à vista habitual)","Calques (modifiés par rapport à la vue habituelle)"],
+const T=[["Map views","Vistas del mapa","Vistas do mapa","Vues de la carte"],["Open on the map","Abrir en el mapa","Abrir no mapa","Ouvrir sur la carte"],
+["No saved map views yet. On the map, choose Save view to keep a selection with its filters and map position.","Aún no hay vistas guardadas. En el mapa, elige Guardar vista para conservar una selección con sus filtros y la posición del mapa.","Ainda não há vistas salvas. No mapa, escolha Salvar vista para guardar uma seleção com seus filtros e a posição do mapa.","Aucune vue enregistrée pour l’instant. Sur la carte, choisissez Enregistrer la vue pour conserver une sélection avec ses filtres et la position de la carte."],
+["Remove saved view","Quitar la vista guardada","Remover a vista salva","Retirer la vue enregistrée"],["Saved view","Vista guardada","Vista salva","Vue enregistrée"],
+["Watch the years pass on the map","Mira pasar los años en el mapa","Veja os anos passarem no mapa","Voir les années défiler sur la carte"],
+["Timeline: every dated film, by decade","Cronología: todas las películas fechadas, por década","Linha do tempo: todos os filmes datados, por década","Chronologie : tous les films datés, par décennie"],
+["About the atlas","Acerca del atlas","Sobre o atlas","À propos de l’atlas"],
+["Layers (changed from the usual view)","Capas (cambiadas respecto a la vista habitual)","Camadas (alteradas em relação à vista habitual)","Calques (modifiés par rapport à la vue habituelle)"],
 ["Lands","Tierras","Terras","Territoires"],["Search","Buscar","Buscar","Rechercher"],["Indexes","Índices","Índices","Index"],
 ["Your atlas","Tu atlas","Seu atlas","Votre atlas"],["The project","El proyecto","O projeto","Le projet"],["Data and CARE","Datos y CARE","Dados e CARE","Données et CARE"],
 ["Screening","Proyección","Exibição","Projection"],["Collapse menu","Contraer el menú","Recolher o menu","Réduire le menu"],["Expand menu","Expandir el menú","Expandir o menu","Développer le menu"],

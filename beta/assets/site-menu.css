@@ -77,3 +77,8 @@
 }
 /* keyboard focus: always visible, on every page */
 :root:not(#_) :is(a,button,summary,select,input,textarea,[tabindex]):focus-visible{outline:2px solid currentColor!important;outline-offset:2px!important}
+/* About | Data and CARE | Resources: one About, three tabs (22 Nov 2026) */
+main .about-tabs{display:inline-flex;flex-wrap:wrap;gap:2px;padding:3px;border-radius:18px;background:var(--ui-wash,#e9ebed);margin:0 0 26px}
+main .about-tabs a{display:inline-flex;align-items:center;min-height:32px;padding:0 16px;border:0;border-radius:999px;color:var(--ui-muted,#5a646d);font:400 14px/1 var(--ui-sans,system-ui,sans-serif);text-decoration:none;background:transparent}
+main .about-tabs a:hover{color:var(--ui-ink,#14181c)}
+main .about-tabs a[aria-current=page]{background:var(--ui-surface,#fbfcfc);color:var(--ui-ink,#14181c);box-shadow:0 1px 2px rgba(20,24,28,.12)}

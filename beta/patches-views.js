@@ -61,7 +61,7 @@ try{(function(){
    '<div class="td-read"><strong id="td-year"></strong><small id="td-count" aria-live="polite"></small></div>'+
    '<div class="td-track"><span>'+START+'</span><input id="td-range" type="range" min="'+START+'" max="'+maxY+'" step="1" aria-label="Year"><span>'+maxY+'</span></div>'+
    '<button type="button" id="td-close" aria-label="Close the time dial">Close</button>'+
-   '<p class="td-note">A land lights up in the year of the earliest dated film by a filmmaker linked to it. '+undated.toLocaleString()+' films have no year recorded yet and are not counted.</p>';
+   '<p class="td-note">A land lights up in the year of the earliest dated film by a filmmaker linked to it. '+undated.toLocaleString()+' films have no year recorded yet and are not counted. <a href="timeline.html">Timeline: every dated film, by decade</a></p>';
   panel.appendChild(bar);
   toggle.onclick=function(){on?close():open(START),on&&play();};
   $('#td-range').oninput=function(e){stop();set(+e.target.value);};
