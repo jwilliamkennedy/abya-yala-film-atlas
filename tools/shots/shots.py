@@ -1,4 +1,6 @@
-"""Screenshot beta pages on a runner. Each job: name, path, viewport, optional steps (click / press / wait / eval)."""
+"""Screenshot beta pages on a runner. Each job: name, path, viewport, optional steps (click / press / wait / eval).
+A job with "filmstrip": {"every": ms, "count": n, "probe": js} records the page as it loads instead: a frame every
+`every` ms from the first byte, and the probe's value at each frame (shots/<name>/NN-<ms>.png, report <name>.frames)."""
 import asyncio, json
 from playwright.async_api import async_playwright
 JOBS = json.load(open('tools/shots/jobs.json'))
@@ -13,6 +15,19 @@ async def main():
             pg.on('pageerror', lambda e: errs.append(str(e)[:200]))
             out = {}
             try:
+                if 'filmstrip' in j:
+                    fs = j['filmstrip']; import os, time; os.makedirs(f"shots/{j['name']}", exist_ok=True); frames = []
+                    t0 = time.monotonic(); await pg.goto('http://127.0.0.1:8771/' + j['path'], wait_until='commit', timeout=90000)
+                    for i in range(fs.get('count', 40)):
+                        await pg.wait_for_timeout(fs.get('every', 100))
+                        ms = round((time.monotonic() - t0) * 1000)
+                        try: v = await pg.evaluate(fs['probe'])
+                        except Exception as e: v = 'probe: ' + str(e)[:80]
+                        try: await pg.screenshot(path=f"shots/{j['name']}/{i:02d}-{ms:05d}.png", timeout=4000, scale='css')
+                        except Exception as e: v = {'shot': str(e)[:60], 'v': v}
+                        frames.append([ms, v])
+                    out['frames'] = frames
+                    rep[j['name']] = {'errors': errs[:10], **out}; await ctx.close(); continue
                 await pg.goto('http://127.0.0.1:8771/' + j['path'], wait_until='load', timeout=90000)
                 await pg.wait_for_timeout(j.get('settle', 6000))
                 for st in j.get('steps', []):
