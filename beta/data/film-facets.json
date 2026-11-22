@@ -2,8 +2,8 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-22",
  "license": "See data.html",
- "films_on_public_map": 2507,
- "film_entries": 2527,
+ "films_on_public_map": 2533,
+ "film_entries": 2553,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -47568,6 +47568,422 @@
    "primary_theme": null,
    "families": [],
    "form": null,
+   "length": null
+  },
+  "Q20261122-40-F1": {
+   "title": "Nirilaurta: Let Us Eat",
+   "year": 2026,
+   "makers": [
+    {
+     "id": "Q20261122-40",
+     "name": "Malaya Qaunirq Chapman"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "Q20261122-41-F1": {
+   "title": "Sober House: A Sign of Change in Cree Nation",
+   "year": 2019,
+   "makers": [
+    {
+     "id": "Q20261122-41",
+     "name": "Wendell G. Collier"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "Q20261122-42-F1": {
+   "title": "Bundle",
+   "year": 2020,
+   "makers": [
+    {
+     "id": "Q20261122-42",
+     "name": "Jamie Whitecrow"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Experimental",
+   "length": null
+  },
+  "Q20261122-43-F1": {
+   "title": "Apaja’simk (The Return)",
+   "year": 2018,
+   "makers": [
+    {
+     "id": "Q20261122-43",
+     "name": "Trevor Gould"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": null
+  },
+  "Q20261122-44-F1": {
+   "title": "Châde Wathte Yuta Wagichibi (Dancing with a Good Heart)",
+   "year": 2019,
+   "makers": [
+    {
+     "id": "Q20261122-44",
+     "name": "Heather Ketchemonia"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "Q20261122-45-F1": {
+   "title": "Le chemin rouge (Red Path)",
+   "year": 2015,
+   "makers": [
+    {
+     "id": "Q20261122-45",
+     "name": "Thérèse Ottawa"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "Q20261122-46-F1": {
+   "title": "Against The Grain",
+   "year": 2009,
+   "makers": [
+    {
+     "id": "Q20261122-46",
+     "name": "Curtis Mandeville"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "Q20261122-47-F1": {
+   "title": "De Face Ou De Profil (Face or Profile)",
+   "year": 2014,
+   "makers": [
+    {
+     "id": "Q20261122-47",
+     "name": "Sharon Fontaine"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "QW-ddd2bb21b6-F1": {
+   "title": "Jordan Gordon’s Guide to Kuujjuaq",
+   "year": 2018,
+   "makers": [
+    {
+     "id": "QW-ddd2bb21b6",
+     "name": "Jordan Gordon"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": null
+  },
+  "Q20261122-48-F1": {
+   "title": "To Wake Up the Nakota Language",
+   "year": 2017,
+   "makers": [
+    {
+     "id": "Q20261122-48",
+     "name": "Louise BigEagle"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "Q20261122-49-F1": {
+   "title": "Tuktumit",
+   "year": 2014,
+   "makers": [
+    {
+     "id": "Q20261122-49",
+     "name": "Ippiksaut Friesen"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": null
+  },
+  "QW-8d6dcf6d77-F1": {
+   "title": "More Than A Stereotype",
+   "year": 2018,
+   "makers": [
+    {
+     "id": "QW-8d6dcf6d77",
+     "name": "Sinay Kennedy"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "QW-c06dc0065d-F1": {
+   "title": "Awaskinawason (Children of Earth)",
+   "year": 2015,
+   "makers": [
+    {
+     "id": "QW-c06dc0065d",
+     "name": "Antony Dubé"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": null
+  },
+  "Q20261122-50-F1": {
+   "title": "Mr. Sanderson",
+   "year": 2014,
+   "makers": [
+    {
+     "id": "Q20261122-50",
+     "name": "Terrie McIntosh"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "Q20261122-51-F1": {
+   "title": "Stolen",
+   "year": 2016,
+   "makers": [
+    {
+     "id": "Q20261122-51",
+     "name": "Kawennáhere Devery Jacobs"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": null
+  },
+  "Q20261122-52-F1": {
+   "title": "Thunderbird",
+   "year": 2018,
+   "makers": [
+    {
+     "id": "Q20261122-52",
+     "name": "Erin Collins"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "Q20261122-53-F1": {
+   "title": "Aboriginality",
+   "year": 2007,
+   "makers": [
+    {
+     "id": "Q20261122-53",
+     "name": "Tom Jackson"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": null
+  },
+  "Q20261122-54-F1": {
+   "title": "Shoot Your Shot",
+   "year": 2021,
+   "makers": [
+    {
+     "id": "Q20261122-54",
+     "name": "Meegwun Fairbrother"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": null
+  },
+  "Q20261122-55-F1": {
+   "title": "Grandfather on the Prairies",
+   "year": 2018,
+   "makers": [
+    {
+     "id": "Q20261122-55",
+     "name": "Andrew Genaille"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": null
+  },
+  "NEW-77dae2d12ee6-F1": {
+   "title": "No Reservations",
+   "year": 2018,
+   "makers": [
+    {
+     "id": "NEW-77dae2d12ee6",
+     "name": "Trevor Carroll"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": null
+  },
+  "Q20261122-56-F1": {
+   "title": "Birchbark",
+   "year": 2008,
+   "makers": [
+    {
+     "id": "Q20261122-56",
+     "name": "John Hupfield"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": null
+  },
+  "NEW-ad1326375f77-F1": {
+   "title": "Mémére Métisse",
+   "year": 2008,
+   "makers": [
+    {
+     "id": "NEW-ad1326375f77",
+     "name": "Janelle Wookey"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "Q20261122-57-F1": {
+   "title": "Ways of Yesterday",
+   "year": 2014,
+   "makers": [
+    {
+     "id": "Q20261122-57",
+     "name": "Elliott Simon"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "Q20261122-58-F1": {
+   "title": "Indian",
+   "year": 2008,
+   "makers": [
+    {
+     "id": "Q20261122-58",
+     "name": "Darryl Nepinak"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": null
+  },
+  "Q20261122-59-F1": {
+   "title": "Released",
+   "year": 2015,
+   "makers": [
+    {
+     "id": "Q20261122-59",
+     "name": "Chantal Rondeau"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "Q20261122-60-F1": {
+   "title": "Smoke Traders",
+   "year": 2012,
+   "makers": [
+    {
+     "id": "Q20261122-60",
+     "name": "Jeff Dorn"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
    "length": null
   }
  }
