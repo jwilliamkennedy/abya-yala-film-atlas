@@ -2,8 +2,8 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-22",
  "license": "See data.html",
- "films_on_public_map": 2365,
- "film_entries": 2384,
+ "films_on_public_map": 2368,
+ "film_entries": 2387,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -38188,6 +38188,38 @@
    "form": "Fiction",
    "length": "Short"
   },
+  "Q20261121-83-F1": {
+   "title": "Mitshanipun",
+   "year": 2023,
+   "makers": [
+    {
+     "id": "QM-788b6afb29",
+     "name": "Pierre-Olivier Hervieux-Picard"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261121-86-F1": {
+   "title": "Outrage (Manenitamᵁ)",
+   "year": 2025,
+   "makers": [
+    {
+     "id": "QM-788b6afb29",
+     "name": "Pierre-Olivier Hervieux-Picard"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "QM-fce875a634-M1": {
    "title": "Uteiminan : l'envol de mikun",
    "year": 2024,
@@ -38273,6 +38305,22 @@
    ],
    "form": null,
    "length": "Short"
+  },
+  "Q20261121-82-F1": {
+   "title": "Fursona",
+   "year": 2022,
+   "makers": [
+    {
+     "id": "QM-7148af2273",
+     "name": "Aly Labbé-Hervieux"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
   },
   "QM-c2135168d9-M1": {
    "title": "Hier aujourd'hui à demain",
