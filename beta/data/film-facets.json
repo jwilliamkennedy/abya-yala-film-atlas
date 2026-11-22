@@ -2,8 +2,8 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-22",
  "license": "See data.html",
- "films_on_public_map": 2420,
- "film_entries": 2442,
+ "films_on_public_map": 2422,
+ "film_entries": 2444,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -45553,6 +45553,38 @@
    "families": [],
    "form": null,
    "length": null
+  },
+  "Q20261121-105-F1": {
+   "title": "Kokom",
+   "year": 2014,
+   "makers": [
+    {
+     "id": "DIR-0114",
+     "name": "Kevin Papatie"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Experimental",
+   "length": "Short"
+  },
+  "Q20261121-104-F1": {
+   "title": "WAPIKONI (Fleur)",
+   "year": 2017,
+   "makers": [
+    {
+     "id": "QW-1ba11ee9f7",
+     "name": "Élisa Moar"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Experimental",
+   "length": "Short"
   },
   "QW-WAPI-V158421063": {
    "title": "KUPANISHKUEU",
