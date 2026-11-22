@@ -2,8 +2,8 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-22",
  "license": "See data.html",
- "films_on_public_map": 2373,
- "film_entries": 2392,
+ "films_on_public_map": 2376,
+ "film_entries": 2395,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -237,7 +237,7 @@
     "match": "probable",
     "indigenous": "yes",
     "note": "Inuktitut in Canadian credits usually names the eastern variety",
-    "films": 16
+    "films": 17
    },
    {
     "label": "Iñupiaq",
@@ -41721,6 +41721,38 @@
    "form": "Animation",
    "length": "Short"
   },
+  "Q20261121-98-F1": {
+   "title": "Culpa (Guilt)",
+   "year": 2023,
+   "makers": [
+    {
+     "id": "Q20261114-73",
+     "name": "Seba Calfuqueo"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Hybrid",
+   "length": null
+  },
+  "Q20261121-98-F2": {
+   "title": "¿Chumal elkaniengeal? (¿Para qué guardar?)",
+   "year": 2023,
+   "makers": [
+    {
+     "id": "Q20261114-73",
+     "name": "Seba Calfuqueo"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": null
+  },
   "Q20261114-69-F1": {
    "title": "Ghost Food",
    "year": 2017,
@@ -44894,6 +44926,36 @@
     }
    ],
    "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261121-94-F1": {
+   "title": "Katatjatuuk Kangirsumi (Throat Singing in Kangirsuk)",
+   "year": 2018,
+   "makers": [
+    {
+     "id": "Q20261121-94",
+     "name": "Eva Kaukai"
+    },
+    {
+     "id": "Q20261121-95",
+     "name": "Manon Chamberland"
+    }
+   ],
+   "languages": [
+    {
+     "label": "Inuktitut",
+     "as_credited": "Inuktitut",
+     "glottocode": "east2534",
+     "iso639_3": "ike",
+     "match": "probable",
+     "indigenous": true,
+     "source": "https://www.kffk.de/filme/kehlkopfgesang-in-kangirsuk-throat-singing-in-kangirsuk/"
+    }
+   ],
    "themes": [],
    "primary_theme": null,
    "families": [],
