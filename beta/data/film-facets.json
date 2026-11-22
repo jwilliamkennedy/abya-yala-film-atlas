@@ -2,8 +2,8 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-22",
  "license": "See data.html",
- "films_on_public_map": 2357,
- "film_entries": 2376,
+ "films_on_public_map": 2360,
+ "film_entries": 2379,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -23964,6 +23964,26 @@
    "form": "Documentary",
    "length": "Feature"
   },
+  "Q20261121-02-F1": {
+   "title": "Los que están por nacer",
+   "year": 2018,
+   "makers": [
+    {
+     "id": "NEW-c74dcc05c3f0",
+     "name": "Yovegami Ascona Mora"
+    },
+    {
+     "id": "NEW-ab671ab16445",
+     "name": "Sinhué Ascona Mora"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
+  },
   "NEW-031a02f81a1f-WORK-1": {
    "title": "Corn Husk Doll",
    "year": null,
@@ -25053,6 +25073,22 @@
   "SA50-20261014-4f512b86ac9a-WORK-01": {
    "title": "Mokuka karõ",
    "year": 2023,
+   "makers": [
+    {
+     "id": "SA50-20261014-4f512b86ac9a",
+     "name": "Bepkadjoiti Kayapó"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261121-78-F1": {
+   "title": "Memybijok – A Festa dos Homens",
+   "year": 2018,
    "makers": [
     {
      "id": "SA50-20261014-4f512b86ac9a",
@@ -26873,6 +26909,22 @@
    "families": [],
    "form": null,
    "length": null
+  },
+  "Q20261121-01-F1": {
+   "title": "Warriache (Gente de la tierra en la ciudad)",
+   "year": 2016,
+   "makers": [
+    {
+     "id": "SAB2-20261014-b75a1a79d063",
+     "name": "Camilo Antileo"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Experimental",
+   "length": "Short"
   },
   "SAB2-20261014-8a01174c17a2-WORK-01": {
    "title": "Jabuayenam — Cuando la palabra comienza a sanar",
