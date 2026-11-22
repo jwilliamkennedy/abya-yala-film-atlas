@@ -2,8 +2,8 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-22",
  "license": "See data.html",
- "films_on_public_map": 2462,
- "film_entries": 2485,
+ "films_on_public_map": 2467,
+ "film_entries": 2490,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -93,7 +93,7 @@
     "match": "exact",
     "indigenous": "yes",
     "note": "",
-    "films": 1
+    "films": 3
    },
    {
     "label": "Ayuujk (Mixe)",
@@ -11870,6 +11870,22 @@
    "primary_theme": null,
    "families": [],
    "form": "Experimental",
+   "length": null
+  },
+  "Q20261121-247-F1": {
+   "title": "El reflejo en mi ojo",
+   "year": 2015,
+   "makers": [
+    {
+     "id": "DIR-0170",
+     "name": "Francisco Huichaqueo Pérez"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
    "length": null
   },
   "FILM-0113": {
@@ -27352,6 +27368,31 @@
    "form": null,
    "length": null
   },
+  "Q20261121-702-F1": {
+   "title": "Siziwa – Danzar para que el planeta siga girando",
+   "year": 2020,
+   "makers": [
+    {
+     "id": "SAB2-20261014-4af382f5d619",
+     "name": "Rafael Mojica Gil"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Extractivism",
+    "More-than-Human Relations",
+    "Music and Performance",
+    "Women and Gender"
+   ],
+   "primary_theme": "More-than-Human Relations",
+   "families": [
+    "Expression and Representation",
+    "Land and Environment",
+    "Lives and Relations"
+   ],
+   "form": "Documentary",
+   "length": "Short"
+  },
   "SAB2-20261014-27c2f0794ff0-WORK-01": {
    "title": "Neyen Mapu. El llamado del Lanín",
    "year": 2025,
@@ -27633,6 +27674,28 @@
    "families": [],
    "form": "Documentary",
    "length": null
+  },
+  "Q20261121-246-F1": {
+   "title": "AWKA KULLIN, Nacidas del Barro",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "SAB2-20261014-2501b24c169e",
+     "name": "Gerardo Berrocal"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Art, Craft and Making",
+    "More-than-Human Relations"
+   ],
+   "primary_theme": "Art, Craft and Making",
+   "families": [
+    "Expression and Representation",
+    "Land and Environment"
+   ],
+   "form": "Documentary",
+   "length": "Short"
   },
   "SAB2-20261014-a5b0a2b0a0f8-WORK-01": {
    "title": "Kizu Trekali — Caminó sola",
@@ -46485,6 +46548,70 @@
    "families": [],
    "form": null,
    "length": null
+  },
+  "QW-WAPI-V279669690": {
+   "title": "Nin Tapwe (Authentique)",
+   "year": 2018,
+   "makers": [
+    {
+     "id": "QW-e6d36f5d7c",
+     "name": "Katherine Nequado"
+    }
+   ],
+   "languages": [
+    {
+     "label": "Atikamekw",
+     "as_credited": "Atikamekw",
+     "glottocode": "atik1240",
+     "iso639_3": "atj",
+     "match": "exact",
+     "indigenous": true,
+     "source": "https://ridm.ca/uploads/document/ridm_2018_catalogue_1210_lightweb.pdf"
+    }
+   ],
+   "themes": [
+    "Women and Gender",
+    "Self-Representation and Countering Stereotypes"
+   ],
+   "primary_theme": "Women and Gender",
+   "families": [
+    "Expression and Representation",
+    "Lives and Relations"
+   ],
+   "form": "Experimental",
+   "length": "Short"
+  },
+  "Q20261121-15-F1": {
+   "title": "Wamin (La pomme)",
+   "year": 2017,
+   "makers": [
+    {
+     "id": "QW-e6d36f5d7c",
+     "name": "Katherine Nequado"
+    }
+   ],
+   "languages": [
+    {
+     "label": "Atikamekw",
+     "as_credited": "Atikamekw",
+     "glottocode": "atik1240",
+     "iso639_3": "atj",
+     "match": "exact",
+     "indigenous": true,
+     "source": "https://2024.fcvq.ca/programmation/20-ans-de-recit-au-coeur-des-premiers-peuples-wapikoni-2024-09-11-14h30"
+    }
+   ],
+   "themes": [
+    "Urban Indigeneity",
+    "Self-Representation and Countering Stereotypes"
+   ],
+   "primary_theme": "Urban Indigeneity",
+   "families": [
+    "Expression and Representation",
+    "Lives and Relations"
+   ],
+   "form": "Experimental",
+   "length": "Short"
   }
  }
 }

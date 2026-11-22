@@ -818,6 +818,7 @@ Q20261114-96-F16,Guernica,2004,length,Short,,https://cinechile.cl/persona/franci
 Q20261114-96-F1,Kuzen,2016,form,Experimental,,https://cinechile.cl/pelicula/kuzen/,"normalised from the recorded form ""Experimental short"""
 Q20261114-96-F1,Kuzen,2016,length,Short,,https://cinechile.cl/pelicula/kuzen/,"normalised from the recorded form ""Experimental short"""
 Q20261121-186-F1,"Santos Chávez, camino de la luna y el sol hacia el Lai Antü",2020,form,Experimental,,https://www.museoregionalaraucania.gob.cl/galeria/santos-chavez-camino-de-la-luna-y-el-sol-hacia-el-lai-antu,"normalised from the recorded form ""Experimental film / audiovisual installation piece"""
+Q20261121-247-F1,El reflejo en mi ojo,2015,form,Documentary,,https://uchile.cl/noticias/110194/profesor-mapuche-realiza-documental-sobre-su-visita-a-taiwan,"normalised from the recorded form ""Documentary"""
 FILM-0113,Punalka,1995,theme,Extractivism,Land and Environment,https://www.themoviedb.org/movie/1147631,tagged from a published synopsis; primary theme
 FILM-0113,Punalka,1995,theme,Water,Land and Environment,https://www.themoviedb.org/movie/1147631,tagged from a published synopsis
 FILM-0113,Punalka,1995,theme,Land Defense,Land and Environment,https://www.themoviedb.org/movie/1147631,tagged from a published synopsis
@@ -2180,6 +2181,12 @@ Q20261114-91-F3,Jikisiña Chuymampi,2024,length,Short,,https://bsj.pitt.edu/ojs/
 Q20261121-01-F1,Warriache (Gente de la tierra en la ciudad),2016,form,Experimental,,https://vimeo.com/221814215,"normalised from the recorded form ""Experimental short film"""
 Q20261121-01-F1,Warriache (Gente de la tierra en la ciudad),2016,length,Short,,https://vimeo.com/221814215,"normalised from the recorded form ""Experimental short film"""
 BETA30-20261106-F29,"Matuna, la sombra del guerrero",2020,language,Damana (Wiwa),mala1522,https://www.retinalatina.org/peliculas/matuna-la-sombra-del-guerrero-rafael-mojica/,recorded with the film
+Q20261121-702-F1,Siziwa – Danzar para que el planeta siga girando,2020,theme,Extractivism,Land and Environment,https://www.sapcine.com/wp-content/uploads/2022/05/FICCALI-XIII-Catalogo-2021.pdf,tagged from a published synopsis
+Q20261121-702-F1,Siziwa – Danzar para que el planeta siga girando,2020,theme,More-than-Human Relations,Land and Environment,https://www.sapcine.com/wp-content/uploads/2022/05/FICCALI-XIII-Catalogo-2021.pdf,tagged from a published synopsis; primary theme
+Q20261121-702-F1,Siziwa – Danzar para que el planeta siga girando,2020,theme,Music and Performance,Expression and Representation,https://www.sapcine.com/wp-content/uploads/2022/05/FICCALI-XIII-Catalogo-2021.pdf,tagged from a published synopsis
+Q20261121-702-F1,Siziwa – Danzar para que el planeta siga girando,2020,theme,Women and Gender,Lives and Relations,https://www.sapcine.com/wp-content/uploads/2022/05/FICCALI-XIII-Catalogo-2021.pdf,tagged from a published synopsis
+Q20261121-702-F1,Siziwa – Danzar para que el planeta siga girando,2020,form,Documentary,,https://www.sapcine.com/wp-content/uploads/2022/05/FICCALI-XIII-Catalogo-2021.pdf,from the published synopsis
+Q20261121-702-F1,Siziwa – Danzar para que el planeta siga girando,2020,length,Short,,https://www.sapcine.com/wp-content/uploads/2022/05/FICCALI-XIII-Catalogo-2021.pdf,from the published synopsis
 Q20261114-34-F1,Luchando por Nuestros Derechos – El Juicio por el Caso Peaje Quino,2012,form,Documentary,,https://adkimvn.wordpress.com/2012/12/06/luchando-por-nuestros-derechos-el-juicio-por-el-caso-peaje-quino-documental-2012/,"normalised from the recorded form ""Documentary"""
 Q20261114-34-F2,Lafkenmapu Ñi Dungun,2007,form,Documentary,,https://adkimvn.wordpress.com/2013/04/19/lafkenmapu-ni-dungun-documental-2007/,"normalised from the recorded form ""Documentary"""
 Q20261114-34-F3,KVKAÑWE – Pewenche Adkvnugvn (Quinquen – Autonomía Pehuenche),2010,form,Documentary,,https://adkimvn.wordpress.com/2012/08/24/kvkanwe-pewenche-adkvnugvn-sinopsis-2010/,"normalised from the recorded form ""Documentary"""
@@ -2193,6 +2200,10 @@ SAB2-20261014-2501b24c169e-F5,Inkaleyiñ Taiñ Kalafken (Defendamos el lago Kala
 SAB2-20261014-2501b24c169e-F6,"Mawizache ñi Zugun, La Voz de la Gente de las Montañas",2020,form,Documentary,,https://miradanativa.org/ca/pelicula/mawizache-ni-zugun-la-voz-de-la-gente-de-las-montanas-ca/,"normalised from the recorded form ""Documentary"""
 SAB2-20261014-2501b24c169e-F7,"Admongen, Vida Mapuche en Wallmapu. Ep. 3: Luis Tori, Werken",2017,form,Documentary,,https://miradanativa.org/pelicula/admongen-vida-mapuche-en-wallmapu-ep-3-luis-tori-werken/,"normalised from the recorded form ""Television documentary episode"""
 SAB2-20261014-2501b24c169e-F8,"Admongen: Mapuche Life in Wallmapu. Ep. 5: David Nahuelhual, Werken",2017,form,Documentary,,https://miradanativa.org/en/pelicula/admongen-mapuche-life-in-wallmapu-ep-5-david-nahuelhual-werken/,"normalised from the recorded form ""Television documentary episode"""
+Q20261121-246-F1,"AWKA KULLIN, Nacidas del Barro",2024,theme,"Art, Craft and Making",Expression and Representation,https://ellugarquehabitamos.org/awka-kullin-nacidas-del-barro/,tagged from a published synopsis; primary theme
+Q20261121-246-F1,"AWKA KULLIN, Nacidas del Barro",2024,theme,More-than-Human Relations,Land and Environment,https://ellugarquehabitamos.org/awka-kullin-nacidas-del-barro/,tagged from a published synopsis
+Q20261121-246-F1,"AWKA KULLIN, Nacidas del Barro",2024,form,Documentary,,https://ellugarquehabitamos.org/awka-kullin-nacidas-del-barro/,from the published synopsis
+Q20261121-246-F1,"AWKA KULLIN, Nacidas del Barro",2024,length,Short,,https://ellugarquehabitamos.org/awka-kullin-nacidas-del-barro/,from the published synopsis
 PILOT-43-ANA-TSUYEB-QM9f1fbc,Andares en la infancia,2018,form,Documentary,,https://ellugarquehabitamos.org/genero-y-disidencias-cine/,"normalised from the recorded form ""Short documentary"""
 PILOT-43-ANA-TSUYEB-QM9f1fbc,Andares en la infancia,2018,length,Short,,https://ellugarquehabitamos.org/genero-y-disidencias-cine/,"normalised from the recorded form ""Short documentary"""
 PILOT-43-ANA-TSUYEB-QM5960a0,Deconstrucción orgánica,2018,form,Documentary,,https://ellugarquehabitamos.org/genero-y-disidencias-cine/,"normalised from the recorded form ""Short documentary"""
@@ -3342,3 +3353,13 @@ QM-44e78904a4-M1,Ãjãlí Numã: o jogo de cabeça dos Manoki e Mỹky,2023,leng
 QM-61cf19b25a-M1,Levante Pela Terra,2022,theme,Land Defense,Land and Environment,https://ecofalante.org.br/filme/levante-pela-terra,tagged from a published synopsis; primary theme
 QM-61cf19b25a-M1,Levante Pela Terra,2022,form,Documentary,,https://ecofalante.org.br/filme/levante-pela-terra,from the published synopsis
 QM-61cf19b25a-M1,Levante Pela Terra,2022,length,Short,,https://ecofalante.org.br/filme/levante-pela-terra,from the published synopsis
+QW-WAPI-V279669690,Nin Tapwe (Authentique),2018,language,Atikamekw,atik1240,https://ridm.ca/uploads/document/ridm_2018_catalogue_1210_lightweb.pdf,recorded with the film
+QW-WAPI-V279669690,Nin Tapwe (Authentique),2018,theme,Women and Gender,Lives and Relations,https://2024.fcvq.ca/programmation/20-ans-de-recit-au-coeur-des-premiers-peuples-wapikoni-2024-09-11-14h30,tagged from a published synopsis; primary theme
+QW-WAPI-V279669690,Nin Tapwe (Authentique),2018,theme,Self-Representation and Countering Stereotypes,Expression and Representation,https://2024.fcvq.ca/programmation/20-ans-de-recit-au-coeur-des-premiers-peuples-wapikoni-2024-09-11-14h30,tagged from a published synopsis
+QW-WAPI-V279669690,Nin Tapwe (Authentique),2018,form,Experimental,,https://2024.fcvq.ca/programmation/20-ans-de-recit-au-coeur-des-premiers-peuples-wapikoni-2024-09-11-14h30,from the published synopsis
+QW-WAPI-V279669690,Nin Tapwe (Authentique),2018,length,Short,,https://2024.fcvq.ca/programmation/20-ans-de-recit-au-coeur-des-premiers-peuples-wapikoni-2024-09-11-14h30,from the published synopsis
+Q20261121-15-F1,Wamin (La pomme),2017,language,Atikamekw,atik1240,https://2024.fcvq.ca/programmation/20-ans-de-recit-au-coeur-des-premiers-peuples-wapikoni-2024-09-11-14h30,recorded with the film
+Q20261121-15-F1,Wamin (La pomme),2017,theme,Urban Indigeneity,Lives and Relations,https://2024.fcvq.ca/programmation/20-ans-de-recit-au-coeur-des-premiers-peuples-wapikoni-2024-09-11-14h30,tagged from a published synopsis; primary theme
+Q20261121-15-F1,Wamin (La pomme),2017,theme,Self-Representation and Countering Stereotypes,Expression and Representation,https://2024.fcvq.ca/programmation/20-ans-de-recit-au-coeur-des-premiers-peuples-wapikoni-2024-09-11-14h30,tagged from a published synopsis
+Q20261121-15-F1,Wamin (La pomme),2017,form,Experimental,,https://2024.fcvq.ca/programmation/20-ans-de-recit-au-coeur-des-premiers-peuples-wapikoni-2024-09-11-14h30,from the published synopsis
+Q20261121-15-F1,Wamin (La pomme),2017,length,Short,,https://2024.fcvq.ca/programmation/20-ans-de-recit-au-coeur-des-premiers-peuples-wapikoni-2024-09-11-14h30,from the published synopsis
