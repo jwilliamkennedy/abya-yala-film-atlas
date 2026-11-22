@@ -584,11 +584,15 @@ DIR-0134-W1031-3,Slash/Back,2022,theme,Youth,Lives and Relations,https://www.the
 DIR-0134-W1031-3,Slash/Back,2022,theme,Women and Gender,Lives and Relations,https://www.themoviedb.org/movie/934194,tagged from a published synopsis
 DIR-0134-W1031-3,Slash/Back,2022,form,Fiction,,https://www.themoviedb.org/movie/934194,from the published synopsis
 DIR-0134-W1031-3,Slash/Back,2022,length,Feature,,https://www.themoviedb.org/movie/934194,from the published synopsis
+DIR-0134-QM6cbee6,Breaths,2016,form,Documentary,,https://www.nfb.ca/film/breaths/,"normalised from the recorded form ""Documentary short"""
+DIR-0134-QM6cbee6,Breaths,2016,length,Short,,https://www.nfb.ca/film/breaths/,"normalised from the recorded form ""Documentary short"""
 DIR-0136-W1031-2,The Doe Boy,2001,theme,Youth,Lives and Relations,https://www.themoviedb.org/movie/73526,tagged from a published synopsis; primary theme
 DIR-0136-W1031-2,The Doe Boy,2001,theme,Health and Healing,Lives and Relations,https://www.themoviedb.org/movie/73526,tagged from a published synopsis
 DIR-0136-W1031-2,The Doe Boy,2001,theme,Self-Representation and Countering Stereotypes,Expression and Representation,https://www.themoviedb.org/movie/73526,tagged from a published synopsis
 DIR-0136-W1031-2,The Doe Boy,2001,form,Fiction,,https://www.themoviedb.org/movie/73526,from the published synopsis
 DIR-0136-W1031-2,The Doe Boy,2001,length,Feature,,https://www.themoviedb.org/movie/73526,from the published synopsis
+DIR-0136-QMab0e14,Among Ravens,2014,form,Fiction,,https://www.hws.edu/news/temp9/article-id-17939.aspx,"normalised from the recorded form ""Fiction feature"""
+DIR-0136-QMab0e14,Among Ravens,2014,length,Feature,,https://www.hws.edu/news/temp9/article-id-17939.aspx,"normalised from the recorded form ""Fiction feature"""
 DIR-0138-F1,Ste. Anne,2021,theme,Kinship,Lives and Relations,https://www.themoviedb.org/movie/795920,tagged from a published synopsis; primary theme
 DIR-0138-F1,Ste. Anne,2021,theme,Women and Gender,Lives and Relations,https://www.themoviedb.org/movie/795920,tagged from a published synopsis
 DIR-0138-F1,Ste. Anne,2021,form,Fiction,,https://www.themoviedb.org/movie/795920,from the published synopsis
@@ -1563,6 +1567,7 @@ NEW-3793ef943e83-WORK-1,Mujer de barro,2024,theme,Women and Gender,Lives and Rel
 NEW-3793ef943e83-WORK-1,Mujer de barro,2024,theme,Health and Healing,Lives and Relations,https://www.themoviedb.org/movie/1602552,tagged from a published synopsis
 NEW-3793ef943e83-WORK-1,Mujer de barro,2024,form,Documentary,,https://www.themoviedb.org/movie/1602552,from the published synopsis
 NEW-3793ef943e83-WORK-1,Mujer de barro,2024,length,Short,,https://www.themoviedb.org/movie/1602552,from the published synopsis
+NEW-14e5329ab65b-QMf7203e,Una mayordomía en Tanetze de Zaragoza,1991,form,Documentary,,https://clacpi.org/wp-content/uploads/2024/08/Catalogo-de-Cine-Video-CLACPI_1995.pdf,"normalised from the recorded form ""Documentary"""
 NEW-da58b683f110-WORK-1,#skoden,2025,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,recorded with the film
 NEW-da58b683f110-WORK-1,#skoden,2025,language,Blackfoot,siks1238,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,recorded with the film
 NEW-da58b683f110-WORK-1,#skoden,2025,theme,Self-Representation and Countering Stereotypes,Expression and Representation,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,tagged from a published synopsis; primary theme
@@ -2206,6 +2211,20 @@ Q20261114-90-F4,Pewmayiñ (Soñemos),2017,form,Fiction,,https://cinechile.cl/per
 Q20261114-90-F4,Pewmayiñ (Soñemos),2017,length,Short,,https://cinechile.cl/persona/escuela-de-cine-y-comunicacion-mapuche-del-aylla-rewe-budi/,"normalised from the recorded form ""Fiction short"""
 LEAD-20261031-0001-F3,Lafken ñi az,2016,form,Documentary,,https://miradanativa.org/pelicula/lafken-ni-az/,"normalised from the recorded form ""Documentary"""
 LEAD-20261031-0001-F4,Chumechi ñi xipapan nafiu flanders,2016,form,Animation,,https://miradanativa.org/pelicula/chumechi-ni-xipapan-nafiu-flanders/,"normalised from the recorded form ""Animation / documentary"""
+Q20261121-232-F1,Ixofil Lawen,2013,form,Documentary,,https://adkimvn.wordpress.com/2014/04/21/ixofil-lawen-documental-2013/,"normalised from the recorded form ""Documentary short"""
+Q20261121-232-F1,Ixofil Lawen,2013,length,Short,,https://adkimvn.wordpress.com/2014/04/21/ixofil-lawen-documental-2013/,"normalised from the recorded form ""Documentary short"""
+Q20261121-233-F1,Fei Lagenmi Ixofil Mogen,2014,form,Documentary,,https://www.mapuexpress.org/2014/12/05/muestra-de-cine-indigena-en-wallmapu-llego-a-territorio-lafkenche/,"normalised from the recorded form ""Documentary short"""
+Q20261121-233-F1,Fei Lagenmi Ixofil Mogen,2014,length,Short,,https://www.mapuexpress.org/2014/12/05/muestra-de-cine-indigena-en-wallmapu-llego-a-territorio-lafkenche/,"normalised from the recorded form ""Documentary short"""
+Q20261121-234-F1,Challwan Kvzaw - El trabajo de la pesca,,form,Documentary,,https://americat.barcelona/es/cortometrajes-indigenas-lebu-chile,"normalised from the recorded form ""Documentary short"""
+Q20261121-234-F1,Challwan Kvzaw - El trabajo de la pesca,,length,Short,,https://americat.barcelona/es/cortometrajes-indigenas-lebu-chile,"normalised from the recorded form ""Documentary short"""
+Q20261121-240-F1,Kimeltuwn Mapuche Ñymican,2011,form,Documentary,,https://reseaudialog.ca/wp-content/uploads/2021/01/Herman-et-al_Cinema-indigenous_en.pdf,"normalised from the recorded form ""Documentary short"""
+Q20261121-240-F1,Kimeltuwn Mapuche Ñymican,2011,length,Short,,https://reseaudialog.ca/wp-content/uploads/2021/01/Herman-et-al_Cinema-indigenous_en.pdf,"normalised from the recorded form ""Documentary short"""
+Q20261121-241-F1,¡Inciñ Getuai Taiñ Mapu!,2012,form,Documentary,,https://reseaudialog.ca/wp-content/uploads/2021/01/Herman-et-al_Cinema-indigenous_en.pdf,"normalised from the recorded form ""Documentary short"""
+Q20261121-241-F1,¡Inciñ Getuai Taiñ Mapu!,2012,length,Short,,https://reseaudialog.ca/wp-content/uploads/2021/01/Herman-et-al_Cinema-indigenous_en.pdf,"normalised from the recorded form ""Documentary short"""
+Q20261121-242-F1,Nutualliñ Tañi Mapuche Ñen,2012,form,Fiction,,https://reseaudialog.ca/wp-content/uploads/2021/01/Herman-et-al_Cinema-indigenous_en.pdf,"normalised from the recorded form ""Short fiction film"""
+Q20261121-242-F1,Nutualliñ Tañi Mapuche Ñen,2012,length,Short,,https://reseaudialog.ca/wp-content/uploads/2021/01/Herman-et-al_Cinema-indigenous_en.pdf,"normalised from the recorded form ""Short fiction film"""
+Q20261121-243-F1,Petu Weicalejiñ ñi Mojeleal ta Inciñ ka Taiñ Mapu,2013,form,Documentary,,https://www.mapuexpress.org/2014/11/05/muestra-itinerante-de-cine-indigena-sigue-recorriendo-wallmapu/,"normalised from the recorded form ""Documentary short"""
+Q20261121-243-F1,Petu Weicalejiñ ñi Mojeleal ta Inciñ ka Taiñ Mapu,2013,length,Short,,https://www.mapuexpress.org/2014/11/05/muestra-itinerante-de-cine-indigena-sigue-recorriendo-wallmapu/,"normalised from the recorded form ""Documentary short"""
 Q20261112-24-F1,Entre el cielo y la tierra,2013,form,Documentary,,https://veracruzanadecine.com/inicio/vii-encuentro-hispanoamericano-de-cine-y-video-documental/,"normalised from the recorded form ""Documentary short"""
 Q20261112-24-F1,Entre el cielo y la tierra,2013,length,Short,,https://veracruzanadecine.com/inicio/vii-encuentro-hispanoamericano-de-cine-y-video-documental/,"normalised from the recorded form ""Documentary short"""
 Q20261112-24-F2,"Ixim, el maíz y nosotros los tseltales",2022,form,Documentary,,https://ellugarquehabitamos.org/wp-content/uploads/2024/11/Catalogo-WEB-ELQH.pdf,"normalised from the recorded form ""Documentary short"""
@@ -2481,6 +2500,8 @@ NEW-c2f732e6e7d6-WORK-1,Untɨ les Origines,,theme,Water,Land and Environment,htt
 NEW-c2f732e6e7d6-WORK-1,Untɨ les Origines,,form,Documentary,,https://www.themoviedb.org/movie/1580573?language=fr-FR,from the published synopsis
 Q20261121-03-F1,Olvidados,2018,form,Documentary,,https://iberculturaviva.org/es/conoce-los-seleccionados-en-el-concurso-de-cortos-comunidades-linguisticas-identidad-y-salvaguardia/,"normalised from the recorded form ""Documentary short"""
 Q20261121-03-F1,Olvidados,2018,length,Short,,https://iberculturaviva.org/es/conoce-los-seleccionados-en-el-concurso-de-cortos-comunidades-linguisticas-identidad-y-salvaguardia/,"normalised from the recorded form ""Documentary short"""
+NEW-35815ec235b0-QM8ff233,Mónica Chub: Tengo el derecho de estar; tengo el derecho de estar con mi familia,2022,form,Documentary,,https://elojoinfinito.blogspot.com/2025/,"normalised from the recorded form ""Documentary short"""
+NEW-35815ec235b0-QM8ff233,Mónica Chub: Tengo el derecho de estar; tengo el derecho de estar con mi familia,2022,length,Short,,https://elojoinfinito.blogspot.com/2025/,"normalised from the recorded form ""Documentary short"""
 NEW-60784d268415-WORK-1,Los hilos de la vida de las mujeres jaguar,2013,theme,Women and Gender,Lives and Relations,https://moreliafilmfest.com/en/peliculas/los-hilos-de-la-vida-de-las-mujeres-jaguar,tagged from a published synopsis; primary theme
 NEW-60784d268415-WORK-1,Los hilos de la vida de las mujeres jaguar,2013,theme,State Violence and Genocide,Sovereignty and Politics,https://moreliafilmfest.com/en/peliculas/los-hilos-de-la-vida-de-las-mujeres-jaguar,tagged from a published synopsis
 NEW-60784d268415-WORK-1,Los hilos de la vida de las mujeres jaguar,2013,theme,Health and Healing,Lives and Relations,https://moreliafilmfest.com/en/peliculas/los-hilos-de-la-vida-de-las-mujeres-jaguar,tagged from a published synopsis
@@ -2997,12 +3018,16 @@ NEW-94635ab3c837-QM9028a1,Sonámbulo (Ne bezho kjinchi),,form,Fiction,,https://l
 NEW-94635ab3c837-QM9028a1,Sonámbulo (Ne bezho kjinchi),,length,Short,,https://leviatan.mx/2026/04/21/sonambulo-un-viaje-cinematografico-al-corazon-del-monte-mazahua/,"normalised from the recorded form ""Fiction short (release unverified)"""
 LEAD-20261011-023-QM21155a,Kondoy: Los nuevos caminos de la nación Ayuuk,,form,Documentary,,https://moreliafilmfest.com/laboratorio-desarrollo-proyectos-cineastas-indigenas-afrodescendientes-mx-2025,"normalised from the recorded form ""Documentary (in progress)"""
 LEAD-20261011-025-QM56bf92,Sueños contradictorios,,form,Fiction,,https://moreliafilmfest.com/laboratorio-desarrollo-proyectos-cineastas-indigenas-afrodescendientes-mx-2025,"normalised from the recorded form ""Fiction (in progress)"""
+LEAD-20261011-025-QM08e14d,"Yo' on k' ox krem, corazón de niño",,form,Documentary,,https://www.imcine.gob.mx/pdf/anuarios/adb623ad553804f5.pdf,"normalised from the recorded form ""Documentary (in progress)"""
 NEW-665eb6a5ccee-QM47a524,Binigula’sa’: los antiguos zapotecas,,form,Documentary,,https://www.imcine.gob.mx/media/2025/10/bol._muestra_cine_ecamc_2025.pdf,"normalised from the recorded form ""Documentary"""
 NEW-665eb6a5ccee-QM7c02fe,La piedra de los Binnigulaza,,form,Documentary,,https://archivo.municipiospuebla.mx/nota/2024-01-04/puebla/apoyar%C3%A1-imcine-cortometraje-de-cinco-se%C3%B1ores-en-ajalpan-puebla,"normalised from the recorded form ""Documentary (in progress)"""
 NEW-665eb6a5ccee-QMc6e740,Los monstruos que devoran la tierra,,form,Documentary,,https://www.imcine.gob.mx/media/2026/1/actualizacion_resultadosecamc-file_696ac66227512.pdf,"normalised from the recorded form ""Documentary (in progress)"""
 QM-694989d5c4-M1,Poch Vaquero,,form,Fiction,,https://moreliafilmfest.com/laboratorio-desarrollo-proyectos-cineastas-indigenas-afrodescendientes-mx-2025,"normalised from the recorded form ""Fiction (in progress)"""
 LEAD-20261011-021-QMed0703,Del mar al volcán,,form,Documentary,,https://moreliafilmfest.com/laboratorio-desarrollo-proyectos-cineastas-indigenas-afrodescendientes-mx-2025,"normalised from the recorded form ""Documentary (in progress)"""
 LEAD-20261011-019-QM596367,Benda Yuuze,,form,Fiction,,https://moreliafilmfest.com/laboratorio-desarrollo-proyectos-cineastas-indigenas-afrodescendientes-mx-2025,"normalised from the recorded form ""Fiction (in progress)"""
+Q20261112-01-F2,Luna,2021,language,Spanish,stan1288,https://sic.cultura.gob.mx/ficha.php?table=produccion_cine&table_id=13933,recorded with the film
+Q20261112-01-F2,Luna,2021,form,Fiction,,https://sic.cultura.gob.mx/ficha.php?table=produccion_cine&table_id=13933,"normalised from the recorded form ""Fiction feature"""
+Q20261112-01-F2,Luna,2021,length,Feature,,https://sic.cultura.gob.mx/ficha.php?table=produccion_cine&table_id=13933,"normalised from the recorded form ""Fiction feature"""
 QM-4b9f5b2e83-M1,K baakelo’on | Nuestros huesos,,form,Documentary,,https://moreliafilmfest.com/laboratorio-desarrollo-proyectos-cineastas-indigenas-afrodescendientes-mx-2025,"normalised from the recorded form ""Documentary (in progress)"""
 QM-4b9f5b2e83-M3,Maaya Ko’olelo’ob: Muuk’,,form,Documentary,,https://moreliafilmfest.com/laboratorio-desarrollo-proyectos-cineastas-indigenas-afrodescendientes-mx-2025,"normalised from the recorded form ""Documentary (in progress)"""
 LEAD-20261011-014-QM0e9ecc,Kuankua Pi,,form,Documentary,,https://www.moreliafilmfest.com/en/node/97411,"normalised from the recorded form ""Documentary (in progress)"""

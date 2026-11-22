@@ -2,8 +2,8 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-22",
  "license": "See data.html",
- "films_on_public_map": 2427,
- "film_entries": 2449,
+ "films_on_public_map": 2443,
+ "film_entries": 2465,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -405,7 +405,7 @@
     "match": "exact",
     "indigenous": "no",
     "note": "",
-    "films": 35
+    "films": 36
    },
    {
     "label": "Portuguese",
@@ -1414,6 +1414,10 @@
      "name": "Sarah Brites"
     },
     {
+     "id": "QM-748e73232d",
+     "name": "Jhon Nara Gomes"
+    },
+    {
      "id": "QM-b28a904c25",
      "name": "Joilson Brites"
     }
@@ -1459,6 +1463,10 @@
     {
      "id": "LEAD-20261011-006",
      "name": "Sarah Brites"
+    },
+    {
+     "id": "QM-748e73232d",
+     "name": "Jhon Nara Gomes"
     },
     {
      "id": "QM-b28a904c25",
@@ -7948,6 +7956,22 @@
    "form": "Fiction",
    "length": "Feature"
   },
+  "DIR-0134-QM6cbee6": {
+   "title": "Breaths",
+   "year": 2016,
+   "makers": [
+    {
+     "id": "DIR-0134",
+     "name": "Nyla Innuksuk"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
+  },
   "DIR-0136-W1031-1": {
    "title": "High Horse",
    "year": 1994,
@@ -8034,6 +8058,22 @@
    "families": [],
    "form": null,
    "length": null
+  },
+  "DIR-0136-QMab0e14": {
+   "title": "Among Ravens",
+   "year": 2014,
+   "makers": [
+    {
+     "id": "DIR-0136",
+     "name": "Randy Redroad"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": "Feature"
   },
   "DIR-0138-F1": {
    "title": "Ste. Anne",
@@ -13065,6 +13105,38 @@
   },
   "DIR-0199-F1": {
    "title": "Los descendientes del jaguar",
+   "year": 2012,
+   "makers": [
+    {
+     "id": "DIR-0199",
+     "name": "Eriberto Gualinga"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261121-230-F1": {
+   "title": "Selva Viva, Kawsak Sacha",
+   "year": 2013,
+   "makers": [
+    {
+     "id": "DIR-0199",
+     "name": "Eriberto Gualinga"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261121-231-F1": {
+   "title": "Los dueños de la selva preocupados",
    "year": 2012,
    "makers": [
     {
@@ -20444,6 +20516,22 @@
    "primary_theme": null,
    "families": [],
    "form": null,
+   "length": null
+  },
+  "NEW-14e5329ab65b-QMf7203e": {
+   "title": "Una mayordomía en Tanetze de Zaragoza",
+   "year": 1991,
+   "makers": [
+    {
+     "id": "NEW-14e5329ab65b",
+     "name": "Crisanto Manzano Avella"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
    "length": null
   },
   "NEW-5a9be9a8d692-WORK-1": {
@@ -27904,6 +27992,134 @@
    "form": "Animation",
    "length": null
   },
+  "Q20261121-232-F1": {
+   "title": "Ixofil Lawen",
+   "year": 2013,
+   "makers": [
+    {
+     "id": "LEAD-20261031-0001",
+     "name": "Escuela de Cine y Comunicación Mapuche del Aylla Rewe Budi"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261121-233-F1": {
+   "title": "Fei Lagenmi Ixofil Mogen",
+   "year": 2014,
+   "makers": [
+    {
+     "id": "LEAD-20261031-0001",
+     "name": "Escuela de Cine y Comunicación Mapuche del Aylla Rewe Budi"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261121-234-F1": {
+   "title": "Challwan Kvzaw - El trabajo de la pesca",
+   "year": null,
+   "makers": [
+    {
+     "id": "LEAD-20261031-0001",
+     "name": "Escuela de Cine y Comunicación Mapuche del Aylla Rewe Budi"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261121-235-F1": {
+   "title": "Pu Papay Ñi Kimvn – La sabiduría de las abuelas",
+   "year": 2015,
+   "makers": [
+    {
+     "id": "LEAD-20261031-0001",
+     "name": "Escuela de Cine y Comunicación Mapuche del Aylla Rewe Budi"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261121-240-F1": {
+   "title": "Kimeltuwn Mapuche Ñymican",
+   "year": 2011,
+   "makers": [
+    {
+     "id": "LEAD-20261031-0001",
+     "name": "Escuela de Cine y Comunicación Mapuche del Aylla Rewe Budi"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261121-241-F1": {
+   "title": "¡Inciñ Getuai Taiñ Mapu!",
+   "year": 2012,
+   "makers": [
+    {
+     "id": "LEAD-20261031-0001",
+     "name": "Escuela de Cine y Comunicación Mapuche del Aylla Rewe Budi"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261121-242-F1": {
+   "title": "Nutualliñ Tañi Mapuche Ñen",
+   "year": 2012,
+   "makers": [
+    {
+     "id": "LEAD-20261031-0001",
+     "name": "Escuela de Cine y Comunicación Mapuche del Aylla Rewe Budi"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": "Short"
+  },
+  "Q20261121-243-F1": {
+   "title": "Petu Weicalejiñ ñi Mojeleal ta Inciñ ka Taiñ Mapu",
+   "year": 2013,
+   "makers": [
+    {
+     "id": "LEAD-20261031-0001",
+     "name": "Escuela de Cine y Comunicación Mapuche del Aylla Rewe Budi"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
+  },
   "RESEARCH-FILM-20261031-0006-01": {
    "title": "Jiru luiai",
    "year": 2024,
@@ -32366,6 +32582,22 @@
    "families": [],
    "form": null,
    "length": null
+  },
+  "NEW-35815ec235b0-QM8ff233": {
+   "title": "Mónica Chub: Tengo el derecho de estar; tengo el derecho de estar con mi familia",
+   "year": 2022,
+   "makers": [
+    {
+     "id": "NEW-35815ec235b0",
+     "name": "Eduardo Say"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
   },
   "NEW-60784d268415-WORK-1": {
    "title": "Los hilos de la vida de las mujeres jaguar",
@@ -40307,6 +40539,22 @@
    "form": "Fiction",
    "length": null
   },
+  "LEAD-20261011-025-QM08e14d": {
+   "title": "Yo' on k' ox krem, corazón de niño",
+   "year": null,
+   "makers": [
+    {
+     "id": "LEAD-20261011-025",
+     "name": "Bernardino de Jesús López de la Cruz"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
   "NEW-4a3766c88a25-QM0e3d6e": {
    "title": "Antes había… entre la agonía del vuelo y el canto",
    "year": null,
@@ -40466,6 +40714,32 @@
    "families": [],
    "form": null,
    "length": null
+  },
+  "Q20261112-01-F2": {
+   "title": "Luna",
+   "year": 2021,
+   "makers": [
+    {
+     "id": "QM-b188b1371d",
+     "name": "Romeo De Paz"
+    }
+   ],
+   "languages": [
+    {
+     "label": "Spanish",
+     "as_credited": "Spanish",
+     "glottocode": "stan1288",
+     "iso639_3": "spa",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://sic.cultura.gob.mx/ficha.php?table=produccion_cine&table_id=13933"
+    }
+   ],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": "Feature"
   },
   "NEW-e5a5fc385de7-QMc2c9fc": {
    "title": "Gu Juk gio Gu Yooxi' (P)&(F)",
