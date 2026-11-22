@@ -30,20 +30,20 @@ h1{font:400 clamp(30px,3.6vw,42px)/1.1 var(--serif);margin:0;letter-spacing:-.01
 
 /* the player */
 #now{display:grid;grid-template-columns:minmax(0,1fr);gap:14px;padding:18px var(--pad) 26px}
-@media (min-width:1180px){#now{grid-template-columns:minmax(0,2.15fr) minmax(250px,1fr);align-items:end}}
+@media (min-width:1180px){#now{grid-template-columns:minmax(0,2fr) minmax(300px,1fr);align-items:end}}
 .frame{position:relative;aspect-ratio:16/9;background:#0d1013;border-radius:8px;overflow:hidden}
 .frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 .now-cap{display:flex;flex-direction:column;gap:10px;min-width:0}
-.now-kicker{font:600 11px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0}
 #now h2{font:400 clamp(22px,2.2vw,30px)/1.2 var(--serif);margin:0}
 #now .by{font-size:14px;color:var(--muted);margin:0}
 #now .by a{color:var(--ink)}
-.now-acts{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+.now-acts{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+.now-acts .btn{padding:0 13px;font-size:13.5px}
 .btn{display:inline-flex;align-items:center;gap:6px;min-height:36px;padding:0 15px;border:1px solid var(--line);border-radius:999px;background:var(--card);color:var(--ink);font-size:14px;cursor:pointer;text-decoration:none}
 .btn:hover,.btn:focus-visible{border-color:var(--ink)}
 a.btn{border-bottom:1px solid var(--line)}
 
-/* the bar: Browse | A–Z, search, filters, then the jump strip */
+/* the bar: Browse | A–Z, search and themes; in A–Z also the order, Plays here and the letter strip */
 .tools{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 94%,transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
 .tools-row{display:flex;flex-wrap:wrap;align-items:center;gap:10px 12px;padding:10px var(--pad)}
 .seg{display:inline-flex;padding:3px;border-radius:999px;background:var(--wash)}
@@ -53,6 +53,7 @@ a.btn{border-bottom:1px solid var(--line)}
 .tools select{font:inherit;font-size:14px;height:38px;padding:0 10px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink);max-width:100%}
 .check{font-size:14px;display:inline-flex;gap:6px;align-items:center;cursor:pointer;white-space:nowrap}
 .count{font-size:13px;color:var(--muted);white-space:nowrap}
+.tools[data-view=browse] #sort,.tools[data-view=browse] .check,.tools[data-view=browse] .count,.jump:empty{display:none}
 .chip{display:inline-flex;align-items:center;gap:6px;height:30px;padding:0 6px 0 12px;border-radius:999px;background:var(--ink);color:var(--card);font-size:13px;border:0;cursor:pointer}
 .chip span{font-size:15px;line-height:1;opacity:.8}
 .jump{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;padding:0 var(--pad) 10px;scroll-padding:0 var(--pad)}
@@ -72,7 +73,11 @@ a.btn{border-bottom:1px solid var(--line)}
 .shelf-head .n{font-size:13px;color:var(--muted)}
 .shelf-head .all{margin-left:auto;font-size:13.5px;color:var(--muted);border:0;background:none;cursor:pointer;padding:4px 0}
 .shelf-head .all:hover{color:var(--ink)}
-.group-label{font:600 11px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);padding:34px var(--pad) 0;margin:0}
+/* countries: one row of names in place of a shelf each */
+.places{padding:34px var(--pad) 0}.places h2{font:400 21px/1.2 var(--serif);margin:0 0 12px}
+.places ul{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:0;padding:0}
+.places button{display:inline-flex;align-items:center;gap:7px;min-height:34px;padding:0 14px;border:1px solid var(--line);border-radius:999px;background:var(--card);color:var(--ink);font-size:14px;cursor:pointer}
+.places button:hover,.places button:focus-visible{border-color:var(--ink)}.places small{font-size:12px;color:var(--muted)}
 .track-wrap{position:relative}
 .track{display:grid;grid-auto-flow:column;grid-auto-columns:var(--tile);gap:var(--gap);overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;
  scroll-padding:0 var(--pad);padding:4px var(--pad) 12px;scrollbar-width:none;list-style:none;margin:0}
@@ -95,7 +100,7 @@ a.btn{border-bottom:1px solid var(--line)}
 .tile{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:12px 14px;text-align:left;color:var(--ink);
  background:linear-gradient(160deg,var(--card),var(--wash))}
 .tile svg{position:absolute;left:50%;top:50%;width:34%;height:auto;transform:translate(-50%,-62%);color:color-mix(in srgb,var(--ink) 13%,transparent)}
-.tile i{position:relative;font:normal 600 10px/1.35 var(--sans);letter-spacing:.11em;text-transform:uppercase;color:var(--muted);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.tile i{position:relative;font:normal 500 12px/1.35 var(--sans);color:var(--muted);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .card .badge{position:absolute;left:8px;bottom:8px;display:inline-flex;align-items:center;gap:5px;height:24px;padding:0 9px 0 8px;border-radius:999px;
  background:rgba(13,16,19,.72);color:#fff;font:500 11.5px/1 var(--sans);opacity:0;transform:translateY(3px);transition:opacity .15s,transform .15s}
 .card .pic:hover .badge,.card .pic:focus-visible .badge,.card.now .badge{opacity:1;transform:none}
@@ -159,8 +164,8 @@ main a[href^="http"]{color:var(--accent,var(--gold))}
 <main class="w">
 <div class="w-head"><h1>Watch</h1><p class="lede">More through <a href="resources.html#platforms">Indigenous cinema platforms and filmmakers’ networks</a>.</p></div>
 <section id="now" aria-label="Player"><div class="frame"><iframe id="now-frame" title="Player" referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
-<div class="now-cap"><p class="now-kicker">Now showing</p><h2 id="now-title"></h2><p class="by" id="now-by"></p>
-<div class="now-acts"><button type="button" class="btn" id="next" title="Play another film">Another film</button><a class="btn" id="now-map" href="./">On the map</a><a class="btn" id="now-out" href="#" target="_blank" rel="noopener">Source ↗</a><button type="button" class="btn" id="now-scr" data-screen data-fid="" data-rid="" data-title="" data-year="" data-maker="" data-page="" data-watch="">＋ Screening list</button></div></div></section>
+<div class="now-cap"><h2 id="now-title"></h2><p class="by" id="now-by"></p>
+<div class="now-acts"><button type="button" class="btn" id="next" title="Play another film">Another film</button><a class="btn" id="now-map" href="./">On the map</a><button type="button" class="btn" id="now-scr" data-screen data-fid="" data-rid="" data-title="" data-year="" data-maker="" data-page="" data-watch="">＋ Screening list</button></div></div></section>
 <div class="tools" id="tools"><div class="tools-row">
 <div class="seg" role="group" aria-label="View"><button type="button" id="v-browse" aria-pressed="true">Browse</button><button type="button" id="v-az" aria-pressed="false">A–Z</button></div>
 <input id="q" type="search" placeholder="Search films, filmmakers, peoples" aria-label="Search films">
@@ -173,6 +178,6 @@ main a[href^="http"]{color:var(--accent,var(--gold))}
 <p class="credit">Something wrong or missing? <a href="corrections.html">Suggest a correction</a>.</p>
 </main>
 <script src="watch-data.js?v=3"></script>
-<script src="watch-20261122.js?v=1"></script>
+<script src="watch-20261122.js?v=2"></script>
 <script src="assets/screening.js"></script>
 </body></html>

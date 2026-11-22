@@ -1,5 +1,5 @@
 /* Watch (22 Nov 2026). One player at the top; below it the films by filmmakers on the atlas, in two views:
-   Browse: shelves you scroll sideways (newest, short and feature films, the five theme families, countries);
+   Browse: shelves you scroll sideways (newest, short and feature films, the five theme families), then countries by name;
    A–Z: every film in one index under letters (by title or filmmaker) or decades (newest first), with a strip to jump.
    Data: beta/watch-data.js, written by tools/atlas/build.py. A card plays its film in the player; a film whose host does
    not allow playing here opens there (↗). Addresses: watch.html?theme=Kinship · ?c=CAN · ?view=az · #<film id>. */
@@ -29,9 +29,8 @@ function play(f,{scroll=false,quiet=false,auto=false}={}){
  const l=playable(f);if(!l)return;state.now=f.fid;
  frame.src=auto?withAutoplay(l.embed):l.embed;frame.title='Player: '+f.t;
  $('#now-title').textContent=f.t+(f.y?` (${f.y})`:'');
- $('#now-by').innerHTML=makersHTML(f)+(f.fx?` · ${esc(f.fx)}`:'');
+ $('#now-by').innerHTML=makersHTML(f)+(f.fx?` · ${esc(f.fx)}`:'')+` · <a id="now-out" href="${esc(l.url)}" target="_blank" rel="noopener">${esc(host(l.url))} ↗</a>`;
  const map=$('#now-map');map.href=mapHref(f);
- const out=$('#now-out');out.href=l.url;out.textContent=host(l.url)+' ↗';
  const scr=$('#now-scr');Object.assign(scr.dataset,{fid:f.fid,rid:f.makers[0].id,title:f.t,year:f.y||'',maker:makerText(f),
   page:`maker/${encodeURIComponent(f.makers[0].id)}.html#${encodeURIComponent(f.fid)}`,watch:l.url});
  window.dispatchEvent(new Event('screening-change'));
@@ -103,17 +102,15 @@ let SEED='';
 const rank=f=>[playable(f)?0:1,(f.img||ytId(playable(f)?.embed||''))?0:1,hash(SEED+f.fid)];
 const byRank=(a,b)=>{const x=rank(a),y=rank(b);for(let i=0;i<x.length;i++)if(x[i]!==y[i])return x[i]<y[i]?-1:1;return 0;};
 const ranked=(seed,a)=>{SEED=seed;return a.sort(byRank);};
-function shelves(){const pool=data.filter(f=>!state.here||playable(f)),out=[];
+function shelves(){const pool=data,out=[];
  const add=(group,id,title,items,all)=>{if(items.length>=3)out.push({group,id,title,items,all});};
  add('','newest','Newest',pool.filter(f=>f.y).sort((a,b)=>(b.y-a.y)||norm(a.t).localeCompare(norm(b.t))),{sort:'new'});
  add('','shorts','Short films',ranked('S',pool.filter(f=>f.len==='S')),{pick:{kind:'len',keys:['S'],label:'Short films'}});
  add('','features','Feature films',ranked('F',pool.filter(f=>f.len==='F')),{pick:{kind:'len',keys:['F'],label:'Feature films'}});
- for(const fam of FAMILIES)add('By theme','fam-'+fam.replace(/\W+/g,'-').toLowerCase(),fam,ranked(fam,pool.filter(f=>(f.fam||[]).includes(fam))),{theme:'fam:'+fam});
- const cc=new Map();for(const f of pool)for(const c of f.c||[])cc.set(c,(cc.get(c)||0)+1);
- const big=[...cc].filter(([,n])=>n>=6).sort((a,b)=>b[1]-a[1]).map(([c])=>c),rest=[...cc.keys()].filter(c=>!big.includes(c)).sort((a,b)=>countryName(a).localeCompare(countryName(b)));
- for(const c of big)add('By country','c-'+c,countryName(c),ranked(c,pool.filter(f=>(f.c||[]).includes(c))),{pick:{kind:'c',keys:[c],label:countryName(c)}});
- if(rest.length){const nm=listNames(rest.map(countryName));add('By country','c-more',nm,ranked('more',pool.filter(f=>(f.c||[]).some(c=>rest.includes(c)))),{pick:{kind:'c',keys:rest,label:nm}});}
+ for(const fam of FAMILIES)add('','fam-'+fam.replace(/\W+/g,'-').toLowerCase(),fam,ranked(fam,pool.filter(f=>(f.fam||[]).includes(fam))),{theme:'fam:'+fam});
  return out;}
+const places=()=>{const cc=new Map();for(const f of data)for(const c of f.c||[])cc.set(c,(cc.get(c)||0)+1);
+ return [...cc].sort((a,b)=>b[1]-a[1]||countryName(a[0]).localeCompare(countryName(b[0])));};
 const MAX=24;let SHELVES=[];
 function renderBrowse(){SHELVES=shelves();let h='',g=null;
  for(const [i,s] of SHELVES.entries()){if(s.group!==g){g=s.group;if(g)h+=`<p class="group-label">${esc(g)}</p>`;}
@@ -122,14 +119,13 @@ function renderBrowse(){SHELVES=shelves();let h='',g=null;
    +`<div class="track-wrap"><button type="button" class="nudge l" aria-label="Scroll ${esc(s.title)} back" hidden>‹</button>`
    +`<ul class="track">${s.items.slice(0,MAX).map(card).join('')}${s.items.length>MAX?`<li><button type="button" class="more-tile" data-all="${i}">All ${s.items.length} →</button></li>`:''}</ul>`
    +`<button type="button" class="nudge r" aria-label="Scroll ${esc(s.title)} on">›</button></div></section>`;}
+ const pl=places();if(h&&pl.length)h+=`<section class="places" aria-labelledby="places-h"><h2 id="places-h">By country</h2><ul>${pl.map(([c,n])=>`<li><button type="button" data-country="${esc(c)}">${esc(countryName(c))} <small>${n}</small></button></li>`).join('')}</ul></section>`;
  $('#browse').innerHTML=h||'<p class="empty">No film to show.</p>';
  for(const t of document.querySelectorAll('#browse .track')){const w=t.parentElement,l=w.querySelector('.nudge.l'),r=w.querySelector('.nudge.r');
   const upd=()=>{l.hidden=t.scrollLeft<8;r.hidden=t.scrollLeft+t.clientWidth>=t.scrollWidth-8;};
   t.addEventListener('scroll',upd,{passive:true});upd();
   l.onclick=()=>t.scrollBy({left:-t.clientWidth*.85,behavior:'smooth'});r.onclick=()=>t.scrollBy({left:t.clientWidth*.85,behavior:'smooth'});}
- $('#jump').className='jump';let j='',gg=null;
- for(const s of SHELVES){if(s.group!==gg){if(gg!==null)j+='<span class="sep" aria-hidden="true"></span>';gg=s.group;}j+=`<a href="#${s.id}" data-jump="${s.id}">${esc(s.title)}</a>`;}
- $('#jump').innerHTML=j;watchImages($('#browse'));}
+ $('#jump').className='jump';$('#jump').innerHTML='';watchImages($('#browse'));}
 
 /* ---------- A–Z: one index ---------- */
 const lead=s=>{const c=norm(s).replace(/^[^a-z0-9]+/,'').charAt(0).toUpperCase();return /[A-Z]/.test(c)?c:'#';};
@@ -152,7 +148,7 @@ function renderAZ(){const items=visible().sort(order[state.sort]),groups=new Map
  watchImages($('#az'));}
 
 /* ---------- the page ---------- */
-function render(){const az=state.view==='az';
+function render(){const az=state.view==='az';$('#tools').dataset.view=state.view;
  $('#v-browse').setAttribute('aria-pressed',String(!az));$('#v-az').setAttribute('aria-pressed',String(az));
  $('#browse').hidden=az;$('#az').hidden=!az;
  sel.value=state.theme;$('#sort').value=state.sort;$('#here').checked=state.here;
@@ -176,6 +172,7 @@ document.addEventListener('click',e=>{
  const x=e.target.closest('#pick-x');if(x){state.pick=null;render();return;}
  const all=e.target.closest('[data-all]');if(all){const s=SHELVES[+all.dataset.all];if(!s)return;
   state.theme=s.all.theme||'';state.pick=s.all.pick||null;if(s.all.sort){state.sort=s.all.sort;remember();}state.view='az';render();toTop();return;}
+ const pc=e.target.closest('[data-country]');if(pc){const c=pc.dataset.country;state.theme='';state.pick={kind:'c',keys:[c],label:countryName(c)};state.view='az';render();toTop();return;}
  const jl=e.target.closest('[data-letter]');if(jl){document.getElementById('az-'+jl.dataset.letter)?.scrollIntoView({block:'start'});return;}
  const sv=e.target.closest('[data-card-save]');if(sv){const f=data.find(x=>x.fid===sv.closest('.card').dataset.fid),S=window.AtlasScreening;if(!f||!S)return;
   const l=S.load(),i=l.findIndex(x=>x.fid===f.fid);
