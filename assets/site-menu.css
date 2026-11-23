@@ -160,3 +160,5 @@ main .about-tabs a[aria-current=page]{background:var(--ui-surface,#fbfcfc);color
 main:is(:has(> nav.eyebrow.pair),:has(> nav.about-tabs),:has(#care-downloads)){box-sizing:border-box;max-width:60rem;margin:0 auto;padding:clamp(28px,4vw,44px) clamp(16px,4vw,48px) 88px;font-size:clamp(16.5px,15px + .3vw,18px);line-height:1.7}
 main:is(:has(> nav.eyebrow.pair),:has(> nav.about-tabs),:has(#care-downloads)) > h1{font:400 clamp(32px,22px + 2.2vw,46px)/1.1 var(--ui-serif,Georgia,serif);margin:0 0 18px;letter-spacing:-.01em;text-wrap:balance}
 main:is(:has(> nav.eyebrow.pair),:has(> nav.about-tabs),:has(#care-downloads)) > nav.eyebrow.pair{min-height:38px;margin:0 0 26px}
+/* beside the rail, less empty space on the left: the column widens a little and its left gap is capped (23 Nov 2026) */
+html[data-rail] main:is(:has(> nav.eyebrow.pair),:has(> nav.about-tabs),:has(#care-downloads)){max-width:64rem;margin:0 auto 0 max(0px,min(calc((100% - 64rem) / 2),5vw))}
