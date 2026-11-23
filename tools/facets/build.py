@@ -175,6 +175,16 @@ def page(path, title, desc, body, head_extra=''):
 def film_li(fid, e):
     makers = ', '.join(f'<a href="maker/{esc(m["id"])}.html#{esc(fid)}">{esc(m["name"])}</a>' for m in e['makers'])
     return f'<li><cite>{esc(e["title"])}</cite>{" (" + str(e["year"]) + ")" if e["year"] else ""} · {makers}</li>'
+def facet_film(fid, e):
+    """A film on the Themes and Languages pages: year column, then the title and the filmmakers."""
+    makers = ', '.join(f'<a href="maker/{esc(m["id"])}.html#{esc(fid)}">{esc(m["name"])}</a>' for m in e['makers'])
+    return f'<li><span class="yr">{e["year"] or "—"}</span><span class="ti"><cite>{esc(e["title"])}</cite><span class="by">{makers}</span></span></li>'
+def facet_row(anchor, name, n, scale=None):
+    """An index entry: name and count, and a bar in proportion when the group has a scale."""
+    bar = f'<span class="bar" style="--w:{round(100 * n / scale)}%"></span>' if scale else ''
+    return f'<li><a href="#{anchor}"><span class="nm">{esc(name)}</span><span class="n">{n}</span>{bar}</a></li>'
+FACET_HEAD = '<link rel="stylesheet" href="assets/facets-20261123.css">'
+FACET_JS = '<script defer src="assets/facets-20261123.js"></script>'
 by_lang = collections.defaultdict(list)
 for fid, e in films.items():
     for x in e['languages']: by_lang[x['label']].append((fid, e))
@@ -187,17 +197,18 @@ for l in order:
     if a.get('iso639_3'): codes.append(f'<a href="https://iso639-3.sil.org/code/{esc(a["iso639_3"])}" rel="noopener" title="International language code (ISO 639-3)">ISO code {esc(a["iso639_3"])}</a>')
     if a.get('match') == 'unresolved': codes.append(esc(a.get('note', 'variety not stated in the credit')))
     fl = sorted(by_lang[l], key=lambda x: (x[1]['year'] or 9999, x[1]['title'].lower()))
-    items.append(f'<li id="{esc(key(l).replace(" ", "-"))}"><h2>{esc(l)}</h2><p class="codes">{len(fl)} film{"s" if len(fl) != 1 else ""} · {" · ".join(codes)}</p><ol>{"".join(film_li(fid, e) for fid, e in fl)}</ol></li>')
+    items.append(f'<li id="{esc(key(l).replace(" ", "-"))}"><h2>{esc(l)}</h2><p class="codes">{len(fl)} film{"s" if len(fl) != 1 else ""} · {" · ".join(codes)}</p><ol class="films">{"".join(facet_film(fid, e) for fid, e in fl)}</ol></li>')
 n_lang_films = sum(1 for e in films.values() if e['languages'])
 ind = [l for l in order if A.get(l, {}).get('indigenous') == 'yes']
 page('languages.html', 'Languages', f'Films on the Indigenous Cinema Atlas by the languages spoken in them, with Glottolog and ISO 639-3 codes.',
      f'<h1>Languages</h1>'
      f'<p class="who">{len(ind)} Indigenous languages across {n_lang_films} films with a recorded language, of {WORKS:,} films on the public map. Each language links to its Glottolog entry; where a credit names a language group rather than one variety, the group is linked. Languages are recorded only as a film’s credits or synopsis state them. Updated {TODAY}.</p>'
-     f'<p class="jump">{" ".join(f"<a href=\"#{esc(key(l).replace(" ", "-"))}\">{esc(l)}</a>" for l in order)}</p>'
-     f'<ul class="facet-list">{"".join(items)}</ul><p class="who"><a href="data/languages.csv">Language authority (CSV)</a> · <a href="data/film-facets.csv">All film facets (CSV)</a> · <a href="data.html">About the data</a></p>')
-def theme_film(fid, e):
-    makers = ', '.join(f'<a href="maker/{esc(m["id"])}.html#{esc(fid)}">{esc(m["name"])}</a>' for m in e['makers'])
-    return f'<li><span class="yr">{e["year"] or "—"}</span><span class="ti"><cite>{esc(e["title"])}</cite><span class="by">{makers}</span></span></li>'
+     # the index: Indigenous languages (bars in proportion to the most-used), then the other languages in the films (counts only)
+     + f'<div class="facet-index" data-choose="Choose a language" data-all="All languages" data-prev="Previous language" data-next="Next language">'
+     + '<section><h2>Indigenous languages</h2><ul>' + ''.join(facet_row(esc(key(l).replace(" ", "-")), l, len(by_lang[l]), max(len(by_lang[x]) for x in ind)) for l in ind) + '</ul></section>'
+     + '<section class="other"><h2>Other languages</h2><ul>' + ''.join(facet_row(esc(key(l).replace(" ", "-")), l, len(by_lang[l])) for l in order if l not in ind) + '</ul></section></div>'
+     + f'<ul class="facet-list">{"".join(items)}</ul><p class="who"><a href="data/languages.csv">Language authority (CSV)</a> · <a href="data/film-facets.csv">All film facets (CSV)</a> · <a href="data.html">About the data</a></p>' + FACET_JS,
+     head_extra=FACET_HEAD)
 by_theme = collections.defaultdict(list)
 for fid, e in films.items():
     for t in e['themes']: by_theme[t].append((fid, e))
@@ -207,17 +218,17 @@ for fam, tags in T['families'].items():
     for t in tags:
         fl = sorted(by_theme.get(t, []), key=lambda x: (x[1]['year'] or 9999, x[1]['title'].lower()))
         if not fl: continue
-        lis.append(f'<li id="{esc(key(t).replace(" ", "-"))}"><h2>{esc(t)}</h2><p class="codes">{len(fl)} film{"s" if len(fl) != 1 else ""}</p><ol class="films">{"".join(theme_film(fid, e) for fid, e in fl)}</ol></li>')
+        lis.append(f'<li id="{esc(key(t).replace(" ", "-"))}"><h2>{esc(t)}</h2><p class="codes">{len(fl)} film{"s" if len(fl) != 1 else ""}</p><ol class="films">{"".join(facet_film(fid, e) for fid, e in fl)}</ol></li>')
     secs.append(f'<section class="fam"><h2 style="font:400 28px/1.2 Georgia,serif">{esc(fam)}</h2><ul class="facet-list">{"".join(lis)}</ul></section>')
 n_th = sum(1 for e in films.values() if e['themes'])
 page('themes.html', 'Themes', 'Films on the Indigenous Cinema Atlas by theme: 30 themes in five families, each tagged from a published synopsis.',
      f'<h1>Themes</h1>'
      f'<p class="who">There are {n_th} of {WORKS:,} films tagged with a theme or themes so far, each from a published synopsis, with its source and link. While a film can carry several themes, its primary theme is listed first in the data. Updated {TODAY}.</p>'
-     # the index: the five families side by side, each theme with its count (themes-20261123.js turns it into one theme at a time)
-     + '<div class="theme-index">' + ''.join(
+     # the index: the five families side by side, each theme with its count (facets-20261123.js turns it into one theme at a time)
+     + '<div class="facet-index" data-choose="Choose a theme" data-all="All themes" data-prev="Previous theme" data-next="Next theme">' + ''.join(
          f'<section><h2>{esc(fam)}</h2><ul>' + ''.join(f'<li><a href="#{esc(key(t).replace(" ", "-"))}"><span class="nm">{esc(t)}</span><span class="n">{len(by_theme[t])}</span><span class="bar" style="--w:{round(100 * len(by_theme[t]) / max(len(v) for v in by_theme.values()))}%"></span></a></li>' for t in tags if by_theme.get(t)) + '</ul></section>'
          for fam, tags in T['families'].items()) + '</div>'
      + ''.join(secs) + '<p class="who"><a href="data/film-facets.csv">All film facets (CSV)</a> · <a href="data.html">About the data</a></p>'
-     '<script defer src="assets/themes-20261123.js"></script>',
-     head_extra='<link rel="stylesheet" href="assets/themes-20261123.css">')
+     + FACET_JS,
+     head_extra=FACET_HEAD)
 print(f'films {WORKS} (facet entries {len(films)}) | with language {n_lang_films} | Indigenous languages {len(ind)} | with themes {n_th} | facet rows {len(rows)} | languages not in authority: {[l for l in lang_count if l not in A]}')
