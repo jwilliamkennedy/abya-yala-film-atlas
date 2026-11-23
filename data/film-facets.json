@@ -1,9 +1,9 @@
 {
  "title": "Indigenous Cinema Atlas · film facets",
- "generated": "2026-11-22",
+ "generated": "2026-11-23",
  "license": "See data.html",
- "films_on_public_map": 2599,
- "film_entries": 2613,
+ "films_on_public_map": 2621,
+ "film_entries": 2635,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -69,7 +69,7 @@
   ]
  },
  "language_authority": {
-  "source": "Glottolog (glottolog-cldf, fetched 2026-11-22)",
+  "source": "Glottolog (glottolog-cldf, fetched 2026-11-23)",
   "languages": [
    {
     "label": "Anishinaabemowin (Ojibwe)",
@@ -81,6 +81,8 @@
     "match": "group",
     "indigenous": "yes",
     "note": "Credits name the language without a regional variety",
+    "region": "North America",
+    "region_basis": "Glottolog coordinates",
     "films": 2
    },
    {
@@ -93,6 +95,8 @@
     "match": "exact",
     "indigenous": "yes",
     "note": "",
+    "region": "North America",
+    "region_basis": "Glottolog countries",
     "films": 3
    },
    {
@@ -105,6 +109,8 @@
     "match": "group",
     "indigenous": "yes",
     "note": "Credits name Ayuujk without a variety",
+    "region": "Central America and the Caribbean",
+    "region_basis": "Glottolog coordinates",
     "films": 1
    },
    {
@@ -117,6 +123,8 @@
     "match": "exact",
     "indigenous": "yes",
     "note": "",
+    "region": "North America",
+    "region_basis": "Glottolog countries",
     "films": 2
    },
    {
@@ -129,6 +137,8 @@
     "match": "exact",
     "indigenous": "yes",
     "note": "",
+    "region": "North America",
+    "region_basis": "Glottolog countries",
     "films": 1
    },
    {
@@ -141,6 +151,8 @@
     "match": "group",
     "indigenous": "yes",
     "note": "Credits name Cree without a variety",
+    "region": "North America",
+    "region_basis": "Glottolog countries",
     "films": 4
    },
    {
@@ -153,6 +165,8 @@
     "match": "exact",
     "indigenous": "yes",
     "note": "",
+    "region": "North America",
+    "region_basis": "Glottolog countries",
     "films": 1
    },
    {
@@ -165,6 +179,8 @@
     "match": "exact",
     "indigenous": "yes",
     "note": "",
+    "region": "North America",
+    "region_basis": "Glottolog countries",
     "films": 1
    },
    {
@@ -177,6 +193,8 @@
     "match": "unresolved",
     "indigenous": "yes",
     "note": "Several Dene languages; the credit does not say which",
+    "region": "North America",
+    "region_basis": "region by hand: no Glottolog code (Dene languages, Canada)",
     "films": 1
    },
    {
@@ -189,6 +207,8 @@
     "match": "exact",
     "indigenous": "yes",
     "note": "",
+    "region": "North America",
+    "region_basis": "Glottolog countries",
     "films": 3
    },
    {
@@ -201,6 +221,8 @@
     "match": "exact",
     "indigenous": "yes",
     "note": "",
+    "region": "Central America and the Caribbean",
+    "region_basis": "Glottolog countries",
     "films": 1
    },
    {
@@ -213,6 +235,8 @@
     "match": "group",
     "indigenous": "yes",
     "note": "",
+    "region": "North America",
+    "region_basis": "Glottolog countries",
     "films": 1
    },
    {
@@ -225,6 +249,8 @@
     "match": "exact",
     "indigenous": "yes",
     "note": "",
+    "region": "North America",
+    "region_basis": "Glottolog countries",
     "films": 1
    },
    {
@@ -237,6 +263,8 @@
     "match": "probable",
     "indigenous": "yes",
     "note": "Inuktitut in Canadian credits usually names the eastern variety",
+    "region": "North America",
+    "region_basis": "Glottolog countries",
     "films": 18
    },
    {
@@ -249,6 +277,8 @@
     "match": "group",
     "indigenous": "yes",
     "note": "",
+    "region": "North America",
+    "region_basis": "Glottolog countries",
     "films": 1
    },
    {
@@ -261,6 +291,8 @@
     "match": "exact",
     "indigenous": "yes",
     "note": "",
+    "region": "North America",
+    "region_basis": "Glottolog countries",
     "films": 2
    },
    {
@@ -273,6 +305,8 @@
     "match": "group",
     "indigenous": "yes",
     "note": "Kichwa names the Ecuadorian Quechua varieties",
+    "region": "South America",
+    "region_basis": "Glottolog coordinates",
     "films": 11
    },
    {
@@ -285,6 +319,8 @@
     "match": "exact",
     "indigenous": "yes",
     "note": "",
+    "region": "North America",
+    "region_basis": "Glottolog countries",
     "films": 0
    },
    {
@@ -297,6 +333,8 @@
     "match": "exact",
     "indigenous": "yes",
     "note": "",
+    "region": "North America",
+    "region_basis": "Glottolog countries",
     "films": 3
    },
    {
@@ -309,6 +347,8 @@
     "match": "exact",
     "indigenous": "yes",
     "note": "",
+    "region": "North America",
+    "region_basis": "Glottolog countries",
     "films": 1
    },
    {
@@ -321,6 +361,8 @@
     "match": "exact",
     "indigenous": "yes",
     "note": "",
+    "region": "North America",
+    "region_basis": "Glottolog countries",
     "films": 1
    },
    {
@@ -333,6 +375,8 @@
     "match": "exact",
     "indigenous": "yes",
     "note": "",
+    "region": "Central America and the Caribbean",
+    "region_basis": "Glottolog countries",
     "films": 1
    },
    {
@@ -345,6 +389,8 @@
     "match": "exact",
     "indigenous": "yes",
     "note": "",
+    "region": "North America",
+    "region_basis": "Glottolog countries",
     "films": 2
    },
    {
@@ -357,6 +403,8 @@
     "match": "exact",
     "indigenous": "yes",
     "note": "",
+    "region": "Central America and the Caribbean",
+    "region_basis": "Glottolog countries",
     "films": 1
    },
    {
@@ -369,6 +417,8 @@
     "match": "group",
     "indigenous": "yes",
     "note": "",
+    "region": "North America",
+    "region_basis": "Glottolog coordinates",
     "films": 1
    },
    {
@@ -381,6 +431,8 @@
     "match": "unresolved",
     "indigenous": "yes",
     "note": "Tupí names several Tupian languages; the credit does not say which",
+    "region": "South America",
+    "region_basis": "region by hand: no Glottolog code (Tupí, Brazil)",
     "films": 1
    },
    {
@@ -393,6 +445,8 @@
     "match": "exact",
     "indigenous": "no",
     "note": "",
+    "region": "",
+    "region_basis": "",
     "films": 88
    },
    {
@@ -405,6 +459,8 @@
     "match": "exact",
     "indigenous": "no",
     "note": "",
+    "region": "",
+    "region_basis": "",
     "films": 42
    },
    {
@@ -417,6 +473,8 @@
     "match": "exact",
     "indigenous": "no",
     "note": "",
+    "region": "",
+    "region_basis": "",
     "films": 1
    },
    {
@@ -429,6 +487,8 @@
     "match": "exact",
     "indigenous": "no",
     "note": "",
+    "region": "",
+    "region_basis": "",
     "films": 3
    },
    {
@@ -441,6 +501,8 @@
     "match": "exact",
     "indigenous": "no",
     "note": "",
+    "region": "",
+    "region_basis": "",
     "films": 1
    },
    {
@@ -453,6 +515,8 @@
     "match": "group",
     "indigenous": "yes",
     "note": "Credits name Aymara without a variety; aym is the ISO macrolanguage code",
+    "region": "South America",
+    "region_basis": "Glottolog countries",
     "films": 5
    },
    {
@@ -465,6 +529,8 @@
     "match": "exact",
     "indigenous": "yes",
     "note": "",
+    "region": "South America",
+    "region_basis": "Glottolog countries",
     "films": 10
    },
    {
@@ -477,6 +543,8 @@
     "match": "exact",
     "indigenous": "yes",
     "note": "",
+    "region": "South America",
+    "region_basis": "Glottolog countries",
     "films": 3
    },
    {
@@ -489,6 +557,8 @@
     "match": "group",
     "indigenous": "yes",
     "note": "Credits name Me'phaa without a variety",
+    "region": "Central America and the Caribbean",
+    "region_basis": "Glottolog coordinates",
     "films": 1
    },
    {
@@ -501,6 +571,8 @@
     "match": "exact",
     "indigenous": "yes",
     "note": "",
+    "region": "Central America and the Caribbean",
+    "region_basis": "Glottolog countries",
     "films": 2
    },
    {
@@ -513,6 +585,8 @@
     "match": "exact",
     "indigenous": "yes",
     "note": "",
+    "region": "South America",
+    "region_basis": "Glottolog countries",
     "films": 2
    },
    {
@@ -525,6 +599,8 @@
     "match": "group",
     "indigenous": "yes",
     "note": "Glottolog separates the pidgin and the creolized Grand Ronde variety (chin1272); credits do not say which",
+    "region": "North America",
+    "region_basis": "region by hand: Glottolog gives no coordinates (Pacific Northwest)",
     "films": 1
    },
    {
@@ -537,6 +613,8 @@
     "match": "exact",
     "indigenous": "yes",
     "note": "",
+    "region": "South America",
+    "region_basis": "Glottolog countries",
     "films": 1
    },
    {
@@ -549,6 +627,8 @@
     "match": "exact",
     "indigenous": "yes",
     "note": "",
+    "region": "South America",
+    "region_basis": "Glottolog countries",
     "films": 1
    },
    {
@@ -561,6 +641,8 @@
     "match": "exact",
     "indigenous": "yes",
     "note": "",
+    "region": "South America",
+    "region_basis": "Glottolog countries",
     "films": 1
    },
    {
@@ -573,6 +655,8 @@
     "match": "exact",
     "indigenous": "yes",
     "note": "",
+    "region": "South America",
+    "region_basis": "Glottolog countries",
     "films": 1
    },
    {
@@ -585,6 +669,8 @@
     "match": "group",
     "indigenous": "yes",
     "note": "Credits say huave without a variety",
+    "region": "Central America and the Caribbean",
+    "region_basis": "Glottolog coordinates",
     "films": 2
    },
    {
@@ -597,6 +683,8 @@
     "match": "exact",
     "indigenous": "yes",
     "note": "",
+    "region": "North America",
+    "region_basis": "Glottolog countries",
     "films": 1
    },
    {
@@ -609,6 +697,8 @@
     "match": "group",
     "indigenous": "yes",
     "note": "Credits name Quechua without a variety",
+    "region": "South America",
+    "region_basis": "Glottolog coordinates",
     "films": 2
    },
    {
@@ -621,6 +711,8 @@
     "match": "exact",
     "indigenous": "no",
     "note": "",
+    "region": "",
+    "region_basis": "",
     "films": 1
    }
   ]
@@ -1581,8 +1673,12 @@
   },
   "FILM-0030": {
    "title": "The Rainy Season",
-   "year": null,
+   "year": 2000,
    "makers": [
+    {
+     "id": "DIR-0025",
+     "name": "Isaac Pinhanta"
+    },
     {
      "id": "DIR-0055",
      "name": "Wewito Piyãko"
@@ -1599,6 +1695,10 @@
    "title": "A gente luta mas come fruta / We Struggle But We Eat Fruit",
    "year": 2006,
    "makers": [
+    {
+     "id": "DIR-0025",
+     "name": "Isaac Pinhanta"
+    },
     {
      "id": "DIR-0055",
      "name": "Wewito Piyãko"
@@ -3975,6 +4075,22 @@
    "form": "Documentary",
    "length": null
   },
+  "Q20261123-19-F1": {
+   "title": "Sweet Home Reservation",
+   "year": null,
+   "makers": [
+    {
+     "id": "DIR-0061",
+     "name": "Alexandra Lazarowich"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": null
+  },
   "FILM-0065": {
    "title": "Flood",
    "year": null,
@@ -5544,6 +5660,22 @@
    "families": [],
    "form": null,
    "length": "Short"
+  },
+  "Q20261123-18-F1": {
+   "title": "Mama Dragon",
+   "year": null,
+   "makers": [
+    {
+     "id": "DIR-0085",
+     "name": "Doane Tulugaq Avery"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": null
   },
   "FILM-SRC-0394": {
    "title": "If the Weather Permits",
@@ -13213,6 +13345,10 @@
     {
      "id": "DIR-0190",
      "name": "Nelly Kuiru"
+    },
+    {
+     "id": "Q20261123-01",
+     "name": "Nelly Kuiru Castro"
     }
    ],
    "languages": [],
@@ -19870,6 +20006,22 @@
    "form": "Fiction",
    "length": "Short"
   },
+  "Q20261123-14-F1": {
+   "title": "Spiral",
+   "year": null,
+   "makers": [
+    {
+     "id": "NEW-514e349bd362",
+     "name": "Alex Nystrom"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": null
+  },
   "NEW-54e5ca967749-WORK-1": {
    "title": "IXIM (el amor no tiene género)",
    "year": 2024,
@@ -20288,6 +20440,22 @@
    ],
    "form": "Documentary",
    "length": "Short"
+  },
+  "Q20261123-11-F1": {
+   "title": "Carrying",
+   "year": null,
+   "makers": [
+    {
+     "id": "NEW-73f9e534b2d7",
+     "name": "Ashley Qilavaq-Savard"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": null
   },
   "NEW-41297500b675-WORK-1": {
    "title": "Last Summer",
@@ -20749,6 +20917,38 @@
    "families": [],
    "form": null,
    "length": null
+  },
+  "Q20261123-16-F1": {
+   "title": "NDN Time",
+   "year": null,
+   "makers": [
+    {
+     "id": "NEW-ed3c2611e1a6",
+     "name": "Charine Pilar Gonzales"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": null
+  },
+  "Q20261123-16-F2": {
+   "title": "Our Quiyo: Maria Martinez",
+   "year": null,
+   "makers": [
+    {
+     "id": "NEW-ed3c2611e1a6",
+     "name": "Charine Pilar Gonzales"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
   },
   "NEW-dc664128300b-WORK-1": {
    "title": "Confluence",
@@ -22060,6 +22260,22 @@
    "form": null,
    "length": null
   },
+  "Q20261123-13-F1": {
+   "title": "Forerunner",
+   "year": null,
+   "makers": [
+    {
+     "id": "NEW-910d2e1ea6f9",
+     "name": "Jared Lank"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": null
+  },
   "NEW-9a693520a54d-F1": {
    "title": "Holy Angels",
    "year": 2017,
@@ -22696,6 +22912,22 @@
    "form": "Fiction",
    "length": "Short"
   },
+  "Q20261123-17-F1": {
+   "title": "The Words We Can’t Speak",
+   "year": null,
+   "makers": [
+    {
+     "id": "NEW-c91587181e29",
+     "name": "Lindsay McIntyre"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": null
+  },
   "NEW-6481dcf12002-WORK-1": {
    "title": "Windsong",
    "year": 2026,
@@ -22737,6 +22969,22 @@
    "families": [],
    "form": null,
    "length": null
+  },
+  "NEW-e108b1f468ae-F1": {
+   "title": "Cache-Cache",
+   "year": null,
+   "makers": [
+    {
+     "id": "NEW-e108b1f468ae",
+     "name": "Louisa Papatie"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
   },
   "NEW-6f7957e0e500-WORK-1": {
    "title": "Mangittatuarjuk (The Gnawer of Rocks)",
@@ -23029,6 +23277,22 @@
    "primary_theme": null,
    "families": [],
    "form": "Documentary",
+   "length": null
+  },
+  "NEW-ea512669e6d8-F1": {
+   "title": "Mia, Too",
+   "year": null,
+   "makers": [
+    {
+     "id": "NEW-ea512669e6d8",
+     "name": "Miciana Alise"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
    "length": null
   },
   "NEW-f6c274cb3b76-WORK-1": {
@@ -23381,6 +23645,22 @@
    "form": null,
    "length": null
   },
+  "NEW-8671d0c8d6ab-F1": {
+   "title": "Indigenous Dad",
+   "year": null,
+   "makers": [
+    {
+     "id": "NEW-8671d0c8d6ab",
+     "name": "Peter Brass"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
   "RESEARCH-FILM-20261031-800-0035": {
    "title": "The Neighborhood Kids / AND THE KIDS SAY",
    "year": 2025,
@@ -23518,6 +23798,22 @@
    "families": [],
    "form": "Experimental",
    "length": "Feature"
+  },
+  "Q20261123-15-F1": {
+   "title": "The Lip of the World",
+   "year": null,
+   "makers": [
+    {
+     "id": "NEW-7feb9c9ffe82",
+     "name": "Ryland Walker Knight"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": null
   },
   "NEW-d42947e0d942-WORK-1": {
    "title": "Isunngannguaq",
@@ -32631,6 +32927,22 @@
    "form": null,
    "length": null
   },
+  "NEW-5f2ee4895e44-F1": {
+   "title": "The Resistance",
+   "year": null,
+   "makers": [
+    {
+     "id": "NEW-5f2ee4895e44",
+     "name": "Ryan Atimoyoo"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Series"
+  },
   "NEW-56ddab7566cd-WORK-1": {
    "title": "Le vieil homme et la rivière",
    "year": null,
@@ -37078,6 +37390,10 @@
     {
      "id": "NEW-11d2e0d50c24",
      "name": "Miles T. Red Corn"
+    },
+    {
+     "id": "QM-f3f8718b1b",
+     "name": "Miles T. RedCorn"
     }
    ],
    "languages": [],
@@ -41230,22 +41546,6 @@
    "form": "Fiction",
    "length": "Short"
   },
-  "QM-6ccf088fdc-M1": {
-   "title": "He visto caer la lluvia",
-   "year": null,
-   "makers": [
-    {
-     "id": "QM-6ccf088fdc",
-     "name": "Abraham Avíla Quintero"
-    }
-   ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
-  },
   "LEAD-20261011-023-QM21155a": {
    "title": "Kondoy: Los nuevos caminos de la nación Ayuuk",
    "year": null,
@@ -45122,6 +45422,22 @@
    "form": null,
    "length": null
   },
+  "Q20261123-12-F1": {
+   "title": "Grief Camp",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261115-909",
+     "name": "Sabrina Saleha"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": null
+  },
   "Q20261115-910-F1": {
    "title": "Saq Nikté y El Espíritu de la Máscara",
    "year": 2025,
@@ -47694,6 +48010,22 @@
    "form": "Documentary",
    "length": null
   },
+  "Q20261123-20-F1": {
+   "title": "Talent",
+   "year": null,
+   "makers": [
+    {
+     "id": "NEW-ad1326375f77",
+     "name": "Janelle Wookey"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Series"
+  },
   "Q20261122-57-F1": {
    "title": "Ways of Yesterday",
    "year": 2014,
@@ -48970,6 +49302,186 @@
     {
      "id": "DIR-0197",
      "name": "Doris Loayza"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "QM-88de1eeefc-F1": {
+   "title": "A New Beginning",
+   "year": null,
+   "makers": [
+    {
+     "id": "QM-88de1eeefc",
+     "name": "Wanda Miniquaken"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QW-462ac9de82-F1": {
+   "title": "Our Land",
+   "year": null,
+   "makers": [
+    {
+     "id": "QW-462ac9de82",
+     "name": "Norman Matchewan"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QM-f3f8718b1b-F2": {
+   "title": "Once Upon a Time in Indian Country",
+   "year": null,
+   "makers": [
+    {
+     "id": "QM-f3f8718b1b",
+     "name": "Miles T. RedCorn"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": null
+  },
+  "Q20261123-01-F1": {
+   "title": "RA",
+   "year": 2020,
+   "makers": [
+    {
+     "id": "Q20261123-01",
+     "name": "Nelly Kuiru Castro"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
+  },
+  "Q20261123-01-F2": {
+   "title": "KIYEDECAGO",
+   "year": 2021,
+   "makers": [
+    {
+     "id": "Q20261123-01",
+     "name": "Nelly Kuiru Castro"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
+  },
+  "Q20261123-02-F1": {
+   "title": "Sisters Of Sorrow",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261123-02",
+     "name": "Jordan Waunch"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
+  },
+  "Q20261123-02-F2": {
+   "title": "Shadow Of The Rougarou",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261123-02",
+     "name": "Jordan Waunch"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": null
+  },
+  "Q20261123-40-F1": {
+   "title": "A Day on Earth",
+   "year": null,
+   "makers": [
+    {
+     "id": "QM-d10df27f63",
+     "name": "Carlos Enqueri Omene"
+    },
+    {
+     "id": "QM-13d22d62eb",
+     "name": "Livia Silvano Pacaya"
+    },
+    {
+     "id": "QM-de64ea2201",
+     "name": "Limber Payaguaje"
+    },
+    {
+     "id": "QM-cfecca471a",
+     "name": "Iniquilipi Chiari"
+    },
+    {
+     "id": "QM-7609532841",
+     "name": "Samai Gualinga"
+    },
+    {
+     "id": "QM-3866700569",
+     "name": "Roxana Carpio Almonte"
+    },
+    {
+     "id": "QM-5f4f5c4d58",
+     "name": "Andrés Bonifacio Bartolo Díaz"
+    },
+    {
+     "id": "QM-ea0147a438",
+     "name": "Ronaldo Manuqueve Careche"
+    },
+    {
+     "id": "QM-1578ee53db",
+     "name": "Maynor Ixcoy"
+    },
+    {
+     "id": "Q20261123-41",
+     "name": "Leo Cerda"
+    },
+    {
+     "id": "Q20261123-42",
+     "name": "Elías Oxom"
+    },
+    {
+     "id": "Q20261123-43",
+     "name": "Shayres Pataxó"
+    },
+    {
+     "id": "Q20261123-44",
+     "name": "Genilson Guajajara"
+    },
+    {
+     "id": "Q20261123-45",
+     "name": "Abner Xitumul Can"
     }
    ],
    "languages": [],

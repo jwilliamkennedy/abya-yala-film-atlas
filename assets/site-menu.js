@@ -48,3 +48,43 @@
   }
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start,{once:true});else start();
 })();
+
+/* Phones (760px and narrower), 23 Nov 2026: the header is one slim row with a Menu button. Menu opens the page
+   list (the header's own nav, opened out) with the language and day/night choices moved to its foot. */
+(function(){
+  if(window.__phoneMenu)return;window.__phoneMenu=1;
+  var mq=window.matchMedia('(max-width:760px)'),root=document.documentElement;
+  function header(){return document.querySelector('body>header');}
+  function nav(){var h=header();return h&&h.querySelector(':scope>nav.primary');}
+  function btn(){var h=header();return h&&h.querySelector('.phone-menu-btn');}
+  function setOpen(open){
+    if(open&&!mq.matches)open=false;
+    if(open)root.dataset.phoneMenu='open';else delete root.dataset.phoneMenu;
+    var b=btn();if(b){b.setAttribute('aria-expanded',String(open));b.querySelector('.t').textContent=open?b.dataset.close:b.dataset.open;}
+    var m=nav()&&nav().querySelector('details.more-menu');if(m&&mq.matches)m.open=open;
+  }
+  // the language and day/night choices live in the menu on phones and go back to the header on wider screens
+  function placeTools(){
+    var h=header(),n=nav(),tools=h&&h.querySelector('.ui-header-tools');if(!h||!n||!tools)return false;
+    if(mq.matches){if(tools.parentElement!==n){tools.__home=tools.__home||{parent:tools.parentElement,next:tools.nextSibling};n.appendChild(tools);}}
+    else if(tools.__home&&tools.parentElement===n){var home=tools.__home;home.parent.insertBefore(tools,home.next&&home.next.parentElement===home.parent?home.next:null);}
+    return true;
+  }
+  function setup(){
+    var h=header(),n=nav();if(!h||!n)return;
+    n.id=n.id||'site-nav';
+    if(!btn()){
+      var b=document.createElement('button');b.type='button';b.className='phone-menu-btn';
+      b.setAttribute('aria-controls',n.id);b.setAttribute('aria-expanded','false');
+      b.dataset.open='Menu';b.dataset.close='Close';
+      b.innerHTML='<span class="bars" aria-hidden="true"></span><span class="t">Menu</span>';
+      h.appendChild(b);
+      b.addEventListener('click',function(){setOpen(root.dataset.phoneMenu!=='open');});
+    }
+    var tries=0;(function again(){if(!placeTools()&&tries++<20)setTimeout(again,250);})();
+  }
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&root.dataset.phoneMenu==='open'){setOpen(false);var b=btn();if(b)b.focus();}});
+  document.addEventListener('click',function(e){if(root.dataset.phoneMenu!=='open')return;var n=nav();if(e.target.closest&&e.target.closest('a[href]')&&n&&n.contains(e.target))setOpen(false);});
+  mq.addEventListener('change',function(){setOpen(false);placeTools();});
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',setup);else setup();
+})();

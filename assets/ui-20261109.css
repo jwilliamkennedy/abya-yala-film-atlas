@@ -311,7 +311,7 @@ html body header nav.primary>a,html body header nav.primary .more-menu>summary{f
 /* night on the other pages: text, links and bordered chips follow the tokens */
 html[data-reading-theme="night"] body:not(.atlas-page){background:var(--ui-paper)!important;color:var(--ui-ink)!important}
 html[data-reading-theme="night"] body:not(.atlas-page) main{color:var(--ui-ink)}
-html[data-reading-theme="night"] body:not(.atlas-page) main a:not([href^="http"]):not(.primary){color:var(--ui-ink)!important;border-color:var(--ui-line)!important}
+html[data-reading-theme="night"] body:not(.atlas-page) main a:not([href^="http"]):not(.primary):not(.btn){color:var(--ui-ink)!important;border-color:var(--ui-line)!important}
 html[data-reading-theme="night"] body:not(.atlas-page) main a[href^="http"]{color:var(--ui-accent)!important}
 html[data-reading-theme="night"] body:not(.atlas-page) :is(h1,h2,h3,h4,p,li,td,th,dt,dd,label,small,figcaption){color:inherit}
 html[data-reading-theme="night"] body:not(.atlas-page) :is(.muted,.meta,small,.crumb,.lands,.aka,.fm){color:var(--ui-muted)!important}

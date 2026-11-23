@@ -1,0 +1,97 @@
+/* Themes and Languages pages (2026-11-23): an index by group (each entry with its count and a decade strip), one menu,
+   and one entry's films at a time (decade columns, then the list with a year column). Without the script every list
+   shows, in the same style. Colours and type are the site's tokens; no colour beyond ink and greys. */
+:root{--th-serif:var(--ui-serif,Georgia,serif);--th-sans:var(--ui-sans,system-ui,sans-serif);--th-ink:var(--ui-ink,#14181c);
+  --th-muted:var(--ui-muted,#5a646d);--th-line:var(--ui-line,#e2e4e7);--th-wash:var(--ui-wash,#e9ebed);--th-surface:var(--ui-surface,#fbfcfc)}
+
+/* the index */
+.facet-index{margin:26px 0 10px;border-top:1px solid var(--th-ink)}
+.facet-index>section{display:grid;grid-template-columns:minmax(150px,200px) 1fr;gap:6px 32px;padding:18px 0 20px;border-bottom:1px solid var(--th-line)}
+.facet-index>section>h2{font:400 21px/1.2 var(--th-serif)!important;color:var(--th-ink);margin:2px 0 0;letter-spacing:0;text-transform:none}
+.facet-index ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;column-gap:32px}
+.facet-index li{margin:0}
+.facet-index li a{display:grid;grid-template-columns:1fr auto;align-items:baseline;gap:2px 12px;padding:8px 0 9px;border:0!important;color:var(--th-ink)}
+.facet-index .nm{font:400 15px/1.3 var(--th-sans)}
+.facet-index .n{font:400 13px/1 var(--th-sans);color:var(--th-muted);font-variant-numeric:tabular-nums}
+.facet-index li a:hover .nm,.facet-index li a:focus-visible .nm{text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
+.facet-index li a:hover .strip,.facet-index li a:focus-visible .strip{opacity:1}
+.facet-index li a:focus-visible{outline:2px solid var(--th-ink);outline-offset:2px;border-radius:2px}
+
+/* the bar: one menu, previous and next, all themes */
+.facet-bar{display:none}
+html.facets-js .facet-bar{display:flex;align-items:center;gap:8px;position:sticky;top:0;z-index:30;margin:22px 0 0;padding:10px 0;
+  background:color-mix(in srgb,var(--ui-paper,#f4f5f6) 94%,transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+html.facets-js.facet-open .facet-bar{border-bottom:1px solid var(--th-line);margin-bottom:18px}
+.facet-bar button,.facet-pick>summary{display:inline-flex;align-items:center;gap:8px;min-height:36px;padding:0 14px;border:1px solid var(--th-line);border-radius:999px;
+  background:var(--th-surface);color:var(--th-ink);font:500 14px/1 var(--th-sans);cursor:pointer;box-shadow:none}
+.facet-bar button:hover,.facet-pick>summary:hover{border-color:color-mix(in srgb,var(--th-ink) 35%,transparent)}
+.facet-bar button[disabled]{opacity:.35;cursor:default;border-color:var(--th-line)}
+.facet-bar .step{width:36px;padding:0;justify-content:center;font-size:16px}
+.facet-bar .all{margin-left:auto}
+.facet-bar .all[aria-pressed=true]{background:var(--th-wash);border-color:transparent;font-weight:600}
+.facet-pick{position:relative}
+.facet-pick>summary{list-style:none;min-width:250px;justify-content:space-between}
+.facet-pick>summary::-webkit-details-marker{display:none}
+.facet-pick>summary::after{content:"";width:7px;height:7px;border:solid currentColor;border-width:0 1.5px 1.5px 0;transform:translateY(-2px) rotate(45deg)}
+.facet-pick[open]>summary::after{transform:translateY(2px) rotate(-135deg)}
+.facet-pick>div{position:absolute;left:0;top:calc(100% + 6px);z-index:40;width:min(760px,calc(100vw - 32px));max-height:min(70vh,620px);overflow:auto;
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px 24px;padding:18px 20px;background:var(--th-surface);
+  border:1px solid var(--th-line);border-radius:12px;box-shadow:var(--ui-shadow,0 10px 30px rgba(28,39,48,.12))}
+.facet-pick h3{font:400 16px/1.25 var(--th-serif);color:var(--th-ink);margin:0 0 6px;padding-bottom:6px;border-bottom:1px solid var(--th-line)}
+.facet-pick a{display:flex;justify-content:space-between;gap:10px;padding:5px 8px;margin:0 -8px;border:0!important;border-radius:6px;font-size:14.5px;color:var(--th-ink)}
+.facet-pick a .n{color:var(--th-muted);font-variant-numeric:tabular-nums;font-size:13px}
+.facet-pick a:hover,.facet-pick a:focus-visible{background:var(--th-wash);outline:none}
+.facet-pick a[aria-current=true]{font-weight:600}
+
+/* a theme */
+.facet-list>li>h2{font:400 34px/1.1 var(--th-serif)!important;margin:0 0 10px;letter-spacing:-.005em}
+.facet-list .codes{display:flex;align-items:center;gap:12px;font:400 14px/1 var(--th-sans)!important;color:var(--th-muted)!important;margin:0 0 18px}
+.facet-list .codes a.watch-theme{display:inline-flex;align-items:center;gap:6px;min-height:30px;padding:0 12px;border:1px solid var(--th-line)!important;border-radius:999px;
+  background:var(--th-surface);color:var(--th-ink);font-size:13.5px}
+.facet-list .codes a.watch-theme:hover{border-color:color-mix(in srgb,var(--th-ink) 35%,transparent)!important}
+ol.films{list-style:none;margin:0!important;padding:0!important;border-top:1px solid var(--th-ink)}
+ol.films>li{display:grid;grid-template-columns:64px 1fr;gap:0 16px;margin:0!important;padding:11px 0 12px;border-bottom:1px solid var(--th-line)}
+ol.films .yr{font:400 13px/1.55 var(--th-sans);color:var(--th-muted);font-variant-numeric:tabular-nums;padding-top:3px}
+ol.films cite{display:block;font:italic 400 17.5px/1.35 var(--th-serif);color:var(--th-ink)}
+ol.films .by{display:block;margin-top:3px;font:400 14px/1.45 var(--th-sans);color:var(--th-muted)}
+ol.films .by a{color:var(--th-muted)!important;border-bottom-color:color-mix(in srgb,var(--th-ink) 18%,transparent)!important}
+ol.films .by a:hover{color:var(--th-ink)!important;border-bottom-color:var(--th-ink)!important}
+
+/* one theme at a time (script on) */
+html.facets-js .fam,html.facets-js .facet-list>li{display:none}
+html.facets-js .fam.on,html.facets-js .facet-list>li.on{display:block}
+html.facets-js.facet-open .facet-index{display:none}
+html.facets-js .fam{margin-top:0}
+html.facets-js .fam>h2{font:600 11.5px/1.3 var(--th-sans)!important;letter-spacing:.08em;text-transform:uppercase;color:var(--th-muted);margin:6px 0 8px}
+html.facets-js .facet-list>li{padding:0;border-bottom:0;scroll-margin-top:118px}
+/* script off: every family and theme in order */
+html:not(.facets-js) .fam>h2{margin-top:34px}
+html:not(.facets-js) .facet-list>li{padding:22px 0 8px;border-bottom:0}
+
+html[data-reading-theme="night"] .facet-bar{background:color-mix(in srgb,var(--ui-paper,#111) 92%,transparent)}
+@media (max-width:720px){
+  .facet-index>section{grid-template-columns:1fr}
+  .facet-index ul{grid-template-columns:1fr}
+  .facet-pick>summary{min-width:0;max-width:52vw}.facet-pick>summary span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  ol.films>li{grid-template-columns:48px 1fr;gap:0 12px}
+  .facet-list>li>h2{font-size:28px!important}
+}
+/* a language: its film count, then its Glottolog and ISO links */
+.facet-list .codes{flex-wrap:wrap;row-gap:8px;line-height:1.3!important}
+.facet-list .codes a:not(.watch-theme){color:var(--th-muted)!important;border-bottom:1px solid color-mix(in srgb,var(--th-ink) 18%,transparent)!important}
+.facet-list .codes a:not(.watch-theme):hover{color:var(--th-ink)!important;border-bottom-color:var(--th-ink)!important}
+.facet-index .other .n{min-width:2ch;text-align:right}
+/* decade strip: one cell per decade, shaded against the entry's own busiest decade, so it reads the same at any count */
+.strip{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);gap:2px;grid-column:1 / -1;margin-top:6px;opacity:.9;transition:opacity .15s}
+.strip i{display:block;height:6px;border-radius:1.5px;background:color-mix(in srgb,var(--th-ink) calc(var(--a,0) * 72%),var(--th-line))}
+.strip-key{display:flex;align-items:center;gap:10px;margin:12px 0 0;font:400 12.5px/1.3 var(--th-sans);color:var(--th-muted)}
+.strip-key .strip{width:84px;margin:0;grid-column:auto}
+.strip-key .strip i{--a:.12}.strip-key .strip i:nth-child(2){--a:.3}.strip-key .strip i:nth-child(3){--a:.5}.strip-key .strip i:nth-child(4){--a:.72}.strip-key .strip i:nth-child(n+5){--a:1}
+/* one entry: films by decade */
+.decades{display:flex;align-items:flex-end;gap:6px;margin:0 0 6px;max-width:100%}
+.decades .col{flex:1 1 0;max-width:64px;display:flex;flex-direction:column;align-items:stretch;justify-content:flex-end;min-width:0}
+.decades .v{font:400 12px/1 var(--th-sans);color:var(--th-muted);text-align:center;margin-bottom:4px;min-height:12px;font-variant-numeric:tabular-nums}
+.decades .b{height:calc(var(--h,0) * .5px);min-height:0;background:color-mix(in srgb,var(--th-ink) 72%,var(--th-line));border-radius:2px 2px 0 0}
+.decades .d{border-top:1px solid var(--th-ink);padding-top:5px;font:400 11.5px/1 var(--th-sans);color:var(--th-muted);text-align:center;font-variant-numeric:tabular-nums}
+.undated{font:400 12.5px/1.3 var(--th-sans);color:var(--th-muted);margin:0 0 18px}
+.decades+ol.films,.undated+ol.films{margin-top:16px!important}
