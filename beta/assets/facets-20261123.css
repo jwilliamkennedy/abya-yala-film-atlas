@@ -1,5 +1,5 @@
-/* Themes and Languages pages (2026-11-23): an index by group (each entry with its count, and a bar in proportion where the
-   group has one), one menu, and one entry's films at a time as a list with a year column. Without the script every list
+/* Themes and Languages pages (2026-11-23): an index by group (each entry with its count and a decade strip), one menu,
+   and one entry's films at a time (decade columns, then the list with a year column). Without the script every list
    shows, in the same style. Colours and type are the site's tokens; no colour beyond ink and greys. */
 :root{--th-serif:var(--ui-serif,Georgia,serif);--th-sans:var(--ui-sans,system-ui,sans-serif);--th-ink:var(--ui-ink,#14181c);
   --th-muted:var(--ui-muted,#5a646d);--th-line:var(--ui-line,#e2e4e7);--th-wash:var(--ui-wash,#e9ebed);--th-surface:var(--ui-surface,#fbfcfc)}
@@ -13,10 +13,8 @@
 .facet-index li a{display:grid;grid-template-columns:1fr auto;align-items:baseline;gap:2px 12px;padding:8px 0 9px;border:0!important;color:var(--th-ink)}
 .facet-index .nm{font:400 15px/1.3 var(--th-sans)}
 .facet-index .n{font:400 13px/1 var(--th-sans);color:var(--th-muted);font-variant-numeric:tabular-nums}
-.facet-index .bar{grid-column:1 / -1;height:2px;margin-top:5px;background:linear-gradient(var(--th-ink),var(--th-ink)) 0 0/var(--w,0%) 100% no-repeat,var(--th-line);
-  border-radius:2px;opacity:.55;transition:opacity .15s}
 .facet-index li a:hover .nm,.facet-index li a:focus-visible .nm{text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
-.facet-index li a:hover .bar,.facet-index li a:focus-visible .bar{opacity:1}
+.facet-index li a:hover .strip,.facet-index li a:focus-visible .strip{opacity:1}
 .facet-index li a:focus-visible{outline:2px solid var(--th-ink);outline-offset:2px;border-radius:2px}
 
 /* the bar: one menu, previous and next, all themes */
@@ -83,3 +81,17 @@ html[data-reading-theme="night"] .facet-bar{background:color-mix(in srgb,var(--u
 .facet-list .codes a:not(.watch-theme){color:var(--th-muted)!important;border-bottom:1px solid color-mix(in srgb,var(--th-ink) 18%,transparent)!important}
 .facet-list .codes a:not(.watch-theme):hover{color:var(--th-ink)!important;border-bottom-color:var(--th-ink)!important}
 .facet-index .other .n{min-width:2ch;text-align:right}
+/* decade strip: one cell per decade, shaded against the entry's own busiest decade, so it reads the same at any count */
+.strip{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);gap:2px;grid-column:1 / -1;margin-top:6px;opacity:.9;transition:opacity .15s}
+.strip i{display:block;height:6px;border-radius:1.5px;background:color-mix(in srgb,var(--th-ink) calc(var(--a,0) * 72%),var(--th-line))}
+.strip-key{display:flex;align-items:center;gap:10px;margin:12px 0 0;font:400 12.5px/1.3 var(--th-sans);color:var(--th-muted)}
+.strip-key .strip{width:84px;margin:0;grid-column:auto}
+.strip-key .strip i{--a:.12}.strip-key .strip i:nth-child(2){--a:.3}.strip-key .strip i:nth-child(3){--a:.5}.strip-key .strip i:nth-child(4){--a:.72}.strip-key .strip i:nth-child(n+5){--a:1}
+/* one entry: films by decade */
+.decades{display:flex;align-items:flex-end;gap:6px;margin:0 0 6px;max-width:100%}
+.decades .col{flex:1 1 0;max-width:64px;display:flex;flex-direction:column;align-items:stretch;justify-content:flex-end;min-width:0}
+.decades .v{font:400 12px/1 var(--th-sans);color:var(--th-muted);text-align:center;margin-bottom:4px;min-height:12px;font-variant-numeric:tabular-nums}
+.decades .b{height:calc(var(--h,0) * .5px);min-height:0;background:color-mix(in srgb,var(--th-ink) 72%,var(--th-line));border-radius:2px 2px 0 0}
+.decades .d{border-top:1px solid var(--th-ink);padding-top:5px;font:400 11.5px/1 var(--th-sans);color:var(--th-muted);text-align:center;font-variant-numeric:tabular-nums}
+.undated{font:400 12.5px/1.3 var(--th-sans);color:var(--th-muted);margin:0 0 18px}
+.decades+ol.films,.undated+ol.films{margin-top:16px!important}

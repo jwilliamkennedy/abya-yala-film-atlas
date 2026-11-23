@@ -179,10 +179,27 @@ def facet_film(fid, e):
     """A film on the Themes and Languages pages: year column, then the title and the filmmakers."""
     makers = ', '.join(f'<a href="maker/{esc(m["id"])}.html#{esc(fid)}">{esc(m["name"])}</a>' for m in e['makers'])
     return f'<li><span class="yr">{e["year"] or "—"}</span><span class="ti"><cite>{esc(e["title"])}</cite><span class="by">{makers}</span></span></li>'
-def facet_row(anchor, name, n, scale=None):
-    """An index entry: name and count, and a bar in proportion when the group has a scale."""
-    bar = f'<span class="bar" style="--w:{round(100 * n / scale)}%"></span>' if scale else ''
-    return f'<li><a href="#{anchor}"><span class="nm">{esc(name)}</span><span class="n">{n}</span>{bar}</a></li>'
+def decades(fl, lo):
+    """Films per decade, from the page's first decade to this one, and how many have no year."""
+    c = collections.Counter(e['year'] // 10 * 10 for _, e in fl if e['year'])
+    return [c.get(d, 0) for d in range(lo, int(TODAY[:3]) * 10 + 1, 10)], sum(1 for _, e in fl if not e['year'])
+def strip(counts):
+    """A decade strip: one cell per decade, shaded against the entry's own busiest decade (the count is the number beside it)."""
+    mx = max(counts) or 1
+    return '<span class="strip" aria-hidden="true">' + ''.join(f'<i style="--a:{0.2 + 0.8 * c / mx:.2f}"></i>' if c else '<i></i>' for c in counts) + '</span>'
+def strip_key(lo):
+    return f'<p class="strip-key"><span class="strip" aria-hidden="true">{"".join("<i></i>" for _ in range(lo, int(TODAY[:3]) * 10 + 1, 10))}</span>Films by decade, {lo}s–{TODAY[:3]}0s</p>'
+def histogram(counts, undated, lo):
+    """One entry's films by decade: a column per decade (height against its busiest), its count and the decade.
+    Shown from five dated films on; below that the list's year column says as much."""
+    if sum(counts) < 5:
+        return ''
+    mx = max(counts) or 1
+    cols = ''.join(f'<span class="col"><span class="v">{c or ""}</span><span class="b" style="--h:{round(100 * c / mx)}"></span><span class="d">{lo + 10 * i}</span></span>' for i, c in enumerate(counts))
+    return f'<div class="decades" aria-hidden="true">{cols}</div>' + (f'<p class="undated">{undated} undated</p>' if undated else '')
+def facet_row(anchor, name, fl, lo):
+    """An index entry: name, count and decade strip."""
+    return f'<li><a href="#{anchor}"><span class="nm">{esc(name)}</span><span class="n">{len(fl)}</span>{strip(decades(fl, lo)[0])}</a></li>'
 FACET_HEAD = '<link rel="stylesheet" href="assets/facets-20261123.css">'
 FACET_JS = '<script defer src="assets/facets-20261123.js"></script>'
 by_lang = collections.defaultdict(list)
@@ -190,6 +207,7 @@ for fid, e in films.items():
     for x in e['languages']: by_lang[x['label']].append((fid, e))
 A = {a['label']: a for a in AUTH}
 order = sorted(by_lang, key=lambda l: (not (A.get(l, {}).get('indigenous') == 'yes'), l.lower()))
+LANG_LO = min((e['year'] // 10 * 10 for l in order for _, e in by_lang[l] if e['year']), default=int(TODAY[:3]) * 10)
 items = []
 for l in order:
     a = A.get(l, {}); codes = []
@@ -197,36 +215,38 @@ for l in order:
     if a.get('iso639_3'): codes.append(f'<a href="https://iso639-3.sil.org/code/{esc(a["iso639_3"])}" rel="noopener" title="International language code (ISO 639-3)">ISO code {esc(a["iso639_3"])}</a>')
     if a.get('match') == 'unresolved': codes.append(esc(a.get('note', 'variety not stated in the credit')))
     fl = sorted(by_lang[l], key=lambda x: (x[1]['year'] or 9999, x[1]['title'].lower()))
-    items.append(f'<li id="{esc(key(l).replace(" ", "-"))}"><h2>{esc(l)}</h2><p class="codes">{len(fl)} film{"s" if len(fl) != 1 else ""} · {" · ".join(codes)}</p><ol class="films">{"".join(facet_film(fid, e) for fid, e in fl)}</ol></li>')
+    items.append(f'<li id="{esc(key(l).replace(" ", "-"))}"><h2>{esc(l)}</h2><p class="codes">{len(fl)} film{"s" if len(fl) != 1 else ""} · {" · ".join(codes)}</p>{histogram(*decades(fl, LANG_LO), LANG_LO)}<ol class="films">{"".join(facet_film(fid, e) for fid, e in fl)}</ol></li>')
 n_lang_films = sum(1 for e in films.values() if e['languages'])
 ind = [l for l in order if A.get(l, {}).get('indigenous') == 'yes']
 page('languages.html', 'Languages', f'Films on the Indigenous Cinema Atlas by the languages spoken in them, with Glottolog and ISO 639-3 codes.',
      f'<h1>Languages</h1>'
      f'<p class="who">{len(ind)} Indigenous languages across {n_lang_films} films with a recorded language, of {WORKS:,} films on the public map. Each language links to its Glottolog entry; where a credit names a language group rather than one variety, the group is linked. Languages are recorded only as a film’s credits or synopsis state them. Updated {TODAY}.</p>'
-     # the index: Indigenous languages (bars in proportion to the most-used), then the other languages in the films (counts only)
+     # the index: Indigenous languages, then the other languages in the films; each with its count and decade strip
      + f'<div class="facet-index" data-choose="Choose a language" data-all="All languages" data-prev="Previous language" data-next="Next language">'
-     + '<section><h2>Indigenous languages</h2><ul>' + ''.join(facet_row(esc(key(l).replace(" ", "-")), l, len(by_lang[l]), max(len(by_lang[x]) for x in ind)) for l in ind) + '</ul></section>'
-     + '<section class="other"><h2>Other languages</h2><ul>' + ''.join(facet_row(esc(key(l).replace(" ", "-")), l, len(by_lang[l])) for l in order if l not in ind) + '</ul></section></div>'
+     + strip_key(LANG_LO)
+     + '<section><h2>Indigenous languages</h2><ul>' + ''.join(facet_row(esc(key(l).replace(" ", "-")), l, by_lang[l], LANG_LO) for l in ind) + '</ul></section>'
+     + '<section class="other"><h2>Other languages</h2><ul>' + ''.join(facet_row(esc(key(l).replace(" ", "-")), l, by_lang[l], LANG_LO) for l in order if l not in ind) + '</ul></section></div>'
      + f'<ul class="facet-list">{"".join(items)}</ul><p class="who"><a href="data/languages.csv">Language authority (CSV)</a> · <a href="data/film-facets.csv">All film facets (CSV)</a> · <a href="data.html">About the data</a></p>' + FACET_JS,
      head_extra=FACET_HEAD)
 by_theme = collections.defaultdict(list)
 for fid, e in films.items():
     for t in e['themes']: by_theme[t].append((fid, e))
+THEME_LO = min((e['year'] // 10 * 10 for v in by_theme.values() for _, e in v if e['year']), default=int(TODAY[:3]) * 10)
 secs = []
 for fam, tags in T['families'].items():
     lis = []
     for t in tags:
         fl = sorted(by_theme.get(t, []), key=lambda x: (x[1]['year'] or 9999, x[1]['title'].lower()))
         if not fl: continue
-        lis.append(f'<li id="{esc(key(t).replace(" ", "-"))}"><h2>{esc(t)}</h2><p class="codes">{len(fl)} film{"s" if len(fl) != 1 else ""}</p><ol class="films">{"".join(facet_film(fid, e) for fid, e in fl)}</ol></li>')
+        lis.append(f'<li id="{esc(key(t).replace(" ", "-"))}"><h2>{esc(t)}</h2><p class="codes">{len(fl)} film{"s" if len(fl) != 1 else ""}</p>{histogram(*decades(fl, THEME_LO), THEME_LO)}<ol class="films">{"".join(facet_film(fid, e) for fid, e in fl)}</ol></li>')
     secs.append(f'<section class="fam"><h2 style="font:400 28px/1.2 Georgia,serif">{esc(fam)}</h2><ul class="facet-list">{"".join(lis)}</ul></section>')
 n_th = sum(1 for e in films.values() if e['themes'])
 page('themes.html', 'Themes', 'Films on the Indigenous Cinema Atlas by theme: 30 themes in five families, each tagged from a published synopsis.',
      f'<h1>Themes</h1>'
      f'<p class="who">There are {n_th} of {WORKS:,} films tagged with a theme or themes so far, each from a published synopsis, with its source and link. While a film can carry several themes, its primary theme is listed first in the data. Updated {TODAY}.</p>'
-     # the index: the five families side by side, each theme with its count (facets-20261123.js turns it into one theme at a time)
-     + '<div class="facet-index" data-choose="Choose a theme" data-all="All themes" data-prev="Previous theme" data-next="Next theme">' + ''.join(
-         f'<section><h2>{esc(fam)}</h2><ul>' + ''.join(f'<li><a href="#{esc(key(t).replace(" ", "-"))}"><span class="nm">{esc(t)}</span><span class="n">{len(by_theme[t])}</span><span class="bar" style="--w:{round(100 * len(by_theme[t]) / max(len(v) for v in by_theme.values()))}%"></span></a></li>' for t in tags if by_theme.get(t)) + '</ul></section>'
+     # the index: the five families, each theme with its count and decade strip (facets-20261123.js turns it into one theme at a time)
+     + '<div class="facet-index" data-choose="Choose a theme" data-all="All themes" data-prev="Previous theme" data-next="Next theme">' + strip_key(THEME_LO) + ''.join(
+         f'<section><h2>{esc(fam)}</h2><ul>' + ''.join(facet_row(esc(key(t).replace(" ", "-")), t, by_theme[t], THEME_LO) for t in tags if by_theme.get(t)) + '</ul></section>'
          for fam, tags in T['families'].items()) + '</div>'
      + ''.join(secs) + '<p class="who"><a href="data/film-facets.csv">All film facets (CSV)</a> · <a href="data.html">About the data</a></p>'
      + FACET_JS,
