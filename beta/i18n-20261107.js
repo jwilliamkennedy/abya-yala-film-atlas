@@ -168,20 +168,31 @@ const T=[["Map views","Vistas del mapa","Vistas do mapa","Vues de la carte"],["O
 ['Preview land · select to explore · drag to pan','Vista previa de la tierra · selecciona para explorar · arrastra para mover','Prévia da terra · selecione para explorar · arraste para mover','Aperçu du territoire · sélectionnez pour explorer · faites glisser pour déplacer'],
 ['. Native Land Digital · overlapping territorial references.','. Native Land Digital · referencias territoriales superpuestas.','. Native Land Digital · referências territoriais sobrepostas.','. Native Land Digital · références territoriales qui se chevauchent.'],
 ['Close (Esc)','Cerrar (Esc)','Fechar (Esc)','Fermer (Esc)'],['Director','Dirección','Direção','Réalisation'],['Interface language','Idioma de la interfaz','Idioma da interface','Langue de l’interface'],
- ["Trace","Trazar","Traçar","Tracer"],
+ ["Gather","Reunir","Reunir","Rassembler"],
+ ["Draw","Dibujar","Desenhar","Dessiner"],
  ["Time","Tiempo","Tempo","Temps"],
  ["Move","Mover","Mover","Déplacer"],
  ["Pause","Pausar","Pausar","Pause"],
- ["Trace a line","Trazar una línea","Traçar uma linha","Tracer une ligne"],
- ["Trace again","Volver a trazar","Traçar novamente","Tracer de nouveau"],
- ["Trace or move the map","Trazar o mover el mapa","Traçar ou mover o mapa","Tracer ou déplacer la carte"],
- ["Trace across lands · scroll to zoom","Traza por los territorios · desplaza para ampliar","Trace pelos territórios · role para ampliar","Tracez à travers les territoires · faites défiler pour zoomer"],
- ["Drag to move · Trace when ready","Arrastra para mover · traza cuando quieras","Arraste para mover · trace quando quiser","Faites glisser pour déplacer · tracez quand vous voulez"],
- ["One finger traces · two move","Un dedo traza · dos mueven","Um dedo traça · dois movem","Un doigt trace · deux déplacent"],
- ["Theme to trace","Tema del trazo","Tema do traçado","Thème du tracé"],
+ ["Gather films","Reunir películas","Reunir filmes","Rassembler des films"],
+ ["Link films","Vincular películas","Vincular filmes","Relier des films"],
+ ["Theme web","Red de temas","Rede de temas","Toile des thèmes"],
+ ["Undo","Deshacer","Desfazer","Annuler"],
+ ["Redo","Rehacer","Refazer","Rétablir"],
+ ["Options","Opciones","Opções","Options"],
+ ["Draw again","Volver a dibujar","Desenhar novamente","Dessiner de nouveau"],
+ ["Draw or move the map","Dibujar o mover el mapa","Desenhar ou mover o mapa","Dessiner ou déplacer la carte"],
+ ["Draw across lands · scroll to zoom","Dibuja sobre los territorios · desplaza para ampliar","Desenhe sobre os territórios · role para ampliar","Dessinez à travers les territoires · faites défiler pour zoomer"],
+ ["Drag to move · Draw when ready","Arrastra para mover · dibuja cuando quieras","Arraste para mover · desenhe quando quiser","Faites glisser pour déplacer · dessinez quand vous voulez"],
+ ["One finger draws · two move","Un dedo dibuja · dos mueven","Um dedo desenha · dois movem","Un doigt dessine · deux déplacent"],
+ ["Theme to gather","Tema para reunir","Tema para reunir","Thème à rassembler"],
  ["Lands crossed by your line","Territorios atravesados por tu línea","Territórios atravessados pela sua linha","Territoires traversés par votre ligne"],
- ["Trace a line across the map: the lands it crosses are listed in order, and can become a thread","Traza una línea en el mapa: los territorios que atraviese se enumerarán en orden y podrán formar un hilo","Trace uma linha no mapa: os territórios atravessados serão listados em ordem e poderão formar um fio","Tracez une ligne sur la carte : les territoires traversés seront listés dans l’ordre et pourront former un fil"],
- ["Trace a line across the map; the lands it crosses give their films","Traza una línea en el mapa; los territorios atravesados aportan sus películas","Trace uma linha no mapa; os territórios atravessados oferecem seus filmes","Tracez une ligne sur la carte ; les territoires traversés apportent leurs films"],
+ ["Draw a line across the map to gather the films along it: the lands it crosses are listed in order, and can become a thread","Dibuja una línea en el mapa para reunir las películas a lo largo de ella: los territorios que atraviese se enumerarán en orden y podrán formar un hilo","Desenhe uma linha no mapa para reunir os filmes ao longo dela: os territórios atravessados serão listados em ordem e poderão formar um fio","Dessinez une ligne sur la carte pour rassembler les films sur son tracé : les territoires traversés seront listés dans l’ordre et pourront former un fil"],
+ ["Draw a line across the map to gather the films of the lands it crosses","Dibuja una línea en el mapa para reunir las películas de los territorios que atraviesa","Desenhe uma linha no mapa para reunir os filmes dos territórios que ela atravessa","Dessinez une ligne sur la carte pour rassembler les films des territoires qu’elle traverse"],
+ ["Draw a line to gather films","Dibuja una línea para reunir películas","Desenhe uma linha para reunir filmes","Dessinez une ligne pour rassembler des films"],
+ ["The lands it crosses give their films, in the order it crosses them.","Los territorios que atraviesa aportan sus películas, en el orden en que los atraviesa.","Os territórios que ela atravessa oferecem seus filmes, na ordem em que os atravessa.","Les territoires qu’elle traverse apportent leurs films, dans l’ordre où elle les traverse."],
+ ["No lands with films crossed. Draw again.","La línea no cruzó territorios con películas. Vuelve a dibujar.","A linha não cruzou territórios com filmes. Desenhe novamente.","La ligne n’a traversé aucun territoire avec des films. Dessinez de nouveau."],
+ ["searches the atlas.","busca en el atlas.","busca no atlas.","cherche dans l’atlas."],
+ ["collects the films of the lands crossed by a line you draw on the map. Large themes open with six films; you can add the rest.","trae las películas de los territorios que cruza una línea que dibujas en el mapa. Los temas grandes se abren con seis películas; puedes añadir el resto.","traz os filmes dos territórios cruzados por uma linha que você desenha no mapa. Os temas grandes abrem com seis filmes; você pode adicionar o resto.","apporte les films des territoires traversés par une ligne que vous dessinez sur la carte. Les grands thèmes s’ouvrent avec six films ; vous pouvez ajouter les autres."],
  ["Time dial","Control temporal","Seletor temporal","Curseur temporel"],
  ["See when each land’s first film appears","Ver cuándo aparece la primera película vinculada a cada territorio","Veja quando aparece o primeiro filme vinculado a cada território","Voir quand apparaît le premier film lié à chaque territoire"],
  ["Close the time dial","Cerrar el control temporal","Fechar o seletor temporal","Fermer le curseur temporel"]
@@ -196,6 +207,7 @@ const PAT=[
  [/^([\d,]+) Indigenous languages across ([\d,]+) films with a recorded language, of ([\d,]+) films on the public map\. Each language links to its Glottolog entry; where a credit names a language group rather than one variety, the group is linked\. Languages are recorded only as a film’s credits or synopsis state them\. Updated ([\d-]+)\.$/,["$1 lenguas indígenas en $2 películas con lengua registrada, de $3 películas en el mapa público. Cada lengua enlaza a su entrada en Glottolog; cuando un crédito nombra un grupo de lenguas y no una variedad, se enlaza el grupo. Las lenguas se registran solo como las indican los créditos o la sinopsis de la película. Actualizado el $4.", "$1 línguas indígenas em $2 filmes com língua registrada, de $3 filmes no mapa público. Cada língua leva à sua entrada no Glottolog; quando um crédito nomeia um grupo de línguas e não uma variedade, o grupo é indicado. As línguas são registradas apenas como os créditos ou a sinopse do filme as indicam. Atualizado em $4.", "$1 langues autochtones dans $2 films dont la langue est connue, sur $3 films de la carte publique. Chaque langue renvoie à sa fiche Glottolog ; quand un crédit nomme un groupe de langues plutôt qu’une variété, c’est le groupe qui est lié. Les langues ne sont notées que telles que les crédits ou le synopsis du film les indiquent. Mis à jour le $4."]],
  [/^Films by decade, (\d{4})s–(\d{4})s$/,["Películas por década, $1–$2", "Filmes por década, $1–$2", "Films par décennie, $1–$2"]],
  [/^(\d+) undated$/,["$1 sin fecha", "$1 sem data", "$1 sans date"]],
+ [/^No lands with (.+) films crossed\. Draw again\.$/,["La línea no cruzó territorios con películas de $1. Vuelve a dibujar.","A linha não cruzou territórios com filmes de $1. Desenhe novamente.","La ligne n’a traversé aucun territoire avec des films de $1. Dessinez de nouveau."]],
  [/^There are ([\d,]+) of ([\d,]+) films tagged with a theme or themes so far, each from a published synopsis, with its source and link\. While a film can carry several themes, its primary theme is listed first in the data\. Updated ([\d-]+)\.$/,["Hay $1 de $2 películas con uno o más temas por ahora, cada uno tomado de una sinopsis publicada, con su fuente y su enlace. Aunque una película puede tener varios temas, su tema principal aparece primero en los datos. Actualizado el $3.", "Há $1 de $2 filmes com um ou mais temas até agora, cada um tirado de uma sinopse publicada, com sua fonte e seu link. Embora um filme possa ter vários temas, o tema principal aparece primeiro nos dados. Atualizado em $3.", "$1 des $2 films ont déjà un ou plusieurs thèmes, chacun tiré d’un synopsis publié, avec sa source et son lien. Si un film peut avoir plusieurs thèmes, son thème principal figure en premier dans les données. Mis à jour le $3."]],
  [/^([\d,]+) filmmakers & collectives$/,['$1 cineastas y colectivos','$1 cineastas e coletivos','$1 cinéastes et collectifs']],
  [/^([\d,]+) filmmakers with land links(.*)$/,['$1 cineastas con vínculos a tierras$2','$1 cineastas com vínculos a terras$2','$1 cinéastes liés à des territoires$2']],
@@ -231,8 +243,21 @@ function tr(en){
  for(const [re,out] of PAT){if(out&&re.test(k))return en.replace(k,k.replace(re,out[i-1]));}
  return null;
 }
+/* A Constellate toolbar label is split in two (.cm-a shows alone when the bar is short): translate the whole label, split at its first space. */
+function cmLabel(n){
+ const p=n.parentElement,l=p&&p.parentElement;if(!l||!l.classList||!l.classList.contains('cm-label')||!p.matches('.cm-a,.cm-b'))return false;
+ const a=l.querySelector(':scope>.cm-a'),b=l.querySelector(':scope>.cm-b');if(!a||!b)return false;
+ const cur=a.textContent+b.textContent;let o=orig.get(l);
+ if(o===undefined||(cur!==o&&cur!==l.__atlasT)){o=cur;orig.set(l,o);}
+ const t=lang==='en'?o:tr(o);if(t==null||cur===t)return true;
+ const k=t.indexOf(' ');l.__atlasT=t;put(a,k<0?t:t.slice(0,k));put(b,k<0?'':t.slice(k));return true;
+}
+/* edit the text node in place: replacing it would end the walk that is visiting it */
+function put(el,v){const f=el.firstChild;if(f&&f.nodeType===3&&!f.nextSibling){if(f.nodeValue!==v)f.nodeValue=v;}else if(el.textContent!==v)el.textContent=v;
+}
 function textNode(n){
  const p=n.parentElement;if(!p||p.closest(SKIP))return;
+ if(cmLabel(n))return;
  if(p.closest(DATA_ZONE)&&!p.closest('button,summary,label,select,option,optgroup,.index-tools,#index-tools')&&!p.closest('.adjacent-visible h3,.adjacent-visible p.meta'))return;
  let o=orig.get(n);const cur=n.nodeValue;
  if(o===undefined||(cur!==o&&cur!==n.__atlasT)){o=cur;orig.set(n,o);}
