@@ -1769,3 +1769,6 @@ html[data-weave-stage="start"] .index-resizer,body.weave-playing .index-resizer{
 #constellate-graph g.weave-thread.is-linking .weave-stop{opacity:1!important}
 #constellate-graph g.weave-thread.is-linking .weave-thread-name{display:none}
 body.is-constellating #weave-draw-help{display:none!important}
+
+/* 23 Nov: the Order list is not its own scroller (it was capped at 210-260px inside the scrolling panel and cut a film in half); the panel scrolls */
+#constellate-popup #weave-order-list{max-height:none;overflow:visible}
