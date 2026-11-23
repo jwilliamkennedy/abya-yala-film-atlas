@@ -15,3 +15,6 @@ Requested by atlas owner: promote current beta/ to published root using tools/pr
 
 2026-11-23 (later afternoon)
 Requested by atlas owner: promote current beta/ to published root using tools/promote_beta.py; preserve beta and private research Queue. About: Team first with photos, new Background opening, CARE grid, sticky contents bar.
+
+2026-11-23 (evening)
+Requested by atlas owner: promote current beta/ to published root using tools/promote_beta.py; preserve beta and private research Queue. About, Data and CARE, Resources: one shared column; lake under the About title; gentler About; phone fit.
