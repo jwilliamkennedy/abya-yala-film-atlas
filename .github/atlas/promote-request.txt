@@ -3,3 +3,6 @@ Requested by atlas owner: promote current beta/ to published root using tools/pr
 
 2026-11-22
 Requested by atlas owner: promote current beta/ to published root using tools/promote_beta.py; preserve beta and private research Queue. Trace, Layers (territories always on, Map key inside), Saved page, About tabs, Timeline and Time links, Watch with related films.
+
+2026-11-23
+Requested by atlas owner: promote current beta/ to published root using tools/promote_beta.py; preserve beta and private research Queue. Gather replaces Trace (translated), Languages by region, Themes and Languages indexes with decade strips, blue-grey ocean, Spanish Constellar, 23 Nov filmmaker additions and corrections.
