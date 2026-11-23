@@ -52,9 +52,41 @@ def csv_with_original_spans(raw):
     return header, head_source, entries
 
 
+def row_key(r):
+    return tuple((v or '').strip() for k, v in r.items() if k and k != 'qid')
+
+def pending_ids(atlas):
+    """The id each blank-id Queue row will get, worked out exactly as atlasio.load does (all Queue files in name
+    order; the next number after the highest; a blank or repeated id takes the next one). verify_queue.py checks
+    rows under these ids before the tidy writes them to disk, so without this a new row waits a whole extra run.
+    Keyed by the row's other cells; a key shared by two blank-id rows is left out (those wait for the tidy)."""
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    import atlasio
+    d = os.path.join(atlas, 'queue')
+    rows = []
+    for f in sorted(os.listdir(d)):
+        if atlasio.QUEUE_FILE.match(f):
+            for r in atlasio.read(f'{d}/{f}'):
+                r = {k: (v or '').strip() for k, v in r.items() if k}
+                if any(v for k, v in r.items() if k != 'qid'):
+                    rows.append(r)
+    seen, nxt, out, dup = set(), max([atlasio.qnum(r.get('qid')) or 0 for r in rows] + [0]) + 1, {}, set()
+    for r in rows:
+        q = r.get('qid')
+        if not atlasio.qnum(q) or q in seen:
+            q = f'Q{nxt:06d}'; nxt += 1
+            if not atlasio.qnum(r.get('qid')):
+                k = row_key(r)
+                if k in out:
+                    dup.add(k)
+                out[k] = q
+        seen.add(q)
+    return {k: q for k, q in out.items() if k not in dup}
+
 def main(atlas, verify_path):
     today = datetime.date.today().isoformat()
     V = {x['qid']: x.get('checks', {}) for x in json.load(open(verify_path, encoding='utf-8'))}
+    pending = pending_ids(atlas)
     names, titles = set(), {}
     for f in glob.glob(os.path.join(atlas, 'master', 'filmmakers*.csv')):
         for r in csv.DictReader(open(f, encoding='utf-8')):
@@ -75,6 +107,10 @@ def main(atlas, verify_path):
         changed = False
         for entry in entries:
             r = entry['data']
+            if r is not None and r.get('queue_status') == 'new' and not (r.get('qid') or '').strip():
+                q = pending.get(row_key(r))
+                if q in V:
+                    r['qid'] = q          # the id the tidy would give it, written now so the merge below sees the same row
             if r is None or r.get('queue_status') != 'new' or r['qid'] not in V:
                 continue
             c, act, problems = V[r['qid']], r.get('queue_action'), []
