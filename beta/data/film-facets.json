@@ -4101,10 +4101,18 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
+   "themes": [
+    "Cosmology and Origin Stories",
+    "Youth",
+    "Displacement and Migration"
+   ],
+   "primary_theme": "Cosmology and Origin Stories",
+   "families": [
+    "Knowledge and Continuity",
+    "Lives and Relations",
+    "Sovereignty and Politics"
+   ],
+   "form": "Hybrid",
    "length": null
   },
   "CHECKED-DIR-0062-inkwoforwhenthestarvingreturn": {
@@ -12589,11 +12597,20 @@
      "source": "https://www.retinalatina.org/peliculas/nabusimake-amado-villafana/"
     }
    ],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Residential and Boarding Schools",
+    "Sovereignty and Self-Determination",
+    "Land Defense",
+    "Memory and Oral History"
+   ],
+   "primary_theme": "Residential and Boarding Schools",
+   "families": [
+    "Knowledge and Continuity",
+    "Land and Environment",
+    "Sovereignty and Politics"
+   ],
+   "form": "Documentary",
+   "length": "Short"
   },
   "BETA30-20261106-F13": {
    "title": "Resistencia en la línea negra",
@@ -12646,11 +12663,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Water"
+   ],
+   "primary_theme": "Water",
+   "families": [
+    "Land and Environment"
+   ],
+   "form": "Documentary",
+   "length": "Feature"
   },
   "BETA30-20261106-F15": {
    "title": "Sein Zare",
@@ -13165,11 +13186,19 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Displacement and Migration",
+    "Extractivism",
+    "Memory and Oral History"
+   ],
+   "primary_theme": "Displacement and Migration",
+   "families": [
+    "Knowledge and Continuity",
+    "Land and Environment",
+    "Sovereignty and Politics"
+   ],
+   "form": "Documentary",
+   "length": "Short"
   },
   "BETA30B-20261107-F16": {
    "title": "Escuela de Paliiawain",
@@ -13559,11 +13588,18 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "More-than-Human Relations",
+    "Youth",
+    "Water"
+   ],
+   "primary_theme": "More-than-Human Relations",
+   "families": [
+    "Land and Environment",
+    "Lives and Relations"
+   ],
+   "form": "Documentary",
+   "length": "Feature"
   },
   "FILM-0147": {
    "title": "Kawsak Sacha - La canoa de la vida",
@@ -26027,11 +26063,18 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Art, Craft and Making",
+    "Women and Gender",
+    "Kinship"
+   ],
+   "primary_theme": "Art, Craft and Making",
+   "families": [
+    "Expression and Representation",
+    "Lives and Relations"
+   ],
+   "form": "Documentary",
+   "length": "Short"
   },
   "NEW-2441be3e4635-WORK-2": {
    "title": "Menire djapej – o trabalho das mulheres",
@@ -26747,11 +26790,20 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Women and Gender",
+    "Kinship",
+    "Land Defense",
+    "Elders and Knowledge"
+   ],
+   "primary_theme": "Women and Gender",
+   "families": [
+    "Knowledge and Continuity",
+    "Land and Environment",
+    "Lives and Relations"
+   ],
+   "form": "Documentary",
+   "length": "Short"
   },
   "SA50-20261014-b63039162853-WORK-01": {
    "title": "Mapukutran",
@@ -28034,11 +28086,19 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Memory and Oral History",
+    "Music and Performance",
+    "Kinship"
+   ],
+   "primary_theme": "Memory and Oral History",
+   "families": [
+    "Expression and Representation",
+    "Knowledge and Continuity",
+    "Lives and Relations"
+   ],
+   "form": "Fiction",
+   "length": "Short"
   },
   "Q20261121-01-F1": {
    "title": "Warriache (Gente de la tierra en la ciudad)",
@@ -36977,11 +37037,17 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Displacement and Migration",
+    "Extractivism"
+   ],
+   "primary_theme": "Displacement and Migration",
+   "families": [
+    "Land and Environment",
+    "Sovereignty and Politics"
+   ],
+   "form": "Documentary",
+   "length": "Short"
   },
   "NEW-4cece503d728-F1": {
    "title": "Identidad",
@@ -38403,11 +38469,17 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Justice, Truth and Reconciliation",
+    "Kinship"
+   ],
+   "primary_theme": "Justice, Truth and Reconciliation",
+   "families": [
+    "Lives and Relations",
+    "Sovereignty and Politics"
+   ],
    "form": "Documentary",
-   "length": null
+   "length": "Short"
   },
   "BETA30B-20261107-F30": {
    "title": "Mareros",
@@ -40295,11 +40367,19 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Music and Performance",
+    "Youth",
+    "Women and Gender",
+    "Art, Craft and Making"
+   ],
+   "primary_theme": "Music and Performance",
+   "families": [
+    "Expression and Representation",
+    "Lives and Relations"
+   ],
+   "form": "Documentary",
+   "length": "Short"
   },
   "QM-4f304218b3-M1": {
    "title": "The Forest, Land, and Water are Hurting",
@@ -42816,11 +42896,18 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": "Animation",
-   "length": null
+   "themes": [
+    "Cosmology and Origin Stories",
+    "Youth",
+    "Kinship"
+   ],
+   "primary_theme": "Cosmology and Origin Stories",
+   "families": [
+    "Knowledge and Continuity",
+    "Lives and Relations"
+   ],
+   "form": "Fiction",
+   "length": "Short"
   },
   "Q20261114-18-F1": {
    "title": "Charley Squash Goes to Town",
@@ -42832,11 +42919,17 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": "Animation",
-   "length": null
+   "themes": [
+    "Self-Representation and Countering Stereotypes",
+    "Youth"
+   ],
+   "primary_theme": "Self-Representation and Countering Stereotypes",
+   "families": [
+    "Expression and Representation",
+    "Lives and Relations"
+   ],
+   "form": "Fiction",
+   "length": "Short"
   },
   "Q20261114-19-F1": {
    "title": "Saints and Warriors",
@@ -42992,9 +43085,17 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Food Sovereignty",
+    "More-than-Human Relations",
+    "Elders and Knowledge",
+    "Cosmology and Origin Stories"
+   ],
+   "primary_theme": "Food Sovereignty",
+   "families": [
+    "Knowledge and Continuity",
+    "Land and Environment"
+   ],
    "form": "Animation",
    "length": "Short"
   },
