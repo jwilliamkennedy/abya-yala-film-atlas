@@ -207,6 +207,18 @@ for fid, e in films.items():
     for x in e['languages']: by_lang[x['label']].append((fid, e))
 A = {a['label']: a for a in AUTH}
 order = sorted(by_lang, key=lambda l: (not (A.get(l, {}).get('indigenous') == 'yes'), l.lower()))
+# Regions (UN M49: Mexico in Central America, Greenland in North America), north to south. A language's region is in the
+# authority (from Glottolog's countries for it); a language not yet there is placed by its filmmakers' countries.
+REGIONS = ['North America', 'Central America and the Caribbean', 'South America']
+R3 = {**{c: REGIONS[0] for c in 'CAN USA GRL BMU SPM'.split()},
+      **{c: REGIONS[1] for c in 'MEX GTM BLZ SLV HND NIC CRI PAN CUB DOM HTI PRI JAM BHS TTO BRB LCA VCT GRD ATG DMA KNA ABW CUW GLP MTQ CYM TCA VGB VIR AIA'.split()},
+      **{c: REGIONS[2] for c in 'ARG BOL BRA CHL COL ECU GUY PER PRY SUR URY VEN GUF FLK'.split()}}
+MAKER_COUNTRIES = {r['id']: r.get('countries') or [] for r in P}
+def lang_region(l):
+    if A.get(l, {}).get('region'):
+        return A[l]['region']
+    votes = collections.Counter(R3[c] for _, e in by_lang[l] for m in e['makers'] for c in MAKER_COUNTRIES.get(m['id'], []) if c in R3)
+    return votes.most_common(1)[0][0] if votes else 'Region not recorded'
 LANG_LO = min((e['year'] // 10 * 10 for l in order for _, e in by_lang[l] if e['year']), default=int(TODAY[:3]) * 10)
 items = []
 for l in order:
@@ -215,18 +227,22 @@ for l in order:
     if a.get('iso639_3'): codes.append(f'<a href="https://iso639-3.sil.org/code/{esc(a["iso639_3"])}" rel="noopener" title="International language code (ISO 639-3)">ISO code {esc(a["iso639_3"])}</a>')
     if a.get('match') == 'unresolved': codes.append(esc(a.get('note', 'variety not stated in the credit')))
     fl = sorted(by_lang[l], key=lambda x: (x[1]['year'] or 9999, x[1]['title'].lower()))
-    items.append(f'<li id="{esc(key(l).replace(" ", "-"))}"><h2>{esc(l)}</h2><p class="codes">{len(fl)} film{"s" if len(fl) != 1 else ""} · {" · ".join(codes)}</p>{histogram(*decades(fl, LANG_LO), LANG_LO)}<ol class="films">{"".join(facet_film(fid, e) for fid, e in fl)}</ol></li>')
+    items.append((l, f'<li id="{esc(key(l).replace(" ", "-"))}"><h2>{esc(l)}</h2><p class="codes">{len(fl)} film{"s" if len(fl) != 1 else ""} · {" · ".join(codes)}</p>{histogram(*decades(fl, LANG_LO), LANG_LO)}<ol class="films">{"".join(facet_film(fid, e) for fid, e in fl)}</ol></li>'))
 n_lang_films = sum(1 for e in films.values() if e['languages'])
 ind = [l for l in order if A.get(l, {}).get('indigenous') == 'yes']
 page('languages.html', 'Languages', f'Films on the Indigenous Cinema Atlas by the languages spoken in them, with Glottolog and ISO 639-3 codes.',
      f'<h1>Languages</h1>'
      f'<p class="who">{len(ind)} Indigenous languages across {n_lang_films} films with a recorded language, of {WORKS:,} films on the public map. Each language links to its Glottolog entry; where a credit names a language group rather than one variety, the group is linked. Languages are recorded only as a film’s credits or synopsis state them. Updated {TODAY}.</p>'
-     # the index: Indigenous languages, then the other languages in the films; each with its count and decade strip
+     # the index: Indigenous languages by region, then the other languages in the films; each with its count and decade strip
      + f'<div class="facet-index" data-choose="Choose a language" data-all="All languages" data-prev="Previous language" data-next="Next language">'
      + strip_key(LANG_LO)
-     + '<section><h2>Indigenous languages</h2><ul>' + ''.join(facet_row(esc(key(l).replace(" ", "-")), l, by_lang[l], LANG_LO) for l in ind) + '</ul></section>'
+     + ''.join(f'<section><h2>{esc(g)}</h2><ul>' + ''.join(facet_row(esc(key(l).replace(" ", "-")), l, by_lang[l], LANG_LO) for l in ind if lang_region(l) == g) + '</ul></section>'
+               for g in REGIONS + ['Region not recorded'] if any(lang_region(l) == g for l in ind))
      + '<section class="other"><h2>Other languages</h2><ul>' + ''.join(facet_row(esc(key(l).replace(" ", "-")), l, by_lang[l], LANG_LO) for l in order if l not in ind) + '</ul></section></div>'
-     + f'<ul class="facet-list">{"".join(items)}</ul><p class="who"><a href="data/languages.csv">Language authority (CSV)</a> · <a href="data/film-facets.csv">All film facets (CSV)</a> · <a href="data.html">About the data</a></p>' + FACET_JS,
+     # the lists, in the index's order: each region of Indigenous languages, then the other languages
+     + ''.join(f'<section class="fam"><h2>{esc(g)}</h2><ul class="facet-list">{"".join(h for l, h in items if l in ind and lang_region(l) == g)}</ul></section>'
+               for g in REGIONS + ['Region not recorded'] if any(lang_region(l) == g for l in ind))
+     + f'<section class="fam"><h2>Other languages</h2><ul class="facet-list">{"".join(h for l, h in items if l not in ind)}</ul></section><p class="who"><a href="data/languages.csv">Language authority (CSV)</a> · <a href="data/film-facets.csv">All film facets (CSV)</a> · <a href="data.html">About the data</a></p>' + FACET_JS,
      head_extra=FACET_HEAD)
 by_theme = collections.defaultdict(list)
 for fid, e in films.items():

@@ -1,47 +1,47 @@
-label,also_credited_as,glottocode,glottolog_name,glottolog_level,iso639_3,match,indigenous,note
-Anishinaabemowin (Ojibwe),Ojibwe; Ojibway; Anishinaabemowin,ojib1241,Ojibwa,family,,group,yes,Credits name the language without a regional variety
-Atikamekw,,atik1240,Atikamekw,language,atj,exact,yes,
-Ayuujk (Mixe),Ayuujk / Mixe; Ayuujk; Mixe,mixe1286,Mixe,family,,group,yes,Credits name Ayuujk without a variety
-Blackfoot,,siks1238,Siksika,language,bla,exact,yes,
-Cherokee,,cher1273,Cherokee,language,chr,exact,yes,
-Cree,,cree1272,Cree,family,cre,group,yes,Credits name Cree without a variety
-Plains Cree,Nehiyawewin,plai1258,Plains Cree,language,crk,exact,yes,
-Denaakk’e (Koyukon),Denaakk’e; Koyukon,koyu1237,Koyukon,language,koy,exact,yes,
-Dene,,,,,,unresolved,yes,Several Dene languages; the credit does not say which
-Diné (Navajo),Diné; Navajo; Diné Bizaad,nava1243,Navajo,language,nav,exact,yes,
-Garifuna,,gari1256,Garifuna,language,cab,exact,yes,
-Haida,,haid1248,Haida,family,hai,group,yes,
-Hän,,hann1241,Han,language,haa,exact,yes,
-Inuktitut,,east2534,Eastern Canadian Inuktitut,language,ike,probable,yes,Inuktitut in Canadian credits usually names the eastern variety
-Iñupiaq,Inupiaq,inup1234,Alaskan Inupiaq,family,ipk,group,yes,
-Kalaallisut,Kalaallisut (Greenlandic); Greenlandic,kala1399,Kalaallisut,language,kal,exact,yes,
-Kichwa,,colo1257,Colombia-Ecuador Quechua,family,,group,yes,Kichwa names the Ecuadorian Quechua varieties
-Lakota,,lako1247,Lakota,language,lkt,exact,yes,
-Mohawk,Kanien’kéha,moha1258,Mohawk,language,moh,exact,yes,
-Nlakapamuxcheen,,thom1243,Thompson,language,thp,exact,yes,
-Payómkawichum Chaamteela,Luiseño,luis1253,Luiseno-Juaneño,language,lui,exact,yes,
-Q’eqchi’,,kekc1242,Q'eqchi',language,kek,exact,yes,
-Secwépemctsín,Secwepemctsín; Secwepemctsin; Shuswap,shus1248,Shuswap,language,shs,exact,yes,
-Taíno,Taíno dialect of Island Arawak Wahiyani,tain1254,Taino,language,tnq,exact,yes,
-Tewa,,tewa1261,Tewa,family,,group,yes,
-Tupí,,,,,,unresolved,yes,Tupí names several Tupian languages; the credit does not say which
-English,,stan1293,English,language,eng,exact,no,
-Spanish,Español,stan1288,Spanish,language,spa,exact,no,
-Portuguese,Português,port1283,Portuguese,language,por,exact,no,
-French,Français,stan1290,French,language,fra,exact,no,
-Vietnamese,,viet1252,Vietnamese,language,vie,exact,no,
-Aymara,Aimara; Aymara,nucl1667,Central-Southern Aymara,family,aym,group,yes,Credits name Aymara without a variety; aym is the ISO macrolanguage code
-Mapudungun,Mapuche language; la lengua del pueblo mapuche,mapu1245,Mapudungun,language,arn,exact,yes,
-Ika (Arhuaco),Arhuaco; Ika; Iku,arhu1242,Arhuaco,language,arh,exact,yes,
-Me'phaa (Tlapanec),Me’phaa; Me' phaa (Tlapaneco); Tlapanec; Tlapaneco,meph1234,Mephaa,family,,group,yes,Credits name Me'phaa without a variety
-Tsotsil (Tzotzil),Tzotzil; Tsotsil,tzot1259,Tzotzil,language,tzo,exact,yes,
-Wayuunaiki,Wayuu,wayu1243,Wayuu,language,guc,exact,yes,
-Chinuk Wawa,Chinook Jargon; chinuk wawa,chin1492,Chinook-based pidgin,family,chn,group,yes,Glottolog separates the pidgin and the creolized Grand Ronde variety (chin1272); credits do not say which
-Shuar,,shua1257,Shuar,language,jiv,exact,yes,
-Siekopai,Secoya; Siekopai,seco1241,Secoya,language,sey,exact,yes,
-Waorani,Huaorani; Wao Tededo,waor1240,Waorani,language,auc,exact,yes,
-Damana (Wiwa),Damana; Wiwa; Malayo,mala1522,Malayo,language,mbp,exact,yes,
-Huave,Ikoots; huave,huav1256,Huavean,family,,group,yes,Credits say huave without a variety
-Innu-aimun,Innu; Montagnais,mont1268,Montagnais,language,moe,exact,yes,
-Quechua,,quec1387,Quechuan,family,que,group,yes,Credits name Quechua without a variety
-German,Deutsch,stan1295,German,language,deu,exact,no,
+label,also_credited_as,glottocode,glottolog_name,glottolog_level,iso639_3,match,indigenous,note,region,region_basis
+Anishinaabemowin (Ojibwe),Ojibwe; Ojibway; Anishinaabemowin,ojib1241,Ojibwa,family,,group,yes,Credits name the language without a regional variety,North America,Glottolog coordinates
+Atikamekw,,atik1240,Atikamekw,language,atj,exact,yes,,North America,Glottolog countries
+Ayuujk (Mixe),Ayuujk / Mixe; Ayuujk; Mixe,mixe1286,Mixe,family,,group,yes,Credits name Ayuujk without a variety,Central America and the Caribbean,Glottolog coordinates
+Blackfoot,,siks1238,Siksika,language,bla,exact,yes,,North America,Glottolog countries
+Cherokee,,cher1273,Cherokee,language,chr,exact,yes,,North America,Glottolog countries
+Cree,,cree1272,Cree,family,cre,group,yes,Credits name Cree without a variety,North America,Glottolog countries
+Plains Cree,Nehiyawewin,plai1258,Plains Cree,language,crk,exact,yes,,North America,Glottolog countries
+Denaakk’e (Koyukon),Denaakk’e; Koyukon,koyu1237,Koyukon,language,koy,exact,yes,,North America,Glottolog countries
+Dene,,,,,,unresolved,yes,Several Dene languages; the credit does not say which,North America,"region by hand: no Glottolog code (Dene languages, Canada)"
+Diné (Navajo),Diné; Navajo; Diné Bizaad,nava1243,Navajo,language,nav,exact,yes,,North America,Glottolog countries
+Garifuna,,gari1256,Garifuna,language,cab,exact,yes,,Central America and the Caribbean,Glottolog countries
+Haida,,haid1248,Haida,family,hai,group,yes,,North America,Glottolog countries
+Hän,,hann1241,Han,language,haa,exact,yes,,North America,Glottolog countries
+Inuktitut,,east2534,Eastern Canadian Inuktitut,language,ike,probable,yes,Inuktitut in Canadian credits usually names the eastern variety,North America,Glottolog countries
+Iñupiaq,Inupiaq,inup1234,Alaskan Inupiaq,family,ipk,group,yes,,North America,Glottolog countries
+Kalaallisut,Kalaallisut (Greenlandic); Greenlandic,kala1399,Kalaallisut,language,kal,exact,yes,,North America,Glottolog countries
+Kichwa,,colo1257,Colombia-Ecuador Quechua,family,,group,yes,Kichwa names the Ecuadorian Quechua varieties,South America,Glottolog coordinates
+Lakota,,lako1247,Lakota,language,lkt,exact,yes,,North America,Glottolog countries
+Mohawk,Kanien’kéha,moha1258,Mohawk,language,moh,exact,yes,,North America,Glottolog countries
+Nlakapamuxcheen,,thom1243,Thompson,language,thp,exact,yes,,North America,Glottolog countries
+Payómkawichum Chaamteela,Luiseño,luis1253,Luiseno-Juaneño,language,lui,exact,yes,,North America,Glottolog countries
+Q’eqchi’,,kekc1242,Q'eqchi',language,kek,exact,yes,,Central America and the Caribbean,Glottolog countries
+Secwépemctsín,Secwepemctsín; Secwepemctsin; Shuswap,shus1248,Shuswap,language,shs,exact,yes,,North America,Glottolog countries
+Taíno,Taíno dialect of Island Arawak Wahiyani,tain1254,Taino,language,tnq,exact,yes,,Central America and the Caribbean,Glottolog countries
+Tewa,,tewa1261,Tewa,family,,group,yes,,North America,Glottolog coordinates
+Tupí,,,,,,unresolved,yes,Tupí names several Tupian languages; the credit does not say which,South America,"region by hand: no Glottolog code (Tupí, Brazil)"
+English,,stan1293,English,language,eng,exact,no,,,
+Spanish,Español,stan1288,Spanish,language,spa,exact,no,,,
+Portuguese,Português,port1283,Portuguese,language,por,exact,no,,,
+French,Français,stan1290,French,language,fra,exact,no,,,
+Vietnamese,,viet1252,Vietnamese,language,vie,exact,no,,,
+Aymara,Aimara; Aymara,nucl1667,Central-Southern Aymara,family,aym,group,yes,Credits name Aymara without a variety; aym is the ISO macrolanguage code,South America,Glottolog countries
+Mapudungun,Mapuche language; la lengua del pueblo mapuche,mapu1245,Mapudungun,language,arn,exact,yes,,South America,Glottolog countries
+Ika (Arhuaco),Arhuaco; Ika; Iku,arhu1242,Arhuaco,language,arh,exact,yes,,South America,Glottolog countries
+Me'phaa (Tlapanec),Me’phaa; Me' phaa (Tlapaneco); Tlapanec; Tlapaneco,meph1234,Mephaa,family,,group,yes,Credits name Me'phaa without a variety,Central America and the Caribbean,Glottolog coordinates
+Tsotsil (Tzotzil),Tzotzil; Tsotsil,tzot1259,Tzotzil,language,tzo,exact,yes,,Central America and the Caribbean,Glottolog countries
+Wayuunaiki,Wayuu,wayu1243,Wayuu,language,guc,exact,yes,,South America,Glottolog countries
+Chinuk Wawa,Chinook Jargon; chinuk wawa,chin1492,Chinook-based pidgin,family,chn,group,yes,Glottolog separates the pidgin and the creolized Grand Ronde variety (chin1272); credits do not say which,North America,region by hand: Glottolog gives no coordinates (Pacific Northwest)
+Shuar,,shua1257,Shuar,language,jiv,exact,yes,,South America,Glottolog countries
+Siekopai,Secoya; Siekopai,seco1241,Secoya,language,sey,exact,yes,,South America,Glottolog countries
+Waorani,Huaorani; Wao Tededo,waor1240,Waorani,language,auc,exact,yes,,South America,Glottolog countries
+Damana (Wiwa),Damana; Wiwa; Malayo,mala1522,Malayo,language,mbp,exact,yes,,South America,Glottolog countries
+Huave,Ikoots; huave,huav1256,Huavean,family,,group,yes,Credits say huave without a variety,Central America and the Caribbean,Glottolog coordinates
+Innu-aimun,Innu; Montagnais,mont1268,Montagnais,language,moe,exact,yes,,North America,Glottolog countries
+Quechua,,quec1387,Quechuan,family,que,group,yes,Credits name Quechua without a variety,South America,Glottolog coordinates
+German,Deutsch,stan1295,German,language,deu,exact,no,,,

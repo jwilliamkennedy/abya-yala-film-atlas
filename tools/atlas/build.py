@@ -49,7 +49,7 @@ def film_tags(records, themes, families):
     tools/facets/build.py run on these records, so there is one definition of how tags are made."""
     import subprocess, tempfile, os
     ON = set(ON_MAP)
-    pub = [{'id': r['id'], 'name': r['name'], 'films': [{'id': f['id'], 'title': f['title'], 'year': f.get('year') or None, 'medium': f.get('medium') or '',
+    pub = [{'id': r['id'], 'name': r['name'], 'countries': r.get('countryCodes') or [], 'films': [{'id': f['id'], 'title': f['title'], 'year': f.get('year') or None, 'medium': f.get('medium') or '',
             'languages': f.get('languages') or '', 'languageLabels': f.get('languageLabels'), 'languageSource': f.get('languageSource', ''),
             'languageNote': f.get('languageNote', ''), 'source': f.get('sourceURL') or f.get('source') or ''} for f in r.get('films') or []]}
            for r in records if r.get('status') in ON]
