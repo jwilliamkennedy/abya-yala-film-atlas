@@ -164,13 +164,13 @@ open(OPT.get('--js-out', f'{BETA}/facets-data.js'), 'w', encoding='utf-8').write
 shell = open(f'{BETA}/maker/index.html', encoding='utf-8').read()
 head, _rest = shell.split('<main>', 1)
 foot = '</main>' + _rest.split('</main>', 1)[1] if '</main>' in _rest else '</main></body></html>'
-def page(path, title, desc, body):
+def page(path, title, desc, body, head_extra=''):
     h = re.sub(r'<title>.*?</title>', f'<title>{esc(title)} · Indigenous Cinema Atlas</title>', head, flags=re.S)
     h = re.sub(r'<meta name="description" content="[^"]*"', f'<meta name="description" content="{esc(desc)}"', h)
     h = h.replace('href="../', 'href="').replace('src="../', 'src="')
     h = h.replace('</head>', '<style>.facet-list{list-style:none;padding:0;margin:0}.facet-list>li{padding:14px 0;border-bottom:1px solid rgba(30,33,36,.14)}'
                   '.facet-list h2{font:400 22px/1.2 Georgia,serif;margin:0 0 4px}.facet-list .codes{font-size:13px;color:#5d6267}.facet-list ol{margin:8px 0 0;padding-left:18px;font-size:15px}'
-                  '.facet-list ol li{margin:3px 0}.jump{display:flex;flex-wrap:wrap;gap:6px 14px;margin:14px 0 6px;font-size:14px}.fam{margin-top:30px}</style></head>')
+                  '.facet-list ol li{margin:3px 0}.jump{display:flex;flex-wrap:wrap;gap:6px 14px;margin:14px 0 6px;font-size:14px}.fam{margin-top:30px}</style>' + head_extra + '</head>')
     open(f'{BETA}/{path}', 'w', encoding='utf-8').write(h + '<main>' + body + foot.replace('href="../', 'href="').replace('src="../', 'src="'))
 def film_li(fid, e):
     makers = ', '.join(f'<a href="maker/{esc(m["id"])}.html#{esc(fid)}">{esc(m["name"])}</a>' for m in e['makers'])
@@ -209,7 +209,12 @@ for fam, tags in T['families'].items():
 n_th = sum(1 for e in films.values() if e['themes'])
 page('themes.html', 'Themes', 'Films on the Indigenous Cinema Atlas by theme: 30 themes in five families, each tagged from a published synopsis.',
      f'<h1>Themes</h1>'
-     f'<p class="who">{n_th} of {WORKS:,} films on the public map are tagged so far, each from a published synopsis whose link is kept with the tag. A film can carry several themes; its primary theme is listed first in the data. Tagging continues. Updated {TODAY}.</p>'
-     f'<p class="jump">{" ".join(f"<a href=\"#{esc(key(t).replace(" ", "-"))}\">{esc(t)}</a>" for fam in T["families"].values() for t in fam if by_theme.get(t))}</p>'
-     + ''.join(secs) + '<p class="who"><a href="data/film-facets.csv">All film facets (CSV)</a> · <a href="data.html">About the data</a></p>')
+     f'<p class="who">There are {n_th} of {WORKS:,} films tagged with a theme or themes so far, each from a published synopsis, with its source and link. While a film can carry several themes, its primary theme is listed first in the data. Updated {TODAY}.</p>'
+     # the index: the five families side by side, each theme with its count (themes-20261123.js turns it into one theme at a time)
+     + '<div class="theme-index">' + ''.join(
+         f'<section><h2>{esc(fam)}</h2><ul>' + ''.join(f'<li><a href="#{esc(key(t).replace(" ", "-"))}">{esc(t)}</a><span class="n">{len(by_theme[t])}</span></li>' for t in tags if by_theme.get(t)) + '</ul></section>'
+         for fam, tags in T['families'].items()) + '</div>'
+     + ''.join(secs) + '<p class="who"><a href="data/film-facets.csv">All film facets (CSV)</a> · <a href="data.html">About the data</a></p>'
+     '<script defer src="assets/themes-20261123.js"></script>',
+     head_extra='<link rel="stylesheet" href="assets/themes-20261123.css">')
 print(f'films {WORKS} (facet entries {len(films)}) | with language {n_lang_films} | Indigenous languages {len(ind)} | with themes {n_th} | facet rows {len(rows)} | languages not in authority: {[l for l in lang_count if l not in A]}')

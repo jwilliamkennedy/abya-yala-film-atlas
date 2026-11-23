@@ -93,8 +93,8 @@ nav.primary{display:flex;flex-wrap:wrap;align-items:center;gap:4px 20px}
 nav.primary>a{color:var(--ink);border:0;font-size:15px;padding:6px 0}
 nav.primary a[aria-current]{box-shadow:inset 0 -2px 0 var(--accent,var(--gold))}
 /* links: ink inside the atlas, red with an arrow when they leave it (the same rule as the map) */
-main a:not([href^="http"]):not(.primary){color:var(--ink);border-bottom-color:color-mix(in srgb,var(--ink) 30%,transparent)}
-main a:not([href^="http"]):not(.primary):hover{border-bottom-color:var(--ink)}
+main a:not([href^="http"]):not(.primary):not(.btn){color:var(--ink);border-bottom-color:color-mix(in srgb,var(--ink) 30%,transparent)}
+main a:not([href^="http"]):not(.primary):not(.btn):hover{border-bottom-color:var(--ink)}
 main a[href^="http"]{color:var(--accent,var(--gold))}
 </style>
 <link rel="stylesheet" href="assets/site-menu.css?v=1c511470"><script defer src="assets/site-menu.js?v=3ce4d36d"></script><script defer src="i18n-20261107.js?v=23"></script>

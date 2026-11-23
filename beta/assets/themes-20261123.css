@@ -1,0 +1,45 @@
+/* Themes page: one theme at a time, chosen from one menu or from the index (2026-11-23). Without the script the page
+   keeps every list in order. Colours and type come from the site tokens (ui-20261109.css, rail-20261121.css). */
+.theme-index{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:22px 28px;margin:22px 0 8px}
+.theme-index h2{font:600 12px/1.3 var(--ui-sans,system-ui)!important;letter-spacing:.06em;text-transform:uppercase;color:var(--ui-muted,#5a646d);margin:0 0 8px}
+.theme-index ul{list-style:none;margin:0;padding:0}
+.theme-index li{display:flex;justify-content:space-between;gap:10px;padding:5px 0;border-bottom:1px solid var(--ui-line,#e2e4e7);font-size:14.5px}
+.theme-index li a{border:0!important}
+.theme-index li a:hover,.theme-index li a:focus-visible{text-decoration:underline;text-underline-offset:3px}
+.theme-index .n,.theme-pick .n{color:var(--ui-muted,#5a646d);font-variant-numeric:tabular-nums;font-size:13px}
+
+.theme-bar{display:none}
+html.themes-js .theme-bar{display:flex;align-items:center;gap:8px;position:sticky;top:0;z-index:30;margin:18px 0 0;padding:10px 0;
+  background:color-mix(in srgb,var(--ui-paper,#f4f5f6) 94%,transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--ui-line,#e2e4e7)}
+.theme-bar button,.theme-pick>summary{display:inline-flex;align-items:center;gap:8px;min-height:36px;padding:0 14px;border:1px solid var(--ui-line,#e2e4e7);border-radius:999px;
+  background:var(--ui-surface,#fbfcfc);color:var(--ui-ink,#14181c);font:500 14px/1 var(--ui-sans,system-ui);cursor:pointer;box-shadow:none}
+.theme-bar button[disabled]{opacity:.35;cursor:default}
+.theme-bar .step{width:36px;padding:0;justify-content:center;font-size:16px}
+.theme-bar .all{margin-left:auto}
+.theme-bar .all[aria-pressed=true]{background:var(--ui-wash,#e9ebed);border-color:transparent;font-weight:600}
+.theme-pick{position:relative}
+.theme-pick>summary{list-style:none;min-width:250px;justify-content:space-between}
+.theme-pick>summary::-webkit-details-marker{display:none}
+.theme-pick>summary::after{content:"";width:7px;height:7px;border:solid currentColor;border-width:0 1.5px 1.5px 0;transform:translateY(-2px) rotate(45deg)}
+.theme-pick[open]>summary::after{transform:translateY(2px) rotate(-135deg)}
+.theme-pick>div{position:absolute;left:0;top:calc(100% + 6px);z-index:40;width:min(760px,calc(100vw - 32px));max-height:min(70vh,620px);overflow:auto;
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px 22px;padding:16px 18px;background:var(--ui-surface,#fbfcfc);
+  border:1px solid var(--ui-line,#e2e4e7);border-radius:12px;box-shadow:var(--ui-shadow,0 10px 30px rgba(28,39,48,.12))}
+.theme-pick h3{font:600 11.5px/1.3 var(--ui-sans,system-ui);letter-spacing:.06em;text-transform:uppercase;color:var(--ui-muted,#5a646d);margin:0 0 4px}
+.theme-pick a{display:flex;justify-content:space-between;gap:10px;padding:5px 8px;margin:0 -8px;border:0!important;border-radius:6px;font-size:14.5px;color:var(--ui-ink,#14181c)}
+.theme-pick a:hover,.theme-pick a:focus-visible{background:var(--ui-wash,#e9ebed);outline:none}
+.theme-pick a[aria-current=true]{font-weight:600}
+
+/* one theme at a time */
+html.themes-js .fam,html.themes-js .facet-list>li{display:none}
+html.themes-js .fam.on,html.themes-js .facet-list>li.on{display:block}
+html.themes-js.theme-open .theme-index{display:none}
+html.themes-js .fam{margin-top:22px}
+html.themes-js .fam>h2{font:600 12px/1.3 var(--ui-sans,system-ui)!important;letter-spacing:.06em;text-transform:uppercase;color:var(--ui-muted,#5a646d);margin:0 0 4px}
+html.themes-js .facet-list>li{padding-top:0;border-bottom:0}
+html.themes-js .facet-list h2{font:400 30px/1.15 var(--ui-serif,Georgia,serif)!important;margin:0 0 6px}
+html.themes-js .facet-list>li{scroll-margin-top:72px}
+
+html[data-reading-theme="night"] .theme-bar{background:color-mix(in srgb,var(--ui-paper,#111) 92%,transparent)}
+@media (max-width:640px){.theme-pick>summary{min-width:0;max-width:52vw}.theme-pick>summary span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}}
+html.themes-js.theme-open .theme-bar{margin-bottom:14px}
