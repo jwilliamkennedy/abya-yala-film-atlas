@@ -51,7 +51,7 @@ dt{font:italic 1em/1.5 var(--ui-serif,Georgia,serif);color:var(--gold);white-spa
 .cta{display:flex;flex-wrap:wrap;gap:12px 22px;margin:22px 0 0}.cta a{font-weight:600}
 @media(max-width:560px){dl{grid-template-columns:1fr}dt{white-space:normal}}
 h2{font:400 clamp(26px,18px + 1.6vw,36px)/1.15 var(--ui-serif,Georgia,serif);margin:clamp(40px,6vw,60px) 0 14px;padding-top:clamp(18px,3vw,28px);border-top:1px solid var(--line);scroll-margin-top:24px}
-h2#background{margin-top:0;padding-top:0;border-top:0}
+h2#team{margin-top:0;padding-top:0;border-top:0}
 p{margin:0 0 16px}
 .bib h3{font:12px/1 var(--ui-sans,system-ui,sans-serif);letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin:28px 0 12px}
 .bib ul{list-style:none;margin:0;padding:0}
@@ -72,18 +72,24 @@ h2{margin:clamp(32px,4vw,44px) 0 12px;padding-top:clamp(16px,2vw,22px)}
 h3{margin:26px 0 8px}
 .contents{margin:0 0 clamp(28px,4vw,40px)}
 .credit{margin-top:40px}
-/* team */
-.team{list-style:none;margin:26px 0 0;padding:0;display:grid;gap:18px}
-.person{display:grid;grid-template-columns:132px 1fr;gap:26px;align-items:start;padding:22px;background:var(--ui-surface,var(--bg2));border:1px solid var(--line);border-radius:16px}
-.portrait{margin:0;width:132px;aspect-ratio:4/5;border-radius:12px;overflow:hidden;background:var(--line)}
+/* team: three cards side by side where they fit, one per row on phones */
+.team{list-style:none;margin:18px 0 8px;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:16px;align-items:stretch}
+.person{display:flex;flex-direction:column;gap:14px;padding:20px;background:var(--ui-surface,var(--bg2));border:1px solid var(--line);border-radius:16px}
+.person-head{display:flex;gap:16px;align-items:center}
+.portrait{flex:none;margin:0;width:88px;aspect-ratio:4/5;border-radius:12px;overflow:hidden;background:var(--line)}
 .portrait img{display:block;width:100%;height:100%;object-fit:cover}
-.portrait.mark{display:grid;place-items:center;background:var(--ui-wash,var(--bg2));color:var(--muted);font:400 30px/1 var(--ui-serif,Georgia,serif);letter-spacing:.04em}
-.person .role{margin:2px 0 8px;font:500 12px/1.3 var(--ui-sans,system-ui,sans-serif);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
-.person .role::before{content:"";display:inline-block;width:7px;height:7px;margin:0 9px 1px 0;border-radius:50%;background:var(--atlas-select,#ad884e);vertical-align:middle}
-.person h3{margin:0 0 10px;font:400 clamp(21px,17px + .8vw,26px)/1.2 var(--ui-serif,Georgia,serif)}
-.person p:last-child{margin:0}
-.person .bio{font-size:.94em;line-height:1.66}
-@media(max-width:560px){.person{grid-template-columns:1fr;gap:16px;padding:18px}.portrait{width:112px}}
+.person .role{margin:0 0 6px;font:500 11.5px/1.35 var(--ui-sans,system-ui,sans-serif);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.person .role::before{content:"";display:inline-block;width:7px;height:7px;margin:0 8px 1px 0;border-radius:50%;background:var(--atlas-select,#ad884e);vertical-align:middle}
+.person h3{margin:0;font:400 clamp(20px,17px + .5vw,23px)/1.2 var(--ui-serif,Georgia,serif)}
+.person .bio{margin:0;font-size:.9em;line-height:1.62}
+.person.clamp .bio{display:-webkit-box;-webkit-line-clamp:8;-webkit-box-orient:vertical;overflow:hidden}
+.person .more{align-self:flex-start;margin:auto 0 0;padding:4px 0;border:0;background:none;color:var(--ink);font:500 13.5px/1 var(--ui-sans,system-ui,sans-serif);border-bottom:1px solid var(--line);cursor:pointer}
+.person .more:hover{border-color:var(--ink)}
+.team:has(.more[aria-expanded="true"]){align-items:start}
+/* the page's sections stay one click away: the contents bar holds at the top while reading */
+:root[data-rail] .contents{position:sticky;top:0;z-index:5;background:var(--ui-paper,var(--bg))}
+h2,h3{scroll-margin-top:72px}
+:root main nav.contents a[aria-current]{color:var(--ink);box-shadow:inset 0 -2px 0 var(--atlas-select,#ad884e)}
 </style>
 <script defer src="assets/counter.js"></script>
 <style id="site-nav-css">
@@ -121,7 +127,23 @@ main a[href^="http"]{color:var(--accent,var(--gold))}
 <h1>Grounding Indigenous Cinema through land and relation</h1>
 <p class="lede">The Indigenous Cinema Atlas is a project that facilitates exploring and relating Indigenous film, television, and visual media in Abya Yala and Turtle Island. It does so through the relationship between land and cinema. The Atlas approaches Indigeneity as a political and relational analytic rather than an ethnic signifier, while respecting the authority of Indigenous communities and creators to define the terms of their own identities beyond the purview of any overarching determination (Storfjell 2021; Picq 2026).</p>
 <p class="lede-2">The purpose of this project is to enable you to explore films and media from Indigenous creators and communities and learn more about how anthropological histories have often sought to “speak for” Indigenous and Native communities through film in particular.</p>
-<nav class="contents" aria-label="On this page"><a href="#background">Background</a><a href="#the-map">The map</a><a href="#constellate">Constellate</a><a href="#ethics">Ethics</a><a href="#team">Team</a><a href="#works-cited">Works cited</a></nav>
+<nav class="contents" aria-label="On this page"><a href="#team">Team</a><a href="#background">Background</a><a href="#the-map">The map</a><a href="#constellate">Constellate</a><a href="#ethics">Ethics</a><a href="#works-cited">Works cited</a></nav>
+
+<h2 id="team">Team</h2>
+<ul class="team">
+<li class="person" id="john-kennedy-godoy">
+ <div class="person-head"><figure class="portrait"><img src="assets/img/team-john-kennedy-godoy-480.jpg" width="480" height="600" alt="John Kennedy Godoy, arms crossed, standing between stone walls with open water behind him; black-and-white photograph." loading="lazy" decoding="async"></figure><div><p class="role">Creator</p><h3>John Kennedy Godoy</h3></div></div>
+ <p class="bio">John Kennedy Godoy is an assistant professor in the Department of Spanish and Portuguese at the University of Colorado Boulder and core faculty in the Center for Native American and Indigenous Studies. He is the creator of the Indigenous Cinema Atlas.</p>
+</li>
+<li class="person" id="zazil-collins">
+ <div class="person-head"><figure class="portrait"><img src="assets/img/team-zazil-collins-480.jpg" width="480" height="600" alt="Zazil Collins outdoors in front of a tall rock face, wearing sunglasses and a light wool poncho." loading="lazy" decoding="async"></figure><div><p class="role">Graduate Research Assistant</p><h3>Zazil Collins</h3></div></div>
+ <p class="bio">Mexican writer and musical curator interested in the spatiality of poetics. She is the author of the poetry books <i>Junkie de nada</i> (Lenguaraz, 2009), <i>No todas las islas</i> (Conaculta-Instituto Sudcaliforniano de Cultura, 2012, Poetry Award La Paz City 2011), <i>El corazón, tan cerca de la boca</i> (Abismos-Mantarraya, 2014), <i>Sipofene</i> (La tinta del silencio, 2016), the bilingual chapbook <i>Pink</i> (Ofi Press, 2018) and <i>Omen</i> (Valparaíso, 2023). Her work was selected for the <i>General Anthology of Mexican Poetry: From the Second half of the Twentieth Century to Our Days</i> (Océano, 2014), Descarga Cultura UNAM and the prize Poesía en Voz Alta 17 at Casa del Lago UNAM. She is the coeditor of the project Musicians in Mexico City, together with US musician Todd Clouser. M.F.A in Creative Writing at the University of Texas at El Paso, and currently a Ph.D Candidate at CU Boulder.</p>
+</li>
+<li class="person" id="asiihkionkonci-parker">
+ <div class="person-head"><figure class="portrait"><img src="assets/img/team-asiihkionkonci-parker-480.jpg" width="480" height="600" alt="Ašiihkionkonci Parker smiling outdoors in a red sweater with a monarch butterfly on it." loading="lazy" decoding="async"></figure><div><p class="role">Undergraduate Research Assistant</p><h3>Ašiihkionkonci Parker</h3></div></div>
+ <p class="bio">Ašiihkionkonci Parker is a member of the Peoria Tribe of Indians of Oklahoma and Chicanx student at the University of Colorado Boulder. They’re the editor-in-chief for student newspaper <i>El Diario de la Gente</i> and board member for Oyate Native Student Org. Through their fields of study, cinema production, journalism and ethnic studies, they hope to fight for a more just world by documenting and reporting on community struggles from a community-oriented perspective.</p>
+</li>
+</ul>
 
 <h2 id="background">Background</h2>
 <p>My name is John Kennedy Godoy and I am the creator of the Indigenous Cinema Atlas. Currently, I am an assistant professor in the Department of Spanish and Portuguese at the University of Colorado Boulder. I am an Irish-Guatemalan American settler from Pennsylvania whose family is from Guatemala (Ixim Ulew) by way of Spain, Scotland, and Ireland. I created the Atlas to help bring attention to Indigenous films so that people can find, watch, and enjoy films made by Indigenous creators.</p>
@@ -180,25 +202,6 @@ main a[href^="http"]{color:var(--accent,var(--gold))}
 <p><strong>Responsibility.</strong> Only Indigenous filmmakers and collectives whose identity has multiple touch points and filmographic and bibliographic information are listed. There are many leads not yet on the website. We seek to constantly improve this project, following the logic of websites like Mirada Nativa, Kin Theory, and others. This project aims to push back on SEO parameters and spiders that view Indigenous cinema as a flattening analytic by instead centering constellated notions of comparative film analysis and viewership.</p>
 <p><strong>Ethics.</strong> The atlas is a collation of public information, links, thumbnails, and public domain films. As such, it doesn’t purport to represent cultural knowledge or gatekeep or present anything as though it were an arbiter. It is open to making mistakes and correcting them; it does not prioritize settler-colonial indices, nor does the project seek monetary recompense in the form of honoraria or stipends for its founder, though student researchers are funded where possible.</p>
 
-<h2 id="team">Team</h2>
-<ul class="team">
-<li class="person" id="john-kennedy-godoy">
- <div class="portrait mark" aria-hidden="true">JKG</div>
- <div><p class="role">Creator</p><h3>John Kennedy Godoy</h3>
- <p class="bio">John Kennedy Godoy is an assistant professor in the Department of Spanish and Portuguese at the University of Colorado Boulder and core faculty in the Center for Native American and Indigenous Studies. He is the creator of the Indigenous Cinema Atlas.</p></div>
-</li>
-<li class="person" id="zazil-collins">
- <figure class="portrait"><img src="assets/img/team-zazil-collins-480.jpg" width="480" height="600" alt="Zazil Collins outdoors in front of a tall rock face, wearing sunglasses and a light wool poncho." loading="lazy" decoding="async"></figure>
- <div><p class="role">Graduate Research Assistant</p><h3>Zazil Collins</h3>
- <p class="bio">Mexican writer and musical curator interested in the spatiality of poetics. She is the author of the poetry books <i>Junkie de nada</i> (Lenguaraz, 2009), <i>No todas las islas</i> (Conaculta-Instituto Sudcaliforniano de Cultura, 2012, Poetry Award La Paz City 2011), <i>El corazón, tan cerca de la boca</i> (Abismos-Mantarraya, 2014), <i>Sipofene</i> (La tinta del silencio, 2016), the bilingual chapbook <i>Pink</i> (Ofi Press, 2018) and <i>Omen</i> (Valparaíso, 2023). Her work was selected for the <i>General Anthology of Mexican Poetry: From the Second half of the Twentieth Century to Our Days</i> (Océano, 2014), Descarga Cultura UNAM and the prize Poesía en Voz Alta 17 at Casa del Lago UNAM. She is the coeditor of the project Musicians in Mexico City, together with US musician Todd Clouser. M.F.A in Creative Writing at the University of Texas at El Paso, and currently a Ph.D Candidate at CU Boulder.</p></div>
-</li>
-<li class="person" id="asiihkionkonci-parker">
- <figure class="portrait"><img src="assets/img/team-asiihkionkonci-parker-480.jpg" width="480" height="600" alt="Ašiihkionkonci Parker smiling outdoors in a red sweater with a monarch butterfly on it." loading="lazy" decoding="async"></figure>
- <div><p class="role">Undergraduate Research Assistant</p><h3>Ašiihkionkonci Parker</h3>
- <p class="bio">Ašiihkionkonci Parker is a member of the Peoria Tribe of Indians of Oklahoma and Chicanx student at the University of Colorado Boulder. They’re the editor-in-chief for student newspaper <i>El Diario de la Gente</i> and board member for Oyate Native Student Org. Through their fields of study, cinema production, journalism and ethnic studies, they hope to fight for a more just world by documenting and reporting on community struggles from a community-oriented perspective.</p></div>
-</li>
-</ul>
-
 <h2 id="works-cited">Works Cited</h2>
 <ul class="cited">
 <li>Byrd, Jodi A. <i>The Transit of Empire: Indigenous Critiques of Colonialism</i>. University of Minnesota Press, 2011.</li>
@@ -218,6 +221,14 @@ main a[href^="http"]{color:var(--accent,var(--gold))}
 if(location.hash==='#scholarship')location.replace('resources.html#books');
 // Old section links land on their new homes.
 (()=>{const to={'#methodology':'evidence','#personal-reflection':'constellate','#how-it-works':'the-map','#cartographic-ethics':'cartographic-ethics'}[location.hash];if(to){history.replaceState(null,'','#'+to);document.getElementById(to)?.scrollIntoView();}})();
+// Long bios fold to eight lines, with More to open them.
+document.querySelectorAll('.person').forEach(p=>{const b=p.querySelector('.bio');p.classList.add('clamp');if(b.scrollHeight<=b.clientHeight+2){p.classList.remove('clamp');return;}
+ const m=document.createElement('button');m.type='button';m.className='more';m.textContent='More';m.setAttribute('aria-expanded','false');
+ m.onclick=()=>{const open=p.classList.toggle('clamp');m.textContent=open?'More':'Less';m.setAttribute('aria-expanded',String(!open));};b.after(m);});
+// The contents bar marks the section being read.
+(()=>{const links=[...document.querySelectorAll('nav.contents a')],secs=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+ const mark=()=>{let cur=null;for(const h of secs){if(h.getBoundingClientRect().top<120)cur=h;}links.forEach(a=>a.toggleAttribute('aria-current',!!cur&&a.getAttribute('href')==='#'+cur.id));};
+ addEventListener('scroll',mark,{passive:true});mark();})();
 </script>
 </body>
 </html>
