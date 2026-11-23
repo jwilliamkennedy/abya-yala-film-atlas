@@ -6929,11 +6929,17 @@
      "source": "https://vtape.org/video?vi=9222"
     }
    ],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Justice, Truth and Reconciliation",
+    "Self-Representation and Countering Stereotypes"
+   ],
+   "primary_theme": "Justice, Truth and Reconciliation",
+   "families": [
+    "Expression and Representation",
+    "Sovereignty and Politics"
+   ],
+   "form": "Experimental",
+   "length": "Short"
   },
   "Q20261115-854-F2": {
    "title": "Casualties of Modernity",
@@ -6955,11 +6961,15 @@
      "source": "https://vtape.org/video?vi=8462"
     }
    ],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Art, Craft and Making"
+   ],
+   "primary_theme": "Art, Craft and Making",
+   "families": [
+    "Expression and Representation"
+   ],
+   "form": "Experimental",
+   "length": "Short"
   },
   "Q20261115-854-F3": {
    "title": "Miss Chief of Hearts",
@@ -6981,11 +6991,16 @@
      "source": "https://vtape.org/video?vi=8380"
     }
    ],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Art, Craft and Making",
+    "Music and Performance"
+   ],
+   "primary_theme": "Art, Craft and Making",
+   "families": [
+    "Expression and Representation"
+   ],
+   "form": "Documentary",
+   "length": "Short"
   },
   "Q20261115-854-F4": {
    "title": "Miss Chief: Justice of the Piece",
@@ -7007,11 +7022,17 @@
      "source": "https://vtape.org/video?vi=7962"
     }
    ],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Sovereignty and Self-Determination",
+    "Music and Performance"
+   ],
+   "primary_theme": "Sovereignty and Self-Determination",
+   "families": [
+    "Expression and Representation",
+    "Sovereignty and Politics"
+   ],
+   "form": "Documentary",
+   "length": "Short"
   },
   "Q20261115-854-F5": {
    "title": "Mary",
@@ -8046,9 +8067,16 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "LGBTQIA2S",
+    "Youth",
+    "Elders and Knowledge"
+   ],
+   "primary_theme": "LGBTQIA2S",
+   "families": [
+    "Knowledge and Continuity",
+    "Lives and Relations"
+   ],
    "form": "Documentary",
    "length": null
   },
@@ -10143,11 +10171,18 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "LGBTQIA2S",
+    "Health and Healing",
+    "Art, Craft and Making"
+   ],
+   "primary_theme": "LGBTQIA2S",
+   "families": [
+    "Expression and Representation",
+    "Lives and Relations"
+   ],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "MIRROR-FILMOGRAPHY-20261107-009": {
    "title": "First Night Out",
@@ -10159,11 +10194,17 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "LGBTQIA2S",
+    "Resistance Movements"
+   ],
+   "primary_theme": "LGBTQIA2S",
+   "families": [
+    "Lives and Relations",
+    "Sovereignty and Politics"
+   ],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "MIRROR-FILMOGRAPHY-20261107-010": {
    "title": "Kwêskosîw (She Whistles)",
@@ -10175,11 +10216,17 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "MMIWG2S",
+    "LGBTQIA2S"
+   ],
+   "primary_theme": "MMIWG2S",
+   "families": [
+    "Lives and Relations",
+    "Sovereignty and Politics"
+   ],
+   "form": "Fiction",
+   "length": "Short"
   },
   "MIRROR-FILMOGRAPHY-20261107-011": {
    "title": "Medicine Bundle",
@@ -10191,11 +10238,18 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Health and Healing",
+    "Kinship",
+    "Memory and Oral History"
+   ],
+   "primary_theme": "Health and Healing",
+   "families": [
+    "Knowledge and Continuity",
+    "Lives and Relations"
+   ],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "MIRROR-FILMOGRAPHY-20261107-012": {
    "title": "Medicine and Magic",
@@ -10207,9 +10261,16 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Health and Healing",
+    "Kinship",
+    "Memory and Oral History"
+   ],
+   "primary_theme": "Health and Healing",
+   "families": [
+    "Knowledge and Continuity",
+    "Lives and Relations"
+   ],
    "form": null,
    "length": null
   },
@@ -10223,11 +10284,17 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Extractivism",
+    "Art, Craft and Making"
+   ],
+   "primary_theme": "Extractivism",
+   "families": [
+    "Expression and Representation",
+    "Land and Environment"
+   ],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "MIRROR-FILMOGRAPHY-20261107-014": {
    "title": "Reclamation",
@@ -10239,11 +10306,19 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Environmental Change",
+    "Land Defense",
+    "LGBTQIA2S",
+    "Food Sovereignty"
+   ],
+   "primary_theme": "Environmental Change",
+   "families": [
+    "Land and Environment",
+    "Lives and Relations"
+   ],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "MIRROR-FILMOGRAPHY-20261107-015": {
    "title": "Thirza Cuthand Is an Indian Within the Meaning of the Indian Act",
@@ -10255,11 +10330,17 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Self-Representation and Countering Stereotypes",
+    "Kinship"
+   ],
+   "primary_theme": "Self-Representation and Countering Stereotypes",
+   "families": [
+    "Expression and Representation",
+    "Lives and Relations"
+   ],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "MIRROR-FILMOGRAPHY-20261107-016": {
    "title": "2 Spirit Dreamcatcher Dot Com",
@@ -10271,11 +10352,17 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "LGBTQIA2S",
+    "Elders and Knowledge"
+   ],
+   "primary_theme": "LGBTQIA2S",
+   "families": [
+    "Knowledge and Continuity",
+    "Lives and Relations"
+   ],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "MIRROR-FILMOGRAPHY-20261107-017": {
    "title": "The Longform Lesbian Census",
@@ -10287,11 +10374,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "LGBTQIA2S"
+   ],
+   "primary_theme": "LGBTQIA2S",
+   "families": [
+    "Lives and Relations"
+   ],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "MIRROR-FILMOGRAPHY-20261107-018": {
    "title": "2 Spirit Introductory Special $19.99",
@@ -10303,11 +10394,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "LGBTQIA2S"
+   ],
+   "primary_theme": "LGBTQIA2S",
+   "families": [
+    "Lives and Relations"
+   ],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "MIRROR-FILMOGRAPHY-20261107-019": {
    "title": "Just Dandy",
@@ -10319,11 +10414,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "LGBTQIA2S"
+   ],
+   "primary_theme": "LGBTQIA2S",
+   "families": [
+    "Lives and Relations"
+   ],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "MIRROR-FILMOGRAPHY-20261107-020": {
    "title": "Boi Oh Boi",
@@ -10335,11 +10434,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "LGBTQIA2S"
+   ],
+   "primary_theme": "LGBTQIA2S",
+   "families": [
+    "Lives and Relations"
+   ],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "MIRROR-FILMOGRAPHY-20261107-021": {
    "title": "Sight",
@@ -10351,11 +10454,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Health and Healing"
+   ],
+   "primary_theme": "Health and Healing",
+   "families": [
+    "Lives and Relations"
+   ],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "MIRROR-FILMOGRAPHY-20261107-022": {
    "title": "Homelands",
@@ -10383,11 +10490,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "LGBTQIA2S"
+   ],
+   "primary_theme": "LGBTQIA2S",
+   "families": [
+    "Lives and Relations"
+   ],
+   "form": "Fiction",
+   "length": "Short"
   },
   "MIRROR-FILMOGRAPHY-20261107-024": {
    "title": "Madness in Four Actions",
@@ -10415,11 +10526,16 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "LGBTQIA2S",
+    "Health and Healing"
+   ],
+   "primary_theme": "LGBTQIA2S",
+   "families": [
+    "Lives and Relations"
+   ],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "MIRROR-FILMOGRAPHY-20261107-026": {
    "title": "Anhedonia",
@@ -10447,11 +10563,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "LGBTQIA2S"
+   ],
+   "primary_theme": "LGBTQIA2S",
+   "families": [
+    "Lives and Relations"
+   ],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "MIRROR-FILMOGRAPHY-20261107-028": {
    "title": "Thirza Cuthand’s Through the Looking Glass",
@@ -10479,11 +10599,16 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "LGBTQIA2S",
+    "Youth"
+   ],
+   "primary_theme": "LGBTQIA2S",
+   "families": [
+    "Lives and Relations"
+   ],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "MIRROR-FILMOGRAPHY-20261107-030": {
    "title": "Bisexual Wannabe",
@@ -10511,11 +10636,16 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "LGBTQIA2S",
+    "Youth"
+   ],
+   "primary_theme": "LGBTQIA2S",
+   "families": [
+    "Lives and Relations"
+   ],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "MIRROR-FILMOGRAPHY-20261107-032": {
    "title": "Colonization: The Second Coming",
@@ -10543,11 +10673,16 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Kinship",
+    "Youth"
+   ],
+   "primary_theme": "Kinship",
+   "families": [
+    "Lives and Relations"
+   ],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "MIRROR-FILMOGRAPHY-20261107-034": {
    "title": "Lessons in Baby Dyke Theory",
@@ -10559,11 +10694,16 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "LGBTQIA2S",
+    "Youth"
+   ],
+   "primary_theme": "LGBTQIA2S",
+   "families": [
+    "Lives and Relations"
+   ],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "Q20261115-84-F1": {
    "title": "Redacted",
@@ -10591,11 +10731,17 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Kinship",
+    "Health and Healing",
+    "LGBTQIA2S"
+   ],
+   "primary_theme": "Kinship",
+   "families": [
+    "Lives and Relations"
+   ],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "Q20261115-84-F3": {
    "title": "Discretion",
@@ -10639,11 +10785,17 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "LGBTQIA2S",
+    "Memory and Oral History"
+   ],
+   "primary_theme": "LGBTQIA2S",
+   "families": [
+    "Knowledge and Continuity",
+    "Lives and Relations"
+   ],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "Q20261115-84-F6": {
    "title": "Extractions",
@@ -10655,11 +10807,18 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Extractivism",
+    "Kinship",
+    "Health and Healing"
+   ],
+   "primary_theme": "Extractivism",
+   "families": [
+    "Land and Environment",
+    "Lives and Relations"
+   ],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "Q20261115-84-F7": {
    "title": "Devout and Out: Susan",
@@ -43287,9 +43446,13 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Self-Representation and Countering Stereotypes"
+   ],
+   "primary_theme": "Self-Representation and Countering Stereotypes",
+   "families": [
+    "Expression and Representation"
+   ],
    "form": "Experimental",
    "length": "Short"
   },
@@ -43401,7 +43564,8 @@
    "themes": [
     "Water",
     "Cosmology and Origin Stories",
-    "Health and Healing"
+    "LGBTQIA2S",
+    "More-than-Human Relations"
    ],
    "primary_theme": "Water",
    "families": [
@@ -43444,11 +43608,17 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Water",
+    "LGBTQIA2S"
+   ],
+   "primary_theme": "Water",
+   "families": [
+    "Land and Environment",
+    "Lives and Relations"
+   ],
    "form": "Experimental",
-   "length": null
+   "length": "Short"
   },
   "Q20261121-101-F5": {
    "title": "Buscando a Marcela Calfuqueo",

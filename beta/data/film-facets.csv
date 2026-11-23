@@ -512,9 +512,24 @@ DIR-0110-F1,this river,2016,theme,Health and Healing,Lives and Relations,https:/
 DIR-0110-F1,this river,2016,theme,Memory and Oral History,Knowledge and Continuity,https://www.nfb.ca/film/this_river/,tagged from a published synopsis
 DIR-0110-F1,this river,2016,form,Documentary,,https://www.nfb.ca/film/this_river/,from the published synopsis
 Q20261115-854-F1,Miss Chief's Praying Hands,2019,language,English,stan1293,https://vtape.org/video?vi=9222,recorded with the film
+Q20261115-854-F1,Miss Chief's Praying Hands,2019,theme,"Justice, Truth and Reconciliation",Sovereignty and Politics,https://vtape.org/video?vi=9222,tagged from a published synopsis; primary theme
+Q20261115-854-F1,Miss Chief's Praying Hands,2019,theme,Self-Representation and Countering Stereotypes,Expression and Representation,https://vtape.org/video?vi=9222,tagged from a published synopsis
+Q20261115-854-F1,Miss Chief's Praying Hands,2019,form,Experimental,,https://vtape.org/video?vi=9222,from the published synopsis
+Q20261115-854-F1,Miss Chief's Praying Hands,2019,length,Short,,https://vtape.org/video?vi=9222,from the published synopsis
 Q20261115-854-F2,Casualties of Modernity,2015,language,English,stan1293,https://vtape.org/video?vi=8462,recorded with the film
+Q20261115-854-F2,Casualties of Modernity,2015,theme,"Art, Craft and Making",Expression and Representation,https://vtape.org/video?vi=8462,tagged from a published synopsis; primary theme
+Q20261115-854-F2,Casualties of Modernity,2015,form,Experimental,,https://vtape.org/video?vi=8462,from the published synopsis
+Q20261115-854-F2,Casualties of Modernity,2015,length,Short,,https://vtape.org/video?vi=8462,from the published synopsis
 Q20261115-854-F3,Miss Chief of Hearts,2015,language,English,stan1293,https://vtape.org/video?vi=8380,recorded with the film
+Q20261115-854-F3,Miss Chief of Hearts,2015,theme,"Art, Craft and Making",Expression and Representation,https://vtape.org/video?vi=8380,tagged from a published synopsis; primary theme
+Q20261115-854-F3,Miss Chief of Hearts,2015,theme,Music and Performance,Expression and Representation,https://vtape.org/video?vi=8380,tagged from a published synopsis
+Q20261115-854-F3,Miss Chief of Hearts,2015,form,Documentary,,https://vtape.org/video?vi=8380,from the published synopsis
+Q20261115-854-F3,Miss Chief of Hearts,2015,length,Short,,https://vtape.org/video?vi=8380,from the published synopsis
 Q20261115-854-F4,Miss Chief: Justice of the Piece,2013,language,English,stan1293,https://vtape.org/video?vi=7962,recorded with the film
+Q20261115-854-F4,Miss Chief: Justice of the Piece,2013,theme,Sovereignty and Self-Determination,Sovereignty and Politics,https://vtape.org/video?vi=7962,tagged from a published synopsis; primary theme
+Q20261115-854-F4,Miss Chief: Justice of the Piece,2013,theme,Music and Performance,Expression and Representation,https://vtape.org/video?vi=7962,tagged from a published synopsis
+Q20261115-854-F4,Miss Chief: Justice of the Piece,2013,form,Documentary,,https://vtape.org/video?vi=7962,from the published synopsis
+Q20261115-854-F4,Miss Chief: Justice of the Piece,2013,length,Short,,https://vtape.org/video?vi=7962,from the published synopsis
 Q20261115-854-F5,Mary,2011,language,English,stan1293,https://vtape.org/video?vi=7421,recorded with the film
 RESEARCH-FILM-20261031-800-0002,"Ninan Auassat: We, The Children",2024,theme,Youth,Lives and Relations,https://www.themoviedb.org/movie/1353478,tagged from a published synopsis; primary theme
 RESEARCH-FILM-20261031-800-0002,"Ninan Auassat: We, The Children",2024,form,Documentary,,https://www.themoviedb.org/movie/1353478,from the published synopsis
@@ -596,7 +611,10 @@ Q20261115-408-F13,Bingo,1991,form,Experimental,,https://www.femfilm.ca/film_sear
 Q20261115-408-F13,Bingo,1991,length,Short,,https://www.femfilm.ca/film_search.php?film=beaucage-bingo&lang=e,"normalised from the recorded form ""Documentary / experimental short"""
 Q20261115-408-F14,Fetal Alcohol Spectrum Disorder... Put a Face on It,2014,form,Documentary,,https://femfilm.ca/film_year_get.php?lang=e&year_entered=2014,"normalised from the recorded form ""Documentary short"""
 Q20261115-408-F14,Fetal Alcohol Spectrum Disorder... Put a Face on It,2014,length,Short,,https://femfilm.ca/film_year_get.php?lang=e&year_entered=2014,"normalised from the recorded form ""Documentary short"""
-Q20261115-408-F16,COMING IN: Stories of Two Spirit in Saskatchewan …Taking Our Place,2016,form,Documentary,,https://sfai.org/people/marjorie-beaucage/,"normalised from the recorded form ""Documentary"""
+Q20261115-408-F16,COMING IN: Stories of Two Spirit in Saskatchewan …Taking Our Place,2016,theme,LGBTQIA2S,Lives and Relations,https://harbourcollective.ca/marjorie-beaucage-rainbow-warrior-and-art-ivist/,tagged from a published synopsis; primary theme
+Q20261115-408-F16,COMING IN: Stories of Two Spirit in Saskatchewan …Taking Our Place,2016,theme,Youth,Lives and Relations,https://harbourcollective.ca/marjorie-beaucage-rainbow-warrior-and-art-ivist/,tagged from a published synopsis
+Q20261115-408-F16,COMING IN: Stories of Two Spirit in Saskatchewan …Taking Our Place,2016,theme,Elders and Knowledge,Knowledge and Continuity,https://harbourcollective.ca/marjorie-beaucage-rainbow-warrior-and-art-ivist/,tagged from a published synopsis
+Q20261115-408-F16,COMING IN: Stories of Two Spirit in Saskatchewan …Taking Our Place,2016,form,Documentary,,https://harbourcollective.ca/marjorie-beaucage-rainbow-warrior-and-art-ivist/,from the published synopsis
 Q20261115-408-F17,Giving Back,2016,form,Documentary,,https://www.femfilm.ca/film_search.php?film=beaucage-giving&lang=e,"normalised from the recorded form ""Documentary short"""
 Q20261115-408-F17,Giving Back,2016,length,Short,,https://www.femfilm.ca/film_search.php?film=beaucage-giving&lang=e,"normalised from the recorded form ""Documentary short"""
 Q20261115-408-F15,Rougarou,2014,form,Experimental,,https://mail.probability.ca/film_search.php?film=beaucage-rougarou&lang=e,"normalised from the recorded form ""Experimental short"""
@@ -756,7 +774,80 @@ Q20261115-223-F1,The Traveling Medicine Show 3: Transformation,2014,form,Animati
 Q20261115-223-F1,The Traveling Medicine Show 3: Transformation,2014,length,Short,,https://www.terrilcalder.com/the-traveling-medicine-show.html,"normalised from the recorded form ""Short animation (segment)"""
 RESEARCH-FILM-20261031-800-0022,Dreams of Sunlight Through Trees,2024,theme,LGBTQIA2S,Lives and Relations,https://www.themoviedb.org/movie/1388741,tagged from a published synopsis; primary theme
 RESEARCH-FILM-20261031-800-0022,Dreams of Sunlight Through Trees,2024,length,Short,,https://www.themoviedb.org/movie/1388741,from the published synopsis
+MIRROR-FILMOGRAPHY-20261107-008,The Lost Art of the Future,2022,theme,LGBTQIA2S,Lives and Relations,https://www.vdb.org/titles/lost-art-future,tagged from a published synopsis; primary theme
+MIRROR-FILMOGRAPHY-20261107-008,The Lost Art of the Future,2022,theme,Health and Healing,Lives and Relations,https://www.vdb.org/titles/lost-art-future,tagged from a published synopsis
+MIRROR-FILMOGRAPHY-20261107-008,The Lost Art of the Future,2022,theme,"Art, Craft and Making",Expression and Representation,https://www.vdb.org/titles/lost-art-future,tagged from a published synopsis
+MIRROR-FILMOGRAPHY-20261107-008,The Lost Art of the Future,2022,length,Short,,https://www.vdb.org/titles/lost-art-future,from the published synopsis
+MIRROR-FILMOGRAPHY-20261107-009,First Night Out,2022,theme,LGBTQIA2S,Lives and Relations,https://www.vdb.org/titles/first-night-out,tagged from a published synopsis; primary theme
+MIRROR-FILMOGRAPHY-20261107-009,First Night Out,2022,theme,Resistance Movements,Sovereignty and Politics,https://www.vdb.org/titles/first-night-out,tagged from a published synopsis
+MIRROR-FILMOGRAPHY-20261107-009,First Night Out,2022,length,Short,,https://www.vdb.org/titles/first-night-out,from the published synopsis
+MIRROR-FILMOGRAPHY-20261107-010,Kwêskosîw (She Whistles),2021,theme,MMIWG2S,Sovereignty and Politics,https://windspeaker.com/news/windspeaker-news/indigenous-thriller-kweskosiw-screen-two-festivals-next-week,tagged from a published synopsis; primary theme
+MIRROR-FILMOGRAPHY-20261107-010,Kwêskosîw (She Whistles),2021,theme,LGBTQIA2S,Lives and Relations,https://windspeaker.com/news/windspeaker-news/indigenous-thriller-kweskosiw-screen-two-festivals-next-week,tagged from a published synopsis
+MIRROR-FILMOGRAPHY-20261107-010,Kwêskosîw (She Whistles),2021,form,Fiction,,https://windspeaker.com/news/windspeaker-news/indigenous-thriller-kweskosiw-screen-two-festivals-next-week,from the published synopsis
+MIRROR-FILMOGRAPHY-20261107-010,Kwêskosîw (She Whistles),2021,length,Short,,https://windspeaker.com/news/windspeaker-news/indigenous-thriller-kweskosiw-screen-two-festivals-next-week,from the published synopsis
+MIRROR-FILMOGRAPHY-20261107-011,Medicine Bundle,2020,theme,Health and Healing,Lives and Relations,https://www.vdb.org/titles/medicine-bundle,tagged from a published synopsis; primary theme
+MIRROR-FILMOGRAPHY-20261107-011,Medicine Bundle,2020,theme,Kinship,Lives and Relations,https://www.vdb.org/titles/medicine-bundle,tagged from a published synopsis
+MIRROR-FILMOGRAPHY-20261107-011,Medicine Bundle,2020,theme,Memory and Oral History,Knowledge and Continuity,https://www.vdb.org/titles/medicine-bundle,tagged from a published synopsis
+MIRROR-FILMOGRAPHY-20261107-011,Medicine Bundle,2020,length,Short,,https://www.vdb.org/titles/medicine-bundle,from the published synopsis
+MIRROR-FILMOGRAPHY-20261107-012,Medicine and Magic,2020,theme,Health and Healing,Lives and Relations,https://vtape.org/event/thirza-cuthand-medicine-and-magic,tagged from a published synopsis; primary theme
+MIRROR-FILMOGRAPHY-20261107-012,Medicine and Magic,2020,theme,Kinship,Lives and Relations,https://vtape.org/event/thirza-cuthand-medicine-and-magic,tagged from a published synopsis
+MIRROR-FILMOGRAPHY-20261107-012,Medicine and Magic,2020,theme,Memory and Oral History,Knowledge and Continuity,https://vtape.org/event/thirza-cuthand-medicine-and-magic,tagged from a published synopsis
+MIRROR-FILMOGRAPHY-20261107-013,Less Lethal Fetishes,2019,theme,Extractivism,Land and Environment,https://www.vdb.org/titles/ndn-survival-trilogy,tagged from a published synopsis; primary theme
+MIRROR-FILMOGRAPHY-20261107-013,Less Lethal Fetishes,2019,theme,"Art, Craft and Making",Expression and Representation,https://www.vdb.org/titles/ndn-survival-trilogy,tagged from a published synopsis
+MIRROR-FILMOGRAPHY-20261107-013,Less Lethal Fetishes,2019,length,Short,,https://www.vdb.org/titles/ndn-survival-trilogy,from the published synopsis
+MIRROR-FILMOGRAPHY-20261107-014,Reclamation,2018,theme,Environmental Change,Land and Environment,https://vtape.org/video?vi=9065,tagged from a published synopsis; primary theme
+MIRROR-FILMOGRAPHY-20261107-014,Reclamation,2018,theme,Land Defense,Land and Environment,https://vtape.org/video?vi=9065,tagged from a published synopsis
+MIRROR-FILMOGRAPHY-20261107-014,Reclamation,2018,theme,LGBTQIA2S,Lives and Relations,https://vtape.org/video?vi=9065,tagged from a published synopsis
+MIRROR-FILMOGRAPHY-20261107-014,Reclamation,2018,theme,Food Sovereignty,Land and Environment,https://vtape.org/video?vi=9065,tagged from a published synopsis
+MIRROR-FILMOGRAPHY-20261107-014,Reclamation,2018,length,Short,,https://vtape.org/video?vi=9065,from the published synopsis
+MIRROR-FILMOGRAPHY-20261107-015,Thirza Cuthand Is an Indian Within the Meaning of the Indian Act,2017,theme,Self-Representation and Countering Stereotypes,Expression and Representation,https://vtape.org/video?vi=8806,tagged from a published synopsis; primary theme
+MIRROR-FILMOGRAPHY-20261107-015,Thirza Cuthand Is an Indian Within the Meaning of the Indian Act,2017,theme,Kinship,Lives and Relations,https://vtape.org/video?vi=8806,tagged from a published synopsis
+MIRROR-FILMOGRAPHY-20261107-015,Thirza Cuthand Is an Indian Within the Meaning of the Indian Act,2017,length,Short,,https://vtape.org/video?vi=8806,from the published synopsis
+MIRROR-FILMOGRAPHY-20261107-016,2 Spirit Dreamcatcher Dot Com,2017,theme,LGBTQIA2S,Lives and Relations,https://vtape.org/video?vi=8737,tagged from a published synopsis; primary theme
+MIRROR-FILMOGRAPHY-20261107-016,2 Spirit Dreamcatcher Dot Com,2017,theme,Elders and Knowledge,Knowledge and Continuity,https://vtape.org/video?vi=8737,tagged from a published synopsis
+MIRROR-FILMOGRAPHY-20261107-016,2 Spirit Dreamcatcher Dot Com,2017,length,Short,,https://vtape.org/video?vi=8737,from the published synopsis
+MIRROR-FILMOGRAPHY-20261107-017,The Longform Lesbian Census,2017,theme,LGBTQIA2S,Lives and Relations,https://www.vdb.org/taxonomy/term/503,tagged from a published synopsis; primary theme
+MIRROR-FILMOGRAPHY-20261107-017,The Longform Lesbian Census,2017,length,Short,,https://www.vdb.org/taxonomy/term/503,from the published synopsis
+MIRROR-FILMOGRAPHY-20261107-018,2 Spirit Introductory Special $19.99,2015,theme,LGBTQIA2S,Lives and Relations,https://www.transgendermediaportal.org/media/WORK_001189.html,tagged from a published synopsis; primary theme
+MIRROR-FILMOGRAPHY-20261107-018,2 Spirit Introductory Special $19.99,2015,length,Short,,https://www.transgendermediaportal.org/media/WORK_001189.html,from the published synopsis
+MIRROR-FILMOGRAPHY-20261107-019,Just Dandy,2013,theme,LGBTQIA2S,Lives and Relations,https://www.vdb.org/titles/just-dandy,tagged from a published synopsis; primary theme
+MIRROR-FILMOGRAPHY-20261107-019,Just Dandy,2013,length,Short,,https://www.vdb.org/titles/just-dandy,from the published synopsis
+MIRROR-FILMOGRAPHY-20261107-020,Boi Oh Boi,2012,theme,LGBTQIA2S,Lives and Relations,https://dorismccarthygallery.utoronto.ca/publications/essays/love-and-numbers,tagged from a published synopsis; primary theme
+MIRROR-FILMOGRAPHY-20261107-020,Boi Oh Boi,2012,length,Short,,https://dorismccarthygallery.utoronto.ca/publications/essays/love-and-numbers,from the published synopsis
+MIRROR-FILMOGRAPHY-20261107-021,Sight,2012,theme,Health and Healing,Lives and Relations,https://vtape.org/event/vtapevideoplay,tagged from a published synopsis; primary theme
+MIRROR-FILMOGRAPHY-20261107-021,Sight,2012,length,Short,,https://vtape.org/event/vtapevideoplay,from the published synopsis
+MIRROR-FILMOGRAPHY-20261107-023,You Are A Lesbian Vampire,2008,theme,LGBTQIA2S,Lives and Relations,https://www.mediaqueer.ca/film/you-are-lesbian-vampire,tagged from a published synopsis; primary theme
+MIRROR-FILMOGRAPHY-20261107-023,You Are A Lesbian Vampire,2008,form,Fiction,,https://www.mediaqueer.ca/film/you-are-lesbian-vampire,from the published synopsis
+MIRROR-FILMOGRAPHY-20261107-023,You Are A Lesbian Vampire,2008,length,Short,,https://www.mediaqueer.ca/film/you-are-lesbian-vampire,from the published synopsis
+MIRROR-FILMOGRAPHY-20261107-025,Love & Numbers,2004,theme,LGBTQIA2S,Lives and Relations,https://www.vdb.org/titles/love-numbers,tagged from a published synopsis; primary theme
+MIRROR-FILMOGRAPHY-20261107-025,Love & Numbers,2004,theme,Health and Healing,Lives and Relations,https://www.vdb.org/titles/love-numbers,tagged from a published synopsis
+MIRROR-FILMOGRAPHY-20261107-025,Love & Numbers,2004,length,Short,,https://www.vdb.org/titles/love-numbers,from the published synopsis
+MIRROR-FILMOGRAPHY-20261107-027,Helpless Maiden Makes an “I” Statement,1999,theme,LGBTQIA2S,Lives and Relations,https://www.mediaqueer.ca/film/helpless-maiden-makes-i-statement,tagged from a published synopsis; primary theme
+MIRROR-FILMOGRAPHY-20261107-027,Helpless Maiden Makes an “I” Statement,1999,length,Short,,https://www.mediaqueer.ca/film/helpless-maiden-makes-i-statement,from the published synopsis
+MIRROR-FILMOGRAPHY-20261107-029,Untouchable,1998,theme,LGBTQIA2S,Lives and Relations,https://www.vdb.org/titles/untouchable,tagged from a published synopsis; primary theme
+MIRROR-FILMOGRAPHY-20261107-029,Untouchable,1998,theme,Youth,Lives and Relations,https://www.vdb.org/titles/untouchable,tagged from a published synopsis
+MIRROR-FILMOGRAPHY-20261107-029,Untouchable,1998,length,Short,,https://www.vdb.org/titles/untouchable,from the published synopsis
+MIRROR-FILMOGRAPHY-20261107-031,Working Baby Dyke Theory,1997,theme,LGBTQIA2S,Lives and Relations,http://www.mediaqueer.ca/film/working-baby-dyke-theory-diasporic-impact-cross-generational-barriers,tagged from a published synopsis; primary theme
+MIRROR-FILMOGRAPHY-20261107-031,Working Baby Dyke Theory,1997,theme,Youth,Lives and Relations,http://www.mediaqueer.ca/film/working-baby-dyke-theory-diasporic-impact-cross-generational-barriers,tagged from a published synopsis
+MIRROR-FILMOGRAPHY-20261107-031,Working Baby Dyke Theory,1997,length,Short,,http://www.mediaqueer.ca/film/working-baby-dyke-theory-diasporic-impact-cross-generational-barriers,from the published synopsis
+MIRROR-FILMOGRAPHY-20261107-033,My Sister,1996,theme,Kinship,Lives and Relations,https://www.vdb.org/titles/my-sister,tagged from a published synopsis; primary theme
+MIRROR-FILMOGRAPHY-20261107-033,My Sister,1996,theme,Youth,Lives and Relations,https://www.vdb.org/titles/my-sister,tagged from a published synopsis
+MIRROR-FILMOGRAPHY-20261107-033,My Sister,1996,length,Short,,https://www.vdb.org/titles/my-sister,from the published synopsis
+MIRROR-FILMOGRAPHY-20261107-034,Lessons in Baby Dyke Theory,1995,theme,LGBTQIA2S,Lives and Relations,https://www.vdb.org/titles/lessons-baby-dyke-theory,tagged from a published synopsis; primary theme
+MIRROR-FILMOGRAPHY-20261107-034,Lessons in Baby Dyke Theory,1995,theme,Youth,Lives and Relations,https://www.vdb.org/titles/lessons-baby-dyke-theory,tagged from a published synopsis
+MIRROR-FILMOGRAPHY-20261107-034,Lessons in Baby Dyke Theory,1995,length,Short,,https://www.vdb.org/titles/lessons-baby-dyke-theory,from the published synopsis
+Q20261115-84-F2,13 Eggs,2022,theme,Kinship,Lives and Relations,https://www.vdb.org/titles/13-eggs,tagged from a published synopsis; primary theme
+Q20261115-84-F2,13 Eggs,2022,theme,Health and Healing,Lives and Relations,https://www.vdb.org/titles/13-eggs,tagged from a published synopsis
+Q20261115-84-F2,13 Eggs,2022,theme,LGBTQIA2S,Lives and Relations,https://www.vdb.org/titles/13-eggs,tagged from a published synopsis
+Q20261115-84-F2,13 Eggs,2022,length,Short,,https://www.vdb.org/titles/13-eggs,from the published synopsis
 Q20261115-84-F4,Processing Racism Table,2021,form,Experimental,,https://www.tjcuthand.com/filmography/,"normalised from the recorded form ""Five-channel video installation"""
+Q20261115-84-F5,Woman Dress,2019,theme,LGBTQIA2S,Lives and Relations,https://www.nfb.ca/film/woman-dress/,tagged from a published synopsis; primary theme
+Q20261115-84-F5,Woman Dress,2019,theme,Memory and Oral History,Knowledge and Continuity,https://www.nfb.ca/film/woman-dress/,tagged from a published synopsis
+Q20261115-84-F5,Woman Dress,2019,length,Short,,https://www.nfb.ca/film/woman-dress/,from the published synopsis
+Q20261115-84-F6,Extractions,2019,theme,Extractivism,Land and Environment,https://www.vdb.org/titles/extractions,tagged from a published synopsis; primary theme
+Q20261115-84-F6,Extractions,2019,theme,Kinship,Lives and Relations,https://www.vdb.org/titles/extractions,tagged from a published synopsis
+Q20261115-84-F6,Extractions,2019,theme,Health and Healing,Lives and Relations,https://www.vdb.org/titles/extractions,tagged from a published synopsis
+Q20261115-84-F6,Extractions,2019,length,Short,,https://www.vdb.org/titles/extractions,from the published synopsis
 DIR-0158-F1,Mohawk Girls,2014,length,Series,,https://mohawkgirls.com/about/creative-team/,"normalised from the recorded form ""Television series"""
 DIR-0158-F2,Cashing In,,length,Series,,https://directors.ca/directors/tracey-deer/,"normalised from the recorded form ""Television series"""
 DIR-0158-F3,Hudson & Rex,,length,Series,,https://directors.ca/directors/tracey-deer/,"normalised from the recorded form ""Television series"""
@@ -3368,7 +3459,8 @@ Q20261114-84-F1,Originárias,2022,form,Documentary,,https://www.sescsp.org.br/ed
 Q20261114-84-F1,Originárias,2022,length,Short,,https://www.sescsp.org.br/editorial/esta-no-ar-mais-uma-lista-com-a-programacao-da-semana-do-sesc-sorocaba-2/,"normalised from the recorded form ""Documentary short"""
 Q20261114-85-F1,Saiti Munuti: Cantos e Encantos,2025,form,Documentary,,https://portalacre.com.br/2025/07/documentario-saiti-munuti-cantos-e-encantos-estreia-no-festcine-originarios-durante-mariri-yawanawa-2025/,"normalised from the recorded form ""Documentary short"""
 Q20261114-85-F1,Saiti Munuti: Cantos e Encantos,2025,length,Short,,https://portalacre.com.br/2025/07/documentario-saiti-munuti-cantos-e-encantos-estreia-no-festcine-originarios-durante-mariri-yawanawa-2025/,"normalised from the recorded form ""Documentary short"""
-Q20261114-73-F1,Asentamiento,2015,form,Experimental,,https://cinechile.cl/pelicula/asentamiento/,"normalised from the recorded form ""Experimental short / video art"""
+Q20261114-73-F1,Asentamiento,2015,theme,Self-Representation and Countering Stereotypes,Expression and Representation,https://sebacalfuqueo.com/,tagged from a published synopsis; primary theme
+Q20261114-73-F1,Asentamiento,2015,form,Experimental,,https://sebacalfuqueo.com/,from the published synopsis
 Q20261114-73-F1,Asentamiento,2015,length,Short,,https://cinechile.cl/pelicula/asentamiento/,"normalised from the recorded form ""Experimental short / video art"""
 Q20261114-73-F2,Mapu Kufüll,2020,theme,Food Sovereignty,Land and Environment,https://sebacalfuqueo.com/mapu-kufull/,tagged from a published synopsis; primary theme
 Q20261114-73-F2,Mapu Kufüll,2020,theme,More-than-Human Relations,Land and Environment,https://sebacalfuqueo.com/mapu-kufull/,tagged from a published synopsis
@@ -3391,16 +3483,20 @@ Q20261121-101-F1,NGÜRU KA WILLIÑ (FOX AND OTTER),2022,theme,Cosmology and Orig
 Q20261121-101-F1,NGÜRU KA WILLIÑ (FOX AND OTTER),2022,theme,More-than-Human Relations,Land and Environment,https://sebacalfuqueo.com/nguru-ka-willin-2022/,tagged from a published synopsis
 Q20261121-101-F1,NGÜRU KA WILLIÑ (FOX AND OTTER),2022,form,Animation,,https://sebacalfuqueo.com/nguru-ka-willin-2022/,from the published synopsis
 Q20261121-101-F1,NGÜRU KA WILLIÑ (FOX AND OTTER),2022,length,Short,,https://sebacalfuqueo.com/nguru-ka-willin-2022/,from the published synopsis
-Q20261121-101-F2,TRAY TRAY KO,2022,theme,Water,Land and Environment,https://sebacalfuqueo.com/tray-tray-ko/,tagged from a published synopsis; primary theme
-Q20261121-101-F2,TRAY TRAY KO,2022,theme,Cosmology and Origin Stories,Knowledge and Continuity,https://sebacalfuqueo.com/tray-tray-ko/,tagged from a published synopsis
-Q20261121-101-F2,TRAY TRAY KO,2022,theme,Health and Healing,Lives and Relations,https://sebacalfuqueo.com/tray-tray-ko/,tagged from a published synopsis
-Q20261121-101-F2,TRAY TRAY KO,2022,form,Experimental,,https://sebacalfuqueo.com/tray-tray-ko/,from the published synopsis
-Q20261121-101-F2,TRAY TRAY KO,2022,length,Short,,https://sebacalfuqueo.com/tray-tray-ko/,from the published synopsis
+Q20261121-101-F2,TRAY TRAY KO,2022,theme,Water,Land and Environment,https://whitney.org/exhibitions/2024-biennial?section=5,tagged from a published synopsis; primary theme
+Q20261121-101-F2,TRAY TRAY KO,2022,theme,Cosmology and Origin Stories,Knowledge and Continuity,https://whitney.org/exhibitions/2024-biennial?section=5,tagged from a published synopsis
+Q20261121-101-F2,TRAY TRAY KO,2022,theme,LGBTQIA2S,Lives and Relations,https://whitney.org/exhibitions/2024-biennial?section=5,tagged from a published synopsis
+Q20261121-101-F2,TRAY TRAY KO,2022,theme,More-than-Human Relations,Land and Environment,https://whitney.org/exhibitions/2024-biennial?section=5,tagged from a published synopsis
+Q20261121-101-F2,TRAY TRAY KO,2022,form,Experimental,,https://whitney.org/exhibitions/2024-biennial?section=5,from the published synopsis
+Q20261121-101-F2,TRAY TRAY KO,2022,length,Short,,https://whitney.org/exhibitions/2024-biennial?section=5,from the published synopsis
 Q20261121-101-F3,Las quilas (The Quilas),2021,theme,LGBTQIA2S,Lives and Relations,https://sebacalfuqueo.com/las-quilas-2021/,tagged from a published synopsis; primary theme
 Q20261121-101-F3,Las quilas (The Quilas),2021,theme,More-than-Human Relations,Land and Environment,https://sebacalfuqueo.com/las-quilas-2021/,tagged from a published synopsis
 Q20261121-101-F3,Las quilas (The Quilas),2021,form,Experimental,,https://sebacalfuqueo.com/las-quilas-2021/,from the published synopsis
 Q20261121-101-F3,Las quilas (The Quilas),2021,length,Short,,https://sebacalfuqueo.com/las-quilas-2021/,from the published synopsis
-Q20261121-101-F4,Kowkülen (Liquid Being),2020,form,Experimental,,https://sebacalfuqueo.com/category/video/,"normalised from the recorded form ""Video art"""
+Q20261121-101-F4,Kowkülen (Liquid Being),2020,theme,Water,Land and Environment,https://post.moma.org/sebastian-calfuqueos-kowkulen-inhabiting-nonbinary-waters/,tagged from a published synopsis; primary theme
+Q20261121-101-F4,Kowkülen (Liquid Being),2020,theme,LGBTQIA2S,Lives and Relations,https://post.moma.org/sebastian-calfuqueos-kowkulen-inhabiting-nonbinary-waters/,tagged from a published synopsis
+Q20261121-101-F4,Kowkülen (Liquid Being),2020,form,Experimental,,https://post.moma.org/sebastian-calfuqueos-kowkulen-inhabiting-nonbinary-waters/,from the published synopsis
+Q20261121-101-F4,Kowkülen (Liquid Being),2020,length,Short,,https://post.moma.org/sebastian-calfuqueos-kowkulen-inhabiting-nonbinary-waters/,from the published synopsis
 Q20261121-101-F5,Buscando a Marcela Calfuqueo,2018,form,Experimental,,https://sebacalfuqueo.com/category/video/,"normalised from the recorded form ""Video art"""
 Q20261121-101-F6,Welu Kumplipe,2018,theme,Sovereignty and Self-Determination,Sovereignty and Politics,https://sebacalfuqueo.com/welu-kumplipe/,tagged from a published synopsis; primary theme
 Q20261121-101-F6,Welu Kumplipe,2018,theme,Memory and Oral History,Knowledge and Continuity,https://sebacalfuqueo.com/welu-kumplipe/,tagged from a published synopsis
