@@ -9,3 +9,6 @@ Requested by atlas owner: promote current beta/ to published root using tools/pr
 
 2026-11-23 (afternoon)
 Requested by atlas owner: promote current beta/ to published root using tools/promote_beta.py; preserve beta and private research Queue. About: Team section (John Kennedy Godoy, Zazil Collins, Ašiihkionkonci Parker), text widened beside the rail, shorter page.
+
+2026-11-23 (afternoon)
+Requested by atlas owner: promote current beta/ to published root using tools/promote_beta.py; preserve beta and private research Queue. Constellate: simpler start with Gather, Link says why two films connect, a land click shows its films, Link works from a clear map, examples stay intact and always listed, Order list shows every film, no author name on the example.
