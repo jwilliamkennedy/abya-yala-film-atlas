@@ -82,3 +82,74 @@ main .about-tabs{display:inline-flex;flex-wrap:wrap;gap:2px;padding:3px;border-r
 main .about-tabs a{display:inline-flex;align-items:center;min-height:32px;padding:0 16px;border:0;border-radius:999px;color:var(--ui-muted,#5a646d);font:400 14px/1 var(--ui-sans,system-ui,sans-serif);text-decoration:none;background:transparent}
 main .about-tabs a:hover{color:var(--ui-ink,#14181c)}
 main .about-tabs a[aria-current=page]{background:var(--ui-surface,#fbfcfc);color:var(--ui-ink,#14181c);box-shadow:0 1px 2px rgba(20,24,28,.12)}
+
+/* ---------- Phones (760px and narrower), 23 Nov 2026 ----------
+   One slim header row on every page (mark, name, Menu); Menu opens a full-width list of the pages with the
+   language and day/night choices at its foot. On the map: the four map tools share one line, the floating
+   controls sit in one row above the sheet, the closed sheet shows only its handle, and the open sheet reads
+   from the top down: Filmmakers | Films | Land, search, its tools, A–Z, the list.
+   Selectors carry three :not(#…) so they outrank the earlier layers' !important rules. */
+.phone-menu-btn{display:none}
+@media (max-width:760px){
+ html:not(#_):not(#__):not(#___) body>header{display:flex!important;flex-wrap:nowrap!important;align-items:center!important;gap:6px!important;height:56px!important;min-height:56px!important;max-height:56px!important;padding:0 6px 0 14px!important;position:relative!important;z-index:1001!important}
+ html:not(#_):not(#__):not(#___) body>header .brand{order:0!important;flex:1 1 auto!important;min-width:0!important;display:flex!important;align-items:center!important;gap:9px!important;margin:0!important}
+ html:not(#_):not(#__):not(#___) body>header .brand svg{flex:none!important;width:26px!important;height:26px!important}
+ html:not(#_):not(#__):not(#___) body>header .brand>span{display:block!important;min-width:0!important;font-size:19px!important;line-height:1.15!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important}
+ html:not(#_):not(#__):not(#___) body>header .brand small{display:none!important}
+ html:not(#_):not(#__):not(#___) body>header>nav.primary,
+ html:not(#_):not(#__):not(#___) body>header>.ui-header-tools,
+ html:not(#_):not(#__):not(#___) body>header>.atlas-utilities{display:none!important}
+ html:not(#_):not(#__):not(#___) .phone-menu-btn{display:inline-flex!important;order:10!important;flex:none!important;align-items:center!important;gap:8px!important;height:44px!important;min-height:44px!important;margin:0 0 0 auto!important;padding:0 12px!important;border:0!important;border-radius:22px!important;background:transparent!important;box-shadow:none!important;color:inherit!important;font:500 15px/1 var(--ui-sans,"Atlas Sans",system-ui,sans-serif)!important;cursor:pointer}
+ html:not(#_):not(#__):not(#___) .phone-menu-btn .t{line-height:1!important}
+ html:not(#_):not(#__):not(#___) .phone-menu-btn .bars{position:relative;width:18px;height:2px;background:currentColor;border-radius:1px;transition:background .15s}
+ html:not(#_):not(#__):not(#___) .phone-menu-btn .bars::before,html:not(#_):not(#__):not(#___) .phone-menu-btn .bars::after{content:"";position:absolute;left:0;width:18px;height:2px;background:currentColor;border-radius:1px;transition:transform .2s}
+ html:not(#_):not(#__):not(#___) .phone-menu-btn .bars::before{top:-6px}html:not(#_):not(#__):not(#___) .phone-menu-btn .bars::after{top:6px}
+ html:not(#_):not(#__):not(#___)[data-phone-menu=open] .phone-menu-btn .bars{background:transparent}
+ html:not(#_):not(#__):not(#___)[data-phone-menu=open] .phone-menu-btn .bars::before{transform:translateY(6px) rotate(45deg)}
+ html:not(#_):not(#__):not(#___)[data-phone-menu=open] .phone-menu-btn .bars::after{transform:translateY(-6px) rotate(-45deg)}
+ html:not(#_):not(#__):not(#___) .phone-menu-btn:focus-visible{outline:2px solid var(--atlas-select,#ad884e);outline-offset:2px}
+ /* the open menu */
+ html:not(#_):not(#__):not(#___)[data-phone-menu=open] body{overflow:hidden!important}
+ html:not(#_):not(#__):not(#___)[data-phone-menu=open] body>header>nav.primary{display:flex!important;flex-direction:column!important;align-items:stretch!important;gap:0!important;position:fixed!important;top:56px!important;left:0!important;right:0!important;bottom:0!important;z-index:1000!important;margin:0!important;padding:6px 22px calc(24px + env(safe-area-inset-bottom))!important;overflow-y:auto!important;background:var(--ui-paper,#f4f5f6)!important;border-top:1px solid var(--ui-line,#e2e4e7)!important;width:auto!important;height:auto!important;max-width:none!important}
+ html:not(#_):not(#__):not(#___)[data-phone-menu=open] body>header>nav.primary>a,
+ html:not(#_):not(#__):not(#___)[data-phone-menu=open] body>header>nav.primary .more-menu>div>a{display:block!important;padding:13px 0!important;margin:0!important;border:0!important;border-bottom:1px solid var(--ui-line,#e2e4e7)!important;border-radius:0!important;background:none!important;box-shadow:none!important;font:400 22px/1.25 var(--ui-serif,"Atlas Serif",Georgia,serif)!important;color:var(--ui-ink,#14181c)!important;text-decoration:none!important;height:auto!important;white-space:normal!important}
+ html:not(#_):not(#__):not(#___)[data-phone-menu=open] body>header>nav.primary .more-menu>div>a{font-size:17px!important;padding:11px 0!important}
+ html:not(#_):not(#__):not(#___)[data-phone-menu=open] body>header>nav.primary a[aria-current=page]{box-shadow:inset 3px 0 0 var(--atlas-select,#ad884e)!important;padding-left:12px!important}
+ html:not(#_):not(#__):not(#___)[data-phone-menu=open] body>header>nav.primary .more-menu{display:block!important;position:static!important;margin:14px 0 0!important}
+ html:not(#_):not(#__):not(#___)[data-phone-menu=open] body>header>nav.primary .more-menu>summary{display:none!important}
+ html:not(#_):not(#__):not(#___)[data-phone-menu=open] body>header>nav.primary .more-menu>div{display:block!important;position:static!important;inset:auto!important;transform:none!important;width:auto!important;min-width:0!important;max-height:none!important;margin:0!important;padding:0!important;border:0!important;border-radius:0!important;background:none!important;box-shadow:none!important;opacity:1!important;visibility:visible!important}
+ html:not(#_):not(#__):not(#___)[data-phone-menu=open] body>header>nav.primary .more-sep{display:block!important;height:14px!important;border:0!important;margin:0!important;background:none!important}
+ html:not(#_):not(#__):not(#___)[data-phone-menu=open] body>header>nav.primary .more-settings{display:none!important}
+ html:not(#_):not(#__):not(#___)[data-phone-menu=open] body>header>nav.primary>.ui-header-tools{display:flex!important;align-items:center!important;gap:12px!important;height:auto!important;margin:22px 0 0!important;padding:0!important;order:9!important}
+ html:not(#_):not(#__):not(#___)[data-reading-theme=night][data-phone-menu=open] body>header>nav.primary{background:#0e1729!important;border-top-color:#25324a!important}
+ html:not(#_):not(#__):not(#___)[data-reading-theme=night][data-phone-menu=open] body>header>nav.primary a{color:#e8ecf2!important;border-bottom-color:#25324a!important}
+
+ /* map: the four tools on one line, equal and centred */
+ html:not(#_):not(#__):not(#___) .map-toolbar .map-actions{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:2px!important;align-items:center!important;margin:0!important;width:100%!important}
+ html:not(#_):not(#__):not(#___) .map-toolbar .map-actions>#map-info{display:none!important}
+ html:not(#_):not(#__):not(#___) .map-toolbar .map-actions>:is(#country-drawer,#layers)>summary,
+ html:not(#_):not(#__):not(#___) .map-toolbar .map-actions>:is(#map-draw-line,#td-toggle){display:flex!important;align-items:center!important;justify-content:center!important;width:100%!important;height:34px!important;min-height:34px!important;margin:0!important;padding:0 4px!important;line-height:1!important;font-size:14px!important;vertical-align:middle!important;box-sizing:border-box!important}
+
+ /* map: the floating controls in one row just above the closed sheet */
+ html:not(#_):not(#__):not(#___)[data-sheet=peek] #index{height:58px!important;overflow:hidden!important}
+ html:not(#_):not(#__):not(#___)[data-sheet=peek] #index>:not(#sheet-handle){visibility:hidden!important}
+ html:not(#_):not(#__):not(#___)[data-sheet] .map-panel .zoom{left:auto!important;right:16px!important;bottom:calc(58px + 12px)!important;top:auto!important}
+ html:not(#_):not(#__):not(#___)[data-sheet] #featured-weave{left:16px!important;right:auto!important;bottom:calc(58px + 12px)!important;width:auto!important;max-width:calc(100% - 32px)!important}
+ html:not(#_):not(#__):not(#___)[data-sheet] #featured-weave:not(.is-collapsed){bottom:calc(58px + 12px + 52px)!important}
+
+ /* map: the open sheet reads from the top down */
+ html:not(#_):not(#__):not(#___) #index .index-command-bar{display:flex!important;flex-wrap:wrap!important;align-items:center!important;column-gap:8px!important;row-gap:10px!important;grid-template-columns:none!important;grid-template-rows:none!important;padding:6px 18px 8px!important}
+ html:not(#_):not(#__):not(#___) #index .index-command-bar>*{flex:0 0 100%!important;min-width:0!important;order:6!important;grid-column:auto!important;grid-row:auto!important}
+ html:not(#_):not(#__):not(#___) #index .index-command-bar>.view-switch{order:1!important;margin:0!important}
+ html:not(#_):not(#__):not(#___) #index .index-command-bar>.search-row{order:2!important;margin:0!important}
+ html:not(#_):not(#__):not(#___) #index .index-command-bar>.view-history{order:3!important;flex:0 0 auto!important;display:flex!important;gap:2px!important;min-height:0!important;margin:0!important;padding:0!important;border:0!important}
+ html:not(#_):not(#__):not(#___) #index .index-command-bar>.index-control-row{order:3!important;flex:1 1 auto!important;display:flex!important;justify-content:flex-end!important;gap:4px!important;margin:0!important;min-height:0!important}
+ html:not(#_):not(#__):not(#___) #index .index-command-bar>:is(#maker-browser,#film-browser){order:4!important;margin:0!important}
+ html:not(#_):not(#__):not(#___) #index .view-history:not(:has(button:not(:disabled))){display:none!important}
+ /* the whole alphabet in three rows instead of a strip that stops at I */
+ html:not(#_):not(#__):not(#___) #index .ui-alpha-shell{display:block!important;overflow:visible!important}
+ html:not(#_):not(#__):not(#___) #index .ui-alpha-shell .ui-alpha-arrow{display:none!important}
+ html:not(#_):not(#__):not(#___) #index :is(#maker-alphabet,#film-alphabet){display:grid!important;grid-template-columns:repeat(10,minmax(0,1fr))!important;gap:2px!important;overflow:visible!important;flex-wrap:wrap!important;width:100%!important;min-height:0!important;padding:2px 0!important;mask-image:none!important;-webkit-mask-image:none!important}
+ html:not(#_):not(#__):not(#___) #index :is(#maker-alphabet,#film-alphabet) button{min-width:0!important;width:auto!important;height:36px!important;min-height:36px!important;padding:0!important;font-size:15px!important}
+ html:not(#_):not(#__):not(#___) #index .view-history button:disabled{display:none!important}
+}
