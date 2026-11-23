@@ -18,3 +18,6 @@ Requested by atlas owner: promote current beta/ to published root using tools/pr
 
 2026-11-23 (evening)
 Requested by atlas owner: promote current beta/ to published root using tools/promote_beta.py; preserve beta and private research Queue. About, Data and CARE, Resources: one shared column; lake under the About title; gentler About; phone fit.
+
+2026-11-23 (evening, 2)
+Requested by atlas owner: promote current beta/ to published root using tools/promote_beta.py; preserve beta and private research Queue. About pages: less empty space beside the rail.
