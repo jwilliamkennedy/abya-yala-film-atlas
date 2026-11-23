@@ -3119,10 +3119,18 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
+   "themes": [
+    "Memory and Oral History",
+    "Youth",
+    "State Violence and Genocide"
+   ],
+   "primary_theme": "Memory and Oral History",
+   "families": [
+    "Knowledge and Continuity",
+    "Lives and Relations",
+    "Sovereignty and Politics"
+   ],
+   "form": "Documentary",
    "length": null
   },
   "MIRROR-FILMOGRAPHY-20261107-062": {
@@ -3189,10 +3197,18 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
+   "themes": [
+    "Sovereignty and Self-Determination",
+    "Food Sovereignty",
+    "State Violence and Genocide",
+    "Water"
+   ],
+   "primary_theme": "Sovereignty and Self-Determination",
+   "families": [
+    "Land and Environment",
+    "Sovereignty and Politics"
+   ],
+   "form": "Documentary",
    "length": null
   },
   "MIRROR-FILMOGRAPHY-20261107-066": {
@@ -3205,10 +3221,18 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
+   "themes": [
+    "Resistance Movements",
+    "Displacement and Migration",
+    "State Violence and Genocide",
+    "Women and Gender"
+   ],
+   "primary_theme": "Resistance Movements",
+   "families": [
+    "Lives and Relations",
+    "Sovereignty and Politics"
+   ],
+   "form": "Documentary",
    "length": null
   },
   "MIRROR-FILMOGRAPHY-20261107-067": {
@@ -3237,10 +3261,17 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
+   "themes": [
+    "Resistance Movements",
+    "State Violence and Genocide",
+    "Women and Gender"
+   ],
+   "primary_theme": "Resistance Movements",
+   "families": [
+    "Lives and Relations",
+    "Sovereignty and Politics"
+   ],
+   "form": "Documentary",
    "length": null
   },
   "MIRROR-FILMOGRAPHY-20261107-069": {
@@ -3323,10 +3354,17 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
+   "themes": [
+    "Youth",
+    "Memory and Oral History",
+    "Kinship"
+   ],
+   "primary_theme": "Youth",
+   "families": [
+    "Knowledge and Continuity",
+    "Lives and Relations"
+   ],
+   "form": "Documentary",
    "length": null
   },
   "MIRROR-FILMOGRAPHY-20261107-074": {
@@ -3339,10 +3377,17 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
+   "themes": [
+    "Food Sovereignty",
+    "Sovereignty and Self-Determination",
+    "State Violence and Genocide"
+   ],
+   "primary_theme": "Food Sovereignty",
+   "families": [
+    "Land and Environment",
+    "Sovereignty and Politics"
+   ],
+   "form": "Documentary",
    "length": null
   },
   "MIRROR-FILMOGRAPHY-20261107-075": {
@@ -4189,10 +4234,16 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": "Animation",
+   "themes": [
+    "Environmental Change",
+    "Youth"
+   ],
+   "primary_theme": "Environmental Change",
+   "families": [
+    "Land and Environment",
+    "Lives and Relations"
+   ],
+   "form": "Hybrid",
    "length": "Short"
   },
   "Q20261114-70-F3": {
@@ -4205,9 +4256,17 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Memory and Oral History",
+    "Kinship",
+    "Displacement and Migration"
+   ],
+   "primary_theme": "Memory and Oral History",
+   "families": [
+    "Knowledge and Continuity",
+    "Lives and Relations",
+    "Sovereignty and Politics"
+   ],
    "form": "Animation",
    "length": "Short"
   },
@@ -4221,10 +4280,19 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": "Music Video",
+   "themes": [
+    "Archives, Museums and Repatriation",
+    "Water",
+    "Elders and Knowledge",
+    "Music and Performance"
+   ],
+   "primary_theme": "Archives, Museums and Repatriation",
+   "families": [
+    "Expression and Representation",
+    "Knowledge and Continuity",
+    "Land and Environment"
+   ],
+   "form": "Animation",
    "length": "Short"
   },
   "Q20261114-70-F5": {
@@ -4237,11 +4305,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Self-Representation and Countering Stereotypes"
+   ],
+   "primary_theme": "Self-Representation and Countering Stereotypes",
+   "families": [
+    "Expression and Representation"
+   ],
    "form": "Animation",
-   "length": null
+   "length": "Short"
   },
   "Q20261114-70-F6": {
    "title": "Biidaaban (The Dawn Comes)",
@@ -4253,9 +4325,17 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "LGBTQIA2S",
+    "Food Sovereignty",
+    "Urban Indigeneity",
+    "More-than-Human Relations"
+   ],
+   "primary_theme": "LGBTQIA2S",
+   "families": [
+    "Land and Environment",
+    "Lives and Relations"
+   ],
    "form": "Animation",
    "length": "Short"
   },
@@ -5307,10 +5387,16 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
+   "themes": [
+    "Youth",
+    "Women and Gender",
+    "Kinship"
+   ],
+   "primary_theme": "Youth",
+   "families": [
+    "Lives and Relations"
+   ],
+   "form": "Fiction",
    "length": "Short"
   },
   "Q20261114-71-F5": {
@@ -5323,10 +5409,20 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
+   "themes": [
+    "State Violence and Genocide",
+    "Environmental Change",
+    "Cosmology and Origin Stories",
+    "Urban Indigeneity"
+   ],
+   "primary_theme": "State Violence and Genocide",
+   "families": [
+    "Knowledge and Continuity",
+    "Land and Environment",
+    "Lives and Relations",
+    "Sovereignty and Politics"
+   ],
+   "form": "Fiction",
    "length": "Short"
   },
   "Q20261114-71-F6": {
@@ -6784,10 +6880,17 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
+   "themes": [
+    "Kinship",
+    "Health and Healing",
+    "Memory and Oral History"
+   ],
+   "primary_theme": "Kinship",
+   "families": [
+    "Knowledge and Continuity",
+    "Lives and Relations"
+   ],
+   "form": "Documentary",
    "length": null
   },
   "DIR-0111-F1": {
@@ -8350,9 +8453,17 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Music and Performance",
+    "Kinship",
+    "Memory and Oral History"
+   ],
+   "primary_theme": "Music and Performance",
+   "families": [
+    "Expression and Representation",
+    "Knowledge and Continuity",
+    "Lives and Relations"
+   ],
    "form": "Documentary",
    "length": "Short"
   },
@@ -12170,9 +12281,17 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Displacement and Migration",
+    "Urban Indigeneity",
+    "Cosmology and Origin Stories"
+   ],
+   "primary_theme": "Displacement and Migration",
+   "families": [
+    "Knowledge and Continuity",
+    "Lives and Relations",
+    "Sovereignty and Politics"
+   ],
    "form": "Experimental",
    "length": null
   },
@@ -12420,10 +12539,18 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
+   "themes": [
+    "Land Defense",
+    "Memory and Oral History",
+    "Sovereignty and Self-Determination"
+   ],
+   "primary_theme": "Land Defense",
+   "families": [
+    "Knowledge and Continuity",
+    "Land and Environment",
+    "Sovereignty and Politics"
+   ],
+   "form": "Documentary",
    "length": null
   },
   "FILM-0115": {
@@ -28895,11 +29022,19 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Elders and Knowledge",
+    "Youth",
+    "More-than-Human Relations"
+   ],
+   "primary_theme": "Elders and Knowledge",
+   "families": [
+    "Knowledge and Continuity",
+    "Land and Environment",
+    "Lives and Relations"
+   ],
+   "form": "Documentary",
+   "length": "Short"
   },
   "LEAD-20261031-0001-F2": {
    "title": "Ince ka mogetun – Yo también volví a nacer",
@@ -28911,11 +29046,18 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Kinship",
+    "Youth",
+    "More-than-Human Relations"
+   ],
+   "primary_theme": "Kinship",
+   "families": [
+    "Land and Environment",
+    "Lives and Relations"
+   ],
+   "form": "Documentary",
+   "length": "Short"
   },
   "Q20261114-90-F1": {
    "title": "Todo lo que necesito, lo tengo a mi alrededor",
@@ -31378,10 +31520,19 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
+   "themes": [
+    "Land Defense",
+    "Memory and Oral History",
+    "Sovereignty and Self-Determination",
+    "Displacement and Migration"
+   ],
+   "primary_theme": "Land Defense",
+   "families": [
+    "Knowledge and Continuity",
+    "Land and Environment",
+    "Sovereignty and Politics"
+   ],
+   "form": "Documentary",
    "length": null
   },
   "NEW-796258423fc1-WORK-2": {
@@ -33632,9 +33783,18 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Art, Craft and Making",
+    "Extractivism",
+    "Women and Gender",
+    "Land Defense"
+   ],
+   "primary_theme": "Art, Craft and Making",
+   "families": [
+    "Expression and Representation",
+    "Land and Environment",
+    "Lives and Relations"
+   ],
    "form": "Documentary",
    "length": "Short"
   },
@@ -34266,11 +34426,20 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Land Defense",
+    "Extractivism",
+    "Resistance Movements",
+    "Youth"
+   ],
+   "primary_theme": "Land Defense",
+   "families": [
+    "Land and Environment",
+    "Lives and Relations",
+    "Sovereignty and Politics"
+   ],
+   "form": "Documentary",
+   "length": "Short"
   },
   "NEW-36eb3ff5a48b-WORK-1": {
    "title": "Cuentos Mixe",
@@ -35922,9 +36091,16 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Kinship",
+    "Youth",
+    "More-than-Human Relations"
+   ],
+   "primary_theme": "Kinship",
+   "families": [
+    "Land and Environment",
+    "Lives and Relations"
+   ],
    "form": "Fiction",
    "length": "Short"
   },
@@ -37099,11 +37275,19 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Land Defense",
+    "Sovereignty and Self-Determination",
+    "Memory and Oral History"
+   ],
+   "primary_theme": "Land Defense",
+   "families": [
+    "Knowledge and Continuity",
+    "Land and Environment",
+    "Sovereignty and Politics"
+   ],
+   "form": "Documentary",
+   "length": "Short"
   },
   "NEW-4b43cfbe178e-WORK-1": {
    "title": "Nichimal Tseb",
@@ -38702,9 +38886,17 @@
      "source": "https://ellugarquehabitamos.org/nipi-utaiamun/"
     }
    ],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Water",
+    "Health and Healing",
+    "Elders and Knowledge"
+   ],
+   "primary_theme": "Water",
+   "families": [
+    "Knowledge and Continuity",
+    "Land and Environment",
+    "Lives and Relations"
+   ],
    "form": null,
    "length": null
   },
@@ -39195,9 +39387,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Women and Gender",
+    "Self-Representation and Countering Stereotypes"
+   ],
+   "primary_theme": "Women and Gender",
+   "families": [
+    "Expression and Representation",
+    "Lives and Relations"
+   ],
    "form": "Fiction",
    "length": "Short"
   },
@@ -40741,9 +40939,13 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Art, Craft and Making"
+   ],
+   "primary_theme": "Art, Craft and Making",
+   "families": [
+    "Expression and Representation"
+   ],
    "form": "Documentary",
    "length": "Short"
   },
@@ -42640,9 +42842,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Displacement and Migration",
+    "Youth"
+   ],
+   "primary_theme": "Displacement and Migration",
+   "families": [
+    "Lives and Relations",
+    "Sovereignty and Politics"
+   ],
    "form": "Animation",
    "length": "Short"
   },
@@ -42800,9 +43008,14 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "LGBTQIA2S",
+    "Women and Gender"
+   ],
+   "primary_theme": "LGBTQIA2S",
+   "families": [
+    "Lives and Relations"
+   ],
    "form": "Animation",
    "length": "Short"
   },
@@ -42832,11 +43045,16 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": "Animation",
-   "length": null
+   "themes": [
+    "Cosmology and Origin Stories",
+    "Elders and Knowledge"
+   ],
+   "primary_theme": "Cosmology and Origin Stories",
+   "families": [
+    "Knowledge and Continuity"
+   ],
+   "form": "Fiction",
+   "length": "Short"
   },
   "Q20261114-16-F1": {
    "title": "Lil Glooscap and the Legends of Turtle Island",
@@ -43109,11 +43327,20 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": "Hybrid",
-   "length": null
+   "themes": [
+    "Land Defense",
+    "State Violence and Genocide",
+    "Environmental Change",
+    "Memory and Oral History"
+   ],
+   "primary_theme": "Land Defense",
+   "families": [
+    "Knowledge and Continuity",
+    "Land and Environment",
+    "Sovereignty and Politics"
+   ],
+   "form": "Experimental",
+   "length": "Short"
   },
   "Q20261121-98-F2": {
    "title": "¿Chumal elkaniengeal? (¿Para qué guardar?)",
@@ -43125,11 +43352,17 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Archives, Museums and Repatriation",
+    "Art, Craft and Making"
+   ],
+   "primary_theme": "Archives, Museums and Repatriation",
+   "families": [
+    "Expression and Representation",
+    "Knowledge and Continuity"
+   ],
    "form": "Animation",
-   "length": null
+   "length": "Short"
   },
   "Q20261121-101-F1": {
    "title": "NGÜRU KA WILLIÑ (FOX AND OTTER)",
@@ -43141,11 +43374,19 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "LGBTQIA2S",
+    "Cosmology and Origin Stories",
+    "More-than-Human Relations"
+   ],
+   "primary_theme": "LGBTQIA2S",
+   "families": [
+    "Knowledge and Continuity",
+    "Land and Environment",
+    "Lives and Relations"
+   ],
    "form": "Animation",
-   "length": null
+   "length": "Short"
   },
   "Q20261121-101-F2": {
    "title": "TRAY TRAY KO",
@@ -43157,11 +43398,19 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": "Hybrid",
-   "length": null
+   "themes": [
+    "Water",
+    "Cosmology and Origin Stories",
+    "Health and Healing"
+   ],
+   "primary_theme": "Water",
+   "families": [
+    "Knowledge and Continuity",
+    "Land and Environment",
+    "Lives and Relations"
+   ],
+   "form": "Experimental",
+   "length": "Short"
   },
   "Q20261121-101-F3": {
    "title": "Las quilas (The Quilas)",
@@ -43173,11 +43422,17 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": "Hybrid",
-   "length": null
+   "themes": [
+    "LGBTQIA2S",
+    "More-than-Human Relations"
+   ],
+   "primary_theme": "LGBTQIA2S",
+   "families": [
+    "Land and Environment",
+    "Lives and Relations"
+   ],
+   "form": "Experimental",
+   "length": "Short"
   },
   "Q20261121-101-F4": {
    "title": "Kowkülen (Liquid Being)",
@@ -43221,11 +43476,17 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": "Hybrid",
-   "length": null
+   "themes": [
+    "Sovereignty and Self-Determination",
+    "Memory and Oral History"
+   ],
+   "primary_theme": "Sovereignty and Self-Determination",
+   "families": [
+    "Knowledge and Continuity",
+    "Sovereignty and Politics"
+   ],
+   "form": "Experimental",
+   "length": "Short"
   },
   "Q20261121-101-F7": {
    "title": "Nunca serás un Weye (You Will Never Be a Weye)",
@@ -43237,11 +43498,19 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": "Hybrid",
-   "length": null
+   "themes": [
+    "LGBTQIA2S",
+    "Memory and Oral History",
+    "State Violence and Genocide"
+   ],
+   "primary_theme": "LGBTQIA2S",
+   "families": [
+    "Knowledge and Continuity",
+    "Lives and Relations",
+    "Sovereignty and Politics"
+   ],
+   "form": "Experimental",
+   "length": "Short"
   },
   "Q20261121-101-F8": {
    "title": "Alka Domo",
@@ -43253,11 +43522,18 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": "Hybrid",
-   "length": null
+   "themes": [
+    "LGBTQIA2S",
+    "Women and Gender",
+    "Self-Representation and Countering Stereotypes"
+   ],
+   "primary_theme": "LGBTQIA2S",
+   "families": [
+    "Expression and Representation",
+    "Lives and Relations"
+   ],
+   "form": "Experimental",
+   "length": "Short"
   },
   "Q20261121-103-F1": {
    "title": "Tantas veces apümngeiñ",
@@ -43269,11 +43545,17 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "State Violence and Genocide",
+    "Memory and Oral History"
+   ],
+   "primary_theme": "State Violence and Genocide",
+   "families": [
+    "Knowledge and Continuity",
+    "Sovereignty and Politics"
+   ],
    "form": "Experimental",
-   "length": null
+   "length": "Short"
   },
   "Q20261114-69-F1": {
    "title": "Ghost Food",
@@ -43381,9 +43663,17 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Memory and Oral History",
+    "Kinship",
+    "Water"
+   ],
+   "primary_theme": "Memory and Oral History",
+   "families": [
+    "Knowledge and Continuity",
+    "Land and Environment",
+    "Lives and Relations"
+   ],
    "form": "Animation",
    "length": "Short"
   },
@@ -43525,9 +43815,17 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Displacement and Migration",
+    "Memory and Oral History",
+    "Kinship"
+   ],
+   "primary_theme": "Displacement and Migration",
+   "families": [
+    "Knowledge and Continuity",
+    "Lives and Relations",
+    "Sovereignty and Politics"
+   ],
    "form": "Documentary",
    "length": "Short"
   },
@@ -46392,9 +46690,18 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Youth",
+    "Elders and Knowledge",
+    "Health and Healing",
+    "Art, Craft and Making"
+   ],
+   "primary_theme": "Youth",
+   "families": [
+    "Expression and Representation",
+    "Knowledge and Continuity",
+    "Lives and Relations"
+   ],
    "form": "Documentary",
    "length": "Short"
   },
@@ -46486,9 +46793,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "LGBTQIA2S",
+    "Self-Representation and Countering Stereotypes"
+   ],
+   "primary_theme": "LGBTQIA2S",
+   "families": [
+    "Expression and Representation",
+    "Lives and Relations"
+   ],
    "form": "Documentary",
    "length": "Short"
   },
@@ -47070,9 +47383,18 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Cosmology and Origin Stories",
+    "Land Defense",
+    "Memory and Oral History",
+    "Music and Performance"
+   ],
+   "primary_theme": "Cosmology and Origin Stories",
+   "families": [
+    "Expression and Representation",
+    "Knowledge and Continuity",
+    "Land and Environment"
+   ],
    "form": "Documentary",
    "length": "Short"
   },
@@ -48201,10 +48523,17 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
+   "themes": [
+    "Health and Healing",
+    "Kinship",
+    "Memory and Oral History"
+   ],
+   "primary_theme": "Health and Healing",
+   "families": [
+    "Knowledge and Continuity",
+    "Lives and Relations"
+   ],
+   "form": "Documentary",
    "length": null
   },
   "QW-WAPI-V277532898": {
