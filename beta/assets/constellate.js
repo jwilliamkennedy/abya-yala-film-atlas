@@ -967,7 +967,7 @@ function stopPlay(){if(!player)return;playThread=null;pausePlay(true);player.hid
    (!films.length?'<p class="wl-note">No film on the atlas is linked to this land yet.</p>':
     (linking?'<p class="wl-note">'+(first?'Choose the second film.':'Choose a film to link.')+'</p>':'<button type="button" class="wl-all">Make a thread from this land</button>')+
     '<ul class="wl-films">'+films.map(x=>{const own=existingWork(x),chosen=linking&&own&&own.id===first;return '<li><button type="button" data-wl="'+esc(x.id)+'"'+(chosen?' disabled':'')+'>'+thumb(x)+'<span class="wl-t"><strong>'+esc(x.title)+'</strong><small>'+esc([x.maker,yr(x)||''].filter(Boolean).join(' · '))+'</small></span><em>'+(chosen?'Chosen':linking?'Link':own?'On the map':'+ Add')+'</em></button></li>';}).join('')+'</ul>');
-  box.hidden=false;openDock();setTab('thread');
+  box.hidden=false;openDock();setTab('thread');if(!refresh)requestAnimationFrame(()=>box.scrollIntoView({block:'nearest',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'}));
  }
  function landPick(xid){const x=catalog.find(v=>v.id===xid);if(!x)return;let own=existingWork(x);
   if(!own){if(!add(x))return;own=existingWork(x);}if(!own)return;
