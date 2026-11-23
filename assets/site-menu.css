@@ -155,3 +155,8 @@ main .about-tabs a[aria-current=page]{background:var(--ui-surface,#fbfcfc);color
  html:not(#_):not(#__):not(#___) #index :is(#maker-alphabet,#film-alphabet) button{min-width:0!important;width:auto!important;height:36px!important;min-height:36px!important;padding:0!important;font-size:15px!important}
  html:not(#_):not(#__):not(#___) #index .view-history button:disabled{display:none!important}
 }
+
+/* About, Data and CARE, and Resources share one column in one place, so the tabs and titles do not move between them (23 Nov 2026) */
+main:is(:has(> nav.eyebrow.pair),:has(> nav.about-tabs),:has(#care-downloads)){box-sizing:border-box;max-width:60rem;margin:0 auto;padding:clamp(28px,4vw,44px) clamp(16px,4vw,48px) 88px;font-size:clamp(16.5px,15px + .3vw,18px);line-height:1.7}
+main:is(:has(> nav.eyebrow.pair),:has(> nav.about-tabs),:has(#care-downloads)) > h1{font:400 clamp(32px,22px + 2.2vw,46px)/1.1 var(--ui-serif,Georgia,serif);margin:0 0 18px;letter-spacing:-.01em;text-wrap:balance}
+main:is(:has(> nav.eyebrow.pair),:has(> nav.about-tabs),:has(#care-downloads)) > nav.eyebrow.pair{min-height:38px;margin:0 0 26px}
