@@ -60,22 +60,27 @@ def pending_ids(atlas):
     order; the next number after the highest; a blank or repeated id takes the next one). verify_queue.py checks
     rows under these ids before the tidy writes them to disk, so without this a new row waits a whole extra run.
     Keyed by the row's other cells; a key shared by two blank-id rows is left out (those wait for the tidy)."""
-    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-    import atlasio
+    # the same file pattern, reading and numbering as atlasio.py (copied here so this step needs no openpyxl)
+    queue_file = re.compile(r'^(proposals|leads|history(?:-[a-z]+)?)(?:-([a-z]{1,2})-([a-z]{1,2}))?\.csv$')
+    def qnum(q):
+        m = re.fullmatch(r'Q(\d+)', q or '')
+        return int(m.group(1)) if m else None
+    csv.field_size_limit(10 ** 8)
     d = os.path.join(atlas, 'queue')
     rows = []
     for f in sorted(os.listdir(d)):
-        if atlasio.QUEUE_FILE.match(f):
-            for r in atlasio.read(f'{d}/{f}'):
-                r = {k: (v or '').strip() for k, v in r.items() if k}
-                if any(v for k, v in r.items() if k != 'qid'):
-                    rows.append(r)
-    seen, nxt, out, dup = set(), max([atlasio.qnum(r.get('qid')) or 0 for r in rows] + [0]) + 1, {}, set()
+        if queue_file.match(f):
+            with open(f'{d}/{f}', encoding='utf-8-sig', newline='') as fh:
+                for r in csv.DictReader(fh):
+                    r = {k: (v or '').strip() for k, v in r.items() if k}
+                    if any(v for k, v in r.items() if k != 'qid'):
+                        rows.append(r)
+    seen, nxt, out, dup = set(), max([qnum(r.get('qid')) or 0 for r in rows] + [0]) + 1, {}, set()
     for r in rows:
         q = r.get('qid')
-        if not atlasio.qnum(q) or q in seen:
+        if not qnum(q) or q in seen:
             q = f'Q{nxt:06d}'; nxt += 1
-            if not atlasio.qnum(r.get('qid')):
+            if not qnum(r.get('qid')):
                 k = row_key(r)
                 if k in out:
                     dup.add(k)
