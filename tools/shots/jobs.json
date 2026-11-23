@@ -1,54 +1,130 @@
 [
  {
-  "name": "load_main_1440",
-  "path": "index.html",
+  "name": "mn_home",
+  "url": "https://www.miradanativa.org/",
+  "viewport": [
+   390,
+   844
+  ],
+  "mobile": true,
+  "full": true,
+  "settle": 7000,
+  "links": true
+ },
+ {
+  "name": "mn_home_fold",
+  "url": "https://www.miradanativa.org/",
+  "viewport": [
+   390,
+   844
+  ],
+  "mobile": true,
+  "settle": 7000
+ },
+ {
+  "name": "mn_catalogo",
+  "url": "https://www.miradanativa.org/catalogo/",
+  "viewport": [
+   390,
+   844
+  ],
+  "mobile": true,
+  "full": true,
+  "settle": 7000,
+  "links": true
+ },
+ {
+  "name": "mn_catalogo_fold",
+  "url": "https://www.miradanativa.org/catalogo/",
+  "viewport": [
+   390,
+   844
+  ],
+  "mobile": true,
+  "settle": 7000
+ },
+ {
+  "name": "mn_home_desktop",
+  "url": "https://www.miradanativa.org/",
   "viewport": [
    1440,
    900
   ],
-  "filmstrip": {
-   "every": 120,
-   "count": 45,
-   "probe": "(()=>{const r=e=>{if(!e)return null;const b=e.getBoundingClientRect();return [b.x,b.y,b.width,b.height].map(Math.round).join(',')};const cs=e=>e?getComputedStyle(e):null;\nconst svg=document.getElementById('atlas'),bm=document.getElementById('atlas-basemap'),M=window.AtlasOpenBasemap&&window.AtlasOpenBasemap.map;\nconst gs=svg?[...svg.querySelectorAll('g[transform]')].slice(0,2).map(g=>g.getAttribute('transform').replace(/(\\d+\\.\\d)\\d+/g,'$1')):null;\nreturn {rail:document.documentElement.dataset.rail||'',ui:document.documentElement.dataset.atlasUi||'',main:cs(document.querySelector('main'))?.visibility,\nsvg:r(svg),vb:svg&&svg.getAttribute('viewBox'),g:gs,bm:bm?r(bm)+' '+cs(bm).visibility+' op'+cs(bm).opacity+' sync'+(bm.dataset.cameraSynced||''):null,\nmz:M?[+M.getZoom().toFixed(2),M.getCenter().lng.toFixed(1),M.getCenter().lat.toFixed(1)].join(','):null,\nbar:r(document.querySelector('.map-toolbar')),idx:r(document.getElementById('index')),fonts:document.fonts.status}})()"
-  }
+  "settle": 7000
  },
  {
-  "name": "load_main_1280",
+  "name": "atlas_map",
   "path": "index.html",
   "viewport": [
-   1280,
-   800
+   390,
+   844
   ],
-  "filmstrip": {
-   "every": 120,
-   "count": 45,
-   "probe": "(()=>{const r=e=>{if(!e)return null;const b=e.getBoundingClientRect();return [b.x,b.y,b.width,b.height].map(Math.round).join(',')};const cs=e=>e?getComputedStyle(e):null;\nconst svg=document.getElementById('atlas'),bm=document.getElementById('atlas-basemap'),M=window.AtlasOpenBasemap&&window.AtlasOpenBasemap.map;\nconst gs=svg?[...svg.querySelectorAll('g[transform]')].slice(0,2).map(g=>g.getAttribute('transform').replace(/(\\d+\\.\\d)\\d+/g,'$1')):null;\nreturn {rail:document.documentElement.dataset.rail||'',ui:document.documentElement.dataset.atlasUi||'',main:cs(document.querySelector('main'))?.visibility,\nsvg:r(svg),vb:svg&&svg.getAttribute('viewBox'),g:gs,bm:bm?r(bm)+' '+cs(bm).visibility+' op'+cs(bm).opacity+' sync'+(bm.dataset.cameraSynced||''):null,\nmz:M?[+M.getZoom().toFixed(2),M.getCenter().lng.toFixed(1),M.getCenter().lat.toFixed(1)].join(','):null,\nbar:r(document.querySelector('.map-toolbar')),idx:r(document.getElementById('index')),fonts:document.fonts.status}})()"
-  }
+  "mobile": true,
+  "settle": 9000
  },
  {
-  "name": "load_beta_1440",
-  "path": "beta/index.html",
+  "name": "atlas_map_sheet",
+  "path": "index.html",
   "viewport": [
-   1440,
-   900
+   390,
+   844
   ],
-  "filmstrip": {
-   "every": 120,
-   "count": 45,
-   "probe": "(()=>{const r=e=>{if(!e)return null;const b=e.getBoundingClientRect();return [b.x,b.y,b.width,b.height].map(Math.round).join(',')};const cs=e=>e?getComputedStyle(e):null;\nconst svg=document.getElementById('atlas'),bm=document.getElementById('atlas-basemap'),M=window.AtlasOpenBasemap&&window.AtlasOpenBasemap.map;\nconst gs=svg?[...svg.querySelectorAll('g[transform]')].slice(0,2).map(g=>g.getAttribute('transform').replace(/(\\d+\\.\\d)\\d+/g,'$1')):null;\nreturn {rail:document.documentElement.dataset.rail||'',ui:document.documentElement.dataset.atlasUi||'',main:cs(document.querySelector('main'))?.visibility,\nsvg:r(svg),vb:svg&&svg.getAttribute('viewBox'),g:gs,bm:bm?r(bm)+' '+cs(bm).visibility+' op'+cs(bm).opacity+' sync'+(bm.dataset.cameraSynced||''):null,\nmz:M?[+M.getZoom().toFixed(2),M.getCenter().lng.toFixed(1),M.getCenter().lat.toFixed(1)].join(','):null,\nbar:r(document.querySelector('.map-toolbar')),idx:r(document.getElementById('index')),fonts:document.fonts.status}})()"
-  }
+  "mobile": true,
+  "settle": 9000,
+  "steps": [
+   {
+    "eval": "(()=>{const s=[...document.querySelectorAll('*')].find(e=>/sheet|handle|grabber/i.test(e.className&&e.className.baseVal===undefined?e.className:'')&&e.getBoundingClientRect().top>600);if(s){s.click();return s.className}return 'no handle'})()",
+    "as": "handle",
+    "wait": 1500
+   }
+  ]
  },
  {
-  "name": "load_beta_1280",
-  "path": "beta/index.html",
+  "name": "atlas_watch",
+  "path": "watch.html",
   "viewport": [
-   1280,
-   800
+   390,
+   844
   ],
-  "filmstrip": {
-   "every": 120,
-   "count": 45,
-   "probe": "(()=>{const r=e=>{if(!e)return null;const b=e.getBoundingClientRect();return [b.x,b.y,b.width,b.height].map(Math.round).join(',')};const cs=e=>e?getComputedStyle(e):null;\nconst svg=document.getElementById('atlas'),bm=document.getElementById('atlas-basemap'),M=window.AtlasOpenBasemap&&window.AtlasOpenBasemap.map;\nconst gs=svg?[...svg.querySelectorAll('g[transform]')].slice(0,2).map(g=>g.getAttribute('transform').replace(/(\\d+\\.\\d)\\d+/g,'$1')):null;\nreturn {rail:document.documentElement.dataset.rail||'',ui:document.documentElement.dataset.atlasUi||'',main:cs(document.querySelector('main'))?.visibility,\nsvg:r(svg),vb:svg&&svg.getAttribute('viewBox'),g:gs,bm:bm?r(bm)+' '+cs(bm).visibility+' op'+cs(bm).opacity+' sync'+(bm.dataset.cameraSynced||''):null,\nmz:M?[+M.getZoom().toFixed(2),M.getCenter().lng.toFixed(1),M.getCenter().lat.toFixed(1)].join(','):null,\nbar:r(document.querySelector('.map-toolbar')),idx:r(document.getElementById('index')),fonts:document.fonts.status}})()"
-  }
+  "mobile": true,
+  "full": true,
+  "settle": 6000
+ },
+ {
+  "name": "atlas_maker",
+  "path": "maker/DIR-0014.html",
+  "viewport": [
+   390,
+   844
+  ],
+  "mobile": true,
+  "full": true,
+  "settle": 5000
+ },
+ {
+  "name": "atlas_about",
+  "path": "about.html",
+  "viewport": [
+   390,
+   844
+  ],
+  "mobile": true,
+  "settle": 4000
+ },
+ {
+  "name": "atlas_menu",
+  "path": "index.html",
+  "viewport": [
+   390,
+   844
+  ],
+  "mobile": true,
+  "settle": 8000,
+  "steps": [
+   {
+    "click": "text=More",
+    "wait": 1200
+   }
+  ]
  }
 ]
