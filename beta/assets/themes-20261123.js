@@ -10,6 +10,10 @@
   var byId = {};
   items.forEach(function (li) { byId[li.id] = li; });
   var nameOf = function (li) { var h = li.querySelector('h2'); return h ? h.textContent.trim() : li.id; };
+  // "47 films · ▶ Watch 22": the count and the Watch pill sit side by side, so the dot between them goes
+  document.querySelectorAll('.facet-list .codes').forEach(function (p) {
+    p.childNodes.forEach(function (x) { if (x.nodeType === 3) x.nodeValue = x.nodeValue.replace(/\s*·\s*$/, ''); });
+  });
 
   // the bar: one menu (grouped by family, with counts), previous and next, and All themes
   var bar = document.createElement('div');
@@ -31,8 +35,8 @@
       if (!a || !byId[a.getAttribute('href').slice(1)]) return;
       var b = document.createElement('a');
       b.href = a.getAttribute('href');
-      var t = document.createElement('span'); t.textContent = a.textContent;
-      var n = document.createElement('span'); n.className = 'n'; n.textContent = (li.querySelector('.n') || {}).textContent || '';
+      var t = document.createElement('span'); t.textContent = (a.querySelector('.nm') || a).textContent;
+      var n = document.createElement('span'); n.className = 'n'; n.textContent = (a.querySelector('.n') || li.querySelector('.n') || {}).textContent || '';
       b.appendChild(t); b.appendChild(n);
       col.appendChild(b);
     });

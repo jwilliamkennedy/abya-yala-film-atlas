@@ -195,6 +195,9 @@ page('languages.html', 'Languages', f'Films on the Indigenous Cinema Atlas by th
      f'<p class="who">{len(ind)} Indigenous languages across {n_lang_films} films with a recorded language, of {WORKS:,} films on the public map. Each language links to its Glottolog entry; where a credit names a language group rather than one variety, the group is linked. Languages are recorded only as a film’s credits or synopsis state them. Updated {TODAY}.</p>'
      f'<p class="jump">{" ".join(f"<a href=\"#{esc(key(l).replace(" ", "-"))}\">{esc(l)}</a>" for l in order)}</p>'
      f'<ul class="facet-list">{"".join(items)}</ul><p class="who"><a href="data/languages.csv">Language authority (CSV)</a> · <a href="data/film-facets.csv">All film facets (CSV)</a> · <a href="data.html">About the data</a></p>')
+def theme_film(fid, e):
+    makers = ', '.join(f'<a href="maker/{esc(m["id"])}.html#{esc(fid)}">{esc(m["name"])}</a>' for m in e['makers'])
+    return f'<li><span class="yr">{e["year"] or "—"}</span><span class="ti"><cite>{esc(e["title"])}</cite><span class="by">{makers}</span></span></li>'
 by_theme = collections.defaultdict(list)
 for fid, e in films.items():
     for t in e['themes']: by_theme[t].append((fid, e))
@@ -204,7 +207,7 @@ for fam, tags in T['families'].items():
     for t in tags:
         fl = sorted(by_theme.get(t, []), key=lambda x: (x[1]['year'] or 9999, x[1]['title'].lower()))
         if not fl: continue
-        lis.append(f'<li id="{esc(key(t).replace(" ", "-"))}"><h2>{esc(t)}</h2><p class="codes">{len(fl)} film{"s" if len(fl) != 1 else ""}</p><ol>{"".join(film_li(fid, e) for fid, e in fl)}</ol></li>')
+        lis.append(f'<li id="{esc(key(t).replace(" ", "-"))}"><h2>{esc(t)}</h2><p class="codes">{len(fl)} film{"s" if len(fl) != 1 else ""}</p><ol class="films">{"".join(theme_film(fid, e) for fid, e in fl)}</ol></li>')
     secs.append(f'<section class="fam"><h2 style="font:400 28px/1.2 Georgia,serif">{esc(fam)}</h2><ul class="facet-list">{"".join(lis)}</ul></section>')
 n_th = sum(1 for e in films.values() if e['themes'])
 page('themes.html', 'Themes', 'Films on the Indigenous Cinema Atlas by theme: 30 themes in five families, each tagged from a published synopsis.',
@@ -212,7 +215,7 @@ page('themes.html', 'Themes', 'Films on the Indigenous Cinema Atlas by theme: 30
      f'<p class="who">There are {n_th} of {WORKS:,} films tagged with a theme or themes so far, each from a published synopsis, with its source and link. While a film can carry several themes, its primary theme is listed first in the data. Updated {TODAY}.</p>'
      # the index: the five families side by side, each theme with its count (themes-20261123.js turns it into one theme at a time)
      + '<div class="theme-index">' + ''.join(
-         f'<section><h2>{esc(fam)}</h2><ul>' + ''.join(f'<li><a href="#{esc(key(t).replace(" ", "-"))}">{esc(t)}</a><span class="n">{len(by_theme[t])}</span></li>' for t in tags if by_theme.get(t)) + '</ul></section>'
+         f'<section><h2>{esc(fam)}</h2><ul>' + ''.join(f'<li><a href="#{esc(key(t).replace(" ", "-"))}"><span class="nm">{esc(t)}</span><span class="n">{len(by_theme[t])}</span><span class="bar" style="--w:{round(100 * len(by_theme[t]) / max(len(v) for v in by_theme.values()))}%"></span></a></li>' for t in tags if by_theme.get(t)) + '</ul></section>'
          for fam, tags in T['families'].items()) + '</div>'
      + ''.join(secs) + '<p class="who"><a href="data/film-facets.csv">All film facets (CSV)</a> · <a href="data.html">About the data</a></p>'
      '<script defer src="assets/themes-20261123.js"></script>',
