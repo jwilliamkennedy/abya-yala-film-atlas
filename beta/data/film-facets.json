@@ -2,8 +2,8 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-23",
  "license": "See data.html",
- "films_on_public_map": 2618,
- "film_entries": 2632,
+ "films_on_public_map": 2621,
+ "film_entries": 2635,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -22878,6 +22878,22 @@
    "form": null,
    "length": null
   },
+  "NEW-e108b1f468ae-F1": {
+   "title": "Cache-Cache",
+   "year": null,
+   "makers": [
+    {
+     "id": "NEW-e108b1f468ae",
+     "name": "Louisa Papatie"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
+  },
   "NEW-6f7957e0e500-WORK-1": {
    "title": "Mangittatuarjuk (The Gnawer of Rocks)",
    "year": null,
@@ -23535,6 +23551,22 @@
    "primary_theme": null,
    "families": [],
    "form": null,
+   "length": null
+  },
+  "NEW-8671d0c8d6ab-F1": {
+   "title": "Indigenous Dad",
+   "year": null,
+   "makers": [
+    {
+     "id": "NEW-8671d0c8d6ab",
+     "name": "Peter Brass"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
    "length": null
   },
   "RESEARCH-FILM-20261031-800-0035": {
@@ -49297,6 +49329,74 @@
    "primary_theme": null,
    "families": [],
    "form": "Fiction",
+   "length": null
+  },
+  "Q20261123-40-F1": {
+   "title": "A Day on Earth",
+   "year": null,
+   "makers": [
+    {
+     "id": "QM-d10df27f63",
+     "name": "Carlos Enqueri Omene"
+    },
+    {
+     "id": "QM-13d22d62eb",
+     "name": "Livia Silvano Pacaya"
+    },
+    {
+     "id": "QM-de64ea2201",
+     "name": "Limber Payaguaje"
+    },
+    {
+     "id": "QM-cfecca471a",
+     "name": "Iniquilipi Chiari"
+    },
+    {
+     "id": "QM-7609532841",
+     "name": "Samai Gualinga"
+    },
+    {
+     "id": "QM-3866700569",
+     "name": "Roxana Carpio Almonte"
+    },
+    {
+     "id": "QM-5f4f5c4d58",
+     "name": "Andrés Bonifacio Bartolo Díaz"
+    },
+    {
+     "id": "QM-ea0147a438",
+     "name": "Ronaldo Manuqueve Careche"
+    },
+    {
+     "id": "QM-1578ee53db",
+     "name": "Maynor Ixcoy"
+    },
+    {
+     "id": "Q20261123-41",
+     "name": "Leo Cerda"
+    },
+    {
+     "id": "Q20261123-42",
+     "name": "Elías Oxom"
+    },
+    {
+     "id": "Q20261123-43",
+     "name": "Shayres Pataxó"
+    },
+    {
+     "id": "Q20261123-44",
+     "name": "Genilson Guajajara"
+    },
+    {
+     "id": "Q20261123-45",
+     "name": "Abner Xitumul Can"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
    "length": null
   }
  }
