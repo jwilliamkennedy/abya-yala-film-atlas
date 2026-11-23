@@ -63,7 +63,15 @@ html{scroll-behavior:smooth}@media (prefers-reduced-motion: reduce){html{scroll-
 .land-band figcaption{position:absolute;right:10px;bottom:8px;font-size:11.5px;line-height:1.3;color:#fff;background:rgba(0,0,0,.42);padding:3px 8px;border-radius:999px}
 .land-band figcaption a{color:inherit}
 /* with the rail mounted, the band is a rounded plate like the map's: flush to the rail, 10px from the top and right */
-:root[data-rail] .land-band{margin:10px 10px 0 0;border:0;border-radius:16px}
+:root[data-rail] .land-band{margin:10px 10px 0 0;border:0;border-radius:16px;height:clamp(170px,19vw,300px)}
+/* with the rail mounted, the text runs the width beside it, inset like the map's controls */
+:root[data-rail] main{max-width:78rem;margin:0;padding:clamp(28px,3.4vw,48px) clamp(28px,4vw,64px) 80px}
+/* a shorter page: smaller lede, tighter sections */
+.lede{font-size:clamp(18px,15px + .6vw,22px)}
+h2{margin:clamp(32px,4vw,44px) 0 12px;padding-top:clamp(16px,2vw,22px)}
+h3{margin:26px 0 8px}
+.contents{margin:0 0 clamp(28px,4vw,40px)}
+.credit{margin-top:40px}
 /* team */
 .team{list-style:none;margin:26px 0 0;padding:0;display:grid;gap:18px}
 .person{display:grid;grid-template-columns:132px 1fr;gap:26px;align-items:start;padding:22px;background:var(--ui-surface,var(--bg2));border:1px solid var(--line);border-radius:16px}
