@@ -557,6 +557,14 @@ html[data-weave-stage="start"] #weave-start{display:block}
 #weave-start .ws-none{font:400 14px/1.4 var(--ui-sans);color:var(--ui-muted);padding:6px 10px}
 #weave-start .ws-primary{align-self:flex-start;font:600 15px/1 var(--ui-sans);color:var(--ui-accent-ink);background:var(--ui-accent);border:1px solid var(--ui-accent);border-radius:999px;padding:12px 18px;cursor:pointer;margin-top:auto}
 #weave-start .ws-link{align-self:flex-start;font:600 14px/1.2 var(--ui-sans);color:var(--ui-accent);background:none;border:0;padding:4px 0;cursor:pointer}
+/* examples: one row under the three ways in (23 Nov) */
+#weave-start .ws-examples{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:16px;padding-top:14px;border-top:1px solid var(--ui-line)}
+#weave-start .ws-examples>span:first-child{font:600 14px/1.2 var(--ui-sans);color:var(--ui-ink);margin-right:6px}
+#weave-start .ws-example-more{display:contents}
+#weave-start .ws-examples button:not(.ws-link){font:400 15px/1.2 var(--ui-serif);color:var(--ui-ink);background:var(--ui-surface);border:1px solid var(--ui-line);border-radius:999px;padding:7px 14px;cursor:pointer}
+#weave-start .ws-examples button:not(.ws-link):hover,#weave-start .ws-examples button:not(.ws-link):focus-visible{border-color:var(--ui-ink);background:var(--ui-wash)}
+#weave-start .ws-examples .ws-link{align-self:center;margin-left:6px}
+#weave-start .ws-path .ws-primary[data-ws-trace]{margin-top:4px!important}
 #weave-start .ws-saved{margin-top:16px;padding-top:14px;border-top:1px solid var(--ui-line);display:flex;align-items:center;gap:12px;flex-wrap:wrap}
 #weave-start .ws-saved[hidden]{display:none}
 #weave-start .ws-saved label{font:600 14px/1 var(--ui-sans);color:var(--ui-ink)}
