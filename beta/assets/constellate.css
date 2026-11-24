@@ -1833,3 +1833,18 @@ body.is-constellating.weave-empty:not(.weave-show-atlas) #atlas .land-thumb[data
 .weave-why-add{appearance:none;border:0;background:none;padding:0 6px;font:500 12px/1 var(--ui-sans);color:var(--ui-muted);cursor:pointer;white-space:nowrap}
 .weave-why-add:hover,.weave-why-add:focus-visible{color:var(--ui-accent)}
 #constellate-context .constellate-actions .weave-why-add{font-size:13px;padding:0 0 0 14px}
+
+/* ══ Night sky (24 Nov 2026) ════════════════════════════════════════════════════════════════
+   Constellate switches the page to the night theme (restored on Exit). The territories sink into the dark so the
+   lands' markers read as stars and the threads as the only colour; a land's films open at the top of the panel. */
+html[data-ui][data-reading-theme=night] body.is-theme-weaving #atlas .land-shading .nation-wash{fill-opacity:clamp(0,calc(var(--territory-wash,.36) * .42),.9)!important;stroke-opacity:.35!important}
+html[data-reading-theme=night] body.is-theme-weaving #atlas .land-word{opacity:.5!important}
+html[data-ui-zoom=far][data-reading-theme=night] body.is-theme-weaving #atlas .land-word[data-ui-tier]{opacity:.42!important}
+html[data-reading-theme=night] body.is-theme-weaving #atlas .land-word:is(:hover,:focus-visible,.selected){opacity:1!important}
+#weave-editor[data-tab="thread"] #weave-land:not([hidden]){order:-6}
+/* the sky holds only lands as stars: no film stills on the map, dark land under the territories */
+body.is-constellating #land-thumb-layer{display:none!important}
+html[data-reading-theme=night] body.is-theme-weaving #atlas .land-shape{fill:#16243b!important}
+/* with nothing on the constellation yet, only the ways in show */
+body.weave-empty #constellate-mode :is(#weave-play,#constellate-read,#constellate-share,#constellate-clear){display:none!important}
+body.weave-empty #weave-order .weave-order-tools{display:none}

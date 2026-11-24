@@ -176,9 +176,18 @@ async def dial_closed(page, base):
 
 
 async def con_start(page, base):
-    await page.goto(base + "?constellate=1", wait_until="load"); await constellate_ready(page)
-    await page.wait_for_selector("#weave-start", state="visible", timeout=20000)
-    need(await page.evaluate("!!document.querySelector('[data-ws-example]') && document.querySelectorAll('[data-ws-theme]').length >= 3"), "Constellate start card is missing its three ways in")
+    """24 Nov 2026: the map's Constellate button opens straight onto a night-sky map, with no start screen;
+    an empty constellation leaves the side panel closed; a land's films can be added from the panel."""
+    await page.goto(base, wait_until="load")
+    await page.wait_for_function("window.AtlasConstellate && window.AtlasCollections", timeout=60000); await fallback_map(page)
+    await page.wait_for_selector(".fw-proxy", timeout=20000)
+    await page.evaluate("document.querySelector('.fw-proxy').click()")
+    await page.wait_for_function("document.body.classList.contains('is-constellating')", timeout=10000)
+    await page.wait_for_timeout(800)
+    s = await page.evaluate("""() => ({ night: document.documentElement.dataset.readingTheme === 'night',
+      start: !!document.querySelector('#weave-start') && document.querySelector('#weave-start').getClientRects().length > 0,
+      rail: !!document.querySelector('#atlas-rail [data-rail="constellate"]') })""")
+    need(s["night"] and not s["start"] and not s["rail"], "Constellate should open on a night map, with no start screen and no left-menu item", s)
 
 
 async def con_follow(page, base):
@@ -272,7 +281,7 @@ async def con_themeweb(page, base):
 
 async def con_threads(page, base):
     await page.goto(base + "?constellate=1", wait_until="load"); await constellate_ready(page)
-    await page.wait_for_selector("#weave-start", state="visible", timeout=20000)
+    await page.wait_for_function("document.body.classList.contains('is-constellating')", timeout=20000)
     await page.evaluate("async () => { const C = window.AtlasConstellate; for (const t of ['Kinship', 'Water', 'Land Defense']) { C.themeThread(t); await new Promise(r => setTimeout(r, 600)); } C.fit('quiet'); }")
     colours = await page.evaluate("window.AtlasCollections.current().threads.map(t => t.color)")
     need(len(set(colours)) == 3, "three theme threads should have three colours", colours)
@@ -323,9 +332,11 @@ async def con_unmapped(page, base):
 
 
 async def con_night(page, base):
+    """Constellate opens at night (24 Nov 2026); the theme switch still gives a day view inside it."""
     await con_build(page, base)
+    need(await page.evaluate("document.documentElement.dataset.readingTheme === 'night'"), "Constellate did not open at night")
     await page.click(".ui-theme-toggle")
-    await page.wait_for_function("document.documentElement.dataset.readingTheme === 'night'", timeout=8000)
+    await page.wait_for_function("document.documentElement.dataset.readingTheme === 'paper'", timeout=8000)
 
 
 async def no_overflow(page):
