@@ -1327,7 +1327,7 @@ body.weave-playing #weave-offmap-rail{visibility:hidden;pointer-events:none}
  #constellate-detail,#constellate-context
 ){display:none!important}
 #constellate-popup:has(#constellate-inline:not([hidden])) #weave-editor>.constellate-actions{display:none!important}
-#constellate-popup:has(#constellate-inline:not([hidden])) :is(.weave-tabs,#weave-find-films){display:none!important}
+#constellate-popup:has(#constellate-inline:not([hidden])) #weave-find-films{display:none!important}
 #constellate-inline .weave-pair-origin{
  display:flex;align-items:center;gap:12px;min-width:0;
  margin:10px 0 15px;padding:10px;
@@ -1726,7 +1726,7 @@ body.is-constellating.weave-empty:not(.weave-show-atlas) #atlas .land-thumb[data
 /* ══ Side panel (24 Nov 2026) ══════════════════════════════════════════════════════════════
    One way to each place: the toolbar's Add opens the search (with "Back to the list"); the list is the default;
    a film's card says what it is and why it follows; everything else is under More. */
-#constellate-popup .weave-tabs,#constellate-popup #constellate-close,#constellate-popup #weave-find-films{display:none!important}
+#constellate-popup #constellate-close,#constellate-popup #weave-find-films{display:none!important}
 #constellate-popup.cm-one-thread :is(.weave-thread-heading,#weave-legend,.weave-focus-actions){display:none!important}
 #constellate-popup:not(.cm-has-edges) #weave-line-key{display:none!important}
 /* the list: number, film, and between two films the reason the second follows the first */
