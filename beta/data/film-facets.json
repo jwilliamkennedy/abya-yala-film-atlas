@@ -2,8 +2,8 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-24",
  "license": "See data.html",
- "films_on_public_map": 2655,
- "film_entries": 2669,
+ "films_on_public_map": 2658,
+ "film_entries": 2672,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -53202,6 +53202,54 @@
    "primary_theme": null,
    "families": [],
    "form": "Fiction",
+   "length": null
+  },
+  "Q20261123-95-F1": {
+   "title": "Los muertos",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "Q20261123-95",
+     "name": "Roldán Dunú Tumi Dësi"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": null
+  },
+  "Q20261123-95-F2": {
+   "title": "Uesnidën Pete Ismebenaid (El descubrimiento de los alimentos)",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "Q20261123-95",
+     "name": "Roldán Dunú Tumi Dësi"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": null
+  },
+  "Q20261123-95-F3": {
+   "title": "Sondado Cuesaid. Enfrentamiento entre los Matsés y el ejército del Perú",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "Q20261123-95",
+     "name": "Roldán Dunú Tumi Dësi"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
    "length": null
   }
  }
