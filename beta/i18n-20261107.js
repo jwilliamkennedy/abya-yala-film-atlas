@@ -5,6 +5,9 @@
 const LANGS={en:'English',es:'Español',pt:'Português',fr:'Français'};
 // [English, Español, Português, Français]
 const T=[
+["Save constellation","Guardar constelación","Salvar constelação","Enregistrer la constellation"],
+["Not saved · temporary in this tab","Sin guardar · temporal en esta pestaña","Não salva · temporária nesta aba","Non enregistrée · temporaire dans cet onglet"],
+["Saved in this browser","Guardada en este navegador","Salva neste navegador","Enregistrée dans ce navigateur"],
 ["Show on map","Mostrar en el mapa","Mostrar no mapa","Afficher sur la carte"],
 ["Clear theme filter","Quitar filtro temático","Limpar filtro temático","Effacer le filtre thématique"],
 ["Compare films","Comparar películas","Comparar filmes","Comparer les films"],
