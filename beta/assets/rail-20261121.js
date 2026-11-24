@@ -10,7 +10,7 @@ const HOME=src?new URL('../',src).href:new URL('./',location.href).href;
 const rel=location.href.split(/[?#]/)[0].replace(HOME,'');
 const onMap=rel===''||rel==='index.html';
 const PAGE={'watch.html':'watch','themes.html':'themes','languages.html':'languages','timeline.html':'timeline','screening.html':'screening',
- 'about.html':'about','resources.html':'about','data.html':'data','corrections.html':'correct'};
+ 'about.html':'about','resources.html':'resources','data.html':'data','corrections.html':'correct'};
 
 /* key, words, short word for the collapsed rail, address */
 const MENU=[
@@ -18,7 +18,7 @@ const MENU=[
  'Indexes',
  ['themes','Themes','Themes','themes.html'],['languages','Languages','Languages','languages.html'],['timeline','Timeline','Timeline','timeline.html'],
  '',
- ['screening','Saved','Saved','screening.html'],['about','About','About','about.html'],['data','Data and CARE','Data','data.html']
+ ['screening','Saved','Saved','screening.html'],['about','About','About','about.html'],['data','Data and CARE','Data','data.html'],['resources','Resources','Resources','resources.html']
 ];
 const ICON={
  search:'<circle cx="10.5" cy="10.5" r="6"/><path d="m15 15 5 5"/>',
@@ -33,6 +33,7 @@ const ICON={
  about:'<circle cx="12" cy="12" r="8.5"/><path d="M12 11v5.5M12 7.6v.2"/>',
  data:'<ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v12c0 1.7 3.1 3 7 3s7-1.3 7-3V6M5 12c0 1.7 3.1 3 7 3s7-1.3 7-3"/>',
  data:'<ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v12c0 1.7 3.1 3 7 3s7-1.3 7-3V6M5 12c0 1.7 3.1 3 7 3s7-1.3 7-3"/>',
+ resources:'<path d="M4.5 4.5h4v15h-4zM9.5 4.5h4v15h-4z"/><path d="m14.6 5.6 3.9-1 3.2 14.6-3.9 1z"/>',
  correct:'<path d="M4 20l1-4.2L15.8 5l3.2 3.2L8.2 19z"/><path d="m13.8 7 3.2 3.2"/>',
  fold:'<rect x="3.5" y="4.5" width="17" height="15" rx="2.5"/><path d="M9.5 4.5v15"/>'
 };
