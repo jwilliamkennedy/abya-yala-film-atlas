@@ -27,3 +27,6 @@ Requested by atlas owner: promote current beta/ to published root using tools/pr
 
 2026-11-23 (night)
 Requested by atlas owner: promote current beta/ to published root using tools/promote_beta.py; preserve beta and private research Queue. About: launch date, 1 November 2026.
+
+2026-11-23 (night, 2)
+Requested by atlas owner: promote current beta/ to published root using tools/promote_beta.py; preserve beta and private research Queue. About: launch date in the Background sentence; This project supports Landback, with links. Watch: Share button.
