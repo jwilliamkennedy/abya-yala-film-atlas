@@ -5,6 +5,14 @@
 const LANGS={en:'English',es:'Español',pt:'Português',fr:'Français'};
 // [English, Español, Português, Français]
 const T=[
+["Discover next","Descubre más","Descubra mais","Découvrez la suite"],
+["More films","Más películas","Mais filmes","Plus de films"],
+["Trailer","Tráiler","Trailer","Bande-annonce"],
+["Film page","Página de la película","Página do filme","Page du film"],
+["Watch ↗","Ver ↗","Assistir ↗","Voir ↗"],
+["Trailer ↗","Tráiler ↗","Trailer ↗","Bande-annonce ↗"],
+["Film page ↗","Página de la película ↗","Página do filme ↗","Page du film ↗"],
+
 ["Choose a land","Elige un territorio","Escolha um território","Choisissez un territoire"],
 ["Edit star","Editar estrella","Editar estrela","Modifier l’étoile"],
 
