@@ -1764,7 +1764,6 @@ body.is-constellating.weave-empty:not(.weave-show-atlas) #atlas .land-thumb[data
 #weave-filters>summary::-webkit-details-marker{display:none}
 #weave-filters>summary::after{content:"▾";font-size:10px}
 #weave-filters[open]>summary::after{content:"▴"}
-#constellate-popup #weave-az-letters{display:none!important}
 #weave-read-start{font-weight:600}
 /* the list comes first when no film is open: threads (if more than one), the films in order, then what could come next */
 #weave-editor[data-tab="thread"]{display:flex;flex-direction:column}
