@@ -1789,6 +1789,14 @@ html[data-reading-theme=night] body.is-theme-weaving #atlas .land-word{opacity:.
 html[data-ui-zoom=far][data-reading-theme=night] body.is-theme-weaving #atlas .land-word[data-ui-tier]{opacity:.42!important}
 html[data-reading-theme=night] body.is-theme-weaving #atlas .land-word:is(:hover,:focus-visible,.selected){opacity:1!important}
 #weave-editor[data-tab="thread"] #weave-land:not([hidden]){order:-6}
+#weave-editor[data-tab="thread"] #constellate-detail:has(#constellate-idea-form){order:-6}
+:root[data-reading-theme] body.is-theme-weaving #constellate-graph .constellate-card.concept .weave-star-hit{fill:transparent;fill-opacity:0;stroke:transparent;stroke-opacity:0;pointer-events:all}
+:root[data-reading-theme] body.is-theme-weaving #constellate-graph .constellate-card.concept:focus-visible .weave-star-hit{stroke:var(--reading-accent);stroke-opacity:1}
+#constellate-graph .concept .weave-idea-star{stroke:#111b2a;stroke-width:1.4;stroke-linejoin:round;pointer-events:none}
+#constellate-graph .concept.selected .weave-idea-star{stroke:#fff;stroke-width:2}
+:root[data-reading-theme] body.is-theme-weaving #constellate-graph .constellate-card.concept .weave-star-title{fill:var(--reading-ink);font-weight:600;paint-order:stroke fill;stroke:var(--reading-paper);stroke-width:3px;stroke-linejoin:round}
+.weave-star-thumb{display:grid;place-items:center;color:var(--reading-accent);font-size:23px}
+#constellate-context .weave-star-note{white-space:pre-wrap;overflow-wrap:anywhere}
 /* the sky holds only lands as stars: no film stills on the map, dark land under the territories */
 body.is-constellating #land-thumb-layer{display:none!important}
 html[data-reading-theme=night] body.is-theme-weaving #atlas .land-shape{fill:#16243b!important}

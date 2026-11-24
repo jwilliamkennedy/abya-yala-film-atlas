@@ -4,7 +4,13 @@
 (()=>{'use strict';
 const LANGS={en:'English',es:'Español',pt:'Português',fr:'Français'};
 // [English, Español, Português, Français]
-const T=[/* Constellate, 24 Nov: labels and accessible names */
+const T=[
+["New star","Nueva estrella","Nova estrela","Nouvelle étoile"],
+["Star name","Nombre de la estrella","Nome da estrela","Nom de l’étoile"],
+["Create star","Crear estrella","Criar estrela","Créer une étoile"],
+["Star","Estrella","Estrela","Étoile"],
+["Freely placed star","Estrella de ubicación libre","Estrela de posição livre","Étoile placée librement"],
+/* Constellate, 24 Nov: labels and accessible names */
 ["Choose a theme…","Elige un tema…","Escolha um tema…","Choisissez un thème…"],
 ["Ways to gather and read","Formas de reunir y leer","Formas de reunir e ler","Modes de collecte et de lecture"],
 ["Constellation actions","Acciones de la constelación","Ações da constelação","Actions de la constellation"],
