@@ -967,7 +967,7 @@ function stopPlay(){if(!player)return;playThread=null;pausePlay(true);player.hid
  function traceRelight(){if(!trace)return;for(const c of trace.cand||[])c.path.classList.toggle('trace-lit',trace.seen.has(c.land.id)&&!trace.skip.has(c.land.id)&&lf(c.land).length>0);}
  function traceKept(){return trace.lands.filter(l=>!trace.skip.has(l.id)&&lf(l).length>0);}
  function traceCount(){const res=traceUI().querySelector('.wt-result'),lands=traceKept(),n=lands.length,ids=new Set();for(const l of lands)for(const x of lf(l))ids.add(x.id);const f=ids.size,one=res.querySelector('[data-wt=one]'),all=res.querySelector('[data-wt=all]');
-  res.querySelector('h3').textContent=n+(n===1?' land · ':' lands · ')+f+(f===1?' film':' films');one.disabled=!n;one.textContent='Make a thread';if(all){all.hidden=!(f>n&&f<=80);all.textContent='All '+f+' films';}
+  res.querySelector('h3').textContent=n+(n===1?' land · ':' lands · ')+f+(f===1?' film':' films');one.disabled=!n;one.textContent='Make a constellation';if(all){all.hidden=!(f>n&&f<=80);all.textContent='All '+f+' films';}
   res.querySelectorAll('li[data-wt-li]').forEach(li=>{const l=trace.lands.find(v=>v.id===li.dataset.wtLi),k=l?lf(l).length:0;li.classList.toggle('is-empty',!k);li.querySelector('small').textContent=k;});renderTracePreview(res);traceRelight();}
  function traceEnd(){const t=trace,el=traceUI(),res=el.querySelector('.wt-result'),hint=el.querySelector('.wt-hint');t.drawing=false;
   if(!traceKept().length){hint.textContent=t.theme?'No lands with '+t.theme+' films crossed. Draw again.':'No lands with films crossed. Draw again.';return;}
@@ -1019,7 +1019,7 @@ function stopPlay(){if(!player)return;playThread=null;pausePlay(true);player.hid
     (linking?'<p class="wl-note">'+(first?'Choose the second film.':'Choose a film to link.')+'</p>':'')+
     '<ul class="wl-films">'+films.slice(0,landLimit).map(x=>{const own=existingWork(x),chosen=linking&&own&&own.id===first,onThread=own&&S.activeThread().items.includes(own.id);return '<li><button type="button" data-wl="'+esc(x.id)+'"'+(chosen?' disabled':'')+'>'+thumb(x)+'<span class="wl-t"><strong>'+esc(x.title)+'</strong><small>'+esc([x.maker,yr(x)||''].filter(Boolean).join(' · '))+'</small></span><em>'+(chosen?'Chosen':linking?'Link':onThread?'On the map':'+ Add')+'</em></button>'+viewingLink(x)+'</li>';}).join('')+'</ul>'+
     (films.length>landLimit?'<button type="button" class="wl-more">More films</button>':'')+
-    (linking?'':'<button type="button" class="wl-all">Make a thread from this land</button>'));
+    (linking?'':'<button type="button" class="wl-all">Make a constellation from this land</button>'));
   box.hidden=false;openDock();highlightLand(id);setTab('thread');if(!refresh){panel.scrollTop=0;requestAnimationFrame(()=>{if(box.hidden||panel.hidden)return;box.scrollIntoView({block:phone.matches?'start':'nearest',behavior:motion.matches?'auto':'smooth'});});}
  }
  function landPick(xid){const x=catalogById.get(xid);if(!x)return;let own=existingWork(x);const tid=S.activeThread().id;
@@ -2066,7 +2066,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 }catch(error){console.error('Constellate section failed: Stages, start card, guide box, suggestions, legend',error);}
 
 /* ================================================================
-   Map page: "Make a thread from this land" beside Land details & sources (13 Nov 2026).
+   Map page: "Make a constellation from this land" beside Land details & sources (13 Nov 2026).
    ================================================================ */
 try{(function(){
  'use strict';
@@ -2077,7 +2077,7 @@ try{(function(){
   var n=id&&C&&C.landFilmCount?C.landFilmCount(id):0;
   if(!n){if(btn)btn.remove();return;}
   if(!btn){btn=document.createElement('button');btn.type='button';btn.setAttribute('data-land-thread','');btn.className='land-thread';box.appendChild(btn);}
-  if(btn.dataset.land!==id){btn.dataset.land=id;btn.textContent='Make a thread from this land →';btn.title='Open Constellate with a thread of this land’s films ('+n+(n===1?' film':' films')+' in the atlas)';}
+  if(btn.dataset.land!==id){btn.dataset.land=id;btn.textContent='Make a constellation from this land →';btn.title='Open Constellate with this land’s films ('+n+(n===1?' film':' films')+' in the atlas)';}
  }
  document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('[data-land-thread]');if(!b)return;e.preventDefault();try{window.AtlasConstellate.landThread(b.dataset.land);}catch(err){console.error(err);}});
  function drawButton(){
