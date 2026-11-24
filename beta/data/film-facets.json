@@ -2,8 +2,8 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-24",
  "license": "See data.html",
- "films_on_public_map": 2772,
- "film_entries": 2786,
+ "films_on_public_map": 2774,
+ "film_entries": 2788,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -56078,6 +56078,42 @@
    "families": [],
    "form": null,
    "length": "Series"
+  },
+  "Q20261124-78-F1": {
+   "title": "Nosso alimento, nosso jeito de viver Madiha – Ikha zamatapa, ikha madie, ikha wima naharo",
+   "year": 2025,
+   "makers": [
+    {
+     "id": "Q20261124-78",
+     "name": "Francisco Kulina"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "Q20261124-79-F1": {
+   "title": "Katxa nawa: cantar para o crescer das plantas",
+   "year": 2025,
+   "makers": [
+    {
+     "id": "Q20261124-79",
+     "name": "Jorge Naxima Huni Kuĩ"
+    },
+    {
+     "id": "Q20261124-80",
+     "name": "Maria de Fátima Pai Huni Kuĩ"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
   }
  }
 }
