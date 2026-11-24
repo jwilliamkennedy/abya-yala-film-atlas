@@ -534,9 +534,6 @@ html[data-weave-stage="start"] #weave-start{display:block}
  background:var(--ui-surface);color:var(--ui-ink);border:1px solid var(--ui-line);border-radius:18px;box-shadow:var(--ui-shadow);padding:24px 28px 22px;font-family:var(--ui-sans)}
 #weave-start .ws-kicker{margin:0 0 8px;font:600 12px/1 var(--ui-sans);letter-spacing:.14em;text-transform:uppercase;color:var(--ui-accent)}
 #weave-start h2{margin:0 0 8px;font:400 34px/1.1 var(--ui-serif);letter-spacing:-.015em;color:var(--ui-ink)}
-#weave-start .ws-lede{margin:0 0 16px;max-width:62ch;font:400 16px/1.55 var(--ui-sans);color:var(--ui-muted)}
-#weave-start .ws-how{display:flex;flex-wrap:wrap;gap:6px 22px;list-style:none;margin:0 0 16px;padding:0;font:600 14px/1.2 var(--ui-sans);color:var(--ui-ink)}
-#weave-start .ws-how b{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--ui-ink);color:var(--ui-paper);font-size:12px;margin-right:6px}
 #weave-start .ws-paths{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
 #weave-start .ws-path{border:1px solid var(--ui-line);border-radius:14px;padding:16px 16px 14px;background:var(--ui-paper);display:flex;flex-direction:column;min-width:0}
 #weave-start .ws-path h3{margin:0;font:400 21px/1.2 var(--ui-serif);color:var(--ui-ink)}
@@ -1669,7 +1666,6 @@ body.weave-tracing.trace-themed #atlas .land-word:not(.trace-theme){opacity:.22!
 html body #weave-start .ws-paths{gap:36px!important}
 html body #weave-start .ws-path{border:0!important;background:transparent!important;box-shadow:none!important;padding:0!important}
 html body #weave-start .ws-trace{background:transparent!important;padding:0!important;border:0!important}
-html body #weave-start .ws-how b{background:var(--ui-accent)!important;color:var(--ui-accent-ink)!important}
 html body #weave-start .ws-current,html body #weave-start .ws-saved{border-width:1px 0 0!important;border-radius:0!important;background:transparent!important}
 /* The Map page's panel grip has no panel to resize on the start screen or in Play. */
 html[data-weave-stage="start"] .index-resizer,body.weave-playing .index-resizer{display:none!important}
