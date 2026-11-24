@@ -3960,6 +3960,7 @@ TOUR-FILM-00440,Evan’s Drum,2021,theme,Youth,Lives and Relations,https://www.t
 TOUR-FILM-00440,Evan’s Drum,2021,length,Short,,https://www.themoviedb.org/movie/881254,from the published synopsis
 DIR-0440-W1031-2,Feather Fall,2024,theme,Self-Representation and Countering Stereotypes,Expression and Representation,https://collection.nfb.ca/film/feather-fall,tagged from a published synopsis; primary theme
 DIR-0440-W1031-2,Feather Fall,2024,form,Documentary,,https://collection.nfb.ca/film/feather-fall,from the published synopsis
+NEW-56159f9ac795-WORK-1,Cocanchej sutimpy,2005,form,Fiction,,https://americanindian.si.edu/sites/1/files/pdf/festival/2006_espanol.pdf,"normalised from the recorded form ""Fiction"""
 NEW-12f91e3b6118-WORK-1,Ketwajê,2023,theme,Collective and Community Media,Expression and Representation,https://www.forumdoc.org.br/filmes/ketwaje,tagged from a published synopsis; primary theme
 NEW-12f91e3b6118-WORK-1,Ketwajê,2023,theme,Youth,Lives and Relations,https://www.forumdoc.org.br/filmes/ketwaje,tagged from a published synopsis
 NEW-12f91e3b6118-WORK-1,Ketwajê,2023,theme,Cosmology and Origin Stories,Knowledge and Continuity,https://www.forumdoc.org.br/filmes/ketwaje,tagged from a published synopsis
@@ -4011,6 +4012,8 @@ NEW-a983b977fed4-WORK-1,Karemona,,length,Short,,https://planetatela.com.br/ccbb-
 NEW-fe2d1df151b6-WORK-1,Fuá – O Sonho,2025,theme,Health and Healing,Lives and Relations,https://ufpr.br/projeto-litoral-indigena-celebra-15-anos-com-exibicao-de-filmes-produzidos-por-cineastas-indigenas/,tagged from a published synopsis; primary theme
 NEW-fe2d1df151b6-WORK-1,Fuá – O Sonho,2025,theme,Kinship,Lives and Relations,https://ufpr.br/projeto-litoral-indigena-celebra-15-anos-com-exibicao-de-filmes-produzidos-por-cineastas-indigenas/,tagged from a published synopsis
 NEW-fe2d1df151b6-WORK-1,Fuá – O Sonho,2025,length,Short,,https://ufpr.br/projeto-litoral-indigena-celebra-15-anos-com-exibicao-de-filmes-produzidos-por-cineastas-indigenas/,from the published synopsis
+NEW-9a51a2c26e38-WORK-1,"Drill de Kaysara, o Filme",2024,form,Music Video,,https://static.ccbb.com.br/site-prod/2025/05/Catalogo_Mostra_Cosmologias_da_Imagem_CCBB_2025.pdf,"normalised from the recorded form ""Music video documentary"""
+NEW-9a51a2c26e38-WORK-2,Tupinambá na Baixada Santista,2022,form,Music Video,,https://static.ccbb.com.br/site-prod/2025/05/Catalogo_Mostra_Cosmologias_da_Imagem_CCBB_2025.pdf,"normalised from the recorded form ""Music video documentary"""
 NEW-f5822b7c2065-WORK-1,O verbo se fez carne (The Word Became Flesh),2019,theme,State Violence and Genocide,Sovereignty and Politics,https://www.themoviedb.org/movie/668041,tagged from a published synopsis; primary theme
 NEW-f5822b7c2065-WORK-1,O verbo se fez carne (The Word Became Flesh),2019,theme,Music and Performance,Expression and Representation,https://www.themoviedb.org/movie/668041,tagged from a published synopsis
 NEW-f5822b7c2065-WORK-1,O verbo se fez carne (The Word Became Flesh),2019,length,Short,,https://www.themoviedb.org/movie/668041,from the published synopsis
@@ -5824,3 +5827,6 @@ Q20261123-52-F1,"Ayllu, encuentro de nuestras almas",,form,Fiction,,https://www.
 Q20261123-95-F1,Los muertos,2024,form,Animation,,https://www.chirapaq.org.pe/es/articles/cine-indigena-del-pueblo-matses-llega-a-youtube-con-tres-cortos-animados,"normalised from the recorded form ""Animation"""
 Q20261123-95-F2,Uesnidën Pete Ismebenaid (El descubrimiento de los alimentos),2024,form,Animation,,https://www.chirapaq.org.pe/es/articles/cine-indigena-del-pueblo-matses-llega-a-youtube-con-tres-cortos-animados,"normalised from the recorded form ""Animation"""
 Q20261123-95-F3,Sondado Cuesaid. Enfrentamiento entre los Matsés y el ejército del Perú,2024,form,Animation,,https://www.chirapaq.org.pe/es/articles/cine-indigena-del-pueblo-matses-llega-a-youtube-con-tres-cortos-animados,"normalised from the recorded form ""Animation"""
+Q20261123-97-F1,Voz con Identidad,2018,form,Documentary,,https://bafilma.gba.gob.ar/audiovisuales/series/voz-con-identidad,"normalised from the recorded form ""Documentary series"""
+Q20261123-97-F1,Voz con Identidad,2018,length,Series,,https://bafilma.gba.gob.ar/audiovisuales/series/voz-con-identidad,"normalised from the recorded form ""Documentary series"""
+Q20261123-97-F2,Agua Milenaria,2019,form,Documentary,,https://www.tn24.com.ar/2024/12/cecual-despide-el-ano-con-un-festival-de-cortos-a-orillas-del-parana/,"normalised from the recorded form ""Documentary"""

@@ -2,8 +2,8 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-24",
  "license": "See data.html",
- "films_on_public_map": 2667,
- "film_entries": 2681,
+ "films_on_public_map": 2672,
+ "film_entries": 2686,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -33908,6 +33908,22 @@
    "form": null,
    "length": null
   },
+  "NEW-56159f9ac795-WORK-1": {
+   "title": "Cocanchej sutimpy",
+   "year": 2005,
+   "makers": [
+    {
+     "id": "NEW-56159f9ac795",
+     "name": "Humberto Claros"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": null
+  },
   "NEW-d80b926f6064-WORK-1": {
    "title": "El Diablo Nunca Duerme / The Devil Never Sleeps",
    "year": 1999,
@@ -34539,6 +34555,38 @@
    ],
    "form": null,
    "length": "Short"
+  },
+  "NEW-9a51a2c26e38-WORK-1": {
+   "title": "Drill de Kaysara, o Filme",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "NEW-9a51a2c26e38",
+     "name": "Wescritor"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Music Video",
+   "length": null
+  },
+  "NEW-9a51a2c26e38-WORK-2": {
+   "title": "Tupinambá na Baixada Santista",
+   "year": 2022,
+   "makers": [
+    {
+     "id": "NEW-9a51a2c26e38",
+     "name": "Wescritor"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Music Video",
+   "length": null
   },
   "NEW-c3fa3281bf58-WORK-1": {
    "title": "Kry-Rytaiti / Lip-Piercing Ceremony",
@@ -35337,26 +35385,14 @@
    "form": null,
    "length": null
   },
-  "NEW-b27842340296-WORK-1": {
-   "title": "Out of the Fog",
-   "year": 1995,
-   "makers": [
-    {
-     "id": "NEW-b27842340296",
-     "name": "Joseph Lazore"
-    }
-   ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
-  },
   "NEW-b36d1e13ff0b-WORK-1": {
    "title": "More Than a Word",
    "year": 2017,
    "makers": [
+    {
+     "id": "NEW-ce7a45b67f8e",
+     "name": "John Little"
+    },
     {
      "id": "NEW-b36d1e13ff0b",
      "name": "Kenn Little"
@@ -35372,6 +35408,22 @@
    ],
    "form": "Documentary",
    "length": "Feature"
+  },
+  "NEW-b27842340296-WORK-1": {
+   "title": "Out of the Fog",
+   "year": 1995,
+   "makers": [
+    {
+     "id": "NEW-b27842340296",
+     "name": "Joseph Lazore"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
   },
   "NEW-3d4cce98ac99-WORK-1": {
    "title": "Odehimin | Heart Berry",
@@ -54325,6 +54377,38 @@
    "primary_theme": null,
    "families": [],
    "form": null,
+   "length": null
+  },
+  "Q20261123-97-F1": {
+   "title": "Voz con Identidad",
+   "year": 2018,
+   "makers": [
+    {
+     "id": "Q20261123-97",
+     "name": "Liliana Claudia Herrera Salinas"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Series"
+  },
+  "Q20261123-97-F2": {
+   "title": "Agua Milenaria",
+   "year": 2019,
+   "makers": [
+    {
+     "id": "Q20261123-97",
+     "name": "Liliana Claudia Herrera Salinas"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
    "length": null
   }
  }
