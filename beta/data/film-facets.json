@@ -1,9 +1,9 @@
 {
  "title": "Indigenous Cinema Atlas · film facets",
- "generated": "2026-11-23",
+ "generated": "2026-11-24",
  "license": "See data.html",
- "films_on_public_map": 2621,
- "film_entries": 2635,
+ "films_on_public_map": 2632,
+ "film_entries": 2646,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -69,7 +69,7 @@
   ]
  },
  "language_authority": {
-  "source": "Glottolog (glottolog-cldf, fetched 2026-11-23)",
+  "source": "Glottolog (glottolog-cldf, fetched 2026-11-24)",
   "languages": [
    {
     "label": "Anishinaabemowin (Ojibwe)",
@@ -615,7 +615,7 @@
     "note": "",
     "region": "South America",
     "region_basis": "Glottolog countries",
-    "films": 1
+    "films": 2
    },
    {
     "label": "Siekopai",
@@ -50090,6 +50090,192 @@
    "families": [],
    "form": "Documentary",
    "length": null
+  },
+  "QM-ce30bebea6-M1": {
+   "title": "The Spectrum Keeper",
+   "year": 2025,
+   "makers": [
+    {
+     "id": "QM-ce30bebea6",
+     "name": "Vonley W. Smith"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261114-22-F1": {
+   "title": "Visita inesperada",
+   "year": 2014,
+   "makers": [
+    {
+     "id": "Q20261114-22",
+     "name": "Etsa-Nantu/Cámara-Shuar"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "Q20261114-22-F2": {
+   "title": "Tsunki Aumatsamu",
+   "year": 2014,
+   "makers": [
+    {
+     "id": "Q20261114-22",
+     "name": "Etsa-Nantu/Cámara-Shuar"
+    }
+   ],
+   "languages": [
+    {
+     "label": "Shuar",
+     "as_credited": "Shuar",
+     "glottocode": "shua1257",
+     "iso639_3": "jiv",
+     "match": "exact",
+     "indigenous": true,
+     "source": "https://miradanativa.org/pelicula/tsunki-aumatsamu/"
+    }
+   ],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "Q20261114-22-F3": {
+   "title": "Nankints: La otra historia",
+   "year": 2019,
+   "makers": [
+    {
+     "id": "Q20261114-22",
+     "name": "Etsa-Nantu/Cámara-Shuar"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "Q20261114-22-F4": {
+   "title": "Genealogía de un territorio en disputa",
+   "year": 2017,
+   "makers": [
+    {
+     "id": "Q20261114-22",
+     "name": "Etsa-Nantu/Cámara-Shuar"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "Q20261114-22-F5": {
+   "title": "¿Quién mató a José Tendenztza?",
+   "year": 2017,
+   "makers": [
+    {
+     "id": "Q20261114-22",
+     "name": "Etsa-Nantu/Cámara-Shuar"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "Q20261114-40-F1": {
+   "title": "Super Autochtone",
+   "year": 2025,
+   "makers": [
+    {
+     "id": "Q20261114-40",
+     "name": "Clément Lagouarde"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": null
+  },
+  "Q20261114-40-F2": {
+   "title": "Qui veut la peau de Nanabozo",
+   "year": 2025,
+   "makers": [
+    {
+     "id": "Q20261114-40",
+     "name": "Clément Lagouarde"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": null
+  },
+  "Q20261114-40-F3": {
+   "title": "Notre Père",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261114-40",
+     "name": "Clément Lagouarde"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
+  },
+  "Q20261114-40-F4": {
+   "title": "13 Octobre",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261114-40",
+     "name": "Clément Lagouarde"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
+  },
+  "Q20261121-102-F1": {
+   "title": "La fuga",
+   "year": 2017,
+   "makers": [
+    {
+     "id": "Q20261121-102",
+     "name": "Isela Lema"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": "Short"
   }
  }
 }
