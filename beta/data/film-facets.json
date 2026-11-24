@@ -2,8 +2,8 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-24",
  "license": "See data.html",
- "films_on_public_map": 2635,
- "film_entries": 2649,
+ "films_on_public_map": 2640,
+ "film_entries": 2654,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -1576,7 +1576,7 @@
     "Land and Environment",
     "Lives and Relations"
    ],
-   "form": null,
+   "form": "Documentary",
    "length": "Short"
   },
   "DIR-0023-QMec1bce": {
@@ -1805,11 +1805,18 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Health and Healing",
+    "Kinship",
+    "Elders and Knowledge"
+   ],
+   "primary_theme": "Health and Healing",
+   "families": [
+    "Knowledge and Continuity",
+    "Lives and Relations"
+   ],
+   "form": "Documentary",
+   "length": "Short"
   },
   "FILM-0035": {
    "title": "Yãmiyhex: As Mulheres‑Espírito",
@@ -1887,11 +1894,17 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "More-than-Human Relations",
+    "Music and Performance"
+   ],
+   "primary_theme": "More-than-Human Relations",
+   "families": [
+    "Expression and Representation",
+    "Land and Environment"
+   ],
    "form": "Documentary",
-   "length": null
+   "length": "Short"
   },
   "Q20261121-72-F1": {
    "title": "Yãmîy",
@@ -1939,11 +1952,19 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Food Sovereignty",
+    "Cosmology and Origin Stories",
+    "Music and Performance"
+   ],
+   "primary_theme": "Food Sovereignty",
+   "families": [
+    "Expression and Representation",
+    "Knowledge and Continuity",
+    "Land and Environment"
+   ],
    "form": "Documentary",
-   "length": null
+   "length": "Short"
   },
   "Q20261121-75-F1": {
    "title": "Xupapoynãg",
@@ -1955,11 +1976,19 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "More-than-Human Relations",
+    "Women and Gender",
+    "Cosmology and Origin Stories"
+   ],
+   "primary_theme": "More-than-Human Relations",
+   "families": [
+    "Knowledge and Continuity",
+    "Land and Environment",
+    "Lives and Relations"
+   ],
    "form": "Documentary",
-   "length": null
+   "length": "Short"
   },
   "Q20261121-76-F1": {
    "title": "Mîmãnãm: mõgmõka xi xûnîm",
@@ -4683,11 +4712,17 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Women and Gender",
+    "Self-Representation and Countering Stereotypes"
+   ],
+   "primary_theme": "Women and Gender",
+   "families": [
+    "Expression and Representation",
+    "Lives and Relations"
+   ],
+   "form": "Experimental",
+   "length": "Short"
   },
   "MIRROR-FILMOGRAPHY-20261107-099": {
    "title": "Tshiuetin",
@@ -4699,11 +4734,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Sovereignty and Self-Determination"
+   ],
+   "primary_theme": "Sovereignty and Self-Determination",
+   "families": [
+    "Sovereignty and Politics"
+   ],
+   "form": "Documentary",
+   "length": "Short"
   },
   "MIRROR-FILMOGRAPHY-20261107-100": {
    "title": "Mobilize",
@@ -4753,11 +4792,17 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Borders",
+    "Water"
+   ],
+   "primary_theme": "Borders",
+   "families": [
+    "Land and Environment",
+    "Sovereignty and Politics"
+   ],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "MIRROR-FILMOGRAPHY-20261107-103": {
    "title": "Ikwé",
@@ -10620,11 +10665,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "LGBTQIA2S"
+   ],
+   "primary_theme": "LGBTQIA2S",
+   "families": [
+    "Lives and Relations"
+   ],
+   "form": "Experimental",
+   "length": "Short"
   },
   "MIRROR-FILMOGRAPHY-20261107-031": {
    "title": "Working Baby Dyke Theory",
@@ -10830,11 +10879,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "LGBTQIA2S"
+   ],
+   "primary_theme": "LGBTQIA2S",
+   "families": [
+    "Lives and Relations"
+   ],
+   "form": "Documentary",
+   "length": "Short"
   },
   "Q20261115-84-F8": {
    "title": "Manipulation/Dictation",
@@ -14482,11 +14535,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Health and Healing"
+   ],
+   "primary_theme": "Health and Healing",
+   "families": [
+    "Lives and Relations"
+   ],
+   "form": "Fiction",
+   "length": "Short"
   },
   "FILM-0169": {
    "title": "La tiricia o de cómo curar la tristeza",
@@ -18537,10 +18594,14 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
+   "themes": [
+    "Health and Healing"
+   ],
+   "primary_theme": "Health and Healing",
+   "families": [
+    "Lives and Relations"
+   ],
+   "form": "Fiction",
    "length": "Short"
   },
   "FILM-0267": {
@@ -21632,11 +21693,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Women and Gender"
+   ],
+   "primary_theme": "Women and Gender",
+   "families": [
+    "Lives and Relations"
+   ],
+   "form": "Documentary",
+   "length": "Short"
   },
   "NEW-da58b683f110-WORK-1": {
    "title": "#skoden",
@@ -23904,11 +23969,16 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "More-than-Human Relations",
+    "Environmental Change"
+   ],
+   "primary_theme": "More-than-Human Relations",
+   "families": [
+    "Land and Environment"
+   ],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "Q20261115-87-F1": {
    "title": "Ibirapitanga",
@@ -26205,11 +26275,20 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Resistance Movements",
+    "Women and Gender",
+    "Sovereignty and Self-Determination",
+    "Music and Performance"
+   ],
+   "primary_theme": "Resistance Movements",
+   "families": [
+    "Expression and Representation",
+    "Lives and Relations",
+    "Sovereignty and Politics"
+   ],
+   "form": "Documentary",
+   "length": "Short"
   },
   "SA50-20261014-70978a9507b4-WORK-01": {
    "title": "Ãgawaraita",
@@ -27644,9 +27723,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Elders and Knowledge",
+    "Youth"
+   ],
+   "primary_theme": "Elders and Knowledge",
+   "families": [
+    "Knowledge and Continuity",
+    "Lives and Relations"
+   ],
    "form": null,
    "length": null
   },
@@ -28707,9 +28792,14 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Elders and Knowledge",
+    "Memory and Oral History"
+   ],
+   "primary_theme": "Elders and Knowledge",
+   "families": [
+    "Knowledge and Continuity"
+   ],
    "form": "Documentary",
    "length": null
   },
@@ -29468,9 +29558,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Health and Healing",
+    "More-than-Human Relations"
+   ],
+   "primary_theme": "Health and Healing",
+   "families": [
+    "Land and Environment",
+    "Lives and Relations"
+   ],
    "form": "Documentary",
    "length": "Short"
   },
@@ -29500,9 +29596,17 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Elders and Knowledge",
+    "Youth",
+    "Food Sovereignty"
+   ],
+   "primary_theme": "Elders and Knowledge",
+   "families": [
+    "Knowledge and Continuity",
+    "Land and Environment",
+    "Lives and Relations"
+   ],
    "form": "Documentary",
    "length": "Short"
   },
@@ -34268,9 +34372,16 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "LGBTQIA2S",
+    "Kinship",
+    "Resistance Movements"
+   ],
+   "primary_theme": "LGBTQIA2S",
+   "families": [
+    "Lives and Relations",
+    "Sovereignty and Politics"
+   ],
    "form": "Documentary",
    "length": "Short"
   },
@@ -34985,11 +35096,17 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Music and Performance",
+    "Elders and Knowledge"
+   ],
+   "primary_theme": "Music and Performance",
+   "families": [
+    "Expression and Representation",
+    "Knowledge and Continuity"
+   ],
+   "form": "Documentary",
+   "length": "Short"
   },
   "NEW-c2055a72bb3e-W1031-2": {
    "title": "Hilando sones",
@@ -37977,11 +38094,19 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Water",
+    "Land Defense",
+    "Elders and Knowledge",
+    "More-than-Human Relations"
+   ],
+   "primary_theme": "Water",
+   "families": [
+    "Knowledge and Continuity",
+    "Land and Environment"
+   ],
+   "form": "Documentary",
+   "length": "Short"
   },
   "NEW-f51c22579e1e-WORK-1": {
    "title": "Ayllu: Memorias y Visiones",
@@ -39346,9 +39471,16 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Land Defense",
+    "Extractivism",
+    "Elders and Knowledge"
+   ],
+   "primary_theme": "Land Defense",
+   "families": [
+    "Knowledge and Continuity",
+    "Land and Environment"
+   ],
    "form": null,
    "length": null
   },
@@ -43908,11 +44040,17 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Women and Gender",
+    "Self-Representation and Countering Stereotypes"
+   ],
+   "primary_theme": "Women and Gender",
+   "families": [
+    "Expression and Representation",
+    "Lives and Relations"
+   ],
    "form": "Experimental",
-   "length": null
+   "length": "Short"
   },
   "Q20261121-101-F6": {
    "title": "Welu Kumplipe",
@@ -46518,9 +46656,16 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Urban Indigeneity",
+    "Youth",
+    "Self-Representation and Countering Stereotypes"
+   ],
+   "primary_theme": "Urban Indigeneity",
+   "families": [
+    "Expression and Representation",
+    "Lives and Relations"
+   ],
    "form": null,
    "length": null
   },
@@ -47222,9 +47367,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Women and Gender",
+    "Self-Representation and Countering Stereotypes"
+   ],
+   "primary_theme": "Women and Gender",
+   "families": [
+    "Expression and Representation",
+    "Lives and Relations"
+   ],
    "form": "Documentary",
    "length": "Short"
   },
@@ -47238,9 +47389,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Music and Performance",
+    "Women and Gender"
+   ],
+   "primary_theme": "Music and Performance",
+   "families": [
+    "Expression and Representation",
+    "Lives and Relations"
+   ],
    "form": "Documentary",
    "length": "Short"
   },
@@ -47276,9 +47433,16 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Land Defense",
+    "Women and Gender",
+    "Youth"
+   ],
+   "primary_theme": "Land Defense",
+   "families": [
+    "Land and Environment",
+    "Lives and Relations"
+   ],
    "form": "Documentary",
    "length": "Short"
   },
@@ -50403,9 +50567,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Collective and Community Media",
+    "More-than-Human Relations"
+   ],
+   "primary_theme": "Collective and Community Media",
+   "families": [
+    "Expression and Representation",
+    "Land and Environment"
+   ],
    "form": "Documentary",
    "length": null
   },
@@ -50609,6 +50779,86 @@
    "primary_theme": null,
    "families": [],
    "form": "Documentary",
+   "length": null
+  },
+  "Q20261123-96-F1": {
+   "title": "Vuelven",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "Q20261123-96",
+     "name": "Anahi Rayen Mariluan"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "Q20261123-96-F2": {
+   "title": "Cantos de la memoria - Cantos con sentido",
+   "year": 2009,
+   "makers": [
+    {
+     "id": "Q20261123-96",
+     "name": "Anahi Rayen Mariluan"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "Q20261123-98-F1": {
+   "title": "Tortugo Jorge: Un sueño de libertad",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261123-98",
+     "name": "Luna Herrera"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "Q20261123-99-F1": {
+   "title": "Mama Ilda",
+   "year": 2020,
+   "makers": [
+    {
+     "id": "Q20261123-99",
+     "name": "Leonardo Tello Imaina"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "Q20261123-99-F2": {
+   "title": "Dos demonios",
+   "year": 2020,
+   "makers": [
+    {
+     "id": "Q20261123-99",
+     "name": "Leonardo Tello Imaina"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
    "length": null
   }
  }
