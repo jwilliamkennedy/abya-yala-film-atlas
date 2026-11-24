@@ -148,6 +148,7 @@ function showEmptyLandNotice(l){
  el.querySelector('button').onclick=()=>{el.hidden=true;};el.style.left=Math.max(12,Math.min(width-224,p.x-100))+'px';el.style.top=Math.max(95,Math.min(height-108,p.y+18))+'px';el.hidden=false;if(window.innerWidth<=680)el.scrollIntoView?.({block:'nearest',behavior:reduced?'instant':'smooth'});
 }
 function openReadingLand(id){id=canonicalLandId(id);
+ if(window.AtlasConstellate?.openLand?.(id))return;
  const l=lands.find(l=>l.id===id);if(!l)return;if(!visibleLandLinks(l).length){showEmptyLandNotice(l);return;}hideEmptyLandNotice();
  s.previewLand=s.previewRecord=null;s.landHover=null;s.land=id;s.landHold=true;
  if(visibleLandLinks(l).length)selectCrossLand(id);else openIndexedLand(id);
