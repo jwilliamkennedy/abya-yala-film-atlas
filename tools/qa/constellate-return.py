@@ -81,7 +81,7 @@ async def check(browser, name, viewport):
     assert await page.evaluate(SNAPSHOT)==snapshot, (name,"preview changed collection")
     assert await page.evaluate("localStorage.getItem('atlas-collections-v1')")==storage, (name,"preview persisted")
     await page.locator("#weave-film-preview [data-explore-theme]").first.click()
-    await page.wait_for_function("!document.getElementById('weave-theme-lens').hidden")
+    await page.wait_for_function("document.getElementById('weave-map-theme').value!==''")
     assert await page.evaluate(SNAPSHOT)==snapshot, (name,"theme chip changed collection")
     await page.evaluate("document.querySelector('#weave-theme-lens button').click()")
     await page.locator("#weave-film-preview [data-preview-back]").click()
@@ -92,9 +92,12 @@ async def check(browser, name, viewport):
       return terms.slice(0,1);
     }""")
     assert themes, (name, "no published themes")
+    await page.locator('#weave-map-theme').select_option(themes[0])
+    if len(themes)>1:
+        await page.locator('#weave-map-theme-second').select_option(themes[1])
     result = await page.evaluate("""themes => {
       const api=window.AtlasConstellate, films=api.themeIntersection(themes);
-      return {ok:api.showThemeLens(themes),count:films.length,
+      return {ok:document.getElementById('weave-map-theme').value===themes[0] && (themes.length===1 || document.getElementById('weave-map-theme-second').value===themes[1]),count:films.length,
               exact:films.every(f=>themes.every(t=>api.terms(f).includes(t)))};
     }""", themes)
     assert result["ok"] and result["count"] and result["exact"], (name, result)
@@ -108,7 +111,7 @@ async def check(browser, name, viewport):
     assert await page.evaluate(SNAPSHOT) == snapshot, (name, "exit mutated the collection")
     await page.evaluate("document.querySelector('header .constellate-link').click()")
     await page.wait_for_function(READY, timeout=30000)
-    assert await page.evaluate("!window.AtlasConstellate.tracing && document.getElementById('weave-theme-lens').hidden"), name
+    assert await page.evaluate("!window.AtlasConstellate.tracing && !document.getElementById('weave-theme-lens').hidden && document.getElementById('weave-map-theme').value===''"), name
     await page.evaluate("document.getElementById('constellate-exit').click()")
     await page.wait_for_function(MAP_READY, timeout=30000)
     # Add, save, then edit: only the explicit Save operation changes storage.

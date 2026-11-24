@@ -155,11 +155,11 @@ if(new URLSearchParams(location.search).get('constellation-embed')==='1'){
  function undo(){const h=history(),x=h.undo.pop();if(x){h.redo.push(x);restoreSnapshot(x.before);status('Undid '+x.label.toLowerCase()+'.');}}
  function redo(){const h=history(),x=h.redo.pop();if(x){h.undo.push(x);restoreSnapshot(x.after);status('Redid '+x.label.toLowerCase()+'.');}}
  function updateHistory(){const h=history();$('#constellate-undo').disabled=!h.undo.length;$('#constellate-redo').disabled=!h.redo.length;$('#constellate-undo').title=h.undo.length?'Undo '+h.undo.at(-1).label.toLowerCase():'Nothing to undo';$('#constellate-redo').title=h.redo.length?'Redo '+h.redo.at(-1).label.toLowerCase():'Nothing to redo';}
- function restoreAtlas(value){const go=()=>{A.restoreStop(copy(value));const{center,scale,zoom,...st}=copy(value);Object.assign(A.state,st);A.refresh();};if(A.holdMapMarkers)A.holdMapMarkers(go);else go();}
- function relayout(){if(!enabled)return;const view=A.captureState();document.body.classList.toggle('weave-dock-open',!panel.hidden||document.body.classList.contains('weave-browsing'));restoreAtlas(view);dimensions();renderGraph();}
+ function restoreAtlas(value){if(!value)return;const go=()=>{A.restoreStop(copy(value));const{center,scale,zoom,...st}=copy(value);Object.assign(A.state,st);A.refresh();};if(A.holdMapMarkers)A.holdMapMarkers(go);else go();}
+ function relayout(){if(!enabled)return;const dock=!panel.hidden||document.body.classList.contains('weave-browsing');const changed=document.body.classList.contains('weave-dock-open')!==dock;document.body.classList.toggle('weave-dock-open',dock);if(changed&&A.resizeMap)A.resizeMap();else if(!A.resizeMap)restoreAtlas(A.captureState());dimensions();renderGraph();}
  let themeBefore=null;
- function open(){const opening=!enabled;document.body.classList.remove('weave-browsing');if(!enabled){if(trace)stopTrace();/* 24 Nov 2026: Constellate turns the map into a night sky */try{const T=window.AtlasReadingTheme,now=document.documentElement.dataset.readingTheme;if(T&&now!=='night'){themeBefore=now||'paper';T.apply('night');}}catch{}entry={state:copy(A.captureState()),scroll:$('#index').scrollTop,url:location.href,x:window.scrollX||0,y:window.scrollY||0};enabled=true;window.AtlasFitCap=8;document.body.classList.add('is-constellating','is-theme-weaving');graph.hidden=false;graph.removeAttribute('hidden');$('#constellate-mode').hidden=false;}
-  syncThemeControl();panel.hidden=opening&&!S.current().items.length;trigger.setAttribute('aria-expanded',String(!panel.hidden));A.closeWorkspacePanels();relayout();render();updateAddress();if(opening&&S.current().items.some(x=>x.type!=='concept'))requestAnimationFrame(()=>requestAnimationFrame(()=>{if(enabled&&!unmapped&&!player)fit('quiet');}));}
+ function open(){const opening=!enabled;document.body.classList.remove('weave-browsing');if(!enabled){if(trace)stopTrace();/* 24 Nov 2026: Constellate turns the map into a night sky */try{const T=window.AtlasReadingTheme,now=document.documentElement.dataset.readingTheme;if(T&&now!=='night'){themeBefore=now||'paper';T.apply('night');}}catch{}entry={state:copy(A.captureState()),scroll:$('#index').scrollTop,url:location.href,x:window.scrollX||0,y:window.scrollY||0};enabled=true;syncStage();window.AtlasFitCap=8;document.body.classList.add('is-constellating','is-theme-weaving');graph.hidden=false;graph.removeAttribute('hidden');$('#constellate-mode').hidden=false;}
+  syncThemeControl();panel.hidden=opening&&!S.current().items.length;trigger.setAttribute('aria-expanded',String(!panel.hidden));A.closeWorkspacePanels();if(opening)A.resizeMap?.();relayout();render();updateAddress();if(opening&&S.current().items.some(x=>x.type!=='concept'))requestAnimationFrame(()=>requestAnimationFrame(()=>{if(enabled&&!unmapped&&!player)fit('quiet');}));}
  function browse(){if(!enabled||document.body.classList.contains('weave-browsing'))return;panel.hidden=true;document.body.classList.add('weave-browsing');trigger.setAttribute('aria-expanded','false');relayout();}
  function close(){closePreview();showLand('');closeFilmPair();document.body.classList.remove('weave-browsing');panel.hidden=true;trigger.setAttribute('aria-expanded','false');document.body.classList.remove('weave-dock-open');relayout();}
  function exit({restore=true,fromHistory=false}={}){
@@ -296,7 +296,7 @@ if(new URLSearchParams(location.search).get('constellation-embed')==='1'){
  const t=stepInfo(x.id)?.t||S.activeThread(),n=t.items.indexOf(x.id)+1,cx=NW()/2,cy=NH/2,selected=active===x.id||first===x.id||shiftFirst===x.id,fresh=selected&&Date.now()-(drawStarts.get(t.id)||0)<1200;
  return `<g class="weave-item" data-weave-item="${esc(x.id)}">${a?`<line class="weave-leader" x1="${a.x}" y1="${a.y}" x2="${p.x}" y2="${p.y}"/>`:''}<g class="constellate-card weave-film-node${selected?' selected':''}${fresh?' weave-just-added':''}" data-constellate-node="${esc(x.id)}" data-land="${esc(a?.id||'')}" transform="translate(${p.x-cx},${p.y-cy})" tabindex="0" role="button" aria-label="${esc(x.title)} · ${esc(landCaption(x))}"><rect class="weave-film-hit" x="${cx-17}" y="${cy-17}" width="34" height="34" rx="17"/><circle class="weave-film-ring" cx="${cx}" cy="${cy}" r="10"/><circle class="weave-film-light" cx="${cx}" cy="${cy}" r="5.5" fill="${color(t)}"/><text class="weave-film-number" x="${cx+13}" y="${cy+4}">${n||''}</text><text class="weave-film-title" text-anchor="middle" x="${cx}" y="${cy+27}">${esc(chipText(x.title,28))}</text><title>${esc(x.title)} · ${esc(landCaption(x))}</title></g></g>`;
  }if(shown&&!shown.has(x.id))return starMode&&x.type!=='concept'&&visibleItem(x.id)&&(unmapped||onScreen(a))?starLabel(x,p):'';const image=sourceImage(x),pict=x.type!=='concept',member=memberships(x.id),t=stepInfo(x.id)?.t,land=a?.name||'Idea';return `<g class="weave-item" data-weave-item="${esc(x.id)}">${p.edge?`<path class="weave-edge-arrow" d="M${p.x-6},${p.y-31} l6,-8 l6,8 z" fill="${color(t||S.activeThread())}" aria-hidden="true"><title>Thread continues beyond visible map</title></path>`:''}${a?`<line class="weave-leader" x1="${a.x}" y1="${a.y}" x2="${p.x}" y2="${p.y}"/>${t?'':`<circle class="weave-land-pin" cx="${a.x}" cy="${a.y}" r="5" fill="${color(t||S.activeThread())}" data-land-pin="${esc(a.id)}"><title>${esc(a.name)}</title></circle>`}`:''}<g class="constellate-card${x.type==='concept'?' concept':' pinned'}${active===x.id||first===x.id||shiftFirst===x.id?' selected':''}" data-constellate-node="${esc(x.id)}" data-land="${esc(a?.id||'')}" transform="translate(${p.x-NW()/2},${p.y-NH/2})" style="--weave-focus-color:${color(t||S.activeThread())}" tabindex="0" role="button" aria-label="${esc(x.title)}. ${esc(land)}. ${a?'Drag or use arrow keys to offset this label; its land pin stays fixed.':'Idea: drag freely.'}"><rect width="${NW()}" height="${NH}" rx="5"/>${pict?`<rect x="5" y="5" width="32" height="32" rx="5" style="fill:${color(t||S.activeThread())};fill-opacity:.19;stroke:none"/><text x="21" y="25" text-anchor="middle" font-size="11" font-weight="600" fill="var(--reading-ink)">${esc(initials(x).slice(0,2))}</text>${image?`<clipPath id="weave-chip-${i}"><rect x="5" y="5" width="32" height="32" rx="5"/></clipPath><image class="weave-card-art" href="${esc(image)}" onerror="this.style.display='none'" x="5" y="5" width="32" height="32" preserveAspectRatio="xMidYMid slice" clip-path="url(#weave-chip-${i})"/>`:''}<rect class="weave-chip-ring" x="5" y="5" width="32" height="32" rx="5" stroke="${color(t||S.activeThread())}"/>`:''}<text class="weave-chip-title" x="${pict?43:11}" y="19">${esc(chipText(x.title,pict?16:21))}</text><text class="weave-land-caption" x="${player?NW()/2+(lw=>Math.max(8+lw-p.x,Math.min(size.width-8-lw-p.x,0)))(Math.min(64,land.length)*(size.width<700?4:5.2)):pict?43:11}" y="${player?NH/2+37:32}">${esc(chipText(land,player?64:pict?20:25))}</text><title>${esc(x.title)} · ${esc(land)} · ${esc(member.map(t=>t.name).join(' / '))}</title></g></g>`;}).join('');
-  $('#weave-empty-hint').hidden=!!S.current().items.length||!!player;panel.classList.toggle('cm-has-edges',!!edges);graph.innerHTML=`<g id="constellate-world">${unmapped?relAxis():''}${threads}${edges}<path id="constellate-preview" class="constellate-preview"/>${nodes}</g>`;if(drawThread){const lk=graph.querySelector('#constellate-world>g.weave-thread.is-active');if(lk){lk.classList.add('is-linking');lk.parentNode.appendChild(lk);}}cameraBasePositions=new Map([...positions].map(([id,p])=>[id,{...p}]));cameraBaseAnchors=new Map([...anchors].map(([id,p])=>[id,{...p}]));renderPreview();}
+  $('#weave-empty-hint').hidden=!!S.current().items.length||!!player;panel.classList.toggle('cm-has-edges',!!edges);graph.innerHTML=`<g id="constellate-world">${unmapped?relAxis():''}${threads}${edges}<path id="constellate-preview" class="constellate-preview"/>${nodes}</g>`;syncKnotVisibility();if(drawThread){const lk=graph.querySelector('#constellate-world>g.weave-thread.is-active');if(lk){lk.classList.add('is-linking');lk.parentNode.appendChild(lk);}}cameraBasePositions=new Map([...positions].map(([id,p])=>[id,{...p}]));cameraBaseAnchors=new Map([...anchors].map(([id,p])=>[id,{...p}]));renderPreview();}
  function renderPreview(){
    const line=$('#constellate-preview'),source=(drawThread?drawLast:null)||first||shiftFirst,a=source&&positions.get(source);
    if(!line)return;
@@ -484,12 +484,13 @@ if(new URLSearchParams(location.search).get('constellation-embed')==='1'){
    if(select.innerHTML!==html){select.innerHTML=html;select.value=chosen[kind];}
   }
  }
+ let facetCacheKey='';
  function renderResults({resetScroll=false}={}){
   const input=$('#constellate-search'),q=norm(input.value).trim(),order=$('#weave-discovery-order').value;
   const onlyNew=$('#weave-discovery-unadded').checked,withArt=$('#weave-discovery-art').checked;
   const box=$('#constellate-results'),thread=S.activeThread(),noun=azTab==='film'?'films':'filmmakers';
   const all=azAll(azTab),membership=onlyNew?thread.items.join('|'):'';
-   refreshFacetOptions(all,q,onlyNew,withArt,thread);const facets=selectedFacets();
+   const facetKey=JSON.stringify([azTab,q,onlyNew,withArt,membership,selectedFacets()]);if(facetKey!==facetCacheKey){refreshFacetOptions(all,q,onlyNew,withArt,thread);facetCacheKey=JSON.stringify([azTab,q,onlyNew,withArt,membership,selectedFacets()]);}const facets=selectedFacets();
   const filterSignature=[azTab,q,order,onlyNew,withArt,thread.id,...facetKinds.map(k=>facets[k])].join('|');
   if(filterSignature!==browseSignature){browsePageStart=0;browsePageLimit=48;browseSignature=filterSignature;}
   const cacheKey=[filterSignature,membership,browsePageStart,browsePageLimit].join('|');
@@ -712,7 +713,7 @@ function updateSaveControl(){const c=S.current(),saved=S.saved(c.id),dirty=S.dir
   $('#weave-focus-thread').onclick=()=>{focusThread=!focusThread;renderLegend();renderGraph();status(focusThread?'Showing '+S.activeThread().name+' only. Show all threads restores the full constellation.':'Showing every visible thread again.');};
  $('#weave-browse-back').onclick=()=>{setTab('thread');renderOrder();};$('#weave-read-start').onclick=()=>{open();setRead(true);};$('#weave-find-films').onclick=()=>{open();setTab('add');$('#constellate-search').focus({preventScroll:true});};$('#weave-browse-films').onclick=()=>{if(enabled&&!reading&&$('#weave-editor').dataset.tab==='add'&&!document.querySelector('#constellate-popup').hidden){setTab('thread');return;}open();if(reading)setRead(false);setTab('add');const q=$('#constellate-search');q.focus({preventScroll:true});q.scrollIntoView({block:window.matchMedia('(max-width:700px)').matches?'center':'nearest',behavior:'smooth'});q.classList.remove('cm-flash');void q.offsetWidth;q.classList.add('cm-flash');};$('#weave-draw-thread').onclick=()=>setDrawThread(!drawThread);$('#weave-land').addEventListener('click',e=>{if(e.target.closest('[data-land-clear-theme]')){const id=landShown;clearThemeLens(false);showLand(id);return;}const l=e.target.closest('[data-wl-land]');if(l){openLand(l.dataset.wlLand);return;}const f=e.target.closest('[data-wl]');if(f){landPick(f.dataset.wl);return;}if(e.target.closest('.wl-more')){const firstNew=landLimit;landLimit+=12;showLand(landShown,true);const next=$$('#weave-land [data-wl]')[firstNew];next?.focus({preventScroll:true});next?.scrollIntoView({block:'nearest',behavior:motion.matches?'auto':'smooth'});return;}if(e.target.closest('.wl-all')){const id=landShown;showLand('');landThread(id);return;}if(e.target.closest('.wl-close'))showLand('');});
  /* a film drawn as a full card sits on its own thread point: hide that point's number so it does not cover the title */
- new MutationObserver(()=>{const on=new Set([...graph.querySelectorAll('[data-constellate-node]')].map(n=>n.dataset.constellateNode));graph.querySelectorAll('[data-weave-knot]').forEach(k=>k.classList.toggle('under-card',on.has(k.dataset.weaveKnot)));}).observe(graph,{childList:true,subtree:true});
+ function syncKnotVisibility(){const on=new Set([...graph.querySelectorAll('[data-constellate-node]')].map(n=>n.dataset.constellateNode));graph.querySelectorAll('[data-weave-knot]').forEach(k=>k.classList.toggle('under-card',on.has(k.dataset.weaveKnot)));}
  /* a land name, its poster or its shaded area, clicked while building: show that land's films */
  map.addEventListener('click',e=>{const t=e.target.closest?.('g.land-word,g.land-thumb,g.land-reference-bubble,.nation-wash');if(!t||!map.querySelector('#atlas')?.contains(t))return;const id=t.dataset.land||t.dataset.connection||t.dataset.landBubble||t.__data__?.id;if(openLand(id)){e.preventDefault();e.stopImmediatePropagation();}},true);$('#weave-draw-done').onclick=()=>setDrawThread(false);$('#weave-trace').onclick=()=>trace?stopTrace():startTrace();
  const peek=$('#weave-peek');function showPeek(id,e,note=''){const x=S.current().items.find(x=>x.id===id);if(!x||drag||player){peek.hidden=true;return;}const ts=memberships(id);peek.innerHTML=`<div><strong>${esc(x.title)}</strong>${x.type!=='concept'?`<small>${esc([x.maker,x.year].filter(Boolean).join(' · '))}</small>`:''}<small class="weave-peek-land">${esc(landCaption(x))}</small>${note?`<p class="weave-peek-note">${esc(note)}</p>`:''}${ts.length?`<span class="weave-peek-threads">${ts.map(t=>`<i style="background:${color(t)}"></i>${esc(t.name)}`).join('<b>·</b>')}</span>`:''}</div>`;peek.hidden=false;const m=map.getBoundingClientRect(),w=peek.offsetWidth,h=peek.offsetHeight;let lx=e.clientX-m.left+16,ly=e.clientY-m.top+16;if(lx+w>m.width-8)lx=e.clientX-m.left-w-16;if(ly+h>m.height-8)ly=e.clientY-m.top-h-16;peek.style.left=Math.max(8,lx)+'px';peek.style.top=Math.max(8,ly)+'px';}
@@ -1237,13 +1238,16 @@ function stopPlay(){if(!player)return;playThread=null;pausePlay(true);player.hid
  // A preview is view state only. It cannot enter the collection through rendering.
  function safeLink(value){try{const u=new URL(value);return u.protocol==='https:'||u.protocol==='http:'?u.href:'';}catch{return '';}}
  function themeButtons(x){return terms(x).map(t=>'<button type="button" class="weave-theme-chip" data-explore-theme="'+esc(t)+'" aria-pressed="'+String(!!themeLens?.terms.includes(t))+'">'+esc(t)+'</button>').join(' ');}
+ const relatedRanks=new Map();
  function rankRelated(seed){
+  if(relatedRanks.has(seed.id))return relatedRanks.get(seed.id);
   const a=suggestEvidence(seed);if(!a)return [];
-  return relatedCandidates(seed).filter(x=>key(x)!==key(seed)).map(x=>{
+  const ranked=relatedCandidates(seed).filter(x=>key(x)!==key(seed)).map(x=>{
    const basis=suggestionBases(seed,x),b=suggestEvidence(x);
    const rare=[...b.themes].filter(t=>a.themes.has(t)).reduce((n,t)=>n+1/Math.sqrt(relationshipIndex().byTheme.get(t)?.length||1),0);
    return {x,...basis,score:basis.themeCount*12+rare*8+(basis.land?5:0)+(basis.people?5:0)+(basis.maker?4:0)+(basis.language?7:0)};
   }).filter(p=>p.themeCount||p.land||p.people||p.maker||p.language).sort((a,b)=>b.score-a.score||azSort.compare(a.x.title,b.x.title));
+  if(relatedRanks.size>=48)relatedRanks.delete(relatedRanks.keys().next().value);relatedRanks.set(seed.id,ranked);return ranked;
  }
  function closePreview(){previewFilm=null;previewOrigin=null;const p=$('#weave-film-preview');if(p)p.hidden=true;panel.classList.remove('has-film-preview');updatePreviewStars();}
  function updatePreviewStars(){syncLandStars();}
@@ -1365,7 +1369,8 @@ function stopPlay(){if(!player)return;playThread=null;pausePlay(true);player.hid
  function setTab(tab){if(tab==='add'){closePreview();showLand('');closeFilmPair();}const ed=$('#weave-editor');$('#weave-browse-films')?.setAttribute('aria-pressed',String(tab==='add'));if(ed.dataset.tab===tab)return;ed.dataset.tab=tab;panel.scrollTop=0;}
  setTab(S.current().items.length?'thread':'add');
 
- function modeButtons(m){clearNotice();[['constellate-edit','edit'],['constellate-read','read'],['constellate-share','share'],['weave-play','play']].forEach(([id,k])=>$('#'+id).setAttribute('aria-pressed',String(m===k)));}
+ function syncStage(){const root=document.documentElement;if(enabled)root.dataset.weaveStage=player?'play':reading?'read':'build';else delete root.dataset.weaveStage;}
+ function modeButtons(m){syncStage();clearNotice();[['constellate-edit','edit'],['constellate-read','read'],['constellate-share','share'],['weave-play','play']].forEach(([id,k])=>$('#'+id).setAttribute('aria-pressed',String(m===k)));}
  $('#constellate-edit').addEventListener('click',()=>modeButtons('edit'));
  // C. sort a thread by year, or as a route (nearest place next)
  function sortThread(by){const t=S.activeThread(),c=S.current(),it=id=>c.items.find(x=>x.id===id);let order;if(by==='year'){order=t.items.map((id,i)=>({id,i,y:yearNum(it(id))})).sort((a,b)=>(a.y||9999)-(b.y||9999)||a.i-b.i).map(o=>o.id);}else{const pts=t.items.map(id=>({id,p:it(id)?.type==='concept'?null:anchors.get(id)})),placed=pts.filter(o=>o.p),rest=pts.filter(o=>!o.p);if(placed.length<3){status('Add films with places to order this thread as a route.');return;}const start=placed.reduce((a,b)=>(b.p.y<a.p.y?b:a));order=[start];const left=new Set(placed.filter(o=>o!==start));while(left.size){const cur=order.at(-1);let best=null,bd=Infinity;for(const o of left){const d=Math.hypot(o.p.x-cur.p.x,o.p.y-cur.p.y);if(d<bd){bd=d;best=o;}}order.push(best);left.delete(best);}order=[...order,...rest].map(o=>o.id);}
@@ -1623,7 +1628,7 @@ try{
   var watching=false;
   function watch(){
    var bar=document.getElementById('constellate-mode');if(!bar||watching)return;watching=true;
-   new MutationObserver(function(){if(!placing)place();}).observe(bar,{childList:true});
+   // Toolbar structure is assembled once. State changes update the existing controls.
    var add=bar.querySelector('.cm-add');
    add.addEventListener('toggle',function(){if(add.open)closeMenus(add);});
    bar.querySelector('.weave-more').addEventListener('toggle',function(e){if(e.target.open)closeMenus(e.target);});
@@ -2073,15 +2078,6 @@ var chip=function(v,n){v=String(v||'');return v.length>n?v.slice(0,n-1).replace(
 var tkey=function(x){return norm(x.title).replace(/[^a-z0-9]+/g,' ').trim()+'|'+(x.year||'');};
 var yr=function(x){var n=parseInt(x&&x.year,10);return n>1800&&n<2100?n:null;};
 /* ---------- 2026-11-11: a new thread never repeats a colour already in use ---------- */
-var STAR_ORDER=['star-blue','star-yellow','star-red','star-bluewhite','star-orange','star-white'],lastThreadCount={};
-function distinctColours(){
- var c=current();if(!c)return;var n=c.threads.length,was=lastThreadCount[c.id];lastThreadCount[c.id]=n;
- if(was===undefined||n<=was)return;
- var fresh=c.threads[n-1],used={};c.threads.slice(0,n-1).forEach(function(t){used[t.color]=1;});
- if(!used[fresh.color])return;
- var free=STAR_ORDER.filter(function(k){return !used[k];})[0];
- if(free){fresh.color=free;try{S().save();}catch(e){}}
-}
 /* ---------- 2026-11-11: legend for the two kinds of line; phone cue for the selected film ---------- */
 function legendNote(){
  var host=$('#weave-legend');if(!host||$('#weave-line-key'))return;
@@ -2121,14 +2117,14 @@ function labels(){
 
 /* ---------- run ---------- */
 var last='';
-function settle(){setTimeout(tick,80);setTimeout(tick,500);}
+function settle(){if(!tick.raf)tick.raf=requestAnimationFrame(function(){tick.raf=0;tick();});}
 function tick(){
  var st=stage();
  /* tick() runs after every class/hidden change on the page, so it must write only what has changed: an unconditional write here re-triggers it on every frame. */
  if((root.dataset.weaveStage||'')!==st){if(st)root.dataset.weaveStage=st;else delete root.dataset.weaveStage;}
  var web=$('#atlas-theme-web'),webOn=!!(web&&!web.hidden);if((root.dataset.weaveWeb==='1')!==webOn){if(webOn)root.dataset.weaveWeb='1';else delete root.dataset.weaveWeb;}
  if(!st)return;
- buildStart();labels();try{examplePreview();}catch(e){}try{distinctColours();legendNote();phoneCue();}catch(e){}
+ if(!$('#weave-start')){buildStart();labels();}try{examplePreview();}catch(e){}try{legendNote();phoneCue();}catch(e){}
  if(st==='start'){savedList();}
  if(st==='start'&&last!=='start'){var qn=$('#ws-film-q');if(qn&&window.innerWidth>760)setTimeout(function(){try{var current=document.activeElement;if(!current||current===document.body||current===document.documentElement||current===qn)qn.focus({preventScroll:true});}catch(e){}},300);}
  last=st;
@@ -2139,8 +2135,9 @@ function start(){
  tick();
  try{S().subscribe(function(){settle();});}catch(e){}
  if(new URLSearchParams(location.search).get('trace')==='1')setTimeout(function(){try{C().trace();}catch(e){}},700);
- var sg=$('#weave-suggest');if(sg)new MutationObserver(function(){labels();}).observe(sg,{childList:true,subtree:true});
- new MutationObserver(function(){if(!tick.raf)tick.raf=requestAnimationFrame(function(){tick.raf=0;tick();});}).observe(document.body,{attributes:true,attributeFilter:['class','aria-pressed','hidden'],subtree:true});
+ var stageObserver=new MutationObserver(settle);stageObserver.observe(document.body,{attributes:true,attributeFilter:['class']});
+ for(var id of ['#constellate-read','#constellate-context','#weave-player']){var el=$(id);if(el)stageObserver.observe(el,{attributes:true,attributeFilter:['aria-pressed','hidden']});}
+ window.addEventListener('resize',settle,{passive:true});
 }
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start,{once:true});else start();
 })();

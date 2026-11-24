@@ -615,6 +615,7 @@ html[data-weave-stage] #atlas .land-watch,html[data-weave-stage] #atlas .land-th
 #weave-start .ws-path{gap:8px}
 /* phones while building: a shorter map, so the guide and the thread show beneath it without scrolling */
 @media (max-width:760px){
+ :root:not(#_)[data-atlas-entry="constellate"]:not([data-weave-stage]) body.atlas-page .map-panel,
  :root:not(#_)[data-weave-stage="build"] body.is-theme-weaving .map-panel{height:52dvh!important;min-height:300px!important;max-height:52dvh!important}
  :root:not(#_)[data-weave-stage="build"] body.is-theme-weaving #constellate-popup{max-height:none!important}
 }
