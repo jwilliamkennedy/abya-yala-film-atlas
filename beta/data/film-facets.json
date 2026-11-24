@@ -2,8 +2,8 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-24",
  "license": "See data.html",
- "films_on_public_map": 2693,
- "film_entries": 2707,
+ "films_on_public_map": 2715,
+ "film_entries": 2729,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -6804,6 +6804,22 @@
    ],
    "form": "Fiction",
    "length": "Short"
+  },
+  "DIR-0098-W1031-1": {
+   "title": "Sumé – The Sound of a Revolution",
+   "year": 2014,
+   "makers": [
+    {
+     "id": "DIR-0098",
+     "name": "Inuk Silis Høegh"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
   },
   "DIR-0099-F1": {
    "title": "Butterfly",
@@ -54778,6 +54794,352 @@
    "primary_theme": null,
    "families": [],
    "form": "Animation",
+   "length": null
+  },
+  "QM-1f982a755a-M1": {
+   "title": "Mujabä Tojk, La casa grande",
+   "year": null,
+   "makers": [
+    {
+     "id": "QM-1f982a755a",
+     "name": "Fortino Domínguez Rueda"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Displacement and Migration",
+    "Urban Indigeneity"
+   ],
+   "primary_theme": "Displacement and Migration",
+   "families": [
+    "Lives and Relations",
+    "Sovereignty and Politics"
+   ],
+   "form": "Documentary",
+   "length": null
+  },
+  "Q20261124-90-F1": {
+   "title": "Your Turn",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261124-90",
+     "name": "Avery Scott Hale"
+    },
+    {
+     "id": "Q20261124-91",
+     "name": "Sunshine Eaton"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261124-94-F1": {
+   "title": "February Sixteenth Nineteen Forty-Seven",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "Q20261124-94",
+     "name": "Jessica Miinguuaqtii"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": null
+  },
+  "Q20261124-03-F1": {
+   "title": "And Knowledge to Keep Us",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261124-03",
+     "name": "Sven Haakanson Jr."
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "Q20261124-64-F1": {
+   "title": "Courage",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261124-64",
+     "name": "Eric Hernandez"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261124-65-F1": {
+   "title": "Camera Roll",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "Q20261124-65",
+     "name": "Juliana Brown Eyes"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261124-66-F1": {
+   "title": "Carin",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "Q20261124-66",
+     "name": "Ethan Nopah"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261124-68-F1": {
+   "title": "My Friend Andrew",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "Q20261124-68",
+     "name": "Kendrick J. Whiteman Jr."
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261124-69-F1": {
+   "title": "Stories From the Tohono O’odham Nation Tribe",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "Q20261124-69",
+     "name": "Chris Rios"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "Q20261124-70-F1": {
+   "title": "The Last Western",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "Q20261124-70",
+     "name": "Echota Killsnight"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261124-71-F1": {
+   "title": "This Means Forever",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "Q20261124-71",
+     "name": "Brandon Martinez"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261124-72-F1": {
+   "title": "Unearthing the Past",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "Q20261124-72",
+     "name": "Rhyka Nelson"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261124-73-F1": {
+   "title": "Tyee—Messenger of the Void",
+   "year": 2023,
+   "makers": [
+    {
+     "id": "Q20261124-73",
+     "name": "Erik Sanchez"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261124-74-F1": {
+   "title": "Baah The Perfect Bread",
+   "year": 2023,
+   "makers": [
+    {
+     "id": "Q20261124-74",
+     "name": "Daveishena Redhouse"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": null
+  },
+  "Q20261124-04-F1": {
+   "title": "Forgotten Founder: The Untold Story of Samson Occom and Dartmouth",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261124-04",
+     "name": "Melissa Tantaquidgeon Zobel"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "Q20261124-07-F1": {
+   "title": "Frost Scraping",
+   "year": 2025,
+   "makers": [
+    {
+     "id": "Q20261124-07",
+     "name": "Theresa iskwêw"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "Q20261124-08-F1": {
+   "title": "Dirt Road",
+   "year": 2023,
+   "makers": [
+    {
+     "id": "Q20261124-08",
+     "name": "Harlan Wungnema Shield"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": "Short"
+  },
+  "Q20261124-40-F1": {
+   "title": "Raven Steals the Sun",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261124-40",
+     "name": "Sydney Mason Renee"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261124-42-F1": {
+   "title": "Poos",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "Q20261124-42",
+     "name": "Celestine Twigg"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": null
+  },
+  "Q20261124-44-F1": {
+   "title": "People of the Sacred Land",
+   "year": 2026,
+   "makers": [
+    {
+     "id": "Q20261124-44",
+     "name": "Sarah Ortegon HighWalking"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "Q20261124-47-F1": {
+   "title": "Forever After",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261124-47",
+     "name": "Miles Smith Jr"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
    "length": null
   }
  }
