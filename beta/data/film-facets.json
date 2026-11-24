@@ -2,8 +2,8 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-24",
  "license": "See data.html",
- "films_on_public_map": 2715,
- "film_entries": 2729,
+ "films_on_public_map": 2733,
+ "film_entries": 2747,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -55133,6 +55133,294 @@
     {
      "id": "Q20261124-47",
      "name": "Miles Smith Jr"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261124-60-F1": {
+   "title": "Sacred Ink",
+   "year": 2025,
+   "makers": [
+    {
+     "id": "Q20261124-60",
+     "name": "Antonia Hatch"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "Q20261124-61-F1": {
+   "title": "Poacher’s Paradise",
+   "year": 2025,
+   "makers": [
+    {
+     "id": "Q20261124-61",
+     "name": "David Arquero"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261124-62-F1": {
+   "title": "Wokiksuye",
+   "year": 2025,
+   "makers": [
+    {
+     "id": "Q20261124-62",
+     "name": "Laura Ten Fingers"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261124-63-F1": {
+   "title": "The Unknown Welcomes Me",
+   "year": 2025,
+   "makers": [
+    {
+     "id": "Q20261124-63",
+     "name": "Whit Maloney"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261124-67-F1": {
+   "title": "Dragged to Nowhere",
+   "year": 2025,
+   "makers": [
+    {
+     "id": "Q20261124-67",
+     "name": "Jordan Martin"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261124-75-F1": {
+   "title": "Broken Path",
+   "year": 2026,
+   "makers": [
+    {
+     "id": "Q20261124-75",
+     "name": "Tyrell Etsitty"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261124-76-F1": {
+   "title": "The Gathering",
+   "year": 2025,
+   "makers": [
+    {
+     "id": "Q20261124-76",
+     "name": "Alexander Kurowski"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261124-41-F1": {
+   "title": "Vidrìi Tr'ahtłoo (Their Warming Heart)",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261124-41",
+     "name": "Nanieezh Peter"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Music Video",
+   "length": null
+  },
+  "Q20261124-45-F1": {
+   "title": "Zilá",
+   "year": 2025,
+   "makers": [
+    {
+     "id": "Q20261124-45",
+     "name": "Henry Geraldes"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261124-46-F1": {
+   "title": "Whispers Between Two Worlds",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261124-46",
+     "name": "Cameren Jackson"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261124-48-F1": {
+   "title": "Between Salt and Sky",
+   "year": 2025,
+   "makers": [
+    {
+     "id": "Q20261124-48",
+     "name": "Felipe Rosa"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "Q20261124-49-F1": {
+   "title": "Made For Her: A Native American Fashion Film",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261124-49",
+     "name": "Orlando Skidmore"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261124-50-F1": {
+   "title": "Walking Forward, Metis Strong",
+   "year": 2025,
+   "makers": [
+    {
+     "id": "Q20261124-50",
+     "name": "Johanna Silver"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261124-51-F1": {
+   "title": "Florencio Quispe",
+   "year": 2025,
+   "makers": [
+    {
+     "id": "Q20261124-51",
+     "name": "Christian Milla Mancilla"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "Q20261124-52-F1": {
+   "title": "Shank",
+   "year": 2026,
+   "makers": [
+    {
+     "id": "Q20261124-52",
+     "name": "Jim Terry"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261124-53-F1": {
+   "title": "A Missão Encantada",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261124-53",
+     "name": "Marta Torres"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261124-54-F1": {
+   "title": "Cervantine Videodance No.2: The Deer Dance!",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261124-54",
+     "name": "Héctor Maya Requena"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261124-55-F1": {
+   "title": "We the Indigenous People",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261124-55",
+     "name": "Zachary Chee Emerson"
     }
    ],
    "languages": [],
