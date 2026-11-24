@@ -1857,17 +1857,22 @@ body.weave-empty #weave-order .weave-order-tools{display:none}
 #weave-trace-layer .wt-film-card small{font:500 12px/1.3 var(--ui-sans);color:var(--dw-sub);overflow-wrap:anywhere}
 
 /* Shared theme lens: a temporary view, not an edit to a thread. */
-#weave-theme-lens{position:absolute;top:64px;left:12px;z-index:13;display:flex;align-items:center;gap:14px;max-width:calc(100% - 24px);padding:8px 10px 8px 14px;border:1px solid var(--reading-line);border-radius:8px;background:var(--reading-paper);color:var(--reading-ink);box-shadow:0 3px 16px #0003}
-#weave-theme-lens[hidden]{display:none!important}
-#weave-theme-lens div{display:flex;flex-direction:column;gap:3px;min-width:0}
-#weave-theme-lens strong{font:600 14px/1.25 var(--ui-sans);overflow-wrap:anywhere}
-#weave-theme-lens small{font:500 12px/1.25 var(--ui-sans);color:var(--reading-muted)}
-#weave-theme-lens button{flex:none;min-width:36px;min-height:36px;border:0;background:transparent;color:inherit;font-size:20px;cursor:pointer}
+/* One map selector for all discovery paths. The second term is progressive disclosure. */
+#weave-theme-lens{position:absolute;top:64px;left:12px;z-index:13;display:grid;gap:5px;width:min(280px,calc(100% - 24px));box-sizing:border-box;padding:8px 10px;border:1px solid var(--reading-line);border-radius:9px;background:var(--reading-paper);color:var(--reading-ink);box-shadow:0 3px 16px #0003}
+#weave-theme-lens[hidden],#weave-theme-lens [hidden]{display:none!important}
+#weave-theme-lens .weave-map-theme-row{display:flex;align-items:center;gap:8px;min-width:0}
+#weave-theme-lens label{font:600 12px/1.2 var(--ui-sans);flex:none;color:var(--reading-muted)}
+#weave-theme-lens select{flex:1;min-width:0;width:100%;font:500 13px/1.3 var(--ui-sans);min-height:34px;box-sizing:border-box;background:var(--reading-wash);color:var(--reading-ink);border:1px solid var(--reading-line);border-radius:6px;padding:4px 8px;text-overflow:ellipsis}
+#weave-theme-lens small{font:500 12px/1.35 var(--ui-sans);color:var(--reading-muted)}
+#weave-theme-lens button{flex:none;min-width:30px;min-height:34px;border:0;background:transparent;color:inherit;font-size:20px;cursor:pointer}
+#weave-theme-lens :is(select,button):focus-visible{outline:2px solid #a8cbe5;outline-offset:2px}
 body.weave-theme-lens #atlas .land-sky-star:not(.theme-match){opacity:.18}
-body.weave-theme-lens #atlas .land-sky-star.theme-match .land-sky-light{fill:#fff2c4;stroke:#fff;stroke-width:1.2;filter:drop-shadow(0 0 5px #f5d68c)}
-body.weave-theme-lens #atlas .land-sky-star:not(.theme-match):is(:hover,:focus-visible){opacity:.85}
-body.is-theme-web-open #weave-theme-lens,body.weave-playing #weave-theme-lens,body.weave-unmapped #weave-theme-lens{display:none!important}
-@media(max-width:700px){#weave-theme-lens{top:58px;left:8px;max-width:calc(100% - 16px)}}
+body.weave-theme-lens #atlas .land-sky-star.theme-match .land-sky-light{fill:#fff2c4;stroke:#fff;stroke-width:1.2;filter:drop-shadow(0 0 4px #f5d68c)}
+body.weave-theme-lens #atlas .land-sky-star:not(.theme-match):is(:hover,:focus-visible,.is-selected){opacity:.85}
+body.is-theme-web-open #weave-theme-lens,body.weave-playing #weave-theme-lens,body.weave-unmapped #weave-theme-lens,body.weave-tracing #weave-theme-lens,html[data-weave-stage="read"] #weave-theme-lens{display:none!important}
+body.is-constellating #weave-trace-layer :is(.wt-switch,.wt-theme-pick,.wt-sep,.wt-theme){display:none!important}
+@media(max-width:700px){#weave-theme-lens{top:58px;left:8px;width:min(240px,calc(100% - 16px));padding:5px 7px}#weave-theme-lens select{min-height:32px;font-size:12px}}
+
 
 /* Film-to-film comparison, using the same sourced artwork as the discovery cards. */
 #weave-film-pair[hidden]{display:none!important}

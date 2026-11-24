@@ -5,6 +5,10 @@
 const LANGS={en:'English',es:'Español',pt:'Português',fr:'Français'};
 // [English, Español, Português, Français]
 const T=[
+["Map themes","Temas del mapa","Temas do mapa","Thèmes de la carte"],
+["Filter map by theme","Filtrar mapa por tema","Filtrar mapa por tema","Filtrer la carte par thème"],
+["Intersect with a second theme","Cruzar con otro tema","Cruzar com outro tema","Croiser avec un second thème"],
+["Intersect with…","Cruzar con…","Cruzar com…","Croiser avec…"],
 ["No matching films","No hay películas que coincidan","Nenhum filme correspondente","Aucun film correspondant"],
 ["Show all films","Mostrar todas las películas","Mostrar todos os filmes","Afficher tous les films"],
 ["Film preview","Vista previa de la película","Prévia do filme","Aperçu du film"],
