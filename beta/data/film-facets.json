@@ -2046,11 +2046,19 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Elders and Knowledge",
+    "Art, Craft and Making",
+    "More-than-Human Relations"
+   ],
+   "primary_theme": "Elders and Knowledge",
+   "families": [
+    "Expression and Representation",
+    "Knowledge and Continuity",
+    "Land and Environment"
+   ],
    "form": "Documentary",
-   "length": null
+   "length": "Short"
   },
   "FILM-0037": {
    "title": "A história do monstro Kátpy (rep.)",
@@ -13687,11 +13695,19 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Memory and Oral History",
+    "Elders and Knowledge",
+    "Self-Representation and Countering Stereotypes",
+    "Art, Craft and Making"
+   ],
+   "primary_theme": "Memory and Oral History",
+   "families": [
+    "Expression and Representation",
+    "Knowledge and Continuity"
+   ],
    "form": "Documentary",
-   "length": null
+   "length": "Feature"
   },
   "Q20261113-102-F1": {
    "title": "Tao'a",
@@ -18861,10 +18877,14 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
+   "themes": [
+    "Youth"
+   ],
+   "primary_theme": "Youth",
+   "families": [
+    "Lives and Relations"
+   ],
+   "form": "Fiction",
    "length": "Feature"
   },
   "FILM-0262": {
@@ -25008,9 +25028,14 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Women and Gender",
+    "Kinship"
+   ],
+   "primary_theme": "Women and Gender",
+   "families": [
+    "Lives and Relations"
+   ],
    "form": "Fiction",
    "length": null
   },
@@ -25459,10 +25484,17 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
+   "themes": [
+    "Kinship",
+    "Art, Craft and Making",
+    "Women and Gender"
+   ],
+   "primary_theme": "Kinship",
+   "families": [
+    "Expression and Representation",
+    "Lives and Relations"
+   ],
+   "form": "Fiction",
    "length": null
   },
   "NEW-86d0a18ee535-WORK-1": {
@@ -26330,10 +26362,18 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
+   "themes": [
+    "Sovereignty and Self-Determination",
+    "Self-Representation and Countering Stereotypes",
+    "Kinship"
+   ],
+   "primary_theme": "Sovereignty and Self-Determination",
+   "families": [
+    "Expression and Representation",
+    "Lives and Relations",
+    "Sovereignty and Politics"
+   ],
+   "form": "Documentary",
    "length": "Short"
   },
   "Q20261115-404-F2": {
@@ -26346,10 +26386,14 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
+   "themes": [
+    "Music and Performance"
+   ],
+   "primary_theme": "Music and Performance",
+   "families": [
+    "Expression and Representation"
+   ],
+   "form": "Experimental",
    "length": "Short"
   },
   "Q20261115-404-F3": {
@@ -26362,10 +26406,14 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
+   "themes": [
+    "Kinship"
+   ],
+   "primary_theme": "Kinship",
+   "families": [
+    "Lives and Relations"
+   ],
+   "form": "Fiction",
    "length": "Short"
   },
   "NEW-699df72682cb-F1": {
@@ -39462,10 +39510,16 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
+   "themes": [
+    "Displacement and Migration",
+    "Kinship"
+   ],
+   "primary_theme": "Displacement and Migration",
+   "families": [
+    "Lives and Relations",
+    "Sovereignty and Politics"
+   ],
+   "form": "Fiction",
    "length": null
   },
   "Q20261114-82-F1": {
@@ -40970,11 +41024,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Health and Healing"
+   ],
+   "primary_theme": "Health and Healing",
+   "families": [
+    "Lives and Relations"
+   ],
+   "form": "Documentary",
+   "length": "Short"
   },
   "BETA25-20261105-14-QMb7bb33": {
    "title": "Estamos na Luta",
@@ -41002,10 +41060,14 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
+   "themes": [
+    "Elders and Knowledge"
+   ],
+   "primary_theme": "Elders and Knowledge",
+   "families": [
+    "Knowledge and Continuity"
+   ],
+   "form": "Documentary",
    "length": null
   },
   "BETA25-20261105-15-FILM1": {
@@ -41433,11 +41495,20 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Women and Gender",
+    "Memory and Oral History",
+    "Land Defense",
+    "Kinship"
+   ],
+   "primary_theme": "Women and Gender",
+   "families": [
+    "Knowledge and Continuity",
+    "Land and Environment",
+    "Lives and Relations"
+   ],
+   "form": "Documentary",
+   "length": "Feature"
   },
   "BETA30-20261106-F25": {
    "title": "Reikwaapa – Saberes Guarani",
@@ -41449,11 +41520,18 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Youth",
+    "Elders and Knowledge",
+    "Women and Gender"
+   ],
+   "primary_theme": "Youth",
+   "families": [
+    "Knowledge and Continuity",
+    "Lives and Relations"
+   ],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "BETA30-20261106-F26": {
    "title": "Djaexá Porãa – Um olhar para o futuro",
@@ -41639,11 +41717,19 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Land Defense",
+    "Collective and Community Media",
+    "Resistance Movements"
+   ],
+   "primary_theme": "Land Defense",
+   "families": [
+    "Expression and Representation",
+    "Land and Environment",
+    "Sovereignty and Politics"
+   ],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "BETA8D-20261107-F01": {
    "title": "Guairaka’i ja – O dono da lontra",
@@ -44296,11 +44382,18 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "More-than-Human Relations",
+    "Environmental Change",
+    "Youth"
+   ],
+   "primary_theme": "More-than-Human Relations",
+   "families": [
+    "Land and Environment",
+    "Lives and Relations"
+   ],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "QM-e66b46752b-M1": {
    "title": "Nyehé: palabras que recogen esperanza",
@@ -48389,11 +48482,18 @@
      "source": "https://vtape.org/video?vi=7708"
     }
    ],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Kinship",
+    "Youth",
+    "Displacement and Migration"
+   ],
+   "primary_theme": "Kinship",
+   "families": [
+    "Lives and Relations",
+    "Sovereignty and Politics"
+   ],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "Q20261115-764-F2": {
    "title": "The Gift",
@@ -48415,11 +48515,19 @@
      "source": "https://vtape.org/video?vi=5946"
     }
    ],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Kinship",
+    "LGBTQIA2S",
+    "Memory and Oral History",
+    "Women and Gender"
+   ],
+   "primary_theme": "Kinship",
+   "families": [
+    "Knowledge and Continuity",
+    "Lives and Relations"
+   ],
+   "form": "Fiction",
+   "length": "Short"
   },
   "Q20261115-765-F1": {
    "title": "down(town) time",
@@ -48545,11 +48653,15 @@
      "source": "https://vtape.org/video?vi=5798"
     }
    ],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Kinship"
+   ],
+   "primary_theme": "Kinship",
+   "families": [
+    "Lives and Relations"
+   ],
+   "form": "Fiction",
+   "length": "Feature"
   },
   "Q20261115-853-F4": {
    "title": "Some Letters to a Young Poet",
@@ -48571,11 +48683,15 @@
      "source": "https://vtape.org/video?vi=5455"
     }
    ],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Art, Craft and Making"
+   ],
+   "primary_theme": "Art, Craft and Making",
+   "families": [
+    "Expression and Representation"
+   ],
+   "form": "Fiction",
+   "length": "Feature"
   },
   "Q20261114-15-F1": {
    "title": "Tule",
@@ -48617,11 +48733,20 @@
      "source": "https://vtape.org/video?vi=5123"
     }
    ],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Resistance Movements",
+    "Sovereignty and Self-Determination",
+    "Cosmology and Origin Stories",
+    "Collective and Community Media"
+   ],
+   "primary_theme": "Resistance Movements",
+   "families": [
+    "Expression and Representation",
+    "Knowledge and Continuity",
+    "Sovereignty and Politics"
+   ],
+   "form": "Documentary",
+   "length": "Short"
   },
   "Q20261115-909-F1": {
    "title": "Legend of Fry-Roti: Rise of the Dough",
@@ -50851,10 +50976,14 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
+   "themes": [
+    "Art, Craft and Making"
+   ],
+   "primary_theme": "Art, Craft and Making",
+   "families": [
+    "Expression and Representation"
+   ],
+   "form": "Fiction",
    "length": null
   },
   "Q20261122-18-F1": {
