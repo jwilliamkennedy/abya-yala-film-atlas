@@ -1889,40 +1889,6 @@ function savedList(){
   if(sel.innerHTML!==html){var previous=sel.value;sel.innerHTML=html;if(previous&&[].some.call(sel.options,function(o){return o.value===previous;}))sel.value=previous;}
 }
 
-/* ---------- the guide at the top of the panel ---------- */
-function buildGuide(){
- var pop=$('#constellate-popup'),head=pop&&$('.constellate-heading',pop);if(!head||$('#weave-guide'))return;
- var g=document.createElement('section');g.id='weave-guide';g.setAttribute('aria-live','polite');
- g.innerHTML='<ol class="wg-steps" aria-label="Constellation steps"><li data-step="add">Add films</li><li data-step="link">Link them</li><li data-step="share">Read and share</li></ol><p class="wg-text"></p><div class="wg-actions"></div>';
- head.after(g);
- g.addEventListener('click',function(e){var a=e.target.closest('[data-wg]');if(!a)return;var k=a.dataset.wg;
-  if(k==='add'){var t=$('#weave-tab-add');if(t)t.click();var s=$('#constellate-search');if(s)setTimeout(function(){s.focus();},60);}
-  else if(k==='suggest'){var tt=$('#weave-tab-thread');if(tt)tt.click();var sg=$('#weave-suggest');if(sg)sg.scrollIntoView({block:'nearest'});}
-  else if(k==='draw'){var d=$('#weave-draw-thread');if(d)d.click();}
-  else if(k==='read'){var r=$('#constellate-read');if(r)r.click();}
-  else if(k==='play'){var p=$('#weave-play');if(p)p.click();}
-  else if(k==='connect'){try{C().startLink();}catch(err){}}else if(k==='trace'){try{C().trace();}catch(err){}}
-  else if(k==='build'){var b=$('#constellate-edit');if(b)b.click();}
-  else if(k==='share'){var sh=$('#constellate-share');if(sh)sh.click();}
-  settle();});
-}
-function q(s){return '“'+s+'”';}
-function guide(st){
- var g=$('#weave-guide');if(!g)return;var c=current(),t=thread();if(!c||!t)return;
- var n=t.items.length,total=c.items.length,threads=c.threads.filter(function(x){return x.items.length;}).length,links=(c.links||[]).length;
- var step='add',text='',acts=[];
- var drawing=$('#weave-draw-thread')&&$('#weave-draw-thread').getAttribute('aria-pressed')==='true';
- if(st==='read'){step='share';text='Reading “'+c.name+'”: '+threads+' thread'+(threads===1?'':'s')+', '+total+' film'+(total===1?'':'s')+'.';acts=[['play','Play on the map'],['share','Share'],['build','Back to building']];}
- else if(drawing){step='link';text=n<2?'Click a land on the map to choose a film, then a second. Then say why they connect.':'Click two films, on the map or in the Order list below, or click a land to choose from its films. Then say why they connect.';acts=[['draw','Done linking']];}
- else if(n===0){step='add';text=total?('Add films to “'+t.name+'”: search, or gather them along a line.'):'Add the first film: search, gather films along a line, or click a film on the map.';acts=[['add','Add films'],['trace','Gather films']];}
- else if(n===1){step='add';text='Add a second film. Films that share a documented theme with this one are listed below.';acts=[['suggest','See films that could come next'],['add','Search films']];}
- else{step='link';text='“'+t.name+'” · '+n+' films. Link two of them and say why they connect.';acts=[['draw','Link films'],['read','Read'],['add','Add films']];}
- $$('.wg-steps li',g).forEach(function(li){var order=['add','link','share'];var k=li.dataset.step===step?'is-now':(order.indexOf(li.dataset.step)<order.indexOf(step)?'is-done':'');if(li.className!==k)li.className=k;});
- var tx=$('.wg-text',g);if(tx.textContent!==text)tx.textContent=text;
- var html=acts.filter(Boolean).map(function(a,i){return '<button type="button" data-wg="'+a[0]+'" class="'+(i===0?'wg-primary':'')+'">'+a[1]+'</button>';}).join('');
- var ab=$('.wg-actions',g);if(ab.dataset.html!==html){ab.dataset.html=html;ab.innerHTML=html;}
-}
-
 /* ---------- labels ---------- */
 /* ---------- 2026-11-11: suggestions never offer a film that is already on the thread ---------- */
 var chip=function(v,n){v=String(v||'');return v.length>n?v.slice(0,n-1).replace(/\s+$/,'')+'…':v;};
@@ -2033,7 +1999,6 @@ function tick(){
  if(!st)return;
  buildStart();labels();try{examplePreview();}catch(e){}try{distinctColours();legendNote();phoneCue();}catch(e){}
  if(st==='start'){savedList();}
- guide(st);
  if(st==='build'){var th=thread(),len=th?th.items.length:0;if(len>=2&&lastLen<2){setTimeout(function(){if(root.dataset.weaveStage==='build'){try{C().fit();}catch(e){}}},350);}lastLen=len;}else lastLen=-1;
  if(st==='start'&&last!=='start'){var qn=$('#ws-film-q');if(qn&&window.innerWidth>760)setTimeout(function(){try{var current=document.activeElement;if(!current||current===document.body||current===document.documentElement||current===qn)qn.focus({preventScroll:true});}catch(e){}},300);}
  last=st;

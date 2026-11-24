@@ -572,7 +572,6 @@ html[data-weave-stage="start"] #weave-start{display:block}
 #weave-start .ws-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
 /* ---------- build: the guide at the top of the panel ---------- */
-html[data-weave-stage="play"] #weave-guide,html[data-weave-stage="read"] #weave-guide{display:none}
 
 /* ---------- toolbar: modes, then building tools (only while building), then the weave's own actions ---------- */
 
@@ -619,7 +618,6 @@ html[data-weave-stage] #atlas .land-watch,html[data-weave-stage] #atlas .land-th
 @media (max-width:760px){
  :root:not(#_)[data-weave-stage="build"] body.is-theme-weaving .map-panel{height:52dvh!important;min-height:300px!important;max-height:52dvh!important}
  :root:not(#_)[data-weave-stage="build"] body.is-theme-weaving #constellate-popup{max-height:none!important}
- #weave-guide{position:static}
 }
 
 /* Theme search and a link back to an existing authored weave. */
@@ -1187,26 +1185,6 @@ body.is-constellating #constellate-popup #constellate-how[open]>ol strong{
   color:var(--reading-ink,#1c2730)!important
 }
 
-/* A compact contextual hint replaces the oversized duplicate three-step guide. */
-html[data-weave-stage="build"] body.is-theme-weaving #weave-guide{
-  position:static!important;z-index:1!important;
-  display:flex!important;flex-wrap:wrap!important;
-  align-items:center!important;justify-content:space-between!important;
-  gap:7px 12px!important;margin:3px 0 10px!important;
-  padding:9px 11px!important;border-radius:8px!important;box-shadow:none!important
-}
-html[data-weave-stage="build"] body.is-theme-weaving #weave-guide .wg-steps{display:none!important}
-html[data-weave-stage="build"] body.is-theme-weaving #weave-guide .wg-text{
-  flex:1 1 215px!important;margin:0!important;font-size:12.5px!important;line-height:1.4!important
-}
-html[data-weave-stage="build"] body.is-theme-weaving #weave-guide .wg-actions{
-  display:flex!important;flex:0 1 auto!important;gap:4px!important;margin:0!important
-}
-html[data-weave-stage="build"] body.is-theme-weaving #weave-guide .wg-actions button:not(:first-child){display:none!important}
-html[data-weave-stage="build"] body.is-theme-weaving #weave-guide .wg-actions button{
-  min-height:32px!important;padding:6px 10px!important;
-  border-radius:6px!important;font-size:12px!important
-}
 @media(max-width:760px){
   body.is-constellating #constellate-popup .constellate-heading #constellate-how[open]>ol{
     max-height:min(44dvh,260px)!important
@@ -1362,7 +1340,7 @@ body.weave-playing #weave-offmap-rail{visibility:hidden;pointer-events:none}
 .weave-connection-kind{display:inline;font-size:11px;font-weight:600;color:var(--reading-muted,#54626b)}
 /* Connect is a short, focused task, not another pane stacked under all the building tools. */
 #constellate-popup:has(#constellate-inline:not([hidden])) :is(
- #weave-guide,#constellate-how,.constellate-collection,#weave-settings,
+ #constellate-how,.constellate-collection,#weave-settings,
  .weave-thread-heading,#weave-thread-form,#weave-draw-help,#weave-legend,
  #weave-order,#weave-suggest,#weave-compare,.weave-browse,
  #constellate-detail,#constellate-context
