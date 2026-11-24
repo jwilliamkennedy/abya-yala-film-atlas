@@ -1814,7 +1814,7 @@ html[data-reading-theme=night] body.is-theme-weaving #atlas .land-word:is(:hover
 @media (prefers-reduced-motion:no-preference){#constellate-graph .weave-just-added .weave-film-light{animation:weave-star-arrival .8s ease-out both}}
 @keyframes weave-star-arrival{0%{opacity:.15;filter:drop-shadow(0 0 14px #fff)}100%{opacity:1;filter:drop-shadow(0 0 7px #e9efff)}}
 :root[data-reading-theme] body.is-theme-weaving #constellate-graph .constellate-card.concept .weave-star-title{fill:var(--reading-ink);font-weight:600;paint-order:stroke fill;stroke:var(--reading-paper);stroke-width:3px;stroke-linejoin:round}
-.weave-star-thumb{display:grid;place-items:center;color:var(--reading-accent);font-size:23px}
+#constellate-popup .weave-media-thumb.weave-star-thumb{display:grid;place-items:center;color:var(--reading-accent);font-size:26px}
 #constellate-context .weave-star-note{white-space:pre-wrap;overflow-wrap:anywhere}
 /* Data-grounded land stars. No decorative or invented territorial positions. */
 body.is-constellating #atlas .land-sky-star{cursor:pointer;pointer-events:all;outline:none}
