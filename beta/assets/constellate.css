@@ -1492,7 +1492,7 @@ body:has(#constellate-mode details[open]) #weave-notice{display:none}
 #constellate-mode button:focus-visible,#constellate-mode details>summary:focus-visible{outline:2.5px solid var(--ui-accent);outline-offset:2px}
 #constellate-mode button:disabled{opacity:.3;cursor:default}
 #constellate-mode .cm-ico{flex:none;width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
-#constellate-mode .cm-sr,#constellate-mode .weave-tool-group .cm-label,#constellate-mode .weave-more>summary .cm-label{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+#constellate-mode .cm-sr,#constellate-mode .weave-tool-group>button:not(#constellate-clear) .cm-label,#constellate-mode .weave-more>summary .cm-label{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
 
 /* Add: the first control, outlined; Play: the one filled control */
 #constellate-mode .cm-add{position:relative;flex:none}
@@ -1521,6 +1521,8 @@ body:has(#constellate-mode details[open]) #weave-notice{display:none}
 
 /* the end: icons for history and Clear, labels for Share and Exit */
 #constellate-mode .weave-tool-group>button{width:34px;padding:0}
+/* Clear keeps its word beside Undo and Redo (24 Nov 2026) */
+#constellate-mode .weave-tool-group>#constellate-clear{width:auto;padding:0 10px 0 8px;margin-left:2px;color:var(--ui-accent)}
 #constellate-mode #constellate-clear:hover:not(:disabled){color:var(--ui-accent)}
 #constellate-mode .weave-more{position:relative}
 #constellate-mode .weave-more>summary{width:34px;padding:0}
@@ -1534,8 +1536,8 @@ html[data-weave-stage="start"] #constellate-mode :is(.cm-add,#weave-play,.weave-
 /* phones: labels drop, one row stays */
 @media (max-width:700px){
  #constellate-mode{gap:4px;padding:0 8px;height:48px}
- #constellate-mode :is(#weave-play,#constellate-share,#constellate-exit) .cm-label{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
- #constellate-mode :is(#constellate-share,#constellate-exit){width:34px;padding:0;margin-left:0}
+ #constellate-mode :is(#weave-play,#constellate-share,#constellate-exit,#constellate-clear) .cm-label{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+ #constellate-mode :is(#constellate-share,#constellate-exit),#constellate-mode .weave-tool-group>#constellate-clear{width:34px;padding:0;margin-left:0}
  #constellate-mode #weave-play{width:38px;padding:0}
  #constellate-mode .weave-tool-group{margin-right:2px;padding-right:4px}
  #constellate-mode .cm-add-menu,#constellate-mode .weave-more-menu{position:fixed;left:8px;right:8px;top:auto;bottom:8px;width:auto;max-height:70vh}
