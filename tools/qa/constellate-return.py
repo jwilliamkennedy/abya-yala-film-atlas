@@ -86,6 +86,13 @@ async def check(browser, name, viewport):
     await page.locator("#weave-film-preview").wait_for(state="visible")
     assert await page.evaluate(SNAPSHOT)==snapshot, (name,"preview changed collection")
     assert await page.evaluate("localStorage.getItem('atlas-collections-v1')")==storage, (name,"preview persisted")
+    related=page.locator('#weave-film-preview [data-preview-film]').first
+    if await related.count():
+        first=await page.locator('#weave-film-preview h3').inner_text()
+        await related.click()
+        await page.locator('#weave-film-preview [data-preview-back]').click()
+        assert await page.locator('#weave-film-preview h3').inner_text()==first, (name,'related-film Back lost previous film')
+        assert await page.evaluate(SNAPSHOT)==snapshot, (name,'related-film browsing changed collection')
     await page.locator("#weave-film-preview [data-explore-theme]").first.click()
     await page.wait_for_function("document.getElementById('weave-map-theme').value!==''")
     assert await page.evaluate(SNAPSHOT)==snapshot, (name,"theme chip changed collection")
@@ -98,6 +105,7 @@ async def check(browser, name, viewport):
       return terms.slice(0,1);
     }""")
     assert themes, (name, "no published themes")
+    camera_before=await page.evaluate('window.Atlas.captureState().scale')
     await page.locator('#weave-map-theme').select_option(themes[0])
     if len(themes)>1:
         await page.locator('#weave-map-theme-second').select_option(themes[1])
@@ -107,6 +115,12 @@ async def check(browser, name, viewport):
               exact:films.every(f=>themes.every(t=>api.terms(f).includes(t)))};
     }""", themes)
     assert result["ok"] and result["count"] and result["exact"], (name, result)
+    # Once the dock is open, changing the second term should not move the camera.
+    camera_filtered=await page.evaluate('window.Atlas.captureState().scale')
+    if len(themes)>1:
+        await page.locator('#weave-map-theme-second').select_option('')
+        await page.locator('#weave-map-theme-second').select_option(themes[1])
+        assert abs(await page.evaluate('window.Atlas.captureState().scale')-camera_filtered)<0.01, (name,'theme selection moved camera')
     assert await page.evaluate(SNAPSHOT) == snapshot, (name, "theme exploration mutated the saved collection")
     await page.evaluate("document.getElementById('weave-theme-web-toggle').click()")
     await page.wait_for_function("!document.getElementById('atlas-theme-web').hidden")

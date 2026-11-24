@@ -1980,3 +1980,8 @@ body.is-constellating #atlas .land-sky-star:is(.film-preview-land,.is-selected) 
 
 /* Map selection and toolbar stay compact; the archive is the primary canvas. */
 @media(max-width:700px){#weave-theme-lens{width:min(205px,calc(100% - 16px));gap:4px}#weave-theme-lens label{display:none}#weave-theme-lens .weave-map-theme-results{font-size:11px}#weave-theme-lens select{min-height:32px}body.is-theme-weaving #constellate-mode{overflow:visible}}
+
+/* Discovery panels do not cover the selected film with unrelated editor controls. */
+#constellate-popup.has-film-preview #weave-film-preview{scroll-margin-top:58px}
+#constellate-popup.has-land-view #weave-land{scroll-margin-top:58px}
+#weave-theme-lens .weave-map-theme-results:hover{color:var(--reading-ink)}
