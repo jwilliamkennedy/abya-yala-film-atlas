@@ -36,3 +36,6 @@ Requested by atlas owner: promote current beta/ to published root using tools/pr
 
 2026-11-24 (after midnight)
 Requested by atlas owner: promote current beta/ to published root using tools/promote_beta.py; preserve beta and private research Queue. Queue review: 93 rows (theme tags, 1491s films, Hugo Fulni-ô film, credits, image, watch link) and the night's theme tags.
+
+2026-11-24 (night)
+Requested by atlas owner: promote current beta/ to published root using tools/promote_beta.py; preserve beta and private research Queue. 1,440 filmmakers: 41 new filmmakers from IAIA, Red Nation and other programmes, Honã, NFB theme rows.
