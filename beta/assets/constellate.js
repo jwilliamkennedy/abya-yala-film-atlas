@@ -1041,10 +1041,12 @@ function stopPlay(){if(!player)return;playThread=null;pausePlay(true);player.hid
  function landFilmCount(landId){const l=landFilms().get(landId);return l?new Set(l.films.map(x=>x.id)).size:0;}
  window.addEventListener('keydown',e=>{if(e.key==='Escape'&&trace){e.preventDefault();e.stopImmediatePropagation();stopTrace();}},true);
  document.addEventListener('click',e=>{if(trace&&e.target.closest&&e.target.closest('#constellate-mode button,#constellate-mode summary')&&!e.target.closest('#weave-trace'))stopTrace();},true);
- function renderThemeStart(){const m=new Map();for(const x of azAll('film'))for(const t of terms(x))m.set(t,(m.get(t)||0)+1);const source=$('#weave-theme-start');source.innerHTML='<option value="">Choose a theme…</option>'+Object.entries(TH.families).map(([fam,ts])=>`<optgroup label="${esc(fam)}">${ts.map(t=>`<option value="${esc(t)}">${esc(t)} (${m.get(t)||0})</option>`).join('')}</optgroup>`).join('');source.dataset.cmOptions=source.innerHTML;const top=[...m].sort((a,b)=>b[1]-a[1]).slice(0,4);$('#weave-hint-themes').innerHTML=top.length?top.map(([t,n])=>`<button type="button" data-theme-thread="${esc(t)}">${esc(t)} <small>${n}</small></button>`).join(''):'';}
+ function renderThemeStart(){const m=new Map([...relationshipIndex().byTheme].map(([term,films])=>[term,films.length]));const source=$('#weave-theme-start');source.innerHTML='<option value="">Choose a theme…</option>'+Object.entries(TH.families).map(([fam,ts])=>`<optgroup label="${esc(fam)}">${ts.map(t=>`<option value="${esc(t)}">${esc(t)} (${m.get(t)||0})</option>`).join('')}</optgroup>`).join('');source.dataset.cmOptions=source.innerHTML;const top=[...m].sort((a,b)=>b[1]-a[1]).slice(0,4);$('#weave-hint-themes').innerHTML=top.length?top.map(([t,n])=>`<button type="button" data-theme-thread="${esc(t)}">${esc(t)} <small>${n}</small></button>`).join(''):'';}
 
  // The first-look example uses only film themes already present in the atlas.
  // No links or imagined relationships are inserted; viewers author those themselves.
+ const suggestCache=new Map(),genericPeople=/^(indigenous|first nations?|native american|aboriginal|intertribal|collective|unknown|not recorded)$/i;
+ let relations=null,themeLens=null;
  const EXAMPLE_TERMS=['Memory and Oral History','Linguistic Preservation','Land Defense'];
  function exampleSeed(){
   const names=[...new Set([...EXAMPLE_TERMS,...Object.values(TH.families).flat()])];
@@ -1093,7 +1095,7 @@ function stopPlay(){if(!player)return;playThread=null;pausePlay(true);player.hid
  // Recommendations use published metadata only: synopsis themes, mapped land
  // reference IDs, explicitly recorded people, director IDs, credited languages,
  // and year. No geographic or identity inference from titles, surnames or plots.
- const suggestCache=new Map(),genericPeople=/^(indigenous|first nations?|native american|aboriginal|intertribal|collective|unknown|not recorded)$/i;
+
  function suggestEvidence(x){
   if(!x||!x.record)return null;
   if(!suggestCache.has(x.id)){
@@ -1109,7 +1111,7 @@ function stopPlay(){if(!player)return;playThread=null;pausePlay(true);player.hid
   return suggestCache.get(x.id);
  }
  // The published catalog is immutable for this page session; build only once.
- let relations=null,themeLens=null;
+
  function relationshipIndex(){
   if(relations)return relations;
   const byTheme=new Map(),byLand=new Map(),byPeople=new Map(),byLanguage=new Map(),byMaker=new Map(),byDecade=new Map(),byForm=new Map();
