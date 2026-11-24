@@ -513,6 +513,7 @@ let holdMarkers=0,markersHeld=false;function holdMapMarkers(fn){holdMarkers++;tr
 
 function inspectPoint(p,{hold=false,xy=null}={}){
  if(!ready||!hold&&hoverIsBlocked())return;const hits=landHits(p).filter(Boolean),c=countryAt(p);
+ if(hold&&hits.length&&window.AtlasConstellate?.openLands?.(hits.map(l=>l.id)))return;
  tip(c,hits,xy,hold);if(!selectionIsHeld())focus(hits.flatMap(landGeometry));
  if(hold){s.tipPinned=false;if(hits.length===1)openReadingLand(hits[0].id);else if(!hits.length&&c)selectCountry(c.code,xy);else if(!hits.length){if($('.profile-dossier'))closeProfile();else clearSelection();}else $('#announcement').textContent=hits.length+' overlapping land names. Choose one in the reading margin.';if(window.innerWidth<=680&&hits.length)$('#index').scrollIntoView?.({block:'start',behavior:reduced?'instant':'smooth'});}
 }

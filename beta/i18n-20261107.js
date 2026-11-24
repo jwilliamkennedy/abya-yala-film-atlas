@@ -5,6 +5,9 @@
 const LANGS={en:'English',es:'Español',pt:'Português',fr:'Français'};
 // [English, Español, Português, Français]
 const T=[
+["Choose a land","Elige un territorio","Escolha um território","Choisissez un territoire"],
+["Edit star","Editar estrella","Editar estrela","Modifier l’étoile"],
+
 ["New star","Nueva estrella","Nova estrela","Nouvelle étoile"],
 ["Star name","Nombre de la estrella","Nome da estrela","Nom de l’étoile"],
 ["Create star","Crear estrella","Criar estrela","Créer une étoile"],
