@@ -11,7 +11,6 @@ const T=[["Map views","Vistas del mapa","Vistas do mapa","Vues de la carte"],["O
 ["Timeline: every dated film, by decade","Cronología: todas las películas fechadas, por década","Linha do tempo: todos os filmes datados, por década","Chronologie : tous les films datés, par décennie"],
 ["About the atlas","Acerca del atlas","Sobre o atlas","À propos de l’atlas"],
 ["Link copied","Enlace copiado","Link copiado","Lien copié"],["Copy failed","No se pudo copiar","Não foi possível copiar","Échec de la copie"],["Share this film","Compartir esta película","Compartilhar este filme","Partager ce film"],
-["Launched 1 November 2026","En línea desde el 1 de noviembre de 2026","No ar desde 1º de novembro de 2026","En ligne depuis le 1er novembre 2026"],
 ["Layers (changed from the usual view)","Capas (cambiadas respecto a la vista habitual)","Camadas (alteradas em relação à vista habitual)","Calques (modifiés par rapport à la vue habituelle)"],
 ["Lands","Tierras","Terras","Territoires"],["Search","Buscar","Buscar","Rechercher"],["Indexes","Índices","Índices","Index"],
 ["Your atlas","Tu atlas","Seu atlas","Votre atlas"],["The project","El proyecto","O projeto","Le projet"],["Data and CARE","Datos y CARE","Dados e CARE","Données et CARE"],
