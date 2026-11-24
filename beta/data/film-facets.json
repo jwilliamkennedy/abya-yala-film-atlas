@@ -2,8 +2,8 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-24",
  "license": "See data.html",
- "films_on_public_map": 2673,
- "film_entries": 2687,
+ "films_on_public_map": 2677,
+ "film_entries": 2691,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -3602,9 +3602,13 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Youth"
+   ],
+   "primary_theme": "Youth",
+   "families": [
+    "Lives and Relations"
+   ],
    "form": null,
    "length": null
   },
@@ -44282,6 +44286,27 @@
    "form": "Documentary",
    "length": null
   },
+  "QM-e267cad3ee-F2": {
+   "title": "Honã – A Origem do Povo Khisetje",
+   "year": 2025,
+   "makers": [
+    {
+     "id": "QM-e267cad3ee",
+     "name": "Renan Khisetje"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Cosmology and Origin Stories",
+    "Memory and Oral History"
+   ],
+   "primary_theme": "Cosmology and Origin Stories",
+   "families": [
+    "Knowledge and Continuity"
+   ],
+   "form": null,
+   "length": "Short"
+  },
   "Q20261108-31-F1": {
    "title": "The Length of Grief: The Daughters of Métis Mothers",
    "year": 2016,
@@ -45912,10 +45937,16 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
+   "themes": [
+    "Youth",
+    "Elders and Knowledge"
+   ],
+   "primary_theme": "Youth",
+   "families": [
+    "Knowledge and Continuity",
+    "Lives and Relations"
+   ],
+   "form": "Animation",
    "length": "Series"
   },
   "Q20261114-06-F1": {
@@ -54425,6 +54456,54 @@
    "primary_theme": null,
    "families": [],
    "form": "Documentary",
+   "length": null
+  },
+  "NEW-b9dba9c4a2d8-WORK-1": {
+   "title": "De l'ombre à la lumière",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "NEW-b9dba9c4a2d8",
+     "name": "Martin Gunn"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "NEW-b9dba9c4a2d8-QMe6d468": {
+   "title": "Les vaillants",
+   "year": 2017,
+   "makers": [
+    {
+     "id": "NEW-b9dba9c4a2d8",
+     "name": "Martin Gunn"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "FILM-SRC-0373": {
+   "title": "Distant",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261124-01",
+     "name": "Elise Paschen"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
    "length": null
   }
  }
