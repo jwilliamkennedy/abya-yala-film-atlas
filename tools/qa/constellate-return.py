@@ -44,9 +44,15 @@ async def check(browser, name, viewport):
     await page.evaluate("document.getElementById('constellate-exit').click()")
     await page.wait_for_function(MAP_READY, timeout=30000)
     # The map must receive a real interaction after returning.
-    prior = await page.evaluate("window.Atlas.captureState().zoom")
-    await page.locator("#zoom-in").click(timeout=15000)
-    await page.wait_for_function("before => window.Atlas.captureState().zoom > before", arg=prior, timeout=15000)
+    # Choose a direction that is not already at the zoom limit, and measure actual camera scale.
+    prior = await page.evaluate("window.Atlas.captureState().scale")
+    zoom_in = await page.locator('#zoom-in').is_enabled()
+    await page.locator('#zoom-in' if zoom_in else '#zoom-out').click(timeout=15000)
+    try:
+        await page.wait_for_function('v => Math.abs(window.Atlas.captureState().scale-v)>0.01', arg=prior, timeout=15000)
+    except Exception:
+        print('MAP_RETURN_CAMERA', await page.evaluate('({scale:window.Atlas.captureState().scale,zoom:window.Atlas.captureState().zoom,body:document.body.className,entry:document.documentElement.dataset.atlasEntry})'), 'prior',prior, 'errors', errors, flush=True)
+        raise
 
     # Re-enter without reload; explore a documented theme intersection without editing.
     await page.evaluate("document.querySelector('header .constellate-link').click()")

@@ -125,8 +125,8 @@ if(new URLSearchParams(location.search).get('constellation-embed')==='1'){
  $('#constellate-mode').after($('#constellate-graph'));
  map.insertAdjacentHTML('beforeend','<div id="weave-theme-lens" hidden role="region" aria-label="Map themes"><div class="weave-map-theme-row"><label for="weave-map-theme">Theme</label><select id="weave-map-theme" aria-label="Filter map by theme"><option value="">All themes</option></select><button type="button" aria-label="Clear theme filter" title="Clear theme filter" hidden>×</button></div><select id="weave-map-theme-second" hidden aria-label="Intersect with a second theme"><option value="">Intersect with…</option></select><small aria-live="polite" hidden></small></div>');
  $('#weave-theme-lens button').onclick=()=>clearThemeLens();
- $('#weave-map-theme').onchange=e=>{const term=e.target.value;if(term)showThemeLens([term]);else clearThemeLens();};
- $('#weave-map-theme-second').onchange=e=>{const primary=$('#weave-map-theme').value;if(primary)showThemeLens([primary,e.target.value].filter(Boolean));};
+ $('#weave-map-theme').onchange=e=>{const term=e.target.value;if(term)showThemeLens([term],{keepPreview:!!previewFilm});else clearThemeLens();};
+ $('#weave-map-theme-second').onchange=e=>{const primary=$('#weave-map-theme').value;if(primary)showThemeLens([primary,e.target.value].filter(Boolean),{keepPreview:!!previewFilm});};
  $('#constellate-share').insertAdjacentHTML('beforebegin','<button type="button" id="constellate-save" aria-label="Save constellation" title="Save constellation"><svg class="cm-ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 2.5h8l2 2V13H3zM5 2.5v4h5v-4M5 13V9h6v4" fill="none" stroke="currentColor" stroke-linejoin="round"/></svg><span class="cm-label">Save</span></button>');
  const graph=$('#constellate-graph'),offMapRail=$('#weave-offmap-rail'),offMapItems=offMapRail.querySelector('.weave-offmap-items'),panel=$('#constellate-popup'),context=$('#constellate-context'),inline=$('#constellate-inline');
  $('#constellate-mode .weave-skip-to-graph').addEventListener('click',e=>{
@@ -156,10 +156,10 @@ if(new URLSearchParams(location.search).get('constellation-embed')==='1'){
  function redo(){const h=history(),x=h.redo.pop();if(x){h.undo.push(x);restoreSnapshot(x.after);status('Redid '+x.label.toLowerCase()+'.');}}
  function updateHistory(){const h=history();$('#constellate-undo').disabled=!h.undo.length;$('#constellate-redo').disabled=!h.redo.length;$('#constellate-undo').title=h.undo.length?'Undo '+h.undo.at(-1).label.toLowerCase():'Nothing to undo';$('#constellate-redo').title=h.redo.length?'Redo '+h.redo.at(-1).label.toLowerCase():'Nothing to redo';}
  function restoreAtlas(value){if(!value)return;const go=()=>{A.restoreStop(copy(value));const{center,scale,zoom,...st}=copy(value);Object.assign(A.state,st);A.refresh();};if(A.holdMapMarkers)A.holdMapMarkers(go);else go();}
- function relayout(){if(!enabled)return;const dock=!panel.hidden||document.body.classList.contains('weave-browsing');const changed=document.body.classList.contains('weave-dock-open')!==dock;document.body.classList.toggle('weave-dock-open',dock);if(changed&&A.resizeMap)A.resizeMap();else if(!A.resizeMap)restoreAtlas(A.captureState());dimensions();renderGraph();}
+ function relayout(force=false){if(!enabled)return;const dock=!panel.hidden||document.body.classList.contains('weave-browsing');document.body.classList.toggle('weave-dock-open',dock);if(A.resizeMap)A.resizeMap({refresh:force});else restoreAtlas(A.captureState());renderGraph();}
  let themeBefore=null;
  function open(){const opening=!enabled;document.body.classList.remove('weave-browsing');if(!enabled){if(trace)stopTrace();/* 24 Nov 2026: Constellate turns the map into a night sky */try{const T=window.AtlasReadingTheme,now=document.documentElement.dataset.readingTheme;if(T&&now!=='night'){themeBefore=now||'paper';T.apply('night');}}catch{}entry={state:copy(A.captureState()),scroll:$('#index').scrollTop,url:location.href,x:window.scrollX||0,y:window.scrollY||0};enabled=true;syncStage();window.AtlasFitCap=8;document.body.classList.add('is-constellating','is-theme-weaving');graph.hidden=false;graph.removeAttribute('hidden');$('#constellate-mode').hidden=false;}
-  syncThemeControl();panel.hidden=opening&&!S.current().items.length;trigger.setAttribute('aria-expanded',String(!panel.hidden));A.closeWorkspacePanels();if(opening)A.resizeMap?.();relayout();render();updateAddress();if(opening&&S.current().items.some(x=>x.type!=='concept'))requestAnimationFrame(()=>requestAnimationFrame(()=>{if(enabled&&!unmapped&&!player)fit('quiet');}));}
+  syncThemeControl();panel.hidden=opening&&!S.current().items.length;trigger.setAttribute('aria-expanded',String(!panel.hidden));A.closeWorkspacePanels();relayout(opening);render();updateAddress();if(opening&&S.current().items.some(x=>x.type!=='concept'))requestAnimationFrame(()=>requestAnimationFrame(()=>{if(enabled&&!unmapped&&!player)fit('quiet');}));}
  function browse(){if(!enabled||document.body.classList.contains('weave-browsing'))return;panel.hidden=true;document.body.classList.add('weave-browsing');trigger.setAttribute('aria-expanded','false');relayout();}
  function close(){closePreview();showLand('');closeFilmPair();document.body.classList.remove('weave-browsing');panel.hidden=true;trigger.setAttribute('aria-expanded','false');document.body.classList.remove('weave-dock-open');relayout();}
  function exit({restore=true,fromHistory=false}={}){
@@ -173,20 +173,20 @@ if(new URLSearchParams(location.search).get('constellation-embed')==='1'){
   cancelConnect();enabled=false;window.AtlasFitCap=null;entry=null;
   drawThread=false;drawLast=null;focusThread=false;selPushed=false;skipPop=false;reading=false;active=null;drag=null;suppress=null;
   timelineOn=false;unmapped=false;relCache.key='';closePreview();clearThemeLens(false);closeFilmPair();previousLand=lastLand='';
-  showLand('');context.hidden=inline.hidden=true;$('#weave-editor').hidden=false;$('#weave-read-panel').hidden=true;closeShare();
+  showLand('');context.hidden=inline.hidden=true;$('#weave-editor').hidden=false;$('#weave-read-panel').hidden=true;$('#weave-compare').hidden=true;$('#weave-thread-form').hidden=true;$('#constellate-new-form').hidden=true;$('#constellate-detail').replaceChildren();ghost(null);closeShare();
   $('#weave-relbar').hidden=true;$('#weave-unmap').setAttribute('aria-pressed','false');$('#weave-unmap').textContent='Disappear map';
   $('#weave-draw-thread').setAttribute('aria-pressed','false');$('#weave-draw-help').hidden=true;modeButtons('edit');setTab('thread');
   graph.hidden=true;graph.setAttribute('hidden','');offMapRail.hidden=true;panel.hidden=true;
   for(const id of ['constellate-mode','weave-notice','weave-timeline','weave-stepper','weave-peek'])$('#'+id).hidden=true;
   $$('#constellate-mode details[open]').forEach(d=>d.open=false);
-  document.body.classList.remove('weave-empty','is-constellating','is-theme-weaving','weave-dock-open','weave-browsing','weave-playing','weave-unmapped','weave-tracing','trace-themed','is-theme-web-open');
+  document.body.classList.remove('weave-empty','is-constellating','is-theme-weaving','weave-dock-open','weave-browsing','weave-playing','weave-unmapped','weave-tracing','trace-themed','is-theme-web-open','weave-show-atlas','weave-dropping');
   // Direct ?constellate=1 entry uses first-paint rules that otherwise hide the restored map.
   const root=document.documentElement;root.dataset.atlasEntry='map';root.dataset.mapReveal='done';delete root.dataset.weaveStage;delete root.dataset.weaveReveal;delete root.dataset.weaveWeb;
   try{if(themeBefore&&window.AtlasReadingTheme)window.AtlasReadingTheme.apply(themeBefore);}catch{}themeBefore=null;
   trigger.setAttribute('aria-expanded','false');
   const u=new URL(fromHistory?location.href:prior?.url||location.href);['constellate','weave','read','play','trace','theme-web','c'].forEach(k=>u.searchParams.delete(k));if(u.hash.startsWith('#weave='))u.hash='';
   if(!fromHistory)try{const st={...(window.history.state||{})};delete st.weaveSelection;window.history.replaceState(st,'',u.href);}catch{}
-  if(browsing&&browseState)restoreAtlas(browseState);else if(restore&&prior)restoreAtlas(prior.state);else A.refresh();
+  if(browsing&&browseState)restoreAtlas(browseState);else if(restore&&prior)restoreAtlas(prior.state);else A.refresh();A.resizeMap?.({refresh:true});
   if(!fromHistory)window.AtlasNavigation?.commit('replace');
   if(restore&&prior&&!browsing){$('#index').scrollTop=prior.scroll;requestAnimationFrame(()=>{if(enabled)return;$('#index').scrollTop=prior.scroll;window.scrollTo?.({left:prior.x,top:prior.y,behavior:'instant'});});}
   document.querySelector('header .map-link')?.focus({preventScroll:true});

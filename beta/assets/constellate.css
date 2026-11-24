@@ -1977,3 +1977,6 @@ body.is-constellating #atlas .land-sky-star:is(.film-preview-land,.is-selected) 
 .wl-bridge{padding:8px 0 10px;border-bottom:1px solid var(--reading-line)}
 .wl-bridge>div{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
 #constellate-graph #weave-ghost{pointer-events:none}
+
+/* Map selection and toolbar stay compact; the archive is the primary canvas. */
+@media(max-width:700px){#weave-theme-lens{width:min(205px,calc(100% - 16px));gap:4px}#weave-theme-lens label{display:none}#weave-theme-lens small{font-size:11px}#weave-theme-lens select{min-height:32px}body.is-theme-weaving #constellate-mode{overflow:visible}}
