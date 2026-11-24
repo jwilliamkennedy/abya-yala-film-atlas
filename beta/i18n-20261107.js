@@ -4,7 +4,27 @@
 (()=>{'use strict';
 const LANGS={en:'English',es:'Español',pt:'Português',fr:'Français'};
 // [English, Español, Português, Français]
-const T=[/* Constellate, 24 Nov 2026: Add menu, the list, reasons between films */
+const T=[/* Constellate, 24 Nov: labels and accessible names */
+["Choose a theme…","Elige un tema…","Escolha um tema…","Choisissez un thème…"],
+["Ways to gather and read","Formas de reunir y leer","Formas de reunir e ler","Modes de collecte et de lecture"],
+["Constellation actions","Acciones de la constelación","Ações da constelação","Actions de la constellation"],
+["Constellation editor","Editor de constelaciones","Editor de constelações","Éditeur de constellations"],
+["Films of the selected land","Películas del territorio seleccionado","Filmes do território selecionado","Films du territoire sélectionné"],
+["Close sharing","Cerrar opciones para compartir","Fechar opções de compartilhamento","Fermer les options de partage"],
+["Add to thread","Añadir al hilo","Adicionar ao fio","Ajouter au fil"],
+["Quiet atlas markers","Atenuar los marcadores del atlas","Atenuar os marcadores do atlas","Atténuer les repères de l’atlas"],
+["This land","Este territorio","Este território","Ce territoire"],
+["Search titles, filmmakers, peoples or themes…","Buscar títulos, cineastas, pueblos o temas…","Buscar títulos, cineastas, povos ou temas…","Chercher des titres, cinéastes, peuples ou thèmes…"],
+["Choose a constellation…","Elige una constelación…","Escolha uma constelação…","Choisissez une constellation…"],
+["Why this follows","Por qué viene después","Por que vem depois","Pourquoi ce film suit"],
+["Save note","Guardar nota","Salvar nota","Enregistrer la note"],
+["Remove from thread","Quitar del hilo","Remover do fio","Retirer du fil"],
+["Thread name","Nombre del hilo","Nome do fio","Nom du fil"],
+["Star color","Color de la estrella","Cor da estrela","Couleur de l’étoile"],
+["Description (optional)","Descripción (opcional)","Descrição (opcional)","Description (facultative)"],
+["Create thread","Crear hilo","Criar fio","Créer un fil"],
+["Close this start screen","Cerrar esta pantalla inicial","Fechar esta tela inicial","Fermer cet écran d’accueil"],
+/* Constellate, 24 Nov 2026: Add menu, the list, reasons between films */
 ["No films yet. Click a land to see its films.", "Aún no hay películas. Haz clic en un territorio para ver sus películas.", "Ainda não há filmes. Clique em um território para ver seus filmes.", "Pas encore de films. Cliquez sur un territoire pour voir ses films."],
 ["Read: go through the constellation film by film", "Leer: recorre la constelación película por película", "Ler: percorra a constelação filme por filme", "Lire : parcourez la constellation film par film"],
 ["Why here?", "¿Por qué aquí?", "Por que aqui?", "Pourquoi ici ?"],
@@ -386,7 +406,9 @@ function textNode(n){
  let o=orig.get(n);const cur=n.nodeValue;
  if(o===undefined||(cur!==o&&cur!==n.__atlasT)){o=cur;orig.set(n,o);}
  if(lang==='en'){if(cur!==o)n.nodeValue=o;return;}
- const t=tr(o);if(t!=null&&cur!==t){n.__atlasT=t;n.nodeValue=t;}
+ let t=tr(o);
+ if(t==null&&p.matches('option')&&p.closest('#weave-theme-start,.cm-theme-select,#ws-theme-all')){const m=o.trim().match(/^(.+) \(([\d,]+)\)$/);if(m&&DICT[m[1]])t=DICT[m[1]][IDX[lang]]+' ('+m[2]+')';}
+ if(t!=null&&cur!==t){n.__atlasT=t;n.nodeValue=t;}
 }
 function attrs(e){
  if(e.closest(SKIP))return;

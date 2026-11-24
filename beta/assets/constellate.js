@@ -971,7 +971,7 @@ function stopPlay(){if(!player)return;playThread=null;pausePlay(true);player.hid
  function landFilmCount(landId){const l=landFilms().get(landId);return l?new Set(l.films.map(x=>x.id)).size:0;}
  window.addEventListener('keydown',e=>{if(e.key==='Escape'&&trace){e.preventDefault();e.stopImmediatePropagation();stopTrace();}},true);
  document.addEventListener('click',e=>{if(trace&&e.target.closest&&e.target.closest('#constellate-mode button,#constellate-mode summary')&&!e.target.closest('#weave-trace'))stopTrace();},true);
- function renderThemeStart(){const m=new Map();for(const x of azAll('film'))for(const t of terms(x))m.set(t,(m.get(t)||0)+1);$('#weave-theme-start').innerHTML='<option value="">Choose a theme…</option>'+Object.entries(TH.families).map(([fam,ts])=>`<optgroup label="${esc(fam)}">${ts.map(t=>`<option value="${esc(t)}">${esc(t)} (${m.get(t)||0})</option>`).join('')}</optgroup>`).join('');const top=[...m].sort((a,b)=>b[1]-a[1]).slice(0,4);$('#weave-hint-themes').innerHTML=top.length?top.map(([t,n])=>`<button type="button" data-theme-thread="${esc(t)}">${esc(t)} <small>${n}</small></button>`).join(''):'';}
+ function renderThemeStart(){const m=new Map();for(const x of azAll('film'))for(const t of terms(x))m.set(t,(m.get(t)||0)+1);const source=$('#weave-theme-start');source.innerHTML='<option value="">Choose a theme…</option>'+Object.entries(TH.families).map(([fam,ts])=>`<optgroup label="${esc(fam)}">${ts.map(t=>`<option value="${esc(t)}">${esc(t)} (${m.get(t)||0})</option>`).join('')}</optgroup>`).join('');source.dataset.cmOptions=source.innerHTML;const top=[...m].sort((a,b)=>b[1]-a[1]).slice(0,4);$('#weave-hint-themes').innerHTML=top.length?top.map(([t,n])=>`<button type="button" data-theme-thread="${esc(t)}">${esc(t)} <small>${n}</small></button>`).join(''):'';}
 
  // The first-look example uses only film themes already present in the atlas.
  // No links or imagined relationships are inserted; viewers author those themselves.
@@ -1399,7 +1399,8 @@ try{
  }
  function fillThemes(add){
   var sel=add.querySelector('.cm-theme-select'),src=document.getElementById('weave-theme-start');if(!sel||!src)return;
-  if(sel.dataset.n!==String(src.options.length)){sel.innerHTML=src.innerHTML;sel.dataset.n=String(src.options.length);}
+  var markup=src.dataset.cmOptions||src.innerHTML;
+  if(sel.dataset.source!==markup){sel.innerHTML=markup;sel.dataset.source=markup;}
   sel.value='';
  }
  function closeMenus(except){[].forEach.call(document.querySelectorAll('#constellate-mode details[open]'),function(d){if(d!==except)d.open=false;});}
