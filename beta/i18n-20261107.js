@@ -5,6 +5,7 @@
 const LANGS={en:'English',es:'Español',pt:'Português',fr:'Français'};
 // [English, Español, Português, Français]
 const T=[/* Constellate, 24 Nov 2026: Add menu, the list, reasons between films */
+["Read: go through the constellation film by film", "Leer: recorre la constelación película por película", "Ler: percorra a constelação filme por filme", "Lire : parcourez la constellation film par film"],
 ["Why here?", "¿Por qué aquí?", "Por que aqui?", "Pourquoi ici ?"],
 ["Constellate: how can films encounter each other?", "Constellar: ¿cómo pueden encontrarse las películas?", "Constellate: como os filmes podem se encontrar?", "Constellate : comment les films peuvent-ils se rencontrer ?"],
 ["By year", "Por año", "Por ano", "Par année"],

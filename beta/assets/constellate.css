@@ -1476,7 +1476,7 @@ body.weave-tracing #atlas .land-shading .nation-wash.trace-lit{--territory-wash:
 html:not([data-weave-stage]) body.is-constellating #constellate-mode{visibility:hidden}
 body.weave-playing #constellate-mode{display:none!important}
 body:has(#constellate-mode details[open]) #weave-notice{display:none}
-#constellate-mode{position:absolute;top:0;left:0;right:0;z-index:25;box-sizing:border-box;display:flex;align-items:center;gap:8px;height:52px;padding:0 12px;
+#constellate-mode{container:cmbar/inline-size;position:absolute;top:0;left:0;right:0;z-index:25;box-sizing:border-box;display:flex;align-items:center;gap:6px;height:52px;padding:0 12px;
  background:color-mix(in srgb,var(--ui-paper) 94%,transparent);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid var(--ui-line);
  color:var(--ui-ink);font:500 13.5px/1 var(--ui-sans)}
 #constellate-mode .cm-hold,#constellate-mode .cm-hold[hidden]{display:none!important}
@@ -1519,6 +1519,10 @@ body:has(#constellate-mode details[open]) #weave-notice{display:none}
 #constellate-mode .weave-more-menu button[aria-pressed="true"]::after{content:"✓";margin-left:auto;font-weight:700;color:var(--ui-accent)}
 #constellate-mode .weave-more-menu button[hidden]{display:none}
 
+/* Gather and Theme web beside Add; Read beside Play. The one in use is shaded. */
+#constellate-mode .cm-tools{flex:none;gap:2px}
+#constellate-mode :is(.cm-tools>button,#constellate-read)[aria-pressed="true"],#constellate-mode .cm-tools>button[aria-expanded="true"]{background:var(--ui-wash);border-color:var(--ui-line)}
+#constellate-mode #constellate-read{flex:none}
 /* the end: icons for history and Clear, labels for Share and Exit */
 #constellate-mode .weave-tool-group>button{width:34px;padding:0}
 /* Clear keeps its word beside Undo and Redo (24 Nov 2026) */
@@ -1530,15 +1534,22 @@ body:has(#constellate-mode details[open]) #weave-notice{display:none}
 #constellate-mode #constellate-exit{margin-left:4px;padding:0 12px 0 10px;border-color:var(--ui-line)}
 #constellate-mode #constellate-exit .cm-ico{width:13px;height:13px}
 
+/* narrower maps: Share and Exit become icons first, then Gather and Theme web; the bar never wraps */
+@container cmbar (max-width:900px){#constellate-mode :is(#constellate-share,#constellate-exit) .cm-label{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}#constellate-mode :is(#constellate-share,#constellate-exit){width:34px;padding:0;margin-left:0}}
+@container cmbar (max-width:760px){#constellate-mode .cm-tools>button .cm-label{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}#constellate-mode .cm-tools>button{width:34px;padding:0}}
+@container cmbar (max-width:640px){#constellate-mode :is(#constellate-read,.weave-tool-group>#constellate-clear,.cm-add>summary) .cm-label{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}#constellate-mode :is(#constellate-read,.weave-tool-group>#constellate-clear){width:34px;padding:0;margin-left:0}#constellate-mode .cm-add>summary{width:38px;padding:0}}
 /* the start screen: only Options and Exit */
-html[data-weave-stage="start"] #constellate-mode :is(.cm-add,#weave-play,.weave-tool-group,#constellate-share){display:none}
+html[data-weave-stage="start"] #constellate-mode :is(.cm-add,.cm-tools,#weave-play,#constellate-read,.weave-tool-group,#constellate-share){display:none}
 
 /* phones: labels drop, one row stays */
 @media (max-width:700px){
  #constellate-mode{gap:4px;padding:0 8px;height:48px}
- #constellate-mode :is(#weave-play,#constellate-share,#constellate-exit,#constellate-clear) .cm-label{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+ #constellate-mode :is(#weave-play,#constellate-share,#constellate-exit,#constellate-clear,.cm-tools>button,.cm-add>summary) .cm-label{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
  #constellate-mode :is(#constellate-share,#constellate-exit),#constellate-mode .weave-tool-group>#constellate-clear{width:34px;padding:0;margin-left:0}
  #constellate-mode #weave-play{width:38px;padding:0}
+ #constellate-mode :is(.cm-tools>button){width:34px;padding:0}
+ #constellate-mode .cm-add>summary{width:38px;padding:0}
+ #constellate-mode :is(#constellate-read,#constellate-redo){display:none}
  #constellate-mode .weave-tool-group{margin-right:2px;padding-right:4px}
  #constellate-mode .cm-add-menu,#constellate-mode .weave-more-menu{position:fixed;left:8px;right:8px;top:auto;bottom:8px;width:auto;max-height:70vh}
 }

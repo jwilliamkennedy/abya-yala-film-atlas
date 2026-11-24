@@ -289,7 +289,7 @@ async def con_connect(page, base):
     bar = await page.evaluate("""() => { const b = document.querySelector('#constellate-mode'), r = b.getBoundingClientRect();
       const shown = id => { const e = document.getElementById(id); return !!e && e.getClientRects().length > 0 && getComputedStyle(e).visibility !== 'hidden'; };
       return { h: r.height, link: shown('weave-draw-thread'), build: shown('constellate-edit'), read: shown('constellate-read'), add: !!b.querySelector('.cm-add') }; }""")
-    need(bar["h"] <= 56 and not bar["link"] and not bar["build"] and not bar["read"] and bar["add"], "toolbar should be one row with Add, and no Link, Build or Read", bar)
+    need(bar["h"] <= 56 and not bar["link"] and not bar["build"] and bar["read"] and bar["add"], "toolbar should be one row with Add and Read, and no Link or Build", bar)
     before = await page.evaluate("""() => { const C = window.AtlasConstellate, c = window.AtlasCollections.current();
       const have = new Set(c.items.map(x => x.film).filter(Boolean)), x = C.catalog.find(x => x.type === 'film' && !have.has(x.film));
       if (!x || !C.add(x)) return null;

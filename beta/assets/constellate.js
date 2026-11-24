@@ -1348,7 +1348,8 @@ try{
   more:svg('<circle cx="3.2" cy="8" r="1.35" '+DOT+'/><circle cx="8" cy="8" r="1.35" '+DOT+'/><circle cx="12.8" cy="8" r="1.35" '+DOT+'/>'),
   exit:svg('<path d="m4 4 8 8M12 4l-8 8"/>'),
   clear:svg('<path d="M2.8 4.4h10.4M6.2 4.4V2.8h3.6v1.6M4.4 4.4l.7 8.8h5.8l.7-8.8"/>'),
-  view:svg('<path d="M1.6 8s2.4-4.4 6.4-4.4S14.4 8 14.4 8 12 12.4 8 12.4 1.6 8 1.6 8z"/><circle cx="8" cy="8" r="2"/>')
+  view:svg('<path d="M1.6 8s2.4-4.4 6.4-4.4S14.4 8 14.4 8 12 12.4 8 12.4 1.6 8 1.6 8z"/><circle cx="8" cy="8" r="2"/>'),
+  read:svg('<path d="M8 4.2C6.6 3.2 4.6 2.8 2.4 3v9.4c2.2-.2 4.2.2 5.6 1.2 1.4-1 3.4-1.4 5.6-1.2V3c-2.2-.2-4.2.2-5.6 1.2z"/><path d="M8 4.2v9.4"/>')
  };
  function dress(btn,icon,text){
   if(!btn||btn.dataset.cm===text)return;btn.dataset.cm=text;
@@ -1379,7 +1380,7 @@ try{
    var title=bar.querySelector(':scope>span:not(#weave-stepper):not(.weave-tool-group):not(.cm-hold)')||bar.querySelector('.cm-hold>span:not(#weave-stepper)');
    /* kept for the engine and for shared links, never shown */
    var hold=bar.querySelector(':scope>.cm-hold')||make('div','cm-hold');/* a div: the engine writes the name into the bar's first span, which must be the name itself */hold.hidden=true;
-   order(hold,[title,edit,read,draw,stepper]);
+   order(hold,[title,edit,draw,stepper]);
    /* Add */
    var add=bar.querySelector(':scope>.cm-add');
    if(!add){
@@ -1389,15 +1390,20 @@ try{
    var am=add.querySelector('.cm-add-menu');
    var themeRow=am.querySelector('.cm-theme-row');
    if(!themeRow){themeRow=make('label','cm-theme-row',ICON.theme+'<span class="cm-label">Films of a theme</span><select class="cm-theme-select" aria-label="Films of a theme"></select>');}
-   order(am,[browse,themeRow,trace,web]);
-   dress(browse,ICON.search,'Search films');dress(trace,ICON.trace,'Gather along a line');dress(web,ICON.web,'Theme web');
+   order(am,[browse,themeRow]);
+   /* the tools that make Constellate engaging stay on the bar (24 Nov 2026): Gather, Theme web, Read */
+   var tools=bar.querySelector(':scope>.cm-tools')||make('div','cm-group cm-tools');tools.setAttribute('role','group');tools.setAttribute('aria-label','Ways to gather and read');
+   order(tools,[trace,web]);
+   dress(browse,ICON.search,'Search films');dress(trace,ICON.trace,'Gather');dress(web,ICON.web,'Theme web');dress(read,ICON.read,'Read');
+   read.title='Read: go through the constellation film by film';
+   if(!read.dataset.cmToggle){read.dataset.cmToggle='1';read.addEventListener('click',function(e){if(read.getAttribute('aria-pressed')==='true'){e.preventDefault();e.stopImmediatePropagation();var back=document.getElementById('weave-read-back');if(back)back.click();}},true);}
    browse.title='Search the atlas and add films';trace.title='Draw a line across the map: the lands it crosses give their films, in order';web.title='Browse the themes documented together in film synopses';
    /* end group */
    var end=bar.querySelector(':scope>.cm-end')||make('div','cm-group cm-end');end.setAttribute('role','group');end.setAttribute('aria-label','Constellation actions');
    var hist=bar.querySelector('.weave-tool-group')||make('span','weave-tool-group');
    order(hist,[undo,redo,clear]);
    order(end,[hist,share,more,exit]);
-   order(bar,[skip,hold,add,play,end]);/* the hidden name stays the bar's first span: the engine writes to it */
+   order(bar,[skip,hold,add,tools,play,read,end]);/* the hidden name stays the bar's first span: the engine writes to it */
    /* Options */
    var layout=heading(menu,'cm-h-layout','Map and display'),threads=heading(menu,'cm-h-threads','Threads');
    [].slice.call(menu.querySelectorAll('.weave-menu-heading')).forEach(function(h){if(h!==layout&&h!==threads)h.remove();});
