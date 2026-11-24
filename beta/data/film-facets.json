@@ -2,8 +2,8 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-24",
  "license": "See data.html",
- "films_on_public_map": 2739,
- "film_entries": 2753,
+ "films_on_public_map": 2747,
+ "film_entries": 2761,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -32531,6 +32531,22 @@
    "form": "Animation",
    "length": "Short"
   },
+  "FILM-SRC-0369": {
+   "title": "Club Kid Alley",
+   "year": 2022,
+   "makers": [
+    {
+     "id": "DIR-0369",
+     "name": "Tyler J Sloane"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "DIR-0370-F1": {
    "title": "Ancestral Threads",
    "year": 2023,
@@ -32572,6 +32588,22 @@
    "primary_theme": null,
    "families": [],
    "form": null,
+   "length": null
+  },
+  "FILM-SRC-0376": {
+   "title": "Biolumin",
+   "year": 2020,
+   "makers": [
+    {
+     "id": "DIR-0376",
+     "name": "Moe Clark"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Experimental",
    "length": null
   },
   "FILM-SRC-0382": {
@@ -39813,6 +39845,22 @@
    ],
    "form": "Documentary",
    "length": "Short"
+  },
+  "NEW-fd9d8b0e39cd-WORK-1": {
+   "title": "Whose Land? O'odham Land!",
+   "year": null,
+   "makers": [
+    {
+     "id": "NEW-fd9d8b0e39cd",
+     "name": "Mike Wilson"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
   },
   "NEW-be2a94b99404-WORK-1": {
    "title": "Nawa Giizhiigong",
@@ -55536,6 +55584,94 @@
    "primary_theme": null,
    "families": [],
    "form": null,
+   "length": null
+  },
+  "Q20261124-19-F1": {
+   "title": "Soup For My Brother",
+   "year": 2016,
+   "makers": [
+    {
+     "id": "Q20261124-19",
+     "name": "Terry J. Jones"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "Q20261124-20-F1": {
+   "title": "Light",
+   "year": 2017,
+   "makers": [
+    {
+     "id": "Q20261124-20",
+     "name": "Sarah Hennigan"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": null
+  },
+  "Q20261124-21-F1": {
+   "title": "The Handsome Man",
+   "year": 2022,
+   "makers": [
+    {
+     "id": "Q20261124-21",
+     "name": "Misty Shipman"
+    },
+    {
+     "id": "Q20261124-22",
+     "name": "Hope Shipman"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": null
+  },
+  "Q20261124-23-F1": {
+   "title": "Julie Takes a Walk",
+   "year": 2026,
+   "makers": [
+    {
+     "id": "Q20261124-23",
+     "name": "Frankie Pedersen"
+    },
+    {
+     "id": "Q20261124-24",
+     "name": "Shea Vassar"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": null
+  },
+  "Q20261124-25-F1": {
+   "title": "Women of the Stony Shore",
+   "year": 2026,
+   "makers": [
+    {
+     "id": "Q20261124-25",
+     "name": "Nathaniel Cummings-Lambert"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
    "length": null
   }
  }

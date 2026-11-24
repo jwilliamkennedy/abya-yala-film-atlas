@@ -3850,6 +3850,7 @@ DIR-0370-F1,Ancestral Threads,2023,theme,Health and Healing,Lives and Relations,
 DIR-0370-F1,Ancestral Threads,2023,theme,Urban Indigeneity,Lives and Relations,https://www.themoviedb.org/movie/1110753,tagged from a published synopsis
 DIR-0370-F1,Ancestral Threads,2023,form,Documentary,,https://www.themoviedb.org/movie/1110753,from the published synopsis
 DIR-0370-F1,Ancestral Threads,2023,length,Short,,https://www.themoviedb.org/movie/1110753,from the published synopsis
+FILM-SRC-0376,Biolumin,2020,form,Experimental,,https://www.reelasian.com/archive-events/shorts-presentation-colliders/,"normalised from the recorded form ""Experimental"""
 FILM-SRC-0382,Ni Wapiten – I see,2022,theme,Youth,Lives and Relations,https://cinemasouslesetoiles.org/en/film/ni-wapiten-i-see_en/,tagged from a published synopsis; primary theme
 FILM-SRC-0382,Ni Wapiten – I see,2022,form,Documentary,,https://cinemasouslesetoiles.org/en/film/ni-wapiten-i-see_en/,from the published synopsis
 FILM-SRC-0382,Ni Wapiten – I see,2022,length,Short,,https://cinemasouslesetoiles.org/en/film/ni-wapiten-i-see_en/,from the published synopsis
@@ -4429,6 +4430,7 @@ NEW-921ff74244e5-WORK-1,Old Antelope Lake,1966,theme,Water,Land and Environment,
 NEW-921ff74244e5-WORK-1,Old Antelope Lake,1966,theme,Youth,Lives and Relations,https://www.themoviedb.org/movie/154050,tagged from a published synopsis
 NEW-921ff74244e5-WORK-1,Old Antelope Lake,1966,form,Documentary,,https://www.themoviedb.org/movie/154050,from the published synopsis
 NEW-921ff74244e5-WORK-1,Old Antelope Lake,1966,length,Short,,https://www.themoviedb.org/movie/154050,from the published synopsis
+NEW-fd9d8b0e39cd-WORK-1,Whose Land? O'odham Land!,,form,Documentary,,https://www.documentary.org/project/whose-land-oodham-land,"normalised from the recorded form ""Documentary (in progress)"""
 Q20261114-108-F1,Clay Beings,2003,theme,"Art, Craft and Making",Expression and Representation,https://americanindian.si.edu/sites/1/files/pdf/festival/2003.pdf#page=13,tagged from a published synopsis; primary theme
 Q20261114-108-F1,Clay Beings,2003,length,Short,,https://americanindian.si.edu/sites/1/files/pdf/festival/2003.pdf#page=13,from the published synopsis
 NEW-9341d60332f6-WORK-1,A Navajo Weaver,1966,theme,"Art, Craft and Making",Expression and Representation,https://www.themoviedb.org/movie/366850,tagged from a published synopsis; primary theme
@@ -5879,3 +5881,8 @@ QM-77e7e886fe-M1,Xgooba,,form,Fiction,,https://oaxaca.eluniversal.com.mx/mas-de-
 QM-77e7e886fe-M1,Xgooba,,length,Short,,https://oaxaca.eluniversal.com.mx/mas-de-oaxaca/cineasta-zapoteco-david-illescas-presentara-en-oaxaca-xgooba-su-primera-cinta-como/?outputType=amp,from the published synopsis
 Q20261124-35-F1,Canoe Connections,2023,form,Documentary,,https://fnfvf.org/events/duke-university-screening,"normalised from the recorded form ""Documentary"""
 NEW-6a4dad66a06c-WORK-1,Más de mil años después,2001,form,Documentary,,https://moreliafilmfest.com/en/peliculas/mas-de-mil-anos-despues,"normalised from the recorded form ""Documentary"""
+Q20261124-19-F1,Soup For My Brother,2016,form,Documentary,,https://fnfvf.org/featured-films-fall-2023-1,"normalised from the recorded form ""Documentary"""
+Q20261124-20-F1,Light,2017,form,Fiction,,https://fnfvf.org/events/duke-university-screening,"normalised from the recorded form ""Fiction"""
+Q20261124-21-F1,The Handsome Man,2022,form,Fiction,,https://fnfvf.org/events/duke-university-screening,"normalised from the recorded form ""Fiction"""
+Q20261124-23-F1,Julie Takes a Walk,2026,form,Fiction,,https://motcp.org/the-way-we/,"normalised from the recorded form ""Fiction"""
+Q20261124-25-F1,Women of the Stony Shore,2026,form,Documentary,,https://motcp.org/the-way-we/,"normalised from the recorded form ""Documentary"""
