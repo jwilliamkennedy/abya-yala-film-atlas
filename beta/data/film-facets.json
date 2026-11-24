@@ -2,8 +2,8 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-24",
  "license": "See data.html",
- "films_on_public_map": 2751,
- "film_entries": 2765,
+ "films_on_public_map": 2757,
+ "film_entries": 2771,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -55736,6 +55736,102 @@
    "primary_theme": null,
    "families": [],
    "form": "Animation",
+   "length": null
+  },
+  "Q20261124-26-F1": {
+   "title": "Mariposa",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261124-26",
+     "name": "Jennifer Amorelli"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261124-27-F1": {
+   "title": "My Journey Home",
+   "year": 2023,
+   "makers": [
+    {
+     "id": "Q20261124-27",
+     "name": "Rose Patterson"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261124-28-F1": {
+   "title": "Tandemic",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261124-28",
+     "name": "Susan Spain"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261124-29-F1": {
+   "title": "Welcome to Wendigo Street",
+   "year": 2026,
+   "makers": [
+    {
+     "id": "Q20261124-29",
+     "name": "Samantha Williams-Gray"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261124-38-F1": {
+   "title": "Tiny Love",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261124-38",
+     "name": "Augusto Castillo"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261124-39-F1": {
+   "title": "Run N 2 (A Black Man)",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261124-39",
+     "name": "Christopher Charles Wilkinson"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
    "length": null
   }
  }
