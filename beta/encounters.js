@@ -689,7 +689,7 @@ function renderConstellation(){
    g.append('title');return g;
   }).attr('data-land-sky',d=>d.id).attr('tabindex',0).attr('transform',d=>`translate(${d.anchorX},${d.anchorY})`)
    .attr('aria-label',d=>d.names.join(' / ')).attr('data-multiple',d=>String(d.ids.length>1))
-   .classed('is-selected',d=>d.ids.includes(window.AtlasConstellate.selectedLand)).attr('aria-pressed',d=>String(d.ids.includes(window.AtlasConstellate.selectedLand)));
+   .classed('is-selected',d=>d.ids.includes(window.AtlasConstellate.selectedLand)).classed('theme-match',d=>window.AtlasConstellate.landMatchesTheme(d.ids)).attr('aria-pressed',d=>String(d.ids.includes(window.AtlasConstellate.selectedLand)));
   nodes.select('.land-sky-light').attr('transform',d=>'scale('+Math.min(1.1,.65+Math.log2(d.count+1)*.10)+')');
   nodes.select('.land-sky-label').text(d=>d.name+(d.ids.length>1?' +'+(d.ids.length-1):''));
   nodes.select('title').text(d=>d.names.join(' / '));
