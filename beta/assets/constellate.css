@@ -1899,3 +1899,65 @@ body.is-theme-web-open #weave-theme-lens,body.weave-playing #weave-theme-lens,bo
 #constellate-mode #constellate-save[data-saved="true"]{opacity:.65}
 @container cmbar (max-width:900px){#constellate-mode #constellate-save .cm-label{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}#constellate-mode #constellate-save{width:34px;padding:0}}
 #weave-save-state{font-size:12px;color:var(--reading-muted);line-height:1.4}
+
+/* Archive, film and personal concept are distinct; color reinforces shape. */
+body.is-theme-weaving{--cx-archive:#ece8db;--cx-film:#a8cbe5;--cx-concept:#e8bf76;--cx-night:#111d30;--cx-slate:#293b50}
+body.is-constellating #atlas .land-sky-light{fill:var(--cx-archive);stroke:var(--cx-archive);filter:drop-shadow(0 0 2px #ece8db66)}
+body.is-constellating #atlas .land-sky-star[data-multiple=true] .land-sky-light{fill:var(--cx-archive);stroke:var(--cx-archive)}
+body.is-constellating #atlas .land-sky-star:is(.is-selected,.film-preview-land) .land-sky-hit{stroke:var(--cx-film);stroke-width:1.7;fill:none;stroke-dasharray:3 2}
+body.is-constellating #atlas .land-sky-star:is(.film-preview-land,.is-selected) .land-sky-label{opacity:1}
+#constellate-graph .weave-film-node .weave-film-ring{fill:none;stroke:var(--cx-film);stroke-width:1.4;opacity:0;pointer-events:none}
+#constellate-graph .weave-film-node:is(.selected,:focus-visible,:hover) .weave-film-ring{opacity:1}
+#constellate-graph .concept .weave-idea-star{fill:var(--cx-night);stroke:var(--cx-concept);stroke-width:2}
+#constellate-graph .concept.selected .weave-idea-star{stroke:#fff;stroke-width:2}
+#constellate-graph .weave-film-light{filter:drop-shadow(0 0 2px #a8cbe555)}
+#weave-film-preview[hidden],#weave-lens-results[hidden]{display:none!important}
+#weave-editor[data-tab="add"] :is(#weave-film-preview,#weave-lens-results){display:none!important}
+#weave-editor[data-tab="thread"] #weave-film-preview:not([hidden]){order:-10}
+#weave-editor[data-tab="thread"] #weave-lens-results:not([hidden]){order:-8}
+#weave-editor[data-tab="thread"] #weave-film-pair:not([hidden]){order:-11}
+#constellate-popup.has-film-preview #weave-suggest{display:none!important}
+#constellate-popup.has-film-preview #weave-land{display:none!important}
+#constellate-popup.has-film-preview #weave-order{order:5}
+#weave-film-preview,#weave-lens-results{padding:12px 0;color:var(--reading-ink);min-width:0}
+.weave-preview-head{display:flex;justify-content:space-between;align-items:center;gap:8px;margin:0 0 12px}
+.weave-preview-head h3{font-size:17px;margin:0;overflow-wrap:anywhere}
+.weave-preview-head span,.weave-preview-note,#weave-lens-results>small{font:400 12px/1.4 var(--ui-sans);color:var(--reading-muted)}
+.weave-preview-main{display:grid;grid-template-columns:minmax(82px,38%) minmax(0,1fr);gap:12px;align-items:start}
+.weave-preview-main>.weave-media-thumb{display:block;position:relative;width:100%;height:auto;aspect-ratio:3/4;background:var(--cx-night);border-radius:6px}
+.weave-preview-main>.weave-media-thumb img,.weave-encounter-art>.weave-media-thumb img{object-fit:contain!important}
+.weave-preview-main h3{font:500 22px/1.16 var(--ui-serif,Georgia,serif);margin:2px 0 6px;overflow-wrap:anywhere}
+.weave-preview-main p,.weave-preview-synopsis{font:400 14px/1.5 var(--ui-sans);margin:0 0 10px}
+.weave-preview-synopsis{margin-top:12px}
+.weave-preview-main .weave-discovery-actions{display:flex;align-items:center;flex-wrap:wrap;gap:8px}
+.weave-preview-themes,.weave-context-themes{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0 6px}
+#constellate-popup .weave-theme-chip{padding:6px 9px;border:1px solid var(--reading-line);border-radius:16px;background:transparent;color:var(--reading-ink);font:500 12px/1.25 var(--ui-sans);cursor:pointer;white-space:normal;text-align:left}
+#constellate-popup .weave-theme-chip[aria-pressed=true]{background:var(--cx-film);color:#111d30;border-color:var(--cx-film)}
+.weave-preview-facts{margin:12px 0;padding:8px 0;border-top:1px solid var(--reading-line);font:400 13px/1.5 var(--ui-sans)}
+.weave-preview-facts summary{cursor:pointer;font-weight:600}
+.weave-preview-facts dt{font-weight:600;color:var(--reading-muted);margin-top:6px}
+.weave-preview-facts dd{margin:0 0 4px}
+.weave-encounter-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.weave-encounter-grid article{min-width:0;display:flex;flex-direction:column;gap:5px}
+#constellate-popup .weave-encounter-art{display:flex;flex-direction:column;gap:6px;text-align:left;border:0;background:transparent;color:inherit;padding:0;cursor:pointer;width:100%}
+.weave-encounter-art>.weave-media-thumb{display:block;position:relative;width:100%;height:auto;aspect-ratio:4/3;background:var(--cx-night);border-radius:6px;overflow:hidden}
+.weave-encounter-art strong{font:500 15px/1.25 var(--ui-serif,Georgia,serif);overflow-wrap:anywhere}
+.weave-encounter-grid article>small{font:400 12px/1.35 var(--ui-sans);color:var(--reading-muted);overflow-wrap:anywhere}
+.weave-encounter-grid article>.weave-encounter-reason{color:var(--reading-accent)}
+.weave-search-art,.weave-search-title{border:0!important;background:transparent!important;color:inherit!important;padding:0!important;text-align:left!important;cursor:pointer}
+.weave-search-title{white-space:normal;font:inherit}
+#weave-land .wl-films:not(.is-linking){display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+#weave-land .wl-films:not(.is-linking) li{min-width:0;border:0}
+#weave-land .wl-films:not(.is-linking) button{display:flex;flex-direction:column;align-items:flex-start;gap:6px}
+#weave-land .wl-films:not(.is-linking) .weave-media-thumb{width:100%;height:auto;aspect-ratio:4/3;background:var(--cx-night)}
+#weave-land .wl-films:not(.is-linking) .weave-media-thumb img{object-fit:contain}
+#weave-land .wl-t strong{font-size:15px;white-space:normal;overflow-wrap:anywhere}
+#weave-land .wl-t small{font-size:12px;line-height:1.35}
+#weave-land .wl-films:not(.is-linking) em{font-size:12px}
+#constellate-popup #weave-order-list [data-order-select] span{font-size:14px;line-height:1.35}
+#constellate-popup #weave-order-list [data-order-select] small{font-size:12px}
+#weave-film-preview button,#weave-lens-results button{min-height:36px}
+#weave-film-preview :is(button,a,summary):focus-visible,#weave-lens-results :is(button,a):focus-visible{outline:2px solid var(--cx-film);outline-offset:3px}
+.wt-selection summary{cursor:pointer;font:500 13px/1.4 var(--ui-sans)}
+.wt-selection .wt-film-strip{max-height:250px;overflow:auto}
+@media(prefers-reduced-motion:reduce){body.is-theme-weaving *,body.is-theme-weaving *::before,body.is-theme-weaving *::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}

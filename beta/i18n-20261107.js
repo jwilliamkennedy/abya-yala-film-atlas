@@ -5,6 +5,15 @@
 const LANGS={en:'English',es:'Español',pt:'Português',fr:'Français'};
 // [English, Español, Português, Français]
 const T=[
+["Film preview","Vista previa de la película","Prévia do filme","Aperçu du film"],
+["Explore","Explorar","Explorar","Explorer"],
+["Film details and sources","Detalles y fuentes de la película","Detalhes e fontes do filme","Détails et sources du film"],
+["Mapped land references","Referencias territoriales cartografiadas","Referências territoriais mapeadas","Références territoriales cartographiées"],
+["Themes from the catalog. Select two to explore their intersection.","Temas del catálogo. Selecciona dos para explorar su intersección.","Temas do catálogo. Selecione dois para explorar sua interseção.","Thèmes du catalogue. Sélectionnez-en deux pour explorer leur intersection."],
+["Catalog coverage, not a measure of cultural significance.","Cobertura del catálogo, no una medida de relevancia cultural.","Cobertura do catálogo, não uma medida de relevância cultural.","Couverture du catalogue, non une mesure de l’importance culturelle."],
+["Atlas film record ↗","Ficha de la película en el atlas ↗","Registro do filme no atlas ↗","Fiche du film dans l’atlas ↗"],
+["← Back","← Atrás","← Voltar","← Retour"],
+["On thread","En el hilo","No fio","Dans le fil"],
 ["Save constellation","Guardar constelación","Salvar constelação","Enregistrer la constellation"],
 ["Not saved · temporary in this tab","Sin guardar · temporal en esta pestaña","Não salva · temporária nesta aba","Non enregistrée · temporaire dans cet onglet"],
 ["Saved in this browser","Guardada en este navegador","Salva neste navegador","Enregistrée dans ce navigateur"],
