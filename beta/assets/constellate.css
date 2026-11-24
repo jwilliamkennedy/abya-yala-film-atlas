@@ -248,13 +248,16 @@
 /* Film imagery continues into the thread order and selected film details. */
 #weave-order-list [data-order-select]{align-items:center;gap:9px}
 #weave-order-list [data-order-select]>.weave-media-thumb{
- display:block;position:relative;flex:0 0 42px;width:42px;height:43px;min-width:42px;
+ display:block;position:relative;flex:0 0 52px;width:52px;height:54px;min-width:52px;
  border:1px solid var(--reading-line);border-radius:4px;overflow:hidden;
  background:var(--reading-wash);
 }
 #weave-order-list [data-order-select]>.weave-media-thumb .weave-media-placeholder>b{font-size:13px}
 #weave-order-list [data-order-select]>.weave-media-thumb .weave-media-placeholder>small{font-size:8px!important}
-#weave-order-list [data-order-select]>span:not(.weave-media-thumb){flex:1;min-width:0}
+#weave-order-list [data-order-select]>span:not(.weave-media-thumb){flex:1;min-width:0;font-size:17px;line-height:1.35;font-weight:500}
+#constellate-popup #weave-order-list [data-order-select] small{font-size:14px;line-height:1.35}
+#constellate-popup .constellate-result strong{font-size:17px;line-height:1.35;overflow-wrap:anywhere}
+#constellate-popup .constellate-result small{font-size:14px;line-height:1.35;overflow-wrap:anywhere}
 #constellate-context .weave-context-preview{
  display:flex;align-items:center;gap:12px;
  margin:4px 0 10px;min-width:0;
@@ -1717,8 +1720,8 @@ html[data-weave-stage] body.weave-empty #atlas .land-word{opacity:.78}
 #weave-land .wl-films .weave-media-placeholder{position:absolute;inset:0;display:grid;place-items:center;align-content:center;font:600 12px/1 var(--ui-sans);color:var(--ui-muted)}
 #weave-land .wl-films .weave-media-placeholder small{font-size:8px;letter-spacing:.08em;text-transform:uppercase}
 #weave-land .wl-t{min-width:0;overflow-wrap:anywhere}
-#weave-land .wl-t strong{display:block;font:400 15px/1.25 var(--ui-serif)}
-#weave-land .wl-t small{display:block;font:400 12.5px/1.3 var(--ui-sans);color:var(--ui-muted)}
+#weave-land .wl-t strong{display:block;font:500 18px/1.3 var(--ui-serif)}
+#weave-land .wl-t small{display:block;font:400 14px/1.4 var(--ui-sans);color:var(--ui-muted)}
 #weave-land .wl-films em{font:600 13px/1 var(--ui-sans);font-style:normal;color:var(--ui-accent);white-space:nowrap}
 #weave-land .wl-films button:disabled{cursor:default;opacity:.55}
 #weave-land .wl-films button:disabled em{color:var(--ui-muted)}
@@ -1732,7 +1735,7 @@ body.is-constellating.weave-empty:not(.weave-show-atlas) #atlas .land-thumb[data
 #constellate-popup.cm-one-thread :is(.weave-thread-heading,#weave-legend,.weave-focus-actions){display:none!important}
 #constellate-popup:not(.cm-has-edges) #weave-line-key{display:none!important}
 /* the list: number, film, and between two films the reason the second follows the first */
-#weave-order-list>li{flex-wrap:wrap;row-gap:2px}
+#weave-order-list>li{flex-wrap:wrap;row-gap:4px;padding:9px 0}
 #weave-order-list .weave-why{order:-1;flex:1 0 calc(100% - 12px);max-width:calc(100% - 12px);box-sizing:border-box;display:flex;align-items:baseline;gap:8px;margin:0 0 2px 11px;padding:3px 0 5px 14px;border:0;border-left:2px solid var(--ui-line);background:none;
  font:400 12.5px/1.4 var(--ui-sans);color:var(--ui-muted);text-align:left;cursor:pointer}
 #weave-order-list .weave-why:not(.has-reason){font-style:italic;opacity:.75}
@@ -1802,6 +1805,16 @@ html[data-reading-theme=night] body.is-theme-weaving #atlas .land-word:is(:hover
 :root[data-reading-theme] body.is-theme-weaving #constellate-graph .constellate-card.concept .weave-star-title{fill:var(--reading-ink);font-weight:600;paint-order:stroke fill;stroke:var(--reading-paper);stroke-width:3px;stroke-linejoin:round}
 .weave-star-thumb{display:grid;place-items:center;color:var(--reading-accent);font-size:23px}
 #constellate-context .weave-star-note{white-space:pre-wrap;overflow-wrap:anywhere}
+/* Data-grounded land stars. No decorative or invented territorial positions. */
+body.is-constellating #atlas .land-sky-star{cursor:pointer;pointer-events:all;outline:none}
+#atlas .land-sky-hit{fill:transparent;stroke:none;pointer-events:all}
+#atlas .land-sky-light{fill:#fff0ce;stroke:#fff8eb;stroke-width:.65;filter:drop-shadow(0 0 4px #f7d991);pointer-events:none}
+#atlas .land-sky-star[data-multiple=true] .land-sky-light{fill:#e0eaff;stroke:#fff}
+#atlas .land-sky-label{opacity:0;fill:#fff2d8;stroke:#0b1527;stroke-width:3.5;paint-order:stroke fill;font:500 14px/1 var(--ui-sans);pointer-events:none}
+#atlas .land-sky-star:is(:hover,:focus-visible,.is-selected) .land-sky-label{opacity:1}
+#atlas .land-sky-star:is(:hover,:focus-visible,.is-selected) .land-sky-light{fill:#fff;stroke:#fff;stroke-width:1.8;filter:drop-shadow(0 0 7px #fff2c9)}
+#atlas .land-sky-star:focus-visible .land-sky-hit{stroke:#fff3d1;stroke-width:1.5}
+body.weave-playing #atlas .land-sky-star{opacity:.35}
 /* the sky holds only lands as stars: no film stills on the map, dark land under the territories */
 body.is-constellating #land-thumb-layer{display:none!important}
 html[data-reading-theme=night] body.is-theme-weaving #atlas .land-shape{fill:#16243b!important}

@@ -651,7 +651,7 @@ function landCentre(l){if(!landCentres.has(l.id)){const fs=landGeometry(l);landC
 
 const weaveReferenceCoordinates=new Map();
 function recordLandReferences(id){return (edgesByRecord.get(id)||[]).map(e=>({id:e.land,name:landDisplayName(landById(e.land)),status:e.status,basis:e.basis,source:e.source||'',mapped:!!landById(e.land)?.groups.length})).filter(e=>e.name).sort((a,b)=>Number(b.status==='sourced')-Number(a.status==='sourced')||Number(/wallmapu/i.test(b.name))-Number(/wallmapu/i.test(a.name)));}
-function landMarkerReference(id){const l=landById(id);if(!l?.groups.length)return null;const fs=landGeometry(l),node=constellationLayer?.selectAll('.land-word,.land-reference-bubble').nodes().find(n=>n.__data__?.id===id),d=node?.__data__;let coord=weaveReferenceCoordinates.get(id);
+function landMarkerReference(id){const l=landById(id);if(!l?.groups.length)return null;const fs=landGeometry(l),node=constellationLayer?.selectAll('.land-word,.land-reference-bubble,.land-sky-star').nodes().find(n=>n.__data__?.id===id),d=node?.__data__;let coord=weaveReferenceCoordinates.get(id);
  if(d&&!s.zooming){const p=projection.invert(transform.invert([d.anchorX,d.anchorY]));if(p&&fs.some(f=>d3.geoContains(f,p)))coord=p;}
  if(!coord){const c=landCentre(l);if(c&&fs.some(f=>d3.geoContains(f,c)))coord=c;else for(const f of fs){const p=d3.geoCentroid(f);if(d3.geoContains(f,p)){coord=p;break;}}}
  if(!coord){const f=fs[0],ring=f.geometry.type==='Polygon'?f.geometry.coordinates[0]:f.geometry.coordinates[0][0];coord=ring[0];}
@@ -660,7 +660,8 @@ function fitLandReferences(ids){const unique=[...new Map(ids.flatMap(id=>landByI
 function relationCurve(e){const dx=e.p.x-e.c.x,dy=e.p.y-e.c.y,inflection=Math.min(25,Math.abs(dx)*.08);return `M${e.c.x},${e.c.y} C${e.c.x+dx*.32},${e.c.y+dy*.12-inflection} ${e.c.x+dx*.72},${e.c.y+dy*.9+inflection} ${e.p.x},${e.p.y}`;}
 function renderConstellation(){
  if(!constellationLayer||!archive)return;constellationLayer.style('display',null);landLabelBoxes=[];
- if(!s.connections&&!s.record&&!s.land&&!s.crossLand){constellationLayer.selectAll('*').remove();return;}
+ const sky=document.body.classList.contains('is-constellating')&&!!window.AtlasConstellate?.landFilmCount;
+ if(!sky&&!s.connections&&!s.record&&!s.land&&!s.crossLand){constellationLayer.selectAll('*').remove();return;}
  if(referenceProjection!==projection){referenceProjection=projection;referenceExtents.clear();referenceBounds.clear();}
  const chosen=s.crossLand||s.land,links=edgesByRecord.get(s.record)||[],selectedIds=new Set([chosen,...links.map(e=>e.land)].filter(Boolean));
  const mayaOverviewPriority=Math.max(1,...mayaMembers.map(l=>landVoice(l).count)),mayaOverview=transform.k<3.4,memberOpacity=Math.max(0,Math.min(1,(transform.k-2.6)/.8));
@@ -669,6 +670,34 @@ function renderConstellation(){
   if(x<12||x>width-12||y<60||labelY>height-65||!selected&&!voice.count&&transform.k<2.5&&extent<labelWidth*.9)return null;
   return {id:l.id,l,name,extent,x:l.browseGroup?labelX+48:labelX,y:l.browseGroup?labelY-(width<=680?36:48):labelY,anchorX:x,anchorY:y,labelWidth,selected,voice,lines,opacity:l.browseGroup?Math.max(.05,1-memberOpacity):mayaMemberIds.has(l.id)&&!selected?memberOpacity:1};
  }).filter(Boolean).sort((a,b)=>Number(b.selected)-Number(a.selected)||Number(!!b.voice.count)-Number(!!a.voice.count)||((width>680&&b.l.browseGroup?mayaOverviewPriority:b.voice.count)-(width>680&&a.l.browseGroup?mayaOverviewPriority:a.voice.count))||(transform.k>=3?a.extent-b.extent:0)||Number(!!b.l.supplied)-Number(!!a.l.supplied)||a.name.localeCompare(b.name));
+ if(sky){
+  // The night sky uses the same territory anchors, not a decorative star field.
+  // At hemisphere scale, overlapping references open a choice of lands.
+  constellationLayer.selectAll('.land-word,.land-reference-bubble,.land-group-leader').remove();
+  const stars=[],spacing=width<680?32:25;
+  for(const n of candidates){
+   const count=window.AtlasConstellate.landFilmCount(n.id);if(!count||n.l.browseGroup)continue;
+   const nearby=stars.find(v=>Math.hypot(v.anchorX-n.anchorX,v.anchorY-n.anchorY)<spacing);
+   if(nearby){nearby.ids.push(n.id);nearby.names.push(n.name);nearby.count+=count;continue;}
+   stars.push({...n,ids:[n.id],names:[n.name],count});
+  }
+  const nodes=constellationLayer.selectAll('.land-sky-star').data(stars,d=>d.id).join(enter=>{
+   const g=enter.append('g').attr('class','land-sky-star').attr('role','button');
+   g.append('circle').attr('class','land-sky-hit').attr('r',spacing/2);
+   g.append('path').attr('class','land-sky-light').attr('d','M0,-8 L2.2,-2.2 L8,0 L2.2,2.2 L0,8 L-2.2,2.2 L-8,0 L-2.2,-2.2 Z');
+   g.append('text').attr('class','land-sky-label').attr('y',-15).attr('text-anchor','middle');
+   g.append('title');return g;
+  }).attr('data-land-sky',d=>d.id).attr('tabindex',0).attr('transform',d=>`translate(${d.anchorX},${d.anchorY})`)
+   .attr('aria-label',d=>d.names.join(' / ')).attr('data-multiple',d=>String(d.ids.length>1));
+  nodes.select('.land-sky-light').attr('transform',d=>'scale('+Math.min(1.1,.65+Math.log2(d.count+1)*.10)+')');
+  nodes.select('.land-sky-label').text(d=>d.name+(d.ids.length>1?' +'+(d.ids.length-1):''));
+  nodes.select('title').text(d=>d.names.join(' / '));
+  const open=d=>window.AtlasConstellate.openLands(d.ids);
+  nodes.on('click',(event,d)=>{event.preventDefault();event.stopPropagation();open(d);})
+   .on('keydown',(event,d)=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();event.stopPropagation();open(d);}else if(['ArrowLeft','ArrowUp','ArrowRight','ArrowDown'].includes(event.key)){event.preventDefault();const list=nodes.nodes(),i=list.indexOf(event.currentTarget);list[(i+(['ArrowLeft','ArrowUp'].includes(event.key)?-1:1)+list.length)%list.length]?.focus();}});
+  return;
+ }
+ constellationLayer.selectAll('.land-sky-star').remove();
  const shown=[];
  for(const n of candidates){
   const x=n.x,y=n.y,offsets=[...(n.l.browseGroup&&width>680?[[16,40],[32,40],[0,40]]:[]),[0,0],[0,20],[0,-20],[0,40],[0,-40],[0,64],[0,-64],[Math.min(90,n.labelWidth*.6),0],[-Math.min(90,n.labelWidth*.6),0],...(n.l.browseGroup?[[70,0],[-70,0],[70,36],[-70,-36]]:[])];
