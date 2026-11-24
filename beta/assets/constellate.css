@@ -1808,3 +1808,15 @@ body.is-constellating.weave-empty:not(.weave-show-atlas) #atlas .land-thumb[data
 #weave-editor[data-tab="thread"]:has(#constellate-context[hidden]) :is(#weave-legend,#weave-line-key){order:-4}
 #weave-editor[data-tab="thread"]:has(#constellate-context[hidden]) #weave-order{order:-3}
 #weave-editor[data-tab="thread"]:has(#constellate-context[hidden]) #weave-suggest{order:-2}
+/* ══ Less to read (24 Nov 2026) ═══════════════════════════════════════════════════════════
+   Headings and the films carry the meaning; explanatory sentences, counts and prompts are gone. */
+#weave-suggest .weave-suggest-intro,#weave-suggest .weave-suggest-head small,#weave-editor[data-tab] #weave-suggest:not([hidden]):not(:has(.constellate-result)),
+#weave-order-summary small,#weave-order-summary .cm-desc-empty,
+#weave-start .ws-path>p,
+#weave-order-list .weave-why small,
+#weave-line-key,
+#constellate-popup.cm-one-thread .weave-browse-head>span{display:none!important}
+#weave-discovery-count{position:absolute!important;width:1px!important;height:1px!important;overflow:hidden!important;clip-path:inset(50%)!important;margin:0!important}
+.weave-why-add{appearance:none;border:0;background:none;padding:0 6px;font:500 12px/1 var(--ui-sans);color:var(--ui-muted);cursor:pointer;white-space:nowrap}
+.weave-why-add:hover,.weave-why-add:focus-visible{color:var(--ui-accent)}
+#constellate-context .constellate-actions .weave-why-add{font-size:13px;padding:0 0 0 14px}

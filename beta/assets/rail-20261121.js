@@ -14,7 +14,7 @@ const PAGE={'watch.html':'watch','themes.html':'themes','languages.html':'langua
 
 /* key, words, short word for the collapsed rail, address */
 const MENU=[
- ['map','Map','Map',''],['lands','Lands','Lands',''],['constellate','Constellate','Constellate','?constellate=1'],['watch','Watch','Watch','watch.html'],
+ ['map','Map','Map',''],['lands','Lands','Lands',''],['watch','Watch','Watch','watch.html'],
  'Indexes',
  ['themes','Themes','Themes','themes.html'],['languages','Languages','Languages','languages.html'],['timeline','Timeline','Timeline','timeline.html'],
  '',
@@ -46,7 +46,7 @@ const flag={take(){try{const v=sessionStorage.getItem('atlas-rail-do');sessionSt
 let nav=null;const homes=new Map();
 const constellating=()=>onMap&&(root.dataset.uiConstellate?root.dataset.uiConstellate==='on':new URLSearchParams(location.search).get('constellate')==='1');
 const landView=()=>onMap&&!!$('.view-switch [data-view="land"][aria-pressed="true"]');
-const current=()=>!onMap?(rel.startsWith('maker/')?'map':PAGE[rel]||''):constellating()?'constellate':landView()?'lands':'map';
+const current=()=>!onMap?(rel.startsWith('maker/')?'map':PAGE[rel]||''):constellating()?'map':landView()?'lands':'map';
 const wanted=()=>store.get('atlas-rail')||(constellating()||innerWidth<1440?'compact':'full');
 
 function build(){

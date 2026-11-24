@@ -280,7 +280,7 @@ async def con_threads(page, base):
 
 async def con_connect(page, base):
     """24 Nov 2026: no Link mode. The order of a thread is its links; between two films in the list,
-    "Why does it follow?" opens the reason form for that pair, and saving it adds one connection."""
+    "Why here?" (a quiet control on the row) opens the reason form for that pair, and saving it adds one connection shown above the film."""
     await con_build(page, base)
     if "/beta/" not in base:
         return
@@ -297,7 +297,7 @@ async def con_connect(page, base):
       return window.AtlasCollections.current().links.length; }""")
     need(before is not None, "could not add a film to make a new pair")
     await page.wait_for_timeout(400)
-    await page.click("#weave-order-list button.weave-why:not(.has-reason) >> nth=0")
+    await page.click("#weave-order-list .weave-why-add >> nth=0", force=True)
     await page.wait_for_selector("#constellate-link-form", state="visible", timeout=7000)
     head = await page.evaluate("document.querySelector('#constellate-link-form h3').textContent")
     need(head == "Why does it follow?", "the reason form has the wrong heading", head)
