@@ -2,8 +2,8 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-24",
  "license": "See data.html",
- "films_on_public_map": 2641,
- "film_entries": 2655,
+ "films_on_public_map": 2644,
+ "film_entries": 2658,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -4985,11 +4985,17 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Residential and Boarding Schools",
+    "Health and Healing"
+   ],
+   "primary_theme": "Residential and Boarding Schools",
+   "families": [
+    "Knowledge and Continuity",
+    "Lives and Relations"
+   ],
+   "form": "Documentary",
+   "length": "Feature"
   },
   "Q20261115-92-F4": {
    "title": "The Thinking Garden",
@@ -17508,6 +17514,38 @@
    "form": "Fiction",
    "length": null
   },
+  "Q20261121-256-F1": {
+   "title": "Slapping Medicine Man",
+   "year": 2011,
+   "makers": [
+    {
+     "id": "DIR-0266",
+     "name": "1491s"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": "Short"
+  },
+  "Q20261121-257-F1": {
+   "title": "I'm an Indian Too",
+   "year": 2012,
+   "makers": [
+    {
+     "id": "DIR-0266",
+     "name": "1491s"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Music Video",
+   "length": null
+  },
   "FILM-0224": {
    "title": "Grab",
    "year": 2011,
@@ -20603,6 +20641,30 @@
    "form": null,
    "length": null
   },
+  "Q20261121-17-F1": {
+   "title": "Minha Alma Não Tem Cor",
+   "year": 2019,
+   "makers": [
+    {
+     "id": "NEW-7185cd45c3f6",
+     "name": "Alexandre Pankararu"
+    },
+    {
+     "id": "NEW-084a145f8fa7",
+     "name": "Graciela Guarani"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Self-Representation and Countering Stereotypes"
+   ],
+   "primary_theme": "Self-Representation and Countering Stereotypes",
+   "families": [
+    "Expression and Representation"
+   ],
+   "form": "Documentary",
+   "length": "Short"
+  },
   "NEW-b11991513c99-WORK-1": {
    "title": "Amber Alert: A Fashion Statement for Truth and Healing",
    "year": 2025,
@@ -22458,11 +22520,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Health and Healing"
+   ],
+   "primary_theme": "Health and Healing",
+   "families": [
+    "Lives and Relations"
+   ],
+   "form": "Fiction",
+   "length": "Short"
   },
   "MIRROR-FILMOGRAPHY-20261107-006": {
    "title": "On and On and On",
@@ -23717,11 +23783,17 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Art, Craft and Making",
+    "Kinship"
+   ],
+   "primary_theme": "Art, Craft and Making",
+   "families": [
+    "Expression and Representation",
+    "Lives and Relations"
+   ],
+   "form": "Documentary",
+   "length": "Short"
   },
   "NEW-e108b1f468ae-F1": {
    "title": "Cache-Cache",
@@ -26670,8 +26742,7 @@
    "languages": [],
    "themes": [
     "Cosmology and Origin Stories",
-    "Women and Gender",
-    "Health and Healing"
+    "Women and Gender"
    ],
    "primary_theme": "Cosmology and Origin Stories",
    "families": [
