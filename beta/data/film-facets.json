@@ -2,8 +2,8 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-24",
  "license": "See data.html",
- "films_on_public_map": 2633,
- "film_entries": 2647,
+ "films_on_public_map": 2635,
+ "film_entries": 2649,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -14730,6 +14730,10 @@
     {
      "id": "DIR-0219",
      "name": "Celina Yunuen Manuel Piñón"
+    },
+    {
+     "id": "LEAD-20261011-019",
+     "name": "Nisaguie Abril Flores Cruz"
     }
    ],
    "languages": [],
@@ -29085,6 +29089,38 @@
    ],
    "form": "Fiction",
    "length": "Short"
+  },
+  "Q20261123-91-F1": {
+   "title": "Colores de las venas",
+   "year": null,
+   "makers": [
+    {
+     "id": "LEAD-20261011-015",
+     "name": "Leyzer Chiquin"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261123-91-F2": {
+   "title": "Mayali (Miremos Guatemala series)",
+   "year": 2014,
+   "makers": [
+    {
+     "id": "LEAD-20261011-015",
+     "name": "Leyzer Chiquin"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
   },
   "Q20261113-52-F1": {
    "title": "El sueño del toro, el caballo y la serpiente",
