@@ -24,3 +24,6 @@ Requested by atlas owner: promote current beta/ to published root using tools/pr
 
 2026-11-23 (evening, 3)
 Requested by atlas owner: promote current beta/ to published root using tools/promote_beta.py; preserve beta and private research Queue. About: Zazil Alaíde Collins corrected bio.
+
+2026-11-23 (night)
+Requested by atlas owner: promote current beta/ to published root using tools/promote_beta.py; preserve beta and private research Queue. About: launch date, 1 November 2026.
