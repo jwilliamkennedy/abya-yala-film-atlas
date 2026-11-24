@@ -2,8 +2,8 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-24",
  "license": "See data.html",
- "films_on_public_map": 2644,
- "film_entries": 2658,
+ "films_on_public_map": 2653,
+ "film_entries": 2667,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -51292,6 +51292,150 @@
     {
      "id": "Q20261123-99",
      "name": "Leonardo Tello Imaina"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QM-c13980c861-M1": {
+   "title": "Je te oins les ch'veux",
+   "year": 2026,
+   "makers": [
+    {
+     "id": "QM-c13980c861",
+     "name": "Carling Sioui"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QW-WAPI-V174841927": {
+   "title": "THE MUSIC IN ME",
+   "year": 2016,
+   "makers": [
+    {
+     "id": "QW-e2481dcaf6",
+     "name": "Emilio Wawatie"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QW-WAPI-V280992645": {
+   "title": "A Stolen Sister",
+   "year": 2018,
+   "makers": [
+    {
+     "id": "QW-ca4c10706e",
+     "name": "Debbie S. Mishibinijima"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QW-WAPI-V287071242": {
+   "title": "A WAY OF LIFE",
+   "year": 2018,
+   "makers": [
+    {
+     "id": "QW-cd618dcc58",
+     "name": "Dorothy Mesher"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QW-WAPI-V288783223": {
+   "title": "CHARLIE BY THE SEA",
+   "year": 2018,
+   "makers": [
+    {
+     "id": "QW-ef3594968c",
+     "name": "Charlie Ekomiak"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QW-WAPI-V280362413": {
+   "title": "Dans l'entre-temps",
+   "year": 2018,
+   "makers": [
+    {
+     "id": "QW-eab231291b",
+     "name": "Érik Papatie"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QW-WAPI-V279673615": {
+   "title": "L'INNU CONTRE-ATTAQUE",
+   "year": 2018,
+   "makers": [
+    {
+     "id": "QW-571f825c35",
+     "name": "BÉRÉNICE MOLLEN-DUPUIS"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261123-46-F1": {
+   "title": "Rêveries",
+   "year": 2021,
+   "makers": [
+    {
+     "id": "Q20261123-46",
+     "name": "Véronique Picard"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261123-47-F1": {
+   "title": "Carnaval",
+   "year": 2013,
+   "makers": [
+    {
+     "id": "Q20261123-47",
+     "name": "Diana Najarro Rojas"
     }
    ],
    "languages": [],
