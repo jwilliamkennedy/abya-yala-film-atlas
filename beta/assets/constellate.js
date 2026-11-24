@@ -839,7 +839,7 @@ function stopPlay(){if(!player)return;playThread=null;pausePlay(true);player.hid
   const all=themeFilms(term),films=sampleThemeFilms(all,6);
   if(!films.length)return;
   if(!enabled)open();
-  setRead(false);
+  setRead(false);showLand('');context.hidden=inline.hidden=true;
   const desc='Films tagged '+term+' from their published synopses.';
   const id=transaction('Start theme thread',()=>{
    const c=S.current(),blank=c.threads.length===1&&!c.threads[0].items.length;
@@ -891,7 +891,7 @@ function stopPlay(){if(!player)return;playThread=null;pausePlay(true);player.hid
  function traceMoving(on){const el=traceUI();if(on)traceUnline();el.classList.toggle('is-moving',!!on);el.querySelectorAll('[data-wtm]').forEach(b=>b.setAttribute('aria-pressed',String((b.dataset.wtm==='move')===!!on)));if(!el.classList.contains('has-result'))el.querySelector('.wt-hint').textContent=on?'Drag to move · Draw when ready':'Draw across lands · scroll to zoom';}
  function traceClear(){document.querySelectorAll('#atlas .nation-wash.trace-lit').forEach(w=>w.classList.remove('trace-lit'));}
  function traceReset(){const el=traceUI();traceClear();trace={drawing:false,pts:[],lands:[],seen:new Set(),filmIds:new Set(),skip:new Set(),browse:!!(trace&&trace.browse),theme:(trace&&trace.theme)||''};{const pk=el.querySelector('.wt-theme-pick'),sw=el.querySelector('.wt-theme-on');if(pk&&!pk.options.length)pk.innerHTML=themeOptions(catalog.filter(x=>x.type==='film'),'',true);if(trace.theme){pk.value=trace.theme;sw.checked=true;}pk.disabled=!sw.checked;}el.querySelector('.wt-casing').setAttribute('d','');el.querySelector('.wt-line').setAttribute('d','');el.querySelector('.wt-dots').innerHTML='';el.querySelector('.wt-result').hidden=true;el.classList.remove('has-result');el.classList.remove('is-moving');el.querySelectorAll('[data-wtm]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.wtm==='draw')));el.querySelector('.wt-hint').textContent=(matchMedia('(pointer:coarse)').matches?'One finger draws · two move':'Draw across lands · scroll to zoom');}
- function startTrace(opts){const browse=!!(opts&&opts.browse)&&!enabled;if(!browse){if(!enabled)open();setRead(false);if(drawThread)setDrawThread(false);}if(innerWidth<700){scrollTo({top:0,behavior:'instant'});{const mp=document.querySelector('.map-panel');if(mp&&mp.getBoundingClientRect().top<0)mp.scrollIntoView({block:'start',behavior:'instant'});}if(browse&&document.documentElement.dataset.sheet&&document.documentElement.dataset.sheet!=='peek')document.documentElement.dataset.sheet='peek';}const el=traceUI();document.body.classList.add('weave-tracing');el.hidden=false;el.classList.toggle('is-browse',browse);{const tb=document.querySelector('.map-panel .map-toolbar');el.style.top=(browse?(tb&&tb.offsetParent?tb.offsetTop+tb.offsetHeight+6:0):($('#constellate-mode')?.offsetHeight||0))+'px';}{const ft=document.querySelector('.map-panel .map-footer');el.style.bottom=(ft&&ft.offsetParent?ft.offsetHeight:0)+'px';}$('#weave-trace')?.setAttribute('aria-pressed','true');$('#map-draw-line')?.setAttribute('aria-pressed','true');traceReset();trace.browse=browse;traceApplyTheme();}
+ function startTrace(opts){const browse=!!(opts&&opts.browse)&&!enabled;if(!browse){if(!enabled)open();setRead(false);if(drawThread)setDrawThread(false);showLand('');close();}if(innerWidth<700){scrollTo({top:0,behavior:'instant'});{const mp=document.querySelector('.map-panel');if(mp&&mp.getBoundingClientRect().top<0)mp.scrollIntoView({block:'start',behavior:'instant'});}if(browse&&document.documentElement.dataset.sheet&&document.documentElement.dataset.sheet!=='peek')document.documentElement.dataset.sheet='peek';}const el=traceUI();document.body.classList.add('weave-tracing');el.hidden=false;el.classList.toggle('is-browse',browse);{const tb=document.querySelector('.map-panel .map-toolbar');el.style.top=(browse?(tb&&tb.offsetParent?tb.offsetTop+tb.offsetHeight+6:0):($('#constellate-mode')?.offsetHeight||0))+'px';}{const ft=document.querySelector('.map-panel .map-footer');el.style.bottom=(ft&&ft.offsetParent?ft.offsetHeight:0)+'px';}$('#weave-trace')?.setAttribute('aria-pressed','true');$('#map-draw-line')?.setAttribute('aria-pressed','true');traceReset();trace.browse=browse;traceApplyTheme();}
  function stopTrace(){if(!trace)return;const el=$('#weave-trace-layer');traceClear();trace=null;traceThemeMap();if(el)el.hidden=true;document.body.classList.remove('weave-tracing');$('#weave-trace')?.setAttribute('aria-pressed','false');$('#map-draw-line')?.setAttribute('aria-pressed','false');}
  function traceBegin(e){traceReset();const el=traceUI(),box=el.getBoundingClientRect(),index=landFilms(),cand=[],marks=[];
   for(const w of document.querySelectorAll('#atlas .nation-wash[data-land]')){const land=index.get(w.dataset.land);if(land)cand.push({land,path:w});}
@@ -937,7 +937,7 @@ function stopPlay(){if(!player)return;playThread=null;pausePlay(true);player.hid
    for(const [x,l] of picks){const own=existingWork(x);if(own)S.addToThread(own.id,tid);else S.add(x,{threadId:tid});if(c.pins)c.pins[(own||x).id]=l.id;}
    c.activeThread=tid;c.selectedItem=null;S.save();return tid;});
   if(!id){status('This constellation has the most threads it can hold.');return;}
-  stopTrace();active=null;fit('quiet');render();const said='Threaded '+picks.length+(picks.length===1?' film':' films')+' from '+names.length+(names.length===1?' land':' lands')+', in the order of your line.';status(said);setTimeout(()=>status(said),900);}
+  stopTrace();openDock();setTab('thread');active=null;context.hidden=inline.hidden=true;fit('quiet');render();const said='Threaded '+picks.length+(picks.length===1?' film':' films')+' from '+names.length+(names.length===1?' land':' lands')+', in the order of your line.';status(said);setTimeout(()=>status(said),900);}
  /* ── A thread from one land (Map page → Constellate) ─────────────────────
     The most recent film of each of the land's filmmakers, up to eight, pinned to that land. */
  /* 23 Nov: clicking a land in Constellate shows its films here: add them, link them, or make a thread of the land */
@@ -962,7 +962,7 @@ function stopPlay(){if(!player)return;playThread=null;pausePlay(true);player.hid
   const yr=x=>{const m=/\d{4}/.exec(String(x.year||''));return m?+m[0]:0;},byMaker=new Map();
   for(const x of land.films.slice().sort((a,b)=>yr(b)-yr(a)||String(a.title).localeCompare(String(b.title)))){const k=x.record||x.maker||x.id;if(!byMaker.has(k))byMaker.set(k,[]);byMaker.get(k).push(x);}
   const picks=[],seen=new Set();for(let round=0;picks.length<8;round++){let more=false;for(const list of byMaker.values()){const x=list[round];if(x&&!seen.has(x.id)){seen.add(x.id);picks.push(x);more=true;if(picks.length>=8)break;}}if(!more)break;}
-  const all=new Set(land.films.map(x=>x.id)).size,desc='';
+  const all=new Set(land.films.map(x=>x.id)).size,desc='';showLand('');context.hidden=inline.hidden=true;
   $('#weave-thread-form').hidden=true;setTab('thread');
   const id=transaction('Thread from '+land.name,()=>{const c=S.current(),blank=c.threads.length===1&&!c.threads[0].items.length;let tid;
    if(blank){const t0=c.threads[0];t0.name=land.name.slice(0,90);t0.description=desc;tid=t0.id;}else tid=S.createThread(land.name.slice(0,90),desc);
@@ -1743,7 +1743,7 @@ try{
    tries++;
    if(atlas()?.catalog&&store()&&document.getElementById('constellate-mode')){
     clearInterval(timer);
-    if(collect()&&markup()){var query=new URLSearchParams(location.search);var firstVisit=query.get('constellate')==='1'&&query.get('read')!=='1'&&query.get('play')!=='1'&&!store().current().items.length&&!query.has('weave')&&!location.hash.includes('weave=');if(query.get('theme-web')==='1'||firstVisit){atlas().open();show(true);}}
+    if(collect()&&markup()){var query=new URLSearchParams(location.search);if(query.get('theme-web')==='1'){atlas().open();show(true);}}
    }else if(tries>70)clearInterval(timer);
   },200);
  }
