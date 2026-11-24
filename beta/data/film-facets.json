@@ -2,8 +2,8 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-24",
  "license": "See data.html",
- "films_on_public_map": 2747,
- "film_entries": 2761,
+ "films_on_public_map": 2751,
+ "film_entries": 2765,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -55672,6 +55672,70 @@
    "primary_theme": null,
    "families": [],
    "form": "Documentary",
+   "length": null
+  },
+  "Q20261124-12-F1": {
+   "title": "Máhsi Negháehnda (I am Thankful to See You)",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261124-12",
+     "name": "Sarah Von Gertzen"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261124-13-F1": {
+   "title": "Buttoned Up",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "Q20261124-13",
+     "name": "Maikaru Douangluxay-Cloud"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261124-17-F1": {
+   "title": "Canoe Carry Me Home",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261124-17",
+     "name": "Derek Sands"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "Q20261124-18-F1": {
+   "title": "My First Dance",
+   "year": 2025,
+   "makers": [
+    {
+     "id": "Q20261124-18",
+     "name": "Erica Pretty Eagle Cozad"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
    "length": null
   }
  }
