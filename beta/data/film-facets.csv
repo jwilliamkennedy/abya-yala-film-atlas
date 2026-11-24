@@ -440,7 +440,10 @@ CHECKED-DIR-0062-inkwoforwhenthestarvingreturn,Inkwo for When the Starving Retur
 CHECKED-DIR-0062-inkwoforwhenthestarvingreturn,Inkwo for When the Starving Return,2024,theme,Health and Healing,Lives and Relations,https://www.themoviedb.org/movie/1175546,tagged from a published synopsis
 CHECKED-DIR-0062-inkwoforwhenthestarvingreturn,Inkwo for When the Starving Return,2024,form,Animation,,https://www.themoviedb.org/movie/1175546,from the published synopsis
 CHECKED-DIR-0062-inkwoforwhenthestarvingreturn,Inkwo for When the Starving Return,2024,length,Short,,https://www.themoviedb.org/movie/1175546,from the published synopsis
-Q20261114-70-F1,Indigo,2014,form,Animation,,https://www.spottedfawnproductions.com/indigo/,"normalised from the recorded form ""Stop-motion animated short"""
+Q20261114-70-F1,Indigo,2014,theme,Women and Gender,Lives and Relations,https://www.spottedfawnproductions.com/indigo/,tagged from a published synopsis; primary theme
+Q20261114-70-F1,Indigo,2014,theme,Health and Healing,Lives and Relations,https://www.spottedfawnproductions.com/indigo/,tagged from a published synopsis
+Q20261114-70-F1,Indigo,2014,theme,More-than-Human Relations,Land and Environment,https://www.spottedfawnproductions.com/indigo/,tagged from a published synopsis
+Q20261114-70-F1,Indigo,2014,form,Animation,,https://www.spottedfawnproductions.com/indigo/,from the published synopsis
 Q20261114-70-F1,Indigo,2014,length,Short,,https://www.spottedfawnproductions.com/indigo/,"normalised from the recorded form ""Stop-motion animated short"""
 Q20261114-70-F2,Mia’,2015,theme,Environmental Change,Land and Environment,https://www.spottedfawnproductions.com/mia/,tagged from a published synopsis; primary theme
 Q20261114-70-F2,Mia’,2015,theme,Youth,Lives and Relations,https://www.spottedfawnproductions.com/mia/,tagged from a published synopsis
@@ -470,8 +473,15 @@ Q20261114-70-F7,Haboolm Ksinaalgat (Soul Catcher),,form,Animation,,https://www.s
 Q20261114-70-F7,Haboolm Ksinaalgat (Soul Catcher),,length,Short,,https://www.spottedfawnproductions.com/soul-catcher/,"normalised from the recorded form ""Stop-motion animated short"""
 Q20261114-70-F8,Molly of Denali,,form,Animation,,https://www.spottedfawnproductions.com/team/,"normalised from the recorded form ""Animated television series (selected episodes)"""
 Q20261114-70-F8,Molly of Denali,,length,Series,,https://www.spottedfawnproductions.com/team/,"normalised from the recorded form ""Animated television series (selected episodes)"""
+FILM-SRC-2023-00040,N’xaxaitkw,,theme,Youth,Lives and Relations,https://www.mcintyre.ca/titles/131306,tagged from a published synopsis; primary theme
+FILM-SRC-2023-00040,N’xaxaitkw,,theme,Cosmology and Origin Stories,Knowledge and Continuity,https://www.mcintyre.ca/titles/131306,tagged from a published synopsis
+FILM-SRC-2023-00040,N’xaxaitkw,,form,Fiction,,https://www.mcintyre.ca/titles/131306,from the published synopsis
 DIR-0063-F1,Racing Waters,2026,form,Documentary,,https://www.aptn.org/docuseries-racing-waters-goes-to-camera-for-season-2-ahead-of-series-launch-on-aptn-this-fall/,"normalised from the recorded form ""Television documentary series"""
 DIR-0063-F1,Racing Waters,2026,length,Series,,https://www.aptn.org/docuseries-racing-waters-goes-to-camera-for-season-2-ahead-of-series-launch-on-aptn-this-fall/,"normalised from the recorded form ""Television documentary series"""
+DIR-0064-F1,Three Thousand,2017,theme,"Archives, Museums and Repatriation",Knowledge and Continuity,https://www.nfb.ca/film/three-thousand/?animation-hp_en=feature_2,tagged from a published synopsis; primary theme
+DIR-0064-F1,Three Thousand,2017,theme,Self-Representation and Countering Stereotypes,Expression and Representation,https://www.nfb.ca/film/three-thousand/?animation-hp_en=feature_2,tagged from a published synopsis
+DIR-0064-F1,Three Thousand,2017,form,Hybrid,,https://www.nfb.ca/film/three-thousand/?animation-hp_en=feature_2,from the published synopsis
+DIR-0064-F1,Three Thousand,2017,length,Short,,https://www.nfb.ca/film/three-thousand/?animation-hp_en=feature_2,from the published synopsis
 FILM-0066,Aitamaako'tamisskapi Natosi: Before the Sun,,theme,Women and Gender,Lives and Relations,https://www.themoviedb.org/movie/1074986,tagged from a published synopsis; primary theme
 FILM-0066,Aitamaako'tamisskapi Natosi: Before the Sun,,theme,Kinship,Lives and Relations,https://www.themoviedb.org/movie/1074986,tagged from a published synopsis
 FILM-0066,Aitamaako'tamisskapi Natosi: Before the Sun,,theme,Youth,Lives and Relations,https://www.themoviedb.org/movie/1074986,tagged from a published synopsis
@@ -495,6 +505,13 @@ RESEARCH-FILM-20261031-800-0005,Pidikwe (Rumble),2024,theme,Music and Performanc
 RESEARCH-FILM-20261031-800-0005,Pidikwe (Rumble),2024,theme,Women and Gender,Lives and Relations,https://www.themoviedb.org/movie/1414895,tagged from a published synopsis
 RESEARCH-FILM-20261031-800-0005,Pidikwe (Rumble),2024,form,Experimental,,https://www.themoviedb.org/movie/1414895,from the published synopsis
 RESEARCH-FILM-20261031-800-0005,Pidikwe (Rumble),2024,length,Short,,https://www.themoviedb.org/movie/1414895,from the published synopsis
+MIRROR-FILMOGRAPHY-20261107-095,Bootlegger,2021,theme,Sovereignty and Self-Determination,Sovereignty and Politics,https://bootleggerlefilm.com/en/,tagged from a published synopsis; primary theme
+MIRROR-FILMOGRAPHY-20261107-095,Bootlegger,2021,form,Fiction,,https://bootleggerlefilm.com/en/,from the published synopsis
+MIRROR-FILMOGRAPHY-20261107-095,Bootlegger,2021,length,Feature,,https://bootleggerlefilm.com/en/,from the published synopsis
+MIRROR-FILMOGRAPHY-20261107-097,Emptying the Tank,2018,theme,Women and Gender,Lives and Relations,https://www.sfomuseum.org/programs/video-arts/emptying-tank,tagged from a published synopsis; primary theme
+MIRROR-FILMOGRAPHY-20261107-097,Emptying the Tank,2018,theme,Health and Healing,Lives and Relations,https://www.sfomuseum.org/programs/video-arts/emptying-tank,tagged from a published synopsis
+MIRROR-FILMOGRAPHY-20261107-097,Emptying the Tank,2018,form,Documentary,,https://www.sfomuseum.org/programs/video-arts/emptying-tank,from the published synopsis
+MIRROR-FILMOGRAPHY-20261107-097,Emptying the Tank,2018,length,Short,,https://www.sfomuseum.org/programs/video-arts/emptying-tank,from the published synopsis
 MIRROR-FILMOGRAPHY-20261107-098,Creatura Dada,2016,theme,Women and Gender,Lives and Relations,https://www.femfilm.ca/film_search.php?film=monnet-creatura&lang=e,tagged from a published synopsis; primary theme
 MIRROR-FILMOGRAPHY-20261107-098,Creatura Dada,2016,theme,Self-Representation and Countering Stereotypes,Expression and Representation,https://www.femfilm.ca/film_search.php?film=monnet-creatura&lang=e,tagged from a published synopsis
 MIRROR-FILMOGRAPHY-20261107-098,Creatura Dada,2016,form,Experimental,,https://www.femfilm.ca/film_search.php?film=monnet-creatura&lang=e,from the published synopsis
@@ -504,9 +521,17 @@ MIRROR-FILMOGRAPHY-20261107-099,Tshiuetin,2016,form,Documentary,,https://www.fem
 MIRROR-FILMOGRAPHY-20261107-099,Tshiuetin,2016,length,Short,,https://www.femfilm.ca/film_search.php?film=monnet-tshiuetin&lang=e,from the published synopsis
 MIRROR-FILMOGRAPHY-20261107-100,Mobilize,2015,theme,"Archives, Museums and Repatriation",Knowledge and Continuity,https://www.nfb.ca/film/mobilize/,tagged from a published synopsis; primary theme
 MIRROR-FILMOGRAPHY-20261107-100,Mobilize,2015,theme,Self-Representation and Countering Stereotypes,Expression and Representation,https://www.nfb.ca/film/mobilize/,tagged from a published synopsis
+MIRROR-FILMOGRAPHY-20261107-101,The Black Case,2014,theme,Residential and Boarding Schools,Knowledge and Continuity,https://f3m.ca/en/film/la-mallette-noire/,tagged from a published synopsis; primary theme
+MIRROR-FILMOGRAPHY-20261107-101,The Black Case,2014,theme,Youth,Lives and Relations,https://f3m.ca/en/film/la-mallette-noire/,tagged from a published synopsis
+MIRROR-FILMOGRAPHY-20261107-101,The Black Case,2014,form,Fiction,,https://f3m.ca/en/film/la-mallette-noire/,from the published synopsis
+MIRROR-FILMOGRAPHY-20261107-101,The Black Case,2014,length,Short,,https://f3m.ca/en/film/la-mallette-noire/,from the published synopsis
 MIRROR-FILMOGRAPHY-20261107-102,Gephyrophobia,2012,theme,Borders,Sovereignty and Politics,https://www.wfgcatalogue.com/films/gephyrophobia,tagged from a published synopsis; primary theme
 MIRROR-FILMOGRAPHY-20261107-102,Gephyrophobia,2012,theme,Water,Land and Environment,https://www.wfgcatalogue.com/films/gephyrophobia,tagged from a published synopsis
 MIRROR-FILMOGRAPHY-20261107-102,Gephyrophobia,2012,length,Short,,https://www.wfgcatalogue.com/films/gephyrophobia,from the published synopsis
+MIRROR-FILMOGRAPHY-20261107-103,Ikwé,2009,theme,Elders and Knowledge,Knowledge and Continuity,https://www.wfgcatalogue.com/films/ikwe,tagged from a published synopsis; primary theme
+MIRROR-FILMOGRAPHY-20261107-103,Ikwé,2009,theme,Women and Gender,Lives and Relations,https://www.wfgcatalogue.com/films/ikwe,tagged from a published synopsis
+MIRROR-FILMOGRAPHY-20261107-103,Ikwé,2009,theme,More-than-Human Relations,Land and Environment,https://www.wfgcatalogue.com/films/ikwe,tagged from a published synopsis
+MIRROR-FILMOGRAPHY-20261107-103,Ikwé,2009,form,Experimental,,https://www.wfgcatalogue.com/films/ikwe,from the published synopsis
 FILM-0069,Finding Dawn,,theme,MMIWG2S,Sovereignty and Politics,https://www.themoviedb.org/movie/204101,tagged from a published synopsis; primary theme
 FILM-0069,Finding Dawn,,theme,Women and Gender,Lives and Relations,https://www.themoviedb.org/movie/204101,tagged from a published synopsis
 FILM-0069,Finding Dawn,,form,Documentary,,https://www.themoviedb.org/movie/204101,from the published synopsis
@@ -2016,7 +2041,9 @@ FILM-0259,A Thousand Roads,2005,theme,Kinship,Lives and Relations,https://www.th
 FILM-0259,A Thousand Roads,2005,theme,Youth,Lives and Relations,https://www.themoviedb.org/movie/239910,tagged from a published synopsis
 FILM-0259,A Thousand Roads,2005,form,Fiction,,https://www.themoviedb.org/movie/239910,from the published synopsis
 FILM-0259,A Thousand Roads,2005,length,Feature,,https://www.themoviedb.org/movie/239910,from the published synopsis
-FILM-0260,Edge of America,2003,form,Fiction,,https://www.unitedstatesartists.org/artists/chris-eyre,"normalised from the recorded form ""Television film"""
+FILM-0260,Edge of America,2003,theme,Youth,Lives and Relations,https://peabodyawards.com/award-profile/edge-of-america/,tagged from a published synopsis; primary theme
+FILM-0260,Edge of America,2003,theme,Women and Gender,Lives and Relations,https://peabodyawards.com/award-profile/edge-of-america/,tagged from a published synopsis
+FILM-0260,Edge of America,2003,form,Fiction,,https://peabodyawards.com/award-profile/edge-of-america/,from the published synopsis
 DIR-0271-F1,Dark Winds,2022,length,Series,,https://www.amc.com/blogs/amc-networks-greenlights-dark-winds-as-a-new-series-for-amc-and-amc--1027269,"normalised from the recorded form ""Television series"""
 FILM-0261,Wild Indian,2021,theme,Youth,Lives and Relations,https://www.sundance.org/blogs/4-indigenous-made-films-premiering-at-the-2021-sundance-film-festival-3/,tagged from a published synopsis; primary theme
 FILM-0261,Wild Indian,2021,form,Fiction,,https://www.sundance.org/blogs/4-indigenous-made-films-premiering-at-the-2021-sundance-film-festival-3/,from the published synopsis
@@ -2156,6 +2183,11 @@ FILM-0270,Mekko,2015,length,Feature,,https://www.themoviedb.org/movie/342182,fro
 DIR-0308-F1,Reservation Dogs,2021,length,Series,,https://imaginenative.org/artists/sterlin-harjo/,"normalised from the recorded form ""Television series"""
 DIR-0308-F2,The Lowdown,2025,length,Series,,https://peabodyawards.com/award-profile/sterlin-harjo/,"normalised from the recorded form ""Television series"""
 DIR-0308-F3,The Magicians,,length,Series,,https://press.hulu.com/bios/sterlin-harjo/,"normalised from the recorded form ""Television series"""
+Q20261108-92-F1,March Point,2008,theme,Youth,Lives and Relations,https://itvs.org/films/march-point/?tab=2,tagged from a published synopsis; primary theme
+Q20261108-92-F1,March Point,2008,theme,Extractivism,Land and Environment,https://itvs.org/films/march-point/?tab=2,tagged from a published synopsis
+Q20261108-92-F1,March Point,2008,theme,Collective and Community Media,Expression and Representation,https://itvs.org/films/march-point/?tab=2,tagged from a published synopsis
+Q20261108-92-F1,March Point,2008,form,Documentary,,https://itvs.org/films/march-point/?tab=2,from the published synopsis
+Q20261108-92-F1,March Point,2008,length,Feature,,https://itvs.org/films/march-point/?tab=2,from the published synopsis
 Q20261113-90-F1,SHE CRIED THAT DAY,,form,Documentary,,https://www.firelightmedia.tv/filmmakers/tracy-rector,"normalised from the recorded form ""Documentary (in progress)"""
 FILM-0233,"Itam Hakim, Hopiit",1985,theme,Cosmology and Origin Stories,Knowledge and Continuity,https://www.themoviedb.org/movie/694643,tagged from a published synopsis; primary theme
 FILM-0233,"Itam Hakim, Hopiit",1985,theme,Memory and Oral History,Knowledge and Continuity,https://www.themoviedb.org/movie/694643,tagged from a published synopsis
@@ -2265,8 +2297,11 @@ DIR-0334-F3,Murder in Big Horn,2023,form,Documentary,,https://www.paramountpress
 DIR-0334-F3,Murder in Big Horn,2023,length,Series,,https://www.sundance.org/blogs/your-guide-to-the-indigenous-works-at-the-2023-sundance-film-festival/,"normalised from the recorded form ""Docuseries"""
 FILM-0275,Shash Jaa’: Bears Ears,2016,language,English,stan1293,https://cinelasamericas.org/panorama-short-films-claiff20/2017/shash-jaa-bears-ears/,recorded with the film
 FILM-0275,Shash Jaa’: Bears Ears,2016,language,Diné (Navajo),nava1243,https://cinelasamericas.org/panorama-short-films-claiff20/2017/shash-jaa-bears-ears/,recorded with the film
-FILM-0275,Shash Jaa’: Bears Ears,2016,form,Documentary,,https://cinelasamericas.org/panorama-short-films-claiff20/2017/shash-jaa-bears-ears/,"normalised from the recorded form ""Documentary short"""
-FILM-0275,Shash Jaa’: Bears Ears,2016,length,Short,,https://cinelasamericas.org/panorama-short-films-claiff20/2017/shash-jaa-bears-ears/,"normalised from the recorded form ""Documentary short"""
+FILM-0275,Shash Jaa’: Bears Ears,2016,theme,Land Defense,Land and Environment,https://cinelasamericas.org/panorama-short-films-claiff20/2017/shash-jaa-bears-ears/,tagged from a published synopsis; primary theme
+FILM-0275,Shash Jaa’: Bears Ears,2016,theme,Sovereignty and Self-Determination,Sovereignty and Politics,https://cinelasamericas.org/panorama-short-films-claiff20/2017/shash-jaa-bears-ears/,tagged from a published synopsis
+FILM-0275,Shash Jaa’: Bears Ears,2016,theme,Extractivism,Land and Environment,https://cinelasamericas.org/panorama-short-films-claiff20/2017/shash-jaa-bears-ears/,tagged from a published synopsis
+FILM-0275,Shash Jaa’: Bears Ears,2016,form,Documentary,,https://cinelasamericas.org/panorama-short-films-claiff20/2017/shash-jaa-bears-ears/,from the published synopsis
+FILM-0275,Shash Jaa’: Bears Ears,2016,length,Short,,https://cinelasamericas.org/panorama-short-films-claiff20/2017/shash-jaa-bears-ears/,from the published synopsis
 FILM-0276,Bring Her Home,2022,theme,MMIWG2S,Sovereignty and Politics,https://www.themoviedb.org/movie/944290,tagged from a published synopsis; primary theme
 FILM-0276,Bring Her Home,2022,theme,Women and Gender,Lives and Relations,https://www.themoviedb.org/movie/944290,tagged from a published synopsis
 FILM-0276,Bring Her Home,2022,form,Documentary,,https://www.themoviedb.org/movie/944290,from the published synopsis
@@ -3972,6 +4007,10 @@ NEW-fb88bc30ef4e-WORK-1,Allá Donde Nace el Sol (Where the Sun Is Born),2026,len
 NEW-f60277eedca1-WORK-1,Wachari,2026,theme,Elders and Knowledge,Knowledge and Continuity,https://www.laprensa.hn/espectaculos/cineasta-hondureno-nery-bernardez-presentara-cortometraje-en-festival-de-nueva-york-GE30250060,tagged from a published synopsis; primary theme
 NEW-f60277eedca1-WORK-1,Wachari,2026,form,Fiction,,https://www.laprensa.hn/espectaculos/cineasta-hondureno-nery-bernardez-presentara-cortometraje-en-festival-de-nueva-york-GE30250060,from the published synopsis
 NEW-f60277eedca1-WORK-1,Wachari,2026,length,Short,,https://www.laprensa.hn/espectaculos/cineasta-hondureno-nery-bernardez-presentara-cortometraje-en-festival-de-nueva-york-GE30250060,from the published synopsis
+NEW-08552066d2ee-WORK-1,Da myndighederne sagde stop / Nalagkersuissut okarput tassagok,1972,theme,Displacement and Migration,Sovereignty and Politics,https://www.nordische-filmtage.de/en/programm/movie/view/2009/1118.html,tagged from a published synopsis; primary theme
+NEW-08552066d2ee-WORK-1,Da myndighederne sagde stop / Nalagkersuissut okarput tassagok,1972,theme,Kinship,Lives and Relations,https://www.nordische-filmtage.de/en/programm/movie/view/2009/1118.html,tagged from a published synopsis
+NEW-08552066d2ee-WORK-1,Da myndighederne sagde stop / Nalagkersuissut okarput tassagok,1972,form,Documentary,,https://www.nordische-filmtage.de/en/programm/movie/view/2009/1118.html,from the published synopsis
+NEW-08552066d2ee-WORK-1,Da myndighederne sagde stop / Nalagkersuissut okarput tassagok,1972,length,Feature,,https://www.nordische-filmtage.de/en/programm/movie/view/2009/1118.html,from the published synopsis
 NEW-af9802b816c1-WORK-1,Inuk Woman City Blues,2002,theme,Urban Indigeneity,Lives and Relations,https://www.themoviedb.org/movie/437524,tagged from a published synopsis; primary theme
 NEW-af9802b816c1-WORK-1,Inuk Woman City Blues,2002,theme,Women and Gender,Lives and Relations,https://www.themoviedb.org/movie/437524,tagged from a published synopsis
 NEW-af9802b816c1-WORK-1,Inuk Woman City Blues,2002,theme,Health and Healing,Lives and Relations,https://www.themoviedb.org/movie/437524,tagged from a published synopsis
@@ -4613,6 +4652,12 @@ QM-ac60127ca8-M1,El viaje del Kokorrdit / Dance of the Kokorrdit,2026,form,Hybri
 Q20261112-06-F1,Kipara: Pintura Tradicional de los Embera,2018,theme,"Art, Craft and Making",Expression and Representation,https://ifnotusthenwho.me/es/films/kipara-pintura-tradicional-de-los-embera/,tagged from a published synopsis; primary theme
 Q20261112-06-F1,Kipara: Pintura Tradicional de los Embera,2018,form,Documentary,,https://ifnotusthenwho.me/es/films/kipara-pintura-tradicional-de-los-embera/,from the published synopsis
 Q20261112-06-F1,Kipara: Pintura Tradicional de los Embera,2018,length,Short,,https://ifnotusthenwho.me/es/films/kipara-pintura-tradicional-de-los-embera/,from the published synopsis
+QM-8ade5da1ed-M1,Drowned Land,2025,theme,Water,Land and Environment,https://drownedland.com/about,tagged from a published synopsis; primary theme
+QM-8ade5da1ed-M1,Drowned Land,2025,theme,Land Defense,Land and Environment,https://drownedland.com/about,tagged from a published synopsis
+QM-8ade5da1ed-M1,Drowned Land,2025,theme,Displacement and Migration,Sovereignty and Politics,https://drownedland.com/about,tagged from a published synopsis
+QM-8ade5da1ed-M1,Drowned Land,2025,theme,Extractivism,Land and Environment,https://drownedland.com/about,tagged from a published synopsis
+QM-8ade5da1ed-M1,Drowned Land,2025,form,Documentary,,https://drownedland.com/about,from the published synopsis
+QM-8ade5da1ed-M1,Drowned Land,2025,length,Feature,,https://drownedland.com/about,from the published synopsis
 Q20261113-87-F1,Untitled Freedmen Film,,form,Documentary,,https://www.firelightmedia.tv/articles/firelight-media-announces-2026-recipients-for-the-william-greaves-research-development-fund,"normalised from the recorded form ""Documentary (in progress)"""
 QM-46e5bc5c8e-M1,Who She Is,2024,theme,MMIWG2S,Sovereignty and Politics,https://visionmakermedia.org/film-library/who-she-is/,tagged from a published synopsis; primary theme
 QM-46e5bc5c8e-M1,Who She Is,2024,theme,Women and Gender,Lives and Relations,https://visionmakermedia.org/film-library/who-she-is/,tagged from a published synopsis
@@ -4767,7 +4812,9 @@ Q20261114-03-F3,The Young and the Rezless,,form,Documentary,,https://ggagency.ca
 Q20261114-03-F3,The Young and the Rezless,,length,Series,,https://ggagency.ca/podemski-2/,"normalised from the recorded form ""Television documentary series"""
 Q20261114-03-F4,The Seventh Generation,1999,form,Documentary,,https://ggagency.ca/podemski-2/,"normalised from the recorded form ""Television documentary series"""
 Q20261114-03-F4,The Seventh Generation,1999,length,Series,,https://ggagency.ca/podemski-2/,"normalised from the recorded form ""Television documentary series"""
-Q20261114-04-F1,Treaty Road,2024,form,Documentary,,https://www.treatyroad.ca/about-treaty-road-the-series,"normalised from the recorded form ""Television documentary series"""
+Q20261114-04-F1,Treaty Road,2024,theme,Sovereignty and Self-Determination,Sovereignty and Politics,https://www.treatyroad.ca/the-episodes,tagged from a published synopsis; primary theme
+Q20261114-04-F1,Treaty Road,2024,theme,Displacement and Migration,Sovereignty and Politics,https://www.treatyroad.ca/the-episodes,tagged from a published synopsis
+Q20261114-04-F1,Treaty Road,2024,form,Documentary,,https://www.treatyroad.ca/the-episodes,from the published synopsis
 Q20261114-04-F1,Treaty Road,2024,length,Series,,https://www.treatyroad.ca/about-treaty-road-the-series,"normalised from the recorded form ""Television documentary series"""
 Q20261114-04-F2,Amplify,,form,Documentary,,https://www.treatyroad.ca/for-media,"normalised from the recorded form ""Television documentary series"""
 Q20261114-04-F2,Amplify,,length,Series,,https://www.treatyroad.ca/for-media,"normalised from the recorded form ""Television documentary series"""
@@ -4780,7 +4827,8 @@ Q20261114-06-F1,Arnattaujuup Unikkaaqtuaqtangit,,theme,Memory and Oral History,K
 Q20261114-06-F1,Arnattaujuup Unikkaaqtuaqtangit,,theme,Elders and Knowledge,Knowledge and Continuity,https://iso-bea.ca/news-events/2026/05/21/iso-63mil-indigenous-productions-in-2025/,tagged from a published synopsis
 Q20261114-06-F1,Arnattaujuup Unikkaaqtuaqtangit,,form,Animation,,https://iso-bea.ca/news-events/2026/05/21/iso-63mil-indigenous-productions-in-2025/,from the published synopsis
 Q20261114-06-F1,Arnattaujuup Unikkaaqtuaqtangit,,length,Series,,https://iso-bea.ca/news-events/2026/05/21/iso-63mil-indigenous-productions-in-2025/,"normalised from the recorded form ""Television series (in progress)"""
-Q20261114-07-F1,Working It Out Together,2014,form,Documentary,,https://www.aptn.ca/programs/working-it-out-together/,"normalised from the recorded form ""Television documentary series"""
+Q20261114-07-F1,Working It Out Together,2014,theme,Health and Healing,Lives and Relations,https://www.aptn.ca/programs/working-it-out-together/,tagged from a published synopsis; primary theme
+Q20261114-07-F1,Working It Out Together,2014,form,Documentary,,https://www.aptn.ca/programs/working-it-out-together/,from the published synopsis
 Q20261114-07-F1,Working It Out Together,2014,length,Series,,https://www.aptn.ca/programs/working-it-out-together/,"normalised from the recorded form ""Television documentary series"""
 Q20261114-07-F3,Little Big Community,2023,form,Documentary,,https://kaskoprod.com/littlebigcommunity/,"normalised from the recorded form ""Television documentary series"""
 Q20261114-07-F3,Little Big Community,2023,length,Series,,https://kaskoprod.com/littlebigcommunity/,"normalised from the recorded form ""Television documentary series"""
