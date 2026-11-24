@@ -40,10 +40,11 @@ function play(f,{scroll=false,quiet=false,auto=false}={}){
  if(scroll)$('#now').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth',block:'start'});
  if(!quiet)try{history.replaceState(null,'',location.pathname+location.search+'#'+encodeURIComponent(f.fid));}catch(e){}}
 /* Share (23 Nov 2026): a link that opens this film on Watch, without the current filters. Phones get the system share sheet;
-   elsewhere the link is copied and the button says so for a moment. */
+   elsewhere the link is copied and a note under the button says so for a moment, so the buttons never move. */
 function shareFilm(){const f=data.find(g=>g.fid===state.now);if(!f)return;const b=$('#now-share');
  const url=location.origin+location.pathname+'#'+encodeURIComponent(f.fid),title=f.t+(f.y?` (${f.y})`:'')+' · Indigenous Cinema Atlas';
- const said=t=>{b.textContent=t;clearTimeout(b._t);b._t=setTimeout(()=>{b.textContent='Share';},2200);};
+ const said=t=>{let n=$('#share-note');if(!n){n=document.createElement('span');n.id='share-note';n.setAttribute('role','status');b.after(n);}
+  n.textContent=t;n.classList.add('on');clearTimeout(n._t);n._t=setTimeout(()=>n.classList.remove('on'),2200);};
  if(navigator.share&&matchMedia('(pointer:coarse)').matches){navigator.share({title,url}).catch(()=>{});return;}
  const fallback=()=>{const a=document.createElement('textarea');a.value=url;a.setAttribute('readonly','');a.style.cssText='position:fixed;opacity:0;top:0;left:0';
   document.body.appendChild(a);a.select();let ok=false;try{ok=document.execCommand('copy');}catch(e){}a.remove();said(ok?'Link copied':'Copy failed');};

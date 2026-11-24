@@ -41,6 +41,7 @@ h1{font:400 clamp(30px,3.6vw,42px)/1.1 var(--serif);margin:0;letter-spacing:-.01
 #now .by a{color:var(--ink)}#now-out{white-space:nowrap}
 .now-acts{display:flex;flex-wrap:wrap;gap:6px;flex:none}
 .now-acts .btn{padding:0 13px;font-size:13.5px}
+.now-acts{position:relative}#share-note{position:absolute;right:0;top:calc(100% + 6px);font-size:12.5px;color:var(--muted);opacity:0;transition:opacity .2s;pointer-events:none;white-space:nowrap}#share-note.on{opacity:1}
 .btn{display:inline-flex;align-items:center;gap:6px;min-height:36px;padding:0 15px;border:1px solid var(--line);border-radius:999px;background:var(--card);color:var(--ink);font-size:14px;cursor:pointer;text-decoration:none}
 .btn:hover,.btn:focus-visible{border-color:var(--ink)}
 a.btn{border-bottom:1px solid var(--line)}
@@ -203,6 +204,6 @@ main a[href^="http"]{color:var(--accent,var(--gold))}
 <p class="credit">Something wrong or missing? <a href="corrections.html">Suggest a correction</a>.</p>
 </main>
 <script src="watch-data.js?v=3"></script>
-<script src="watch-20261122.js?v=4"></script>
+<script src="watch-20261122.js?v=5"></script>
 <script src="assets/screening.js"></script>
 </body></html>
