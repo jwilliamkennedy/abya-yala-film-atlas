@@ -2,8 +2,8 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-24",
  "license": "See data.html",
- "films_on_public_map": 2677,
- "film_entries": 2691,
+ "films_on_public_map": 2685,
+ "film_entries": 2699,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -14052,6 +14052,10 @@
     {
      "id": "SAB2-20261014-4af382f5d619",
      "name": "Rafael Mojica Gil"
+    },
+    {
+     "id": "QM-022e025057",
+     "name": "Bladimir Rivera Macuna"
     }
    ],
    "languages": [],
@@ -32533,6 +32537,26 @@
    ],
    "form": "Documentary",
    "length": "Short"
+  },
+  "FILM-SRC-0373": {
+   "title": "Distant",
+   "year": null,
+   "makers": [
+    {
+     "id": "DIR-0373",
+     "name": "Keli Mashburn"
+    },
+    {
+     "id": "Q20261124-01",
+     "name": "Elise Paschen"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
   },
   "FILM-SRC-0382": {
    "title": "Ni Wapiten – I see",
@@ -54490,20 +54514,142 @@
    "form": "Documentary",
    "length": null
   },
-  "FILM-SRC-0373": {
-   "title": "Distant",
+  "QM-e4c19f2d9b-M1": {
+   "title": "Jiru Iuai “Algo Malo”",
    "year": null,
    "makers": [
     {
-     "id": "Q20261124-01",
-     "name": "Elise Paschen"
+     "id": "QM-e4c19f2d9b",
+     "name": "Yon Arley Agreda Jamioy"
     }
    ],
    "languages": [],
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
+   "form": "Fiction",
+   "length": null
+  },
+  "Q20261124-92-F1": {
+   "title": "pahkwêsikan sâkihitowin: Bannock is Love",
+   "year": 2026,
+   "makers": [
+    {
+     "id": "Q20261124-92",
+     "name": "Tyra Delver"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "Q20261124-93-F1": {
+   "title": "Where Our Flowers Grow",
+   "year": 2026,
+   "makers": [
+    {
+     "id": "Q20261124-93",
+     "name": "Maxime Kornachuk"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": null
+  },
+  "Q20261124-95-F1": {
+   "title": "Héroes del silencio",
+   "year": 2026,
+   "makers": [
+    {
+     "id": "Q20261124-95",
+     "name": "Atikeinis Durán Izquierdo"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "Q20261124-96-F1": {
+   "title": "Jupitr",
+   "year": 2026,
+   "makers": [
+    {
+     "id": "Q20261124-96",
+     "name": "alika mteuzi"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": null
+  },
+  "Q20261124-97-F1": {
+   "title": "Tomena",
+   "year": 2019,
+   "makers": [
+    {
+     "id": "Q20261124-97",
+     "name": "Gary Medina Cook"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": null
+  },
+  "QM-eb80bb7374-M1": {
+   "title": "Quando os Maíra’yr Criaram a Noite",
+   "year": 2023,
+   "makers": [
+    {
+     "id": "QM-eb80bb7374",
+     "name": "Jonas Lima Guajajara"
+    },
+    {
+     "id": "Q20261124-02",
+     "name": "Ana Rosa de Lima Tovstiga"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "More-than-Human Relations",
+    "Cosmology and Origin Stories"
+   ],
+   "primary_theme": "More-than-Human Relations",
+   "families": [
+    "Knowledge and Continuity",
+    "Land and Environment"
+   ],
+   "form": "Animation",
+   "length": "Short"
+  },
+  "QM-0a9e86f388-M1": {
+   "title": "Cupē Te Mē Iquêtjê Jipej Catêjê / O Homem Branco Massacrou o Meu Povo Krahô",
+   "year": 2023,
+   "makers": [
+    {
+     "id": "QM-0a9e86f388",
+     "name": "Francisco Hýjnõ Krahô"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
    "length": null
   }
  }
