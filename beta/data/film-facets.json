@@ -2,8 +2,8 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-24",
  "license": "See data.html",
- "films_on_public_map": 2735,
- "film_entries": 2749,
+ "films_on_public_map": 2739,
+ "film_entries": 2753,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -55472,6 +55472,70 @@
    "primary_theme": null,
    "families": [],
    "form": "Documentary",
+   "length": null
+  },
+  "NEW-6a4dad66a06c-WORK-1": {
+   "title": "Más de mil años después",
+   "year": 2001,
+   "makers": [
+    {
+     "id": "NEW-6a4dad66a06c",
+     "name": "Pablo Chankin Najbor"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "Q20261124-10-F1": {
+   "title": "How Time Flies",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261124-10",
+     "name": "Ryan Henry Craig"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261124-11-F1": {
+   "title": "Japchi Nahual The Teachings of Don Juan",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261124-11",
+     "name": "Rodrigo Barquera de Anda"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261124-14-F1": {
+   "title": "Obaìtí Àtilẹ̀nde",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261124-14",
+     "name": "Bianca Bomfim"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
    "length": null
   }
  }
