@@ -2,8 +2,8 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-24",
  "license": "See data.html",
- "films_on_public_map": 2640,
- "film_entries": 2654,
+ "films_on_public_map": 2641,
+ "film_entries": 2655,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -1936,9 +1936,17 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Cosmology and Origin Stories",
+    "Music and Performance",
+    "More-than-Human Relations"
+   ],
+   "primary_theme": "Cosmology and Origin Stories",
+   "families": [
+    "Expression and Representation",
+    "Knowledge and Continuity",
+    "Land and Environment"
+   ],
    "form": "Documentary",
    "length": null
   },
@@ -3076,11 +3084,17 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Youth",
+    "Resistance Movements"
+   ],
+   "primary_theme": "Youth",
+   "families": [
+    "Lives and Relations",
+    "Sovereignty and Politics"
+   ],
+   "form": "Documentary",
+   "length": "Feature"
   },
   "MIRROR-FILMOGRAPHY-20261107-057": {
    "title": "The People of the Kattawapiskak River",
@@ -6125,12 +6139,16 @@
    ],
    "languages": [],
    "themes": [
+    "Displacement and Migration",
     "Kinship",
-    "Women and Gender"
+    "Women and Gender",
+    "Environmental Change"
    ],
-   "primary_theme": "Kinship",
+   "primary_theme": "Displacement and Migration",
    "families": [
-    "Lives and Relations"
+    "Land and Environment",
+    "Lives and Relations",
+    "Sovereignty and Politics"
    ],
    "form": "Fiction",
    "length": "Feature"
@@ -8305,11 +8323,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Health and Healing"
+   ],
+   "primary_theme": "Health and Healing",
+   "families": [
+    "Lives and Relations"
+   ],
+   "form": "Fiction",
+   "length": "Short"
   },
   "FILM-SRC-NFB-00065": {
    "title": "Natsik Hunting",
@@ -20561,6 +20583,26 @@
    "form": null,
    "length": "Short"
   },
+  "Q20261121-14-F1": {
+   "title": "Mãos de Barro",
+   "year": 2016,
+   "makers": [
+    {
+     "id": "NEW-7185cd45c3f6",
+     "name": "Alexandre Pankararu"
+    },
+    {
+     "id": "NEW-084a145f8fa7",
+     "name": "Graciela Guarani"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "NEW-b11991513c99-WORK-1": {
    "title": "Amber Alert: A Fashion Statement for Truth and Healing",
    "year": 2025,
@@ -22432,11 +22474,16 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Elders and Knowledge",
+    "Memory and Oral History"
+   ],
+   "primary_theme": "Elders and Knowledge",
+   "families": [
+    "Knowledge and Continuity"
+   ],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "MIRROR-FILMOGRAPHY-20261107-104": {
    "title": "Mooz Miikan",
@@ -23380,11 +23427,18 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "LGBTQIA2S",
+    "Urban Indigeneity",
+    "Food Sovereignty"
+   ],
+   "primary_theme": "LGBTQIA2S",
+   "families": [
+    "Land and Environment",
+    "Lives and Relations"
+   ],
+   "form": "Fiction",
+   "length": "Short"
   },
   "RESEARCH-FILM-20261031-800-NEW-363": {
    "title": "He Moʻolelo Wahi Pana (A Storied Landscape)",
@@ -23540,10 +23594,14 @@
      "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/"
     }
    ],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": "Fiction",
+   "themes": [
+    "More-than-Human Relations"
+   ],
+   "primary_theme": "More-than-Human Relations",
+   "families": [
+    "Land and Environment"
+   ],
+   "form": "Animation",
    "length": "Short"
   },
   "NEW-c91587181e29-WORK-1": {
@@ -23887,7 +23945,7 @@
     "Knowledge and Continuity",
     "Lives and Relations"
    ],
-   "form": "Hybrid",
+   "form": null,
    "length": "Short"
   },
   "Q20261121-20-F1": {
@@ -37531,7 +37589,7 @@
    "families": [
     "Lives and Relations"
    ],
-   "form": "Experimental",
+   "form": null,
    "length": "Short"
   },
   "NEW-0eb2bf43aa15-WORK-1": {
