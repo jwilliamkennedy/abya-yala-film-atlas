@@ -2,8 +2,8 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-24",
  "license": "See data.html",
- "films_on_public_map": 2763,
- "film_entries": 2777,
+ "films_on_public_map": 2772,
+ "film_entries": 2786,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -31566,6 +31566,62 @@
    "form": "Documentary",
    "length": "Feature"
   },
+  "LEAD-20261011-022-F3": {
+   "title": "Seybaplaya maaya",
+   "year": 2021,
+   "makers": [
+    {
+     "id": "LEAD-20261011-022",
+     "name": "Yaremi Guadalupe Chan Padilla"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "LEAD-20261011-022-QM39a01b": {
+   "title": "K baakelo’on (Nuestros huesos)",
+   "year": null,
+   "makers": [
+    {
+     "id": "LEAD-20261011-022",
+     "name": "Yaremi Guadalupe Chan Padilla"
+    },
+    {
+     "id": "QM-4b9f5b2e83",
+     "name": "Yaremi Chan"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "LEAD-20261011-022-QM73bf05": {
+   "title": "Maaya Ko'olelo'ob: Muuk'",
+   "year": null,
+   "makers": [
+    {
+     "id": "LEAD-20261011-022",
+     "name": "Yaremi Guadalupe Chan Padilla"
+    },
+    {
+     "id": "QM-4b9f5b2e83",
+     "name": "Yaremi Chan"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
   "RESEARCH-FILM-20261031-0001-01": {
    "title": "Kvpalme – El Origen",
    "year": 2019,
@@ -45579,45 +45635,6 @@
    "form": null,
    "length": null
   },
-  "QM-4b9f5b2e83-M1": {
-   "title": "K baakelo’on | Nuestros huesos",
-   "year": null,
-   "makers": [
-    {
-     "id": "QM-4b9f5b2e83",
-     "name": "Yaremi Chan"
-    }
-   ],
-   "languages": [],
-   "themes": [
-    "Memory and Oral History",
-    "Women and Gender",
-    "Elders and Knowledge"
-   ],
-   "primary_theme": "Memory and Oral History",
-   "families": [
-    "Knowledge and Continuity",
-    "Lives and Relations"
-   ],
-   "form": "Documentary",
-   "length": "Feature"
-  },
-  "QM-4b9f5b2e83-M3": {
-   "title": "Maaya Ko’olelo’ob: Muuk’",
-   "year": null,
-   "makers": [
-    {
-     "id": "QM-4b9f5b2e83",
-     "name": "Yaremi Chan"
-    }
-   ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": "Documentary",
-   "length": null
-  },
   "LEAD-20261011-014-QM0e9ecc": {
    "title": "Kuankua Pi",
    "year": null,
@@ -55929,6 +55946,138 @@
    "families": [],
    "form": "Fiction",
    "length": null
+  },
+  "QW-WAPI-V252402584": {
+   "title": "Hunter (Ya’ma’yetha)",
+   "year": 2017,
+   "makers": [
+    {
+     "id": "QM-9564319d10",
+     "name": "Daryl Kootenay"
+    },
+    {
+     "id": "QM-39100c570f",
+     "name": "Cameron Kootenay"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "Q20261124-56-F1": {
+   "title": "Stay Awhile",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261124-56",
+     "name": "John Seymour"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": null
+  },
+  "Q20261124-58-F1": {
+   "title": "Where Smoke Rises",
+   "year": 2020,
+   "makers": [
+    {
+     "id": "Q20261124-58",
+     "name": "Kalilinoe Detwiler"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": null
+  },
+  "Q20261124-59-F1": {
+   "title": "Teko Porã: Retrato Atual da Vida Cotidiana na Aldeia Guarani Rio Silveira",
+   "year": 2026,
+   "makers": [
+    {
+     "id": "Q20261124-59",
+     "name": "Adolfo Timotio"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "Q20261124-77-F1": {
+   "title": "O Alimento da Saúde é Indígena e Intercultural",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261124-77",
+     "name": "Kléber Xukuru"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "Q20261124-81-F1": {
+   "title": "El canto del maguaré. Palabra de consejo de Dújdulli",
+   "year": 2022,
+   "makers": [
+    {
+     "id": "Q20261124-81",
+     "name": "Vanessa Teteye Mendoza"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "Q20261124-82-F1": {
+   "title": "Tanuzanamu: Principio del Equilibrio",
+   "year": 2026,
+   "makers": [
+    {
+     "id": "Q20261124-82",
+     "name": "Ati Gúndiwa"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "Q20261124-83-F1": {
+   "title": "Navajo Highways",
+   "year": 2025,
+   "makers": [
+    {
+     "id": "Q20261124-83",
+     "name": "Pete Sands"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Series"
   }
  }
 }
