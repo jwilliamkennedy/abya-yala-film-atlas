@@ -1801,7 +1801,18 @@ html[data-reading-theme=night] body.is-theme-weaving #atlas .land-word:is(:hover
 :root[data-reading-theme] body.is-theme-weaving #constellate-graph .constellate-card.concept .weave-star-hit{fill:transparent;fill-opacity:0;stroke:transparent;stroke-opacity:0;pointer-events:all}
 :root[data-reading-theme] body.is-theme-weaving #constellate-graph .constellate-card.concept:focus-visible .weave-star-hit{stroke:var(--reading-accent);stroke-opacity:1}
 #constellate-graph .concept .weave-idea-star{stroke:#111b2a;stroke-width:1.4;stroke-linejoin:round;pointer-events:none}
-#constellate-graph .concept.selected .weave-idea-star{stroke:#fff;stroke-width:2}
+#constellate-graph .concept.selected .weave-idea-star{stroke:#fff;stroke-width:2;filter:drop-shadow(0 0 6px #e8f1ff)}
+#constellate-graph.weave-star-build .weave-stop{visibility:hidden;pointer-events:none}
+:root[data-reading-theme] body.is-theme-weaving #constellate-graph .weave-film-node .weave-film-hit{fill:transparent;fill-opacity:0;stroke:transparent;stroke-opacity:0;pointer-events:all}
+:root[data-reading-theme] body.is-theme-weaving #constellate-graph .weave-film-node:focus-visible .weave-film-hit{stroke:#f3e6c4;stroke-opacity:1}
+#constellate-graph .weave-film-light{stroke:#f0f4ff;stroke-width:.8;filter:drop-shadow(0 0 3px currentColor);pointer-events:none}
+#constellate-graph .weave-film-node:is(.selected,:hover,:focus-visible) .weave-film-light{stroke:white;stroke-width:1.8;filter:drop-shadow(0 0 7px #e9efff)}
+:root[data-reading-theme] body.is-theme-weaving #constellate-graph .weave-film-node :is(.weave-film-number,.weave-film-title){fill:#f3f4ff;stroke:#0c1426;stroke-width:3.2;paint-order:stroke fill;stroke-linejoin:round;pointer-events:none}
+#constellate-graph .weave-film-number{font:600 12px/1 var(--ui-sans)}
+#constellate-graph .weave-film-title{font:500 14px/1 var(--ui-sans);opacity:0}
+#constellate-graph .weave-film-node:is(.selected,:hover,:focus-visible) .weave-film-title{opacity:1}
+@media (prefers-reduced-motion:no-preference){#constellate-graph .weave-just-added .weave-film-light{animation:weave-star-arrival .8s ease-out both}}
+@keyframes weave-star-arrival{0%{opacity:.15;filter:drop-shadow(0 0 14px #fff)}100%{opacity:1;filter:drop-shadow(0 0 7px #e9efff)}}
 :root[data-reading-theme] body.is-theme-weaving #constellate-graph .constellate-card.concept .weave-star-title{fill:var(--reading-ink);font-weight:600;paint-order:stroke fill;stroke:var(--reading-paper);stroke-width:3px;stroke-linejoin:round}
 .weave-star-thumb{display:grid;place-items:center;color:var(--reading-accent);font-size:23px}
 #constellate-context .weave-star-note{white-space:pre-wrap;overflow-wrap:anywhere}
