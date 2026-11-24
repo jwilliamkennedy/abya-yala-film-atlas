@@ -33,3 +33,6 @@ Requested by atlas owner: promote current beta/ to published root using tools/pr
 
 2026-11-23 (night, 3)
 Requested by atlas owner: promote current beta/ to published root using tools/promote_beta.py; preserve beta and private research Queue. Rail: Data and CARE back as its own item under About.
+
+2026-11-24 (after midnight)
+Requested by atlas owner: promote current beta/ to published root using tools/promote_beta.py; preserve beta and private research Queue. Queue review: 93 rows (theme tags, 1491s films, Hugo Fulni-ô film, credits, image, watch link) and the night's theme tags.
