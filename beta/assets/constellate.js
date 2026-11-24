@@ -1855,10 +1855,6 @@ function buildStart(){
  
  sec.addEventListener('click',function(e){
   var t=e.target.closest('[data-ws-theme]');if(t){showWelcome=false;C().themeThread(t.dataset.wsTheme);settle();return;}
-  var et=e.target.closest('[data-ws-example-thread]');
-  if(et){showWelcome=false;var P2=window.AtlasPublished,name=et.dataset.wsExampleThread;
-   var go=function(){var t=S().current().threads.find(t=>t.name.toLowerCase()===name.toLowerCase());if(t)C().readThread(t.id);settle();};
-   if(P2&&P2.example)P2.open(P2.example,'read').then(function(){setTimeout(go,300);},go);else go();return;}
   if(e.target.closest('[data-ws-example]')){showWelcome=false;var P=window.AtlasPublished,old=function(){var b=$('#weave-example');if(b)b.click();settle();};if(P&&P.example){P.open(P.example,'read').then(settle,old);}else old();return;}
   var sm=e.target.closest('[data-ws-sample]');if(sm){showWelcome=false;var P3=window.AtlasPublished;if(P3)P3.open(sm.dataset.wsSample,'read').then(settle,settle);return;}
   if(e.target.closest('[data-ws-close]')){showWelcome=false;keepBuild=true;settle();return;}
@@ -1950,23 +1946,6 @@ function phoneCue(){
  cue.hidden=r.top<window.innerHeight-80&&r.bottom>0;
 }
 /* 2026-11-11: the example is the published, hand-written constellation, not an automatic pick */
-async function welcomePair(P,sec){
- const doc=await P.load(P.example),weave=doc.weave;
- const thread=weave.threads.find(t=>t.name==='Remembrance');
- if(!thread)return;
- const ids=thread.items.slice(0,2),films=ids.map(id=>{
-  const entry=weave.items.find(x=>x.type==='film'&&'film:'+x.record+':'+x.film===id);
-  const maker=entry&&window.Atlas.recordById(entry.record);
-  const film=maker?.films.find(f=>f.id===entry.film);
-  return film&&{...entry,title:film.title,maker:maker.name};
- });
- const link=weave.links.find(l=>l.source===ids[0]&&l.target===ids[1]);
- if(films.length!==2||films.some(f=>!f)||!link?.note)return;
- const box=document.createElement('details');box.className='ws-pair';
- box.innerHTML='<summary>'+films.map(f=>'<span class="ws-pair-film">'+thumbHTML(f)+'<span><strong>'+esc(f.title)+'</strong><small>'+esc(f.maker)+'</small></span></span>').join('<span aria-hidden="true">→</span>')+'<span class="ws-pair-action">Why this pairing?</span></summary>'+
-  '<p>'+esc(link.note)+'</p><button type="button" data-ws-example-thread="'+esc(thread.name)+'">Read this thread</button>';
- $('#weave-start-title',sec).after(box);
-}
 function examplePreview(){
  var P=window.AtlasPublished,sec=$('#weave-start');if(!P||!P.example||!sec||sec.dataset.wsPublished)return;
  var e=(P.list||[]).filter(function(x){return x.slug===P.example;})[0];if(!e)return;
