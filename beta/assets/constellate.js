@@ -159,7 +159,7 @@ if(new URLSearchParams(location.search).get('constellation-embed')==='1'){
  function open(){const opening=!enabled;document.body.classList.remove('weave-browsing');if(!enabled){if(trace)stopTrace();/* 24 Nov 2026: Constellate turns the map into a night sky */try{const T=window.AtlasReadingTheme,now=document.documentElement.dataset.readingTheme;if(T&&now!=='night'){themeBefore=now||'paper';T.apply('night');}}catch{}entry={state:copy(A.captureState()),scroll:$('#index').scrollTop,url:location.href,x:window.scrollX||0,y:window.scrollY||0};enabled=true;window.AtlasFitCap=8;document.body.classList.add('is-constellating','is-theme-weaving');graph.hidden=false;graph.removeAttribute('hidden');$('#constellate-mode').hidden=false;}
   panel.hidden=opening&&!S.current().items.length;trigger.setAttribute('aria-expanded',String(!panel.hidden));A.closeWorkspacePanels();relayout();render();updateAddress();if(opening&&S.current().items.some(x=>x.type!=='concept'))requestAnimationFrame(()=>requestAnimationFrame(()=>{if(enabled&&!unmapped&&!player)fit('quiet');}));}
  function browse(){if(!enabled||document.body.classList.contains('weave-browsing'))return;panel.hidden=true;document.body.classList.add('weave-browsing');trigger.setAttribute('aria-expanded','false');relayout();}
- function close(){closePreview();document.body.classList.remove('weave-browsing');panel.hidden=true;trigger.setAttribute('aria-expanded','false');document.body.classList.remove('weave-dock-open');relayout();}
+ function close(){closePreview();showLand('');closeFilmPair();document.body.classList.remove('weave-browsing');panel.hidden=true;trigger.setAttribute('aria-expanded','false');document.body.classList.remove('weave-dock-open');relayout();}
  function exit({restore=true,fromHistory=false}={}){
   if(!enabled){if(trace)stopTrace();return;}
   const prior=entry,browsing=document.body.classList.contains('weave-browsing'),browseState=browsing?copy(A.captureState()):null;
@@ -170,7 +170,7 @@ if(new URLSearchParams(location.search).get('constellation-embed')==='1'){
   if(frame){cancelAnimationFrame(frame);frame=0;}
   cancelConnect();enabled=false;window.AtlasFitCap=null;entry=null;
   drawThread=false;drawLast=null;focusThread=false;selPushed=false;skipPop=false;reading=false;active=null;drag=null;suppress=null;
-  timelineOn=false;unmapped=false;relCache.key='';closePreview();clearThemeLens(false);closeFilmPair();
+  timelineOn=false;unmapped=false;relCache.key='';closePreview();clearThemeLens(false);closeFilmPair();previousLand=lastLand='';
   showLand('');context.hidden=inline.hidden=true;$('#weave-editor').hidden=false;$('#weave-read-panel').hidden=true;closeShare();
   $('#weave-relbar').hidden=true;$('#weave-unmap').setAttribute('aria-pressed','false');$('#weave-unmap').textContent='Disappear map';
   $('#weave-draw-thread').setAttribute('aria-pressed','false');$('#weave-draw-help').hidden=true;modeButtons('edit');setTab('thread');
@@ -708,7 +708,7 @@ function updateSaveControl(){const c=S.current(),saved=S.saved(c.id),dirty=S.dir
   for(const id of ['weave-discovery-order','weave-discovery-unadded','weave-discovery-art',...facetKinds.map(k=>'weave-discovery-'+k)])$('#'+id).addEventListener('change',()=>{resetBrowsePage();renderResults({resetScroll:true});});
   $('#weave-discovery-clear').onclick=()=>{$('#constellate-search').value='';$('#weave-discovery-order').value='relevance';$('#weave-discovery-unadded').checked=false;$('#weave-discovery-art').checked=false;facetKinds.forEach(k=>facetSelect(k).value='');resetBrowsePage();renderResults({resetScroll:true});$('#constellate-search').focus({preventScroll:true});};
   $('#weave-focus-thread').onclick=()=>{focusThread=!focusThread;renderLegend();renderGraph();status(focusThread?'Showing '+S.activeThread().name+' only. Show all threads restores the full constellation.':'Showing every visible thread again.');};
- $('#weave-browse-back').onclick=()=>{setTab('thread');renderOrder();};$('#weave-read-start').onclick=()=>{open();setRead(true);};$('#weave-find-films').onclick=()=>{open();setTab('add');$('#constellate-search').focus({preventScroll:true});};$('#weave-browse-films').onclick=()=>{if(enabled&&!reading&&$('#weave-editor').dataset.tab==='add'&&!document.querySelector('#constellate-popup').hidden){setTab('thread');return;}open();if(reading)setRead(false);setTab('add');const q=$('#constellate-search');q.focus({preventScroll:true});q.scrollIntoView({block:window.matchMedia('(max-width:700px)').matches?'center':'nearest',behavior:'smooth'});q.classList.remove('cm-flash');void q.offsetWidth;q.classList.add('cm-flash');};$('#weave-draw-thread').onclick=()=>setDrawThread(!drawThread);$('#weave-land').addEventListener('click',e=>{const l=e.target.closest('[data-wl-land]');if(l){openLand(l.dataset.wlLand);return;}const f=e.target.closest('[data-wl]');if(f){landPick(f.dataset.wl);return;}if(e.target.closest('.wl-more')){const firstNew=landLimit;landLimit+=12;showLand(landShown,true);const next=$$('#weave-land [data-wl]')[firstNew];next?.focus({preventScroll:true});next?.scrollIntoView({block:'nearest',behavior:motion.matches?'auto':'smooth'});return;}if(e.target.closest('.wl-all')){const id=landShown;showLand('');landThread(id);return;}if(e.target.closest('.wl-close'))showLand('');});
+ $('#weave-browse-back').onclick=()=>{setTab('thread');renderOrder();};$('#weave-read-start').onclick=()=>{open();setRead(true);};$('#weave-find-films').onclick=()=>{open();setTab('add');$('#constellate-search').focus({preventScroll:true});};$('#weave-browse-films').onclick=()=>{if(enabled&&!reading&&$('#weave-editor').dataset.tab==='add'&&!document.querySelector('#constellate-popup').hidden){setTab('thread');return;}open();if(reading)setRead(false);setTab('add');const q=$('#constellate-search');q.focus({preventScroll:true});q.scrollIntoView({block:window.matchMedia('(max-width:700px)').matches?'center':'nearest',behavior:'smooth'});q.classList.remove('cm-flash');void q.offsetWidth;q.classList.add('cm-flash');};$('#weave-draw-thread').onclick=()=>setDrawThread(!drawThread);$('#weave-land').addEventListener('click',e=>{if(e.target.closest('[data-land-clear-theme]')){const id=landShown;clearThemeLens(false);A.refresh();showLand(id);return;}const l=e.target.closest('[data-wl-land]');if(l){openLand(l.dataset.wlLand);return;}const f=e.target.closest('[data-wl]');if(f){landPick(f.dataset.wl);return;}if(e.target.closest('.wl-more')){const firstNew=landLimit;landLimit+=12;showLand(landShown,true);const next=$$('#weave-land [data-wl]')[firstNew];next?.focus({preventScroll:true});next?.scrollIntoView({block:'nearest',behavior:motion.matches?'auto':'smooth'});return;}if(e.target.closest('.wl-all')){const id=landShown;showLand('');landThread(id);return;}if(e.target.closest('.wl-close'))showLand('');});
  /* a film drawn as a full card sits on its own thread point: hide that point's number so it does not cover the title */
  new MutationObserver(()=>{const on=new Set([...graph.querySelectorAll('[data-constellate-node]')].map(n=>n.dataset.constellateNode));graph.querySelectorAll('[data-weave-knot]').forEach(k=>k.classList.toggle('under-card',on.has(k.dataset.weaveKnot)));}).observe(graph,{childList:true,subtree:true});
  /* a land name, its poster or its shaded area, clicked while building: show that land's films */
@@ -1008,23 +1008,52 @@ function stopPlay(){if(!player)return;playThread=null;pausePlay(true);player.hid
  /* ── A thread from one land (Map page → Constellate) ─────────────────────
     The most recent film of each of the land's filmmakers, up to eight, pinned to that land. */
  /* 23 Nov: clicking a land in Constellate shows its films here: add them, link them, or make a thread of the land */
- let landShown='',landLimit=4,previewFilm=null,previewOrigin=null,lensLimit=6;
- function highlightLand(id){for(const el of $$('#atlas .land-sky-star')){const selected=!!id&&!!el.__data__?.ids?.includes(id);el.classList.toggle('is-selected',selected);el.setAttribute('aria-pressed',String(selected));}}
+ let landShown='',landLimit=4,previewFilm=null,previewOrigin=null,lensLimit=6,selectedLandIds=[],previousLand='',lastLand='',landViewToken=0;
+ function highlightLand(id){const ids=Array.isArray(id)?id:id?[id]:[];selectedLandIds=ids;for(const el of $$('#atlas .land-sky-star')){const selected=!!el.__data__?.ids?.some(v=>ids.includes(v));el.classList.toggle('is-selected',selected);el.setAttribute('aria-pressed',String(selected));}}
  function canOpenLand(){return enabled&&!reading&&!player&&!trace&&!document.body.classList.contains('is-theme-web-open');}
  function openLand(id){const land=id&&A.landById(id);if(!canOpenLand()||!land)return false;if(land.browseGroup&&land.members?.length&&!landFilms().get(land.id)?.films.length)return openLands(land.members);showLand(land.id);return true;}
- function openLands(ids){if(!canOpenLand())return false;const lands=[...new Map(ids.map(id=>A.landById(id)).filter(Boolean).map(l=>[l.id,l])).values()];if(!lands.length)return false;if(lands.length===1)return openLand(lands[0].id);const box=$('#weave-land');landShown='';context.hidden=inline.hidden=true;draft=draftKey=null;$('#weave-editor').hidden=false;box.innerHTML='<div class="wl-head"><h3>Choose a land</h3><button type="button" class="wl-close" aria-label="Close" title="Close">×</button></div><div class="wl-choices">'+lands.map(l=>'<button type="button" data-wl-land="'+esc(l.id)+'">'+esc(A.landDisplayName?.(l)||l.name)+'</button>').join('')+'</div>';box.hidden=false;openDock();setTab('thread');panel.scrollTop=0;requestAnimationFrame(()=>{if(!box.hidden&&!panel.hidden)box.scrollIntoView({block:phone.matches?'start':'nearest',behavior:motion.matches?'auto':'smooth'});});return true;}
- function showLand(id,refresh){if(id&&!refresh)closePreview();const box=$('#weave-land');if(!box)return;if(!id){box.hidden=true;landShown='';highlightLand('');return;}if(refresh&&box.hidden)return;if(!refresh){landLimit=4;context.hidden=inline.hidden=true;draft=draftKey=null;$('#weave-editor').hidden=false;}
+ function beginLandView(){
+  closePreview();closeFilmPair();ghost(null);context.hidden=inline.hidden=true;draft=draftKey=null;
+  $('#weave-editor').hidden=false;$('#weave-compare').hidden=true;
+  const detail=$('#constellate-detail');if(detail)detail.replaceChildren();
+  $('#weave-thread-form').hidden=true;setTab('thread');panel.classList.add('has-land-view');
+ }
+ function presentLandView(box,ids,refresh=false){
+  box.hidden=false;openDock();highlightLand(ids);
+  if(refresh)return;
+  const token=++landViewToken;panel.scrollTop=0;
+  requestAnimationFrame(()=>{if(token!==landViewToken||box.hidden||panel.hidden||!enabled)return;panel.scrollTop=0;
+    if(phone.matches){const b=box.getBoundingClientRect();if(b.top<0||b.top>innerHeight-100)box.scrollIntoView({block:'start',behavior:'instant'});}
+  });
+ }
+ function openLands(ids){
+  if(!canOpenLand())return false;
+  const lands=[...new Map(ids.map(id=>A.landById(id)).filter(Boolean).map(l=>[l.id,l])).values()];
+  if(!lands.length)return false;if(lands.length===1)return openLand(lands[0].id);
+  beginLandView();const box=$('#weave-land');landShown='';
+  const entries=lands.map(l=>{const films=landFilms().get(l.id)?.films||[],matches=themeLens?films.filter(x=>themeLens.ids.has(x.id)):films;return {l,films,matches};}).sort((a,b)=>Number(!!b.matches.length)-Number(!!a.matches.length)||azSort.compare(a.l.name,b.l.name));
+  box.innerHTML='<div class="wl-head"><div><h3>Choose a land</h3><small>'+lands.length+' land references</small></div><button type="button" class="wl-close" aria-label="Close" title="Close">×</button></div><div class="wl-choices">'+entries.map(({l,films,matches})=>'<button type="button" data-wl-land="'+esc(l.id)+'"><strong>'+esc(A.landDisplayName?.(l)||l.name)+'</strong><small>'+matches.length+' '+(matches.length===1?'film':'films')+(themeLens?' · '+films.length+' total':'')+'</small></button>').join('')+'</div>';
+  presentLandView(box,lands.map(l=>l.id));return true;
+ }
+ function landSharedTerms(a,b){
+  if(!a||a===b)return [];
+  const counts=id=>{const m=new Map();for(const x of landFilms().get(id)?.films||[])for(const t of terms(x)){if(!m.has(t))m.set(t,new Set());m.get(t).add(x.id);}return m;};
+  const left=counts(a),right=counts(b);
+  return [...left].filter(([t,ids])=>right.has(t)&&new Set([...ids,...right.get(t)]).size>1).sort((x,y)=>Math.min(y[1].size,right.get(y[0]).size)-Math.min(x[1].size,right.get(x[0]).size)||azSort.compare(x[0],y[0])).slice(0,3).map(([t])=>t);
+ }
+ function showLand(id,refresh){const box=$('#weave-land');if(!box)return;if(!id){++landViewToken;box.hidden=true;landShown='';panel.classList.remove('has-land-view');highlightLand('');return;}if(refresh&&box.hidden)return;if(!refresh){beginLandView();landLimit=4;if(lastLand!==id){previousLand=lastLand;lastLand=id;}}
   const land=landFilms().get(id),name=land?.name||A.landById?.(id)?.name||'This land';landShown=id;
   const seen=new Set(),films=[];for(const x of land?.films||[]){if(themeLens&&!themeLens.ids.has(x.id))continue;const k=key(x);if(seen.has(k))continue;seen.add(k);films.push(x);}
   const yr=x=>{const m=/\d{4}/.exec(String(x.year||''));return m?+m[0]:0;};films.sort((a,b)=>(yr(b)||0)-(yr(a)||0)||azSort.compare(a.title,b.title));
-  const linking=drawThread;
-  box.innerHTML='<div class="wl-head"><div><h3>'+esc(name)+'</h3><small>'+(films.length?films.length+(films.length===1?' film':' films'):'No films yet')+'</small></div><button type="button" class="wl-close" aria-label="Close" title="Close">×</button></div>'+
-   (!films.length?'<p class="wl-note">No film on the atlas is linked to this land yet.</p>':
+  const linking=drawThread,shared=linking?[]:landSharedTerms(previousLand,id),prior=previousLand&&A.landById(previousLand),total=land?.films?.length||0;
+  box.innerHTML='<div class="wl-head"><div><h3>'+esc(name)+'</h3><small>'+(films.length?films.length+(films.length===1?' film':' films'):themeLens&&total?'No matching films':'No films yet')+'</small></div><button type="button" class="wl-close" aria-label="Close" title="Close">×</button></div>'+
+   (shared.length&&prior?'<div class="wl-bridge"><small>Catalog themes also found in films linked to '+esc(A.landDisplayName?.(prior)||prior.name)+'</small><div>'+shared.map(t=>'<button type="button" class="weave-theme-chip" data-explore-theme="'+esc(t)+'" aria-pressed="'+String(!!themeLens?.terms.includes(t))+'">'+esc(t)+'</button>').join(' ')+'</div></div>':'')+
+   (!films.length?(themeLens&&total?'<p class="wl-note">This land has '+total+' '+(total===1?'film':'films')+' in the catalog, but none match the selected themes.</p><button type="button" class="wl-more" data-land-clear-theme>Show all films</button>':'<p class="wl-note">No film on the atlas is linked to this land yet.</p>'):
     (linking?'<p class="wl-note">'+(first?'Choose the second film.':'Choose a film to link.')+'</p>':'')+
     '<ul class="wl-films'+(linking?' is-linking':'')+'">'+films.slice(0,landLimit).map(x=>{const own=existingWork(x),chosen=linking&&own&&own.id===first,onThread=own&&S.activeThread().items.includes(own.id);return '<li><button type="button" data-wl="'+esc(x.id)+'"'+(chosen?' disabled':'')+'>'+thumb(x)+'<span class="wl-t"><strong>'+esc(x.title)+'</strong><small>'+esc([x.maker,yr(x)||''].filter(Boolean).join(' · '))+'</small></span><em>'+(chosen?'Chosen':linking?'Link':onThread?'On thread':'Explore')+'</em></button></li>';}).join('')+'</ul>'+
     (films.length>landLimit?'<button type="button" class="wl-more">More films</button>':'')+
     (linking?'':'<button type="button" class="wl-all">Make a constellation from this land</button>'));
-  box.hidden=false;openDock();highlightLand(id);setTab('thread');if(!refresh){panel.scrollTop=0;requestAnimationFrame(()=>{if(box.hidden||panel.hidden)return;box.scrollIntoView({block:phone.matches?'start':'nearest',behavior:motion.matches?'auto':'smooth'});});}
+  presentLandView(box,[id],refresh);
  }
  function landPick(xid){const x=catalogById.get(xid);if(!x)return;if(!drawThread){showPreview(x,{land:landShown});return;}let own=existingWork(x);const tid=S.activeThread().id;
   if(!own||!S.activeThread().items.includes(own.id)){if(!add(x,tid,{landId:landShown,keepView:true}))return;own=existingWork(x);}if(!own)return;
@@ -1157,8 +1186,8 @@ function stopPlay(){if(!player)return;playThread=null;pausePlay(true);player.hid
   return true;
  }
  function clearThemeLens(refresh=true){
-  themeLens=null;document.body.classList.remove('weave-theme-lens');const lens=$('#weave-lens-results');if(lens)lens.hidden=true;const box=$('#weave-theme-lens');if(box)box.hidden=true;
-  if(refresh&&enabled){showLand('');if(previewFilm)renderFilmPreview();A.refresh();renderGraph();}
+  const selected=landShown;themeLens=null;document.body.classList.remove('weave-theme-lens');const lens=$('#weave-lens-results');if(lens)lens.hidden=true;const box=$('#weave-theme-lens');if(box)box.hidden=true;
+  if(refresh&&enabled){if(selected)showLand(selected,true);else if(previewFilm)renderFilmPreview();A.refresh();renderGraph();}
  }
  function landMatchesTheme(ids){return !themeLens||ids.some(id=>themeLens.lands.has(id));}
  function suggestionBases(seed,x){
@@ -1306,7 +1335,7 @@ function stopPlay(){if(!player)return;playThread=null;pausePlay(true);player.hid
  // Beta 1103d: the dock has two tabs, so the A–Z list is never pushed down by the thread
  // Keep the next-film choices immediately after the selected film card.
  $('#constellate-context').after($('#weave-suggest'));
- function setTab(tab){if(tab==='add')closePreview();const ed=$('#weave-editor');$('#weave-browse-films')?.setAttribute('aria-pressed',String(tab==='add'));if(ed.dataset.tab===tab)return;ed.dataset.tab=tab;panel.scrollTop=0;}
+ function setTab(tab){if(tab==='add'){closePreview();showLand('');closeFilmPair();}const ed=$('#weave-editor');$('#weave-browse-films')?.setAttribute('aria-pressed',String(tab==='add'));if(ed.dataset.tab===tab)return;ed.dataset.tab=tab;panel.scrollTop=0;}
  setTab(S.current().items.length?'thread':'add');
 
  function modeButtons(m){clearNotice();[['constellate-edit','edit'],['constellate-read','read'],['constellate-share','share'],['weave-play','play']].forEach(([id,k])=>$('#'+id).setAttribute('aria-pressed',String(m===k)));}
@@ -1346,7 +1375,7 @@ function stopPlay(){if(!player)return;playThread=null;pausePlay(true);player.hid
  {const z=document.querySelector('.map-panel .zoom');let b=$('#atlas-unmap');if(!b&&z){z.insertAdjacentHTML('beforeend','<button id="atlas-unmap" aria-pressed="false" title="Disappear the cartography: keep names, lose coastlines, borders and shading">Disappear map</button>');b=$('#atlas-unmap');}
   if(b&&!b.dataset.atlasBound){b.dataset.atlasBound='1';const set=on=>{document.body.classList.toggle('atlas-unmapped',on);b.setAttribute('aria-pressed',String(on));b.textContent=on?'Return map':'Disappear map';try{localStorage.setItem('atlas-unmapped',on?'1':'0');}catch{}};b.onclick=()=>set(!document.body.classList.contains('atlas-unmapped'));try{if(localStorage.getItem('atlas-unmapped')==='1')set(true);}catch{}}}
  map.dataset.dropLabel='Drop to add to the thread';
- window.AtlasConstellate={setTab,open,browse,close,exit,showPreview,get previewFilm(){return previewFilm},previewLandIds:()=>previewFilm?references(previewFilm).map(r=>r.id):[],showThemeLens,clearThemeLens,landMatchesTheme,themeIntersection,themeTerms:()=>[...relationshipIndex().byTheme.keys()],thumb,openLand,openLands,readFromStart,undo,redo,fit,add,followFilm,showPicker,setRead,readThread,shareURL,citation,csvExport,jsonExport,choose,startLink,reference,tags,play:playWeave,stopPlay,pausePlay,playStep,get playing(){return !!player},get enabled(){return enabled},get selectedLand(){return landShown},get positions(){return new Map(positions)},get anchors(){return new Map(anchors)},get catalog(){return catalog},themeFilms,themeThread,landThread,landFilmCount,trace:startTrace,stopTrace,get tracing(){return !!trace},terms,sourceImage,get view(){return{k:1,x:0,y:0}}};
+ window.AtlasConstellate={setTab,open,browse,close,exit,showPreview,get previewFilm(){return previewFilm},previewLandIds:()=>previewFilm?references(previewFilm).map(r=>r.id):[],showThemeLens,clearThemeLens,landMatchesTheme,themeIntersection,themeTerms:()=>[...relationshipIndex().byTheme.keys()],thumb,openLand,openLands,readFromStart,undo,redo,fit,add,followFilm,showPicker,setRead,readThread,shareURL,citation,csvExport,jsonExport,choose,startLink,reference,tags,play:playWeave,stopPlay,pausePlay,playStep,get playing(){return !!player},get enabled(){return enabled},get selectedLand(){return landShown},get selectedLandIds(){return [...selectedLandIds]},get positions(){return new Map(positions)},get anchors(){return new Map(anchors)},get catalog(){return catalog},themeFilms,themeThread,landThread,landFilmCount,trace:startTrace,stopTrace,get tracing(){return !!trace},terms,sourceImage,get view(){return{k:1,x:0,y:0}}};
  // Share snapshots are additive: never replace a newer local weave with an old link.
  try{const u=new URL(inbound),payload=new URLSearchParams(u.hash.slice(1)).get('weave');if(payload){if(payload.length>100000)throw Error('Share link is too large. Import JSON instead.');const b64=s=>s.replace(/-/g,'+').replace(/_/g,'/');let raw;if(payload[0]==='z'){const bin=atob(b64(payload.slice(1))),bytes=Uint8Array.from(bin,c=>c.charCodeAt(0));raw=JSON.parse(await new Response(new Blob([bytes]).stream().pipeThrough(new DecompressionStream('deflate-raw'))).text());}else raw=JSON.parse(decodeURIComponent(escape(atob(b64(payload)))));if(raw.version!==2||!raw.weave)throw Error('Unsupported constellation link.');const fingerprint=String([...payload].reduce((h,c)=>Math.imul(h^c.charCodeAt(0),16777619),2166136261)>>>0);busy=true;S.importWeave(raw.weave,fingerprint);restorePersistedAnnotations({...raw.weave,id:S.current().id});S.save();busy=false;known.set(S.current().id,copy(S.current()));open();if(u.searchParams.get('read')==='1')readFromStart();else setRead(false);fit('quiet');if(u.searchParams.get('play')==='1')playWeave();}else if(u.searchParams.get('constellate')==='1'){const id=u.searchParams.get('weave');if(id&&S.state.collections.some(c=>c.id===id)){busy=true;S.activate(id);busy=false;}open();setRead(u.searchParams.get('read')==='1');if(u.searchParams.get('play')==='1')playWeave();}}catch(err){busy=false;open();status('Could not open share link: '+err.message);}
 })().catch(e=>console.error('Constellate could not open',e));

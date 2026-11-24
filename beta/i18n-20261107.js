@@ -5,6 +5,8 @@
 const LANGS={en:'English',es:'Español',pt:'Português',fr:'Français'};
 // [English, Español, Português, Français]
 const T=[
+["No matching films","No hay películas que coincidan","Nenhum filme correspondente","Aucun film correspondant"],
+["Show all films","Mostrar todas las películas","Mostrar todos os filmes","Afficher tous les films"],
 ["Film preview","Vista previa de la película","Prévia do filme","Aperçu du film"],
 ["Explore","Explorar","Explorar","Explorer"],
 ["Film details and sources","Detalles y fuentes de la película","Detalhes e fontes do filme","Détails et sources du film"],

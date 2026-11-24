@@ -689,7 +689,7 @@ function renderConstellation(){
    g.append('title');return g;
   }).attr('data-land-sky',d=>d.id).attr('tabindex',0).attr('transform',d=>`translate(${d.anchorX},${d.anchorY})`)
    .attr('aria-label',d=>d.names.join(' / ')).attr('data-multiple',d=>String(d.ids.length>1))
-   .classed('is-selected',d=>d.ids.includes(window.AtlasConstellate.selectedLand)).classed('theme-match',d=>window.AtlasConstellate.landMatchesTheme(d.ids)).classed('film-preview-land',d=>d.ids.some(id=>window.AtlasConstellate.previewLandIds?.().includes(id))).attr('aria-pressed',d=>String(d.ids.includes(window.AtlasConstellate.selectedLand)));
+   .classed('is-selected',d=>d.ids.some(id=>window.AtlasConstellate.selectedLandIds.includes(id))).classed('theme-match',d=>window.AtlasConstellate.landMatchesTheme(d.ids)).classed('film-preview-land',d=>d.ids.some(id=>window.AtlasConstellate.previewLandIds?.().includes(id))).attr('aria-pressed',d=>String(d.ids.some(id=>window.AtlasConstellate.selectedLandIds.includes(id))));
   nodes.select('.land-sky-light').attr('transform',d=>'scale('+(d.ids.length>1?1.05:.9)+')');
   nodes.select('.land-sky-label').text(d=>d.name+(d.ids.length>1?' +'+(d.ids.length-1):''));
   nodes.select('title').text(d=>d.names.join(' / '));

@@ -53,6 +53,24 @@ async def check(browser, name, viewport):
     await page.wait_for_function(READY, timeout=30000)
     snapshot = await page.evaluate(SNAPSHOT)
     storage = await page.evaluate("localStorage.getItem('atlas-collections-v1')")
+    # Successive star clicks replace the active discovery surface.
+    await page.wait_for_function("document.querySelectorAll('#atlas .land-sky-star').length>1")
+    lands = await page.evaluate("""() => {
+      const stars=[...document.querySelectorAll('#atlas .land-sky-star')];
+      return stars.slice(0,2).map(s=>s.__data__.ids);
+    }""")
+    await page.evaluate("ids=>window.AtlasConstellate.openLands(ids)", lands[0])
+    await page.locator("#weave-land").wait_for(state="visible")
+    await page.evaluate("""() => {
+      const api=window.AtlasConstellate;
+      api.showPreview(api.catalog.find(x=>x.type==='film'));
+    }""")
+    await page.locator("#weave-film-preview").wait_for(state="visible")
+    await page.evaluate("ids=>window.AtlasConstellate.openLands(ids)", lands[1])
+    await page.locator("#weave-land").wait_for(state="visible")
+    assert await page.locator("#weave-film-preview").is_hidden(), (name,"previous film still visible")
+    assert await page.evaluate("window.AtlasConstellate.selectedLandIds")==lands[1], (name,"wrong star selection")
+    assert await page.evaluate(SNAPSHOT)==snapshot, (name,"star browsing changed collection")
     # Actual film preview: no collection change, no local persistence.
     await page.evaluate("""() => {
       const api=window.AtlasConstellate;
