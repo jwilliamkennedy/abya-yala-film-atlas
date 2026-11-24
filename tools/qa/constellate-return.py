@@ -52,6 +52,21 @@ async def check(browser, name, viewport):
     await page.evaluate("document.querySelector('header .constellate-link').click()")
     await page.wait_for_function(READY, timeout=30000)
     snapshot = await page.evaluate(SNAPSHOT)
+    storage = await page.evaluate("localStorage.getItem('atlas-collections-v1')")
+    # Actual film preview: no collection change, no local persistence.
+    await page.evaluate("""() => {
+      const api=window.AtlasConstellate;
+      const film=api.catalog.find(x=>x.type==='film' && api.terms(x).length);
+      if(!film || !api.showPreview(film)) throw Error('No film preview');
+    }""")
+    await page.locator("#weave-film-preview").wait_for(state="visible")
+    assert await page.evaluate(SNAPSHOT)==snapshot, (name,"preview changed collection")
+    assert await page.evaluate("localStorage.getItem('atlas-collections-v1')")==storage, (name,"preview persisted")
+    await page.locator("#weave-film-preview [data-explore-theme]").first.click()
+    await page.wait_for_function("!document.getElementById('weave-theme-lens').hidden")
+    assert await page.evaluate(SNAPSHOT)==snapshot, (name,"theme chip changed collection")
+    await page.evaluate("document.querySelector('#weave-theme-lens button').click()")
+    await page.locator("#weave-film-preview [data-preview-back]").click()
     themes = await page.evaluate("""() => {
       const api=window.AtlasConstellate, terms=api.themeTerms();
       for (let i=0;i<terms.length;i++) for(let j=i+1;j<terms.length;j++)
@@ -78,6 +93,20 @@ async def check(browser, name, viewport):
     assert await page.evaluate("!window.AtlasConstellate.tracing && document.getElementById('weave-theme-lens').hidden"), name
     await page.evaluate("document.getElementById('constellate-exit').click()")
     await page.wait_for_function(MAP_READY, timeout=30000)
+    # Add, save, then edit: only the explicit Save operation changes storage.
+    await page.evaluate("document.querySelector('header .constellate-link').click()")
+    await page.wait_for_function(READY, timeout=30000)
+    await page.evaluate("""() => {
+      const api=window.AtlasConstellate;
+      api.showPreview(api.catalog.find(x=>x.type==='film'));
+    }""")
+    await page.locator("#weave-film-preview [data-preview-add]").click()
+    assert await page.evaluate("localStorage.getItem('atlas-collections-v1')")==storage, (name,"Add persisted draft")
+    await page.evaluate("document.getElementById('constellate-save').click()")
+    saved = await page.evaluate("localStorage.getItem('atlas-collections-v1')")
+    assert saved and saved!=storage, (name,"explicit Save did not persist")
+    await page.evaluate("window.AtlasCollections.addConcept('Temporary test star')")
+    assert await page.evaluate("localStorage.getItem('atlas-collections-v1')")==saved, (name,"edit persisted")
     assert not errors, (name, errors)
     print(name, "map return and theme intersection passed", result, flush=True)
     await context.close()

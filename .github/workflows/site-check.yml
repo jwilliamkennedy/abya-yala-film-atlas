@@ -783,31 +783,19 @@ jobs:
                 else:
                   await page.locator('#tw-mobile-list [data-mobile-term]').first.click()
                 await page.locator('#tw-detail [data-film-id]').first.wait_for(timeout=12000)
+                # Preview is navigation, not authorship. Adding remains explicit.
+                snapshot=await page.evaluate("JSON.stringify(window.AtlasCollections.current().items)")
                 destination=await page.locator('#tw-detail [data-film-id]').first.get_attribute('data-film-id')
                 await page.locator('#tw-detail [data-film-id]').first.click()
-                debug=await page.evaluate("""() => {
-                  const c=document.querySelector('#constellate-context'),p=document.querySelector('#constellate-popup');
-                  return {contextHidden:c?.hidden,contextDisplay:c&&getComputedStyle(c).display,
-                    popupHidden:p?.hidden,editorHidden:document.querySelector('#weave-editor')?.hidden,
-                    editorTab:document.querySelector('#weave-editor')?.dataset.tab,
-                    preview:c?.querySelector('.weave-context-preview h3')?.textContent,
-                    selected:window.AtlasCollections.current().selectedItem,
-                    count:window.AtlasCollections.current().items.length};
-                }""")
-                print('FOLLOW_DEBUG',name,json.dumps(debug),errors[:3])
-                await page.locator('#constellate-context').wait_for(state='visible',timeout=12000)
-                current=await page.locator('#constellate-context .weave-context-preview h3').inner_text()
-                state['followed']=current
-                assert current, 'Theme-film selection did not open a destination card'
-                if await page.locator('#weave-suggest [data-weave-follow]').count():
-                  await click_visible(page,'#weave-suggest [data-weave-follow]')
-                  await page.wait_for_function("""oldTitle => {
-                    const title=document.querySelector('#constellate-context .weave-context-preview h3')?.textContent;
-                    return !!title&&title!==oldTitle;
-                  }""",arg=current,timeout=12000)
-                  nxt=await page.locator('#constellate-context .weave-context-preview h3').inner_text()
-                  assert nxt and nxt!=current, 'Follow did not move to the next film'
-                  state['nextFilm']=nxt
+                await page.locator('#weave-film-preview').wait_for(state='visible',timeout=12000)
+                current=await page.locator('#weave-film-preview h3').inner_text()
+                assert current, 'Theme-film selection did not open preview'
+                assert await page.evaluate("JSON.stringify(window.AtlasCollections.current().items)")==snapshot, 'Preview added a film'
+                state['previewed']=current
+                add=page.locator('#weave-film-preview [data-preview-add]')
+                if await add.is_enabled():
+                  await add.click()
+                  assert await page.evaluate("JSON.stringify(window.AtlasCollections.current().items)")!=snapshot, 'Explicit Add did not add film'
                 assert not errors, f'Navigation raised page errors: {errors}'
                 state['pageerrors']=errors[:12]
                 report[name]=state
