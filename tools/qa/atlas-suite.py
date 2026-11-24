@@ -235,7 +235,7 @@ async def con_select(page, base):
 
 async def con_add(page, base):
     await con_build(page, base)
-    await page.evaluate("document.querySelector('#weave-tab-add').click()")
+    await page.evaluate("document.querySelector('#weave-browse-films').click()")
     await page.fill("#constellate-search", "kinship")
     await page.wait_for_timeout(700)
     n = await page.evaluate("document.querySelectorAll('#constellate-results .constellate-result, #weave-az .constellate-result, .constellate-result').length")
@@ -279,38 +279,35 @@ async def con_threads(page, base):
 
 
 async def con_connect(page, base):
-    """Connect keeps the origin visible, groups destinations, and opens on the right tab."""
+    """24 Nov 2026: no Link mode. The order of a thread is its links; between two films in the list,
+    "Why does it follow?" opens the reason form for that pair, and saving it adds one connection."""
     await con_build(page, base)
-    # The main site is promoted separately; this new pairing UI currently exists in beta only.
     if "/beta/" not in base:
         return
-    expected = await page.evaluate("""() => {
-      const c = window.AtlasCollections.current();
-      const thread = c.threads.find(t => t.items.length > 1);
-      if (!thread) return null;
-      const from = c.items.find(x => x.id === thread.items[0]);
-      const before = c.links.length;
-      window.AtlasConstellate.startLink(from.id);
-      return { name: from.title, target: thread.items[1], before };
-    }""")
-    need(expected is not None, "published example has no pair to connect")
-    await page.wait_for_selector("#weave-connect-target", state="visible", timeout=7000)
-    info = await page.evaluate("""() => ({
-      name: document.querySelector('#constellate-inline .weave-pair-origin-copy strong')?.textContent,
-      picture: !!document.querySelector('#constellate-inline .weave-pair-origin .weave-media-thumb'),
-      groups: [...document.querySelectorAll('#weave-connect-target optgroup')].map(o => o.label),
-      tab: document.querySelector('#weave-editor')?.dataset.tab,
-      guideHidden: getComputedStyle(document.querySelector('#weave-guide')).display === 'none'
-    })""")
-    need(info["name"] == expected["name"] and info["picture"], "Connect lost the origin title or atlas image placeholder", info)
-    need(any(g.startswith("On this thread") for g in info["groups"]), "On-this-thread destinations are not grouped", info)
-    need(any("Elsewhere in this constellation" in g for g in info["groups"]), "Other-thread destinations are not grouped", info)
-    need(info["tab"] == "thread" and info["guideHidden"], "Connect is lost behind the editor or guide", info)
-    await page.select_option("#weave-connect-target", expected["target"])
+    await page.evaluate("document.querySelector('[data-weave-back]')?.click()")
+    await page.wait_for_timeout(400)
+    bar = await page.evaluate("""() => { const b = document.querySelector('#constellate-mode'), r = b.getBoundingClientRect();
+      const shown = id => { const e = document.getElementById(id); return !!e && e.getClientRects().length > 0 && getComputedStyle(e).visibility !== 'hidden'; };
+      return { h: r.height, link: shown('weave-draw-thread'), build: shown('constellate-edit'), read: shown('constellate-read'), add: !!b.querySelector('.cm-add') }; }""")
+    need(bar["h"] <= 56 and not bar["link"] and not bar["build"] and not bar["read"] and bar["add"], "toolbar should be one row with Add, and no Link, Build or Read", bar)
+    before = await page.evaluate("""() => { const C = window.AtlasConstellate, c = window.AtlasCollections.current();
+      const have = new Set(c.items.map(x => x.film).filter(Boolean)), x = C.catalog.find(x => x.type === 'film' && !have.has(x.film));
+      if (!x || !C.add(x)) return null;
+      document.querySelector('[data-weave-back]')?.click();
+      return window.AtlasCollections.current().links.length; }""")
+    need(before is not None, "could not add a film to make a new pair")
+    await page.wait_for_timeout(400)
+    await page.click("#weave-order-list button.weave-why:not(.has-reason) >> nth=0")
     await page.wait_for_selector("#constellate-link-form", state="visible", timeout=7000)
-    await page.evaluate("document.querySelector('#constellate-cancel-link').click()")
-    count = await page.evaluate("window.AtlasCollections.current().links.length")
-    need(count == expected["before"], "Cancelling Connect unexpectedly saved a link", count)
+    head = await page.evaluate("document.querySelector('#constellate-link-form h3').textContent")
+    need(head == "Why does it follow?", "the reason form has the wrong heading", head)
+    await page.fill("#constellate-link-label", "echoes")
+    await page.evaluate("document.querySelector('#constellate-link-form').requestSubmit()")
+    await page.wait_for_timeout(500)
+    after = await page.evaluate("({ n: window.AtlasCollections.current().links.length, shown: [...document.querySelectorAll('#weave-order-list .weave-why.has-reason b')].some(b => b.textContent === 'echoes') })")
+    need(after["n"] == before + 1 and after["shown"], "saving a reason did not add one connection shown in the list", after)
+    await page.evaluate("window.AtlasConstellate.undo()")
+    await page.wait_for_timeout(300)
 
 
 async def phone_connect(page, base):
