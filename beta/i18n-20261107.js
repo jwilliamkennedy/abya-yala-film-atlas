@@ -5,6 +5,10 @@
 const LANGS={en:'English',es:'Español',pt:'Português',fr:'Français'};
 // [English, Español, Português, Français]
 const T=[
+["Show on map","Mostrar en el mapa","Mostrar no mapa","Afficher sur la carte"],
+["Clear theme filter","Quitar filtro temático","Limpar filtro temático","Effacer le filtre thématique"],
+["Compare films","Comparar películas","Comparar filmes","Comparer les films"],
+["Compare","Comparar","Comparar","Comparer"],
 ["Discover next","Descubre más","Descubra mais","Découvrez la suite"],
 ["More films","Más películas","Mais filmes","Plus de films"],
 ["Trailer","Tráiler","Trailer","Bande-annonce"],
