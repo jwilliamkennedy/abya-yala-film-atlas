@@ -2,8 +2,8 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-24",
  "license": "See data.html",
- "films_on_public_map": 2661,
- "film_entries": 2675,
+ "films_on_public_map": 2667,
+ "film_entries": 2681,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -1954,11 +1954,17 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Memory and Oral History",
+    "More-than-Human Relations"
+   ],
+   "primary_theme": "Memory and Oral History",
+   "families": [
+    "Knowledge and Continuity",
+    "Land and Environment"
+   ],
    "form": "Documentary",
-   "length": null
+   "length": "Short"
   },
   "Q20261121-73-F1": {
    "title": "Quando os yãmiy vêm dançar conosco",
@@ -2360,11 +2366,19 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Elders and Knowledge",
+    "Youth",
+    "More-than-Human Relations"
+   ],
+   "primary_theme": "Elders and Knowledge",
+   "families": [
+    "Knowledge and Continuity",
+    "Land and Environment",
+    "Lives and Relations"
+   ],
+   "form": "Documentary",
+   "length": "Short"
   },
   "FILM-0049": {
    "title": "Floresta também é gente",
@@ -4600,11 +4614,17 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Cosmology and Origin Stories",
+    "Youth"
+   ],
+   "primary_theme": "Cosmology and Origin Stories",
+   "families": [
+    "Knowledge and Continuity",
+    "Lives and Relations"
+   ],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "DIR-0062-F1": {
    "title": "Molly of Denali: Episode 505, There is Pele",
@@ -4616,11 +4636,17 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Cosmology and Origin Stories",
+    "Youth"
+   ],
+   "primary_theme": "Cosmology and Origin Stories",
+   "families": [
+    "Knowledge and Continuity",
+    "Lives and Relations"
+   ],
+   "form": "Fiction",
+   "length": "Short"
   },
   "FILM-SRC-2023-00003": {
    "title": "I’m Just Here for the Riot",
@@ -6917,11 +6943,18 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Residential and Boarding Schools",
+    "Justice, Truth and Reconciliation",
+    "Memory and Oral History"
+   ],
+   "primary_theme": "Residential and Boarding Schools",
+   "families": [
+    "Knowledge and Continuity",
+    "Sovereignty and Politics"
+   ],
+   "form": "Documentary",
+   "length": "Feature"
   },
   "DIR-0105-W1031-2": {
    "title": "He'ge'ah: Little Brother",
@@ -7196,11 +7229,16 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Women and Gender",
+    "Health and Healing"
+   ],
+   "primary_theme": "Women and Gender",
+   "families": [
+    "Lives and Relations"
+   ],
+   "form": "Documentary",
+   "length": "Short"
   },
   "DIR-0107-Q20261115-850-F7": {
    "title": "Butterfly Monument: A Tribute to Shannen Koostachin",
@@ -7228,11 +7266,16 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Kinship",
+    "Youth"
+   ],
+   "primary_theme": "Kinship",
+   "families": [
+    "Lives and Relations"
+   ],
+   "form": "Documentary",
+   "length": "Short"
   },
   "DIR-0107-Q20261115-850-F9": {
    "title": "OshKiKiShiKaw: A New Day",
@@ -7244,11 +7287,16 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Youth",
+    "Kinship"
+   ],
+   "primary_theme": "Youth",
+   "families": [
+    "Lives and Relations"
+   ],
+   "form": "Documentary",
+   "length": "Short"
   },
   "DIR-0107-Q20261115-850-F10": {
    "title": "OChiSkwaCho",
@@ -7280,11 +7328,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Women and Gender"
+   ],
+   "primary_theme": "Women and Gender",
+   "families": [
+    "Lives and Relations"
+   ],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "DIR-0107-Q20261115-850-F12": {
    "title": "AskiBoyz — Episode Eleven / Takastepanichikewin Peyakoshap",
@@ -7312,11 +7364,18 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Residential and Boarding Schools",
+    "Health and Healing",
+    "Memory and Oral History"
+   ],
+   "primary_theme": "Residential and Boarding Schools",
+   "families": [
+    "Knowledge and Continuity",
+    "Lives and Relations"
+   ],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "DIR-0107-Q20261115-850-F14": {
    "title": "Lands Enchanted — Traces of the Transformers",
@@ -7687,11 +7746,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Memory and Oral History"
+   ],
+   "primary_theme": "Memory and Oral History",
+   "families": [
+    "Knowledge and Continuity"
+   ],
+   "form": "Fiction",
+   "length": "Short"
   },
   "Q20261114-66-F4": {
    "title": "Reservation Soldiers",
@@ -8030,10 +8093,16 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
+   "themes": [
+    "Archives, Museums and Repatriation",
+    "Memory and Oral History",
+    "Elders and Knowledge"
+   ],
+   "primary_theme": "Archives, Museums and Repatriation",
+   "families": [
+    "Knowledge and Continuity"
+   ],
+   "form": "Documentary",
    "length": null
   },
   "Q20261115-100-F1": {
@@ -10370,11 +10439,17 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Land Defense",
+    "Cosmology and Origin Stories"
+   ],
+   "primary_theme": "Land Defense",
+   "families": [
+    "Knowledge and Continuity",
+    "Land and Environment"
+   ],
+   "form": "Fiction",
+   "length": "Short"
   },
   "FILM-0090": {
    "title": "Le Dep",
@@ -13364,11 +13439,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Water"
+   ],
+   "primary_theme": "Water",
+   "families": [
+    "Land and Environment"
+   ],
    "form": "Experimental",
-   "length": null
+   "length": "Short"
   },
   "Q20261114-96-F6": {
    "title": "Gente Pájaro",
@@ -13572,9 +13651,13 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Cosmology and Origin Stories"
+   ],
+   "primary_theme": "Cosmology and Origin Stories",
+   "families": [
+    "Knowledge and Continuity"
+   ],
    "form": "Experimental",
    "length": "Short"
   },
@@ -14001,11 +14084,18 @@
      "source": "https://www.daupara.com/obra/historias-de-shiriwa-y-muni"
     }
    ],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Water",
+    "Extractivism",
+    "More-than-Human Relations",
+    "Land Defense"
+   ],
+   "primary_theme": "Water",
+   "families": [
+    "Land and Environment"
+   ],
    "form": "Documentary",
-   "length": null
+   "length": "Short"
   },
   "FILM-0122": {
    "title": "Owners of the Water (Ö Tede'wa) (co-dir.)",
@@ -14204,11 +14294,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Displacement and Migration"
+   ],
+   "primary_theme": "Displacement and Migration",
+   "families": [
+    "Sovereignty and Politics"
+   ],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "BETA30B-20261107-F02": {
    "title": "Majayut Señorita",
@@ -14882,9 +14976,16 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Land Defense",
+    "Resistance Movements",
+    "Sovereignty and Self-Determination"
+   ],
+   "primary_theme": "Land Defense",
+   "families": [
+    "Land and Environment",
+    "Sovereignty and Politics"
+   ],
    "form": "Fiction",
    "length": "Feature"
   },
@@ -18428,6 +18529,86 @@
    "form": "Music Video",
    "length": "Short"
   },
+  "Q20261121-259-F1": {
+   "title": "More Indianer Than You",
+   "year": 2012,
+   "makers": [
+    {
+     "id": "DIR-0266",
+     "name": "1491s"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": "Short"
+  },
+  "Q20261121-260-F1": {
+   "title": "The Indian Store",
+   "year": 2013,
+   "makers": [
+    {
+     "id": "DIR-0266",
+     "name": "1491s"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": "Short"
+  },
+  "Q20261121-261-F1": {
+   "title": "Stoic Off!!!",
+   "year": 2014,
+   "makers": [
+    {
+     "id": "DIR-0266",
+     "name": "1491s"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": "Short"
+  },
+  "Q20261121-262-F1": {
+   "title": "Deer Hunter",
+   "year": 2013,
+   "makers": [
+    {
+     "id": "DIR-0266",
+     "name": "1491s"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": "Short"
+  },
+  "Q20261121-263-F1": {
+   "title": "The Adoption of Johnny Depp",
+   "year": 2012,
+   "makers": [
+    {
+     "id": "DIR-0266",
+     "name": "1491s"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": "Short"
+  },
   "FILM-0224": {
    "title": "Grab",
    "year": 2011,
@@ -18780,11 +18961,17 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Kinship",
+    "Displacement and Migration"
+   ],
+   "primary_theme": "Kinship",
+   "families": [
+    "Lives and Relations",
+    "Sovereignty and Politics"
+   ],
+   "form": "Fiction",
+   "length": "Feature"
   },
   "Q20261115-956-F1": {
    "title": "The Girl of the Golden West",
@@ -18876,11 +19063,16 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Displacement and Migration",
+    "State Violence and Genocide"
+   ],
+   "primary_theme": "Displacement and Migration",
+   "families": [
+    "Sovereignty and Politics"
+   ],
+   "form": "Fiction",
+   "length": "Feature"
   },
   "DIR-0285-F1": {
    "title": "Rabbit Stories",
@@ -21741,11 +21933,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "More-than-Human Relations"
+   ],
+   "primary_theme": "More-than-Human Relations",
+   "families": [
+    "Land and Environment"
+   ],
+   "form": "Documentary",
+   "length": "Short"
   },
   "NEW-1f8a8f87fd75-WORK-1": {
    "title": "Ni racaladxe’",
@@ -22646,9 +22842,16 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Art, Craft and Making",
+    "Women and Gender",
+    "Kinship"
+   ],
+   "primary_theme": "Art, Craft and Making",
+   "families": [
+    "Expression and Representation",
+    "Lives and Relations"
+   ],
    "form": null,
    "length": "Short"
   },
@@ -22676,9 +22879,13 @@
      "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/"
     }
    ],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Cosmology and Origin Stories"
+   ],
+   "primary_theme": "Cosmology and Origin Stories",
+   "families": [
+    "Knowledge and Continuity"
+   ],
    "form": "Experimental",
    "length": "Short"
   },
@@ -22692,11 +22899,16 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Kinship",
+    "Youth"
+   ],
+   "primary_theme": "Kinship",
+   "families": [
+    "Lives and Relations"
+   ],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "NEW-9aa0b951017b-WORK-1": {
    "title": "XO RAD Magical",
@@ -23811,11 +24023,18 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Women and Gender",
+    "Youth",
+    "Cosmology and Origin Stories"
+   ],
+   "primary_theme": "Women and Gender",
+   "families": [
+    "Knowledge and Continuity",
+    "Lives and Relations"
+   ],
+   "form": "Fiction",
+   "length": "Short"
   },
   "NEW-f82421999862-QM97f908": {
    "title": "Akababuru: Expresión de Asombro",
@@ -24129,11 +24348,18 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Music and Performance",
+    "Resistance Movements",
+    "Art, Craft and Making"
+   ],
+   "primary_theme": "Music and Performance",
+   "families": [
+    "Expression and Representation",
+    "Sovereignty and Politics"
+   ],
+   "form": "Documentary",
+   "length": "Short"
   },
   "NEW-2f13bf985833-WORK-1": {
    "title": "Ohskennón:ten Owí:ra (Little Deer)",
@@ -24489,7 +24715,6 @@
    "languages": [],
    "themes": [
     "Memory and Oral History",
-    "Cosmology and Origin Stories",
     "Kinship"
    ],
    "primary_theme": "Memory and Oral History",
@@ -24797,11 +25022,16 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Elders and Knowledge",
+    "Cosmology and Origin Stories"
+   ],
+   "primary_theme": "Elders and Knowledge",
+   "families": [
+    "Knowledge and Continuity"
+   ],
+   "form": "Fiction",
+   "length": "Short"
   },
   "NEW-0f17e286a91a-WORK-1": {
    "title": "Jülapüin Yonna (The Dream of Dance)",
@@ -24813,11 +25043,20 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Extractivism",
+    "Music and Performance",
+    "Health and Healing",
+    "Land Defense"
+   ],
+   "primary_theme": "Extractivism",
+   "families": [
+    "Expression and Representation",
+    "Land and Environment",
+    "Lives and Relations"
+   ],
+   "form": "Fiction",
+   "length": "Short"
   },
   "Q20261113-54-F1": {
    "title": "Ako’yolowaa (Cubrirse el alma)",
@@ -24896,9 +25135,15 @@
      "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/"
     }
    ],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Linguistic Preservation",
+    "Kinship"
+   ],
+   "primary_theme": "Linguistic Preservation",
+   "families": [
+    "Knowledge and Continuity",
+    "Lives and Relations"
+   ],
    "form": "Documentary",
    "length": "Short"
   },
@@ -25225,9 +25470,15 @@
      "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/"
     }
    ],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Justice, Truth and Reconciliation",
+    "Women and Gender"
+   ],
+   "primary_theme": "Justice, Truth and Reconciliation",
+   "families": [
+    "Lives and Relations",
+    "Sovereignty and Politics"
+   ],
    "form": "Documentary",
    "length": "Feature"
   },
@@ -25611,9 +25862,13 @@
      "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/"
     }
    ],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Art, Craft and Making"
+   ],
+   "primary_theme": "Art, Craft and Making",
+   "families": [
+    "Expression and Representation"
+   ],
    "form": "Experimental",
    "length": "Feature"
   },
@@ -25681,11 +25936,18 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Kinship",
+    "Women and Gender",
+    "Memory and Oral History"
+   ],
+   "primary_theme": "Kinship",
+   "families": [
+    "Knowledge and Continuity",
+    "Lives and Relations"
+   ],
+   "form": "Experimental",
+   "length": "Short"
   },
   "NEW-8b961b170d36-F1": {
    "title": "ᏓᏗᏬᏂᏏ (We Will Speak)",
@@ -26298,11 +26560,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Kinship"
+   ],
+   "primary_theme": "Kinship",
+   "families": [
+    "Lives and Relations"
+   ],
+   "form": "Fiction",
+   "length": "Short"
   },
   "NEW-65dc33c64059-WORK-1": {
    "title": "The Business of Fancydancing",
@@ -26346,9 +26612,15 @@
      "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/"
     }
    ],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Art, Craft and Making",
+    "Memory and Oral History"
+   ],
+   "primary_theme": "Art, Craft and Making",
+   "families": [
+    "Expression and Representation",
+    "Knowledge and Continuity"
+   ],
    "form": "Fiction",
    "length": "Short"
   },
@@ -26671,9 +26943,17 @@
      "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/"
     }
    ],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Art, Craft and Making",
+    "Kinship",
+    "Memory and Oral History"
+   ],
+   "primary_theme": "Art, Craft and Making",
+   "families": [
+    "Expression and Representation",
+    "Knowledge and Continuity",
+    "Lives and Relations"
+   ],
    "form": "Documentary",
    "length": "Short"
   },
@@ -28209,11 +28489,19 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Health and Healing",
+    "Elders and Knowledge",
+    "More-than-Human Relations"
+   ],
+   "primary_theme": "Health and Healing",
+   "families": [
+    "Knowledge and Continuity",
+    "Land and Environment",
+    "Lives and Relations"
+   ],
+   "form": "Documentary",
+   "length": "Short"
   },
   "SA50-20261014-cbcef9a56096-QM118f46": {
    "title": "La Industria del Fuego",
@@ -29116,11 +29404,20 @@
      "source": "https://daupara.com/obra/hampi-mama-mujeres-medicina-"
     }
    ],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Health and Healing",
+    "Women and Gender",
+    "Elders and Knowledge",
+    "More-than-Human Relations"
+   ],
+   "primary_theme": "Health and Healing",
+   "families": [
+    "Knowledge and Continuity",
+    "Land and Environment",
+    "Lives and Relations"
+   ],
    "form": "Documentary",
-   "length": "Series"
+   "length": "Short"
   },
   "Q20261112-10-F3": {
    "title": "Hampi Mama Pasto, Curar la tierra y ofrendar al espíritu del agua",
@@ -29142,11 +29439,20 @@
      "source": "https://daupara.com/obra/hampi-mama-pasto-curar-la-tierra-y-ofrendar-al-espiritu-del-agua-"
     }
    ],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Health and Healing",
+    "Women and Gender",
+    "Elders and Knowledge",
+    "More-than-Human Relations"
+   ],
+   "primary_theme": "Health and Healing",
+   "families": [
+    "Knowledge and Continuity",
+    "Land and Environment",
+    "Lives and Relations"
+   ],
    "form": "Documentary",
-   "length": "Series"
+   "length": "Short"
   },
   "Q20261112-10-F4": {
    "title": "Hampi Mama Kamëntšá, Sanar el cuerpo desde la sagralidad de las plantas",
@@ -29168,11 +29474,20 @@
      "source": "https://daupara.com/obra/hampi-mama-kamnta-sanar-el-cuerpo-desde-la-sagralidad-de-las-plantas-"
     }
    ],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Health and Healing",
+    "Women and Gender",
+    "Elders and Knowledge",
+    "More-than-Human Relations"
+   ],
+   "primary_theme": "Health and Healing",
+   "families": [
+    "Knowledge and Continuity",
+    "Land and Environment",
+    "Lives and Relations"
+   ],
    "form": "Documentary",
-   "length": "Series"
+   "length": "Short"
   },
   "Q20261112-10-F5": {
    "title": "Hampi Mama Nasa, Sanar desde la espiritualidad",
@@ -29194,11 +29509,20 @@
      "source": "https://daupara.com/obra/hampi-mama-nasa-sanar-desde-la-espiritualidad"
     }
    ],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Health and Healing",
+    "Women and Gender",
+    "Elders and Knowledge",
+    "More-than-Human Relations"
+   ],
+   "primary_theme": "Health and Healing",
+   "families": [
+    "Knowledge and Continuity",
+    "Land and Environment",
+    "Lives and Relations"
+   ],
    "form": "Documentary",
-   "length": "Series"
+   "length": "Short"
   },
   "Q20261112-10-F6": {
    "title": "Hampi Mama Misak, sanar desde el vientre",
@@ -29220,11 +29544,20 @@
      "source": "https://daupara.com/obra/hampi-mama-misak-sanar-desde-el-vientre-"
     }
    ],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Health and Healing",
+    "Women and Gender",
+    "Elders and Knowledge",
+    "More-than-Human Relations"
+   ],
+   "primary_theme": "Health and Healing",
+   "families": [
+    "Knowledge and Continuity",
+    "Land and Environment",
+    "Lives and Relations"
+   ],
    "form": "Documentary",
-   "length": "Series"
+   "length": "Short"
   },
   "SA50-20261014-c6d731eec058-WORK-01": {
    "title": "Atizando la Hoguera",
@@ -29582,6 +29915,22 @@
    "form": null,
    "length": "Short"
   },
+  "Q20261121-23-F1": {
+   "title": "Guardiões de um Tesouro Linguístico",
+   "year": 2019,
+   "makers": [
+    {
+     "id": "SAB2-20261014-65c02a0f591c",
+     "name": "Elvis Ferreira de Sá"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "SAB2-20261014-22938e1c0ad7-WORK-01": {
    "title": "Xandoca",
    "year": 2019,
@@ -29685,11 +30034,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Memory and Oral History"
+   ],
+   "primary_theme": "Memory and Oral History",
+   "families": [
+    "Knowledge and Continuity"
+   ],
+   "form": "Documentary",
+   "length": "Short"
   },
   "SAB2-20261014-ce245304c05a-WORK-01": {
    "title": "Oro Maldito / Cursed Gold",
@@ -30221,10 +30574,17 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
+   "themes": [
+    "Health and Healing",
+    "More-than-Human Relations",
+    "Kinship"
+   ],
+   "primary_theme": "Health and Healing",
+   "families": [
+    "Land and Environment",
+    "Lives and Relations"
+   ],
+   "form": "Documentary",
    "length": null
   },
   "BETA30-20261106-F28": {
@@ -30237,11 +30597,19 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Art, Craft and Making",
+    "Women and Gender",
+    "Memory and Oral History"
+   ],
+   "primary_theme": "Art, Craft and Making",
+   "families": [
+    "Expression and Representation",
+    "Knowledge and Continuity",
+    "Lives and Relations"
+   ],
+   "form": "Documentary",
+   "length": "Short"
   },
   "BETA30-20261106-F29": {
    "title": "Matuna, la sombra del guerrero",
@@ -30263,11 +30631,17 @@
      "source": "https://www.retinalatina.org/peliculas/matuna-la-sombra-del-guerrero-rafael-mojica/"
     }
    ],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Cosmology and Origin Stories",
+    "Youth"
+   ],
+   "primary_theme": "Cosmology and Origin Stories",
+   "families": [
+    "Knowledge and Continuity",
+    "Lives and Relations"
+   ],
+   "form": "Fiction",
+   "length": "Short"
   },
   "BETA30-20261106-F30": {
    "title": "Ushui, la luna y el trueno",
@@ -30395,11 +30769,16 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Land Defense",
+    "More-than-Human Relations"
+   ],
+   "primary_theme": "Land Defense",
+   "families": [
+    "Land and Environment"
+   ],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "Q20261114-34-F1": {
    "title": "Luchando por Nuestros Derechos – El Juicio por el Caso Peaje Quino",
@@ -30504,11 +30883,17 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Land Defense",
+    "Resistance Movements"
+   ],
+   "primary_theme": "Land Defense",
+   "families": [
+    "Land and Environment",
+    "Sovereignty and Politics"
+   ],
    "form": "Documentary",
-   "length": null
+   "length": "Short"
   },
   "SAB2-20261014-2501b24c169e-F2": {
    "title": "TRANGOL, La Recuperación",
@@ -30577,11 +30962,18 @@
      "source": "https://miradanativa.org/pelicula/portawe-lelfvn-territorio-espiritual-de-la-vida-mapuche/"
     }
    ],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Land Defense",
+    "More-than-Human Relations",
+    "Elders and Knowledge"
+   ],
+   "primary_theme": "Land Defense",
+   "families": [
+    "Knowledge and Continuity",
+    "Land and Environment"
+   ],
    "form": "Documentary",
-   "length": null
+   "length": "Short"
   },
   "SAB2-20261014-2501b24c169e-F5": {
    "title": "Inkaleyiñ Taiñ Kalafken (Defendamos el lago Kalafken)",
@@ -30647,11 +31039,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Elders and Knowledge"
+   ],
+   "primary_theme": "Elders and Knowledge",
+   "families": [
+    "Knowledge and Continuity"
+   ],
    "form": "Documentary",
-   "length": null
+   "length": "Short"
   },
   "SAB2-20261014-2501b24c169e-F8": {
    "title": "Admongen: Mapuche Life in Wallmapu. Ep. 5: David Nahuelhual, Werken",
@@ -30663,11 +31059,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Elders and Knowledge"
+   ],
+   "primary_theme": "Elders and Knowledge",
+   "families": [
+    "Knowledge and Continuity"
+   ],
    "form": "Documentary",
-   "length": null
+   "length": "Short"
   },
   "Q20261121-246-F1": {
    "title": "AWKA KULLIN, Nacidas del Barro",
@@ -31167,9 +31567,13 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "More-than-Human Relations"
+   ],
+   "primary_theme": "More-than-Human Relations",
+   "families": [
+    "Land and Environment"
+   ],
    "form": "Documentary",
    "length": "Short"
   },
@@ -31775,11 +32179,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Health and Healing"
+   ],
+   "primary_theme": "Health and Healing",
+   "families": [
+    "Lives and Relations"
+   ],
+   "form": "Fiction",
+   "length": "Short"
   },
   "Q20261114-23-F1": {
    "title": "Becoming Buffalo",
@@ -31898,11 +32306,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Elders and Knowledge"
+   ],
+   "primary_theme": "Elders and Knowledge",
+   "families": [
+    "Knowledge and Continuity"
+   ],
+   "form": "Fiction",
+   "length": "Short"
   },
   "RESEARCH-FILM-20261031-800-NEW-352": {
    "title": "Uasheshkun",
@@ -31935,11 +32347,16 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Land Defense",
+    "Extractivism"
+   ],
+   "primary_theme": "Land Defense",
+   "families": [
+    "Land and Environment"
+   ],
+   "form": "Documentary",
+   "length": "Feature"
   },
   "RESEARCH-FILM-20261031-800-NEW-356": {
    "title": "Ea",
@@ -31951,11 +32368,19 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Land Defense",
+    "Sovereignty and Self-Determination",
+    "Kinship"
+   ],
+   "primary_theme": "Land Defense",
+   "families": [
+    "Land and Environment",
+    "Lives and Relations",
+    "Sovereignty and Politics"
+   ],
+   "form": "Documentary",
+   "length": "Feature"
   },
   "RESEARCH-FILM-20261031-800-NEW-357": {
    "title": "Honor of the Paintbrush",
@@ -31990,11 +32415,17 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Youth",
+    "Self-Representation and Countering Stereotypes"
+   ],
+   "primary_theme": "Youth",
+   "families": [
+    "Expression and Representation",
+    "Lives and Relations"
+   ],
+   "form": "Fiction",
+   "length": "Short"
   },
   "RESEARCH-FILM-20261031-800-NEW-359": {
    "title": "HOST",
@@ -32006,11 +32437,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Health and Healing"
+   ],
+   "primary_theme": "Health and Healing",
+   "families": [
+    "Lives and Relations"
+   ],
+   "form": "Experimental",
+   "length": "Short"
   },
   "RESEARCH-FILM-20261031-800-NEW-360": {
    "title": "Charip: Lightning in the River",
@@ -35815,9 +36250,18 @@
      "source": "https://kelluwunmedia.com/tuwun-3/"
     }
    ],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Women and Gender",
+    "Displacement and Migration",
+    "Kinship",
+    "Memory and Oral History"
+   ],
+   "primary_theme": "Women and Gender",
+   "families": [
+    "Knowledge and Continuity",
+    "Lives and Relations",
+    "Sovereignty and Politics"
+   ],
    "form": "Documentary",
    "length": "Short"
   },
@@ -35923,11 +36367,16 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Kinship",
+    "Youth"
+   ],
+   "primary_theme": "Kinship",
+   "families": [
+    "Lives and Relations"
+   ],
+   "form": "Fiction",
+   "length": "Short"
   },
   "NEW-288e467f0bc7-WORK-1": {
    "title": "Tejedoras de resistencia – El Buen Vivir",
@@ -39916,11 +40365,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Youth"
+   ],
+   "primary_theme": "Youth",
+   "families": [
+    "Lives and Relations"
+   ],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "NEW-434940552bf4-WORK-2": {
    "title": "Piny Pyta: a força de nossa medicina",
@@ -41186,10 +41639,14 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
+   "themes": [
+    "More-than-Human Relations"
+   ],
+   "primary_theme": "More-than-Human Relations",
+   "families": [
+    "Land and Environment"
+   ],
+   "form": "Animation",
    "length": "Short"
   },
   "BETA25-20261105-18-QMd9c74b": {
@@ -41748,11 +42205,18 @@
      "source": "https://habanerofilmsales.com/filmmakers/daniel-diaz"
     }
    ],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Self-Representation and Countering Stereotypes",
+    "Art, Craft and Making",
+    "Kinship"
+   ],
+   "primary_theme": "Self-Representation and Countering Stereotypes",
+   "families": [
+    "Expression and Representation",
+    "Lives and Relations"
+   ],
+   "form": "Documentary",
+   "length": "Feature"
   },
   "BETA4C-20261107-F03": {
    "title": "Pupuka",
@@ -41849,11 +42313,17 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Memory and Oral History",
+    "More-than-Human Relations"
+   ],
+   "primary_theme": "Memory and Oral History",
+   "families": [
+    "Knowledge and Continuity",
+    "Land and Environment"
+   ],
+   "form": "Hybrid",
+   "length": "Feature"
   },
   "BETA-AYOREO-20261107-3-FILM": {
    "title": "Yiquijmapiedie – Our Ways",
@@ -41865,10 +42335,17 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
+   "themes": [
+    "Art, Craft and Making",
+    "Elders and Knowledge",
+    "Memory and Oral History"
+   ],
+   "primary_theme": "Art, Craft and Making",
+   "families": [
+    "Expression and Representation",
+    "Knowledge and Continuity"
+   ],
+   "form": "Documentary",
    "length": null
   },
   "QM-234cb393b5-M3": {
@@ -42000,10 +42477,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
+   "themes": [
+    "Memory and Oral History",
+    "Elders and Knowledge"
+   ],
+   "primary_theme": "Memory and Oral History",
+   "families": [
+    "Knowledge and Continuity"
+   ],
+   "form": "Documentary",
    "length": null
   },
   "DIR-0212-QM2512de": {
@@ -49011,9 +49493,13 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Memory and Oral History"
+   ],
+   "primary_theme": "Memory and Oral History",
+   "families": [
+    "Knowledge and Continuity"
+   ],
    "form": null,
    "length": "Short"
   },
@@ -53267,11 +53753,16 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Extractivism",
+    "Land Defense"
+   ],
+   "primary_theme": "Extractivism",
+   "families": [
+    "Land and Environment"
+   ],
    "form": "Documentary",
-   "length": null
+   "length": "Short"
   },
   "Q20261114-22-F2": {
    "title": "Tsunki Aumatsamu",
@@ -53293,11 +53784,18 @@
      "source": "https://miradanativa.org/pelicula/tsunki-aumatsamu/"
     }
    ],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Cosmology and Origin Stories",
+    "More-than-Human Relations",
+    "Water"
+   ],
+   "primary_theme": "Cosmology and Origin Stories",
+   "families": [
+    "Knowledge and Continuity",
+    "Land and Environment"
+   ],
    "form": "Documentary",
-   "length": null
+   "length": "Short"
   },
   "Q20261114-22-F3": {
    "title": "Nankints: La otra historia",
