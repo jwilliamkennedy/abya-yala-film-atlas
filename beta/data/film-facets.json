@@ -3030,11 +3030,18 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Justice, Truth and Reconciliation",
+    "Youth",
+    "Kinship"
+   ],
+   "primary_theme": "Justice, Truth and Reconciliation",
+   "families": [
+    "Lives and Relations",
+    "Sovereignty and Politics"
+   ],
+   "form": "Documentary",
+   "length": "Feature"
   },
   "MIRROR-FILMOGRAPHY-20261107-055": {
    "title": "Trick or Treaty?",
@@ -3046,10 +3053,17 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
+   "themes": [
+    "Sovereignty and Self-Determination",
+    "Land Defense",
+    "Resistance Movements"
+   ],
+   "primary_theme": "Sovereignty and Self-Determination",
+   "families": [
+    "Land and Environment",
+    "Sovereignty and Politics"
+   ],
+   "form": "Documentary",
    "length": null
   },
   "MIRROR-FILMOGRAPHY-20261107-056": {
@@ -3078,10 +3092,16 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
+   "themes": [
+    "Land Defense",
+    "Self-Representation and Countering Stereotypes"
+   ],
+   "primary_theme": "Land Defense",
+   "families": [
+    "Expression and Representation",
+    "Land and Environment"
+   ],
+   "form": "Documentary",
    "length": null
   },
   "MIRROR-FILMOGRAPHY-20261107-058": {
@@ -3094,10 +3114,16 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
+   "themes": [
+    "Youth",
+    "Self-Representation and Countering Stereotypes"
+   ],
+   "primary_theme": "Youth",
+   "families": [
+    "Expression and Representation",
+    "Lives and Relations"
+   ],
+   "form": "Fiction",
    "length": null
   },
   "MIRROR-FILMOGRAPHY-20261107-059": {
@@ -3172,11 +3198,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Memory and Oral History"
+   ],
+   "primary_theme": "Memory and Oral History",
+   "families": [
+    "Knowledge and Continuity"
+   ],
+   "form": "Documentary",
+   "length": "Feature"
   },
   "MIRROR-FILMOGRAPHY-20261107-063": {
    "title": "Sigwan",
@@ -3210,11 +3240,19 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Sovereignty and Self-Determination",
+    "Land Defense",
+    "Water",
+    "Resistance Movements"
+   ],
+   "primary_theme": "Sovereignty and Self-Determination",
+   "families": [
+    "Land and Environment",
+    "Sovereignty and Politics"
+   ],
+   "form": "Documentary",
+   "length": "Feature"
   },
   "MIRROR-FILMOGRAPHY-20261107-065": {
    "title": "Is the Crown at War with Us?",
@@ -3274,10 +3312,16 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
+   "themes": [
+    "Land Defense",
+    "Resistance Movements"
+   ],
+   "primary_theme": "Land Defense",
+   "families": [
+    "Land and Environment",
+    "Sovereignty and Politics"
+   ],
+   "form": "Documentary",
    "length": null
   },
   "MIRROR-FILMOGRAPHY-20261107-068": {
@@ -3351,10 +3395,16 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
+   "themes": [
+    "Urban Indigeneity",
+    "Displacement and Migration"
+   ],
+   "primary_theme": "Urban Indigeneity",
+   "families": [
+    "Lives and Relations",
+    "Sovereignty and Politics"
+   ],
+   "form": "Documentary",
    "length": null
   },
   "MIRROR-FILMOGRAPHY-20261107-072": {
@@ -3367,11 +3417,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Health and Healing"
+   ],
+   "primary_theme": "Health and Healing",
+   "families": [
+    "Lives and Relations"
+   ],
+   "form": "Documentary",
+   "length": "Short"
   },
   "MIRROR-FILMOGRAPHY-20261107-073": {
    "title": "Richard Cardinal: Cry from a Diary of a Métis Child",
@@ -3429,10 +3483,14 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
+   "themes": [
+    "Food Sovereignty"
+   ],
+   "primary_theme": "Food Sovereignty",
+   "families": [
+    "Land and Environment"
+   ],
+   "form": "Documentary",
    "length": null
   },
   "MIRROR-FILMOGRAPHY-20261107-076": {
@@ -3461,11 +3519,19 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Women and Gender",
+    "Kinship",
+    "Linguistic Preservation",
+    "Elders and Knowledge"
+   ],
+   "primary_theme": "Women and Gender",
+   "families": [
+    "Knowledge and Continuity",
+    "Lives and Relations"
+   ],
+   "form": "Documentary",
+   "length": "Feature"
   },
   "MIRROR-FILMOGRAPHY-20261107-078": {
    "title": "Sounds From Our People: Cold Journey",
@@ -4120,11 +4186,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "More-than-Human Relations"
+   ],
+   "primary_theme": "More-than-Human Relations",
+   "families": [
+    "Land and Environment"
+   ],
+   "form": "Documentary",
+   "length": "Short"
   },
   "CHECKED-DIR-0061-lake": {
    "title": "Lake",
@@ -4852,11 +4922,19 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Women and Gender",
+    "Land Defense",
+    "Resistance Movements"
+   ],
+   "primary_theme": "Women and Gender",
+   "families": [
+    "Land and Environment",
+    "Lives and Relations",
+    "Sovereignty and Politics"
+   ],
+   "form": "Documentary",
+   "length": "Feature"
   },
   "Q20261115-92-F2": {
    "title": "The Story of the Coast Salish Knitters",
@@ -4868,10 +4946,19 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
+   "themes": [
+    "Art, Craft and Making",
+    "Women and Gender",
+    "Kinship",
+    "Elders and Knowledge"
+   ],
+   "primary_theme": "Art, Craft and Making",
+   "families": [
+    "Expression and Representation",
+    "Knowledge and Continuity",
+    "Lives and Relations"
+   ],
+   "form": "Documentary",
    "length": null
   },
   "Q20261115-92-F3": {
@@ -6625,11 +6712,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Women and Gender"
+   ],
+   "primary_theme": "Women and Gender",
+   "families": [
+    "Lives and Relations"
+   ],
+   "form": "Documentary",
+   "length": "Feature"
   },
   "FILM-SRC-2023-00008": {
    "title": "WaaPaKe",
@@ -7776,11 +7867,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Music and Performance"
+   ],
+   "primary_theme": "Music and Performance",
+   "families": [
+    "Expression and Representation"
+   ],
+   "form": "Documentary",
+   "length": "Short"
   },
   "Q20261115-98-F5": {
    "title": "Number 14",
@@ -7840,11 +7935,18 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Kinship",
+    "Art, Craft and Making",
+    "Music and Performance"
+   ],
+   "primary_theme": "Kinship",
+   "families": [
+    "Expression and Representation",
+    "Lives and Relations"
+   ],
+   "form": "Documentary",
+   "length": "Feature"
   },
   "Q20261115-98-F9": {
    "title": "How We Stand",
@@ -9930,11 +10032,16 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "State Violence and Genocide",
+    "Justice, Truth and Reconciliation"
+   ],
+   "primary_theme": "State Violence and Genocide",
+   "families": [
+    "Sovereignty and Politics"
+   ],
+   "form": "Documentary",
+   "length": "Feature"
   },
   "Q20261115-93-F2": {
    "title": "Birth of a Family",
@@ -9946,11 +10053,18 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Kinship",
+    "Displacement and Migration",
+    "State Violence and Genocide"
+   ],
+   "primary_theme": "Kinship",
+   "families": [
+    "Lives and Relations",
+    "Sovereignty and Politics"
+   ],
+   "form": "Documentary",
+   "length": "Feature"
   },
   "Q20261115-93-F3": {
    "title": "7 Minutes",
@@ -10555,11 +10669,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Health and Healing"
+   ],
+   "primary_theme": "Health and Healing",
+   "families": [
+    "Lives and Relations"
+   ],
+   "form": "Experimental",
+   "length": "Short"
   },
   "MIRROR-FILMOGRAPHY-20261107-025": {
    "title": "Love & Numbers",
@@ -10592,11 +10710,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Health and Healing"
+   ],
+   "primary_theme": "Health and Healing",
+   "families": [
+    "Lives and Relations"
+   ],
+   "form": "Experimental",
+   "length": "Short"
   },
   "MIRROR-FILMOGRAPHY-20261107-027": {
    "title": "Helpless Maiden Makes an “I” Statement",
@@ -11005,11 +11127,16 @@
      "source": "https://www.nfb.ca/film/club_native/"
     }
    ],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Kinship",
+    "Women and Gender"
+   ],
+   "primary_theme": "Kinship",
+   "families": [
+    "Lives and Relations"
+   ],
+   "form": "Documentary",
+   "length": "Feature"
   },
   "Q20261115-762-F2": {
    "title": "Kanien’kehá:ka/Living the Language",
@@ -11045,11 +11172,17 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Borders",
+    "Youth"
+   ],
+   "primary_theme": "Borders",
+   "families": [
+    "Lives and Relations",
+    "Sovereignty and Politics"
+   ],
+   "form": "Fiction",
+   "length": "Short"
   },
   "DIR-0159-F1": {
    "title": "Portraits from a Fire",
@@ -11980,11 +12113,16 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Art, Craft and Making",
+    "Music and Performance"
+   ],
+   "primary_theme": "Art, Craft and Making",
+   "families": [
+    "Expression and Representation"
+   ],
+   "form": "Documentary",
+   "length": "Short"
   },
   "Q20261115-761-F7": {
    "title": "Kayak to Klemtu",
@@ -13365,9 +13503,17 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Elders and Knowledge",
+    "More-than-Human Relations",
+    "Kinship"
+   ],
+   "primary_theme": "Elders and Knowledge",
+   "families": [
+    "Knowledge and Continuity",
+    "Land and Environment",
+    "Lives and Relations"
+   ],
    "form": null,
    "length": null
   },
@@ -17066,9 +17212,16 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Elders and Knowledge",
+    "Youth",
+    "Kinship"
+   ],
+   "primary_theme": "Elders and Knowledge",
+   "families": [
+    "Knowledge and Continuity",
+    "Lives and Relations"
+   ],
    "form": null,
    "length": null
   },
@@ -18218,11 +18371,18 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Cosmology and Origin Stories",
+    "Memory and Oral History",
+    "More-than-Human Relations"
+   ],
+   "primary_theme": "Cosmology and Origin Stories",
+   "families": [
+    "Knowledge and Continuity",
+    "Land and Environment"
+   ],
+   "form": "Experimental",
+   "length": "Short"
   },
   "MIRROR-FILMOGRAPHY-20261107-036": {
    "title": "Sunflower Siege Engine",
@@ -18234,11 +18394,18 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Resistance Movements",
+    "Archives, Museums and Repatriation",
+    "Sovereignty and Self-Determination"
+   ],
+   "primary_theme": "Resistance Movements",
+   "families": [
+    "Knowledge and Continuity",
+    "Sovereignty and Politics"
+   ],
+   "form": "Experimental",
+   "length": "Short"
   },
   "MIRROR-FILMOGRAPHY-20261107-037": {
    "title": "Lore",
@@ -18390,11 +18557,18 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Memory and Oral History",
+    "Elders and Knowledge",
+    "Kinship"
+   ],
+   "primary_theme": "Memory and Oral History",
+   "families": [
+    "Knowledge and Continuity",
+    "Lives and Relations"
+   ],
+   "form": "Experimental",
+   "length": "Short"
   },
   "MIRROR-FILMOGRAPHY-20261107-045": {
    "title": "wawa",
@@ -18438,11 +18612,20 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Cosmology and Origin Stories",
+    "Kinship",
+    "More-than-Human Relations",
+    "Memory and Oral History"
+   ],
+   "primary_theme": "Cosmology and Origin Stories",
+   "families": [
+    "Knowledge and Continuity",
+    "Land and Environment",
+    "Lives and Relations"
+   ],
+   "form": "Experimental",
+   "length": "Short"
   },
   "MIRROR-FILMOGRAPHY-20261107-047": {
    "title": "Subterranean Moon",
@@ -18496,11 +18679,17 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Kinship",
+    "Memory and Oral History"
+   ],
+   "primary_theme": "Kinship",
+   "families": [
+    "Knowledge and Continuity",
+    "Lives and Relations"
+   ],
+   "form": "Experimental",
+   "length": "Short"
   },
   "MIRROR-FILMOGRAPHY-20261107-050": {
    "title": "Here you are before the trees",
@@ -21175,11 +21364,17 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "LGBTQIA2S",
+    "Environmental Change"
+   ],
+   "primary_theme": "LGBTQIA2S",
+   "families": [
+    "Land and Environment",
+    "Lives and Relations"
+   ],
+   "form": "Animation",
+   "length": "Short"
   },
   "NEW-60305ce10147-WORK-1": {
    "title": "Manoá – A Lenda das Queixadas",
@@ -21801,11 +21996,18 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Self-Representation and Countering Stereotypes",
+    "Women and Gender",
+    "Kinship"
+   ],
+   "primary_theme": "Self-Representation and Countering Stereotypes",
+   "families": [
+    "Expression and Representation",
+    "Lives and Relations"
+   ],
+   "form": "Fiction",
+   "length": "Short"
   },
   "NEW-7314e3db4581-WORK-1": {
    "title": "Midnight Migrations: Wëdzey Tąy (Caribou Trails)",
@@ -22170,11 +22372,19 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Land Defense",
+    "Health and Healing",
+    "Urban Indigeneity",
+    "Environmental Change"
+   ],
+   "primary_theme": "Land Defense",
+   "families": [
+    "Land and Environment",
+    "Lives and Relations"
+   ],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "NEW-29965da2d9cb-WORK-1": {
    "title": "Abinoojiikaasmin (We Act Like Children)",
@@ -22367,10 +22577,17 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
+   "themes": [
+    "Justice, Truth and Reconciliation",
+    "Sovereignty and Self-Determination",
+    "Collective and Community Media"
+   ],
+   "primary_theme": "Justice, Truth and Reconciliation",
+   "families": [
+    "Expression and Representation",
+    "Sovereignty and Politics"
+   ],
+   "form": "Documentary",
    "length": null
   },
   "NEW-b711f8b08315-W1031-1": {
@@ -22670,10 +22887,17 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
+   "themes": [
+    "Kinship",
+    "Elders and Knowledge",
+    "Health and Healing"
+   ],
+   "primary_theme": "Kinship",
+   "families": [
+    "Knowledge and Continuity",
+    "Lives and Relations"
+   ],
+   "form": "Documentary",
    "length": null
   },
   "NEW-530611f5ba51-WORK-1": {
@@ -22734,11 +22958,18 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Residential and Boarding Schools",
+    "Memory and Oral History",
+    "Youth"
+   ],
+   "primary_theme": "Residential and Boarding Schools",
+   "families": [
+    "Knowledge and Continuity",
+    "Lives and Relations"
+   ],
+   "form": "Documentary",
+   "length": "Short"
   },
   "NEW-473fa4602c6b-WORK-1": {
    "title": "Dream Touch Believe",
@@ -27307,9 +27538,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Youth",
+    "Kinship",
+    "Health and Healing"
+   ],
+   "primary_theme": "Youth",
+   "families": [
+    "Lives and Relations"
+   ],
    "form": null,
    "length": null
   },
@@ -28947,11 +29184,18 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Land Defense",
+    "Borders",
+    "Resistance Movements"
+   ],
+   "primary_theme": "Land Defense",
+   "families": [
+    "Land and Environment",
+    "Sovereignty and Politics"
+   ],
    "form": "Documentary",
-   "length": null
+   "length": "Short"
   },
   "SAB2-20261014-2501b24c169e-F7": {
    "title": "Admongen, Vida Mapuche en Wallmapu. Ep. 3: Luis Tori, Werken",
@@ -32691,10 +32935,14 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
+   "themes": [
+    "Art, Craft and Making"
+   ],
+   "primary_theme": "Art, Craft and Making",
+   "families": [
+    "Expression and Representation"
+   ],
+   "form": "Documentary",
    "length": null
   },
   "Q20261115-96-F3": {
@@ -32723,11 +32971,19 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "MMIWG2S",
+    "Resistance Movements",
+    "Women and Gender",
+    "Kinship"
+   ],
+   "primary_theme": "MMIWG2S",
+   "families": [
+    "Lives and Relations",
+    "Sovereignty and Politics"
+   ],
+   "form": "Documentary",
+   "length": "Feature"
   },
   "Q20261115-96-F5": {
    "title": "Little Boy Who Lived with Muini'skw",
@@ -43283,11 +43539,17 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": "Animation",
-   "length": null
+   "themes": [
+    "Youth",
+    "Collective and Community Media"
+   ],
+   "primary_theme": "Youth",
+   "families": [
+    "Expression and Representation",
+    "Lives and Relations"
+   ],
+   "form": "Fiction",
+   "length": "Short"
   },
   "Q20261114-10-F1": {
    "title": "Wapos Bay: Dance Monkey, Dance",
@@ -43299,11 +43561,19 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": "Animation",
-   "length": null
+   "themes": [
+    "Youth",
+    "Music and Performance",
+    "Elders and Knowledge"
+   ],
+   "primary_theme": "Youth",
+   "families": [
+    "Expression and Representation",
+    "Knowledge and Continuity",
+    "Lives and Relations"
+   ],
+   "form": "Fiction",
+   "length": "Short"
   },
   "Q20261114-12-F1": {
    "title": "Waseteg",
@@ -43315,11 +43585,18 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": "Animation",
-   "length": null
+   "themes": [
+    "Kinship",
+    "Youth",
+    "More-than-Human Relations"
+   ],
+   "primary_theme": "Kinship",
+   "families": [
+    "Land and Environment",
+    "Lives and Relations"
+   ],
+   "form": "Fiction",
+   "length": "Short"
   },
   "Q20261114-76-F1": {
    "title": "Maq and the Spirit of the Woods",
@@ -43331,9 +43608,16 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Youth",
+    "Elders and Knowledge",
+    "Memory and Oral History"
+   ],
+   "primary_theme": "Youth",
+   "families": [
+    "Knowledge and Continuity",
+    "Lives and Relations"
+   ],
    "form": "Animation",
    "length": "Short"
   },
@@ -43433,9 +43717,13 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "More-than-Human Relations"
+   ],
+   "primary_theme": "More-than-Human Relations",
+   "families": [
+    "Land and Environment"
+   ],
    "form": "Animation",
    "length": "Short"
   },
@@ -45037,11 +45325,17 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Music and Performance",
+    "Kinship"
+   ],
+   "primary_theme": "Music and Performance",
+   "families": [
+    "Expression and Representation",
+    "Lives and Relations"
+   ],
    "form": "Documentary",
-   "length": null
+   "length": "Feature"
   },
   "Q20261114-79-F2": {
    "title": "Stories from the Seventh Fire: Summer",
@@ -45073,11 +45367,18 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Justice, Truth and Reconciliation",
+    "Sovereignty and Self-Determination",
+    "Collective and Community Media"
+   ],
+   "primary_theme": "Justice, Truth and Reconciliation",
+   "families": [
+    "Expression and Representation",
+    "Sovereignty and Politics"
+   ],
    "form": "Documentary",
-   "length": null
+   "length": "Feature"
   },
   "Q20261114-110-F1": {
    "title": "Kla Ah Men: As Far Back as the Story Goes",
@@ -46089,11 +46390,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Self-Representation and Countering Stereotypes"
+   ],
+   "primary_theme": "Self-Representation and Countering Stereotypes",
+   "families": [
+    "Expression and Representation"
+   ],
+   "form": "Experimental",
+   "length": "Short"
   },
   "Q20261115-501-F4": {
    "title": "Kakalakkuvik (Where the Children Dwell)",
@@ -46131,11 +46436,17 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Kinship",
+    "Memory and Oral History"
+   ],
+   "primary_theme": "Kinship",
+   "families": [
+    "Knowledge and Continuity",
+    "Lives and Relations"
+   ],
+   "form": "Documentary",
+   "length": "Short"
   },
   "Q20261115-764-F1": {
    "title": "Arrivals and Departures",
