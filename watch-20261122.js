@@ -15,7 +15,7 @@ const makerText=f=>f.makers.map(m=>m.name).join(', ');
 const peopleText=f=>[...new Set(f.makers.map(m=>m.people).filter(Boolean))].join(', ');
 const mapHref=f=>`./#view=films&maker=${encodeURIComponent(f.makers[0].id)}&film=${encodeURIComponent(f.fid)}`;
 const makersHTML=f=>f.makers.map(m=>`<a href="maker/${encodeURIComponent(m.id)}.html">${esc(m.name)}</a>${m.people?` (${esc(m.people)})`:''}`).join(', ');
-const FAMILIES=['Land and Environment','Sovereignty and Politics','Knowledge and Continuity','Lives and Relations','Expression and Representation'];
+const THEME_VOCAB=W.families||{"Land and Environment":["Land Defense","Water","Extractivism","Environmental Change","More-than-Human Relations","Food Sovereignty"],"Sovereignty and Politics":["Sovereignty and Self-Determination","Resistance Movements","Borders","Displacement and Migration","State Violence and Genocide","Justice, Truth and Reconciliation","MMIWG2S"],"Knowledge and Continuity":["Linguistic Preservation","Memory and Oral History","Elders and Knowledge","Cosmology and Origin Stories","Residential and Boarding Schools","Archives, Museums and Repatriation"],"Lives and Relations":["Kinship","Youth","Women and Gender","LGBTQIA2S","Health and Healing","Urban Indigeneity"],"Expression and Representation":["Music and Performance","Art, Craft and Making","Non-Conformity / Punk Film","Self-Representation and Countering Stereotypes","Collective and Community Media"]},FAMILIES=Object.keys(THEME_VOCAB);
 const params=new URLSearchParams(location.search);
 const state={view:'browse',q:'',theme:params.get('theme')||'',pick:null,sort:'title',here:false,now:null};
 try{const s=JSON.parse(localStorage.getItem('atlas-watch-view')||'{}');if(['maker','new','title'].includes(s.sort))state.sort=s.sort;state.here=!!s.here;}catch(e){}
@@ -70,18 +70,13 @@ $('#next').onclick=()=>{const p=visible().filter(f=>playable(f)&&f.fid!==state.n
 
 /* ---------- filters ---------- */
 const themeCount=new Map(),famCount=new Map();
-for(const f of data){for(const t of f.th||[])themeCount.set(t,(themeCount.get(t)||0)+1);for(const x of f.fam||[])famCount.set(x,(famCount.get(x)||0)+1);}
-const famOf=new Map();
-const sel=$('#theme');
-{const byFam=new Map(FAMILIES.map(x=>[x,[]]));byFam.set('',[]);
- // a theme's family is the family most of its films share it with
- for(const t of themeCount.keys()){const c=new Map();for(const f of data)if((f.th||[]).includes(t))for(const x of f.fam||[])c.set(x,(c.get(x)||0)+1);
-  const fam=[...c].sort((a,b)=>b[1]-a[1])[0]?.[0]||'';famOf.set(t,fam);(byFam.get(fam)||byFam.get('')).push(t);}
- let h='';for(const [fam,ts] of byFam){if(!ts.length)continue;
-  h+=`<optgroup label="${esc(fam||'More themes')}">`+(fam?`<option value="fam:${esc(fam)}">All in ${esc(fam)} (${famCount.get(fam)||0})</option>`:'')
-   +ts.sort((a,b)=>a.localeCompare(b)).map(t=>`<option value="${esc(t)}">${esc(t)} (${themeCount.get(t)})</option>`).join('')+'</optgroup>';}
+for(const f of data){for(const t of new Set(f.th||[]))themeCount.set(t,(themeCount.get(t)||0)+1);for(const x of new Set(f.fam||[]))famCount.set(x,(famCount.get(x)||0)+1);}
+const sel=$('#theme'),knownThemes=new Set(Object.values(THEME_VOCAB).flat());
+{let h='';for(const [fam,ts] of Object.entries(THEME_VOCAB)){
+  h+=`<optgroup label="${esc(fam)}"><option value="fam:${esc(fam)}">All in ${esc(fam)} (${famCount.get(fam)||0})</option>`
+   +ts.map(t=>`<option value="${esc(t)}">${esc(t)} (${themeCount.get(t)||0})</option>`).join('')+'</optgroup>';}
  sel.insertAdjacentHTML('beforeend',h);}
-if(state.theme&&!themeCount.has(state.theme)&&!(state.theme.startsWith('fam:')&&famCount.has(state.theme.slice(4))))state.theme='';
+if(state.theme&&!knownThemes.has(state.theme)&&!(state.theme.startsWith('fam:')&&FAMILIES.includes(state.theme.slice(4))))state.theme='';
 if(params.get('c')){const cs=params.get('c').split(',').filter(c=>COUNTRY[c]);if(cs.length)state.pick={kind:'c',keys:cs,label:listNames(cs.map(countryName))};}
 if(params.get('len')==='S'||params.get('len')==='F')state.pick={kind:'len',keys:[params.get('len')],label:params.get('len')==='S'?'Short films':'Feature films'};
 if(state.theme||state.pick||params.get('view')==='az')state.view='az';

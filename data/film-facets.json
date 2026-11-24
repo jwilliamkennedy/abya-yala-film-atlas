@@ -1053,11 +1053,17 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Cosmology and Origin Stories",
+    "More-than-Human Relations"
+   ],
+   "primary_theme": "Cosmology and Origin Stories",
+   "families": [
+    "Knowledge and Continuity",
+    "Land and Environment"
+   ],
    "form": "Documentary",
-   "length": null
+   "length": "Feature"
   },
   "FILM-0015": {
    "title": "Bicicletas de Nhanderu",
@@ -1195,11 +1201,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Youth"
+   ],
+   "primary_theme": "Youth",
+   "families": [
+    "Lives and Relations"
+   ],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "FILM-0055": {
    "title": "No caminho com Mario",
@@ -5069,10 +5079,11 @@
    ],
    "languages": [],
    "themes": [
+    "LGBTQIA2S",
     "Youth",
     "Self-Representation and Countering Stereotypes"
    ],
-   "primary_theme": "Youth",
+   "primary_theme": "LGBTQIA2S",
    "families": [
     "Expression and Representation",
     "Lives and Relations"
@@ -6928,11 +6939,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "LGBTQIA2S"
+   ],
+   "primary_theme": "LGBTQIA2S",
+   "families": [
+    "Lives and Relations"
+   ],
+   "form": "Fiction",
+   "length": "Short"
   },
   "DIR-0107-Q20261115-850-F11": {
    "title": "APishKweShiMon",
@@ -9466,9 +9481,13 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "LGBTQIA2S"
+   ],
+   "primary_theme": "LGBTQIA2S",
+   "families": [
+    "Lives and Relations"
+   ],
    "form": null,
    "length": null
   },
@@ -10306,9 +10325,13 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "LGBTQIA2S"
+   ],
+   "primary_theme": "LGBTQIA2S",
+   "families": [
+    "Lives and Relations"
+   ],
    "form": null,
    "length": null
   },
@@ -12683,9 +12706,13 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Health and Healing"
+   ],
+   "primary_theme": "Health and Healing",
+   "families": [
+    "Lives and Relations"
+   ],
    "form": "Animation",
    "length": "Short"
   },
@@ -12863,9 +12890,13 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Art, Craft and Making"
+   ],
+   "primary_theme": "Art, Craft and Making",
+   "families": [
+    "Expression and Representation"
+   ],
    "form": "Experimental",
    "length": null
   },
@@ -13683,11 +13714,16 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Elders and Knowledge",
+    "Memory and Oral History"
+   ],
+   "primary_theme": "Elders and Knowledge",
+   "families": [
+    "Knowledge and Continuity"
+   ],
+   "form": "Fiction",
+   "length": "Short"
   },
   "BETA30B-20261107-F15": {
    "title": "Aquel cuatro de noviembre",
@@ -13739,11 +13775,19 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Kinship",
+    "Land Defense",
+    "Sovereignty and Self-Determination"
+   ],
+   "primary_theme": "Kinship",
+   "families": [
+    "Land and Environment",
+    "Lives and Relations",
+    "Sovereignty and Politics"
+   ],
+   "form": "Documentary",
+   "length": "Short"
   },
   "DIR-0187-QM1eab5e": {
    "title": "El buen vivir – temporada 4",
@@ -14124,11 +14168,19 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Sovereignty and Self-Determination",
+    "Land Defense",
+    "Art, Craft and Making"
+   ],
+   "primary_theme": "Sovereignty and Self-Determination",
+   "families": [
+    "Expression and Representation",
+    "Land and Environment",
+    "Sovereignty and Politics"
+   ],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "FILM-0148": {
    "title": "Sachata Kishipichik Mani (I Am the Defender of the Jungle)",
@@ -14156,11 +14208,20 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Land Defense",
+    "Extractivism",
+    "Resistance Movements",
+    "Women and Gender"
+   ],
+   "primary_theme": "Land Defense",
+   "families": [
+    "Land and Environment",
+    "Lives and Relations",
+    "Sovereignty and Politics"
+   ],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "FILM-0150": {
    "title": "The Return",
@@ -14172,11 +14233,16 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Health and Healing",
+    "Kinship"
+   ],
+   "primary_theme": "Health and Healing",
+   "families": [
+    "Lives and Relations"
+   ],
+   "form": "Documentary",
+   "length": "Short"
   },
   "DIR-0199-F1": {
    "title": "Los descendientes del jaguar",
@@ -14789,9 +14855,13 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "LGBTQIA2S"
+   ],
+   "primary_theme": "LGBTQIA2S",
+   "families": [
+    "Lives and Relations"
+   ],
    "form": null,
    "length": null
   },
@@ -15595,11 +15665,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "More-than-Human Relations"
+   ],
+   "primary_theme": "More-than-Human Relations",
+   "families": [
+    "Land and Environment"
+   ],
+   "form": "Documentary",
+   "length": "Short"
   },
   "DIR-0229-W1031-4": {
    "title": "El rebozo de mi madre",
@@ -17271,11 +17345,19 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "More-than-Human Relations",
+    "Elders and Knowledge",
+    "Sovereignty and Self-Determination"
+   ],
+   "primary_theme": "More-than-Human Relations",
+   "families": [
+    "Knowledge and Continuity",
+    "Land and Environment",
+    "Sovereignty and Politics"
+   ],
+   "form": "Documentary",
+   "length": "Short"
   },
   "BETA30B-20261107-F12": {
    "title": "Canción sin miedo. Juntanza de mujeres indígenas colombianas",
@@ -19948,7 +20030,8 @@
    "themes": [
     "Kinship",
     "Women and Gender",
-    "Music and Performance"
+    "Music and Performance",
+    "LGBTQIA2S"
    ],
    "primary_theme": "Kinship",
    "families": [
@@ -20635,11 +20718,17 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Art, Craft and Making",
+    "Women and Gender"
+   ],
+   "primary_theme": "Art, Craft and Making",
+   "families": [
+    "Expression and Representation",
+    "Lives and Relations"
+   ],
+   "form": "Documentary",
+   "length": "Short"
   },
   "Q20261121-17-F1": {
    "title": "Minha Alma Não Tem Cor",
@@ -23326,9 +23415,13 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "LGBTQIA2S"
+   ],
+   "primary_theme": "LGBTQIA2S",
+   "families": [
+    "Lives and Relations"
+   ],
    "form": null,
    "length": null
   },
@@ -26964,11 +27057,19 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Land Defense",
+    "Resistance Movements",
+    "Archives, Museums and Repatriation"
+   ],
+   "primary_theme": "Land Defense",
+   "families": [
+    "Knowledge and Continuity",
+    "Land and Environment",
+    "Sovereignty and Politics"
+   ],
+   "form": "Documentary",
+   "length": "Short"
   },
   "SA50-20261014-3e3ac546338d-FD1": {
    "title": "Nhakpoti Star Girl",
@@ -27020,11 +27121,19 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "More-than-Human Relations",
+    "Kinship",
+    "Collective and Community Media"
+   ],
+   "primary_theme": "More-than-Human Relations",
+   "families": [
+    "Expression and Representation",
+    "Land and Environment",
+    "Lives and Relations"
+   ],
+   "form": "Documentary",
+   "length": "Short"
   },
   "SA50-20261014-3646d5d9be66-WORK-01": {
    "title": "Oxe Thepe Iriamu — Brincando com as crianças",
@@ -27052,11 +27161,17 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Youth",
+    "Self-Representation and Countering Stereotypes"
+   ],
+   "primary_theme": "Youth",
+   "families": [
+    "Expression and Representation",
+    "Lives and Relations"
+   ],
+   "form": "Documentary",
+   "length": "Short"
   },
   "SA50-20261014-4c05b1125ca7-WORK-01": {
    "title": "Warmi Pachakutik / Tiempo de mujeres",
@@ -27283,11 +27398,18 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Land Defense",
+    "Extractivism",
+    "Sovereignty and Self-Determination"
+   ],
+   "primary_theme": "Land Defense",
+   "families": [
+    "Land and Environment",
+    "Sovereignty and Politics"
+   ],
+   "form": "Documentary",
+   "length": "Short"
   },
   "SA50-20261014-21ad260edcc3-WORK-01": {
    "title": "LimaShipibo",
@@ -27554,10 +27676,17 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
+   "themes": [
+    "Extractivism",
+    "More-than-Human Relations",
+    "Cosmology and Origin Stories"
+   ],
+   "primary_theme": "Extractivism",
+   "families": [
+    "Knowledge and Continuity",
+    "Land and Environment"
+   ],
+   "form": "Fiction",
    "length": null
   },
   "SA50-20261014-13c9baba1fb3-WORK-01": {
@@ -27635,10 +27764,16 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
+   "themes": [
+    "More-than-Human Relations",
+    "Health and Healing"
+   ],
+   "primary_theme": "More-than-Human Relations",
+   "families": [
+    "Land and Environment",
+    "Lives and Relations"
+   ],
+   "form": "Fiction",
    "length": null
   },
   "SA50-20261014-fb0a064f4eff-WORK-01": {
@@ -27875,10 +28010,17 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
+   "themes": [
+    "Elders and Knowledge",
+    "Memory and Oral History",
+    "More-than-Human Relations"
+   ],
+   "primary_theme": "Elders and Knowledge",
+   "families": [
+    "Knowledge and Continuity",
+    "Land and Environment"
+   ],
+   "form": "Documentary",
    "length": null
   },
   "SA50-20261014-b13c85277547-WORK-01": {
@@ -27891,10 +28033,17 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
+   "themes": [
+    "Kinship",
+    "Health and Healing",
+    "Elders and Knowledge"
+   ],
+   "primary_theme": "Kinship",
+   "families": [
+    "Knowledge and Continuity",
+    "Lives and Relations"
+   ],
+   "form": "Fiction",
    "length": null
   },
   "SA50-20261014-b13c85277547-QM7f4ded": {
@@ -28073,11 +28222,19 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Kinship",
+    "Elders and Knowledge",
+    "More-than-Human Relations"
+   ],
+   "primary_theme": "Kinship",
+   "families": [
+    "Knowledge and Continuity",
+    "Land and Environment",
+    "Lives and Relations"
+   ],
+   "form": "Documentary",
+   "length": "Short"
   },
   "SA50-20261014-14e876264d18-WORK-02": {
    "title": "Sa’anasia Lapü — Lo bueno de los sueños",
@@ -28115,11 +28272,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Sovereignty and Self-Determination"
+   ],
+   "primary_theme": "Sovereignty and Self-Determination",
+   "families": [
+    "Sovereignty and Politics"
+   ],
+   "form": "Documentary",
+   "length": "Short"
   },
   "SAB2-20261014-bcdd867e2132-WORK-01": {
    "title": "Memória nas coisas do vovô",
@@ -28422,11 +28583,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Memory and Oral History"
+   ],
+   "primary_theme": "Memory and Oral History",
+   "families": [
+    "Knowledge and Continuity"
+   ],
+   "form": "Documentary",
+   "length": "Short"
   },
   "SAB2-20261014-d7ba4e1b0983-WORK-01": {
    "title": "Ações Núcleo Fulni-ô de Enfrentamento ao Covid-19 2020",
@@ -29024,11 +29189,20 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Women and Gender",
+    "Elders and Knowledge",
+    "Self-Representation and Countering Stereotypes",
+    "Cosmology and Origin Stories"
+   ],
+   "primary_theme": "Women and Gender",
+   "families": [
+    "Expression and Representation",
+    "Knowledge and Continuity",
+    "Lives and Relations"
+   ],
+   "form": "Documentary",
+   "length": "Feature"
   },
   "Q20261121-702-F1": {
    "title": "Siziwa – Danzar para que el planeta siga girando",
@@ -29065,11 +29239,19 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Land Defense",
+    "Environmental Change",
+    "Memory and Oral History",
+    "More-than-Human Relations"
+   ],
+   "primary_theme": "Land Defense",
+   "families": [
+    "Knowledge and Continuity",
+    "Land and Environment"
+   ],
+   "form": "Documentary",
+   "length": "Feature"
   },
   "SAB2-20261014-2501b24c169e-WORK-01": {
    "title": "ADMONGEN, Vida Mapuche en Wallmapu",
@@ -29101,11 +29283,17 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Sovereignty and Self-Determination",
+    "Collective and Community Media"
+   ],
+   "primary_theme": "Sovereignty and Self-Determination",
+   "families": [
+    "Expression and Representation",
+    "Sovereignty and Politics"
+   ],
+   "form": "Documentary",
+   "length": "Short"
   },
   "FILM-ADD-20261031-20": {
    "title": "TRENTREN, Challupen Lof",
@@ -29227,11 +29415,18 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Land Defense",
+    "State Violence and Genocide",
+    "Resistance Movements"
+   ],
+   "primary_theme": "Land Defense",
+   "families": [
+    "Land and Environment",
+    "Sovereignty and Politics"
+   ],
    "form": "Documentary",
-   "length": null
+   "length": "Short"
   },
   "SAB2-20261014-2501b24c169e-F3": {
    "title": "ELUWUN, Camilo Catrillanca",
@@ -29243,11 +29438,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "State Violence and Genocide"
+   ],
+   "primary_theme": "State Violence and Genocide",
+   "families": [
+    "Sovereignty and Politics"
+   ],
    "form": "Documentary",
-   "length": null
+   "length": "Short"
   },
   "SAB2-20261014-2501b24c169e-F4": {
    "title": "Portawe Lelfvn, Territorio Espiritual de la Vida Mapuche",
@@ -29293,11 +29492,18 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Water",
+    "Land Defense",
+    "Resistance Movements"
+   ],
+   "primary_theme": "Water",
+   "families": [
+    "Land and Environment",
+    "Sovereignty and Politics"
+   ],
    "form": "Documentary",
-   "length": null
+   "length": "Short"
   },
   "SAB2-20261014-2501b24c169e-F6": {
    "title": "Mawizache ñi Zugun, La Voz de la Gente de las Montañas",
@@ -29899,11 +30105,17 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Youth",
+    "Collective and Community Media"
+   ],
+   "primary_theme": "Youth",
+   "families": [
+    "Expression and Representation",
+    "Lives and Relations"
+   ],
    "form": "Documentary",
-   "length": null
+   "length": "Short"
   },
   "LEAD-20261031-0001-F4": {
    "title": "Chumechi ñi xipapan nafiu flanders",
@@ -31079,11 +31291,17 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Elders and Knowledge",
+    "Youth"
+   ],
+   "primary_theme": "Elders and Knowledge",
+   "families": [
+    "Knowledge and Continuity",
+    "Lives and Relations"
+   ],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "WAP-2026-NEW403": {
    "title": "Nuhe nenë boghílníh (Protégeons nos terres)",
@@ -31118,11 +31336,16 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Extractivism",
+    "Land Defense"
+   ],
+   "primary_theme": "Extractivism",
+   "families": [
+    "Land and Environment"
+   ],
+   "form": "Documentary",
+   "length": "Short"
   },
   "WAP-2026-NEW404": {
    "title": "Onickakw (Réveillez-vous)",
@@ -35403,9 +35626,13 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Music and Performance"
+   ],
+   "primary_theme": "Music and Performance",
+   "families": [
+    "Expression and Representation"
+   ],
    "form": null,
    "length": null
   },
@@ -38503,10 +38730,16 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
+   "themes": [
+    "Water",
+    "Sovereignty and Self-Determination"
+   ],
+   "primary_theme": "Water",
+   "families": [
+    "Land and Environment",
+    "Sovereignty and Politics"
+   ],
+   "form": "Documentary",
    "length": null
   },
   "NEW-551fa83631f3-WORK-1": {
@@ -39259,9 +39492,13 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Memory and Oral History"
+   ],
+   "primary_theme": "Memory and Oral History",
+   "families": [
+    "Knowledge and Continuity"
+   ],
    "form": "Documentary",
    "length": "Short"
   },
@@ -39275,11 +39512,20 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Land Defense",
+    "Environmental Change",
+    "Cosmology and Origin Stories",
+    "Youth"
+   ],
+   "primary_theme": "Land Defense",
+   "families": [
+    "Knowledge and Continuity",
+    "Land and Environment",
+    "Lives and Relations"
+   ],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "BETA25-20261105-05-FILM1": {
    "title": "Waska: The Forest Is My Family",
@@ -39295,9 +39541,16 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Extractivism",
+    "Land Defense",
+    "Memory and Oral History"
+   ],
+   "primary_theme": "Extractivism",
+   "families": [
+    "Knowledge and Continuity",
+    "Land and Environment"
+   ],
    "form": "Documentary",
    "length": "Short"
   },
@@ -40037,11 +40290,18 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Water",
+    "More-than-Human Relations",
+    "Youth"
+   ],
+   "primary_theme": "Water",
+   "families": [
+    "Land and Environment",
+    "Lives and Relations"
+   ],
+   "form": "Animation",
+   "length": "Short"
   },
   "BETA4C-20261107-F02": {
    "title": "Bajo sospecha: Zokunentu",
@@ -41027,11 +41287,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Music and Performance"
+   ],
+   "primary_theme": "Music and Performance",
+   "families": [
+    "Expression and Representation"
+   ],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "Q20261121-81-F1": {
    "title": "Transition",
@@ -41838,11 +42102,16 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Health and Healing",
+    "Women and Gender"
+   ],
+   "primary_theme": "Health and Healing",
+   "families": [
+    "Lives and Relations"
+   ],
+   "form": "Documentary",
+   "length": "Short"
   },
   "QM-577ad2c826-F1": {
    "title": "Nurdargana",
@@ -43170,11 +43439,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "LGBTQIA2S"
+   ],
+   "primary_theme": "LGBTQIA2S",
+   "families": [
+    "Lives and Relations"
+   ],
    "form": null,
-   "length": null
+   "length": "Feature"
   },
   "Q20261113-01-F1": {
    "title": "A través de Tola",
@@ -44690,9 +44963,16 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Cosmology and Origin Stories",
+    "Archives, Museums and Repatriation",
+    "Self-Representation and Countering Stereotypes"
+   ],
+   "primary_theme": "Cosmology and Origin Stories",
+   "families": [
+    "Expression and Representation",
+    "Knowledge and Continuity"
+   ],
    "form": "Animation",
    "length": "Short"
   },
@@ -44802,9 +45082,17 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Art, Craft and Making",
+    "Elders and Knowledge",
+    "Kinship"
+   ],
+   "primary_theme": "Art, Craft and Making",
+   "families": [
+    "Expression and Representation",
+    "Knowledge and Continuity",
+    "Lives and Relations"
+   ],
    "form": "Documentary",
    "length": "Short"
   },
@@ -49999,9 +50287,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Extractivism",
+    "Resistance Movements"
+   ],
+   "primary_theme": "Extractivism",
+   "families": [
+    "Land and Environment",
+    "Sovereignty and Politics"
+   ],
    "form": "Documentary",
    "length": null
   },
@@ -50015,9 +50309,16 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Women and Gender",
+    "LGBTQIA2S",
+    "Self-Representation and Countering Stereotypes"
+   ],
+   "primary_theme": "Women and Gender",
+   "families": [
+    "Expression and Representation",
+    "Lives and Relations"
+   ],
    "form": "Documentary",
    "length": null
   },
@@ -50079,9 +50380,13 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Youth"
+   ],
+   "primary_theme": "Youth",
+   "families": [
+    "Lives and Relations"
+   ],
    "form": "Fiction",
    "length": null
   },
@@ -50095,9 +50400,13 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Music and Performance"
+   ],
+   "primary_theme": "Music and Performance",
+   "families": [
+    "Expression and Representation"
+   ],
    "form": "Documentary",
    "length": null
   },
@@ -50115,9 +50424,16 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Music and Performance",
+    "Youth",
+    "Self-Representation and Countering Stereotypes"
+   ],
+   "primary_theme": "Music and Performance",
+   "families": [
+    "Expression and Representation",
+    "Lives and Relations"
+   ],
    "form": "Documentary",
    "length": null
   },
@@ -50131,9 +50447,17 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Food Sovereignty",
+    "Art, Craft and Making",
+    "Urban Indigeneity"
+   ],
+   "primary_theme": "Food Sovereignty",
+   "families": [
+    "Expression and Representation",
+    "Land and Environment",
+    "Lives and Relations"
+   ],
    "form": "Documentary",
    "length": null
   },
@@ -50207,9 +50531,13 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "More-than-Human Relations"
+   ],
+   "primary_theme": "More-than-Human Relations",
+   "families": [
+    "Land and Environment"
+   ],
    "form": "Fiction",
    "length": null
   },
@@ -50291,9 +50619,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Resistance Movements",
+    "Self-Representation and Countering Stereotypes"
+   ],
+   "primary_theme": "Resistance Movements",
+   "families": [
+    "Expression and Representation",
+    "Sovereignty and Politics"
+   ],
    "form": "Documentary",
    "length": null
   },
@@ -50319,9 +50653,14 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Land Defense",
+    "Environmental Change"
+   ],
+   "primary_theme": "Land Defense",
+   "families": [
+    "Land and Environment"
+   ],
    "form": "Documentary",
    "length": null
   },
@@ -50347,9 +50686,14 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Kinship",
+    "Youth"
+   ],
+   "primary_theme": "Kinship",
+   "families": [
+    "Lives and Relations"
+   ],
    "form": "Fiction",
    "length": null
   },
@@ -50367,9 +50711,16 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Youth",
+    "Health and Healing",
+    "Linguistic Preservation"
+   ],
+   "primary_theme": "Youth",
+   "families": [
+    "Knowledge and Continuity",
+    "Lives and Relations"
+   ],
    "form": "Fiction",
    "length": null
   },
@@ -50455,9 +50806,13 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Self-Representation and Countering Stereotypes"
+   ],
+   "primary_theme": "Self-Representation and Countering Stereotypes",
+   "families": [
+    "Expression and Representation"
+   ],
    "form": "Documentary",
    "length": null
   },
@@ -51231,9 +51586,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Music and Performance",
+    "Women and Gender"
+   ],
+   "primary_theme": "Music and Performance",
+   "families": [
+    "Expression and Representation",
+    "Lives and Relations"
+   ],
    "form": "Documentary",
    "length": null
   },
@@ -51343,11 +51704,19 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "MMIWG2S",
+    "Health and Healing",
+    "Music and Performance"
+   ],
+   "primary_theme": "MMIWG2S",
+   "families": [
+    "Expression and Representation",
+    "Lives and Relations",
+    "Sovereignty and Politics"
+   ],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "QW-WAPI-V287071242": {
    "title": "A WAY OF LIFE",
@@ -51359,11 +51728,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Memory and Oral History"
+   ],
+   "primary_theme": "Memory and Oral History",
+   "families": [
+    "Knowledge and Continuity"
+   ],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "QW-WAPI-V288783223": {
    "title": "CHARLIE BY THE SEA",
