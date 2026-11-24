@@ -1,0 +1,95 @@
+"""Beta: returning from Constellate must restore the actual interactive Map."""
+import asyncio
+import os
+from playwright.async_api import async_playwright
+
+BASE = os.environ.get("ATLAS_QA_BASE", "http://127.0.0.1:8985/beta/")
+
+READY = """() => window.AtlasConstellate?.enabled &&
+    document.documentElement.dataset.atlasUi === 'ready'"""
+MAP_READY = """() => {
+    const root=document.documentElement, map=document.querySelector('#atlas');
+    const index=document.querySelector('#index'), style=getComputedStyle(map);
+    return !window.AtlasConstellate?.enabled &&
+      root.dataset.atlasEntry==='map' && !root.dataset.weaveStage &&
+      !new URL(location.href).searchParams.has('constellate') &&
+      !document.body.matches('.is-constellating,.weave-tracing,.is-theme-web-open,.weave-playing,.weave-unmapped,.weave-theme-lens') &&
+      style.visibility==='visible' && style.opacity==='1' &&
+      getComputedStyle(index).visibility==='visible' &&
+      document.querySelector('#constellate-graph').hidden.baseVal !== false &&
+      document.querySelector('#weave-trace-layer')?.hidden !== false &&
+      document.querySelector('#atlas-theme-web')?.hidden !== false;
+}"""
+# SVG elements may not expose an HTML-style hidden property; test the attribute.
+MAP_READY = MAP_READY.replace(
+    "document.querySelector('#constellate-graph').hidden.baseVal !== false",
+    "document.querySelector('#constellate-graph').hasAttribute('hidden')"
+)
+SNAPSHOT = """() => {
+  const c=window.AtlasCollections.current();
+  return JSON.stringify([c.items,c.threads,c.links]);
+}"""
+
+async def check(browser, name, viewport):
+    context = await browser.new_context(viewport=viewport, reduced_motion="reduce")
+    page = await context.new_page()
+    errors = []
+    page.on("pageerror", lambda error: errors.append(str(error)))
+    await page.goto(BASE+"?constellate=1", wait_until="domcontentloaded", timeout=90000)
+    await page.wait_for_function(READY, timeout=60000)
+    await page.wait_for_function("window.AtlasThemeWeb?.close && document.getElementById('map-draw-line')", timeout=30000)
+    # Direct entry; trace must be cleared by Exit.
+    await page.evaluate("window.AtlasConstellate.trace()")
+    await page.wait_for_function("window.AtlasConstellate.tracing")
+    await page.evaluate("document.getElementById('constellate-exit').click()")
+    await page.wait_for_function(MAP_READY, timeout=30000)
+    # The map must receive a real interaction after returning.
+    prior = await page.evaluate("window.Atlas.captureState().zoom")
+    await page.locator("#zoom-in").click(timeout=15000)
+    await page.wait_for_function("before => window.Atlas.captureState().zoom > before", arg=prior, timeout=15000)
+
+    # Re-enter without reload; explore a documented theme intersection without editing.
+    await page.evaluate("document.querySelector('header .constellate-link').click()")
+    await page.wait_for_function(READY, timeout=30000)
+    snapshot = await page.evaluate(SNAPSHOT)
+    themes = await page.evaluate("""() => {
+      const api=window.AtlasConstellate, terms=api.themeTerms();
+      for (let i=0;i<terms.length;i++) for(let j=i+1;j<terms.length;j++)
+        if(api.themeIntersection([terms[i],terms[j]]).length) return [terms[i],terms[j]];
+      return terms.slice(0,1);
+    }""")
+    assert themes, (name, "no published themes")
+    result = await page.evaluate("""themes => {
+      const api=window.AtlasConstellate, films=api.themeIntersection(themes);
+      return {ok:api.showThemeLens(themes),count:films.length,
+              exact:films.every(f=>themes.every(t=>api.terms(f).includes(t)))};
+    }""", themes)
+    assert result["ok"] and result["count"] and result["exact"], (name, result)
+    assert await page.evaluate(SNAPSHOT) == snapshot, (name, "theme exploration mutated the saved collection")
+    await page.evaluate("document.getElementById('weave-theme-web-toggle').click()")
+    await page.wait_for_function("!document.getElementById('atlas-theme-web').hidden")
+    # Map header uses the same in-page exit, not a reload.
+    await page.evaluate("window.__atlasReturnTest=1;document.querySelector('header .map-link').click()")
+    await page.wait_for_function(MAP_READY, timeout=30000)
+    assert await page.evaluate("window.__atlasReturnTest") == 1, (name, "Map reloaded")
+    assert await page.evaluate(SNAPSHOT) == snapshot, (name, "exit mutated the collection")
+    await page.evaluate("document.querySelector('header .constellate-link').click()")
+    await page.wait_for_function(READY, timeout=30000)
+    assert await page.evaluate("!window.AtlasConstellate.tracing && document.getElementById('weave-theme-lens').hidden"), name
+    await page.evaluate("document.getElementById('constellate-exit').click()")
+    await page.wait_for_function(MAP_READY, timeout=30000)
+    assert not errors, (name, errors)
+    print(name, "map return and theme intersection passed", result, flush=True)
+    await context.close()
+
+async def main():
+    async with async_playwright() as p:
+        browser = await p.chromium.launch(args=["--use-angle=swiftshader", "--enable-unsafe-swiftshader"])
+        try:
+            for name, viewport in [("desktop", {"width":1440,"height":900}), ("mobile", {"width":390,"height":844})]:
+                await check(browser, name, viewport)
+        finally:
+            await browser.close()
+
+if __name__ == "__main__":
+    asyncio.run(main())

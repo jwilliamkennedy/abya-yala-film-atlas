@@ -823,3 +823,19 @@ jobs:
         with:
           name: constellate-theme-web-qa
           path: shots/
+
+  constellate-return:
+    name: "Beta: repeated Map and Constellate transitions"
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Chromium
+        run: |
+          python3 -m pip install -q 'playwright==1.*'
+          python3 -m playwright install --with-deps chromium >/dev/null
+      - name: Verify direct entry, drawing cleanup, theme lens and Map return
+        run: |
+          python3 -m http.server 8985 --bind 127.0.0.1 >/tmp/atlas-return.log 2>&1 &
+          sleep 2
+          python3 tools/qa/constellate-return.py
