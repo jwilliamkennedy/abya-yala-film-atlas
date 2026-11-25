@@ -38,19 +38,71 @@ jobs:
               raise SystemExit('Artwork inventory not produced; inspect audit logs')
           report = json.loads(path.read_text(encoding='utf-8'))
           responses = {r['src']: r['state'] for r in report['sampled_image_responses']}
+          # Rank missing and failed artwork by potential geographic coverage.
+          # Use decoded images, not merely a nonempty URL, as the coverage baseline.
+          credits = report['all_credit_images']
+          uncovered = {lid for c in credits for lid in c.get('lands', [])}
+          for c in credits:
+              if responses.get(c.get('source')) == 'decoded':
+                  uncovered.difference_update(c.get('lands', []))
+          land_names = {l['id']: l['name'] for l in report['lands_without_recorded_art']}
+          for c in credits:
+              for lid in c.get('lands', []):
+                  land_names.setdefault(lid, lid)
+          groups = collections.defaultdict(list)
           rows = []
-          for credit in report['all_credit_images']:
+          for credit in credits:
               source = credit.get('source')
               result = responses.get(source, 'not_checked') if source else 'missing'
               if result == 'decoded':
                   continue
-              rows.append({'credit_id': credit['id'], 'title': credit.get('title',''),
-                           'maker': credit.get('maker',''), 'land_ids': '; '.join(credit.get('lands',[])),
-                           'image_url': source or '', 'result': result})
+              lands = sorted(set(credit.get('lands', [])) & uncovered)
+              row = {'credit_id': credit['id'], 'film_id': credit.get('film',''),
+                     'filmmaker_id': credit.get('record',''), 'title': credit.get('title',''),
+                     'maker': credit.get('maker',''), 'land_ids': '; '.join(credit.get('lands',[])),
+                     'uncovered_land_ids': '; '.join(lands), 'potential_new_lands': len(lands),
+                     'image_url': source or '', 'result': result}
+              rows.append(row)
+              # A single film-specific source can serve multiple directing credits.
+              if row['film_id']:
+                  groups[row['film_id']].append(row)
+          rows.sort(key=lambda r: (-r['potential_new_lands'], r['result'] == 'missing', r['title'].casefold(), r['credit_id']))
+          fields = ['credit_id','film_id','filmmaker_id','title','maker','land_ids',
+                    'uncovered_land_ids','potential_new_lands','image_url','result']
           with path.with_name('artwork-needs-review.csv').open('w', encoding='utf-8-sig', newline='') as f:
-              writer = csv.DictWriter(f, fieldnames=['credit_id','title','maker','land_ids','image_url','result'])
+              writer = csv.DictWriter(f, fieldnames=fields)
               writer.writeheader()
               writer.writerows(rows)
+          # Greedily select distinct film IDs to cover as many currently uncovered
+          # lands as possible; each next film adds at least one new land.
+          remaining = set(uncovered)
+          candidates = {fid: set().union(*(set(r['uncovered_land_ids'].split('; ')) - {''} for r in rs))
+                        for fid, rs in groups.items()}
+          priority = []
+          while remaining and candidates:
+              fid = min(candidates, key=lambda k: (-len(candidates[k] & remaining), k))
+              new = candidates.pop(fid) & remaining
+              if not new:
+                  break
+              rs = groups[fid]
+              priority.append({'rank': len(priority)+1, 'film_id': fid, 'title': rs[0]['title'],
+                  'makers': '; '.join(sorted({r['maker'] for r in rs})),
+                  'credit_ids': '; '.join(r['credit_id'] for r in rs),
+                  'new_land_ids': '; '.join(sorted(new)),
+                  'new_land_names': '; '.join(land_names[lid] for lid in sorted(new)),
+                  'new_lands': len(new)})
+              remaining.difference_update(new)
+          with path.with_name('artwork-geographic-priority.csv').open('w', encoding='utf-8-sig', newline='') as f:
+              writer = csv.DictWriter(f, fieldnames=['rank','film_id','title','makers','credit_ids','new_land_ids','new_land_names','new_lands'])
+              writer.writeheader()
+              writer.writerows(priority)
+          print('ARTWORK_GEOGRAPHIC_PRIORITY', json.dumps({
+              'uncovered_lands': len(uncovered), 'distinct_priority_films': len(priority),
+              'potential_lands_covered': len(uncovered)-len(remaining),
+              'uncovered_after_plan': sorted(remaining)}))
+          for row in rows:
+              if row['result'] not in ('missing', 'not_checked'):
+                  print('ARTWORK_URL_REVIEW', json.dumps(row, ensure_ascii=False))
           counts = collections.Counter(responses.values())
           with open(os.environ['GITHUB_STEP_SUMMARY'], 'a', encoding='utf-8') as f:
               f.write('## Full artwork audit\n\n')
@@ -62,6 +114,9 @@ jobs:
               f.write(f"- Credits without recorded artwork: {len(report['missing_credit_images'])}\n")
               f.write(f"- Lands with films but no recorded artwork: {len(report['lands_without_recorded_art'])}\n")
               f.write(f"- Credits requiring review: {len(rows)}\n")
+              f.write(f"- Lands without a decoded image: {len(uncovered)}\n")
+              f.write(f"- Distinct film research targets in geographic priority CSV: {len(priority)}\n")
+              f.write(f"- Potential new land coverage: {len(uncovered)-len(remaining)}\n")
               f.write('\nExternal failures are observations, not proof that an image is invalid. No catalogue entries were changed.\n')
           assert report['image_audit_mode'] == 'full'
           assert len(responses) == report['distinct_recorded_urls'], 'Incomplete full artwork audit'
