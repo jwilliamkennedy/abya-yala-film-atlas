@@ -965,13 +965,13 @@ function stopPlay(){if(!player)return;playThread=null;pausePlay(true);player.hid
   el.querySelector('.wt-theme-on').addEventListener('change',()=>{if(trace)traceApplyTheme();});
   el.querySelector('.wt-mode').addEventListener('click',e=>{const b=e.target.closest('[data-wtm]');if(b)traceMoving(b.dataset.wtm==='move');});
   const end=e=>{captured.delete(e.pointerId);if(lift(e))return;if(trace?.drawing){if(e.type==='pointercancel')traceReset();else traceEnd();}};svg.addEventListener('pointerup',end);svg.addEventListener('pointercancel',end);
-  el.querySelector('.wt-result').addEventListener('click',e=>{const o=e.target.closest('[data-wt-open]');if(o){e.preventDefault();const id=o.dataset.wtOpen;stopTrace();try{A.selectLand(id);}catch(_){}return;}const b=e.target.closest('[data-wt]');if(!b)return;const k=b.dataset.wt;if(k==='one'||k==='all')lineThread(k==='all');else if(k==='again')traceReset();else stopTrace();});
-  el.querySelector('.wt-result').addEventListener('change',e=>{if(e.target.classList.contains('wt-theme')&&trace){const v=e.target.value,sw=el.querySelector('.wt-theme-on'),pk=el.querySelector('.wt-theme-pick');sw.checked=!!v;if(v)pk.value=v;traceApplyTheme();return;}const box=e.target.closest('[data-wt-land]');if(!box||!trace)return;const id=box.dataset.wtLand;if(box.checked)trace.skip.delete(id);else trace.skip.add(id);for(const c of trace.cand)if(c.land.id===id)c.path.classList.toggle('trace-lit',box.checked);traceCount();});
+  el.querySelector('.wt-result').addEventListener('click',e=>{const o=e.target.closest('[data-wt-open]');if(o){e.preventDefault();const id=o.dataset.wtOpen;stopTrace();try{A.selectLand(id);}catch(_){}return;}const theme=e.target.closest('[data-wt-bridge]');if(theme&&trace){trace.routeTheme=trace.routeTheme===theme.dataset.wtBridge?'':theme.dataset.wtBridge;trace.routeChoices=new Map();traceCount();el.querySelector('[data-wt-bridge][aria-pressed="true"]')?.focus({preventScroll:true});return;}const b=e.target.closest('[data-wt]');if(!b)return;const k=b.dataset.wt;if(k==='one'||k==='all')lineThread(k==='all');else if(k==='again')traceReset();else stopTrace();});
+  el.querySelector('.wt-result').addEventListener('change',e=>{if(e.target.classList.contains('wt-theme')&&trace){const v=e.target.value,sw=el.querySelector('.wt-theme-on'),pk=el.querySelector('.wt-theme-pick');sw.checked=!!v;if(v)pk.value=v;traceApplyTheme();return;}const choice=e.target.closest('[data-wt-choice]');if(choice&&trace){trace.routeChoices.set(choice.dataset.wtChoice,choice.value);traceCount();[...el.querySelectorAll('[data-wt-choice]')].find(v=>v.dataset.wtChoice===choice.dataset.wtChoice)?.focus({preventScroll:true});return;}const box=e.target.closest('[data-wt-land]');if(!box||!trace)return;const id=box.dataset.wtLand;if(box.checked)trace.skip.delete(id);else trace.skip.add(id);for(const c of trace.cand)if(c.land.id===id)c.path.classList.toggle('trace-lit',box.checked);traceCount();});
   return el;}
  function traceUnline(){const el=$('#weave-trace-layer');if(!el)return;el.querySelector('.wt-casing').setAttribute('d','');el.querySelector('.wt-line').setAttribute('d','');el.querySelector('.wt-dots').innerHTML='';}
  function traceMoving(on){const el=traceUI();if(on)traceUnline();el.classList.toggle('is-moving',!!on);el.querySelectorAll('[data-wtm]').forEach(b=>b.setAttribute('aria-pressed',String((b.dataset.wtm==='move')===!!on)));if(!el.classList.contains('has-result'))el.querySelector('.wt-hint').textContent=on?'Drag to move · Draw when ready':'Draw across lands · scroll to zoom';}
  function traceClear(){document.querySelectorAll('#atlas .nation-wash.trace-lit').forEach(w=>w.classList.remove('trace-lit'));}
- function traceReset(){const el=traceUI();traceClear();trace={drawing:false,pts:[],lands:[],seen:new Set(),filmIds:new Set(),skip:new Set(),browse:!!(trace&&trace.browse),theme:(trace&&trace.theme)||''};{const pk=el.querySelector('.wt-theme-pick'),sw=el.querySelector('.wt-theme-on');if(pk&&!pk.options.length)pk.innerHTML=themeOptions(catalog.filter(x=>x.type==='film'),'',true);if(trace.theme){pk.value=trace.theme;sw.checked=true;}else{sw.checked=false;pk.value='';}pk.disabled=!sw.checked;}el.querySelector('.wt-casing').setAttribute('d','');el.querySelector('.wt-line').setAttribute('d','');el.querySelector('.wt-dots').innerHTML='';el.querySelector('.wt-result').hidden=true;el.classList.remove('has-result');el.classList.remove('is-moving');el.querySelectorAll('[data-wtm]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.wtm==='draw')));el.querySelector('.wt-hint').textContent=(matchMedia('(pointer:coarse)').matches?'One finger draws · two move':'Draw across lands · scroll to zoom');}
+ function traceReset(){const el=traceUI();traceClear();trace={drawing:false,pts:[],lands:[],seen:new Set(),filmIds:new Set(),skip:new Set(),routeChoices:new Map(),routeTheme:'',browse:!!(trace&&trace.browse),theme:(trace&&trace.theme)||''};{const pk=el.querySelector('.wt-theme-pick'),sw=el.querySelector('.wt-theme-on');if(pk&&!pk.options.length)pk.innerHTML=themeOptions(catalog.filter(x=>x.type==='film'),'',true);if(trace.theme){pk.value=trace.theme;sw.checked=true;}else{sw.checked=false;pk.value='';}pk.disabled=!sw.checked;}el.querySelector('.wt-casing').setAttribute('d','');el.querySelector('.wt-line').setAttribute('d','');el.querySelector('.wt-dots').innerHTML='';el.querySelector('.wt-result').hidden=true;el.classList.remove('has-result');el.classList.remove('is-moving');el.querySelectorAll('[data-wtm]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.wtm==='draw')));el.querySelector('.wt-hint').textContent=(matchMedia('(pointer:coarse)').matches?'One finger draws · two move':'Draw across lands · scroll to zoom');}
  function startTrace(opts){const browse=!!(opts&&opts.browse)&&!enabled;if(!browse){if(!enabled)open({dock:false});window.AtlasThemeWeb?.close();if(reading)setRead(false,{dock:false});if(drawThread)setDrawThread(false);closeShare();ghost(null);/* The dock stays in its current state beneath the drawing layer. */}if(browse&&innerWidth<700){scrollTo({top:0,behavior:'instant'});{const mp=document.querySelector('.map-panel');if(mp&&mp.getBoundingClientRect().top<0)mp.scrollIntoView({block:'start',behavior:'instant'});}if(browse&&document.documentElement.dataset.sheet&&document.documentElement.dataset.sheet!=='peek')document.documentElement.dataset.sheet='peek';}const el=traceUI();document.body.classList.add('weave-tracing');el.hidden=false;el.classList.toggle('is-browse',browse);{const tb=document.querySelector('.map-panel .map-toolbar');el.style.top=(browse?(tb&&tb.offsetParent?tb.offsetTop+tb.offsetHeight+6:0):($('#constellate-mode')?.offsetHeight||0))+'px';}{const ft=document.querySelector('.map-panel .map-footer');el.style.bottom=(ft&&ft.offsetParent?ft.offsetHeight:0)+'px';}$('#weave-trace')?.setAttribute('aria-pressed','true');$('#map-draw-line')?.setAttribute('aria-pressed','true');traceReset();trace.browse=browse;traceApplyTheme();if(!browse&&themeLens)el.querySelector('.wt-hint').textContent=themeLens.terms.join(' × ')+' · '+(matchMedia('(pointer:coarse)').matches?'One finger draws · two move':'Draw across lands · scroll to zoom');}
  function stopTrace(){if(!trace)return;const el=$('#weave-trace-layer');traceClear();trace=null;el?.resetGesture?.();traceThemeMap();if(el)el.hidden=true;document.body.classList.remove('weave-tracing');$('#weave-trace')?.setAttribute('aria-pressed','false');$('#map-draw-line')?.setAttribute('aria-pressed','false');}
  function traceBegin(e){traceReset();const el=traceUI(),box=el.getBoundingClientRect(),index=landFilms(),cand=[],marks=[];
@@ -985,7 +985,7 @@ function stopPlay(){if(!player)return;playThread=null;pausePlay(true);player.hid
  function tracePath(p){if(!p.length)return '';let d='M'+p[0][0].toFixed(1)+','+p[0][1].toFixed(1);if(p.length<2)return d;for(let i=1;i<p.length-1;i++)d+='Q'+p[i][0].toFixed(1)+','+p[i][1].toFixed(1)+' '+((p[i][0]+p[i+1][0])/2).toFixed(1)+','+((p[i][1]+p[i+1][1])/2).toFixed(1);const z=p[p.length-1];return d+'L'+z[0].toFixed(1)+','+z[1].toFixed(1);}
  function traceMove(e){const t=trace,x=e.clientX,y=e.clientY,l=t.last;if(l){const d=Math.hypot(x-l[0],y-l[1]);if(d<3)return;const n=Math.ceil(d/6);for(let i=1;i<=n;i++)traceSample(l[0]+(x-l[0])*i/n,l[1]+(y-l[1])*i/n);}else traceSample(x,y);
   t.last=[x,y];t.pts.push([x-t.box.left,y-t.box.top]);const d=tracePath(t.pts),el=traceUI();el.querySelector('.wt-casing').setAttribute('d',d);el.querySelector('.wt-line').setAttribute('d',d);
-  const kept=traceKept(),n=kept.length,ids=new Set();for(const l of kept)for(const x of lf(l))ids.add(x.id);const f=ids.size;el.querySelector('.wt-hint').textContent=n?n+(n===1?' land · ':' lands · ')+f+(f===1?' film':' films'):'…';}
+  const kept=traceKept(),n=kept.length,ids=new Set();for(const l of kept)for(const x of lf(l))ids.add(x.id);const f=ids.size;const recent=kept.at(-1);el.querySelector('.wt-hint').textContent=n?(recent?recent.name+' · ':'')+n+(n===1?' land · ':' lands · ')+f+(f===1?' film':' films'):'Draw across a land with films';}
  /* A line can carry a theme: only films tagged with it count, and only lands that have them light up. */
  function lf(l){return l.films.filter(x=>(!themeLens||themeLens.ids.has(x.id))&&(!trace?.theme||terms(x).includes(trace.theme)));}
  function themeOptions(films,sel,noAll){const n=new Map();for(const x of films)for(const t of terms(x))n.set(t,(n.get(t)||0)+1);return (noAll?'':'<option value="">All themes</option>')+[...n].sort((a,b)=>b[1]-a[1]||a[0].localeCompare(b[0])).map(([t,c])=>'<option value="'+esc(t)+'"'+(t===sel?' selected':'')+'>'+esc(t)+' ('+c+')</option>').join('');}
@@ -998,31 +998,75 @@ function stopPlay(){if(!player)return;playThread=null;pausePlay(true);player.hid
  function traceRelight(){if(!trace)return;for(const c of trace.cand||[])c.path.classList.toggle('trace-lit',trace.seen.has(c.land.id)&&!trace.skip.has(c.land.id)&&lf(c.land).length>0);}
  function traceKept(){return trace.lands.filter(l=>!trace.skip.has(l.id)&&lf(l).length>0);}
  function traceCount(){const res=traceUI().querySelector('.wt-result'),lands=traceKept(),n=lands.length,ids=new Set();for(const l of lands)for(const x of lf(l))ids.add(x.id);const f=ids.size,one=res.querySelector('[data-wt=one]'),all=res.querySelector('[data-wt=all]');
-  res.querySelector('h3').textContent=n+(n===1?' land · ':' lands · ')+f+(f===1?' film':' films');one.disabled=!n;one.textContent='Make a constellation';if(all){all.hidden=!(f>n&&f<=80);all.textContent='All '+f+' films';}
+  res.querySelector('h3').textContent=n+(n===1?' land · ':' lands · ')+f+(f===1?' film':' films');one.disabled=!n;one.textContent='Keep this thread';if(all){all.hidden=!(f>n&&f<=80);all.textContent='All '+f+' films';}
   res.querySelectorAll('li[data-wt-li]').forEach(li=>{const l=trace.lands.find(v=>v.id===li.dataset.wtLi),k=l?lf(l).length:0;li.classList.toggle('is-empty',!k);li.querySelector('small').textContent=k;});renderTracePreview(res);traceRelight();}
  function traceEnd(){const t=trace,el=traceUI(),res=el.querySelector('.wt-result'),hint=el.querySelector('.wt-hint');t.drawing=false;
   if(!traceKept().length){hint.textContent=t.theme?'No lands with '+t.theme+' films crossed. Draw again.':'No lands with films crossed. Draw again.';return;}
   const n=t.lands.length,f=t.filmIds.size;
-  res.innerHTML='<h3></h3><select class="wt-theme" aria-label="Theme">'+themeOptions([...new Map(t.lands.flatMap(l=>l.films).map(x=>[x.id,x])).values()],t.theme)+'</select><ol>'+t.lands.map(l=>'<li data-wt-li="'+esc(l.id)+'"><label><input type="checkbox" checked data-wt-land="'+esc(l.id)+'">'+(t.browse?'<button type="button" class="wt-open" data-wt-open="'+esc(l.id)+'" title="Open this land on the map">'+esc(l.name)+'</button>':'<span>'+esc(l.name)+'</span>')+'</label><small></small></li>').join('')+'</ol><div class="wt-film-preview" aria-label="Films" hidden></div><div class="wt-actions"><button type="button" class="wt-primary" data-wt="one"></button><button type="button" data-wt="all"></button><button type="button" data-wt="again">Draw again</button><button type="button" data-wt="cancel">'+(t.browse?'Close':'Cancel')+'</button></div><p class="wt-credit">Territories: Native Land Digital</p>';
+  res.innerHTML='<h3></h3><p class="wt-route-intro">A route through cinema. Choose films and examine the connections before keeping your thread.</p><select class="wt-theme" aria-label="Theme">'+themeOptions([...new Map(t.lands.flatMap(l=>l.films).map(x=>[x.id,x])).values()],t.theme)+'</select><ol>'+t.lands.map(l=>'<li data-wt-li="'+esc(l.id)+'"><label><input type="checkbox" checked data-wt-land="'+esc(l.id)+'">'+(t.browse?'<button type="button" class="wt-open" data-wt-open="'+esc(l.id)+'" title="Open this land on the map">'+esc(l.name)+'</button>':'<span>'+esc(l.name)+'</span>')+'</label><small></small></li>').join('')+'</ol><div class="wt-film-preview" aria-label="Route film choices" hidden></div><div class="wt-actions"><button type="button" class="wt-primary" data-wt="one"></button><button type="button" data-wt="all"></button><button type="button" data-wt="again">Draw again</button><button type="button" data-wt="cancel">'+(t.browse?'Close':'Cancel')+'</button></div><p class="wt-credit">Territories: Native Land Digital</p>';
   traceCount();res.hidden=false;el.classList.add('has-result');hint.textContent='';res.querySelector('.wt-primary').focus({preventScroll:true});}
- // Keep the route preview and the actual thread selection in agreement.
+ // A drawn route is a draft comparative programme, not a recency-ranked list.
+ // Work-level IDs are distinct; metadata connections are suggestions, never authored notes.
+ function routeThemes(lands){
+  const index=new Map();
+  for(const l of lands)for(const x of lf(l))for(const term of terms(x)){
+   if(!index.has(term))index.set(term,{term,lands:new Set(),films:new Set()});
+   const v=index.get(term);v.lands.add(l.id);v.films.add(key(x));
+  }
+  return [...index.values()].filter(v=>v.lands.size>1&&v.films.size>1)
+   .sort((a,b)=>b.lands.size-a.lands.size||a.films.size-b.films.size||azSort.compare(a.term,b.term));
+ }
+ function routeCandidates(l,used,prior,bridge,coverage,reserved){
+  const prev=prior?new Set(terms(prior)):new Set();
+  return lf(l).filter(x=>!used.has(key(x))&&!reserved.has(key(x))).map(x=>{
+   const ts=terms(x),same=ts.filter(t=>prev.has(t)),cross=ts.reduce((n,t)=>n+Math.max(0,(coverage.get(t)||1)-1),0);
+   const score=(bridge&&ts.includes(bridge)?1000:0)+same.length*12+cross*3+(prior&&prior.record!==x.record?2:0)+(x.year?1:0);
+   return {x,score};
+  }).sort((a,b)=>b.score-a.score||azSort.compare(a.x.title,b.x.title)).map(v=>v.x);
+ }
+ function routeDraft(){
+  const lands=traceKept(),bridges=routeThemes(lands),bridge=bridges.some(v=>v.term===trace.routeTheme)?trace.routeTheme:'',coverage=new Map(bridges.map(v=>[v.term,v.lands.size])),used=new Set(),picks=[],stops=[];
+  // Reserve explicit choices so an earlier automatic suggestion cannot consume them.
+  const locked=new Map(),reserved=new Set();
+  for(const l of lands){const id=trace.routeChoices.get(l.id),x=lf(l).find(x=>x.id===id);if(x&&!reserved.has(key(x))){locked.set(l.id,x);reserved.add(key(x));}}
+  let prior=null;
+  for(const l of lands){
+   const lock=locked.get(l.id);if(lock)reserved.delete(key(lock));
+   const options=routeCandidates(l,used,prior,bridge,coverage,reserved);
+   const x=lock&&!used.has(key(lock))?lock:options[0];
+   if(!x){stops.push({l,x:null,options:[]});continue;}
+   const shared=prior?terms(x).filter(t=>terms(prior).includes(t)):[];
+   stops.push({l,x,options,prior,shared});picks.push([x,l]);used.add(key(x));prior=x;
+  }
+  return {bridges,bridge,picks,stops};
+ }
  function linePicks(all=false){
-  const lands=traceKept(),used=new Set(),picks=[],yr=x=>{const m=/\d{4}/.exec(String(x.year||''));return m?+m[0]:0;};
-  for(const l of lands){const fs=lf(l).filter(x=>!used.has(x.id)).sort((a,b)=>yr(b)-yr(a)||String(a.title).localeCompare(String(b.title)));for(const x of (all?fs:fs.slice(0,1))){used.add(x.id);picks.push([x,l]);}}
+  if(!all)return routeDraft().picks;
+  const used=new Set(),picks=[];
+  for(const l of traceKept())for(const x of lf(l).slice().sort((a,b)=>azSort.compare(a.title,b.title)))if(!used.has(key(x))){used.add(key(x));picks.push([x,l]);}
   return picks;
+ }
+ function routeSource(x,shared){
+  const sources=[...new Set(tags(x).filter(t=>shared.includes(t.term)).map(t=>safeLink(t.source)).filter(Boolean))];
+  return sources.length?sources.map((u,i)=>'<a href="'+esc(u)+'" target="_blank" rel="noopener noreferrer">Synopsis source'+(sources.length>1?' '+(i+1):'')+' ↗</a>').join(' · '):'';
  }
  function renderTracePreview(res){
   const box=res.querySelector('.wt-film-preview');if(!box)return;
-  const picks=linePicks(false),themes=new Map();
-  for(const [x,l] of picks)for(const term of terms(x)){if(!themes.has(term))themes.set(term,new Set());themes.get(term).add(l.id);}
-  const shared=[...themes].filter(([,ids])=>ids.size>1).sort((a,b)=>b[1].size-a[1].size||a[0].localeCompare(b[0])).slice(0,2).map(([term])=>term);
-  box.hidden=!picks.length;
-  box.innerHTML=(shared.length?'<p class="wt-shared-theme">'+esc('Shared theme: '+shared.join(' · '))+'</p>':'')+'<details class="wt-selection"'+(picks.length<=4?' open':'')+'><summary>'+picks.length+' selected films · one per land</summary><div class="wt-film-strip">'+picks.map(([x,l])=>'<div class="wt-film-card">'+thumb(x)+'<strong>'+esc(x.title)+'</strong><small>'+esc(l.name)+'</small></div>').join('')+'</div></details>';
+  const {bridges,bridge,picks,stops}=routeDraft();
+  box.hidden=!stops.length;
+  const chips=bridges.slice(0,6).map(v=>'<button type="button" data-wt-bridge="'+esc(v.term)+'" aria-pressed="'+String(bridge===v.term)+'">'+esc(v.term)+' <small>'+v.lands.size+' lands</small></button>').join('');
+  const nodes=stops.map(({l,x,options,prior,shared},i)=>{
+   if(!x)return '<article class="wt-route-stop"><small>'+esc(l.name)+'</small><p>No additional distinct film in the current selection.</p></article>';
+   const film=filmOf(x),media=film&&A.mediaForFilm(film),opts=options.map(v=>'<option value="'+esc(v.id)+'"'+(v.id===x.id?' selected':'')+'>'+esc(v.title+(v.year?' ('+v.year+')':''))+'</option>').join('');
+   const evidence=prior?(shared.length?'<div class="wt-route-relation"><strong>Shared theme: '+esc(shared.join(' · '))+'</strong><small>Catalogued themes, not evidence of influence.</small><span>'+routeSource(prior,shared)+(routeSource(prior,shared)&&routeSource(x,shared)?' / ':'')+routeSource(x,shared)+'</span></div>':'<div class="wt-route-relation"><small>No shared catalogued theme with the previous film. Compare the films to explore other connections.</small></div>'):'';
+   return evidence+'<article class="wt-route-stop"><small class="wt-route-land">'+(i+1)+' · '+esc(l.name)+'</small><div class="wt-route-film">'+thumb(x)+'<div><strong>'+esc(x.title)+'</strong><small>'+esc([x.maker,x.year].filter(Boolean).join(' · '))+'</small><small>'+esc(terms(x).join(' · '))+'</small>'+viewingLink(x)+'</div></div>'+(options.length>1?'<label class="wt-route-choice">Choose another film<select data-wt-choice="'+esc(l.id)+'" aria-label="Choose film for '+esc(l.name)+'">'+opts+'</select></label>':'')+(media?.synopsis?'<details><summary>Synopsis</summary><p>'+esc(media.synopsis)+'</p></details>':'')+'</article>';
+  }).join('');
+  box.innerHTML=(chips?'<div class="wt-route-bridges"><strong>Possible threads across lands</strong><div>'+chips+'</div><small>Choose a theme to change the suggested films, not the map.</small></div>':'')+'<p class="wt-route-summary">'+picks.length+' distinct films · '+stops.length+' land references</p><div class="wt-route-sequence">'+nodes+'</div>';
  }
  function lineThread(all){const t=trace;if(!t?.lands.length)return;const picks=linePicks(all);if(!picks.length)return;if(t.browse){t.browse=false;open();setRead(false);}
   if(!picks.length)return;
   const short=n=>{const t=String(n).split(' (')[0].split(' / ')[0].trim();const latin=t.split(/\s+/).filter(w=>/[A-Za-zÀ-ÿĀ-ž]/.test(w)).join(' ');return (latin||t).slice(0,40);};
-  const names=[...new Set(picks.map(v=>v[1]))].map(l=>l.name),route=names.length>1?short(names[0])+' → '+short(names[names.length-1]):short(names[0]),name=((t.theme?t.theme+' · ':'')+route).slice(0,90);
+  const names=[...new Set(picks.map(v=>v[1]))].map(l=>l.name),route=names.length>1?short(names[0])+' → '+short(names[names.length-1]):short(names[0]),name=(((t.routeTheme||t.theme)?(t.routeTheme||t.theme)+' · ':'')+route).slice(0,90);
   const desc='';
   $('#weave-thread-form').hidden=true;setTab('thread');
   const id=transaction('Gather films',()=>{const c=S.current(),blank=c.threads.length===1&&!c.threads[0].items.length;let tid;
@@ -1031,7 +1075,7 @@ function stopPlay(){if(!player)return;playThread=null;pausePlay(true);player.hid
    for(const [x,l] of picks){const own=existingWork(x);if(own)S.addToThread(own.id,tid);else S.add(x,{threadId:tid});if(c.pins)c.pins[(own||x).id]=l.id;}
    c.activeThread=tid;c.selectedItem=null;S.save();return tid;});
   if(!id){status('This constellation has the most threads it can hold.');return;}
-  stopTrace();openDock();setTab('thread');active=null;context.hidden=inline.hidden=true;fit('quiet');render();const said='Threaded '+picks.length+(picks.length===1?' film':' films')+' from '+names.length+(names.length===1?' land':' lands')+', in the order of your line.';status(said);setTimeout(()=>status(said),900);}
+  stopTrace();openDock();setTab('thread');active=null;context.hidden=inline.hidden=true;render();const said='Threaded '+picks.length+(picks.length===1?' film':' films')+' from '+names.length+(names.length===1?' land':' lands')+', in the order of your line.';status(said);setTimeout(()=>status(said),900);}
  /* ── A thread from one land (Map page → Constellate) ─────────────────────
     The most recent film of each of the land's filmmakers, up to eight, pinned to that land. */
  /* 23 Nov: clicking a land in Constellate shows its films here: add them, link them, or make a thread of the land */
