@@ -9,7 +9,7 @@ const DEG=180/Math.PI,clamp=(v,a,b)=>Math.max(a,Math.min(b,v)),wrap=v=>((v+180)%
 let active=false,closed=false,host=null,canvas=null,ctx=null,ro=null,raf=0,settleTimer=0;
 let W=0,H=0,dpr=1,zoom=1,center=[-91,12],proj=null,path=null,earth=null,landArea=0;
 let records=[],points=[],byId=new Map(),near=[],inside=[],focusIds=[],focusKey='',previewLimit=3,settled=false,anchorFailures=[];
-let targetCoordinate=null,targetPrimary='',targetMode='overview';
+let targetCoordinate=null,targetPrimary='',targetMode='overview',localNameKey='';
 let pointers=new Map(),gesture=null,dragged=false,previousFocus=null;
 const labelAnchors=new Map(),labelFailures=new Set();let labelQueue=null,labelTimer=0,labelUploaded=-1,labelFocusKey='';
 let relief=null,reliefState='loading',flight=0,flightTarget=null,lastDrag=null;
@@ -267,7 +267,7 @@ function loadRelief(){
   }
   ambientCount=unique.size;return {type:'FeatureCollection',features:[...unique.values()]};
  }
- const landLayerIds=['native-ambient-fill','native-ambient-line','land-color','land-outline','indigenous-names','indigenous-regional-names'];
+ const landLayerIds=['native-ambient-fill','native-ambient-line','land-color','land-outline','indigenous-names','indigenous-regional-names','indigenous-local-name'];
  function opacityExpression(values){return ['interpolate',['linear'],['zoom'],...values.flatMap(([z,a])=>[z,Math.min(.85,a*landStrength)])];}
  function syncLandVisibility(){
   const b=$('#globe-lands');if(b){b.setAttribute('aria-pressed',String(landsVisible));b.textContent=landsVisible?'Lands: on':'Lands: off';}
@@ -301,6 +301,11 @@ function loadRelief(){
   const key=focusIds.slice().sort().join('|');
   if(key!==labelFocusKey){labelFocusKey=key;const selected=['in',['get','land'],['literal',focusIds]];live.setFilter('indigenous-names',selected);live.setFilter('indigenous-regional-names',['!',selected]);}
   if(labelUploaded!==labelAnchors.size){labelUploaded=labelAnchors.size;live.getSource('native-labels')?.setData(territoryLabelData());}
+  // At close scale a vast territory's ordinary label anchor can be far offscreen.
+  // Use the actual contained focal point, not a fabricated settlement or film location.
+  const local=targetMode==='local'&&inside.find(r=>r.id===targetPrimary),anchor=local&&labelAnchors.get(local.id),xy=anchor&&live.project(anchor.coordinates),offscreen=local&&(!xy||xy.x<30||xy.y<30||xy.x>W-30||xy.y>H-30);
+  const localKey=offscreen&&targetCoordinate?JSON.stringify([local.id,targetCoordinate]):'';
+  if(localKey!==localNameKey){localNameKey=localKey;live.getSource('native-local-label')?.setData(localKey?{type:'FeatureCollection',features:[{type:'Feature',properties:{name:local.name},geometry:{type:'Point',coordinates:targetCoordinate}}]}:emptyGeo());}
   if(z<5.5||labelTimer)return;
   if(!labelQueue){
    // Begin with territories in the vicinity; remaining names are indexed in
@@ -430,6 +435,7 @@ function loadRelief(){
     'native-focus-edges':{type:'geojson',data:emptyGeo(),tolerance:0,buffer:128,maxzoom:14},
     'native-lands':{type:'geojson',data:emptyGeo(),tolerance:0,buffer:128,maxzoom:14},
     'native-labels':{type:'geojson',data:seedTerritoryLabels(),maxzoom:14},
+    'native-local-label':{type:'geojson',data:emptyGeo(),maxzoom:14},
     'cinema-points':{type:'geojson',data:livePointsData(),maxzoom:14},'globe-collected':{type:'geojson',data:emptyGeo(),maxzoom:14},'globe-authored-links':{type:'geojson',data:emptyGeo(),tolerance:0,maxzoom:14}
    },layers:[
     {id:'sea',type:'background',paint:{'background-color':'#213d50'}},
@@ -453,6 +459,7 @@ function loadRelief(){
     {id:'globe-user-halo',type:'circle',source:'globe-collected',paint:{'circle-radius':7,'circle-color':['get','color'],'circle-blur':.95,'circle-opacity':.28}},
     {id:'globe-user-star',type:'circle',source:'globe-collected',paint:{'circle-radius':['case',['==',['get','selected'],1],4.2,2.7],'circle-color':'#f1f6e8','circle-stroke-color':['get','color'],'circle-stroke-width':1,'circle-opacity':.98}},
     {id:'indigenous-regional-names',type:'symbol',source:'native-labels',minzoom:5.5,layout:{'text-field':['get','name'],'text-font':['Noto Sans Regular'],'text-size':['interpolate',['linear'],['zoom'],5.5,11,11,14],'text-anchor':'top','text-offset':[0,.6],'text-padding':11,'text-max-width':12,'text-allow-overlap':false,'text-ignore-placement':false},paint:{'text-color':'#dce9dd','text-halo-color':'#172a31','text-halo-width':1.45,'text-opacity':['interpolate',['linear'],['zoom'],5.5,.25,7,.82,10,.94]}},
+    {id:'indigenous-local-name',type:'symbol',source:'native-local-label',minzoom:7,layout:{'text-field':['get','name'],'text-font':['Noto Sans Regular'],'text-size':15,'text-anchor':'top','text-offset':[0,1.5],'text-max-width':18,'text-padding':7,'text-allow-overlap':false},paint:{'text-color':'#f4eee0','text-halo-color':'#172a31','text-halo-width':1.65}},
     {id:'indigenous-names',type:'symbol',source:'native-labels',minzoom:3,filter:['in',['get','land'],['literal',[]]],layout:{'text-field':['get','name'],'text-font':['Noto Sans Regular'],'text-size':['interpolate',['linear'],['zoom'],3,12,7,14,11,15],'text-anchor':'top','text-offset':[0,.65],'text-padding':7,'text-max-width':12,'text-allow-overlap':false,'text-ignore-placement':false},paint:{'text-color':'#f4eee0','text-halo-color':'#172a31','text-halo-width':1.65,'text-opacity':['interpolate',['linear'],['zoom'],3,.75,4,1]}}
    ]};
    live=new ml.Map({container:liveHost,style,center:initialCamera?initialCamera.slice(0,2):center,zoom:initialCamera?initialCamera[2]:liveBaseZoom,minZoom:Math.max(-2,liveBaseZoom-0.35),maxZoom:14,maxPitch:55,attributionControl:false,dragRotate:false,pitchWithRotate:false,touchPitch:false,renderWorldCopies:false,cooperativeGestures:false,fadeDuration:120,trackResize:false,maxTileCacheSize:W<760?96:240,scrollZoom:{around:'center'}});
@@ -867,9 +874,9 @@ function drawUnmappedReading(item,panel,status){
 }
 function drawEncounter(){
  const panel=$('#globe-encounter'),status=$('#globe-status'),actual=new Set(inside.map(r=>r.id));
- const readingItem=currentReadingItem();if(readingItem&&!journeyReference(readingItem)){drawUnmappedReading(readingItem,panel,status);return;}
  const chosen=focusIds.map(id=>byId.get(id)).filter(Boolean);
  const primary=chooseTarget(chosen);targetPrimary=primary?.id||'';targetFeedback();
+ const readingItem=currentReadingItem();if(readingItem&&!journeyReference(readingItem)){drawUnmappedReading(readingItem,panel,status);return;}
  const films=primary?rankedFilms(primary.id):[];
  if(primary&&lastEncounter!==primary.id){filmOffset=0;lastEncounter=primary.id;}
  if(pendingFilm){const i=films.findIndex(f=>f.id===pendingFilm);if(i>=0){filmOffset=i;pendingFilm='';}}
