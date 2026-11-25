@@ -57,54 +57,25 @@ async def run(pw, width, height, mobile, label):
       await new Promise(r => setTimeout(r, 2000)); o.disconnect(); return n; }""")
     check(idle < 30, f"the idle start screen changed the page {idle} times in 2 seconds")
 
-    # 0. the start screen: a real click on each control does that control's job and nothing else.
-    # (On 11-13 Nov every click in the start screen opened the example; scripted clicks did not show it.)
-    async def start_state():
-        return await page.evaluate("""() => ({ open: getComputedStyle(document.querySelector('#weave-start')).display !== 'none',
-          films: window.AtlasCollections.current().items.length, threads: window.AtlasCollections.current().threads.map(t => t.name) })""")
-    controls=[("#ws-film-q", "film search"), ("#weave-start h2", "heading"), ("#ws-theme-all", "All themes list")]
-    if await page.locator("#ws-theme-q").count(): controls.insert(0,("#ws-theme-q","theme search"))
-    else: check(await page.locator("#weave-start .ws-chips [data-ws-theme]").count()>0,"simplified start lacks theme chips")
-    for sel, name in controls:
-        box = await page.evaluate("(s) => { const b = document.querySelector(s).getBoundingClientRect(); return [b.x + b.width / 2, b.y + b.height / 2]; }", sel)
-        await page.mouse.click(box[0], box[1])
-        await page.wait_for_timeout(700)
-        st = await start_state()
-        check(st["open"] and st["films"] == 0, f"clicking the {name} on the start screen opened something", st)
-    if fails:
-        await browser.close()
-        return fails
-    await page.evaluate("document.querySelector('#ws-theme-all').blur()")
-    if await page.locator("#ws-theme-q").count():
-        await page.fill("#ws-theme-q", "water")
-        await page.wait_for_timeout(400)
-        await page.click("#ws-theme-results [data-ws-theme]")
-    else:
-        # Beta intentionally exposes popular chips + the full controlled list.
-        # Exercise the visitor's real control, not an internal themeThread call.
-        water=await page.locator("#ws-theme-all option").evaluate_all("(options)=>options.find(o=>o.value.toLowerCase()==='water')?.value")
-        check(bool(water),"Water absent from all-themes selector")
-        await page.select_option("#ws-theme-all",value=water)
-    await page.wait_for_function("window.AtlasCollections.current().items.length >= 1", timeout=20000)
-    st = await start_state()
-    check(any("water" in t.lower() for t in st["threads"]) and "Story-making" not in st["threads"], "theme search did not start that theme's thread", st)
-    await page.evaluate("localStorage.clear()")
-    await page.goto(BASE + "?constellate=1", wait_until="load", timeout=90000)
-    await page.wait_for_function("window.AtlasConstellate?.enabled && document.querySelector('#weave-start')", timeout=60000)
-    await page.select_option("#ws-theme-all", index=3)
-    await page.wait_for_function("window.AtlasCollections.current().items.length >= 1", timeout=20000)
-    st = await start_state()
-    check(len(st["threads"]) == 1 and st["threads"][0] not in ("Story-making", "First thread"), "choosing from All themes did not start that theme's thread", st)
-    await page.evaluate("localStorage.clear()")
-    await page.goto(BASE + "?constellate=1", wait_until="load", timeout=90000)
-    await page.wait_for_function("window.AtlasConstellate?.enabled && document.querySelector('#weave-start')", timeout=60000)
+    # Discovery starts on the map; exploring does not author a constellation.
+    await page.wait_for_function("document.documentElement.dataset.weaveStage==='build'")
+    check(not await page.locator("#weave-start").is_visible(), "obsolete welcome covers the map")
+    await page.locator("#weave-map-theme").wait_for(state="visible")
+    before=await page.evaluate("JSON.stringify(window.AtlasCollections.current())")
+    await page.locator("#weave-map-theme").select_option("Water")
+    await page.locator(".weave-map-theme-results").wait_for(state="visible")
+    check(await page.evaluate("JSON.stringify(window.AtlasCollections.current())")==before,"theme discovery changed collection")
+    await page.locator("#weave-map-theme").select_option("")
+    await page.evaluate("window.AtlasConstellate.close()")
+    await page.locator("#weave-browse-films").click()
+    await page.locator("#constellate-search").fill("water")
+    await page.wait_for_function("document.querySelectorAll('#constellate-results .constellate-result').length>0")
+    check(await page.evaluate("JSON.stringify(window.AtlasCollections.current())")==before,"film search changed collection")
+    await page.evaluate("window.AtlasConstellate.close()")
 
     # 0b. Trace a line: from the start screen, a drag across the map gathers lands in the order
     # crossed, and the thread holds one film from each kept land, pinned to that land, in that order.
-    await page.wait_for_selector("[data-ws-trace]", state="visible", timeout=20000)
-    await page.wait_for_timeout(600)
-    box = await page.evaluate("(() => { const e = document.querySelector('[data-ws-trace]'); e.scrollIntoView({ block: 'center' }); const b = e.getBoundingClientRect(); return [b.x + b.width / 2, b.y + b.height / 2]; })()")
-    await page.mouse.click(box[0], box[1])
+    await page.locator("#weave-trace").click()
     await page.wait_for_function("window.AtlasConstellate.tracing === true", timeout=8000)
     await page.wait_for_timeout(1200)
     await page.keyboard.press("Escape")
@@ -136,7 +107,8 @@ async def run(pw, width, height, mobile, label):
     await page.wait_for_function("window.AtlasConstellate?.enabled && document.querySelector('#weave-start')", timeout=60000)
 
     # 1. the example
-    await page.click("[data-ws-example]")
+    # Seed the existing example fixture for the downstream playback/share tests.
+    await page.evaluate("document.querySelector('#weave-example').click()")
     await page.wait_for_function("window.AtlasCollections.current().items.length >= 3", timeout=20000)
     await page.wait_for_timeout(2500)
     ex = await page.evaluate("""() => {
@@ -307,10 +279,9 @@ async def run(pw, width, height, mobile, label):
     check(await stage() == "build", "Clear left Build", await stage())
     await page.evaluate("localStorage.clear()")
     await page.goto(BASE + "?constellate=1", wait_until="load", timeout=90000)
-    await page.wait_for_selector("#weave-start [data-ws-close]", state="visible", timeout=60000)
-    await page.click("#weave-start [data-ws-close]")
-    await page.wait_for_timeout(700)
-    check(await stage() == "build", "× on the start screen did not close it", await stage())
+    await page.wait_for_function("window.AtlasConstellate?.enabled && document.documentElement.dataset.weaveStage==='build'")
+    check(not await page.locator("#weave-start").is_visible(),"reentry opened obsolete welcome")
+    check(await page.evaluate("window.AtlasCollections.current().items.length===0"),"reentry unexpectedly populated collection")
     # The Map page offers a thread from an open land.
     await page.goto(BASE, wait_until="load", timeout=90000)
     await page.wait_for_timeout(3500)
