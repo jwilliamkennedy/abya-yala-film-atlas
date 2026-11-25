@@ -54,7 +54,6 @@ body.atlas-globe-experiment #atlas-theme-web :is(#tw-seed,[data-start-term]){dis
 /* Native globe stays behind the offline canvas until the style has initialized. */
 #globe-live-map{position:absolute;inset:0;z-index:0;visibility:hidden;background:#101b29;touch-action:none}
 #atlas-rotational-globe.globe-live #globe-live-map{visibility:visible}
-#atlas-rotational-globe.globe-live #globe-surface{opacity:0;pointer-events:none;visibility:hidden}
 #globe-live-map .maplibregl-canvas{outline-offset:-2px;touch-action:none}
 #globe-aperture,.globe-instructions{z-index:1}
 .globe-footer{font-size:10px;line-height:1.4}
@@ -448,6 +447,4 @@ body.atlas-globe-experiment #constellate-mode{display:none!important}
 #atlas-rotational-globe[data-layout=compact][data-menu]:not([data-menu=""]) :is(#globe-encounter,.globe-zoom){visibility:hidden;pointer-events:none}
 #atlas-rotational-globe .globe-instructions{display:none}
 #atlas-rotational-globe:not([data-ready=true]){visibility:hidden}
-#atlas-rotational-globe.globe-live:not(.globe-revealed) #globe-live-map{opacity:0}
-#atlas-rotational-globe.globe-live.globe-revealed #globe-live-map{opacity:1;transition:opacity .25s ease}
-@media(prefers-reduced-motion:reduce){#atlas-rotational-globe.globe-live.globe-revealed #globe-live-map{transition:none}}
+/* The native renderer stays opaque behind the overview; fade only the top canvas, never both layers. */
