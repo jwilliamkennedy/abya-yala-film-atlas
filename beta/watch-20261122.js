@@ -228,8 +228,10 @@ addEventListener('resize',stick);
 if('ResizeObserver' in window)new ResizeObserver(fitQueue).observe($('#queue'));else addEventListener('resize',fitQueue);
 render();stick();
 /* first film: the one named in the address (#film id), else one at random that plays here */
-let requested='';try{requested=decodeURIComponent(location.hash.slice(1));}catch{}
-const asked=data.find(f=>f.fid===requested);
+function requestedFilm(){let id='';try{id=decodeURIComponent(location.hash.slice(1));}catch{}return data.find(f=>f.fid===id);}
+const asked=requestedFilm();
 if(asked)play(asked,{quiet:true});
 else{const p=(visible().filter(playable).length?visible():data).filter(playable);if(p.length)play(p[Math.floor(Math.random()*p.length)],{quiet:true});else $('#now').hidden=true;}
+// Hash-only navigation does not reload this page. Honor film deep links and browser Back/Forward.
+addEventListener('hashchange',()=>{const f=requestedFilm();if(f&&f.fid!==state.now){$('#now').hidden=false;play(f,{quiet:true});}});
 })();
