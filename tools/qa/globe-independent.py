@@ -96,12 +96,22 @@ async def run(browser,name,viewport):
             await page.wait_for_timeout(1000)
             art=await page.evaluate("""() => [...document.querySelectorAll('#atlas-rotational-globe .globe-artwork[data-art-state=ready] img')].filter(i=>i.getClientRects().length&&i.getBoundingClientRect().width>0).map(i=>{
                 const b=i.getBoundingClientRect(),s=getComputedStyle(i);
-                return {natural:[i.naturalWidth,i.naturalHeight],display:[b.width,b.height],fit:s.objectFit,filter:s.filter,opacity:s.opacity,film:i.parentElement.dataset.film};
+                const f=i.parentElement.getBoundingClientRect();
+                return {natural:[i.naturalWidth,i.naturalHeight],display:[b.width,b.height],frame:[f.width,f.height],fit:s.objectFit,filter:s.filter,opacity:s.opacity,film:i.parentElement.dataset.film};
             })""")
+            assert art,(name,"no decoded artwork audited")
             for a in art:
                 n=a["natural"]; d=a["display"]
                 assert abs(d[0]/d[1]-n[0]/n[1])<0.04*max(1,n[0]/n[1]),(name,"stretched artwork",a)
                 assert d[0]<=n[0]+1 and d[1]<=n[1]+1,(name,"upscaled artwork",a)
+                assert all(abs(v-u)<1.1 for v,u in zip(a["frame"],d)),(name,"oversized exterior artwork frame",a)
+            # Audit outer floating card width against image plus actual padding/border.
+            assert await page.evaluate("""() => {
+                const p=document.querySelector('#globe-emergent');if(p.hidden)return true;
+                const a=p.querySelector('.globe-artwork'),s=getComputedStyle(p);
+                return Math.abs(p.getBoundingClientRect().width-a.getBoundingClientRect().width-parseFloat(s.paddingLeft)-parseFloat(s.paddingRight)-parseFloat(s.borderLeftWidth)-parseFloat(s.borderRightWidth))<1.1;
+            }"""),(name,"floating exterior width does not fit image")
+            for a in art:
                 assert a["fit"]=="contain" and a["filter"]=="none" and a["opacity"]=="1",(name,"washed artwork",a)
             print(name,"artwork dimensions",json.dumps(art),flush=True)
             print(name,"emergent artwork",await page.evaluate("window.AtlasGlobe.discovery.posterVisible"),flush=True)

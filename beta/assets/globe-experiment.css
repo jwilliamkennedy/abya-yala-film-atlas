@@ -155,3 +155,36 @@ body.atlas-globe-experiment #globe-close{position:static;z-index:auto;width:100%
 #atlas-rotational-globe.is-moving #globe-encounter{opacity:.82}
 #globe-encounter .globe-film-strip{min-height:94px}
 @media(max-width:760px){#globe-encounter .globe-featured{grid-template-columns:minmax(76px,39%) minmax(0,1fr)}#globe-encounter .globe-feature-art.globe-artwork{max-height:132px}#atlas-rotational-globe .globe-art-feature img{max-height:min(132px,var(--art-natural-height,132px))!important}#globe-emergent .globe-emergent-title{font-size:11px}.globe-emergent-meta{font-size:9px}}
+
+/* Tight image border-boxes: the artwork, not the grid slot, owns its frame.
+ * Captions are separate; all source-image edges remain visible. */
+#atlas-rotational-globe .globe-artwork[data-art-state=ready]{
+ box-sizing:content-box;display:block;flex:none;min-width:0;min-height:0;
+ padding:0!important;border:0!important;aspect-ratio:auto!important;
+ height:auto!important;max-height:none!important;background:transparent;
+}
+#atlas-rotational-globe .globe-artwork[data-art-state=ready] img{
+ display:block;width:100%!important;height:auto!important;max-width:100%!important;
+ max-height:none!important;aspect-ratio:auto!important;margin:0!important;
+}
+#globe-encounter .globe-art-feature[data-art-state=ready]{
+ width:min(100%,var(--art-feature-width))!important;justify-self:start;align-self:start;
+}
+#globe-encounter .globe-art-strip[data-art-state=ready]{
+ width:min(100%,var(--art-strip-width))!important;justify-self:start;align-self:start;
+}
+#globe-encounter .globe-film-strip{align-items:start;min-height:0}
+#globe-encounter .globe-film{grid-template-rows:auto auto;align-content:start}
+#globe-emergent{
+ box-sizing:border-box;width:calc(var(--poster-image-width,100px) + 14px)!important;
+ height:auto!important;min-width:0;max-width:none;min-height:0;max-height:none;
+ display:flex;align-items:stretch;padding:6px;gap:4px;
+}
+#globe-emergent .globe-art-emergent[data-art-state=ready]{
+ width:var(--poster-image-width)!important;height:auto!important;flex:none;
+}
+#globe-emergent .globe-emergent-title{min-height:0;overflow-wrap:anywhere}
+#globe-emergent .globe-emergent-meta{max-width:100%;min-width:0}
+@media(max-width:760px){
+ #globe-encounter .globe-art-feature[data-art-state=ready]{width:min(100%,var(--art-mobile-width))!important}
+}
