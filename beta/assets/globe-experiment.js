@@ -140,9 +140,9 @@ function shape(g,fill,stroke,width=1){
  ctx.beginPath();path(g);if(fill){ctx.fillStyle=fill;ctx.fill();}if(stroke){ctx.strokeStyle=stroke;ctx.lineWidth=width;ctx.stroke();}
 }
 function screenPoints(){
- const c=C(),out=[];
- for(const p of points){if((!liveReady||live.getZoom()<5)&&!visible(p.coord))continue;const pos=liveReady?live.project(p.coord):null;const xy=pos?[pos.x,pos.y]:proj(p.coord);if(!xy?.every(Number.isFinite)||xy[0]<-10||xy[1]<-10||xy[0]>W+10||xy[1]>H+10)continue;
-  out.push({p,xy,match:matchingFilms(p.id).length>0,distance:Math.hypot(xy[0]-W/2,xy[1]-H/2)});
+ const out=[],stamp=filterKey(),checkHemisphere=!liveReady||live.getZoom()<5;
+ for(const p of points){if(checkHemisphere&&!visible(p.coord))continue;const pos=liveReady?live.project(p.coord):null;const xy=pos?[pos.x,pos.y]:proj(p.coord);if(!xy?.every(Number.isFinite)||xy[0]<-10||xy[1]<-10||xy[0]>W+10||xy[1]>H+10)continue;
+  out.push({p,xy,match:matchingFilms(p.id,stamp).length>0,distance:Math.hypot(xy[0]-W/2,xy[1]-H/2)});
  }
  return out;
 }
@@ -516,7 +516,7 @@ function underFocus(){
  const c=liveReady?live.unproject([W/2,H/2]):null,p=c?[wrap(c.lng),c.lat]:center;
  return records.filter(rec=>rec.shapes.some(s=>includesBounds(s.bounds,p)&&d3.geoContains(s.feature,p)));
 }
-function matchingFilms(id){const stamp=filterKey();if(stamp!==matchingStamp){matchingStamp=stamp;matchingCache.clear();}if(!matchingCache.has(id))matchingCache.set(id,C().globeLandCatalogFilms(id).filter(f=>periodMatch(f)&&matchesFacets(f)));return matchingCache.get(id);}
+function matchingFilms(id,stamp=filterKey()){if(stamp!==matchingStamp){matchingStamp=stamp;matchingCache.clear();}if(!matchingCache.has(id))matchingCache.set(id,C().globeLandCatalogFilms(id).filter(f=>periodMatch(f)&&matchesFacets(f)));return matchingCache.get(id);}
 // Lazy public CSV projection: exact credit key, including multiline source evidence.
 let publicRowsPromise=null,facetRowsPromise=null,publicationStatus='loading',facetFilter={language:'',form:'',length:''},matchingCache=new Map(),matchingStamp='',filtersInitialized=false;
 function parsePublicCSV(raw,required=['filmmaker_id','film_id']){
@@ -573,7 +573,7 @@ async function synchronizePublication(){
   const [rows,facets]=await Promise.all([publicRows(),facetRows()]);if(!active||closed)return;
   const current=featured?.film.id;
   C().installGlobePublication(rows,facets);publicationStatus='ready';
-  rankCache.clear();matchingCache.clear();matchingStamp='';focusKey='';liveSignature='';posterKey='';
+  rankCache.clear();matchingCache.clear();matchingStamp='';coverageMemo=null;focusKey='';liveSignature='';posterKey='';
   if(current&&!inboundEncounter?.film)pendingFilm=current;
   refreshFacetOptions();showPublicationStatus();restoreEncounter();sync();scheduleSettle(100);
  }catch(e){if(!active)return;publicationStatus='error';showPublicationStatus();console.warn('Globe publication synchronization:',e);}
@@ -895,7 +895,8 @@ function wire(){
  canvas.addEventListener('wheel',e=>{e.preventDefault();inboundEncounter=null;cancelFlight();const delta=e.deltaY*(e.deltaMode===1?16:1);zoom=clamp(zoom*Math.exp(-clamp(delta,-350,350)*(e.ctrlKey?.009:.004)),.8,25);movement();finishMove();},{passive:false});
  canvas.addEventListener('keydown',e=>{const k=e.key,step=12/Math.sqrt(zoom);if(!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','+','=','-','Home','Enter'].includes(k))return;e.preventDefault();e.stopPropagation();if(k==='Enter'){if(focusIds.length)C().openLands(focusIds);return;}if(k==='Home'){setCamera([-91,12],1);return;}if(k==='+'||k==='='){setCamera(center,zoom*1.4);return;}if(k==='-'){setCamera(center,zoom/1.4);return;}setCamera([center[0]+(k==='ArrowRight'?step:k==='ArrowLeft'?-step:0),center[1]+(k==='ArrowUp'?step:k==='ArrowDown'?-step:0)]);});
 }
-function themeCoverage(){const seen=new Set();let lands=0;for(const p of points){const fs=matchingFilms(p.id);if(fs.length)lands++;for(const f of fs)seen.add(f.id);}return {lands,credits:seen.size};}
+let coverageMemo=null;
+function themeCoverage(){const stamp=filterKey();if(coverageMemo?.stamp===stamp)return coverageMemo.value;const seen=new Set();let lands=0;for(const p of points){const fs=matchingFilms(p.id,stamp);if(fs.length)lands++;for(const f of fs)seen.add(f.id);}const value={lands,credits:seen.size};coverageMemo={stamp,value};return value;}
 function refreshMenuLabels(){
  const b=$('#globe-theme-toggle'),t=currentTheme(),period=$('#globe-period')?.value;
  if(b){b.textContent=t.length?'Themes ('+t.length+')':'Themes';b.classList.toggle('has-filter',!!t.length);b.title=t.join(' + ')||'Explore films by theme';}
