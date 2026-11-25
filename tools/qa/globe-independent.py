@@ -36,16 +36,14 @@ async def run(browser,name,viewport):
             await page.emulate_media(reduced_motion="no-preference")
             burst=await fallback.evaluate("""e=>{const before=AtlasGlobe.camera;
                 for(const dy of [-80,-80,40])e.dispatchEvent(new WheelEvent('wheel',{deltaY:dy,bubbles:true,cancelable:true}));
-                return {before,immediate:AtlasGlobe.camera,busy:!AtlasGlobe.focus.settled};}""")
-            assert burst["busy"] and burst["before"]==burst["immediate"],(name,"overview wheel jumped synchronously",burst)
-            # Initiating a wheel gesture and a keyboard-style click in the same
-            # event task must never activate the stale encounter.
-            blocked=await fallback.evaluate("""e=>{e.dispatchEvent(new WheelEvent('wheel',{deltaY:0,bubbles:true,cancelable:true}));
+                // Test the stale panel activation in the same event task,
+                // before any requestAnimationFrame can settle the camera.
                 const panel=document.querySelector('#globe-encounter'),probe=document.createElement('button');let activated=false;
                 panel.append(probe);probe.addEventListener('click',()=>activated=true);
                 const evt=new MouseEvent('click',{bubbles:true,cancelable:true});probe.dispatchEvent(evt);probe.remove();
-                return {activated,prevented:evt.defaultPrevented,busy:!AtlasGlobe.focus.settled};}""")
-            if blocked["busy"]: assert blocked["prevented"] and not blocked["activated"],(name,blocked)
+                return {before,immediate:AtlasGlobe.camera,busy:!AtlasGlobe.focus.settled,activated,prevented:evt.defaultPrevented};}""")
+            assert burst["busy"] and burst["before"]==burst["immediate"],(name,"overview wheel jumped synchronously",burst)
+            assert burst["prevented"] and not burst["activated"],(name,"stale encounter activated",burst)
             await page.wait_for_function("AtlasGlobe.focus.settled",timeout=15000)
             after=await page.evaluate("AtlasGlobe.camera")
             import math
