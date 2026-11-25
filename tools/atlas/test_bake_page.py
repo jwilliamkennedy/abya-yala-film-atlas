@@ -29,3 +29,29 @@ class PageLoaderTest(unittest.TestCase):
                 self.assertEqual(positions, sorted(positions))
                 page(path)
                 self.assertEqual(once, path.read_text())
+
+    def test_current_beta_page_preserves_loader_order_and_versions(self):
+        # Test the real checked-in shell, not just synthetic script tags.
+        root = Path(__file__).resolve().parents[2]
+        original = (root / 'beta' / 'index.html').read_text(encoding='utf-8')
+        import re
+        pattern = r'<script\b[^>]*\bsrc="([^"?]+)(?:\?[^"]*)?"[^>]*></script>'
+        def scripts(html):
+            return [(m.group(1), m.group(0)) for m in re.finditer(pattern, html)]
+        before = scripts(original)
+        required = ('atlas-data.js', 'territories-data.js', 'territory-fixes.js',
+                    'assets/constellate.js', 'watch-data.js', 'assets/globe-experiment.js')
+        for src in required:
+            self.assertEqual(sum(name == src for name, _ in before), 1, src)
+        names = [name for name, _ in before]
+        self.assertLess(names.index('watch-data.js'), names.index('assets/globe-experiment.js'))
+        self.assertLess(names.index('assets/constellate.js'), names.index('assets/globe-experiment.js'))
+        with TemporaryDirectory() as folder:
+            path = Path(folder) / 'index.html'
+            path.write_text(original, encoding='utf-8')
+            page(path)
+            once = path.read_text(encoding='utf-8')
+            self.assertEqual(scripts(once), before, 'Rebuild changed a published script tag or its order')
+            self.assertEqual(once, original, 'Current beta shell must be a fixed point of bake.page()')
+            page(path)
+            self.assertEqual(path.read_text(encoding='utf-8'), once)
