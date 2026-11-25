@@ -79,6 +79,7 @@ async def run(browser,name,viewport):
                 print(name,"two-touch gesture delivered",await page.evaluate("window.AtlasGlobe.tileState.input"),flush=True)
             await shot(page,f"shots/globe-independent/{name}-input.png")
             # A failed module request must retain a usable overview and its shared camera.
+            await page.wait_for_function("window.AtlasGlobe.focus.settled && !window.AtlasGlobe.tileState.wheelActive")
             shared=await page.evaluate("window.AtlasGlobe.discovery.shareURL")
             expected=await page.evaluate("window.AtlasGlobe.camera")
             await page.unroute("**/assets/maplibre/maplibre-gl.mjs*",hold_native)
