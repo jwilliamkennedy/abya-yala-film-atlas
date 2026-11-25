@@ -423,8 +423,8 @@ function tr(en){
   return en.replace(k,msg[lang]);
  }
  const row=DICT[k];if(row)return en.replace(k,row[i]);
- const evidence=k.match(/^(Shared synopsis theme|Same mapped land|Same people|Same filmmaker|Same published language): (.+)$/);
- if(evidence){const prefixes={'Shared synopsis theme':['Tema compartido en la sinopsis','Tema compartilhado na sinopse','Thème commun dans le synopsis'],'Same mapped land':['Mismo territorio indexado','Mesmo território indexado','Même territoire indexé'],'Same people':['Mismo pueblo','Mesmo povo','Même peuple'],'Same filmmaker':['Mismo cineasta','Mesmo cineasta','Même cinéaste'],'Same published language':['Misma lengua registrada','Mesma língua registrada','Même langue documentée']};const value=evidence[1]==='Shared synopsis theme'?evidence[2].split(' · ').map(term=>DICT[term]?.[i]||term).join(' · '):evidence[2];return en.replace(k,prefixes[evidence[1]][i-1]+': '+value);}
+ const evidence=k.match(/^(Shared theme|Same mapped land|Same people|Same filmmaker|Same published language): (.+)$/);
+ if(evidence){const prefixes={'Shared theme':['Tema compartido','Tema compartilhado','Thème commun'],'Same mapped land':['Mismo territorio indexado','Mesmo território indexado','Même territoire indexé'],'Same people':['Mismo pueblo','Mesmo povo','Même peuple'],'Same filmmaker':['Mismo cineasta','Mesmo cineasta','Même cinéaste'],'Same published language':['Misma lengua registrada','Mesma língua registrada','Même langue documentée']};const value=evidence[1]==='Shared theme'?evidence[2].split(' · ').map(term=>DICT[term]?.[i]||term).join(' · '):evidence[2];return en.replace(k,prefixes[evidence[1]][i-1]+': '+value);}
  if(k.includes(' · ')){const parts=k.split(' · ');if(parts.every(p=>DICT[p]||/^[\d,]+$/.test(p)))return en.replace(k,parts.map(p=>DICT[p]?DICT[p][i]:p).join(' · '));}
  for(const [re,out] of PAT){if(out&&re.test(k))return en.replace(k,k.replace(re,out[i-1]));}
  return null;

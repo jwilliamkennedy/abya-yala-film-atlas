@@ -1985,3 +1985,9 @@ body.is-constellating #atlas .land-sky-star:is(.film-preview-land,.is-selected) 
 #constellate-popup.has-film-preview #weave-film-preview{scroll-margin-top:58px}
 #constellate-popup.has-land-view #weave-land{scroll-margin-top:58px}
 #weave-theme-lens .weave-map-theme-results:hover{color:var(--reading-ink)}
+
+/* Wider toolbars expose creative actions; compact widths retain them in Add. */
+#constellate-mode[data-tools="1"] .cm-tools>button{width:34px;padding:0;gap:0}
+#constellate-mode[data-tools="1"] .cm-tools>button .cm-label{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+#constellate-mode .cm-add-menu #weave-draw-thread[aria-pressed="true"]{background:var(--ui-wash)}
+#constellate-mode .cm-tools>button:focus-visible,#constellate-mode .cm-add-menu>button:focus-visible{outline:2px solid var(--cx-film,#a8cbe5);outline-offset:2px}
