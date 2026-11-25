@@ -168,6 +168,8 @@ def write(records, countries, meta, owned, base_globals, edges=None, keep_record
            + (js('ATLAS_FACETS', facets) if facets is not None else ''))
     (B / 'atlas-data.js').write_text(neutral(txt), encoding='utf-8')
     page()
+    if (B / 'flat.html').exists():
+        page(B / 'flat.html')
     return {'atlas-data.js MB': round((B / 'atlas-data.js').stat().st_size / 1e6, 2)}
 
 def page(path=B / 'index.html'):

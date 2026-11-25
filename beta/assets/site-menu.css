@@ -162,3 +162,6 @@ main:is(:has(> nav.eyebrow.pair),:has(> nav.about-tabs),:has(#care-downloads)) >
 main:is(:has(> nav.eyebrow.pair),:has(> nav.about-tabs),:has(#care-downloads)) > nav.eyebrow.pair{min-height:38px;margin:0 0 26px}
 /* beside the rail, less empty space on the left: the column widens a little and its left gap is capped (23 Nov 2026) */
 html[data-rail] main:is(:has(> nav.eyebrow.pair),:has(> nav.about-tabs),:has(#care-downloads)){max-width:64rem;margin:0 auto 0 max(0px,min(calc((100% - 64rem) / 2),5vw))}
+
+/* The globe is the public beta Map. Keep the old Constellate navigation only in explicitly opened legacy workspaces. */
+html:not([data-legacy-workspace]) body>header nav.primary>a[href$='?constellate=1']{display:none!important}

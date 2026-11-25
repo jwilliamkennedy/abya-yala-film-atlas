@@ -63,7 +63,7 @@ def main(root):
     n = 0
     for f in root.rglob('*.html'):
         rel = f.relative_to(root)
-        if str(rel) == 'index.html' or rel.parts[0].startswith('_'):
+        if str(rel) in ('index.html', 'flat.html') or rel.parts[0].startswith('_'):
             continue
         t = f.read_text(encoding='utf-8')
         if '<nav class="primary"' not in t:

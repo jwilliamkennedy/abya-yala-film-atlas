@@ -242,11 +242,12 @@ function mapPage(){
  /* Constellate: the map dims while it is open */
  function constellate(){
   var mode=$('#constellate-mode');
-  var on=!!(mode&&!mode.hidden&&mode.getBoundingClientRect().height>0);
+  var globe=!!root.dataset.globeEntry, on=globe||!!(mode&&!mode.hidden&&mode.getBoundingClientRect().height>0);
   var val=on?'on':'off';
   if(root.dataset.uiConstellate!==val)root.dataset.uiConstellate=val;
-  var ml=$('header .map-link');if(ml&&on===(ml.getAttribute('aria-current')==='page')){if(on)ml.removeAttribute('aria-current');else ml.setAttribute('aria-current','page');}
-  var cl=$('header .constellate-link');if(cl&&on!==(cl.getAttribute('aria-current')==='page')){if(on)cl.setAttribute('aria-current','page');else cl.removeAttribute('aria-current');}
+  var legacyOn=on&&!globe;
+  var ml=$('header .map-link');if(ml&&legacyOn===(ml.getAttribute('aria-current')==='page')){if(legacyOn)ml.removeAttribute('aria-current');else ml.setAttribute('aria-current','page');}
+  var cl=$('header .constellate-link');if(cl&&legacyOn!==(cl.getAttribute('aria-current')==='page')){if(legacyOn)cl.setAttribute('aria-current','page');else cl.removeAttribute('aria-current');}
  }
  /* Run only the work a change actually requires. Previously every DOM
     mutation remeasured every SVG territory and traversed the entire page. */

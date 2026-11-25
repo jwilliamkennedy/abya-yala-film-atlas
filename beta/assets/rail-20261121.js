@@ -7,9 +7,9 @@ if(window.__atlasRail)return;window.__atlasRail=1;
 const root=document.documentElement,wide=matchMedia('(min-width:901px)');
 const src=(document.currentScript&&document.currentScript.src)||'';
 const HOME=src?new URL('../',src).href:new URL('./',location.href).href;
-const FLAT=new URL('?globe=0',HOME).href;
+const FLAT=new URL('flat.html',HOME).href;
 const rel=location.href.split(/[?#]/)[0].replace(HOME,'');
-const onMap=rel===''||rel==='index.html';
+const onMap=rel===''||rel==='index.html'||rel==='flat.html';
 const PAGE={'watch.html':'watch','themes.html':'themes','languages.html':'languages','timeline.html':'timeline','screening.html':'screening',
  'about.html':'about','resources.html':'resources','data.html':'data','corrections.html':'correct'};
 
@@ -46,7 +46,7 @@ const flag={take(){try{const v=sessionStorage.getItem('atlas-rail-do');sessionSt
  set(v){try{sessionStorage.setItem('atlas-rail-do',v)}catch(e){}}};
 
 let nav=null;const homes=new Map();
-const constellating=()=>onMap&&(root.dataset.uiConstellate?root.dataset.uiConstellate==='on':new URLSearchParams(location.search).get('constellate')==='1');
+const constellating=()=>onMap&&(!!root.dataset.globeEntry||(root.dataset.uiConstellate?root.dataset.uiConstellate==='on':new URLSearchParams(location.search).get('constellate')==='1'));
 const landView=()=>onMap&&!!$('.view-switch [data-view="land"][aria-pressed="true"]');
 const current=()=>!onMap?(rel.startsWith('maker/')?'map':PAGE[rel]||''):constellating()?'map':landView()?'lands':'map';
 const wanted=()=>store.get('atlas-rail')||(constellating()||innerWidth<1440?'compact':'full');
