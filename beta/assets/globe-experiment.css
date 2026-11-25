@@ -58,3 +58,13 @@ body.atlas-globe-experiment #globe-close{position:fixed;right:14px;bottom:10px;z
 #globe-live-map .maplibregl-canvas{outline-offset:-2px;touch-action:none}
 #globe-aperture,.globe-instructions{z-index:1}
 .globe-footer{font-size:10px;line-height:1.4}
+
+/* Keep the return/terrain controls inside the same accessible navigation panel. */
+body.atlas-globe-experiment #globe-close{position:static;z-index:auto;width:100%;text-align:center}
+.globe-guide{top:64px;z-index:5}
+.globe-guide>button{font:500 12px/1.4 system-ui,sans-serif;padding:6px 8px;border:1px solid #587080;background:#20364a;color:#edf3f4;border-radius:5px;cursor:pointer}
+.globe-guide>button[aria-pressed="true"]{background:#45685f;border-color:#acc9a7}
+.globe-detail-status{font:10px/1.4 system-ui,sans-serif;color:#c6d9da;overflow-wrap:anywhere}
+#globe-live-map .maplibregl-canvas-container{touch-action:none;overscroll-behavior:contain}
+#globe-aperture{pointer-events:none}
+@media(max-width:760px){.globe-guide{top:58px}.globe-guide>button{font-size:11px;padding:4px 6px}.globe-detail-status{font-size:9px}}

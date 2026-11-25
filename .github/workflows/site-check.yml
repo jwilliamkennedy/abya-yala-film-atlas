@@ -843,6 +843,12 @@ jobs:
           python3 -m http.server 8985 --bind 127.0.0.1 >/tmp/atlas-globe.log 2>&1 &
           sleep 2
           python3 tools/qa/globe-discovery.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: globe-visual-validation
+          path: shots/globe/
+          if-no-files-found: warn
 
   globe-geography:
     name: "Beta: spherical geometry, source coordinates and CSV joins"
