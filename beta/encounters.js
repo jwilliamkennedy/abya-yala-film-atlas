@@ -671,7 +671,7 @@ function renderConstellation(){
   return {id:l.id,l,name,extent,x:l.browseGroup?labelX+48:labelX,y:l.browseGroup?labelY-(width<=680?36:48):labelY,anchorX:x,anchorY:y,labelWidth,selected,voice,lines,opacity:l.browseGroup?Math.max(.05,1-memberOpacity):mayaMemberIds.has(l.id)&&!selected?memberOpacity:1};
  }).filter(Boolean).sort((a,b)=>Number(b.selected)-Number(a.selected)||Number(!!b.voice.count)-Number(!!a.voice.count)||((width>680&&b.l.browseGroup?mayaOverviewPriority:b.voice.count)-(width>680&&a.l.browseGroup?mayaOverviewPriority:a.voice.count))||(transform.k>=3?a.extent-b.extent:0)||Number(!!b.l.supplied)-Number(!!a.l.supplied)||a.name.localeCompare(b.name));
  if(sky){
-  // The night sky uses the same territory anchors, not a decorative star field.
+  // Quiet archive reference points use territory anchors, not decorative stars.
   // At hemisphere scale, overlapping references open a choice of lands.
   constellationLayer.selectAll('.land-word,.land-reference-bubble,.land-group-leader').remove();
   const stars=[],spacing=width<680?32:25;
@@ -685,15 +685,15 @@ function renderConstellation(){
   const nodes=constellationLayer.selectAll('.land-sky-star').data(stars,d=>d.id).join(enter=>{
    const g=enter.append('g').attr('class','land-sky-star').attr('role','button');
    g.append('circle').attr('class','land-sky-hit').attr('r',spacing/2);
-   g.append('path').attr('class','land-sky-light').attr('d','M0,-8 L2.2,-2.2 L8,0 L2.2,2.2 L0,8 L-2.2,2.2 L-8,0 L-2.2,-2.2 Z');
+   g.append('circle').attr('class','land-sky-light').attr('r',2.8);
    g.append('text').attr('class','land-sky-label').attr('y',-15).attr('text-anchor','middle');
    g.append('title');return g;
   }).attr('data-land-sky',d=>d.id).attr('tabindex',0).attr('transform',d=>`translate(${d.anchorX},${d.anchorY})`)
-   .attr('aria-label',d=>d.names.join(' / ')).attr('data-multiple',d=>String(d.ids.length>1))
+   .attr('aria-label',d=>d.names.join(' / ')+' · '+d.count+' catalogued film references'+(d.ids.length>1?' · grouped nearby lands':'')).attr('data-multiple',d=>String(d.ids.length>1))
    .classed('is-selected',d=>d.ids.some(id=>selectedLandIds.has(id))).classed('theme-match',d=>window.AtlasConstellate.landMatchesTheme(d.ids)).classed('film-preview-land',d=>d.ids.some(id=>previewLandIds.has(id))).attr('aria-pressed',d=>String(d.ids.some(id=>selectedLandIds.has(id))));
-  nodes.select('.land-sky-light').attr('transform',d=>'scale('+(d.ids.length>1?1.05:.9)+')');
+  nodes.select('.land-sky-light').attr('r',2.8);
   nodes.select('.land-sky-label').text(d=>d.name+(d.ids.length>1?' +'+(d.ids.length-1):''));
-  nodes.select('title').text(d=>d.names.join(' / '));
+  nodes.select('title').text(d=>d.names.join(' / ')+' · '+d.count+' catalogued film references'+(d.ids.length>1?' · select to choose a land':''));
   const open=d=>window.AtlasConstellate.openLands(d.ids);
   nodes.on('click',(event,d)=>{event.preventDefault();event.stopPropagation();open(d);})
    .on('keydown',(event,d)=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();event.stopPropagation();open(d);}else if(['ArrowLeft','ArrowUp','ArrowRight','ArrowDown'].includes(event.key)){event.preventDefault();const list=nodes.nodes(),i=list.indexOf(event.currentTarget);list[(i+(['ArrowLeft','ArrowUp'].includes(event.key)?-1:1)+list.length)%list.length]?.focus();}});
