@@ -11,17 +11,20 @@ function resolve(href){
  // send visitors to the unlisted workspace (e.g. analytics or referral links).
  const legacyHash=hash.has('view')&&!mappedHash&&!hash.has('weave');
  const globe=!legacy&&(q.get('globe')==='1'||!legacyHash||stateKeys.some(k=>q.has(k)));
- if(!globe)return {globe:false,inbound:source.href,canonical:source.href};
+ if(!globe){
+  const flat=new URL('flat.html',source);flat.search=source.search;flat.hash=source.hash;
+  return {globe:false,canonical:flat.href};
+ }
  const canonical=new URL('./',source);
  for(const k of stateKeys)if(q.has(k))canonical.searchParams.set(k,q.get(k));
  // Old film/profile/land links use explicit IDs, never a geographic guess.
  if(mappedHash)for(const k of ['maker','film','land'])if(hash.has(k)&&!canonical.searchParams.has(k))canonical.searchParams.set(k,hash.get(k));
  if(hash.has('weave'))canonical.hash='weave='+hash.get('weave');
- const inbound=new URL(canonical);inbound.searchParams.set('constellate','1');inbound.searchParams.set('globe','1');
- // A legacy browser-local collection ID may restore an existing collection; it is not a public route.
- if(q.has('weave'))inbound.searchParams.set('weave',q.get('weave'));
- return {globe:true,inbound:inbound.href,canonical:canonical.href};
+ return {globe:true,canonical:canonical.href};
 }
 if(typeof module!=='undefined'&&module.exports)module.exports={resolve};
-else root.AtlasRoute=Object.freeze(resolve(location.href));
+else {
+ root.AtlasRoute=Object.freeze(resolve(location.href));
+ if(!root.AtlasRoute.globe)location.replace(root.AtlasRoute.canonical);
+}
 })(typeof globalThis!=='undefined'?globalThis:this);

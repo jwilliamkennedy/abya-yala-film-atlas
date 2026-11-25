@@ -22,5 +22,9 @@ const cases=[
  ['#view=filmmakers&browse=1',false,'#view=filmmakers&browse=1'],
  ['?at=1,2,3#weave=abc',true,'?at=1%2C2%2C3#weave=abc']
 ];
-for(const [suffix,globe,expected] of cases){const result=resolve(base+suffix);assert.equal(result.globe,globe,suffix);assert.equal(result.canonical,base+expected,suffix);if(globe){const q=new URL(result.inbound).searchParams;assert.equal(q.get('globe'),'1');assert.equal(q.get('constellate'),'1');}}
+for(const [suffix,globe,expected] of cases){
+ const result=resolve(base+suffix);
+ assert.equal(result.globe,globe,suffix);
+ assert.equal(result.canonical,base+(globe?'':'flat.html')+expected,suffix);
+}
 console.log('Atlas route checks passed:',cases.length);

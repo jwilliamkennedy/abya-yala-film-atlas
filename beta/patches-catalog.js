@@ -945,14 +945,6 @@ window.AtlasThemeTags=(()=>{
 
 }).call(window);}catch(e){setTimeout(function(){throw e;});}
 
-/* ==== weave-route62.js ==== */
-try{(function(){
-'use strict';
-// The entry document owns its bootstrap input; never overwrite a globe route.
-window.AtlasWeaveIncoming=window.AtlasWeaveIncoming||location.href;
-
-}).call(window);}catch(e){setTimeout(function(){throw e;});}
-
 /* ==== atlas-update-1031.js ==== */
 try{(function(){
 'use strict';

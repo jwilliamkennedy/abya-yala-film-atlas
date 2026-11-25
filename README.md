@@ -4,7 +4,7 @@ A map of Indigenous filmmakers and their lands across the Americas, by John Kenn
 
 Public site: https://jwilliamkennedy.github.io/abya-yala-film-atlas/
 
-Beta globe (default; independent viewport, with the legacy catalogue runtime isolated): https://jwilliamkennedy.github.io/abya-yala-film-atlas/beta/
+Beta globe (default entry at beta/index.html, sharing the catalogue and collection services with flat.html): https://jwilliamkennedy.github.io/abya-yala-film-atlas/beta/
 
 Previous flat beta (unlisted, noindex): https://jwilliamkennedy.github.io/abya-yala-film-atlas/beta/flat.html (independent entry; the same live catalogue)
 

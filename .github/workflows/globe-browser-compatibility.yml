@@ -4,7 +4,11 @@ on:
     branches: [main]
     paths:
       - 'beta/index.html'
-      - 'beta/assets/globe-experiment.*'
+      - 'beta/assets/globe.js'
+      - 'beta/assets/globe-experiment.css'
+      - 'beta/assets/catalogue.js'
+      - 'beta/assets/collection-editor.js'
+      - 'beta/assets/collection-store.js'
       - 'beta/assets/maplibre/**'
       - 'beta/assets/constellate.js'
       - 'beta/patches-collections.js'
@@ -93,7 +97,7 @@ jobs:
                       await page.wait_for_function("AtlasGlobe.discovery.themeCoverage?.credits>0")
                       await page.locator('#weave-map-theme').select_option('')
                       await press('#globe-find-toggle')
-                      land = await page.evaluate("AtlasGlobe.anchors.find(a=>AtlasConstellate.globeLandFilmCount(a.id)>0)?.id")
+                      land = await page.evaluate("AtlasGlobe.anchors.find(a=>AtlasCollectionEditor.globeLandFilmCount(a.id)>0)?.id")
                       assert land
                       await page.locator('#globe-find').select_option(land)
                       await page.wait_for_function("id=>AtlasGlobe.focus.settled && AtlasGlobe.discovery.featured?.land===id",arg=land,timeout=30000)

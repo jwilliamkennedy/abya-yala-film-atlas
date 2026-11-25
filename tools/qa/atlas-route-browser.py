@@ -27,7 +27,8 @@ async def main():
             writes=await page.evaluate("window.__atlasHistoryWrites")
             assert not any("constellate=1" in u or "globe=1" in u for u in writes),writes
             assert await page.locator('script[src^="assets/globe.js"]').count()==1
-            assert await page.evaluate("new URL(AtlasWeaveIncoming).searchParams.get('globe')==='1'")
+            assert await page.evaluate("!window.AtlasConstellate && !window.AtlasOpenBasemap && !window.AtlasCollectionEditor.enabled")
+            assert await page.locator('#atlas, #index, script[src*="encounters.js"], script[src*="constellate.js"]').count()==0
             assert not await page.locator("header .constellate-link").is_visible()
             assert await page.locator("#globe-close,.globe-legacy-link").count()==0
             await page.locator("#globe-find-toggle").click()

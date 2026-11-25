@@ -3,8 +3,11 @@ on:
   push:
     branches: [main]
     paths:
-      - 'beta/assets/globe-experiment.*'
       - 'beta/assets/globe.js'
+      - 'beta/assets/globe-experiment.css'
+      - 'beta/assets/catalogue.js'
+      - 'beta/assets/collection-editor.js'
+      - 'beta/assets/collection-store.js'
       - 'beta/patches-catalog.js'
       - 'beta/territory-fixes.js'
       - 'beta/encounters.js'

@@ -12,9 +12,9 @@ async def main():
         browser=await p.chromium.launch(args=["--use-angle=swiftshader","--enable-unsafe-swiftshader"])
         page=await browser.new_page(viewport={"width":1440,"height":900})
         await page.goto(BASE+"?constellate=1&globe=1",wait_until="domcontentloaded",timeout=90000)
-        await page.wait_for_function("window.AtlasGlobe?.active && window.AtlasGlobe.discovery.publication==='ready' && window.AtlasConstellate?.globeCreditIndex",timeout=60000)
+        await page.wait_for_function("window.AtlasGlobe?.active && window.AtlasGlobe.discovery.publication==='ready' && window.AtlasCollectionEditor?.globeCreditIndex",timeout=60000)
         live=await page.evaluate("""() => {
-          const A=window.Atlas,C=window.AtlasConstellate,I=C.globeCreditIndex(),F=window.ATLAS_FACETS||{};
+          const A=window.AtlasCatalogue,C=window.AtlasCollectionEditor,I=C.globeCreditIndex(),F=window.ATLAS_FACETS||{};
           return {makers:A.allRecords().map(r=>({id:r.id,name:r.name,community:r.community,nation:r.nation,countries:r.countryCodes,refs:A.recordLandReferences(r.id)})),
             films:I.films.map(x=>{const r=A.recordById(x.record),f=r.films.find(f=>f.id===x.film),m=C.globeMetadata(x);return {maker:x.record,film:x.film,title:x.title,year:x.year,credit:m?.film.credit||f.credit,refs:I.refs.get(x.id),terms:C.terms(x),image:C.sourceImage(x),watch:C.globeViewingRoutes(x).map(l=>l.url),facets:m?{l:m.l,f:m.f,n:m.n,p:m.p,t:m.t}:F.films?.[x.film]||{},exportFacet:C.globeFacetExport(x.film),baked:F.films?.[x.film]||{},hasPublic:!!m,publicRow:m?.row||null}}),
             languages:F.languages||{},terms:Object.values(F.families||{}).flat()};

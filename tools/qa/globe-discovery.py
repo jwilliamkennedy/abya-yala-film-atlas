@@ -30,12 +30,12 @@ async def check(browser,name,viewport):
     await page.wait_for_function("document.querySelector('#atlas-rotational-globe')?.dataset.ready==='true'",timeout=60000)
     after=await page.locator("#atlas-globe-stage").bounding_box()
     assert max(abs(plate[k]-after[k]) for k in ("x","y","width","height"))<=3, (name,"map plate jumped during startup",plate,after)
-    assert await page.evaluate("document.querySelector('#atlas-rotational-globe').parentElement.id==='atlas-globe-stage' && document.querySelector('body>main').inert && !document.querySelector('body>main').contains(document.querySelector('#atlas-rotational-globe'))"), (name,"legacy runtime owns public layout")
+    assert await page.evaluate("document.querySelector('#atlas-rotational-globe').parentElement.id==='atlas-globe-stage' && !document.querySelector('.map-panel,#atlas,#index')"), (name,"legacy runtime owns public layout")
     assert await page.evaluate("!location.search && !location.hash"), (name,"legacy controllers changed public URL")
     assert await page.evaluate("window.AtlasGlobe.pointCount>0 && window.AtlasGlobe.geometryCount>0 && window.AtlasGlobe.landArea>2.5 && window.AtlasGlobe.landArea<4.8"),name
     # Test the production index rather than a mocked grouping or screen location.
     join = await page.evaluate("""() => {
-      const C=window.AtlasConstellate,A=window.Atlas,G=window.AtlasGlobe,I=C.globeCreditIndex();
+      const C=window.AtlasCollectionEditor,A=window.AtlasCatalogue,G=window.AtlasGlobe,I=C.globeCreditIndex();
       const credits=new Set(A.allRecords().flatMap(r=>r.films.map(f=>'film:'+r.id+':'+f.id)));
       const actual=new Set(I.films.map(f=>f.id));
       const missing=[...credits].filter(id=>!actual.has(id));
@@ -56,7 +56,7 @@ async def check(browser,name,viewport):
     # Regression: Hawaiian catalogue identities and the Native Land source
     # polygon must resolve to one real, contained geographic anchor.
     hawaii = await page.evaluate("""() => {
-      const A=window.Atlas,C=window.AtlasConstellate,G=window.AtlasGlobe;
+      const A=window.AtlasCatalogue,C=window.AtlasCollectionEditor,G=window.AtlasGlobe;
       const land=A.landById('NAME-165'),I=C.globeCreditIndex(),entry=I.byLand.get('NAME-165');
       const a=G.anchors.find(x=>x.id==='NAME-165');
       const source=land?.groups.flatMap(g=>g.features).find(f=>String(f.id)==='35877');
@@ -79,7 +79,7 @@ async def check(browser,name,viewport):
     # All explicit aliases must resolve to the exact named source feature,
     # and subgroup-qualified geometries must remain distinct.
     relays = await page.evaluate("""() => {
-      const A=window.Atlas,C=window.AtlasConstellate,I=C.globeCreditIndex();
+      const A=window.AtlasCatalogue,C=window.AtlasCollectionEditor,I=C.globeCreditIndex();
       const aliases=(window.AtlasLandAliasRelays||[]).map(([id,sid,label])=>{
         const l=A.landById(id);
         return {id,target:l?.id,ok:!!l?.groups.some(g=>g.features.some(f=>String(f.id)===sid&&f.properties.name===label))};
@@ -194,7 +194,7 @@ async def check(browser,name,viewport):
     await page.wait_for_timeout(450)
     assert await page.evaluate(CAM)==selected,(name,"theme moved camera")
     assert await page.evaluate("""() => {
-      const C=window.AtlasConstellate, t=document.querySelector('#weave-map-theme').value;
+      const C=window.AtlasCollectionEditor, t=document.querySelector('#weave-map-theme').value;
       return window.AtlasGlobe.focus.ids.every(id=>C.globeLandCatalogFilms(id).every(f=>C.terms(f).includes(t)));
     }"""),(name,"theme leaked between credits")
 
@@ -210,7 +210,7 @@ async def check(browser,name,viewport):
     await page.evaluate("AtlasGlobe.close()")
     await page.wait_for_function("!window.AtlasOpenBasemap?.active || !!document.querySelector('#atlas-basemap')",timeout=30000)
     assert await page.evaluate("!document.documentElement.dataset.globeEntry && !document.querySelector('#atlas-rotational-globe')"),(name,"globe ownership not released")
-    await page.wait_for_function("!window.AtlasGlobe.active && window.AtlasConstellate.enabled")
+    await page.wait_for_function("!window.AtlasGlobe.active && !window.AtlasCollectionEditor.enabled")
     assert await page.locator("#atlas-rotational-globe").count()==0
     await page.goto(BASE+"flat.html",wait_until="domcontentloaded",timeout=90000)
     await page.wait_for_function("document.documentElement.dataset.atlasUi==='ready'",timeout=60000)

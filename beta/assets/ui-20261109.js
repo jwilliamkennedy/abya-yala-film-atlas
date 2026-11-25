@@ -294,6 +294,7 @@ function mapPage(){
 
 function start(){
  if(!headerTools()){var mo=new MutationObserver(function(){if(headerTools())mo.disconnect();});mo.observe(document.documentElement,{childList:true,subtree:true});setTimeout(function(){mo.disconnect();},15000);}
+ if(root.dataset.globeEntry)return;
  if(isMap()){var wait=function(n){if(window.Atlas&&window.Atlas.allRecords&&$('#atlas .land-word'))return mapPage();if(n<80)setTimeout(function(){wait(n+1);},250);else mapPage();};wait(0);}
  else{placeholders();var phScheduled=false;new MutationObserver(function(){if(phScheduled)return;phScheduled=true;requestAnimationFrame(function(){phScheduled=false;placeholders();});}).observe(document.body,{childList:true,subtree:true});}
 }

@@ -101,7 +101,7 @@ async def run(browser,name,viewport):
         assert layer["boundaries"]["longEdges"]==0,(name,"cross-world territory edges",layer["boundaries"])
         print(name,"ambient territory layer",json.dumps(layer),flush=True)
         if MODE=="terrain":
-            counts=await page.evaluate("""()=>{const G=AtlasGlobe,I=AtlasConstellate.globeCreditIndex(),A=new Map(G.anchors.map(a=>[a.id,a.coordinate])),credits=new Map(I.films.map(f=>[f.id,f])),markers=G.cinemaMarkers;return {markers:markers.length,multiple:markers.filter(m=>m.films>1&&m.makers>1).length,invalid:markers.filter(m=>{const rows=G.matchingCreditIds(m.land).map(id=>credits.get(id));return !A.has(m.land)||JSON.stringify(m.coordinate)!==JSON.stringify(A.get(m.land))||rows.some(f=>!f)||m.credits!==new Set(rows.map(f=>f.id)).size||m.films!==new Set(rows.map(f=>f.film||f.id)).size||m.makers!==new Set(rows.map(f=>f.record).filter(Boolean)).size;}).map(m=>m.land)};}""")
+            counts=await page.evaluate("""()=>{const G=AtlasGlobe,I=AtlasCollectionEditor.globeCreditIndex(),A=new Map(G.anchors.map(a=>[a.id,a.coordinate])),credits=new Map(I.films.map(f=>[f.id,f])),markers=G.cinemaMarkers;return {markers:markers.length,multiple:markers.filter(m=>m.films>1&&m.makers>1).length,invalid:markers.filter(m=>{const rows=G.matchingCreditIds(m.land).map(id=>credits.get(id));return !A.has(m.land)||JSON.stringify(m.coordinate)!==JSON.stringify(A.get(m.land))||rows.some(f=>!f)||m.credits!==new Set(rows.map(f=>f.id)).size||m.films!==new Set(rows.map(f=>f.film||f.id)).size||m.makers!==new Set(rows.map(f=>f.record).filter(Boolean)).size;}).map(m=>m.land)};}""")
             assert counts["markers"]>0 and counts["multiple"]>0 and not counts["invalid"],(name,counts)
             print(name,"cinema multiplicity from exact catalogue IDs",json.dumps(counts),flush=True)
         if MODE=="input":
@@ -161,7 +161,7 @@ async def run(browser,name,viewport):
             assert any("tiles.maps.eox.at/" in u for u in tiles),("no successful satellite response",tiles)
             assert any("tiles.mapterhorn.com/" in u for u in tiles),("no successful DEM response",tiles)
             await page.wait_for_function("AtlasGlobe.territoryNames.withoutCinema>0",timeout=60000)
-            labels=await page.evaluate("""()=>{const N=AtlasGlobe.territoryNames,L=new Map(Atlas.lands.map(x=>[x.id,x]));return {indexed:N.indexed,total:N.total,withoutCinema:N.withoutCinema,invalid:N.anchors.filter(a=>!L.get(a.id)?.groups.some(g=>g.features.some(f=>String(f.id)===a.sourceId&&d3.geoContains(f,a.coordinate)))).map(a=>a.id)};}""")
+            labels=await page.evaluate("""()=>{const N=AtlasGlobe.territoryNames,L=new Map(AtlasCatalogue.lands.map(x=>[x.id,x]));return {indexed:N.indexed,total:N.total,withoutCinema:N.withoutCinema,invalid:N.anchors.filter(a=>!L.get(a.id)?.groups.some(g=>g.features.some(f=>String(f.id)===a.sourceId&&d3.geoContains(f,a.coordinate)))).map(a=>a.id)};}""")
             assert not labels["invalid"] and labels["withoutCinema"]>0,(name,labels)
             print(name,"geographic name coverage",json.dumps(labels),flush=True)
             await shot(page,f"shots/globe-independent/{name}-overhead.png")
@@ -193,7 +193,7 @@ async def run(browser,name,viewport):
             await page.locator("#globe-more-toggle").click()
             await page.locator("#globe-landscape").click()
             await page.wait_for_function("AtlasGlobe.tileState.pitch>35 && AtlasGlobe.focus.settled")
-            assert await page.evaluate("""()=>{const G=AtlasGlobe,t=G.focus.target;const ids=Atlas.lands.filter(l=>!l.browseGroup&&l.groups?.some(g=>g.features.some(f=>d3.geoContains(f,t.coordinate)))).map(l=>l.id);return G.focus.inside.every(id=>ids.includes(id))&&ids.every(id=>G.focus.inside.includes(id))&&(!t.primary||G.focus.ids.includes(t.primary))&&(t.reason!=='contains-target'||ids.includes(t.primary));}"""),(name,"pitched geographic target mismatch")
+            assert await page.evaluate("""()=>{const G=AtlasGlobe,t=G.focus.target;const ids=AtlasCatalogue.lands.filter(l=>!l.browseGroup&&l.groups?.some(g=>g.features.some(f=>d3.geoContains(f,t.coordinate)))).map(l=>l.id);return G.focus.inside.every(id=>ids.includes(id))&&ids.every(id=>G.focus.inside.includes(id))&&(!t.primary||G.focus.ids.includes(t.primary))&&(t.reason!=='contains-target'||ids.includes(t.primary));}"""),(name,"pitched geographic target mismatch")
             print(name,"adaptive targeting",sizes,flush=True)
             # Verify real button-driven zoom, not only programmatic jumps.
             before=await page.evaluate("({center:AtlasGlobe.camera.center,zoom:AtlasGlobe.camera.zoom,featured:AtlasGlobe.discovery.featured})")
@@ -276,7 +276,7 @@ async def run(browser,name,viewport):
                 assert await page.evaluate("window.AtlasGlobe.territoryLayer.edgeVisibility")==expected
             await page.locator(".globe-settings summary").click()
             await page.locator("#globe-find-toggle").click()
-            land=await page.evaluate("""()=>{const inv=window.AtlasGlobe.artworkInventory(),local=new Map();for(const c of inv.credits){if(!c.source||/^https?:/i.test(c.source))continue;for(const id of c.lands)local.set(id,(local.get(id)||0)+1);}return window.AtlasGlobe.anchors.find(a=>(local.get(a.id)||0)>1)?.id||window.AtlasGlobe.anchors.find(a=>window.AtlasConstellate.globeLandFilmCount(a.id)>1).id;}""")
+            land=await page.evaluate("""()=>{const inv=window.AtlasGlobe.artworkInventory(),local=new Map();for(const c of inv.credits){if(!c.source||/^https?:/i.test(c.source))continue;for(const id of c.lands)local.set(id,(local.get(id)||0)+1);}return window.AtlasGlobe.anchors.find(a=>(local.get(a.id)||0)>1)?.id||window.AtlasGlobe.anchors.find(a=>window.AtlasCollectionEditor.globeLandFilmCount(a.id)>1).id;}""")
             await page.locator("#globe-find").select_option(value=land)
             assert await page.locator(".globe-menu-panel:visible").count()==0
             await page.wait_for_function("(id)=>window.AtlasGlobe.focus.settled && window.AtlasGlobe.focus.ids.includes(id)",arg=land)
@@ -311,7 +311,7 @@ async def run(browser,name,viewport):
             }"""),(name,"poster obstructs aperture or lacks sourced image")
             # The catalogue order is independent of artwork. Select a recorded local
             # image explicitly instead of assuming the first few films have one.
-            assert await page.evaluate("""id=>{const films=AtlasConstellate.globeLandCatalogFilms(id).slice().sort((a,b)=>a.title.localeCompare(b.title)||String(a.maker||'').localeCompare(String(b.maker||''))||a.id.localeCompare(b.id));return AtlasGlobe.discovery.featured.film===films[0]?.id;}""",land),(name,"artwork-neutral order")
+            assert await page.evaluate("""id=>{const films=AtlasCollectionEditor.globeLandCatalogFilms(id).slice().sort((a,b)=>a.title.localeCompare(b.title)||String(a.maker||'').localeCompare(String(b.maker||''))||a.id.localeCompare(b.id));return AtlasGlobe.discovery.featured.film===films[0]?.id;}""",land),(name,"artwork-neutral order")
             image_id=await page.evaluate("""id=>AtlasGlobe.artworkInventory().credits.find(c=>c.lands.includes(id)&&c.source&&!/^https?:/i.test(c.source))?.id""",land)
             if image_id and await page.evaluate("AtlasGlobe.discovery.featured.film")!=image_id:
                 picker=page.locator("#globe-encounter .globe-land-films")
@@ -386,7 +386,7 @@ async def run(browser,name,viewport):
             form=await page.locator('#globe-filter-form option').nth(1).get_attribute('value')
             await page.locator('#globe-filter-form').select_option(form)
             assert await page.evaluate('(f)=>window.AtlasGlobe.discovery.filters.form===f',form)
-            assert await page.evaluate('''(f)=>{const G=window.AtlasGlobe,C=window.AtlasConstellate,I=C.globeCreditIndex(),byId=new Map(I.films.map(x=>[x.id,x]));return G.anchors.every(a=>G.matchingCreditIds(a.id).every(id=>C.globeMetadata(byId.get(id))?.f===f));}''',form),(name,'form filter leaked into geographic selection')
+            assert await page.evaluate('''(f)=>{const G=window.AtlasGlobe,C=window.AtlasCollectionEditor,I=C.globeCreditIndex(),byId=new Map(I.films.map(x=>[x.id,x]));return G.anchors.every(a=>G.matchingCreditIds(a.id).every(id=>C.globeMetadata(byId.get(id))?.f===f));}''',form),(name,'form filter leaked into geographic selection')
             assert await page.evaluate("new URL(window.AtlasGlobe.discovery.shareURL).searchParams.has('form')")
             await page.locator('#globe-clear-filters').click()
             await page.wait_for_function("AtlasGlobe.focus.settled")
@@ -444,7 +444,7 @@ async def run(browser,name,viewport):
             await page.locator('[aria-label="Next film in thread"]').click()
             await page.wait_for_function("window.AtlasGlobe.focus.settled && document.querySelector('.globe-reading-journey')?.textContent.includes('A test of an authored connection')")
             # Add an actual unmapped catalogue film to the temporary test draft.
-            unmapped=await page.evaluate("""()=>{const I=AtlasGlobe.artworkInventory(),c=I.credits.find(x=>!x.lands.length);if(!c)return null;const f=AtlasConstellate.globeCreditIndex().films.find(x=>x.id===c.id);if(!f||!AtlasCollections.add(f))return null;AtlasGlobe.sync();return {id:f.id,title:f.title};}""")
+            unmapped=await page.evaluate("""()=>{const I=AtlasGlobe.artworkInventory(),c=I.credits.find(x=>!x.lands.length);if(!c)return null;const f=AtlasCollectionEditor.globeCreditIndex().films.find(x=>x.id===c.id);if(!f||!AtlasCollections.add(f))return null;AtlasGlobe.sync();return {id:f.id,title:f.title};}""")
             assert unmapped
             before_unmapped=await page.evaluate("AtlasGlobe.camera")
             await page.locator('#globe-encounter [aria-label="Next film in thread"]').click()
@@ -458,9 +458,9 @@ async def run(browser,name,viewport):
             print(name,"globe collect, author, save, restore and complete thread reading passed",flush=True)
             if name=="desktop":
                 # Use actual published credit IDs and anchors, not fabricated locations.
-                fixture=await page.evaluate("""()=>{const G=AtlasGlobe,C=AtlasConstellate,I=C.globeCreditIndex(),A=G.anchors;for(const a of A){const f=I.byLand.get(a.id)?.films||[];if(f.length<2)continue;for(const b of A){const d=d3.geoDistance(a.coordinate,b.coordinate);if(d<.26||d>.60||Math.abs(a.coordinate[1])>60||Math.abs(b.coordinate[1])>60)continue;const g=I.byLand.get(b.id)?.films.find(x=>!f.slice(0,2).some(y=>x.id===y.id));if(!g)continue;return {a:a.id,b:b.id,ids:[f[0].id,f[1].id,g.id],center:d3.geoInterpolate(a.coordinate,b.coordinate)(.5)};}}return null;}""")
+                fixture=await page.evaluate("""()=>{const G=AtlasGlobe,C=AtlasCollectionEditor,I=C.globeCreditIndex(),A=G.anchors;for(const a of A){const f=I.byLand.get(a.id)?.films||[];if(f.length<2)continue;for(const b of A){const d=d3.geoDistance(a.coordinate,b.coordinate);if(d<.26||d>.60||Math.abs(a.coordinate[1])>60||Math.abs(b.coordinate[1])>60)continue;const g=I.byLand.get(b.id)?.films.find(x=>!f.slice(0,2).some(y=>x.id===y.id));if(!g)continue;return {a:a.id,b:b.id,ids:[f[0].id,f[1].id,g.id],center:d3.geoInterpolate(a.coordinate,b.coordinate)(.5)};}}return null;}""")
                 assert fixture,"No grouped star test fixture"
-                assert await page.evaluate("""v=>{AtlasCollections.create('Grouped star test');const C=AtlasConstellate,I=C.globeCreditIndex();return v.ids.every((id,i)=>C.globeCollect(I.films.find(x=>x.id===id),i<2?v.a:v.b));}""",fixture)
+                assert await page.evaluate("""v=>{AtlasCollections.create('Grouped star test');const C=AtlasCollectionEditor,I=C.globeCreditIndex();return v.ids.every((id,i)=>C.globeCollect(I.films.find(x=>x.id===id),i<2?v.a:v.b));}""",fixture)
                 await page.evaluate("v=>{AtlasGlobe.sync();AtlasGlobe.goTo(v.center,2.8);}",fixture)
                 await page.wait_for_function("AtlasGlobe.focus.settled && AtlasGlobe.discovery.collection.stars===2 && AtlasGlobe.discovery.collection.items===3",timeout=30000)
                 surface=page.locator("#globe-live-map canvas")

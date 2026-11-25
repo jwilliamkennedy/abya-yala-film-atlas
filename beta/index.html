@@ -1,167 +1,53 @@
-<!DOCTYPE html><html lang="en" data-sheet="peek"><head><meta charset="utf-8"><script src="assets/atlas-route.js?v=2"></script><script id="atlas-entry-mode">(()=>{
- const r=document.documentElement,route=window.AtlasRoute;
- const u=new URLSearchParams(location.search);
- if(route?.globe){
-  // Synthetic compatibility input is passed to the catalogue, not exposed in the URL.
-  window.AtlasWeaveIncoming=route.inbound;
-  r.dataset.atlasEntry='constellate';r.dataset.uiConstellate='on';r.dataset.globeEntry='pending';
-  // Public entry is a physical document, not an alias for a legacy URL.
-  // Bootstrap data is passed through AtlasWeaveIncoming; never put it in history.
- }else{r.dataset.atlasEntry=u.get('constellate')==='1'?'constellate':'map';r.dataset.legacyWorkspace='true';}
- if(matchMedia('(max-width:760px)').matches)r.dataset.uiBar='split';
- // Restore the visible state of inbound shared map links before navigation runs.
- const hash=new URLSearchParams(location.hash.slice(1));
- if(hash.has('view')){
-  if(hash.get('totals')==='0')r.dataset.atlasInboundTotals='off';
-  if(hash.get('connections')==='0')r.dataset.atlasInboundConnections='off';
-  if(hash.get('world')==='1')r.dataset.atlasInboundWorld='1';
- }
- // Match reading-theme.js and menus-20261107.js before painting.
- const palette={
-  paper:{paper:'#eceef0',ink:'#1c2730',muted:'#56636d',accent:'#3d6178',wash:'#e3e5e8',line:'#c6ccd1'},
-  night:{paper:'#0f1830',ink:'#f2e8cf',muted:'#b9c1d6',accent:'#8fb0c6',wash:'#1c2b48',line:'#33456a'}
- };
- let theme='paper',mode='soft',strength=28;
- try{
-  if(localStorage.getItem('atlas-palette-pass')==='88'&&localStorage.getItem('atlas-reading-theme')==='night')theme='night';
-  const raw=localStorage.getItem('atlas-ui-territories');
-  if(raw!==null){const v=JSON.parse(raw);if(['off','soft','strong','custom'].includes(v))mode=v;}
-  const rawStrength=localStorage.getItem('atlas-ui-territory-strength');
-  if(rawStrength!==null){const v=JSON.parse(rawStrength);if(typeof v==='number'&&Number.isFinite(v))strength=Math.min(60,Math.max(8,v));}
- }catch(e){}
- // 22 Nov 2026: territories are always shown. An old "off" becomes Soft; a hand-set strength becomes the nearer of Soft and Strong.
- if(mode==='custom')mode=strength>=35?'strong':'soft';
- if(mode==='off')mode='soft';
- r.dataset.atlasTerritories='always';
- if(mode==='strong')strength=41;
- if(mode==='soft')strength=28;
- r.dataset.readingTheme=theme;
- r.dataset.atlasInitialTerritories=mode;
- r.style.setProperty('--territory-wash',String(strength/100));
- for(const [key,value]of Object.entries(palette[theme]))r.style.setProperty('--reading-'+key,value);
-})();</script><script id="atlas-map-reveal">/* 2026-11-15: the map appears once, when its tiles and labels are ready (4.5 s at most), instead of in layers. */
-(()=>{const r=document.documentElement;if(r.dataset.atlasEntry!=='constellate'||r.dataset.globeEntry)return;r.dataset.weaveReveal='pending';
-/* Constellate: wait for the stage, the tiles and the camera fit, then fade in once (5 s at most). */
-let t=0;const go=()=>{if(r.dataset.weaveReveal!=='pending')return;r.dataset.weaveReveal='ready';setTimeout(()=>{r.dataset.weaveReveal='done'},700)};
-const check=()=>{const b=window.AtlasOpenBasemap;const base=r.dataset.basemapTiles==='ready'||r.dataset.basemapState==='failed'||(b&&b.active===false);if(r.dataset.weaveStage&&base&&!t)t=setTimeout(go,700)};
-new MutationObserver(check).observe(r,{attributes:true,attributeFilter:['data-weave-stage','data-basemap-state','data-basemap-tiles']});
-addEventListener('DOMContentLoaded',()=>setTimeout(check,0));setTimeout(go,5000)})();
-(()=>{const r=document.documentElement;if(r.dataset.atlasEntry!=='map')return;r.dataset.mapReveal='pending';
-const go=()=>{if(r.dataset.mapReveal!=='pending')return;r.dataset.mapReveal='ready';setTimeout(()=>{r.dataset.mapReveal='done'},700)};
-const check=()=>{const b=window.AtlasOpenBasemap;const base=r.dataset.basemapTiles==='ready'||r.dataset.basemapState==='failed'||(b&&b.active===false);if(base&&r.dataset.atlasUi==='ready')go()};
-new MutationObserver(check).observe(r,{attributes:true,attributeFilter:['data-atlas-ui','data-basemap-state','data-basemap-tiles']});
-addEventListener('DOMContentLoaded',()=>setTimeout(check,0));setTimeout(go,4500)})();</script><style id="atlas-menu-first-paint">
-html[data-atlas-entry="constellate"][data-weave-reveal="pending"] body.atlas-page :is(.map-panel #atlas,.map-panel #atlas-basemap,.map-panel .map-toolbar,.map-panel .zoom,#weave-editor){opacity:0!important}
-html[data-atlas-entry="constellate"][data-weave-reveal="ready"] body.atlas-page :is(.map-panel #atlas,.map-panel #atlas-basemap,.map-panel .map-toolbar,.map-panel .zoom,#weave-editor){transition:opacity .4s ease-out!important}
-html[data-atlas-entry="map"]:not([data-atlas-ui="ready"]) body.atlas-page #index :is(.index-header,#index-list,.reading-utilities){opacity:0!important}
-html[data-atlas-entry="map"][data-map-reveal] body.atlas-page #index :is(.index-header,#index-list,.reading-utilities){transition:opacity .3s ease-out}
-html[data-atlas-entry="map"][data-map-reveal="pending"] body.atlas-page .map-panel :is(#atlas-basemap,#atlas,.zoom,.map-toolbar){opacity:0!important}
-html[data-atlas-entry="map"][data-map-reveal="ready"] body.atlas-page .map-panel :is(#atlas-basemap,#atlas,.zoom,.map-toolbar){transition:opacity .4s ease-out!important}
-@media (prefers-reduced-motion: reduce){html[data-map-reveal="ready"] body.atlas-page .map-panel :is(#atlas-basemap,#atlas,.zoom,.map-toolbar){transition:none!important}}
-
-/* Hide only the old four-control map menu until the final menu has been placed. */
-html:not([data-atlas-ui="ready"]) body.atlas-page .map-toolbar{visibility:hidden!important;pointer-events:none!important}
-body.atlas-page .map-toolbar .map-actions>button#world,
-body.atlas-page .map-toolbar .map-actions>button#jump-index{display:none!important}
-body.atlas-page .map-toolbar .map-actions>details:not(#country-drawer):not(#layers):not(#map-info){display:none!important}
-/* Prevent the initial unsynchronized MapLibre camera from flashing as a ghost map. */
-html[data-basemap="open"] #atlas-basemap:not([data-camera-synced="true"]){visibility:hidden!important;pointer-events:none!important}
-
-/* First paint: defer only the evolving map scene, not the header or bottom sheet.
-   Atlas UI reaches 'ready' when sourced SVG, territory, and controls are assembled. */
-/* Keep stable continental outlines visible while the dynamic labels and markers
-   are assembled. Do not show half-rendered names, poster chips or connections. */
-html[data-atlas-entry="map"]:not([data-atlas-ui="ready"]) body.atlas-page #atlas :is(.land-word,.land-thumb,.cinema-anchor,.land-watch,.anchor-leader,.land-group-leader){visibility:hidden!important;pointer-events:none!important}
-html[data-atlas-entry="map"]:not([data-atlas-ui="ready"]) body.atlas-page .map-panel #featured-weave{visibility:hidden!important;pointer-events:none!important}
-@media(max-width:760px){
- html[data-atlas-entry="map"] body.atlas-page .map-toolbar{visibility:visible!important}
- html[data-atlas-entry="map"]:not([data-atlas-ui="ready"]) body.atlas-page .map-toolbar{pointer-events:none!important}
-}
-/* Shared link visibility controls are held until navigation.js restores its route. */
-html[data-atlas-inbound-shading="off"] body:not([data-navigation="ready"]) #atlas .land-shading,
-html[data-atlas-inbound-totals="off"] body:not([data-navigation="ready"]) #atlas .cinema-markers,
-html[data-atlas-inbound-connections="off"] body:not([data-navigation="ready"]) #atlas .land-word{visibility:hidden!important;pointer-events:none!important}
-html[data-atlas-inbound-world="1"] body:not([data-navigation="ready"]) #atlas .geography,
-html[data-atlas-inbound-world="1"] body:not([data-navigation="ready"]) #atlas-basemap{visibility:hidden!important;pointer-events:none!important}
-/* Respect saved Off while geography is loading; later checkbox state owns visibility. */
-html[data-atlas-initial-territories="off"]:not([data-atlas-ui="ready"]) body.atlas-page #atlas .land-shading{visibility:hidden!important;pointer-events:none!important}
-/* Constellate's start card and theme web are authored asynchronously by separate modules.
-   Neither the atlas map nor outdated tools should paint behind an unfinished entrance. */
-html[data-atlas-entry="constellate"]:not([data-weave-stage]) body.atlas-page .map-panel #atlas,
-html[data-atlas-entry="constellate"]:not([data-weave-stage]) body.atlas-page .map-panel #atlas-basemap,
-html[data-atlas-entry="constellate"]:not([data-weave-stage]) body.atlas-page .map-panel #featured-weave,
-html[data-atlas-entry="constellate"]:not([data-weave-stage]) body.atlas-page .map-panel .zoom,
-html[data-atlas-entry="constellate"]:not([data-weave-stage]) body.atlas-page .map-panel #constellate-mode{visibility:hidden!important;pointer-events:none!important}
-html[data-atlas-entry="constellate"] body.atlas-page .map-panel{background:#15283d!important}
-/* Until Constellate's first screen is ready, say so, and keep the Map page's index out of the way. */
-#weave-opening{display:none}
-html[data-atlas-entry="constellate"]:not([data-weave-stage]) body.atlas-page #weave-opening{display:block;position:absolute;left:0;right:0;top:38%;margin:0;text-align:center;font:500 15px/1.4 var(--ui-sans,system-ui,sans-serif);letter-spacing:.03em;color:#c9d3e0;z-index:6;pointer-events:none}
-html[data-atlas-entry="constellate"]:not([data-weave-stage]) body.atlas-page #index{visibility:hidden!important}
-/* Globe entry has one first-paint owner; no interim flat map. */
-html[data-globe-entry] body.atlas-page .map-panel :is(#atlas,#atlas-basemap,.map-toolbar,.zoom,#constellate-mode,#constellate-graph,#featured-weave,#weave-offmap-rail){visibility:hidden!important;pointer-events:none!important}
-html[data-globe-entry=pending] body.atlas-page #weave-opening{display:block;position:absolute;inset:40% 0 auto;margin:0;text-align:center;color:#c9d3e0;font:500 15px/1.4 var(--ui-sans,system-ui,sans-serif);z-index:6;pointer-events:none}
-html[data-globe-entry=ready] #weave-opening{display:none!important}
-/* The public globe owns its own viewport, not the legacy workspace's grid.
-   Keep the latter measurable for its data service but visually and interactively isolated. */
+<!DOCTYPE html>
+<html lang="en" data-atlas-entry="globe" data-globe-entry="pending" data-reading-theme="night">
+<head>
+<meta charset="utf-8">
+<script src="assets/atlas-route.js?v=3"></script>
+<meta name="viewport" content="width=device-width,initial-scale=1"><meta name="referrer" content="no-referrer"><meta name="theme-color" content="#173746"><title>Indigenous Cinema Atlas · Films of Abya Yala and Turtle Island</title><meta name="description" content="A map of Indigenous filmmakers and their films across Abya Yala and Turtle Island, placed on the lands they name."><meta property="og:title" content="Indigenous Cinema Atlas"><meta property="og:description" content="A map of Indigenous filmmakers and their films across Abya Yala and Turtle Island."><meta property="og:image" content="https://jwilliamkennedy.github.io/abya-yala-film-atlas/beta/assets/og-atlas.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image"><link rel="icon" href="assets/icon-1107.svg" type="image/svg+xml"><link rel="stylesheet" href="assets/maplibre/maplibre-gl.css"><link rel="stylesheet" href="atlas.css?v=13">
+<script id="rail-early">(function(){var d=document.documentElement,p=null;if(!matchMedia('(min-width:901px)').matches)return;try{p=localStorage.getItem('atlas-rail')}catch(e){}d.setAttribute('data-rail',p||(innerWidth<1440||d.dataset.globeEntry||/[?&]constellate=1/.test(location.search)?'compact':'full'))})()</script>
+<link rel="stylesheet" href="assets/site-menu.css?v=21">
+<link rel="stylesheet" href="assets/ui-20261109.css?v=41">
+<link rel="stylesheet" href="assets/constellate.css?v=87">
+<link rel="stylesheet" href="assets/rail-20261121.css?v=8">
+<link rel="stylesheet" href="assets/globe-experiment.css?v=49">
+<style>
 #atlas-globe-stage{display:none}
 html[data-globe-entry] #atlas-globe-stage{display:block;position:fixed;inset:var(--globe-shell-top,94px) 0 0 var(--globe-shell-left,0px);overflow:hidden;isolation:isolate;background:#101b29;z-index:20}
 html[data-globe-entry][data-rail]{--globe-shell-top:0px;--globe-shell-left:var(--rail-w,76px)}
 @media(max-width:760px){html[data-globe-entry]{--globe-shell-top:56px}}
-html[data-globe-entry]:not(#_):not(#__):not(#___) body.atlas-page>main{position:fixed!important;inset:var(--globe-shell-top,94px) 0 0 var(--globe-shell-left,0px)!important;width:auto!important;height:auto!important;min-height:0!important;max-height:none!important;display:block!important;overflow:hidden!important;opacity:0!important;pointer-events:none!important;z-index:-1!important}
-html[data-globe-entry]:not(#_):not(#__):not(#___) body.atlas-page>main>.map-panel{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;min-height:0!important;max-height:none!important;margin:0!important}
-html[data-globe-entry] body.atlas-page>main>#index{visibility:hidden!important;pointer-events:none!important}
-html[data-globe-entry] body.atlas-page>header .constellate-link{display:none!important}
-html[data-globe-entry] body.atlas-page .map-panel :is(#featured-weave,#constellate-mode,#weave-offmap-rail){display:none!important}
 #globe-stage-loading{position:absolute;inset:0;display:grid;place-items:center;margin:0;color:#c9d3e0;font:500 15px/1.4 system-ui,sans-serif;pointer-events:none}
 html[data-globe-entry=ready] #globe-stage-loading{display:none}
 html[data-globe-entry=error] #globe-stage-loading{pointer-events:auto}
 html[data-globe-entry=error] #globe-stage-loading button{margin-left:8px;cursor:pointer}
 html[data-globe-entry] body.atlas-page>header{box-sizing:border-box}
 @media(min-width:761px) and (max-width:900px){html[data-globe-entry]:not(#_):not(#__):not(#___) body.atlas-page>header{height:94px!important;min-height:94px!important;max-height:94px!important}}
-</style><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="referrer" content="no-referrer"><meta name="theme-color" content="#173746"><title>Indigenous Cinema Atlas · Films of Abya Yala and Turtle Island</title><meta name="description" content="A map of Indigenous filmmakers and their films across Abya Yala and Turtle Island, placed on the lands they name."><meta property="og:title" content="Indigenous Cinema Atlas"><meta property="og:description" content="A map of Indigenous filmmakers and their films across Abya Yala and Turtle Island."><meta property="og:image" content="https://jwilliamkennedy.github.io/abya-yala-film-atlas/beta/assets/og-atlas.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image"><link rel="icon" href="assets/icon-1107.svg" type="image/svg+xml"><link rel="stylesheet" href="assets/maplibre/maplibre-gl.css"><link rel="stylesheet" href="atlas.css?v=13"><script src="assets/d3.min.js" defer=""></script><script src="assets/topojson-client.min.js" defer=""></script><script src="atlas-data.js"></script>
-<script src="territories-data.js?v=2" defer=""></script><script src="territory-fixes.js?v=5-relays" defer></script><script defer src="patches-catalog.js?v=3"></script><script src="basemap-open-20261107.js?v=17" defer></script><script src="assets/geo-integrity.js?v=1" defer></script><script src="encounters.js?v=170-relays" defer=""></script><script src="navigation.js?v=84" defer=""></script><script defer src="patches-collections.js?v=4"></script><script src="assets/constellate.js?v=107-direct-entry" defer></script>
-<script defer src="patches-views.js?v=13"></script><script src="menus-20261107.js?v=43" defer></script><script src="i18n-20261107.js?v=39" defer></script><script defer src="assets/counter.js"></script>
+</style>
+<script defer src="assets/d3.min.js"></script>
+<script defer src="assets/topojson-client.min.js"></script>
+<script defer src="atlas-data.js"></script>
+<script defer src="territories-data.js?v=2"></script>
+<script defer src="territory-fixes.js?v=5-map-entry"></script>
+<script defer src="patches-catalog.js?v=4"></script>
+<script defer src="assets/catalogue.js"></script>
+<script defer src="assets/geo-integrity.js?v=1"></script>
+<script defer src="assets/collection-store.js"></script>
+<script defer src="assets/collection-editor.js"></script>
+<script defer src="i18n-20261107.js?v=39"></script>
+<script defer src="assets/ui-20261109.js?v=14"></script>
+<script defer src="assets/site-menu.js?v=4"></script>
+<script defer src="assets/rail-20261121.js?v=globe-routing-5"></script>
 <script defer src="assets/screening.js"></script>
-<link rel="stylesheet" href="assets/site-menu.css?v=21">
-<link rel="stylesheet" href="assets/ui-20261109.css?v=41"><script id="atlas-flourish-mode">(()=>{const r=document.documentElement,u=new URLSearchParams(location.search);let seen=null,drawn=null;try{seen=localStorage.getItem('atlas-intro-seen');drawn=sessionStorage.getItem('atlas-mark-drawn');sessionStorage.setItem('atlas-mark-drawn','1');}catch{}
-const still=matchMedia('(prefers-reduced-motion: reduce)').matches,bot=navigator.webdriver;
-if(u.get('intro')==='1'||(!still&&!bot&&!seen&&!location.hash&&!location.search))r.dataset.intro='1';else if(!still&&!bot&&!drawn)r.dataset.markDraw='1';})();</script><link rel="stylesheet" href="assets/flourish-20261115.css?v=1">
-<link rel="stylesheet" href="assets/time-dial.css?v=6">
-<link rel="stylesheet" href="assets/constellate.css?v=87"><script defer src="assets/site-menu.js?v=4"></script><script defer src="assets/ui-20261109.js?v=13"></script>
-<script id="rail-early">(function(){var d=document.documentElement,p=null;if(!matchMedia('(min-width:901px)').matches)return;try{p=localStorage.getItem('atlas-rail')}catch(e){}d.setAttribute('data-rail',p||(innerWidth<1440||d.dataset.globeEntry||/[?&]constellate=1/.test(location.search)?'compact':'full'))})()</script><link rel="stylesheet" href="assets/rail-20261121.css?v=8"><script defer src="assets/rail-20261121.js?v=globe-routing-5"></script>
-<link rel="stylesheet" href="assets/globe-experiment.css?v=49"><script defer src="watch-data.js"></script><script defer src="assets/globe.js?v=2-hawaii"></script></head><body class="atlas-page" data-view="filmmakers"><script src="assets/flourish-20261115.js?v=1"></script><a class="skip" href="#index">Skip to index</a><header><a class="brand" href="./"><svg class="brand-mark" viewBox="0 0 120 120" aria-hidden="true" focusable="false"><circle cx="60" cy="60" r="50" fill="none" stroke="currentColor" stroke-width="7"/><path class="meridian" d="M44 16 C66 30 50 46 62 60 C74 74 56 88 66 104" fill="none" stroke="#5f8199" stroke-width="8" stroke-linecap="round"/><circle cx="62" cy="60" r="7" fill="currentColor"/></svg><span class="brand-title">Indigenous Cinema Atlas<small>Abya Yala and Turtle Island</small></span></a><nav class="primary" aria-label="Explore the atlas"><a href="about.html" class="about-link">About</a><a href="./" class="map-link" aria-current="page">Map</a><a href="flat.html?constellate=1" class="constellate-link">Constellate</a><a href="watch.html" class="watch-link">Watch</a><details class="more-menu"><summary>More</summary><div><a href="languages.html">Languages</a><a href="themes.html">Themes</a><a href="timeline.html">Timeline</a><span class="more-sep"></span><a href="screening.html" data-screen-count>Saved</a><span class="more-sep"></span><a href="corrections.html">Suggest a correction</a></div></details></nav><script id="atlas-initial-nav-state">if(!document.documentElement.dataset.globeEntry&&new URLSearchParams(location.search).get('constellate')==='1'){document.querySelector('header .map-link')?.removeAttribute('aria-current');document.querySelector('header .constellate-link')?.setAttribute('aria-current','page');}</script><nav class="atlas-utilities" aria-label="Atlas utilities"><button id="close-menus" hidden title="Close open menus without clearing your selection">Close menus ×</button></nav></header><section id="atlas-globe-stage" role="main" aria-label="Cinema globe"><p id="globe-stage-loading" role="status">Opening the atlas…</p></section><main><section class="map-panel" aria-label="Land names and cinema connections"><p id="weave-opening" role="status">Opening the atlas…</p>
-<div class="map-toolbar"><button id="return" hidden="">← Clear selection</button><span id="map-state">AMERICAS</span>
-<div class="map-actions"><details id="country-drawer"><summary title="Browse filmmakers and films by country">Countries <span id="country-active"></span></summary><div class="country-relay"><p>Filmmakers and films indexed by country</p><nav id="country-rail" aria-label="All country catalog totals"></nav><button data-close-map-panel="country-drawer" class="map-panel-close">Close</button></div></details><details id="layers"><summary title="Choose what is visible on the map">Layers</summary><div><fieldset id="view-control"><legend>View</legend><div class="view-toggles"><button id="world" aria-pressed="false" title="Expand to the world">World</button><button id="atlas-unmap" aria-pressed="false" title="Disappear the cartography: keep names, lose coastlines, borders and shading">Disappear map</button></div></fieldset><label><input id="layer-connections" type="checkbox" checked=""> Land names</label><label><input id="layer-cinema" type="checkbox" checked=""> Countries</label><label hidden=""><input id="show-curves" type="checkbox"> Curved Relations layout</label><label><input id="layer-shading" type="checkbox" checked=""> Native Land overlay</label><label><input id="layer-geography" type="checkbox" checked> Geographic relief</label><label><input id="layer-boundaries" type="checkbox"> Territory outlines</label><p class="layers-credit"><span id="connection-count" hidden></span>Territories: <a href="https://native-land.ca/" target="_blank" rel="noopener noreferrer">Native Land Digital</a></p><button data-close-map-panel="layers" class="map-panel-close">Close</button></div></details><button id="jump-index" class="mobile-jump" title="Jump to the reading panel">Index ↓</button><details id="map-info"><summary aria-label="How to read this map">Map key</summary><div>
-<strong>Reading the atlas</strong><div class="map-external-links" aria-label="External source maps"><strong>Explore the source maps</strong>
-<a href="https://native-land.ca/maps/native-land" target="_blank" rel="noopener noreferrer">Native Land Digital — classic map ↗</a>
-<a href="https://native-land.ca/maps/constellation" target="_blank" rel="noopener noreferrer">Native Land Digital — constellation map ↗</a>
-<a href="https://native-land.ca/maps" target="_blank" rel="noopener noreferrer">Native Land Digital — all maps ↗</a>
-<a href="https://native-land.ca/maps/placenames" target="_blank" rel="noopener noreferrer">Native Land Digital — placenames map ↗</a>
-<a href="https://native-land.ca/maps/reciprocity" target="_blank" rel="noopener noreferrer">Native Land Digital — reciprocity map ↗</a>
-<a href="https://www.arcgis.com/apps/instant/atlas/index.html?appid=0cd1cdee853c413a84bfe4b9a6931f0d&amp;webmap=d5da92f110824400aaa30e31b2e500e9" target="_blank" rel="noopener noreferrer">MapMaker — Indigenous Territories ↗</a>
-<a href="https://www.naturalearthdata.com/" target="_blank" rel="noopener noreferrer">Natural Earth geographic data ↗</a>
-<a href="https://education.nationalgeographic.org/resource/mapmaker-indigenous-territories/" target="_blank" rel="noopener noreferrer">MapMaker source and attribution ↗</a></div><p>Larger land names have more linked filmmakers in this index. Indigenous scripts are retained. Connections include sourced affiliations and catalog matches awaiting review.</p><p>Preview land by pointing at the map. Select a name to open its filmmakers. Overlapping names appear in the reading panel. Names without a mapped area remain in Land.</p><p>Country totals count indexed filmmakers and distinct films. A sourced association may place a filmmaker in more than one country. Totals do not establish Indigenous identity, citizenship or residence.</p><p>Solid lines have an affiliation source. Dashed lines are catalog matches awaiting review. The lines connect index references, not filmmakers’ residences.</p><p>Land names and shapes: <a href="https://native-land.ca/" target="_blank" rel="noopener noreferrer">Native Land Digital</a> / <a href="https://education.nationalgeographic.org/resource/mapmaker-indigenous-territories/" target="_blank" rel="noopener noreferrer">National Geographic MapMaker</a>, 2023 snapshot. Names have different historical and political uses; these shapes are references rather than definitive boundaries.</p>
-<button data-close-map-panel="map-info" class="map-panel-close">Close</button>
-</div></details></div></div>
-<script id="atlas-preseed-layer-input">
- const shared=new URLSearchParams(location.hash.slice(1));
- if(shared.has('view')){
-  for(const [id,value] of [['layer-cinema',shared.get('totals')!=='0'],['layer-connections',shared.get('connections')!=='0'],['layer-shading',true],['layer-boundaries',shared.get('outlines')==='1']]){
-   const el=document.getElementById(id);if(el)el.checked=value;
-  }
- }
- try{if(localStorage.getItem('atlas-unmapped')==='1'){document.body.classList.add('atlas-unmapped');const b=document.getElementById('atlas-unmap');if(b){b.setAttribute('aria-pressed','true');b.textContent='Return map';}}}catch(e){}
- </script><svg id="atlas" tabindex="0" aria-describedby="map-help" role="group" aria-label="Land and cinema atlas. Move across land to read Indigenous names in the index margin. Tab to a name and press Enter to explore. All country totals are in the Country totals menu."></svg>
-<div id="map-selection-focus" hidden role="status" aria-live="polite"><strong id="map-focus-name"></strong><span id="map-focus-basis"></span></div><div class="zoom" role="group" aria-label="Map controls"><button id="zoom-out" aria-label="Zoom out" title="Zoom out">−</button><output id="zoom-level" aria-label="Current zoom">1×</output><button id="zoom-in" aria-label="Zoom in" title="Zoom in">+</button><button id="zoom-selection" title="Fit the selected affiliation or country reference; keep the index" disabled="">Fit selection</button><button id="zoom-reset" aria-label="Map overview" title="Return to overview; keep the current selection and filters">Overview</button></div>
-<section id="map-films" hidden aria-label="Films in the selected filmmaker or land"><div class="map-films-heading"><button id="map-films-toggle" aria-expanded="false" aria-controls="map-film-cards" title="Expand or collapse film previews"><span id="map-films-label">Films</span><b id="map-films-count"></b><i aria-hidden="true">⌃</i></button><button id="map-films-all">Browse films →</button></div><div id="map-film-cards" hidden aria-label="Selected film previews"></div></section><p id="map-help" class="sr-only">Drag to pan. Scroll or pinch to zoom at the pointer. Plus and minus zoom; Home returns to overview. Fit selection locates the selected reference. Overview retains the index selection.</p>
-<footer class="map-footer"><span id="map-caption">Point at a land to preview it; click to open.</span><span class="map-source-links"><a href="https://www.naturalearthdata.com/" target="_blank" rel="noopener noreferrer">Natural Earth</a> · <a href="https://native-land.ca/" target="_blank" rel="noopener noreferrer">Native Land Digital</a> (<a href="https://native-land.ca/maps/constellation" target="_blank" rel="noopener noreferrer">Constellation map</a> · <a href="https://native-land.ca/maps" target="_blank" rel="noopener noreferrer">All maps</a>) · <a href="https://www.arcgis.com/apps/instant/atlas/index.html?appid=0cd1cdee853c413a84bfe4b9a6931f0d&amp;webmap=d5da92f110824400aaa30e31b2e500e9" target="_blank" rel="noopener noreferrer">MapMaker</a> · 2023</span></footer>
-<div hidden="" aria-hidden="true"><button id="plane-map"></button><button id="plane-relations"></button><div id="relation-pager" hidden=""><button id="relations-prev"></button><span id="relations-page"></span><button id="relations-next"></button></div><div id="selection-crumbs" hidden=""></div><div id="maker-location" hidden=""></div><div id="map-tip" hidden=""></div><section id="branch-tray" hidden=""><span id="branch-name"></span><button id="close-works"></button><svg id="works-atlas"></svg></section><div id="work-pager" hidden=""><button id="works-prev"></button><span id="works-page"></span><button id="works-next"></button></div></div>
-</section><aside id="index" tabindex="-1" aria-label="Atlas reading index"><button type="button" id="sheet-handle" aria-controls="index" aria-expanded="false"><span class="grip" aria-hidden="true"></span><span class="lbl">Filmmakers, films and land</span></button><div class="index-command-bar"><div class="primary view-switch" role="group" aria-label="Browse the atlas by"><button data-view="filmmakers" aria-pressed="true">Filmmakers</button><button data-view="films" aria-pressed="false">Films</button><button data-view="land" aria-pressed="false">Land</button></div><nav class="view-history" aria-label="Atlas view history"><button id="view-back" disabled title="Return to the previous atlas view">← Back</button><button id="view-forward" disabled title="Return to the next atlas view">Forward →</button></nav><button id="back-index" hidden=""></button><button id="back-land" hidden=""></button><div class="index-topline"><span id="section-label">Filmmakers</span><button id="jump-map" class="mobile-jump">Map ↑</button></div><div class="search-row"><label class="search"><svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="8" cy="8" r="5.5"></circle><path d="m12 12 5 5"></path></svg><input id="search" type="search" placeholder="Search…" aria-label="Search filmmakers" autocomplete="off" aria-keyshortcuts="/"></label><button id="clear-search" hidden="" title="Clear search; keep filters and map position" aria-label="Clear search">×</button></div><p id="search-shortcut-hint" hidden>One result · press Enter to open</p><div class="index-control-row"><button id="toggle-filters" aria-expanded="false" aria-controls="index-tools">Filters <span id="active-filter-count" hidden=""></span></button><button id="toggle-recent" aria-expanded="false" aria-controls="exploration-trail">Recent</button><button id="toggle-saved" aria-expanded="false" aria-controls="exploration-trail">Saved <span id="trail-count"></span></button><details class="ui-index-more"><summary aria-label="More list tools" title="More list tools">⋯</summary><div role="menu"><button id="random-entry" title="Open a random entry">Surprise me</button><div id="selection-tools" hidden=""><button id="bookmark-selection" aria-pressed="false">Save view</button><button id="copy-view-link">Copy link</button><button id="focus-selection">Show on map</button></div></div></details></div><p id="save-notice" role="status" hidden=""></p><details id="index-tools"><summary hidden="">Filters</summary><div class="index-tools-content" aria-label="Browse and filter the index">
-<label class="filter-list-label" for="browse-select">Browse list</label><select id="browse-select" aria-label="Browse list"></select>
-<div id="browse-lists" hidden=""><span id="browse-list-label"></span><div id="browse-list-buttons"></div><div id="browse-films-facets" hidden=""></div></div>
-<div id="explore-filters"><div class="filter-fields"><div class="year-fields"><label>From year<input id="year-from" type="number" min="1900" max="2100" placeholder="Any"></label><label>To year<input id="year-to" type="number" min="1900" max="2100" placeholder="Any"></label></div><label class="undated-label"><input id="include-undated" type="checkbox" checked=""> Include undated works</label><label>Film language<select id="filter-language"><option value="">Any language</option></select></label><label>Theme<select id="filter-theme"><option value="">Any theme</option></select></label><label>Film form<select id="filter-form"><option value="">Any form</option></select></label><label id="sort-field">Film order<select id="film-sort"><option value="title">Title</option><option value="year">Year</option></select></label></div></div>
-<div id="index-options"><label><input id="research" type="checkbox" checked=""> Include research candidates</label></div>
-<div class="filter-actions"><button id="reset-filters">Clear filters</button><button id="close-filters">Done</button></div>
-</div></details><details id="exploration-trail"><summary hidden="">Saved views and recent selections</summary><div class="saved-panel"><div class="saved-panel-heading"><strong>Saved views</strong><button id="clear-trail">Clear recent</button><button id="close-saved" aria-label="Close saved views">×</button></div><p class="saved-storage-note">Saved in this browser · up to 50 views. Each view keeps its filters, layers and map position.</p><div id="saved-items"></div><div id="trail-items"></div></div></details><div id="view-link-fallback" hidden=""><label for="view-link">View link</label><input id="view-link" type="url" readonly=""></div><nav id="search-relay" aria-label="Search across the atlas" hidden=""></nav><div id="selection-summary" hidden=""><div class="selection-label"><small id="selection-kind">Selected</small><strong id="selection-name"></strong></div><button id="selection-locate" title="Fit the selected affiliation or country reference">Show on map</button><button id="clear-context" hidden="" aria-label="Clear selection" title="Clear the selection; keep search, filters and map position">Clear</button></div><div id="active-context" hidden=""><div id="active-filters"></div></div><button id="pointer-summary" class="pointer-summary" title="Read the map preview">Explore land on the map · select a name</button></div><div class="index-header"><section id="reading-margin" aria-label="Land names and selected relationships">
-<div id="reading-context" hidden=""></div><div id="place-reader" hidden=""><span class="reader-eyebrow">MAP PREVIEW</span><div id="place-names"><p class="reader-invitation">Point at the map to preview a land.<br>Select a name to see its filmmakers.</p></div><div id="place-actions" hidden=""></div></div><details id="reference-disclosure" hidden><summary>Land references <span id="reference-count"></span></summary><div id="reading-links" hidden=""></div><button id="reading-frame">Fit affiliations on map →</button></details></section><section id="maker-browser" aria-label="Browse filmmakers alphabetically"><div class="maker-browser-heading"><strong>Filmmakers A–Z</strong><button id="maker-all">All names →</button><button id="maker-close" hidden="">Close list ×</button></div><div class="ui-alpha-shell has-overflow"><button type="button" class="ui-alpha-arrow" aria-label="Scroll filmmaker alphabet left" title="Earlier letters" onclick="this.nextElementSibling.scrollBy({left:-Math.max(140,this.nextElementSibling.clientWidth*.75),behavior:'smooth'})">‹</button><nav tabindex="0" id="maker-alphabet" aria-label="Filmmakers by first letter"></nav><button type="button" class="ui-alpha-arrow" aria-label="Scroll filmmaker alphabet right" title="Later letters" onclick="this.previousElementSibling.scrollBy({left:Math.max(140,this.previousElementSibling.clientWidth*.75),behavior:'smooth'})">›</button></div><p id="maker-invitation">Choose a land on the map, search a name, or start with a letter.</p></section><section id="film-browser" aria-label="Alphabetical film browser" hidden=""><div class="film-browser-heading"><strong>Films A–Z</strong><button id="all-films" hidden="">All films</button></div><div class="ui-alpha-shell has-overflow"><button type="button" class="ui-alpha-arrow" aria-label="Scroll film alphabet left" title="Earlier letters" onclick="this.nextElementSibling.scrollBy({left:-Math.max(140,this.nextElementSibling.clientWidth*.75),behavior:'smooth'})">‹</button><nav tabindex="0" id="film-alphabet" aria-label="Jump to film titles by initial"></nav><button type="button" class="ui-alpha-arrow" aria-label="Scroll film alphabet right" title="Later letters" onclick="this.previousElementSibling.scrollBy({left:Math.max(140,this.previousElementSibling.clientWidth*.75),behavior:'smooth'})">›</button></div><nav id="film-pages" aria-label="Film pages"><button id="films-prev">← Previous</button><label><span class="sr-only">Page</span><select id="films-page-select"></select></label><button id="films-next">Next →</button></nav><p id="film-page-range"></p></section><div class="index-meta"><span id="result-count" role="status" aria-live="polite" aria-atomic="true"></span></div><p id="index-context" hidden=""></p></div><button id="clear-country" hidden=""></button><button id="clear-community" hidden=""></button><p id="pilot-note" hidden="">Sourced affiliations and provisional catalog matches. Membership, community origin and ancestry remain distinct in the record details.</p><div id="index-list"><p class="empty">Loading the atlas…</p></div><div class="reading-utilities"><div id="catalog-info" class="archive-summary"><span id="catalog-total"></span><div hidden><button id="pilot">Linked filmmakers <span></span></button><button id="unassigned" aria-pressed="false"></button></div></div><button id="reset-workspace" title="Reset the map, searches, filters, selections and recent history. Saved views are kept.">Reset atlas</button></div></aside><svg id="reading-lines" aria-hidden="true"></svg></main><div id="announcement" class="sr-only" role="status"></div><noscript></noscript>
-</body></html>
+<script defer src="assets/counter.js"></script>
+<script defer src="watch-data.js"></script>
+<script defer src="assets/globe.js?v=3-map-entry"></script>
+</head>
+<body class="atlas-page">
+<a class="skip" href="#atlas-globe-stage">Skip to globe</a>
+<header><a class="brand" href="./"><svg class="brand-mark" viewBox="0 0 120 120" aria-hidden="true" focusable="false"><circle cx="60" cy="60" r="50" fill="none" stroke="currentColor" stroke-width="7"/><path class="meridian" d="M44 16 C66 30 50 46 62 60 C74 74 56 88 66 104" fill="none" stroke="#5f8199" stroke-width="8" stroke-linecap="round"/><circle cx="62" cy="60" r="7" fill="currentColor"/></svg><span class="brand-title">Indigenous Cinema Atlas<small>Abya Yala and Turtle Island</small></span></a><nav class="primary" aria-label="Explore the atlas"><a href="about.html" class="about-link">About</a><a href="./" class="map-link" aria-current="page">Map</a><a href="watch.html" class="watch-link">Watch</a><details class="more-menu"><summary>More</summary><div><a href="languages.html">Languages</a><a href="themes.html">Themes</a><a href="timeline.html">Timeline</a><span class="more-sep"></span><a href="screening.html" data-screen-count>Saved</a><span class="more-sep"></span><a href="corrections.html">Suggest a correction</a></div></details></nav><nav class="atlas-utilities" aria-label="Atlas utilities"><button id="close-menus" hidden title="Close open menus without clearing your selection">Close menus ×</button></nav></header>
+<section id="atlas-globe-stage" tabindex="-1" role="main" aria-label="Cinema globe">
+<p id="globe-stage-loading" role="status">Opening the atlas…</p>
+</section>
+<div id="collection-editor" hidden></div>
+<noscript>The interactive globe requires JavaScript.</noscript>
+</body>
+</html>

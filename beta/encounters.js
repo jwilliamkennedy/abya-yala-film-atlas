@@ -5,45 +5,7 @@ const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)],esc
 const norm=s=>String(s??'').normalize('NFD').replace(/\p{Diacritic}/gu,'').toLowerCase().replace(/[’‘ʻʼ`]/g,"'"),key=s=>norm(s).replace(/[^\p{L}\p{N}]/gu,'');
 const safe=s=>{try{const u=new URL(s);return ['https:','http:'].includes(u.protocol)?u.href:'';}catch{return '';}};
 const washes=['#e3b68c','#bca8d4','#94cbb0','#d9c27d','#82bdc9','#d59fa6'],color=id=>washes[[...String(id)].reduce((a,c)=>a+c.charCodeAt(0),0)%washes.length];
-const names=[...window.ATLAS_NAMES_DATA.records,...(window.ATLAS_RESEARCH_ADDITIONS?.lands||[]),...(window.ATLAS_SOUTH_AMERICA_50?.lands||[]),...(window.ATLAS_SOUTH_AMERICA_50_BATCH2?.lands||[])],territories=structuredClone(window.ATLAS_TERRITORIES.features),groupMap=new Map(),byFeature=new Map();
-for(const f of territories){for(const rings of f.geometry.type==='Polygon'?[f.geometry.coordinates]:f.geometry.coordinates){if(d3.geoArea({type:'Polygon',coordinates:[rings[0]]})>2*Math.PI)rings[0].reverse();for(const h of rings.slice(1))if(d3.geoArea({type:'Polygon',coordinates:[h]})<2*Math.PI)h.reverse();}f.bounds=d3.geoBounds(f);let g=groupMap.get(f.properties.name);if(!g){g={id:String(f.id),name:f.properties.name,features:[]};groupMap.set(g.name,g);}g.features.push(f);byFeature.set(String(f.id),g);}
-const groups=[...groupMap.values()],lands=[],usedGroups=new Set(),groupToLand=new Map();
-// Exact spelling matches share one interface entry. No film affiliation is inferred.
-// NAME-074 is Jennifer Wickham's already-sourced Wet'suwet'en affiliation. Native Land
-// maps the same nation as “Wet’suwet’en Yintikh” (territory source ID 36103).
-// Join that existing polygon to the existing land ID; do not create a proxy pin.
-const hawaiiRelay=window.AtlasHawaiiRelay;
-// Source qualifiers are geographic distinctions, not just alternate spellings.
-// Keep the source's named subterritories separate instead of pooling them.
-const qualifiedSourceIds=new Map([
- ['NAME-015',new Set(['33550'])], // Dënéndeh; not Dënësųłinë́ Nëné or Acho Dene Koe
- ['NAME-063',new Set(['36317'])], // supplied context explicitly says Western Shoshone
- ['NAME-161',new Set(['33417'])], // Matsés (Mayoruna), not the distinct Matis source
- ['NAME-153',new Set(['36000'])]  // general Guarani source; specific subgroups below
-]);
-for(const n of names){if(hawaiiRelay?.aliases.includes(n.id))continue;const matches=groups.filter(g=>qualifiedSourceIds.has(n.id)?qualifiedSourceIds.get(n.id).has(g.id):(window.AtlasMapLabelLayout.sourceMatches(n.name,g.name)||
-  (n.id==='NAME-074'&&g.id==='36103')||(n.id===hawaiiRelay?.canonical&&g.id===hawaiiRelay.sourceId)));const item={id:n.id,name:n.name,aliases:[...new Set([...(n.aliases||[]),...matches.map(g=>g.name),...(n.id===hawaiiRelay?.canonical?hawaiiRelay.labels:[])])],supplied:n,groups:matches};lands.push(item);for(const g of matches){usedGroups.add(g.id);groupToLand.set(g.id,item);}}
-for(const g of groups)if(!usedGroups.has(g.id)){const item={id:'LAND-'+g.id,name:g.name,aliases:[],supplied:null,groups:[g]};lands.push(item);groupToLand.set(g.id,item);}
-// Preserve source feature IDs and attach explicit, previously unplaced names to
-// their verified existing reference, without copying or combining polygons.
-for(const g of groups)for(const f of g.features)if(groupToLand.has(g.id))groupToLand.set(String(f.id),groupToLand.get(g.id));
-const aliasLandIds=new Map();
-for(const [id,sourceId,sourceName] of window.AtlasLandAliasRelays||[]){
- const alias=lands.find(l=>l.id===id),target=groupToLand.get(sourceId);
- if(!alias||alias.groups.length||!target||alias===target||!target.groups.some(g=>g.features.some(f=>String(f.id)===sourceId&&f.properties.name===sourceName)))continue;
- target.aliases=[...new Set([...target.aliases,alias.name,...alias.aliases])];
- (target.relatedNames||=[]).push({id:alias.id,name:alias.name,context:alias.supplied?.context||'',usage:alias.supplied?.usage||''});
- aliasLandIds.set(id,target.id);lands.splice(lands.indexOf(alias),1);
-}
-// A browsing group uses existing community references; no combined territorial boundary is created.
-const mayaMemberIds=new Set(['NAME-088','NAME-089','NAME-090','NAME-091','NAME-093','NAME-094','NAME-095','LAND-35926','LAND-35828','LAND-36628','LAND-35963']);
-const mayaMembers=lands.filter(l=>mayaMemberIds.has(l.id));
-const mayaGroup={id:'GROUP-MAYA',name:'Maya',aliases:['Maya communities',...mayaMembers.flatMap(l=>[l.name,...l.aliases])],supplied:null,browseGroup:true,members:mayaMembers.map(l=>l.id),groups:[...new Map(mayaMembers.flatMap(l=>l.groups).map(g=>[g.id,g])).values()]};
-lands.push(mayaGroup);
-lands.sort((a,b)=>a.name.localeCompare(b.name));
-const canonicalLandId=id=>hawaiiRelay?.aliases.includes(id)?hawaiiRelay.canonical:aliasLandIds.get(id)||(typeof id==='string'&&id.startsWith('LAND-')?(groupToLand.get(id.slice(5))?.id||id):id);
-// Beta 90: indexed lookup (was a scan of every land on every call, which froze theme-weaving).
-let landIndex=new Map(),landIndexOf=null,landIndexLen=-1;const landById=id=>{if(landIndexOf!==lands||landIndexLen!==lands.length){landIndex=new Map();for(const l of lands)if(!landIndex.has(l.id))landIndex.set(l.id,l);landIndexOf=lands;landIndexLen=lands.length;}return landIndex.get(canonicalLandId(id));};
+const {territories,byFeature,groupToLand,mayaMemberIds,mayaMembers,lands,canonicalLandId,landById,landDisplayName,edgesByRecord,edgesByLand,landLinks,recordLandReferences,mediaForFilm,viewingRoutes}=window.AtlasCatalogue;
 const s={view:'filmmakers',queries:{filmmakers:'',films:'',land:''},scope:'all',record:null,film:null,land:null,landHover:null,landHold:false,world:false,limit:40,page:0,previewRecord:null,previewFilm:null,selection:null,country:null,hoverCountry:null,tipPinned:false,worksOpen:true,returnContext:null};
 let archive,features,svg,geo,territoryLayer,focusLayer,countryLayer,markerLayer,drawing,projection,path,zoom,transform,width=900,height=650,ready=false,resizeTimer,lastHover='',lastDrawingKey='',projectionWorld=null;
 const pilot=window.ATLAS_CONNECTIONS||{communities:[],directors:[]};
@@ -126,21 +88,6 @@ function initPanelControls(){
  renderPanelControls();
 }
 
-// Display aliases only: source names, distinct references and affiliation edges stay intact.
-const shortLandNames=new Map([
- ["Ben ‘Zaa/Binnizá/Mén Diiste/Bene Xhon (Zapoteco)","Binnizá"],
- ["Iximulew","Ixim Ulew"],
- ["Wallmapu (Mapuche)","Wallmapu"],
- ["Tekohá (Guarani)","Tekohá"],
- ["Shiwinna (Zuni)","Shiwinna"],
- ["Magüta/Ticuna","Magüta"],
- ["Batsil Winik’ Otik (Tzotzil)","Batsil Winik’ Otik"],
- ["Winik Atel (Tzeltal)","Winik Atel"],
- ["Winaq Qo’ (Mam)","Winaq Qo’"],
- ["Kogui/Kaggabba","Kogui"],
- ["Kalina/Kariña","Kariña"]
-]);
-function landDisplayName(l){const name=l?.name||'';return /[^\p{Script=Latin}\p{Script=Common}\p{Script=Inherited}]/u.test(name)?name:shortLandNames.get(name)||name;}
 // A deliberate selection owns the reading surface until another deliberate action.
 let heldIdentity='',referenceRecord=null;
 function selectionIsHeld(){return !!(s.record||s.film||s.crossLand||s.land||s.country||s.landCountry||s.community||s.pilot||s.unassigned);}
@@ -275,31 +222,6 @@ function landQueryFrom(query,country=null){const q=norm(query).trim();const alia
 function landQuery(){return landQueryFrom(s.queries.land,s.landCountry);}
 function relatedCommunities(l){return pilot.communities.filter(c=>l.groups.some(g=>g.features.some(f=>String(f.id)===c.land)));}
 
-// Repair a homonym collision: source 36469 is Maya in Australia, not the Maya peoples of the Americas.
-// These relays use only the specific affiliation already recorded on each edge; status and evidence stay unchanged.
-const mayaAffiliationRelays=[[/k['’]?iche/i,'LAND-36164'],[/kaqchikel/i,'LAND-36187'],[/poqomchi/i,'LAND-35828'],[/tsotsil|tzotzil/i,'LAND-36628'],[/tseltal|tzeltal/i,'LAND-35963'],[/\bmam\b/i,'LAND-35926'],[/q['’]?eqchi/i,'LAND-36036']];
-const guaraniAffiliationRelays=[
- [/\bkaiowa\b|\bpai\s+tavytera\b/i,'LAND-33460'],
- [/\b(?:nhande[wv]a|nande[wv]a|ava[\s-]+guarani)\b/i,'LAND-33458'],
- [/\bmbya\b/i,'LAND-33387']
-];
-function repairedLandEdges(e){
- const land=canonicalLandId(e.land);
- if(land==='NAME-153'){
-  // Match only the already-recorded affiliation; an unspecified Guarani
-  // association retains the general source, not either subgroup's polygon.
-  const basis=String(e.basis||'').normalize('NFD').replace(/\p{Diacritic}/gu,'');
-  const targets=guaraniAffiliationRelays.filter(([pattern])=>pattern.test(basis)).map(([,id])=>canonicalLandId(id)).filter(id=>landById(id)?.groups.length);
-  if(targets.length)return [...new Set(targets)].map(land=>({...e,land,navigationCorrection:'Specific Guarani affiliation matched to its named source territory'}));
- }
- if(e.land!=='LAND-36469')return [{...e,land}];
- const targets=mayaAffiliationRelays.filter(([pattern])=>pattern.test(e.basis||'')).map(([,id])=>canonicalLandId(id));
- return targets.map(land=>({...e,land,navigationCorrection:'Maya homonym repaired from the recorded specific affiliation'}));
-}
-for(const [pattern,id] of mayaAffiliationRelays){const l=landById(id);if(l){l.aliases.push('Maya '+l.name);if(/Mam/.test(l.groups[0]?.name||''))l.aliases.push('Maya Mam');if(/Tzotzil/.test(l.name))l.aliases.push('Maya Tsotsil');if(/Tzeltal/.test(l.name))l.aliases.push('Maya Tseltal');}}
-const crossEdges=[...new Map((window.ATLAS_LAND_CROSSINDEX?.edges||[]).flatMap(repairedLandEdges).filter(e=>!(window.AtlasCatalogAudit61?.edgeExclusions||[]).some(x=>x.record===e.record&&x.land===e.land)).sort((a,b)=>Number(a.status==='sourced')-Number(b.status==='sourced')).map(e=>[e.land+'|'+e.record,e])).values()],edgesByLand=new Map(),edgesByRecord=new Map();
-for(const e of crossEdges){if(!edgesByLand.has(e.land))edgesByLand.set(e.land,[]);edgesByLand.get(e.land).push(e);if(!edgesByRecord.has(e.record))edgesByRecord.set(e.record,[]);edgesByRecord.get(e.record).push(e);}
-const landLinks=l=>{const id=canonicalLandId(typeof l==='string'?l:l.id),item=landById(id);if(!item?.browseGroup)return edgesByLand.get(id)||[];return [...new Map(item.members.flatMap(id=>edgesByLand.get(id)||[]).sort((a,b)=>Number(a.status==='sourced')-Number(b.status==='sourced')).map(e=>[e.record,e])).values()];};
 const visibleLandLinks=l=>landLinks(l).filter(e=>{const r=recordById(e.record);return r&&recordPasses(r)&&(s.scope==='all'||window.ATLAS_ON_MAP.has(r.status));});
 const linkStatus=e=>e?.status==='sourced'?'Sourced connection':'Provisional · catalog match';
 function linkedLandDetail(id){const links=edgesByRecord.get(id)||[];return links.length?`<details class="land-crosslinks"><summary>Land index · ${links.length} ${links.length===1?'entry':'entries'}</summary>${links.map((e,i)=>`<button class="community-chip" data-index-land="${e.land}"><b class="reference-code">${i+1}</b>${esc(landDisplayName(lands.find(l=>l.id===e.land)))} → <small>${linkStatus(e)}</small></button>`).join('')}</details>`:'';}
@@ -356,7 +278,6 @@ function exploration(r){const m=r.metadata;if(!m?.reviewedOn)return '';return `<
 function adjacentRecords(id){const origin=edgesByRecord.get(id)||[],matches=new Map();for(const sourceEdge of origin){for(const edge of visibleLandLinks(sourceEdge.land)){if(edge.record===id)continue;let item=matches.get(edge.record);if(!item){item={record:recordById(edge.record),links:[]};matches.set(edge.record,item);}item.links.push({land:edge.land,status:sourceEdge.status==='sourced'&&edge.status==='sourced'?'sourced':'provisional'});}}return [...matches.values()].sort((a,b)=>b.links.length-a.links.length||a.record.name.localeCompare(b.record.name));}
 function adjacentDetail(id){const items=adjacentRecords(id);return items.length?`<section class="adjacent-makers adjacent-visible"><h3>Continue exploring</h3><p class="meta">Shared land references · a route through the index, not evidence of collaboration or residence.</p>${items.slice(0,3).map(({record:r,links})=>`<button class="adjacent-maker" data-adjacent-maker="${r.id}"><strong>${esc(r.name)}</strong><small>${links.slice(0,2).map(e=>esc(lands.find(l=>l.id===e.land).name)).join(' · ')} · ${links.every(e=>e.status==='sourced')?'sourced links':'includes provisional links'}</small></button>`).join('')}${items.length>3?`<p class="meta">${items.length} filmmakers share index references. Open a land reference to explore more.</p>`:''}</section>`:'';}
 
-function mediaForFilm(f){return window.ATLAS_PROFILE_MEDIA?.[f.id]||null;}
 function imageURL(raw){if(!raw)return '';try{const u=new URL(raw,location.href);return ['https:','http:'].includes(u.protocol)?u.href:'';}catch{return '';}}
 function filmImage(f,compact=false,record=null){const m=mediaForFilm(f),url=imageURL(m?.image||f.thumbnailURL||f.imageURL);if(!url)return '';const clickable=compact&&record,tag=clickable?'button':'div';return `<figure class="film-artwork${compact?' compact':''}"><${tag} class="artwork-frame${clickable?' artwork-open':''}"${clickable?` data-open-film="${esc(f.id)}" data-profile-maker="${esc(record)}" aria-label="Open ${esc(f.title)}"`:''}><img src="${esc(url)}" alt="${m?.kind==='Installation view'?'Installation view':m?.kind==='Film poster'?'Poster':m?.kind==='Series publicity image'?'Series image':'Publicity image'} for ${esc(f.title)}" loading="eager" decoding="async" referrerpolicy="no-referrer"><span class="artwork-fallback" hidden>Film image unavailable · ${esc(f.title)}</span></${tag}><figcaption>${safe(m?.sourceURL)?`<a href="${esc(safe(m.sourceURL))}" target="_blank" rel="noopener noreferrer">${m?.kind==='Installation view'?'Installation view':m?.kind==='Film poster'?'Poster':m?.kind==='Series publicity image'?'Series image':'Film image'} · ${esc(m.publisher||sourceHost(m.sourceURL))} ↗</a>`:'Film publicity image'}</figcaption></figure>`;}
 function runtimeLabel(value){const seconds=Math.round(Number(value)*60);if(!Number.isFinite(seconds)||seconds<=0)return '';const mins=Math.floor(seconds/60),rest=seconds%60;return `${mins} min${rest?' '+rest+' sec':''}`;}
@@ -368,10 +289,6 @@ function publicCredit(c){c=String(c||'');const i=c.indexOf(' — ');if(i<0)retur
 function publicNotes(list){const out=[];for(const n of list)for(const s of String(n).split(/\s+\|\s+|(?<=\.)\s+(?=[A-Z])/)){const x=s.trim();if(x&&!INTERNAL.test(x.replace(/^(Also )?credited as/i,''))||/^(Also )?credited as/i.test(x))out.push(x);}return [...new Set(out)];}
 function renderFacts(f){const facts=filmFacts(f);return facts.length?`<dl class="film-facts">${facts.map(([name,value])=>`<div><dt>${name}</dt><dd>${esc(value)}</dd></div>`).join('')}</dl>`:'';}
 function sourceHost(url){try{return new URL(url).hostname.replace(/^www\./,'');}catch{return '';}}
-function viewingRoutes(f){
- const m=mediaForFilm(f),items=[...(safe(f.watchURL)?[{url:f.watchURL,title:'Open viewing page',context:f.creditNote&&/access code|rental|donation/i.test(f.creditNote)?'Check the provider page for access conditions.':''}]:[]),...(window.ATLAS_FILM_EXPLORATION?.[f.id]?.links||[]),...(m?.viewing||[])],seen=new Set();
- return items.filter(l=>{const url=safe(l.url);if(!url||seen.has(url))return false;seen.add(url);return true;});
-}
 function viewingLabel(route){const title=route.title||'';if(/trailer|teaser|preview/i.test(title))return 'Trailer';if(/watch|full film|stream|viewing|ver pelicula|ver filme/i.test(title))return 'Watch';return 'Film page';}
 function playHere(f){const w=window.ATLAS_WATCH&&window.ATLAS_WATCH.films;if(!w)return '';if(!playHere.ids)playHere.ids=new Set(w.filter(x=>x.links.some(l=>l.embed)).map(x=>x.fid));return playHere.ids.has(f.id)?`<a class="viewing-route play-here" href="watch.html#${encodeURIComponent(f.id)}"><span>▶ Play on Watch</span></a>`:'';}
 function filmViewingLinks(f){return (h=>{const p=playHere(f);if(!p)return h;return h?h.replace(/(<section class="dossier-viewing"[^>]*>)/,'$1'+p):`<section class="dossier-viewing" aria-label="Watch">${p}</section>`;})(filmViewingLinks0(f));}
@@ -687,7 +604,6 @@ const landCentres=new Map(),landCentresInside=new Map();
 function landCentre(l){if(!landCentres.has(l.id)){const fs=landGeometry(l);landCentres.set(l.id,fs.length?d3.geoCentroid({type:'FeatureCollection',features:fs}):null);}return landCentres.get(l.id);}
 
 const weaveReferenceCoordinates=new Map();
-function recordLandReferences(id){return (edgesByRecord.get(id)||[]).map(e=>({id:e.land,name:landDisplayName(landById(e.land)),status:e.status,basis:e.basis,source:e.source||'',mapped:!!landById(e.land)?.groups.length})).filter(e=>e.name).sort((a,b)=>Number(b.status==='sourced')-Number(a.status==='sourced')||Number(/wallmapu/i.test(b.name))-Number(/wallmapu/i.test(a.name)));}
 function landMarkerReference(id){const l=landById(id);if(!l?.groups.length)return null;const fs=landGeometry(l),node=constellationLayer?.selectAll('.land-word,.land-reference-bubble,.land-sky-star').nodes().find(n=>n.__data__?.id===id),d=node?.__data__;let coord=weaveReferenceCoordinates.get(id);
  if(d&&!s.zooming){const p=projection.invert(transform.invert([d.anchorX,d.anchorY]));if(p&&fs.some(f=>d3.geoContains(f,p)))coord=p;}
  if(!coord){const c=landCentre(l);if(c&&fs.some(f=>d3.geoContains(f,c)))coord=c;else for(const f of fs){const p=d3.geoCentroid(f);if(d3.geoContains(f,p)){coord=p;break;}}}

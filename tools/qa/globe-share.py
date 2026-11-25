@@ -7,7 +7,7 @@ from urllib.parse import urlsplit
 from playwright.async_api import async_playwright, expect
 
 BASE = os.environ.get("ATLAS_QA_BASE", "http://127.0.0.1:8985/beta/")
-READY = "window.AtlasGlobe?.discovery.publication === 'ready' && window.AtlasGlobe.focus.settled"
+READY = "window.AtlasGlobe?.discovery.publication === 'ready' && document.documentElement.dataset.globeEntry==='ready' && window.AtlasGlobe.focus.settled"
 CONTENTS = """() => {
     const {items, threads, links, pins, activeThread} = AtlasCollections.current();
     return {items, threads, links, pins, activeThread};
