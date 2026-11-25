@@ -21,7 +21,7 @@ const params=new URLSearchParams(location.search);
 const inboundGlobe=new URLSearchParams(params.get('fromGlobe')||'');
 if(inboundGlobe.get('globe')==='1'&&inboundGlobe.get('constellate')==='1'){
  const back=new URL('./',location.href);
- for(const k of ['constellate','globe','at','land','film','themes','period','lands','edges','language','form','length'])if(inboundGlobe.has(k))back.searchParams.set(k,inboundGlobe.get(k));
+ for(const k of ['constellate','globe','at','pitch','territories','land','film','themes','period','lands','edges','language','form','length'])if(inboundGlobe.has(k))back.searchParams.set(k,inboundGlobe.get(k));
  const link=document.createElement('a');link.className='btn';link.id='watch-return-globe';link.href=back.href;link.textContent='← Return to globe';$('.w-head').append(link);
 }
 const state={view:'browse',q:'',theme:params.get('theme')||'',pick:null,sort:'title',here:false,now:null};
