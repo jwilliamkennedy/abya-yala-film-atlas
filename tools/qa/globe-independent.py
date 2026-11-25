@@ -164,6 +164,16 @@ async def run(browser,name,viewport):
             await page.wait_for_function("AtlasGlobe.tileState.pitch>35 && AtlasGlobe.focus.settled")
             assert await page.evaluate("""()=>{const G=AtlasGlobe,t=G.focus.target;const ids=Atlas.lands.filter(l=>!l.browseGroup&&l.groups?.some(g=>g.features.some(f=>d3.geoContains(f,t.coordinate)))).map(l=>l.id);return G.focus.inside.every(id=>ids.includes(id))&&ids.every(id=>G.focus.inside.includes(id))&&(!t.primary||G.focus.ids.includes(t.primary))&&(t.reason!=='contains-target'||ids.includes(t.primary));}"""),(name,"pitched geographic target mismatch")
             print(name,"adaptive targeting",sizes,flush=True)
+            # Verify real button-driven zoom, not only programmatic jumps.
+            before=await page.evaluate("({center:AtlasGlobe.camera.center,zoom:AtlasGlobe.camera.zoom,featured:AtlasGlobe.discovery.featured})")
+            await page.locator("#globe-plus").click()
+            await page.wait_for_function("AtlasGlobe.focus.settled && !AtlasGlobe.tileState.wheelActive")
+            after=await page.evaluate("({center:AtlasGlobe.camera.center,zoom:AtlasGlobe.camera.zoom,featured:AtlasGlobe.discovery.featured})")
+            assert after["zoom"]>before["zoom"] and after["featured"]==before["featured"],(name,before,after)
+            assert max(abs((after["center"][0]-before["center"][0]+180)%360-180),abs(after["center"][1]-before["center"][1]))<.01,(name,before,after)
+            await page.locator("#globe-minus").click()
+            await page.wait_for_function("AtlasGlobe.focus.settled && !AtlasGlobe.tileState.wheelActive")
+            assert abs((await page.evaluate("AtlasGlobe.camera.zoom"))/before["zoom"]-1)<.002,(name,"zoom controls not reversible")
             if startup["firstRenderer"]=="native":
                 # A graphics-context failure must reveal the actual overview, even
                 # when normal entry has never shown that canvas to the visitor.
@@ -218,6 +228,13 @@ async def run(browser,name,viewport):
             assert await page.locator(".globe-menu-panel:visible").count()==0
             await page.wait_for_function("(id)=>window.AtlasGlobe.focus.settled && window.AtlasGlobe.focus.ids.includes(id)",arg=land)
             await page.locator("#globe-encounter .globe-film-title").wait_for()
+            panel=page.locator("#globe-encounter")
+            await page.locator("#globe-expand-encounter").click()
+            assert await panel.get_attribute("data-expanded")=="true"
+            assert await page.locator("#globe-expand-encounter").get_attribute("aria-expanded")=="true"
+            assert not await page.locator("#globe-emergent").is_visible()
+            await page.locator("#globe-expand-encounter").click()
+            assert await panel.get_attribute("data-expanded")=="false"
             first=await page.locator("#globe-encounter .globe-film-title").inner_text()
             await page.locator('#globe-encounter [aria-label="Next film"]').focus()
             await page.keyboard.press("Enter")
@@ -301,7 +318,7 @@ async def run(browser,name,viewport):
             if await bridge.count():
                 previous=await page.evaluate("window.AtlasGlobe.discovery.featured")
                 target=await bridge.get_attribute("data-target-film")
-                await page.locator(".globe-credit-details summary").click()
+                await page.locator(".globe-related-details summary").click()
                 await bridge.click()
                 await page.wait_for_function("(id)=>window.AtlasGlobe.focus.settled && window.AtlasGlobe.discovery.featured?.film===id",arg=target,timeout=30000)
                 await page.locator("#globe-more-toggle").click()

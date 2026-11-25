@@ -458,7 +458,11 @@ body.atlas-globe-experiment #constellate-mode{display:none!important}
 
 /* The encounter is a compact reading card, not a second navigation menu. */
 #atlas-rotational-globe #globe-encounter{gap:8px;padding:12px;max-height:min(48%,420px);font-family:var(--ui-sans,system-ui,sans-serif)}
-#globe-encounter .globe-encounter-heading{display:grid;grid-template-columns:minmax(0,1fr);gap:2px}
+#atlas-rotational-globe #globe-encounter:is([data-expanded=true],:has(.globe-encounter-disclosures>details[open])){max-height:min(74%,620px,var(--globe-encounter-room,620px))}
+#globe-encounter .globe-expand-encounter{grid-column:2;grid-row:1/span 3;align-self:start;justify-self:end;min-height:34px;min-width:34px;background:transparent;border:1px solid #718e8960;border-radius:5px;color:#dbe6db;font:500 18px/1 var(--ui-sans,system-ui,sans-serif);cursor:pointer}
+#globe-encounter .globe-expand-encounter:focus-visible{outline:2px solid #e9dfb5;outline-offset:2px}
+#globe-encounter .globe-encounter-heading{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:8px;row-gap:2px}
+#globe-encounter .globe-encounter-heading>:not(.globe-expand-encounter){grid-column:1;min-width:0}
 #globe-encounter .globe-encounter-heading>strong{font:500 17px/1.25 var(--ui-serif,Georgia,serif)}
 #globe-encounter .globe-encounter-heading :is(.globe-cinema-count,.globe-association,.globe-active-theme){font:500 11px/1.35 var(--ui-sans,system-ui,sans-serif);white-space:normal;overflow-wrap:anywhere}
 #globe-encounter .globe-featured{margin:2px 0;align-items:start}
@@ -467,10 +471,11 @@ body.atlas-globe-experiment #constellate-mode{display:none!important}
 #globe-encounter .globe-encounter-actions :is(a,button){font:600 12px/1.3 var(--ui-sans,system-ui,sans-serif);min-height:34px;box-sizing:border-box;display:inline-flex;align-items:center;padding:6px 10px;border-radius:5px}
 #globe-encounter .globe-encounter-actions [hidden]{display:none!important}
 #globe-encounter .globe-encounter-nav{justify-content:space-between;gap:8px;border-top:1px solid #718e893b;padding-top:6px}
-#globe-encounter .globe-encounter-disclosures{display:flex;flex-wrap:wrap;gap:4px 12px;border-top:1px solid #718e893b;padding-top:5px}
+#globe-encounter .globe-encounter-disclosures{display:flex;flex-wrap:wrap;gap:3px 6px;border-top:1px solid #718e893b;padding-top:6px}
 #globe-encounter .globe-encounter-disclosures>details{flex:0 0 auto;max-width:100%;min-width:0;margin:0;padding:0;border:0}
 #globe-encounter .globe-encounter-disclosures>details[open]{flex-basis:100%}
-#globe-encounter .globe-encounter-disclosures>details>summary{font:500 12px/1.4 var(--ui-sans,system-ui,sans-serif);color:#d3e3d9;text-decoration:none;cursor:pointer;padding:5px 0;overflow-wrap:anywhere}
+#globe-encounter .globe-encounter-disclosures>details>summary{font:500 12px/1.4 var(--ui-sans,system-ui,sans-serif);color:#d3e3d9;text-decoration:none;cursor:pointer;padding:5px 7px;overflow-wrap:anywhere;border:1px solid #718e894a;border-radius:4px}
+#globe-encounter .globe-encounter-disclosures>details[open]>summary{background:#233b46;border-color:#718e89}
 #globe-encounter .globe-encounter-disclosures>details[open]>summary{color:#f1edda}
 #globe-encounter .globe-related-list{display:grid;gap:4px}
 #globe-encounter .globe-source-group>a{display:block;margin:5px 0}
@@ -481,5 +486,5 @@ body.atlas-globe-experiment #constellate-mode{display:none!important}
 #atlas-rotational-globe[data-target-mode=local] #globe-aperture::before,#atlas-rotational-globe[data-target-mode=local] #globe-aperture::after{background:#d7e6dfa0}
 #atlas-rotational-globe[data-ready=true]{animation:atlas-globe-entry .42s ease-out both}
 @keyframes atlas-globe-entry{from{opacity:0}to{opacity:1}}
-@media(max-width:760px){#atlas-rotational-globe #globe-encounter{padding:9px;gap:6px;max-height:38%}#globe-encounter .globe-encounter-actions :is(a,button){min-height:44px}#globe-encounter .globe-encounter-disclosures>details>summary{min-height:32px;box-sizing:border-box;display:list-item}#globe-encounter .globe-film-title{font-size:14px}}
+@media(max-width:760px){#atlas-rotational-globe #globe-encounter{padding:9px;gap:6px;max-height:38%}#globe-encounter .globe-encounter-actions :is(a,button){min-height:44px}#globe-encounter .globe-encounter-disclosures>details>summary{min-height:32px;box-sizing:border-box;display:list-item}#globe-encounter .globe-film-title{font-size:14px}#globe-encounter .globe-expand-encounter{min-height:44px;min-width:44px}}
 @media(prefers-reduced-motion:reduce){#atlas-rotational-globe[data-ready=true]{animation:none}#atlas-rotational-globe #globe-aperture{transition:none}}
