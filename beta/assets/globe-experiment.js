@@ -621,8 +621,8 @@ function button(label,fn,cls){const b=el('button',cls,label);b.type='button';b.a
    if(active&&container.isConnected){cancelAnimationFrame(posterLayoutFrame);posterLayoutFrame=requestAnimationFrame(()=>{posterLayoutFrame=0;placeEmergent();});}
   };
   img.addEventListener('load',measure,{once:true});
-  img.addEventListener('error',()=>{artFailures.add(source);container.dataset.artState='broken';placeholder.title='Recorded artwork could not load; film remains available';img.remove();if(kind==='emergent'&&active&&container.isConnected)placeEmergent();},{once:true});
-  container.dataset.artState='loading';container.append(img);img.src=url.href;if(img.complete&&img.naturalWidth)measure();
+  img.addEventListener('error',()=>{artFailures.add(source);container.dataset.artState='broken';placeholder.textContent='Image unavailable';placeholder.title='Recorded artwork could not load; film remains available';img.remove();if(kind==='emergent'&&active&&container.isConnected)placeEmergent();},{once:true});
+  container.dataset.artState='loading';placeholder.textContent=kind==='feature'?'Loading artwork…':film.title;container.append(img);img.src=url.href;if(img.complete&&img.naturalWidth)measure();
  }
  function placeEmergent(){
   const b=$('#globe-emergent');if(!b)return;
