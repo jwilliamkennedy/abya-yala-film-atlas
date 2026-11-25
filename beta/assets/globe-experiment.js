@@ -696,7 +696,8 @@ function markup(){
  for(const key of ['find','theme','more'])$('#globe-'+key+'-toggle').onclick=()=>setMenu(key);
  menuListeners=new AbortController();const opts={capture:true,signal:menuListeners.signal};
  document.addEventListener('pointerdown',e=>{if(menuMode&&!e.target.closest('.globe-guide'))setMenu('');},opts);
- document.addEventListener('keydown',e=>{if(e.key==='Escape'&&menuMode){e.preventDefault();e.stopImmediatePropagation();setMenu('',true);}},opts);
+ // Window capture precedes document-level legacy Escape handlers, which can exit Constellate.
+ window.addEventListener('keydown',e=>{if(e.key==='Escape'&&menuMode){e.preventDefault();e.stopImmediatePropagation();setMenu('',true);}},opts);
  $('#weave-map-theme')?.addEventListener('change',refreshMenuLabels,{signal:menuListeners.signal});$('#weave-map-theme-second')?.addEventListener('change',refreshMenuLabels,{signal:menuListeners.signal});
  canvas=$('#globe-surface');ctx=canvas.getContext('2d',{alpha:false});if(!ctx)throw Error('Canvas unavailable');
  $('#globe-emergent').onclick=()=>{if(featured){C().showPreview(featured.film,{land:featured.land});placeEmergent();sync();}};

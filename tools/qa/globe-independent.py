@@ -84,6 +84,7 @@ async def run(browser,name,viewport):
             assert await page.locator(".globe-menu-panel:visible").count()==0
             after=await page.evaluate("window.AtlasGlobe.camera")
             print(name,'menu camera',cam,after,flush=True)
+            assert after is not None,(name,'Escape exited the globe instead of closing its menu')
             assert max(abs((after['center'][0]-cam['center'][0]+180)%360-180),abs(after['center'][1]-cam['center'][1]))<.01 and abs(after['zoom']/cam['zoom']-1)<.002,(name,cam,after)
             await page.locator("#globe-more-toggle").click()
             await page.locator("#globe-lands").click()

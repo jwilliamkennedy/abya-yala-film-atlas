@@ -1,0 +1,1 @@
+The a801efc browser audit reproduced an actual Escape regression: camera was null after closing Map, because a legacy document capture handler closed the globe. The globe now handles menu Escape in window capture, before the document handlers. Test explicitly asserts that the globe remains active, then checks camera stability. Syntax passed; browser rerun queued.
