@@ -61,6 +61,10 @@ async def run(browser,name,viewport):
         assert layer["visible"] and layer["features"]>0 and layer["fill"] is not None,(name,"ambient territory layer absent",layer)
         assert layer["boundaries"]["longEdges"]==0,(name,"cross-world territory edges",layer["boundaries"])
         print(name,"ambient territory layer",json.dumps(layer),flush=True)
+        if MODE=="terrain":
+            counts=await page.evaluate("""()=>{const G=AtlasGlobe,I=AtlasConstellate.globeCreditIndex(),A=new Map(G.anchors.map(a=>[a.id,a.coordinate])),credits=new Map(I.films.map(f=>[f.id,f])),markers=G.cinemaMarkers;return {markers:markers.length,multiple:markers.filter(m=>m.films>1&&m.makers>1).length,invalid:markers.filter(m=>{const rows=G.matchingCreditIds(m.land).map(id=>credits.get(id));return !A.has(m.land)||JSON.stringify(m.coordinate)!==JSON.stringify(A.get(m.land))||rows.some(f=>!f)||m.credits!==new Set(rows.map(f=>f.id)).size||m.films!==new Set(rows.map(f=>f.film||f.id)).size||m.makers!==new Set(rows.map(f=>f.record).filter(Boolean)).size;}).map(m=>m.land)};}""")
+            assert counts["markers"]>0 and counts["multiple"]>0 and not counts["invalid"],(name,counts)
+            print(name,"cinema multiplicity from exact catalogue IDs",json.dumps(counts),flush=True)
         if MODE=="input":
             # Keep ordinary physical wheel, synthetic DOM Ctrl-wheel and
             # CDP two-touch gestures distinct in the report.

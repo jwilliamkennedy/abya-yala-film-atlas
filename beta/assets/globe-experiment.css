@@ -448,3 +448,7 @@ body.atlas-globe-experiment #constellate-mode{display:none!important}
 #atlas-rotational-globe .globe-instructions{display:none}
 #atlas-rotational-globe:not([data-ready=true]){visibility:hidden}
 /* The native renderer stays opaque behind the overview; fade only the top canvas, never both layers. */
+
+/* Film counts are catalogue metadata, not geographic positions. */
+#globe-encounter .globe-encounter-heading .globe-cinema-count{flex-basis:100%;white-space:normal;overflow-wrap:anywhere;font:500 12px/1.4 var(--ui-sans,system-ui,sans-serif);color:#c9dcd2}
+#atlas-rotational-globe .globe-marker-key{font:12px/1.45 var(--ui-sans,system-ui,sans-serif);color:#c0d2cd}
