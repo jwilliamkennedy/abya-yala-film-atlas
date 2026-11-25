@@ -1,5 +1,5 @@
 """One header menu for every page of the beta except the map itself (which builds the same menu in menus-20261107.js).
-Same items, same order, same words as the map: About · Map · Constellate · Watch · More
+Same public items, same order, same words as the globe: About · Map · Watch · More
 (Browse: Languages, Themes, Timeline · Your list: Screening list · About the data: Data, Reuse, and CARE,
 Resources, Suggest a correction). Filmmakers, Films and Land are switched inside the map's sidebar (2026-11-09).
 Also loads the shared interface layer (assets/ui-20261109.css and .js) after site-menu.css, and last of all the left rail

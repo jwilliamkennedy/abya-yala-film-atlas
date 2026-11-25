@@ -1,5 +1,6 @@
 """Export the public (on-map) records from the loaded beta runtime: python3 dump.py <beta url> <out.json>"""
 import asyncio, json, sys
+from urllib.parse import urljoin
 from playwright.async_api import async_playwright
 JS = '''()=>{const A=window.Atlas,on=window.ATLAS_ON_MAP,M=window.ATLAS_PROFILE_MEDIA||{};const WATCH=/watch|full film|stream|viewing|ver pelicula|ver filme/i,NOT=/trailer|teaser|preview/i;
 const lands=id=>{try{return [...new Set((A.recordLandReferences?A.recordLandReferences(id):[]).map(l=>l&&(A.landDisplayName?A.landDisplayName(l):l.name)).filter(Boolean))]}catch(e){return []}};
@@ -15,7 +16,11 @@ async def main():
         b = await p.chromium.launch(**({'executable_path': sys.argv[3]} if len(sys.argv) > 3 else {}), args=['--no-sandbox'])
         ctx = await b.new_context()
         await ctx.route(lambda u: not u.startswith('http://127.0.0.1'), lambda r: r.abort())
-        pg = await ctx.new_page(); await pg.goto(sys.argv[1] + ('&' if '?' in sys.argv[1] else '?') + 'globe=0', wait_until='networkidle'); await pg.wait_for_timeout(3500)
+        # The exporter uses the legacy Atlas API by design, not the public globe route.
+        pg = await ctx.new_page()
+        await pg.goto(urljoin(sys.argv[1], 'flat.html'), wait_until='domcontentloaded')
+        await pg.wait_for_function("window.Atlas && window.ATLAS_ON_MAP && document.documentElement.dataset.legacyWorkspace==='true' && window.Atlas.allRecords().length>0", timeout=90000)
+        await pg.wait_for_timeout(3500)
         data = await pg.evaluate(JS)
         json.dump(data, open(sys.argv[2], 'w'), ensure_ascii=False)
         print(len(data), 'records', sum(len(r['films']) for r in data), 'films')

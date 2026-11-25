@@ -50,8 +50,8 @@ def public_credit(c):
 def header(depth):
     up = '../' * depth
     return (f'<header><a class="brand" href="{up}./"><img src="{up}assets/icon-1107.svg" alt=""><span>Indigenous Cinema Atlas<small>Abya Yala and Turtle Island</small></span></a>'
-            f'<nav class="primary" aria-label="Explore the atlas"><a href="{up}about.html">About</a><a href="{up}./#view=filmmakers">Filmmakers</a><a href="{up}./#view=films">Films</a>'
-            f'<a href="{up}./#view=land">Land</a><a href="{up}./?constellate=1">Constellate</a><a href="{up}watch.html">▸ Watch</a><a href="{up}screening.html" data-screen-count>Screening list</a></nav></header>')
+            f'<nav class="primary" aria-label="Explore the atlas"><a href="{up}about.html">About</a><a href="{up}./">Map</a>'
+            f'<a href="{up}watch.html">Watch</a><a href="{up}screening.html" data-screen-count>Saved</a></nav></header>')
 
 def page(title, desc, body, depth, extra_head=''):
     up = '../' * depth

@@ -5,6 +5,9 @@ on:
     paths:
       - 'beta/index.html'
       - 'beta/assets/globe.js'
+      - 'beta/assets/atlas-route.js'
+      - 'beta/assets/rail-20261121.js'
+      - 'beta/flat.html'
       - 'beta/assets/globe-experiment.css'
       - 'beta/assets/catalogue.js'
       - 'beta/assets/collection-editor.js'

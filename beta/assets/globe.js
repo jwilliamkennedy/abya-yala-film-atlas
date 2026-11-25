@@ -123,7 +123,15 @@ function close(){
  closed=true;active=false;delete document.documentElement.dataset.globeEntry;clearStarDrag();closeGlobePlayer();clearTimeout(settleTimer);clearTimeout(labelTimer);labelTimer=0;cancelFlight();if(raf)cancelAnimationFrame(raf);raf=0;if(posterLayoutFrame)cancelAnimationFrame(posterLayoutFrame);posterLayoutFrame=0;ro?.disconnect();
  clearTimeout(liveTimer);stopWheel();zoomListeners?.abort();zoomListeners=null;restoreThemeLens();liveReady=false;live?.remove();live=null;liveHost=null;relief?.dispose();relief=null;host?.remove();host=null;document.body.classList.remove('atlas-globe-experiment');
 }
-function canonicalize(){const target=window.AtlasRoute?.canonical;if(target&&location.href!==target)try{history.replaceState(history.state,'',target);}catch{}}
+function canonicalize(){
+ const route=window.AtlasRoute?.canonical;if(!route)return;
+ const target=new URL(route),local=new URL(location.href).searchParams.get('weave'),store=window.AtlasCollections;
+ // A collection ID is local to this browser. Preserve a genuinely saved
+ // collection on reload, but never mistake an unknown legacy ID for a portable
+ // snapshot. A portable #weave payload always has precedence.
+ if(!target.hash&&local&&store?.saved(local)&&store.current()?.id===local)target.searchParams.set('weave',local);
+ if(location.href!==target.href)try{history.replaceState(history.state,'',target.href);}catch{}
+}
 function fallback(e){
  bootFailure=String(e?.stack||e);console.warn('Globe discovery unavailable',bootFailure);close();canonicalize();
  if(window.AtlasRoute?.globe){document.documentElement.dataset.globeEntry='error';const p=$('#globe-stage-loading');if(p){p.replaceChildren();const box=el('span',null,'The map could not initialize. ');const retry=button('Reload',()=>location.reload());box.append(retry);p.append(box);}return;}

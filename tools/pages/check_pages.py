@@ -6,7 +6,7 @@ usage: python3 tools/pages/check_pages.py http://127.0.0.1:8765/beta/ [chromium 
 import sys, asyncio
 from playwright.async_api import async_playwright
 
-PAGES = ['index.html', 'about.html', 'resources.html', 'watch.html', 'languages.html', 'themes.html', 'timeline.html', 'screening.html',
+PAGES = ['flat.html', 'about.html', 'resources.html', 'watch.html', 'languages.html', 'themes.html', 'timeline.html', 'screening.html',
          'data.html', 'corrections.html', 'maker/index.html', 'maker/DIR-0059.html']
 WIDTHS = [(1440, 900), (1000, 800), (390, 844)]
 TOLERANCE = 4  # px
@@ -30,12 +30,12 @@ async def main(base, chrome=None):
                 pg = await ctx.new_page()
                 errors = []
                 pg.on('pageerror', lambda e: errors.append(str(e)))
-                await pg.goto(base + page + ('?globe=0' if page == 'index.html' else ''))
-                await pg.wait_for_timeout(2500 if page == 'index.html' else 700)
+                await pg.goto(base + page)
+                await pg.wait_for_timeout(2500 if page == 'flat.html' else 700)
                 got = await pg.evaluate(JS)
                 # A missing Watch loader is silent on the map: the globe simply loses
                 # playable encounters. Check the actual generated payload before publishing.
-                if page in ('index.html', 'watch.html'):
+                if page in ('flat.html', 'watch.html'):
                     watch = await pg.evaluate("""() => {
                       const scripts = [...document.scripts].map(s => new URL(s.src || location.href, location.href).pathname);
                       const loaders = scripts.filter(s => s.endsWith('/watch-data.js'));
@@ -67,10 +67,40 @@ async def main(base, chrome=None):
                         problems.append(f'{w}px {page}: {k} at {c}, on {ref[0]} at {a}')
                 if got['items'] != ref[1]['items']:
                     problems.append(f'{w}px {page}: menu items differ: {got["items"]} vs {ref[1]["items"]}')
+            # Separately check the actual public entry at every width. The
+            # legacy layout comparison above must not stand in for this check.
+            ctx = await b.new_context(viewport={'width': w, 'height': h}, reduced_motion='reduce')
+            await ctx.route(lambda u: not u.startswith(base.split('/beta')[0]), lambda r: asyncio.ensure_future(r.abort()))
+            pg = await ctx.new_page()
+            errors = []
+            pg.on('pageerror', lambda e: errors.append(str(e)))
+            try:
+                await pg.goto(base, wait_until='domcontentloaded', timeout=90000)
+                await pg.wait_for_function("""window.AtlasGlobe?.active &&
+                    document.documentElement.dataset.globeEntry==='ready' &&
+                    AtlasGlobe.discovery.publication==='ready' && AtlasGlobe.focus.settled""", timeout=90000)
+                entry = await pg.evaluate("""() => {
+                    const scripts = [...document.scripts].map(s=>new URL(s.src || location.href, location.href).pathname);
+                    const globe = scripts.findIndex(s=>s.endsWith('/assets/globe.js'));
+                    const watch = scripts.filter(s=>s.endsWith('/watch-data.js'));
+                    return {public: !!window.AtlasRoute?.globe && !window.AtlasConstellate && !window.AtlasOpenBasemap,
+                        legacyNodes: document.querySelectorAll('#atlas,#index,header .constellate-link').length,
+                        globe: globe>=0, watch: watch.length===1 && scripts.indexOf(watch[0])<globe && !!window.ATLAS_WATCH?.films?.length,
+                        route: location.href, landCount: AtlasGlobe.geometryCount};
+                }""")
+                if not (entry['public'] and entry['globe'] and entry['watch'] and entry['landCount']>0 and
+                        entry['legacyNodes']==0 and entry['route']==base):
+                    problems.append(f'{w}px public globe: entry contract violated: {entry}')
+            except Exception as exc:
+                problems.append(f'{w}px public globe: failed to initialize: {str(exc)[:300]}')
+            finally:
+                await ctx.close()
+            if errors:
+                problems.append(f'{w}px public globe: script error: {errors[0][:160]}')
         await b.close()
     for x in problems:
         print('PROBLEM', x)
-    print(f'page check: {len(PAGES)} pages x {len(WIDTHS)} widths, {len(problems)} problems')
+    print(f'page check: {len(PAGES)+1} pages x {len(WIDTHS)} widths, {len(problems)} problems')
     sys.exit(1 if problems else 0)
 
 if __name__ == '__main__':

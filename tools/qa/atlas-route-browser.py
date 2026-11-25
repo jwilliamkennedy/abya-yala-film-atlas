@@ -2,7 +2,7 @@
 Uses the production catalogue and local overview fallback, not mocked application state."""
 import asyncio
 import os
-from urllib.parse import urlsplit
+from urllib.parse import urlsplit, urlencode
 from playwright.async_api import async_playwright
 
 BASE = os.environ.get("ATLAS_QA_BASE", "http://127.0.0.1:8985/beta/")
@@ -35,6 +35,37 @@ async def main():
             assert await page.locator("#globe-search").is_visible()
             assert page.url==BASE
             print("CANONICAL_GLOBE",suffix or "clean",page.url,flush=True)
+        # Exercise a real catalogue credit, not synthetic placeholder IDs.
+        credit=await page.evaluate("""() => {
+            const mapped=new Set(AtlasGlobe.anchors.map(x=>x.id));
+            const c=AtlasGlobe.artworkInventory().credits.find(x=>x.lands.some(l=>mapped.has(l)));
+            return {maker:c.record,film:c.film,credit:c.id,land:c.lands.find(l=>mapped.has(l))};
+        }""")
+        query=urlencode({k:credit[k] for k in ("maker","film","land")})
+        await page.goto(BASE+"?globe=1#view=films&"+query,wait_until="domcontentloaded",timeout=90000)
+        await page.wait_for_function(READY,timeout=90000)
+        await page.wait_for_function("c=>AtlasGlobe.focus.settled && AtlasGlobe.discovery.featured?.film===c.credit && AtlasGlobe.discovery.featured?.land===c.land",arg=credit,timeout=60000)
+        assert "globe=1" not in page.url and "film=" in page.url and "maker=" in page.url and "land=" in page.url
+        print("EXACT_CREDIT_LINK",credit,page.url,flush=True)
+        # A valid locally saved collection survives canonicalization and reload.
+        # Unknown UUIDs are still stripped (the STALE case above).
+        local=await page.evaluate("""() => {
+            AtlasCollections.create('Route audit');
+            if(!AtlasCollections.persist())throw Error('Could not persist route fixture');
+            return AtlasCollections.current().id;
+        }""")
+        await page.goto(BASE+"?constellate=1&globe=1&weave="+local,wait_until="domcontentloaded",timeout=90000)
+        await page.wait_for_function(READY,timeout=90000)
+        assert page.url==BASE+"?weave="+local
+        assert await page.evaluate("AtlasCollections.current().id")==local
+        await page.reload(wait_until="domcontentloaded",timeout=90000)
+        await page.wait_for_function(READY,timeout=90000)
+        assert await page.evaluate("AtlasCollections.current().id")==local and page.url==BASE+"?weave="+local
+        print("LOCAL_COLLECTION_RELOAD",local,flush=True)
+        await page.goto(BASE+"?menu=find",wait_until="domcontentloaded",timeout=90000)
+        await page.wait_for_function(READY,timeout=90000)
+        assert await page.locator("#globe-search").is_visible()
+        print("PUBLIC_FIND_LINK",page.url,flush=True)
         await page.goto(BASE+"flat.html",wait_until="domcontentloaded",timeout=90000)
         await page.wait_for_function("document.documentElement.dataset.atlasUi==='ready'",timeout=60000)
         assert urlsplit(page.url).path.endswith("/flat.html")
