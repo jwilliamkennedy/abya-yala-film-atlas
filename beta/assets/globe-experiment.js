@@ -780,7 +780,7 @@ function otherLands(chosen,primary){
  }
  d.append(list);return d;
 }
-let collectionSourceKey='',collectionPanelKey='',linkFrom='',linkTo='',drawingLink=false,collectionNotice='',connectionDraft=null,starGroup='',starDrag=null,suppressStarClickUntil=0;
+let collectionSourceKey='',collectionPanelKey='',linkFrom='',linkTo='',drawingLink=false,collectionNotice='',connectionDraft=null,starGroup='',starDrag=null,cancelledStarPointer=null,suppressStarClickUntil=0;
 const store=()=>window.AtlasCollections;
 function collectionState(){return store()?.current();}
 function collectedPoints(){
@@ -810,7 +810,7 @@ function starAt(x,y){
  if(!liveReady)return null;
  const h=10,hit=live.queryRenderedFeatures([[x-h,y-h],[x+h,y+h]],{layers:['globe-user-star']});
  // Choose the closest visible anchor rather than layer order when symbols overlap.
- const candidates=[...new Set(hit.map(f=>f.properties.land))].map(id=>{const group=groupedStars().get(id),p=group?.[0];if(!p)return null;const q=live.project(p.coord);return {id,group,d:Math.hypot(q.x-x,q.y-y)};}).filter(Boolean).sort((a,b)=>a.d-b.d||a.id.localeCompare(b.id));
+ const groups=groupedStars();const candidates=[...new Set(hit.map(f=>f.properties.land))].map(id=>{const group=groups.get(id),p=group?.[0];if(!p)return null;const q=live.project(p.coord);return {id,group,d:Math.hypot(q.x-x,q.y-y)};}).filter(Boolean).sort((a,b)=>a.d-b.d||a.id.localeCompare(b.id));
  return candidates[0]||null;
 }
 function openStarGroup(id){
@@ -824,8 +824,8 @@ function selectStar(hit){
  if(drawingLink){starGroup='';pickLink(id);if(linkTo&&menuMode!=='collection')setMenu('collection');else if(!linkTo&&menuMode==='collection')setMenu('');return;}
  const item=collectionState()?.items.find(x=>x.id===id);if(item)openCollected(item);
 }
-function clearStarDrag(){
- const drag=starDrag;starDrag=null;$('#globe-draw-preview')?.remove();
+function clearStarDrag(completed=false){
+ const drag=starDrag;starDrag=null;$('#globe-draw-preview')?.remove();if(drag&&completed!==true){cancelledStarPointer=drag.pointer;suppressStarClickUntil=nowMs()+350;}
  if(drag?.pan&&liveReady)live.dragPan.enable();
  if(drag?.element?.hasPointerCapture?.(drag.pointer))try{drag.element.releasePointerCapture(drag.pointer);}catch{}
  return drag;
@@ -840,6 +840,7 @@ function installStarDrawing(){
  };
  window.addEventListener('pointerdown',e=>{
   if(starDrag&&e.pointerId!==starDrag.pointer){clearStarDrag();return;}
+  if(cancelledStarPointer===e.pointerId)cancelledStarPointer=null;
   if(!drawingLink||linkTo||!settled||!e.isPrimary||e.button!==0||e.pointerType==='touch'||!surface.contains(e.target))return;
   const xy=local(e),hit=starAt(...xy);if(!hit)return;
   const source=hit.group.find(x=>x.id===linkFrom)||(hit.group.length===1?hit.group[0]:null);if(!source)return;
@@ -850,14 +851,15 @@ function installStarDrawing(){
  },opts);
  window.addEventListener('pointermove',e=>{const drag=starDrag;if(!drag||e.pointerId!==drag.pointer)return;stop(e);const xy=local(e);if(Math.hypot(xy[0]-drag.start[0],xy[1]-drag.start[1])>5)drag.moved=true;if(drag.moved)preview(drag.anchor,xy);},opts);
  window.addEventListener('pointerup',e=>{
+  if(cancelledStarPointer===e.pointerId){cancelledStarPointer=null;suppressStarClickUntil=nowMs()+350;stop(e);return;}
   const drag=starDrag;if(!drag||e.pointerId!==drag.pointer)return;stop(e);
-  const hit=starAt(...local(e));clearStarDrag();suppressStarClickUntil=nowMs()+350;
+  const hit=starAt(...local(e));clearStarDrag(true);suppressStarClickUntil=nowMs()+350;
   if(!drag.moved){if(hit)selectStar(hit);return;}
   if(!hit||hit.id===drag.land)return; // cancellation never writes a relation
   if(!linkFrom)pickLink(drag.source);
   selectStar(hit);
  },opts);
- window.addEventListener('pointercancel',e=>{if(starDrag?.pointer===e.pointerId)clearStarDrag();},opts);
+ window.addEventListener('pointercancel',e=>{if(starDrag?.pointer===e.pointerId)clearStarDrag();if(cancelledStarPointer===e.pointerId)cancelledStarPointer=null;},opts);
  window.addEventListener('blur',clearStarDrag,{signal:zoomListeners.signal});
  window.addEventListener('click',e=>{if(nowMs()<suppressStarClickUntil&&surface.contains(e.target)){stop(e);suppressStarClickUntil=0;}},opts);
 }
@@ -892,10 +894,10 @@ function renderCollection(force=false){
   panel.scrollTop=scroll;
   if(focused){const target=[...panel.querySelectorAll('button,input,select,textarea')].find(e=>focusId&&e.id===focusId||focusLabel&&e.getAttribute('aria-label')===focusLabel||focusItem&&e.dataset.collectedId===focusItem);if(target&&!target.disabled)target.focus({preventScroll:true});}
  }
- const settings=el('details','globe-collection-settings');settings.append(el('summary',null,'Manage collections and threads'));const name=el('label',null,'Constellation'),select=el('select');select.setAttribute('aria-label','Choose constellation');for(const c of store().state.collections){const o=el('option',null,c.name+(store().saved(c.id)?'':' · Draft'));o.value=c.id;select.append(o);}select.value=cur.id;select.onchange=()=>{drawingLink=false;linkFrom=linkTo='';collectionNotice='';store().activate(select.value);renderCollection(true);};name.append(select);settings.append(name);
- const thread=el('label',null,'Thread'),ts=el('select');ts.setAttribute('aria-label','Choose thread');for(const t of cur.threads){const o=el('option',null,t.name);o.value=t.id;ts.append(o);}ts.value=cur.activeThread;ts.onchange=()=>{cur.activeThread=ts.value;store().save();renderCollection(true);};thread.append(ts);settings.append(thread);
+ const settings=el('details','globe-collection-settings');settings.append(el('summary',null,'Manage collections and threads'));const name=el('label',null,'Constellation'),select=el('select');select.setAttribute('aria-label','Choose constellation');for(const c of store().state.collections){const o=el('option',null,c.name+(store().saved(c.id)?'':' · Draft'));o.value=c.id;select.append(o);}select.value=cur.id;select.onchange=()=>{clearStarDrag();starGroup='';drawingLink=false;linkFrom=linkTo='';connectionDraft=null;collectionNotice='';store().activate(select.value);renderCollection(true);};name.append(select);settings.append(name);
+ const thread=el('label',null,'Thread'),ts=el('select');ts.setAttribute('aria-label','Choose thread');for(const t of cur.threads){const o=el('option',null,t.name);o.value=t.id;ts.append(o);}ts.value=cur.activeThread;ts.onchange=()=>{clearStarDrag();starGroup='';drawingLink=false;linkFrom=linkTo='';connectionDraft=null;cur.activeThread=ts.value;store().save();renderCollection(true);};thread.append(ts);settings.append(thread);
  const info=el('p','globe-collection-info',films.length+' collected films · '+summary.mapped+' mapped · '+cur.links.length+' connections');panel.append(info);
- const actions=el('div','globe-buttons');const save=button(summary.saved?'Saved in browser':'Save',()=>{collectionNotice=store().persist()?'Saved in this browser.':'Save failed. Export in the flat workspace.';renderCollection(true);});save.disabled=!cur.items.length||summary.saved;save.id='globe-save-collection';const fresh=button('New',()=>{if(store().dirty()&&cur.items.length&&!window.confirm('Start a new draft? The current draft stays in this tab until saved.'))return;drawingLink=false;linkFrom=linkTo='';collectionNotice='';store().create('Untitled constellation');renderCollection(true);});actions.append(save);settings.append(fresh);panel.append(actions);
+ const actions=el('div','globe-buttons');const save=button(summary.saved?'Saved in browser':'Save',()=>{collectionNotice=store().persist()?'Saved in this browser.':'Save failed. Export in the flat workspace.';renderCollection(true);});save.disabled=!cur.items.length||summary.saved;save.id='globe-save-collection';const fresh=button('New',()=>{if(store().dirty()&&cur.items.length&&!window.confirm('Start a new draft? The current draft stays in this tab until saved.'))return;clearStarDrag();starGroup='';drawingLink=false;linkFrom=linkTo='';connectionDraft=null;collectionNotice='';store().create('Untitled constellation');renderCollection(true);});actions.append(save);settings.append(fresh);panel.append(actions);
  const edit=button('Open flat editor',()=>{close();C().open({dock:true});});settings.append(edit);panel.append(settings);if(films.length){const share=button('Share constellation',async()=>{const snapshot=C().shareURL('globe');if(!snapshot){collectionNotice='Too large to share as a link. Export JSON in the flat editor.';renderCollection(true);return;}const u=new URL(shareView());u.hash=new URL(snapshot).hash;try{await navigator.clipboard.writeText(u.href);collectionNotice='Constellation link copied.';renderCollection(true);}catch{const field=el('input');field.readOnly=true;field.value=u.href;field.setAttribute('aria-label','Shareable constellation link');share.after(field);field.select();}});actions.append(share);}
  const msg=el('p','globe-collection-info',collectionNotice||(!films.length?'Collect a film to begin.':'Choose films to revisit or connect.'));msg.setAttribute('role','status');panel.append(msg);
  if(!films.length&&!journeyItems().length){restoreCollectionPanel();return;}
