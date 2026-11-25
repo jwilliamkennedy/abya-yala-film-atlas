@@ -42,15 +42,22 @@ function relatedEncounters(seed,land){
   if(f.id===seed.id||f.film===seed.film||!periodMatch(f)||!matchesFacets(f))continue;
   const tags=C().terms(f),shared=tags.filter(x=>ts.includes(x));if(!activeThemes.every(x=>tags.includes(x)))continue;
   for(const ref of idx.refs.get(f.id)||[]){
-   const p=pointById.get(ref.id);if(!p||ref.id===land||seedRefs.has(ref.id)||origin&&d3.geoDistance(origin.coord,p.coord)<.15)continue;
+   const p=pointById.get(ref.id);if(!p||ref.id===land||seedRefs.has(ref.id))continue;
    const key=f.id+'|'+ref.id;if(candidates.has(key))continue;
    const term=shared.find(x=>activeThemes.includes(x))||shared[0];
-   const score=shared.length*10+Number(!!C().sourceImage(f))+Number(!!safeViewing(f)||!!watchEntry(f))+(ref.status==='sourced'?2:0)-(visitedLands.has(ref.id)?12:0)-(visitedFilms.has(f.id)?20:0);
-   candidates.set(key,{film:f,ref,term,shared,score});
+   const distance=origin?d3.geoDistance(origin.coord,p.coord):0;
+   const score=shared.length*10+(ref.status==='sourced'?2:0)-(visitedLands.has(ref.id)?12:0)-(visitedFilms.has(f.id)?20:0);
+   candidates.set(key,{film:f,ref,term,shared,score,distance});
   }
  }
  const out=[],films=new Set(),lands=new Set();
- for(const v of [...candidates.values()].sort((a,b)=>b.score-a.score||a.film.title.localeCompare(b.film.title))){if(films.has(v.film.film)||lands.has(v.ref.id))continue;out.push(v);films.add(v.film.film);lands.add(v.ref.id);if(out.length===3)break;}
+ const ranked=[...candidates.values()].sort((a,b)=>b.score-a.score||a.distance-b.distance||a.film.title.localeCompare(b.film.title));
+ const add=v=>{if(!v||films.has(v.film.film)||lands.has(v.ref.id))return false;out.push(v);films.add(v.film.film);lands.add(v.ref.id);return true;};
+ add(ranked[0]);const eligible=v=>!films.has(v.film.film)&&!lands.has(v.ref.id);
+ // Offer a regional encounter and a longer geographic connection when the published themes permit.
+ add(ranked.find(v=>eligible(v)&&v.distance<.25&&v.score>=ranked[0].score-12));
+ add(ranked.find(v=>eligible(v)&&v.distance>=.25&&v.score>=ranked[0].score-12));
+ for(const v of ranked){if(out.length>=3)break;add(v);}
  return out;
 }
 function followRelated(related){if(featured)journey.push({land:featured.land,film:featured.film.id,theme:currentTheme(),period:yearBand,facets:{...facetFilter},center:[...center],zoom});if(journey.length>20)journey.shift();if(!currentTheme().length)C().showThemeLens([related.term]);gotoLand(related.ref.id,related.film.id,true);}
@@ -258,7 +265,7 @@ function loadRelief(){
   }
   ambientCount=unique.size;return {type:'FeatureCollection',features:[...unique.values()]};
  }
- const landLayerIds=['native-ambient-fill','native-ambient-line','land-color','land-outline','indigenous-names'];
+ const landLayerIds=['native-ambient-fill','native-ambient-line','land-color','land-outline','indigenous-names','indigenous-regional-names'];
  function opacityExpression(values){return ['interpolate',['linear'],['zoom'],...values.flatMap(([z,a])=>[z,Math.min(.85,a*landStrength)])];}
  function syncLandVisibility(){
   const b=$('#globe-lands');if(b){b.setAttribute('aria-pressed',String(landsVisible));b.textContent=landsVisible?'Lands: on':'Lands: off';}
@@ -416,7 +423,8 @@ function loadRelief(){
     {id:'globe-user-link',type:'line',source:'globe-authored-links',layout:{'line-cap':'round','line-join':'round'},paint:{'line-color':['get','color'],'line-opacity':.6,'line-width':1.2,'line-dasharray':[2,2]}},
     {id:'globe-user-halo',type:'circle',source:'globe-collected',paint:{'circle-radius':7,'circle-color':['get','color'],'circle-blur':.95,'circle-opacity':.28}},
     {id:'globe-user-star',type:'circle',source:'globe-collected',paint:{'circle-radius':['case',['==',['get','selected'],1],4.2,2.7],'circle-color':'#f1f6e8','circle-stroke-color':['get','color'],'circle-stroke-width':1,'circle-opacity':.98}},
-    {id:'indigenous-names',type:'symbol',source:'cinema-points',minzoom:3,layout:{'text-field':['get','name'],'text-font':['Noto Sans Regular'],'text-size':['interpolate',['linear'],['zoom'],3,11,7,13,11,15],'symbol-sort-key':['case',['==',['get','focus'],1],0,1],'text-anchor':'top','text-offset':[0,.65],'text-padding':9,'text-max-width':12,'text-allow-overlap':false,'text-ignore-placement':false},paint:{'text-color':'#f4eee0','text-halo-color':'#172a31','text-halo-width':1.65,'text-opacity':['interpolate',['linear'],['zoom'],3,['case',['==',['get','focus'],1],.8,0],5,['case',['==',['get','focus'],1],1,0],6.5,['case',['==',['get','focus'],1],1,.78],10,1]}}
+    {id:'indigenous-regional-names',type:'symbol',source:'cinema-points',minzoom:5.5,filter:['==',['get','focus'],0],layout:{'text-field':['get','name'],'text-font':['Noto Sans Regular'],'text-size':['interpolate',['linear'],['zoom'],5.5,11,11,14],'text-anchor':'top','text-offset':[0,.6],'text-padding':11,'text-max-width':12,'text-allow-overlap':false,'text-ignore-placement':false},paint:{'text-color':'#dce9dd','text-halo-color':'#172a31','text-halo-width':1.45,'text-opacity':['interpolate',['linear'],['zoom'],5.5,.25,7,.82,10,.94]}},
+    {id:'indigenous-names',type:'symbol',source:'cinema-points',minzoom:3,filter:['==',['get','focus'],1],layout:{'text-field':['get','name'],'text-font':['Noto Sans Regular'],'text-size':['interpolate',['linear'],['zoom'],3,12,7,14,11,15],'text-anchor':'top','text-offset':[0,.65],'text-padding':7,'text-max-width':12,'text-allow-overlap':false,'text-ignore-placement':false},paint:{'text-color':'#f4eee0','text-halo-color':'#172a31','text-halo-width':1.65,'text-opacity':['interpolate',['linear'],['zoom'],3,.75,4,1]}}
    ]};
    live=new ml.Map({container:liveHost,style,center:initialCamera?initialCamera.slice(0,2):center,zoom:initialCamera?initialCamera[2]:liveBaseZoom,minZoom:Math.max(-2,liveBaseZoom-0.35),maxZoom:14,maxPitch:55,attributionControl:false,dragRotate:false,pitchWithRotate:false,touchPitch:false,renderWorldCopies:false,cooperativeGestures:false,fadeDuration:120,trackResize:false,maxTileCacheSize:W<760?96:240,scrollZoom:{around:'center'}});
    live.keyboard?.disableRotation?.();
@@ -732,7 +740,7 @@ function collectionGeometry(){
 }
 function collectionSummary(){const c=collectionState(),g=collectionGeometry();return {id:c?.id,name:c?.name,items:c?.items.filter(x=>x.type==='film').length||0,mapped:g.mapped,stars:g.stars.features.length,lines:g.lines.features.length,links:c?.links.length||0,saved:!!c&&store().saved(c.id)&&!store().dirty()};}
 function updateCollectionMap(){if(!liveReady)return;const c=collectionState(),key=JSON.stringify([c?.id,c?.items.map(x=>x.id),c?.pins,c?.threads.map(t=>[t.visible,t.color,t.items]),c?.links,linkFrom,linkTo]);if(key===collectionSourceKey)return;collectionSourceKey=key;const g=collectionGeometry();live.getSource('globe-collected')?.setData(g.stars);live.getSource('globe-authored-links')?.setData(g.lines);}
-function pickLink(id){if(!collectionState()?.items.some(x=>x.id===id&&x.type==='film'))return;if(!drawingLink){drawingLink=true;linkFrom=id;linkTo='';}else if(!linkFrom||linkFrom===id){linkFrom=id;linkTo='';}else{linkTo=id;}collectionNotice='';collectionPanelKey='';renderCollection();renderSoon();}
+function pickLink(id){if(!collectionState()?.items.some(x=>x.id===id&&x.type==='film'))return;if(!drawingLink){drawingLink=true;linkFrom=id;linkTo='';}else if(!linkFrom||linkFrom===id){linkFrom=id;linkTo='';}else{linkTo=id;}collectionNotice='';collectionPanelKey='';renderCollection();updateCollectButton();renderSoon();}
 function collectFilm(film,land){if(!settled||featured?.film.id!==film.id||featured?.land!==land)return;const ok=C().globeCollect(film,land);collectionNotice=ok?'Added to '+store().activeThread().name+'.':'Could not add this film.';collectionPanelKey='';updateCollectButton();renderCollection();renderSoon();sync();}
 function openCollected(x){const ref=C().reference(x);if(!ref||!pointById.has(ref.id)){collectionNotice='This film has no mapped reference. Open the flat workspace to view it.';renderCollection(true);return;}setMenu('');clearDiscoveryFilters();gotoLand(ref.id,x.id,true);}
 let readingJourney=null;
@@ -746,7 +754,7 @@ function journeyControls(film){if(!readingJourney)return null;const cur=collecti
 function renderCollection(force=false){
  const panel=$('#globe-collection-panel'),toggle=$('#globe-collection-toggle'),cur=collectionState();if(!panel||!toggle||!cur)return;
  const films=cur.items.filter(x=>x.type==='film'),summary=collectionSummary();
- const label='My films'+(films.length?' ('+films.length+')':'');if(toggle.textContent!==label)toggle.textContent=label;
+ const label=(drawingLink?'Connecting': 'My films')+(films.length?' ('+films.length+')':'');if(toggle.textContent!==label)toggle.textContent=label;
  const key=JSON.stringify([cur.id,cur.name,cur.activeThread,cur.threads.map(t=>[t.id,t.name,t.visible,t.items]),cur.items,cur.links,cur.pins,summary.saved,store().state.collections.map(c=>[c.id,c.name,store().saved(c.id)]),drawingLink,linkFrom,linkTo,collectionNotice]);
  if(!force&&key===collectionPanelKey)return;collectionPanelKey=key;
  if(panel.hidden)return;
@@ -768,20 +776,20 @@ function renderCollection(force=false){
  const edit=button('Open flat editor',()=>{close();C().open({dock:true});});settings.append(edit);panel.append(settings);if(films.length){const share=button('Share constellation',async()=>{const snapshot=C().shareURL('globe');if(!snapshot){collectionNotice='Too large to share as a link. Export JSON in the flat editor.';renderCollection(true);return;}const u=new URL(shareView());u.hash=new URL(snapshot).hash;try{await navigator.clipboard.writeText(u.href);collectionNotice='Constellation link copied.';renderCollection(true);}catch{const field=el('input');field.readOnly=true;field.value=u.href;field.setAttribute('aria-label','Shareable constellation link');share.after(field);field.select();}});actions.append(share);}
  const msg=el('p','globe-collection-info',collectionNotice||(!films.length?'Collect a film to begin.':'Choose films to revisit or connect.'));msg.setAttribute('role','status');panel.append(msg);
  if(!films.length){restoreCollectionPanel();return;}
- const draw=button(drawingLink?'Cancel connection':'Connect two films',()=>{drawingLink=!drawingLink;linkFrom=linkTo='';connectionDraft=null;collectionNotice='';renderCollection(true);renderSoon();});draw.id='globe-draw-link';draw.disabled=films.length<2;draw.setAttribute('aria-pressed',String(drawingLink));panel.append(draw);if(!drawingLink&&journeyItems().length){const read=button('Read this thread',()=>readJourneyStep(0));read.id='globe-read-thread';panel.append(read);}
- if(drawingLink){panel.append(el('p','globe-collection-info',!linkFrom?'Choose the first film or star.':!linkTo?'Choose a different second film or star.':'Give your connection a reason.'));
+ const draw=button(drawingLink?'Cancel connection':'Connect two films',()=>{drawingLink=!drawingLink;linkFrom=linkTo='';connectionDraft=null;collectionNotice='';renderCollection(true);updateCollectButton();renderSoon();});draw.id='globe-draw-link';draw.disabled=films.length<1;draw.setAttribute('aria-pressed',String(drawingLink));panel.append(draw);if(!drawingLink&&journeyItems().length){const read=button('Read this thread',()=>readJourneyStep(0));read.id='globe-read-thread';panel.append(read);}
+ if(drawingLink){panel.append(el('p','globe-collection-info',!linkFrom?'Choose a film or star.':!linkTo?'Explore or choose another collected film.':'Give your connection a reason.'));
   if(linkFrom&&linkTo){const form=el('form','globe-link-form'),from=films.find(x=>x.id===linkFrom),to=films.find(x=>x.id===linkTo);if(from&&to){form.append(el('strong',null,from.title+' → '+to.title));const reason=el('input');reason.id='globe-link-reason';reason.required=true;reason.maxLength=180;reason.placeholder='Why do these films connect?';reason.setAttribute('aria-label','Connection reason');const kind=el('select');kind.setAttribute('aria-label','Connection type');for(const [v,l] of [['interpretation','My interpretation'],['question','My question']]){const o=el('option',null,l);o.value=v;kind.append(o);}const note=el('textarea');note.placeholder='Optional note';note.setAttribute('aria-label','Connection note');note.maxLength=10000;const submit=el('button',null,'Save connection');submit.type='submit';const draftKey=JSON.stringify([cur.id,cur.activeThread,linkFrom,linkTo]);
  if(connectionDraft?.key!==draftKey)connectionDraft={key:draftKey,reason:'',kind:'interpretation',note:''};
  reason.value=connectionDraft.reason;kind.value=connectionDraft.kind;note.value=connectionDraft.note;
  const rememberDraft=()=>{connectionDraft={key:draftKey,reason:reason.value,kind:kind.value,note:note.value};};
  form.addEventListener('input',rememberDraft);kind.addEventListener('change',rememberDraft);
- form.append(reason,kind,note,submit);form.onsubmit=e=>{e.preventDefault();if(C().globeConnect(linkFrom,linkTo,reason.value,note.value,kind.value)){drawingLink=false;linkFrom=linkTo='';connectionDraft=null;collectionNotice='Your connection is saved in the draft.';renderCollection(true);renderSoon();}};panel.append(form);}}
+ form.append(reason,kind,note,submit);form.onsubmit=e=>{e.preventDefault();if(C().globeConnect(linkFrom,linkTo,reason.value,note.value,kind.value)){drawingLink=false;linkFrom=linkTo='';connectionDraft=null;collectionNotice='Your connection is saved in the draft.';renderCollection(true);updateCollectButton();renderSoon();}};panel.append(form);}}
  }
  const list=el('div','globe-collected-list');for(const x of films){const p=C().reference(x),b=button(x.title,()=>drawingLink?pickLink(x.id):openCollected(x),'globe-collected-item');b.dataset.collectedId=x.id;b.setAttribute('aria-pressed',String(linkFrom===x.id||linkTo===x.id));const row=el('div');row.append(b,el('small',null,[x.maker,p?.name||'Not mapped'].filter(Boolean).join(' · ')));list.append(row);}panel.append(list);
  if(cur.links.length){const details=el('details','globe-authored-list');details.append(el('summary',null,'Your connections ('+cur.links.length+')'));for(const l of cur.links){const a=cur.items.find(x=>x.id===l.source),b=cur.items.find(x=>x.id===l.target);if(a&&b)details.append(el('p',null,a.title+' → '+b.title+' · '+l.label+' ('+l.kind+')'));}panel.append(details);}
  restoreCollectionPanel();
 }
-function updateCollectButton(){const b=$('#globe-collect-film');if(!b||!featured)return;const on=!!store()?.activeThread().items.includes(featured.film.id);b.disabled=on;b.textContent=on?'Collected':'＋ Collect film';}
+function updateCollectButton(){const b=$('#globe-collect-film'),link=$('#globe-connect-featured');if(!b||!featured)return;const id=featured.film.id,on=!!store()?.activeThread().items.includes(id),inCollection=!!collectionState()?.items.some(x=>x.id===id&&x.type==='film');b.disabled=on;b.textContent=on?'Collected':'＋ Collect film';if(link){link.hidden=!inCollection;link.disabled=drawingLink&&linkFrom===id&&!linkTo;link.textContent=drawingLink&&linkFrom&&linkFrom!==id?'Connect to this film':drawingLink&&linkFrom===id?'First film selected':'Connect';link.setAttribute('aria-pressed',String(drawingLink&&(linkFrom===id||linkTo===id)));}}
 function drawEncounter(){
  const panel=$('#globe-encounter'),status=$('#globe-status'),actual=new Set(inside.map(r=>r.id));
  const chosen=focusIds.map(id=>byId.get(id)).filter(Boolean);
@@ -819,8 +827,8 @@ function drawEncounter(){
   copy.append(title,el('small','globe-film-byline',[film.maker,film.year].filter(Boolean).join(' · ')));
   const facts=[format,length,runtime].filter(Boolean).join(' · ');if(facts)copy.append(el('small','globe-film-facts',facts));
   const {actions,profile,external}=encounterLinks(film,work);if(actions.childNodes.length)copy.append(actions);
-  const inThread=store()?.activeThread().items.includes(film.id),collect=button(inThread?'Collected':'＋ Collect film',()=>collectFilm(film,primary.id),'globe-collect-film');collect.id='globe-collect-film';collect.disabled=!!inThread;copy.append(collect);
-  card.append(art,copy);panel.append(card);const reading=journeyControls(film);if(reading)panel.append(reading);
+  const inThread=store()?.activeThread().items.includes(film.id),collect=button(inThread?'Collected':'＋ Collect film',()=>collectFilm(film,primary.id),'globe-collect-film');collect.id='globe-collect-film';collect.disabled=!!inThread;copy.append(collect);const link=button('Connect',()=>{if(!settled||featured?.film.id!==film.id)return;pickLink(film.id);updateCollectButton();if(linkTo&&menuMode!=='collection')setMenu('collection');else if(linkFrom&&!linkTo){collectionNotice='Explore and collect another film, then connect it.';if(menuMode==='collection')setMenu('');renderCollection(true);}},'globe-connect-featured');link.id='globe-connect-featured';link.hidden=true;copy.append(link);
+  card.append(art,copy);panel.append(card);updateCollectButton();const reading=journeyControls(film);if(reading)panel.append(reading);
   if(films.length>1){
    const nav=el('div','globe-encounter-nav'),prev=button('‹',()=>{filmOffset=(filmOffset+films.length-1)%films.length;focusKey='';drawEncounter();},'globe-cycle'),next=button('›',()=>{filmOffset=(filmOffset+1)%films.length;focusKey='';drawEncounter();},'globe-cycle');
    prev.setAttribute('aria-label','Previous film');next.setAttribute('aria-label','Next film');
