@@ -860,17 +860,20 @@ function drawEncounter(){
 function settle(){
  if(!active||!W||!H)return;
  if(pointers.size||activeMapPointers.size||flight||wheelActive||gestureStart!==null){scheduleSettle(180);return;}
- if(liveReady){readLiveCamera();if(live.isMoving()&&nowMs()-lastCameraChange<350){scheduleSettle(180);return;}}
+ // Never resolve the geographic encounter against an intermediate camera frame.
+ // A busy tab can pause animation frames for >350ms while MapLibre is still moving.
+ if(liveReady){readLiveCamera();if(live.isMoving()){scheduleSettle(180);return;}}
  settled=true;host.classList.remove('is-moving');$('#globe-encounter').setAttribute('aria-busy','false');updateProjection();inside=underFocus();
  const nearby=screenPoints().filter(v=>v.match&&v.distance<=aperture()).sort((a,b)=>a.distance-b.distance||a.p.name.localeCompare(b.p.name));
  const direct=inside.filter(v=>matchingFilms(v.id).length);
  // All overlapping land references remain available. Catalogue size never ranks peoples.
  // If no matching film sits beneath the focus, an actual nearby indexed point may respond.
- // MapLibre clamps latitude at the poles. Retain an explicitly chosen reference
- // when its exact anchor lies beyond that camera limit, not an unrelated territory.
+ // An explicit selection at its exact camera anchor takes precedence over
+ // incidental overlapping polygons, including anchors clamped at the poles.
+ // A freely moved camera does not retain a remote territory.
  const requested=pointById.get(preferredLand),cap=liveReady?85:89.9;
- const polar=!!requested&&Math.abs(requested.coord[1])>cap&&d3.geoDistance(center,[requested.coord[0],clamp(requested.coord[1],-cap,cap)])<.0001;
- const next=[...new Set([...direct.map(v=>v.id),...nearby.map(v=>v.p.id),...inside.map(v=>v.id),...(polar?[preferredLand]:[])])];
+ const atRequestedAnchor=!!requested&&d3.geoDistance(center,[requested.coord[0],clamp(requested.coord[1],-cap,cap)])<.0001;
+ const next=[...new Set([...direct.map(v=>v.id),...nearby.map(v=>v.p.id),...inside.map(v=>v.id),...(atRequestedAnchor?[preferredLand]:[])])];
  if(next.join('|')!==focusIds.join('|')){previewLimit=3;if(!next.includes(preferredLand)){preferredLand='';pendingFilm='';}}
  focusIds=next;lastSettledFilter=filterKey();drawEncounter();placeEmergent();renderSoon();
 }

@@ -62,6 +62,11 @@ async def main():
         candidates=[l for l in lands if l["credits"] and any(c["source"] for c in refs[l["id"]])]
         selected=[candidates[i] for i in sorted(set(round(j*(len(candidates)-1)/7) for j in range(8)))] if candidates else []
         selected+=absent[:2]
+        # Reproduce the exact overlap that failed the full audit, rather than relying
+        # on its position in a changing sample. Approach from two distant views.
+        salish=next((l for l in lands if l['id']=='LAND-36072' and l['credits']),None)
+        assert salish, 'Salish & Kootenai regression fixture missing from catalogue'
+        selected=[salish]+[l for l in selected if l['id']!=salish['id']]+[salish]
         for l in selected:
             print("SELECTING_LAND",l["id"],l["name"],flush=True)
             await page.locator("#globe-find-toggle").click()
