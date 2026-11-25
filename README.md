@@ -7,5 +7,5 @@ Public site: https://jwilliamkennedy.github.io/abya-yala-film-atlas/
 ## What's here
 
 - The repository root is the published site: the November 2026 edition, promoted from `beta/` on 1 November 2026. The earlier edition (site version 66) is preserved in this repository's history.
-- Research files, masters and build scripts are kept in a separate private repository.
-- `beta/` holds the next edition for review before it replaces the main site.
+- The private research repository owns the CSV master, review Queue and publisher. Its workflow calls the public build scripts in `tools/atlas/` and `tools/rebuild_pages.sh`. The workbook is a generated reading copy.
+- The `main` branch serves both editions. The publisher rebuilds `beta/` for review. Moving beta into the production root requires separate approval.

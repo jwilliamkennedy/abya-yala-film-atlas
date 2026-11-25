@@ -13,7 +13,50 @@ B = pathlib.Path('beta')
 OWNED = ['ATLAS_PROFILE_MEDIA', 'ATLAS_FILM_EXPLORATION', 'ATLAS_THEMES_1103']
 SKIP = {'ATLAS_UPDATE_1031', 'ATLAS_FACETS', 'ATLAS_ON_MAP', 'ATLAS_FLAT'}  # merge input / built with the records / defined in code
 MIXED = ['ATLAS_REBUILD_SUPPLEMENT', 'ATLAS_RESEARCH_ADDITIONS', 'ATLAS_SOUTH_AMERICA_50', 'ATLAS_SOUTH_AMERICA_50_BATCH2', 'ATLAS_PILOT_CATALOG']
-KEEP_PAGE = {'territories-data.js', 'watch-data.js'}  # Native Land shapes stay their own file; everything of ours is in atlas-data.js
+# Only these historical scripts were folded into atlas-data.js. Other loaders
+# have independent owners and must survive publication, including cache keys.
+LEGACY_PAGE_LAYERS = {
+    'artwork-additions-data.js',
+    'atlas-update-1031-data.js',
+    'autonyms-data.js',
+    'beta-pilot25-20261105-data.js',
+    'beta-test-1101-data.js',
+    'card-verification-data.js',
+    'connections-data.js',
+    'country-relay-data.js',
+    'dedupe-20261107-data.js',
+    'facets-data.js',
+    'film-exploration-data.js',
+    'land-crossindex-data.js',
+    'landlinks-1031-data.js',
+    'mirror-filmography-20261107-data.js',
+    'next25-20261105-data.js',
+    'pilot-catalog-data.js',
+    'profile-media-data.js',
+    'rebuild-supplement-data.js',
+    'research-1101-data.js',
+    'research-1102-data.js',
+    'research-additions-data.js',
+    'south-america-directors-50-batch2-data.js',
+    'south-america-directors-50-data.js',
+    'themes-1103-data.js',
+    'thumbnail-expansion-data.js',
+    'thumbnails-1102-data.js',
+    'thumbnails-af-20261107-data.js',
+    'thumbnails-mirror-gap-20261107-data.js',
+    'thumbnails-sourced-1031-data.js',
+    'thumbnails-wiki-data.js',
+    'titlefix-20261107-data.js',
+    'verification-data.js',
+    'verified-ayoreo-20261107-data.js',
+    'verified11d-20261107-data.js',
+    'verified30-20261106-data.js',
+    'verified30b-20261107-data.js',
+    'verified4c-20261107-data.js',
+    'verified6-20261107-data.js',
+    'verified8d-20261107-data.js',
+    'watch-20261107-data.js',
+}
 
 def js(name, value):
     return f'window.{name}=' + json.dumps(value, ensure_ascii=False, separators=(',', ':')) + ';\n'
@@ -131,12 +174,13 @@ def page(path=B / 'index.html'):
     """Make the beta page load atlas-data.js instead of any data layers (idempotent: run on the flat page it changes nothing)."""
     html = path.read_text(encoding='utf-8')
     tags = list(re.finditer(r'[ \t]*<script\b[^>]*\bsrc="([^"?]+)(?:\?[^"]*)?"[^>]*></script>\n?', html))
-    out, first = html, True
+    out = html
+    needs_catalogue = not any(tag.group(1) == "atlas-data.js" for tag in tags)
     for m in tags:
         src = m.group(1)
-        if src.endswith('-data.js') and src not in KEEP_PAGE:
-            rep = '<script src="atlas-data.js"></script>\n' if first else ''
-            first = False
+        if src in LEGACY_PAGE_LAYERS:
+            rep = '<script src="atlas-data.js"></script>\n' if needs_catalogue else ''
+            needs_catalogue = False
             out = out.replace(m.group(0), rep, 1)
     if 'territory-fixes.js' not in out:
         out = re.sub(r'(<script\b[^>]*\bsrc="territories-data\.js[^"]*"[^>]*></script>)', r'\1<script src="territory-fixes.js" defer></script>', out, count=1)
