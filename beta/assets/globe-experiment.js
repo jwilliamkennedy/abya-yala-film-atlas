@@ -614,8 +614,9 @@ function button(label,fn,cls){const b=el('button',cls,label);b.type='button';b.a
   if(!source){container.dataset.artState='missing';return;}
   let url;try{url=new URL(source,location.href);if(!['http:','https:'].includes(url.protocol))throw Error('invalid image');}catch{container.dataset.artState='missing';return;}
   const img=el('img');img.alt='';img.decoding='async';img.draggable=false;img.loading=kind==='strip'?'lazy':'eager';img.referrerPolicy='strict-origin-when-cross-origin';
+  let timer=0,finished=false;
   const measure=()=>{
-   if(!img.naturalWidth||!img.naturalHeight)return;
+   if(finished||!img.naturalWidth||!img.naturalHeight)return;finished=true;clearTimeout(timer);
    const ratio=img.naturalWidth/img.naturalHeight;
    artFailures.delete(source);artSizes.set(source,{w:img.naturalWidth,h:img.naturalHeight,ratio});
    container.dataset.artState='ready';container.dataset.orientation=ratio<.86?'portrait':ratio>1.25?'landscape':'square';
@@ -628,7 +629,8 @@ function button(label,fn,cls){const b=el('button',cls,label);b.type='button';b.a
    if(active&&container.isConnected){cancelAnimationFrame(posterLayoutFrame);posterLayoutFrame=requestAnimationFrame(()=>{posterLayoutFrame=0;placeEmergent();});}
   };
   img.addEventListener('load',measure,{once:true});
-  img.addEventListener('error',()=>{artFailures.add(source);container.dataset.artState='broken';placeholder.textContent='Image unavailable';placeholder.title='Recorded artwork could not load; film remains available';img.remove();if(kind==='emergent'&&active&&container.isConnected)placeEmergent();},{once:true});
+  const failed=reason=>{if(finished)return;finished=true;clearTimeout(timer);artFailures.add(source);container.dataset.artState='broken';container.dataset.artFailure=reason;placeholder.textContent='Image unavailable';placeholder.title=reason==='timeout'?'Recorded artwork did not respond; film remains available':'Recorded artwork could not load; film remains available';img.remove();img.removeAttribute('src');if(kind==='emergent'&&active&&container.isConnected)placeEmergent();};
+  img.addEventListener('error',()=>failed('error'),{once:true});if(kind!=='strip')timer=setTimeout(()=>failed('timeout'),12000);
   container.dataset.artState='loading';placeholder.textContent=kind==='feature'?'Loading artwork…':film.title;container.append(img);img.src=url.href;if(img.complete&&img.naturalWidth)measure();
  }
  function placeEmergent(){
@@ -849,7 +851,11 @@ function settle(){
  const direct=inside.filter(v=>matchingFilms(v.id).length);
  // All overlapping land references remain available. Catalogue size never ranks peoples.
  // If no matching film sits beneath the focus, an actual nearby indexed point may respond.
- const next=[...new Set([...direct.map(v=>v.id),...nearby.map(v=>v.p.id),...inside.map(v=>v.id)])];
+ // MapLibre clamps latitude at the poles. Retain an explicitly chosen reference
+ // when its exact anchor lies beyond that camera limit, not an unrelated territory.
+ const requested=pointById.get(preferredLand),cap=liveReady?85:89.9;
+ const polar=!!requested&&Math.abs(requested.coord[1])>cap&&d3.geoDistance(center,[requested.coord[0],clamp(requested.coord[1],-cap,cap)])<.0001;
+ const next=[...new Set([...direct.map(v=>v.id),...nearby.map(v=>v.p.id),...inside.map(v=>v.id),...(polar?[preferredLand]:[])])];
  if(next.join('|')!==focusIds.join('|')){previewLimit=3;if(!next.includes(preferredLand)){preferredLand='';pendingFilm='';}}
  focusIds=next;lastSettledFilter=filterKey();drawEncounter();placeEmergent();renderSoon();
 }
