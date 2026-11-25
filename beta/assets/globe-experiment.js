@@ -21,7 +21,7 @@ function sync(){
   if(signature===next)return;signature=next;map.getSource('archive-references').setData({type:'FeatureCollection',features});
  });
 }
-window.AtlasGlobe={get active(){return active},sync,close};
+window.AtlasGlobe={get active(){return active},get camera(){if(!active||!map)return null;const c=map.getCenter();return {center:[c.lng,c.lat],zoom:map.getZoom(),projection:map.getProjection()?.type};},get pointCount(){return points.length},sync,close};
 function collect(){
  const c=C(),a=A(),out=[];
  for(const land of a.lands){
