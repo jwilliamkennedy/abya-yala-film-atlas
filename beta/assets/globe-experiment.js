@@ -17,8 +17,8 @@ function renderSoon(){if(!active||raf)return;raf=requestAnimationFrame(()=>{raf=
 function sync(){if(!active)return;renderSoon();if(!pointers.size)scheduleSettle(75);}
 window.AtlasGlobe={get active(){return active},get camera(){return active?camera():null},get pointCount(){return points.length},get geometryCount(){return records.length},get anchorFailures(){return [...anchorFailures]},get anchors(){return points.map(p=>({id:p.id,coordinate:[...p.coord],sourceId:p.anchor.sourceId,component:p.anchor.component,method:p.anchor.method}))},get landArea(){return landArea},get focus(){return {ids:[...focusIds],inside:inside.map(r=>r.id),settled};},sync,close};
 function close(){
- closed=true;active=false;clearTimeout(settleTimer);if(raf)cancelAnimationFrame(raf);raf=0;ro?.disconnect();
- host?.remove();host=null;document.body.classList.remove('atlas-globe-experiment');
+ const wasActive=active;closed=true;active=false;clearTimeout(settleTimer);if(raf)cancelAnimationFrame(raf);raf=0;ro?.disconnect();
+ host?.remove();host=null;document.body.classList.remove('atlas-globe-experiment');if(wasActive&&C()?.enabled)C().refreshDiscoveryMode();
  const u=new URL(location.href);u.searchParams.delete('globe');history.replaceState(history.state,'',u.href);
 }
 function fallback(e){console.warn('Globe discovery unavailable',e);close();const p=document.createElement('p');p.className='globe-fallback';p.textContent='The globe could not initialize. The flat workspace remains available.';$('.map-panel')?.append(p);setTimeout(()=>p.remove(),9000);}
@@ -39,7 +39,7 @@ function collect(){
   const fs=[...new Map(l.groups.flatMap(g=>g.features).map(f=>[String(f.id),f])).values()].filter(f=>f.geometry);
   if(!fs.length)continue;
   const shapes=fs.map(f=>({feature:f,bounds:f.bounds||d3.geoBounds(f)}));
-  const r={id:l.id,name:A().landDisplayName(l),shapes,count:C().landFilmCount(l.id)};
+  const r={id:l.id,name:A().landDisplayName(l),shapes,count:C().globeLandFilmCount(l.id)};
   records.push(r);byId.set(r.id,r);
   if(!r.count)continue;
   const anchor=window.AtlasGeoIntegrity.anchor(fs),coord=anchor?.coordinates;
@@ -102,7 +102,7 @@ function underFocus(){
  const p=center;
  return records.filter(rec=>rec.shapes.some(s=>includesBounds(s.bounds,p)&&d3.geoContains(s.feature,p)));
 }
-function matchingFilms(id){return C().landCatalogFilms(id);}
+function matchingFilms(id){return C().globeLandCatalogFilms(id);}
 function el(tag,cls,text){const e=document.createElement(tag);if(cls)e.className=cls;if(text!=null)e.textContent=text;return e;}
 function button(label,fn,cls){const b=el('button',cls,label);b.type='button';b.addEventListener('click',fn);return b;}
 function drawEncounter(){
@@ -113,15 +113,15 @@ function drawEncounter(){
  if(!chosen.length){panel.append(el('small','globe-kicker','Explore the globe'),el('strong',null,'Move a light into the circle'),el('p','globe-empty','Land references and their cinema will appear here.'));status.textContent='No land reference in focus';return;}
  const found=chosen.filter(r=>matchingFilms(r.id).length),primary=found[0]||chosen[0];
  panel.append(el('small','globe-kicker',actual.has(primary.id)?'Land at the focal point':'Nearby land reference'));
- const heading=el('div','globe-encounter-heading');heading.append(el('strong',null,primary.name),el('small',null,matchingFilms(primary.id).length+' matching films'));panel.append(heading);
+ const heading=el('div','globe-encounter-heading');heading.append(el('strong',null,primary.name),el('small',null,matchingFilms(primary.id).length+' matching film credits'));panel.append(heading);
  if(chosen.length>1){const choices=el('div','globe-choices');for(const r of chosen){const b=button(r.name+' · '+matchingFilms(r.id).length,()=>{C().openLand(r.id);sync();});choices.append(b);}panel.append(choices);}
  const films=matchingFilms(primary.id);if(films.length){
   const list=el('div','globe-film-strip');for(const film of films.slice(0,previewLimit)){
    const b=button('',()=>{C().showPreview(film,{land:primary.id});sync();},'globe-film');
    const art=el('span','globe-film-art');art.innerHTML=C().thumb(film);
-   const copy=el('span','globe-film-copy');copy.append(el('strong',null,film.title),el('small',null,[film.maker,film.year].filter(Boolean).join(' · ')));b.append(art,copy);list.append(b);
+   const copy=el('span','globe-film-copy');const ref=A().recordLandReferences(film.record).find(r=>r.id===primary.id);copy.append(el('strong',null,film.title),el('small',null,[film.maker,film.year].filter(Boolean).join(' · ')),el('small',null,ref?.status==='sourced'?'Sourced land association':'Provisional land association'));b.append(art,copy);list.append(b);
   }panel.append(list);
-  panel.append(button('Explore all '+films.length+' films',()=>{C().openLand(primary.id);sync();},'globe-more'));
+  panel.append(button('Explore all '+films.length+' film credits',()=>{C().openLand(primary.id);sync();},'globe-more'));
  }else{panel.append(el('p','globe-empty',primary.count?'No films match the current theme selection.':'No linked films in the Atlas yet.'));}
  status.textContent=chosen.length+' land reference'+(chosen.length===1?'':'s')+' in focus';
 }
@@ -178,7 +178,7 @@ async function boot(){
   if(!Number.isFinite(landArea)||landArea<2.5||landArea>4.8)throw Error('Natural Earth land area is invalid: '+landArea);
   collect();if(!points.length)throw Error('No mapped cinema references');
   proj=d3.geoOrthographic().clipAngle(90).precision(.65);markup();path=d3.geoPath(proj,ctx);
-  active=true;document.body.classList.add('atlas-globe-experiment');host.dataset.ready='true';
+  active=true;document.body.classList.add('atlas-globe-experiment');host.dataset.ready='true';C().refreshDiscoveryMode();
   ro=new ResizeObserver(resize);ro.observe(canvas);resize();draw();settle();
  }catch(e){fallback(e);}
 }
