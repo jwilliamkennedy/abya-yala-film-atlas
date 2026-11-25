@@ -17,9 +17,32 @@ async def run(browser,name,viewport):
             tiles.append(r.url)
     page.on("response",response)
     os.makedirs("shots/globe-independent",exist_ok=True)
+    gate=asyncio.Event()
+    fallback_camera=None
+    async def hold_native(route):
+        await gate.wait()
+        await route.continue_()
     try:
+        if MODE=="input":
+            await page.route("**/assets/maplibre/maplibre-gl.mjs*",hold_native)
         await page.goto(BASE+"?constellate=1&globe=1",wait_until="domcontentloaded",timeout=90000)
+        if MODE=="input":
+            await page.wait_for_function("window.AtlasGlobe?.camera?.renderer==='orthographic-canvas' && window.AtlasGlobe.focus.settled",timeout=60000)
+            fallback=page.locator("#globe-surface")
+            await fallback.press("ArrowRight")
+            await fallback.press("+")
+            fallback_camera=await page.evaluate("window.AtlasGlobe.camera")
+            gate.set()
         await page.wait_for_function("window.AtlasGlobe?.camera?.renderer==='maplibre-globe' && window.AtlasGlobe.focus.settled",timeout=60000)
+        await page.wait_for_function("document.querySelector('#atlas-rotational-globe')?.classList.contains('globe-revealed')",timeout=15000)
+        startup=await page.evaluate("window.AtlasGlobe.tileState.startup")
+        assert startup["fallbackPaint"]<=startup["nativeLoaded"]<=startup["handoff"]<=startup["revealed"],(name,startup)
+        assert startup["reason"] in ("local-sources","bounded-timeout"),(name,startup)
+        if fallback_camera:
+            native=await page.evaluate("window.AtlasGlobe.camera")
+            assert max(abs((native["center"][0]-fallback_camera["center"][0]+180)%360-180),abs(native["center"][1]-fallback_camera["center"][1]))<.01,(name,"handoff moved camera",fallback_camera,native)
+            assert abs(native["zoom"]/fallback_camera["zoom"]-1)<.002,(name,"handoff changed zoom",fallback_camera,native)
+        print(name,"startup handoff",json.dumps(startup),flush=True)
         layer=await page.evaluate("window.AtlasGlobe.territoryLayer")
         assert layer["visible"] and layer["features"]>0 and layer["fill"] is not None,(name,"ambient territory layer absent",layer)
         print(name,"ambient territory layer",json.dumps(layer),flush=True)
@@ -229,6 +252,7 @@ async def run(browser,name,viewport):
         assert not errors,(name,errors)
         print(name,MODE,"passed",flush=True)
     finally:
+        gate.set()
         data=await page.evaluate("window.AtlasGlobe?.tileState||null")
         print(name,MODE,"diagnostics",json.dumps({"state":data,"images":tiles[:30],"errors":errors},ensure_ascii=False),flush=True)
         try: await page.screenshot(path=f"shots/globe-independent/{name}-last.png",timeout=10000)
