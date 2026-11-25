@@ -29,7 +29,7 @@ const params=new URL(window.AtlasRoute?.inbound||location.href).searchParams;lan
 let inboundEncounter={land:params.get('land')||'',film:params.get('film')||'',maker:params.get('maker')||''};
 function restoreEncounter(){
  if(!active||publicationStatus!=='ready'||!inboundEncounter)return;
- const {land,film,maker}=inboundEncounter;inboundEncounter=null;if(!land&&!film&&!maker)return;
+ const {land:inboundLand,film,maker}=inboundEncounter;const land=A().landById(inboundLand)?.id||inboundLand;inboundEncounter=null;if(!land&&!film&&!maker)return;
  const idx=C().globeCreditIndex(),refs=f=>(idx.refs.get(f.id)||[]).filter(r=>byId.has(r.id));
  let work=film?idx.films.find(f=>f.id===film||f.film===film&&(!maker||f.record===maker)):null;
  if(film&&!work)return;
@@ -51,7 +51,7 @@ function periodMatch(f){if(!yearBand)return true;const y=Number(f.year);return N
 function rankedFilms(id){const key=id+'|'+filterKey(),cached=rankCache.get(key);if(cached)return cached;const fs=matchingFilms(id),seen=new Set(),ranked=fs.slice().sort((a,b)=>a.title.localeCompare(b.title)||String(a.maker||'').localeCompare(String(b.maker||''))||a.id.localeCompare(b.id)).filter(f=>{if(seen.has(f.id))return false;seen.add(f.id);return true;});if(rankCache.size>160)rankCache.clear();rankCache.set(key,ranked);return ranked;}
 function safeViewing(f){const links=C().globeViewingRoutes(f);return links.map(l=>{try{if(new URL(l.url).protocol!=='https:')return null;return {url:l.url,label:/trailer|teaser|preview/i.test(l.title||'')?'Trailer':/watch|full film|stream|viewing|ver pel[ií]cula|ver filme/i.test(l.title||'')?'Watch':'Film page'};}catch{return null;}}).filter(Boolean).sort((a,b)=>['Watch','Trailer','Film page'].indexOf(a.label)-['Watch','Trailer','Film page'].indexOf(b.label))[0]||null;}
 function externalLink(label,url,cls){try{const u=new URL(url,location.href);if(u.protocol!=='https:'&&!(u.protocol==='http:'&&u.origin===location.origin))return null;}catch{return null;}const a=el('a',cls,label);a.href=url;a.target='_blank';a.rel='noopener noreferrer';return a;}
-function gotoLand(id,filmId='',overview=false){pendingFilm=filmId;const r=byId.get(id);if(!r)return;const a=territoryAnchor(r)?.coordinates;if(!a)return;preferredLand=id;filmOffset=0;const distance=d3.geoDistance(center,a);setCamera(a,overview?Math.max(2.2,Math.min(zoom,4)):Math.max(zoom,2.2),Math.round(clamp(280+distance*200,280,850)));}
+function gotoLand(id,filmId='',overview=false){id=A().landById(id)?.id||id;pendingFilm=filmId;const r=byId.get(id);if(!r)return;const a=territoryAnchor(r)?.coordinates;if(!a)return;preferredLand=id;filmOffset=0;const distance=d3.geoDistance(center,a);setCamera(a,overview?Math.max(2.2,Math.min(zoom,4)):Math.max(zoom,2.2),Math.round(clamp(280+distance*200,280,850)));}
 function surprise(){const current=preferredLand||lastEncounter;const candidates=points.filter(p=>matchingFilms(p.id).length&&p.id!==current);const unseen=candidates.filter(p=>!recent.some(r=>r.id===p.id)),pool=unseen.length?unseen:candidates;if(pool.length)gotoLand(pool[Math.floor(Math.random()*pool.length)].id,'',true);else if($('#globe-status'))$('#globe-status').textContent='No additional mapped films match the selected filters.';}
 function relatedEncounters(seed,land){
  const idx=C().globeCreditIndex(),ts=C().terms(seed),activeThemes=currentTheme(),origin=pointById.get(land);
@@ -142,16 +142,34 @@ function normalizeGeometry(g){
  return {type:g.type,coordinates:g.type==='Polygon'?cleaned[0]:cleaned};
 }
 const pointById=new Map();
+// Archipelagic source polygons can have centroids far out at sea. For the
+// Hawaiian relay use the largest contained Natural Earth land component;
+// the anchor remains inside the original Native Land source polygon.
+function cinemaAnchor(l,fs){
+ const fallback=window.AtlasGeoIntegrity.anchor(fs);
+ if(l.id!==window.AtlasHawaiiRelay?.canonical||!fallback||!earth)return fallback;
+ const source=fs.find(f=>String(f.id)===fallback.sourceId);
+ if(!source)return fallback;
+ const components=earth.type==='Polygon'?[earth.coordinates]:earth.type==='MultiPolygon'?earth.coordinates:[];
+ let best=null;
+ for(const coordinates of components){
+  const polygon={type:'Polygon',coordinates},area=d3.geoArea(polygon);
+  if(!(area>0&&area<2*Math.PI)||best&&area<=best.area)continue;
+  const p=d3.geoCentroid(polygon);
+  if(d3.geoContains(polygon,p)&&d3.geoContains(source,p))best={area,p};
+ }
+ return best?{...fallback,coordinates:best.p,method:'contained-terrestrial-component-centroid',anchorSource:'Natural Earth 1:50m land within Native Land source 35877'}:fallback;
+}
 function collect(){
  for(const l of A().lands){
   if(l.browseGroup||!l.groups?.length)continue;
   const fs=[...new Map(l.groups.flatMap(g=>g.features).map(f=>[String(f.id),f])).values()].filter(f=>f.geometry);
   if(!fs.length)continue;
   const shapes=fs.map(f=>({feature:f,bounds:f.bounds||d3.geoBounds(f)}));
-  const r={id:l.id,name:A().landDisplayName(l),fullName:l.name||A().landDisplayName(l),shapes,count:C().globeLandFilmCount(l.id)};
+  const r={id:l.id,name:A().landDisplayName(l),fullName:l.name||A().landDisplayName(l),aliases:l.aliases||[],shapes,count:C().globeLandFilmCount(l.id)};
   records.push(r);byId.set(r.id,r);
   if(!r.count)continue;
-  const anchor=window.AtlasGeoIntegrity.anchor(fs),coord=anchor?.coordinates;
+  const anchor=cinemaAnchor(l,fs),coord=anchor?.coordinates;
   if(!coord||!fs.some(f=>String(f.id)===anchor.sourceId&&d3.geoContains(f,coord))){anchorFailures.push(l.id);continue;}
   // Anchor is deterministic and independent of the flat map, zoom, or viewport.
   const point={...r,coord,anchor};points.push(point);pointById.set(r.id,point);
@@ -1211,8 +1229,8 @@ function markup(){
  for(const key of Object.keys(facetFilter))$('#globe-filter-'+key).onchange=e=>changeFacet(key,e.target.value);
  $('#globe-clear-filters').onclick=clearDiscoveryFilters;$('#globe-csv-retry').onclick=synchronizePublication;
  const search=$('#globe-search'),results=$('#globe-search-results');
- const normalize=v=>String(v||'').normalize('NFD').replace(/\p{Diacritic}/gu,'').toLowerCase();
- search.addEventListener('input',()=>{const q=normalize(search.value).trim();results.replaceChildren();if(q.length<2)return;const idx=C().globeCreditIndex(),matches=idx.films.filter(f=>{const r=A().recordById(f.record),work=r?.films.find(x=>x.id===f.film);return normalize([f.title,f.maker,r?.community,r?.nation,...(Array.isArray(r?.aliases)?r.aliases:[]),...(Array.isArray(work?.aliases)?work.aliases:[]),...(exactFacet(f).l||[]),...C().terms(f)].join(' ')).includes(q);});for(const f of matches.slice(0,12)){const refs=idx.refs.get(f.id)||[],ref=refs.find(x=>byId.has(x.id));const item=el('div','globe-search-result');const b=button(f.title+' · '+[f.maker,f.year].filter(Boolean).join(' · '),()=>{setMenu('');if(ref){clearDiscoveryFilters();gotoLand(ref.id,f.id,true);}else previewFromGlobe(f,'',null);},'globe-search-film');item.append(b,el('small',null,ref?'Mapped land association':'No mapped land association'));if(!ref){const link=externalLink('Atlas record ↗',creditProfile(f));if(link)item.append(link);}results.append(item);}if(!matches.length)results.append(el('p',null,'No matching film credits.'));else if(matches.length>12)results.append(el('small',null,'Showing 12 of '+matches.length+' credits. Refine search.'));});
+ const normalize=v=>String(v||'').normalize('NFD').replace(/\p{Diacritic}/gu,'').replace(/[ʻʼ‘’']/g,'').toLowerCase();
+ search.addEventListener('input',()=>{const q=normalize(search.value).trim();results.replaceChildren();if(q.length<2)return;const idx=C().globeCreditIndex(),landMatches=records.filter(p=>normalize([p.name,p.fullName,...p.aliases].join(' ')).includes(q)).slice(0,5);for(const p of landMatches){const item=el('div','globe-search-result');item.append(button(p.name+' · '+p.count+' film credits',()=>{setMenu('');clearDiscoveryFilters();gotoLand(p.id);},'globe-search-film'),el('small',null,'Land reference'));results.append(item);}const matches=idx.films.filter(f=>{const r=A().recordById(f.record),work=r?.films.find(x=>x.id===f.film);return normalize([f.title,f.maker,r?.community,r?.nation,...(Array.isArray(r?.aliases)?r.aliases:[]),...(Array.isArray(work?.aliases)?work.aliases:[]),...(exactFacet(f).l||[]),...C().terms(f),...(idx.refs.get(f.id)||[]).flatMap(ref=>{const land=byId.get(ref.id);return land?[land.name,...land.aliases]:[];})].join(' ')).includes(q);});for(const f of matches.slice(0,12)){const refs=idx.refs.get(f.id)||[],ref=refs.find(x=>byId.has(x.id));const item=el('div','globe-search-result');const b=button(f.title+' · '+[f.maker,f.year].filter(Boolean).join(' · '),()=>{setMenu('');if(ref){clearDiscoveryFilters();gotoLand(ref.id,f.id,true);}else previewFromGlobe(f,'',null);},'globe-search-film');item.append(b,el('small',null,ref?'Mapped land association':'No mapped land association'));if(!ref){const link=externalLink('Atlas record ↗',creditProfile(f));if(link)item.append(link);}results.append(item);}if(!matches.length&&!landMatches.length)results.append(el('p',null,'No matching films or lands.'));else if(matches.length>12)results.append(el('small',null,'Showing 12 of '+matches.length+' credits. Refine search.'));});
  const sel=$('#globe-find');for(const p of records){const o=el('option',null,p.name+(p.count?' ('+p.count+')':' · no films yet'));o.value=p.id;sel.append(o);}
  sel.onchange=()=>{if(sel.value){setMenu('');gotoLand(sel.value);}};
  const years=$('#globe-period');for(let y=1900;y<=2020;y+=20){const o=el('option',null,y+'–'+(y+19));o.value=String(y);years.append(o);}if([...years.options].some(o=>o.value===params.get('period'))){yearBand=params.get('period');years.value=yearBand;}years.onchange=()=>{setPeriod(years.value);refreshMenuLabels();};
