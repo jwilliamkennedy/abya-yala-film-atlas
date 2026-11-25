@@ -3,6 +3,7 @@ on:
   push:
     branches: [main]
     paths:
+      - 'beta/index.html'
       - 'beta/assets/globe-experiment.*'
       - 'beta/assets/maplibre/**'
       - 'beta/assets/constellate.js'
@@ -65,7 +66,11 @@ jobs:
                       reduced_motion=os.environ['MOTION'])
                   page = await context.new_page()
                   errors = []
-                  page.on('pageerror', lambda e: errors.append(str(e)))
+                  failed_requests = []
+                  def monitor(target, phase):
+                      target.on('pageerror', lambda e: errors.append({'phase':phase,'message':str(e)}))
+                      target.on('requestfailed', lambda request: failed_requests.append({'phase':phase,'url':request.url,'failure':request.failure}))
+                  monitor(page, 'discovery')
                   async def press(selector):
                       control = page.locator(selector)
                       if touch: await control.tap()
@@ -97,6 +102,13 @@ jobs:
                       assert await page.evaluate("AtlasGlobe.discovery.collection.stars===0")
                       await page.screenshot(path='shots/globe-browser/encounter.png',timeout=30000)
                       expected = await page.evaluate("({featured:AtlasGlobe.discovery.featured,camera:AtlasGlobe.camera,url:AtlasGlobe.discovery.shareURL})")
+                      # Open the shared URL as a second tab, just as a recipient would.
+                      # Navigating the live map away cancels in-flight imagery and blob requests
+                      # in WebKit; that conflates teardown with shared-link restoration.
+                      # Keep the original tab alive and retain strict error checks on both tabs.
+                      shared = await context.new_page()
+                      monitor(shared, 'shared-view')
+                      page = shared
                       await page.goto(expected['url'],wait_until='domcontentloaded',timeout=90000)
                       await page.wait_for_function(READY,timeout=90000)
                       await page.wait_for_function("v=>AtlasGlobe.discovery.featured?.film===v.film && AtlasGlobe.discovery.featured?.land===v.land",arg=expected['featured'],timeout=30000)
@@ -104,12 +116,13 @@ jobs:
                       assert max(abs((camera['center'][0]-expected['camera']['center'][0]+180)%360-180),abs(camera['center'][1]-expected['camera']['center'][1]))<.02,(camera,expected)
                       assert abs(camera['zoom']/expected['camera']['zoom']-1)<.003,(camera,expected)
                       assert not await page.locator('#constellate-popup').is_visible()
-                      assert not errors,errors
                       await page.screenshot(path='shots/globe-browser/shared-view.png',timeout=30000)
+                      assert not errors,errors
                       print('COMPATIBILITY_PASS',os.environ['PROFILE'],json.dumps(camera),flush=True)
                   finally:
                       print('COMPATIBILITY_DIAGNOSTICS',os.environ['PROFILE'],json.dumps(
                           await page.evaluate("({camera:window.AtlasGlobe?.camera,tiles:window.AtlasGlobe?.tileState,viewport:[innerWidth,innerHeight]})")),errors,flush=True)
+                      print('FAILED_REQUESTS',json.dumps(failed_requests),flush=True)
                       try: await page.screenshot(path='shots/globe-browser/last.png',timeout=10000)
                       except Exception as e: print('SCREENSHOT_FAILED',str(e),flush=True)
                       await browser.close()
