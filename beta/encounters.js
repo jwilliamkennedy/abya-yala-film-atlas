@@ -279,16 +279,17 @@ function relatedCommunities(l){return pilot.communities.filter(c=>l.groups.some(
 // These relays use only the specific affiliation already recorded on each edge; status and evidence stay unchanged.
 const mayaAffiliationRelays=[[/k['’]?iche/i,'LAND-36164'],[/kaqchikel/i,'LAND-36187'],[/poqomchi/i,'LAND-35828'],[/tsotsil|tzotzil/i,'LAND-36628'],[/tseltal|tzeltal/i,'LAND-35963'],[/\bmam\b/i,'LAND-35926'],[/q['’]?eqchi/i,'LAND-36036']];
 const guaraniAffiliationRelays=[
- [/\bkaiow[aá]\b|\bpa[ĩi]\s+tavytera\b/iu,'LAND-33460'],
- [/\b(?:nhande[wv]a|[ñn]ande[wv]a|av[aá][\s-]+guaran[ií])\b/iu,'LAND-33458'],
- [/\bmby[aá]\b/iu,'LAND-33387']
+ [/\bkaiowa\b|\bpai\s+tavytera\b/i,'LAND-33460'],
+ [/\b(?:nhande[wv]a|nande[wv]a|ava[\s-]+guarani)\b/i,'LAND-33458'],
+ [/\bmbya\b/i,'LAND-33387']
 ];
 function repairedLandEdges(e){
  const land=canonicalLandId(e.land);
  if(land==='NAME-153'){
   // Match only the already-recorded affiliation; an unspecified Guarani
   // association retains the general source, not either subgroup's polygon.
-  const targets=guaraniAffiliationRelays.filter(([pattern])=>pattern.test(e.basis||'')).map(([,id])=>canonicalLandId(id)).filter(id=>landById(id)?.groups.length);
+  const basis=String(e.basis||'').normalize('NFD').replace(/\p{Diacritic}/gu,'');
+  const targets=guaraniAffiliationRelays.filter(([pattern])=>pattern.test(basis)).map(([,id])=>canonicalLandId(id)).filter(id=>landById(id)?.groups.length);
   if(targets.length)return [...new Set(targets)].map(land=>({...e,land,navigationCorrection:'Specific Guarani affiliation matched to its named source territory'}));
  }
  if(e.land!=='LAND-36469')return [{...e,land}];
