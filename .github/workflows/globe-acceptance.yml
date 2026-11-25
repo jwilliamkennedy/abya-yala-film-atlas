@@ -1,0 +1,40 @@
+name: Globe acceptance
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'beta/assets/globe-experiment.*'
+      - 'beta/assets/geo-integrity.js'
+      - 'beta/assets/maplibre/**'
+      - 'beta/index.html'
+      - 'tools/qa/globe-discovery.py'
+      - '.github/workflows/globe-acceptance.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: globe-acceptance-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  globe-discovery:
+    name: "Beta: experimental globe rotation and discovery"
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Chromium
+        run: |
+          python3 -m pip install -q 'playwright==1.*'
+          python3 -m playwright install --with-deps chromium >/dev/null
+      - name: Verify rotation, thematic camera continuity and return
+        run: |
+          python3 -m http.server 8985 --bind 127.0.0.1 >/tmp/atlas-globe.log 2>&1 &
+          sleep 2
+          python3 tools/qa/globe-discovery.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: globe-visual-validation
+          path: shots/globe/
+          if-no-files-found: warn
+

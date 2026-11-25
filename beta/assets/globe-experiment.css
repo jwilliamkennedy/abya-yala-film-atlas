@@ -68,3 +68,5 @@ body.atlas-globe-experiment #globe-close{position:static;z-index:auto;width:100%
 #globe-live-map .maplibregl-canvas-container{touch-action:none;overscroll-behavior:contain}
 #globe-aperture{pointer-events:none}
 @media(max-width:760px){.globe-guide{top:58px}.globe-guide>button{font-size:11px;padding:4px 6px}.globe-detail-status{font-size:9px}}
+
+#globe-live-map .maplibregl-canvas:focus-visible{outline:2px solid #dcebc8;outline-offset:-2px}

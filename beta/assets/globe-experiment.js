@@ -13,14 +13,16 @@ let pointers=new Map(),gesture=null,dragged=false,previousFocus=null;
 let relief=null,reliefState='loading',flight=0,flightTarget=null,lastDrag=null;
 let live=null,liveReady=false,liveHost=null,liveSignature='',liveBaseZoom=0,liveMoved=false,liveTimer=0;
 let wheelFrame=0,wheelGoal=null,wheelLast=0,wheelActive=false,gestureStart=null,gestureUntil=0,landscape=false,lastLiveUpdate=0;
-const received={marble:0,satellite:0,dem:0,places:0},sourceErrors={};
+const received={marble:0,satellite:0,dem:0,hilldem:0,places:0},sourceErrors={};
+let lastStatus=0;
 const nowMs=()=>performance.now();
 function liveStats(){
  if(!liveReady||!live)return null;
  let elevation=null;try{elevation=live.queryTerrainElevation(center);}catch{}
  return {version:live.version||null,zoom:live.getZoom(),pitch:live.getPitch(),mesh:live.getTerrain()?.source||null,elevation,received:{...received},errors:{...sourceErrors},wheelActive};
 }
-function updateDetailStatus(){
+function updateDetailStatus(force=false){
+ const t=nowMs();if(!force&&t-lastStatus<160)return;lastStatus=t;
  const e=$('#globe-detail-status');if(!e)return;
  if(!liveReady){e.textContent='Overview only · loading detailed map';return;}
  const s=liveStats(),z=s.zoom;
@@ -165,12 +167,13 @@ function loadRelief(){
  function liveLandData(ids){
   const features=[];
   for(const id of ids){const r=byId.get(id);if(!r)continue;const color='rgb('+territoryTone(id)+')',match=C().landMatchesTheme([id]);
-   for(const {feature} of r.shapes)features.push({type:'Feature',properties:{land:id,color,match:match?1:0},geometry:geoPolygon(feature.geometry)});
+   const focus=focusIds.includes(id)||[...C().selectedLandIds].includes(id)||C().previewLandIds().includes(id);
+   for(const {feature} of r.shapes)features.push({type:'Feature',properties:{land:id,color,match:match?1:0,focus:focus?1:0},geometry:geoPolygon(feature.geometry)});
   }
   return {type:'FeatureCollection',features};
  }
  function livePointsData(){
-  return {type:'FeatureCollection',features:points.map(p=>({type:'Feature',properties:{land:p.id,match:C().landMatchesTheme([p.id])?1:0},geometry:{type:'Point',coordinates:p.coord}}))};
+  return {type:'FeatureCollection',features:points.map(p=>({type:'Feature',properties:{land:p.id,name:p.name,focus:focusIds.includes(p.id)?1:0,match:C().landMatchesTheme([p.id])?1:0},geometry:{type:'Point',coordinates:p.coord}}))};
  }
  function updateLive(){
   if(!liveReady)return;
@@ -181,7 +184,7 @@ function loadRelief(){
   // Keep the source stable while dragging. Rebuild only once the camera settles or theme changes.
   if(live.isMoving()||wheelActive)return;
   const ids=[...new Set([...focusIds,...C().selectedLandIds,...C().previewLandIds(),...ps.filter(v=>v.match&&v.distance<=aperture()*2.4).sort((a,b)=>a.distance-b.distance).slice(0,8).map(v=>v.p.id)])];
-  const sig=JSON.stringify([ids,points.filter(p=>C().landMatchesTheme([p.id])).map(p=>p.id)]);
+  const sig=JSON.stringify([ids,focusIds,C().selectedLandIds,C().previewLandIds(),points.filter(p=>C().landMatchesTheme([p.id])).map(p=>p.id)]);
   if(sig===liveSignature)return;liveSignature=sig;
   live.getSource('native-lands')?.setData(liveLandData(ids));
   live.getSource('cinema-points')?.setData(livePointsData());
@@ -189,7 +192,7 @@ function loadRelief(){
  function readLiveCamera(){const p=live.getCenter();center=[wrap(p.lng),p.lat];zoom=Math.pow(2,live.getZoom()-liveBaseZoom);}
  // Centered wheel/pinch uses accumulated logarithmic scale, not a restarted easing
  // animation. The geographic point inside the fixed aperture stays fixed.
- function stopWheel(){if(wheelFrame)cancelAnimationFrame(wheelFrame);wheelFrame=0;wheelGoal=null;wheelActive=false;gestureStart=null;}
+ function stopWheel(resetGesture=true){if(wheelFrame)cancelAnimationFrame(wheelFrame);wheelFrame=0;wheelGoal=null;wheelActive=false;if(resetGesture)gestureStart=null;}
  function queueZoom(goal){
   if(!liveReady)return;
   wheelGoal=clamp(goal,live.getMinZoom(),live.getMaxZoom());wheelLast=nowMs();
@@ -201,7 +204,7 @@ function loadRelief(){
    const next=reduced.matches||Math.abs(delta)<.008?wheelGoal:current+delta*.36;
    if(Math.abs(next-current)>1e-6)live.jumpTo({zoom:next});
    if(Math.abs(wheelGoal-live.getZoom())>.008||t-wheelLast<90){wheelFrame=requestAnimationFrame(frame);return;}
-   stopWheel();readLiveCamera();finishMove();updateDetailStatus();
+   stopWheel(false);readLiveCamera();if(live.getZoom()<6&&landscape){landscape=false;$('#globe-landscape').setAttribute('aria-pressed','false');live.setPitch(0);}finishMove();updateDetailStatus(true);
   }
   wheelFrame=requestAnimationFrame(frame);
  }
@@ -240,6 +243,7 @@ function loadRelief(){
     satellite:{type:'raster',tiles:['https://tiles.maps.eox.at/wmts/1.0.0/s2cloudless_3857/default/g/{z}/{y}/{x}.jpg'],tileSize:256,minzoom:4,maxzoom:14,attribution:'EOxCloudless by EOX IT Services GmbH (Contains modified Copernicus Sentinel data 2016 & 2017)'},
     places:{type:'vector',url:'https://tiles.openfreemap.org/planet',attribution:'OpenStreetMap contributors / OpenFreeMap'},
     dem:{type:'raster-dem',tiles:['https://tiles.mapterhorn.com/{z}/{x}/{y}.webp'],tileSize:512,maxzoom:12,encoding:'terrarium',attribution:'Mapterhorn terrain'},
+    hilldem:{type:'raster-dem',tiles:['https://tiles.mapterhorn.com/{z}/{x}/{y}.webp'],tileSize:512,maxzoom:12,encoding:'terrarium',attribution:'Mapterhorn terrain'},
     'native-lands':{type:'geojson',data:emptyGeo(),tolerance:0,buffer:128,maxzoom:14},
     'cinema-points':{type:'geojson',data:livePointsData(),maxzoom:14}
    },layers:[
@@ -247,13 +251,14 @@ function loadRelief(){
     {id:'fallback-land',type:'fill',source:'earth',paint:{'fill-color':'#69877b'}},
     {id:'marble',type:'raster',source:'marble',paint:{'raster-saturation':-.08,'raster-contrast':.09,'raster-fade-duration':180}},
     {id:'satellite',type:'raster',source:'satellite',minzoom:4,paint:{'raster-opacity':['interpolate',['linear'],['zoom'],4,0,6,1],'raster-saturation':-.04,'raster-contrast':.12,'raster-brightness-max':.98,'raster-fade-duration':180}},
-    {id:'relief',type:'hillshade',source:'dem',minzoom:3,paint:{'hillshade-exaggeration':.43,'hillshade-shadow-color':'#19272c','hillshade-highlight-color':'#f1e5ce','hillshade-accent-color':'#2b423a','hillshade-illumination-direction':315}},
+    {id:'relief',type:'hillshade',source:'hilldem',minzoom:3,paint:{'hillshade-exaggeration':.43,'hillshade-shadow-color':'#19272c','hillshade-highlight-color':'#f1e5ce','hillshade-accent-color':'#2b423a','hillshade-illumination-direction':315}},
     {id:'river-context',type:'line',source:'places','source-layer':'waterway',minzoom:7,filter:['==',['get','class'],'river'],paint:{'line-color':'#9ac9d7','line-opacity':.55,'line-width':['interpolate',['linear'],['zoom'],7,.35,12,1.4]}},
     {id:'city-context',type:'symbol',source:'places','source-layer':'place',minzoom:5,filter:['match',['get','class'],['city','town'],true,false],layout:{'text-field':['get','name'],'text-font':['Noto Sans Regular'],'text-size':['interpolate',['linear'],['zoom'],5,10,10,13],'symbol-sort-key':['coalesce',['get','rank'],99],'text-padding':8,'text-allow-overlap':false},paint:{'text-color':'#e2e9e4','text-halo-color':'#20362e','text-halo-width':1.1,'text-opacity':.75}},
-    {id:'land-color',type:'fill',source:'native-lands',paint:{'fill-color':['get','color'],'fill-opacity':['case',['==',['get','match'],1],.23,.07],'fill-opacity-transition':{duration:160,delay:0}}},
-    {id:'land-outline',type:'line',source:'native-lands',paint:{'line-color':['get','color'],'line-opacity':['case',['==',['get','match'],1],.86,.27],'line-width':['interpolate',['linear'],['zoom'],1,.8,5,1.4,11,2]}},
+    {id:'land-color',type:'fill',source:'native-lands',paint:{'fill-color':['get','color'],'fill-opacity':['case',['==',['get','match'],0],.07,['==',['get','focus'],1],.30,.13],'fill-opacity-transition':{duration:160,delay:0}}},
+    {id:'land-outline',type:'line',source:'native-lands',paint:{'line-color':['get','color'],'line-opacity':['case',['==',['get','match'],0],.24,['==',['get','focus'],1],.92,.53],'line-width':['interpolate',['linear'],['zoom'],1,.8,5,1.4,11,2]}},
     {id:'cinema-glow',type:'circle',source:'cinema-points',paint:{'circle-radius':5,'circle-color':'#e8eed9','circle-opacity':['case',['==',['get','match'],1],.13,0],'circle-blur':.9,'circle-pitch-alignment':'map'}},
-    {id:'cinema-light',type:'circle',source:'cinema-points',paint:{'circle-radius':['interpolate',['linear'],['zoom'],0,2,7,3.2],'circle-color':'#e5ebd8','circle-opacity':['case',['==',['get','match'],1],.95,.22],'circle-pitch-alignment':'map'}}
+    {id:'cinema-light',type:'circle',source:'cinema-points',paint:{'circle-radius':['interpolate',['linear'],['zoom'],0,2,7,3.2],'circle-color':'#e5ebd8','circle-opacity':['case',['==',['get','match'],1],.95,.22],'circle-pitch-alignment':'map'}},
+    {id:'indigenous-names',type:'symbol',source:'cinema-points',minzoom:3.5,filter:['==',['get','focus'],1],layout:{'text-field':['get','name'],'text-font':['Noto Sans Regular'],'text-size':14,'text-anchor':'top','text-offset':[0,.55],'text-padding':5,'text-allow-overlap':true,'text-ignore-placement':false},paint:{'text-color':'#f4eee0','text-halo-color':'#172a31','text-halo-width':1.65}}
    ]};
    live=new ml.Map({container:liveHost,style,center,zoom:liveBaseZoom,minZoom:Math.max(-2,liveBaseZoom-0.35),maxZoom:14,maxPitch:55,attributionControl:false,dragRotate:false,pitchWithRotate:false,touchPitch:false,renderWorldCopies:false,cooperativeGestures:false,fadeDuration:120,trackResize:false});
    live.keyboard?.disableRotation?.();
@@ -266,7 +271,7 @@ function loadRelief(){
    });
    live.on('load',()=>{
     if(!active||!live)return;
-    clearTimeout(liveTimer);liveReady=true;host.classList.add('globe-live');cancelFlight();readLiveCamera();installZoom();movement();finishMove();updateDetailStatus();
+    clearTimeout(liveTimer);liveReady=true;host.classList.add('globe-live');cancelFlight();readLiveCamera();installZoom();movement();finishMove();updateDetailStatus(true);
     // Keep the default overhead view. An explicit landscape button exposes the actual mesh.
     $('#globe-landscape').hidden=false;
     live.on('zoomend',()=>{if(live.getZoom()<6&&landscape&&!wheelActive){landscape=false;$('#globe-landscape').setAttribute('aria-pressed','false');live.easeTo({pitch:0,duration:reduced.matches?0:220});}});
@@ -274,8 +279,15 @@ function loadRelief(){
     live.getCanvas().addEventListener('keydown',e=>{if(e.key==='Enter'&&focusIds.length){e.preventDefault();C().openLands(focusIds);}});
     live.on('movestart',()=>{if(!liveReady||wheelActive)return;liveMoved=true;movement();});
     live.on('move',()=>{if(!liveReady)return;readLiveCamera();renderSoon();});
-    live.on('moveend',()=>{if(!liveReady)return;readLiveCamera();if(wheelActive)return;liveMoved=false;finishMove();updateDetailStatus();});
-    live.on('click','cinema-light',e=>{const id=e.features?.[0]?.properties?.land,p=points.find(v=>v.id===id);if(p&&C().landMatchesTheme([id]))setCamera(p.coord,zoom);});
+    live.on('moveend',()=>{if(!liveReady)return;readLiveCamera();if(wheelActive)return;liveMoved=false;finishMove();updateDetailStatus(true);});
+    live.on('click',e=>{
+     const h=10,q=e.point;
+     const hit=live.queryRenderedFeatures([[q.x-h,q.y-h],[q.x+h,q.y+h]],{layers:['cinema-light']}).find(f=>C().landMatchesTheme([f.properties.land]));
+     const p=hit&&points.find(v=>v.id===hit.properties.land);
+     if(p){setCamera(p.coord,zoom);return;}
+     const coord=[wrap(e.lngLat.lng),e.lngLat.lat];
+     if(records.some(r=>r.shapes.some(s=>includesBounds(s.bounds,coord)&&d3.geoContains(s.feature,coord))))setCamera(coord,zoom);
+    });
 
    });
    live.on('error',e=>{if(!liveReady&&/WebGL|shader|context/i.test(String(e.error)))failLive(e.error);});
