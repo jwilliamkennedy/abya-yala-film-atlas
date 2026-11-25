@@ -140,7 +140,9 @@ async def run(browser,name,viewport):
             await page.wait_for_function("(id)=>window.AtlasGlobe.focus.settled && window.AtlasGlobe.focus.ids.includes(id)",arg=land)
             await page.locator("#globe-encounter .globe-film-title").wait_for()
             first=await page.locator("#globe-encounter .globe-film-title").inner_text()
-            await page.locator("#globe-encounter .globe-cycle").last.click()
+            await page.locator('[aria-label="Next film"]').focus()
+            await page.keyboard.press("Enter")
+            assert await page.evaluate("document.activeElement?.getAttribute('aria-label')==='Next film'"),(name,"film navigation lost keyboard focus")
             assert await page.locator("#globe-encounter .globe-film-title").inner_text()!=first or await page.evaluate("window.AtlasGlobe.discovery.filmOffset===1")
             assert await page.evaluate("new URL(window.AtlasGlobe.discovery.shareURL).searchParams.has('at')")
             assert await page.evaluate("new URL(window.AtlasGlobe.discovery.shareURL).hash === ''")
@@ -220,8 +222,11 @@ async def run(browser,name,viewport):
             await page.wait_for_function("(id)=>window.AtlasGlobe.focus.settled && window.AtlasGlobe.discovery.recent[0]?.id!==id",arg=land)
             assert await page.evaluate("JSON.stringify(window.AtlasCollections.current())")==initial
             assert await page.evaluate("window.AtlasGlobe.discovery.collection.stars===0")
+            await page.locator(".globe-credit-details summary").click()
+            await page.evaluate("window.__qaEncounterArt=document.querySelector('.globe-feature-art')")
             await page.locator("#globe-collect-film").click()
             await page.wait_for_function("window.AtlasGlobe.discovery.collection.items===1 && window.AtlasGlobe.discovery.collection.stars===1")
+            assert await page.evaluate("document.querySelector('.globe-credit-details')?.open && document.querySelector('.globe-feature-art')===window.__qaEncounterArt"),(name,"collecting reset the active film card")
             assert await page.evaluate("window.AtlasGlobe.discovery.collection.links===0")
             first_land=await page.evaluate("window.AtlasGlobe.discovery.featured.land")
             await page.locator("#globe-surprise").click()
@@ -233,6 +238,13 @@ async def run(browser,name,viewport):
             await page.locator(".globe-collected-item").nth(0).click()
             await page.locator(".globe-collected-item").nth(1).click()
             await page.locator("#globe-link-reason").fill("A test of an authored connection")
+            await page.locator('[aria-label="Connection note"]').fill("Unsubmitted note")
+            await page.locator('[aria-label="Connection type"]').select_option("question")
+            await page.keyboard.press("Escape")
+            await page.locator("#globe-collection-toggle").click()
+            assert await page.locator("#globe-link-reason").input_value()=="A test of an authored connection"
+            assert await page.locator('[aria-label="Connection note"]').input_value()=="Unsubmitted note"
+            assert await page.locator('[aria-label="Connection type"]').input_value()=="question"
             await page.locator(".globe-link-form button[type=submit]").click()
             assert await page.evaluate("window.AtlasGlobe.discovery.collection.links===1 && window.AtlasGlobe.discovery.collection.lines===1")
             await page.locator("#globe-save-collection").click()
