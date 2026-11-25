@@ -33,6 +33,19 @@ async def main(base, chrome=None):
                 await pg.goto(base + page)
                 await pg.wait_for_timeout(2500 if page == 'index.html' else 700)
                 got = await pg.evaluate(JS)
+                # A missing Watch loader is silent on the map: the globe simply loses
+                # playable encounters. Check the actual generated payload before publishing.
+                if page in ('index.html', 'watch.html'):
+                    watch = await pg.evaluate("""() => {
+                      const scripts = [...document.scripts].map(s => new URL(s.src || location.href, location.href).pathname);
+                      const loaders = scripts.filter(s => s.endsWith('/watch-data.js'));
+                      const globe = scripts.findIndex(s => s.endsWith('/assets/globe-experiment.js'));
+                      const films = window.ATLAS_WATCH?.films;
+                      return {loaders: loaders.length, films: Array.isArray(films) ? films.length : -1,
+                              ordered: globe < 0 || scripts.indexOf(loaders[0]) < globe};
+                    }""")
+                    if watch['loaders'] != 1 or watch['films'] <= 0 or not watch['ordered']:
+                        problems.append(f'{w}px {page}: Watch data missing, duplicated, empty or loaded after globe: {watch}')
                 await ctx.close()
                 if errors:
                     problems.append(f'{w}px {page}: script error: {errors[0][:160]}')
