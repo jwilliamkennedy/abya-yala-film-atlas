@@ -12,6 +12,11 @@ on:
       - 'beta/atlas-data.js'
       - '.github/workflows/globe-independent.yml'
   workflow_dispatch:
+    inputs:
+      full_artwork:
+        description: Decode every distinct recorded artwork URL (slower; opt-in)
+        type: boolean
+        default: false
 permissions:
   contents: read
 jobs:
@@ -22,13 +27,15 @@ jobs:
       matrix:
         mode: [terrain, discovery, input, csv, artwork]
     runs-on: ubuntu-latest
-    timeout-minutes: 12
+    timeout-minutes: ${{ matrix.mode == 'artwork' && 45 || 12 }}
     steps:
       - uses: actions/checkout@v4
       - run: |
           python3 -m pip install -q 'playwright==1.*'
           python3 -m playwright install --with-deps chromium >/dev/null
-      - run: |
+      - env:
+          ATLAS_ARTWORK_FULL: ${{ inputs.full_artwork && '1' || '0' }}
+        run: |
           python3 -m http.server 8985 --bind 127.0.0.1 >/tmp/globe-independent.log 2>&1 &
           sleep 2
           if [ '${{ matrix.mode }}' = csv ]; then python3 tools/qa/globe-csv-concordance.py; elif [ '${{ matrix.mode }}' = artwork ]; then python3 tools/qa/globe-artwork.py; else python3 tools/qa/globe-independent.py ${{ matrix.mode }}; fi

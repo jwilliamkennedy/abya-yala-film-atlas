@@ -75,6 +75,7 @@ async def run(browser,name,viewport):
             assert await page.locator(".globe-primary button").count()==4
             assert await page.locator(".globe-map-sources").get_attribute("href")=="map-sources.html"
             assert await page.locator("#globe-credit-live").is_visible()
+            await page.wait_for_function("document.querySelector('#globe-encounter').getBoundingClientRect().bottom <= document.querySelector('.globe-footer').getBoundingClientRect().top+1")
             sources=await page.request.get(BASE+"map-sources.html")
             assert sources.ok and "Copernicus Sentinel data 2016" in await sources.text()
             assert await page.locator(".globe-menu-panel:visible").count()==0
@@ -161,8 +162,12 @@ async def run(browser,name,viewport):
                 await page.locator(".globe-credit-details summary").click()
                 await bridge.click()
                 await page.wait_for_function("(id)=>window.AtlasGlobe.focus.settled && window.AtlasGlobe.discovery.featured?.film===id",arg=target,timeout=30000)
+                await page.locator("#globe-more-toggle").click()
+                await page.locator("#globe-period").select_option("2020")
+                await page.keyboard.press("Escape")
                 await page.locator("#globe-journey-back").click()
                 await page.wait_for_function("(v)=>window.AtlasGlobe.focus.settled && window.AtlasGlobe.discovery.featured?.film===v.film && window.AtlasGlobe.discovery.featured?.land===v.land",arg=previous,timeout=30000)
+                assert await page.evaluate("window.AtlasGlobe.discovery.period===''")
                 print(name,"thematic journey and return passed",flush=True)
             await page.locator("#globe-more-toggle").click()
             await page.locator('.globe-catalog-filters summary').click()

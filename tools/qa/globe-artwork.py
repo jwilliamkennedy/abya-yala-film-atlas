@@ -19,6 +19,9 @@ async def main():
         counts={"credits":len(credits),"with_image":sum(bool(c["source"]) for c in credits),"mapped_credits":sum(bool(c["lands"]) for c in credits),"land_groups":len(lands),"lands_with_films":sum(l["credits"]>0 for l in lands),"lands_with_art":sum(any(c["source"] for c in refs[l["id"]]) for l in lands)}
         absent=[l for l in lands if l["credits"] and not any(c["source"] for c in refs[l["id"]])]
         mismatch=[c for c in credits if c["published"] and c["source"]!=c["published"]]
+        playback={"indexed":sum(bool(c["watch"]) for c in credits),"embedded":sum(bool(c["watch"] and c["watch"]["embedded"]) for c in credits),"recorded_external":sum(bool(c["view"]) for c in credits)}
+        assert playback["embedded"]>0,"Watch index was not loaded"
+        print("PLAYBACK_COVERAGE",json.dumps(playback),flush=True)
         assert not mismatch,("published image resolver mismatch",mismatch[:4])
         assert all(l["credits"]==len(refs[l["id"]]) for l in lands)
         assert all(l["matching"]==l["credits"] for l in lands)
@@ -33,7 +36,9 @@ async def main():
         for domain,urls in sorted(domains.items()):
             unique=list(dict.fromkeys(urls))
             samples.extend(unique[:min(4,len(unique))])
-        samples=samples[:96]
+        full=os.getenv("ATLAS_ARTWORK_FULL")=="1"
+        samples=list(dict.fromkeys(c["source"] for c in credits if c["source"])) if full else samples[:96]
+        print("ARTWORK_MODE","full" if full else "sample",len(samples),flush=True)
         loaded=[]
         for i in range(0,len(samples),8):
             loaded.extend(await page.evaluate("""async urls=>Promise.all(urls.map(src=>new Promise(resolve=>{
@@ -42,7 +47,8 @@ async def main():
               const timer=setTimeout(()=>finish('timeout'),12000);
               img.referrerPolicy='strict-origin-when-cross-origin';img.onload=()=>finish(img.naturalWidth?'decoded':'empty');img.onerror=()=>finish('failed');img.src=src;
             })))""",samples[i:i+8]))
-        report={"counts":counts,"lands_without_recorded_art":absent,"missing_credit_images":[c for c in credits if not c["source"]],"boundaries":boundaries,"sampled_image_responses":loaded,"all_credit_images":credits}
+            if full and (i%96==0 or i+8>=len(samples)):print("ARTWORK_PROGRESS",min(i+8,len(samples)),len(samples),flush=True)
+        report={"counts":counts,"playback":playback,"image_audit_mode":"full" if full else "sample","distinct_recorded_urls":len(set(c["source"] for c in credits if c["source"])),"lands_without_recorded_art":absent,"missing_credit_images":[c for c in credits if not c["source"]],"boundaries":boundaries,"sampled_image_responses":loaded,"all_credit_images":credits}
         with open("shots/globe-independent/artwork-inventory.json","w",encoding="utf-8") as f:json.dump(report,f,ensure_ascii=False,indent=2)
         print("ARTWORK_INVENTORY",json.dumps(counts), "NO_ART_LANDS",json.dumps([l["name"] for l in absent],ensure_ascii=False),"IMAGE_SAMPLE",dict(collections.Counter(v["state"] for v in loaded)),"BOUNDARIES",json.dumps(boundaries),flush=True)
         assert any(v["state"]=="decoded" for v in loaded),"No real artwork decoded"

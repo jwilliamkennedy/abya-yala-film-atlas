@@ -297,3 +297,11 @@ body.atlas-globe-experiment #globe-close{position:static;z-index:auto;width:100%
 #atlas-rotational-globe .globe-footer{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:3px 10px;padding:4px 10px;font:11px/1.4 system-ui,sans-serif;color:#cbd8dd;background:#132533f2}
 #globe-attribution{flex:1 1 450px;min-width:0;overflow-wrap:anywhere}#globe-attribution [hidden]{display:none!important}.globe-map-sources{flex:none;white-space:nowrap;font-weight:600;text-underline-offset:2px}
 @media(max-width:760px){#atlas-rotational-globe .globe-footer{font-size:10px;padding:3px 6px;gap:1px 6px}#globe-attribution{flex-basis:100%}.globe-map-sources{margin-left:auto}}
+
+/* Reserve actual attribution height as credits wrap. */
+#atlas-rotational-globe{--globe-footer-height:44px}
+#atlas-rotational-globe #globe-encounter{bottom:calc(var(--globe-footer-height) + 8px)}
+#atlas-rotational-globe .globe-zoom{bottom:calc(var(--globe-footer-height) + 32px)}
+#globe-live-map .maplibregl-ctrl-bottom-right{bottom:calc(var(--globe-footer-height) + 4px)}
+#atlas-rotational-globe .globe-footer{padding-bottom:max(4px,env(safe-area-inset-bottom))}
+@media(max-height:500px) and (orientation:landscape){#atlas-rotational-globe #globe-encounter{max-height:calc(100% - var(--globe-footer-height) - 100px);width:min(280px,38%);padding:7px}#atlas-rotational-globe .globe-guide{top:48px}#atlas-rotational-globe .globe-menu-panel{max-height:calc(100vh - 118px)}#atlas-rotational-globe .globe-zoom{bottom:calc(var(--globe-footer-height) + 20px)}}
