@@ -1,0 +1,75 @@
+name: Full globe artwork audit
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/globe-artwork-full.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: full-globe-artwork-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  artwork:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install browser
+        run: |
+          python3 -m pip install -q 'playwright==1.*'
+          python3 -m playwright install --with-deps chromium
+      - name: Decode every distinct recorded artwork URL
+        env:
+          ATLAS_ARTWORK_FULL: '1'
+        run: |
+          python3 -m http.server 8985 --bind 127.0.0.1 >/tmp/globe-artwork.log 2>&1 &
+          sleep 2
+          python3 tools/qa/globe-artwork.py
+      - name: Build actionable artwork report
+        if: always()
+        run: |
+          python3 - <<'PY'
+          import collections, csv, json, os
+          from pathlib import Path
+          path = Path('shots/globe-independent/artwork-inventory.json')
+          if not path.exists():
+              raise SystemExit('Artwork inventory not produced; inspect audit logs')
+          report = json.loads(path.read_text(encoding='utf-8'))
+          responses = {r['src']: r['state'] for r in report['sampled_image_responses']}
+          rows = []
+          for credit in report['all_credit_images']:
+              source = credit.get('source')
+              result = responses.get(source, 'not_checked') if source else 'missing'
+              if result == 'decoded':
+                  continue
+              rows.append({'credit_id': credit['id'], 'title': credit.get('title',''),
+                           'maker': credit.get('maker',''), 'land_ids': '; '.join(credit.get('lands',[])),
+                           'image_url': source or '', 'result': result})
+          with path.with_name('artwork-needs-review.csv').open('w', encoding='utf-8-sig', newline='') as f:
+              writer = csv.DictWriter(f, fieldnames=['credit_id','title','maker','land_ids','image_url','result'])
+              writer.writeheader()
+              writer.writerows(rows)
+          counts = collections.Counter(responses.values())
+          with open(os.environ['GITHUB_STEP_SUMMARY'], 'a', encoding='utf-8') as f:
+              f.write('## Full artwork audit\n\n')
+              f.write(f"- Film credits: {report['counts']['credits']}\n")
+              f.write(f"- Distinct recorded URLs: {report['distinct_recorded_urls']}\n")
+              f.write(f"- Distinct URLs checked: {len(responses)}\n")
+              for state, n in sorted(counts.items()):
+                  f.write(f"- {state}: {n}\n")
+              f.write(f"- Credits without recorded artwork: {len(report['missing_credit_images'])}\n")
+              f.write(f"- Lands with films but no recorded artwork: {len(report['lands_without_recorded_art'])}\n")
+              f.write(f"- Credits requiring review: {len(rows)}\n")
+              f.write('\nExternal failures are observations, not proof that an image is invalid. No catalogue entries were changed.\n')
+          assert report['image_audit_mode'] == 'full'
+          assert len(responses) == report['distinct_recorded_urls'], 'Incomplete full artwork audit'
+          assert not report['local_failures'], 'Locally hosted artwork failed to decode'
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: full-artwork-audit
+          path: shots/globe-independent/
+          if-no-files-found: warn
