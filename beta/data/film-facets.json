@@ -18378,11 +18378,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Kinship"
+   ],
+   "primary_theme": "Kinship",
+   "families": [
+    "Lives and Relations"
+   ],
+   "form": "Fiction",
+   "length": "Short"
   },
   "DIR-0248-W1031-9": {
    "title": "Las lecciones de Silveria",
@@ -36589,11 +36593,18 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Memory and Oral History",
+    "Elders and Knowledge",
+    "Kinship"
+   ],
+   "primary_theme": "Memory and Oral History",
+   "families": [
+    "Knowledge and Continuity",
+    "Lives and Relations"
+   ],
+   "form": "Experimental",
+   "length": "Short"
   },
   "Q20261114-102-F1": {
    "title": "Anaana (Mother)",
@@ -46762,11 +46773,17 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Resistance Movements",
+    "Kinship"
+   ],
+   "primary_theme": "Resistance Movements",
+   "families": [
+    "Lives and Relations",
+    "Sovereignty and Politics"
+   ],
    "form": "Experimental",
-   "length": null
+   "length": "Short"
   },
   "NEW-e5a5fc385de7-NEW-d4429a8a4dbb-WORK-1": {
    "title": "Reventar los hilos",
@@ -56117,11 +56134,16 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Cosmology and Origin Stories",
+    "Memory and Oral History"
+   ],
+   "primary_theme": "Cosmology and Origin Stories",
+   "families": [
+    "Knowledge and Continuity"
+   ],
    "form": "Animation",
-   "length": null
+   "length": "Short"
   },
   "Q20261123-95-F2": {
    "title": "Uesnidën Pete Ismebenaid (El descubrimiento de los alimentos)",
@@ -56133,11 +56155,18 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Food Sovereignty",
+    "More-than-Human Relations",
+    "Memory and Oral History"
+   ],
+   "primary_theme": "Food Sovereignty",
+   "families": [
+    "Knowledge and Continuity",
+    "Land and Environment"
+   ],
    "form": "Animation",
-   "length": null
+   "length": "Short"
   },
   "Q20261123-95-F3": {
    "title": "Sondado Cuesaid. Enfrentamiento entre los Matsés y el ejército del Perú",
@@ -56149,11 +56178,17 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "State Violence and Genocide",
+    "Memory and Oral History"
+   ],
+   "primary_theme": "State Violence and Genocide",
+   "families": [
+    "Knowledge and Continuity",
+    "Sovereignty and Politics"
+   ],
    "form": "Animation",
-   "length": null
+   "length": "Short"
   },
   "QW-WAPI-V1121276538": {
    "title": "Madjashin",

@@ -2175,6 +2175,9 @@ DIR-0248-W1031-6,Sueños binacionales,2005,form,Documentary,,https://moreliafilm
 DIR-0248-W1031-7,Reencuentros: entre la memoria y la nostalgia,2008,theme,Displacement and Migration,Sovereignty and Politics,https://moreliafilmfest.com/en/peliculas/reencuentros-entre-la-memoria-y-la-nostalgia,tagged from a published synopsis; primary theme
 DIR-0248-W1031-7,Reencuentros: entre la memoria y la nostalgia,2008,theme,"Art, Craft and Making",Expression and Representation,https://moreliafilmfest.com/en/peliculas/reencuentros-entre-la-memoria-y-la-nostalgia,tagged from a published synopsis
 DIR-0248-W1031-7,Reencuentros: entre la memoria y la nostalgia,2008,form,Documentary,,https://moreliafilmfest.com/en/peliculas/reencuentros-entre-la-memoria-y-la-nostalgia,from the published synopsis
+DIR-0248-W1031-8,El reloj,2013,theme,Kinship,Lives and Relations,https://latinopublic.media/post-content/el-reloj-the-watch/,tagged from a published synopsis; primary theme
+DIR-0248-W1031-8,El reloj,2013,form,Fiction,,https://latinopublic.media/post-content/el-reloj-the-watch/,from the published synopsis
+DIR-0248-W1031-8,El reloj,2013,length,Short,,https://latinopublic.media/post-content/el-reloj-the-watch/,from the published synopsis
 DIR-0248-W1031-9,Las lecciones de Silveria,2014,theme,Youth,Lives and Relations,https://moreliafilmfest.com/en/peliculas/las-lecciones-de-silveria,tagged from a published synopsis; primary theme
 DIR-0248-W1031-9,Las lecciones de Silveria,2014,form,Fiction,,https://moreliafilmfest.com/en/peliculas/las-lecciones-de-silveria,from the published synopsis
 DIR-0248-W1031-9,Las lecciones de Silveria,2014,length,Short,,https://moreliafilmfest.com/en/peliculas/las-lecciones-de-silveria,from the published synopsis
@@ -4562,6 +4565,11 @@ NEW-052b89150bd7-W1031-2,Amarok's Song - The Journey to Nunavut,1998,theme,Kinsh
 NEW-052b89150bd7-W1031-2,Amarok's Song - The Journey to Nunavut,1998,theme,Displacement and Migration,Sovereignty and Politics,https://collection.nfb.ca/film/amaroks_song_-_the_journey_to_nunavut,tagged from a published synopsis
 NEW-052b89150bd7-W1031-2,Amarok's Song - The Journey to Nunavut,1998,form,Documentary,,https://collection.nfb.ca/film/amaroks_song_-_the_journey_to_nunavut,from the published synopsis
 NEW-052b89150bd7-W1031-2,Amarok's Song - The Journey to Nunavut,1998,length,Feature,,https://collection.nfb.ca/film/amaroks_song_-_the_journey_to_nunavut,from the published synopsis
+NEW-a07593bb44ba-WORK-1,Ningiura,,theme,Memory and Oral History,Knowledge and Continuity,https://arnaitvideo.ca/films/,tagged from a published synopsis; primary theme
+NEW-a07593bb44ba-WORK-1,Ningiura,,theme,Elders and Knowledge,Knowledge and Continuity,https://arnaitvideo.ca/films/,tagged from a published synopsis
+NEW-a07593bb44ba-WORK-1,Ningiura,,theme,Kinship,Lives and Relations,https://arnaitvideo.ca/films/,tagged from a published synopsis
+NEW-a07593bb44ba-WORK-1,Ningiura,,form,Experimental,,https://arnaitvideo.ca/films/,from the published synopsis
+NEW-a07593bb44ba-WORK-1,Ningiura,,length,Short,,https://arnaitvideo.ca/films/,from the published synopsis
 NEW-32f1d03344c9-WORK-1,Salvaged,,form,Documentary,,https://careynewman.ca/salvaged-film-project/,"normalised from the recorded form ""Documentary (in progress)"""
 NEW-d5184c6b9cfd-WORK-1,Throw Away Kids,2000,theme,Music and Performance,Expression and Representation,https://americanindian.si.edu/sites/1/files/pdf/festival/2000.pdf,tagged from a published synopsis; primary theme
 NEW-d5184c6b9cfd-WORK-1,Throw Away Kids,2000,theme,Youth,Lives and Relations,https://americanindian.si.edu/sites/1/files/pdf/festival/2000.pdf,tagged from a published synopsis
@@ -5679,7 +5687,10 @@ LEAD-20261011-019-QM596367,Benda Yuuze,,length,Short,,https://moreliafilmfest.co
 Q20261112-01-F2,Luna,2021,language,Spanish,stan1288,https://sic.cultura.gob.mx/ficha.php?table=produccion_cine&table_id=13933,recorded with the film
 Q20261112-01-F2,Luna,2021,form,Fiction,,https://sic.cultura.gob.mx/ficha.php?table=produccion_cine&table_id=13933,"normalised from the recorded form ""Fiction feature"""
 Q20261112-01-F2,Luna,2021,length,Feature,,https://sic.cultura.gob.mx/ficha.php?table=produccion_cine&table_id=13933,"normalised from the recorded form ""Fiction feature"""
-Q20261121-13-F1,Luisa gu mejikan,2021,form,Experimental,,https://vimeo.com/751937924,"normalised from the recorded form ""Experimental"""
+Q20261121-13-F1,Luisa gu mejikan,2021,theme,Resistance Movements,Sovereignty and Politics,https://vimeo.com/751937924,tagged from a published synopsis; primary theme
+Q20261121-13-F1,Luisa gu mejikan,2021,theme,Kinship,Lives and Relations,https://vimeo.com/751937924,tagged from a published synopsis
+Q20261121-13-F1,Luisa gu mejikan,2021,form,Experimental,,https://vimeo.com/751937924,from the published synopsis
+Q20261121-13-F1,Luisa gu mejikan,2021,length,Short,,https://vimeo.com/751937924,from the published synopsis
 LEAD-20261011-014-QM0e9ecc,Kuankua Pi,,form,Documentary,,https://www.moreliafilmfest.com/en/node/97411,"normalised from the recorded form ""Documentary (in progress)"""
 QM-ec0a41166c-M1,Yuyarisun,,form,Documentary,,https://www.moreliafilmfest.com/en/node/97411,"normalised from the recorded form ""Documentary (in progress)"""
 LEAD-20261011-016-QMe71298,Wawa Pampay,,form,Fiction,,https://www.moreliafilmfest.com/en/node/97411,"normalised from the recorded form ""Fiction (in progress)"""
@@ -6734,9 +6745,19 @@ Q20261123-51-F1,"Gregoria, tu nombre",2023,theme,Memory and Oral History,Knowled
 Q20261123-51-F1,"Gregoria, tu nombre",2023,form,Documentary,,https://ellugarquehabitamos.org/gregoria-tu-nombre/,from the published synopsis
 Q20261123-51-F1,"Gregoria, tu nombre",2023,length,Short,,https://ellugarquehabitamos.org/gregoria-tu-nombre/,from the published synopsis
 Q20261123-52-F1,"Ayllu, encuentro de nuestras almas",,form,Fiction,,https://www.biobiochile.cl/noticias/artes-y-cultura/actualidad-cultural/2024/02/13/amp/chile-participa-en-berlinale-compitiendo-en-tres-secciones-y-con-variada-presencia-en-el-mercado.shtml,"normalised from the recorded form ""Fiction (in progress)"""
-Q20261123-95-F1,Los muertos,2024,form,Animation,,https://www.chirapaq.org.pe/es/articles/cine-indigena-del-pueblo-matses-llega-a-youtube-con-tres-cortos-animados,"normalised from the recorded form ""Animation"""
-Q20261123-95-F2,Uesnidën Pete Ismebenaid (El descubrimiento de los alimentos),2024,form,Animation,,https://www.chirapaq.org.pe/es/articles/cine-indigena-del-pueblo-matses-llega-a-youtube-con-tres-cortos-animados,"normalised from the recorded form ""Animation"""
-Q20261123-95-F3,Sondado Cuesaid. Enfrentamiento entre los Matsés y el ejército del Perú,2024,form,Animation,,https://www.chirapaq.org.pe/es/articles/cine-indigena-del-pueblo-matses-llega-a-youtube-con-tres-cortos-animados,"normalised from the recorded form ""Animation"""
+Q20261123-95-F1,Los muertos,2024,theme,Cosmology and Origin Stories,Knowledge and Continuity,https://www.chirapaq.org.pe/es/articles/cine-indigena-del-pueblo-matses-llega-a-youtube-con-tres-cortos-animados,tagged from a published synopsis; primary theme
+Q20261123-95-F1,Los muertos,2024,theme,Memory and Oral History,Knowledge and Continuity,https://www.chirapaq.org.pe/es/articles/cine-indigena-del-pueblo-matses-llega-a-youtube-con-tres-cortos-animados,tagged from a published synopsis
+Q20261123-95-F1,Los muertos,2024,form,Animation,,https://www.chirapaq.org.pe/es/articles/cine-indigena-del-pueblo-matses-llega-a-youtube-con-tres-cortos-animados,from the published synopsis
+Q20261123-95-F1,Los muertos,2024,length,Short,,https://www.chirapaq.org.pe/es/articles/cine-indigena-del-pueblo-matses-llega-a-youtube-con-tres-cortos-animados,from the published synopsis
+Q20261123-95-F2,Uesnidën Pete Ismebenaid (El descubrimiento de los alimentos),2024,theme,Food Sovereignty,Land and Environment,https://www.chirapaq.org.pe/es/articles/cine-indigena-del-pueblo-matses-llega-a-youtube-con-tres-cortos-animados,tagged from a published synopsis; primary theme
+Q20261123-95-F2,Uesnidën Pete Ismebenaid (El descubrimiento de los alimentos),2024,theme,More-than-Human Relations,Land and Environment,https://www.chirapaq.org.pe/es/articles/cine-indigena-del-pueblo-matses-llega-a-youtube-con-tres-cortos-animados,tagged from a published synopsis
+Q20261123-95-F2,Uesnidën Pete Ismebenaid (El descubrimiento de los alimentos),2024,theme,Memory and Oral History,Knowledge and Continuity,https://www.chirapaq.org.pe/es/articles/cine-indigena-del-pueblo-matses-llega-a-youtube-con-tres-cortos-animados,tagged from a published synopsis
+Q20261123-95-F2,Uesnidën Pete Ismebenaid (El descubrimiento de los alimentos),2024,form,Animation,,https://www.chirapaq.org.pe/es/articles/cine-indigena-del-pueblo-matses-llega-a-youtube-con-tres-cortos-animados,from the published synopsis
+Q20261123-95-F2,Uesnidën Pete Ismebenaid (El descubrimiento de los alimentos),2024,length,Short,,https://www.chirapaq.org.pe/es/articles/cine-indigena-del-pueblo-matses-llega-a-youtube-con-tres-cortos-animados,from the published synopsis
+Q20261123-95-F3,Sondado Cuesaid. Enfrentamiento entre los Matsés y el ejército del Perú,2024,theme,State Violence and Genocide,Sovereignty and Politics,https://www.chirapaq.org.pe/es/articles/cine-indigena-del-pueblo-matses-llega-a-youtube-con-tres-cortos-animados,tagged from a published synopsis; primary theme
+Q20261123-95-F3,Sondado Cuesaid. Enfrentamiento entre los Matsés y el ejército del Perú,2024,theme,Memory and Oral History,Knowledge and Continuity,https://www.chirapaq.org.pe/es/articles/cine-indigena-del-pueblo-matses-llega-a-youtube-con-tres-cortos-animados,tagged from a published synopsis
+Q20261123-95-F3,Sondado Cuesaid. Enfrentamiento entre los Matsés y el ejército del Perú,2024,form,Animation,,https://www.chirapaq.org.pe/es/articles/cine-indigena-del-pueblo-matses-llega-a-youtube-con-tres-cortos-animados,from the published synopsis
+Q20261123-95-F3,Sondado Cuesaid. Enfrentamiento entre los Matsés y el ejército del Perú,2024,length,Short,,https://www.chirapaq.org.pe/es/articles/cine-indigena-del-pueblo-matses-llega-a-youtube-con-tres-cortos-animados,from the published synopsis
 QW-WAPI-V1121276538,Madjashin,2025,theme,Health and Healing,Lives and Relations,https://evenementswapikoni.ca/madjashin,tagged from a published synopsis; primary theme
 QW-WAPI-V1121276538,Madjashin,2025,theme,"Art, Craft and Making",Expression and Representation,https://evenementswapikoni.ca/madjashin,tagged from a published synopsis
 QW-WAPI-V1121276538,Madjashin,2025,length,Short,,https://evenementswapikoni.ca/madjashin,from the published synopsis
