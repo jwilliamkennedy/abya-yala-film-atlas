@@ -37,3 +37,6 @@ body.atlas-globe-experiment #atlas-theme-web :is(#tw-seed,[data-start-term]){dis
 .globe-fallback{position:absolute;bottom:50px;left:16px;right:16px;z-index:40;background:#263d54;color:white;padding:10px;border-radius:7px}
 @media(max-width:760px){#globe-aperture{width:46px;height:46px}.globe-instructions{display:none}.globe-guide{max-width:145px;right:6px;top:58px;padding:4px}.globe-guide select{font-size:11px;padding:4px}.globe-buttons button{min-height:26px;font-size:11px;padding:3px 6px}#globe-encounter{left:6px;bottom:61px;width:min(240px,calc(100% - 12px));max-height:32%;padding:8px;gap:4px}.globe-encounter-heading>strong,#globe-encounter>strong{font-size:16px}.globe-film{grid-template-columns:45px minmax(0,1fr);gap:6px}.globe-film-art{width:45px;height:32px}.globe-film-copy strong{font-size:12px}.globe-footer{font-size:9px;padding:4px 6px}}
 @media(prefers-reduced-motion:reduce){#globe-aperture,#globe-encounter{transition:none}}
+
+/* Keep the explicit return control reachable above the discovery dock. */
+body.atlas-globe-experiment #globe-close{position:fixed;right:14px;bottom:10px;z-index:50}

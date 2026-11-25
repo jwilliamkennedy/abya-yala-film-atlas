@@ -9,13 +9,13 @@ const $=s=>document.querySelector(s),C=()=>window.AtlasConstellate,A=()=>window.
 const DEG=180/Math.PI,clamp=(v,a,b)=>Math.max(a,Math.min(b,v)),wrap=v=>((v+180)%360+360)%360-180;
 let active=false,closed=false,host=null,canvas=null,ctx=null,ro=null,raf=0,settleTimer=0;
 let W=0,H=0,dpr=1,zoom=1,center=[-91,12],proj=null,path=null,earth=null,landArea=0;
-let records=[],points=[],byId=new Map(),near=[],inside=[],focusIds=[],focusKey='',previewLimit=3,settled=false;
+let records=[],points=[],byId=new Map(),near=[],inside=[],focusIds=[],focusKey='',previewLimit=3,settled=false,anchorFailures=[];
 let pointers=new Map(),gesture=null,dragged=false,previousFocus=null;
 const sphere={type:'Sphere'};
 function camera(){return {center:[...center],zoom,projection:'globe',renderer:'orthographic-canvas'};}
 function renderSoon(){if(!active||raf)return;raf=requestAnimationFrame(()=>{raf=0;draw();});}
 function sync(){if(!active)return;renderSoon();if(!pointers.size)scheduleSettle(75);}
-window.AtlasGlobe={get active(){return active},get camera(){return active?camera():null},get pointCount(){return points.length},get geometryCount(){return records.length},get landArea(){return landArea},get focus(){return {ids:[...focusIds],inside:inside.map(r=>r.id),settled};},sync,close};
+window.AtlasGlobe={get active(){return active},get camera(){return active?camera():null},get pointCount(){return points.length},get geometryCount(){return records.length},get anchorFailures(){return [...anchorFailures]},get anchors(){return points.map(p=>({id:p.id,coordinate:[...p.coord],sourceId:p.anchor.sourceId,component:p.anchor.component,method:p.anchor.method}))},get landArea(){return landArea},get focus(){return {ids:[...focusIds],inside:inside.map(r=>r.id),settled};},sync,close};
 function close(){
  closed=true;active=false;clearTimeout(settleTimer);if(raf)cancelAnimationFrame(raf);raf=0;ro?.disconnect();
  host?.remove();host=null;document.body.classList.remove('atlas-globe-experiment');
@@ -42,11 +42,10 @@ function collect(){
   const r={id:l.id,name:A().landDisplayName(l),shapes,count:C().landFilmCount(l.id)};
   records.push(r);byId.set(r.id,r);
   if(!r.count)continue;
-  const ref=A().landMarkerReference(l.id),coord=ref?.coordinates;
-  if(!coord?.every(Number.isFinite)||Math.abs(coord[0])>180||Math.abs(coord[1])>90)continue;
-  // Existing reference coordinates are checked against the exact linked polygons.
-  if(!fs.some(f=>d3.geoContains(f,coord)))continue;
-  points.push({...r,coord});
+  const anchor=window.AtlasGeoIntegrity.anchor(fs),coord=anchor?.coordinates;
+  if(!coord||!fs.some(f=>String(f.id)===anchor.sourceId&&d3.geoContains(f,coord))){anchorFailures.push(l.id);continue;}
+  // Anchor is deterministic and independent of the flat map, zoom, or viewport.
+  points.push({...r,coord,anchor});
  }
  records.sort((a,b)=>a.name.localeCompare(b.name));points.sort((a,b)=>a.name.localeCompare(b.name));
 }
@@ -183,5 +182,5 @@ async function boot(){
   ro=new ResizeObserver(resize);ro.observe(canvas);resize();draw();settle();
  }catch(e){fallback(e);}
 }
-const started=Date.now();(function wait(){if(closed)return;if(C()?.enabled&&A()?.lands&&window.topojson&&window.d3){boot();return;}if(Date.now()-started<20000)setTimeout(wait,100);})();
+const started=Date.now();(function wait(){if(closed)return;if(C()?.enabled&&A()?.lands&&window.topojson&&window.d3&&window.AtlasGeoIntegrity){boot();return;}if(Date.now()-started<20000)setTimeout(wait,100);})();
 })();
