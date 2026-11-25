@@ -251,8 +251,10 @@ async def run(browser,name,viewport):
             await page.wait_for_function("(id)=>window.AtlasGlobe.focus.settled && window.AtlasGlobe.discovery.recent[0]?.id!==id",arg=land)
             assert await page.evaluate("JSON.stringify(window.AtlasCollections.current())")==initial
             assert await page.evaluate("window.AtlasGlobe.discovery.collection.stars===0")
-            await page.locator(".globe-credit-details summary").click()
-            await page.evaluate("window.__qaEncounterArt=document.querySelector('.globe-feature-art')")
+            if not await page.locator("#globe-encounter .globe-credit-details").evaluate("(d)=>d.open"):
+                await page.locator("#globe-encounter .globe-credit-details summary").click()
+            await page.wait_for_function("document.querySelector('#globe-encounter .globe-credit-details')?.open")
+            await page.evaluate("window.__qaEncounterArt=document.querySelector('#globe-encounter .globe-feature-art')")
             await page.locator("#globe-collect-film").click()
             await page.wait_for_function("window.AtlasGlobe.discovery.collection.items===1 && window.AtlasGlobe.discovery.collection.stars===1")
             assert await page.evaluate("document.querySelector('.globe-credit-details')?.open && document.querySelector('.globe-feature-art')===window.__qaEncounterArt"),(name,"collecting reset the active film card")
