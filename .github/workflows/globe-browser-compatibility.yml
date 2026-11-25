@@ -1,0 +1,123 @@
+name: Globe browser compatibility
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'beta/assets/globe-experiment.*'
+      - 'beta/assets/maplibre/**'
+      - 'beta/assets/constellate.js'
+      - 'beta/patches-collections.js'
+      - '.github/workflows/globe-browser-compatibility.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: globe-browser-compatibility-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  browser:
+    name: ${{ matrix.profile }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - {profile: chromium-landscape, engine: chromium, width: 844, height: 390, motion: no-preference, touch: '1'}
+          - {profile: chromium-landscape-reduced, engine: chromium, width: 844, height: 390, motion: reduce, touch: '1'}
+          - {profile: webkit-desktop, engine: webkit, width: 1440, height: 900, motion: no-preference, touch: '0'}
+          - {profile: webkit-landscape-reduced, engine: webkit, width: 844, height: 390, motion: reduce, touch: '1'}
+    env:
+      ENGINE: ${{ matrix.engine }}
+      VIEW_WIDTH: ${{ matrix.width }}
+      VIEW_HEIGHT: ${{ matrix.height }}
+      MOTION: ${{ matrix.motion }}
+      TOUCH: ${{ matrix.touch }}
+      PROFILE: ${{ matrix.profile }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install browser
+        run: |
+          python3 -m pip install -q 'playwright==1.*'
+          python3 -m playwright install --with-deps "$ENGINE"
+      - name: Verify startup, discovery, layout and shared camera
+        run: |
+          python3 -m http.server 8985 --bind 127.0.0.1 >/tmp/globe-browser.log 2>&1 &
+          sleep 2
+          mkdir -p shots/globe-browser
+          python3 - <<'PY'
+          import asyncio, json, os
+          from playwright.async_api import async_playwright
+
+          BASE = 'http://127.0.0.1:8985/beta/'
+          READY = """window.AtlasGlobe?.discovery.publication==='ready' &&
+            window.AtlasGlobe.camera?.renderer==='maplibre-globe' &&
+            window.AtlasGlobe.focus.settled &&
+            document.querySelector('#atlas-rotational-globe')?.classList.contains('globe-revealed')"""
+          async def main():
+              engine = os.environ['ENGINE']
+              touch = os.environ['TOUCH'] == '1'
+              async with async_playwright() as p:
+                  args = ['--use-angle=swiftshader','--enable-unsafe-swiftshader'] if engine == 'chromium' else []
+                  browser = await getattr(p,engine).launch(args=args)
+                  context = await browser.new_context(viewport={'width':int(os.environ['VIEW_WIDTH']),
+                      'height':int(os.environ['VIEW_HEIGHT'])}, has_touch=touch,
+                      reduced_motion=os.environ['MOTION'])
+                  page = await context.new_page()
+                  errors = []
+                  page.on('pageerror', lambda e: errors.append(str(e)))
+                  async def press(selector):
+                      control = page.locator(selector)
+                      if touch: await control.tap()
+                      else: await control.click()
+                  try:
+                      await page.goto(BASE+'?constellate=1&globe=1',wait_until='domcontentloaded',timeout=90000)
+                      await page.wait_for_function(READY,timeout=90000)
+                      assert await page.evaluate("matchMedia('(prefers-reduced-motion: reduce)').matches") == (os.environ['MOTION']=='reduce')
+                      assert await page.evaluate("AtlasGlobe.discovery.collection.stars===0")
+                      initial = await page.evaluate("JSON.stringify(AtlasCollections.current())")
+                      controls = await page.locator('.globe-primary button').evaluate_all("""els=>els.map(e=>{
+                        const r=e.getBoundingClientRect();
+                        return {label:e.textContent.trim(),inView:r.width>0&&r.height>0&&
+                          r.left>=-1&&r.top>=-1&&r.right<=innerWidth+1&&r.bottom<=innerHeight+1};
+                      })""")
+                      assert len(controls)==5 and all(c['inView'] for c in controls), controls
+                      await page.screenshot(path='shots/globe-browser/first-view.png',timeout=30000)
+                      await press('#globe-theme-toggle')
+                      await page.locator('#weave-map-theme').select_option('Water')
+                      await page.wait_for_function("AtlasGlobe.discovery.themeCoverage?.credits>0")
+                      await page.locator('#weave-map-theme').select_option('')
+                      await press('#globe-find-toggle')
+                      land = await page.evaluate("AtlasGlobe.anchors.find(a=>AtlasConstellate.globeLandFilmCount(a.id)>0)?.id")
+                      assert land
+                      await page.locator('#globe-find').select_option(land)
+                      await page.wait_for_function("id=>AtlasGlobe.focus.settled && AtlasGlobe.discovery.featured?.land===id",arg=land,timeout=30000)
+                      await page.locator('#globe-encounter .globe-film-title').wait_for(state='visible')
+                      assert await page.evaluate("JSON.stringify(AtlasCollections.current())")==initial
+                      assert await page.evaluate("AtlasGlobe.discovery.collection.stars===0")
+                      await page.screenshot(path='shots/globe-browser/encounter.png',timeout=30000)
+                      expected = await page.evaluate("({featured:AtlasGlobe.discovery.featured,camera:AtlasGlobe.camera,url:AtlasGlobe.discovery.shareURL})")
+                      await page.goto(expected['url'],wait_until='domcontentloaded',timeout=90000)
+                      await page.wait_for_function(READY,timeout=90000)
+                      await page.wait_for_function("v=>AtlasGlobe.discovery.featured?.film===v.film && AtlasGlobe.discovery.featured?.land===v.land",arg=expected['featured'],timeout=30000)
+                      camera=await page.evaluate("AtlasGlobe.camera")
+                      assert max(abs((camera['center'][0]-expected['camera']['center'][0]+180)%360-180),abs(camera['center'][1]-expected['camera']['center'][1]))<.02,(camera,expected)
+                      assert abs(camera['zoom']/expected['camera']['zoom']-1)<.003,(camera,expected)
+                      assert not await page.locator('#constellate-popup').is_visible()
+                      assert not errors,errors
+                      await page.screenshot(path='shots/globe-browser/shared-view.png',timeout=30000)
+                      print('COMPATIBILITY_PASS',os.environ['PROFILE'],json.dumps(camera),flush=True)
+                  finally:
+                      print('COMPATIBILITY_DIAGNOSTICS',os.environ['PROFILE'],json.dumps(
+                          await page.evaluate("({camera:window.AtlasGlobe?.camera,tiles:window.AtlasGlobe?.tileState,viewport:[innerWidth,innerHeight]})")),errors,flush=True)
+                      try: await page.screenshot(path='shots/globe-browser/last.png',timeout=10000)
+                      except Exception as e: print('SCREENSHOT_FAILED',str(e),flush=True)
+                      await browser.close()
+          asyncio.run(main())
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: globe-browser-${{ matrix.profile }}
+          path: shots/globe-browser/
+          if-no-files-found: warn
