@@ -92,9 +92,30 @@ async def run(browser,name,viewport):
                 const a=document.querySelector('#globe-aperture').getBoundingClientRect(),r=b.getBoundingClientRect();
                 return !!b.querySelector('img') && (r.right<a.left||r.left>a.right||r.bottom<a.top||r.top>a.bottom);
             }"""),(name,"poster obstructs aperture or lacks sourced image")
+            # Audit actual decoded dimensions, fit and contrast; allow honest missing/broken images.
+            await page.wait_for_timeout(1000)
+            art=await page.evaluate("""() => [...document.querySelectorAll('#atlas-rotational-globe .globe-artwork[data-art-state=ready] img')].filter(i=>i.getClientRects().length&&i.getBoundingClientRect().width>0).map(i=>{
+                const b=i.getBoundingClientRect(),s=getComputedStyle(i);
+                return {natural:[i.naturalWidth,i.naturalHeight],display:[b.width,b.height],fit:s.objectFit,filter:s.filter,opacity:s.opacity,film:i.parentElement.dataset.film};
+            })""")
+            for a in art:
+                n=a["natural"]; d=a["display"]
+                assert abs(d[0]/d[1]-n[0]/n[1])<0.04*max(1,n[0]/n[1]),(name,"stretched artwork",a)
+                assert d[0]<=n[0]+1 and d[1]<=n[1]+1,(name,"upscaled artwork",a)
+                assert a["fit"]=="contain" and a["filter"]=="none" and a["opacity"]=="1",(name,"washed artwork",a)
+            print(name,"artwork dimensions",json.dumps(art),flush=True)
             print(name,"emergent artwork",await page.evaluate("window.AtlasGlobe.discovery.posterVisible"),flush=True)
             assert await page.evaluate("window.AtlasGlobe.discovery.recent.length>0")
             await shot(page,f"shots/globe-independent/{name}-encounter.png")
+            bridge=page.locator("#globe-encounter [data-target-film]").first
+            if await bridge.count():
+                previous=await page.evaluate("window.AtlasGlobe.discovery.featured")
+                target=await bridge.get_attribute("data-target-film")
+                await bridge.click()
+                await page.wait_for_function("(id)=>window.AtlasGlobe.focus.settled && window.AtlasGlobe.discovery.featured?.film===id",arg=target,timeout=30000)
+                await page.locator("#globe-journey-back").click()
+                await page.wait_for_function("(v)=>window.AtlasGlobe.focus.settled && window.AtlasGlobe.discovery.featured?.film===v.film && window.AtlasGlobe.discovery.featured?.land===v.land",arg=previous,timeout=30000)
+                print(name,"thematic journey and return passed",flush=True)
             await page.locator("#globe-period").select_option("2020")
             assert await page.evaluate("window.AtlasGlobe.discovery.period==='2020'")
             await page.locator("#globe-period").select_option("")
