@@ -215,13 +215,36 @@ function loadRelief(){
  // All reference geometry is kept visible, not just land under the aperture.
  // Deduplicate identical source features shared by multiple catalogue groupings.
  function boundaryData(collection,track=false){
-  let segments=0,splits=0;const features=[];
-  const rings=g=>g.type==='Polygon'?g.coordinates:g.type==='MultiPolygon'?g.coordinates.flat():g.type==='GeometryCollection'?g.geometries.flatMap(rings):[];
-  for(const f of collection.features){const lines=[];for(const ring of rings(f.geometry)){let line=[ring[0]];for(let i=1;i<ring.length;i++){const p=ring[i-1],q=ring[i],delta=q[0]-p[0];if(Math.abs(delta)>180){const edge=delta>0?-180:180,adjust=q[0]+(delta>0?-360:360),t=(edge-p[0])/(adjust-p[0]),lat=p[1]+(q[1]-p[1])*t; if(Number.isFinite(lat)){line.push([edge,lat]);if(line.length>1)lines.push(line);line=[[-edge,lat],q];splits++;continue;}}line.push(q);}if(line.length>1)lines.push(line);}
-   if(lines.length){segments+=lines.length;features.push({type:'Feature',properties:f.properties,geometry:{type:'MultiLineString',coordinates:lines}});}}
-  if(track)boundaryStats={features:features.length,segments,datelineSplits:splits};return {type:'FeatureCollection',features};
- }
- function ambientLandData(){
+   let segments=0,splits=0,longEdges=0;const features=[];
+   const rings=g=>g.type==='Polygon'?g.coordinates:g.type==='MultiPolygon'?g.coordinates.flat():g.type==='GeometryCollection'?g.geometries.flatMap(rings):[];
+   const same=(p,q)=>p[0]===q[0]&&p[1]===q[1];
+   for(const f of collection.features){
+    const lines=[];
+    for(const ring of rings(f.geometry)){
+     if(ring.length<2)continue;
+     let line=[ring[0]];
+     const append=p=>{if(!same(line[line.length-1],p))line.push(p);};
+     const flush=()=>{if(line.length>1){for(let i=1;i<line.length;i++)if(Math.abs(line[i][0]-line[i-1][0])>180)longEdges++;lines.push(line);}};
+     for(let i=1;i<ring.length;i++){
+      const p=ring[i-1],q=ring[i],delta=q[0]-p[0];
+      if(Math.abs(delta)>180){
+       const edge=delta>0?-180:180,adjust=q[0]+(delta>0?-360:360),denom=adjust-p[0];
+       // +180 and -180 are the same meridian. Preserve any north/south edge
+       // there without dividing by zero or sending a line across the planet.
+       const lat=denom===0?q[1]:p[1]+(q[1]-p[1])*(edge-p[0])/denom;
+       if(Number.isFinite(lat)){
+        append([edge,lat]);flush();line=[[-edge,lat]];append(q);splits++;continue;
+       }
+      }
+      append(q);
+     }
+     flush();
+    }
+    if(lines.length){segments+=lines.length;features.push({type:'Feature',properties:f.properties,geometry:{type:'MultiLineString',coordinates:lines}});}
+   }
+   if(track)boundaryStats={features:features.length,segments,datelineSplits:splits,longEdges};return {type:'FeatureCollection',features};
+  }
+  function ambientLandData(){
   const unique=new Map();
   for(const r of records)for(const {feature} of r.shapes){
    const key=String(feature.id);if(unique.has(key))continue;
