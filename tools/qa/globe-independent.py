@@ -37,12 +37,26 @@ async def run(browser,name,viewport):
         await page.wait_for_function("document.querySelector('#atlas-rotational-globe')?.classList.contains('globe-revealed')",timeout=15000)
         startup=await page.evaluate("window.AtlasGlobe.tileState.startup")
         assert startup["fallbackPaint"]<=startup["nativeLoaded"]<=startup["handoff"]<=startup["revealed"],(name,startup)
-        assert startup["reason"] in ("local-sources","bounded-timeout"),(name,startup)
+        assert startup["reason"] in ("local-sources","local-and-imagery"),(name,startup)
+        assert startup["handoff"]<=startup["localReady"]<=startup["revealed"],(name,startup)
         if fallback_camera:
             native=await page.evaluate("window.AtlasGlobe.camera")
             assert max(abs((native["center"][0]-fallback_camera["center"][0]+180)%360-180),abs(native["center"][1]-fallback_camera["center"][1]))<.01,(name,"handoff moved camera",fallback_camera,native)
             assert abs(native["zoom"]/fallback_camera["zoom"]-1)<.002,(name,"handoff changed zoom",fallback_camera,native)
         print(name,"startup handoff",json.dumps(startup),flush=True)
+        assert await page.evaluate("document.documentElement.dataset.globeEntry==='ready' && document.querySelector('#atlas-rotational-globe').dataset.ready==='true'")
+        if MODE=="terrain":
+            boxes=[]
+            for key in ("find","theme","more","collection"):
+                await page.locator("#globe-"+key+"-toggle").click()
+                panel=page.locator("#globe-"+key+"-panel")
+                await panel.wait_for()
+                bounds=await panel.evaluate("""e=>{const a=e.getBoundingClientRect(),r=document.querySelector('#atlas-rotational-globe').getBoundingClientRect(),f=document.querySelector('.globe-footer').getBoundingClientRect(),p=document.querySelector('.globe-primary').getBoundingClientRect();return {x:a.x,y:a.y,w:a.width,right:a.right,rootRight:r.right,rootLeft:r.left,bottom:a.bottom,footer:f.top,primaryBottom:p.bottom,font:getComputedStyle(e).fontFamily};}""")
+                assert bounds["x"]>=bounds["rootLeft"]-.5 and bounds["right"]<=bounds["rootRight"]+.5 and bounds["bottom"]<=bounds["footer"]+.5 and bounds["y"]>=bounds["primaryBottom"],(name,key,bounds)
+                boxes.append(bounds)
+                await page.locator("#globe-"+key+"-toggle").click()
+            assert max(x["right"] for x in boxes)-min(x["right"] for x in boxes)<.5 and max(x["w"] for x in boxes)-min(x["w"] for x in boxes)<.5 and len({x["font"] for x in boxes})==1,(name,boxes)
+            print(name,"standardized menu bounds and typography",json.dumps(boxes),flush=True)
         layer=await page.evaluate("window.AtlasGlobe.territoryLayer")
         assert layer["visible"] and layer["features"]>0 and layer["fill"] is not None,(name,"ambient territory layer absent",layer)
         assert layer["boundaries"]["longEdges"]==0,(name,"cross-world territory edges",layer["boundaries"])
