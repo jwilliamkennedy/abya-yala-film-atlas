@@ -332,3 +332,5 @@ body.atlas-globe-experiment #constellate-mode{display:none!important}
 #atlas-rotational-globe.globe-live.globe-revealed #globe-surface{opacity:0}
 @media(prefers-reduced-motion:reduce){#atlas-rotational-globe.globe-live #globe-surface{transition:none}}
 @media(max-width:760px){#atlas-rotational-globe .globe-guide{top:8px}#atlas-rotational-globe #globe-collection-toggle{font-size:11px;min-height:36px}}
+
+#globe-encounter .globe-reading-journey{border-top:1px solid #607b7e55;padding:5px 0;display:grid;gap:4px;font:12px/1.4 system-ui,sans-serif;overflow-wrap:anywhere}#globe-encounter .globe-reading-journey p{margin:0}#globe-encounter .globe-reading-journey .globe-buttons{align-items:center}#globe-encounter .globe-reading-journey button{min-height:32px}

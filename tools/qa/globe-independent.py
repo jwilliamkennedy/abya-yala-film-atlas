@@ -72,7 +72,7 @@ async def run(browser,name,viewport):
             await page.wait_for_function("window.AtlasGlobe.discovery.publication==='ready'",timeout=60000)
             await page.wait_for_function("window.AtlasGlobe.focus.settled && !window.AtlasGlobe.tileState.wheelActive")
             initial=await page.evaluate("JSON.stringify(window.AtlasCollections.current())")
-            assert await page.locator(".globe-primary button").count()==4
+            assert await page.locator(".globe-primary button").count()==5
             assert await page.locator(".globe-map-sources").get_attribute("href")=="map-sources.html"
             assert await page.locator("#globe-credit-live").is_visible()
             await page.wait_for_function("document.querySelector('#globe-encounter').getBoundingClientRect().bottom <= document.querySelector('.globe-footer').getBoundingClientRect().top+1")
@@ -221,7 +221,11 @@ async def run(browser,name,viewport):
             await page.locator(".globe-collection-settings summary").click()
             await page.locator('#globe-collection-panel select[aria-label="Choose constellation"]').select_option(saved)
             await page.wait_for_function("window.AtlasGlobe.discovery.collection.items===2 && window.AtlasGlobe.discovery.collection.links===1 && window.AtlasGlobe.discovery.collection.stars===2")
-            print(name,"globe collect, author, save and restore passed",flush=True)
+            await page.locator("#globe-read-thread").click()
+            await page.wait_for_function("window.AtlasGlobe.focus.settled && !!document.querySelector('.globe-reading-journey')")
+            await page.locator('[aria-label="Next film in thread"]').click()
+            await page.wait_for_function("window.AtlasGlobe.focus.settled && document.querySelector('.globe-reading-journey')?.textContent.includes('A test of an authored connection')")
+            print(name,"globe collect, author, save, restore and read passed",flush=True)
         assert not errors,(name,errors)
         print(name,MODE,"passed",flush=True)
     finally:

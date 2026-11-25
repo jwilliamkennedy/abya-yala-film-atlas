@@ -382,9 +382,9 @@ function loadRelief(){
     {id:'land-outline',type:'line',source:'native-focus-edges',layout:{'line-join':'round','line-cap':'round'},paint:{'line-color':['get','color'],'line-opacity':['case',['==',['get','match'],0],.16,['==',['get','focus'],1],.62,.32],'line-width':['interpolate',['linear'],['zoom'],1,.6,5,1,11,1.5]}},
     {id:'cinema-glow',type:'circle',source:'cinema-points',paint:{'circle-radius':5,'circle-color':'#e8eed9','circle-opacity':['case',['==',['get','match'],1],.13,0],'circle-blur':.9,'circle-pitch-alignment':'map'}},
     {id:'cinema-light',type:'circle',source:'cinema-points',paint:{'circle-radius':['interpolate',['linear'],['zoom'],0,['case',['==',['get','lens'],1],['interpolate',['linear'],['get','count'],0,1,1,2,8,3.5,30,5],1.8],7,['case',['==',['get','lens'],1],['interpolate',['linear'],['get','count'],0,1.2,1,2.8,8,4.5,30,6],2.8]],'circle-color':['case',['==',['get','lens'],1],'#d5ebc5','#e5ebd8'],'circle-opacity':['case',['==',['get','match'],1],.95,['==',['get','lens'],1],.12,.22],'circle-pitch-alignment':'map'}},
-    {id:'globe-user-link',type:'line',source:'globe-authored-links',layout:{'line-cap':'round','line-join':'round'},paint:{'line-color':'#b4d7de','line-opacity':.6,'line-width':1.2,'line-dasharray':[2,2]}},
-    {id:'globe-user-halo',type:'circle',source:'globe-collected',paint:{'circle-radius':7,'circle-color':'#c9e7e7','circle-blur':.95,'circle-opacity':.28}},
-    {id:'globe-user-star',type:'circle',source:'globe-collected',paint:{'circle-radius':['case',['==',['get','selected'],1],4.2,2.7],'circle-color':'#f1f6e8','circle-stroke-color':'#b1d6de','circle-stroke-width':1,'circle-opacity':.98}},
+    {id:'globe-user-link',type:'line',source:'globe-authored-links',layout:{'line-cap':'round','line-join':'round'},paint:{'line-color':['get','color'],'line-opacity':.6,'line-width':1.2,'line-dasharray':[2,2]}},
+    {id:'globe-user-halo',type:'circle',source:'globe-collected',paint:{'circle-radius':7,'circle-color':['get','color'],'circle-blur':.95,'circle-opacity':.28}},
+    {id:'globe-user-star',type:'circle',source:'globe-collected',paint:{'circle-radius':['case',['==',['get','selected'],1],4.2,2.7],'circle-color':'#f1f6e8','circle-stroke-color':['get','color'],'circle-stroke-width':1,'circle-opacity':.98}},
     {id:'indigenous-names',type:'symbol',source:'cinema-points',minzoom:3.5,filter:['==',['get','focus'],1],layout:{'text-field':['get','name'],'text-font':['Noto Sans Regular'],'text-size':14,'text-anchor':'top','text-offset':[0,.55],'text-padding':5,'text-allow-overlap':false,'text-ignore-placement':false},paint:{'text-color':'#f4eee0','text-halo-color':'#172a31','text-halo-width':1.65}}
    ]};
    live=new ml.Map({container:liveHost,style,center:initialCamera?initialCamera.slice(0,2):center,zoom:initialCamera?initialCamera[2]:liveBaseZoom,minZoom:Math.max(-2,liveBaseZoom-0.35),maxZoom:14,maxPitch:55,attributionControl:false,dragRotate:false,pitchWithRotate:false,touchPitch:false,renderWorldCopies:false,cooperativeGestures:false,fadeDuration:120,trackResize:false,maxTileCacheSize:W<760?96:240,scrollZoom:{around:'center'}});
@@ -667,23 +667,33 @@ function collectedPoints(){
   const ref=C().reference(x),p=ref&&pointById.get(ref.id);if(p)out.push({id:x.id,film:x.film,title:x.title,land:ref.id,coord:p.coord});
  }return out;
 }
+const threadTones={'star-blue':'#83b8d4','star-yellow':'#d4c58c','star-red':'#d69e96','star-bluewhite':'#c8dbe7','star-orange':'#dbb28c','star-white':'#dbe4d9',blue:'#83b8d4',orange:'#dbb28c',teal:'#88bdae',purple:'#b8a6d4',rose:'#d6a6bb',olive:'#bac397',cyan:'#98c5d0',red:'#d69e96'};
 function collectionGeometry(){
  const stars=collectedPoints(),byItem=new Map(stars.map(x=>[x.id,x])),grouped=new Map(),lines=[];
  for(const s of stars){let group=grouped.get(s.land);if(!group)grouped.set(s.land,group=[]);group.push(s);}
- const nodes=[...grouped.values()].map(group=>({type:'Feature',properties:{land:group[0].land,item:group[0].id,count:group.length,selected:group.some(x=>x.id===linkFrom||x.id===linkTo)?1:0},geometry:{type:'Point',coordinates:group[0].coord}}));
+ const threads=collectionState()?.threads.filter(t=>t.visible)||[],tone=id=>threadTones[threads.find(t=>t.items.includes(id))?.color]||'#c8dbe7';
+ const nodes=[...grouped.values()].map(group=>({type:'Feature',properties:{color:tone(group[0].id),land:group[0].land,item:group[0].id,count:group.length,selected:group.some(x=>x.id===linkFrom||x.id===linkTo)?1:0},geometry:{type:'Point',coordinates:group[0].coord}}));
  for(const l of collectionState()?.links||[]){
   const a=byItem.get(l.source),b=byItem.get(l.target);if(!a||!b||a.land===b.land)continue;
   const interpolate=d3.geoInterpolate(a.coord,b.coord),n=Math.max(8,Math.ceil(d3.geoDistance(a.coord,b.coord)*60)),segments=[],first=interpolate(0);let segment=[first];
   for(let i=1;i<=n;i++){const p=segment.at(-1),q=interpolate(i/n),delta=q[0]-p[0];if(Math.abs(delta)>180){const edge=delta>0?-180:180,adjust=q[0]+(delta>0?-360:360),t=(edge-p[0])/(adjust-p[0]),lat=p[1]+(q[1]-p[1])*t;if(Number.isFinite(lat)){segment.push([edge,lat]);segments.push(segment);segment=[[-edge,lat],q];continue;}}segment.push(q);}
-  if(segment.length>1)segments.push(segment);if(segments.length)lines.push({type:'Feature',properties:{id:l.id,kind:l.kind},geometry:{type:'MultiLineString',coordinates:segments}});
+  if(segment.length>1)segments.push(segment);if(segments.length)lines.push({type:'Feature',properties:{id:l.id,kind:l.kind,color:threadTones[threads.find(t=>t.items.includes(l.source)&&t.items.includes(l.target))?.color]||'#b4d7de'},geometry:{type:'MultiLineString',coordinates:segments}});
  }
  return {stars:{type:'FeatureCollection',features:nodes},lines:{type:'FeatureCollection',features:lines},mapped:stars.length};
 }
 function collectionSummary(){const c=collectionState(),g=collectionGeometry();return {id:c?.id,name:c?.name,items:c?.items.filter(x=>x.type==='film').length||0,mapped:g.mapped,stars:g.stars.features.length,lines:g.lines.features.length,links:c?.links.length||0,saved:!!c&&store().saved(c.id)&&!store().dirty()};}
-function updateCollectionMap(){if(!liveReady)return;const c=collectionState(),key=JSON.stringify([c?.id,c?.items.map(x=>x.id),c?.pins,c?.threads.map(t=>[t.visible,t.items]),c?.links,linkFrom,linkTo]);if(key===collectionSourceKey)return;collectionSourceKey=key;const g=collectionGeometry();live.getSource('globe-collected')?.setData(g.stars);live.getSource('globe-authored-links')?.setData(g.lines);}
+function updateCollectionMap(){if(!liveReady)return;const c=collectionState(),key=JSON.stringify([c?.id,c?.items.map(x=>x.id),c?.pins,c?.threads.map(t=>[t.visible,t.color,t.items]),c?.links,linkFrom,linkTo]);if(key===collectionSourceKey)return;collectionSourceKey=key;const g=collectionGeometry();live.getSource('globe-collected')?.setData(g.stars);live.getSource('globe-authored-links')?.setData(g.lines);}
 function pickLink(id){if(!collectionState()?.items.some(x=>x.id===id&&x.type==='film'))return;if(!drawingLink){drawingLink=true;linkFrom=id;linkTo='';}else if(!linkFrom||linkFrom===id){linkFrom=id;linkTo='';}else{linkTo=id;}collectionNotice='';collectionPanelKey='';renderCollection();renderSoon();}
 function collectFilm(film,land){const ok=C().globeCollect(film,land);collectionNotice=ok?'Added to '+store().activeThread().name+'.':'Could not add this film.';collectionPanelKey='';focusKey='';drawEncounter();renderCollection();renderSoon();}
 function openCollected(x){const ref=C().reference(x);if(!ref||!pointById.has(ref.id)){collectionNotice='This film has no mapped reference. Open the flat workspace to view it.';renderCollection(true);return;}setMenu('');clearDiscoveryFilters();gotoLand(ref.id,x.id,true);}
+let readingJourney=null;
+function journeyItems(){const cur=collectionState(),t=store()?.activeThread();return (t?.items||[]).map(id=>cur.items.find(x=>x.id===id)).filter(x=>x?.type==='film'&&C().reference(x)&&pointById.has(C().reference(x).id));}
+function readJourneyStep(i){const cur=collectionState(),t=store().activeThread(),items=journeyItems();if(i<0||i>=items.length)return;readingJourney={collection:cur.id,thread:t.id,index:i,item:items[i].id};if(menuMode)setMenu('');clearDiscoveryFilters();gotoLand(C().reference(items[i]).id,items[i].id,true);focusKey='';renderSoon();}
+function journeyControls(film){if(!readingJourney)return null;const cur=collectionState(),t=store().activeThread(),items=journeyItems();if(readingJourney.collection!==cur.id||readingJourney.thread!==t.id){readingJourney=null;return null;}const i=items.findIndex(x=>x.id===readingJourney.item);if(i<0){readingJourney=null;return null;}const box=el('div','globe-reading-journey'),row=el('div','globe-buttons'),prev=button('‹',()=>readJourneyStep(i-1)),next=button('›',()=>readJourneyStep(i+1)),end=button('End',()=>{readingJourney=null;focusKey='';drawEncounter();});prev.disabled=i===0;next.disabled=i===items.length-1;prev.setAttribute('aria-label','Previous film in thread');next.setAttribute('aria-label','Next film in thread');row.append(prev,el('small',null,(i+1)+' / '+items.length),next,end);box.append(el('small','globe-source-label','Reading · '+t.name),row);
+ if(film.id!==items[i].id){box.append(button('Return to thread film',()=>readJourneyStep(i)));return box;}
+ const note=t.notes?.[film.id];if(note)box.append(el('p',null,note));
+ const incoming=i>0&&cur.links.find(l=>l.source===items[i-1].id&&l.target===film.id);if(incoming){box.append(el('small',null,'Your connection: '+incoming.label));if(incoming.note)box.append(el('p',null,incoming.note));}
+ return box;}
 function renderCollection(force=false){
  const panel=$('#globe-collection-panel'),toggle=$('#globe-collection-toggle'),cur=collectionState();if(!panel||!toggle||!cur)return;
  const films=cur.items.filter(x=>x.type==='film'),summary=collectionSummary();
@@ -699,7 +709,7 @@ function renderCollection(force=false){
  const edit=button('Open flat editor',()=>{close();C().open({dock:true});});settings.append(edit);panel.append(settings);if(films.length){const share=button('Share constellation',async()=>{const snapshot=C().shareURL('globe');if(!snapshot){collectionNotice='Too large to share as a link. Export JSON in the flat editor.';renderCollection(true);return;}const u=new URL(shareView());u.hash=new URL(snapshot).hash;try{await navigator.clipboard.writeText(u.href);collectionNotice='Constellation link copied.';renderCollection(true);}catch{const field=el('input');field.readOnly=true;field.value=u.href;field.setAttribute('aria-label','Shareable constellation link');share.after(field);field.select();}});actions.append(share);}
  const msg=el('p','globe-collection-info',collectionNotice||(!films.length?'Collect a film to begin.':'Choose films to revisit or connect.'));msg.setAttribute('role','status');panel.append(msg);
  if(!films.length)return;
- const draw=button(drawingLink?'Cancel connection':'Connect two films',()=>{drawingLink=!drawingLink;linkFrom=linkTo='';collectionNotice='';renderCollection(true);renderSoon();});draw.id='globe-draw-link';draw.disabled=films.length<2;draw.setAttribute('aria-pressed',String(drawingLink));panel.append(draw);
+ const draw=button(drawingLink?'Cancel connection':'Connect two films',()=>{drawingLink=!drawingLink;linkFrom=linkTo='';collectionNotice='';renderCollection(true);renderSoon();});draw.id='globe-draw-link';draw.disabled=films.length<2;draw.setAttribute('aria-pressed',String(drawingLink));panel.append(draw);if(!drawingLink&&journeyItems().length){const read=button('Read this thread',()=>readJourneyStep(0));read.id='globe-read-thread';panel.append(read);}
  if(drawingLink){panel.append(el('p','globe-collection-info',!linkFrom?'Choose the first film or star.':!linkTo?'Choose a different second film or star.':'Give your connection a reason.'));
   if(linkFrom&&linkTo){const form=el('form','globe-link-form'),from=films.find(x=>x.id===linkFrom),to=films.find(x=>x.id===linkTo);if(from&&to){form.append(el('strong',null,from.title+' → '+to.title));const reason=el('input');reason.id='globe-link-reason';reason.required=true;reason.maxLength=180;reason.placeholder='Why do these films connect?';reason.setAttribute('aria-label','Connection reason');const kind=el('select');kind.setAttribute('aria-label','Connection type');for(const [v,l] of [['interpretation','My interpretation'],['question','My question']]){const o=el('option',null,l);o.value=v;kind.append(o);}const note=el('textarea');note.placeholder='Optional note';note.setAttribute('aria-label','Connection note');note.maxLength=10000;const submit=el('button',null,'Save connection');submit.type='submit';form.append(reason,kind,note,submit);form.onsubmit=e=>{e.preventDefault();if(C().globeConnect(linkFrom,linkTo,reason.value,note.value,kind.value)){drawingLink=false;linkFrom=linkTo='';collectionNotice='Your connection is saved in the draft.';renderCollection(true);renderSoon();}};panel.append(form);}}
  }
@@ -714,7 +724,7 @@ function drawEncounter(){
  if(primary&&lastEncounter!==primary.id){filmOffset=0;lastEncounter=primary.id;}
  if(pendingFilm){const i=films.findIndex(f=>f.id===pendingFilm);if(i>=0){filmOffset=i;pendingFilm='';}}
  filmOffset=Math.min(filmOffset,Math.max(0,films.length-1));
- const sig=JSON.stringify([focusIds,inside.map(v=>v.id),primary?.id,films.map(f=>f.id),filmOffset,yearBand,currentTheme(),facetFilter,publicationStatus,pendingFilm,journey.length,collectionState()?.id,collectionState()?.activeThread,store()?.activeThread().items]);
+ const sig=JSON.stringify([focusIds,inside.map(v=>v.id),primary?.id,films.map(f=>f.id),filmOffset,yearBand,currentTheme(),facetFilter,publicationStatus,pendingFilm,journey.length,readingJourney,collectionState()?.id,collectionState()?.activeThread,store()?.activeThread().items]);
  if(sig===focusKey){placeEmergent();return;}focusKey=sig;panel.replaceChildren();panel.scrollTop=0;
  if(!primary){featured=null;panel.append(el('strong',null,'Explore the globe'),el('p','globe-empty','Move a light into the circle to discover cinema.'));status.textContent='No land reference in focus';placeEmergent();return;}
  recordVisit(primary);
@@ -733,7 +743,7 @@ function drawEncounter(){
   const facts=[format,length,runtime].filter(Boolean).join(' · ');if(facts)copy.append(el('small','globe-film-facts',facts));
   const {actions,profile,external}=encounterLinks(film,work);if(actions.childNodes.length)copy.append(actions);
   const inThread=store()?.activeThread().items.includes(film.id),collect=button(inThread?'Collected':'＋ Collect film',()=>collectFilm(film,primary.id),'globe-collect-film');collect.id='globe-collect-film';collect.disabled=!!inThread;copy.append(collect);
-  card.append(art,copy);panel.append(card);
+  card.append(art,copy);panel.append(card);const reading=journeyControls(film);if(reading)panel.append(reading);
   if(films.length>1){
    const nav=el('div','globe-encounter-nav'),prev=button('‹',()=>{filmOffset=(filmOffset+films.length-1)%films.length;focusKey='';drawEncounter();},'globe-cycle'),next=button('›',()=>{filmOffset=(filmOffset+1)%films.length;focusKey='';drawEncounter();},'globe-cycle');
    prev.setAttribute('aria-label','Previous film');next.setAttribute('aria-label','Next film');
