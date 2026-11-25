@@ -53,6 +53,31 @@ async def check(browser,name,viewport):
     assert not any(join[k] for k in ('missing','extra','badJoins','invalid','missingAnchors','anchorFailures')), (name,join)
     print(name,"exact geographic credit joins",join["credits"],"land anchors",join["points"],flush=True)
 
+    # Regression: Hawaiian catalogue identities and the Native Land source
+    # polygon must resolve to one real, contained geographic anchor.
+    hawaii = await page.evaluate("""() => {
+      const A=window.Atlas,C=window.AtlasConstellate,G=window.AtlasGlobe;
+      const land=A.landById('NAME-165'),I=C.globeCreditIndex(),entry=I.byLand.get('NAME-165');
+      const a=G.anchors.find(x=>x.id==='NAME-165');
+      const source=land?.groups.flatMap(g=>g.features).find(f=>String(f.id)==='35877');
+      const makers=new Set((entry?.films||[]).map(f=>f.record));
+      return {name:land?.name,source:source?.properties.name,coordinate:a?.coordinate,
+        contained:!!(a&&source&&d3.geoContains(source,a.coordinate)),
+        aliases:['NAME-166','NAME-167','LAND-35877'].every(id=>A.landById(id)?.id==='NAME-165'),
+        makers:makers.size,films:new Set((entry?.films||[]).map(f=>f.film||f.id)).size,
+        credits:entry?.films.length||0,
+        ciara:makers.has('DIR-0332'),erin:makers.has('NEW-4a265d56f02e'),
+        wongKalu:makers.has('NEW-5b2be22f2d92'),
+        badMaka:A.recordLandReferences('NEW-c2f1143331bb').some(r=>r.id==='LAND-33208')};
+    }""")
+    assert hawaii["name"] == "Hawaiʻi" and hawaii["source"] == "Nā moku ʻehā", hawaii
+    assert hawaii["contained"] and hawaii["aliases"] and not hawaii["badMaka"], hawaii
+    assert -157 < hawaii["coordinate"][0] < -154 and 18 < hawaii["coordinate"][1] < 21, hawaii
+    assert hawaii["makers"] >= 30 and hawaii["films"] >= 60, hawaii
+    assert hawaii["ciara"] and hawaii["erin"] and hawaii["wongKalu"], hawaii
+    print(name,"HAWAII_LAND_RELAY",hawaii,flush=True)
+
+
     await page.wait_for_function("window.AtlasGlobe.terrain in {'tiled':1,'ready':1,'unavailable':1}",timeout=25000)
     await page.wait_for_function("window.AtlasGlobe.camera.renderer === 'maplibre-globe'",timeout=40000)
     assert await page.evaluate("window.AtlasGlobe.tileState?.mesh === null"),(name,"overview should not load an elevation mesh")
