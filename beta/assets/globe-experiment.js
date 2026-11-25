@@ -166,7 +166,7 @@ function queueOverviewZoom(delta){
   const current=Math.log2(zoom),remaining=wheelGoal-current,dt=wheelTick?clamp(t-wheelTick,1,80):16.7;wheelTick=t;
   const next=reduced.matches||Math.abs(remaining)<.008?wheelGoal:current+remaining*(1-Math.exp(-dt/62));
   zoom=Math.pow(2,next);renderSoon();
-  if(Math.abs(wheelGoal-next)>.008||t-wheelLast<90){wheelFrame=requestAnimationFrame(frame);return;}
+  if(Math.abs(wheelGoal-next)>1e-9||t-wheelLast<90){wheelFrame=requestAnimationFrame(frame);return;}
   stopWheel();finishMove();
  }
  wheelFrame=requestAnimationFrame(frame);
@@ -394,7 +394,7 @@ function loadRelief(){
     const pitch=landscape?42*clamp((next-5.4)/1.6,0,1):live.getPitch();
     live.jumpTo({center:live.getCenter(),zoom:next,pitch});
    }
-   if(Math.abs(wheelGoal-live.getZoom())>.008||t-wheelLast<90){wheelFrame=requestAnimationFrame(frame);return;}
+   if(Math.abs(wheelGoal-live.getZoom())>1e-5||t-wheelLast<90){wheelFrame=requestAnimationFrame(frame);return;}
    stopWheel(false);readLiveCamera();syncTerrain();inputStats.lastAfter=live.getZoom();if(live.getZoom()<=5.4&&landscape){landscape=false;$('#globe-landscape').setAttribute('aria-pressed','false');}finishMove();updateDetailStatus(true);
   }
   wheelFrame=requestAnimationFrame(frame);
@@ -575,7 +575,7 @@ function loadRelief(){
     $('#globe-landscape').hidden=false;
     live.on('zoomend',()=>{if(landscape&&!wheelActive&&live.getZoom()<7){const pitch=42*clamp((live.getZoom()-5.4)/1.6,0,1);if(live.getZoom()<=5.4){landscape=false;$('#globe-landscape').setAttribute('aria-pressed','false');}if(Math.abs(live.getPitch()-pitch)>.5)live.easeTo({pitch,duration:reduced.matches?0:200});}});
     live.getCanvas().setAttribute('aria-label','Rotate and zoom the globe; Enter explores the focused lands');
-    live.getCanvas().addEventListener('keydown',e=>{if(e.key==='Enter'&&focusIds.length){e.preventDefault();focusEncounter();return;}if(['+','=','-'].includes(e.key)&&!e.ctrlKey&&!e.metaKey){e.preventDefault();e.stopImmediatePropagation();queueZoom((wheelGoal??live.getZoom())+(e.key==='-'?-.65:.65));}},{capture:true});
+    live.getCanvas().addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();if(settled&&focusIds.length)focusEncounter();return;}if(['+','=','-'].includes(e.key)&&!e.ctrlKey&&!e.metaKey){e.preventDefault();e.stopImmediatePropagation();queueZoom((wheelGoal??live.getZoom())+(e.key==='-'?-.65:.65));}},{capture:true});
     live.on('movestart',()=>{if(!liveReady||wheelActive)return;liveMoved=true;movement();});
     live.on('move',()=>{if(!liveReady)return;readLiveCamera();renderSoon();if(!settled)scheduleSettle(180);});
     live.on('idle',()=>{if(!settled&&!wheelActive)scheduleSettle(100);updateDetailStatus(true);});
