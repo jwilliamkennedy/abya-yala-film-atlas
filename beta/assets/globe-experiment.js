@@ -729,7 +729,7 @@ function collectionGeometry(){
 function collectionSummary(){const c=collectionState(),g=collectionGeometry();return {id:c?.id,name:c?.name,items:c?.items.filter(x=>x.type==='film').length||0,mapped:g.mapped,stars:g.stars.features.length,lines:g.lines.features.length,links:c?.links.length||0,saved:!!c&&store().saved(c.id)&&!store().dirty()};}
 function updateCollectionMap(){if(!liveReady)return;const c=collectionState(),key=JSON.stringify([c?.id,c?.items.map(x=>x.id),c?.pins,c?.threads.map(t=>[t.visible,t.color,t.items]),c?.links,linkFrom,linkTo]);if(key===collectionSourceKey)return;collectionSourceKey=key;const g=collectionGeometry();live.getSource('globe-collected')?.setData(g.stars);live.getSource('globe-authored-links')?.setData(g.lines);}
 function pickLink(id){if(!collectionState()?.items.some(x=>x.id===id&&x.type==='film'))return;if(!drawingLink){drawingLink=true;linkFrom=id;linkTo='';}else if(!linkFrom||linkFrom===id){linkFrom=id;linkTo='';}else{linkTo=id;}collectionNotice='';collectionPanelKey='';renderCollection();renderSoon();}
-function collectFilm(film,land){const ok=C().globeCollect(film,land);collectionNotice=ok?'Added to '+store().activeThread().name+'.':'Could not add this film.';collectionPanelKey='';focusKey='';drawEncounter();renderCollection();renderSoon();}
+function collectFilm(film,land){const ok=C().globeCollect(film,land);collectionNotice=ok?'Added to '+store().activeThread().name+'.':'Could not add this film.';collectionPanelKey='';updateCollectButton();renderCollection();renderSoon();sync();}
 function openCollected(x){const ref=C().reference(x);if(!ref||!pointById.has(ref.id)){collectionNotice='This film has no mapped reference. Open the flat workspace to view it.';renderCollection(true);return;}setMenu('');clearDiscoveryFilters();gotoLand(ref.id,x.id,true);}
 let readingJourney=null;
 function journeyItems(){const cur=collectionState(),t=store()?.activeThread();return (t?.items||[]).map(id=>cur.items.find(x=>x.id===id)).filter(x=>x?.type==='film'&&C().reference(x)&&pointById.has(C().reference(x).id));}
@@ -777,6 +777,7 @@ function renderCollection(force=false){
  if(cur.links.length){const details=el('details','globe-authored-list');details.append(el('summary',null,'Your connections ('+cur.links.length+')'));for(const l of cur.links){const a=cur.items.find(x=>x.id===l.source),b=cur.items.find(x=>x.id===l.target);if(a&&b)details.append(el('p',null,a.title+' → '+b.title+' · '+l.label+' ('+l.kind+')'));}panel.append(details);}
  restoreCollectionPanel();
 }
+function updateCollectButton(){const b=$('#globe-collect-film');if(!b||!featured)return;const on=!!store()?.activeThread().items.includes(featured.film.id);b.disabled=on;b.textContent=on?'Collected':'＋ Collect film';}
 function drawEncounter(){
  const panel=$('#globe-encounter'),status=$('#globe-status'),actual=new Set(inside.map(r=>r.id));
  const chosen=focusIds.map(id=>byId.get(id)).filter(Boolean);
@@ -785,8 +786,8 @@ function drawEncounter(){
  if(primary&&lastEncounter!==primary.id){filmOffset=0;lastEncounter=primary.id;}
  if(pendingFilm){const i=films.findIndex(f=>f.id===pendingFilm);if(i>=0){filmOffset=i;pendingFilm='';}}
  filmOffset=Math.min(filmOffset,Math.max(0,films.length-1));
- const sig=JSON.stringify([focusIds,inside.map(v=>v.id),primary?.id,films.map(f=>f.id),filmOffset,yearBand,currentTheme(),facetFilter,publicationStatus,pendingFilm,journey.length,readingJourney,collectionState()?.id,collectionState()?.activeThread,store()?.activeThread().items]);
- if(sig===focusKey){const link=panel.querySelector('[data-view-kind^="indexed-"]');if(link&&featured)link.href=watchURL(featured.film);placeEmergent();return;}focusKey=sig;
+ const sig=JSON.stringify([focusIds,inside.map(v=>v.id),primary?.id,films.map(f=>f.id),filmOffset,yearBand,currentTheme(),facetFilter,publicationStatus,pendingFilm,journey.length,readingJourney,readingJourney?collectionState()?.id:null,readingJourney?collectionState()?.activeThread:null,readingJourney?store()?.activeThread().items:null]);
+ if(sig===focusKey){updateCollectButton();const link=panel.querySelector('[data-view-kind^="indexed-"]');if(link&&featured)link.href=watchURL(featured.film);placeEmergent();return;}focusKey=sig;
  const nextFilm=films[filmOffset],sameEncounter=!!primary&&panel.dataset.land===primary.id&&panel.dataset.film===(nextFilm?.id||'');
  const savedScroll=sameEncounter?panel.scrollTop:0,openDetails=[...panel.querySelectorAll('details[open]')].map(d=>d.classList[0]);
  const oldArt=sameEncounter?panel.querySelector('.globe-feature-art'):null;
