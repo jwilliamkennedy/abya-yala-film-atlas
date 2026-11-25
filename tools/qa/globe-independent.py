@@ -156,7 +156,7 @@ async def run(browser,name,viewport):
             await page.wait_for_function("(id)=>window.AtlasGlobe.focus.settled && window.AtlasGlobe.focus.ids.includes(id)",arg=land)
             await page.locator("#globe-encounter .globe-film-title").wait_for()
             first=await page.locator("#globe-encounter .globe-film-title").inner_text()
-            await page.locator('[aria-label="Next film"]').focus()
+            await page.locator('#globe-encounter [aria-label="Next film"]').focus()
             await page.keyboard.press("Enter")
             assert await page.evaluate("document.activeElement?.getAttribute('aria-label')==='Next film'"),(name,"film navigation lost keyboard focus")
             assert await page.locator("#globe-encounter .globe-film-title").inner_text()!=first or await page.evaluate("window.AtlasGlobe.discovery.filmOffset===1")
