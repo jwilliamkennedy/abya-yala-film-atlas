@@ -1,0 +1,5 @@
+# CSV-to-globe concordance
+
+The globe uses the published baked catalogue (beta/atlas-data.js) and exact filmmaker_id + film_id credits. It does not fetch six CSV downloads at startup. Full credit and sources lazily fetches the public Published CSV on request, parses quoted and multiline fields, and exposes every nonempty public column for the exact credit. No internal columns or private workbook access. The feature card uses exact-ID facet language/form/length, runtime, and exact maker page URL. Find searches catalogue credits, including unmapped credits (no invented geography).
+
+Dedicated CSV audit compares six exports against runtime, logs counts and field differences, and publishes JSON report as a workflow artifact. Missing Published credits/makers fail the job; other mismatches are explicitly reported for reconciliation, not silently replaced. This is a diagnostic, not proof of parity until CI runs. No data files edited.

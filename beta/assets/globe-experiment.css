@@ -242,3 +242,10 @@ body.atlas-globe-experiment #globe-close{position:static;z-index:auto;width:100%
  #globe-encounter .globe-overlap,#globe-encounter .globe-film-extras{font-size:11px}
 }
 @media(max-height:500px) and (orientation:landscape){#atlas-rotational-globe .globe-guide{top:48px}.globe-menu-panel{max-height:calc(100vh - 125px)}.globe-zoom{bottom:62px}}
+
+/* Exact public metadata is available without crowding the default encounter. */
+#globe-encounter .globe-credit-details{font:12px/1.4 system-ui,sans-serif;color:#c6d6d7}
+.globe-credit-details summary{cursor:pointer;padding:4px 0}.globe-credit-data{overflow-wrap:anywhere}.globe-data-group{margin:9px 0}.globe-data-group dl{margin:5px 0;display:grid;grid-template-columns:minmax(75px,35%) minmax(0,1fr);gap:4px 8px}.globe-data-group dt{font-weight:600;color:#bdced1}.globe-data-group dd{margin:0;white-space:pre-wrap;color:#e4ece9}.globe-credit-data a,.globe-search-result a{color:#bcded5;text-underline-offset:2px}
+#globe-search{min-height:40px;box-sizing:border-box;width:100%;background:#20374b;color:#eef1f4;border:1px solid #678095;border-radius:5px;padding:6px;font:13px system-ui,sans-serif}
+#globe-search-results:empty{display:none}.globe-search-result{display:grid;gap:3px;border-bottom:1px solid #527078;padding:5px 0}.globe-search-result small{font-size:11px;color:#bfccd0}.globe-search-film{width:100%;text-align:left;background:transparent;color:#eef1f4;border:0;padding:5px;font:600 12px/1.35 system-ui,sans-serif;cursor:pointer}
+@media(max-width:760px){#globe-search{font-size:16px;min-height:44px}}

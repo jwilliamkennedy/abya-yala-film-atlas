@@ -6,6 +6,9 @@ on:
       - 'beta/assets/globe-experiment.*'
       - 'beta/index.html'
       - 'tools/qa/globe-independent.py'
+      - 'tools/qa/globe-csv-concordance.py'
+      - 'beta/data/*.csv'
+      - 'beta/atlas-data.js'
       - '.github/workflows/globe-independent.yml'
   workflow_dispatch:
 permissions:
@@ -16,7 +19,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        mode: [terrain, discovery, input]
+        mode: [terrain, discovery, input, csv]
     runs-on: ubuntu-latest
     timeout-minutes: 12
     steps:
@@ -27,7 +30,7 @@ jobs:
       - run: |
           python3 -m http.server 8985 --bind 127.0.0.1 >/tmp/globe-independent.log 2>&1 &
           sleep 2
-          python3 tools/qa/globe-independent.py ${{ matrix.mode }}
+          if [ '${{ matrix.mode }}' = csv ]; then python3 tools/qa/globe-csv-concordance.py; else python3 tools/qa/globe-independent.py ${{ matrix.mode }}; fi
       - uses: actions/upload-artifact@v4
         if: always()
         with:

@@ -130,6 +130,11 @@ async def run(browser,name,viewport):
             for a in art:
                 assert a["fit"]=="contain" and a["filter"]=="none" and a["opacity"]=="1",(name,"washed artwork",a)
             print(name,"artwork dimensions",json.dumps(art),flush=True)
+            await page.locator(".globe-credit-details summary").click()
+            await page.wait_for_function("document.querySelector('.globe-credit-data dl') || document.querySelector('.globe-credit-data p')?.textContent.includes('No exact row')",timeout=30000)
+            assert await page.locator(".globe-credit-data dl").count()>0,(name,"featured credit missing from public CSV")
+            assert await page.locator(".globe-credit-data").get_by_text("Film id",exact=True).count()>0
+            await page.locator(".globe-credit-details summary").click()
             print(name,"emergent artwork",await page.evaluate("window.AtlasGlobe.discovery.posterVisible"),flush=True)
             assert await page.evaluate("window.AtlasGlobe.discovery.recent.length>0")
             await shot(page,f"shots/globe-independent/{name}-encounter.png")
