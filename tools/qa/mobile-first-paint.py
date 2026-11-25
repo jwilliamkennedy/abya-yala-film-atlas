@@ -35,7 +35,7 @@ JS=r"""() => {
   cinemaChecked:$('#layer-cinema')?.checked??null,
   outlinesChecked:$('#layer-boundaries')?.checked??null,
   inboundWorld:document.documentElement.dataset.atlasInboundWorld||null,
-  unmappedClass:document.body.classList.contains('atlas-unmapped'),
+  unmappedClass:!!document.body?.classList.contains('atlas-unmapped'),
   unmapParent:$('#atlas-unmap')?.parentElement?.className||null,
   unmapPressed:$('#atlas-unmap')?.getAttribute('aria-pressed')||null,
   unmapText:$('#atlas-unmap')?.textContent.trim()||null,
@@ -69,7 +69,8 @@ async def case(browser,engine,name,route,width,persisted=None):
   await asyncio.sleep(0.9)
   await req.continue_()
  await p.route('**/assets/world-50m.json', delay_world)
- url=BASE+route+('?constellate=1' if name=='constellate' else '?globe=0' if route=='beta/index.html' else '')
+ route=route.replace('beta/index.html','beta/flat.html')
+ url=BASE+route+('?constellate=1' if name=='constellate' else '')
  samples=[]
  try:
   await p.goto(url,wait_until='domcontentloaded',timeout=90000)
