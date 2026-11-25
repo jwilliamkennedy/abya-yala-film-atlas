@@ -133,7 +133,11 @@ async def main():
                     await watch_tab.wait_for_function("(u)=>document.querySelector('#now-external-link')?.getAttribute('href')===u",arg=next(l['url'] for l in entry['links'] if l['url'].startswith('https:')))
                     assert await watch_tab.locator('#now-external-link').is_visible()
                 print("WATCH_RETURN_REQUEST",watch_tab.url,"expected query",query,flush=True)
-                await watch_tab.locator("#watch-return-globe").wait_for(state="visible",timeout=30000)
+                try:
+                    await watch_tab.locator("#watch-return-globe").wait_for(state="visible",timeout=30000)
+                except Exception:
+                    print("WATCH_RETURN_DIAGNOSTICS",json.dumps(await watch_tab.evaluate("""()=>{const link=document.querySelector('#watch-return-globe');return {url:location.href,origin:document.documentElement.dataset.watchOrigin,link:link?.outerHTML,display:link&&getComputedStyle(link).display,rect:link?.getBoundingClientRect().toJSON(),ready:document.readyState,helper:!!window.AtlasRouteTools,title:document.querySelector('#now-title')?.textContent}}""")),flush=True)
+                    raise
                 href=await watch_tab.locator("#watch-return-globe").get_attribute("href")
                 assert parse_qs(urlparse(href).query)==parse_qs(query),(href,shared)
                 print("WATCH_RETURN",entry["fid"],"embedded" if embedded else "external",flush=True)

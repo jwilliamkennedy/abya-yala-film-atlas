@@ -665,7 +665,8 @@ jobs:
             if beta and not await p.locator('.weave-more').evaluate('(e)=>e.open'):
               await press(p,'.weave-more > summary')
             await press(p,'#weave-focus-thread')
-            assert await p.locator('#weave-focus-thread').inner_text()=='Show all threads',(label,'focus action label')
+            await p.wait_for_function("document.querySelector('#weave-focus-thread')?.getAttribute('aria-pressed')==='true'")
+            assert (await p.locator('#weave-focus-thread').text_content()).strip()=='Show all threads',(label,'focus action label')
             focused=await p.evaluate("() => window.AtlasCollections.current().threads.map(t=>({id:t.id,visible:t.visible,items:t.items.slice()}))")
             assert before==focused,(label,'focus mutated saved thread data')
             if beta:

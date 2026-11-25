@@ -1,6 +1,6 @@
 'use strict';
 const assert=require('node:assert/strict');
-const {resolve}=require('../../beta/assets/atlas-route.js');
+const {resolve,watchReturn}=require('../../beta/assets/atlas-route.js');
 const base='https://example.test/abya-yala-film-atlas/beta/';
 const cases=[
  ['',true,''],
@@ -29,3 +29,11 @@ for(const [suffix,globe,expected] of cases){
  assert.equal(result.canonical,base+(globe?'':'flat.html')+expected,suffix);
 }
 console.log('Atlas route checks passed:',cases.length);
+
+const watch=new URL('watch.html',base);
+assert.equal(watchReturn(watch.href),null);
+watch.searchParams.set('fromGlobe','at=-91%2C12%2C2&film=film%3ADIR-1%3AFILM-2&trace=1&traceTheme=Water&next=https://evil.example');
+const expectedBack=base+'?at=-91%2C12%2C2&film=film%3ADIR-1%3AFILM-2&trace=1&traceTheme=Water';
+for(const hash of ['#FILM-0008','#FILM-0027','']){watch.hash=hash;assert.equal(watchReturn(watch.href),expectedBack);}
+watch.searchParams.set('fromGlobe','https://evil.example');assert.equal(watchReturn(watch.href),base);
+console.log('Watch origin route checks passed');

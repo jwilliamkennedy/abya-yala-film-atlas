@@ -20,11 +20,9 @@ const params=new URLSearchParams(location.search);
 // The presence of fromGlobe is the navigation intent, even when a camera
 // was not yet available. Restore only allowlisted atlas state, never a URL.
 function syncGlobeReturn(){
- const query=new URLSearchParams(location.search),link=$('#watch-return-globe');
- if(!query.has('fromGlobe')){if(link)link.hidden=true;return;}
- const inbound=new URLSearchParams(query.get('fromGlobe')||''),back=new URL('./',location.href);
- for(const k of ['at','pitch','territories','land','film','maker','themes','period','lands','edges','language','form','length','menu','trace','traceTheme'])if(inbound.has(k))back.searchParams.set(k,inbound.get(k));
- if(link){link.href=back.href;link.hidden=false;}
+ const back=window.AtlasRouteTools.watchReturn(location.href),link=$('#watch-return-globe');
+ if(back&&link){link.href=back;document.documentElement.dataset.watchOrigin='globe';}
+ else{delete document.documentElement.dataset.watchOrigin;if(link)link.href='./';}
 }
 syncGlobeReturn();addEventListener('pageshow',syncGlobeReturn);addEventListener('popstate',syncGlobeReturn);addEventListener('hashchange',syncGlobeReturn);
 const state={view:'browse',q:'',theme:params.get('theme')||'',pick:null,sort:'title',here:false,now:null};
@@ -37,6 +35,7 @@ const listNames=a=>a.length<2?a.join(''):a.slice(0,-1).join(', ')+' and '+a[a.le
 const frame=$('#now-frame');frame.referrerPolicy='strict-origin-when-cross-origin';
 const withAutoplay=u=>u+(u.includes('?')?'&':'?')+'autoplay=1';
 function play(f,{scroll=false,quiet=false,auto=false}={}){
+ syncGlobeReturn();
  const embed=playable(f),l=embed||f.links.find(v=>{try{return new URL(v.url).protocol==='https:';}catch{return false;}});if(!l)return;state.now=f.fid;
  const box=frame.parentElement,outside=$('#now-external'),link=$('#now-external-link');
  // Keep a single permanent provider link and switch its visibility only after its target is set.

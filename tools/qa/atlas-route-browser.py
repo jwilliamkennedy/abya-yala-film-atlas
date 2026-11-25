@@ -76,6 +76,14 @@ async def main():
             href=await link.get_attribute("href")
             assert urlsplit(href).path==urlsplit(BASE).path
             assert parse_qs(urlsplit(href).query)==parse_qs(state),(href,state)
+        entries=await page.evaluate("ATLAS_WATCH.films.slice(0,2).map(f=>({id:f.fid,title:f.t}))")
+        assert len(entries)==2
+        initial=await page.locator("#watch-return-globe").get_attribute("href")
+        for entry in entries:
+            await page.evaluate("id=>{location.hash=encodeURIComponent(id)}",entry["id"])
+            await page.wait_for_function("title=>document.querySelector('#now-title')?.textContent.startsWith(title)",arg=entry["title"])
+            assert await page.locator("#watch-return-globe").is_visible()
+            assert await page.locator("#watch-return-globe").get_attribute("href")==initial
         await page.goto(BASE+"watch.html",wait_until="domcontentloaded",timeout=90000)
         assert await page.locator("#watch-return-globe").is_hidden()
         print("WATCH_RETURN_ROUTES passed",flush=True)

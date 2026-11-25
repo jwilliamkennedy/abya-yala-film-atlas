@@ -180,14 +180,21 @@ async def con_start(page, base):
     an empty constellation leaves the side panel closed; a land's films can be added from the panel."""
     await page.goto(base + ("?globe=0" if "/beta/" in base else ""), wait_until="load")
     await page.wait_for_function("window.AtlasConstellate && window.AtlasCollections", timeout=60000); await fallback_map(page)
-    await page.wait_for_selector(".fw-proxy", timeout=20000)
-    await page.evaluate("document.querySelector('.fw-proxy').click()")
+    if "/beta/" in base:
+        await page.wait_for_selector(".fw-proxy", timeout=20000)
+        await page.evaluate("document.querySelector('.fw-proxy').click()")
+    else:
+        await page.goto(base+"?constellate=1",wait_until="load")
+        await constellate_ready(page)
     await page.wait_for_function("document.body.classList.contains('is-constellating')", timeout=10000)
     await page.wait_for_timeout(800)
     s = await page.evaluate("""() => ({ night: document.documentElement.dataset.readingTheme === 'night',
       start: !!document.querySelector('#weave-start') && document.querySelector('#weave-start').getClientRects().length > 0,
       rail: !!document.querySelector('#atlas-rail [data-rail="constellate"]') })""")
-    need(s["night"] and not s["start"] and not s["rail"], "Constellate should open on a night map, with no start screen and no left-menu item", s)
+    if "/beta/" in base:
+        need(s["night"] and not s["start"] and not s["rail"], "Hidden beta Constellate should open on a night map, with no start screen or left-menu item", s)
+    else:
+        need(await page.evaluate("window.AtlasConstellate.enabled && !!window.AtlasCollections.current()"), "Published legacy Constellate did not initialize", s)
 
 
 async def con_follow(page, base):
@@ -237,7 +244,12 @@ async def phone_trace(page, base):
 async def con_select(page, base):
     await con_build(page, base)
     await settle(page)
-    await page.click("#constellate-graph .weave-star-label >> nth=2", force=True)
+    nodes=page.locator("#constellate-graph [data-constellate-node][tabindex='0']:visible")
+    if await nodes.count():
+        await nodes.first.focus()
+        await nodes.first.press("Enter")
+    else:
+        await page.locator("#constellate-graph .weave-star-label:visible").first.click(force=True)
     await page.wait_for_selector("#constellate-context h3", state="visible", timeout=8000)
     need(await page.evaluate("document.querySelectorAll('#constellate-graph .constellate-card').length >= 1"), "selecting a film did not open its card")
 
@@ -288,8 +300,7 @@ async def con_threads(page, base):
 
 
 async def con_connect(page, base):
-    """24 Nov 2026: no Link mode. The order of a thread is its links; between two films in the list,
-    "Why here?" (a quiet control on the row) opens the reason form for that pair, and saving it adds one connection shown above the film."""
+    """Check compact toolbar and authored adjacent-film reasons; Link remains available directly or in Add."""
     await con_build(page, base)
     if "/beta/" not in base:
         return
@@ -298,7 +309,8 @@ async def con_connect(page, base):
     bar = await page.evaluate("""() => { const b = document.querySelector('#constellate-mode'), r = b.getBoundingClientRect();
       const shown = id => { const e = document.getElementById(id); return !!e && e.getClientRects().length > 0 && getComputedStyle(e).visibility !== 'hidden'; };
       return { h: r.height, link: shown('weave-draw-thread'), build: shown('constellate-edit'), read: shown('constellate-read'), add: !!b.querySelector('.cm-add'), phone: innerWidth <= 700 }; }""")
-    need(bar["h"] <= 56 and not bar["link"] and not bar["build"] and (bar["read"] or bar["phone"]) and bar["add"], "toolbar should be one row with Add and Read, and no Link or Build", bar)
+    need(bar["h"] <= 56 and not bar["build"] and (bar["read"] or bar["phone"]) and bar["add"], "compact toolbar should be one row with Add and Read, without the hidden Build control", bar)
+    need(await page.locator("#weave-draw-thread").count()==1, "Link control should have one live instance")
     before = await page.evaluate("""() => { const C = window.AtlasConstellate, c = window.AtlasCollections.current();
       const have = new Set(c.items.map(x => x.film).filter(Boolean)), x = C.catalog.find(x => x.type === 'film' && !have.has(x.film));
       if (!x || !C.add(x)) return null;
@@ -334,9 +346,14 @@ async def con_unmapped(page, base):
 async def con_night(page, base):
     """Constellate opens at night (24 Nov 2026); the theme switch still gives a day view inside it."""
     await con_build(page, base)
-    need(await page.evaluate("document.documentElement.dataset.readingTheme === 'night'"), "Constellate did not open at night")
-    await page.click(".ui-theme-toggle")
-    await page.wait_for_function("document.documentElement.dataset.readingTheme === 'paper'", timeout=8000)
+    initial=await page.evaluate("document.documentElement.dataset.readingTheme")
+    if "/beta/" in base:
+        need(initial=="night", "Beta Constellate did not open at night")
+    else:
+        need(initial in ("paper","night"), "Unknown reading theme", initial)
+    for target in (("paper" if initial=="night" else "night"),initial):
+        await page.click(".ui-theme-toggle")
+        await page.wait_for_function("t=>document.documentElement.dataset.readingTheme===t",arg=target,timeout=8000)
 
 
 async def no_overflow(page):

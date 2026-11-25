@@ -22,9 +22,21 @@ function resolve(href){
  if(hash.has('weave'))canonical.hash='weave='+hash.get('weave');
  return {globe:true,canonical:canonical.href};
 }
-if(typeof module!=='undefined'&&module.exports)module.exports={resolve};
+// Watch origin belongs to the query, not to the currently playing film hash.
+function watchReturn(href){
+ const source=new URL(href),q=source.searchParams;
+ if(!q.has('fromGlobe'))return null;
+ const state=new URLSearchParams(q.get('fromGlobe')||''),back=new URL('./',source);
+ for(const key of stateKeys)if(state.has(key))back.searchParams.set(key,state.get(key));
+ return back.href;
+}
+const tools=Object.freeze({resolve,watchReturn});
+if(typeof module!=='undefined'&&module.exports)module.exports=tools;
 else {
- root.AtlasRoute=Object.freeze(resolve(location.href));
- if(!root.AtlasRoute.globe)location.replace(root.AtlasRoute.canonical);
+ root.AtlasRouteTools=tools;
+ if(root.document.documentElement.dataset.atlasEntry==='globe'){
+  root.AtlasRoute=Object.freeze(resolve(location.href));
+  if(!root.AtlasRoute.globe)location.replace(root.AtlasRoute.canonical);
+ }
 }
 })(typeof globalThis!=='undefined'?globalThis:this);
