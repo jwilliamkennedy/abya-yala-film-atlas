@@ -169,6 +169,7 @@ async def run(browser,name,viewport):
             await page.locator("#globe-landscape").click()
             await page.wait_for_function("window.AtlasGlobe.tileState.pitch>35 && window.AtlasGlobe.focus.settled")
             await shot(page,f"shots/globe-independent/{name}-tilted.png")
+            assert await page.evaluate("Math.abs(Number(new URL(AtlasGlobe.discovery.shareURL).searchParams.get('pitch'))-AtlasGlobe.tileState.pitch)<.02"),(name,"shared terrain pitch missing")
             # Confirm that the actual reticle, geographic hit test and encounter
             # remain aligned through close zoom, including a pitched terrain view.
             await page.locator("#globe-more-toggle").click()
@@ -245,7 +246,9 @@ async def run(browser,name,viewport):
             cam=await page.evaluate("window.AtlasGlobe.camera")
             await page.locator("#globe-theme-toggle").click()
             assert await page.locator("#weave-map-theme").is_visible()
-            await page.locator("#weave-map-theme").select_option("Water")
+            atomic=await page.locator("#weave-map-theme").evaluate("""e=>{e.value='Water';e.dispatchEvent(new Event('change',{bubbles:true}));const panel=document.querySelector('#globe-encounter'),probe=document.createElement('button');let activated=false;panel.append(probe);probe.onclick=()=>activated=true;const evt=new MouseEvent('click',{bubbles:true,cancelable:true});probe.dispatchEvent(evt);probe.remove();return {busy:panel.getAttribute('aria-busy'),settled:AtlasGlobe.focus.settled,activated,prevented:evt.defaultPrevented};}""")
+            assert atomic=={"busy":"true","settled":False,"activated":False,"prevented":True},(name,"theme changes exposed stale encounter",atomic)
+            await page.wait_for_function("AtlasGlobe.focus.settled")
             await page.wait_for_function("!document.querySelector('#globe-theme-coverage').hidden && window.AtlasGlobe.discovery.themeCoverage.credits>0")
             assert await page.evaluate("""()=>{const G=window.AtlasGlobe,sets=G.anchors.map(a=>G.matchingCreditIds(a.id)),coverage=G.discovery.themeCoverage;return coverage.lands===sets.filter(x=>x.length).length&&coverage.credits===new Set(sets.flat()).size;}""")
             await page.locator("#weave-map-theme").select_option("")
@@ -386,6 +389,7 @@ async def run(browser,name,viewport):
             assert await page.evaluate('''(f)=>{const G=window.AtlasGlobe,C=window.AtlasConstellate,I=C.globeCreditIndex(),byId=new Map(I.films.map(x=>[x.id,x]));return G.anchors.every(a=>G.matchingCreditIds(a.id).every(id=>C.globeMetadata(byId.get(id))?.f===f));}''',form),(name,'form filter leaked into geographic selection')
             assert await page.evaluate("new URL(window.AtlasGlobe.discovery.shareURL).searchParams.has('form')")
             await page.locator('#globe-clear-filters').click()
+            await page.wait_for_function("AtlasGlobe.focus.settled")
             assert await page.evaluate("Object.values(window.AtlasGlobe.discovery.filters).every(v=>!v) && !new URL(window.AtlasGlobe.discovery.shareURL).searchParams.has('form')")
             await page.locator('.globe-catalog-filters summary').click()
             await page.locator("#globe-period").select_option("2020")
