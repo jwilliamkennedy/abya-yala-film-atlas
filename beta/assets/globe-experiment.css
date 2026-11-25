@@ -320,3 +320,15 @@ body.atlas-globe-experiment #globe-close{position:static;z-index:auto;width:100%
 #globe-collection-panel .globe-collected-list{display:grid;gap:6px}#globe-collection-panel .globe-collected-list>div{display:grid;gap:2px;border-top:1px solid #607b7e55;padding:5px 0}#globe-collection-panel .globe-collected-item{text-align:left;white-space:normal;overflow-wrap:anywhere}#globe-collection-panel .globe-collected-item[aria-pressed=true]{border-color:#bfdbd4;background:#355762}#globe-collection-panel small{font-size:11px;color:#b6cbcb}#globe-collection-panel .globe-link-form{display:grid;gap:6px}#globe-collection-panel .globe-authored-list p{font:12px/1.4 system-ui,sans-serif;overflow-wrap:anywhere}
 #globe-encounter .globe-collect-film{align-self:flex-start;color:#d4e8dd;background:#24473e;border:1px solid #71998a;border-radius:5px;padding:5px 8px;font:600 12px/1.4 system-ui,sans-serif;cursor:pointer}#globe-encounter .globe-collect-film:disabled{opacity:.65;cursor:default}
 @media(max-width:760px){#globe-collection-toggle{min-height:32px;margin-top:4px}#globe-collection-panel{max-height:55vh}#globe-collection-panel input,#globe-collection-panel select,#globe-collection-panel textarea{font-size:16px}}
+
+/* Globe owns its navigation; the flat toolbar returns only on leaving globe. */
+body.atlas-globe-experiment #constellate-mode{display:none!important}
+#atlas-rotational-globe .globe-instructions{display:none}
+#atlas-rotational-globe .globe-guide{top:12px}
+#atlas-rotational-globe #globe-collection-toggle{margin:0;padding:5px 8px;min-height:32px;background:transparent;border:0;font-size:12px;white-space:nowrap}
+#atlas-rotational-globe .globe-primary{flex-wrap:wrap;justify-content:flex-end}
+#globe-collection-panel .globe-collection-settings{border-top:1px solid #607b7e55;padding-top:5px}#globe-collection-panel .globe-collection-settings[open]{display:grid;gap:6px}
+#atlas-rotational-globe.globe-live #globe-surface{visibility:visible;opacity:1;pointer-events:none;transition:opacity .25s ease}
+#atlas-rotational-globe.globe-live.globe-revealed #globe-surface{opacity:0}
+@media(prefers-reduced-motion:reduce){#atlas-rotational-globe.globe-live #globe-surface{transition:none}}
+@media(max-width:760px){#atlas-rotational-globe .globe-guide{top:8px}#atlas-rotational-globe #globe-collection-toggle{font-size:11px;min-height:36px}}

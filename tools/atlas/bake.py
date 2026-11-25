@@ -13,7 +13,7 @@ B = pathlib.Path('beta')
 OWNED = ['ATLAS_PROFILE_MEDIA', 'ATLAS_FILM_EXPLORATION', 'ATLAS_THEMES_1103']
 SKIP = {'ATLAS_UPDATE_1031', 'ATLAS_FACETS', 'ATLAS_ON_MAP', 'ATLAS_FLAT'}  # merge input / built with the records / defined in code
 MIXED = ['ATLAS_REBUILD_SUPPLEMENT', 'ATLAS_RESEARCH_ADDITIONS', 'ATLAS_SOUTH_AMERICA_50', 'ATLAS_SOUTH_AMERICA_50_BATCH2', 'ATLAS_PILOT_CATALOG']
-KEEP_PAGE = {'territories-data.js'}  # Native Land shapes stay their own file; everything of ours is in atlas-data.js
+KEEP_PAGE = {'territories-data.js', 'watch-data.js'}  # Native Land shapes stay their own file; everything of ours is in atlas-data.js
 
 def js(name, value):
     return f'window.{name}=' + json.dumps(value, ensure_ascii=False, separators=(',', ':')) + ';\n'

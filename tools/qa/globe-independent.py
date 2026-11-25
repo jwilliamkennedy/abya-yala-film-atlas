@@ -216,7 +216,9 @@ async def run(browser,name,viewport):
             saved=await page.evaluate("window.AtlasGlobe.discovery.collection.id")
             await page.reload(wait_until="domcontentloaded")
             await page.wait_for_function("window.AtlasGlobe?.camera?.renderer==='maplibre-globe' && window.AtlasGlobe.focus.settled",timeout=90000)
+            assert not await page.locator("#constellate-popup").is_visible(),"legacy editor opened over globe"
             await page.locator("#globe-collection-toggle").click()
+            await page.locator(".globe-collection-settings summary").click()
             await page.locator('#globe-collection-panel select[aria-label="Choose constellation"]').select_option(saved)
             await page.wait_for_function("window.AtlasGlobe.discovery.collection.items===2 && window.AtlasGlobe.discovery.collection.links===1 && window.AtlasGlobe.discovery.collection.stars===2")
             print(name,"globe collect, author, save and restore passed",flush=True)
