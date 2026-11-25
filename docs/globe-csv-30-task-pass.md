@@ -35,3 +35,5 @@ Implemented:
 30. Strict effective CSV audit and menu-camera diagnostics/filter test.
 
 No catalogue, geographic reference or private workbook changes. Published credit fields take precedence when populated; work-level facet export retained as separate evidence. Baked catalogue remains fallback. Distinguish corrected effective display from underlying generated baked discrepancies; this does not rebuild the underlying static exports. Browser QA pending; actual physical Safari gesture still unverified.
+
+Follow-up audit: compares every public column after the browser parses the CSV, distinguishes upstream baked and work-level facet disagreements from effective-credit discrepancies, checks language authority codes, flags duplicate keys and scalar conflicts, and records maker field differences. Upstream disagreements are diagnostic, not silently treated as resolved by the runtime precedence policy. The effective catalogue check remains strict.
