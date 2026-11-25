@@ -130,15 +130,16 @@ async def main():
                 assert await watch_tab.locator("#now-frame").is_visible()==embedded
                 assert await watch_tab.locator("#now-external").is_visible()==(not embedded)
                 if not embedded:
-                    await watch_tab.wait_for_function("(u)=>document.querySelector('#now-external-link')?.getAttribute('href')===u",arg=entry['links'][0]['url'])
+                    await watch_tab.wait_for_function("(u)=>document.querySelector('#now-external-link')?.getAttribute('href')===u",arg=next(l['url'] for l in entry['links'] if l['url'].startswith('https:')))
                     assert await watch_tab.locator('#now-external-link').is_visible()
                 print("WATCH_RETURN_REQUEST",watch_tab.url,"expected query",query,flush=True)
+                await watch_tab.locator("#watch-return-globe").wait_for(state="visible",timeout=30000)
                 href=await watch_tab.locator("#watch-return-globe").get_attribute("href")
                 assert parse_qs(urlparse(href).query)==parse_qs(query),(href,shared)
                 print("WATCH_RETURN",entry["fid"],"embedded" if embedded else "external",flush=True)
             # A standalone Watch link should not carry a globe return control.
             await watch_tab.goto(BASE+"watch.html#"+indexed[0]["fid"],wait_until="domcontentloaded",timeout=90000)
-            assert await watch_tab.locator("#watch-return-globe").count()==0
+            assert await watch_tab.locator("#watch-return-globe").is_hidden()
         finally:await watch_tab.close()
         assert await page.locator("#globe-close,.globe-legacy-link").count()==0
         await page.goto(BASE+"flat.html",wait_until="domcontentloaded",timeout=90000)

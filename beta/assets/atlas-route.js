@@ -2,7 +2,7 @@
    workspace to own the globe address. Explicit legacy routes remain available. */
 (function(root){
 'use strict';
-const stateKeys=['at','pitch','territories','land','film','maker','themes','period','lands','edges','language','form','length','menu'];
+const stateKeys=['at','pitch','territories','land','film','maker','themes','period','lands','edges','language','form','length','menu','trace','traceTheme'];
 function resolve(href){
  const source=new URL(href),q=source.searchParams,hash=new URLSearchParams(source.hash.slice(1));
  const legacy=q.get('globe')==='0'||(q.get('globe')!=='1'&&(q.get('constellate')==='1'||['c','dial','theme-web','constellation-embed','intro'].some(k=>q.has(k))));

@@ -535,3 +535,20 @@ html[data-globe-entry] #atlas-globe-stage>#constellate-popup .constellate-headin
 #globe-encounter .globe-film-language{margin:0 0 5px;padding:0}
 @media(max-width:760px){#globe-encounter .globe-encounter-disclosures>details>summary.globe-section-summary{min-height:36px;font-size:12px}}
 @media(prefers-reduced-motion:reduce){#globe-encounter .globe-section-summary::after{transition:none}}
+
+/* Discovery and authorship: distinct controls and a common encounter. */
+#globe-encounter .globe-connect-mode{background:transparent;color:#e2cd94;border:1px solid #9b8956;border-radius:4px}
+#globe-encounter .globe-connect-mode[aria-pressed=true]{background:#50482f;color:#fff1c7}
+#globe-encounter .globe-trace-scope{display:grid;gap:4px;color:#bcd2ca;font-size:11px}
+#globe-encounter .globe-trace-scope select{width:100%;min-height:32px;color:#e8eee9;background:#233a44;border:1px solid #617e7e;border-radius:4px}
+#globe-encounter .globe-related-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px;align-items:center}
+#globe-encounter .globe-retain-related{background:transparent;border:1px solid #73998a;color:#d1e6d9;border-radius:5px;min-height:32px;min-width:32px;text-align:center;justify-content:center}
+#globe-encounter .globe-related-row .globe-related{width:100%;min-width:0}
+#globe-collection-panel .globe-collection-heading{display:grid;gap:3px;color:#e2ebe3}
+#globe-collection-panel .globe-collection-heading strong{font:500 17px/1.3 var(--ui-serif,Georgia,serif)}
+#globe-collection-panel .globe-collection-heading small{color:#b2c9c0}
+#globe-collection-panel .globe-new-thread,#globe-collection-panel .globe-thread-item{display:grid;gap:5px}
+#globe-collection-panel .globe-thread-item{border-bottom:1px solid #718e893b;padding:7px 0}
+#globe-collection-panel .globe-thread-item textarea{width:100%;min-height:45px;resize:vertical;box-sizing:border-box}
+#globe-collection-panel .globe-thread-item strong{font-size:12px}
+@media(max-width:760px){#globe-encounter .globe-retain-related{min-width:40px;min-height:40px}}

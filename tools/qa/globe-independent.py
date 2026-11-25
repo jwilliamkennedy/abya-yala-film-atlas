@@ -380,6 +380,9 @@ async def run(browser,name,viewport):
                 await page.locator("#globe-trace-themes").click()
                 assert await page.evaluate("AtlasGlobe.themeConnections.enabled && AtlasGlobe.themeConnections.links.length>0 && AtlasGlobe.themeConnections.links.length<=3")
                 assert await page.evaluate("AtlasGlobe.themeConnections.links.every(l=>l.fromFilm===AtlasGlobe.discovery.featured.film && l.toLand!==l.fromLand)")
+                assert await page.locator('#globe-connect-mode').get_attribute('aria-pressed')=='true'
+                assert await page.locator('.globe-trace-scope select').count()==1
+                assert await page.evaluate("new URL(AtlasGlobe.discovery.shareURL).searchParams.get('trace')==='1'")
                 await page.locator("#globe-trace-themes").click()
                 assert await page.evaluate("AtlasGlobe.themeConnections.links.length===0")
                 await bridge.click()
