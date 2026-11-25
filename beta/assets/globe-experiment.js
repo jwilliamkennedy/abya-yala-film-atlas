@@ -29,7 +29,7 @@ function recordVisit(r){if(recent[0]?.id===r.id)return;recent=[{id:r.id,name:r.n
 function updateRecent(){const s=$('#globe-recent');if(!s)return;s.replaceChildren(el('option',null,'Recently explored…'));for(const r of recent){if(!byId.has(r.id))continue;const o=el('option',null,r.name);o.value=r.id;s.append(o);}s.hidden=s.options.length<2;}
 function setPeriod(v){yearBand=v;pendingFilm='';filmOffset=0;focusKey='';liveSignature='';settle();renderSoon();}
 function periodMatch(f){if(!yearBand)return true;const y=Number(f.year);return Number.isFinite(y)&&y>=Number(yearBand)&&y<Number(yearBand)+20;}
-function rankedFilms(id){const key=id+'|'+filterKey(),cached=rankCache.get(key);if(cached)return cached;const fs=matchingFilms(id),seen=new Set(),ranked=fs.slice().sort((a,b)=>a.title.localeCompare(b.title)||a.maker.localeCompare(b.maker)||a.id.localeCompare(b.id)).filter(f=>{if(seen.has(f.id))return false;seen.add(f.id);return true;});if(rankCache.size>160)rankCache.clear();rankCache.set(key,ranked);return ranked;}
+function rankedFilms(id){const key=id+'|'+filterKey(),cached=rankCache.get(key);if(cached)return cached;const fs=matchingFilms(id),seen=new Set(),ranked=fs.slice().sort((a,b)=>a.title.localeCompare(b.title)||String(a.maker||'').localeCompare(String(b.maker||''))||a.id.localeCompare(b.id)).filter(f=>{if(seen.has(f.id))return false;seen.add(f.id);return true;});if(rankCache.size>160)rankCache.clear();rankCache.set(key,ranked);return ranked;}
 function safeViewing(f){const work=A().recordById(f.record)?.films.find(x=>x.id===f.film);const links=C().globeViewingRoutes(f);return links.map(l=>{try{if(new URL(l.url).protocol!=='https:')return null;return {url:l.url,label:/trailer|teaser|preview/i.test(l.title||'')?'Trailer':/watch|full film|stream|viewing|ver pel[ií]cula|ver filme/i.test(l.title||'')?'Watch':'Film page'};}catch{return null;}}).filter(Boolean).sort((a,b)=>['Watch','Trailer','Film page'].indexOf(a.label)-['Watch','Trailer','Film page'].indexOf(b.label))[0]||null;}
 function externalLink(label,url,cls){try{const u=new URL(url,location.href);if(u.protocol!=='https:'&&!(u.protocol==='http:'&&u.origin===location.origin))return null;}catch{return null;}const a=el('a',cls,label);a.href=url;a.target='_blank';a.rel='noopener noreferrer';return a;}
 function gotoLand(id,filmId='',overview=false){pendingFilm=filmId;const r=byId.get(id);if(!r)return;const a=territoryAnchor(r)?.coordinates;if(!a)return;preferredLand=id;filmOffset=0;const distance=d3.geoDistance(center,a);setCamera(a,overview?Math.max(2.2,Math.min(zoom,4)):Math.max(zoom,2.2),Math.round(clamp(280+distance*200,280,850)));}
@@ -100,7 +100,7 @@ let previewReturn=null;
 function previewFromGlobe(film,land='',trigger=null){previewReturn={film:film.id,land,trigger};C().showPreview(film,{land,from:'globe'});sync();}
 function returnFromPreview(){const origin=previewReturn;previewReturn=null;if(!active)return;sync();requestAnimationFrame(()=>{if(!active)return;const trigger=origin?.trigger;if(trigger?.isConnected&&!trigger.hidden&&trigger.getClientRects().length){trigger.focus({preventScroll:true});return;}if(origin&&origin.film===featured?.film.id){$('#globe-encounter .globe-film-title')?.focus({preventScroll:true});return;}(liveReady?live.getCanvas():canvas)?.focus({preventScroll:true});});}
 function close(){
- const wasActive=active;closed=true;active=false;clearTimeout(settleTimer);clearTimeout(labelTimer);labelTimer=0;cancelFlight();if(raf)cancelAnimationFrame(raf);raf=0;if(posterLayoutFrame)cancelAnimationFrame(posterLayoutFrame);posterLayoutFrame=0;ro?.disconnect();
+ const wasActive=active;closed=true;active=false;closeGlobePlayer();clearTimeout(settleTimer);clearTimeout(labelTimer);labelTimer=0;cancelFlight();if(raf)cancelAnimationFrame(raf);raf=0;if(posterLayoutFrame)cancelAnimationFrame(posterLayoutFrame);posterLayoutFrame=0;ro?.disconnect();
  clearTimeout(liveTimer);stopWheel();zoomListeners?.abort();zoomListeners=null;restoreThemeLens();liveReady=false;live?.remove();live=null;liveHost=null;relief?.dispose();relief=null;host?.remove();host=null;document.body.classList.remove('atlas-globe-experiment');if(wasActive&&C()?.enabled)C().refreshDiscoveryMode();
  const u=new URL(location.href);for(const k of ['globe','at','themes','period','lands','language','form','length','land','film','edges'])u.searchParams.delete(k);history.replaceState(history.state,'',u.href);
 }
@@ -713,15 +713,32 @@ function button(label,fn,cls){const b=el('button',cls,label);b.type='button';b.a
 let watchLookupSource=null,watchLookup=new Map();
 function watchEntry(film){const source=window.ATLAS_WATCH?.films;if(source!==watchLookupSource){watchLookupSource=source;watchLookup=new Map((source||[]).filter(x=>x.links?.some(l=>l.url)).map(x=>[x.fid,x]));}return watchLookup.get(film.film);}
 function watchURL(film){const u=new URL('watch.html',document.baseURI);u.hash=encodeURIComponent(film.film);u.searchParams.set('fromGlobe',new URL(shareView()).search.slice(1));return u.href;}
+// Embed only already indexed full films on explicitly approved player hosts.
+let globePlayer=null,playerReturn=null;
+function embeddedRoute(entry){
+ for(const l of entry?.links||[]){try{const u=new URL(l.embed);if(u.protocol==='https:'&&((['www.youtube-nocookie.com','www.youtube.com'].includes(u.hostname)&&/^\/embed\/[A-Za-z0-9_-]+$/.test(u.pathname))||(u.hostname==='player.vimeo.com'&&/^\/video\/\d+$/.test(u.pathname))))return l;}catch{}}
+ return null;
+}
+function closeGlobePlayer(){const d=globePlayer;if(!d)return;const trigger=playerReturn;playerReturn=null;globePlayer=null;d.querySelector('iframe')?.removeAttribute('src');if(d.open)d.close();d.remove();if(active&&trigger?.isConnected)trigger.focus({preventScroll:true});}
+function openGlobePlayer(film,route,trigger){
+ if(!active||!settled||!route||typeof HTMLDialogElement==='undefined'||!HTMLDialogElement.prototype.showModal)return false;
+ closeGlobePlayer();if(menuMode)setMenu('');playerReturn=trigger;
+ const d=el('dialog','globe-player'),header=el('div','globe-player-head'),copy=el('div'),heading=el('h2',null,film.title),dismiss=button('Close',closeGlobePlayer);
+ d.id='globe-player';d.setAttribute('aria-labelledby','globe-player-title');heading.id='globe-player-title';copy.append(heading,el('p',null,[film.maker,film.year].filter(Boolean).join(' · ')));dismiss.setAttribute('aria-label','Close film player');header.append(copy,dismiss);d.append(header);
+ const frame=el('iframe');frame.title='Player: '+film.title;frame.allow='autoplay; encrypted-media; fullscreen; picture-in-picture';frame.allowFullscreen=true;frame.referrerPolicy='strict-origin-when-cross-origin';d.append(frame);
+ const foot=el('div','globe-player-foot'),source=externalLink('Open at film source ↗',route.url),watch=externalLink('Watch page ↗',watchURL(film));if(source)foot.append(source);if(watch)foot.append(watch);d.append(foot);
+ d.addEventListener('cancel',e=>{e.preventDefault();closeGlobePlayer();});d.addEventListener('close',()=>{if(globePlayer===d)closeGlobePlayer();});
+ host.append(d);globePlayer=d;try{d.showModal();frame.src=route.embed;dismiss.focus({preventScroll:true});return true;}catch{closeGlobePlayer();return false;}
+}
 function encounterLinks(film,work){
  const actions=el('div','globe-film-actions'),meta=C().globeMetadata(film),view=safeViewing(film);
- const watch=watchEntry(film),embedded=watch?.links?.some(l=>l.embed);
+ const watch=watchEntry(film),route=embeddedRoute(watch),embedded=!!route;
  // Never label a trailer or an information page as full-film playback.
  const play=embedded?externalLink('▶ Play',watchURL(film),'globe-view-link'):
   watch?externalLink('Watch ↗',watchURL(film),'globe-view-link'):
   view&&view.label==='Watch'?externalLink('▶ Watch ↗',view.url,'globe-view-link'):
   view&&view.label==='Trailer'?externalLink('▶ Trailer ↗',view.url,'globe-view-link'):null;
- if(play){play.dataset.viewKind=embedded?'indexed-embed':watch?'indexed-external':view?.label==='Trailer'?'trailer':'external-watch';actions.append(play);}
+ if(play){play.dataset.viewKind=embedded?'indexed-embed':watch?'indexed-external':view?.label==='Trailer'?'trailer':'external-watch';if(embedded)play.addEventListener('click',e=>{if(e.button===0&&!e.metaKey&&!e.ctrlKey&&!e.shiftKey&&!e.altKey&&openGlobePlayer(film,route,play))e.preventDefault();});actions.append(play);}
  const source=view?.label==='Film page'?view.url:meta?.row?.film_source||work?.sourceURL;
  const external=source&&externalLink('Film page ↗',source,'globe-source-link');
  const profile=externalLink('Atlas record ↗',creditProfile(film),'globe-source-link');
@@ -986,7 +1003,7 @@ function markup(){
  menuListeners=new AbortController();const opts={capture:true,signal:menuListeners.signal};
  document.addEventListener('pointerdown',e=>{if(menuMode&&!e.target.closest('.globe-guide'))setMenu('');},opts);
  // Window capture precedes document-level legacy Escape handlers, which can exit Constellate.
- window.addEventListener('keydown',e=>{if(e.key==='Escape'&&menuMode){e.preventDefault();e.stopImmediatePropagation();setMenu('',true);}},opts);
+ window.addEventListener('keydown',e=>{if(e.key==='Escape'&&globePlayer){e.preventDefault();e.stopImmediatePropagation();closeGlobePlayer();return;}if(e.key==='Escape'&&menuMode){e.preventDefault();e.stopImmediatePropagation();setMenu('',true);}},opts);
  $('#weave-map-theme')?.addEventListener('change',refreshMenuLabels,{signal:menuListeners.signal});$('#weave-map-theme-second')?.addEventListener('change',refreshMenuLabels,{signal:menuListeners.signal});
  canvas=$('#globe-surface');ctx=canvas.getContext('2d',{alpha:false});if(!ctx)throw Error('Canvas unavailable');
  $('#globe-emergent').onclick=()=>{if(featured){previewFromGlobe(featured.film,featured.land,$('#globe-emergent'));placeEmergent();}};
