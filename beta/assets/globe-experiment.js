@@ -128,6 +128,8 @@ function resize(){
  if(!host||!canvas)return;const footer=$('.globe-footer'),h0=Math.ceil(footer?.getBoundingClientRect().height||0)+'px';if(host.style.getPropertyValue('--globe-footer-height')!==h0){host.style.setProperty('--globe-footer-height',h0);placeEmergent();}
  const b=canvas.getBoundingClientRect();if(!b.width||!b.height)return;
  const w=b.width,h=b.height,ratio=Math.min(window.devicePixelRatio||1,2);
+ const primary=$('.globe-primary')?.getBoundingClientRect(),root=host.getBoundingClientRect(),footerTop=footer?.getBoundingClientRect().top??root.bottom;
+ const menuRoom=Math.max(64,Math.floor(footerTop-(primary?.bottom??root.top)-14))+'px';if(host.style.getPropertyValue('--globe-menu-room')!==menuRoom)host.style.setProperty('--globe-menu-room',menuRoom);
  if(w===W&&h===H&&ratio===dpr)return;
  W=w;H=h;dpr=ratio;canvas.width=Math.round(W*dpr);canvas.height=Math.round(H*dpr);if(live)live.resize();renderSoon();scheduleSettle(100);
 }
@@ -966,7 +968,7 @@ async function boot(){
   collect();if(!points.length)throw Error('No mapped cinema references');
   proj=d3.geoOrthographic().clipAngle(90).precision(.65);markup();path=d3.geoPath(proj,ctx);
   active=true;C().close();loadRelief();document.body.classList.add('atlas-globe-experiment');host.dataset.ready='true';C().refreshDiscoveryMode();refreshFacetOptions();synchronizePublication();
-  ro=new ResizeObserver(resize);ro.observe(canvas);ro.observe($('.globe-footer'));resize();if(initialCamera){center=initialCamera.slice(0,2);const base=Math.max(-1.3,Math.log2(Math.min(W,H)*.87*Math.PI/512));zoom=Math.pow(2,initialCamera[2]-base);}try{const t=JSON.parse(params.get('themes')||'[]');if(Array.isArray(t)&&t.every(x=>typeof x==='string')&&t.length)C().showThemeLens(t);}catch{}draw();settle();bootLive();
+  ro=new ResizeObserver(resize);ro.observe(canvas);ro.observe($('.globe-footer'));ro.observe($('.globe-primary'));resize();if(initialCamera){center=initialCamera.slice(0,2);const base=Math.max(-1.3,Math.log2(Math.min(W,H)*.87*Math.PI/512));zoom=Math.pow(2,initialCamera[2]-base);}try{const t=JSON.parse(params.get('themes')||'[]');if(Array.isArray(t)&&t.every(x=>typeof x==='string')&&t.length)C().showThemeLens(t);}catch{}draw();settle();bootLive();
  }catch(e){fallback(e);}
 }
 const started=Date.now();(function wait(){if(closed)return;if(C()?.enabled&&A()?.lands&&window.topojson&&window.d3&&window.AtlasGeoIntegrity){boot();return;}if(Date.now()-started<20000)setTimeout(wait,100);})();
