@@ -25,6 +25,15 @@ MAP_READY = MAP_READY.replace(
     "document.querySelector('#constellate-graph').hidden.baseVal !== false",
     "document.querySelector('#constellate-graph').hasAttribute('hidden')"
 )
+CAMERA = """() => {const r=document.querySelector('#atlas').getBoundingClientRect(),s=window.Atlas.captureState();return {rect:[r.x,r.y,r.width,r.height],center:s.center,scale:s.scale,zoom:s.zoom};}"""
+
+async def stable_camera(page, baseline, label):
+    await page.wait_for_timeout(350) # allow any delayed ResizeObserver work to settle
+    actual = await page.evaluate(CAMERA)
+    assert max(abs(a-b) for a,b in zip(actual['rect'],baseline['rect'])) < 1.1, (label, 'map frame shifted', baseline, actual)
+    assert abs(actual['scale']-baseline['scale']) < 0.01, (label, 'map scale shifted', baseline, actual)
+    assert max(abs(a-b) for a,b in zip(actual['center'],baseline['center'])) < 0.001, (label, 'map center shifted', baseline, actual)
+
 SNAPSHOT = """() => {
   const c=window.AtlasCollections.current();
   return JSON.stringify([c.items,c.threads,c.links]);
@@ -65,8 +74,26 @@ async def check(browser, name, viewport):
       const stars=[...document.querySelectorAll('#atlas .land-sky-star')];
       return stars.slice(0,2).map(s=>s.__data__.ids);
     }""")
+    await page.wait_for_timeout(350)
+    original_camera = await page.evaluate(CAMERA)
     await page.evaluate("ids=>window.AtlasConstellate.openLands(ids)", lands[0])
     await page.locator("#weave-land").wait_for(state="visible")
+    # Desktop dock and mobile below-map panel must preserve the canvas on first selection.
+    await stable_camera(page, original_camera, name+' first land')
+    await page.locator('#weave-theme-web-toggle').click()
+    await page.locator('#atlas-theme-web').wait_for(state='visible')
+    await stable_camera(page, original_camera, name+' theme web open')
+    await page.locator('#tw-close').click()
+    await page.locator('#weave-land').wait_for(state='visible')
+    await stable_camera(page, original_camera, name+' theme web closed')
+    await page.locator('#weave-trace').click()
+    await page.wait_for_function('window.AtlasConstellate.tracing')
+    await stable_camera(page, original_camera, name+' draw open')
+    await page.locator('#weave-trace').click()
+    await page.wait_for_function('!window.AtlasConstellate.tracing')
+    await page.locator('#weave-land').wait_for(state='visible')
+    await stable_camera(page, original_camera, name+' draw closed')
+    assert await page.evaluate(SNAPSHOT)==snapshot, (name,'overlay tools changed collection')
     await page.evaluate("""() => {
       const api=window.AtlasConstellate;
       api.showPreview(api.catalog.find(x=>x.type==='film'));

@@ -337,11 +337,9 @@
 /* Film Atlas · Constellate / theme web (beta)
    Source-led thematic navigation. The geography remains a reference, while concepts
    have no invented coordinates. Styles are scoped to this optional lens. */
-/* The thematic lens takes the full map width; the regular editing dock returns on close.
-   This avoids competing search boxes and keeps the scholarly network readable. */
-body.atlas-page.is-theme-weaving.weave-dock-open.is-theme-web-open main{display:block!important;grid-template-columns:minmax(0,1fr)!important}
-body.is-theme-web-open #constellate-popup{display:none!important}
-body.is-theme-web-open .map-panel{width:100%!important;max-width:none!important}
+/* Theme web and Draw are transient layers over the same map.
+   Suppress the dock without changing map dimensions or discarding its contents. */
+body.is-theme-weaving:is(.is-theme-web-open,.weave-tracing) #constellate-popup{visibility:hidden!important;pointer-events:none!important}
 
 
 
@@ -694,7 +692,7 @@ html[data-weave-stage="read"] #weave-read-panel>.constellate-actions button{min-
   height:auto!important;min-height:0!important;display:flex!important;flex-direction:column!important;
  }
  html[data-weave-stage="read"] body.is-theme-weaving .map-panel{
-  height:42dvh!important;min-height:270px!important;max-height:42dvh!important;
+  height:52dvh!important;min-height:300px!important;max-height:52dvh!important;
  }
  html[data-weave-stage="read"] body.is-theme-weaving #constellate-popup{
   height:auto!important;max-height:none!important;overflow:visible!important;
@@ -721,7 +719,7 @@ html[data-weave-stage="read"] #weave-read-panel>.constellate-actions button{min-
 html[data-weave-stage="read"] body.is-theme-weaving .map-panel::before,
 html[data-weave-stage="read"] body.is-theme-weaving .map-panel::after{display:none!important}
 html[data-weave-stage="read"] body.is-theme-weaving #atlas .weave-night-veil{display:none!important}
-html[data-weave-stage="read"] body #atlas-theme-web{display:none!important}
+/* Theme web remains available from Read; it overlays rather than replaces the map. */
 
 /* Search themes and search films begin at the same level.
    Featured themes are suggestions beneath the search, never an obstacle above it. */
@@ -1991,3 +1989,19 @@ body.is-constellating #atlas .land-sky-star:is(.film-preview-land,.is-selected) 
 #constellate-mode[data-tools="1"] .cm-tools>button .cm-label{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
 #constellate-mode .cm-add-menu #weave-draw-thread[aria-pressed="true"]{background:var(--ui-wash)}
 #constellate-mode .cm-tools>button:focus-visible,#constellate-mode .cm-add-menu>button:focus-visible{outline:2px solid var(--cx-film,#a8cbe5);outline-offset:2px}
+
+/* Stable geographic canvas: desktop discovery dock floats inside the existing map
+   frame. Opening, closing, drawing and filtering never change the map's grid track. */
+@media (min-width:761px){
+ :root body.atlas-page.is-theme-weaving:not(.weave-playing) main{position:relative;display:block!important;grid-template-columns:minmax(0,1fr)!important}
+ :root body.atlas-page.is-theme-weaving:not(.weave-playing) .map-panel{width:100%!important;max-width:none!important;height:100%!important}
+ :root body.atlas-page.is-theme-weaving:not(.weave-playing) #constellate-popup:not([hidden]){
+  position:absolute!important;left:auto!important;right:12px!important;top:60px!important;bottom:12px!important;
+  width:min(360px,calc(100% - 24px))!important;height:auto!important;max-height:none!important;min-height:0;
+  border:1px solid var(--reading-line);border-radius:10px;box-shadow:0 10px 32px #07122655;z-index:20;overflow-y:auto;
+ }
+}
+@media (max-width:760px){
+ :root:not(#_):not(#__) body.atlas-page.is-theme-weaving:not(.weave-playing) main{height:auto!important;min-height:0!important;display:flex!important;flex-direction:column!important}
+ :root:not(#_):not(#__) body.atlas-page.is-theme-weaving:not(.weave-playing) .map-panel{flex:none!important;height:52dvh!important;min-height:300px!important;max-height:52dvh!important;width:100%!important}
+}
