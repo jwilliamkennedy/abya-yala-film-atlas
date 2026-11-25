@@ -1,0 +1,50 @@
+{
+  "auditedCommit": "118bff66abc96e807f38830d40fe7e9994cab9c1",
+  "source": {
+    "source": "Native Land Digital, distributed through Esri / National Geographic MapMaker",
+    "url": "https://services6.arcgis.com/SC70xY1nSLm15pYn/arcgis/rest/services/Native_Land_Digital_territories/FeatureServer/0",
+    "license": "CC0 as declared by the redistributor",
+    "licenseURL": "https://education.nationalgeographic.org/resource/mapmaker-indigenous-territories/",
+    "retrieved": "2026-09-23",
+    "serviceDataLastEditDate": "2023-10-01",
+    "note": "Source polygons are not official or legal boundaries. Coverage and names are incomplete and span different periods."
+  },
+  "sourceFeatures": 2059,
+  "correctedFeatures": 2065,
+  "geometryIssues": [],
+  "projection": {
+    "vertices": 112496,
+    "mercatorTested": 112496,
+    "mercatorSkipped": 0,
+    "maxMercatorMetres": 1.34677224095245e-8,
+    "maxGlobeMetres": 7.103855494658057e-9,
+    "maxInverseMetres": 7.2973924429629935e-9,
+    "maxIndependentPixels": 5.4569682106375694e-12,
+    "failed": 0,
+    "ok": true
+  },
+  "mappedLandReferences": 221,
+  "containedAnchors": 221,
+  "failedAnchors": [],
+  "anchorMethods": {
+    "contained-spherical-centroid": 213,
+    "contained-geographic-grid": 8
+  },
+  "makersCSV": 1493,
+  "makersRuntime": 1493,
+  "creditsCSV": 3081,
+  "creditsRuntime": 3081,
+  "missingRuntime": 0,
+  "missingCSV": 0,
+  "staleEdges": 14,
+  "mappedEdges": 839,
+  "unmappedEdges": 208,
+  "sourcedMapped": 267,
+  "provisionalMapped": 572,
+  "mappedMakers": 704,
+  "limitations": [
+    "Historical local snapshot, not a live polygon-by-polygon comparison against current Native Land Digital; no new territory data downloaded.",
+    "Numerical error measures projection precision, not survey accuracy or verification of affiliation.",
+    "Geometry changes limited to existing documented territory-fixes.js; all resulting coordinates checked against original feature or broadOf ID."
+  ]
+}
