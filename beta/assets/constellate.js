@@ -165,6 +165,7 @@ if(new URLSearchParams(location.search).get('constellation-embed')==='1'){
  function close(){closePreview();showLand('');closeFilmPair();document.body.classList.remove('weave-browsing');panel.hidden=true;trigger.setAttribute('aria-expanded','false');document.body.classList.remove('weave-dock-open');relayout();}
  function exit({restore=true,fromHistory=false}={}){
   if(!enabled){if(trace)stopTrace();return;}
+  window.AtlasGlobe?.close();
   const prior=entry,browsing=document.body.classList.contains('weave-browsing'),browseState=browsing?copy(A.captureState()):null;
   // Turn off every transient interaction before handing the same map back.
   if(trace)stopTrace();
@@ -1093,7 +1094,7 @@ function stopPlay(){if(!player)return;playThread=null;pausePlay(true);player.hid
  }
  function presentLandView(box,ids,refresh=false){
   box.hidden=false;openDock();highlightLand(ids);
-  if(refresh)return;
+  if(refresh||window.AtlasGlobe?.active)return;
   const token=++landViewToken;panel.scrollTop=0;
   requestAnimationFrame(()=>{if(token!==landViewToken||box.hidden||panel.hidden||!enabled)return;panel.scrollTop=0;
     if(phone.matches){const b=box.getBoundingClientRect();if(b.top<0||b.top>innerHeight-100)box.scrollIntoView({block:'start',behavior:'instant'});}
@@ -1286,6 +1287,7 @@ function stopPlay(){if(!player)return;playThread=null;pausePlay(true);player.hid
    el.classList.toggle('is-selected',on);el.classList.toggle('theme-match',landMatchesTheme(ids));el.classList.toggle('film-preview-land',ids.some(id=>previews.has(id)));
    if(el.getAttribute('aria-pressed')!==String(on))el.setAttribute('aria-pressed',String(on));
   }
+  window.AtlasGlobe?.sync();
  }
  function suggestionBases(seed,x){
   const a=suggestEvidence(seed),b=suggestEvidence(x);if(!a||!b)return {bases:[],themeCount:0,land:false,people:false,maker:false,language:false,decade:false};
