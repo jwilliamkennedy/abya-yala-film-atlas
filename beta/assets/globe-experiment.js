@@ -665,13 +665,15 @@ function button(label,fn,cls){const b=el('button',cls,label);b.type='button';b.a
  const a=externalLink('Native Land Digital ↗','https://native-land.ca/');if(a)b.append(a);
  return b;
 }
-function watchEntry(film){return window.ATLAS_WATCH?.films?.find(x=>x.fid===film.film&&x.links?.some(l=>l.url));}
+let watchLookupSource=null,watchLookup=new Map();
+function watchEntry(film){const source=window.ATLAS_WATCH?.films;if(source!==watchLookupSource){watchLookupSource=source;watchLookup=new Map((source||[]).filter(x=>x.links?.some(l=>l.url)).map(x=>[x.fid,x]));}return watchLookup.get(film.film);}
+function watchURL(film){const u=new URL('watch.html',document.baseURI);u.hash=encodeURIComponent(film.film);u.searchParams.set('fromGlobe',new URL(shareView()).search.slice(1));return u.href;}
 function encounterLinks(film,work){
  const actions=el('div','globe-film-actions'),meta=C().globeMetadata(film),view=safeViewing(film);
  const watch=watchEntry(film),embedded=watch?.links?.some(l=>l.embed);
  // Never label a trailer or an information page as full-film playback.
- const play=embedded?externalLink('▶ Play',new URL('watch.html#'+encodeURIComponent(film.film),document.baseURI).href,'globe-view-link'):
-  watch?externalLink('Watch ↗',new URL('watch.html#'+encodeURIComponent(film.film),document.baseURI).href,'globe-view-link'):
+ const play=embedded?externalLink('▶ Play',watchURL(film),'globe-view-link'):
+  watch?externalLink('Watch ↗',watchURL(film),'globe-view-link'):
   view&&view.label==='Watch'?externalLink('▶ Watch ↗',view.url,'globe-view-link'):
   view&&view.label==='Trailer'?externalLink('▶ Trailer ↗',view.url,'globe-view-link'):null;
  if(play){play.dataset.viewKind=embedded?'indexed-embed':watch?'indexed-external':view?.label==='Trailer'?'trailer':'external-watch';actions.append(play);}
