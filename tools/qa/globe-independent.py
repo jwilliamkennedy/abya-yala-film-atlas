@@ -135,7 +135,7 @@ async def run(browser,name,viewport):
             await page.locator("#globe-more-toggle").click()
             await page.locator("#globe-landscape").click()
             await page.wait_for_function("AtlasGlobe.tileState.pitch>35 && AtlasGlobe.focus.settled")
-            assert await page.evaluate("""()=>{const G=AtlasGlobe,t=G.focus.target;const ids=Atlas.lands.filter(l=>!l.browseGroup&&l.groups?.some(g=>g.features.some(f=>d3.geoContains(f,t.coordinate)))).map(l=>l.id);return G.focus.inside.every(id=>ids.includes(id))&&(!t.primary||G.focus.ids.includes(t.primary));}"""),(name,"pitched geographic target mismatch")
+            assert await page.evaluate("""()=>{const G=AtlasGlobe,t=G.focus.target;const ids=Atlas.lands.filter(l=>!l.browseGroup&&l.groups?.some(g=>g.features.some(f=>d3.geoContains(f,t.coordinate)))).map(l=>l.id);return G.focus.inside.every(id=>ids.includes(id))&&ids.every(id=>G.focus.inside.includes(id))&&(!t.primary||G.focus.ids.includes(t.primary))&&(t.reason!=='contains-target'||ids.includes(t.primary));}"""),(name,"pitched geographic target mismatch")
             print(name,"adaptive targeting",sizes,flush=True)
         else:
             await page.wait_for_function("window.AtlasGlobe.discovery.publication==='ready'",timeout=60000)
@@ -346,6 +346,8 @@ async def run(browser,name,viewport):
             await page.wait_for_function("id=>document.querySelector('#globe-encounter').dataset.film===id && AtlasGlobe.discovery.featured===null",arg=unmapped["id"])
             assert await page.locator(".globe-unmapped-title").inner_text()==unmapped["title"]
             assert await page.evaluate("AtlasGlobe.camera")==before_unmapped
+            assert not await page.locator("#weave-offmap-rail").is_visible(),(name,"flat workspace rail appeared over globe reading")
+            assert not await page.evaluate("document.querySelector('#atlas-rotational-globe').classList.contains('has-cinema')"),(name,"unmapped reading incorrectly signaled a cinematic location")
             await page.locator('#globe-encounter [aria-label="Previous film in thread"]').click()
             await page.wait_for_function("AtlasGlobe.focus.settled && !!AtlasGlobe.discovery.featured && !document.querySelector('.globe-unmapped-title')")
             print(name,"globe collect, author, save, restore and complete thread reading passed",flush=True)

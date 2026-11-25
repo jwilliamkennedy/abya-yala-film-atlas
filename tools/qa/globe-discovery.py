@@ -98,6 +98,7 @@ async def check(browser,name,viewport):
     await page.wait_for_function("(z)=>window.AtlasGlobe.camera.zoom>z",arg=after_zoom["zoom"],timeout=8000)
     await page.wait_for_function("window.AtlasGlobe.focus.settled && !window.AtlasGlobe.tileState.wheelActive")
     aperture=await page.locator("#globe-aperture").bounding_box()
+    aperture_center=(aperture["x"]+aperture["width"]/2,aperture["y"]+aperture["height"]/2)
     # Real remote tiles + known high-elevation geography, not a mocked terrain fixture.
     await page.evaluate("window.AtlasGlobe.goTo([-90.875,14.501],10)")
     await page.wait_for_function("window.AtlasGlobe.tileState?.mesh === 'dem'",timeout=20000)
@@ -143,7 +144,11 @@ async def check(browser,name,viewport):
       return window.AtlasGlobe.focus.ids.every(id=>C.globeLandCatalogFilms(id).every(f=>C.terms(f).includes(t)));
     }"""),(name,"theme leaked between credits")
 
-    assert await page.locator("#globe-aperture").bounding_box()==aperture,(name,"aperture shifted")
+    final_aperture=await page.locator("#globe-aperture").bounding_box()
+    final_center=(final_aperture["x"]+final_aperture["width"]/2,final_aperture["y"]+final_aperture["height"]/2)
+    assert max(abs(a-b) for a,b in zip(aperture_center,final_center))<.5,(name,"aperture center shifted",aperture,final_aperture)
+    radius=await page.evaluate("AtlasGlobe.focus.target.radius")
+    assert abs(final_aperture["width"]-2*radius)<.5,(name,"visible target and hit radius differ")
     assert await page.evaluate(SNAP)==snapshot,(name,"discovery mutated collection")
     await page.locator("#globe-more-toggle").click()
     await page.locator("#globe-close").click()

@@ -251,7 +251,9 @@ if(new URLSearchParams(location.search).get('constellation-embed')==='1'){
    seen.add(id);items.push(x);
   }
   offMapIds=new Set(items.map(x=>x.id));
-  offMapRail.hidden=unmapped||!items.length;
+  // The globe owns its own complete reading and collection surface. The flat
+  // workspace rail must not intercept pointer or keyboard events while it is active.
+  offMapRail.hidden=globeMode()||unmapped||!items.length;
   const signature=items.map(x=>x.id).join('|');
   if(signature!==offMapSignature){
    offMapSignature=signature;
@@ -1325,6 +1327,7 @@ function stopPlay(){if(!player)return;playThread=null;pausePlay(true);player.hid
   return {terms:ts,films,ids,lands};
  }
  function refreshDiscoveryMode(){
+  syncOffMapRail();
   if(themeLens)themeLens=lensFor(themeLens.terms);
   renderThemeStart();$('#weave-map-theme-second').dataset.primary='';
   syncThemeControl();if(themeLens)renderLensResults();if(landShown)showLand(landShown,true);syncLandStars();

@@ -9,7 +9,7 @@ const DEG=180/Math.PI,clamp=(v,a,b)=>Math.max(a,Math.min(b,v)),wrap=v=>((v+180)%
 let active=false,closed=false,host=null,canvas=null,ctx=null,ro=null,raf=0,settleTimer=0;
 let W=0,H=0,dpr=1,zoom=1,center=[-91,12],proj=null,path=null,earth=null,landArea=0;
 let records=[],points=[],byId=new Map(),near=[],inside=[],focusIds=[],focusKey='',previewLimit=3,settled=false,anchorFailures=[];
-let targetCoordinate=null,targetPrimary='',targetMode='overview',localNameKey='';
+let targetCoordinate=null,targetPrimary='',targetMode='overview',localNameKey='',targetScreen=null,targetReason='none';
 let pointers=new Map(),gesture=null,dragged=false,previousFocus=null;
 const labelAnchors=new Map(),labelFailures=new Set();let labelQueue=null,labelTimer=0,labelUploaded=-1,labelFocusKey='';
 let relief=null,reliefState='loading',flight=0,flightTarget=null,lastDrag=null;
@@ -96,7 +96,7 @@ function camera(){if(liveReady&&live){const p=live.getCenter();return {center:[w
 function renderSoon(){if(!active||raf)return;raf=requestAnimationFrame(()=>{raf=0;draw();});}
 let lastSettledFilter='';
 function sync(){if(!active)return;refreshMenuLabels();renderCollection();renderSoon();if(settled&&focusKey&&!readingJourney&&lastSettledFilter===filterKey()&&!live?.isMoving()){updateCollectButton();placeEmergent();return;}if(!pointers.size&&!flight&&!wheelActive&&(!live?.isMoving()||settled))scheduleSettle(75);}
-window.AtlasGlobe={get active(){return active},get camera(){return active?camera():null},get pointCount(){return points.length},get geometryCount(){return records.length},get anchorFailures(){return [...anchorFailures]},get territoryNames(){return {indexed:labelAnchors.size,total:records.length,failures:[...labelFailures],withoutCinema:[...labelAnchors.keys()].filter(id=>!pointById.has(id)).length,anchors:[...labelAnchors].map(([id,a])=>({id,coordinate:a.coordinates,sourceId:a.sourceId}))}},get anchors(){return points.map(p=>({id:p.id,coordinate:[...p.coord],sourceId:p.anchor.sourceId,component:p.anchor.component,method:p.anchor.method}))},get landArea(){return landArea},get territoryLayer(){return {visible:landsVisible,strength:landStrength,edgeMode,edgeVisibility:liveReady?['native-ambient-line','land-outline'].map(id=>live.getLayoutProperty(id,'visibility')):[],features:ambientCount,boundaries:{...boundaryStats},fill:liveReady?live.getPaintProperty('native-ambient-fill','fill-opacity'):null,outline:liveReady?live.getPaintProperty('native-ambient-line','line-opacity'):null}},get terrain(){return liveReady?'tiled':reliefState},get tileState(){return liveStats()},matchingCreditIds:id=>matchingFilms(id).map(f=>f.id),artworkInventory:()=>({lands:records.map(r=>({id:r.id,name:r.name,credits:C().globeLandFilmCount(r.id),matching:matchingFilms(r.id).length})),credits:C().globeCreditIndex().films.map(f=>({id:f.id,film:f.film,title:f.title,maker:f.maker,record:f.record,source:C().sourceImage(f)||'',published:C().globeMetadata(f)?.image||'',view:safeViewing(f),watch:watchEntry(f)?{embedded:watchEntry(f).links.some(l=>l.embed),links:watchEntry(f).links}:null,lands:(C().globeCreditIndex().refs.get(f.id)||[]).map(r=>r.id)}))}),get discovery(){return {collection:collectionSummary(),themeCoverage:themeCoverage(),menu:menuMode,period:yearBand,filters:{...facetFilter},publication:publicationStatus,preferredLand,recent:[...recent],filmOffset,featured:featured?{land:featured.land,film:featured.film.id}:null,journeyDepth:journey.length,posterVisible:!$('#globe-emergent')?.hidden,posterReason,artState:$('#globe-encounter .globe-art-feature')?.dataset.artState||null,shareURL:shareView()}},goTo(coord,mapZoom){if(liveReady&&Array.isArray(coord)&&coord.length===2&&coord.every(Number.isFinite)&&Number.isFinite(mapZoom))setCamera(coord,Math.pow(2,mapZoom-liveBaseZoom),0);},get focus(){return {ids:[...focusIds],inside:inside.map(r=>r.id),settled,target:{mode:targetMode,radius:aperture(),coordinate:targetCoordinate,primary:targetPrimary,nearby:near.map(v=>v.p.id)}};},sync,close,returnFromPreview};
+window.AtlasGlobe={get active(){return active},get camera(){return active?camera():null},get pointCount(){return points.length},get geometryCount(){return records.length},get anchorFailures(){return [...anchorFailures]},get territoryNames(){return {indexed:labelAnchors.size,total:records.length,failures:[...labelFailures],withoutCinema:[...labelAnchors.keys()].filter(id=>!pointById.has(id)).length,anchors:[...labelAnchors].map(([id,a])=>({id,coordinate:a.coordinates,sourceId:a.sourceId}))}},get anchors(){return points.map(p=>({id:p.id,coordinate:[...p.coord],sourceId:p.anchor.sourceId,component:p.anchor.component,method:p.anchor.method}))},get landArea(){return landArea},get territoryLayer(){return {visible:landsVisible,strength:landStrength,edgeMode,edgeVisibility:liveReady?['native-ambient-line','land-outline'].map(id=>live.getLayoutProperty(id,'visibility')):[],features:ambientCount,boundaries:{...boundaryStats},fill:liveReady?live.getPaintProperty('native-ambient-fill','fill-opacity'):null,outline:liveReady?live.getPaintProperty('native-ambient-line','line-opacity'):null}},get terrain(){return liveReady?'tiled':reliefState},get tileState(){return liveStats()},matchingCreditIds:id=>matchingFilms(id).map(f=>f.id),artworkInventory:()=>({lands:records.map(r=>({id:r.id,name:r.name,credits:C().globeLandFilmCount(r.id),matching:matchingFilms(r.id).length})),credits:C().globeCreditIndex().films.map(f=>({id:f.id,film:f.film,title:f.title,maker:f.maker,record:f.record,source:C().sourceImage(f)||'',published:C().globeMetadata(f)?.image||'',view:safeViewing(f),watch:watchEntry(f)?{embedded:watchEntry(f).links.some(l=>l.embed),links:watchEntry(f).links}:null,lands:(C().globeCreditIndex().refs.get(f.id)||[]).map(r=>r.id)}))}),get discovery(){return {collection:collectionSummary(),themeCoverage:themeCoverage(),menu:menuMode,period:yearBand,filters:{...facetFilter},publication:publicationStatus,preferredLand,recent:[...recent],filmOffset,featured:featured?{land:featured.land,film:featured.film.id}:null,journeyDepth:journey.length,posterVisible:!$('#globe-emergent')?.hidden,posterReason,artState:$('#globe-encounter .globe-art-feature')?.dataset.artState||null,shareURL:shareView()}},goTo(coord,mapZoom){if(liveReady&&Array.isArray(coord)&&coord.length===2&&coord.every(Number.isFinite)&&Number.isFinite(mapZoom))setCamera(coord,Math.pow(2,mapZoom-liveBaseZoom),0);},get focus(){return {ids:[...focusIds],inside:inside.map(r=>r.id),settled,target:{mode:targetMode,radius:aperture(),screen:targetScreen,coordinate:targetCoordinate,primary:targetPrimary,reason:targetReason,nearby:near.map(v=>v.p.id)}};},sync,close,returnFromPreview};
 let previewReturn=null;
 function previewFromGlobe(film,land='',trigger=null){previewReturn={film:film.id,land,trigger};C().showPreview(film,{land,from:'globe'});sync();}
 function returnFromPreview(){const origin=previewReturn;previewReturn=null;if(!active)return;sync();requestAnimationFrame(()=>{if(!active)return;const trigger=origin?.trigger;if(trigger?.isConnected&&!trigger.hidden&&trigger.getClientRects().length){trigger.focus({preventScroll:true});return;}if(origin&&origin.film===featured?.film.id){$('#globe-encounter .globe-film-title')?.focus({preventScroll:true});return;}(liveReady?live.getCanvas():canvas)?.focus({preventScroll:true});});}
@@ -141,7 +141,7 @@ function resize(){
  const primary=$('.globe-primary')?.getBoundingClientRect(),root=host.getBoundingClientRect(),footerTop=footer?.getBoundingClientRect().top??root.bottom;
  const menuRoom=Math.max(64,Math.floor(footerTop-(primary?.bottom??root.top)-14))+'px';if(host.style.getPropertyValue('--globe-menu-room')!==menuRoom)host.style.setProperty('--globe-menu-room',menuRoom);
  if(w===W&&h===H&&ratio===dpr)return;
- W=w;H=h;dpr=ratio;canvas.width=Math.round(W*dpr);canvas.height=Math.round(H*dpr);if(live)live.resize();renderSoon();scheduleSettle(100);
+ W=w;H=h;targetScreen=null;dpr=ratio;canvas.width=Math.round(W*dpr);canvas.height=Math.round(H*dpr);if(live)live.resize();renderSoon();scheduleSettle(100);
 }
 function radius(){return Math.max(70,Math.min(W,H)*.445)*zoom;}
 function updateProjection(){
@@ -152,9 +152,9 @@ function shape(g,fill,stroke,width=1){
  ctx.beginPath();path(g);if(fill){ctx.fillStyle=fill;ctx.fill();}if(stroke){ctx.strokeStyle=stroke;ctx.lineWidth=width;ctx.stroke();}
 }
 function screenPoints(){
- const out=[],stamp=filterKey(),checkHemisphere=!liveReady||live.getZoom()<5;
- for(const p of points){if(checkHemisphere&&!visible(p.coord))continue;const pos=liveReady?live.project(p.coord):null;const xy=pos?[pos.x,pos.y]:proj(p.coord);if(!xy?.every(Number.isFinite)||xy[0]<-10||xy[1]<-10||xy[0]>W+10||xy[1]>H+10)continue;
-  out.push({p,xy,match:matchingFilms(p.id,stamp).length>0,distance:Math.hypot(xy[0]-W/2,xy[1]-H/2)});
+ const out=[],stamp=filterKey(),[tx,ty]=targetScreen||[W/2,H/2];
+ for(const p of points){if(!visible(p.coord))continue;const pos=liveReady?live.project(p.coord):null;const xy=pos?[pos.x,pos.y]:proj(p.coord);if(!xy?.every(Number.isFinite)||xy[0]<-10||xy[1]<-10||xy[0]>W+10||xy[1]>H+10)continue;
+  out.push({p,xy,match:matchingFilms(p.id,stamp).length>0,distance:Math.hypot(xy[0]-tx,xy[1]-ty)});
  }
  return out;
 }
@@ -557,15 +557,23 @@ function loadRelief(){
 function mapScale(){return liveReady?live.getZoom():Math.log2(Math.max(.1,zoom))+Math.max(-1.3,Math.log2(Math.min(W,H)*.87*Math.PI/512));}
 function aperture(){const z=mapScale(),base=W<=760?23:29;return Math.round(z<4?base:z<7?base-(base-13)*(z-4)/3:13);}
 function updateTarget(){if(!host)return;const z=mapScale();targetMode=z>=7?'local':z>=4?'landscape':'overview';const size=2*aperture()+'px';if(host.style.getPropertyValue('--globe-target-size')!==size)host.style.setProperty('--globe-target-size',size);if(host.dataset.targetMode!==targetMode)host.dataset.targetMode=targetMode;}
-function targetFeedback(){if(!host)return;const chosen=settled&&byId.get(targetPrimary);host.classList.toggle('has-tuning',settled?!!chosen:targetMode==='overview'&&near.length>0);host.classList.toggle('has-cinema',settled?!!chosen&&matchingFilms(chosen.id).length>0:targetMode==='overview'&&near.length>0);}
+function targetFeedback(){if(!host)return;const chosen=settled&&byId.get(targetPrimary),unmappedReading=!!readingJourney&&!journeyReference(currentReadingItem());host.classList.toggle('has-tuning',settled?!!chosen:targetMode==='overview'&&near.length>0);host.classList.toggle('has-cinema',!unmappedReading&&(settled?!!chosen&&matchingFilms(chosen.id).length>0:targetMode==='overview'&&near.length>0));}
 function chooseTarget(chosen){const actual=new Set(inside.map(r=>r.id)),direct=chosen.filter(r=>actual.has(r.id)),matching=direct.filter(r=>matchingFilms(r.id).length);const preferred=chosen.find(r=>r.id===preferredLand);if(preferred)return preferred;const prior=direct.find(r=>r.id===lastEncounter);if(targetMode!=='overview'&&direct.length)return (prior&&(!matching.length||matching.includes(prior))?prior:null)||matching[0]||direct[0];const marker=near.map(v=>byId.get(v.p.id)).find(r=>r&&chosen.includes(r));return (prior&&matching.includes(prior)?prior:null)||marker||matching[0]||prior||direct[0]||chosen[0]||null;}
 function includesBounds(bounds,p){
  const [[west,south],[east,north]]=bounds,[lon,lat]=p;
  return lat>=south-1e-7&&lat<=north+1e-7&&(west<=east?lon>=west-1e-7&&lon<=east+1e-7:lon>=west-1e-7||lon<=east+1e-7);
 }
+// Resolve the visible reticle against the same CSS-pixel coordinate system
+// used by the active renderer. The pitched map center is not a substitute for
+// the geographic point actually under the target.
 function underFocus(){
- let p=center;try{if(liveReady){const c=live.unproject([W/2,H/2]);p=[wrap(c.lng),c.lat];}}catch{}targetCoordinate=p.every(Number.isFinite)?[...p]:null;
- if(!targetCoordinate)return [];return records.filter(rec=>rec.shapes.some(s=>includesBounds(s.bounds,targetCoordinate)&&d3.geoContains(s.feature,targetCoordinate)));
+ const rect=$('#globe-aperture').getBoundingClientRect(),surface=(liveReady?live.getCanvas():canvas).getBoundingClientRect();
+ targetScreen=[rect.left+rect.width/2-surface.left,rect.top+rect.height/2-surface.top];
+ let p=null;
+ try{if(liveReady){const c=live.unproject(targetScreen);p=[wrap(c.lng),c.lat];}else if(Math.hypot(targetScreen[0]-W/2,targetScreen[1]-H/2)<=radius())p=proj.invert(targetScreen);}catch{}
+ targetCoordinate=p?.every(Number.isFinite)&&Math.abs(p[1])<=90?[...p]:null;
+ if(!targetCoordinate)return [];
+ return records.filter(rec=>rec.shapes.some(s=>includesBounds(s.bounds,targetCoordinate)&&d3.geoContains(s.feature,targetCoordinate)));
 }
 function matchingFilms(id,stamp=filterKey()){if(stamp!==matchingStamp){matchingStamp=stamp;matchingCache.clear();}if(!matchingCache.has(id))matchingCache.set(id,C().globeLandCatalogFilms(id).filter(f=>periodMatch(f)&&matchesFacets(f)));return matchingCache.get(id);}
 // Lazy public CSV projection: exact credit key, including multiline source evidence.
@@ -875,7 +883,7 @@ function drawUnmappedReading(item,panel,status){
 function drawEncounter(){
  const panel=$('#globe-encounter'),status=$('#globe-status'),actual=new Set(inside.map(r=>r.id));
  const chosen=focusIds.map(id=>byId.get(id)).filter(Boolean);
- const primary=chooseTarget(chosen);targetPrimary=primary?.id||'';targetFeedback();
+ const primary=chooseTarget(chosen);targetPrimary=primary?.id||'';targetReason=!primary?'none':actual.has(primary.id)?'contains-target':near.some(v=>v.p.id===primary.id)?'nearby-marker':'explicit-anchor';targetFeedback();
  const readingItem=currentReadingItem();if(readingItem&&!journeyReference(readingItem)){drawUnmappedReading(readingItem,panel,status);return;}
  const films=primary?rankedFilms(primary.id):[];
  if(primary&&lastEncounter!==primary.id){filmOffset=0;lastEncounter=primary.id;}
@@ -949,9 +957,10 @@ function settle(){
  // incidental overlapping polygons, including anchors clamped at the poles.
  // A freely moved camera does not retain a remote territory.
  const requested=labelAnchors.get(preferredLand)?.coordinates||pointById.get(preferredLand)?.coord,cap=liveReady?85:89.9;
- const atRequestedAnchor=!!requested&&d3.geoDistance(center,[requested[0],clamp(requested[1],-cap,cap)])<.0001;
+ const atRequestedAnchor=!!requested&&!!targetCoordinate&&d3.geoDistance(targetCoordinate,[requested[0],clamp(requested[1],-cap,cap)])<.0001;
  const next=[...new Set([...direct.map(v=>v.id),...nearby.map(v=>v.p.id),...inside.map(v=>v.id),...(atRequestedAnchor?[preferredLand]:[])])];
- if(next.join('|')!==focusIds.join('|')){previewLimit=3;if(!next.includes(preferredLand)){preferredLand='';pendingFilm='';}}
+ if(next.join('|')!==focusIds.join('|'))previewLimit=3;
+ if(preferredLand&&!next.includes(preferredLand)){preferredLand='';pendingFilm='';}
  focusIds=next;lastSettledFilter=filterKey();drawEncounter();updateTerritoryLabels();placeEmergent();renderSoon();
 }
 function scheduleSettle(ms=180){clearTimeout(settleTimer);settleTimer=setTimeout(settle,ms);}
