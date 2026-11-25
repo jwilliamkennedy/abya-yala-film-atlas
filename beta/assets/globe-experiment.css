@@ -398,3 +398,19 @@ body.atlas-globe-experiment #constellate-mode{display:none!important}
 .atlas-globe-experiment #constellate-popup .globe-clean-art:not(.is-ready),.atlas-globe-experiment #constellate-popup .globe-clean-art.is-broken{display:none!important}
 .atlas-globe-experiment #constellate-popup .weave-preview-main{grid-template-columns:minmax(0,1fr)}
 .atlas-globe-experiment #constellate-popup .weave-preview-main:has(>.globe-clean-art.is-ready:not(.is-broken)){grid-template-columns:minmax(82px,38%) minmax(0,1fr)}
+
+/* Full films remain part of the globe encounter. Native dialog traps focus and
+   makes the map inert while the viewer is open; no third-party player is loaded
+   until a visitor explicitly chooses Play. */
+#globe-player{box-sizing:border-box;width:min(920px,calc(100vw - 28px));max-width:100%;max-height:calc(100dvh - 24px);overflow:auto;overscroll-behavior:contain;background:#13252b;color:#eef1e8;border:1px solid #789a8b;border-radius:10px;padding:14px;box-shadow:0 18px 90px #0009}
+#globe-player::backdrop{background:#071319d9}
+#globe-player .globe-player-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:12px}
+#globe-player h2{font:500 clamp(18px,2.3vw,26px)/1.25 system-ui,sans-serif;color:#edf1e9;margin:0;overflow-wrap:anywhere}
+#globe-player p{font:13px/1.4 system-ui,sans-serif;color:#c0d6ce;margin:4px 0 0}
+#globe-player button,#globe-player a{font:600 13px/1.4 system-ui,sans-serif;color:#e3efe5}
+#globe-player button{min-height:44px;background:#29443e;border:1px solid #75988a;border-radius:5px;padding:7px 12px;cursor:pointer}
+#globe-player iframe{width:100%;aspect-ratio:16/9;display:block;border:0;background:#0a1216}
+#globe-player .globe-player-foot{display:flex;flex-wrap:wrap;gap:12px 18px;padding:12px 0 0}
+#globe-player .globe-player-foot a{text-decoration:underline;text-underline-offset:3px}
+@media(max-height:530px){#globe-player{width:min(760px,calc(100vw - 20px));padding:9px}#globe-player iframe{max-height:calc(100dvh - 125px)}}
+@media(max-width:550px){#globe-player{padding:10px}#globe-player .globe-player-foot a{padding:6px 0}}
