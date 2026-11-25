@@ -1,6 +1,6 @@
 """Inventory every exact credit and land; decode representative real images; test land selection and boundary overlays."""
 import asyncio,collections,json,os
-from urllib.parse import urlparse
+from urllib.parse import urlparse, urlencode, parse_qs, unquote
 from playwright.async_api import async_playwright
 BASE=os.getenv("ATLAS_QA_BASE","http://127.0.0.1:8985/beta/")
 async def main():
@@ -32,26 +32,32 @@ async def main():
         domains=collections.defaultdict(list)
         for c in credits:
             if c["source"]:domains[urlparse(c["source"]).netloc or "local"].append(c["source"])
-        samples=[]
+        local=list(dict.fromkeys(domains.get("local",[])))
+        remote=[]
         for domain,urls in sorted(domains.items()):
+            if domain=="local":continue
             unique=list(dict.fromkeys(urls))
-            samples.extend(unique[:min(4,len(unique))])
+            remote.extend(unique[:min(4,len(unique))])
         full=os.getenv("ATLAS_ARTWORK_FULL")=="1"
-        samples=list(dict.fromkeys(c["source"] for c in credits if c["source"])) if full else samples[:96]
+        samples=list(dict.fromkeys(c["source"] for c in credits if c["source"])) if full else local+remote[:96]
         print("ARTWORK_MODE","full" if full else "sample",len(samples),flush=True)
         loaded=[]
-        for i in range(0,len(samples),8):
+        for i in range(0,len(samples),16):
             loaded.extend(await page.evaluate("""async urls=>Promise.all(urls.map(src=>new Promise(resolve=>{
               const img=new Image();let done=false;
               const finish=state=>{if(done)return;done=true;clearTimeout(timer);resolve({src,state,w:img.naturalWidth,h:img.naturalHeight});};
               const timer=setTimeout(()=>finish('timeout'),12000);
               img.referrerPolicy='strict-origin-when-cross-origin';img.onload=()=>finish(img.naturalWidth?'decoded':'empty');img.onerror=()=>finish('failed');img.src=src;
-            })))""",samples[i:i+8]))
-            if full and (i%96==0 or i+8>=len(samples)):print("ARTWORK_PROGRESS",min(i+8,len(samples)),len(samples),flush=True)
-        report={"counts":counts,"playback":playback,"image_audit_mode":"full" if full else "sample","distinct_recorded_urls":len(set(c["source"] for c in credits if c["source"])),"lands_without_recorded_art":absent,"missing_credit_images":[c for c in credits if not c["source"]],"boundaries":boundaries,"sampled_image_responses":loaded,"all_credit_images":credits}
+            })))""",samples[i:i+16]))
+            if i%96==0 or i+16>=len(samples):print("ARTWORK_PROGRESS",min(i+16,len(samples)),len(samples),flush=True)
+        by_source={v["src"]:v for v in loaded}
+        failed_credits=[{**c,"image_result":by_source[c["source"]]["state"]} for c in credits if c["source"] in by_source and by_source[c["source"]]["state"]!="decoded"]
+        local_failed=[v for v in loaded if not urlparse(v["src"]).netloc and v["state"]!="decoded"]
+        report={"local_urls_checked":len(local),"local_failures":local_failed,"failed_credit_images":failed_credits,"counts":counts,"playback":playback,"image_audit_mode":"full" if full else "sample","distinct_recorded_urls":len(set(c["source"] for c in credits if c["source"])),"lands_without_recorded_art":absent,"missing_credit_images":[c for c in credits if not c["source"]],"boundaries":boundaries,"sampled_image_responses":loaded,"all_credit_images":credits}
         with open("shots/globe-independent/artwork-inventory.json","w",encoding="utf-8") as f:json.dump(report,f,ensure_ascii=False,indent=2)
         print("ARTWORK_INVENTORY",json.dumps(counts), "NO_ART_LANDS",json.dumps([l["name"] for l in absent],ensure_ascii=False),"IMAGE_SAMPLE",dict(collections.Counter(v["state"] for v in loaded)),"BOUNDARIES",json.dumps(boundaries),flush=True)
         assert any(v["state"]=="decoded" for v in loaded),"No real artwork decoded"
+        print("LOCAL_ARTWORK",len(local),"FAILURES",len(local_failed),flush=True)
         # Exercise a geographic spread, including populated territories without recorded art.
         candidates=[l for l in lands if l["credits"] and any(c["source"] for c in refs[l["id"]])]
         selected=[candidates[i] for i in sorted(set(round(j*(len(candidates)-1)/7) for j in range(8)))] if candidates else []
@@ -70,6 +76,30 @@ async def main():
             await page.goto(shared,wait_until="domcontentloaded",timeout=90000)
             await page.wait_for_function("(v)=>window.AtlasGlobe?.discovery.publication==='ready' && window.AtlasGlobe.focus.settled && window.AtlasGlobe.discovery.featured?.land===v.land && window.AtlasGlobe.discovery.featured?.film===v.film",arg=expected,timeout=90000)
             print("SHARED_ENCOUNTER passed",expected,flush=True)
+        # Verify both indexed playback types in a separate tab, without depending
+        # on the availability of the third-party video itself.
+        watch_tab=await browser.new_page()
+        try:
+            for pattern in ("**/youtube-nocookie.com/**","**/youtube.com/embed/**","**/player.vimeo.com/**"):
+                await watch_tab.route(pattern,lambda route:route.abort())
+            indexed=await page.evaluate("window.ATLAS_WATCH.films")
+            for embedded in (True,False):
+                entry=next((f for f in indexed if any(l.get("embed") for l in f["links"])==embedded),None)
+                if not entry:continue
+                shared=await page.evaluate("window.AtlasGlobe.discovery.shareURL")
+                query=urlparse(shared).query
+                await watch_tab.goto(BASE+"watch.html?"+urlencode({"fromGlobe":query})+"#"+entry["fid"],wait_until="domcontentloaded",timeout=90000)
+                await watch_tab.wait_for_function("(t)=>document.querySelector('#now-title')?.textContent.startsWith(t)",arg=entry["t"])
+                assert await watch_tab.locator("#now-frame").is_visible()==embedded
+                assert await watch_tab.locator("#now-external").is_visible()==(not embedded)
+                if not embedded:assert await watch_tab.locator("#now-external a").get_attribute("href")==entry["links"][0]["url"]
+                href=await watch_tab.locator("#watch-return-globe").get_attribute("href")
+                assert parse_qs(urlparse(href).query)==parse_qs(query),(href,shared)
+                print("WATCH_RETURN",entry["fid"],"embedded" if embedded else "external",flush=True)
+            # A standalone Watch link should not carry a globe return control.
+            await watch_tab.goto(BASE+"watch.html#"+indexed[0]["fid"],wait_until="domcontentloaded",timeout=90000)
+            assert await watch_tab.locator("#watch-return-globe").count()==0
+        finally:await watch_tab.close()
         await page.locator("#globe-more-toggle").click()
         await page.locator("#globe-close").click()
         await page.wait_for_function("!window.AtlasGlobe.active && window.AtlasConstellate.enabled")
