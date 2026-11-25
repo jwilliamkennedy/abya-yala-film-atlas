@@ -45,6 +45,7 @@ async def run(browser,name,viewport):
         print(name,"startup handoff",json.dumps(startup),flush=True)
         layer=await page.evaluate("window.AtlasGlobe.territoryLayer")
         assert layer["visible"] and layer["features"]>0 and layer["fill"] is not None,(name,"ambient territory layer absent",layer)
+        assert layer["boundaries"]["longEdges"]==0,(name,"cross-world territory edges",layer["boundaries"])
         print(name,"ambient territory layer",json.dumps(layer),flush=True)
         if MODE=="input":
             # Keep ordinary physical wheel, synthetic DOM Ctrl-wheel and
