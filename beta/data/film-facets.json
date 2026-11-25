@@ -2,8 +2,8 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-25",
  "license": "See data.html",
- "films_on_public_map": 2785,
- "film_entries": 2799,
+ "films_on_public_map": 2789,
+ "film_entries": 2803,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -30015,6 +30015,10 @@
     {
      "id": "SA50-20261014-b13c85277547",
      "name": "Maryoli Ceballos Vivas"
+    },
+    {
+     "id": "NEW-545ffc911e01",
+     "name": "Leidy Guancha"
     }
    ],
    "languages": [
@@ -39302,6 +39306,22 @@
    "primary_theme": null,
    "families": [],
    "form": null,
+   "length": null
+  },
+  "NEW-ced1815bec80-WORK-1": {
+   "title": "El legado harakbut",
+   "year": 2025,
+   "makers": [
+    {
+     "id": "NEW-ced1815bec80",
+     "name": "Herlinda Italiano"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
    "length": null
   },
   "NEW-9d672a8a828c-WORK-1": {
@@ -57943,6 +57963,54 @@
    ],
    "form": "Documentary",
    "length": "Short"
+  },
+  "Q20261124-99-F1": {
+   "title": "Starlight",
+   "year": 2020,
+   "makers": [
+    {
+     "id": "Q20261124-99",
+     "name": "Cole Vandale"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261125-01-F1": {
+   "title": "Healing Nation",
+   "year": 2022,
+   "makers": [
+    {
+     "id": "Q20261125-01",
+     "name": "Jamuna Galay-Tamang"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "QM-e4a0eabad1-M1": {
+   "title": "He visto caer la lluvia",
+   "year": null,
+   "makers": [
+    {
+     "id": "QM-e4a0eabad1",
+     "name": "Abraham Ávila Quintero"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
   }
  }
 }
