@@ -91,7 +91,7 @@ const kind={filmmakers:'Filmmakers',films:'Films',land:'Lands'};
 const drawViews=()=>{const v=views().saved;$('#views-empty').hidden=!!v.length;$('#n-views').textContent=v.length||'';$('#n-films').textContent=S().load().length||'';
  $('#views').innerHTML=v.map((x,i)=>`<li><span><span class="t">${esc(x.label||'Saved view')}</span><small>${esc(kind[x.view]||'')}</small></span><span><button type="button" class="open" data-open="${i}">Open on the map</button><button type="button" class="mv" data-rmv="${i}" aria-label="Remove saved view">✕</button></span></li>`).join('');};
 document.addEventListener('click',e=>{const t=e.target;
- if(t.dataset.open!==undefined){try{sessionStorage.setItem('atlas-rail-do','saved:'+t.dataset.open);}catch(err){}location.href='./';}
+ if(t.dataset.open!==undefined){try{sessionStorage.setItem('atlas-rail-do','saved:'+t.dataset.open);}catch(err){}location.href='flat.html';}
  if(t.dataset.rmv!==undefined){const v=views();v.saved.splice(+t.dataset.rmv,1);try{localStorage.setItem(VK,JSON.stringify(v));}catch(err){}drawViews();}});
 const tab=which=>{for(const k of ['films','views']){const on=k===which;$('#t-'+k).setAttribute('aria-selected',String(on));$('#p-'+k).hidden=!on;}try{history.replaceState(null,'',which==='views'?'#views':location.pathname+location.search);}catch(err){}};
 $('#t-films').onclick=()=>tab('films');$('#t-views').onclick=()=>tab('views');

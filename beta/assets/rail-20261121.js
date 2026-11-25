@@ -55,7 +55,7 @@ const wanted=()=>store.get('atlas-rail')||(constellating()||innerWidth<1440?'com
 
 function build(){
  nav=document.createElement('nav');nav.id='atlas-rail';nav.setAttribute('aria-label','Atlas menu');
- const row=([k,full,short,href])=>'<a class="rail-item" data-rail="'+k+'" href="'+HOME+href+'" title="'+full+'">'+svg(k)+'<span class="full">'+full+'</span><span class="short">'+short+'</span>'+
+ const row=([k,full,short,href])=>'<a class="rail-item" data-rail="'+k+'" href="'+(k==='map'&&!publicMap()?FLAT:k==='lands'&&publicMap()?findURL():HOME+href)+'" title="'+full+'">'+svg(k)+'<span class="full">'+full+'</span><span class="short">'+short+'</span>'+
   (k==='screening'?'<span class="rail-n" data-rail-n="screening"></span>':'')+'</a>';
  nav.innerHTML='<a class="rail-brand" href="'+HOME+'">'+MARK+'<span class="rail-title"><b>Indigenous<br>Cinema Atlas</b>'+
   '<span class="rail-count" hidden><span><span data-rail-n="films"></span> <span>films</span></span><span><span data-rail-n="makers"></span> <span>filmmakers</span></span></span></span></a>'+
@@ -164,7 +164,7 @@ function goHome(){
  setTimeout(()=>{const r=$('#zoom-reset');if(r)r.click();},120);
 }
 /* a link on another page can ask the map to do one thing on arrival: <a href="./" data-atlas-do="time"> */
-document.addEventListener('click',e=>{const a=e.target.closest&&e.target.closest('a[data-atlas-do]');if(a){flag.set(a.dataset.atlasDo);const dest=new URL(a.href,location.href);if(dest.origin===location.origin&&dest.pathname===new URL(HOME).pathname&&!dest.search){dest.searchParams.set('globe','0');a.href=dest.href;}}},true);
+document.addEventListener('click',e=>{const a=e.target.closest&&e.target.closest('a[data-atlas-do]');if(!a)return;const dest=new URL(a.href,location.href);if(dest.origin!==location.origin||dest.pathname!==new URL(HOME).pathname||dest.search)return;if(publicMap()&&a.dataset.atlasDo==='time'){dest.searchParams.set('menu','more');a.href=dest.href;return;}if(publicMap()&&['lands','search'].includes(a.dataset.atlasDo)){a.href=findURL();return;}flag.set(a.dataset.atlasDo);a.href=FLAT;},true);
 document.addEventListener('click',e=>{const a=e.target.closest&&e.target.closest('#atlas-rail [data-rail="map"]');if(!a||!onMap||constellating()||landView())return;e.preventDefault();e.stopImmediatePropagation();goHome();},true);
 document.addEventListener('keydown',e=>{
  if(!root.dataset.rail)return;

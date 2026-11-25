@@ -38,7 +38,7 @@ def row(f, r):
             f'<button type="button" class="scr" data-screen data-fid="{esc(f["id"])}" data-rid="{esc(r["id"])}" data-title="{esc(f["title"])}" data-year="{f["year"]}" data-maker="{esc(", ".join(x["name"] for x in co.get(f["id"], [r])))}" data-page="maker/{esc(r["id"])}.html#{esc(f["id"])}" data-watch="{esc((f["watch"] or [""])[0])}">＋ Screening list</button></li>')
 secs = ''.join(f'<h2 id="d{k}">{k}s <small>{len(decades[k])} film{'' if len(decades[k]) == 1 else 's'}</small></h2><ol class="tl">' + ''.join(row(f, r) for f, r in sorted(decades[k], key=lambda x: (x[0]['year'], x[0]['title'].lower()))) + '</ol>' for k in sorted(decades))
 write('timeline.html', 'Timeline · Indigenous Cinema Atlas', f'{len(dated)} dated films by Indigenous filmmakers, by decade.',
-      EXTRA_CSS + f'<h1>Timeline</h1><p class="who">{len(dated)} dated films on the public map, by decade. {len([x for x in films if not isinstance(x[0]["year"], int)])} more film credits have no year recorded yet. <a href="./" data-atlas-do="time">Watch the years pass on the map</a>.</p><nav class="bars" aria-label="Films per decade">{bars}</nav>{secs}')
+      EXTRA_CSS + f'<h1>Timeline</h1><p class="who">{len(dated)} dated films on the public map, by decade. {len([x for x in films if not isinstance(x[0]["year"], int)])} more film credits have no year recorded yet. <a href="./?menu=more">Explore film periods on the map</a>.</p><nav class="bars" aria-label="Films per decade">{bars}</nav>{secs}')
 write('screening.html', 'Saved · Indigenous Cinema Atlas', 'Your screening list and saved map views from the Indigenous Cinema Atlas.', EXTRA_CSS + '''
 <style>.tabs{display:inline-flex;padding:3px;border-radius:999px;background:var(--ui-wash,#e9ebed);margin:14px 0 18px}
 .tabs button{min-height:32px;padding:0 16px;border:0;border-radius:999px;background:transparent;color:var(--muted);font:inherit;font-size:14px;cursor:pointer}
@@ -71,7 +71,7 @@ const kind={filmmakers:'Filmmakers',films:'Films',land:'Lands'};
 const drawViews=()=>{const v=views().saved;$('#views-empty').hidden=!!v.length;$('#n-views').textContent=v.length||'';$('#n-films').textContent=S().load().length||'';
  $('#views').innerHTML=v.map((x,i)=>`<li><span><span class="t">${esc(x.label||'Saved view')}</span><small>${esc(kind[x.view]||'')}</small></span><span><button type="button" class="open" data-open="${i}">Open on the map</button><button type="button" class="mv" data-rmv="${i}" aria-label="Remove saved view">✕</button></span></li>`).join('');};
 document.addEventListener('click',e=>{const t=e.target;
- if(t.dataset.open!==undefined){try{sessionStorage.setItem('atlas-rail-do','saved:'+t.dataset.open);}catch(err){}location.href='./';}
+ if(t.dataset.open!==undefined){try{sessionStorage.setItem('atlas-rail-do','saved:'+t.dataset.open);}catch(err){}location.href='flat.html';}
  if(t.dataset.rmv!==undefined){const v=views();v.saved.splice(+t.dataset.rmv,1);try{localStorage.setItem(VK,JSON.stringify(v));}catch(err){}drawViews();}});
 const tab=which=>{for(const k of ['films','views']){const on=k===which;$('#t-'+k).setAttribute('aria-selected',String(on));$('#p-'+k).hidden=!on;}try{history.replaceState(null,'',which==='views'?'#views':location.pathname+location.search);}catch(err){}};
 $('#t-films').onclick=()=>tab('films');$('#t-views').onclick=()=>tab('views');

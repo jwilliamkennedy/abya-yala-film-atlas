@@ -9,6 +9,12 @@ on:
       - 'beta/index.html'
       - 'tools/qa/globe-discovery.py'
       - 'tools/qa/atlas-route.cjs'
+      - 'tools/qa/atlas-route-browser.py'
+      - 'beta/flat.html'
+      - 'beta/assets/rail-20261121.js'
+      - 'beta/about.html'
+      - 'beta/screening.html'
+      - 'tools/pages/extra.py'
       - 'beta/assets/atlas-route.js'
       - '.github/workflows/globe-acceptance.yml'
   workflow_dispatch:
@@ -22,7 +28,7 @@ jobs:
   globe-discovery:
     name: "Beta: experimental globe rotation and discovery"
     runs-on: ubuntu-latest
-    timeout-minutes: 12
+    timeout-minutes: 18
     steps:
       - uses: actions/checkout@v4
       - name: Verify public and legacy URL routes
@@ -36,6 +42,11 @@ jobs:
           python3 -m http.server 8985 --bind 127.0.0.1 >/tmp/atlas-globe.log 2>&1 &
           sleep 2
           python3 tools/qa/globe-discovery.py
+      - name: Verify actual public and hidden navigation destinations
+        run: |
+          python3 -m http.server 8986 --bind 127.0.0.1 >/tmp/atlas-route.log 2>&1 &
+          sleep 2
+          ATLAS_QA_BASE=http://127.0.0.1:8986/beta/ python3 tools/qa/atlas-route-browser.py
       - uses: actions/upload-artifact@v4
         if: always()
         with:
