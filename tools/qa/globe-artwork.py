@@ -94,6 +94,23 @@ async def main():
             await page.goto(shared,wait_until="domcontentloaded",timeout=90000)
             await page.wait_for_function("(v)=>window.AtlasGlobe?.discovery.publication==='ready' && window.AtlasGlobe.focus.settled && window.AtlasGlobe.discovery.featured?.land===v.land && window.AtlasGlobe.discovery.featured?.film===v.film",arg=expected,timeout=90000)
             print("SHARED_ENCOUNTER passed",expected,flush=True)
+        # In-place playback must keep the exact globe state and focus.
+        target=await page.evaluate("""()=>{const G=AtlasGlobe,I=G.artworkInventory(),a=new Map(G.anchors.map(x=>[x.id,x.coordinate]));const c=I.credits.find(c=>c.watch?.embedded&&c.lands.some(id=>a.has(id)));if(!c)return null;const land=c.lands.find(id=>a.has(id)),u=new URL(G.discovery.shareURL);u.searchParams.set('at',[...a.get(land),4].join(','));u.searchParams.set('land',land);u.searchParams.set('film',c.id);return {url:u.href,film:c.id,land};}""")
+        assert target,"No mapped indexed film for inline playback"
+        for pattern in ("**/youtube-nocookie.com/**","**/youtube.com/embed/**","**/player.vimeo.com/**"):
+            await page.route(pattern,lambda route:route.abort())
+        await page.goto(target["url"],wait_until="domcontentloaded",timeout=90000)
+        await page.wait_for_function("(v)=>AtlasGlobe?.discovery.publication==='ready' && AtlasGlobe.focus.settled && AtlasGlobe.discovery.featured?.film===v.film && AtlasGlobe.discovery.featured?.land===v.land",arg=target,timeout=90000)
+        initial=await page.evaluate("({camera:AtlasGlobe.camera,featured:AtlasGlobe.discovery.featured,collection:AtlasGlobe.discovery.collection,url:location.href})")
+        play=page.locator('#globe-encounter [data-view-kind="indexed-embed"]')
+        await play.click()
+        await page.locator("#globe-player[open] iframe").wait_for(state="visible")
+        assert await page.locator("#globe-player iframe").get_attribute("src")
+        await page.locator('#globe-player button[aria-label="Close film player"]').click()
+        assert not await page.locator("#globe-player").count()
+        assert await page.evaluate("({camera:AtlasGlobe.camera,featured:AtlasGlobe.discovery.featured,collection:AtlasGlobe.discovery.collection,url:location.href})")==initial
+        assert await play.evaluate("(e)=>document.activeElement===e")
+        print("INLINE_PLAYBACK passed",target["film"],flush=True)
         # Verify both indexed playback types in a separate tab, without depending
         # on the availability of the third-party video itself.
         watch_tab=await browser.new_page()
