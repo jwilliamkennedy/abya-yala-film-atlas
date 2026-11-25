@@ -67,7 +67,7 @@ async function boot(){
  let ml;try{const lib=await import(new URL('assets/maplibre/maplibre-gl.mjs',document.baseURI).href);ml=lib.default||lib;}catch(e){fail();return;}
  // Set the actual initial palette before MapLibre paints its first frame.
  // Retain the day values for correct subsequent mode switching.
- const openingWeave=new URLSearchParams(location.search).get('constellate')==='1';
+ const openingWeave=!!window.AtlasRoute?.globe||new URLSearchParams(location.search).get('constellate')==='1';
  if(root.dataset.readingTheme==='night'||root.dataset.uiConstellate==='on'||openingWeave){
   for(const [id,properties] of Object.entries(NIGHT)){
    const layer=style.layers.find(l=>l.id===id);
