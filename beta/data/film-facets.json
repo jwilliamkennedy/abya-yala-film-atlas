@@ -7882,9 +7882,17 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Displacement and Migration",
+    "Health and Healing",
+    "Residential and Boarding Schools"
+   ],
+   "primary_theme": "Displacement and Migration",
+   "families": [
+    "Knowledge and Continuity",
+    "Lives and Relations",
+    "Sovereignty and Politics"
+   ],
    "form": "Documentary",
    "length": null
   },
@@ -16831,10 +16839,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
+   "themes": [
+    "Sovereignty and Self-Determination",
+    "Resistance Movements"
+   ],
+   "primary_theme": "Sovereignty and Self-Determination",
+   "families": [
+    "Sovereignty and Politics"
+   ],
+   "form": "Documentary",
    "length": null
   },
   "DIR-0230-W1031-5": {
@@ -17011,10 +17024,17 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
+   "themes": [
+    "Extractivism",
+    "Land Defense",
+    "Resistance Movements"
+   ],
+   "primary_theme": "Extractivism",
+   "families": [
+    "Land and Environment",
+    "Sovereignty and Politics"
+   ],
+   "form": "Documentary",
    "length": null
   },
   "FILM-B25B-02": {
@@ -17037,10 +17057,15 @@
      "source": "https://ojodeaguacomunicacion.org/poder-pal-pueblo/"
     }
    ],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
+   "themes": [
+    "Sovereignty and Self-Determination",
+    "Resistance Movements"
+   ],
+   "primary_theme": "Sovereignty and Self-Determination",
+   "families": [
+    "Sovereignty and Politics"
+   ],
+   "form": "Documentary",
    "length": null
   },
   "FILM-B25B-12": {
@@ -22096,9 +22121,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Women and Gender",
+    "Art, Craft and Making"
+   ],
+   "primary_theme": "Women and Gender",
+   "families": [
+    "Expression and Representation",
+    "Lives and Relations"
+   ],
    "form": "Documentary",
    "length": "Short"
   },
@@ -22783,9 +22814,13 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Cosmology and Origin Stories"
+   ],
+   "primary_theme": "Cosmology and Origin Stories",
+   "families": [
+    "Knowledge and Continuity"
+   ],
    "form": null,
    "length": "Short"
   },
@@ -23131,11 +23166,16 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Kinship",
+    "Health and Healing"
+   ],
+   "primary_theme": "Kinship",
+   "families": [
+    "Lives and Relations"
+   ],
+   "form": "Documentary",
+   "length": "Short"
   },
   "NEW-45cb5ec69bd9-WORK-1": {
    "title": "Convenience Store NDN Zombie",
@@ -23590,11 +23630,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "LGBTQIA2S"
+   ],
+   "primary_theme": "LGBTQIA2S",
+   "families": [
+    "Lives and Relations"
+   ],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "NEW-797d6554404b-W1031-1": {
    "title": "El camino es largo",
@@ -24189,11 +24233,18 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Women and Gender",
+    "Cosmology and Origin Stories",
+    "Youth"
+   ],
+   "primary_theme": "Women and Gender",
+   "families": [
+    "Knowledge and Continuity",
+    "Lives and Relations"
+   ],
+   "form": "Fiction",
+   "length": "Short"
   },
   "Q20261113-53-F1": {
    "title": "Mu Kar: mi raíz",
@@ -27887,9 +27938,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Cosmology and Origin Stories",
+    "Youth"
+   ],
+   "primary_theme": "Cosmology and Origin Stories",
+   "families": [
+    "Knowledge and Continuity",
+    "Lives and Relations"
+   ],
    "form": null,
    "length": "Short"
   },
@@ -32581,11 +32638,16 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Elders and Knowledge",
+    "Memory and Oral History"
+   ],
+   "primary_theme": "Elders and Knowledge",
+   "families": [
+    "Knowledge and Continuity"
+   ],
+   "form": "Documentary",
+   "length": "Short"
   },
   "RESEARCH-FILM-20261031-800-NEW-350": {
    "title": "The Saint and The Bear",
@@ -35122,10 +35184,16 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
+   "themes": [
+    "Art, Craft and Making",
+    "Memory and Oral History"
+   ],
+   "primary_theme": "Art, Craft and Making",
+   "families": [
+    "Expression and Representation",
+    "Knowledge and Continuity"
+   ],
+   "form": "Documentary",
    "length": null
   },
   "Q20261115-97-F2": {
@@ -35138,10 +35206,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
+   "themes": [
+    "Art, Craft and Making",
+    "Self-Representation and Countering Stereotypes"
+   ],
+   "primary_theme": "Art, Craft and Making",
+   "families": [
+    "Expression and Representation"
+   ],
+   "form": "Documentary",
    "length": null
   },
   "Q20261115-97-F3": {
@@ -35154,10 +35227,16 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
+   "themes": [
+    "Sovereignty and Self-Determination",
+    "Water"
+   ],
+   "primary_theme": "Sovereignty and Self-Determination",
+   "families": [
+    "Land and Environment",
+    "Sovereignty and Politics"
+   ],
+   "form": "Documentary",
    "length": null
   },
   "Q20261115-97-F4": {
@@ -35170,11 +35249,17 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Memory and Oral History",
+    "Kinship"
+   ],
+   "primary_theme": "Memory and Oral History",
+   "families": [
+    "Knowledge and Continuity",
+    "Lives and Relations"
+   ],
+   "form": "Documentary",
+   "length": "Short"
   },
   "Q20261115-97-F5": {
    "title": "Our Voices, Our Stories",
@@ -35186,11 +35271,18 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Residential and Boarding Schools",
+    "Health and Healing",
+    "Memory and Oral History"
+   ],
+   "primary_theme": "Residential and Boarding Schools",
+   "families": [
+    "Knowledge and Continuity",
+    "Lives and Relations"
+   ],
+   "form": "Documentary",
+   "length": "Short"
   },
   "NEW-efb16e33eb64-WORK-1": {
    "title": "Freddy",
@@ -35363,11 +35455,17 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Art, Craft and Making",
+    "Water"
+   ],
+   "primary_theme": "Art, Craft and Making",
+   "families": [
+    "Expression and Representation",
+    "Land and Environment"
+   ],
+   "form": "Documentary",
+   "length": "Feature"
   },
   "Q20261115-96-F4": {
    "title": "The Spirit of Annie Mae",
@@ -35511,11 +35609,18 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Women and Gender",
+    "Resistance Movements",
+    "Justice, Truth and Reconciliation"
+   ],
+   "primary_theme": "Women and Gender",
+   "families": [
+    "Lives and Relations",
+    "Sovereignty and Politics"
+   ],
    "form": "Documentary",
-   "length": null
+   "length": "Feature"
   },
   "NEW-b4a289ea9cc8-WORK-1": {
    "title": "Higher Heights",
@@ -40920,11 +41025,19 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Youth",
+    "State Violence and Genocide",
+    "Music and Performance"
+   ],
+   "primary_theme": "Youth",
+   "families": [
+    "Expression and Representation",
+    "Lives and Relations",
+    "Sovereignty and Politics"
+   ],
+   "form": "Documentary",
+   "length": "Feature"
   },
   "Q20261121-18-F1": {
    "title": "Opará: Morada dos Nossos Ancestrais",
@@ -41514,9 +41627,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Memory and Oral History",
+    "Sovereignty and Self-Determination"
+   ],
+   "primary_theme": "Memory and Oral History",
+   "families": [
+    "Knowledge and Continuity",
+    "Sovereignty and Politics"
+   ],
    "form": "Documentary",
    "length": null
   },
@@ -41760,11 +41879,18 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Land Defense",
+    "Youth",
+    "More-than-Human Relations"
+   ],
+   "primary_theme": "Land Defense",
+   "families": [
+    "Land and Environment",
+    "Lives and Relations"
+   ],
+   "form": "Fiction",
+   "length": "Feature"
   },
   "BETA25-20261105-03-FILM1": {
    "title": "Replikka",
@@ -46437,9 +46563,14 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Health and Healing",
+    "Kinship"
+   ],
+   "primary_theme": "Health and Healing",
+   "families": [
+    "Lives and Relations"
+   ],
    "form": "Documentary",
    "length": "Series"
   },
@@ -47588,9 +47719,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Self-Representation and Countering Stereotypes",
+    "Kinship"
+   ],
+   "primary_theme": "Self-Representation and Countering Stereotypes",
+   "families": [
+    "Expression and Representation",
+    "Lives and Relations"
+   ],
    "form": "Fiction",
    "length": "Short"
   },
@@ -48416,11 +48553,18 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Sovereignty and Self-Determination",
+    "Elders and Knowledge",
+    "Memory and Oral History"
+   ],
+   "primary_theme": "Sovereignty and Self-Determination",
+   "families": [
+    "Knowledge and Continuity",
+    "Sovereignty and Politics"
+   ],
+   "form": "Documentary",
+   "length": "Feature"
   },
   "Q20261114-111-F1": {
    "title": "A Cry for Freedom",
@@ -48529,11 +48673,20 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Land Defense",
+    "Resistance Movements",
+    "Extractivism",
+    "Elders and Knowledge"
+   ],
+   "primary_theme": "Land Defense",
+   "families": [
+    "Knowledge and Continuity",
+    "Land and Environment",
+    "Sovereignty and Politics"
+   ],
+   "form": "Documentary",
+   "length": "Feature"
   },
   "Q20261114-116-F1": {
    "title": "Ama: La Memoria del Tiempo",
@@ -49012,10 +49165,17 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
+   "themes": [
+    "Sovereignty and Self-Determination",
+    "Land Defense",
+    "Resistance Movements"
+   ],
+   "primary_theme": "Sovereignty and Self-Determination",
+   "families": [
+    "Land and Environment",
+    "Sovereignty and Politics"
+   ],
+   "form": "Documentary",
    "length": "Short"
   },
   "Q20261115-402-F3": {
@@ -55416,11 +55576,18 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Memory and Oral History",
+    "Elders and Knowledge",
+    "Kinship"
+   ],
+   "primary_theme": "Memory and Oral History",
+   "families": [
+    "Knowledge and Continuity",
+    "Lives and Relations"
+   ],
    "form": "Animation",
-   "length": null
+   "length": "Short"
   },
   "Q20261124-03-F1": {
    "title": "And Knowledge to Keep Us",
