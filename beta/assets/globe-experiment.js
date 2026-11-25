@@ -3,7 +3,7 @@
  * The old orthographic canvas is a clearly labeled, local-only overview fallback.
  */
 (()=>{'use strict';
-if(new URLSearchParams(location.search).get('globe')!=='1')return;
+if(!(window.AtlasRoute?.globe??(new URLSearchParams(location.search).get('globe')==='1')))return;
 const $=s=>document.querySelector(s),C=()=>window.AtlasConstellate,A=()=>window.Atlas;
 // Start independent fetches together instead of waiting for the flat catalogue
 // interface and its data to finish constructing. Catch immediately; boot owns recovery.
@@ -26,12 +26,23 @@ let ambientCount=0,landsVisible=true,landStrength=1,edgeMode='selected',lastCame
 let featured=null,lastVisiblePosterKey='',posterKey='',journey=[],artSizes=new Map(),posterLayoutFrame=0,posterReason='initializing',boundaryStats={features:0,segments:0,datelineSplits:0},menuMode='',themeLensHome=null,menuListeners=null,encounterExpanded=false;
 const inputStats={wheel:0,pinch:0,safari:0,touch:0,zoomEvents:0,lastDelta:0,lastBefore:null,lastAfter:null,lastInputMs:null};
 const params=new URLSearchParams(location.search);landsVisible=params.get('territories')!=='off';
-let inboundEncounter={land:params.get('land')||'',film:params.get('film')||''};
-function restoreEncounter(){if(!active||publicationStatus!=='ready'||!inboundEncounter)return;const {land,film}=inboundEncounter;inboundEncounter=null;if(!byId.has(land))return;if(film&&!C().globeCreditIndex().byLand.get(land)?.films.some(f=>f.id===film))return;preferredLand=land;pendingFilm=film;focusKey='';scheduleSettle(80);}
+let inboundEncounter={land:params.get('land')||'',film:params.get('film')||'',maker:params.get('maker')||''};
+function restoreEncounter(){
+ if(!active||publicationStatus!=='ready'||!inboundEncounter)return;
+ const {land,film,maker}=inboundEncounter;inboundEncounter=null;if(!land&&!film&&!maker)return;
+ const idx=C().globeCreditIndex(),refs=f=>(idx.refs.get(f.id)||[]).filter(r=>byId.has(r.id));
+ let work=film?idx.films.find(f=>f.id===film||f.film===film&&(!maker||f.record===maker)):null;
+ if(film&&!work)return;
+ if(!work&&maker){const credits=idx.films.filter(f=>f.record===maker);work=credits.find(f=>refs(f).length)||credits[0];}
+ const selected=byId.has(land)&&(!work||refs(work).some(r=>r.id===land))?land:(!land&&work?refs(work)[0]?.id:'');
+ if(!selected){if(work)previewFromGlobe(work,'',null);else if(maker){const record=A().recordById(maker),input=$('#globe-search');if(record&&input){if(menuMode!=='find')setMenu('find');input.value=record.name||record.title||maker;input.dispatchEvent(new Event('input',{bubbles:true}));}}return;}
+ if(!initialCamera){gotoLand(selected,work?.id||'',true);return;}
+ preferredLand=selected;pendingFilm=work?.id||'';focusKey='';scheduleSettle(80);
+}
 const initialCamera=(()=>{const a=params.get('at')?.split(',').map(Number);return a?.length===3&&a.every(Number.isFinite)&&Math.abs(a[0])<=180&&Math.abs(a[1])<=85&&a[2]>=-2&&a[2]<=14?a:null;})();
 let requestedPitch=initialCamera&&params.has('pitch')&&Number.isFinite(Number(params.get('pitch')))?clamp(Number(params.get('pitch')),0,42):0;
 function currentTheme(){return [$('#weave-map-theme')?.value,$('#weave-map-theme-second')?.value].filter(Boolean);}
-function shareView(){const u=new URL(location.pathname,location.origin),s=liveStats();u.searchParams.set('constellate','1');u.searchParams.set('globe','1');if(W&&H){const base=Math.max(-1.3,Math.log2(Math.min(W,H)*.87*Math.PI/512)),mapZoom=s?.zoom??clamp(base+Math.log2(Math.max(.1,zoom)),-2,14);u.searchParams.set('at',[center[0].toFixed(5),clamp(center[1],-85,85).toFixed(5),mapZoom.toFixed(3)].join(','));}if(settled&&featured){u.searchParams.set('land',featured.land);u.searchParams.set('film',featured.film.id);}if(s?.pitch>0)u.searchParams.set('pitch',s.pitch.toFixed(2));if(!landsVisible)u.searchParams.set('territories','off');if(landStrength!==1)u.searchParams.set('lands',String(landStrength));if(edgeMode!=='selected')u.searchParams.set('edges',edgeMode);const t=currentTheme();if(t.length)u.searchParams.set('themes',JSON.stringify(t));else u.searchParams.delete('themes');if(yearBand)u.searchParams.set('period',yearBand);else u.searchParams.delete('period');for(const [key,val] of Object.entries(facetFilter))if(val)u.searchParams.set(key,val);return u.href;}
+function shareView(){const u=new URL('./',document.baseURI),s=liveStats();if(W&&H){const base=Math.max(-1.3,Math.log2(Math.min(W,H)*.87*Math.PI/512)),mapZoom=s?.zoom??clamp(base+Math.log2(Math.max(.1,zoom)),-2,14);u.searchParams.set('at',[center[0].toFixed(5),clamp(center[1],-85,85).toFixed(5),mapZoom.toFixed(3)].join(','));}if(settled&&featured){u.searchParams.set('land',featured.land);u.searchParams.set('film',featured.film.id);}if(s?.pitch>0)u.searchParams.set('pitch',s.pitch.toFixed(2));if(!landsVisible)u.searchParams.set('territories','off');if(landStrength!==1)u.searchParams.set('lands',String(landStrength));if(edgeMode!=='selected')u.searchParams.set('edges',edgeMode);const t=currentTheme();if(t.length)u.searchParams.set('themes',JSON.stringify(t));else u.searchParams.delete('themes');if(yearBand)u.searchParams.set('period',yearBand);else u.searchParams.delete('period');for(const [key,val] of Object.entries(facetFilter))if(val)u.searchParams.set(key,val);return u.href;}
 function recordVisit(r){if(recent[0]?.id===r.id)return;recent=[{id:r.id,name:r.name},...recent.filter(v=>v.id!==r.id)].slice(0,10);try{sessionStorage.setItem('atlas-globe-recent',JSON.stringify(recent));}catch{}updateRecent();}
 function updateRecent(){const s=$('#globe-recent');if(!s)return;s.replaceChildren(el('option',null,'Recently explored…'));for(const r of recent){if(!byId.has(r.id))continue;const o=el('option',null,r.name);o.value=r.id;s.append(o);}s.hidden=s.options.length<2;}
 function invalidateFilters(){pendingFilm='';filmOffset=0;focusKey='';liveSignature='';refreshMenuLabels();movement();scheduleSettle(80);}
@@ -111,9 +122,13 @@ function close(){
  clearTimeout(firstSceneTimer);firstSceneTimer=0;
  const wasActive=active;closed=true;active=false;delete document.documentElement.dataset.globeEntry;clearStarDrag();closeGlobePlayer();clearTimeout(settleTimer);clearTimeout(labelTimer);labelTimer=0;cancelFlight();if(raf)cancelAnimationFrame(raf);raf=0;if(posterLayoutFrame)cancelAnimationFrame(posterLayoutFrame);posterLayoutFrame=0;ro?.disconnect();
  clearTimeout(liveTimer);stopWheel();zoomListeners?.abort();zoomListeners=null;restoreThemeLens();liveReady=false;live?.remove();live=null;liveHost=null;relief?.dispose();relief=null;host?.remove();host=null;document.body.classList.remove('atlas-globe-experiment');if(wasActive&&C()?.enabled)C().refreshDiscoveryMode();
- const u=new URL(location.href);for(const k of ['globe','at','pitch','territories','themes','period','lands','language','form','length','land','film','edges'])u.searchParams.delete(k);u.searchParams.set('globe','0');history.replaceState(history.state,'',u.href);
+ if(!window.AtlasRoute?.globe){const u=new URL(location.href);for(const k of ['globe','at','pitch','territories','themes','period','lands','language','form','length','land','film','edges'])u.searchParams.delete(k);u.searchParams.set('globe','0');history.replaceState(history.state,'',u.href);}
 }
-function fallback(e){console.warn('Globe discovery unavailable',e);close();const p=document.createElement('p');p.className='globe-fallback';p.textContent='The globe could not initialize. The flat workspace remains available.';$('.map-panel')?.append(p);setTimeout(()=>p.remove(),9000);}
+function fallback(e){
+ console.warn('Globe discovery unavailable',e);close();
+ if(window.AtlasRoute?.globe){document.documentElement.dataset.globeEntry='error';const main=document.querySelector('body>main');if(main)main.inert=true;const p=$('#globe-stage-loading');if(p){p.replaceChildren();const box=el('span',null,'The map could not initialize. ');const retry=button('Reload',()=>location.reload());box.append(retry);p.append(box);}return;}
+ const p=el('p','globe-fallback','The globe could not initialize.');$('.map-panel')?.append(p);
+}
 function normalizeGeometry(g){
  if(!g)return g;
  if(g.type==='GeometryCollection')return {type:g.type,geometries:g.geometries.map(normalizeGeometry)};
@@ -460,7 +475,7 @@ function loadRelief(){
   clearTimeout(firstSceneTimer);firstSceneTimer=0;
   startup.firstVisible=nowMs();startup.firstRenderer=renderer;
   host.dataset.firstRenderer=renderer;host.dataset.ready='true';host.inert=false;
-  document.documentElement.dataset.globeEntry='ready';const menu=params.get('menu');if(['find','collection','more','theme'].includes(menu))setMenu(menu);
+  document.documentElement.dataset.globeEntry='ready';const menu=params.get('menu');if(['find','collection','more','theme'].includes(menu)&&menuMode!==menu)setMenu(menu);
  }
  function failLive(reason){
   if(!active)return;clearStarDrag();console.warn('Native globe unavailable; using local fallback',reason);const focused=!!liveHost?.contains(document.activeElement);if(liveReady&&live){try{readLiveCamera();}catch{}}stopWheel();zoomListeners?.abort();zoomListeners=null;
@@ -979,8 +994,8 @@ function renderCollection(force=false){
  const settings=el('details','globe-collection-settings');settings.append(el('summary',null,'Manage collections and threads'));const name=el('label',null,'Constellation'),select=el('select');select.setAttribute('aria-label','Choose constellation');for(const c of store().state.collections){const o=el('option',null,c.name+(store().saved(c.id)?'':' · Draft'));o.value=c.id;select.append(o);}select.value=cur.id;select.onchange=()=>{clearStarDrag();starGroup='';drawingLink=false;linkFrom=linkTo='';connectionDraft=null;collectionNotice='';store().activate(select.value);renderCollection(true);};name.append(select);settings.append(name);
  const thread=el('label',null,'Thread'),ts=el('select');ts.setAttribute('aria-label','Choose thread');for(const t of cur.threads){const o=el('option',null,t.name);o.value=t.id;ts.append(o);}ts.value=cur.activeThread;ts.onchange=()=>{clearStarDrag();starGroup='';drawingLink=false;linkFrom=linkTo='';connectionDraft=null;cur.activeThread=ts.value;store().save();renderCollection(true);};thread.append(ts);settings.append(thread);
  const info=el('p','globe-collection-info',films.length+' collected films · '+summary.mapped+' mapped · '+cur.links.length+' connections');panel.append(info);
- const actions=el('div','globe-buttons');const save=button(summary.saved?'Saved in browser':'Save',()=>{collectionNotice=store().persist()?'Saved in this browser.':'Save failed. Export in the flat workspace.';renderCollection(true);});save.disabled=!cur.items.length||summary.saved;save.id='globe-save-collection';const fresh=button('New',()=>{if(store().dirty()&&cur.items.length&&!window.confirm('Start a new draft? The current draft stays in this tab until saved.'))return;clearStarDrag();starGroup='';drawingLink=false;linkFrom=linkTo='';connectionDraft=null;collectionNotice='';store().create('Untitled constellation');renderCollection(true);});actions.append(save);settings.append(fresh);panel.append(actions);
- const edit=button('Open flat editor',()=>{close();C().open({dock:true});});settings.append(edit);panel.append(settings);if(films.length){const share=button('Share constellation',async()=>{const snapshot=C().shareURL('globe');if(!snapshot){collectionNotice='Too large to share as a link. Export JSON in the flat editor.';renderCollection(true);return;}const u=new URL(shareView());u.hash=new URL(snapshot).hash;try{await navigator.clipboard.writeText(u.href);collectionNotice='Constellation link copied.';renderCollection(true);}catch{const field=el('input');field.readOnly=true;field.value=u.href;field.setAttribute('aria-label','Shareable constellation link');share.after(field);field.select();}});actions.append(share);}
+ const actions=el('div','globe-buttons');const save=button(summary.saved?'Saved in browser':'Save',()=>{collectionNotice=store().persist()?'Saved in this browser.':'Save failed. Export a JSON copy.';renderCollection(true);});save.disabled=!cur.items.length||summary.saved;save.id='globe-save-collection';const fresh=button('New',()=>{if(store().dirty()&&cur.items.length&&!window.confirm('Start a new draft? The current draft stays in this tab until saved.'))return;clearStarDrag();starGroup='';drawingLink=false;linkFrom=linkTo='';connectionDraft=null;collectionNotice='';store().create('Untitled constellation');renderCollection(true);});actions.append(save);settings.append(fresh);panel.append(actions);
+ const exportCopy=button('Export JSON',()=>{const blob=new Blob([JSON.stringify(C().jsonExport(),null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=el('a');a.href=url;a.download='atlas-collection.json';document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);});settings.append(exportCopy);panel.append(settings);if(films.length){const share=button('Share constellation',async()=>{const snapshot=C().shareURL('globe');if(!snapshot){collectionNotice='Too large to share as a link. Export JSON under Manage collections and threads.';renderCollection(true);return;}const u=new URL(shareView());u.hash=new URL(snapshot).hash;try{await navigator.clipboard.writeText(u.href);collectionNotice='Constellation link copied.';renderCollection(true);}catch{const field=el('input');field.readOnly=true;field.value=u.href;field.setAttribute('aria-label','Shareable constellation link');share.after(field);field.select();}});actions.append(share);}
  const msg=el('p','globe-collection-info',collectionNotice||(!films.length?'Collect a film to begin.':'Choose films to revisit or connect.'));msg.setAttribute('role','status');panel.append(msg);
  if(!films.length&&!journeyItems().length){restoreCollectionPanel();return;}
  const draw=button(drawingLink?'Cancel connection':'Connect two films',()=>{drawingLink=!drawingLink;linkFrom=linkTo='';connectionDraft=null;collectionNotice='';renderCollection(true);updateCollectButton();renderSoon();});draw.id='globe-draw-link';draw.disabled=films.length<1;draw.setAttribute('aria-pressed',String(drawingLink));panel.append(draw);if(!drawingLink&&journeyItems().length){const read=button('Read this thread',()=>readJourneyStep(0));read.id='globe-read-thread';panel.append(read);}
@@ -1238,5 +1253,5 @@ async function boot(){
   bootLive();
  }catch(e){fallback(e);}
 }
-const started=Date.now();(function wait(){if(closed)return;if(C()?.enabled&&A()?.lands&&window.topojson&&window.d3&&window.AtlasGeoIntegrity){boot();return;}if(Date.now()-started<20000)setTimeout(wait,100);else{delete document.documentElement.dataset.globeEntry;}})();
+const started=Date.now();(function wait(){if(closed)return;if(C()?.enabled&&A()?.lands&&window.topojson&&window.d3&&window.AtlasGeoIntegrity){boot();return;}if(Date.now()-started<60000)setTimeout(wait,100);else fallback(Error('Catalogue initialization timed out'));})();
 })();

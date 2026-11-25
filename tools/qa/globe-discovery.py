@@ -22,7 +22,7 @@ async def check(browser,name,viewport):
     page.on("response",tile_response)
     page.on("pageerror",lambda e: errors.append(str(e)))
     await page.goto(BASE,wait_until="domcontentloaded",timeout=90000)
-    assert await page.evaluate("new URLSearchParams(location.search).get('globe')==='1' && new URLSearchParams(location.search).get('constellate')==='1'"), "Clean beta entry did not select globe"
+    assert await page.evaluate("window.AtlasRoute?.globe && !location.search && !location.hash"), "Clean beta entry did not select globe"
     # Measure the map plate before the delayed native renderer can reveal it.
     plate=await page.locator("#atlas-globe-stage").bounding_box()
     assert plate and plate["width"]>200 and plate["height"]>200, (name,"collapsed initial map",plate)
@@ -31,6 +31,7 @@ async def check(browser,name,viewport):
     after=await page.locator("#atlas-globe-stage").bounding_box()
     assert max(abs(plate[k]-after[k]) for k in ("x","y","width","height"))<=3, (name,"map plate jumped during startup",plate,after)
     assert await page.evaluate("document.querySelector('#atlas-rotational-globe').parentElement.id==='atlas-globe-stage' && document.querySelector('body>main').inert && !document.querySelector('body>main').contains(document.querySelector('#atlas-rotational-globe'))"), (name,"legacy runtime owns public layout")
+    assert await page.evaluate("!location.search && !location.hash"), (name,"legacy controllers changed public URL")
     assert await page.evaluate("window.AtlasGlobe.pointCount>0 && window.AtlasGlobe.geometryCount>0 && window.AtlasGlobe.landArea>2.5 && window.AtlasGlobe.landArea<4.8"),name
     # Test the production index rather than a mocked grouping or screen location.
     join = await page.evaluate("""() => {

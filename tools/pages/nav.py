@@ -8,7 +8,7 @@ and for the rail to draw on. The current page is marked. Safe to run again.
 usage: python3 tools/pages/nav.py beta"""
 import sys, re, pathlib
 
-TOP = [('About', 'about.html'), ('Map', './'), ('Constellate', './?constellate=1'), ('Watch', 'watch.html')]
+TOP = [('About', 'about.html'), ('Map', './'), ('Watch', 'watch.html')]
 MORE = [[('Languages', 'languages.html'), ('Themes', 'themes.html'), ('Timeline', 'timeline.html')],
         [('Saved', 'screening.html')],
         [('Suggest a correction', 'corrections.html')]]   # Data and CARE, and Resources, are tabs at the top of About

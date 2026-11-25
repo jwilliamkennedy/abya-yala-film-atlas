@@ -14,7 +14,7 @@ TOLERANCE = 4  # px
 JS = '''() => { const r = s => { const e = document.querySelector(s); if (!e) return null; const c = e.getBoundingClientRect();
   return [Math.round(c.x), Math.round(c.y)]; };
   return { brand: r('header .brand'), nav: r('header nav.primary'), more: r('header .more-menu summary'),
-           items: [...document.querySelectorAll('header nav.primary > a, header nav.primary > button')].map(e => e.textContent.trim()).join('|'),
+           items: [...document.querySelectorAll('header nav.primary > a, header nav.primary > button')].filter(e=>!e.getAttribute('href')?.endsWith('?constellate=1')).map(e => e.textContent.trim()).join('|'),
            rail: r('#atlas-rail .rail-item[data-rail="map"]'),
            railItems: [...document.querySelectorAll('#atlas-rail .rail-item .full')].map(e => e.textContent.trim()).join('|') }; }'''
 

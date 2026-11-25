@@ -164,4 +164,4 @@ main:is(:has(> nav.eyebrow.pair),:has(> nav.about-tabs),:has(#care-downloads)) >
 html[data-rail] main:is(:has(> nav.eyebrow.pair),:has(> nav.about-tabs),:has(#care-downloads)){max-width:64rem;margin:0 auto 0 max(0px,min(calc((100% - 64rem) / 2),5vw))}
 
 /* The globe is the public beta Map. Keep the old Constellate navigation only in explicitly opened legacy workspaces. */
-html:not([data-legacy-workspace]) body>header nav.primary>a[href$='?constellate=1']{display:none!important}
+html:not(#_):not(#__):not(#___):not([data-legacy-workspace]) body>header nav.primary>a[href$='?constellate=1']{display:none!important}

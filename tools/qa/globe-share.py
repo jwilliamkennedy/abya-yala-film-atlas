@@ -68,7 +68,7 @@ async def check():
         camera = await page.evaluate("AtlasGlobe.camera")
         await page.get_by_role("button", name="Share constellation", exact=True).click()
         link = await page.evaluate("navigator.clipboard.readText()")
-        assert "#weave=" in link and "globe=1" in link and "territories=off" in link
+        assert "#weave=" in link and "at=" in link and "territories=off" in link and "constellate=1" not in link
 
         receiver = await browser.new_context(viewport=viewport, reduced_motion="reduce")
         await receiver.route(lambda url: urlsplit(url).scheme in ("https", "http") and urlsplit(url).netloc != origin, lambda r: r.abort())

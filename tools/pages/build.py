@@ -84,7 +84,7 @@ for r in data:
         for w in f['watch'][:2]:
             if w not in used: used.add(w); links.append(f'<a href="{esc(w)}" target="_blank" rel="noopener">Watch · {esc(host(w))} ↗</a>')
         if f['source'] and f['source'] not in used: used.add(f['source']); links.append(f'<a href="{esc(f["source"])}" target="_blank" rel="noopener">Credit source · {esc(host(f["source"]))} ↗</a>')
-        links.append(f'<a href="../#view=films&amp;maker={esc(r["id"])}&amp;film={esc(f["id"])}">On the map</a>')
+        links.append(f'<a href="../?maker={esc(r["id"])}&amp;film={esc(f["id"])}">On the map</a>')
         links.append(f'<button type="button" class="scr" data-screen data-fid="{esc(f["id"])}" data-rid="{esc(r["id"])}" data-title="{esc(f["title"])}" data-year="{esc(f["year"] or "")}" data-maker="{esc(nm)}" data-page="{esc(r["id"])}.html#{esc(f["id"])}" data-watch="{esc((f["watch"] or [""])[0])}">＋ Screening list</button>')
         # one order for a film everywhere (map card, this page, Watch): title and year · role · form, length, language · themes · links
         langs = ', '.join(f['languageLabels']) if isinstance(f.get('languageLabels'), list) else (f['languages'] or '')
@@ -113,7 +113,7 @@ for r in data:
             + ('<p class="unverified">Ancestral affiliation unverified: the only sources describe ancestry in third-party words. Not shown on the map by default.</p>' if r.get('unverified') else '')
             + (f'<p class="lands">Land references on the atlas: {esc(", ".join(r["lands"]))}</p>' if r['lands'] else '')
             + (f'<p class="aka">Also credited as {esc(", ".join(r["aliases"]))}</p>' if r['aliases'] else '')
-            + f'<div class="actions"><a class="primary" href="../#view=filmmakers&amp;maker={esc(r["id"])}">Open on the map</a><a href="{esc(correct)}">Suggest a correction</a></div>'
+            + f'<div class="actions"><a class="primary" href="../?maker={esc(r["id"])}">Open on the map</a><a href="{esc(correct)}">Suggest a correction</a></div>'
             + f'<h2>Films <small>{len(films)}</small></h2><ol class="films">{"".join(items)}</ol>'
             + (f'<h2>Sources</h2><ul class="src">{srcs}</ul>' if srcs else '')
             + f'<h2 id="cite">Cite this page</h2><div class="cite"><p><b>MLA</b><button type="button" data-copy="mla-{esc(r["id"])}">Copy</button></p><p id="mla-{esc(r["id"])}">{mla}</p>'

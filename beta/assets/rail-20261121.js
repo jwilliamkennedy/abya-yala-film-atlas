@@ -9,7 +9,7 @@ const src=(document.currentScript&&document.currentScript.src)||'';
 const HOME=src?new URL('../',src).href:new URL('./',location.href).href;
 const FLAT=new URL('flat.html',HOME).href;
 const publicMap=()=>!root.dataset.legacyWorkspace;
-const findURL=()=>{const u=new URL(HOME);u.searchParams.set('constellate','1');u.searchParams.set('globe','1');u.searchParams.set('menu','find');return u.href;};
+const findURL=()=>{const u=new URL(HOME);u.searchParams.set('menu','find');return u.href;};
 const rel=location.href.split(/[?#]/)[0].replace(HOME,'');
 const onMap=rel===''||rel==='index.html'||rel==='flat.html';
 const PAGE={'watch.html':'watch','themes.html':'themes','languages.html':'languages','timeline.html':'timeline','screening.html':'screening',
