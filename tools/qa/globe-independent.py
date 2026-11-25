@@ -31,7 +31,25 @@ async def run(browser,name,viewport):
             fallback=page.locator("#globe-surface")
             await fallback.press("ArrowRight")
             await fallback.press("+")
+            await page.wait_for_function("AtlasGlobe.focus.settled")
+            # Hold native loading while exercising real-time overview easing.
+            await page.emulate_media(reduced_motion="no-preference")
+            burst=await fallback.evaluate("""e=>{const before=AtlasGlobe.camera;
+                for(const dy of [-80,-80,40])e.dispatchEvent(new WheelEvent('wheel',{deltaY:dy,bubbles:true,cancelable:true}));
+                return {before,immediate:AtlasGlobe.camera,busy:!AtlasGlobe.focus.settled};}""")
+            assert burst["busy"] and burst["before"]==burst["immediate"],(name,"overview wheel jumped synchronously",burst)
+            await page.wait_for_function("AtlasGlobe.focus.settled",timeout=15000)
+            after=await page.evaluate("AtlasGlobe.camera")
+            import math
+            assert abs(after["zoom"]/(burst["before"]["zoom"]*math.exp(.48))-1)<.002,(name,"overview wheel burst lost input",burst,after)
+            assert after["center"]==burst["before"]["center"],(name,"overview wheel moved the focal point",burst,after)
+            await page.emulate_media(reduced_motion="reduce")
+            # Page-mode input must be normalized by viewport height, not read as pixels.
+            await fallback.dispatch_event("wheel",{"deltaY":1,"deltaMode":2,"bubbles":True,"cancelable":True})
+            await page.wait_for_function("AtlasGlobe.focus.settled",timeout=15000)
             fallback_camera=await page.evaluate("window.AtlasGlobe.camera")
+            assert fallback_camera["zoom"]<after["zoom"]*.8,(name,"page-mode wheel ignored",after,fallback_camera)
+            print(name,"overview wheel burst, reduced motion and page units",flush=True)
             gate.set()
         await page.wait_for_function("window.AtlasGlobe?.camera?.renderer==='maplibre-globe' && window.AtlasGlobe.focus.settled",timeout=60000)
         await page.wait_for_function("document.querySelector('#atlas-rotational-globe')?.classList.contains('globe-revealed')",timeout=15000)
