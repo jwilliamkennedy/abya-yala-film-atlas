@@ -948,7 +948,8 @@ window.AtlasThemeTags=(()=>{
 /* ==== weave-route62.js ==== */
 try{(function(){
 'use strict';
-window.AtlasWeaveIncoming=location.href;
+// The entry document owns its bootstrap input; never overwrite a globe route.
+window.AtlasWeaveIncoming=window.AtlasWeaveIncoming||location.href;
 
 }).call(window);}catch(e){setTimeout(function(){throw e;});}
 
