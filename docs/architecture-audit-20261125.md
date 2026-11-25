@@ -20,3 +20,6 @@
 - Known regression: external-only Watch player failed repeated browser runs; permanent external provider markup and hash navigation tests address this. Existing old UI tests must target the explicit legacy page/route, not removed globe controls.
 - Latest successful browser compatibility prior to the canonical route change: 41bfc27. Independent input, CSV and discovery checks also passed on later baked snapshot. Current full acceptance, artwork and deployment checks still must complete; do not describe syntax or build success as full visual validation.
 - Direct browser access unavailable in the audit environment; hosted Actions results are the browser evidence. No production promotion or private data edit performed.
+
+## Browser regression correction
+The first canonical-route implementation (80f82d7) failed all four browser compatibility profiles before rendering; the archived Chromium screenshot showed the initialization error screen. Keep the known bootstrap query through legacy catalogue initialization, suppress legacy history writers, and canonicalize only when a usable globe is visible. This is a transitional compatibility bridge, not an independent catalogue module. Added caught-exception diagnostics; verify the new revision before certifying visual behavior.

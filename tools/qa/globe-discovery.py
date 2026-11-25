@@ -22,7 +22,7 @@ async def check(browser,name,viewport):
     page.on("response",tile_response)
     page.on("pageerror",lambda e: errors.append(str(e)))
     await page.goto(BASE,wait_until="domcontentloaded",timeout=90000)
-    assert await page.evaluate("window.AtlasRoute?.globe && !location.search && !location.hash"), "Clean beta entry did not select globe"
+    assert await page.evaluate("window.AtlasRoute?.globe && new URL(window.AtlasRoute.canonical).search==='' && new URL(window.AtlasRoute.canonical).hash===''"), "Clean beta entry did not select globe"
     # Measure the map plate before the delayed native renderer can reveal it.
     plate=await page.locator("#atlas-globe-stage").bounding_box()
     assert plate and plate["width"]>200 and plate["height"]>200, (name,"collapsed initial map",plate)
