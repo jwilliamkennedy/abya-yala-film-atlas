@@ -12,8 +12,9 @@ const groups=[...groupMap.values()],lands=[],usedGroups=new Set(),groupToLand=ne
 // NAME-074 is Jennifer Wickham's already-sourced Wet'suwet'en affiliation. Native Land
 // maps the same nation as “Wet’suwet’en Yintikh” (territory source ID 36103).
 // Join that existing polygon to the existing land ID; do not create a proxy pin.
-for(const n of names){const matches=groups.filter(g=>window.AtlasMapLabelLayout.sourceMatches(n.name,g.name)||
-  (n.id==='NAME-074'&&g.id==='36103'));const item={id:n.id,name:n.name,aliases:[...new Set([...(n.aliases||[]),...matches.map(g=>g.name)])],supplied:n,groups:matches};lands.push(item);for(const g of matches){usedGroups.add(g.id);groupToLand.set(g.id,item);}}
+const hawaiiRelay=window.AtlasHawaiiRelay;
+for(const n of names){if(hawaiiRelay?.aliases.includes(n.id))continue;const matches=groups.filter(g=>window.AtlasMapLabelLayout.sourceMatches(n.name,g.name)||
+  (n.id==='NAME-074'&&g.id==='36103')||(n.id===hawaiiRelay?.canonical&&g.id===hawaiiRelay.sourceId));const item={id:n.id,name:n.name,aliases:[...new Set([...(n.aliases||[]),...matches.map(g=>g.name),...(n.id===hawaiiRelay?.canonical?hawaiiRelay.labels:[])])],supplied:n,groups:matches};lands.push(item);for(const g of matches){usedGroups.add(g.id);groupToLand.set(g.id,item);}}
 for(const g of groups)if(!usedGroups.has(g.id)){const item={id:'LAND-'+g.id,name:g.name,aliases:[],supplied:null,groups:[g]};lands.push(item);groupToLand.set(g.id,item);}
 // A browsing group uses existing community references; no combined territorial boundary is created.
 const mayaMemberIds=new Set(['NAME-088','NAME-089','NAME-090','NAME-091','NAME-093','NAME-094','NAME-095','LAND-35926','LAND-35828','LAND-36628','LAND-35963']);
@@ -21,7 +22,7 @@ const mayaMembers=lands.filter(l=>mayaMemberIds.has(l.id));
 const mayaGroup={id:'GROUP-MAYA',name:'Maya',aliases:['Maya communities',...mayaMembers.flatMap(l=>[l.name,...l.aliases])],supplied:null,browseGroup:true,members:mayaMembers.map(l=>l.id),groups:[...new Map(mayaMembers.flatMap(l=>l.groups).map(g=>[g.id,g])).values()]};
 lands.push(mayaGroup);
 lands.sort((a,b)=>a.name.localeCompare(b.name));
-const canonicalLandId=id=>typeof id==='string'&&id.startsWith('LAND-')?(groupToLand.get(id.slice(5))?.id||id):id;
+const canonicalLandId=id=>hawaiiRelay?.aliases.includes(id)?hawaiiRelay.canonical:typeof id==='string'&&id.startsWith('LAND-')?(groupToLand.get(id.slice(5))?.id||id):id;
 // Beta 90: indexed lookup (was a scan of every land on every call, which froze theme-weaving).
 let landIndex=new Map(),landIndexOf=null,landIndexLen=-1;const landById=id=>{if(landIndexOf!==lands||landIndexLen!==lands.length){landIndex=new Map();for(const l of lands)if(!landIndex.has(l.id))landIndex.set(l.id,l);landIndexOf=lands;landIndexLen=lands.length;}return landIndex.get(canonicalLandId(id));};
 const s={view:'filmmakers',queries:{filmmakers:'',films:'',land:''},scope:'all',record:null,film:null,land:null,landHover:null,landHold:false,world:false,limit:40,page:0,previewRecord:null,previewFilm:null,selection:null,country:null,hoverCountry:null,tipPinned:false,worksOpen:true,returnContext:null};
