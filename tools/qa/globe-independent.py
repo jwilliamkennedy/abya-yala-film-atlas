@@ -85,6 +85,14 @@ async def run(browser,name,viewport):
             await page.locator("#globe-encounter .globe-cycle").last.click()
             assert await page.locator("#globe-encounter .globe-film-title").inner_text()!=first or await page.evaluate("window.AtlasGlobe.discovery.filmOffset===1")
             assert await page.evaluate("new URL(window.AtlasGlobe.discovery.shareURL).searchParams.has('at')")
+            assert await page.evaluate("new URL(window.AtlasGlobe.discovery.shareURL).hash === ''")
+            assert await page.evaluate("""() => {
+                const b=document.querySelector('#globe-emergent'),f=window.AtlasGlobe.discovery.featured;
+                if(!f||b.hidden)return true;
+                const a=document.querySelector('#globe-aperture').getBoundingClientRect(),r=b.getBoundingClientRect();
+                return !!b.querySelector('img') && (r.right<a.left||r.left>a.right||r.bottom<a.top||r.top>a.bottom);
+            }"""),(name,"poster obstructs aperture or lacks sourced image")
+            print(name,"emergent artwork",await page.evaluate("window.AtlasGlobe.discovery.posterVisible"),flush=True)
             assert await page.evaluate("window.AtlasGlobe.discovery.recent.length>0")
             await shot(page,f"shots/globe-independent/{name}-encounter.png")
             await page.locator("#globe-period").select_option("2020")

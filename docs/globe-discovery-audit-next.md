@@ -1,0 +1,7 @@
+# Globe discovery follow-up — 24 November 2026
+
+Baseline: 9e53e51 passed both dedicated globe workflows (45537327846 and 45537327794): desktop/mobile rotation, touch, wheel, simulated Ctrl-wheel, discovery, native DEM and real satellite responses. Geographic audit passed 3,081 credits and 219 anchors; 2,065 territory reference features. Physical Mac pinch still needs manual testing. One desktop screenshot timed out, nonfatal.
+
+New: one collision-aware film thumbnail appears near the aperture only if a sourced image is present and free screen space exists. It hides during movement, opens the real film, and does not claim a filming location. Theme journeys retain active intersections, return to prior camera/film/theme, avoid excessive local zoom on distant destinations, and prioritize less recently explored lands. Share links whitelist public discovery parameters instead of inheriting unrelated constellation hashes. Exit clears globe-specific parameters. Test checks preview source, aperture separation, and clean share URL.
+
+Outstanding: first-visit and two broader discovery/interface test jobs still failed against legacy controls; Map/Constellate return now passed. Full browser suite pending. Next: verify new thumbnails visually, reconcile obsolete controls in tests without weakening real assertions, physical Safari gesture test, and assess exploration with students before adding user-created constellations. No data files changed.
