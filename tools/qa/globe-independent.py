@@ -27,7 +27,7 @@ async def run(browser,name,viewport):
             await page.route("**/assets/maplibre/maplibre-gl.mjs*",hold_native)
         await page.goto(BASE+"?constellate=1&globe=1",wait_until="domcontentloaded",timeout=90000)
         if MODE=="input":
-            await page.wait_for_function("window.AtlasGlobe?.camera?.renderer==='orthographic-canvas' && window.AtlasGlobe.focus.settled",timeout=60000)
+            await page.wait_for_function("window.AtlasGlobe?.camera?.renderer==='orthographic-canvas' && window.AtlasGlobe.focus.settled && document.querySelector('#atlas-rotational-globe')?.dataset.ready==='true'",timeout=60000)
             fallback=page.locator("#globe-surface")
             await fallback.press("ArrowRight")
             await fallback.press("+")
@@ -39,6 +39,14 @@ async def run(browser,name,viewport):
         assert startup["fallbackPaint"]<=startup["nativeLoaded"]<=startup["handoff"]<=startup["revealed"],(name,startup)
         assert startup["reason"] in ("local-sources","local-and-imagery"),(name,startup)
         assert startup["handoff"]<=startup["localReady"]<=startup["revealed"],(name,startup)
+        assert startup["stableFrames"]>=3 and startup["stableMs"]>=420,(name,startup)
+        if MODE=="input":
+            assert startup["firstRenderer"]=="overview" and startup["firstVisible"]<startup["handoff"],(name,startup)
+        elif startup["firstRenderer"]=="native":
+            assert startup["firstVisible"]>=startup["revealed"],(name,startup)
+            assert await page.locator('#globe-surface').evaluate("e=>getComputedStyle(e).visibility==='hidden' && Number(getComputedStyle(e).opacity)===0")
+        else:
+            print(name,'slow-start overview fallback',startup,flush=True)
         if fallback_camera:
             native=await page.evaluate("window.AtlasGlobe.camera")
             assert max(abs((native["center"][0]-fallback_camera["center"][0]+180)%360-180),abs(native["center"][1]-fallback_camera["center"][1]))<.01,(name,"handoff moved camera",fallback_camera,native)

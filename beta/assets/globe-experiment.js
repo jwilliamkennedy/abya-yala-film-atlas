@@ -14,7 +14,8 @@ let pointers=new Map(),gesture=null,dragged=false,previousFocus=null;
 const labelAnchors=new Map(),labelFailures=new Set();let labelQueue=null,labelTimer=0,labelUploaded=-1,labelFocusKey='';
 let relief=null,reliefState='loading',flight=0,flightTarget=null,lastDrag=null;
 let live=null,liveReady=false,liveHost=null,liveSignature='',liveBaseZoom=0,liveMoved=false,liveTimer=0;
- const startup={fallbackPaint:null,nativeLoaded:null,handoff:null,revealed:null,reason:null,localReady:null,imageryReady:false};
+ const startup={fallbackPaint:null,nativeLoaded:null,handoff:null,revealed:null,reason:null,localReady:null,imageryReady:false,firstVisible:null,firstRenderer:null,stableFrames:0,stableMs:0};
+ let firstSceneTimer=0;
 let wheelFrame=0,wheelGoal=null,wheelLast=0,wheelActive=false,gestureStart=null,gestureUntil=0,landscape=false,lastLiveUpdate=0;
 const received={marble:0,satellite:0,dem:0,hilldem:0,places:0},sourceErrors={};
 let ambientCount=0,landsVisible=true,landStrength=1,edgeMode='selected',lastCameraChange=0,lastCameraKey='',activeMapPointers=new Set(),pendingFilm='',rankCache=new Map(),zoomListeners=null,lastStatus=0,frameTimes=[],lastRender=0,preferredLand='',filmOffset=0,yearBand='',lastEncounter='',recent=[],lastRelated=null;
@@ -101,6 +102,7 @@ let previewReturn=null;
 function previewFromGlobe(film,land='',trigger=null){previewReturn={film:film.id,land,trigger};C().showPreview(film,{land,from:'globe'});sync();}
 function returnFromPreview(){const origin=previewReturn;previewReturn=null;if(!active)return;sync();requestAnimationFrame(()=>{if(!active)return;const trigger=origin?.trigger;if(trigger?.isConnected&&!trigger.hidden&&trigger.getClientRects().length){trigger.focus({preventScroll:true});return;}if(origin&&origin.film===featured?.film.id){$('#globe-encounter .globe-film-title')?.focus({preventScroll:true});return;}(liveReady?live.getCanvas():canvas)?.focus({preventScroll:true});});}
 function close(){
+ clearTimeout(firstSceneTimer);firstSceneTimer=0;
  const wasActive=active;closed=true;active=false;delete document.documentElement.dataset.globeEntry;clearStarDrag();closeGlobePlayer();clearTimeout(settleTimer);clearTimeout(labelTimer);labelTimer=0;cancelFlight();if(raf)cancelAnimationFrame(raf);raf=0;if(posterLayoutFrame)cancelAnimationFrame(posterLayoutFrame);posterLayoutFrame=0;ro?.disconnect();
  clearTimeout(liveTimer);stopWheel();zoomListeners?.abort();zoomListeners=null;restoreThemeLens();liveReady=false;live?.remove();live=null;liveHost=null;relief?.dispose();relief=null;host?.remove();host=null;document.body.classList.remove('atlas-globe-experiment');if(wasActive&&C()?.enabled)C().refreshDiscoveryMode();
  const u=new URL(location.href);for(const k of ['globe','at','themes','period','lands','language','form','length','land','film','edges'])u.searchParams.delete(k);history.replaceState(history.state,'',u.href);
@@ -421,10 +423,19 @@ function loadRelief(){
   window.addEventListener('pointerup',release,opts);window.addEventListener('pointercancel',release,opts);
   window.addEventListener('blur',()=>{activeMapPointers.clear();stopWheel();if(active)finishMove();},{signal:zoomListeners.signal});
  }
+ // Publish a complete first scene once. The overview is an emergency/slow-load
+ // path, not a compulsory animation before the detailed renderer.
+ function showFirstScene(renderer){
+  if(!active||!host||startup.firstVisible!==null)return;
+  clearTimeout(firstSceneTimer);firstSceneTimer=0;
+  startup.firstVisible=nowMs();startup.firstRenderer=renderer;
+  host.dataset.firstRenderer=renderer;host.dataset.ready='true';host.inert=false;
+  document.documentElement.dataset.globeEntry='ready';
+ }
  function failLive(reason){
   if(!active)return;clearStarDrag();console.warn('Native globe unavailable; using local fallback',reason);const focused=!!liveHost?.contains(document.activeElement);if(liveReady&&live){try{readLiveCamera();}catch{}}stopWheel();zoomListeners?.abort();zoomListeners=null;
   clearTimeout(liveTimer);liveReady=false;try{live?.remove();}catch{}live=null;liveHost?.remove();liveHost=null;activeMapPointers.clear();
-  host?.classList.remove('globe-live','globe-revealed');canvas.tabIndex=0;canvas.removeAttribute('aria-hidden');$('#globe-landscape').hidden=true;updateMapCredits();if(focused)canvas.focus({preventScroll:true});const e=$('#globe-detail-status');if(e)e.textContent='Overview only · detailed map unavailable';draw();scheduleSettle(100);
+  host?.classList.remove('globe-live','globe-revealed');canvas.tabIndex=0;canvas.removeAttribute('aria-hidden');$('#globe-landscape').hidden=true;updateMapCredits();if(focused)canvas.focus({preventScroll:true});const e=$('#globe-detail-status');if(e)e.textContent='Overview only · detailed map unavailable';draw();showFirstScene('overview');scheduleSettle(100);
  }
  async function bootLive(){
   try{
@@ -496,18 +507,31 @@ function loadRelief(){
     canvas.tabIndex=-1;canvas.setAttribute('aria-hidden','true');if(focused)live.getCanvas().focus({preventScroll:true});
     syncTerrain();syncLandVisibility();settle();updateLive();updateDetailStatus(true);
     // Wait for a rendered frame with local geometry, not remote imagery or global idle.
-    const map=live,core=['earth','native-ambient','native-lands','native-focus-edges','cinema-points'];
-    let revealed=false;
-    function reveal(reason){if(revealed||!active||live!==map)return;revealed=true;clearTimeout(liveTimer);map.off('render',check);startup.revealed=nowMs();startup.reason=reason;host.classList.add('globe-revealed');}
+    const map=live,core=['earth','native-ambient','native-ambient-edges','native-lands','native-focus-edges','native-labels','native-local-label','cinema-points','globe-collected','globe-authored-links'];
+    let revealed=false,stableSince=null,stableSignature='',stableFrames=0;
+    function reveal(reason){if(revealed||!active||live!==map)return;revealed=true;clearTimeout(liveTimer);map.off('render',check);startup.revealed=nowMs();startup.reason=reason;host.classList.add('globe-revealed');showFirstScene('native');}
     function check(){
-     if(revealed||!active||live!==map||!core.every(id=>map.isSourceLoaded(id)))return;
-     if(startup.localReady===null)startup.localReady=nowMs();
+     if(revealed||!active||live!==map)return;
+     const t=nowMs(),elapsed=t-startup.handoff,local=core.every(id=>map.isSourceLoaded(id));
+     if(local&&startup.localReady===null)startup.localReady=t;
+     // A source-loaded event is not a painted frame. Also wait for publication
+     // and the final encounter/camera, including newly queued GeoJSON updates.
      const img=map.getZoom()>=6?'satellite':'marble';
      startup.imageryReady=received[img]>0&&map.isSourceLoaded(img);
-     if(startup.imageryReady||sourceErrors[img]||nowMs()-startup.localReady>=2500)reveal(startup.imageryReady?'local-and-imagery':'local-sources');
+     const imagerySettled=startup.imageryReady||elapsed>=3500;
+     const elevationSettled=!map.getTerrain()||map.isSourceLoaded('dem')||elapsed>=4500;
+     const catalogSettled=publicationStatus!=='loading'||elapsed>=3500;
+     const ready=local&&settled&&!map.isMoving()&&!wheelActive&&imagerySettled&&elevationSettled&&catalogSettled;
+     const signature=JSON.stringify([lastCameraKey,focusKey,liveSignature,sourceUpdates,publicationStatus,startup.imageryReady,received[img],map.getTerrain()?.source]);
+     if(!ready||signature!==stableSignature){stableSince=ready?t:null;stableSignature=signature;stableFrames=0;}
+     if(!ready)return;
+     stableFrames++;startup.stableFrames=stableFrames;startup.stableMs=t-stableSince;
+     // Raster fades last 180ms; symbol/fill fades also need time to finish.
+     // Require a sustained sequence of unchanged, actually rendered frames.
+     if(stableFrames>=3&&startup.stableMs>=420)reveal(startup.imageryReady?'local-and-imagery':'local-sources');
     }
     map.on('render',check);
-    const awaitFrame=()=>{if(revealed||!active||live!==map)return;if(nowMs()-startup.handoff>9000){if(startup.localReady!==null&&core.every(id=>map.isSourceLoaded(id)))reveal('local-sources');else failLive('Local geography did not finish rendering');return;}map.triggerRepaint();liveTimer=setTimeout(awaitFrame,120);};
+    const awaitFrame=()=>{if(revealed||!active||live!==map)return;if(nowMs()-startup.handoff>12000){failLive('Detailed scene did not stabilize');return;}map.triggerRepaint();liveTimer=setTimeout(awaitFrame,100);};
     awaitFrame();
     /* Initial theme already applied in overview; preserve visitor choices. */
     restoreEncounter();
@@ -1115,7 +1139,7 @@ function restoreThemeLens(){
  themeLensHome=null;menuListeners?.abort();menuListeners=null;
 }
 function markup(){
- host=el('section');host.id='atlas-rotational-globe';host.setAttribute('aria-label','Rotatable cinema atlas');
+ host=el('section');host.id='atlas-rotational-globe';host.inert=true;host.setAttribute('aria-label','Rotatable cinema atlas');
  host.innerHTML='<canvas id="globe-surface" tabindex="0" aria-label="Rotate the globe using arrow keys, plus and minus to zoom, Enter to explore the focused lands"></canvas><div id="globe-aperture" aria-hidden="true"></div><button id="globe-emergent" type="button" hidden></button><div class="globe-instructions">Drag to explore · scroll or pinch to zoom</div><nav class="globe-guide" aria-label="Globe navigation"><div class="globe-primary"><button type="button" id="globe-find-toggle" aria-expanded="false" aria-controls="globe-find-panel">Find</button><button type="button" id="globe-theme-toggle" aria-expanded="false" aria-controls="globe-theme-panel">Themes</button><button type="button" id="globe-surprise">Discover</button><button type="button" id="globe-more-toggle" aria-expanded="false" aria-controls="globe-more-panel">Map</button><button type="button" id="globe-collection-toggle" aria-expanded="false" aria-controls="globe-collection-panel">My constellation</button></div><div id="globe-collection-panel" class="globe-menu-panel" hidden></div><div id="globe-find-panel" class="globe-menu-panel" hidden><label for="globe-search">Find films or filmmakers</label><input id="globe-search" type="search" placeholder="Title or filmmaker…" autocomplete="off"><div id="globe-search-results" aria-live="polite"></div><p class="globe-marker-key">Lights mark land references with indexed cinema. At closer scales, numbers show distinct indexed films, not individual locations.</p><label for="globe-find">Find a land</label><select id="globe-find"><option value="">Choose a land…</option></select><select id="globe-recent" aria-label="Recently explored lands" hidden><option value="">Recently explored…</option></select></div><div id="globe-theme-panel" class="globe-menu-panel" hidden></div><div id="globe-more-panel" class="globe-menu-panel" hidden><div class="globe-buttons"><button type="button" id="globe-home">Americas</button><button type="button" id="globe-landscape" aria-pressed="false" hidden>Terrain</button></div><label for="globe-period">Film period</label><select id="globe-period"><option value="">All years</option></select><div class="globe-buttons"><button type="button" id="globe-lands" aria-pressed="true" title="Toggle Indigenous reference territories">Lands: on</button><button type="button" id="globe-share">Share view</button></div><details class="globe-settings"><summary>Land visibility</summary><label for="globe-opacity" class="sr-only">Territory visibility</label><select id="globe-opacity" aria-label="Territory visibility"><option value="0.65">Subtle</option><option value="1" selected>Balanced</option><option value="1.6">Stronger</option></select><label for="globe-edges">Territory outlines</label><select id="globe-edges"><option value="selected">Selected land only</option><option value="none">No outlines</option><option value="all">All outlines</option></select></details><details class="globe-catalog-filters"><summary>Film filters</summary><label for="globe-filter-language">Language</label><select id="globe-filter-language"></select><label for="globe-filter-form">Form</label><select id="globe-filter-form"></select><label for="globe-filter-length">Length</label><select id="globe-filter-length"></select><button type="button" id="globe-clear-filters">Clear film filters</button></details><div id="globe-csv-status" role="status"></div><button type="button" id="globe-csv-retry" hidden>Retry catalogue sync</button><div id="globe-detail-status" class="globe-detail-status" aria-live="off">Loading detailed map</div><button type="button" id="globe-close">Flat workspace</button></div></nav><div class="globe-zoom" aria-label="Zoom controls"><button type="button" id="globe-plus" aria-label="Zoom in">+</button><button type="button" id="globe-minus" aria-label="Zoom out">−</button></div><section id="globe-encounter" aria-label="Cinema at the focal point"></section><div class="globe-footer"><span id="globe-attribution"><a href="https://native-land.ca/" target="_blank" rel="noopener">Native Land Digital</a><span id="globe-credit-fallback"> · Natural Earth</span><span id="globe-credit-live" hidden> · <a href="https://nasa-gibs.github.io/gibs-api-docs/" target="_blank" rel="noopener">NASA GIBS</a> · <a href="https://openfreemap.org/" target="_blank" rel="noopener">OpenFreeMap</a> <a href="https://www.openmaptiles.org/" target="_blank" rel="noopener">© OpenMapTiles</a> · <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">© OpenStreetMap contributors</a> · <a href="https://mapterhorn.com/attribution/" target="_blank" rel="noopener">Mapterhorn</a></span><span id="globe-credit-satellite" hidden> · <a href="https://cloudless.eox.at/" target="_blank" rel="noopener">EOxCloudless</a> by <a href="https://eox.at/" target="_blank" rel="noopener">EOX IT Services GmbH</a> (Contains modified Copernicus Sentinel data 2016 &amp; 2017)</span></span><a class="globe-map-sources" href="map-sources.html" target="_blank" rel="noopener">Map sources ↗</a><span id="globe-status" class="sr-only" role="status" aria-live="polite"></span></div>';
  $('.map-panel').append(host);const lens=$('#weave-theme-lens');if(lens){themeLensHome={parent:lens.parentNode,next:lens.nextSibling};$('#globe-theme-panel').append(lens,el('p','globe-theme-coverage'));const legend=$('.globe-theme-coverage');legend.id='globe-theme-coverage';legend.hidden=true;}
  for(const key of ['find','theme','more','collection'])$('#globe-'+key+'-toggle').onclick=()=>setMenu(key);renderCollection();
@@ -1161,7 +1185,11 @@ async function boot(){
   collect();if(!points.length)throw Error('No mapped cinema references');
   proj=d3.geoOrthographic().clipAngle(90).precision(.65);markup();path=d3.geoPath(proj,ctx);
   active=true;C().close();loadRelief();document.body.classList.add('atlas-globe-experiment');C().refreshDiscoveryMode();refreshFacetOptions();synchronizePublication();
-  ro=new ResizeObserver(resize);ro.observe(canvas);ro.observe($('.globe-footer'));ro.observe($('.globe-primary'));resize();if(initialCamera){center=initialCamera.slice(0,2);const base=Math.max(-1.3,Math.log2(Math.min(W,H)*.87*Math.PI/512));zoom=Math.pow(2,initialCamera[2]-base);}try{const t=JSON.parse(params.get('themes')||'[]');if(Array.isArray(t)&&t.every(x=>typeof x==='string')&&t.length)C().showThemeLens(t);}catch{}settle();draw();host.dataset.ready='true';document.documentElement.dataset.globeEntry='ready';bootLive();
+  ro=new ResizeObserver(resize);ro.observe(canvas);ro.observe($('.globe-footer'));ro.observe($('.globe-primary'));resize();if(initialCamera){center=initialCamera.slice(0,2);const base=Math.max(-1.3,Math.log2(Math.min(W,H)*.87*Math.PI/512));zoom=Math.pow(2,initialCamera[2]-base);}try{const t=JSON.parse(params.get('themes')||'[]');if(Array.isArray(t)&&t.every(x=>typeof x==='string')&&t.length)C().showThemeLens(t);}catch{}settle();draw();
+  // The loading screen stays still while the native scene is prepared. A slow
+  // module/connection still gets a usable local overview, not a blank map.
+  firstSceneTimer=setTimeout(()=>{if(!liveReady){draw();showFirstScene('overview');}},9000);
+  bootLive();
  }catch(e){fallback(e);}
 }
 const started=Date.now();(function wait(){if(closed)return;if(C()?.enabled&&A()?.lands&&window.topojson&&window.d3&&window.AtlasGeoIntegrity){boot();return;}if(Date.now()-started<20000)setTimeout(wait,100);else{delete document.documentElement.dataset.globeEntry;}})();

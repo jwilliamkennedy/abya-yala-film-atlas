@@ -446,7 +446,10 @@ body.atlas-globe-experiment #constellate-mode{display:none!important}
 #atlas-rotational-globe[data-layout=compact] .globe-zoom button{min-width:44px}
 #atlas-rotational-globe[data-layout=compact][data-menu]:not([data-menu=""]) :is(#globe-encounter,.globe-zoom){visibility:hidden;pointer-events:none}
 #atlas-rotational-globe .globe-instructions{display:none}
-#atlas-rotational-globe:not([data-ready=true]){visibility:hidden}
+#atlas-rotational-globe:not([data-ready=true]){opacity:0;pointer-events:none}
+/* Normal entry reveals only the detailed globe, without a visible second renderer. */
+#atlas-rotational-globe[data-first-renderer=native] #globe-surface{opacity:0;visibility:hidden;transition:none}
+#atlas-rotational-globe[data-ready=true]{opacity:1}
 /* The native renderer stays opaque behind the overview; fade only the top canvas, never both layers. */
 
 /* Film counts are catalogue metadata, not geographic positions. */
