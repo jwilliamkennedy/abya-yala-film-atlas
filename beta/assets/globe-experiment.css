@@ -377,3 +377,10 @@ body.atlas-globe-experiment #constellate-mode{display:none!important}
  #globe-encounter .globe-next-encounter .globe-related{min-height:44px}
 }
 @media(prefers-reduced-motion:reduce){#globe-encounter .globe-art-arrive{animation:none}}
+
+/* Connection is an explicit action, available only on collected film cards. */
+#globe-encounter .globe-connect-featured{align-self:flex-start;background:none;border:0;color:#c9e2d7;padding:4px 2px;font:600 12px/1.4 system-ui,sans-serif;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+#globe-encounter .globe-connect-featured[hidden]{display:none!important}
+#globe-encounter .globe-connect-featured:disabled{color:#a8c3b9;cursor:default;text-decoration:none}
+@media(max-width:760px){#globe-encounter .globe-connect-featured{min-height:44px;font-size:13px}}
+#atlas-rotational-globe #globe-collection-toggle[aria-label="Connecting films"]{color:#f3e3b9}
