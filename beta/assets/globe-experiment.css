@@ -334,3 +334,19 @@ body.atlas-globe-experiment #constellate-mode{display:none!important}
 @media(max-width:760px){#atlas-rotational-globe .globe-guide{top:8px}#atlas-rotational-globe #globe-collection-toggle{font-size:11px;min-height:36px}}
 
 #globe-encounter .globe-reading-journey{border-top:1px solid #607b7e55;padding:5px 0;display:grid;gap:4px;font:12px/1.4 system-ui,sans-serif;overflow-wrap:anywhere}#globe-encounter .globe-reading-journey p{margin:0}#globe-encounter .globe-reading-journey .globe-buttons{align-items:center}#globe-encounter .globe-reading-journey button{min-height:32px}
+
+/* Fit navigation within the actual map panel, not an assumed browser viewport. */
+#atlas-rotational-globe{--globe-menu-room:370px}
+#atlas-rotational-globe .globe-menu-panel{max-height:min(55vh,var(--globe-menu-room),370px)}
+#atlas-rotational-globe #globe-collection-panel{max-height:min(65vh,var(--globe-menu-room),540px)}
+@media(max-width:760px){
+ #atlas-rotational-globe .globe-menu-panel{max-height:min(55vh,var(--globe-menu-room));width:min(300px,calc(100vw - 12px))}
+ #atlas-rotational-globe #globe-collection-panel{max-height:min(60vh,var(--globe-menu-room))}
+ #atlas-rotational-globe #globe-search{font-size:16px;min-height:44px}
+ #atlas-rotational-globe .globe-primary button,#atlas-rotational-globe #globe-collection-toggle{min-height:44px}
+ #atlas-rotational-globe .globe-land-choice,#atlas-rotational-globe .globe-cycle{min-height:44px}
+}
+@media(max-height:500px) and (orientation:landscape){
+ #atlas-rotational-globe .globe-guide{top:8px}
+ #atlas-rotational-globe .globe-menu-panel,#atlas-rotational-globe #globe-collection-panel{max-height:var(--globe-menu-room)}
+}
