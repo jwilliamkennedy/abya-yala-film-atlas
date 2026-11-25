@@ -354,7 +354,9 @@ async def run(browser,name,viewport):
             assert abs(camera_after["zoom"]/camera_before["zoom"]-1)<.002
             assert await page.evaluate("window.AtlasGlobe.discovery.featured")==featured_before
             await page.wait_for_function("document.activeElement?.classList.contains('globe-film-title')")
+            assert await page.locator("#globe-encounter .globe-section-summary").count() >= 2
             await page.locator(".globe-credit-details summary").click()
+            assert await page.locator("#globe-encounter .globe-encounter-disclosures > details[open]").count()==1
             await page.wait_for_function("document.querySelector('.globe-credit-data dl') || document.querySelector('.globe-credit-data p')?.textContent.includes('No exact row')",timeout=30000)
             assert await page.locator(".globe-credit-data dl").count()>0,(name,"featured credit missing from public CSV")
             assert await page.locator(".globe-credit-data").get_by_text("Film id",exact=True).count()>0

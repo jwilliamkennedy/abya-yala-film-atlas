@@ -735,8 +735,36 @@ function renderPublicFields(box,row){
  for(const [label,keys] of Object.entries(publicGroups))section(label,keys);
  section('Additional public fields',Object.keys(row));
 }
+// A consistent, accessible disclosure row: label, optional count, one chevron.
+function encounterSummary(label,count=null){
+ const summary=el('summary','globe-section-summary');
+ summary.append(el('span','globe-section-label',label));
+ if(count!==null)summary.append(el('span','globe-section-count',String(count)));
+ return summary;
+}
+function encounterDisclosures(panel,sections){
+ const wrap=el('div','globe-encounter-disclosures');
+ wrap.setAttribute('role','group');wrap.setAttribute('aria-label','Explore this encounter');
+ for(const d of sections.filter(Boolean)){
+  const summary=d.querySelector(':scope > summary');
+  if(!summary)continue;
+  const key=d.classList[0];
+  summary.id='globe-section-'+key;
+  d.name='atlas-globe-encounter';
+  summary.addEventListener('click',()=>{
+   if(!d.open)for(const other of wrap.children)if(other!==d)other.open=false;
+   // Keep the chosen header and the start of its content in view without
+   // scrolling the page or moving the globe.
+   requestAnimationFrame(()=>{if(d.open&&summary.isConnected){const top=summary.getBoundingClientRect().top-panel.getBoundingClientRect().top;if(top<0||top+72>panel.clientHeight)panel.scrollTop+=top-8;}});
+  });
+  d.addEventListener('toggle',()=>{if(d.open)for(const other of wrap.children)if(other!==d&&other.open)other.open=false;placeEmergent();});
+  wrap.append(d);
+ }
+ if(wrap.childElementCount)panel.append(wrap);
+ return wrap;
+}
 function creditDetails(film,summaryContent=[]){
- const d=el('details','globe-credit-details');d.append(el('summary',null,'Details & sources'),...summaryContent);const body=el('div','globe-credit-data');d.append(body);
+ const d=el('details','globe-credit-details');d.append(encounterSummary('Details & sources'),...summaryContent);const body=el('div','globe-credit-data');d.append(body);
  let loading=false,done=false;d.addEventListener('toggle',async()=>{if(!d.open||done||loading)return;loading=true;body.replaceChildren(el('p',null,'Loading public record…'));
  try{const rows=(await publicRows()).get(film.record+'|'+film.film)||[];if(!d.isConnected)return;body.replaceChildren();
  if(!rows.length){body.append(el('p',null,'No exact row in the current public CSV. The Atlas record remains available.'));}else{if(rows.length>1)body.append(el('p',null,'Multiple public rows share this credit key; all are shown.'));for(const row of rows)renderPublicFields(body,row);}
@@ -892,10 +920,10 @@ function otherLands(chosen,primary){
  const others=chosen.filter(r=>r.id!==primary.id);if(!others.length)return null;
  const actual=new Set(inside.map(r=>r.id)),d=el('details','globe-overlap');
  const overlapping=others.filter(r=>actual.has(r.id)).length,nearby=others.length-overlapping;
- d.append(el('summary',null,[overlapping?'Overlapping lands ('+overlapping+')':'',nearby?'Nearby references ('+nearby+')':''].filter(Boolean).join(' · ')));
+ d.append(encounterSummary('Other land references',others.length));
  const list=el('div','globe-choices');
- for(const [label,group] of [['At focal point',others.filter(r=>actual.has(r.id))],['Nearby cinema references',others.filter(r=>!actual.has(r.id))]]){
-  if(!group.length)continue;list.append(el('small','globe-land-group',label));
+ for(const [label,group] of [['Overlapping lands',others.filter(r=>actual.has(r.id))],['Nearby cinema references',others.filter(r=>!actual.has(r.id))]]){
+  if(!group.length)continue;list.append(el('small','globe-land-group',label+' · '+group.length));
   for(const r of group.sort((a,b)=>a.name.localeCompare(b.name))){
    const n=matchingFilms(r.id).length,btn=button(r.name+(n?' · '+n+' '+(n===1?'credit':'credits'):' · no matching films'),()=>{
     preferredLand=r.id;pendingFilm='';filmOffset=0;focusKey='';drawEncounter();renderSoon();
@@ -1077,7 +1105,7 @@ function filmStrip(films){
  strip.append(head,track);requestAnimationFrame(()=>{if(!track.isConnected)return;const selected=track.querySelector('[aria-current=true]');if(selected){if(selected.offsetLeft<track.scrollLeft)track.scrollLeft=selected.offsetLeft;else if(selected.offsetLeft+selected.offsetWidth>track.scrollLeft+track.clientWidth)track.scrollLeft=selected.offsetLeft+selected.offsetWidth-track.clientWidth;}});return strip;
 }
 function landFilmPicker(films){
- const details=el('details','globe-land-films'),summary=el('summary',null,'All credits ('+films.length+')'),list=el('div','globe-land-film-list');details.append(summary,list);
+ const details=el('details','globe-land-films'),summary=encounterSummary('All film credits',films.length),list=el('div','globe-land-film-list');details.append(summary,list);
  let limit=0;const append=()=>{const end=Math.min(limit+12,films.length);list.querySelector('.globe-land-film-more')?.remove();for(let i=limit;i<end;i++){const f=films[i],b=button('',()=>{if(!settled)return;filmOffset=i;focusKey='';drawEncounter();focusEncounter();},'globe-land-film');const copy=el('span','globe-list-copy');copy.append(el('strong',null,f.title),el('small',null,[f.maker,f.year].filter(Boolean).join(' · ')));b.append(thumbnail(f),copy);b.dataset.filmId=f.id;if(i===filmOffset)b.setAttribute('aria-current','true');list.append(b);}limit=end;if(limit<films.length)list.append(button('Show more films',append,'globe-land-film-more'));};
  details.addEventListener('toggle',()=>{if(details.open&&!limit)append();});return details;
 }
@@ -1139,19 +1167,32 @@ function drawEncounter(){
   const inThread=store()?.activeThread().items.includes(film.id),collect=button(inThread?'Collected':'＋ Collect',()=>collectFilm(film,primary.id),'globe-collect-film');collect.id='globe-collect-film';collect.disabled=!!inThread;actionRow.append(collect);if(external&&!actionRow.querySelector('.globe-view-link'))actionRow.append(external.cloneNode(true));const link=button('Connect',()=>{if(!settled||featured?.film.id!==film.id)return;pickLink(film.id);updateCollectButton();if(linkTo&&menuMode!=='collection')setMenu('collection');else if(linkFrom&&!linkTo){collectionNotice='Explore and collect another film, then connect it.';if(menuMode==='collection')setMenu('');renderCollection(true);}},'globe-connect-featured');link.id='globe-connect-featured';link.hidden=true;actionRow.append(link);
   copy.append(actionRow);card.append(art,copy);panel.append(card);updateCollectButton();const reading=journeyControls(film);if(reading)panel.append(reading);
   if(films.length>1){const strip=filmStrip(films);panel.append(strip);strip.querySelector('.globe-strip-track').scrollLeft=stripScroll;}
-  const disclosures=el('div','globe-encounter-disclosures');if(films.length>1)disclosures.append(landFilmPicker(films));const other=otherLands(chosen,primary);if(other)disclosures.append(other);
+  const sections=[];if(films.length>1)sections.push(landFilmPicker(films));const other=otherLands(chosen,primary);if(other)sections.push(other);
   const source=landSources(ref);if(external)source.append(external);if(profile)source.append(profile);
   const language=facet.l||work?.languageLabels||work?.languages,lang=Array.isArray(language)?language.join(' · '):typeof language==='string'?language:'';
-  if(lang)source.append(el('p',null,'Language: '+lang));
-  const themes=el('div','globe-film-themes');for(const t of C().terms(film))themes.append(button(t,()=>{C().showThemeLens([t]);filmOffset=0;sync();}));if(themes.childNodes.length){source.append(el('small','globe-source-label','Themes'),themes);}
-  const related=relatedEncounters(film,primary.id);themeRoutes=related;if(related.length){const routes=el('div','globe-related-list');routes.append(el('small','globe-source-label','Shared catalogue themes · film connections, not relationships between peoples'));const trace=button(themeTrace?'Hide thematic lines':'Show thematic lines',toggleThemeTrace,'globe-theme-trace');trace.id='globe-trace-themes';trace.setAttribute('aria-pressed',String(themeTrace));routes.append(trace);for(const [i,v] of related.entries()){const bridge=button('',()=>followRelated(v),'globe-related');const thumb=thumbnail(v.film),copy=el('span','globe-list-copy');copy.append(el('strong',null,v.film.title),el('small',null,v.ref.name+' · '+v.shared.join(' · ')));bridge.append(thumb,copy);bridge.dataset.targetFilm=v.film.id;bridge.dataset.targetLand=v.ref.id;routes.append(bridge);}if(routes.querySelector('button')){const relatedDetails=el('details','globe-related-details');relatedDetails.append(el('summary',null,'Connections ('+related.length+')'),routes);disclosures.append(relatedDetails);}}
+  if(lang){const info=el('div','globe-source-group globe-film-language');info.append(el('small','globe-source-label','Film language'),el('p',null,lang));source.prepend(info);}
+  const themes=el('div','globe-film-themes');for(const t of C().terms(film))themes.append(button(t,()=>{C().showThemeLens([t]);filmOffset=0;sync();}));
+  const related=relatedEncounters(film,primary.id);themeRoutes=related;
+  if(related.length||themes.childNodes.length){
+   const d=el('details','globe-related-details'),routes=el('div','globe-related-list');
+   d.append(encounterSummary('Thematic connections',related.length||null));
+   if(themes.childNodes.length){const tags=el('div','globe-connection-themes');tags.append(el('small','globe-source-label','Themes in this film'),themes);routes.append(tags);}
+   if(related.length){
+    const bar=el('div','globe-connection-toolbar'),trace=button(themeTrace?'Hide thematic lines':'Show thematic lines',toggleThemeTrace,'globe-theme-trace');
+    trace.id='globe-trace-themes';trace.setAttribute('aria-pressed',String(themeTrace));bar.append(el('small','globe-source-label','Related films'),trace);routes.append(bar);
+    for(const v of related){const bridge=button('',()=>followRelated(v),'globe-related'),thumb=thumbnail(v.film),copy=el('span','globe-list-copy');
+     copy.append(el('strong',null,v.film.title),el('small',null,v.ref.name),el('small','globe-shared-themes',v.shared.join(' · ')));bridge.append(thumb,copy);bridge.dataset.targetFilm=v.film.id;bridge.dataset.targetLand=v.ref.id;routes.append(bridge);}
+    routes.append(el('p','globe-connection-note','Shared catalogue themes connect films, not peoples or filming locations.'));
+   }
+   d.append(routes);sections.push(d);
+  }
   if(journey.length){const back=button('‹ Previous encounter',journeyBack,'globe-related');back.id='globe-journey-back';panel.append(back);}
-  disclosures.append(creditDetails(film,[source]));for(const d of disclosures.children){d.name='atlas-globe-encounter';d.addEventListener('toggle',()=>{if(d.open){for(const other of disclosures.children)if(other!==d&&other.open)other.open=false;}placeEmergent();});}panel.append(disclosures);
+  sections.push(creditDetails(film,[source]));encounterDisclosures(panel,sections);
  }else{
   featured=null;themeRoutes=[];panel.append(el('p','globe-empty',primary.count?'No films match the active filters.':'No linked films in the Atlas yet.'));
-  const other=otherLands(chosen,primary);if(other)panel.append(other);
+  const other=otherLands(chosen,primary);
   if(primary.count)panel.append(button('Clear film filters',clearDiscoveryFilters,'globe-more'));else if(points.some(p=>matchingFilms(p.id).length))panel.append(button('Discover a film',surprise,'globe-more'));
-  const d=el('details','globe-credit-details');d.append(el('summary',null,'Sources'),landSources(null));panel.append(d);
+  const d=el('details','globe-credit-details');d.append(encounterSummary('Land sources'),landSources(null));encounterDisclosures(panel,[other,d]);
  }
  status.textContent=primary.name+' · '+films.length+' matching film credits';restorePanel();placeEmergent();updateThemeMap();renderSoon();
 }
@@ -1258,7 +1299,7 @@ function markup(){
  menuListeners=new AbortController();const opts={capture:true,signal:menuListeners.signal};
  document.addEventListener('pointerdown',e=>{if(menuMode&&!e.target.closest('.globe-guide'))setMenu('');},opts);
  // Window capture precedes document-level legacy Escape handlers, which can exit Constellate.
- window.addEventListener('keydown',e=>{if(e.key==='Escape'&&starDrag){e.preventDefault();e.stopImmediatePropagation();clearStarDrag();return;}if(e.key==='Escape'&&globePlayer){e.preventDefault();e.stopImmediatePropagation();closeGlobePlayer();return;}if(e.key==='Escape'&&menuMode){e.preventDefault();e.stopImmediatePropagation();setMenu('',true);return;}if(e.key==='Escape'){e.preventDefault();e.stopImmediatePropagation();const popup=$('#constellate-popup');if(popup&&!popup.hidden){C()?.close();returnFromPreview();}}},opts);
+ window.addEventListener('keydown',e=>{if(e.key==='Escape'&&starDrag){e.preventDefault();e.stopImmediatePropagation();clearStarDrag();return;}if(e.key==='Escape'&&globePlayer){e.preventDefault();e.stopImmediatePropagation();closeGlobePlayer();return;}if(e.key==='Escape'&&menuMode){e.preventDefault();e.stopImmediatePropagation();setMenu('',true);return;}if(e.key==='Escape'){e.preventDefault();e.stopImmediatePropagation();const popup=$('#constellate-popup');if(popup&&!popup.hidden){C()?.close();returnFromPreview();return;}const open=$('#globe-encounter .globe-encounter-disclosures>details[open]');if(open){open.open=false;open.querySelector('summary')?.focus({preventScroll:true});}}},opts);
  $('#weave-map-theme')?.addEventListener('change',refreshMenuLabels,{signal:menuListeners.signal});$('#weave-map-theme-second')?.addEventListener('change',refreshMenuLabels,{signal:menuListeners.signal});
  canvas=$('#globe-surface');ctx=canvas.getContext('2d',{alpha:false});if(!ctx)throw Error('Canvas unavailable');
  $('#globe-emergent').onclick=()=>{if(featured){previewFromGlobe(featured.film,featured.land,$('#globe-emergent'));placeEmergent();}};
