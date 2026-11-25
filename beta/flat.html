@@ -99,6 +99,8 @@ html[data-globe-entry] body.atlas-page .map-panel :is(#atlas,#atlas-basemap,.map
 html[data-globe-entry=pending] body.atlas-page #weave-opening{display:block;position:absolute;inset:40% 0 auto;margin:0;text-align:center;color:#c9d3e0;font:500 15px/1.4 var(--ui-sans,system-ui,sans-serif);z-index:6;pointer-events:none}
 html[data-globe-entry=ready] #weave-opening{display:none!important}
 /* Keep the public map plate invariant from the first paint, before legacy modules start. */
+html[data-globe-entry]:not(#_):not(#__):not(#___) body.atlas-page{box-sizing:border-box;display:flex!important;flex-direction:column!important;height:100dvh!important;min-height:0!important;max-height:100dvh!important;overflow:hidden!important}
+html[data-globe-entry] body.atlas-page>header{flex:0 0 auto!important}
 html[data-globe-entry]:not(#_):not(#__):not(#___) body.atlas-page>main{position:relative!important;display:block!important;flex:1 1 auto!important;height:auto!important;min-height:0!important;max-height:none!important;overflow:hidden!important;grid-template-columns:minmax(0,1fr)!important}
 html[data-globe-entry]:not(#_):not(#__):not(#___) body.atlas-page>main>.map-panel{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;min-height:0!important;max-height:none!important;margin:0!important}
 html[data-globe-entry] body.atlas-page>main>#index{display:none!important}

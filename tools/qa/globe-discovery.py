@@ -23,7 +23,13 @@ async def check(browser,name,viewport):
     page.on("pageerror",lambda e: errors.append(str(e)))
     await page.goto(BASE,wait_until="domcontentloaded",timeout=90000)
     assert await page.evaluate("new URLSearchParams(location.search).get('globe')==='1' && new URLSearchParams(location.search).get('constellate')==='1'"), "Clean beta entry did not select globe"
+    # Measure the map plate before the delayed native renderer can reveal it.
+    plate=await page.locator(".map-panel").bounding_box()
+    assert plate and plate["width"]>200 and plate["height"]>200, (name,"collapsed initial map",plate)
     await page.wait_for_function("window.AtlasGlobe?.active && window.AtlasGlobe.focus.settled",timeout=60000)
+    await page.wait_for_function("document.querySelector('#atlas-rotational-globe')?.dataset.ready==='true'",timeout=60000)
+    after=await page.locator(".map-panel").bounding_box()
+    assert max(abs(plate[k]-after[k]) for k in ("x","y","width","height"))<=3, (name,"map plate jumped during startup",plate,after)
     assert await page.evaluate("window.AtlasGlobe.pointCount>0 && window.AtlasGlobe.geometryCount>0 && window.AtlasGlobe.landArea>2.5 && window.AtlasGlobe.landArea<4.8"),name
     # Test the production index rather than a mocked grouping or screen location.
     join = await page.evaluate("""() => {
