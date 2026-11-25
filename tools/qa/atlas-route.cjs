@@ -8,6 +8,7 @@ const cases=[
  ['?constellate=1&globe=1&weave=61b22ae4-4801-4379-a456-62c23b984561#view=filmmakers&browse=1',true,''],
  ['?constellate=1&globe=1&at=-91,12,2&territories=off',true,'?at=-91%2C12%2C2&territories=off'],
  ['?menu=find',true,'?menu=find'],
+ ['?trace=1&traceTheme=Land+Defense',true,'?trace=1&traceTheme=Land+Defense'],
  ['?utm_source=shared',true,''],
  ['?ref=external&menu=find',true,'?menu=find'],
  ['?globe=1#view=films&maker=DIR-0007&film=FILM-0008',true,'?maker=DIR-0007&film=FILM-0008'],

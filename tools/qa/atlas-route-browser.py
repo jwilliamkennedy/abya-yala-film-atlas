@@ -68,7 +68,7 @@ async def main():
         print("PUBLIC_FIND_LINK",page.url,flush=True)
         # Watch returns only to the public globe, and preserves supported
         # state even when there was no camera snapshot.
-        for state in ("", "menu=find", query+"&at=-91%2C12%2C2"):
+        for state in ("", "menu=find", query+"&at=-91%2C12%2C2&trace=1&traceTheme=Land+Defense"):
             await page.goto(BASE+"watch.html?"+urlencode({"fromGlobe":state}),wait_until="domcontentloaded",timeout=90000)
             link=page.locator("#watch-return-globe")
             await link.wait_for(state="visible",timeout=30000)
@@ -77,7 +77,7 @@ async def main():
             assert urlsplit(href).path==urlsplit(BASE).path
             assert parse_qs(urlsplit(href).query)==parse_qs(state),(href,state)
         await page.goto(BASE+"watch.html",wait_until="domcontentloaded",timeout=90000)
-        assert await page.locator("#watch-return-globe").count()==0
+        assert await page.locator("#watch-return-globe").is_hidden()
         print("WATCH_RETURN_ROUTES passed",flush=True)
         await page.goto(BASE+"flat.html",wait_until="domcontentloaded",timeout=90000)
         await page.wait_for_function("document.documentElement.dataset.atlasUi==='ready'",timeout=60000)

@@ -552,3 +552,9 @@ html[data-globe-entry] #atlas-globe-stage>#constellate-popup .constellate-headin
 #globe-collection-panel .globe-thread-item textarea{width:100%;min-height:45px;resize:vertical;box-sizing:border-box}
 #globe-collection-panel .globe-thread-item strong{font-size:12px}
 @media(max-width:760px){#globe-encounter .globe-retain-related{min-width:40px;min-height:40px}}
+
+#globe-collection-panel .globe-authored-relation{display:grid;gap:4px;padding:7px 0;border-bottom:1px solid #718e893b}
+#globe-collection-panel .globe-authored-relation strong{font-size:12px}
+#globe-collection-panel .globe-authored-relation button{justify-self:start;font-size:11px;min-height:30px}
+#globe-collection-panel .globe-thread-item .globe-buttons{flex-wrap:wrap}
+#globe-encounter #globe-connect-featured{font-size:11px;text-align:left}

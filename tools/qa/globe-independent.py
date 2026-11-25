@@ -527,6 +527,24 @@ async def run(browser,name,viewport):
                 assert await page.evaluate("AtlasGlobe.camera")==camera
                 print(name,"grouped stars, same-land connection, cancel and direct drawing passed",flush=True)
 
+        # Exercise the direct discovery-to-authorship path using a fresh draft.
+        if MODE=="discovery" and name=="desktop" and 'previous' in locals() and previous:
+            await page.evaluate("()=>{AtlasCollections.create('Discovery QA');AtlasGlobe.sync();}")
+            await page.goto(BASE+"?film="+previous["film"]+"&land="+previous["land"],wait_until="domcontentloaded",timeout=90000)
+            await page.wait_for_function("AtlasGlobe?.discovery.publication==='ready' && AtlasGlobe.focus.settled && !!document.querySelector('.globe-retain-related')",timeout=90000)
+            await page.evaluate("()=>{AtlasCollections.create('Direct connection QA');AtlasGlobe.sync();}")
+            await page.locator(".globe-related-details summary").click()
+            await page.locator(".globe-retain-related").first.click()
+            await page.locator("#globe-link-reason").wait_for()
+            assert await page.evaluate("AtlasGlobe.discovery.collection.items===2 && AtlasGlobe.discovery.collection.links===0")
+            await page.locator("#globe-link-reason").fill("Visitor-authored connection")
+            await page.locator(".globe-link-form button[type=submit]").click()
+            assert await page.evaluate("AtlasGlobe.discovery.collection.links===1")
+            await page.locator(".globe-thread-order summary").click()
+            before=await page.evaluate("AtlasCollections.activeThread().items.slice()")
+            await page.locator(".globe-thread-item").first.get_by_role("button",name="Move",exact=False).last.click()
+            assert await page.evaluate("AtlasCollections.activeThread().items.slice()")==before[::-1]
+            print(name,"direct thematic collection and thread reordering passed",flush=True)
         assert not errors,(name,errors)
         print(name,MODE,"passed",flush=True)
     finally:

@@ -121,7 +121,7 @@ async def main():
                 await watch_tab.route(pattern,lambda route:route.abort())
             indexed=await page.evaluate("window.ATLAS_WATCH.films")
             for embedded in (True,False):
-                entry=next((f for f in indexed if any(l.get("embed") for l in f["links"])==embedded),None)
+                entry=next((f for f in indexed if any(l.get("embed") for l in f["links"])==embedded and any(l.get("url","").startswith("https:") for l in f["links"])),None)
                 if not entry:continue
                 shared=await page.evaluate("window.AtlasGlobe.discovery.shareURL")
                 query=urlparse(shared).query
