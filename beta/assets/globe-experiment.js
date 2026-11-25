@@ -12,18 +12,18 @@ const worldRequest=fetch(new URL('assets/world-50m.json',document.baseURI)).then
 const DEG=180/Math.PI,clamp=(v,a,b)=>Math.max(a,Math.min(b,v)),wrap=v=>((v+180)%360+360)%360-180;
 let active=false,closed=false,host=null,canvas=null,ctx=null,ro=null,raf=0,settleTimer=0;
 let W=0,H=0,dpr=1,zoom=1,center=[-91,12],proj=null,path=null,earth=null,landArea=0;
-let records=[],points=[],byId=new Map(),near=[],inside=[],focusIds=[],focusKey='',previewLimit=3,settled=false,anchorFailures=[];
+let records=[],points=[],byId=new Map(),near=[],inside=[],focusIds=[],focusKey='',settled=false,anchorFailures=[];
 let targetCoordinate=null,targetPrimary='',targetMode='overview',localNameKey='',targetScreen=null,targetReason='none';
 let pointers=new Map(),gesture=null,dragged=false,previousFocus=null;
 const labelAnchors=new Map(),labelFailures=new Set();let labelQueue=null,labelTimer=0,labelUploaded=-1,labelFocusKey='';
 let relief=null,reliefState='deferred',flight=0,flightTarget=null,lastDrag=null;
-let live=null,liveReady=false,liveHost=null,liveSignature='',liveBaseZoom=0,liveMoved=false,liveTimer=0;
+let live=null,liveReady=false,liveHost=null,liveSignature='',liveBaseZoom=0,liveTimer=0;
  const startup={fallbackPaint:null,nativeLoaded:null,handoff:null,revealed:null,reason:null,localReady:null,imageryReady:false,firstVisible:null,firstRenderer:null,stableFrames:0,stableMs:0};
  let firstSceneTimer=0;
 let wheelFrame=0,wheelGoal=null,wheelLast=0,wheelTick=0,wheelActive=false,gestureStart=null,gestureUntil=0,landscape=false,lastLiveUpdate=0;
 const received={marble:0,satellite:0,dem:0,hilldem:0,places:0},sourceErrors={};
-let ambientCount=0,landsVisible=true,landStrength=1,edgeMode='selected',lastCameraChange=0,lastCameraKey='',activeMapPointers=new Set(),pendingFilm='',rankCache=new Map(),zoomListeners=null,lastStatus=0,frameTimes=[],lastRender=0,preferredLand='',filmOffset=0,yearBand='',lastEncounter='',recent=[],lastRelated=null;
-let featured=null,lastVisiblePosterKey='',posterKey='',journey=[],returning=false,artSizes=new Map(),artFailures=new Set(),posterLayoutFrame=0,posterReason='initializing',boundaryStats={features:0,segments:0,datelineSplits:0},menuMode='',themeLensHome=null,menuListeners=null,encounterExpanded=false;
+let ambientCount=0,landsVisible=true,landStrength=1,edgeMode='selected',lastCameraChange=0,lastCameraKey='',activeMapPointers=new Set(),pendingFilm='',rankCache=new Map(),zoomListeners=null,lastStatus=0,frameTimes=[],lastRender=0,preferredLand='',filmOffset=0,yearBand='',lastEncounter='',recent=[];
+let featured=null,lastVisiblePosterKey='',posterKey='',journey=[],artSizes=new Map(),posterLayoutFrame=0,posterReason='initializing',boundaryStats={features:0,segments:0,datelineSplits:0},menuMode='',themeLensHome=null,menuListeners=null,encounterExpanded=false;
 const inputStats={wheel:0,pinch:0,safari:0,touch:0,zoomEvents:0,lastDelta:0,lastBefore:null,lastAfter:null,lastInputMs:null};
 const params=new URLSearchParams(location.search);
 let inboundEncounter={land:params.get('land')||'',film:params.get('film')||''};
@@ -33,10 +33,11 @@ function currentTheme(){return [$('#weave-map-theme')?.value,$('#weave-map-theme
 function shareView(){const u=new URL(location.pathname,location.origin),s=liveStats();u.searchParams.set('constellate','1');u.searchParams.set('globe','1');if(W&&H){const base=Math.max(-1.3,Math.log2(Math.min(W,H)*.87*Math.PI/512)),mapZoom=s?.zoom??clamp(base+Math.log2(Math.max(.1,zoom)),-2,14);u.searchParams.set('at',[center[0].toFixed(5),clamp(center[1],-85,85).toFixed(5),mapZoom.toFixed(3)].join(','));}if(settled&&featured){u.searchParams.set('land',featured.land);u.searchParams.set('film',featured.film.id);}if(landStrength!==1)u.searchParams.set('lands',String(landStrength));if(edgeMode!=='selected')u.searchParams.set('edges',edgeMode);const t=currentTheme();if(t.length)u.searchParams.set('themes',JSON.stringify(t));else u.searchParams.delete('themes');if(yearBand)u.searchParams.set('period',yearBand);else u.searchParams.delete('period');for(const [key,val] of Object.entries(facetFilter))if(val)u.searchParams.set(key,val);return u.href;}
 function recordVisit(r){if(recent[0]?.id===r.id)return;recent=[{id:r.id,name:r.name},...recent.filter(v=>v.id!==r.id)].slice(0,10);try{sessionStorage.setItem('atlas-globe-recent',JSON.stringify(recent));}catch{}updateRecent();}
 function updateRecent(){const s=$('#globe-recent');if(!s)return;s.replaceChildren(el('option',null,'Recently explored…'));for(const r of recent){if(!byId.has(r.id))continue;const o=el('option',null,r.name);o.value=r.id;s.append(o);}s.hidden=s.options.length<2;}
-function setPeriod(v){yearBand=v;pendingFilm='';filmOffset=0;focusKey='';liveSignature='';settle();renderSoon();}
+function invalidateFilters(){pendingFilm='';filmOffset=0;focusKey='';liveSignature='';refreshMenuLabels();movement();scheduleSettle(80);}
+function setPeriod(v){yearBand=v;invalidateFilters();}
 function periodMatch(f){if(!yearBand)return true;const y=Number(f.year);return Number.isFinite(y)&&y>=Number(yearBand)&&y<Number(yearBand)+20;}
 function rankedFilms(id){const key=id+'|'+filterKey(),cached=rankCache.get(key);if(cached)return cached;const fs=matchingFilms(id),seen=new Set(),ranked=fs.slice().sort((a,b)=>a.title.localeCompare(b.title)||String(a.maker||'').localeCompare(String(b.maker||''))||a.id.localeCompare(b.id)).filter(f=>{if(seen.has(f.id))return false;seen.add(f.id);return true;});if(rankCache.size>160)rankCache.clear();rankCache.set(key,ranked);return ranked;}
-function safeViewing(f){const work=A().recordById(f.record)?.films.find(x=>x.id===f.film);const links=C().globeViewingRoutes(f);return links.map(l=>{try{if(new URL(l.url).protocol!=='https:')return null;return {url:l.url,label:/trailer|teaser|preview/i.test(l.title||'')?'Trailer':/watch|full film|stream|viewing|ver pel[ií]cula|ver filme/i.test(l.title||'')?'Watch':'Film page'};}catch{return null;}}).filter(Boolean).sort((a,b)=>['Watch','Trailer','Film page'].indexOf(a.label)-['Watch','Trailer','Film page'].indexOf(b.label))[0]||null;}
+function safeViewing(f){const links=C().globeViewingRoutes(f);return links.map(l=>{try{if(new URL(l.url).protocol!=='https:')return null;return {url:l.url,label:/trailer|teaser|preview/i.test(l.title||'')?'Trailer':/watch|full film|stream|viewing|ver pel[ií]cula|ver filme/i.test(l.title||'')?'Watch':'Film page'};}catch{return null;}}).filter(Boolean).sort((a,b)=>['Watch','Trailer','Film page'].indexOf(a.label)-['Watch','Trailer','Film page'].indexOf(b.label))[0]||null;}
 function externalLink(label,url,cls){try{const u=new URL(url,location.href);if(u.protocol!=='https:'&&!(u.protocol==='http:'&&u.origin===location.origin))return null;}catch{return null;}const a=el('a',cls,label);a.href=url;a.target='_blank';a.rel='noopener noreferrer';return a;}
 function gotoLand(id,filmId='',overview=false){pendingFilm=filmId;const r=byId.get(id);if(!r)return;const a=territoryAnchor(r)?.coordinates;if(!a)return;preferredLand=id;filmOffset=0;const distance=d3.geoDistance(center,a);setCamera(a,overview?Math.max(2.2,Math.min(zoom,4)):Math.max(zoom,2.2),Math.round(clamp(280+distance*200,280,850)));}
 function surprise(){const current=preferredLand||lastEncounter;const candidates=points.filter(p=>matchingFilms(p.id).length&&p.id!==current);const unseen=candidates.filter(p=>!recent.some(r=>r.id===p.id)),pool=unseen.length?unseen:candidates;if(pool.length)gotoLand(pool[Math.floor(Math.random()*pool.length)].id,'',true);else if($('#globe-status'))$('#globe-status').textContent='No additional mapped films match the selected filters.';}
@@ -68,7 +69,7 @@ function relatedEncounters(seed,land){
  return out;
 }
 function followRelated(related){if(featured)journey.push({land:featured.land,film:featured.film.id,theme:currentTheme(),period:yearBand,facets:{...facetFilter},center:[...center],zoom});if(journey.length>20)journey.shift();if(!currentTheme().length)C().showThemeLens([related.term]);gotoLand(related.ref.id,related.film.id,true);}
-function journeyBack(){const v=journey.pop();if(!v)return;returning=true;yearBand=v.period||'';$('#globe-period').value=yearBand;for(const key of Object.keys(facetFilter)){facetFilter[key]=v.facets?.[key]||'';$('#globe-filter-'+key).value=facetFilter[key];}if(v.theme.length)C().showThemeLens(v.theme);else C().clearThemeLens();pendingFilm=v.film;preferredLand=v.land;filmOffset=0;focusKey='';liveSignature='';refreshMenuLabels();setCamera(v.center,v.zoom);returning=false;}
+function journeyBack(){const v=journey.pop();if(!v)return;yearBand=v.period||'';$('#globe-period').value=yearBand;for(const key of Object.keys(facetFilter)){facetFilter[key]=v.facets?.[key]||'';$('#globe-filter-'+key).value=facetFilter[key];}if(v.theme.length)C().showThemeLens(v.theme);else C().clearThemeLens();pendingFilm=v.film;preferredLand=v.land;filmOffset=0;focusKey='';liveSignature='';refreshMenuLabels();setCamera(v.center,v.zoom);}
 function syncTerrain(){if(!liveReady||!live)return;const z=live.getZoom(),want=z>=6.2||(z>=5.7&&!!live.getTerrain());if(want&&!live.getTerrain())live.setTerrain({source:'dem',exaggeration:1});else if(!want&&live.getTerrain())live.setTerrain(null);}
 
 const nowMs=()=>performance.now();
@@ -100,7 +101,7 @@ const sphere={type:'Sphere'};
 function camera(){if(liveReady&&live){const p=live.getCenter();return {center:[wrap(p.lng),p.lat],zoom:Math.pow(2,live.getZoom()-liveBaseZoom),projection:'globe',renderer:'maplibre-globe'};}return {center:[...center],zoom,projection:'globe',renderer:'orthographic-canvas'};}
 function renderSoon(){if(!active||raf)return;raf=requestAnimationFrame(()=>{raf=0;draw();});}
 let lastSettledFilter='';
-function sync(){if(!active)return;refreshMenuLabels();renderCollection();renderSoon();if(settled&&focusKey&&!readingJourney&&lastSettledFilter===filterKey()&&!live?.isMoving()){updateCollectButton();placeEmergent();return;}if(!pointers.size&&!flight&&!wheelActive&&(!live?.isMoving()||settled))scheduleSettle(75);}
+function sync(){if(!active)return;refreshMenuLabels();renderCollection();renderSoon();const sameFilter=lastSettledFilter===filterKey();if(settled&&!sameFilter){movement();scheduleSettle(75);return;}if(settled&&focusKey&&!readingJourney&&sameFilter&&!live?.isMoving()){updateCollectButton();placeEmergent();return;}if(!pointers.size&&!flight&&!wheelActive&&(!live?.isMoving()||settled))scheduleSettle(75);}
 window.AtlasGlobe={get active(){return active},get camera(){return active?camera():null},get pointCount(){return points.length},get geometryCount(){return records.length},get anchorFailures(){return [...anchorFailures]},get territoryNames(){return {indexed:labelAnchors.size,total:records.length,failures:[...labelFailures],withoutCinema:[...labelAnchors.keys()].filter(id=>!pointById.has(id)).length,anchors:[...labelAnchors].map(([id,a])=>({id,coordinate:a.coordinates,sourceId:a.sourceId}))}},get anchors(){return points.map(p=>({id:p.id,coordinate:[...p.coord],sourceId:p.anchor.sourceId,component:p.anchor.component,method:p.anchor.method}))},get landArea(){return landArea},get territoryLayer(){return {visible:landsVisible,strength:landStrength,edgeMode,edgeVisibility:liveReady?['native-ambient-line','land-outline'].map(id=>live.getLayoutProperty(id,'visibility')):[],features:ambientCount,boundaries:{...boundaryStats},fill:liveReady?live.getPaintProperty('native-ambient-fill','fill-opacity'):null,outline:liveReady?live.getPaintProperty('native-ambient-line','line-opacity'):null}},get terrain(){return liveReady?'tiled':reliefState},get tileState(){return liveStats()},matchingCreditIds:id=>matchingFilms(id).map(f=>f.id),cinemaCounts:id=>({...cinemaStats(matchingFilms(id))}),get cinemaMarkers(){return livePointsData().features.map(f=>({land:f.properties.land,films:f.properties.films,makers:f.properties.makers,credits:f.properties.count,coordinate:f.geometry.coordinates}));},artworkInventory:()=>({lands:records.map(r=>({id:r.id,name:r.name,credits:C().globeLandFilmCount(r.id),matching:matchingFilms(r.id).length})),credits:C().globeCreditIndex().films.map(f=>({id:f.id,film:f.film,title:f.title,maker:f.maker,record:f.record,source:C().sourceImage(f)||'',published:C().globeMetadata(f)?.image||'',view:safeViewing(f),watch:watchEntry(f)?{embedded:watchEntry(f).links.some(l=>l.embed),links:watchEntry(f).links}:null,lands:(C().globeCreditIndex().refs.get(f.id)||[]).map(r=>r.id)}))}),get collectionStars(){return [...groupedStars()].map(([land,group])=>{const p=group[0],q=liveReady?live.project(p.coord):null;return {land,items:group.map(x=>x.id),coordinate:p.coord,screen:q?[q.x,q.y]:null,visible:visible(p.coord)};})},get discovery(){return {collection:collectionSummary(),themeCoverage:themeCoverage(),menu:menuMode,period:yearBand,filters:{...facetFilter},publication:publicationStatus,preferredLand,recent:[...recent],filmOffset,featured:featured?{land:featured.land,film:featured.film.id}:null,journeyDepth:journey.length,posterVisible:!$('#globe-emergent')?.hidden,posterReason,artState:$('#globe-encounter .globe-art-feature')?.dataset.artState||null,shareURL:shareView()}},goTo(coord,mapZoom){if(liveReady&&Array.isArray(coord)&&coord.length===2&&coord.every(Number.isFinite)&&Number.isFinite(mapZoom))setCamera(coord,Math.pow(2,mapZoom-liveBaseZoom),0);},get focus(){return {ids:[...focusIds],inside:inside.map(r=>r.id),settled,target:{mode:targetMode,radius:aperture(),screen:targetScreen,coordinate:targetCoordinate,primary:targetPrimary,reason:targetReason,nearby:near.map(v=>v.p.id)}};},sync,close,returnFromPreview};
 let previewReturn=null;
 function previewFromGlobe(film,land='',trigger=null){previewReturn={film:film.id,land,trigger};C().showPreview(film,{land,from:'globe'});sync();}
@@ -163,8 +164,7 @@ function queueOverviewZoom(delta){
  if(wheelFrame)return;
  function frame(t){
   wheelFrame=0;if(!active||liveReady||wheelGoal===null){stopWheel();return;}
-  const current=Math.log2(zoom),remaining=wheelGoal-current,dt=wheelTick?clamp(t-wheelTick,1,80):16.7;wheelTick=t;
-  const next=reduced.matches||Math.abs(remaining)<.008?wheelGoal:current+remaining*(1-Math.exp(-dt/62));
+  const next=wheelStep(Math.log2(zoom),t);
   zoom=Math.pow(2,next);renderSoon();
   if(Math.abs(wheelGoal-next)>1e-9||t-wheelLast<90){wheelFrame=requestAnimationFrame(frame);return;}
   stopWheel();finishMove();
@@ -178,9 +178,9 @@ function visible(p){return d3.geoDistance(center,p)<Math.PI/2-1e-5;}
 function shape(g,fill,stroke,width=1){
  ctx.beginPath();path(g);if(fill){ctx.fillStyle=fill;ctx.fill();}if(stroke){ctx.strokeStyle=stroke;ctx.lineWidth=width;ctx.stroke();}
 }
-function screenPoints(){
+function screenPoints(native=liveReady){
  const out=[],stamp=filterKey(),[tx,ty]=targetScreen||[W/2,H/2];
- for(const p of points){if(!visible(p.coord))continue;const pos=liveReady?live.project(p.coord):null;const xy=pos?[pos.x,pos.y]:proj(p.coord);if(!xy?.every(Number.isFinite)||xy[0]<-10||xy[1]<-10||xy[0]>W+10||xy[1]>H+10)continue;
+ for(const p of points){if(!visible(p.coord))continue;const pos=native?live.project(p.coord):null;const xy=pos?[pos.x,pos.y]:proj(p.coord);if(!xy?.every(Number.isFinite)||xy[0]<-10||xy[1]<-10||xy[0]>W+10||xy[1]>H+10)continue;
   out.push({p,xy,match:matchingFilms(p.id,stamp).length>0,distance:Math.hypot(xy[0]-tx,xy[1]-ty)});
  }
  return out;
@@ -377,6 +377,7 @@ function loadRelief(){
  function readLiveCamera(){const p=live.getCenter();center=[wrap(p.lng),p.lat];zoom=Math.pow(2,live.getZoom()-liveBaseZoom);const k=[center[0].toFixed(7),center[1].toFixed(7),live.getZoom().toFixed(6),live.getPitch().toFixed(4)].join('|');if(k!==lastCameraKey){lastCameraKey=k;lastCameraChange=nowMs();}}
  // Centered wheel/pinch uses accumulated logarithmic scale, not a restarted easing
  // animation. The geographic point inside the fixed aperture stays fixed.
+ function wheelStep(current,t){const dt=wheelTick?clamp(t-wheelTick,1,80):16.7;wheelTick=t;const delta=wheelGoal-current;return reduced.matches||Math.abs(delta)<.008?wheelGoal:current+delta*(1-Math.exp(-dt/62));}
  function stopWheel(resetGesture=true){if(wheelFrame)cancelAnimationFrame(wheelFrame);wheelFrame=0;wheelGoal=null;wheelTick=0;wheelActive=false;if(resetGesture)gestureStart=null;}
  function queueZoom(goal){
   if(!liveReady)return;
@@ -385,11 +386,7 @@ function loadRelief(){
   if(wheelFrame)return;
   function frame(t){
    wheelFrame=0;if(!active||!liveReady||wheelGoal===null){stopWheel();return;}
-   const current=live.getZoom(),delta=wheelGoal-current;
-   // Use elapsed time, not frame count: a 120 Hz trackpad display and a
-   // busy 30 Hz device should converge at the same perceptual speed.
-   const dt=wheelTick?clamp(t-wheelTick,1,80):16.7;wheelTick=t;
-   const next=reduced.matches||Math.abs(delta)<.008?wheelGoal:current+delta*(1-Math.exp(-dt/62));
+   const current=live.getZoom(),next=wheelStep(current,t);
    if(Math.abs(next-current)>1e-6){
     const pitch=landscape?42*clamp((next-5.4)/1.6,0,1):live.getPitch();
     live.jumpTo({center:live.getCenter(),zoom:next,pitch});
@@ -508,13 +505,13 @@ function loadRelief(){
     {id:'land-outline',type:'line',source:'native-focus-edges',layout:{'line-join':'round','line-cap':'round'},paint:{'line-color':['get','color'],'line-opacity':['case',['==',['get','match'],0],.16,['==',['get','focus'],1],.62,.32],'line-width':['interpolate',['linear'],['zoom'],1,.6,5,1,11,1.5]}},
     {id:'cinema-glow',type:'circle',source:'cinema-points',paint:{'circle-radius':5,'circle-color':'#e8eed9','circle-opacity':['case',['==',['get','match'],1],.13,0],'circle-blur':.9,'circle-pitch-alignment':'map'}},
     {id:'cinema-light',type:'circle',source:'cinema-points',paint:{'circle-radius':['interpolate',['linear'],['zoom'],0,1.8,3,2.6,4,2.7,7,2.4],'circle-color':'#dce9d8','circle-opacity':['case',['==',['get','match'],1],.92,.08],'circle-pitch-alignment':'viewport'}},
-    {id:'cinema-count',type:'symbol',source:'cinema-points',minzoom:3.8,filter:['==',['get','match'],1],layout:{'text-field':['to-string',['get','films']],'text-font':['Noto Sans Regular'],'text-size':11,'text-anchor':'left','text-offset':[.65,0],'text-padding':4,'text-allow-overlap':false,'text-ignore-placement':false,'text-pitch-alignment':'viewport','text-rotation-alignment':'viewport','symbol-sort-key':['case',['==',['get','focus'],1],0,1]},paint:{'text-color':'#eff2e9','text-halo-color':'#1b393e','text-halo-width':1.35,'text-opacity':['interpolate',['linear'],['zoom'],3.8,.65,4.3,1]}},
+    {id:'cinema-count',type:'symbol',source:'cinema-points',minzoom:3.8,filter:['==',['get','match'],1],layout:{'text-field':['to-string',['get','films']],'text-font':['Noto Sans Regular'],'text-size':11,'text-anchor':'left','text-offset':[.65,0],'text-padding':4,'text-allow-overlap':false,'text-ignore-placement':false,'text-pitch-alignment':'viewport','text-rotation-alignment':'viewport','symbol-sort-key':['case',['==',['get','focus'],1],0,1]},paint:{'text-color':'#eff2e9','text-halo-color':'#1b393e','text-halo-width':1.35,'text-opacity':['interpolate',['linear'],['zoom'],3.8,0,4.6,1]}},
     {id:'globe-user-link',type:'line',source:'globe-authored-links',layout:{'line-cap':'round','line-join':'round'},paint:{'line-color':['get','color'],'line-opacity':.6,'line-width':1.2,'line-dasharray':[2,2]}},
     {id:'globe-user-halo',type:'circle',source:'globe-collected',paint:{'circle-radius':7,'circle-color':['get','color'],'circle-blur':.95,'circle-opacity':.28}},
     {id:'globe-user-star',type:'circle',source:'globe-collected',paint:{'circle-radius':['case',['==',['get','selected'],1],4.2,['>', ['get','count'],1],3.8,2.7],'circle-color':'#f1f6e8','circle-stroke-color':['get','color'],'circle-stroke-width':1,'circle-opacity':.98}},
-    {id:'indigenous-regional-names',type:'symbol',source:'native-labels',minzoom:5.5,layout:{'text-field':['get','name'],'text-font':['Noto Sans Regular'],'text-size':['interpolate',['linear'],['zoom'],5.5,11,11,14],'text-anchor':'top','text-offset':[0,.6],'text-padding':11,'text-max-width':12,'text-allow-overlap':false,'text-ignore-placement':false},paint:{'text-color':'#dce9dd','text-halo-color':'#172a31','text-halo-width':1.45,'text-opacity':['interpolate',['linear'],['zoom'],5.5,.25,7,.82,10,.94]}},
+    {id:'indigenous-regional-names',type:'symbol',source:'native-labels',minzoom:5.5,layout:{'text-field':['get','name'],'text-font':['Noto Sans Regular'],'text-size':['interpolate',['linear'],['zoom'],5.5,11,11,14],'text-anchor':'top','text-offset':[0,.6],'text-padding':11,'text-max-width':12,'text-allow-overlap':false,'text-ignore-placement':false},paint:{'text-color':'#dce9dd','text-halo-color':'#172a31','text-halo-width':1.45,'text-opacity':['interpolate',['linear'],['zoom'],5.5,0,7,.82,10,.94]}},
     {id:'indigenous-local-name',type:'symbol',source:'native-local-label',minzoom:7,layout:{'text-field':['get','name'],'text-font':['Noto Sans Regular'],'text-size':15,'text-anchor':'top','text-offset':[0,1.5],'text-max-width':18,'text-padding':7,'text-allow-overlap':false},paint:{'text-color':'#f4eee0','text-halo-color':'#172a31','text-halo-width':1.65}},
-    {id:'indigenous-names',type:'symbol',source:'native-labels',minzoom:3,filter:['in',['get','land'],['literal',[]]],layout:{'text-field':['get','name'],'text-font':['Noto Sans Regular'],'text-size':['interpolate',['linear'],['zoom'],3,12,7,14,11,15],'text-anchor':'top','text-offset':[0,.65],'text-padding':7,'text-max-width':12,'text-allow-overlap':false,'text-ignore-placement':false},paint:{'text-color':'#f4eee0','text-halo-color':'#172a31','text-halo-width':1.65,'text-opacity':['interpolate',['linear'],['zoom'],3,.75,4,1]}}
+    {id:'indigenous-names',type:'symbol',source:'native-labels',minzoom:3,filter:['in',['get','land'],['literal',[]]],layout:{'text-field':['get','name'],'text-font':['Noto Sans Regular'],'text-size':['interpolate',['linear'],['zoom'],3,12,7,14,11,15],'text-anchor':'top','text-offset':[0,.65],'text-padding':7,'text-max-width':12,'text-allow-overlap':false,'text-ignore-placement':false},paint:{'text-color':'#f4eee0','text-halo-color':'#172a31','text-halo-width':1.65,'text-opacity':['interpolate',['linear'],['zoom'],3,0,4.3,1]}}
    ]};
    live=new ml.Map({container:liveHost,style,center:initialCamera?initialCamera.slice(0,2):center,zoom:initialCamera?initialCamera[2]:liveBaseZoom,minZoom:Math.max(-2,liveBaseZoom-0.35),maxZoom:14,maxPitch:55,attributionControl:false,dragRotate:false,pitchWithRotate:false,touchPitch:false,renderWorldCopies:false,cooperativeGestures:false,fadeDuration:120,trackResize:false,maxTileCacheSize:W<760?96:240,scrollZoom:{around:'center'}});
    live.keyboard?.disableRotation?.();
@@ -576,19 +573,19 @@ function loadRelief(){
     live.on('zoomend',()=>{if(landscape&&!wheelActive&&live.getZoom()<7){const pitch=42*clamp((live.getZoom()-5.4)/1.6,0,1);if(live.getZoom()<=5.4){landscape=false;$('#globe-landscape').setAttribute('aria-pressed','false');}if(Math.abs(live.getPitch()-pitch)>.5)live.easeTo({pitch,duration:reduced.matches?0:200});}});
     live.getCanvas().setAttribute('aria-label','Rotate and zoom the globe; Enter explores the focused lands');
     live.getCanvas().addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();if(settled&&focusIds.length)focusEncounter();return;}if(['+','=','-'].includes(e.key)&&!e.ctrlKey&&!e.metaKey){e.preventDefault();e.stopImmediatePropagation();queueZoom((wheelGoal??live.getZoom())+(e.key==='-'?-.65:.65));}},{capture:true});
-    live.on('movestart',()=>{if(!liveReady||wheelActive)return;liveMoved=true;movement();});
+    live.on('movestart',()=>{if(!liveReady||wheelActive)return;movement();});
     live.on('move',()=>{if(!liveReady)return;readLiveCamera();renderSoon();if(!settled)scheduleSettle(180);});
     live.on('idle',()=>{if(!settled&&!wheelActive)scheduleSettle(100);updateDetailStatus(true);});
-    live.on('moveend',()=>{if(!liveReady)return;readLiveCamera();if(wheelActive)return;liveMoved=false;syncTerrain();finishMove();updateDetailStatus(true);});
+    live.on('moveend',()=>{if(!liveReady)return;readLiveCamera();if(wheelActive)return;syncTerrain();finishMove();updateDetailStatus(true);});
     installStarDrawing();
     live.on('click',e=>{
      const h=10,q=e.point;if(nowMs()<suppressStarClickUntil)return;
      const star=starAt(q.x,q.y);if(star){selectStar(star);return;}
      const hit=live.queryRenderedFeatures([[q.x-h,q.y-h],[q.x+h,q.y+h]],{layers:['cinema-light','cinema-count']}).filter(f=>matchingFilms(f.properties.land).length>0).map(f=>({f,p:pointById.get(f.properties.land)})).filter(v=>v.p).sort((a,b)=>{const pa=live.project(a.p.coord),pb=live.project(b.p.coord);return Math.hypot(pa.x-q.x,pa.y-q.y)-Math.hypot(pb.x-q.x,pb.y-q.y)||a.p.id.localeCompare(b.p.id);})[0]?.f;
      const p=hit&&points.find(v=>v.id===hit.properties.land);
-     if(p){preferredLand=p.id;filmOffset=0;setCamera(p.coord,zoom);return;}
+     if(p){selectMapLand(p.id,p.coord);return;}
      const coord=[wrap(e.lngLat.lng),e.lngLat.lat];
-     const hitLands=records.filter(r=>r.shapes.some(s=>includesBounds(s.bounds,coord)&&d3.geoContains(s.feature,coord)));if(hitLands.length){preferredLand=(hitLands.find(r=>r.id===preferredLand)||hitLands.find(r=>matchingFilms(r.id).length)||hitLands[0]).id;filmOffset=0;setCamera(coord,zoom);}
+     const land=landAt(coord);if(land)selectMapLand(land.id,coord);
     });
 
    }
@@ -597,14 +594,17 @@ function loadRelief(){
   }catch(e){failLive(e);}
  }
  function draw(){
- if(!W||!H)return;updateTarget();if(liveReady){updateLive();return;}updateProjection();ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,W,H);
+ if(!W||!H)return;updateTarget();if(liveReady){updateLive();if(startup.firstRenderer!=='overview'||host.classList.contains('globe-revealed'))return;}
+ // A visible overview follows the native camera while local tiles stabilize.
+ // Never leave an interactive but frozen canvas above the incoming renderer.
+ updateProjection();ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,W,H);
  ctx.fillStyle='#101b29';ctx.fillRect(0,0,W,H);
  const r=radius(),ocean=ctx.createRadialGradient(W/2-r*.25,H/2-r*.3,0,W/2,H/2,r);
  ocean.addColorStop(0,'#426f80');ocean.addColorStop(.72,'#315667');ocean.addColorStop(1,'#203b50');
  shape(sphere,ocean,null);shape(earth,'#69877b',null);
  if(relief){try{relief.draw();}catch(e){reliefState='unavailable';relief.dispose();relief=null;}}
  shape(earth,null,'rgba(180,201,184,.55)',.42);
- const ps=screenPoints();
+ const ps=screenPoints(false);
  // Render only the exact existing reference shapes currently under the aperture
  // or selected by the visitor. No arbitrary territory outlines or country proxies.
  const selected=new Set(C().selectedLandIds),preview=new Set(C().previewLandIds());
@@ -623,12 +623,12 @@ function loadRelief(){
  }
  if(fading)renderSoon();
  shape(sphere,null,'rgba(190,212,220,.36)',.75);
- near=ps.filter(v=>v.match&&v.distance<=aperture()).sort((a,b)=>a.distance-b.distance||a.p.name.localeCompare(b.p.name));
+ if(!liveReady)near=ps.filter(v=>v.match&&v.distance<=aperture()).sort((a,b)=>a.distance-b.distance||a.p.name.localeCompare(b.p.name));
  for(const {p,xy,match} of ps){
-  const chosen=focused.has(p.id)||selected.has(p.id)||preview.has(p.id),counted=match&&mapScale()>=4,rr=chosen?3:2,rgb=territoryTone(p.id);
+  const chosen=focused.has(p.id)||selected.has(p.id)||preview.has(p.id),countAlpha=match?clamp((mapScale()-3.8)/.8,0,1):0,rr=chosen?3:2,rgb=territoryTone(p.id);
   if(chosen&&match){ctx.beginPath();ctx.arc(xy[0],xy[1],rr+3,0,2*Math.PI);ctx.fillStyle=rgba(rgb,.23);ctx.fill();}
   ctx.beginPath();ctx.arc(xy[0],xy[1],rr,0,2*Math.PI);ctx.fillStyle=match?(chosen?'#f8eed8':'#e0e7dc'):'rgba(208,222,219,.22)';ctx.fill();
-  if(counted){ctx.font='500 11px '+(getComputedStyle(host).getPropertyValue('--ui-sans').trim()||'system-ui');ctx.fillStyle='#eff2e9';ctx.textAlign='left';ctx.textBaseline='middle';const label=String(cinemaStats(matchingFilms(p.id)).films);ctx.strokeStyle='#1b393e';ctx.lineWidth=2;ctx.strokeText(label,xy[0]+6,xy[1]);ctx.fillText(label,xy[0]+6,xy[1]);}
+  if(countAlpha>0){ctx.save();ctx.globalAlpha=countAlpha;ctx.font='500 11px '+(getComputedStyle(host).getPropertyValue('--ui-sans').trim()||'system-ui');ctx.fillStyle='#eff2e9';ctx.textAlign='left';ctx.textBaseline='middle';const label=String(cinemaStats(matchingFilms(p.id)).films);ctx.strokeStyle='#1b393e';ctx.lineWidth=2;ctx.strokeText(label,xy[0]+6,xy[1]);ctx.fillText(label,xy[0]+6,xy[1]);ctx.restore();}
  }
  targetFeedback();if(startup.fallbackPaint===null)startup.fallbackPaint=nowMs();
 }
@@ -641,6 +641,9 @@ function includesBounds(bounds,p){
  const [[west,south],[east,north]]=bounds,[lon,lat]=p;
  return lat>=south-1e-7&&lat<=north+1e-7&&(west<=east?lon>=west-1e-7&&lon<=east+1e-7:lon>=west-1e-7||lon<=east+1e-7);
 }
+function landsAt(coord){return records.filter(r=>r.shapes.some(s=>includesBounds(s.bounds,coord)&&d3.geoContains(s.feature,coord)));}
+function landAt(coord){const hit=landsAt(coord);return hit.find(r=>r.id===preferredLand)||hit.find(r=>matchingFilms(r.id).length)||hit[0]||null;}
+function selectMapLand(id,coord){preferredLand=id;pendingFilm='';filmOffset=0;setCamera(coord,zoom);}
 // Resolve the visible reticle against the same CSS-pixel coordinate system
 // used by the active renderer. The pitched map center is not a substitute for
 // the geographic point actually under the target.
@@ -651,7 +654,7 @@ function underFocus(){
  try{if(liveReady){const c=live.unproject(targetScreen);p=[wrap(c.lng),c.lat];}else if(Math.hypot(targetScreen[0]-W/2,targetScreen[1]-H/2)<=radius())p=proj.invert(targetScreen);}catch{}
  targetCoordinate=p?.every(Number.isFinite)&&Math.abs(p[1])<=90?[...p]:null;
  if(!targetCoordinate)return [];
- return records.filter(rec=>rec.shapes.some(s=>includesBounds(s.bounds,targetCoordinate)&&d3.geoContains(s.feature,targetCoordinate)));
+ return landsAt(targetCoordinate);
 }
 function matchingFilms(id,stamp=filterKey()){if(stamp!==matchingStamp){matchingStamp=stamp;matchingCache.clear();}if(!matchingCache.has(id))matchingCache.set(id,C().globeLandCatalogFilms(id).filter(f=>periodMatch(f)&&matchesFacets(f)));return matchingCache.get(id);}
 // Lazy public CSV projection: exact credit key, including multiline source evidence.
@@ -730,8 +733,8 @@ function refreshFacetOptions(){
  if(publicationStatus==='ready')filtersInitialized=true;
  refreshMenuLabels();
 }
-function changeFacet(key,value){facetFilter[key]=value;pendingFilm='';filmOffset=0;focusKey='';liveSignature='';refreshMenuLabels();scheduleSettle(80);renderSoon();}
-function clearDiscoveryFilters(){C().clearThemeLens();setPeriod('');$('#globe-period').value='';for(const key of Object.keys(facetFilter)){facetFilter[key]='';$('#globe-filter-'+key).value='';}focusKey='';liveSignature='';filtersInitialized=true;refreshMenuLabels();scheduleSettle(80);renderSoon();}
+function changeFacet(key,value){facetFilter[key]=value;invalidateFilters();}
+function clearDiscoveryFilters(){yearBand='';$('#globe-period').value='';for(const key of Object.keys(facetFilter)){facetFilter[key]='';$('#globe-filter-'+key).value='';}filtersInitialized=true;invalidateFilters();C().clearThemeLens();}
 
 function creditProfile(film){return new URL('maker/'+encodeURIComponent(film.record)+'.html#'+encodeURIComponent(film.film),document.baseURI).href;}
 function el(tag,cls,text){const e=document.createElement(tag);if(cls)e.className=cls;if(text!=null)e.textContent=text;return e;}
@@ -747,12 +750,12 @@ function button(label,fn,cls){const b=el('button',cls,label);b.type='button';b.a
   container.replaceChildren();container.hidden=true;
   if(!source){container.dataset.artState='missing';return;}
   let url;try{url=new URL(source,location.href);if(!['http:','https:'].includes(url.protocol))throw Error('invalid image');}catch{container.dataset.artState='missing';return;}
-  const img=el('img');img.alt='';img.decoding='async';img.draggable=false;img.loading=kind==='strip'?'lazy':'eager';img.referrerPolicy='strict-origin-when-cross-origin';
+  const img=el('img');img.alt='';img.decoding='async';img.draggable=false;img.loading='eager';img.referrerPolicy='strict-origin-when-cross-origin';
   let timer=0,finished=false;
   const measure=()=>{
    if(finished||!img.naturalWidth||!img.naturalHeight)return;finished=true;clearTimeout(timer);
    const ratio=img.naturalWidth/img.naturalHeight;
-   artFailures.delete(source);artSizes.set(source,{w:img.naturalWidth,h:img.naturalHeight,ratio});
+   artSizes.set(source,{w:img.naturalWidth,h:img.naturalHeight,ratio});
    container.dataset.artState='ready';container.hidden=false;container.dataset.orientation=ratio<.86?'portrait':ratio>1.25?'landscape':'square';
    container.style.setProperty('--art-ratio',String(ratio));
    container.style.setProperty('--art-natural-width',img.naturalWidth+'px');
@@ -763,8 +766,8 @@ function button(label,fn,cls){const b=el('button',cls,label);b.type='button';b.a
    if(active&&container.isConnected){cancelAnimationFrame(posterLayoutFrame);posterLayoutFrame=requestAnimationFrame(()=>{posterLayoutFrame=0;placeEmergent();});}
   };
   img.addEventListener('load',measure,{once:true});
-  const failed=reason=>{if(finished)return;finished=true;clearTimeout(timer);artFailures.add(source);container.dataset.artState='broken';container.dataset.artFailure=reason;container.hidden=true;img.remove();img.removeAttribute('src');if(kind==='emergent'&&active&&container.isConnected)placeEmergent();};
-  img.addEventListener('error',()=>failed('error'),{once:true});if(kind!=='strip')timer=setTimeout(()=>failed('timeout'),12000);
+  const failed=reason=>{if(finished)return;finished=true;clearTimeout(timer);container.dataset.artState='broken';container.dataset.artFailure=reason;container.hidden=true;img.remove();img.removeAttribute('src');if(kind==='emergent'&&active&&container.isConnected)placeEmergent();};
+  img.addEventListener('error',()=>failed('error'),{once:true});timer=setTimeout(()=>failed('timeout'),12000);
   container.dataset.artState='loading';container.append(img);img.src=url.href;if(img.complete&&img.naturalWidth)measure();
  }
  function placeEmergent(){
@@ -1098,7 +1101,6 @@ function settle(){
  const requested=labelAnchors.get(preferredLand)?.coordinates||pointById.get(preferredLand)?.coord,cap=liveReady?85:89.9;
  const atRequestedAnchor=!!requested&&!!targetCoordinate&&d3.geoDistance(targetCoordinate,[requested[0],clamp(requested[1],-cap,cap)])<.0001;
  const next=[...new Set([...direct.map(v=>v.id),...nearby.map(v=>v.p.id),...inside.map(v=>v.id),...(atRequestedAnchor?[preferredLand]:[])])];
- if(next.join('|')!==focusIds.join('|'))previewLimit=3;
  if(preferredLand&&!next.includes(preferredLand)){preferredLand='';pendingFilm='';}
  focusIds=next;
  // Preserve the exact credit only if the resolved territory remains the same.
@@ -1138,9 +1140,9 @@ function wire(){
   center=[wrap(center[0]-dx*scale/cos),clamp(center[1]+dy*scale,-89.9,89.9)];movement();
  });
  function end(e){if(!pointers.has(e.pointerId))return;pointers.delete(e.pointerId);gesture=midpoint();if(pointers.size)return;canvas.classList.remove('grabbing');
-  if(!dragged&&e.type==='pointerup'){const b=canvas.getBoundingClientRect(),xy=[e.clientX-b.left,e.clientY-b.top];const found=screenPoints().filter(v=>v.match&&Math.hypot(v.xy[0]-xy[0],v.xy[1]-xy[1])<14).sort((a,b)=>Math.hypot(a.xy[0]-xy[0],a.xy[1]-xy[1])-Math.hypot(b.xy[0]-xy[0],b.xy[1]-xy[1]));if(found.length){preferredLand=found[0].p.id;pendingFilm='';filmOffset=0;setCamera(found[0].p.coord,zoom);return;}
+  if(!dragged&&e.type==='pointerup'){const b=canvas.getBoundingClientRect(),xy=[e.clientX-b.left,e.clientY-b.top];const found=screenPoints().filter(v=>v.match&&Math.hypot(v.xy[0]-xy[0],v.xy[1]-xy[1])<14).sort((a,b)=>Math.hypot(a.xy[0]-xy[0],a.xy[1]-xy[1])-Math.hypot(b.xy[0]-xy[0],b.xy[1]-xy[1]));if(found.length){selectMapLand(found[0].p.id,found[0].p.coord);return;}
    // The overview is also navigable by territory, including lands without films.
-   if(Math.hypot(xy[0]-W/2,xy[1]-H/2)<=radius()){const coord=proj.invert(xy);if(coord?.every(Number.isFinite)){const hit=records.filter(r=>r.shapes.some(s=>includesBounds(s.bounds,coord)&&d3.geoContains(s.feature,coord)));if(hit.length){preferredLand=(hit.find(r=>r.id===preferredLand)||hit.find(r=>matchingFilms(r.id).length)||hit[0]).id;pendingFilm='';filmOffset=0;setCamera(coord,zoom);return;}}}
+   if(Math.hypot(xy[0]-W/2,xy[1]-H/2)<=radius()){const coord=proj.invert(xy);if(coord?.every(Number.isFinite)){const land=landAt(coord);if(land){selectMapLand(land.id,coord);return;}}}
   }
   if(dragged&&e.type==='pointerup'&&!reduced.matches&&lastDrag&&performance.now()-lastDrag.t<75){
    const dx=clamp(lastDrag.lon*65,-12,12),dy=clamp(lastDrag.lat*65,-10,10);
@@ -1230,7 +1232,7 @@ async function boot(){
   ro=new ResizeObserver(resize);ro.observe(canvas);ro.observe($('.globe-footer'));ro.observe($('.globe-primary'));resize();if(initialCamera){center=initialCamera.slice(0,2);const base=Math.max(-1.3,Math.log2(Math.min(W,H)*.87*Math.PI/512));zoom=Math.pow(2,initialCamera[2]-base);}try{const t=JSON.parse(params.get('themes')||'[]');if(Array.isArray(t)&&t.every(x=>typeof x==='string')&&t.length)C().showThemeLens(t);}catch{}settle();draw();
   // The loading screen stays still while the native scene is prepared. A slow
   // module/connection still gets a usable local overview, not a blank map.
-  firstSceneTimer=setTimeout(()=>{if(!liveReady){draw();showFirstScene('overview');}},9000);
+  firstSceneTimer=setTimeout(()=>{if(startup.firstVisible===null){showFirstScene('overview');draw();}},9000);
   bootLive();
  }catch(e){fallback(e);}
 }
