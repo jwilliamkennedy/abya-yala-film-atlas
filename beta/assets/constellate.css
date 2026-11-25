@@ -1800,18 +1800,17 @@ html[data-reading-theme=night] body.is-theme-weaving #atlas .land-word:is(:hover
 :root[data-reading-theme] body.is-theme-weaving #constellate-graph .constellate-card.concept .weave-star-hit{fill:transparent;fill-opacity:0;stroke:transparent;stroke-opacity:0;pointer-events:all}
 :root[data-reading-theme] body.is-theme-weaving #constellate-graph .constellate-card.concept:focus-visible .weave-star-hit{stroke:var(--reading-accent);stroke-opacity:1}
 #constellate-graph .concept .weave-idea-star{stroke:#111b2a;stroke-width:1.4;stroke-linejoin:round;pointer-events:none}
-#constellate-graph .concept.selected .weave-idea-star{stroke:#fff;stroke-width:2;filter:drop-shadow(0 0 6px #e8f1ff)}
+#constellate-graph .concept.selected .weave-idea-star{stroke:#fff;stroke-width:2;filter:none}
 #constellate-graph.weave-star-build .weave-stop{visibility:hidden;pointer-events:none}
 :root[data-reading-theme] body.is-theme-weaving #constellate-graph .weave-film-node .weave-film-hit{fill:transparent;fill-opacity:0;stroke:transparent;stroke-opacity:0;pointer-events:all}
 :root[data-reading-theme] body.is-theme-weaving #constellate-graph .weave-film-node:focus-visible .weave-film-hit{stroke:#f3e6c4;stroke-opacity:1}
-#constellate-graph .weave-film-light{stroke:#f0f4ff;stroke-width:.8;filter:drop-shadow(0 0 3px currentColor);pointer-events:none}
-#constellate-graph .weave-film-node:is(.selected,:hover,:focus-visible) .weave-film-light{stroke:white;stroke-width:1.8;filter:drop-shadow(0 0 7px #e9efff)}
+#constellate-graph .weave-film-light{stroke:#d5e1e9;stroke-width:.7;filter:none;pointer-events:none}
+#constellate-graph .weave-film-node:is(.selected,:hover,:focus-visible) .weave-film-light{stroke:#e1e7eb;stroke-width:1.1;filter:none}
 :root[data-reading-theme] body.is-theme-weaving #constellate-graph .weave-film-node :is(.weave-film-number,.weave-film-title){fill:#f3f4ff;stroke:#0c1426;stroke-width:3.2;paint-order:stroke fill;stroke-linejoin:round;pointer-events:none}
 #constellate-graph .weave-film-number{font:600 12px/1 var(--ui-sans)}
 #constellate-graph .weave-film-title{font:500 14px/1 var(--ui-sans);opacity:0}
 #constellate-graph .weave-film-node:is(.selected,:hover,:focus-visible) .weave-film-title{opacity:1}
-@media (prefers-reduced-motion:no-preference){#constellate-graph .weave-just-added .weave-film-light{animation:weave-star-arrival .8s ease-out both}}
-@keyframes weave-star-arrival{0%{opacity:.15;filter:drop-shadow(0 0 14px #fff)}100%{opacity:1;filter:drop-shadow(0 0 7px #e9efff)}}
+
 :root[data-reading-theme] body.is-theme-weaving #constellate-graph .constellate-card.concept .weave-star-title{fill:var(--reading-ink);font-weight:600;paint-order:stroke fill;stroke:var(--reading-paper);stroke-width:3px;stroke-linejoin:round}
 #constellate-popup .weave-media-thumb.weave-star-thumb{display:grid;place-items:center;color:var(--reading-accent);font-size:26px}
 #constellate-context .weave-star-note{white-space:pre-wrap;overflow-wrap:anywhere}
@@ -1906,7 +1905,7 @@ body.is-constellating #weave-trace-layer :is(.wt-switch,.wt-theme-pick,.wt-sep,.
 
 /* Archive, film and personal concept are distinct; color reinforces shape. */
 body.is-theme-weaving{--cx-archive:#ece8db;--cx-film:#a8cbe5;--cx-concept:#e8bf76;--cx-night:#111d30;--cx-slate:#293b50}
-body.is-constellating #atlas .land-sky-light{fill:var(--cx-archive);stroke:var(--cx-archive);filter:drop-shadow(0 0 2px #ece8db66)}
+body.is-constellating #atlas .land-sky-light{fill:var(--cx-archive);stroke:none;filter:none}
 body.is-constellating #atlas .land-sky-star[data-multiple=true] .land-sky-light{fill:var(--cx-archive);stroke:var(--cx-archive)}
 body.is-constellating #atlas .land-sky-star:is(.is-selected,.film-preview-land) .land-sky-hit{stroke:var(--cx-film);stroke-width:1.7;fill:none;stroke-dasharray:3 2}
 body.is-constellating #atlas .land-sky-star:is(.film-preview-land,.is-selected) .land-sky-label{opacity:1}
@@ -1914,7 +1913,7 @@ body.is-constellating #atlas .land-sky-star:is(.film-preview-land,.is-selected) 
 #constellate-graph .weave-film-node:is(.selected,:focus-visible,:hover) .weave-film-ring{opacity:1}
 #constellate-graph .concept .weave-idea-star{fill:var(--cx-night);stroke:var(--cx-concept);stroke-width:2}
 #constellate-graph .concept.selected .weave-idea-star{stroke:#fff;stroke-width:2}
-#constellate-graph .weave-film-light{filter:drop-shadow(0 0 2px #a8cbe555)}
+#constellate-graph .weave-film-light{filter:none}
 #weave-film-preview[hidden],#weave-lens-results[hidden]{display:none!important}
 #weave-editor[data-tab="add"] :is(#weave-film-preview,#weave-lens-results){display:none!important}
 #weave-editor[data-tab="thread"] #weave-film-preview:not([hidden]){order:-10}
@@ -2005,3 +2004,24 @@ body.is-constellating #atlas .land-sky-star:is(.film-preview-land,.is-selected) 
  :root:not(#_):not(#__) body.atlas-page.is-theme-weaving:not(.weave-playing) main{height:auto!important;min-height:0!important;display:flex!important;flex-direction:column!important}
  :root:not(#_):not(#__) body.atlas-page.is-theme-weaving:not(.weave-playing) .map-panel{flex:none!important;height:52dvh!important;min-height:300px!important;max-height:52dvh!important;width:100%!important}
 }
+
+/* 24 Nov: Quiet reference points are not constellation nodes. Preserve hit areas,
+   sourced geography and keyboard focus; never encode film count as prominence. */
+body.is-constellating #atlas .land-sky-star .land-sky-light{fill:#b5c1c9;fill-opacity:.68;stroke:none;filter:none}
+body.is-constellating #atlas .land-sky-star[data-multiple=true] .land-sky-light{fill:none;stroke:#b5c1c9;stroke-width:1.25;stroke-opacity:.8;filter:none}
+body.is-constellating #atlas .land-sky-star:is(:hover,:focus-visible,.is-selected,.film-preview-land) .land-sky-light{fill:#dce4e8;fill-opacity:1;stroke:#dce4e8;stroke-width:.8;filter:none}
+body.is-constellating #atlas .land-sky-star:is(.is-selected,.film-preview-land) .land-sky-hit{stroke:#b8cbd8;stroke-width:1;stroke-dasharray:none}
+body.weave-theme-lens.is-constellating #atlas .land-sky-star.theme-match .land-sky-light{fill:#c6d6df;fill-opacity:1;stroke:none;filter:none}
+body.weave-theme-lens.is-constellating #atlas .land-sky-star.theme-match[data-multiple=true] .land-sky-light{fill:none;stroke:#c6d6df;stroke-width:1.25}
+body.weave-theme-lens.is-constellating #atlas .land-sky-star:not(.theme-match){opacity:.3}
+#atlas .land-sky-label{fill:#dce4e8;font-size:13px;stroke-width:2.5;filter:none}
+html[data-ui][data-reading-theme=night] body.is-theme-weaving #atlas .land-shading .nation-wash{fill-opacity:clamp(0,calc(var(--territory-wash,.36) * .72),.9)!important;stroke-opacity:.48!important}
+body.is-theme-weaving #constellate-graph .weave-thread-halo{stroke-width:3.5px!important;stroke-opacity:.35!important}
+body.is-theme-weaving #constellate-graph .weave-cord.weave-strand{stroke-width:1.65px!important;stroke-opacity:.85!important}
+body.is-theme-weaving #constellate-graph .weave-thread.is-quiet .weave-cord.weave-strand{stroke-width:1.2px!important;stroke-opacity:.7!important}
+body.is-theme-weaving #constellate-graph .weave-thread.is-focus .weave-cord.weave-strand{stroke-width:2px!important}
+#constellate-graph .weave-film-node .weave-film-ring{stroke-width:1;filter:none}
+#constellate-graph .weave-film-light,#constellate-graph .concept .weave-idea-star,#constellate-graph .weave-film-node:is(.selected,:hover,:focus-visible) .weave-film-light{filter:none;animation:none}
+#constellate-graph.weave-play-focus .weave-stop.current{filter:none}
+body.weave-playing:not(.weave-unmapped) #constellate-graph.weave-play-focus{background:none}
+#weave-theme-lens .weave-map-key{font:400 11px/1.4 var(--ui-sans);color:var(--reading-muted);margin:0;padding:3px 0 0;border-top:1px solid var(--reading-line)}
