@@ -4,6 +4,9 @@ on:
     branches: [main]
     paths:
       - 'beta/assets/globe-experiment.*'
+      - 'beta/assets/globe.js'
+      - 'beta/patches-catalog.js'
+      - 'beta/basemap-open-20261107.js'
       - 'beta/assets/geo-integrity.js'
       - 'beta/assets/maplibre/**'
       - 'beta/index.html'
