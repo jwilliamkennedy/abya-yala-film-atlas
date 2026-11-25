@@ -5,6 +5,10 @@
 (()=>{'use strict';
 if(new URLSearchParams(location.search).get('globe')!=='1')return;
 const $=s=>document.querySelector(s),C=()=>window.AtlasConstellate,A=()=>window.Atlas;
+// Start independent fetches together instead of waiting for the flat catalogue
+// interface and its data to finish constructing. Catch immediately; boot owns recovery.
+const nativeModule=import(new URL('assets/maplibre/maplibre-gl.mjs',document.baseURI).href).then(value=>({value}),error=>({error}));
+const worldRequest=fetch(new URL('assets/world-50m.json',document.baseURI)).then(async r=>{if(!r.ok)throw Error('Geography unavailable');return {value:await r.json()};}).catch(error=>({error}));
 const DEG=180/Math.PI,clamp=(v,a,b)=>Math.max(a,Math.min(b,v)),wrap=v=>((v+180)%360+360)%360-180;
 let active=false,closed=false,host=null,canvas=null,ctx=null,ro=null,raf=0,settleTimer=0;
 let W=0,H=0,dpr=1,zoom=1,center=[-91,12],proj=null,path=null,earth=null,landArea=0;
@@ -12,7 +16,7 @@ let records=[],points=[],byId=new Map(),near=[],inside=[],focusIds=[],focusKey='
 let targetCoordinate=null,targetPrimary='',targetMode='overview',localNameKey='',targetScreen=null,targetReason='none';
 let pointers=new Map(),gesture=null,dragged=false,previousFocus=null;
 const labelAnchors=new Map(),labelFailures=new Set();let labelQueue=null,labelTimer=0,labelUploaded=-1,labelFocusKey='';
-let relief=null,reliefState='loading',flight=0,flightTarget=null,lastDrag=null;
+let relief=null,reliefState='deferred',flight=0,flightTarget=null,lastDrag=null;
 let live=null,liveReady=false,liveHost=null,liveSignature='',liveBaseZoom=0,liveMoved=false,liveTimer=0;
  const startup={fallbackPaint:null,nativeLoaded:null,handoff:null,revealed:null,reason:null,localReady:null,imageryReady:false,firstVisible:null,firstRenderer:null,stableFrames:0,stableMs:0};
  let firstSceneTimer=0;
@@ -216,6 +220,7 @@ function setupRelief(image){
  },dispose(){gl.deleteTexture(tex);gl.deleteBuffer(buf);gl.deleteProgram(program);gl.deleteShader(vs);gl.deleteShader(fs);}};
 }
 function loadRelief(){
+ if(reliefState!=='deferred')return;reliefState='loading';
  const image=new Image();image.onload=()=>{if(!active)return;try{relief=setupRelief(image);reliefState='ready';}catch(e){reliefState='unavailable';console.warn('Globe relief unavailable',e);}renderSoon();};
  image.onerror=()=>{reliefState='unavailable';};image.src=new URL('assets/globe-relief-hyp-50m.png',document.baseURI);
 }
@@ -435,11 +440,11 @@ function loadRelief(){
  function failLive(reason){
   if(!active)return;clearStarDrag();console.warn('Native globe unavailable; using local fallback',reason);const focused=!!liveHost?.contains(document.activeElement);if(liveReady&&live){try{readLiveCamera();}catch{}}stopWheel();zoomListeners?.abort();zoomListeners=null;
   clearTimeout(liveTimer);liveReady=false;try{live?.remove();}catch{}live=null;liveHost?.remove();liveHost=null;activeMapPointers.clear();
-  host?.classList.remove('globe-live','globe-revealed');canvas.tabIndex=0;canvas.removeAttribute('aria-hidden');$('#globe-landscape').hidden=true;updateMapCredits();if(focused)canvas.focus({preventScroll:true});const e=$('#globe-detail-status');if(e)e.textContent='Overview only · detailed map unavailable';draw();showFirstScene('overview');scheduleSettle(100);
+  host?.classList.remove('globe-live','globe-revealed');canvas.tabIndex=0;canvas.removeAttribute('aria-hidden');$('#globe-landscape').hidden=true;updateMapCredits();if(focused)canvas.focus({preventScroll:true});const e=$('#globe-detail-status');if(e)e.textContent='Overview only · detailed map unavailable';draw();showFirstScene('overview');loadRelief();scheduleSettle(100);
  }
  async function bootLive(){
   try{
-   const lib=await import(new URL('assets/maplibre/maplibre-gl.mjs',document.baseURI).href),ml=lib.default||lib;
+   const result=await nativeModule;if(result.error)throw result.error;const lib=result.value,ml=lib.default||lib;
    if(!active)return;
    liveHost=el('div');liveHost.id='globe-live-map';host.insertBefore(liveHost,canvas);
    // 512 CSS pixels per world at zoom 0. Use a viewport-dependent overview size.
@@ -521,9 +526,10 @@ function loadRelief(){
      const imagerySettled=startup.imageryReady||elapsed>=3500;
      const elevationSettled=!map.getTerrain()||map.isSourceLoaded('dem')||elapsed>=4500;
      const catalogSettled=publicationStatus!=='loading'||elapsed>=3500;
-     const ready=local&&settled&&!map.isMoving()&&!wheelActive&&imagerySettled&&elevationSettled&&catalogSettled;
+     const fontsSettled=!document.fonts||document.fonts.status==='loaded'||elapsed>=2200;
+     const ready=local&&settled&&!map.isMoving()&&!wheelActive&&imagerySettled&&elevationSettled&&catalogSettled&&fontsSettled;
      const signature=JSON.stringify([lastCameraKey,focusKey,liveSignature,sourceUpdates,publicationStatus,startup.imageryReady,received[img],map.getTerrain()?.source]);
-     if(!ready||signature!==stableSignature){stableSince=ready?t:null;stableSignature=signature;stableFrames=0;}
+     if(!ready||stableSince===null||signature!==stableSignature){stableSince=ready?t:null;stableSignature=signature;stableFrames=0;}
      if(!ready)return;
      stableFrames++;startup.stableFrames=stableFrames;startup.stableMs=t-stableSince;
      // Raster fades last 180ms; symbol/fill fades also need time to finish.
@@ -1177,14 +1183,14 @@ function markup(){
 }
 async function boot(){
  try{
-  const resp=await fetch(new URL('assets/world-50m.json',document.baseURI));if(!resp.ok)throw Error('Geography unavailable');const world=await resp.json();if(closed||!C()?.enabled)return;
+  const result=await worldRequest;if(result.error)throw result.error;const world=result.value;if(closed||!C()?.enabled)return;
   const collection=world.objects.countries;if(!collection?.geometries?.length)throw Error('No Natural Earth geometry');
   earth=normalizeGeometry(topojson.merge(world,collection.geometries));landArea=d3.geoArea(earth);
   // Earth's dry land is about 29% of its surface. Catch winding inversions or empty topology before displaying a sphere.
   if(!Number.isFinite(landArea)||landArea<2.5||landArea>4.8)throw Error('Natural Earth land area is invalid: '+landArea);
   collect();if(!points.length)throw Error('No mapped cinema references');
   proj=d3.geoOrthographic().clipAngle(90).precision(.65);markup();path=d3.geoPath(proj,ctx);
-  active=true;C().close();loadRelief();document.body.classList.add('atlas-globe-experiment');C().refreshDiscoveryMode();refreshFacetOptions();synchronizePublication();
+  active=true;C().close();document.body.classList.add('atlas-globe-experiment');C().refreshDiscoveryMode();refreshFacetOptions();synchronizePublication();
   ro=new ResizeObserver(resize);ro.observe(canvas);ro.observe($('.globe-footer'));ro.observe($('.globe-primary'));resize();if(initialCamera){center=initialCamera.slice(0,2);const base=Math.max(-1.3,Math.log2(Math.min(W,H)*.87*Math.PI/512));zoom=Math.pow(2,initialCamera[2]-base);}try{const t=JSON.parse(params.get('themes')||'[]');if(Array.isArray(t)&&t.every(x=>typeof x==='string')&&t.length)C().showThemeLens(t);}catch{}settle();draw();
   // The loading screen stays still while the native scene is prepared. A slow
   // module/connection still gets a usable local overview, not a blank map.

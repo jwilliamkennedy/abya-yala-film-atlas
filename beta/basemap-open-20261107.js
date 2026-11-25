@@ -101,5 +101,15 @@ function applyPalette(){
 }
 new MutationObserver(applyPalette).observe(root,{attributes:true,attributeFilter:['data-reading-theme','data-ui-constellate']});
 window.AtlasOpenBasemap={active:true,projection:()=>d3.geoMercator(),sync,applyPalette,get map(){return map;}};
-if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});else boot();
+// The flat SVG still needs the Mercator projection during globe mode, but
+// the second WebGL renderer and its tile network are unnecessary until exit.
+let bootStarted=false;
+const entryObserver=new MutationObserver(startWhenNeeded);
+function startWhenNeeded(){
+ if(bootStarted||document.readyState==='loading'||root.dataset.globeEntry)return;
+ bootStarted=true;entryObserver.disconnect();boot();
+}
+if(root.dataset.globeEntry)root.dataset.basemapState='deferred';
+entryObserver.observe(root,{attributes:true,attributeFilter:['data-globe-entry']});
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',startWhenNeeded,{once:true});else startWhenNeeded();
 })();

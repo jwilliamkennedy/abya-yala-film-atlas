@@ -51,6 +51,7 @@ async def run(browser,name,viewport):
             native=await page.evaluate("window.AtlasGlobe.camera")
             assert max(abs((native["center"][0]-fallback_camera["center"][0]+180)%360-180),abs(native["center"][1]-fallback_camera["center"][1]))<.01,(name,"handoff moved camera",fallback_camera,native)
             assert abs(native["zoom"]/fallback_camera["zoom"]-1)<.002,(name,"handoff changed zoom",fallback_camera,native)
+        assert await page.evaluate("!AtlasOpenBasemap.active || (!AtlasOpenBasemap.map && !document.querySelector('#atlas-basemap'))"),(name,"hidden flat renderer competing with globe")
         print(name,"startup handoff",json.dumps(startup),flush=True)
         assert await page.evaluate("document.documentElement.dataset.globeEntry==='ready' && document.querySelector('#atlas-rotational-globe').dataset.ready==='true'")
         if MODE=="terrain":

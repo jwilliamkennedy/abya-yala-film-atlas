@@ -152,6 +152,8 @@ async def check(browser,name,viewport):
     assert await page.evaluate(SNAP)==snapshot,(name,"discovery mutated collection")
     await page.locator("#globe-more-toggle").click()
     await page.locator("#globe-close").click()
+    await page.wait_for_function("!window.AtlasOpenBasemap?.active || !!document.querySelector('#atlas-basemap')",timeout=30000)
+    assert await page.evaluate("!document.documentElement.dataset.globeEntry && !document.querySelector('#atlas-rotational-globe')"),(name,"globe ownership not released")
     await page.wait_for_function("!window.AtlasGlobe.active && window.AtlasConstellate.enabled")
     assert await page.locator("#atlas-rotational-globe").count()==0
     assert not errors,(name,errors)
