@@ -63,10 +63,16 @@ async def main():
         selected=[candidates[i] for i in sorted(set(round(j*(len(candidates)-1)/7) for j in range(8)))] if candidates else []
         selected+=absent[:2]
         for l in selected:
+            print("SELECTING_LAND",l["id"],l["name"],flush=True)
             await page.locator("#globe-find-toggle").click()
             await page.locator("#globe-find").select_option(l["id"])
-            await page.wait_for_function("(id)=>window.AtlasGlobe.focus.settled && window.AtlasGlobe.discovery.featured?.land===id",arg=l["id"],timeout=30000)
-            await page.wait_for_function("['ready','missing','broken'].includes(window.AtlasGlobe.discovery.artState)",timeout=20000)
+            try:
+                await page.wait_for_function("(id)=>window.AtlasGlobe.focus.settled && window.AtlasGlobe.discovery.featured?.land===id",arg=l["id"],timeout=30000)
+                await page.wait_for_function("['ready','missing','broken'].includes(window.AtlasGlobe.discovery.artState)",timeout=20000)
+            except Exception:
+                print("ENCOUNTER_FAILURE",l["id"],l["name"],json.dumps(await page.evaluate("(id)=>({anchor:AtlasGlobe.anchors.find(a=>a.id===id),camera:AtlasGlobe.camera,focus:AtlasGlobe.focus,featured:AtlasGlobe.discovery.featured,preferred:AtlasGlobe.discovery.preferredLand,art:AtlasGlobe.discovery.artState,tiles:AtlasGlobe.tileState?.motion})",l["id"]),ensure_ascii=False),flush=True)
+                await page.screenshot(path="shots/globe-independent/artwork-encounter-failure.png",timeout=15000)
+                raise
             state=await page.evaluate("window.AtlasGlobe.discovery")
             assert any(c["id"]==state["featured"]["film"] for c in refs[l["id"]])
             print("ENCOUNTER",l["name"],state["artState"],state["posterReason"],flush=True)
