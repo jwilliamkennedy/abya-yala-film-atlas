@@ -103,6 +103,10 @@ async def run(browser,name,viewport):
             assert await page.locator("#globe-credit-satellite").is_visible()
             assert any("tiles.maps.eox.at/" in u for u in tiles),("no successful satellite response",tiles)
             assert any("tiles.mapterhorn.com/" in u for u in tiles),("no successful DEM response",tiles)
+            await page.wait_for_function("AtlasGlobe.territoryNames.withoutCinema>0",timeout=60000)
+            labels=await page.evaluate("""()=>{const N=AtlasGlobe.territoryNames,L=new Map(Atlas.lands.map(x=>[x.id,x]));return {indexed:N.indexed,total:N.total,withoutCinema:N.withoutCinema,invalid:N.anchors.filter(a=>!L.get(a.id)?.groups.some(g=>g.features.some(f=>String(f.id)===a.sourceId&&d3.geoContains(f,a.coordinate)))).map(a=>a.id)};}""")
+            assert not labels["invalid"] and labels["withoutCinema"]>0,(name,labels)
+            print(name,"geographic name coverage",json.dumps(labels),flush=True)
             await shot(page,f"shots/globe-independent/{name}-overhead.png")
             await page.locator("#globe-more-toggle").click()
             await page.locator("#globe-landscape").click()
@@ -176,11 +180,17 @@ async def run(browser,name,viewport):
                 const a=document.querySelector('#globe-aperture').getBoundingClientRect(),r=b.getBoundingClientRect();
                 return !!b.querySelector('img') && (r.right<a.left||r.left>a.right||r.bottom<a.top||r.top>a.bottom);
             }"""),(name,"poster obstructs aperture or lacks sourced image")
-            # Audit actual decoded dimensions, fit and contrast; allow honest missing/broken images.
-            for _ in range(8):
-                await page.wait_for_function("window.AtlasGlobe.discovery.artState!=='loading'",timeout=25000)
-                if await page.evaluate("window.AtlasGlobe.discovery.artState==='ready'"):break
-                await page.locator("#globe-encounter .globe-cycle").last.click()
+            # The catalogue order is independent of artwork. Select a recorded local
+            # image explicitly instead of assuming the first few films have one.
+            assert await page.evaluate("""id=>{const films=AtlasConstellate.globeLandCatalogFilms(id).slice().sort((a,b)=>a.title.localeCompare(b.title)||String(a.maker||'').localeCompare(String(b.maker||''))||a.id.localeCompare(b.id));return AtlasGlobe.discovery.featured.film===films[0]?.id;}""",land),(name,"artwork-neutral order")
+            image_id=await page.evaluate("""id=>AtlasGlobe.artworkInventory().credits.find(c=>c.lands.includes(id)&&c.source&&!/^https?:/i.test(c.source))?.id""",land)
+            if image_id and await page.evaluate("AtlasGlobe.discovery.featured.film")!=image_id:
+                picker=page.locator("#globe-encounter .globe-land-films")
+                if not await picker.evaluate("(e)=>e.open"):await picker.locator("summary").click()
+                image_choice=picker.locator("[data-film-id='"+image_id+"']")
+                while not await image_choice.count() and await picker.locator(".globe-land-film-more").count():
+                    await picker.locator(".globe-land-film-more").click()
+                await image_choice.click()
             await page.wait_for_function("window.AtlasGlobe.discovery.artState==='ready'",timeout=25000)
             art=await page.evaluate("""() => [...document.querySelectorAll('#atlas-rotational-globe .globe-artwork[data-art-state=ready] img')].filter(i=>i.getClientRects().length&&i.getBoundingClientRect().width>0).map(i=>{
                 const b=i.getBoundingClientRect(),s=getComputedStyle(i);
