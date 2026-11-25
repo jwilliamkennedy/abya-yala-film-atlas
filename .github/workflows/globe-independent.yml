@@ -5,6 +5,9 @@ on:
     paths:
       - 'beta/assets/globe-experiment.*'
       - 'beta/index.html'
+      - 'beta/watch.html'
+      - 'beta/watch-20261122.js'
+      - 'beta/watch-data.js'
       - 'tools/qa/globe-independent.py'
       - 'tools/qa/globe-share.py'
       - 'beta/assets/constellate.js'
