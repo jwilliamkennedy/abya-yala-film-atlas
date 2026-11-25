@@ -8,6 +8,8 @@ const root=document.documentElement,wide=matchMedia('(min-width:901px)');
 const src=(document.currentScript&&document.currentScript.src)||'';
 const HOME=src?new URL('../',src).href:new URL('./',location.href).href;
 const FLAT=new URL('flat.html',HOME).href;
+const publicMap=()=>!root.dataset.legacyWorkspace;
+const findURL=()=>{const u=new URL(HOME);u.searchParams.set('constellate','1');u.searchParams.set('globe','1');u.searchParams.set('menu','find');return u.href;};
 const rel=location.href.split(/[?#]/)[0].replace(HOME,'');
 const onMap=rel===''||rel==='index.html'||rel==='flat.html';
 const PAGE={'watch.html':'watch','themes.html':'themes','languages.html':'languages','timeline.html':'timeline','screening.html':'screening',
@@ -68,8 +70,8 @@ function build(){
 function onClick(e){
  const a=e.target.closest('[data-rail]');if(!a)return;const k=a.dataset.rail,here=onMap&&!constellating();
  if(k==='toggle'){const next=root.dataset.rail==='compact'?'full':'compact';store.set('atlas-rail',next);root.dataset.rail=next;sync();dispatchEvent(new Event('resize'));return;}
- if(k==='search'){e.preventDefault();if(window.AtlasGlobe?.openMenu('find'))return;if(here){const s=$('#search');if(s){s.focus();return;}}flag.set('search');location.href=FLAT;return;}
- if(k==='lands'||k==='saved'){e.preventDefault();if(here)act(k);else{flag.set(k);location.href=FLAT;}return;}
+ if(k==='search'){e.preventDefault();if(window.AtlasGlobe?.openMenu('find'))return;if(publicMap()){location.href=findURL();return;}if(here){const s=$('#search');if(s){s.focus();return;}}flag.set('search');location.href=FLAT;return;}
+ if(k==='lands'||k==='saved'){e.preventDefault();if(publicMap()){if(k==='saved'){location.href=new URL('screening.html',HOME).href;return;}if(!window.AtlasGlobe?.openMenu('find'))location.href=findURL();return;}if(here)act(k);else{flag.set(k);location.href=FLAT;}return;}
  if(k==='map'&&here){e.preventDefault();if(landView()){const b=$('.view-switch [data-view="filmmakers"]');if(b)b.click();}}
 }
 function act(k){
@@ -167,7 +169,7 @@ document.addEventListener('click',e=>{const a=e.target.closest&&e.target.closest
 document.addEventListener('keydown',e=>{
  if(!root.dataset.rail)return;
  /* N2 "/" on any page goes to the map's search (the map page handles its own) */
- if(e.key==='/'&&!onMap&&!typing(e)&&!e.metaKey&&!e.ctrlKey&&!e.altKey){e.preventDefault();flag.set('search');location.href=FLAT;return;}
+ if(e.key==='/'&&!onMap&&!typing(e)&&!e.metaKey&&!e.ctrlKey&&!e.altKey){e.preventDefault();if(publicMap()){location.href=findURL();return;}flag.set('search');location.href=FLAT;return;}
  /* N3 Esc leaves Link films, Draw a line, and the map's Draw */
  if(e.key==='Escape'){for(const s of ['#weave-draw-thread','#weave-trace','#map-draw-line']){const b=$(s);if(b&&b.getAttribute('aria-pressed')==='true'&&b.offsetParent){b.click();e.preventDefault();return;}}}
  /* N5 up and down arrows move through the list; Enter opens (it is a button) */
