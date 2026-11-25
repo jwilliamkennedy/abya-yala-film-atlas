@@ -177,10 +177,30 @@ async def run(browser,name,viewport):
             if startup["firstRenderer"]=="native":
                 # A graphics-context failure must reveal the actual overview, even
                 # when normal entry has never shown that canvas to the visitor.
-                assert await page.evaluate("""()=>{const canvas=document.querySelector("#globe-live-map canvas");if(!canvas)return false;canvas.dispatchEvent(new Event("webglcontextlost",{cancelable:true}));return true;}"""),(name,"missing native canvas before context loss")
+                # Use an overhead view at a scale above the overview's ordinary
+                # maximum, where a renderer failure previously made the next
+                # zoom-out jump by several orders of magnitude.
+                await page.locator("#globe-more-toggle").click()
+                await page.locator("#globe-landscape").click()
+                await page.wait_for_function("AtlasGlobe.tileState.pitch<1 && AtlasGlobe.focus.settled",timeout=30000)
+                await page.evaluate("a=>AtlasGlobe.goTo(a,8)",land["coordinate"])
+                await page.wait_for_function("AtlasGlobe.focus.settled && AtlasGlobe.camera.zoom>40",timeout=30000)
+                expected=await page.evaluate("({camera:AtlasGlobe.camera,featured:AtlasGlobe.discovery.featured,collection:JSON.stringify(AtlasCollections.current())})")
+                assert expected["featured"]["land"]==land["id"],(name,expected)
+                await page.locator("#globe-live-map canvas").focus()
+                assert await page.evaluate("""()=>{const canvas=document.querySelector("#globe-live-map canvas");if(!canvas||document.activeElement!==canvas)return false;canvas.dispatchEvent(new Event("webglcontextlost",{cancelable:true}));return true;}"""),(name,"missing focused native canvas before context loss")
                 await page.wait_for_function("AtlasGlobe.camera.renderer==='orthographic-canvas' && AtlasGlobe.focus.settled",timeout=30000)
-                assert await page.locator("#globe-surface").evaluate("e=>getComputedStyle(e).visibility==='visible' && Number(getComputedStyle(e).opacity)===1")
-                print(name,"native-first context loss recovers visible overview",flush=True)
+                surface=page.locator("#globe-surface")
+                assert await surface.evaluate("e=>getComputedStyle(e).visibility==='visible' && Number(getComputedStyle(e).opacity)===1 && document.activeElement===e")
+                recovered=await page.evaluate("({camera:AtlasGlobe.camera,featured:AtlasGlobe.discovery.featured,collection:JSON.stringify(AtlasCollections.current())})")
+                assert recovered["featured"]==expected["featured"] and recovered["collection"]==expected["collection"],(name,expected,recovered)
+                assert max(abs((recovered["camera"]["center"][0]-expected["camera"]["center"][0]+180)%360-180),abs(recovered["camera"]["center"][1]-expected["camera"]["center"][1]))<.01,(name,expected,recovered)
+                assert abs(recovered["camera"]["zoom"]/expected["camera"]["zoom"]-1)<.002,(name,expected,recovered)
+                await surface.press("-")
+                await page.wait_for_function("AtlasGlobe.focus.settled")
+                after=await page.evaluate("AtlasGlobe.camera.zoom")
+                assert abs(after/(recovered["camera"]["zoom"]/1.4)-1)<.002,(name,"overview zoom-out jumped",recovered,after)
+                print(name,"native-first context loss preserves film, camera, focus and gradual zoom-out",flush=True)
         else:
             await page.wait_for_function("window.AtlasGlobe.discovery.publication==='ready'",timeout=60000)
             await page.wait_for_function("window.AtlasGlobe.focus.settled && !window.AtlasGlobe.tileState.wheelActive")

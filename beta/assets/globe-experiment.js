@@ -150,6 +150,9 @@ function resize(){
  W=w;H=h;targetScreen=null;dpr=ratio;canvas.width=Math.round(W*dpr);canvas.height=Math.round(H*dpr);if(live)live.resize();renderSoon();scheduleSettle(100);
 }
 function radius(){return Math.max(70,Math.min(W,H)*.445)*zoom;}
+// A native failure or shared detail URL can enter the overview above its usual limit.
+// Allow a continuous descent from that scale, without offering additional local detail.
+function overviewZoom(value){return clamp(value,.8,Math.max(25,zoom));}
 function updateProjection(){
  proj.rotate([-center[0],-center[1],0]).translate([W/2,H/2]).scale(radius());
 }
@@ -446,7 +449,7 @@ function loadRelief(){
  function failLive(reason){
   if(!active)return;clearStarDrag();console.warn('Native globe unavailable; using local fallback',reason);const focused=!!liveHost?.contains(document.activeElement);if(liveReady&&live){try{readLiveCamera();}catch{}}stopWheel();zoomListeners?.abort();zoomListeners=null;
   clearTimeout(liveTimer);liveReady=false;try{live?.remove();}catch{}live=null;liveHost?.remove();liveHost=null;activeMapPointers.clear();
-  host?.classList.remove('globe-live','globe-revealed');canvas.tabIndex=0;canvas.removeAttribute('aria-hidden');$('#globe-landscape').hidden=true;updateMapCredits();if(focused)canvas.focus({preventScroll:true});const e=$('#globe-detail-status');if(e)e.textContent='Overview only · detailed map unavailable';draw();showFirstScene('overview');loadRelief();scheduleSettle(100);
+  host?.classList.remove('globe-live','globe-revealed');landscape=false;$('#globe-landscape').setAttribute('aria-pressed','false');canvas.tabIndex=0;canvas.removeAttribute('aria-hidden');$('#globe-landscape').hidden=true;updateMapCredits();if(focused)canvas.focus({preventScroll:true});const e=$('#globe-detail-status');if(e)e.textContent='Overview only · detailed map unavailable';movement();draw();showFirstScene('overview');loadRelief();scheduleSettle(100);
  }
  async function bootLive(){
   try{
@@ -1094,7 +1097,7 @@ function cancelFlight(){if(flight)cancelAnimationFrame(flight);flight=0;flightTa
 function setCamera(c,z=zoom,duration=300){
  inboundEncounter=null;
  if(liveReady){stopWheel();movement();const target={center:[wrap(c[0]),clamp(c[1],-85,85)],zoom:clamp(liveBaseZoom+Math.log2(Math.max(.1,z)),live.getMinZoom(),live.getMaxZoom()),duration:reduced.matches?0:duration};live.easeTo(target);return;}
- cancelFlight();const goal=[wrap(c[0]),clamp(c[1],-89.9,89.9)],goalZoom=clamp(z,.8,25);
+ cancelFlight();const goal=[wrap(c[0]),clamp(c[1],-89.9,89.9)],goalZoom=overviewZoom(z);
  movement();
  if(reduced.matches||duration===0){center=goal;zoom=goalZoom;finishMove();return;}
  flightTarget={center:goal,zoom:goalZoom};
@@ -1111,7 +1114,7 @@ function wire(){
  canvas.addEventListener('pointermove',e=>{
   if(!pointers.has(e.pointerId))return;pointers.set(e.pointerId,{x:e.clientX,y:e.clientY});const m=midpoint(),g=gesture;gesture=m;if(!m||!g)return;
   const dx=m.x-g.x,dy=m.y-g.y;if(Math.abs(dx)+Math.abs(dy)>1||Math.abs(m.d-g.d)>1)dragged=true;if(!dragged)return;inboundEncounter=null;
-  if(m.d&&g.d)zoom=clamp(zoom*m.d/g.d,.8,25);
+  if(m.d&&g.d)zoom=overviewZoom(zoom*m.d/g.d);
   const scale=DEG/radius(),cos=Math.max(.35,Math.cos(center[1]/DEG));
   const now=performance.now(),dt=lastDrag?clamp(now-lastDrag.t,8,80):16;lastDrag={t:now,lon:-dx*scale/cos/dt,lat:dy*scale/dt};
   center=[wrap(center[0]-dx*scale/cos),clamp(center[1]+dy*scale,-89.9,89.9)];movement();
@@ -1128,7 +1131,7 @@ function wire(){
   finishMove();
  }
  canvas.addEventListener('pointerup',end);canvas.addEventListener('pointercancel',end);canvas.addEventListener('lostpointercapture',end);
- canvas.addEventListener('wheel',e=>{e.preventDefault();inboundEncounter=null;cancelFlight();const delta=e.deltaY*(e.deltaMode===1?16:1);zoom=clamp(zoom*Math.exp(-clamp(delta,-350,350)*(e.ctrlKey?.009:.004)),.8,25);movement();finishMove();},{passive:false});
+ canvas.addEventListener('wheel',e=>{e.preventDefault();inboundEncounter=null;cancelFlight();const delta=e.deltaY*(e.deltaMode===1?16:1);zoom=overviewZoom(zoom*Math.exp(-clamp(delta,-350,350)*(e.ctrlKey?.009:.004)));movement();finishMove();},{passive:false});
  canvas.addEventListener('keydown',e=>{const k=e.key,step=12/Math.sqrt(zoom);if(!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','+','=','-','Home','Enter'].includes(k))return;e.preventDefault();e.stopPropagation();if(k==='Enter'){if(focusIds.length)focusEncounter();return;}if(k==='Home'){setCamera([-91,12],1);return;}if(k==='+'||k==='='){setCamera(center,zoom*1.4);return;}if(k==='-'){setCamera(center,zoom/1.4);return;}setCamera([center[0]+(k==='ArrowRight'?step:k==='ArrowLeft'?-step:0),center[1]+(k==='ArrowUp'?step:k==='ArrowDown'?-step:0)]);});
 }
 let coverageMemo=null;
