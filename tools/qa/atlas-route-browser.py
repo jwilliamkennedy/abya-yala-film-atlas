@@ -17,11 +17,17 @@ async def main():
         origin=urlsplit(BASE).netloc
         await context.route(lambda url: urlsplit(url).scheme in ("http","https") and urlsplit(url).netloc!=origin, lambda route:route.abort())
         page=await context.new_page()
+        # Detect synthetic public URL writes during bootstrap, even if later removed.
+        await page.add_init_script("""window.__atlasHistoryWrites=[];for(const key of ['replaceState','pushState']){const original=history[key];history[key]=function(...args){if(args[2]!=null)window.__atlasHistoryWrites.push(String(args[2]));return original.apply(this,args);};}""")
         for suffix in ("",STALE):
             await page.goto("about:blank")
             await page.goto(BASE+suffix,wait_until="domcontentloaded",timeout=90000)
             await page.wait_for_function(READY,timeout=90000)
             assert page.url==BASE,(suffix,page.url)
+            writes=await page.evaluate("window.__atlasHistoryWrites")
+            assert not any("constellate=1" in u or "globe=1" in u for u in writes),writes
+            assert await page.locator('script[src^="assets/globe.js"]').count()==1
+            assert await page.evaluate("new URL(AtlasWeaveIncoming).searchParams.get('globe')==='1'")
             assert not await page.locator("header .constellate-link").is_visible()
             assert await page.locator("#globe-close,.globe-legacy-link").count()==0
             await page.locator("#globe-find-toggle").click()
@@ -31,6 +37,7 @@ async def main():
         await page.goto(BASE+"flat.html",wait_until="domcontentloaded",timeout=90000)
         await page.wait_for_function("document.documentElement.dataset.atlasUi==='ready'",timeout=60000)
         assert urlsplit(page.url).path.endswith("/flat.html")
+        assert await page.locator('script[src^="assets/globe.js"]').count()==0
         assert await page.evaluate("!window.AtlasGlobe?.active && document.documentElement.dataset.legacyWorkspace==='true'")
         assert (await page.locator('#atlas-rail [data-rail="map"]').get_attribute("href")).endswith("/flat.html")
         print("HIDDEN_FLAT",page.url,flush=True)
