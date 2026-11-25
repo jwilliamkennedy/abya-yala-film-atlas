@@ -370,7 +370,7 @@ function loadRelief(){
    const dt=wheelTick?clamp(t-wheelTick,1,80):16.7;wheelTick=t;
    const next=reduced.matches||Math.abs(delta)<.008?wheelGoal:current+delta*(1-Math.exp(-dt/62));
    if(Math.abs(next-current)>1e-6){
-    const pitch=landscape?Math.min(live.getPitch(),42*clamp((next-5.4)/1.6,0,1)):live.getPitch();
+    const pitch=landscape?42*clamp((next-5.4)/1.6,0,1):live.getPitch();
     live.jumpTo({center:live.getCenter(),zoom:next,pitch});
    }
    if(Math.abs(wheelGoal-live.getZoom())>.008||t-wheelLast<90){wheelFrame=requestAnimationFrame(frame);return;}
@@ -1005,8 +1005,7 @@ function drawEncounter(){
  const readingItem=currentReadingItem();if(readingItem&&!journeyReference(readingItem)){drawUnmappedReading(readingItem,panel,status);return;}
  const films=primary?rankedFilms(primary.id):[];
  if(primary&&lastEncounter!==primary.id){filmOffset=0;lastEncounter=primary.id;}
- const requestedFilm=pendingFilm;
- if(requestedFilm){const i=films.findIndex(f=>f.id===requestedFilm);if(i>=0){filmOffset=i;pendingFilm='';}}
+ if(pendingFilm){const i=films.findIndex(f=>f.id===pendingFilm);if(i>=0){filmOffset=i;pendingFilm='';}}
  filmOffset=Math.min(filmOffset,Math.max(0,films.length-1));
  const sig=JSON.stringify([focusIds,inside.map(v=>v.id),primary?.id,films.map(f=>f.id),filmOffset,yearBand,currentTheme(),facetFilter,publicationStatus,pendingFilm,journey.length,readingJourney,readingJourney?collectionState()?.id:null,readingJourney?collectionState()?.activeThread:null,readingJourney?store()?.activeThread().items:null]);
  if(sig===focusKey){updateCollectButton();const link=panel.querySelector('[data-view-kind^="indexed-"]');if(link&&featured)link.href=watchURL(featured.film);placeEmergent();return;}focusKey=sig;
@@ -1069,9 +1068,6 @@ function settle(){
  if(liveReady){readLiveCamera();if(live.isMoving()){scheduleSettle(180);return;}}
  settled=true;host.classList.remove('is-moving');$('#globe-encounter').setAttribute('aria-busy','false');updateProjection();updateTarget();inside=underFocus();
  const nearby=screenPoints().filter(v=>v.match&&v.distance<=aperture()).sort((a,b)=>a.distance-b.distance||a.p.name.localeCompare(b.p.name));near=nearby;
- // During centered zoom, preserve the exact selected credit if it still belongs
- // to the selected territory and passes the active catalogue filters.
- if(!pendingFilm&&featured&&lastEncounter===featured.land&&inside.some(r=>r.id===featured.land)&&matchingFilms(featured.land).some(f=>f.id===featured.film.id))pendingFilm=featured.film.id;
  const direct=inside.filter(v=>matchingFilms(v.id).length);
  // All overlapping land references remain available. Catalogue size never ranks peoples.
  // If no matching film sits beneath the focus, an actual nearby indexed point may respond.
@@ -1083,7 +1079,11 @@ function settle(){
  const next=[...new Set([...direct.map(v=>v.id),...nearby.map(v=>v.p.id),...inside.map(v=>v.id),...(atRequestedAnchor?[preferredLand]:[])])];
  if(next.join('|')!==focusIds.join('|'))previewLimit=3;
  if(preferredLand&&!next.includes(preferredLand)){preferredLand='';pendingFilm='';}
- focusIds=next;lastSettledFilter=filterKey();drawEncounter();updateTerritoryLabels();placeEmergent();renderSoon();
+ focusIds=next;
+ // Preserve the exact credit only if the resolved territory remains the same.
+ // Do not carry a pending credit into an unrelated overlapping territory.
+ if(!pendingFilm&&featured&&chooseTarget(next.map(id=>byId.get(id)).filter(Boolean))?.id===featured.land&&matchingFilms(featured.land).some(f=>f.id===featured.film.id))pendingFilm=featured.film.id;
+ lastSettledFilter=filterKey();drawEncounter();updateTerritoryLabels();placeEmergent();renderSoon();
 }
 function scheduleSettle(ms=180){clearTimeout(settleTimer);settleTimer=setTimeout(settle,ms);}
 function movement(){
