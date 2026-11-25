@@ -545,6 +545,7 @@ async def run(browser,name,viewport):
             await page.locator(".globe-thread-item").first.get_by_role("button",name="Move",exact=False).last.click()
             assert await page.evaluate("AtlasCollections.activeThread().items.slice()")==before[::-1]
             print(name,"direct thematic collection and thread reordering passed",flush=True)
+        assert await page.evaluate("AtlasGlobe.artworkCache.decoded<=160 && AtlasGlobe.artworkCache.failed<=160 && AtlasGlobe.artworkCache.warming<=8")
         assert not errors,(name,errors)
         print(name,MODE,"passed",flush=True)
     finally:
