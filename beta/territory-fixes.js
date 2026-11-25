@@ -19,7 +19,7 @@
   canonical,sourceId:'35877',
   aliases:[...aliases],
   labels:['Ka Pae ʻĀina','Kānaka Maoli','Kanaka Maoli','Native Hawaiian','Nā moku ʻehā'],
-  sourceURL:'https://native-land.ca/listings/territories/kanaka-maoli'
+  sourceURL:source.properties.url
  };
  W.AtlasHawaiiRelay=Object.freeze(relays);
  const existing=idx.edges||[];
@@ -42,3 +42,28 @@
  }
  idx.edges=edges;
 })();
+
+/* Explicit source-name navigation relays. Each source ID and exact original
+   label must still exist; a matching name alone never creates an association.
+   These redirect existing geographic references, not identity or film claims.
+   Keep broader regions, language names, and confederacies with distinct
+   component territories separate unless there is a documented common source. */
+window.AtlasLandAliasRelays = [
+ ['NAME-030','36372','Anishinabewaki ᐊᓂᔑᓈᐯᐗᑭ'],
+ ['NAME-024','36681','Kanienʼkehá꞉ka (Mohawk)'],
+ ['NAME-022','35947','N’dakina (Abenaki / Abénaquis)'],
+ ['NAME-044','35970','Niitsítpiis-stahkoii ᖹᐟᒧᐧᐨᑯᐧ ᓴᐦᖾᐟ (Blackfoot / Niitsítapi ᖹᐟᒧᐧᒣᑯ)'],
+ ['NAME-045','35970','Niitsítpiis-stahkoii ᖹᐟᒧᐧᐨᑯᐧ ᓴᐦᖾᐟ (Blackfoot / Niitsítapi ᖹᐟᒧᐧᒣᑯ)'],
+ ['NAME-098','36553','Ayuukjä’äy (Mixe)'],
+ ['NAME-075','36210','Kulhulmcilh (Nuxalk)'],
+ ['NAME-077','35866','Kwakwaka’wakw A̱wi’nagwis'],
+ ['NAME-140','33514','Mundurukânia (Wuy jugu)'],
+ ['NAME-156','33700','So’to (Yekuana)'],
+ ['NAME-092','35926','Winaq Qo’ (Mam)'],
+ ['NAME-100','36171','Ralámuli/Rarámari/Rarómari (Tarahumara)'],
+ ['SA50-COMMUNITY-7d0acdc1d4','34123','A’i Cofán/Kofán'],
+ ['SA50-COMMUNITY-fc2ea31de4','34123','A’i Cofán/Kofán'],
+ ['SA50-COMMUNITY-6d728c70c1','34123','A’i Cofán/Kofán'],
+ ['SA50-COMMUNITY-28d03658be','33648','Siekopa’aiInte/Aido-Pãi (Secoya)'],
+ ['SA50-COMMUNITY-188341b6b5','33671','Pasto']
+];
