@@ -100,6 +100,9 @@ async def run(browser,name,viewport):
             await page.locator("#globe-opacity").select_option("1.6")
             assert await page.evaluate("window.AtlasGlobe.territoryLayer.strength===1.6")
             await page.locator("#globe-opacity").select_option("1")
+            for mode,expected in [("none",["none","none"]),("all",["visible","visible"]),("selected",["none","visible"])]:
+                await page.locator("#globe-edges").select_option(mode)
+                assert await page.evaluate("window.AtlasGlobe.territoryLayer.edgeVisibility")==expected
             await page.locator(".globe-settings summary").click()
             await page.locator("#globe-find-toggle").click()
             land=await page.evaluate("window.AtlasGlobe.anchors.find(a=>window.AtlasConstellate.globeLandFilmCount(a.id)>1).id")

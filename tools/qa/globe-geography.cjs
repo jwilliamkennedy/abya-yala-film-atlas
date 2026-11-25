@@ -15,12 +15,15 @@ w.AtlasMapLabelLayout=vm.runInNewContext('(()=>{'+section(p,' const baseCache=',
 const q=vm.runInNewContext('(()=>{'+section(e,'const names=','const s={view:')+section(e,'const mayaAffiliationRelays=','const landLinks=')+';return {lands,territories,crossEdges,landById};})()',ctx);
 const failures=[];for(const f of q.territories){const orig=rawMap.get(String(f.properties.broadOf||f.id));const x=G.inspect(f);if(!x.ok||!orig||G.signature(f.geometry)!==G.signature(orig.geometry))failures.push({id:f.id,...x});}
 const projection=G.projectionAudit(q.territories);
+// Report long original edges for source review. Never simplify or remove them automatically.
+const rings=g=>g.type==='Polygon'?g.coordinates:g.type==='MultiPolygon'?g.coordinates.flat():g.type==='GeometryCollection'?g.geometries.flatMap(rings):[];
+const sourceEdges=[];for(const f of q.territories)for(const ring of rings(f.geometry))for(let i=1;i<ring.length;i++){const a=ring[i-1],b=ring[i],km=d3.geoDistance(a,b)*6371;if(km>500)sourceEdges.push({id:f.id,name:f.properties?.Name||f.properties?.name||'',km:Math.round(km),a,b});}sourceEdges.sort((a,b)=>b.km-a.km);
 const records=w.ATLAS_FLAT.records,ids=new Set(records.map(r=>r.id)),live=q.crossEdges.filter(e=>ids.has(e.record)),mapped=live.filter(e=>q.landById(e.land)?.groups.length);
 const landIds=[...new Set(mapped.map(e=>e.land))],badAnchors=[],methods={};
 for(const id of landIds){const l=q.landById(id),fs=l.groups.flatMap(g=>g.features),a=G.anchor(fs);if(!a||!fs.some(f=>String(f.id)===a.sourceId&&d3.geoContains(f,a.coordinates)))badAnchors.push(id);else methods[a.method]=(methods[a.method]||0)+1;}
 const makers=d3.csvParse(read('data/atlas-filmmakers.csv')),films=d3.csvParse(read('data/atlas-films.csv'));
 const mcsv=new Set(makers.map(x=>x.record_id)),fcsv=new Set(films.map(x=>x.record_id+'|'+x.film_id)),runtime=new Set(records.flatMap(r=>r.films.map(f=>r.id+'|'+f.id)));
 const diff=(a,b)=>[...a].filter(v=>!b.has(v));const discrepancies={makerCSV:diff(mcsv,ids),makerRuntime:diff(ids,mcsv),filmCSV:diff(fcsv,runtime),filmRuntime:diff(runtime,fcsv)};
-const result={sourceFeatures:original.length,correctedFeatures:q.territories.length,failures,projection,landIds:landIds.length,badAnchors,methods,filmmakers:ids.size,credits:runtime.size,discrepancies,staleEdges:q.crossEdges.length-live.length,mappedEdges:mapped.length,unmappedEdges:live.length-mapped.length,mappedMakers:new Set(mapped.map(e=>e.record)).size};
+const result={longOriginalEdgeCount:sourceEdges.length,longestOriginalEdges:sourceEdges.slice(0,30),sourceFeatures:original.length,correctedFeatures:q.territories.length,failures,projection,landIds:landIds.length,badAnchors,methods,filmmakers:ids.size,credits:runtime.size,discrepancies,staleEdges:q.crossEdges.length-live.length,mappedEdges:mapped.length,unmappedEdges:live.length-mapped.length,mappedMakers:new Set(mapped.map(e=>e.record)).size};
 console.log(JSON.stringify(result,null,2));
 assert.equal(failures.length,0,'Source coordinate preservation');assert(projection.ok,'Projection precision');assert.equal(badAnchors.length,0,'Contained anchors');assert(Object.values(discrepancies).every(a=>!a.length),'CSV/runtime ID disagreement');
