@@ -34,7 +34,9 @@ async def check(browser,name,viewport):
     assert not any(join[k] for k in ('missing','extra','badJoins','invalid','missingAnchors','anchorFailures')), (name,join)
     print(name,"exact geographic credit joins",join["credits"],"land anchors",join["points"],flush=True)
 
-    assert await page.evaluate("""() => {const c=document.querySelector('#globe-surface'),d=c.getContext('2d').getImageData(0,0,c.width,c.height).data;let n=0;for(let i=0;i<d.length;i+=4)if(d[i]===105&&d[i+1]===135&&d[i+2]===123)n++;return n>100;}"""),(name,"no visible land pixels")
+    await page.wait_for_function("window.AtlasGlobe.terrain !== 'loading'",timeout=20000)
+    assert await page.evaluate("window.AtlasGlobe.terrain === 'ready'"),(name,"relief did not initialize")
+    assert await page.evaluate("""() => {const c=document.querySelector('#globe-surface'),d=c.getContext('2d').getImageData(0,0,c.width,c.height).data;let n=0;for(let i=0;i<d.length;i+=4)if(d[i]>60&&d[i+1]>75&&d[i+1]>d[i+2])n++;return n>100;}"""),(name,"no visible land pixels")
     anchor_snapshot=await page.evaluate('JSON.stringify(window.AtlasGlobe.anchors)')
     before=await page.evaluate(CAM)
     assert before["projection"]=="globe",(name,before)

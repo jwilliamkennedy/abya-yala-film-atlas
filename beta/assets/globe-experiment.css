@@ -40,3 +40,13 @@ body.atlas-globe-experiment #atlas-theme-web :is(#tw-seed,[data-start-term]){dis
 
 /* Keep the explicit return control reachable above the discovery dock. */
 body.atlas-globe-experiment #globe-close{position:fixed;right:14px;bottom:10px;z-index:50}
+
+/* Softer encounter transition and larger readable film labels. */
+#atlas-rotational-globe{background:#101b29}
+#globe-aperture{border-color:#afc8d1;transition:border-color .22s ease,box-shadow .22s ease}
+#atlas-rotational-globe.has-cinema #globe-aperture{border-color:#e9dfb5;box-shadow:0 0 0 3px #e4ecc018,0 0 12px #e2ecb31c}
+#globe-encounter{background:#142537ed;transition:opacity .22s ease;border-color:#516a7a}
+#atlas-rotational-globe.is-moving #globe-encounter{opacity:.66}
+.globe-film-copy strong{font-size:14px}.globe-film-copy small{font-size:12px}
+@media(max-width:760px){.globe-film-copy strong{font-size:13px}.globe-film-copy small{font-size:11px}}
+@media(prefers-reduced-motion:reduce){#globe-aperture,#globe-encounter{transition:none}}
