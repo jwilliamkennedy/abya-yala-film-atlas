@@ -75,6 +75,13 @@ async def main():
                 raise
             state=await page.evaluate("window.AtlasGlobe.discovery")
             assert any(c["id"]==state["featured"]["film"] for c in refs[l["id"]])
+            art=page.locator("#globe-encounter .globe-feature-art")
+            assert await art.is_visible()==(state["artState"]=="ready"),(l["id"],state["artState"])
+            assert await page.locator("#globe-encounter .globe-film-title").is_visible()
+            assert await page.locator("#globe-encounter .globe-art-placeholder").count()==0
+            if state["artState"]!="ready":
+                assert await page.locator("#globe-encounter .globe-featured").evaluate("(e)=>getComputedStyle(e).gridTemplateColumns.trim().split(/\\s+/).length===1"),l["id"]
+                assert not await page.locator("#globe-emergent").is_visible(),l["id"]
             print("ENCOUNTER",l["name"],state["artState"],state["posterReason"],flush=True)
         if selected:
             expected=await page.evaluate("window.AtlasGlobe.discovery.featured")
