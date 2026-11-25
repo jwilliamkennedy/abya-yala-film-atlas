@@ -251,3 +251,7 @@ body.atlas-globe-experiment #globe-close{position:static;z-index:auto;width:100%
 @media(max-width:760px){#globe-search{font-size:16px;min-height:44px}}
 
 .globe-catalog-filters{font:12px/1.4 system-ui,sans-serif;color:#d6e2df}.globe-catalog-filters summary{cursor:pointer;padding:5px 0}.globe-catalog-filters label{display:block;margin:8px 0 3px}.globe-catalog-filters select{margin-bottom:4px}.globe-catalog-filters button{width:100%;margin-top:5px}#globe-csv-status{font:11px/1.4 system-ui,sans-serif;color:#afc9c2}#globe-csv-retry{min-height:38px}
+
+/* The mobile guide's full-width wrapper must not intercept map gestures. */
+#atlas-rotational-globe .globe-guide{pointer-events:none}#atlas-rotational-globe .globe-primary,#atlas-rotational-globe .globe-menu-panel{pointer-events:auto}
+#globe-encounter .globe-art-feature[data-art-state=missing],#globe-encounter .globe-art-feature[data-art-state=broken]{min-height:48px;background:#1d3139}
