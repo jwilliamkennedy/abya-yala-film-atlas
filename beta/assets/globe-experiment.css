@@ -15,31 +15,24 @@ body.atlas-globe-experiment #constellate-popup:not([hidden]){z-index:26}
 body.atlas-globe-experiment #atlas-theme-web :is(#tw-seed,[data-start-term]){display:none!important}
 .globe-instructions{position:absolute;top:60px;left:50%;transform:translateX(-50%);font-size:12px;color:#c1d1d9;pointer-events:none;white-space:nowrap}
 
-
 .globe-buttons{display:flex;gap:5px;justify-content:flex-end}
 .globe-buttons button,.globe-footer button,.globe-more,.globe-choices button{min-height:32px;padding:5px 9px;background:#20364a;color:#eef1f4;border:1px solid #587080;border-radius:5px;cursor:pointer;font:500 12px/1.3 var(--ui-sans,system-ui,sans-serif)}
 #globe-encounter{position:absolute;bottom:48px;left:12px;z-index:3;display:grid;gap:7px;width:min(320px,calc(100% - 24px));max-height:42%;overflow:auto;box-sizing:border-box;padding:13px 14px;background:#16283aef;border:1px solid #506779;border-radius:9px;box-shadow:0 5px 20px #08131b45;overscroll-behavior:contain;transition:opacity .15s}
 #atlas-rotational-globe.is-moving #globe-encounter{opacity:.42;pointer-events:none}
-.globe-kicker{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#becfc9}
+
 .globe-encounter-heading{display:flex;align-items:baseline;flex-wrap:wrap;gap:6px;justify-content:space-between}
 .globe-encounter-heading>strong,#globe-encounter>strong{font:500 19px/1.2 var(--ui-serif,Georgia,serif);color:#f1f0e6}
 .globe-encounter-heading small,.globe-empty{font-size:12px;color:#c5d1dc;margin:0}
-.globe-film-strip{display:grid;gap:6px}
-.globe-film{display:grid;grid-template-columns:62px minmax(0,1fr);gap:9px;align-items:center;text-align:left;border:0;background:transparent;color:#edf0eb;cursor:pointer;padding:3px 0;font:inherit}
-.globe-film-art{display:block;overflow:hidden;border-radius:4px;width:62px;height:43px;background:#2c4152}
-.globe-film-art .weave-media-thumb{width:100%!important;height:100%!important;aspect-ratio:auto!important;display:block}
-.globe-film-art img{width:100%;height:100%;object-fit:contain}
-.globe-film-copy{display:grid;gap:2px;min-width:0}.globe-film-copy strong{font-size:13px;font-weight:600;overflow-wrap:anywhere}.globe-film-copy small{font-size:11px;color:#bccad6}
+
 .globe-choices{display:flex;flex-wrap:wrap;gap:4px;max-height:90px;overflow:auto}.globe-choices button{font-size:11px;min-height:27px;text-align:left}
 .globe-more{justify-self:start}.globe-footer{position:absolute;bottom:0;left:0;right:0;display:flex;gap:8px;align-items:center;padding:6px 10px;background:#142539f2;font:10px/1.3 system-ui,sans-serif;z-index:4;color:#c7d3dc}
 .globe-footer>span:first-child{flex:1;min-width:100px}.globe-footer a{color:#d5e5eb;text-decoration:underline}.globe-footer button{flex:none;min-height:28px}
 #atlas-rotational-globe :is(button,select,canvas):focus-visible{outline:2px solid #dcebc8;outline-offset:-2px}
 .globe-fallback{position:absolute;bottom:50px;left:16px;right:16px;z-index:40;background:#263d54;color:white;padding:10px;border-radius:7px}
-@media(max-width:760px){#globe-aperture{width:46px;height:46px}.globe-instructions{display:none}.globe-buttons button{min-height:26px;font-size:11px;padding:3px 6px}#globe-encounter{left:6px;bottom:61px;width:min(240px,calc(100% - 12px));max-height:32%;padding:8px;gap:4px}.globe-encounter-heading>strong,#globe-encounter>strong{font-size:16px}.globe-film{grid-template-columns:45px minmax(0,1fr);gap:6px}.globe-film-art{width:45px;height:32px}.globe-film-copy strong{font-size:12px}.globe-footer{font-size:9px;padding:4px 6px}}
+@media(max-width:760px){#globe-aperture{width:46px;height:46px}.globe-instructions{display:none}.globe-buttons button{min-height:26px;font-size:11px;padding:3px 6px}#globe-encounter{left:6px;bottom:61px;width:min(240px,calc(100% - 12px));max-height:32%;padding:8px;gap:4px}.globe-encounter-heading>strong,#globe-encounter>strong{font-size:16px}.globe-footer{font-size:9px;padding:4px 6px}}
 @media(prefers-reduced-motion:reduce){#globe-aperture,#globe-encounter{transition:none}}
 
 /* Keep the explicit return control reachable above the discovery dock. */
-
 
 /* Softer encounter transition and larger readable film labels. */
 #atlas-rotational-globe{background:#101b29}
@@ -47,8 +40,8 @@ body.atlas-globe-experiment #atlas-theme-web :is(#tw-seed,[data-start-term]){dis
 #atlas-rotational-globe.has-cinema #globe-aperture{border-color:#e9dfb5;box-shadow:0 0 0 3px #e4ecc018,0 0 12px #e2ecb31c}
 #globe-encounter{background:#142537ed;transition:opacity .22s ease;border-color:#516a7a}
 #atlas-rotational-globe.is-moving #globe-encounter{opacity:.66}
-.globe-film-copy strong{font-size:14px}.globe-film-copy small{font-size:12px}
-@media(max-width:760px){.globe-film-copy strong{font-size:13px}.globe-film-copy small{font-size:11px}}
+
+@media(max-width:760px){}
 @media(prefers-reduced-motion:reduce){#globe-aperture,#globe-encounter{transition:none}}
 
 /* Native globe stays behind the offline canvas until the style has initialized. */
@@ -82,30 +75,27 @@ body.atlas-globe-experiment #atlas-theme-web :is(#tw-seed,[data-start-term]){dis
 .globe-related{justify-self:start;text-align:left}
 .globe-cycle{font-size:17px;min-width:30px;min-height:30px}
 .globe-cycle:disabled{opacity:.35;cursor:default}.globe-encounter-nav small{font-size:11px;color:#d0dcd9}
-.globe-film-strip{display:flex;gap:6px;overflow-x:auto;overscroll-behavior:contain}
-.globe-film{flex:1;min-width:84px;display:grid;grid-template-columns:1fr;gap:4px;padding:4px;border-radius:5px;border:1px solid transparent}
-.globe-film[aria-pressed=true],.globe-choices button[aria-pressed=true]{border-color:#a6c1b4;background:#2b4650}
-.globe-film-art{width:100%;height:42px}.globe-film-copy strong{font-size:11px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+
+.globe-choices button[aria-pressed=true]{border-color:#a6c1b4;background:#2b4650}
+
 .globe-land-source{font-size:11px;color:#b9c9ce}.globe-land-source p{margin:5px 0;line-height:1.4}
 .globe-share-url{width:100%;font-size:11px}
 
 #globe-live-map .maplibregl-ctrl-bottom-right{bottom:55px;right:8px}
 #globe-live-map .maplibregl-ctrl-scale{background:#172c38c9;color:#dbe5e6;border-color:#dbe5e6}
-@media(max-width:760px){#globe-encounter{width:min(260px,calc(100% - 12px));max-height:39%;gap:5px}.globe-featured{grid-template-columns:78px minmax(0,1fr);gap:7px}.globe-film-title{font-size:13px}.globe-feature-copy small{font-size:10px}.globe-film-art{height:30px}.globe-buttons button{min-height:27px}.globe-film-strip{display:none}#globe-live-map .maplibregl-ctrl-bottom-right{bottom:72px}}
+@media(max-width:760px){#globe-encounter{width:min(260px,calc(100% - 12px));max-height:39%;gap:5px}.globe-featured{grid-template-columns:78px minmax(0,1fr);gap:7px}.globe-film-title{font-size:13px}.globe-feature-copy small{font-size:10px}.globe-buttons button{min-height:27px}#globe-live-map .maplibregl-ctrl-bottom-right{bottom:72px}}
 
 /* The shared thumbnail CSS positions images absolutely. Establish a containing
  block for every globe thumbnail so a film image cannot cover the map or buttons. */
 #globe-encounter{display:flex;flex-direction:column;align-items:stretch;isolation:isolate;overflow-y:auto;overflow-x:hidden}
 #globe-encounter>*{flex-shrink:0;min-width:0}
-#globe-encounter .weave-media-thumb,#globe-encounter .globe-film-art,#globe-encounter .globe-feature-art{position:relative;overflow:hidden;isolation:isolate}
+#globe-encounter .weave-media-thumb,#globe-encounter .globe-feature-art{position:relative;overflow:hidden;isolation:isolate}
 #globe-encounter .weave-media-thumb>img{position:absolute;inset:0;pointer-events:none;object-fit:contain!important}
-#globe-encounter .globe-film-strip{position:relative;min-height:76px;align-items:start}
-#globe-encounter .globe-film{position:relative;min-width:80px;max-width:33.333%;overflow:hidden;flex:1}
-#globe-encounter .globe-film-copy{min-width:0;overflow:hidden}
+
 #globe-encounter .globe-encounter-nav{position:relative;z-index:1;flex:none}
 #globe-encounter .globe-cycle{min-width:36px;min-height:36px}
 #globe-live-map canvas{touch-action:none;overscroll-behavior:contain}
-@media(max-width:760px){#globe-encounter{max-height:36%;width:min(260px,calc(100% - 12px))}#globe-encounter .globe-film-strip{display:none}}
+@media(max-width:760px){#globe-encounter{max-height:36%;width:min(260px,calc(100% - 12px))}}
 
 /* Quiet reference layer toggle, not a new editing mode. */
 
@@ -135,11 +125,9 @@ body.atlas-globe-experiment #atlas-theme-web :is(#tw-seed,[data-start-term]){dis
 #atlas-rotational-globe .globe-artwork img{position:static!important;inset:auto!important;display:block;width:auto!important;height:auto!important;max-width:100%!important;max-height:100%!important;min-width:0!important;min-height:0!important;object-fit:contain!important;object-position:center;filter:none!important;opacity:1!important;mix-blend-mode:normal!important;pointer-events:none}
 #atlas-rotational-globe .globe-art-feature[data-art-state=ready]{aspect-ratio:var(--art-ratio,1.5);max-height:min(212px,var(--art-natural-height,212px));min-height:0}
 #atlas-rotational-globe .globe-art-feature img{max-height:min(212px,var(--art-natural-height,212px))!important}
-#atlas-rotational-globe .globe-art-placeholder{font:500 12px/1.3 system-ui,sans-serif;color:#bdcbd0;overflow-wrap:anywhere;text-align:center;padding:8px}
-#atlas-rotational-globe .globe-artwork[data-art-state=ready] .globe-art-placeholder{display:none}
+
 #atlas-rotational-globe .globe-artwork:not([data-art-state=ready]) img{visibility:hidden;position:absolute!important}
-#atlas-rotational-globe .globe-art-strip{height:64px;width:100%;background:#101920}
-#atlas-rotational-globe .globe-art-strip .globe-art-placeholder{font-size:10px}
+
 #atlas-rotational-globe .globe-art-emergent{flex:1;min-height:0;height:100%;width:100%;background:#101920}
 #atlas-rotational-globe .globe-art-emergent img{max-height:min(100%,var(--art-natural-height,100%))!important}
 #globe-emergent{background:#152632f5;border-color:#8bada0;padding:6px;gap:4px}
@@ -147,7 +135,7 @@ body.atlas-globe-experiment #atlas-theme-web :is(#tw-seed,[data-start-term]){dis
 .globe-emergent-meta{font:10px/1.2 system-ui,sans-serif;color:#c9d5d9;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:none}
 #globe-encounter .globe-film-facts{font-size:11px;color:#d5dedc}
 #atlas-rotational-globe.is-moving #globe-encounter{opacity:.82}
-#globe-encounter .globe-film-strip{min-height:94px}
+
 @media(max-width:760px){#globe-encounter .globe-featured{grid-template-columns:minmax(76px,39%) minmax(0,1fr)}#globe-encounter .globe-feature-art.globe-artwork{max-height:132px}#atlas-rotational-globe .globe-art-feature img{max-height:min(132px,var(--art-natural-height,132px))!important}#globe-emergent .globe-emergent-title{font-size:11px}.globe-emergent-meta{font-size:9px}}
 
 /* Tight image border-boxes: the artwork, not the grid slot, owns its frame.
@@ -164,11 +152,7 @@ body.atlas-globe-experiment #atlas-theme-web :is(#tw-seed,[data-start-term]){dis
 #globe-encounter .globe-art-feature[data-art-state=ready]{
  width:min(100%,var(--art-feature-width))!important;justify-self:start;align-self:start;
 }
-#globe-encounter .globe-art-strip[data-art-state=ready]{
- width:min(100%,var(--art-strip-width))!important;justify-self:start;align-self:start;
-}
-#globe-encounter .globe-film-strip{align-items:start;min-height:0}
-#globe-encounter .globe-film{grid-template-rows:auto auto;align-content:start}
+
 #globe-emergent{
  box-sizing:border-box;width:calc(var(--poster-image-width,100px) + 14px)!important;
  height:auto!important;min-width:0;max-width:none;min-height:0;max-height:none;
@@ -194,36 +178,27 @@ body.atlas-globe-experiment #atlas-theme-web :is(#tw-seed,[data-start-term]){dis
 #atlas-rotational-globe #weave-theme-lens .weave-map-theme-results{color:#d6e2df;font-size:12px}
 #atlas-rotational-globe #weave-theme-lens .weave-map-theme-row button{color:#e0e8e8}
 
-#globe-encounter .globe-overlap,#globe-encounter .globe-film-extras{font:12px/1.4 system-ui,sans-serif;color:#c6d6d7}
-.globe-overlap summary,.globe-film-extras summary{cursor:pointer;padding:4px 0}
-.globe-film-extras[open]>.globe-film-strip{margin:5px 0}
+#globe-encounter .globe-overlap{font:12px/1.4 system-ui,sans-serif;color:#c6d6d7}
+.globe-overlap summary{cursor:pointer;padding:4px 0}
+
 .globe-overlap[open] .globe-choices{margin-top:4px}
-#globe-encounter .globe-kicker{font-size:10px;letter-spacing:.035em}
+
 #globe-encounter{max-height:44%;gap:7px}
 #globe-encounter .globe-encounter-nav .globe-cycle{min-width:40px;min-height:36px}
 .globe-instructions{top:65px;font-size:11px;left:12px;transform:none}
 @media(max-width:760px){
- 
- 
- 
- 
- 
- 
- 
- 
- #globe-encounter{max-height:36%;width:min(260px,calc(100% - 62px));gap:5px}
- #globe-encounter .globe-film-extras[open] .globe-film-strip{display:flex}
- #globe-encounter .globe-encounter-nav .globe-cycle{min-width:44px;min-height:40px}
- #globe-encounter .globe-overlap,#globe-encounter .globe-film-extras{font-size:11px}
-}
 
+ #globe-encounter{max-height:36%;width:min(260px,calc(100% - 62px));gap:5px}
+ 
+ #globe-encounter .globe-encounter-nav .globe-cycle{min-width:44px;min-height:40px}
+ #globe-encounter .globe-overlap{font-size:11px}
+}
 
 /* Exact public metadata is available without crowding the default encounter. */
 #globe-encounter .globe-credit-details{font:12px/1.4 system-ui,sans-serif;color:#c6d6d7}
 .globe-credit-details summary{cursor:pointer;padding:4px 0}.globe-credit-data{overflow-wrap:anywhere}.globe-data-group{margin:9px 0}.globe-data-group dl{margin:5px 0;display:grid;grid-template-columns:minmax(75px,35%) minmax(0,1fr);gap:4px 8px}.globe-data-group dt{font-weight:600;color:#bdced1}.globe-data-group dd{margin:0;white-space:pre-wrap;color:#e4ece9}.globe-credit-data a,.globe-search-result a{color:#bcded5;text-underline-offset:2px}
 
 #globe-search-results:empty{display:none}.globe-search-result{display:grid;gap:3px;border-bottom:1px solid #527078;padding:5px 0}.globe-search-result small{font-size:11px;color:#bfccd0}.globe-search-film{width:100%;text-align:left;background:transparent;color:#eef1f4;border:0;padding:5px;font:600 12px/1.35 system-ui,sans-serif;cursor:pointer}
-
 
 .globe-catalog-filters{font:12px/1.4 system-ui,sans-serif;color:#d6e2df}.globe-catalog-filters summary{cursor:pointer;padding:5px 0}.globe-catalog-filters label{display:block;margin:8px 0 3px}.globe-catalog-filters select{margin-bottom:4px}.globe-catalog-filters button{width:100%;margin-top:5px}#globe-csv-status{font:11px/1.4 system-ui,sans-serif;color:#afc9c2}#globe-csv-retry{min-height:38px}
 
@@ -279,7 +254,6 @@ body.atlas-globe-experiment #atlas-theme-web :is(#tw-seed,[data-start-term]){dis
 
 #globe-live-map .maplibregl-ctrl-bottom-right{bottom:calc(var(--globe-footer-height) + 4px)}
 #atlas-rotational-globe .globe-footer{padding-bottom:max(4px,env(safe-area-inset-bottom))}
-@media(max-height:500px) and (orientation:landscape){#atlas-rotational-globe #globe-encounter{max-height:calc(100% - var(--globe-footer-height) - 100px);width:min(280px,38%);padding:7px}}
 
 #globe-encounter .globe-land-group{color:#b5cacb;font-weight:600;padding:4px 2px 0}
 #globe-encounter .globe-land-choice{text-align:left;overflow-wrap:anywhere;white-space:normal}
@@ -303,21 +277,15 @@ body.atlas-globe-experiment #constellate-mode{display:none!important}
 #atlas-rotational-globe.globe-live.globe-revealed #globe-surface{opacity:0}
 @media(prefers-reduced-motion:reduce){#atlas-rotational-globe.globe-live #globe-surface{transition:none}}
 
-
 #globe-encounter .globe-reading-journey{border-top:1px solid #607b7e55;padding:5px 0;display:grid;gap:4px;font:12px/1.4 system-ui,sans-serif;overflow-wrap:anywhere}#globe-encounter .globe-reading-journey p{margin:0}#globe-encounter .globe-reading-journey .globe-buttons{align-items:center}#globe-encounter .globe-reading-journey button{min-height:32px}
 
 /* Fit navigation within the actual map panel, not an assumed browser viewport. */
 #atlas-rotational-globe{--globe-menu-room:370px}
 
-
 @media(max-width:760px){
- 
- 
- 
- 
+
  #atlas-rotational-globe .globe-land-choice,#atlas-rotational-globe .globe-cycle{min-height:44px}
 }
-
 
 /* The film is the encounter, not the availability of its artwork. */
 #atlas-rotational-globe .globe-artwork[hidden]{display:none!important}
@@ -328,12 +296,7 @@ body.atlas-globe-experiment #constellate-mode{display:none!important}
 #globe-encounter .globe-film-title{font-size:clamp(15px,1.3vw,19px);line-height:1.28;overflow-wrap:anywhere}
 #globe-encounter .globe-film-byline{font-size:12px;line-height:1.35}
 #globe-encounter .globe-film-facts{font-size:11px;line-height:1.4}
-#globe-encounter .globe-next-encounter{display:grid;gap:4px;border-top:1px solid #829b963b;padding-top:6px}
-#globe-encounter .globe-next-encounter .globe-related{display:grid;gap:3px;justify-self:stretch;background:transparent;border:0;border-radius:3px;padding:5px 4px;text-align:left;overflow-wrap:anywhere}
-#globe-encounter .globe-next-encounter .globe-related:hover,#globe-encounter .globe-next-encounter .globe-related:focus-visible{background:#314b4a}
-#globe-encounter .globe-next-encounter .globe-related strong{font-size:13px;line-height:1.3;color:#edf1e7}
-#globe-encounter .globe-next-encounter .globe-related small{font-size:11px;color:#bcd2c9;line-height:1.3}
-#globe-encounter .globe-next-encounter .globe-related::after{content:'↗';justify-self:end;color:#c4ddd1;font-size:14px;line-height:1}
+
 #globe-encounter .globe-land-choice{white-space:normal;overflow-wrap:anywhere}
 #globe-encounter .globe-association{font-size:11px;color:#c4d4cf}
 #globe-encounter{background:linear-gradient(135deg,#162b35f5,#132532ef);border-color:#718e8970;box-shadow:0 6px 26px #08131b36}
@@ -342,7 +305,7 @@ body.atlas-globe-experiment #constellate-mode{display:none!important}
  #globe-encounter .globe-featured:has(>.globe-feature-art[data-art-state=ready]:not([hidden])){grid-template-columns:minmax(62px,35%) minmax(0,1fr);gap:7px}
  #globe-encounter .globe-film-title{font-size:15px}
  #globe-encounter .globe-film-byline,#globe-encounter .globe-film-facts{font-size:12px}
- #globe-encounter .globe-next-encounter .globe-related{min-height:44px}
+ 
 }
 @media(prefers-reduced-motion:reduce){#globe-encounter .globe-art-arrive{animation:none}}
 
@@ -351,7 +314,6 @@ body.atlas-globe-experiment #constellate-mode{display:none!important}
 #globe-encounter .globe-connect-featured[hidden]{display:none!important}
 #globe-encounter .globe-connect-featured:disabled{color:#a8c3b9;cursor:default;text-decoration:none}
 @media(max-width:760px){#globe-encounter .globe-connect-featured{min-height:44px;font-size:13px}}
-
 
 /* A land's filmography is browsable without leaving the globe. */
 #globe-encounter .globe-land-films{font:12px/1.4 system-ui,sans-serif;color:#d5e5db}
@@ -457,7 +419,7 @@ body.atlas-globe-experiment #constellate-mode{display:none!important}
 #atlas-rotational-globe .globe-marker-key{font:12px/1.45 var(--ui-sans,system-ui,sans-serif);color:#c0d2cd}
 
 /* The encounter is a compact reading card, not a second navigation menu. */
-#atlas-rotational-globe #globe-encounter{gap:8px;padding:12px;max-height:min(48%,420px);font-family:var(--ui-sans,system-ui,sans-serif)}
+#atlas-rotational-globe #globe-encounter{gap:7px;padding:11px 12px;width:min(330px,calc(100% - 24px));max-height:min(48%,420px,var(--globe-encounter-room,420px));font-family:var(--ui-sans,system-ui,sans-serif)}
 #atlas-rotational-globe #globe-encounter:is([data-expanded=true],:has(.globe-encounter-disclosures>details[open])){max-height:min(74%,620px,var(--globe-encounter-room,620px))}
 #globe-encounter .globe-expand-encounter{grid-column:2;grid-row:1/span 3;align-self:start;justify-self:end;min-height:34px;min-width:34px;background:transparent;border:1px solid #718e8960;border-radius:5px;color:#dbe6db;font:500 18px/1 var(--ui-sans,system-ui,sans-serif);cursor:pointer}
 #globe-encounter .globe-expand-encounter:focus-visible{outline:2px solid #e9dfb5;outline-offset:2px}
@@ -486,5 +448,8 @@ body.atlas-globe-experiment #constellate-mode{display:none!important}
 #atlas-rotational-globe[data-target-mode=local] #globe-aperture::before,#atlas-rotational-globe[data-target-mode=local] #globe-aperture::after{background:#d7e6dfa0}
 #atlas-rotational-globe[data-ready=true]{animation:atlas-globe-entry .42s ease-out both}
 @keyframes atlas-globe-entry{from{opacity:0}to{opacity:1}}
-@media(max-width:760px){#atlas-rotational-globe #globe-encounter{padding:9px;gap:6px;max-height:38%}#globe-encounter .globe-encounter-actions :is(a,button){min-height:44px}#globe-encounter .globe-encounter-disclosures>details>summary{min-height:32px;box-sizing:border-box;display:list-item}#globe-encounter .globe-film-title{font-size:14px}#globe-encounter .globe-expand-encounter{min-height:44px;min-width:44px}}
+@media(max-width:760px){#atlas-rotational-globe #globe-encounter{padding:9px;gap:6px;width:min(270px,calc(100% - 62px));max-height:min(38%,var(--globe-encounter-room,420px))}#globe-encounter .globe-encounter-actions :is(a,button){min-height:44px}#globe-encounter .globe-encounter-disclosures>details>summary{min-height:32px;box-sizing:border-box;display:list-item}#globe-encounter .globe-film-title{font-size:14px}#globe-encounter .globe-expand-encounter{min-height:44px;min-width:44px}}
 @media(prefers-reduced-motion:reduce){#atlas-rotational-globe[data-ready=true]{animation:none}#atlas-rotational-globe #globe-aperture{transition:none}}
+
+/* Short landscape screens keep the film card and toolbar in separate regions. */
+@media(max-height:500px) and (orientation:landscape){#atlas-rotational-globe #globe-encounter{width:min(280px,38%);padding:7px;max-height:min(48%,var(--globe-encounter-room,420px))}}
