@@ -60,6 +60,7 @@ async def run(browser,name,viewport):
             await page.wait_for_function("window.AtlasGlobe.tileState?.elevation>1500",timeout=60000)
             # Elevation can arrive first; explicitly await actual satellite tile success.
             await page.wait_for_function("window.AtlasGlobe.tileState?.received.satellite>0",timeout=60000)
+            assert await page.locator("#globe-credit-satellite").is_visible()
             assert any("tiles.maps.eox.at/" in u for u in tiles),("no successful satellite response",tiles)
             assert any("tiles.mapterhorn.com/" in u for u in tiles),("no successful DEM response",tiles)
             await shot(page,f"shots/globe-independent/{name}-overhead.png")
@@ -72,6 +73,10 @@ async def run(browser,name,viewport):
             await page.wait_for_function("window.AtlasGlobe.focus.settled && !window.AtlasGlobe.tileState.wheelActive")
             initial=await page.evaluate("JSON.stringify(window.AtlasCollections.current())")
             assert await page.locator(".globe-primary button").count()==4
+            assert await page.locator(".globe-map-sources").get_attribute("href")=="map-sources.html"
+            assert await page.locator("#globe-credit-live").is_visible()
+            sources=await page.request.get(BASE+"map-sources.html")
+            assert sources.ok and "Copernicus Sentinel data 2016" in await sources.text()
             assert await page.locator(".globe-menu-panel:visible").count()==0
             cam=await page.evaluate("window.AtlasGlobe.camera")
             await page.locator("#globe-theme-toggle").click()
