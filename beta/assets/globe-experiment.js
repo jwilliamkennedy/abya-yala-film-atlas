@@ -153,6 +153,24 @@ function radius(){return Math.max(70,Math.min(W,H)*.445)*zoom;}
 // A native failure or shared detail URL can enter the overview above its usual limit.
 // Allow a continuous descent from that scale, without offering additional local detail.
 function overviewZoom(value){return clamp(value,.8,Math.max(25,zoom));}
+// The local renderer uses the same time-based logarithmic easing as native pinch.
+// A burst of wheel input accumulates against its goal, not a lagging camera frame.
+function queueOverviewZoom(delta){
+ if(!active||liveReady||!Number.isFinite(delta)||!delta)return;
+ cancelFlight();const current=Math.log2(zoom);
+ wheelGoal=clamp((wheelGoal??current)+delta,Math.log2(.8),Math.log2(Math.max(25,zoom)));wheelLast=nowMs();
+ if(!wheelActive){wheelActive=true;movement();}
+ if(wheelFrame)return;
+ function frame(t){
+  wheelFrame=0;if(!active||liveReady||wheelGoal===null){stopWheel();return;}
+  const current=Math.log2(zoom),remaining=wheelGoal-current,dt=wheelTick?clamp(t-wheelTick,1,80):16.7;wheelTick=t;
+  const next=reduced.matches||Math.abs(remaining)<.008?wheelGoal:current+remaining*(1-Math.exp(-dt/62));
+  zoom=Math.pow(2,next);renderSoon();
+  if(Math.abs(wheelGoal-next)>.008||t-wheelLast<90){wheelFrame=requestAnimationFrame(frame);return;}
+  stopWheel();finishMove();
+ }
+ wheelFrame=requestAnimationFrame(frame);
+}
 function updateProjection(){
  proj.rotate([-center[0],-center[1],0]).translate([W/2,H/2]).scale(radius());
 }
@@ -514,7 +532,7 @@ function loadRelief(){
    function handoff(){
     if(!active||!live||liveReady)return;
     // Do not steal an ongoing fallback drag or flight. Transfer the actual visible camera.
-    if(pointers.size||flight){liveTimer=setTimeout(handoff,50);return;}
+    if(pointers.size||flight||wheelActive){liveTimer=setTimeout(handoff,50);return;}
     const target={center:[wrap(center[0]),clamp(center[1],-85,85)],zoom:clamp(liveBaseZoom+Math.log2(Math.max(.1,zoom)),live.getMinZoom(),live.getMaxZoom())};
     const focused=document.activeElement===canvas;
     draw();live.jumpTo(target);liveReady=true;startup.handoff=nowMs();host.classList.add('globe-live');readLiveCamera();installZoom();
@@ -1097,7 +1115,7 @@ function cancelFlight(){if(flight)cancelAnimationFrame(flight);flight=0;flightTa
 function setCamera(c,z=zoom,duration=300){
  inboundEncounter=null;
  if(liveReady){stopWheel();movement();const target={center:[wrap(c[0]),clamp(c[1],-85,85)],zoom:clamp(liveBaseZoom+Math.log2(Math.max(.1,z)),live.getMinZoom(),live.getMaxZoom()),duration:reduced.matches?0:duration};live.easeTo(target);return;}
- cancelFlight();const goal=[wrap(c[0]),clamp(c[1],-89.9,89.9)],goalZoom=overviewZoom(z);
+ stopWheel();cancelFlight();const goal=[wrap(c[0]),clamp(c[1],-89.9,89.9)],goalZoom=overviewZoom(z);
  movement();
  if(reduced.matches||duration===0){center=goal;zoom=goalZoom;finishMove();return;}
  flightTarget={center:goal,zoom:goalZoom};
@@ -1110,7 +1128,7 @@ function setCamera(c,z=zoom,duration=300){
 }
 function midpoint(){const ps=[...pointers.values()];if(!ps.length)return null;return ps.length===1?{x:ps[0].x,y:ps[0].y,d:0}:{x:(ps[0].x+ps[1].x)/2,y:(ps[0].y+ps[1].y)/2,d:Math.hypot(ps[0].x-ps[1].x,ps[0].y-ps[1].y)};}
 function wire(){
- canvas.addEventListener('pointerdown',e=>{if(e.button!==0&&e.pointerType==='mouse')return;cancelFlight();lastDrag=null;canvas.setPointerCapture(e.pointerId);pointers.set(e.pointerId,{x:e.clientX,y:e.clientY});gesture=midpoint();dragged=pointers.size>1;clearTimeout(settleTimer);canvas.classList.add('grabbing');});
+ canvas.addEventListener('pointerdown',e=>{if(e.button!==0&&e.pointerType==='mouse')return;stopWheel();cancelFlight();lastDrag=null;canvas.setPointerCapture(e.pointerId);pointers.set(e.pointerId,{x:e.clientX,y:e.clientY});gesture=midpoint();dragged=pointers.size>1;clearTimeout(settleTimer);canvas.classList.add('grabbing');});
  canvas.addEventListener('pointermove',e=>{
   if(!pointers.has(e.pointerId))return;pointers.set(e.pointerId,{x:e.clientX,y:e.clientY});const m=midpoint(),g=gesture;gesture=m;if(!m||!g)return;
   const dx=m.x-g.x,dy=m.y-g.y;if(Math.abs(dx)+Math.abs(dy)>1||Math.abs(m.d-g.d)>1)dragged=true;if(!dragged)return;inboundEncounter=null;
@@ -1131,8 +1149,8 @@ function wire(){
   finishMove();
  }
  canvas.addEventListener('pointerup',end);canvas.addEventListener('pointercancel',end);canvas.addEventListener('lostpointercapture',end);
- canvas.addEventListener('wheel',e=>{e.preventDefault();inboundEncounter=null;cancelFlight();const delta=e.deltaY*(e.deltaMode===1?16:1);zoom=overviewZoom(zoom*Math.exp(-clamp(delta,-350,350)*(e.ctrlKey?.009:.004)));movement();finishMove();},{passive:false});
- canvas.addEventListener('keydown',e=>{const k=e.key,step=12/Math.sqrt(zoom);if(!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','+','=','-','Home','Enter'].includes(k))return;e.preventDefault();e.stopPropagation();if(k==='Enter'){if(focusIds.length)focusEncounter();return;}if(k==='Home'){setCamera([-91,12],1);return;}if(k==='+'||k==='='){setCamera(center,zoom*1.4);return;}if(k==='-'){setCamera(center,zoom/1.4);return;}setCamera([center[0]+(k==='ArrowRight'?step:k==='ArrowLeft'?-step:0),center[1]+(k==='ArrowUp'?step:k==='ArrowDown'?-step:0)]);});
+ canvas.addEventListener('wheel',e=>{e.preventDefault();if(liveReady||pointers.size)return;const unit=e.deltaMode===1?16:e.deltaMode===2?H:1,delta=clamp(-e.deltaY*unit*(e.ctrlKey?.009:.004)/Math.LN2,-1.25,1.25);if(!delta)return;inboundEncounter=null;queueOverviewZoom(delta);},{passive:false});
+ canvas.addEventListener('keydown',e=>{const k=e.key,step=12/Math.sqrt(zoom);if(!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','+','=','-','Home','Enter'].includes(k))return;e.preventDefault();e.stopPropagation();if(k==='Enter'){if(settled&&focusIds.length)focusEncounter();return;}if(k==='Home'){setCamera([-91,12],1);return;}if(k==='+'||k==='='){setCamera(center,zoom*1.4);return;}if(k==='-'){setCamera(center,zoom/1.4);return;}setCamera([center[0]+(k==='ArrowRight'?step:k==='ArrowLeft'?-step:0),center[1]+(k==='ArrowUp'?step:k==='ArrowDown'?-step:0)]);});
 }
 let coverageMemo=null;
 function themeCoverage(){const stamp=filterKey();if(coverageMemo?.stamp===stamp)return coverageMemo.value;const seen=new Set();let lands=0;for(const p of points){const fs=matchingFilms(p.id,stamp);if(fs.length)lands++;for(const f of fs)seen.add(f.id);}const value={lands,credits:seen.size};coverageMemo={stamp,value};return value;}
@@ -1188,6 +1206,10 @@ function markup(){
  $('#globe-edges').onchange=e=>{edgeMode=e.target.value;syncLandVisibility();};
  $('.globe-settings').addEventListener('toggle',()=>placeEmergent());
  $('#globe-encounter').addEventListener('toggle',()=>placeEmergent(),true);
+ // Pointer events are already disabled while moving; keyboard and assistive
+ // activation must also wait for the new geographic encounter to resolve.
+ $('#globe-encounter').addEventListener('click',e=>{if(!settled){e.preventDefault();e.stopImmediatePropagation();}},true);
+ $('#globe-encounter').addEventListener('keydown',e=>{if(!settled&&['Enter',' '].includes(e.key)){e.preventDefault();e.stopImmediatePropagation();}},true);
  $('#globe-share').onclick=async()=>{const u=shareView();try{await navigator.clipboard.writeText(u);$('#globe-share').textContent='Copied';setTimeout(()=>{if($('#globe-share'))$('#globe-share').textContent='Share view';},1400);}catch{const input=el('input','globe-share-url');input.value=u;input.readOnly=true;input.setAttribute('aria-label','Shareable globe link');$('#globe-share').after(input);input.select();}};
 
  $('#globe-home').onclick=()=>{setMenu('');sel.value='';preferredLand='';filmOffset=0;landscape=false;$('#globe-landscape').setAttribute('aria-pressed','false');if(liveReady)live.setPitch(0);setCamera([-91,12],1);};
