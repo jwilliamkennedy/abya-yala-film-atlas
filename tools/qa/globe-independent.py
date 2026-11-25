@@ -359,7 +359,9 @@ async def run(browser,name,viewport):
             assert await page.locator(".globe-credit-data dl").count()>0,(name,"featured credit missing from public CSV")
             assert await page.locator(".globe-credit-data").get_by_text("Film id",exact=True).count()>0
             assert await page.locator("#globe-encounter .globe-feature-art").count()==1
-            assert await page.locator("#globe-encounter .globe-film-strip").count()==0
+            assert await page.locator("#globe-encounter .globe-film-strip").count()==1
+            assert 1 < await page.locator("#globe-encounter .globe-strip-item").count() <= 8
+            assert await page.locator("#globe-encounter .globe-strip-item[aria-current=true]").count()==1
             assert await page.locator("#globe-encounter .globe-credit-details").count()==1
             await page.locator(".globe-credit-details summary").click()
             print(name,"emergent artwork",await page.evaluate("window.AtlasGlobe.discovery.posterVisible"),flush=True)
@@ -372,6 +374,12 @@ async def run(browser,name,viewport):
                 previous=await page.evaluate("window.AtlasGlobe.discovery.featured")
                 target=await bridge.get_attribute("data-target-film")
                 await page.locator(".globe-related-details summary").click()
+                assert not await page.evaluate("AtlasGlobe.themeConnections.enabled")
+                await page.locator("#globe-trace-themes").click()
+                assert await page.evaluate("AtlasGlobe.themeConnections.enabled && AtlasGlobe.themeConnections.links.length>0 && AtlasGlobe.themeConnections.links.length<=3")
+                assert await page.evaluate("AtlasGlobe.themeConnections.links.every(l=>l.fromFilm===AtlasGlobe.discovery.featured.film && l.toLand!==l.fromLand)")
+                await page.locator("#globe-trace-themes").click()
+                assert await page.evaluate("AtlasGlobe.themeConnections.links.length===0")
                 await bridge.click()
                 await page.wait_for_function("(id)=>window.AtlasGlobe.focus.settled && window.AtlasGlobe.discovery.featured?.film===id",arg=target,timeout=30000)
                 await page.locator("#globe-more-toggle").click()
