@@ -384,3 +384,17 @@ body.atlas-globe-experiment #constellate-mode{display:none!important}
 #globe-encounter .globe-connect-featured:disabled{color:#a8c3b9;cursor:default;text-decoration:none}
 @media(max-width:760px){#globe-encounter .globe-connect-featured{min-height:44px;font-size:13px}}
 #atlas-rotational-globe #globe-collection-toggle[aria-label="Connecting films"]{color:#f3e3b9}
+
+/* A land's filmography is browsable without leaving the globe. */
+#globe-encounter .globe-land-films{font:12px/1.4 system-ui,sans-serif;color:#d5e5db}
+#globe-encounter .globe-land-films summary{cursor:pointer;padding:5px 0;text-decoration:underline;text-underline-offset:3px}
+#globe-encounter .globe-land-film-list{display:grid;gap:2px;margin:4px 0;max-height:240px;overflow:auto;overscroll-behavior:contain}
+#globe-encounter .globe-land-film{display:grid;gap:3px;background:transparent;border:0;border-radius:3px;color:#e1eae1;font:500 12px/1.4 system-ui,sans-serif;padding:7px 6px;text-align:left;cursor:pointer;overflow-wrap:anywhere}
+#globe-encounter .globe-land-film small{color:#b9cdc5;font-size:11px}
+#globe-encounter .globe-land-film[aria-current=true],#globe-encounter .globe-land-film:hover,#globe-encounter .globe-land-film:focus-visible{background:#314a43}
+#globe-encounter .globe-land-film-more{background:none;color:#d4e8dd;border:1px solid #75928a;border-radius:4px;padding:6px}
+@media(max-width:760px){#globe-encounter .globe-land-film{min-height:44px}#globe-encounter .globe-land-film-list{max-height:180px}}
+/* A globe-origin preview uses only successfully decoded source artwork. */
+.atlas-globe-experiment #constellate-popup .globe-clean-art:not(.is-ready),.atlas-globe-experiment #constellate-popup .globe-clean-art.is-broken{display:none!important}
+.atlas-globe-experiment #constellate-popup .weave-preview-main{grid-template-columns:minmax(0,1fr)}
+.atlas-globe-experiment #constellate-popup .weave-preview-main:has(>.globe-clean-art.is-ready:not(.is-broken)){grid-template-columns:minmax(82px,38%) minmax(0,1fr)}
