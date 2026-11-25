@@ -1,6 +1,6 @@
 {
  "title": "Indigenous Cinema Atlas · film facets",
- "generated": "2026-11-24",
+ "generated": "2026-11-25",
  "license": "See data.html",
  "films_on_public_map": 2783,
  "film_entries": 2797,
@@ -69,7 +69,7 @@
   ]
  },
  "language_authority": {
-  "source": "Glottolog (glottolog-cldf, fetched 2026-11-24)",
+  "source": "Glottolog (glottolog-cldf, fetched 2026-11-25)",
   "languages": [
    {
     "label": "Anishinaabemowin (Ojibwe)",
