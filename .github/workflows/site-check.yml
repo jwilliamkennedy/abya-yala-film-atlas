@@ -53,8 +53,10 @@ jobs:
         run: |
           python3 -m http.server 8983 --bind 127.0.0.1 >/tmp/now.log 2>&1 &
           sleep 2
-          python3 tools/qa/atlas-suite.py capture http://127.0.0.1:8983/ /tmp/suite/now-main --shots
-          python3 tools/qa/atlas-suite.py capture http://127.0.0.1:8983/beta/ /tmp/suite/now-beta --shots
+          status=0
+          python3 tools/qa/atlas-suite.py capture http://127.0.0.1:8983/ /tmp/suite/now-main --shots || status=1
+          python3 tools/qa/atlas-suite.py capture http://127.0.0.1:8983/beta/ /tmp/suite/now-beta --shots || status=1
+          exit "$status"
       - name: Did anything move since the previous push?
         if: always()
         run: |

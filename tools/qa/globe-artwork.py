@@ -58,6 +58,12 @@ async def main():
             state=await page.evaluate("window.AtlasGlobe.discovery")
             assert any(c["id"]==state["featured"]["film"] for c in refs[l["id"]])
             print("ENCOUNTER",l["name"],state["artState"],state["posterReason"],flush=True)
+        if selected:
+            expected=await page.evaluate("window.AtlasGlobe.discovery.featured")
+            shared=await page.evaluate("window.AtlasGlobe.discovery.shareURL")
+            await page.goto(shared,wait_until="domcontentloaded",timeout=90000)
+            await page.wait_for_function("(v)=>window.AtlasGlobe?.discovery.publication==='ready' && window.AtlasGlobe.focus.settled && window.AtlasGlobe.discovery.featured?.land===v.land && window.AtlasGlobe.discovery.featured?.film===v.film",arg=expected,timeout=90000)
+            print("SHARED_ENCOUNTER passed",expected,flush=True)
         await page.locator("#globe-more-toggle").click()
         await page.locator("#globe-close").click()
         await page.wait_for_function("!window.AtlasGlobe.active && window.AtlasConstellate.enabled")

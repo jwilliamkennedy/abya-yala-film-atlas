@@ -18,9 +18,11 @@ let ambientCount=0,landsVisible=true,landStrength=1,lastCameraChange=0,lastCamer
 let featured=null,posterKey='',journey=[],returning=false,artSizes=new Map(),artFailures=new Set(),posterLayoutFrame=0,posterReason='initializing',boundaryStats={features:0,segments:0,datelineSplits:0},menuMode='',themeLensHome=null,menuListeners=null,encounterExpanded=false;
 const inputStats={wheel:0,pinch:0,safari:0,touch:0,zoomEvents:0,lastDelta:0,lastBefore:null,lastAfter:null,lastInputMs:null};
 const params=new URLSearchParams(location.search);
+let inboundEncounter={land:params.get('land')||'',film:params.get('film')||''};
+function restoreEncounter(){if(!liveReady||publicationStatus!=='ready'||!inboundEncounter)return;const {land,film}=inboundEncounter;inboundEncounter=null;if(!byId.has(land))return;if(film&&!C().globeCreditIndex().byLand.get(land)?.films.some(f=>f.id===film))return;preferredLand=land;pendingFilm=film;focusKey='';scheduleSettle(80);}
 const initialCamera=(()=>{const a=params.get('at')?.split(',').map(Number);return a?.length===3&&a.every(Number.isFinite)&&Math.abs(a[0])<=180&&Math.abs(a[1])<=85&&a[2]>=-2&&a[2]<=14?a:null;})();
 function currentTheme(){return [$('#weave-map-theme')?.value,$('#weave-map-theme-second')?.value].filter(Boolean);}
-function shareView(){const u=new URL(location.pathname,location.origin),s=liveStats();u.searchParams.set('constellate','1');u.searchParams.set('globe','1');if(s)u.searchParams.set('at',[center[0].toFixed(5),center[1].toFixed(5),s.zoom.toFixed(3)].join(','));if(landStrength!==1)u.searchParams.set('lands',String(landStrength));else u.searchParams.delete('lands');const t=currentTheme();if(t.length)u.searchParams.set('themes',JSON.stringify(t));else u.searchParams.delete('themes');if(yearBand)u.searchParams.set('period',yearBand);else u.searchParams.delete('period');for(const [key,val] of Object.entries(facetFilter))if(val)u.searchParams.set(key,val);return u.href;}
+function shareView(){const u=new URL(location.pathname,location.origin),s=liveStats();u.searchParams.set('constellate','1');u.searchParams.set('globe','1');if(s)u.searchParams.set('at',[center[0].toFixed(5),center[1].toFixed(5),s.zoom.toFixed(3)].join(','));if(settled&&featured){u.searchParams.set('land',featured.land);u.searchParams.set('film',featured.film.id);}if(landStrength!==1)u.searchParams.set('lands',String(landStrength));else u.searchParams.delete('lands');const t=currentTheme();if(t.length)u.searchParams.set('themes',JSON.stringify(t));else u.searchParams.delete('themes');if(yearBand)u.searchParams.set('period',yearBand);else u.searchParams.delete('period');for(const [key,val] of Object.entries(facetFilter))if(val)u.searchParams.set(key,val);return u.href;}
 function recordVisit(r){if(recent[0]?.id===r.id)return;recent=[{id:r.id,name:r.name},...recent.filter(v=>v.id!==r.id)].slice(0,10);try{sessionStorage.setItem('atlas-globe-recent',JSON.stringify(recent));}catch{}updateRecent();}
 function updateRecent(){const s=$('#globe-recent');if(!s)return;s.replaceChildren(el('option',null,'Recently explored…'));for(const r of recent){if(!byId.has(r.id))continue;const o=el('option',null,r.name);o.value=r.id;s.append(o);}s.hidden=s.options.length<2;}
 function setPeriod(v){yearBand=v;filmOffset=0;focusKey='';liveSignature='';settle();renderSoon();}
@@ -68,7 +70,7 @@ window.AtlasGlobe={get active(){return active},get camera(){return active?camera
 function close(){
  const wasActive=active;closed=true;active=false;clearTimeout(settleTimer);cancelFlight();if(raf)cancelAnimationFrame(raf);raf=0;if(posterLayoutFrame)cancelAnimationFrame(posterLayoutFrame);posterLayoutFrame=0;ro?.disconnect();
  clearTimeout(liveTimer);stopWheel();zoomListeners?.abort();zoomListeners=null;restoreThemeLens();liveReady=false;live?.remove();live=null;liveHost=null;relief?.dispose();relief=null;host?.remove();host=null;document.body.classList.remove('atlas-globe-experiment');if(wasActive&&C()?.enabled)C().refreshDiscoveryMode();
- const u=new URL(location.href);for(const k of ['globe','at','themes','period','lands','language','form','length'])u.searchParams.delete(k);history.replaceState(history.state,'',u.href);
+ const u=new URL(location.href);for(const k of ['globe','at','themes','period','lands','language','form','length','land','film'])u.searchParams.delete(k);history.replaceState(history.state,'',u.href);
 }
 function fallback(e){console.warn('Globe discovery unavailable',e);close();const p=document.createElement('p');p.className='globe-fallback';p.textContent='The globe could not initialize. The flat workspace remains available.';$('.map-panel')?.append(p);setTimeout(()=>p.remove(),9000);}
 function normalizeGeometry(g){
@@ -372,6 +374,7 @@ function loadRelief(){
     if(initialCamera)live.jumpTo({center:initialCamera.slice(0,2),zoom:initialCamera[2]});
     readLiveCamera();syncTerrain();syncLandVisibility();movement();finishMove();updateDetailStatus(true);
     try{const t=JSON.parse(params.get('themes')||'[]');if(Array.isArray(t)&&t.every(x=>typeof x==='string')&&t.length)C().showThemeLens(t);}catch{}
+    restoreEncounter();
     live.on('render',()=>{const t=nowMs();if(lastRender&&t-lastRender<250){frameTimes.push(t-lastRender);if(frameTimes.length>120)frameTimes.shift();}lastRender=t;});
     live.on('zoom',()=>{inputStats.zoomEvents++;inputStats.lastAfter=live.getZoom();});
     live.addControl(new ml.ScaleControl({maxWidth:90,unit:'metric'}),'bottom-right');
@@ -501,8 +504,8 @@ async function synchronizePublication(){
   const current=featured?.film.id;
   C().installGlobePublication(rows,facets);publicationStatus='ready';
   rankCache.clear();matchingCache.clear();matchingStamp='';focusKey='';liveSignature='';posterKey='';
-  if(current)pendingFilm=current;
-  refreshFacetOptions();showPublicationStatus();sync();scheduleSettle(100);
+  if(current&&!inboundEncounter?.film)pendingFilm=current;
+  refreshFacetOptions();showPublicationStatus();restoreEncounter();sync();scheduleSettle(100);
  }catch(e){if(!active)return;publicationStatus='error';showPublicationStatus();console.warn('Globe publication synchronization:',e);}
 }
 function filterKey(){return JSON.stringify([currentTheme(),yearBand,facetFilter,publicationStatus]);}
