@@ -313,7 +313,17 @@ async def run(browser,name,viewport):
             await page.wait_for_function("window.AtlasGlobe.focus.settled && !!document.querySelector('.globe-reading-journey')")
             await page.locator('[aria-label="Next film in thread"]').click()
             await page.wait_for_function("window.AtlasGlobe.focus.settled && document.querySelector('.globe-reading-journey')?.textContent.includes('A test of an authored connection')")
-            print(name,"globe collect, author, save, restore and read passed",flush=True)
+            # Add an actual unmapped catalogue film to the temporary test draft.
+            unmapped=await page.evaluate("""()=>{const I=AtlasGlobe.artworkInventory(),c=I.credits.find(x=>!x.lands.length);if(!c)return null;const f=AtlasConstellate.globeCreditIndex().films.find(x=>x.id===c.id);if(!f||!AtlasCollections.add(f))return null;AtlasGlobe.sync();return {id:f.id,title:f.title};}""")
+            assert unmapped
+            before_unmapped=await page.evaluate("AtlasGlobe.camera")
+            await page.locator('#globe-encounter [aria-label="Next film in thread"]').click()
+            await page.wait_for_function("id=>document.querySelector('#globe-encounter').dataset.film===id && AtlasGlobe.discovery.featured===null",arg=unmapped["id"])
+            assert await page.locator(".globe-unmapped-title").inner_text()==unmapped["title"]
+            assert await page.evaluate("AtlasGlobe.camera")==before_unmapped
+            await page.locator('#globe-encounter [aria-label="Previous film in thread"]').click()
+            await page.wait_for_function("AtlasGlobe.focus.settled && !!AtlasGlobe.discovery.featured && !document.querySelector('.globe-unmapped-title')")
+            print(name,"globe collect, author, save, restore and complete thread reading passed",flush=True)
         assert not errors,(name,errors)
         print(name,MODE,"passed",flush=True)
     finally:
