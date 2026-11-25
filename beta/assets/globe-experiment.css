@@ -117,3 +117,7 @@ body.atlas-globe-experiment #globe-close{position:static;z-index:auto;width:100%
 .globe-guide .globe-buttons button{flex:1}
 #globe-aperture{box-shadow:0 0 0 1px #14263850}
 #atlas-rotational-globe.has-cinema #globe-aperture{box-shadow:0 0 0 2px #dce8b719,0 0 8px #e2ecb320}
+
+/* Optional visibility settings are collapsed, leaving the map interaction area clear. */
+.globe-settings{font:11px/1.4 system-ui,sans-serif;color:#c8d9dc}.globe-settings summary{cursor:pointer;padding:4px 2px}.globe-settings label{display:block;margin:4px 0}.globe-settings select{width:100%}
+@media(max-width:760px){.globe-guide{max-width:135px;max-height:calc(50% - 72px);overflow-y:auto;overscroll-behavior:contain}.globe-guide>*{flex-shrink:0}.globe-guide .globe-buttons{flex-wrap:nowrap}.globe-guide select{max-width:100%}.globe-settings{font-size:10px}}

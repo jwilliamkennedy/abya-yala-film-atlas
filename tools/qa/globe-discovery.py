@@ -59,11 +59,16 @@ async def check(browser,name,viewport):
     box=await page.locator("#globe-live-map canvas").bounding_box()
     x=box["x"]+box["width"]*.50
     y=box["y"]+box["height"]*.48
+    assert await page.evaluate("([x,y])=>!!document.elementFromPoint(x,y)?.closest('#globe-live-map')",[x,y]),(name,"drag starts outside globe")
     await page.mouse.move(x,y)
     await page.mouse.down()
     await page.mouse.move(x+min(65,box["width"]*.15),y+8,steps=10)
     await page.mouse.up()
-    await page.wait_for_function("window.AtlasGlobe.focus.settled")
+    try:
+        await page.wait_for_function("window.AtlasGlobe.focus.settled",timeout=20000)
+    except Exception:
+        print(name,"DRAG_SETTLE",await page.evaluate("window.AtlasGlobe.tileState"),flush=True)
+        raise
     after=await page.evaluate(CAM)
     assert abs(after["center"][0]-before["center"][0])>.1,(name,"drag did not rotate")
     assert await page.evaluate('JSON.stringify(window.AtlasGlobe.anchors)') == anchor_snapshot, (name,'rotation changed geographic anchors')
@@ -98,6 +103,7 @@ async def check(browser,name,viewport):
     await page.wait_for_function("window.AtlasGlobe.tileState?.mesh === 'dem'",timeout=20000)
     await page.wait_for_function("window.AtlasGlobe.tileState?.elevation > 1500",timeout=45000)
     await page.wait_for_function("window.AtlasGlobe.focus.settled")
+    await page.wait_for_function("window.AtlasGlobe.tileState?.received.satellite>0",timeout=60000)
     assert any('tiles.maps.eox.at/wmts/' in u for u in imagery),(name,"no successful satellite image responses")
     assert any('tiles.mapterhorn.com/' in u for u in imagery),(name,"no successful DEM image responses")
     print(name,"Acatenango elevation",await page.evaluate("window.AtlasGlobe.tileState"),flush=True)
