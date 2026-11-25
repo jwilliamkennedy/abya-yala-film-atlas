@@ -48,6 +48,11 @@ async def check():
             await collect.click()
             await expect(collect).to_be_disabled()
         assert await page.evaluate("Object.keys(AtlasCollections.current().pins).length===2 && AtlasCollections.current().links.length===0")
+        # Share an explicitly hidden territory layer, not just its opacity.
+        await page.locator("#globe-more-toggle").click()
+        await page.locator("#globe-lands").click()
+        assert not await page.evaluate("AtlasGlobe.territoryLayer.visible")
+        await page.keyboard.press("Escape")
         await page.locator("#globe-collection-toggle").click()
         await page.locator("#globe-draw-link").click()
         films = page.locator(".globe-collected-item")
@@ -63,7 +68,7 @@ async def check():
         camera = await page.evaluate("AtlasGlobe.camera")
         await page.get_by_role("button", name="Share constellation", exact=True).click()
         link = await page.evaluate("navigator.clipboard.readText()")
-        assert "#weave=" in link and "globe=1" in link
+        assert "#weave=" in link and "globe=1" in link and "territories=off" in link
 
         receiver = await browser.new_context(viewport=viewport, reduced_motion="reduce")
         await receiver.route(lambda url: urlsplit(url).scheme in ("https", "http") and urlsplit(url).netloc != origin, lambda r: r.abort())
@@ -76,6 +81,8 @@ async def check():
             assert await opened.evaluate(CONTENTS) == expected
             assert await opened.evaluate("AtlasGlobe.discovery.featured") == featured
             assert await opened.evaluate("AtlasGlobe.discovery.collection.stars") == 2
+            assert not await opened.evaluate("AtlasGlobe.territoryLayer.visible")
+            assert await opened.locator("#globe-lands").get_attribute("aria-pressed") == "false"
             assert await opened.evaluate("localStorage.getItem('atlas-collections-v1')") is None
             actual = await opened.evaluate("AtlasGlobe.camera")
             assert max(abs(a-b) for a,b in zip(actual["center"],camera["center"])) < .02
