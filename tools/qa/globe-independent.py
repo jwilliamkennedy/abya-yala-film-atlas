@@ -112,6 +112,31 @@ async def run(browser,name,viewport):
             await page.locator("#globe-landscape").click()
             await page.wait_for_function("window.AtlasGlobe.tileState.pitch>35 && window.AtlasGlobe.focus.settled")
             await shot(page,f"shots/globe-independent/{name}-tilted.png")
+            # Confirm that the actual reticle, geographic hit test and encounter
+            # remain aligned through close zoom, including a pitched terrain view.
+            await page.locator("#globe-more-toggle").click()
+            await page.locator("#globe-landscape").click()
+            await page.wait_for_function("AtlasGlobe.tileState.pitch<1 && AtlasGlobe.focus.settled")
+            land=await page.evaluate("AtlasGlobe.anchors.find(a=>a.id==='LAND-36072')")
+            assert land
+            await page.locator("#globe-find-toggle").click()
+            await page.locator("#globe-find").select_option(land["id"])
+            await page.wait_for_function("id=>AtlasGlobe.focus.settled && AtlasGlobe.discovery.featured?.land===id",arg=land["id"],timeout=30000)
+            film=await page.evaluate("AtlasGlobe.discovery.featured.film")
+            sizes=[]
+            for z in (3,5,8,10):
+                await page.evaluate("([a,z])=>AtlasGlobe.goTo(a,z)",[land["coordinate"],z])
+                await page.wait_for_function("AtlasGlobe.focus.settled && !AtlasGlobe.tileState.motion.moving",timeout=30000)
+                target=await page.evaluate("""()=>{const G=AtlasGlobe,T=G.focus.target,e=document.querySelector('#globe-aperture').getBoundingClientRect(),b=document.querySelector('#globe-live-map').getBoundingClientRect();return {target:T,inside:G.focus.inside,featured:G.discovery.featured,width:e.width,offset:[e.x+e.width/2-b.x-b.width/2,e.y+e.height/2-b.y-b.height/2],lit:document.querySelector('#atlas-rotational-globe').classList.contains('has-cinema')};}""")
+                assert abs(target["width"]-2*target["target"]["radius"])<.5 and max(map(abs,target["offset"]))<.5,(name,z,target)
+                assert target["target"]["primary"]==land["id"] and target["featured"]["film"]==film and target["lit"],(name,z,target)
+                sizes.append(target["width"])
+            assert sizes[0]>sizes[-1] and sizes[-1]==26,(name,sizes)
+            await page.locator("#globe-more-toggle").click()
+            await page.locator("#globe-landscape").click()
+            await page.wait_for_function("AtlasGlobe.tileState.pitch>35 && AtlasGlobe.focus.settled")
+            assert await page.evaluate("""()=>{const G=AtlasGlobe,t=G.focus.target;const ids=Atlas.lands.filter(l=>!l.browseGroup&&l.groups?.some(g=>g.features.some(f=>d3.geoContains(f,t.coordinate)))).map(l=>l.id);return G.focus.inside.every(id=>ids.includes(id))&&(!t.primary||G.focus.ids.includes(t.primary));}"""),(name,"pitched geographic target mismatch")
+            print(name,"adaptive targeting",sizes,flush=True)
         else:
             await page.wait_for_function("window.AtlasGlobe.discovery.publication==='ready'",timeout=60000)
             await page.wait_for_function("window.AtlasGlobe.focus.settled && !window.AtlasGlobe.tileState.wheelActive")
