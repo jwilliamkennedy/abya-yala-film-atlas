@@ -2802,9 +2802,13 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Collective and Community Media"
+   ],
+   "primary_theme": "Collective and Community Media",
+   "families": [
+    "Expression and Representation"
+   ],
    "form": "Documentary",
    "length": "Short"
   },
@@ -2842,11 +2846,17 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Women and Gender",
+    "Sovereignty and Self-Determination"
+   ],
+   "primary_theme": "Women and Gender",
+   "families": [
+    "Lives and Relations",
+    "Sovereignty and Politics"
+   ],
    "form": "Documentary",
-   "length": null
+   "length": "Feature"
   },
   "DIR-0056-W1031-3": {
    "title": "Kene Yuxi – As voltas do Kene",
@@ -2882,11 +2892,18 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Memory and Oral History",
+    "Elders and Knowledge",
+    "Kinship"
+   ],
+   "primary_theme": "Memory and Oral History",
+   "families": [
+    "Knowledge and Continuity",
+    "Lives and Relations"
+   ],
    "form": "Documentary",
-   "length": null
+   "length": "Feature"
   },
   "Q20261114-87-F2": {
    "title": "Manã Bai, a história do meu pai",
@@ -2898,9 +2915,14 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Linguistic Preservation",
+    "Elders and Knowledge"
+   ],
+   "primary_theme": "Linguistic Preservation",
+   "families": [
+    "Knowledge and Continuity"
+   ],
    "form": "Documentary",
    "length": "Short"
   },
@@ -2914,9 +2936,13 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Elders and Knowledge"
+   ],
+   "primary_theme": "Elders and Knowledge",
+   "families": [
+    "Knowledge and Continuity"
+   ],
    "form": "Documentary",
    "length": "Short"
   },
@@ -2930,9 +2956,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Art, Craft and Making",
+    "Elders and Knowledge"
+   ],
+   "primary_theme": "Art, Craft and Making",
+   "families": [
+    "Expression and Representation",
+    "Knowledge and Continuity"
+   ],
    "form": "Documentary",
    "length": "Short"
   },
@@ -4586,9 +4618,17 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Elders and Knowledge",
+    "LGBTQIA2S",
+    "Health and Healing",
+    "Kinship"
+   ],
+   "primary_theme": "Elders and Knowledge",
+   "families": [
+    "Knowledge and Continuity",
+    "Lives and Relations"
+   ],
    "form": "Animation",
    "length": "Short"
   },
@@ -5502,11 +5542,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Memory and Oral History"
+   ],
+   "primary_theme": "Memory and Oral History",
+   "families": [
+    "Knowledge and Continuity"
+   ],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "Q20261115-770-F8": {
    "title": "Gun Play",
@@ -47179,9 +47223,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Kinship",
+    "Memory and Oral History"
+   ],
+   "primary_theme": "Kinship",
+   "families": [
+    "Knowledge and Continuity",
+    "Lives and Relations"
+   ],
    "form": "Animation",
    "length": "Short"
   },
@@ -49157,9 +49207,14 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Women and Gender",
+    "Health and Healing"
+   ],
+   "primary_theme": "Women and Gender",
+   "families": [
+    "Lives and Relations"
+   ],
    "form": null,
    "length": "Short"
   },
