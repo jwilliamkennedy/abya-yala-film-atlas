@@ -76,6 +76,26 @@ async def check(browser,name,viewport):
     assert hawaii["makers"] >= 30 and hawaii["films"] >= 60, hawaii
     assert hawaii["ciara"] and hawaii["erin"] and hawaii["wongKalu"], hawaii
     print(name,"HAWAII_LAND_RELAY",hawaii,flush=True)
+    # All explicit aliases must resolve to the exact named source feature,
+    # and subgroup-qualified geometries must remain distinct.
+    relays = await page.evaluate("""() => {
+      const A=window.Atlas,C=window.AtlasConstellate,I=C.globeCreditIndex();
+      const aliases=(window.AtlasLandAliasRelays||[]).map(([id,sid,label])=>{
+        const l=A.landById(id);
+        return {id,target:l?.id,ok:!!l?.groups.some(g=>g.features.some(f=>String(f.id)===sid&&f.properties.name===label))};
+      });
+      const groups=['NAME-015','NAME-063','NAME-161','NAME-153'].map(id=>({id,ids:A.landById(id)?.groups.map(g=>String(g.id))}));
+      const subgroup=['LAND-33460','LAND-33458','LAND-33387'].map(id=>({id,count:I.byLand.get(id)?.films.length||0}));
+      const generic=(I.byLand.get('NAME-153')?.films||[]).filter(f=>
+        A.recordLandReferences(f.record).some(r=>r.id==='NAME-153'&&/kaiowa|nhande[wv]a|nande[wv]a|ava[ -]+guarani|mbya/i.test(String(r.basis||'').normalize('NFD').replace(/\\p{Diacritic}/gu,'')))).map(f=>f.id);
+      return {aliases,groups,subgroup,generic};
+    }""")
+    assert len(relays["aliases"]) >= 17 and all(x["ok"] for x in relays["aliases"]), relays
+    assert {x["id"]:x["ids"] for x in relays["groups"]} == {"NAME-015":["33550"],"NAME-063":["36317"],"NAME-161":["33417"],"NAME-153":["36000"]}, relays
+    assert all(x["count"] > 0 for x in relays["subgroup"]), relays
+    assert not relays["generic"], relays
+    print(name,"TERRITORY_ALIAS_AND_SUBGROUP_AUDIT",relays,flush=True)
+
 
 
     await page.wait_for_function("window.AtlasGlobe.terrain in {'tiled':1,'ready':1,'unavailable':1}",timeout=25000)
