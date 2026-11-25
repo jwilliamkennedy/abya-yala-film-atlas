@@ -255,3 +255,40 @@ body.atlas-globe-experiment #globe-close{position:static;z-index:auto;width:100%
 /* The mobile guide's full-width wrapper must not intercept map gestures. */
 #atlas-rotational-globe .globe-guide{pointer-events:none}#atlas-rotational-globe .globe-primary,#atlas-rotational-globe .globe-menu-panel{pointer-events:auto}
 #globe-encounter .globe-art-feature[data-art-state=missing],#globe-encounter .globe-art-feature[data-art-state=broken]{min-height:48px;background:#1d3139}
+
+/* Compact cinema encounter: one image, one title, one metadata/action block.
+   Other territories and sources stay accessible without duplicating cards. */
+#globe-encounter{width:min(348px,calc(100% - 24px));max-height:48%;padding:12px;gap:6px;border-radius:8px;scrollbar-width:thin}
+#globe-encounter .globe-encounter-heading{align-items:baseline;gap:5px;margin:0}
+#globe-encounter .globe-encounter-heading>strong{font-size:17px;line-height:1.22;overflow-wrap:anywhere}
+#globe-encounter .globe-encounter-heading small{font-size:11px;white-space:nowrap}
+#globe-encounter .globe-association{font:11px/1.3 system-ui,sans-serif;color:#b9c8ce}
+#globe-encounter .globe-featured{grid-template-columns:minmax(78px,37%) minmax(0,1fr);gap:10px;margin:4px 0}
+#globe-encounter .globe-feature-art[data-art-state=ready]{width:min(100%,var(--art-feature-width),118px)!important}
+#globe-encounter .globe-feature-copy{gap:4px}
+#globe-encounter .globe-film-title{font-size:15px;line-height:1.2}
+#globe-encounter .globe-film-byline,#globe-encounter .globe-film-facts{font-size:12px;line-height:1.3}
+#globe-encounter .globe-film-actions{gap:6px;align-items:center;margin-top:2px}
+#globe-encounter .globe-film-actions a{font:600 12px/1.4 system-ui,sans-serif}
+#globe-encounter .globe-view-link{padding:5px 8px;border-radius:5px}
+#globe-encounter .globe-overlap,#globe-encounter .globe-credit-details{border-top:1px solid #607b7e45;padding-top:3px;font-size:12px}
+#globe-encounter .globe-overlap summary,#globe-encounter .globe-credit-details summary{padding:5px 0;cursor:pointer}
+#globe-encounter .globe-encounter-nav{gap:6px;margin:0}
+#globe-encounter .globe-encounter-nav .globe-cycle{min-width:32px;min-height:32px}
+#globe-encounter .globe-source-group{display:grid;gap:6px;padding:5px 0;overflow-wrap:anywhere}
+#globe-encounter .globe-source-group p{margin:0;line-height:1.4}
+#globe-encounter .globe-source-group a{color:#bcded5;font-size:12px}
+#globe-encounter .globe-source-label{font-weight:600;color:#c6d6d7}
+#globe-encounter .globe-source-group .globe-film-themes button{font-size:11px;padding:4px 6px;text-align:left}
+#globe-encounter .globe-source-group .globe-related{white-space:normal;max-width:100%}
+#globe-encounter .globe-choices{display:grid;max-height:150px;gap:4px}
+@media(max-width:760px){
+ #globe-encounter{width:min(270px,calc(100% - 62px));max-height:36%;padding:8px;gap:4px}
+ #globe-encounter .globe-encounter-heading>strong{font-size:15px}
+ #globe-encounter .globe-featured{grid-template-columns:minmax(62px,35%) minmax(0,1fr);gap:7px}
+ #globe-encounter .globe-feature-art[data-art-state=ready]{width:min(100%,var(--art-mobile-width),88px)!important}
+ #globe-encounter .globe-film-title{font-size:13px}
+ #globe-encounter .globe-film-byline,#globe-encounter .globe-film-facts{font-size:11px}
+ #globe-encounter .globe-encounter-nav .globe-cycle{min-width:40px;min-height:36px}
+ #globe-encounter .globe-film-actions a{font-size:11px}
+}

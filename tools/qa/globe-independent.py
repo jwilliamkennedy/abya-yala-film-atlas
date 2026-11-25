@@ -139,6 +139,9 @@ async def run(browser,name,viewport):
             await page.wait_for_function("document.querySelector('.globe-credit-data dl') || document.querySelector('.globe-credit-data p')?.textContent.includes('No exact row')",timeout=30000)
             assert await page.locator(".globe-credit-data dl").count()>0,(name,"featured credit missing from public CSV")
             assert await page.locator(".globe-credit-data").get_by_text("Film id",exact=True).count()>0
+            assert await page.locator("#globe-encounter .globe-feature-art").count()==1
+            assert await page.locator("#globe-encounter .globe-film-strip").count()==0
+            assert await page.locator("#globe-encounter .globe-credit-details").count()==1
             await page.locator(".globe-credit-details summary").click()
             print(name,"emergent artwork",await page.evaluate("window.AtlasGlobe.discovery.posterVisible"),flush=True)
             assert await page.evaluate("window.AtlasGlobe.discovery.recent.length>0")
@@ -147,6 +150,7 @@ async def run(browser,name,viewport):
             if await bridge.count():
                 previous=await page.evaluate("window.AtlasGlobe.discovery.featured")
                 target=await bridge.get_attribute("data-target-film")
+                await page.locator(".globe-credit-details summary").click()
                 await bridge.click()
                 await page.wait_for_function("(id)=>window.AtlasGlobe.focus.settled && window.AtlasGlobe.discovery.featured?.film===id",arg=target,timeout=30000)
                 await page.locator("#globe-journey-back").click()

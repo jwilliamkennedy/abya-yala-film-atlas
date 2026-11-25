@@ -123,7 +123,7 @@ async def check(browser,name,viewport):
     assert land in await page.evaluate("window.AtlasGlobe.focus.ids"),(name,"index join failed",land)
     assert await page.locator("#globe-encounter .globe-feature-art").count()>0,(name,"no automatic film encounter")
     assert await page.locator("#globe-encounter .globe-film-title").inner_text(),(name,"no film title")
-    if await page.locator("#globe-encounter .globe-cycle").last.is_enabled():
+    if await page.locator("#globe-encounter .globe-cycle").count() and await page.locator("#globe-encounter .globe-cycle").last.is_enabled():
         await page.locator("#globe-encounter .globe-cycle").last.click()
         assert (await page.evaluate("window.AtlasGlobe.discovery.filmOffset"))>0
     assert await page.evaluate("new URL(window.AtlasGlobe.discovery.shareURL).searchParams.has('at')")

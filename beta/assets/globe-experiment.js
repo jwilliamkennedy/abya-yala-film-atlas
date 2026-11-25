@@ -475,8 +475,8 @@ function renderPublicFields(box,row){
  for(const [label,keys] of Object.entries(publicGroups))section(label,keys);
  section('Additional public fields',Object.keys(row));
 }
-function creditDetails(film){
- const d=el('details','globe-credit-details');d.append(el('summary',null,'Full credit and sources'));const body=el('div','globe-credit-data');d.append(body);
+function creditDetails(film,summaryContent=[]){
+ const d=el('details','globe-credit-details');d.append(el('summary',null,'Sources & themes'),...summaryContent);const body=el('div','globe-credit-data');d.append(body);
  let loading=false,done=false;d.addEventListener('toggle',async()=>{if(!d.open||done||loading)return;loading=true;body.replaceChildren(el('p',null,'Loading public record…'));
  try{const rows=(await publicRows()).get(film.record+'|'+film.film)||[];if(!d.isConnected)return;body.replaceChildren();
  if(!rows.length){body.append(el('p',null,'No exact row in the current public CSV. The Atlas record remains available.'));}else{if(rows.length>1)body.append(el('p',null,'Multiple public rows share this credit key; all are shown.'));for(const row of rows)renderPublicFields(body,row);}
@@ -532,7 +532,7 @@ function button(label,fn,cls){const b=el('button',cls,label);b.type='button';b.a
   const source=C().sourceImage(film);
   container.classList.add('globe-artwork','globe-art-'+kind);
   container.dataset.film=film.id;container.dataset.source=source||'';
-  const placeholder=el('span','globe-art-placeholder',film.title);placeholder.setAttribute('aria-hidden','true');
+  const placeholder=el('span','globe-art-placeholder',kind==='feature'?'No image available':film.title);placeholder.setAttribute('aria-hidden','true');
   container.replaceChildren(placeholder);
   if(!source){container.dataset.artState='missing';return;}
   let url;try{url=new URL(source,location.href);if(!['http:','https:'].includes(url.protocol))throw Error('invalid image');}catch{container.dataset.artState='missing';return;}
@@ -582,38 +582,82 @@ function button(label,fn,cls){const b=el('button',cls,label);b.type='button';b.a
   }
   return hide('no-safe-space-or-small-image');
  }
- function drawEncounter(){
+ function landSources(ref){
+ const b=el('div','globe-source-group');
+ b.append(el('p','globe-association-note',ref?.status==='sourced'?'Sourced land association.':'Provisional land association; not a verified filming location.'));
+ if(ref?.basis)b.append(el('p',null,ref.basis));
+ if(ref?.source){const a=externalLink('Association source ↗',ref.source);if(a)b.append(a);}
+ b.append(el('p',null,'Native Land Digital / MapMaker reference geometry (2023). Overlaps are intentional; shapes are not official boundaries or filming locations.'));
+ const a=externalLink('Native Land Digital ↗','https://native-land.ca/');if(a)b.append(a);
+ return b;
+}
+function encounterLinks(film,work){
+ const actions=el('div','globe-film-actions'),meta=C().globeMetadata(film),view=safeViewing(film);
+ const watch=window.ATLAS_WATCH?.films?.find(x=>x.fid===film.film&&x.links?.some(l=>l.embed));
+ // Never label a trailer or an information page as full-film playback.
+ const play=watch?externalLink('▶ Play',new URL('watch.html#'+encodeURIComponent(film.film),document.baseURI).href,'globe-view-link'):
+  view&&view.label==='Watch'?externalLink('▶ Watch ↗',view.url,'globe-view-link'):
+  view&&view.label==='Trailer'?externalLink('▶ Trailer ↗',view.url,'globe-view-link'):null;
+ if(play)actions.append(play);
+ const source=view?.label==='Film page'?view.url:meta?.row?.film_source||work?.sourceURL;
+ const external=source&&externalLink('Film page ↗',source,'globe-source-link');
+ const profile=externalLink('Atlas record ↗',creditProfile(film),'globe-source-link');
+ if(external)actions.append(external);else if(profile)actions.append(profile);
+ return {actions,profile,external};
+}
+function otherLands(chosen,primary){
+ const others=chosen.filter(r=>r.id!==primary.id);if(!others.length)return null;
+ const d=el('details','globe-overlap');d.append(el('summary',null,'Other lands here ('+others.length+')'));
+ const list=el('div','globe-choices');
+ for(const r of others){const n=matchingFilms(r.id).length,btn=button(r.name+(n?' · '+n:' · no matching films'),()=>{preferredLand=r.id;pendingFilm='';filmOffset=0;focusKey='';drawEncounter();renderSoon();},'globe-land-choice');list.append(btn);}
+ d.append(list);return d;
+}
+function drawEncounter(){
  const panel=$('#globe-encounter'),status=$('#globe-status'),actual=new Set(inside.map(r=>r.id));
  const chosen=focusIds.map(id=>byId.get(id)).filter(Boolean);
  const primary=chosen.find(r=>r.id===preferredLand)||chosen.find(r=>actual.has(r.id)&&matchingFilms(r.id).length)||chosen.find(r=>matchingFilms(r.id).length)||chosen.find(r=>actual.has(r.id))||chosen[0];
- const sig=JSON.stringify([focusIds,inside.map(v=>v.id),primary?.id,primary?matchingFilms(primary.id).map(f=>f.id):[],filmOffset,yearBand,currentTheme(),facetFilter,publicationStatus,pendingFilm,journey.length]);
- if(sig===focusKey){placeEmergent();return;}focusKey=sig;panel.replaceChildren();
- if(!primary){featured=null;placeEmergent();panel.append(el('strong',null,'Explore the globe'),el('p','globe-empty','Move a light into the circle to discover cinema.'));status.textContent='No land reference in focus';return;}
- const films=rankedFilms(primary.id);
- if(lastEncounter!==primary.id){filmOffset=0;lastEncounter=primary.id;}
+ const films=primary?rankedFilms(primary.id):[];
+ if(primary&&lastEncounter!==primary.id){filmOffset=0;lastEncounter=primary.id;}
  if(pendingFilm){const i=films.findIndex(f=>f.id===pendingFilm);if(i>=0){filmOffset=i;pendingFilm='';}}
  filmOffset=Math.min(filmOffset,Math.max(0,films.length-1));
+ const sig=JSON.stringify([focusIds,inside.map(v=>v.id),primary?.id,films.map(f=>f.id),filmOffset,yearBand,currentTheme(),facetFilter,publicationStatus,pendingFilm,journey.length]);
+ if(sig===focusKey){placeEmergent();return;}focusKey=sig;panel.replaceChildren();panel.scrollTop=0;
+ if(!primary){featured=null;panel.append(el('strong',null,'Explore the globe'),el('p','globe-empty','Move a light into the circle to discover cinema.'));status.textContent='No land reference in focus';placeEmergent();return;}
  recordVisit(primary);
- const head=el('div','globe-encounter-heading');head.append(el('strong',null,primary.name),el('small',null,films.length+' film credit'+(films.length===1?'':'s')));
- panel.append(el('small','globe-kicker',actual.has(primary.id)?'Land at the focal point':'Nearby land reference'),head);
- if(chosen.length>1){const overlap=el('details','globe-overlap');overlap.append(el('summary',null,chosen.length+' land references · '+chosen.filter(r=>matchingFilms(r.id).length).length+' with matching films'));const choices=el('div','globe-choices');for(const r of chosen){const btn=button(r.name+' · '+matchingFilms(r.id).length,()=>{preferredLand=r.id;filmOffset=0;focusKey='';drawEncounter();renderSoon();},'globe-land-choice');btn.setAttribute('aria-pressed',String(primary.id===r.id));choices.append(btn);}overlap.append(choices);panel.append(overlap);}
- if(films.length){
-  const film=films[filmOffset];featured={land:primary.id,film};const card=el('div','globe-featured'),art=button('',()=>{C().showPreview(film,{land:primary.id});sync();},'globe-feature-art');
+ const film=films[filmOffset],ref=film?A().recordLandReferences(film.record).find(r=>r.id===primary.id):null;
+ const head=el('div','globe-encounter-heading');head.append(el('strong',null,primary.name));
+ if(films.length>1)head.append(el('small',null,films.length+' films'));
+ panel.append(head);
+ const assoc=el('small','globe-association',film?(ref?.status==='sourced'?'Sourced association':'Provisional association'):(actual.has(primary.id)?'Land at the focal point':'Nearby land reference'));if(film&&!actual.has(primary.id))assoc.textContent='Nearby · '+assoc.textContent;panel.append(assoc);
+ if(film){
+  featured={land:primary.id,film};const card=el('div','globe-featured'),art=button('',()=>{C().showPreview(film,{land:primary.id});sync();},'globe-feature-art');
   art.setAttribute('aria-label','Preview '+film.title);artwork(art,film,'feature');
   const copy=el('div','globe-feature-copy'),title=button(film.title,()=>{C().showPreview(film,{land:primary.id});sync();},'globe-film-title');
-  const ref=A().recordLandReferences(film.record).find(r=>r.id===primary.id);copy.append(title,el('small','globe-film-byline',[film.maker,film.year].filter(Boolean).join(' · ')));const work=C().globeMetadata(film)?.film||A().recordById(film.record)?.films.find(x=>x.id===film.film);const facet=exactFacet(film),format=facet.f||work?.weaveForm||work?.medium;const language=facet.l||work?.languageLabels||work?.languages;const lang=Array.isArray(language)?language.join(' · '):typeof language==='string'?language:'';const length=facet.n||({S:'Short',F:'Feature',M:'Mid-length'}[work?.weaveLength]||work?.weaveLength),runtime=Number(work?.runtimeMinutes)>0?work.runtimeMinutes+' min':'';const facts=[format,length,runtime,lang].filter(Boolean).join(' · ');if(facts)copy.append(el('small','globe-film-facts',facts));copy.append(el('small','globe-provenance',ref?.status==='sourced'?'Sourced land association':'Provisional land association'));
-  if(ref?.source){const source=externalLink('Association source',ref.source,'globe-source-link');if(source)copy.append(source);}
-  const actions=el('div','globe-film-actions');const view=safeViewing(film);if(view){const a=externalLink(view.label+' ↗',view.url,'globe-view-link');if(a)actions.append(a);}
-  const profile=externalLink('Atlas record ↗',creditProfile(film),'globe-source-link');if(profile)actions.append(profile);copy.append(actions);
-  const themes=el('div','globe-film-themes');for(const t of C().terms(film).slice(0,3))themes.append(button(t,()=>{C().showThemeLens([t]);filmOffset=0;sync();}));if(themes.childNodes.length)copy.append(themes);
+  const work=C().globeMetadata(film)?.film||A().recordById(film.record)?.films.find(x=>x.id===film.film),facet=exactFacet(film),format=facet.f||work?.weaveForm||work?.medium;
+  const rawLength=facet.n||work?.weaveLength,length=({S:'Short',F:'Feature',M:'Mid-length'})[rawLength]||rawLength,runtime=Number(work?.runtimeMinutes)>0?work.runtimeMinutes+' min':'';
+  copy.append(title,el('small','globe-film-byline',[film.maker,film.year].filter(Boolean).join(' · ')));
+  const facts=[format,length,runtime].filter(Boolean).join(' · ');if(facts)copy.append(el('small','globe-film-facts',facts));
+  const {actions,profile,external}=encounterLinks(film,work);if(actions.childNodes.length)copy.append(actions);
   card.append(art,copy);panel.append(card);
-  const extras=el('details','globe-film-extras');extras.open=encounterExpanded;extras.append(el('summary',null,'More films and land sources'));extras.addEventListener('toggle',()=>{encounterExpanded=extras.open;placeEmergent();});const strip=el('div','globe-film-strip');for(const f of films.slice(filmOffset,filmOffset+3)){const btn=button('',()=>{filmOffset=films.indexOf(f);focusKey='';drawEncounter();},'globe-film');btn.setAttribute('aria-label','Select '+f.title);btn.setAttribute('aria-pressed',String(f.id===film.id));const a=el('span','globe-film-art');artwork(a,f,'strip');const c=el('span','globe-film-copy');c.append(el('strong',null,f.title),el('small',null,f.year||''));btn.append(a,c);strip.append(btn);}extras.append(strip);
-  const nav=el('div','globe-encounter-nav');const prev=button('‹',()=>{filmOffset=(filmOffset+films.length-1)%films.length;focusKey='';drawEncounter();},'globe-cycle'),next=button('›',()=>{filmOffset=(filmOffset+1)%films.length;focusKey='';drawEncounter();},'globe-cycle');prev.setAttribute('aria-label','Previous film');next.setAttribute('aria-label','Next film');prev.disabled=next.disabled=films.length<2;
-  nav.append(prev,el('small',null,(filmOffset+1)+' / '+films.length),next,button('Land catalogue',()=>{C().openLand(primary.id);sync();},'globe-more'));panel.append(nav);
-  const related=relatedEncounter(film,primary.id);if(related){const bridge=button('Follow '+related.term+' · '+related.ref.name,()=>{followRelated(related);},'globe-related');bridge.title=related.film.title;bridge.dataset.targetFilm=related.film.id;bridge.dataset.targetLand=related.ref.id;panel.append(bridge);}panel.append(extras,creditDetails(film));
- }else{featured=null;panel.append(el('p','globe-empty',primary.count?'No films match the active filters.':'No linked films in the Atlas yet. This is still a mapped land reference.'),button('Explore this land',()=>C().openLand(primary.id),'globe-more'));if(primary.count)panel.append(button('Clear film filters',clearDiscoveryFilters,'globe-more'));else if(points.some(p=>matchingFilms(p.id).length))panel.append(button('Discover a film',surprise,'globe-more'));}
- if(journey.length){const back=button('‹ Previous encounter',journeyBack,'globe-related');back.id='globe-journey-back';panel.append(back);}
- const provenance=el('details','globe-land-source');provenance.append(el('summary',null,'About these land references'),el('p',null,'The atlas uses the 2023 Native Land Digital / MapMaker reference geometry. Overlaps are intentional; these are not official boundaries or filming locations.'));const link=externalLink('Native Land Digital ↗','https://native-land.ca/');if(link)provenance.append(link);const extra=panel.querySelector('.globe-film-extras');(extra||panel).append(provenance);
+  if(films.length>1){
+   const nav=el('div','globe-encounter-nav'),prev=button('‹',()=>{filmOffset=(filmOffset+films.length-1)%films.length;focusKey='';drawEncounter();},'globe-cycle'),next=button('›',()=>{filmOffset=(filmOffset+1)%films.length;focusKey='';drawEncounter();},'globe-cycle');
+   prev.setAttribute('aria-label','Previous film');next.setAttribute('aria-label','Next film');
+   nav.append(prev,el('small',null,(filmOffset+1)+' / '+films.length),next,button('All films',()=>{C().openLand(primary.id);sync();},'globe-more'));panel.append(nav);
+  }
+  const other=otherLands(chosen,primary);if(other)panel.append(other);
+  const source=landSources(ref);if(external&&profile)source.append(profile);
+  const language=facet.l||work?.languageLabels||work?.languages,lang=Array.isArray(language)?language.join(' · '):typeof language==='string'?language:'';
+  if(lang)source.append(el('p',null,'Language: '+lang));
+  const themes=el('div','globe-film-themes');for(const t of C().terms(film))themes.append(button(t,()=>{C().showThemeLens([t]);filmOffset=0;sync();}));if(themes.childNodes.length){source.append(el('small','globe-source-label','Themes'),themes);}
+  const related=relatedEncounter(film,primary.id);if(related){const bridge=button('Follow '+related.term+' · '+related.ref.name,()=>{followRelated(related);},'globe-related');bridge.title=related.film.title;bridge.dataset.targetFilm=related.film.id;bridge.dataset.targetLand=related.ref.id;source.append(bridge);}
+  if(journey.length){const back=button('‹ Previous encounter',journeyBack,'globe-related');back.id='globe-journey-back';panel.append(back);}
+  panel.append(creditDetails(film,[source]));
+ }else{
+  featured=null;panel.append(el('p','globe-empty',primary.count?'No films match the active filters.':'No linked films in the Atlas yet.'));
+  const other=otherLands(chosen,primary);if(other)panel.append(other);
+  if(primary.count)panel.append(button('Clear film filters',clearDiscoveryFilters,'globe-more'));else if(points.some(p=>matchingFilms(p.id).length))panel.append(button('Discover a film',surprise,'globe-more'));
+  const d=el('details','globe-credit-details');d.append(el('summary',null,'Sources'),landSources(null));panel.append(d);
+ }
  status.textContent=primary.name+' · '+films.length+' matching film credits';placeEmergent();
 }
 
