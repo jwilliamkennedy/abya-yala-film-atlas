@@ -12,11 +12,11 @@ async def main():
         browser=await p.chromium.launch(args=["--use-angle=swiftshader","--enable-unsafe-swiftshader"])
         page=await browser.new_page(viewport={"width":1440,"height":900})
         await page.goto(BASE+"?constellate=1&globe=1",wait_until="domcontentloaded",timeout=90000)
-        await page.wait_for_function("window.AtlasGlobe?.active && window.AtlasConstellate?.globeCreditIndex",timeout=60000)
+        await page.wait_for_function("window.AtlasGlobe?.active && window.AtlasGlobe.discovery.publication==='ready' && window.AtlasConstellate?.globeCreditIndex",timeout=60000)
         live=await page.evaluate("""() => {
           const A=window.Atlas,C=window.AtlasConstellate,I=C.globeCreditIndex(),F=window.ATLAS_FACETS||{};
           return {makers:A.allRecords().map(r=>({id:r.id,name:r.name,community:r.community,nation:r.nation,countries:r.countryCodes})),
-            films:I.films.map(x=>{const r=A.recordById(x.record),f=r.films.find(f=>f.id===x.film);return {maker:x.record,film:x.film,title:x.title,year:x.year,credit:f.credit,refs:I.refs.get(x.id),terms:C.terms(x),image:C.sourceImage(x),watch:A.viewingRoutes(f).map(l=>l.url),facets:F.films?.[x.film]||{}}}),
+            films:I.films.map(x=>{const r=A.recordById(x.record),f=r.films.find(f=>f.id===x.film),m=C.globeMetadata(x);return {maker:x.record,film:x.film,title:x.title,year:x.year,credit:m?.film.credit||f.credit,refs:I.refs.get(x.id),terms:C.terms(x),image:C.sourceImage(x),watch:C.globeViewingRoutes(x).map(l=>l.url),facets:m?{l:m.l,f:m.f,n:m.n,p:m.p,t:m.t}:F.films?.[x.film]||{},exportFacet:C.globeFacetExport(x.film),baked:F.films?.[x.film]||{},hasPublic:!!m}}),
             languages:Object.keys(F.languages||{}),terms:Object.values(F.families||{}).flat()};
         }""")
         await browser.close()
@@ -28,6 +28,7 @@ async def main():
     for k,r in published.items():
         x=index.get(k)
         if not x:note("published_credit_missing",k);continue
+        if not x['hasPublic']:note('published_exact_row_missing',k)
         for col in ("title","year","credit"):
             if r.get(col) and str(r[col]).strip()!=str(x.get(col) or "").strip():note("published_"+col,k,r[col],x.get(col))
         if r.get("themes") and not parts(r["themes"]).issubset(set(x["terms"])):note("published_theme",k,r["themes"],x["terms"])
@@ -44,7 +45,7 @@ async def main():
     for r in pub:
         if r["filmmaker_id"] not in mid:note("published_maker_missing",r["filmmaker_id"])
     facet_index={}
-    for x in live["films"]:facet_index.setdefault(x["film"],x["facets"])
+    for x in live["films"]:facet_index.setdefault(x["film"],x["exportFacet"] or {})
     for r in facets:
         field={"language":"l","theme":"t","form":"f","length":"n"}.get(r["field"])
         if not field:continue
@@ -59,5 +60,6 @@ async def main():
     with open("shots/globe-independent/csv-concordance.json","w",encoding="utf-8") as f:json.dump(report,f,ensure_ascii=False,indent=2)
     print("CSV_CONCORDANCE",json.dumps({"counts":report["counts"],"names_export_differences":report["names_export_differences"],"runtime_only_credits":len(report["runtime_only_credits"]),"discrepancies":{k:len(v) for k,v in discrepancy.items()}},ensure_ascii=False),flush=True)
     for k,v in discrepancy.items():print(k,json.dumps(v[:3],ensure_ascii=False),flush=True)
-    assert not discrepancy["published_credit_missing"] and not discrepancy["published_maker_missing"],"Published records absent from runtime; see report"
+    assert not any(discrepancy.values()),'CSV/runtime discrepancies remain; see report'
+    assert not report['names_export_differences'] and not report['runtime_only_credits'],'Export identity mismatch'
 if __name__=="__main__":asyncio.run(main())

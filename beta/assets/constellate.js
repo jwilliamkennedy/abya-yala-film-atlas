@@ -35,11 +35,44 @@ if(new URLSearchParams(location.search).get('constellation-embed')==='1'){
  const raw=A.allRecords().flatMap(r=>[...r.films.map(f=>({...S.item({type:'film',record:r.id,film:f.id,title:f.title,maker:r.name,year:f.year,image:A.mediaForFilm(f)?.image}),community:r.community})),{...S.item({type:'maker',record:r.id,title:r.name,maker:r.name}),community:r.community}]);
  const key=x=>x.type==='film'?'t:'+norm(x.title).replace(/[^a-z0-9]+/g,' ').trim()+'|'+(x.year||''):x.id,grouped=new Map();const byFilm=new Map();for(const x of raw){let k=key(x);if(x.type==='film'&&x.film){if(byFilm.has(x.film))k=byFilm.get(x.film);else byFilm.set(x.film,k);}if(!grouped.has(k))grouped.set(k,[]);grouped.get(k).push(x);}const catalog=[...grouped.values()].map(g=>({...g[0],image:g.find(x=>x.image)?.image||'',credits:g,maker:[...new Set(g.map(x=>x.maker))].join(' · ')}));const catalogById=new Map(catalog.map(x=>[x.id,x]));
  const globeCredits=new Map(raw.filter(x=>x.type==='film').map(x=>[x.id,{...x,credits:[x]}]));
- let globeRelations=null;
+ let globeRelations=null,globePublication=null,globeFacetRows=new Map(),globeMetadataCache=new Map();
  const globeMode=()=>!!window.AtlasGlobe?.active;
+ const csvList=v=>[...new Set(String(v||'').split(/\s*;\s*/).filter(Boolean))];
+ const baseFilm=x=>A.recordById(x?.record)?.films.find(f=>f.id===x.film)||null;
+ function installGlobePublication(rows,facets){
+  globePublication=rows;globeFacetRows=new Map();globeMetadataCache.clear();globeRelations=null;
+  for(const row of facets){if(!row.film_id||!row.value)continue;let f=globeFacetRows.get(row.film_id);if(!f){f={l:[],t:[],f:'',n:'',p:'',sources:[],conflicts:[]};globeFacetRows.set(row.film_id,f);}
+   const field={language:'l',theme:'t',form:'f',length:'n'}[row.field];if(!field)continue;
+   if(Array.isArray(f[field])){if(!f[field].includes(row.value))f[field].push(row.value);}
+   else if(!f[field])f[field]=row.value;else if(f[field]!==row.value)f.conflicts.push([row.field,f[field],row.value]);
+   if(row.field==='theme'&&/primary theme/i.test(row.basis||''))f.p=row.value;
+   f.sources.push(row);
+  }
+  if(globeMode())refreshDiscoveryMode();
+ }
+ function globeFacetExport(id){return globeFacetRows.get(id)||null;}
+ function globeMetadata(x){
+  if(x?.type!=='film'||!globePublication)return null;
+  const key=x.record+'|'+x.film;if(globeMetadataCache.has(key))return globeMetadataCache.get(key);
+  const rows=globePublication.get(key)||[],row=rows.length===1?rows[0]:null;
+  if(!row)return null;
+  const raw=baseFilm(x),fac=globeFacetRows.get(x.film),compact=window.ATLAS_FACETS?.films?.[x.film]||{};
+  const value=(column,field)=>row[column]||fac?.[field]||compact[field]||'';
+  const list=(column,field)=>row[column]?csvList(row[column]):fac?.[field]?.length?fac[field]:compact[field]||[];
+  const t=list('themes','t').filter(v=>FAM[v]),l=list('languages','l');
+  const routes=[1,2].map(n=>({url:row['watch_'+n+'_url'],title:row['watch_'+n+'_label']||'Viewing page',context:row['watch_'+n+'_note']||'',source:'Published CSV'})).filter(v=>safeLink(v.url));
+  const result={row,t,l,f:value('form','f'),n:value('length','n'),p:value('primary_theme','p'),routes,
+    image:row.image_url||'',themeSource:row.theme_source||'',languageSource:row.language_source||'',creditSource:row.film_source||'',
+    film:{...raw,credit:row.credit||raw?.credit,medium:row.medium||raw?.medium,runtimeMinutes:row.runtime_min||raw?.runtimeMinutes,
+    languageLabels:l,weaveForm:value('form','f'),weaveLength:value('length','n'),primaryTheme:value('primary_theme','p'),themeSource:row.theme_source||raw?.themeSource,sourceURL:row.film_source||raw?.sourceURL}};
+  globeMetadataCache.set(key,result);return result;
+ }
+ function globeViewingRoutes(x){const m=globeMetadata(x),f=baseFilm(x);return m?.routes.length?m.routes:(f?A.viewingRoutes(f):[]);}
+ function exactGlobeMeta(x){return globeMode()&&(!x?.credits||x.credits.length===1)?globeMetadata(x):null;}
+
  const discoveryItem=id=>(globeMode()?globeCredits.get(id):null)||catalogById.get(id);let azTab='film',azKey='',browsePageStart=0,browsePageLimit=48,browseSignature='',focusThread=false;const azSort=new Intl.Collator(undefined,{sensitivity:'base',numeric:true}),sortKey=v=>String(v||'').replace(/^[\s"'“”‘’¡¿(\[«.…-]+/u,''),letterOf=x=>{const raw=String(x.title||'').trim();if(!/^\p{L}/u.test(raw))return '#';const ch=norm(raw).charAt(0).toUpperCase();return /^[A-Z]$/.test(ch)?ch:'#';},azCache={},azAll=type=>azCache[type]||(azCache[type]=catalog.filter(x=>x.type===type).sort((a,b)=>{const la=letterOf(a),lb=letterOf(b);return la==='#'&&lb!=='#'?1:lb==='#'&&la!=='#'?-1:azSort.compare(la==='#'?a.title:sortKey(a.title),lb==='#'?b.title:sortKey(b.title));}));
- function tags(x){const r=A.recordById(x.record),credits=x.type==='film'?(x.credits||grouped.get(byFilm.get(x.film))||[x]):[];const fs=x.type==='film'?credits.flatMap(c=>A.recordById(c.record)?.films.filter(f=>f.id===c.film)||[]):r?.films;return [...new Map((fs||[]).flatMap(f=>f.themes||[]).map(t=>[t.term+'|'+t.source,t])).values()];}
- function filmOf(x){if(x?.type!=='film')return null;return A.recordById(x.record)?.films.find(f=>f.id===x.film)||null;}
+ function tags(x){const m=exactGlobeMeta(x);if(m)return m.t.map(term=>({term,source:'curator',family:FAM[term]}));const r=A.recordById(x.record),credits=x.type==='film'?(x.credits||grouped.get(byFilm.get(x.film))||[x]):[];const fs=x.type==='film'?credits.flatMap(c=>A.recordById(c.record)?.films.filter(f=>f.id===c.film)||[]):r?.films;return [...new Map((fs||[]).flatMap(f=>f.themes||[]).map(t=>[t.term+'|'+t.source,t])).values()];}
+ function filmOf(x){if(x?.type!=='film')return null;return exactGlobeMeta(x)?.film||baseFilm(x);}
  function publishedValues(v){
   if(Array.isArray(v))return v.flatMap(publishedValues);
   if(typeof v==='string')return v.split(/\s*;\s*/).map(x=>x.trim()).filter(Boolean);
@@ -93,11 +126,11 @@ if(new URLSearchParams(location.search).get('constellation-embed')==='1'){
  // deliberately a placeholder, not an inferred still or filmmaker portrait.
  function sourceImage(x){
   if(!x||x.type!=='film')return '';
-  return window.AtlasArtwork.imageForItem(x)||catalogById.get(x.id)?.image||x.image||'';
+  return exactGlobeMeta(x)?.image||window.AtlasArtwork.imageForItem(x)||catalogById.get(x.id)?.image||x.image||'';
  }
  function viewingAction(x){
   const works=x?.type==='film'?(x.credits||grouped.get(byFilm.get(x.film))||[x]):[];
-  const routes=works.flatMap(w=>{const f=filmOf(w);return f?A.viewingRoutes(f):[];}).filter(l=>{try{return new URL(l.url).protocol==='https:';}catch{return false;}});
+  const routes=works.flatMap(w=>{if(globeMode())return globeViewingRoutes(w);const f=filmOf(w);return f?A.viewingRoutes(f):[];}).filter(l=>{try{return new URL(l.url).protocol==='https:';}catch{return false;}});
   const kind=l=>/trailer|teaser|preview/i.test(l.title||'')?'Trailer':/watch|full film|stream|viewing|ver pel[ií]cula|ver filme/i.test(l.title||'')?'Watch':'Film page';
   return routes.map(l=>({url:l.url,label:kind(l)})).sort((a,b)=>['Watch','Trailer','Film page'].indexOf(a.label)-['Watch','Trailer','Film page'].indexOf(b.label))[0]||null;
  }
@@ -1366,7 +1399,7 @@ function stopPlay(){if(!player)return;playThread=null;pausePlay(true);player.hid
   const x=previewFilm;if(!x)return;const p=$('#weave-film-preview'),f=filmOf(x),r=A.recordById(x.record),media=f&&A.mediaForFilm(f),own=existingWork(x),has=!!(own&&S.activeThread().items.includes(own.id)),refs=references(x),src=safeLink(f?.themeSource);
   const facts=pairFact('Year',x.year)+pairFact('People',publishedValues(r?.community).join(' · '))+pairFact('Language',publishedValues(f?.languageLabels||f?.languages||f?.language).join(' · '))+pairFact('Form',f?.weaveForm||f?.medium)+pairFact('Mapped land references',refs.map(v=>v.name).join(' · '));
   const ranked=rankRelated(x),bridge=ranked.find(v=>v.themeCount&&!v.land&&v.x.record!==x.record),related=[...new Map([bridge,...ranked].filter(Boolean).map(v=>[v.x.id,v])).values()].slice(0,3);
-  const atlasURL=safeLink(new URL(x.href||'./',location.href).href);
+  const atlasURL=safeLink(globeMode()?new URL('maker/'+encodeURIComponent(x.record)+'.html#'+encodeURIComponent(x.film),document.baseURI).href:new URL(x.href||'./',location.href).href);
   p.innerHTML='<div class="weave-preview-head"><button type="button" data-preview-back>← Back</button><span>Film preview</span></div><div class="weave-preview-main">'+thumb(x)+'<div><h3 tabindex="-1">'+esc(x.title)+'</h3><p>'+esc([x.maker,x.year].filter(Boolean).join(' · '))+'</p><div class="weave-discovery-actions"><button class="weave-primary-add" type="button" data-preview-add="'+esc(x.id)+'"'+(has?' disabled':'')+'>'+(has?'On thread':'+ Add')+'</button>'+viewingLink(x)+'</div></div></div><div class="weave-preview-themes">'+themeButtons(x)+'</div>'+(terms(x).length?'<small class="weave-preview-note">Themes from the catalog. Select two to explore their intersection.</small>':'')+(media?.synopsis?'<p class="weave-preview-synopsis">'+esc(media.synopsis)+'</p>':'')+'<details class="weave-preview-facts"><summary>Film details and sources</summary><dl>'+facts+'</dl>'+(src?'<a href="'+esc(src)+'" target="_blank" rel="noopener noreferrer">Synopsis source ↗</a>':'')+(atlasURL?' <a href="'+esc(atlasURL)+'" target="_blank" rel="noopener noreferrer">Atlas film record ↗</a>':'')+'</details>'+(related.length?'<h4>Discover next</h4><div class="weave-encounter-grid">'+related.map(v=>'<article><button type="button" class="weave-encounter-art" data-preview-film="'+esc(v.x.id)+'">'+thumb(v.x)+'<strong>'+esc(v.x.title)+'</strong></button><small>'+esc([v.x.maker,v.x.year].filter(Boolean).join(' · '))+'</small><small class="weave-encounter-reason">'+esc(v.bases.find(t=>t.startsWith('Shared theme:'))||v.bases[0])+'</small><button type="button" data-film-pair="'+esc(v.x.id)+'" data-pair-seed="'+esc(x.id)+'">Compare</button></article>').join('')+'</div>':'');
   p.hidden=false;panel.classList.add('has-film-preview');
  }
@@ -1513,7 +1546,7 @@ function stopPlay(){if(!player)return;playThread=null;pausePlay(true);player.hid
  {const z=document.querySelector('.map-panel .zoom');let b=$('#atlas-unmap');if(!b&&z){z.insertAdjacentHTML('beforeend','<button id="atlas-unmap" aria-pressed="false" title="Disappear the cartography: keep names, lose coastlines, borders and shading">Disappear map</button>');b=$('#atlas-unmap');}
   if(b&&!b.dataset.atlasBound){b.dataset.atlasBound='1';const set=on=>{document.body.classList.toggle('atlas-unmapped',on);b.setAttribute('aria-pressed',String(on));b.textContent=on?'Return map':'Disappear map';try{localStorage.setItem('atlas-unmapped',on?'1':'0');}catch{}};b.onclick=()=>set(!document.body.classList.contains('atlas-unmapped'));try{if(localStorage.getItem('atlas-unmapped')==='1')set(true);}catch{}}}
  map.dataset.dropLabel='Drop to add to the thread';
- window.AtlasConstellate={setTab,open,browse,close,exit,showPreview,get previewFilm(){return previewFilm},previewLandIds:()=>previewFilm?references(previewFilm).map(r=>r.id):[],showThemeLens,clearThemeLens,landMatchesTheme,themeIntersection,themeTerms:()=>[...discoveryIndex().byTheme.keys()],thumb,openLand,openLands,readFromStart,undo,redo,fit,add,followFilm,showPicker,setRead,readThread,shareURL,citation,csvExport,jsonExport,choose,startLink,reference,tags,play:playWeave,stopPlay,pausePlay,playStep,get playing(){return !!player},get enabled(){return enabled},get selectedLand(){return landShown},get selectedLandIds(){return [...selectedLandIds]},get positions(){return new Map(positions)},get anchors(){return new Map(anchors)},get catalog(){return catalog},themeFilms,themeThread,landThread,landFilmCount,refreshDiscoveryMode,globeLandFilmCount:id=>globeIndex().byLand.get(id)?.films.length||0,globeLandCatalogFilms:globeLandFilms,globeCreditIndex:()=>globeIndex(),landCatalogFilms:id=>(landFilms().get(id)?.films||[]).filter(x=>!themeLens||themeLens.ids.has(x.id)),trace:startTrace,stopTrace,get tracing(){return !!trace},terms,sourceImage,get view(){return{k:1,x:0,y:0}}};
+ window.AtlasConstellate={setTab,open,browse,close,exit,showPreview,get previewFilm(){return previewFilm},previewLandIds:()=>previewFilm?references(previewFilm).map(r=>r.id):[],showThemeLens,clearThemeLens,landMatchesTheme,themeIntersection,themeTerms:()=>[...discoveryIndex().byTheme.keys()],thumb,openLand,openLands,readFromStart,undo,redo,fit,add,followFilm,showPicker,setRead,readThread,shareURL,citation,csvExport,jsonExport,choose,startLink,reference,tags,play:playWeave,stopPlay,pausePlay,playStep,get playing(){return !!player},get enabled(){return enabled},get selectedLand(){return landShown},get selectedLandIds(){return [...selectedLandIds]},get positions(){return new Map(positions)},get anchors(){return new Map(anchors)},get catalog(){return catalog},themeFilms,themeThread,landThread,landFilmCount,refreshDiscoveryMode,globeLandFilmCount:id=>globeIndex().byLand.get(id)?.films.length||0,globeLandCatalogFilms:globeLandFilms,globeCreditIndex:()=>globeIndex(),installGlobePublication,globeMetadata,globeFacetExport,globeViewingRoutes,landCatalogFilms:id=>(landFilms().get(id)?.films||[]).filter(x=>!themeLens||themeLens.ids.has(x.id)),trace:startTrace,stopTrace,get tracing(){return !!trace},terms,sourceImage,get view(){return{k:1,x:0,y:0}}};
  // Share snapshots are additive: never replace a newer local weave with an old link.
  try{const u=new URL(inbound),payload=new URLSearchParams(u.hash.slice(1)).get('weave');if(payload){if(payload.length>100000)throw Error('Share link is too large. Import JSON instead.');const b64=s=>s.replace(/-/g,'+').replace(/_/g,'/');let raw;if(payload[0]==='z'){const bin=atob(b64(payload.slice(1))),bytes=Uint8Array.from(bin,c=>c.charCodeAt(0));raw=JSON.parse(await new Response(new Blob([bytes]).stream().pipeThrough(new DecompressionStream('deflate-raw'))).text());}else raw=JSON.parse(decodeURIComponent(escape(atob(b64(payload)))));if(raw.version!==2||!raw.weave)throw Error('Unsupported constellation link.');const fingerprint=String([...payload].reduce((h,c)=>Math.imul(h^c.charCodeAt(0),16777619),2166136261)>>>0);busy=true;S.importWeave(raw.weave,fingerprint);restorePersistedAnnotations({...raw.weave,id:S.current().id});S.save();busy=false;known.set(S.current().id,copy(S.current()));open();if(u.searchParams.get('read')==='1')readFromStart();else setRead(false);fit('quiet');if(u.searchParams.get('play')==='1')playWeave();}else if(u.searchParams.get('constellate')==='1'){const id=u.searchParams.get('weave');if(id&&S.state.collections.some(c=>c.id===id)){busy=true;S.activate(id);busy=false;}const wantRead=u.searchParams.get('read')==='1';open({dock:wantRead||!!S.current().items.length});if(wantRead)setRead(true);if(u.searchParams.get('play')==='1')playWeave();}}catch(err){busy=false;open();status('Could not open share link: '+err.message);}
 })().catch(e=>console.error('Constellate could not open',e));

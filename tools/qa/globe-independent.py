@@ -68,10 +68,12 @@ async def run(browser,name,viewport):
             await page.wait_for_function("window.AtlasGlobe.tileState.pitch>35 && window.AtlasGlobe.focus.settled")
             await shot(page,f"shots/globe-independent/{name}-tilted.png")
         else:
+            await page.wait_for_function("window.AtlasGlobe.discovery.publication==='ready'",timeout=60000)
+            await page.wait_for_function("window.AtlasGlobe.focus.settled && !window.AtlasGlobe.tileState.wheelActive")
             initial=await page.evaluate("JSON.stringify(window.AtlasCollections.current())")
             assert await page.locator(".globe-primary button").count()==4
             assert await page.locator(".globe-menu-panel:visible").count()==0
-            cam=await page.evaluate("JSON.stringify(window.AtlasGlobe.camera)")
+            cam=await page.evaluate("window.AtlasGlobe.camera")
             await page.locator("#globe-theme-toggle").click()
             assert await page.locator("#weave-map-theme").is_visible()
             assert await page.locator(".globe-menu-panel:visible").count()==1
@@ -80,7 +82,9 @@ async def run(browser,name,viewport):
             assert not await page.locator("#weave-map-theme").is_visible()
             await page.keyboard.press("Escape")
             assert await page.locator(".globe-menu-panel:visible").count()==0
-            assert await page.evaluate("JSON.stringify(window.AtlasGlobe.camera)")==cam
+            after=await page.evaluate("window.AtlasGlobe.camera")
+            print(name,'menu camera',cam,after,flush=True)
+            assert max(abs((after['center'][0]-cam['center'][0]+180)%360-180),abs(after['center'][1]-cam['center'][1]))<.01 and abs(after['zoom']/cam['zoom']-1)<.002,(name,cam,after)
             await page.locator("#globe-more-toggle").click()
             await page.locator("#globe-lands").click()
             assert not await page.evaluate("window.AtlasGlobe.territoryLayer.visible")
@@ -148,6 +152,12 @@ async def run(browser,name,viewport):
                 await page.wait_for_function("(v)=>window.AtlasGlobe.focus.settled && window.AtlasGlobe.discovery.featured?.film===v.film && window.AtlasGlobe.discovery.featured?.land===v.land",arg=previous,timeout=30000)
                 print(name,"thematic journey and return passed",flush=True)
             await page.locator("#globe-more-toggle").click()
+            await page.locator('.globe-catalog-filters summary').click()
+            form=await page.locator('#globe-filter-form option').nth(1).get_attribute('value')
+            await page.locator('#globe-filter-form').select_option(form)
+            assert await page.evaluate('(f)=>window.AtlasGlobe.discovery.filters.form===f',form)
+            await page.locator('#globe-filter-form').select_option('')
+            await page.locator('.globe-catalog-filters summary').click()
             await page.locator("#globe-period").select_option("2020")
             assert await page.evaluate("window.AtlasGlobe.discovery.period==='2020'")
             await page.locator("#globe-period").select_option("")

@@ -131,6 +131,8 @@ async def check(browser,name,viewport):
     await page.locator("#globe-period").select_option("2020")
     assert await page.evaluate("window.AtlasGlobe.discovery.period")== "2020"
     await page.locator("#globe-period").select_option("")
+    await page.wait_for_function("window.AtlasGlobe.discovery.publication==='ready'",timeout=60000)
+    await page.wait_for_function("window.AtlasGlobe.focus.settled")
     selected=await page.evaluate(CAM)
     await page.locator("#globe-theme-toggle").click()
     await page.locator("#weave-map-theme").select_option(index=1)
