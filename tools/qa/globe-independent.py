@@ -78,6 +78,21 @@ async def run(browser,name,viewport):
                 await page.wait_for_function("(z)=>window.AtlasGlobe.camera.zoom>z*1.05",arg=before,timeout=15000)
                 print(name,"two-touch gesture delivered",await page.evaluate("window.AtlasGlobe.tileState.input"),flush=True)
             await shot(page,f"shots/globe-independent/{name}-input.png")
+            # A failed module request must retain a usable overview and its shared camera.
+            shared=await page.evaluate("window.AtlasGlobe.discovery.shareURL")
+            expected=await page.evaluate("window.AtlasGlobe.camera")
+            await page.unroute("**/assets/maplibre/maplibre-gl.mjs*",hold_native)
+            await page.route("**/assets/maplibre/maplibre-gl.mjs*",lambda route: route.abort())
+            await page.goto(shared,wait_until="domcontentloaded",timeout=90000)
+            await page.wait_for_function("window.AtlasGlobe?.camera?.renderer==='orthographic-canvas' && window.AtlasGlobe.focus.settled",timeout=60000)
+            await page.wait_for_function("document.querySelector('#globe-detail-status')?.textContent.includes('unavailable')")
+            overview=await page.evaluate("window.AtlasGlobe.camera")
+            assert max(abs((overview["center"][0]-expected["center"][0]+180)%360-180),abs(overview["center"][1]-expected["center"][1]))<.01,(name,expected,overview)
+            assert abs(overview["zoom"]/expected["zoom"]-1)<.003,(name,expected,overview)
+            assert await page.evaluate("new URL(window.AtlasGlobe.discovery.shareURL).searchParams.has('at')")
+            await page.locator("#globe-surface").press("ArrowRight")
+            await page.wait_for_function("(x)=>Math.abs(window.AtlasGlobe.camera.center[0]-x)>.01",arg=overview["center"][0])
+            print(name,"degraded renderer remains navigable",flush=True)
         elif MODE=="terrain":
             await page.evaluate("window.AtlasGlobe.goTo([-90.875,14.501],10)")
             await page.wait_for_function("window.AtlasGlobe.tileState?.mesh==='dem'",timeout=20000)
@@ -178,6 +193,19 @@ async def run(browser,name,viewport):
             for a in art:
                 assert a["fit"]=="contain" and a["filter"]=="none" and a["opacity"]=="1",(name,"washed artwork",a)
             print(name,"artwork dimensions",json.dumps(art),flush=True)
+            # Previewing a film must not send Back into the old land-list interface.
+            camera_before=await page.evaluate("window.AtlasGlobe.camera")
+            featured_before=await page.evaluate("window.AtlasGlobe.discovery.featured")
+            await page.locator("#globe-encounter .globe-film-title").click()
+            await page.locator("#weave-film-preview").wait_for()
+            await page.locator("[data-preview-back]").click()
+            assert not await page.locator("#constellate-popup").is_visible(),(name,"Back left old editor open")
+            await page.wait_for_function("window.AtlasGlobe.focus.settled")
+            camera_after=await page.evaluate("window.AtlasGlobe.camera")
+            assert max(abs((camera_after["center"][0]-camera_before["center"][0]+180)%360-180),abs(camera_after["center"][1]-camera_before["center"][1]))<.01,(name,camera_before,camera_after)
+            assert abs(camera_after["zoom"]/camera_before["zoom"]-1)<.002
+            assert await page.evaluate("window.AtlasGlobe.discovery.featured")==featured_before
+            await page.wait_for_function("document.activeElement?.classList.contains('globe-film-title')")
             await page.locator(".globe-credit-details summary").click()
             await page.wait_for_function("document.querySelector('.globe-credit-data dl') || document.querySelector('.globe-credit-data p')?.textContent.includes('No exact row')",timeout=30000)
             assert await page.locator(".globe-credit-data dl").count()>0,(name,"featured credit missing from public CSV")
