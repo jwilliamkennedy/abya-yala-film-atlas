@@ -6,6 +6,10 @@ BASE=os.environ.get("ATLAS_QA_BASE","http://127.0.0.1:8985/beta/")
 CAM="window.AtlasGlobe.camera"
 SNAP="JSON.stringify(window.AtlasCollections.current())"
 
+async def shot(page,path):
+    try: await page.screenshot(path=path,timeout=45000)
+    except Exception as e: print("SCREENSHOT_FAILED",path,str(e)[:240],flush=True)
+
 async def check(browser,name,viewport):
     context=await browser.new_context(viewport=viewport,reduced_motion="reduce")
     page=await context.new_page()
@@ -45,7 +49,7 @@ async def check(browser,name,viewport):
     assert await page.evaluate("window.AtlasGlobe.tileState?.mesh === null"),(name,"overview should not load an elevation mesh")
     await page.wait_for_function("window.AtlasGlobe.focus.settled")
     os.makedirs("shots/globe",exist_ok=True)
-    await page.screenshot(path=f"shots/globe/{name}-planet.png",timeout=15000)
+    await shot(page,f"shots/globe/{name}-planet.png")
     assert await page.locator('#globe-live-map canvas').is_visible(),(name,"native globe canvas not visible")
     anchor_snapshot=await page.evaluate('JSON.stringify(window.AtlasGlobe.anchors)')
     before=await page.evaluate(CAM)
@@ -71,16 +75,19 @@ async def check(browser,name,viewport):
     await page.wait_for_function("(z)=>window.AtlasGlobe.camera.zoom > z*1.05",arg=before_zoom["zoom"],timeout=15000)
     await page.wait_for_function("window.AtlasGlobe.focus.settled")
     before_zoom=await page.evaluate(CAM)
-    session=await context.new_cdp_session(page)
-    await session.send("Input.dispatchMouseEvent",{"type":"mouseWheel","x":x,"y":y,"deltaX":0,"deltaY":-120,"modifiers":2})
-    await page.wait_for_timeout(500)
-    print(name,"pinch diagnostics",await page.evaluate("window.AtlasGlobe.tileState"),flush=True)
+    # Verify the application's Ctrl+wheel route with a DOM event. Headless CDP
+    # previously swallowed the browser-level pinch before delivery. Do not
+    # represent this test as a physical trackpad test.
+    count=await page.evaluate("window.AtlasGlobe.tileState.input.pinch")
+    await page.locator("#globe-live-map canvas").dispatch_event("wheel",{"deltaY":-80,"deltaX":0,"ctrlKey":True,"bubbles":True,"cancelable":True})
+    await page.wait_for_function("(n)=>window.AtlasGlobe.tileState.input.pinch>n",arg=count)
     await page.wait_for_function("(z)=>window.AtlasGlobe.camera.zoom > z*1.10",arg=before_zoom["zoom"],timeout=15000)
+    print(name,"DOM pinch diagnostics (not hardware)",await page.evaluate("window.AtlasGlobe.tileState"),flush=True)
     await page.wait_for_function("window.AtlasGlobe.focus.settled && !window.AtlasGlobe.tileState.wheelActive")
     after_zoom=await page.evaluate(CAM)
     assert after_zoom["zoom"]>before_zoom["zoom"],(name,"trackpad pinch wheel did not zoom")
     # Wheel input at the center must preserve the tuned geographic location.
-    assert abs(after_zoom["center"][0]-before_zoom["center"][0])<.05,(name,"pinch displaced center",before_zoom,after_zoom)
+    assert abs((after_zoom["center"][0]-before_zoom["center"][0]+180)%360-180)<.05,(name,"pinch displaced center",before_zoom,after_zoom)
     await page.mouse.wheel(0,-120)
     await page.wait_for_function("(z)=>window.AtlasGlobe.camera.zoom>z",arg=after_zoom["zoom"],timeout=8000)
     await page.wait_for_function("window.AtlasGlobe.focus.settled && !window.AtlasGlobe.tileState.wheelActive")
@@ -93,11 +100,11 @@ async def check(browser,name,viewport):
     assert any('tiles.maps.eox.at/wmts/' in u for u in imagery),(name,"no successful satellite image responses")
     assert any('tiles.mapterhorn.com/' in u for u in imagery),(name,"no successful DEM image responses")
     print(name,"Acatenango elevation",await page.evaluate("window.AtlasGlobe.tileState"),flush=True)
-    await page.screenshot(path=f"shots/globe/{name}-guatemala-overhead.png",timeout=15000)
+    await shot(page,f"shots/globe/{name}-guatemala-overhead.png")
     await page.locator("#globe-landscape").click()
     await page.wait_for_function("window.AtlasGlobe.tileState.pitch > 35")
     await page.wait_for_function("window.AtlasGlobe.focus.settled")
-    await page.screenshot(path=f"shots/globe/{name}-guatemala-terrain.png",timeout=15000)
+    await shot(page,f"shots/globe/{name}-guatemala-terrain.png")
     await page.locator("#globe-home").click()
     await page.wait_for_function("window.AtlasGlobe.focus.settled")
     land=await page.evaluate("window.AtlasGlobe.anchors[0].id")

@@ -96,3 +96,17 @@ body.atlas-globe-experiment #globe-close{position:static;z-index:auto;width:100%
 #globe-live-map .maplibregl-ctrl-bottom-right{bottom:55px;right:8px}
 #globe-live-map .maplibregl-ctrl-scale{background:#172c38c9;color:#dbe5e6;border-color:#dbe5e6}
 @media(max-width:760px){#globe-encounter{width:min(260px,calc(100% - 12px));max-height:39%;gap:5px}.globe-featured{grid-template-columns:78px minmax(0,1fr);gap:7px}.globe-film-title{font-size:13px}.globe-feature-copy small{font-size:10px}.globe-film-art{height:30px}.globe-guide{max-width:142px}.globe-guide>button,.globe-buttons button{min-height:27px}.globe-film-strip{display:none}#globe-live-map .maplibregl-ctrl-bottom-right{bottom:72px}}
+
+/* The shared thumbnail CSS positions images absolutely. Establish a containing
+ block for every globe thumbnail so a film image cannot cover the map or buttons. */
+#globe-encounter{display:flex;flex-direction:column;align-items:stretch;isolation:isolate;overflow-y:auto;overflow-x:hidden}
+#globe-encounter>*{flex-shrink:0;min-width:0}
+#globe-encounter .weave-media-thumb,#globe-encounter .globe-film-art,#globe-encounter .globe-feature-art{position:relative;overflow:hidden;isolation:isolate}
+#globe-encounter .weave-media-thumb>img{position:absolute;inset:0;pointer-events:none;object-fit:contain!important}
+#globe-encounter .globe-film-strip{position:relative;min-height:76px;align-items:start}
+#globe-encounter .globe-film{position:relative;min-width:80px;max-width:33.333%;overflow:hidden;flex:1}
+#globe-encounter .globe-film-copy{min-width:0;overflow:hidden}
+#globe-encounter .globe-encounter-nav{position:relative;z-index:1;flex:none}
+#globe-encounter .globe-cycle{min-width:36px;min-height:36px}
+#globe-live-map canvas{touch-action:none;overscroll-behavior:contain}
+@media(max-width:760px){#globe-encounter{max-height:36%;width:min(260px,calc(100% - 12px))}#globe-encounter .globe-film-strip{display:none}}

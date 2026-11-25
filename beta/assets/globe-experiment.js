@@ -14,8 +14,8 @@ let relief=null,reliefState='loading',flight=0,flightTarget=null,lastDrag=null;
 let live=null,liveReady=false,liveHost=null,liveSignature='',liveBaseZoom=0,liveMoved=false,liveTimer=0;
 let wheelFrame=0,wheelGoal=null,wheelLast=0,wheelActive=false,gestureStart=null,gestureUntil=0,landscape=false,lastLiveUpdate=0;
 const received={marble:0,satellite:0,dem:0,hilldem:0,places:0},sourceErrors={};
-let lastStatus=0,frameTimes=[],lastRender=0,preferredLand='',filmOffset=0,yearBand='',lastEncounter='',recent=[],lastRelated=null;
-const inputStats={wheel:0,pinch:0,zoomEvents:0,lastDelta:0,lastBefore:null,lastAfter:null,lastInputMs:null};
+let zoomListeners=null,lastStatus=0,frameTimes=[],lastRender=0,preferredLand='',filmOffset=0,yearBand='',lastEncounter='',recent=[],lastRelated=null;
+const inputStats={wheel:0,pinch:0,safari:0,touch:0,zoomEvents:0,lastDelta:0,lastBefore:null,lastAfter:null,lastInputMs:null};
 const params=new URLSearchParams(location.search);
 const initialCamera=(()=>{const a=params.get('at')?.split(',').map(Number);return a?.length===3&&a.every(Number.isFinite)&&Math.abs(a[0])<=180&&Math.abs(a[1])<=85&&a[2]>=-2&&a[2]<=14?a:null;})();
 function currentTheme(){return [$('#weave-map-theme')?.value,$('#weave-map-theme-second')?.value].filter(Boolean);}
@@ -63,7 +63,7 @@ function sync(){if(!active)return;renderSoon();if(!pointers.size&&!flight&&!whee
 window.AtlasGlobe={get active(){return active},get camera(){return active?camera():null},get pointCount(){return points.length},get geometryCount(){return records.length},get anchorFailures(){return [...anchorFailures]},get anchors(){return points.map(p=>({id:p.id,coordinate:[...p.coord],sourceId:p.anchor.sourceId,component:p.anchor.component,method:p.anchor.method}))},get landArea(){return landArea},get terrain(){return liveReady?'tiled':reliefState},get tileState(){return liveStats()},get discovery(){return {period:yearBand,preferredLand,recent:[...recent],filmOffset,shareURL:shareView()}},goTo(coord,mapZoom){if(liveReady&&Array.isArray(coord)&&coord.length===2&&coord.every(Number.isFinite)&&Number.isFinite(mapZoom))setCamera(coord,Math.pow(2,mapZoom-liveBaseZoom),0);},get focus(){return {ids:[...focusIds],inside:inside.map(r=>r.id),settled};},sync,close};
 function close(){
  const wasActive=active;closed=true;active=false;clearTimeout(settleTimer);cancelFlight();if(raf)cancelAnimationFrame(raf);raf=0;ro?.disconnect();
- clearTimeout(liveTimer);stopWheel();liveReady=false;live?.remove();live=null;liveHost=null;relief?.dispose();relief=null;host?.remove();host=null;document.body.classList.remove('atlas-globe-experiment');if(wasActive&&C()?.enabled)C().refreshDiscoveryMode();
+ clearTimeout(liveTimer);stopWheel();zoomListeners?.abort();zoomListeners=null;liveReady=false;live?.remove();live=null;liveHost=null;relief?.dispose();relief=null;host?.remove();host=null;document.body.classList.remove('atlas-globe-experiment');if(wasActive&&C()?.enabled)C().refreshDiscoveryMode();
  const u=new URL(location.href);u.searchParams.delete('globe');history.replaceState(history.state,'',u.href);
 }
 function fallback(e){console.warn('Globe discovery unavailable',e);close();const p=document.createElement('p');p.className='globe-fallback';p.textContent='The globe could not initialize. The flat workspace remains available.';$('.map-panel')?.append(p);setTimeout(()=>p.remove(),9000);}
@@ -216,45 +216,60 @@ function loadRelief(){
  function queueZoom(goal){
   if(!liveReady)return;
   wheelGoal=clamp(goal,live.getMinZoom(),live.getMaxZoom());wheelLast=nowMs();
-  if(!wheelActive){live.stop();wheelActive=true;movement();}
+  if(!wheelActive){wheelActive=true;live.stop();movement();}
   if(wheelFrame)return;
   function frame(t){
    wheelFrame=0;if(!active||!liveReady||wheelGoal===null){stopWheel();return;}
    const current=live.getZoom(),delta=wheelGoal-current;
    const next=reduced.matches||Math.abs(delta)<.008?wheelGoal:current+delta*.36;
-   if(Math.abs(next-current)>1e-6)live.jumpTo({zoom:next});
+   if(Math.abs(next-current)>1e-6)live.jumpTo({center:live.getCenter(),zoom:next});
    if(Math.abs(wheelGoal-live.getZoom())>.008||t-wheelLast<90){wheelFrame=requestAnimationFrame(frame);return;}
-   stopWheel(false);readLiveCamera();if(live.getZoom()<6&&landscape){landscape=false;$('#globe-landscape').setAttribute('aria-pressed','false');live.setPitch(0);}finishMove();updateDetailStatus(true);
+   stopWheel(false);readLiveCamera();syncTerrain();inputStats.lastAfter=live.getZoom();if(live.getZoom()<6&&landscape){landscape=false;$('#globe-landscape').setAttribute('aria-pressed','false');live.setPitch(0);}finishMove();updateDetailStatus(true);
   }
   wheelFrame=requestAnimationFrame(frame);
  }
  function installZoom(){
-  // Use MapLibre's mature scroll/trackpad and touch handlers for normal input.
-  // At overview terrain is disabled, so elevation cannot change the zoom scale.
+  // Trackpad scroll and mouse wheel: native MapLibre inertia, with more responsive
+  // rates. Native touch pinch remains centered on the fixed discovery aperture.
   live.scrollZoom.enable({around:'center'});
-  live.scrollZoom.setZoomRate?.(1/65);
-  live.scrollZoom.setWheelZoomRate?.(1/300);
+  live.scrollZoom.setZoomRate?.(1/45);
+  live.scrollZoom.setWheelZoomRate?.(1/170);
   live.touchZoomRotate.enable({around:'center'});live.touchZoomRotate.disableRotation();
-  const observe=e=>{
-   if(!liveReady)return;
+  zoomListeners?.abort();zoomListeners=new AbortController();
+  const opts={capture:true,passive:false,signal:zoomListeners.signal};
+  const isMap=e=>liveReady&&!!liveHost&&e.composedPath().includes(liveHost);
+  const stop=e=>{if(e.cancelable)e.preventDefault();e.stopImmediatePropagation();};
+  // Capture at WINDOW before other page or map handlers. Ordinary wheel events
+  // are left to MapLibre. Ctrl+wheel and Safari GestureEvent each have exactly
+  // one zoom owner and never propagate to browser page zoom if delivered here.
+  window.addEventListener('wheel',e=>{
+   if(!isMap(e))return;
    inputStats.wheel++;if(e.ctrlKey)inputStats.pinch++;
    inputStats.lastDelta=e.deltaY;inputStats.lastBefore=live.getZoom();inputStats.lastInputMs=nowMs();
-   // Chromium/trackpad pinch arrives as ctrl+wheel. Handle it on the capture
-   // path before MapLibre or browser zoom, with an immediate centered camera step.
-   if(!e.ctrlKey||gestureStart!==null||nowMs()<gestureUntil)return;
-   e.preventDefault();e.stopImmediatePropagation();
-   const unit=e.deltaMode===1?16:e.deltaMode===2?H:1,d=clamp(-e.deltaY*unit*.012,-1.2,1.2);
+   inputStats.lastTrusted=e.isTrusted;
+   if(!e.ctrlKey)return;
+   stop(e);
+   if(gestureStart!==null||nowMs()<gestureUntil)return;
+   const unit=e.deltaMode===1?16:e.deltaMode===2?H:1,d=clamp(-e.deltaY*unit*.014,-1.25,1.25);
    if(!d)return;
-   live.stop();live.jumpTo({center:live.getCenter(),zoom:clamp(live.getZoom()+d,live.getMinZoom(),live.getMaxZoom())});
-   readLiveCamera();inputStats.lastAfter=live.getZoom();finishMove();
-  };
-  liveHost.addEventListener('wheel',observe,{capture:true,passive:false});
-  liveHost.addEventListener('gesturestart',e=>{e.preventDefault();live.stop();gestureStart=live.getZoom();inputStats.pinch++;inputStats.lastBefore=gestureStart;},{capture:true,passive:false});
-  liveHost.addEventListener('gesturechange',e=>{if(gestureStart===null)return;e.preventDefault();const z=clamp(gestureStart+Math.log2(Math.max(.05,e.scale)),live.getMinZoom(),live.getMaxZoom());live.jumpTo({center:live.getCenter(),zoom:z});readLiveCamera();inputStats.lastAfter=live.getZoom();},{capture:true,passive:false});
-  liveHost.addEventListener('gestureend',e=>{e.preventDefault();gestureStart=null;gestureUntil=nowMs()+160;finishMove();},{capture:true,passive:false});
+   queueZoom((wheelGoal??live.getZoom())+d);
+  },opts);
+  window.addEventListener('gesturestart',e=>{
+   if(!isMap(e))return;stop(e);live.stop();stopWheel();gestureStart=live.getZoom();
+   inputStats.pinch++;inputStats.safari++;inputStats.lastBefore=gestureStart;
+  },opts);
+  window.addEventListener('gesturechange',e=>{
+   if(gestureStart===null||!liveReady)return;stop(e);queueZoom(gestureStart+Math.log2(Math.max(.05,e.scale)));
+  },opts);
+  window.addEventListener('gestureend',e=>{
+   if(gestureStart===null)return;stop(e);gestureStart=null;gestureUntil=nowMs()+180;
+   if(!wheelActive)finishMove();
+  },opts);
+  liveHost.addEventListener('touchstart',e=>{if(e.touches.length===2)inputStats.touch++;},{passive:true,signal:zoomListeners.signal});
+  liveHost.addEventListener('pointerdown',()=>{if(wheelActive){stopWheel();finishMove();}},{capture:true,signal:zoomListeners.signal});
  }
  function failLive(reason){
-  if(!liveHost)return;console.warn('Native globe unavailable; using local fallback',reason);stopWheel();
+  if(!liveHost)return;console.warn('Native globe unavailable; using local fallback',reason);stopWheel();zoomListeners?.abort();zoomListeners=null;
   clearTimeout(liveTimer);liveReady=false;live?.remove();live=null;liveHost.remove();liveHost=null;
   host?.classList.remove('globe-live');if(active){const e=$('#globe-detail-status');if(e)e.textContent='Overview only · detailed map unavailable';renderSoon();scheduleSettle(100);}
  }
@@ -478,7 +493,7 @@ function markup(){
 
  $('#globe-home').onclick=()=>{sel.value='';preferredLand='';filmOffset=0;landscape=false;$('#globe-landscape').setAttribute('aria-pressed','false');if(liveReady)live.setPitch(0);setCamera([-91,12],1);};
  $('#globe-landscape').onclick=()=>{if(!liveReady)return;stopWheel();landscape=!landscape;$('#globe-landscape').setAttribute('aria-pressed',String(landscape));if(landscape&&!live.getTerrain())live.setTerrain({source:'dem',exaggeration:1});live.easeTo({zoom:landscape?Math.max(live.getZoom(),7):live.getZoom(),pitch:landscape?42:0,duration:reduced.matches?0:350});};
- $('#globe-plus').onclick=()=>setCamera(flightTarget?.center||center,(flightTarget?.zoom||zoom)*1.4);$('#globe-minus').onclick=()=>setCamera(flightTarget?.center||center,(flightTarget?.zoom||zoom)/1.4);$('#globe-close').onclick=close;
+ $('#globe-plus').onclick=()=>{if(liveReady)queueZoom((wheelGoal??live.getZoom())+.65);else setCamera(flightTarget?.center||center,(flightTarget?.zoom||zoom)*1.5);};$('#globe-minus').onclick=()=>{if(liveReady)queueZoom((wheelGoal??live.getZoom())-.65);else setCamera(flightTarget?.center||center,(flightTarget?.zoom||zoom)/1.5);};$('#globe-close').onclick=close;
  wire();
 }
 async function boot(){

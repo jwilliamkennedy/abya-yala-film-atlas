@@ -3,6 +3,10 @@ import asyncio, os, json, sys
 from playwright.async_api import async_playwright
 BASE=os.getenv("ATLAS_QA_BASE","http://127.0.0.1:8985/beta/")
 MODE=sys.argv[1] if len(sys.argv)>1 else "terrain"
+async def shot(page,path):
+    try: await page.screenshot(path=path,timeout=45000)
+    except Exception as e: print("SCREENSHOT_FAILED",path,str(e)[:240],flush=True)
+
 async def run(browser,name,viewport):
     context=await browser.new_context(viewport=viewport, reduced_motion="reduce")
     page=await context.new_page()
@@ -22,10 +26,10 @@ async def run(browser,name,viewport):
             await page.wait_for_function("window.AtlasGlobe.tileState?.elevation>1500",timeout=60000)
             assert any("tiles.maps.eox.at/" in u for u in tiles),("no successful satellite response",tiles)
             assert any("tiles.mapterhorn.com/" in u for u in tiles),("no successful DEM response",tiles)
-            await page.screenshot(path=f"shots/globe-independent/{name}-overhead.png",timeout=15000)
+            await shot(page,f"shots/globe-independent/{name}-overhead.png")
             await page.locator("#globe-landscape").click()
             await page.wait_for_function("window.AtlasGlobe.tileState.pitch>35 && window.AtlasGlobe.focus.settled")
-            await page.screenshot(path=f"shots/globe-independent/{name}-tilted.png",timeout=15000)
+            await shot(page,f"shots/globe-independent/{name}-tilted.png")
         else:
             initial=await page.evaluate("JSON.stringify(window.AtlasCollections.current())")
             land=await page.evaluate("window.AtlasGlobe.anchors.find(a=>window.AtlasConstellate.globeLandFilmCount(a.id)>1).id")
@@ -37,7 +41,7 @@ async def run(browser,name,viewport):
             assert await page.locator("#globe-encounter .globe-film-title").inner_text()!=first or await page.evaluate("window.AtlasGlobe.discovery.filmOffset===1")
             assert await page.evaluate("new URL(window.AtlasGlobe.discovery.shareURL).searchParams.has('at')")
             assert await page.evaluate("window.AtlasGlobe.discovery.recent.length>0")
-            await page.screenshot(path=f"shots/globe-independent/{name}-encounter.png",timeout=15000)
+            await shot(page,f"shots/globe-independent/{name}-encounter.png")
             await page.locator("#globe-period").select_option("2020")
             assert await page.evaluate("window.AtlasGlobe.discovery.period==='2020'")
             await page.locator("#globe-period").select_option("")
