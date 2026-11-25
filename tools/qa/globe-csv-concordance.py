@@ -53,6 +53,9 @@ async def main():
             if url and url not in x["watch"]:note("published_watch",k,url,x["watch"])
         if r.get("image_url") and not x["image"]:note("published_image_missing",k,r["image_url"])
     for k in exported.keys()-index.keys():note("film_export_credit_missing",k)
+    for k in index.keys()-exported.keys():note('runtime_credit_missing_from_film_export',k)
+    for k in published.keys()-exported.keys():note('published_credit_missing_from_film_export',k)
+    for k in exported.keys()-published.keys():note('film_export_credit_missing_from_published',k)
     for r in makers:
         if r["record_id"] not in mid:note("maker_export_missing",r["record_id"])
     for r in pub:
