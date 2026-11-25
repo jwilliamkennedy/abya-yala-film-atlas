@@ -350,3 +350,30 @@ body.atlas-globe-experiment #constellate-mode{display:none!important}
  #atlas-rotational-globe .globe-guide{top:8px}
  #atlas-rotational-globe .globe-menu-panel,#atlas-rotational-globe #globe-collection-panel{max-height:var(--globe-menu-room)}
 }
+
+/* The film is the encounter, not the availability of its artwork. */
+#atlas-rotational-globe .globe-artwork[hidden]{display:none!important}
+#globe-encounter .globe-featured{grid-template-columns:minmax(0,1fr);gap:0}
+#globe-encounter .globe-featured:has(>.globe-feature-art[data-art-state=ready]:not([hidden])){grid-template-columns:minmax(78px,37%) minmax(0,1fr);gap:10px}
+#globe-encounter .globe-feature-art[data-art-state=ready]{background:transparent;min-height:0}
+#globe-encounter .globe-feature-copy{min-width:0}
+#globe-encounter .globe-film-title{font-size:clamp(15px,1.3vw,19px);line-height:1.28;overflow-wrap:anywhere}
+#globe-encounter .globe-film-byline{font-size:12px;line-height:1.35}
+#globe-encounter .globe-film-facts{font-size:11px;line-height:1.4}
+#globe-encounter .globe-next-encounter{display:grid;gap:4px;border-top:1px solid #829b963b;padding-top:6px}
+#globe-encounter .globe-next-encounter .globe-related{display:grid;gap:3px;justify-self:stretch;background:transparent;border:0;border-radius:3px;padding:5px 4px;text-align:left;overflow-wrap:anywhere}
+#globe-encounter .globe-next-encounter .globe-related:hover,#globe-encounter .globe-next-encounter .globe-related:focus-visible{background:#314b4a}
+#globe-encounter .globe-next-encounter .globe-related strong{font-size:13px;line-height:1.3;color:#edf1e7}
+#globe-encounter .globe-next-encounter .globe-related small{font-size:11px;color:#bcd2c9;line-height:1.3}
+#globe-encounter .globe-next-encounter .globe-related::after{content:'↗';justify-self:end;color:#c4ddd1;font-size:14px;line-height:1}
+#globe-encounter .globe-land-choice{white-space:normal;overflow-wrap:anywhere}
+#globe-encounter .globe-association{font-size:11px;color:#c4d4cf}
+#globe-encounter{background:linear-gradient(135deg,#162b35f5,#132532ef);border-color:#718e8970;box-shadow:0 6px 26px #08131b36}
+#globe-encounter .globe-art-arrive{animation-duration:.28s}
+@media(max-width:760px){
+ #globe-encounter .globe-featured:has(>.globe-feature-art[data-art-state=ready]:not([hidden])){grid-template-columns:minmax(62px,35%) minmax(0,1fr);gap:7px}
+ #globe-encounter .globe-film-title{font-size:15px}
+ #globe-encounter .globe-film-byline,#globe-encounter .globe-film-facts{font-size:12px}
+ #globe-encounter .globe-next-encounter .globe-related{min-height:44px}
+}
+@media(prefers-reduced-motion:reduce){#globe-encounter .globe-art-arrive{animation:none}}
