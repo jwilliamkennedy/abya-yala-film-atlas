@@ -6,7 +6,7 @@ Public site: https://jwilliamkennedy.github.io/abya-yala-film-atlas/
 
 Beta globe (default): https://jwilliamkennedy.github.io/abya-yala-film-atlas/beta/
 
-Previous flat beta: https://jwilliamkennedy.github.io/abya-yala-film-atlas/beta/?globe=0
+Previous flat beta: https://jwilliamkennedy.github.io/abya-yala-film-atlas/beta/flat.html (explicit flat entry; the same live catalogue)
 
 Explicit flat Constellate: https://jwilliamkennedy.github.io/abya-yala-film-atlas/beta/?constellate=1
 

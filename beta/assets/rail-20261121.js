@@ -7,6 +7,7 @@ if(window.__atlasRail)return;window.__atlasRail=1;
 const root=document.documentElement,wide=matchMedia('(min-width:901px)');
 const src=(document.currentScript&&document.currentScript.src)||'';
 const HOME=src?new URL('../',src).href:new URL('./',location.href).href;
+const FLAT=new URL('?globe=0',HOME).href;
 const rel=location.href.split(/[?#]/)[0].replace(HOME,'');
 const onMap=rel===''||rel==='index.html';
 const PAGE={'watch.html':'watch','themes.html':'themes','languages.html':'languages','timeline.html':'timeline','screening.html':'screening',
@@ -67,8 +68,8 @@ function build(){
 function onClick(e){
  const a=e.target.closest('[data-rail]');if(!a)return;const k=a.dataset.rail,here=onMap&&!constellating();
  if(k==='toggle'){const next=root.dataset.rail==='compact'?'full':'compact';store.set('atlas-rail',next);root.dataset.rail=next;sync();dispatchEvent(new Event('resize'));return;}
- if(k==='search'){e.preventDefault();if(here){const s=$('#search');if(s){s.focus();return;}}flag.set('search');location.href=HOME;return;}
- if(k==='lands'||k==='saved'){e.preventDefault();if(here)act(k);else{flag.set(k);location.href=HOME;}return;}
+ if(k==='search'){e.preventDefault();if(window.AtlasGlobe?.openMenu('find'))return;if(here){const s=$('#search');if(s){s.focus();return;}}flag.set('search');location.href=FLAT;return;}
+ if(k==='lands'||k==='saved'){e.preventDefault();if(here)act(k);else{flag.set(k);location.href=FLAT;}return;}
  if(k==='map'&&here){e.preventDefault();if(landView()){const b=$('.view-switch [data-view="filmmakers"]');if(b)b.click();}}
 }
 function act(k){
@@ -161,12 +162,12 @@ function goHome(){
  setTimeout(()=>{const r=$('#zoom-reset');if(r)r.click();},120);
 }
 /* a link on another page can ask the map to do one thing on arrival: <a href="./" data-atlas-do="time"> */
-document.addEventListener('click',e=>{const a=e.target.closest&&e.target.closest('a[data-atlas-do]');if(a)flag.set(a.dataset.atlasDo);},true);
+document.addEventListener('click',e=>{const a=e.target.closest&&e.target.closest('a[data-atlas-do]');if(a){flag.set(a.dataset.atlasDo);const dest=new URL(a.href,location.href);if(dest.origin===location.origin&&dest.pathname===new URL(HOME).pathname&&!dest.search){dest.searchParams.set('globe','0');a.href=dest.href;}}},true);
 document.addEventListener('click',e=>{const a=e.target.closest&&e.target.closest('#atlas-rail [data-rail="map"]');if(!a||!onMap||constellating()||landView())return;e.preventDefault();e.stopImmediatePropagation();goHome();},true);
 document.addEventListener('keydown',e=>{
  if(!root.dataset.rail)return;
  /* N2 "/" on any page goes to the map's search (the map page handles its own) */
- if(e.key==='/'&&!onMap&&!typing(e)&&!e.metaKey&&!e.ctrlKey&&!e.altKey){e.preventDefault();flag.set('search');location.href=HOME;return;}
+ if(e.key==='/'&&!onMap&&!typing(e)&&!e.metaKey&&!e.ctrlKey&&!e.altKey){e.preventDefault();flag.set('search');location.href=FLAT;return;}
  /* N3 Esc leaves Link films, Draw a line, and the map's Draw */
  if(e.key==='Escape'){for(const s of ['#weave-draw-thread','#weave-trace','#map-draw-line']){const b=$(s);if(b&&b.getAttribute('aria-pressed')==='true'&&b.offsetParent){b.click();e.preventDefault();return;}}}
  /* N5 up and down arrows move through the list; Enter opens (it is a button) */
