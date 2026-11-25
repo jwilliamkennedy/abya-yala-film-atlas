@@ -4,6 +4,8 @@ on:
     branches: [main]
     paths:
       - 'beta/assets/globe-experiment.*'
+      - 'beta/assets/geo-integrity.js'
+      - 'beta/assets/maplibre/**'
       - 'beta/index.html'
       - 'beta/watch.html'
       - 'beta/watch-20261122.js'
@@ -25,6 +27,9 @@ on:
         default: false
 permissions:
   contents: read
+concurrency:
+  group: globe-independent-${{ github.ref }}
+  cancel-in-progress: false
 jobs:
   checks:
     name: Independent globe ${{ matrix.mode }}
