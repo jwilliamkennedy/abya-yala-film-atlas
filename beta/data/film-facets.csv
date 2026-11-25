@@ -246,8 +246,10 @@ Q20261114-88-F7,Kugihe Kuêgü: A Hiper Doença,2020,form,Documentary,,https://w
 Q20261114-88-F7,Kugihe Kuêgü: A Hiper Doença,2020,length,Short,,https://www.frontiersin.org/journals/climate/articles/10.3389/fclim.2023.1231794/full,"normalised from the recorded form ""Documentary short"""
 Q20261114-88-F8,Jogos Mundiais Indígenas,2015,form,Documentary,,https://www.frontiersin.org/journals/climate/articles/10.3389/fclim.2023.1231794/full,"normalised from the recorded form ""Documentary short"""
 Q20261114-88-F8,Jogos Mundiais Indígenas,2015,length,Short,,https://www.frontiersin.org/journals/climate/articles/10.3389/fclim.2023.1231794/full,"normalised from the recorded form ""Documentary short"""
-Q20261114-88-F9,Pandemia e Fake News no Alto Xingu,2021,form,Documentary,,https://www.frontiersin.org/journals/climate/articles/10.3389/fclim.2023.1231794/full,"normalised from the recorded form ""Documentary short"""
-Q20261114-88-F9,Pandemia e Fake News no Alto Xingu,2021,length,Short,,https://www.frontiersin.org/journals/climate/articles/10.3389/fclim.2023.1231794/full,"normalised from the recorded form ""Documentary short"""
+Q20261114-88-F9,Pandemia e Fake News no Alto Xingu,2021,theme,Health and Healing,Lives and Relations,https://pulitzercenter.org/stories/documentary-pandemic-and-fake-news-upper-xingu-portuguese,tagged from a published synopsis; primary theme
+Q20261114-88-F9,Pandemia e Fake News no Alto Xingu,2021,theme,Sovereignty and Self-Determination,Sovereignty and Politics,https://pulitzercenter.org/stories/documentary-pandemic-and-fake-news-upper-xingu-portuguese,tagged from a published synopsis
+Q20261114-88-F9,Pandemia e Fake News no Alto Xingu,2021,form,Documentary,,https://pulitzercenter.org/stories/documentary-pandemic-and-fake-news-upper-xingu-portuguese,from the published synopsis
+Q20261114-88-F9,Pandemia e Fake News no Alto Xingu,2021,length,Short,,https://pulitzercenter.org/stories/documentary-pandemic-and-fake-news-upper-xingu-portuguese,from the published synopsis
 Q20261114-88-F10,Incêndios florestais no Alto Xingu MT,2022,form,Documentary,,https://www.frontiersin.org/journals/climate/articles/10.3389/fclim.2023.1231794/full,"normalised from the recorded form ""Documentary short"""
 Q20261114-88-F10,Incêndios florestais no Alto Xingu MT,2022,length,Short,,https://www.frontiersin.org/journals/climate/articles/10.3389/fclim.2023.1231794/full,"normalised from the recorded form ""Documentary short"""
 Q20261114-88-F11,Kuikuro Response to Covid-19 in Xingu,2020,form,Documentary,,https://www.frontiersin.org/journals/climate/articles/10.3389/fclim.2023.1231794/full,"normalised from the recorded form ""Documentary short"""
@@ -258,12 +260,18 @@ Q20261114-88-F1,As Hiper-Mulheres,2011,form,Documentary,,https://pulitzercenter.
 Q20261114-88-F1,As Hiper-Mulheres,2011,length,Feature,,https://pulitzercenter.org/people/takuma-kuikuro,"normalised from the recorded form ""Documentary feature"""
 Q20261114-88-F2,Karioka,2014,form,Documentary,,https://pulitzercenter.org/people/takuma-kuikuro,"normalised from the recorded form ""Documentary short"""
 Q20261114-88-F2,Karioka,2014,length,Short,,https://pulitzercenter.org/people/takuma-kuikuro,"normalised from the recorded form ""Documentary short"""
-Q20261114-88-F3,ETE London: Londres como uma aldeia,2017,form,Documentary,,https://embaubaplay.com/diretor_s/takuma-kuikuro/,"normalised from the recorded form ""Documentary short"""
-Q20261114-88-F3,ETE London: Londres como uma aldeia,2017,length,Short,,https://embaubaplay.com/diretor_s/takuma-kuikuro/,"normalised from the recorded form ""Documentary short"""
-Q20261114-88-F4,Território Pequi,2021,form,Documentary,,https://embaubaplay.com/diretor_s/takuma-kuikuro/,"normalised from the recorded form ""Documentary short"""
-Q20261114-88-F4,Território Pequi,2021,length,Short,,https://embaubaplay.com/diretor_s/takuma-kuikuro/,"normalised from the recorded form ""Documentary short"""
+Q20261114-88-F3,ETE London: Londres como uma aldeia,2017,theme,Urban Indigeneity,Lives and Relations,https://peoplespalaceprojects.org.uk/pt/4080-2/,tagged from a published synopsis; primary theme
+Q20261114-88-F3,ETE London: Londres como uma aldeia,2017,theme,Self-Representation and Countering Stereotypes,Expression and Representation,https://peoplespalaceprojects.org.uk/pt/4080-2/,tagged from a published synopsis
+Q20261114-88-F3,ETE London: Londres como uma aldeia,2017,form,Documentary,,https://peoplespalaceprojects.org.uk/pt/4080-2/,from the published synopsis
+Q20261114-88-F3,ETE London: Londres como uma aldeia,2017,length,Short,,https://peoplespalaceprojects.org.uk/pt/4080-2/,from the published synopsis
+Q20261114-88-F4,Território Pequi,2021,theme,Food Sovereignty,Land and Environment,https://ecofalante.org.br/filme/territorio-pequi,tagged from a published synopsis; primary theme
+Q20261114-88-F4,Território Pequi,2021,theme,More-than-Human Relations,Land and Environment,https://ecofalante.org.br/filme/territorio-pequi,tagged from a published synopsis
+Q20261114-88-F4,Território Pequi,2021,form,Documentary,,https://ecofalante.org.br/filme/territorio-pequi,from the published synopsis
+Q20261114-88-F4,Território Pequi,2021,length,Short,,https://ecofalante.org.br/filme/territorio-pequi,from the published synopsis
+Q20261114-88-F6,Kagaiha Atipügü,2012,theme,Collective and Community Media,Expression and Representation,https://vimeo.com/88071174,tagged from a published synopsis; primary theme
+Q20261114-88-F6,Kagaiha Atipügü,2012,theme,Self-Representation and Countering Stereotypes,Expression and Representation,https://vimeo.com/88071174,tagged from a published synopsis
+Q20261114-88-F6,Kagaiha Atipügü,2012,length,Short,,https://vimeo.com/88071174,from the published synopsis
 Q20261114-88-F6,Kagaiha Atipügü,2012,form,Documentary,,https://embaubaplay.com/diretor_s/takuma-kuikuro/,"normalised from the recorded form ""Documentary short"""
-Q20261114-88-F6,Kagaiha Atipügü,2012,length,Short,,https://embaubaplay.com/diretor_s/takuma-kuikuro/,"normalised from the recorded form ""Documentary short"""
 FILM-0032,Antônio e Piti,,theme,Land Defense,Land and Environment,https://www.themoviedb.org/movie/640892,tagged from a published synopsis; primary theme
 FILM-0032,Antônio e Piti,,theme,Extractivism,Land and Environment,https://www.themoviedb.org/movie/640892,tagged from a published synopsis
 FILM-0032,Antônio e Piti,,theme,Borders,Sovereignty and Politics,https://www.themoviedb.org/movie/640892,tagged from a published synopsis
@@ -3591,7 +3599,10 @@ Q20261122-444-F1,Aún hay Esperanza,,theme,Extractivism,Land and Environment,htt
 Q20261122-444-F1,Aún hay Esperanza,,length,Short,,https://iberculturaviva.org/conheca-os-selecionados-no-concurso-de-curtas-comunidades-linguisticas-identidade-e-salvaguarda/,from the published synopsis
 SA50-20261014-50ce6a02e8f9-WORK-01,Sacha Warmi,,theme,Women and Gender,Lives and Relations,https://www.expreso.ec/ocio/cultura/cine-indigena-exhibe-vivencias-pueblos-99303.html,tagged from a published synopsis; primary theme
 SA50-20261014-50ce6a02e8f9-WORK-01,Sacha Warmi,,length,Short,,https://www.expreso.ec/ocio/cultura/cine-indigena-exhibe-vivencias-pueblos-99303.html,from the published synopsis
-Q20261121-100-F1,Paktara,2014,length,Short,,https://indigcinematics.llc.ed.ac.uk/2020/08/06/filmography-2/,"normalised from the recorded form ""Drama short"""
+Q20261121-100-F1,Paktara,2014,theme,Women and Gender,Lives and Relations,https://elcostanero.com/aqui-y-ahora-nosotras/nosotras-sobrevivimos-del-arte-mujeres-cultura-ecuador/,tagged from a published synopsis; primary theme
+Q20261121-100-F1,Paktara,2014,theme,Resistance Movements,Sovereignty and Politics,https://elcostanero.com/aqui-y-ahora-nosotras/nosotras-sobrevivimos-del-arte-mujeres-cultura-ecuador/,tagged from a published synopsis
+Q20261121-100-F1,Paktara,2014,form,Fiction,,https://elcostanero.com/aqui-y-ahora-nosotras/nosotras-sobrevivimos-del-arte-mujeres-cultura-ecuador/,from the published synopsis
+Q20261121-100-F1,Paktara,2014,length,Short,,https://elcostanero.com/aqui-y-ahora-nosotras/nosotras-sobrevivimos-del-arte-mujeres-cultura-ecuador/,from the published synopsis
 Q20261121-100-F2,El rumor del ocaso,2015,length,Short,,https://indigcinematics.llc.ed.ac.uk/2020/08/06/filmography-2/,"normalised from the recorded form ""Drama short"""
 Q20261121-130-F1,Ñukanchikpa (De nosotras),2016,theme,Women and Gender,Lives and Relations,https://vimeo.com/189152154,tagged from a published synopsis; primary theme
 Q20261121-130-F1,Ñukanchikpa (De nosotras),2016,form,Experimental,,https://vimeo.com/189152154,from the published synopsis

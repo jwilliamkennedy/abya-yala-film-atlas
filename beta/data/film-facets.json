@@ -2591,9 +2591,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Health and Healing",
+    "Sovereignty and Self-Determination"
+   ],
+   "primary_theme": "Health and Healing",
+   "families": [
+    "Lives and Relations",
+    "Sovereignty and Politics"
+   ],
    "form": "Documentary",
    "length": "Short"
   },
@@ -2687,9 +2693,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Urban Indigeneity",
+    "Self-Representation and Countering Stereotypes"
+   ],
+   "primary_theme": "Urban Indigeneity",
+   "families": [
+    "Expression and Representation",
+    "Lives and Relations"
+   ],
    "form": "Documentary",
    "length": "Short"
   },
@@ -2703,9 +2715,14 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Food Sovereignty",
+    "More-than-Human Relations"
+   ],
+   "primary_theme": "Food Sovereignty",
+   "families": [
+    "Land and Environment"
+   ],
    "form": "Documentary",
    "length": "Short"
   },
@@ -2719,9 +2736,14 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Collective and Community Media",
+    "Self-Representation and Countering Stereotypes"
+   ],
+   "primary_theme": "Collective and Community Media",
+   "families": [
+    "Expression and Representation"
+   ],
    "form": "Documentary",
    "length": "Short"
   },
@@ -29099,10 +29121,16 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
+   "themes": [
+    "Women and Gender",
+    "Resistance Movements"
+   ],
+   "primary_theme": "Women and Gender",
+   "families": [
+    "Lives and Relations",
+    "Sovereignty and Politics"
+   ],
+   "form": "Fiction",
    "length": "Short"
   },
   "Q20261121-100-F2": {
