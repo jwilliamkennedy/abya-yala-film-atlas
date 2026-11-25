@@ -253,7 +253,20 @@ function loadRelief(){
   live.touchZoomRotate.enable({around:'center'});live.touchZoomRotate.disableRotation();
   zoomListeners?.abort();zoomListeners=new AbortController();
   const opts={capture:true,passive:false,signal:zoomListeners.signal};
-  const isMap=e=>liveReady&&!!liveHost&&e.composedPath().includes(liveHost);
+  // Safari can retarget gestures to the document. Check the actual pointer
+  // location as well as the event path, without grabbing scroll over controls.
+  let mapPointer=false;
+  window.addEventListener('pointermove',e=>{mapPointer=!!liveHost&&!!document.elementFromPoint(e.clientX,e.clientY)?.closest('#globe-live-map');},{capture:true,passive:true,signal:zoomListeners.signal});
+  const isMap=e=>{
+   if(!liveReady||!liveHost)return false;
+   if(e.composedPath().includes(liveHost))return true;
+   if(Number.isFinite(e.clientX)&&Number.isFinite(e.clientY)){
+    const hit=document.elementFromPoint(e.clientX,e.clientY);
+    if(hit?.closest('#globe-live-map'))return true;
+    if(hit?.closest('#globe-encounter,.globe-guide,.globe-footer'))return false;
+   }
+   return e.type.startsWith('gesture')&&mapPointer;
+  };
   const stop=e=>{if(e.cancelable)e.preventDefault();e.stopImmediatePropagation();};
   // Capture at WINDOW before other page or map handlers. Ordinary wheel events
   // are left to MapLibre. Ctrl+wheel and Safari GestureEvent each have exactly

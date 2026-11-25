@@ -8,7 +8,7 @@ async def shot(page,path):
     except Exception as e: print("SCREENSHOT_FAILED",path,str(e)[:240],flush=True)
 
 async def run(browser,name,viewport):
-    context=await browser.new_context(viewport=viewport, reduced_motion="reduce")
+    context=await browser.new_context(viewport=viewport, reduced_motion="reduce",has_touch=(MODE=="input" and name=="phone"))
     page=await context.new_page()
     errors=[]; tiles=[]
     page.on("pageerror",lambda e:errors.append(str(e)))
@@ -23,7 +23,38 @@ async def run(browser,name,viewport):
         layer=await page.evaluate("window.AtlasGlobe.territoryLayer")
         assert layer["visible"] and layer["features"]>0 and layer["fill"] is not None,(name,"ambient territory layer absent",layer)
         print(name,"ambient territory layer",json.dumps(layer),flush=True)
-        if MODE=="terrain":
+        if MODE=="input":
+            # Keep ordinary physical wheel, synthetic DOM Ctrl-wheel and
+            # CDP two-touch gestures distinct in the report.
+            surface=page.locator("#globe-live-map canvas")
+            box=await surface.bounding_box()
+            x=box["x"]+box["width"]*.5; y=box["y"]+box["height"]*.48
+            assert await page.evaluate("([x,y])=>!!document.elementFromPoint(x,y)?.closest('#globe-live-map')",[x,y])
+            before=await page.evaluate("window.AtlasGlobe.camera.zoom")
+            await page.mouse.move(x,y)
+            await page.mouse.wheel(0,-160)
+            await page.wait_for_function("(z)=>window.AtlasGlobe.camera.zoom>z*1.05",arg=before,timeout=15000)
+            await page.wait_for_function("window.AtlasGlobe.focus.settled")
+            print(name,"native wheel delivered",await page.evaluate("window.AtlasGlobe.tileState.input"),flush=True)
+            before=await page.evaluate("window.AtlasGlobe.camera.zoom")
+            await surface.dispatch_event("wheel",{"deltaY":-80,"deltaX":0,"ctrlKey":True,"bubbles":True,"cancelable":True})
+            await page.wait_for_function("(z)=>window.AtlasGlobe.camera.zoom>z*1.1",arg=before,timeout=15000)
+            await page.wait_for_function("window.AtlasGlobe.focus.settled")
+            print(name,"synthetic Ctrl-wheel delivered",await page.evaluate("window.AtlasGlobe.tileState.input"),flush=True)
+            if name=="phone":
+                before=await page.evaluate("window.AtlasGlobe.camera.zoom")
+                cdp=await context.new_cdp_session(page)
+                def fingers(d):
+                    return [{"x":x-d,"y":y,"id":1},{"x":x+d,"y":y,"id":2}]
+                await cdp.send("Input.dispatchTouchEvent",{"type":"touchStart","touchPoints":fingers(25)})
+                for d in range(30,76,5):
+                    await cdp.send("Input.dispatchTouchEvent",{"type":"touchMove","touchPoints":fingers(d)})
+                    await page.wait_for_timeout(35)
+                await cdp.send("Input.dispatchTouchEvent",{"type":"touchEnd","touchPoints":[]})
+                await page.wait_for_function("(z)=>window.AtlasGlobe.camera.zoom>z*1.05",arg=before,timeout=15000)
+                print(name,"two-touch gesture delivered",await page.evaluate("window.AtlasGlobe.tileState.input"),flush=True)
+            await shot(page,f"shots/globe-independent/{name}-input.png")
+        elif MODE=="terrain":
             await page.evaluate("window.AtlasGlobe.goTo([-90.875,14.501],10)")
             await page.wait_for_function("window.AtlasGlobe.tileState?.mesh==='dem'",timeout=20000)
             await page.wait_for_function("window.AtlasGlobe.tileState?.elevation>1500",timeout=60000)
