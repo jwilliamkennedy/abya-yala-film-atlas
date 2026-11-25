@@ -784,7 +784,7 @@ function drawEncounter(){
  if(pendingFilm){const i=films.findIndex(f=>f.id===pendingFilm);if(i>=0){filmOffset=i;pendingFilm='';}}
  filmOffset=Math.min(filmOffset,Math.max(0,films.length-1));
  const sig=JSON.stringify([focusIds,inside.map(v=>v.id),primary?.id,films.map(f=>f.id),filmOffset,yearBand,currentTheme(),facetFilter,publicationStatus,pendingFilm,journey.length,readingJourney,collectionState()?.id,collectionState()?.activeThread,store()?.activeThread().items]);
- if(sig===focusKey){placeEmergent();return;}focusKey=sig;
+ if(sig===focusKey){const link=panel.querySelector('[data-view-kind^="indexed-"]');if(link&&featured)link.href=watchURL(featured.film);placeEmergent();return;}focusKey=sig;
  const nextFilm=films[filmOffset],sameEncounter=!!primary&&panel.dataset.land===primary.id&&panel.dataset.film===(nextFilm?.id||'');
  const savedScroll=sameEncounter?panel.scrollTop:0,openDetails=[...panel.querySelectorAll('details[open]')].map(d=>d.classList[0]);
  const oldArt=sameEncounter?panel.querySelector('.globe-feature-art'):null;
