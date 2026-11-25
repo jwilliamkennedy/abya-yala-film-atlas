@@ -38,6 +38,14 @@ async def run(browser,name,viewport):
                 for(const dy of [-80,-80,40])e.dispatchEvent(new WheelEvent('wheel',{deltaY:dy,bubbles:true,cancelable:true}));
                 return {before,immediate:AtlasGlobe.camera,busy:!AtlasGlobe.focus.settled};}""")
             assert burst["busy"] and burst["before"]==burst["immediate"],(name,"overview wheel jumped synchronously",burst)
+            # Initiating a wheel gesture and a keyboard-style click in the same
+            # event task must never activate the stale encounter.
+            blocked=await fallback.evaluate("""e=>{e.dispatchEvent(new WheelEvent('wheel',{deltaY:0,bubbles:true,cancelable:true}));
+                const panel=document.querySelector('#globe-encounter'),probe=document.createElement('button');let activated=false;
+                panel.append(probe);probe.addEventListener('click',()=>activated=true);
+                const evt=new MouseEvent('click',{bubbles:true,cancelable:true});probe.dispatchEvent(evt);probe.remove();
+                return {activated,prevented:evt.defaultPrevented,busy:!AtlasGlobe.focus.settled};}""")
+            if blocked["busy"]: assert blocked["prevented"] and not blocked["activated"],(name,blocked)
             await page.wait_for_function("AtlasGlobe.focus.settled",timeout=15000)
             after=await page.evaluate("AtlasGlobe.camera")
             import math
@@ -84,6 +92,12 @@ async def run(browser,name,viewport):
                 await page.locator("#globe-"+key+"-toggle").click()
             assert max(x["right"] for x in boxes)-min(x["right"] for x in boxes)<.5 and max(x["w"] for x in boxes)-min(x["w"] for x in boxes)<.5 and len({x["font"] for x in boxes})==1,(name,boxes)
             print(name,"standardized menu bounds and typography",json.dumps(boxes),flush=True)
+            await page.locator("#globe-find-toggle").click()
+            await page.locator("#globe-find").focus()
+            await page.keyboard.press("Escape")
+            assert await page.locator("#globe-find-panel").is_hidden()
+            assert await page.locator("#globe-find-toggle").evaluate("e=>document.activeElement===e")
+            print(name,"menu keyboard focus restored",flush=True)
         layer=await page.evaluate("window.AtlasGlobe.territoryLayer")
         assert layer["visible"] and layer["features"]>0 and layer["fill"] is not None,(name,"ambient territory layer absent",layer)
         assert layer["boundaries"]["longEdges"]==0,(name,"cross-world territory edges",layer["boundaries"])
