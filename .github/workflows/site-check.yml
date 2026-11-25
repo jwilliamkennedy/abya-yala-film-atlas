@@ -223,15 +223,16 @@ jobs:
                 assert modes_visible=={'build':'Build','follow':'Read','playVisible':True},(label,'Play missing from toolbar',modes_visible)
                 # Help must open as a short anchored popover, not a screen-sized overlay.
                 await page.locator('#constellate-how > summary').wait_for(state='attached',timeout=20000)
-                await page.locator('#constellate-how > summary').click(force=True,timeout=12000)
+                await page.locator('#constellate-how > summary').click(timeout=12000)
                 help_state=await page.evaluate("""() => {
                   const d=document.getElementById('constellate-how'),ol=d.querySelector('ol'),
                     r=ol.getBoundingClientRect();
                   return {open:d.open,items:ol.querySelectorAll(':scope > li').length,height:r.height,
                     width:r.width,guide:document.getElementById('weave-guide')?.getBoundingClientRect().height};
                 }""")
-                assert help_state['open'] and help_state['items']==4 and 0<help_state['height']<365,(label,'Help popover obstructs interface',help_state)
-                assert help_state['guide'] is not None and help_state['guide']<120,(label,'Onboarding guide too tall',help_state)
+                assert help_state['open'] and help_state['items']==(3 if prefix else 4) and 0<help_state['height']<365,(label,'Help popover obstructs interface',help_state)
+                if not prefix:
+                    assert help_state['guide'] is not None and help_state['guide']<120,(label,'Onboarding guide too tall',help_state)
                 await page.keyboard.press('Escape')
                 assert await page.locator('#constellate-how').evaluate('(d)=>!d.open'),(label,'Help Escape failed')
                 assert await page.evaluate("window.AtlasConstellate.enabled"),(label,'Help Escape closed the editor')
@@ -244,7 +245,7 @@ jobs:
                   const center=id=>{
                     const g=[...document.querySelectorAll('#constellate-graph [data-constellate-node]')].find(g=>g.dataset.constellateNode===id);
                     const rect=g?.querySelector('rect'),matrix=g?.transform.baseVal.consolidate()?.matrix;
-                    return matrix&&rect?{x:matrix.e+rect.width.baseVal.value/2,y:matrix.f+rect.height.baseVal.value/2}:null;
+                    return matrix&&rect?{x:matrix.e+rect.x.baseVal.value+rect.width.baseVal.value/2,y:matrix.f+rect.y.baseVal.value+rect.height.baseVal.value/2}:null;
                   };
                   if(!path)return {error:'no ribbon for visible thread'};
                   const start=center(t.items[0]),end=center(t.items.at(-1));
@@ -320,7 +321,7 @@ jobs:
                   const card=id=>cards.find(n=>n.dataset.constellateNode===id);
                   const center=id=>{
                     const g=card(id),rect=g?.querySelector('rect'),matrix=g?.transform.baseVal.consolidate()?.matrix;
-                    return matrix&&rect?{x:matrix.e+rect.width.baseVal.value/2,y:matrix.f+rect.height.baseVal.value/2}:null;
+                    return matrix&&rect?{x:matrix.e+rect.x.baseVal.value+rect.width.baseVal.value/2,y:matrix.f+rect.y.baseVal.value+rect.height.baseVal.value/2}:null;
                   };
                   const first=center(t.items[0]),last=center(t.items.at(-1));
                   const start=path?.getPointAtLength(0),end=path?.getPointAtLength(path.getTotalLength());
@@ -551,7 +552,8 @@ jobs:
             p.on('pageerror',lambda err:errors.append(str(err)))
             await p.goto(base+'index.html?constellate=1',wait_until='domcontentloaded',timeout=90000)
             await p.wait_for_function('window.AtlasConstellate?.enabled && document.getElementById("weave-start") && window.AtlasCollections?.current()',timeout=55000)
-            if label.startswith('beta'):
+            beta = label.startswith('beta')
+            if beta:
               await p.locator('#weave-map-theme').wait_for(state='visible')
               assert not await p.locator('#weave-start').is_visible()
               assert await p.locator('#weave-map-theme option[value]:not([value=""])').count()==30
@@ -560,9 +562,10 @@ jobs:
               await p.locator('.weave-map-theme-results').wait_for(state='visible')
               assert await p.evaluate('JSON.stringify(window.AtlasCollections.current())')==before
               await p.locator('#weave-map-theme').select_option('')
+              beginning={'themes':30,'collection_unchanged':True}
               # Explicit creation is a separate operation, not an effect of browsing.
               await p.evaluate("window.AtlasConstellate.themeThread('Cosmology and Origin Stories')")
-              await p.evaluate("window.AtlasConstellate.open({dock:true})")
+              await p.evaluate("window.AtlasConstellate.open({dock:true}); window.AtlasConstellate.setTab('thread')")
             else:
               beginning=await p.evaluate("""() => {
                 const q=document.querySelector('#ws-theme-q'), f=document.querySelector('#ws-film-q'),chips=document.querySelector('.ws-chips'),all=document.querySelector('#ws-theme-all');
@@ -598,23 +601,10 @@ jobs:
                 thread:t.name};
             }""")
             assert seed['seed']==6 and seed['playVisible'],(label,'six-film starter or top-level Play failed',seed)
-            state=await p.evaluate("""() => {
-              const tab=document.querySelector('#weave-tab-add'),panel=document.querySelector('#constellate-popup'),
-                    ed=document.querySelector('#weave-editor'),r=tab.getBoundingClientRect();
-              return {stage:document.documentElement.dataset.weaveStage,body:document.body.className,
-                tabRect:r.toJSON(),tabDisplay:getComputedStyle(tab).display,
-                panelDisplay:getComputedStyle(panel).display,editorDisplay:getComputedStyle(ed).display,
-                panelHidden:panel.hidden,editorHidden:ed.hidden,
-                topAtTab:document.elementFromPoint(r.x+r.width/2,r.y+r.height/2)?.id||''};
-            }""")
-            print('DISCOVERY_BROWSE_STATE',label,json.dumps(state,ensure_ascii=False),flush=True)
-            # Map camera redraws can prevent Playwright's stability heuristic
-            # from settling even while the tab is visibly hit-testable.
-            # A physical mouse click at its exposed centre still tests navigation.
-            r=state['tabRect']
-            assert state['tabDisplay']!='none' and state['editorDisplay']!='none' and state['topAtTab']=='weave-tab-add', (label,'Browse films is obstructed',state)
-            assert r['x']>=0 and r['right']<=width and r['y']>=0 and r['bottom']<=height,(label,'Browse films is outside viewport',state)
-            await p.mouse.click(r['x']+r['width']/2,r['y']+r['height']/2)
+            browse='#weave-browse-films' if beta else '#weave-tab-add'
+            if beta and not await p.locator(browse).is_visible():
+              await press(p,'#constellate-mode .cm-add > summary')
+            await press(p,browse)
             await p.wait_for_function("document.querySelector('#weave-editor')?.dataset.tab==='add'",timeout=8000)
             await p.wait_for_function("document.querySelectorAll('#constellate-results .constellate-result').length>=30",timeout=15000)
             search=await p.evaluate("""() => ({
@@ -626,21 +616,30 @@ jobs:
             assert search['shown']==48 and search['more'] and search['focusButton'],(label,'first browsing page',search)
             await press(p,'[data-results-more]')
             assert await p.locator('#constellate-results .constellate-result').count()==96,(label,'Show more pagination')
-            letter=await p.evaluate("""() => {
-              const b=[...document.querySelectorAll('#weave-az-letters button')].find(x=>!x.disabled&&x.dataset.azLetter!=='A');
-              if(!b)return null;
-              const value=b.dataset.azLetter;b.click();
-              const header=document.querySelector('#constellate-results .weave-az-letter')?.textContent;
-              return {value,header,shown:document.querySelectorAll('#constellate-results .constellate-result').length};
-            }""")
-            assert letter and letter['shown']<=48,(label,'A-Z on-demand navigation',letter)
+            if beta:
+              letter=await p.locator('#constellate-results .weave-az-letter').first.inner_text()
+              assert letter,(label,'alphabetic browsing has no groups')
+            else:
+              letter=await p.evaluate("""() => {
+                const b=[...document.querySelectorAll('#weave-az-letters button')].find(x=>!x.disabled&&x.dataset.azLetter!=='A');
+                if(!b)return null;
+                const value=b.dataset.azLetter;b.click();
+                const header=document.querySelector('#constellate-results .weave-az-letter')?.textContent;
+                return {value,header,shown:document.querySelectorAll('#constellate-results .constellate-result').length};
+              }""")
+              assert letter and letter['shown']<=48,(label,'A-Z on-demand navigation',letter)
             await p.locator('#constellate-search').fill('veryunlikelyatlasfilmtermxyz',timeout=12000)
             assert await p.locator('.weave-discovery-empty').count()==1,(label,'no-match recovery')
             await press(p,'[data-discovery-reset]')
             assert await p.locator('#constellate-search').input_value()=='',(label,'search reset')
+            if beta:
+              await press(p,'#weave-filters > summary')
             await p.locator('#weave-discovery-order').select_option('newest')
             disabled=await p.evaluate("() => [...document.querySelectorAll('#weave-az-letters button')].every(b=>b.disabled)")
-            assert disabled,(label,'A-Z jump should be disabled outside alphabetical order')
+            if beta:
+              assert await p.locator('#constellate-results .weave-az-letter').count()==0
+            else:
+              assert disabled,(label,'A-Z jump should be disabled outside alphabetical order')
             await p.locator('#weave-discovery-order').select_option('relevance')
             await press(p,'#weave-discovery-unadded')
             assert await p.locator('#weave-discovery-count').inner_text(),(label,'filtered result count absent')
@@ -653,19 +652,25 @@ jobs:
             assert await p.locator('#constellate-search').input_value()=='Cosmology',(label,'search lost on tab switch')
             await press(p,'[data-az-tab="film"]')
             await press(p,'#weave-discovery-clear')
-            await press(p,'#weave-tab-thread')
+            await press(p,'#weave-browse-back' if beta else '#weave-tab-thread')
             # A temporary thread focus changes no collection visibility or membership.
             await p.evaluate("""() => window.AtlasCollections.createThread('QA secondary thread','','star-red')""")
             await p.wait_for_function("document.querySelector('#weave-focus-thread')?.hidden===false",timeout=10000)
             before=await p.evaluate("() => window.AtlasCollections.current().threads.map(t=>({id:t.id,visible:t.visible,items:t.items.slice()}))")
+            if beta and not await p.locator('.weave-more').evaluate('(e)=>e.open'):
+              await press(p,'.weave-more > summary')
             await press(p,'#weave-focus-thread')
             assert await p.locator('#weave-focus-thread').inner_text()=='Show all threads',(label,'focus action label')
             focused=await p.evaluate("() => window.AtlasCollections.current().threads.map(t=>({id:t.id,visible:t.visible,items:t.items.slice()}))")
             assert before==focused,(label,'focus mutated saved thread data')
+            if beta and not await p.locator('.weave-more').evaluate('(e)=>e.open'):
+              await press(p,'.weave-more > summary')
             await press(p,'#weave-focus-thread')
+            if beta and await p.locator('.weave-more').evaluate('(e)=>e.open'):
+              await press(p,'.weave-more > summary')
             await press(p,'#constellate-how>summary')
             help_count=await p.locator('#constellate-how>ol>li').count()
-            assert help_count==4,(label,'Help should have four steps',help_count)
+            assert help_count==(3 if beta else 4),(label,'Help steps',help_count)
             await p.keyboard.press('Escape')
             assert not await p.locator('#constellate-how').evaluate('(x)=>x.open'),(label,'Help did not close')
             await press(p,'#weave-play')

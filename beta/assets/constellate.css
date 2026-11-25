@@ -1509,7 +1509,8 @@ html[data-weave-stage="start"] #constellate-mode :is(.cm-add,.cm-tools,#weave-pl
  #constellate-mode .cm-add>summary{width:38px;padding:0}
  #constellate-mode :is(#constellate-read,#constellate-redo){display:none}
  #constellate-mode .weave-tool-group{margin-right:2px;padding-right:4px}
- #constellate-mode .cm-add-menu,#constellate-mode .weave-more-menu{position:fixed;left:8px;right:8px;top:auto;bottom:8px;width:auto;max-height:70vh}
+ #constellate-mode .cm-add,#constellate-mode .weave-more{position:static}
+ #constellate-mode .cm-add-menu,#constellate-mode .weave-more-menu{position:absolute;left:8px;right:8px;top:100%;bottom:auto;width:auto;max-height:min(44dvh,360px)}
 }
 
 /* ══ Add films filters (13 Nov 2026): a two-column grid. Order across the top; the two tick boxes on one row;
@@ -2059,3 +2060,9 @@ body.weave-playing:not(.weave-unmapped) #constellate-graph.weave-play-focus{back
 #weave-trace-layer .wt-result .wt-actions{position:sticky;bottom:-12px;flex:none;margin:10px -16px -12px;padding:10px 16px 12px;background:var(--reading-paper,#f4f5f6);border-top:1px solid var(--dw-line);z-index:1}
 #weave-trace-layer .wt-credit{font-size:11px;margin:5px 0 0;color:var(--dw-sub)}
 @media(max-width:700px){#weave-trace-layer .wt-result{width:auto}#weave-trace-layer .wt-result>ol{max-height:88px}#weave-trace-layer .wt-route-film{grid-template-columns:68px minmax(0,1fr)}#weave-trace-layer .wt-route-film>.weave-media-thumb{width:68px}}
+
+/* Let the open toolbar menu sit above its sibling editor dock. The map's
+   isolated stacking context otherwise traps even the frontmost menu. */
+body.is-constellating .map-panel:has(#constellate-mode details[open]) {
+  isolation: auto;
+}
