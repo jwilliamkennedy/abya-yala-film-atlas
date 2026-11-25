@@ -14,7 +14,28 @@ async def check(browser,name,viewport):
     await page.goto(BASE+"?constellate=1&globe=1",wait_until="domcontentloaded",timeout=90000)
     await page.wait_for_function("window.AtlasGlobe?.active && window.AtlasGlobe.focus.settled",timeout=60000)
     assert await page.evaluate("window.AtlasGlobe.pointCount>0 && window.AtlasGlobe.geometryCount>0 && window.AtlasGlobe.landArea>2.5 && window.AtlasGlobe.landArea<4.8"),name
+    # Test the production index rather than a mocked grouping or screen location.
+    join = await page.evaluate("""() => {
+      const C=window.AtlasConstellate,A=window.Atlas,G=window.AtlasGlobe,I=C.globeCreditIndex();
+      const credits=new Set(A.allRecords().flatMap(r=>r.films.map(f=>'film:'+r.id+':'+f.id)));
+      const actual=new Set(I.films.map(f=>f.id));
+      const missing=[...credits].filter(id=>!actual.has(id));
+      const extra=[...actual].filter(id=>!credits.has(id));
+      const badJoins=[];
+      for(const [land,entry] of I.byLand)for(const f of entry.films){
+        if(!A.recordLandReferences(f.record).some(r=>r.id===land&&r.mapped))badJoins.push([land,f.id]);
+        if(!credits.has(f.id))badJoins.push(['missing credit',f.id]);
+      }
+      const expected=new Set(I.byLand.keys()),anchors=G.anchors;
+      const invalid=anchors.filter(a=>!A.landById(a.id)?.groups.some(g=>g.features.some(f=>String(f.id)===a.sourceId&&d3.geoContains(f,a.coordinate))));
+      const missingAnchors=[...expected].filter(id=>!anchors.some(a=>a.id===id));
+      return {credits:actual.size,lands:expected.size,points:anchors.length,missing,extra,badJoins,invalid,missingAnchors,anchorFailures:G.anchorFailures};
+    }""")
+    assert not any(join[k] for k in ('missing','extra','badJoins','invalid','missingAnchors','anchorFailures')), (name,join)
+    print(name,"exact geographic credit joins",join["credits"],"land anchors",join["points"],flush=True)
+
     assert await page.evaluate("""() => {const c=document.querySelector('#globe-surface'),d=c.getContext('2d').getImageData(0,0,c.width,c.height).data;let n=0;for(let i=0;i<d.length;i+=4)if(d[i]===105&&d[i+1]===135&&d[i+2]===123)n++;return n>100;}"""),(name,"no visible land pixels")
+    anchor_snapshot=await page.evaluate('JSON.stringify(window.AtlasGlobe.anchors)')
     before=await page.evaluate(CAM)
     assert before["projection"]=="globe",(name,before)
     snapshot=await page.evaluate(SNAP)
@@ -28,6 +49,7 @@ async def check(browser,name,viewport):
     await page.wait_for_function("window.AtlasGlobe.focus.settled")
     after=await page.evaluate(CAM)
     assert abs(after["center"][0]-before["center"][0])>.1,(name,"drag did not rotate")
+    assert await page.evaluate('JSON.stringify(window.AtlasGlobe.anchors)') == anchor_snapshot, (name,'rotation changed geographic anchors')
     aperture=await page.locator("#globe-aperture").bounding_box()
     await page.locator("#globe-find").select_option(index=1)
     await page.wait_for_function("window.AtlasGlobe.focus.settled && window.AtlasGlobe.focus.ids.length>0")
@@ -38,6 +60,11 @@ async def check(browser,name,viewport):
     await page.locator("#weave-map-theme").select_option(index=1)
     await page.wait_for_timeout(450)
     assert await page.evaluate(CAM)==selected,(name,"theme moved camera")
+    assert await page.evaluate("""() => {
+      const C=window.AtlasConstellate, t=document.querySelector('#weave-map-theme').value;
+      return window.AtlasGlobe.focus.ids.every(id=>C.globeLandCatalogFilms(id).every(f=>C.terms(f).includes(t)));
+    }"""),(name,"theme leaked between credits")
+
     assert await page.locator("#globe-aperture").bounding_box()==aperture,(name,"aperture shifted")
     assert await page.evaluate(SNAP)==snapshot,(name,"discovery mutated collection")
     await page.locator("#globe-close").click()

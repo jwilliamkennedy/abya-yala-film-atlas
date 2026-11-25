@@ -1,0 +1,15 @@
+# Spherical concordance — 24 November 2026
+
+## Coordinate domains
+Authoritative inputs for this audit: the Atlas's stored Native Land Digital/Esri/MapMaker 2023 snapshot and its already documented corrections, not the current NLD website. Source service: https://services6.arcgis.com/SC70xY1nSLm15pYn/arcgis/rest/services/Native_Land_Digital_territories/FeatureServer/0 (layer WKID 3857, service geographic WKID 4326). Coordinates are lon/lat degrees. Antimeridian wrapping is permitted, not silently clamped. No new external polygon data was obtained or stored.
+
+Let p=(longitude,latitude), c=(longitude0,latitude0), and r=globe radius in pixels. Independent orthographic x=r cos(lat) sin(lon-lon0); y=r[cos(lat0)sin(lat)-sin(lat0)cos(lat)cos(lon-lon0)]. Canvas y is negative. z=sin(lat0)sin(lat)+cos(lat0)cos(lat)cos(lon-lon0); only z>0 is in view. Independent inverse and D3 inverse must recover p. Great-circle distance on the mean Earth radius measures numerical residual, not ground-truth survey accuracy. Mercator 3857 round trip independently uses 6378137 m and the standard inverse. All vertices tested using the most face-on of six orientations, at radius 4096px. Explicit tolerances: 0.01 m round trip, 0.0001px independent forward agreement. Polygon interiors and holes maintain their winding semantics; no vertex edits except ring reversal.
+
+## Relational domains
+Join source polygon ID -> canonical land ID -> record_id -> (record_id, film_id) -> film's own themes. Every marker is independently contained within its linked original feature, with deterministic spherical centroid or geographic interior search. It is not a filmmaker's residence, filming location, or territorial capital. Overlaps remain independently available. The globe uses exact credit keys; flat workspace retains prior grouping. Counts on the globe may include multiple director credits for the same work; no title/year-based merges. Association status displayed alongside film. Unmapped, provisional, stale and source permission issues are separate from geometric validation.
+
+## Results
+See [machine-readable audit](globe-geo-audit-2026-11-24.json) for measured baseline. Re-run `node tools/qa/globe-geography.cjs` from the repository root and browser QA `python tools/qa/globe-discovery.py` against a local site server. The offline audit extracts production join setup (fail closed if its section markers change); the browser verifies the actual public runtime joins, point containment, rotation invariance, and exact theme isolation.
+
+## Limits
+The historical dataset may differ from the present-day Native Land map; the original external feature geometries were not re-downloaded or independently verified. No new territory publication or change to existing source/CSV records. Permission, date, affiliation evidence, unmapped people and source geography need separate review. Rendering numerical precision is not cultural or cartographic authority. Topography, terrain labels, and new source-approved geography remain future work.
