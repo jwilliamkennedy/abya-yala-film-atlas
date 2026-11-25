@@ -12,6 +12,7 @@ let records=[],points=[],byId=new Map(),near=[],inside=[],focusIds=[],focusKey='
 let pointers=new Map(),gesture=null,dragged=false,previousFocus=null;
 let relief=null,reliefState='loading',flight=0,flightTarget=null,lastDrag=null;
 let live=null,liveReady=false,liveHost=null,liveSignature='',liveBaseZoom=0,liveMoved=false,liveTimer=0;
+ const startup={fallbackPaint:null,nativeLoaded:null,handoff:null,revealed:null,reason:null};
 let wheelFrame=0,wheelGoal=null,wheelLast=0,wheelActive=false,gestureStart=null,gestureUntil=0,landscape=false,lastLiveUpdate=0;
 const received={marble:0,satellite:0,dem:0,hilldem:0,places:0},sourceErrors={};
 let ambientCount=0,landsVisible=true,landStrength=1,edgeMode='selected',lastCameraChange=0,lastCameraKey='',activeMapPointers=new Set(),pendingFilm='',rankCache=new Map(),zoomListeners=null,lastStatus=0,frameTimes=[],lastRender=0,preferredLand='',filmOffset=0,yearBand='',lastEncounter='',recent=[],lastRelated=null;
@@ -60,7 +61,7 @@ const nowMs=()=>performance.now();
 function liveStats(){
  if(!liveReady||!live)return null;
  let elevation=null;try{elevation=live.queryTerrainElevation(center);}catch{}
- return {version:live.version||null,zoom:live.getZoom(),pitch:live.getPitch(),mesh:live.getTerrain()?.source||null,elevation,received:{...received},errors:{...sourceErrors},wheelActive:wheelActive||live.isZooming(),sourceUpdates:{...sourceUpdates},tileCacheLimit:W<760?96:240,motion:{moving:live.isMoving(),pointers:activeMapPointers.size,quietMs:nowMs()-lastCameraChange,settled},input:{...inputStats},medianFrameMs:frameTimes.length?frameTimes.slice().sort((a,b)=>a-b)[Math.floor(frameTimes.length/2)]:null};
+ return {version:live.version||null,zoom:live.getZoom(),pitch:live.getPitch(),mesh:live.getTerrain()?.source||null,elevation,received:{...received},errors:{...sourceErrors},wheelActive:wheelActive||live.isZooming(),sourceUpdates:{...sourceUpdates},tileCacheLimit:W<760?96:240,motion:{moving:live.isMoving(),pointers:activeMapPointers.size,quietMs:nowMs()-lastCameraChange,settled},input:{...inputStats},startup:{...startup},medianFrameMs:frameTimes.length?frameTimes.slice().sort((a,b)=>a-b)[Math.floor(frameTimes.length/2)]:null};
 }
 function updateMapCredits(z=0){const a=$('#globe-credit-live'),b=$('#globe-credit-fallback'),c=$('#globe-credit-satellite');if(a)a.hidden=!liveReady;if(b)b.hidden=liveReady;if(c)c.hidden=!liveReady||z<=4;}
 function updateDetailStatus(force=false){
@@ -342,7 +343,7 @@ function loadRelief(){
  function failLive(reason){
   if(!liveHost)return;console.warn('Native globe unavailable; using local fallback',reason);stopWheel();zoomListeners?.abort();zoomListeners=null;
   clearTimeout(liveTimer);liveReady=false;live?.remove();live=null;liveHost.remove();liveHost=null;
-  host?.classList.remove('globe-live');if(active){const e=$('#globe-detail-status');if(e)e.textContent='Overview only · detailed map unavailable';renderSoon();scheduleSettle(100);}
+  host?.classList.remove('globe-live','globe-revealed');if(active){const e=$('#globe-detail-status');if(e)e.textContent='Overview only · detailed map unavailable';renderSoon();scheduleSettle(100);}
  }
  async function bootLive(){
   try{
@@ -397,10 +398,23 @@ function loadRelief(){
     const id=e.sourceId||e.tile?.source||'other';sourceErrors[id]=(sourceErrors[id]||0)+1;updateDetailStatus();
    });
    live.on('load',()=>{
-    if(!active||!live)return;
-    clearTimeout(liveTimer);liveReady=true;host.classList.add('globe-live');cancelFlight();readLiveCamera();installZoom();
-    if(initialCamera)live.jumpTo({center:initialCamera.slice(0,2),zoom:initialCamera[2]});
-    readLiveCamera();syncTerrain();syncLandVisibility();movement();finishMove();updateDetailStatus(true);requestAnimationFrame(()=>{if(host&&liveReady)host.classList.add('globe-revealed');});
+    startup.nativeLoaded=nowMs();clearTimeout(liveTimer);handoff();
+   });
+   function handoff(){
+    if(!active||!live||liveReady)return;
+    // Do not steal an ongoing fallback drag or flight. Transfer the actual visible camera.
+    if(pointers.size||flight){liveTimer=setTimeout(handoff,50);return;}
+    const target={center:[wrap(center[0]),clamp(center[1],-85,85)],zoom:clamp(liveBaseZoom+Math.log2(Math.max(.1,zoom)),live.getMinZoom(),live.getMaxZoom())};
+    const focused=document.activeElement===canvas;
+    draw();live.jumpTo(target);liveReady=true;startup.handoff=nowMs();host.classList.add('globe-live');readLiveCamera();installZoom();
+    if(focused)live.getCanvas().focus({preventScroll:true});
+    syncTerrain();syncLandVisibility();settle();updateLive();updateDetailStatus(true);
+    // Wait for a rendered frame with local geometry, not remote imagery or global idle.
+    const map=live,core=['earth','native-ambient','native-lands','native-focus-edges','cinema-points'];
+    let revealed=false;
+    function reveal(reason){if(revealed||!active||live!==map)return;revealed=true;clearTimeout(liveTimer);map.off('render',check);startup.revealed=nowMs();startup.reason=reason;host.classList.add('globe-revealed');}
+    function check(){if(core.every(id=>map.isSourceLoaded(id)))reveal('local-sources');}
+    map.on('render',check);liveTimer=setTimeout(()=>reveal('bounded-timeout'),1800);map.triggerRepaint();
     try{const t=JSON.parse(params.get('themes')||'[]');if(Array.isArray(t)&&t.every(x=>typeof x==='string')&&t.length)C().showThemeLens(t);}catch{}
     restoreEncounter();
     live.on('render',()=>{const t=nowMs();if(lastRender&&t-lastRender<250){frameTimes.push(t-lastRender);if(frameTimes.length>120)frameTimes.shift();}lastRender=t;});
@@ -425,13 +439,13 @@ function loadRelief(){
      const hitLands=records.filter(r=>r.shapes.some(s=>includesBounds(s.bounds,coord)&&d3.geoContains(s.feature,coord)));if(hitLands.length){preferredLand=(hitLands.find(r=>r.id===preferredLand)||hitLands.find(r=>matchingFilms(r.id).length)||hitLands[0]).id;filmOffset=0;setCamera(coord,zoom);}
     });
 
-   });
+   }
    live.on('error',e=>{if(!liveReady&&/WebGL|shader|context/i.test(String(e.error)))failLive(e.error);});
    liveTimer=setTimeout(()=>{if(!liveReady)failLive('Map initialization timeout');},18000);
   }catch(e){failLive(e);}
  }
  function draw(){
- if(!W||!H)return;if(liveReady){updateLive();return;}updateProjection();ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,W,H);
+ if(!W||!H)return;if(liveReady){updateLive();return;}if(startup.fallbackPaint===null)startup.fallbackPaint=nowMs();updateProjection();ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,W,H);
  ctx.fillStyle='#101b29';ctx.fillRect(0,0,W,H);
  const r=radius(),ocean=ctx.createRadialGradient(W/2-r*.25,H/2-r*.3,0,W/2,H/2,r);
  ocean.addColorStop(0,'#426f80');ocean.addColorStop(.72,'#315667');ocean.addColorStop(1,'#203b50');
