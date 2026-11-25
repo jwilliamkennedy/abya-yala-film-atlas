@@ -101,6 +101,7 @@ async def main():
             await page.route(pattern,lambda route:route.abort())
         await page.goto(target["url"],wait_until="domcontentloaded",timeout=90000)
         await page.wait_for_function("(v)=>AtlasGlobe?.discovery.publication==='ready' && AtlasGlobe.focus.settled && AtlasGlobe.discovery.featured?.film===v.film && AtlasGlobe.discovery.featured?.land===v.land",arg=target,timeout=90000)
+        await page.wait_for_function("AtlasGlobe.camera.renderer==='maplibre-globe' && AtlasGlobe.focus.settled && document.querySelector('#atlas-rotational-globe').classList.contains('globe-revealed')",timeout=90000)
         initial=await page.evaluate("({camera:AtlasGlobe.camera,featured:AtlasGlobe.discovery.featured,collection:AtlasGlobe.discovery.collection,url:location.href})")
         play=page.locator('#globe-encounter [data-view-kind="indexed-embed"]')
         await play.click()
@@ -108,7 +109,8 @@ async def main():
         assert await page.locator("#globe-player iframe").get_attribute("src")
         await page.locator('#globe-player button[aria-label="Close film player"]').click()
         assert not await page.locator("#globe-player").count()
-        assert await page.evaluate("({camera:AtlasGlobe.camera,featured:AtlasGlobe.discovery.featured,collection:AtlasGlobe.discovery.collection,url:location.href})")==initial
+        after=await page.evaluate("({camera:AtlasGlobe.camera,featured:AtlasGlobe.discovery.featured,collection:AtlasGlobe.discovery.collection,url:location.href})")
+        assert after==initial,("INLINE_PLAYBACK state changed",initial,after)
         assert await play.evaluate("(e)=>document.activeElement===e")
         print("INLINE_PLAYBACK passed",target["film"],flush=True)
         # Verify both indexed playback types in a separate tab, without depending

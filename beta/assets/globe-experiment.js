@@ -480,8 +480,8 @@ function loadRelief(){
     {id:'land-color',type:'fill',source:'native-lands',paint:{'fill-color':['get','color'],'fill-opacity':['case',['==',['get','match'],0],.02,['==',['get','focus'],1],.14,.07],'fill-opacity-transition':{duration:160,delay:0},'fill-outline-color':'rgba(0,0,0,0)'}},
     {id:'land-outline',type:'line',source:'native-focus-edges',layout:{'line-join':'round','line-cap':'round'},paint:{'line-color':['get','color'],'line-opacity':['case',['==',['get','match'],0],.16,['==',['get','focus'],1],.62,.32],'line-width':['interpolate',['linear'],['zoom'],1,.6,5,1,11,1.5]}},
     {id:'cinema-glow',type:'circle',source:'cinema-points',paint:{'circle-radius':5,'circle-color':'#e8eed9','circle-opacity':['case',['==',['get','match'],1],.13,0],'circle-blur':.9,'circle-pitch-alignment':'map'}},
-    {id:'cinema-light',type:'circle',source:'cinema-points',paint:{'circle-radius':['interpolate',['linear'],['zoom'],0,2,3,3,4,10,7,11],'circle-color':['interpolate',['linear'],['zoom'],0,'#dce9d8',3,'#dce9d8',4,'#1b393e'],'circle-opacity':['case',['==',['get','match'],1],.96,.10],'circle-stroke-color':'#b7d6c4','circle-stroke-width':['interpolate',['linear'],['zoom'],0,0,3,0,4,1,7,1.2],'circle-stroke-opacity':['case',['==',['get','match'],1],.92,0],'circle-pitch-alignment':'viewport'}},
-    {id:'cinema-count',type:'symbol',source:'cinema-points',minzoom:3.8,filter:['==',['get','match'],1],layout:{'text-field':['to-string',['get','films']],'text-font':['Noto Sans Regular'],'text-size':10,'text-padding':4,'text-allow-overlap':false,'text-ignore-placement':false,'text-pitch-alignment':'viewport','text-rotation-alignment':'viewport','symbol-sort-key':['case',['==',['get','focus'],1],0,1]},paint:{'text-color':'#eff2e9','text-halo-color':'#1b393e','text-halo-width':.8,'text-opacity':['interpolate',['linear'],['zoom'],3.8,.65,4.3,1]}},
+    {id:'cinema-light',type:'circle',source:'cinema-points',paint:{'circle-radius':['interpolate',['linear'],['zoom'],0,1.8,3,2.6,4,2.7,7,2.4],'circle-color':'#dce9d8','circle-opacity':['case',['==',['get','match'],1],.92,.08],'circle-pitch-alignment':'viewport'}},
+    {id:'cinema-count',type:'symbol',source:'cinema-points',minzoom:3.8,filter:['==',['get','match'],1],layout:{'text-field':['to-string',['get','films']],'text-font':['Noto Sans Regular'],'text-size':11,'text-anchor':'left','text-offset':[.65,0],'text-padding':4,'text-allow-overlap':false,'text-ignore-placement':false,'text-pitch-alignment':'viewport','text-rotation-alignment':'viewport','symbol-sort-key':['case',['==',['get','focus'],1],0,1]},paint:{'text-color':'#eff2e9','text-halo-color':'#1b393e','text-halo-width':1.35,'text-opacity':['interpolate',['linear'],['zoom'],3.8,.65,4.3,1]}},
     {id:'globe-user-link',type:'line',source:'globe-authored-links',layout:{'line-cap':'round','line-join':'round'},paint:{'line-color':['get','color'],'line-opacity':.6,'line-width':1.2,'line-dasharray':[2,2]}},
     {id:'globe-user-halo',type:'circle',source:'globe-collected',paint:{'circle-radius':7,'circle-color':['get','color'],'circle-blur':.95,'circle-opacity':.28}},
     {id:'globe-user-star',type:'circle',source:'globe-collected',paint:{'circle-radius':['case',['==',['get','selected'],1],4.2,['>', ['get','count'],1],3.8,2.7],'circle-color':'#f1f6e8','circle-stroke-color':['get','color'],'circle-stroke-width':1,'circle-opacity':.98}},
@@ -598,10 +598,10 @@ function loadRelief(){
  shape(sphere,null,'rgba(190,212,220,.36)',.75);
  near=ps.filter(v=>v.match&&v.distance<=aperture()).sort((a,b)=>a.distance-b.distance||a.p.name.localeCompare(b.p.name));
  for(const {p,xy,match} of ps){
-  const chosen=focused.has(p.id)||selected.has(p.id)||preview.has(p.id),counted=match&&mapScale()>=4,rr=counted?11:chosen?3.2:1.9,rgb=territoryTone(p.id);
+  const chosen=focused.has(p.id)||selected.has(p.id)||preview.has(p.id),counted=match&&mapScale()>=4,rr=chosen?3:2,rgb=territoryTone(p.id);
   if(chosen&&match){ctx.beginPath();ctx.arc(xy[0],xy[1],rr+3,0,2*Math.PI);ctx.fillStyle=rgba(rgb,.23);ctx.fill();}
-  ctx.beginPath();ctx.arc(xy[0],xy[1],rr,0,2*Math.PI);ctx.fillStyle=match?(counted?'#1b393e':chosen?'#f8eed8':'#e0e7dc'):'rgba(208,222,219,.22)';ctx.fill();
-  if(counted){ctx.strokeStyle='#b7d6c4';ctx.lineWidth=1;ctx.stroke();ctx.font='500 10px '+(getComputedStyle(host).getPropertyValue('--ui-sans').trim()||'system-ui');ctx.fillStyle='#eff2e9';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(String(cinemaStats(matchingFilms(p.id)).films),xy[0],xy[1]);}
+  ctx.beginPath();ctx.arc(xy[0],xy[1],rr,0,2*Math.PI);ctx.fillStyle=match?(chosen?'#f8eed8':'#e0e7dc'):'rgba(208,222,219,.22)';ctx.fill();
+  if(counted){ctx.font='500 11px '+(getComputedStyle(host).getPropertyValue('--ui-sans').trim()||'system-ui');ctx.fillStyle='#eff2e9';ctx.textAlign='left';ctx.textBaseline='middle';const label=String(cinemaStats(matchingFilms(p.id)).films);ctx.strokeStyle='#1b393e';ctx.lineWidth=2;ctx.strokeText(label,xy[0]+6,xy[1]);ctx.fillText(label,xy[0]+6,xy[1]);}
  }
  targetFeedback();if(startup.fallbackPaint===null)startup.fallbackPaint=nowMs();
 }
@@ -660,7 +660,7 @@ function renderPublicFields(box,row){
  section('Additional public fields',Object.keys(row));
 }
 function creditDetails(film,summaryContent=[]){
- const d=el('details','globe-credit-details');d.append(el('summary',null,'Sources & themes'),...summaryContent);const body=el('div','globe-credit-data');d.append(body);
+ const d=el('details','globe-credit-details');d.append(el('summary',null,'Details & sources'),...summaryContent);const body=el('div','globe-credit-data');d.append(body);
  let loading=false,done=false;d.addEventListener('toggle',async()=>{if(!d.open||done||loading)return;loading=true;body.replaceChildren(el('p',null,'Loading public record…'));
  try{const rows=(await publicRows()).get(film.record+'|'+film.film)||[];if(!d.isConnected)return;body.replaceChildren();
  if(!rows.length){body.append(el('p',null,'No exact row in the current public CSV. The Atlas record remains available.'));}else{if(rows.length>1)body.append(el('p',null,'Multiple public rows share this credit key; all are shown.'));for(const row of rows)renderPublicFields(body,row);}
@@ -788,7 +788,7 @@ function embeddedRoute(entry){
 }
 function closeGlobePlayer(){const d=globePlayer;if(!d)return;const trigger=playerReturn;playerReturn=null;globePlayer=null;d.querySelector('iframe')?.removeAttribute('src');if(d.open)d.close();d.remove();if(active&&trigger?.isConnected)trigger.focus({preventScroll:true});}
 function openGlobePlayer(film,route,trigger){
- if(!active||!settled||!route||typeof HTMLDialogElement==='undefined'||!HTMLDialogElement.prototype.showModal)return false;
+ if(!active||!settled||!host||host.inert||!route||typeof HTMLDialogElement==='undefined'||!HTMLDialogElement.prototype.showModal)return false;
  closeGlobePlayer();if(menuMode)setMenu('');playerReturn=trigger;
  const d=el('dialog','globe-player'),header=el('div','globe-player-head'),copy=el('div'),heading=el('h2',null,film.title),dismiss=button('Close',closeGlobePlayer);
  d.id='globe-player';d.setAttribute('aria-labelledby','globe-player-title');heading.id='globe-player-title';copy.append(heading,el('p',null,[film.maker,film.year].filter(Boolean).join(' · ')));dismiss.setAttribute('aria-label','Close film player');header.append(copy,dismiss);d.append(header);
@@ -970,7 +970,7 @@ function renderCollection(force=false){
 function updateCollectButton(){const b=$('#globe-collect-film'),link=$('#globe-connect-featured');if(!b||!featured)return;const id=featured.film.id,on=!!store()?.activeThread().items.includes(id),inCollection=!!collectionState()?.items.some(x=>x.id===id&&x.type==='film');b.disabled=on;b.textContent=on?'Collected':'＋ Collect film';if(link){link.hidden=!inCollection;link.disabled=drawingLink&&linkFrom===id&&!linkTo;link.textContent=drawingLink&&linkFrom&&linkFrom!==id?'Connect to this film':drawingLink&&linkFrom===id?'First film selected':'Connect';link.setAttribute('aria-pressed',String(drawingLink&&(linkFrom===id||linkTo===id)));}}
 function focusEncounter(){const target=$('#globe-encounter .globe-film-title')||$('#globe-encounter summary')||$('#globe-encounter button');if(target){target.focus({preventScroll:true});target.scrollIntoView({block:'nearest',inline:'nearest',behavior:'auto'});}}
 function landFilmPicker(films){
- const details=el('details','globe-land-films'),summary=el('summary',null,'Browse '+countLabel(films.length,'film credit')),list=el('div','globe-land-film-list');details.append(summary,list);
+ const details=el('details','globe-land-films'),summary=el('summary',null,'Films ('+films.length+')'),list=el('div','globe-land-film-list');details.append(summary,list);
  let limit=0;const append=()=>{const end=Math.min(limit+30,films.length);list.querySelector('.globe-land-film-more')?.remove();for(let i=limit;i<end;i++){const f=films[i],b=button('',()=>{if(!settled)return;filmOffset=i;focusKey='';drawEncounter();focusEncounter();},'globe-land-film');b.append(el('strong',null,f.title),el('small',null,[f.maker,f.year].filter(Boolean).join(' · ')));b.dataset.filmId=f.id;if(i===filmOffset)b.setAttribute('aria-current','true');list.append(b);}limit=end;if(limit<films.length)list.append(button('Show more films',append,'globe-land-film-more'));};
  details.addEventListener('toggle',()=>{if(details.open&&!limit)append();});return details;
 }
@@ -1013,13 +1013,13 @@ function drawEncounter(){
   // Repeated Previous/Next and keyboard reading retain their control after replacement.
   if(activeControl){const candidate=[...panel.querySelectorAll('button,a,summary')].find(e=>focusId&&e.id===focusId||focusLabel&&e.getAttribute('aria-label')===focusLabel);if(candidate&&!candidate.disabled)candidate.focus({preventScroll:true});else if(sameEncounter)panel.querySelector('.globe-film-title')?.focus({preventScroll:true});}
  }
- if(!primary){featured=null;panel.append(el('strong',null,'Explore the globe'),el('p','globe-empty','Move a cinema light or numbered land reference into the circle to discover its films.'));status.textContent='No land reference in focus';restorePanel();placeEmergent();return;}
+ if(!primary){featured=null;panel.append(el('strong',null,'Explore the globe'),el('p','globe-empty','Move the globe to bring a cinema light into focus.'));status.textContent='No land reference in focus';restorePanel();placeEmergent();return;}
  recordVisit(primary);
  const film=films[filmOffset],ref=film?A().recordLandReferences(film.record).find(r=>r.id===primary.id):null;
  const head=el('div','globe-encounter-heading'),landTitle=el('strong',null,primary.name);if(primary.fullName!==primary.name)landTitle.title=primary.fullName;head.append(landTitle);
  if(films.length)head.append(el('small','globe-cinema-count',cinemaSummary(cinemaStats(films))));
- panel.append(head);const activeThemes=currentTheme();if(activeThemes.length){const coverage=themeCoverage();panel.append(el('small','globe-active-theme',activeThemes.join(' · ')+' · '+coverage.lands+' matching lands'));}
- const assoc=el('small','globe-association',film?(ref?.status==='sourced'?'Sourced association':'Provisional association'):(actual.has(primary.id)?'Land at the focal point':'Nearby land reference'));if(film&&!actual.has(primary.id))assoc.textContent='Nearby · '+assoc.textContent;panel.append(assoc);
+ panel.append(head);const activeThemes=currentTheme();if(activeThemes.length)head.append(el('small','globe-active-theme',activeThemes.join(' · ')));
+ const assoc=el('small','globe-association',film?(ref?.status==='sourced'?'Sourced association':'Provisional association'):(actual.has(primary.id)?'Land at the focal point':'Nearby land reference'));if(film&&!actual.has(primary.id))assoc.textContent='Nearby · '+assoc.textContent;head.append(assoc);
  if(film){
   featured={land:primary.id,film};const card=el('div','globe-featured'+(sameEncounter?'':' globe-art-arrive')),reuseArt=oldArt&&oldArt.dataset.source===(C().sourceImage(film)||''),art=reuseArt?oldArt:el('button','globe-feature-art');
   art.type='button';art.onclick=()=>previewFromGlobe(film,primary.id,art);art.setAttribute('aria-label','Preview '+film.title);if(!reuseArt)artwork(art,film,'feature');
@@ -1028,22 +1028,22 @@ function drawEncounter(){
   const rawLength=facet.n||work?.weaveLength,length=({S:'Short',F:'Feature',M:'Mid-length'})[rawLength]||rawLength,runtime=Number(work?.runtimeMinutes)>0?work.runtimeMinutes+' min':'';
   copy.append(title,el('small','globe-film-byline',[film.maker,film.year].filter(Boolean).join(' · ')));
   const facts=[format,length,runtime].filter(Boolean).join(' · ');if(facts)copy.append(el('small','globe-film-facts',facts));
-  const {actions,profile,external}=encounterLinks(film,work);if(actions.childNodes.length)copy.append(actions);
-  const inThread=store()?.activeThread().items.includes(film.id),collect=button(inThread?'Collected':'＋ Collect film',()=>collectFilm(film,primary.id),'globe-collect-film');collect.id='globe-collect-film';collect.disabled=!!inThread;copy.append(collect);const link=button('Connect',()=>{if(!settled||featured?.film.id!==film.id)return;pickLink(film.id);updateCollectButton();if(linkTo&&menuMode!=='collection')setMenu('collection');else if(linkFrom&&!linkTo){collectionNotice='Explore and collect another film, then connect it.';if(menuMode==='collection')setMenu('');renderCollection(true);}},'globe-connect-featured');link.id='globe-connect-featured';link.hidden=true;copy.append(link);
-  card.append(art,copy);panel.append(card);updateCollectButton();const reading=journeyControls(film);if(reading)panel.append(reading);
+  const {actions,profile,external}=encounterLinks(film,work);const actionRow=el('div','globe-encounter-actions');for(const a of [...actions.children])if(a.classList.contains('globe-view-link'))actionRow.append(a);
+  const inThread=store()?.activeThread().items.includes(film.id),collect=button(inThread?'Collected':'＋ Collect film',()=>collectFilm(film,primary.id),'globe-collect-film');collect.id='globe-collect-film';collect.disabled=!!inThread;actionRow.append(collect);const link=button('Connect',()=>{if(!settled||featured?.film.id!==film.id)return;pickLink(film.id);updateCollectButton();if(linkTo&&menuMode!=='collection')setMenu('collection');else if(linkFrom&&!linkTo){collectionNotice='Explore and collect another film, then connect it.';if(menuMode==='collection')setMenu('');renderCollection(true);}},'globe-connect-featured');link.id='globe-connect-featured';link.hidden=true;actionRow.append(link);
+  card.append(art,copy);panel.append(card,actionRow);updateCollectButton();const reading=journeyControls(film);if(reading)panel.append(reading);
   if(films.length>1){
    const nav=el('div','globe-encounter-nav'),prev=button('‹',()=>{filmOffset=(filmOffset+films.length-1)%films.length;focusKey='';drawEncounter();},'globe-cycle'),next=button('›',()=>{filmOffset=(filmOffset+1)%films.length;focusKey='';drawEncounter();},'globe-cycle');
    prev.setAttribute('aria-label','Previous film');next.setAttribute('aria-label','Next film');
-   nav.append(prev,el('small',null,(filmOffset+1)+' / '+films.length+' credits'),next);panel.append(nav,landFilmPicker(films));
+   nav.append(prev,el('small',null,(filmOffset+1)+' / '+films.length),next);panel.append(nav);
   }
-  const other=otherLands(chosen,primary);if(other)panel.append(other);
-  const source=landSources(ref);if(external&&profile)source.append(profile);
+  const disclosures=el('div','globe-encounter-disclosures');if(films.length>1)disclosures.append(landFilmPicker(films));const other=otherLands(chosen,primary);if(other)disclosures.append(other);
+  const source=landSources(ref);if(external)source.append(external);if(profile)source.append(profile);
   const language=facet.l||work?.languageLabels||work?.languages,lang=Array.isArray(language)?language.join(' · '):typeof language==='string'?language:'';
   if(lang)source.append(el('p',null,'Language: '+lang));
   const themes=el('div','globe-film-themes');for(const t of C().terms(film))themes.append(button(t,()=>{C().showThemeLens([t]);filmOffset=0;sync();}));if(themes.childNodes.length){source.append(el('small','globe-source-label','Themes'),themes);}
-  const related=relatedEncounters(film,primary.id);if(related.length){const routes=el('div','globe-related-list');routes.append(el('small','globe-source-label','More related films · shared catalogue themes'));for(const [i,v] of related.entries()){const bridge=button('',()=>followRelated(v),'globe-related');bridge.append(el('strong',null,v.film.title),el('small',null,v.ref.name+' · '+v.shared.join(' · ')));bridge.dataset.targetFilm=v.film.id;bridge.dataset.targetLand=v.ref.id;if(i===0&&!readingJourney){const next=el('div','globe-next-encounter');next.append(el('small','globe-source-label','Continue exploring'),bridge);panel.append(next);}else routes.append(bridge);}if(routes.querySelector('button'))source.append(routes);}
+  const related=relatedEncounters(film,primary.id);if(related.length){const routes=el('div','globe-related-list');routes.append(el('small','globe-source-label','More related films · shared catalogue themes'));for(const [i,v] of related.entries()){const bridge=button('',()=>followRelated(v),'globe-related');bridge.append(el('strong',null,v.film.title),el('small',null,v.ref.name+' · '+v.shared.join(' · ')));bridge.dataset.targetFilm=v.film.id;bridge.dataset.targetLand=v.ref.id;routes.append(bridge);}if(routes.querySelector('button')){const relatedDetails=el('details','globe-related-details');relatedDetails.append(el('summary',null,'Related films'),routes);disclosures.append(relatedDetails);}}
   if(journey.length){const back=button('‹ Previous encounter',journeyBack,'globe-related');back.id='globe-journey-back';panel.append(back);}
-  panel.append(creditDetails(film,[source]));
+  disclosures.append(creditDetails(film,[source]));panel.append(disclosures);
  }else{
   featured=null;panel.append(el('p','globe-empty',primary.count?'No films match the active filters.':'No linked films in the Atlas yet.'));
   const other=otherLands(chosen,primary);if(other)panel.append(other);

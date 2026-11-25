@@ -167,7 +167,7 @@ async def run(browser,name,viewport):
             if startup["firstRenderer"]=="native":
                 # A graphics-context failure must reveal the actual overview, even
                 # when normal entry has never shown that canvas to the visitor.
-                await page.locator("#globe-live-map canvas").dispatch_event("webglcontextlost")
+                assert await page.evaluate("""()=>{const canvas=document.querySelector("#globe-live-map canvas");if(!canvas)return false;canvas.dispatchEvent(new Event("webglcontextlost",{cancelable:true}));return true;}"""),(name,"missing native canvas before context loss")
                 await page.wait_for_function("AtlasGlobe.camera.renderer==='orthographic-canvas' && AtlasGlobe.focus.settled",timeout=30000)
                 assert await page.locator("#globe-surface").evaluate("e=>getComputedStyle(e).visibility==='visible' && Number(getComputedStyle(e).opacity)===1")
                 print(name,"native-first context loss recovers visible overview",flush=True)
