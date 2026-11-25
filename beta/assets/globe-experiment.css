@@ -50,3 +50,11 @@ body.atlas-globe-experiment #globe-close{position:fixed;right:14px;bottom:10px;z
 .globe-film-copy strong{font-size:14px}.globe-film-copy small{font-size:12px}
 @media(max-width:760px){.globe-film-copy strong{font-size:13px}.globe-film-copy small{font-size:11px}}
 @media(prefers-reduced-motion:reduce){#globe-aperture,#globe-encounter{transition:none}}
+
+/* Native globe stays behind the offline canvas until the style has initialized. */
+#globe-live-map{position:absolute;inset:0;z-index:0;visibility:hidden;background:#101b29;touch-action:none}
+#atlas-rotational-globe.globe-live #globe-live-map{visibility:visible}
+#atlas-rotational-globe.globe-live #globe-surface{opacity:0;pointer-events:none;visibility:hidden}
+#globe-live-map .maplibregl-canvas{outline-offset:-2px;touch-action:none}
+#globe-aperture,.globe-instructions{z-index:1}
+.globe-footer{font-size:10px;line-height:1.4}

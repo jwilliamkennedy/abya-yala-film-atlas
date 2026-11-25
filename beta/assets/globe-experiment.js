@@ -12,19 +12,20 @@ let W=0,H=0,dpr=1,zoom=1,center=[-91,12],proj=null,path=null,earth=null,landArea
 let records=[],points=[],byId=new Map(),near=[],inside=[],focusIds=[],focusKey='',previewLimit=3,settled=false,anchorFailures=[];
 let pointers=new Map(),gesture=null,dragged=false,previousFocus=null;
 let relief=null,reliefState='loading',flight=0,flightTarget=null,lastDrag=null;
+let live=null,liveReady=false,liveHost=null,liveSignature='',liveBaseZoom=0,liveMoved=false,liveTimer=0;
 const reduced=matchMedia('(prefers-reduced-motion: reduce)');
 const paint=new Map();
 const tones=['213,157,90','183,135,194','89,190,174','219,123,113','137,174,226','196,192,100','224,157,181','121,192,124'];
 function territoryTone(id){let h=2166136261;for(const c of String(id)){h=Math.imul(h^c.charCodeAt(0),16777619);}return tones[(h>>>0)%tones.length];}
 const rgba=(rgb,a)=>'rgba('+rgb+','+a+')';
 const sphere={type:'Sphere'};
-function camera(){return {center:[...center],zoom,projection:'globe',renderer:'orthographic-canvas'};}
+function camera(){return {center:[...center],zoom,projection:'globe',renderer:liveReady?'maplibre-globe':'orthographic-canvas'};}
 function renderSoon(){if(!active||raf)return;raf=requestAnimationFrame(()=>{raf=0;draw();});}
-function sync(){if(!active)return;renderSoon();if(!pointers.size&&!flight)scheduleSettle(75);}
-window.AtlasGlobe={get active(){return active},get camera(){return active?camera():null},get pointCount(){return points.length},get geometryCount(){return records.length},get anchorFailures(){return [...anchorFailures]},get anchors(){return points.map(p=>({id:p.id,coordinate:[...p.coord],sourceId:p.anchor.sourceId,component:p.anchor.component,method:p.anchor.method}))},get landArea(){return landArea},get terrain(){return reliefState},get focus(){return {ids:[...focusIds],inside:inside.map(r=>r.id),settled};},sync,close};
+function sync(){if(!active)return;renderSoon();if(!pointers.size&&!flight&&!live?.isMoving())scheduleSettle(75);}
+window.AtlasGlobe={get active(){return active},get camera(){return active?camera():null},get pointCount(){return points.length},get geometryCount(){return records.length},get anchorFailures(){return [...anchorFailures]},get anchors(){return points.map(p=>({id:p.id,coordinate:[...p.coord],sourceId:p.anchor.sourceId,component:p.anchor.component,method:p.anchor.method}))},get landArea(){return landArea},get terrain(){return liveReady?'tiled':reliefState},get tileState(){return liveReady?{satellite:live.isSourceLoaded('satellite'),terrain:live.isSourceLoaded('dem'),zoom:live.getZoom()}:null},get focus(){return {ids:[...focusIds],inside:inside.map(r=>r.id),settled};},sync,close};
 function close(){
  const wasActive=active;closed=true;active=false;clearTimeout(settleTimer);cancelFlight();if(raf)cancelAnimationFrame(raf);raf=0;ro?.disconnect();
- relief?.dispose();relief=null;host?.remove();host=null;document.body.classList.remove('atlas-globe-experiment');if(wasActive&&C()?.enabled)C().refreshDiscoveryMode();
+ clearTimeout(liveTimer);liveReady=false;live?.remove();live=null;liveHost=null;relief?.dispose();relief=null;host?.remove();host=null;document.body.classList.remove('atlas-globe-experiment');if(wasActive&&C()?.enabled)C().refreshDiscoveryMode();
  const u=new URL(location.href);u.searchParams.delete('globe');history.replaceState(history.state,'',u.href);
 }
 function fallback(e){console.warn('Globe discovery unavailable',e);close();const p=document.createElement('p');p.className='globe-fallback';p.textContent='The globe could not initialize. The flat workspace remains available.';$('.map-panel')?.append(p);setTimeout(()=>p.remove(),9000);}
@@ -59,7 +60,7 @@ function resize(){
  const b=canvas.getBoundingClientRect();if(!b.width||!b.height)return;
  const w=b.width,h=b.height,ratio=Math.min(window.devicePixelRatio||1,2);
  if(w===W&&h===H&&ratio===dpr)return;
- W=w;H=h;dpr=ratio;canvas.width=Math.round(W*dpr);canvas.height=Math.round(H*dpr);renderSoon();scheduleSettle(100);
+ W=w;H=h;dpr=ratio;canvas.width=Math.round(W*dpr);canvas.height=Math.round(H*dpr);if(live)live.resize();renderSoon();scheduleSettle(100);
 }
 function radius(){return Math.max(70,Math.min(W,H)*.445)*zoom;}
 function updateProjection(){
@@ -71,7 +72,7 @@ function shape(g,fill,stroke,width=1){
 }
 function screenPoints(){
  const c=C(),out=[];
- for(const p of points){if(!visible(p.coord))continue;const xy=proj(p.coord);if(!xy?.every(Number.isFinite)||xy[0]<-10||xy[1]<-10||xy[0]>W+10||xy[1]>H+10)continue;
+ for(const p of points){if((!liveReady||live.getZoom()<5)&&!visible(p.coord))continue;const pos=liveReady?live.project(p.coord):null;const xy=pos?[pos.x,pos.y]:proj(p.coord);if(!xy?.every(Number.isFinite)||xy[0]<-10||xy[1]<-10||xy[0]>W+10||xy[1]>H+10)continue;
   out.push({p,xy,match:c.landMatchesTheme([p.id]),distance:Math.hypot(xy[0]-W/2,xy[1]-H/2)});
  }
  return out;
@@ -135,8 +136,92 @@ function loadRelief(){
  const image=new Image();image.onload=()=>{if(!active)return;try{relief=setupRelief(image);reliefState='ready';}catch(e){reliefState='unavailable';console.warn('Globe relief unavailable',e);}renderSoon();};
  image.onerror=()=>{reliefState='unavailable';};image.src=new URL('assets/globe-relief-hyp-50m.png',document.baseURI);
 }
-function draw(){
- if(!W||!H)return;updateProjection();ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,W,H);
+// Native globe projection, native gestures and one geographic renderer for imagery,
+ // relief, territory geometries and catalog anchors. The orthographic canvas is an offline fallback.
+ const emptyGeo=()=>({type:'FeatureCollection',features:[]});
+ function geoPolygon(g){
+  // D3 reference polygons have spherical clockwise exteriors; GeoJSON uses the inverse.
+  if(g.type==='Polygon')return {type:g.type,coordinates:g.coordinates.map(r=>r.slice().reverse())};
+  if(g.type==='MultiPolygon')return {type:g.type,coordinates:g.coordinates.map(p=>p.map(r=>r.slice().reverse()))};
+  if(g.type==='GeometryCollection')return {type:g.type,geometries:g.geometries.map(geoPolygon)};
+  return g;
+ }
+ function liveLandData(ids){
+  const features=[];
+  for(const id of ids){const r=byId.get(id);if(!r)continue;const color='rgb('+territoryTone(id)+')',match=C().landMatchesTheme([id]);
+   for(const {feature} of r.shapes)features.push({type:'Feature',properties:{land:id,color,match:match?1:0},geometry:geoPolygon(feature.geometry)});
+  }
+  return {type:'FeatureCollection',features};
+ }
+ function livePointsData(){
+  return {type:'FeatureCollection',features:points.map(p=>({type:'Feature',properties:{land:p.id,match:C().landMatchesTheme([p.id])?1:0},geometry:{type:'Point',coordinates:p.coord}}))};
+ }
+ function updateLive(){
+  if(!liveReady)return;
+  const ps=screenPoints();near=ps.filter(v=>v.match&&v.distance<=aperture()).sort((a,b)=>a.distance-b.distance||a.p.name.localeCompare(b.p.name));
+  host.classList.toggle('has-tuning',!!near.length||!!inside.length&&settled);
+  host.classList.toggle('has-cinema',near.length>0||settled&&inside.some(v=>C().landMatchesTheme([v.id])&&v.count));
+  // Keep the source stable while dragging. Rebuild only once the camera settles or theme changes.
+  if(live.isMoving())return;
+  const ids=[...new Set([...focusIds,...C().selectedLandIds,...C().previewLandIds(),...ps.filter(v=>v.match&&v.distance<=aperture()*2.4).sort((a,b)=>a.distance-b.distance).slice(0,8).map(v=>v.p.id)])];
+  const sig=JSON.stringify([ids,points.filter(p=>C().landMatchesTheme([p.id])).map(p=>p.id)]);
+  if(sig===liveSignature)return;liveSignature=sig;
+  live.getSource('native-lands')?.setData(liveLandData(ids));
+  live.getSource('cinema-points')?.setData(livePointsData());
+ }
+ function readLiveCamera(){const p=live.getCenter();center=[wrap(p.lng),p.lat];zoom=Math.pow(2,live.getZoom()-liveBaseZoom);}
+ function failLive(reason){
+  if(!liveHost)return;console.warn('Native globe unavailable; using local fallback',reason);
+  clearTimeout(liveTimer);liveReady=false;live?.remove();live=null;liveHost.remove();liveHost=null;
+  host?.classList.remove('globe-live');if(active){renderSoon();scheduleSettle(100);}
+ }
+ async function bootLive(){
+  try{
+   const lib=await import(new URL('assets/maplibre/maplibre-gl.mjs',document.baseURI).href),ml=lib.default||lib;
+   if(!active)return;
+   liveHost=el('div');liveHost.id='globe-live-map';host.insertBefore(liveHost,canvas);
+   // 512 CSS pixels per world at zoom 0. Use a viewport-dependent overview size.
+   liveBaseZoom=Math.max(-1.3,Math.log2(Math.min(W,H)*.87*Math.PI/512));
+   const style={version:8,projection:{type:'globe'},sources:{
+    earth:{type:'geojson',data:{type:'Feature',properties:{},geometry:geoPolygon(earth)}},
+    satellite:{type:'raster',tiles:['https://tiles.maps.eox.at/wmts/1.0.0/s2cloudless-2025_3857/default/g/{z}/{y}/{x}.jpg'],tileSize:256,maxzoom:14,attribution:'EOxCloudless https://cloudless.eox.at by EOX IT Services GmbH (Contains modified Copernicus Sentinel data 2025)'},
+    dem:{type:'raster-dem',tiles:['https://tiles.mapterhorn.com/{z}/{x}/{y}.webp'],tileSize:512,maxzoom:12,encoding:'terrarium',attribution:'Mapterhorn terrain'},
+    'native-lands':{type:'geojson',data:emptyGeo(),tolerance:0,buffer:128,maxzoom:14},
+    'cinema-points':{type:'geojson',data:livePointsData(),maxzoom:14}
+   },layers:[
+    {id:'sea',type:'background',paint:{'background-color':'#1c3446'}},
+    {id:'fallback-land',type:'fill',source:'earth',paint:{'fill-color':'#69877b'}},
+    {id:'satellite',type:'raster',source:'satellite',paint:{'raster-saturation':-.13,'raster-contrast':.08,'raster-brightness-min':.025,'raster-brightness-max':.90,'raster-fade-duration':260}},
+    {id:'relief',type:'hillshade',source:'dem',minzoom:2,paint:{'hillshade-exaggeration':.27,'hillshade-shadow-color':'#17242b','hillshade-highlight-color':'#ebdfc1','hillshade-accent-color':'#253c36','hillshade-illumination-direction':315}},
+    {id:'land-color',type:'fill',source:'native-lands',paint:{'fill-color':['get','color'],'fill-opacity':['case',['==',['get','match'],1],.26,.09]}},
+    {id:'land-outline',type:'line',source:'native-lands',paint:{'line-color':['get','color'],'line-opacity':['case',['==',['get','match'],1],.86,.27],'line-width':['interpolate',['linear'],['zoom'],1,.8,5,1.4,11,2]}},
+    {id:'cinema-glow',type:'circle',source:'cinema-points',paint:{'circle-radius':5,'circle-color':'#e8eed9','circle-opacity':['case',['==',['get','match'],1],.13,0],'circle-blur':.9,'circle-pitch-alignment':'map'}},
+    {id:'cinema-light',type:'circle',source:'cinema-points',paint:{'circle-radius':['interpolate',['linear'],['zoom'],0,2,7,3.2],'circle-color':'#e5ebd8','circle-opacity':['case',['==',['get','match'],1],.95,.22],'circle-pitch-alignment':'map'}}
+   ]};
+   live=new ml.Map({container:liveHost,style,center,zoom:liveBaseZoom,minZoom:Math.max(-2,liveBaseZoom-0.35),maxZoom:14,maxPitch:0,attributionControl:false,dragRotate:false,pitchWithRotate:false,renderWorldCopies:false,cooperativeGestures:false,fadeDuration:180,trackResize:false});
+   live.touchZoomRotate?.disableRotation();
+   live.keyboard?.disableRotation?.();
+   live.on('load',()=>{
+    if(!active||!live)return;
+    clearTimeout(liveTimer);liveReady=true;host.classList.add('globe-live');cancelFlight();readLiveCamera();movement();finishMove();
+    live.getCanvas().setAttribute('aria-label','Rotate and zoom the globe; Enter explores the focused lands');
+    live.getCanvas().addEventListener('keydown',e=>{if(e.key==='Enter'&&focusIds.length){e.preventDefault();C().openLands(focusIds);}});
+    live.on('movestart',()=>{if(!liveReady)return;liveMoved=true;movement();});
+    live.on('move',()=>{if(!liveReady)return;readLiveCamera();renderSoon();});
+    live.on('moveend',()=>{if(!liveReady)return;readLiveCamera();liveMoved=false;finishMove();});
+    live.on('click','cinema-light',e=>{const id=e.features?.[0]?.properties?.land,p=points.find(v=>v.id===id);if(p&&C().landMatchesTheme([id]))setCamera(p.coord,zoom);});
+    // Safari emits proprietary pinch events; Chromium sends ctrl+wheel which MapLibre handles natively.
+    let pinch=null;
+    liveHost.addEventListener('gesturestart',e=>{e.preventDefault();pinch=live.getZoom();live.stop();},{passive:false});
+    liveHost.addEventListener('gesturechange',e=>{if(pinch===null)return;e.preventDefault();live.jumpTo({zoom:clamp(pinch+Math.log2(Math.max(.05,e.scale)),live.getMinZoom(),14)});},{passive:false});
+    liveHost.addEventListener('gestureend',e=>{e.preventDefault();pinch=null;finishMove();},{passive:false});
+   });
+   live.on('error',e=>{if(!liveReady&&/WebGL|shader|context/i.test(String(e.error)))failLive(e.error);});
+   liveTimer=setTimeout(()=>{if(!liveReady)failLive('Map initialization timeout');},18000);
+  }catch(e){failLive(e);}
+ }
+ function draw(){
+ if(!W||!H)return;if(liveReady){updateLive();return;}updateProjection();ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,W,H);
  ctx.fillStyle='#101b29';ctx.fillRect(0,0,W,H);
  const r=radius(),ocean=ctx.createRadialGradient(W/2-r*.25,H/2-r*.3,0,W/2,H/2,r);
  ocean.addColorStop(0,'#426f80');ocean.addColorStop(.72,'#315667');ocean.addColorStop(1,'#203b50');
@@ -204,7 +289,7 @@ function drawEncounter(){
  status.textContent=chosen.length+' land reference'+(chosen.length===1?'':'s')+' in focus';
 }
 function settle(){
- if(!active||!W||!H||pointers.size||flight)return;settled=true;updateProjection();inside=underFocus();
+ if(!active||!W||!H||pointers.size||flight||live?.isMoving())return;settled=true;updateProjection();inside=underFocus();
  const nearby=screenPoints().filter(v=>v.match&&v.distance<=aperture()).sort((a,b)=>a.distance-b.distance||a.p.name.localeCompare(b.p.name));
  const direct=inside.filter(v=>C().landMatchesTheme([v.id])&&matchingFilms(v.id).length);
  // All overlapping land references remain available. Catalogue size never ranks peoples.
@@ -220,6 +305,7 @@ function movement(){
 function finishMove(){host.classList.remove('is-moving');$('#globe-encounter').setAttribute('aria-busy','false');scheduleSettle(140);}
 function cancelFlight(){if(flight)cancelAnimationFrame(flight);flight=0;flightTarget=null;}
 function setCamera(c,z=zoom,duration=300){
+ if(liveReady){const target={center:[wrap(c[0]),clamp(c[1],-85,85)],zoom:clamp(liveBaseZoom+Math.log2(Math.max(.1,z)),live.getMinZoom(),live.getMaxZoom()),duration:reduced.matches?0:duration};live.easeTo(target);return;}
  cancelFlight();const goal=[wrap(c[0]),clamp(c[1],-89.9,89.9)],goalZoom=clamp(z,.8,25);
  movement();
  if(reduced.matches||duration===0){center=goal;zoom=goalZoom;finishMove();return;}
@@ -251,12 +337,12 @@ function wire(){
   finishMove();
  }
  canvas.addEventListener('pointerup',end);canvas.addEventListener('pointercancel',end);canvas.addEventListener('lostpointercapture',end);
- canvas.addEventListener('wheel',e=>{e.preventDefault();setCamera(flightTarget?.center||center,(flightTarget?.zoom||zoom)*Math.exp(-clamp(e.deltaY*(e.deltaMode===1?16:1),-350,350)*.0025),150);},{passive:false});
+ canvas.addEventListener('wheel',e=>{e.preventDefault();cancelFlight();const delta=e.deltaY*(e.deltaMode===1?16:1);zoom=clamp(zoom*Math.exp(-clamp(delta,-350,350)*(e.ctrlKey?.009:.004)),.8,25);movement();finishMove();},{passive:false});
  canvas.addEventListener('keydown',e=>{const k=e.key,step=12/Math.sqrt(zoom);if(!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','+','=','-','Home','Enter'].includes(k))return;e.preventDefault();e.stopPropagation();if(k==='Enter'){if(focusIds.length)C().openLands(focusIds);return;}if(k==='Home'){setCamera([-91,12],1);return;}if(k==='+'||k==='='){setCamera(center,zoom*1.4);return;}if(k==='-'){setCamera(center,zoom/1.4);return;}setCamera([center[0]+(k==='ArrowRight'?step:k==='ArrowLeft'?-step:0),center[1]+(k==='ArrowUp'?step:k==='ArrowDown'?-step:0)]);});
 }
 function markup(){
  host=el('section');host.id='atlas-rotational-globe';host.setAttribute('aria-label','Rotatable cinema atlas');
- host.innerHTML='<canvas id="globe-surface" tabindex="0" aria-label="Rotate the globe using arrow keys, plus and minus to zoom, Enter to explore the focused lands"></canvas><div id="globe-aperture" aria-hidden="true"></div><div class="globe-instructions">Drag to rotate · zoom to explore</div><div class="globe-guide"><label for="globe-find" class="sr-only">Find a land reference</label><select id="globe-find"><option value="">Find a land…</option></select><div class="globe-buttons"><button type="button" id="globe-home">Americas</button><button type="button" id="globe-plus" aria-label="Zoom in">+</button><button type="button" id="globe-minus" aria-label="Zoom out">−</button></div></div><section id="globe-encounter" aria-label="Cinema at the focal point"></section><div class="globe-footer"><span><a href="https://www.naturalearthdata.com/" target="_blank" rel="noopener">Natural Earth (shaded relief)</a> · Existing 2023 Atlas references: <a href="https://native-land.ca/" target="_blank" rel="noopener">Native Land Digital</a> / <a href="https://education.nationalgeographic.org/resource/mapmaker-indigenous-territories/" target="_blank" rel="noopener">MapMaker</a>. Reference shapes, not official boundaries or filming locations.</span><button type="button" id="globe-close">Flat workspace</button><span id="globe-status" class="sr-only" role="status" aria-live="polite"></span></div>';
+ host.innerHTML='<canvas id="globe-surface" tabindex="0" aria-label="Rotate the globe using arrow keys, plus and minus to zoom, Enter to explore the focused lands"></canvas><div id="globe-aperture" aria-hidden="true"></div><div class="globe-instructions">Drag to rotate · zoom to explore</div><div class="globe-guide"><label for="globe-find" class="sr-only">Find a land reference</label><select id="globe-find"><option value="">Find a land…</option></select><div class="globe-buttons"><button type="button" id="globe-home">Americas</button><button type="button" id="globe-plus" aria-label="Zoom in">+</button><button type="button" id="globe-minus" aria-label="Zoom out">−</button></div></div><section id="globe-encounter" aria-label="Cinema at the focal point"></section><div class="globe-footer"><span><a href="https://www.naturalearthdata.com/" target="_blank" rel="noopener">Natural Earth (fallback)</a> · <a href="https://cloudless.eox.at/license-non-commercial" target="_blank" rel="noopener">EOxCloudless by EOX IT Services GmbH (Contains modified Copernicus Sentinel data 2025)</a> · <a href="https://mapterhorn.com/attribution/" target="_blank" rel="noopener">Mapterhorn terrain</a> · Existing 2023 Atlas references: <a href="https://native-land.ca/" target="_blank" rel="noopener">Native Land Digital</a> / <a href="https://education.nationalgeographic.org/resource/mapmaker-indigenous-territories/" target="_blank" rel="noopener">MapMaker</a>. Reference shapes, not official boundaries or filming locations.</span><button type="button" id="globe-close">Flat workspace</button><span id="globe-status" class="sr-only" role="status" aria-live="polite"></span></div>';
  $('.map-panel').append(host);canvas=$('#globe-surface');ctx=canvas.getContext('2d',{alpha:false});if(!ctx)throw Error('Canvas unavailable');
  const sel=$('#globe-find');for(const p of points){const o=el('option',null,p.name+' ('+p.count+')');o.value=p.id;sel.append(o);}
  sel.onchange=()=>{const p=points.find(v=>v.id===sel.value);if(p)setCamera(p.coord,Math.max(zoom,2.2));};
@@ -274,7 +360,7 @@ async function boot(){
   collect();if(!points.length)throw Error('No mapped cinema references');
   proj=d3.geoOrthographic().clipAngle(90).precision(.65);markup();path=d3.geoPath(proj,ctx);
   active=true;loadRelief();document.body.classList.add('atlas-globe-experiment');host.dataset.ready='true';C().refreshDiscoveryMode();
-  ro=new ResizeObserver(resize);ro.observe(canvas);resize();draw();settle();
+  ro=new ResizeObserver(resize);ro.observe(canvas);resize();draw();settle();bootLive();
  }catch(e){fallback(e);}
 }
 const started=Date.now();(function wait(){if(closed)return;if(C()?.enabled&&A()?.lands&&window.topojson&&window.d3&&window.AtlasGeoIntegrity){boot();return;}if(Date.now()-started<20000)setTimeout(wait,100);})();

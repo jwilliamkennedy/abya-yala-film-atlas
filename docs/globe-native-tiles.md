@@ -1,0 +1,3 @@
+# Native tiled globe — 24 November 2026
+
+Beta uses vendored MapLibre globe projection for satellite, DEM hillshade, existing reference polygons and cinema anchors. At high zoom MapLibre transitions to a local Mercator view; all layers share its camera. Fallback remains the local orthographic canvas. The 2025 EOxCloudless WMTS is used under its non-commercial license with visible attribution; see https://cloudless.eox.at/license-non-commercial. Terrain tiles: https://mapterhorn.com/attribution/. No API key. Satellite resolution is Sentinel-2, not proprietary sub-meter aerial photography. Source availability and latency depend on external services. No boundaries or catalog records changed.
