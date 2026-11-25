@@ -163,6 +163,13 @@ async def run(browser,name,viewport):
             await page.wait_for_function("AtlasGlobe.tileState.pitch>35 && AtlasGlobe.focus.settled")
             assert await page.evaluate("""()=>{const G=AtlasGlobe,t=G.focus.target;const ids=Atlas.lands.filter(l=>!l.browseGroup&&l.groups?.some(g=>g.features.some(f=>d3.geoContains(f,t.coordinate)))).map(l=>l.id);return G.focus.inside.every(id=>ids.includes(id))&&ids.every(id=>G.focus.inside.includes(id))&&(!t.primary||G.focus.ids.includes(t.primary))&&(t.reason!=='contains-target'||ids.includes(t.primary));}"""),(name,"pitched geographic target mismatch")
             print(name,"adaptive targeting",sizes,flush=True)
+            if startup["firstRenderer"]=="native":
+                # A graphics-context failure must reveal the actual overview, even
+                # when normal entry has never shown that canvas to the visitor.
+                await page.locator("#globe-live-map canvas").dispatch_event("webglcontextlost")
+                await page.wait_for_function("AtlasGlobe.camera.renderer==='orthographic-canvas' && AtlasGlobe.focus.settled",timeout=30000)
+                assert await page.locator("#globe-surface").evaluate("e=>getComputedStyle(e).visibility==='visible' && Number(getComputedStyle(e).opacity)===1")
+                print(name,"native-first context loss recovers visible overview",flush=True)
         else:
             await page.wait_for_function("window.AtlasGlobe.discovery.publication==='ready'",timeout=60000)
             await page.wait_for_function("window.AtlasGlobe.focus.settled && !window.AtlasGlobe.tileState.wheelActive")
