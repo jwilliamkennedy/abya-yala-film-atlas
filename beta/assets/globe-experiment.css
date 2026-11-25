@@ -420,3 +420,15 @@ body.atlas-globe-experiment #constellate-mode{display:none!important}
 #globe-encounter .globe-unmapped-title{font:500 19px/1.25 system-ui,sans-serif;color:#f0f1e9;overflow-wrap:anywhere}
 #globe-encounter .globe-overlap summary{overflow-wrap:anywhere;line-height:1.4}
 #globe-encounter .globe-reading-journey p{font-size:13px;line-height:1.45;overflow-wrap:anywhere}
+
+/* Hit detection and the visible reticle share the exact same diameter.
+   Close views use a smaller, precise target instead of a large acquisition ring. */
+#atlas-rotational-globe #globe-aperture{width:var(--globe-target-size,58px);height:var(--globe-target-size,58px)}
+#atlas-rotational-globe[data-target-mode=landscape] #globe-aperture{border-width:1px}
+#atlas-rotational-globe[data-target-mode=local] #globe-aperture{border-width:1px;border-color:#d7e6dfb8;box-shadow:0 0 0 1px #14263866}
+#atlas-rotational-globe[data-target-mode=local] #globe-aperture::before,
+#atlas-rotational-globe[data-target-mode=local] #globe-aperture::after{content:'';position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:#d7e6dfdb;pointer-events:none}
+#atlas-rotational-globe[data-target-mode=local] #globe-aperture::before{width:8px;height:1px}
+#atlas-rotational-globe[data-target-mode=local] #globe-aperture::after{width:1px;height:8px}
+#atlas-rotational-globe[data-target-mode=local].has-cinema #globe-aperture{border-color:#e9dfb5;box-shadow:0 0 0 1px #e4ecc022}
+#atlas-rotational-globe.is-moving[data-target-mode=local] #globe-aperture{border-color:#c4d5d0a0;box-shadow:none}
