@@ -1,0 +1,36 @@
+name: Globe terrain and discovery
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'beta/assets/globe-experiment.*'
+      - 'beta/index.html'
+      - 'tools/qa/globe-independent.py'
+      - '.github/workflows/globe-independent.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  checks:
+    name: Independent globe ${{ matrix.mode }}
+    strategy:
+      fail-fast: false
+      matrix:
+        mode: [terrain, discovery]
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          python3 -m pip install -q 'playwright==1.*'
+          python3 -m playwright install --with-deps chromium >/dev/null
+      - run: |
+          python3 -m http.server 8985 --bind 127.0.0.1 >/tmp/globe-independent.log 2>&1 &
+          sleep 2
+          python3 tools/qa/globe-independent.py ${{ matrix.mode }}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: globe-${{ matrix.mode }}-screenshots
+          path: shots/globe-independent/
+          if-no-files-found: warn
