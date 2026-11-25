@@ -255,7 +255,12 @@ jobs:
                     endError:Math.hypot(end.x-q.x,end.y-q.y)};
                 }""")
                 assert not geometry.get('error') and geometry['startError']<12 and geometry['endError']<12,(label,'thread not connected to card thumbnails',geometry)
-                await page.locator('#constellate-read').click(force=True,timeout=15000)
+                read=page.locator('#constellate-read')
+                if prefix and not await read.is_visible():
+                    if await page.locator('#weave-browse-back').is_visible():
+                        await page.locator('#weave-browse-back').click()
+                    read=page.locator('#weave-read-start')
+                await read.click(timeout=15000)
                 await page.locator('.weave-read-focus').wait_for(state='visible',timeout=15000)
                 progress=await page.evaluate("""()=>({
                   stage:document.documentElement.dataset.weaveStage,
@@ -663,11 +668,12 @@ jobs:
             assert await p.locator('#weave-focus-thread').inner_text()=='Show all threads',(label,'focus action label')
             focused=await p.evaluate("() => window.AtlasCollections.current().threads.map(t=>({id:t.id,visible:t.visible,items:t.items.slice()}))")
             assert before==focused,(label,'focus mutated saved thread data')
-            if beta and not await p.locator('.weave-more').evaluate('(e)=>e.open'):
+            if beta:
+              await p.wait_for_function("!document.querySelector('.weave-more').open")
               await press(p,'.weave-more > summary')
             await press(p,'#weave-focus-thread')
-            if beta and await p.locator('.weave-more').evaluate('(e)=>e.open'):
-              await press(p,'.weave-more > summary')
+            if beta:
+              await p.wait_for_function("!document.querySelector('.weave-more').open")
             await press(p,'#constellate-how>summary')
             help_count=await p.locator('#constellate-how>ol>li').count()
             assert help_count==(3 if beta else 4),(label,'Help steps',help_count)

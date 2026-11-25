@@ -981,7 +981,10 @@ function stopPlay(){if(!player)return;playThread=null;pausePlay(true);player.hid
    const c=S.current(),blank=c.threads.length===1&&!c.threads[0].items.length;
    let tid;
    if(blank){const t0=c.threads[0];t0.name=term;t0.description=desc;t0.color=DYE_FOR[FAM[term]]||t0.color;tid=t0.id;}
-   else tid=S.createThread(term,desc,DYE_FOR[FAM[term]]);
+   else {
+    const preferred=DYE_FOR[FAM[term]];
+    tid=S.createThread(term,desc,c.threads.some(t=>t.color===preferred)?undefined:preferred);
+   }
    if(!tid)return false;
    for(const x of films){const own=existingWork(x);if(own)S.addToThread(own.id,tid);else S.add(x,{threadId:tid});}
    c.activeThread=tid;c.selectedItem=null;S.save();return tid;

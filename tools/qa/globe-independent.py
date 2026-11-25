@@ -267,12 +267,12 @@ async def run(browser,name,viewport):
             await page.locator(".globe-collected-item").nth(0).click()
             await page.locator(".globe-collected-item").nth(1).click()
             await page.locator("#globe-link-reason").fill("A test of an authored connection")
-            await page.locator('[aria-label="Connection note"]').fill("Unsubmitted note")
+            await page.get_by_role('textbox', name='Connection note').fill("Unsubmitted note")
             await page.locator('[aria-label="Connection type"]').select_option("question")
             await page.keyboard.press("Escape")
             await page.locator("#globe-collection-toggle").click()
             assert await page.locator("#globe-link-reason").input_value()=="A test of an authored connection"
-            assert await page.locator('[aria-label="Connection note"]').input_value()=="Unsubmitted note"
+            assert await page.get_by_role('textbox', name='Connection note').input_value()=="Unsubmitted note"
             assert await page.locator('[aria-label="Connection type"]').input_value()=="question"
             await page.locator(".globe-link-form button[type=submit]").click()
             assert await page.evaluate("window.AtlasGlobe.discovery.collection.links===1 && window.AtlasGlobe.discovery.collection.lines===1")

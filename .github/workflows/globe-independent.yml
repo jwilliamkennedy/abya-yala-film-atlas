@@ -6,6 +6,9 @@ on:
       - 'beta/assets/globe-experiment.*'
       - 'beta/index.html'
       - 'tools/qa/globe-independent.py'
+      - 'tools/qa/globe-share.py'
+      - 'beta/assets/constellate.js'
+      - 'beta/patches-collections.js'
       - 'tools/qa/globe-csv-concordance.py'
       - 'tools/qa/globe-artwork.py'
       - 'beta/data/*.csv'
@@ -39,6 +42,11 @@ jobs:
           python3 -m http.server 8985 --bind 127.0.0.1 >/tmp/globe-independent.log 2>&1 &
           sleep 2
           if [ '${{ matrix.mode }}' = csv ]; then python3 tools/qa/globe-csv-concordance.py; elif [ '${{ matrix.mode }}' = artwork ]; then python3 tools/qa/globe-artwork.py; else python3 tools/qa/globe-independent.py ${{ matrix.mode }}; fi
+      - name: Open a shared collection in a clean browser
+        if: ${{ !cancelled() && matrix.mode == 'discovery' }}
+        run: |
+          python3 -m http.server 8990 --bind 127.0.0.1 >/tmp/globe-share.log 2>&1 &
+          ATLAS_QA_BASE=http://127.0.0.1:8990/beta/ python3 tools/qa/globe-share.py
       - uses: actions/upload-artifact@v4
         if: always()
         with:
