@@ -2,8 +2,8 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-25",
  "license": "See data.html",
- "films_on_public_map": 2783,
- "film_entries": 2797,
+ "films_on_public_map": 2785,
+ "film_entries": 2799,
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -21518,11 +21518,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Land Defense"
+   ],
+   "primary_theme": "Land Defense",
+   "families": [
+    "Land and Environment"
+   ],
+   "form": "Documentary",
+   "length": "Short"
   },
   "Q20261115-851-F2": {
    "title": "Sex Spirit Strength",
@@ -56280,6 +56284,42 @@
    "families": [],
    "form": null,
    "length": null
+  },
+  "QM-996fa5ad2b-M1": {
+   "title": "Tinku",
+   "year": 2025,
+   "makers": [
+    {
+     "id": "QM-996fa5ad2b",
+     "name": "Román Nina Nina"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QM-eaec7451b0-M1": {
+   "title": "TRANSpassado – corpos que retratam",
+   "year": 2023,
+   "makers": [
+    {
+     "id": "QM-eaec7451b0",
+     "name": "Otávio Kaxixó"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "LGBTQIA2S"
+   ],
+   "primary_theme": "LGBTQIA2S",
+   "families": [
+    "Lives and Relations"
+   ],
+   "form": "Documentary",
+   "length": "Short"
   }
  }
 }
