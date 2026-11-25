@@ -17,6 +17,13 @@ const mapHref=f=>`./#view=films&maker=${encodeURIComponent(f.makers[0].id)}&film
 const makersHTML=f=>f.makers.map(m=>`<a href="maker/${encodeURIComponent(m.id)}.html">${esc(m.name)}</a>${m.people?` (${esc(m.people)})`:''}`).join(', ');
 const THEME_VOCAB=W.families||{"Land and Environment":["Land Defense","Water","Extractivism","Environmental Change","More-than-Human Relations","Food Sovereignty"],"Sovereignty and Politics":["Sovereignty and Self-Determination","Resistance Movements","Borders","Displacement and Migration","State Violence and Genocide","Justice, Truth and Reconciliation","MMIWG2S"],"Knowledge and Continuity":["Linguistic Preservation","Memory and Oral History","Elders and Knowledge","Cosmology and Origin Stories","Residential and Boarding Schools","Archives, Museums and Repatriation"],"Lives and Relations":["Kinship","Youth","Women and Gender","LGBTQIA2S","Health and Healing","Urban Indigeneity"],"Expression and Representation":["Music and Performance","Art, Craft and Making","Non-Conformity / Punk Film","Self-Representation and Countering Stereotypes","Collective and Community Media"]},FAMILIES=Object.keys(THEME_VOCAB);
 const params=new URLSearchParams(location.search);
+// Only restore an atlas-local globe view; never follow an arbitrary return URL.
+const inboundGlobe=new URLSearchParams(params.get('fromGlobe')||'');
+if(inboundGlobe.get('globe')==='1'&&inboundGlobe.get('constellate')==='1'){
+ const back=new URL('./',location.href);
+ for(const k of ['constellate','globe','at','land','film','themes','period','lands','edges','language','form','length'])if(inboundGlobe.has(k))back.searchParams.set(k,inboundGlobe.get(k));
+ const link=document.createElement('a');link.className='btn';link.id='watch-return-globe';link.href=back.href;link.textContent='← Return to globe';$('.w-head').append(link);
+}
 const state={view:'browse',q:'',theme:params.get('theme')||'',pick:null,sort:'title',here:false,now:null};
 try{const s=JSON.parse(localStorage.getItem('atlas-watch-view')||'{}');if(['maker','new','title'].includes(s.sort))state.sort=s.sort;state.here=!!s.here;}catch(e){}
 const remember=()=>{try{localStorage.setItem('atlas-watch-view',JSON.stringify({sort:state.sort,here:state.here}));}catch(e){}};
@@ -27,8 +34,12 @@ const listNames=a=>a.length<2?a.join(''):a.slice(0,-1).join(', ')+' and '+a[a.le
 const frame=$('#now-frame');frame.referrerPolicy='strict-origin-when-cross-origin';
 const withAutoplay=u=>u+(u.includes('?')?'&':'?')+'autoplay=1';
 function play(f,{scroll=false,quiet=false,auto=false}={}){
- const l=playable(f);if(!l)return;state.now=f.fid;
- frame.src=auto?withAutoplay(l.embed):l.embed;frame.title='Player: '+f.t;
+ const embed=playable(f),l=embed||f.links.find(v=>{try{return new URL(v.url).protocol==='https:';}catch{return false;}});if(!l)return;state.now=f.fid;
+ const box=frame.parentElement;let outside=$('#now-external');
+ if(!outside){outside=document.createElement('div');outside.id='now-external';outside.className='now-external';box.append(outside);}
+ outside.hidden=!!embed;frame.hidden=!embed;box.classList.toggle('external-only',!embed);
+ if(embed){frame.src=auto?withAutoplay(embed.embed):embed.embed;frame.title='Player: '+f.t;}
+ else{frame.removeAttribute('src');outside.replaceChildren();const title=document.createElement('strong');title.textContent=f.t;const desc=document.createElement('p');desc.textContent='This film is available at its source, rather than in the embedded player.';const link=document.createElement('a');link.href=l.url;link.target='_blank';link.rel='noopener noreferrer';link.className='btn';link.textContent='Watch at '+host(l.url)+' ↗';outside.append(title,desc,link);}
  $('#now-title').textContent=f.t+(f.y?` (${f.y})`:'');
  $('#now-by').innerHTML=makersHTML(f)+(f.fx?` · ${esc(f.fx)}`:'')+` · <a id="now-out" href="${esc(l.url)}" target="_blank" rel="noopener">${esc(host(l.url))} ↗</a>`;
  const map=$('#now-map');map.href=mapHref(f);
@@ -217,7 +228,8 @@ addEventListener('resize',stick);
 if('ResizeObserver' in window)new ResizeObserver(fitQueue).observe($('#queue'));else addEventListener('resize',fitQueue);
 render();stick();
 /* first film: the one named in the address (#film id), else one at random that plays here */
-const asked=data.find(f=>f.fid===decodeURIComponent(location.hash.slice(1)));
-if(asked&&playable(asked))play(asked,{quiet:true});
+let requested='';try{requested=decodeURIComponent(location.hash.slice(1));}catch{}
+const asked=data.find(f=>f.fid===requested);
+if(asked)play(asked,{quiet:true});
 else{const p=(visible().filter(playable).length?visible():data).filter(playable);if(p.length)play(p[Math.floor(Math.random()*p.length)],{quiet:true});else $('#now').hidden=true;}
 })();
