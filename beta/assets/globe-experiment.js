@@ -25,12 +25,13 @@ const received={marble:0,satellite:0,dem:0,hilldem:0,places:0},sourceErrors={};
 let ambientCount=0,landsVisible=true,landStrength=1,edgeMode='selected',lastCameraChange=0,lastCameraKey='',activeMapPointers=new Set(),pendingFilm='',rankCache=new Map(),zoomListeners=null,lastStatus=0,frameTimes=[],lastRender=0,preferredLand='',filmOffset=0,yearBand='',lastEncounter='',recent=[];
 let featured=null,lastVisiblePosterKey='',posterKey='',journey=[],artSizes=new Map(),posterLayoutFrame=0,posterReason='initializing',boundaryStats={features:0,segments:0,datelineSplits:0},menuMode='',themeLensHome=null,menuListeners=null,encounterExpanded=false;
 const inputStats={wheel:0,pinch:0,safari:0,touch:0,zoomEvents:0,lastDelta:0,lastBefore:null,lastAfter:null,lastInputMs:null};
-const params=new URLSearchParams(location.search);
+const params=new URLSearchParams(location.search);landsVisible=params.get('territories')!=='off';
 let inboundEncounter={land:params.get('land')||'',film:params.get('film')||''};
 function restoreEncounter(){if(!active||publicationStatus!=='ready'||!inboundEncounter)return;const {land,film}=inboundEncounter;inboundEncounter=null;if(!byId.has(land))return;if(film&&!C().globeCreditIndex().byLand.get(land)?.films.some(f=>f.id===film))return;preferredLand=land;pendingFilm=film;focusKey='';scheduleSettle(80);}
 const initialCamera=(()=>{const a=params.get('at')?.split(',').map(Number);return a?.length===3&&a.every(Number.isFinite)&&Math.abs(a[0])<=180&&Math.abs(a[1])<=85&&a[2]>=-2&&a[2]<=14?a:null;})();
+let requestedPitch=initialCamera&&params.has('pitch')&&Number.isFinite(Number(params.get('pitch')))?clamp(Number(params.get('pitch')),0,42):0;
 function currentTheme(){return [$('#weave-map-theme')?.value,$('#weave-map-theme-second')?.value].filter(Boolean);}
-function shareView(){const u=new URL(location.pathname,location.origin),s=liveStats();u.searchParams.set('constellate','1');u.searchParams.set('globe','1');if(W&&H){const base=Math.max(-1.3,Math.log2(Math.min(W,H)*.87*Math.PI/512)),mapZoom=s?.zoom??clamp(base+Math.log2(Math.max(.1,zoom)),-2,14);u.searchParams.set('at',[center[0].toFixed(5),clamp(center[1],-85,85).toFixed(5),mapZoom.toFixed(3)].join(','));}if(settled&&featured){u.searchParams.set('land',featured.land);u.searchParams.set('film',featured.film.id);}if(landStrength!==1)u.searchParams.set('lands',String(landStrength));if(edgeMode!=='selected')u.searchParams.set('edges',edgeMode);const t=currentTheme();if(t.length)u.searchParams.set('themes',JSON.stringify(t));else u.searchParams.delete('themes');if(yearBand)u.searchParams.set('period',yearBand);else u.searchParams.delete('period');for(const [key,val] of Object.entries(facetFilter))if(val)u.searchParams.set(key,val);return u.href;}
+function shareView(){const u=new URL(location.pathname,location.origin),s=liveStats();u.searchParams.set('constellate','1');u.searchParams.set('globe','1');if(W&&H){const base=Math.max(-1.3,Math.log2(Math.min(W,H)*.87*Math.PI/512)),mapZoom=s?.zoom??clamp(base+Math.log2(Math.max(.1,zoom)),-2,14);u.searchParams.set('at',[center[0].toFixed(5),clamp(center[1],-85,85).toFixed(5),mapZoom.toFixed(3)].join(','));}if(settled&&featured){u.searchParams.set('land',featured.land);u.searchParams.set('film',featured.film.id);}if(s?.pitch>0)u.searchParams.set('pitch',s.pitch.toFixed(2));if(!landsVisible)u.searchParams.set('territories','off');if(landStrength!==1)u.searchParams.set('lands',String(landStrength));if(edgeMode!=='selected')u.searchParams.set('edges',edgeMode);const t=currentTheme();if(t.length)u.searchParams.set('themes',JSON.stringify(t));else u.searchParams.delete('themes');if(yearBand)u.searchParams.set('period',yearBand);else u.searchParams.delete('period');for(const [key,val] of Object.entries(facetFilter))if(val)u.searchParams.set(key,val);return u.href;}
 function recordVisit(r){if(recent[0]?.id===r.id)return;recent=[{id:r.id,name:r.name},...recent.filter(v=>v.id!==r.id)].slice(0,10);try{sessionStorage.setItem('atlas-globe-recent',JSON.stringify(recent));}catch{}updateRecent();}
 function updateRecent(){const s=$('#globe-recent');if(!s)return;s.replaceChildren(el('option',null,'Recently explored…'));for(const r of recent){if(!byId.has(r.id))continue;const o=el('option',null,r.name);o.value=r.id;s.append(o);}s.hidden=s.options.length<2;}
 function invalidateFilters(){pendingFilm='';filmOffset=0;focusKey='';liveSignature='';refreshMenuLabels();movement();scheduleSettle(80);}
@@ -70,7 +71,7 @@ function relatedEncounters(seed,land){
 }
 function followRelated(related){if(featured)journey.push({land:featured.land,film:featured.film.id,theme:currentTheme(),period:yearBand,facets:{...facetFilter},center:[...center],zoom});if(journey.length>20)journey.shift();if(!currentTheme().length)C().showThemeLens([related.term]);gotoLand(related.ref.id,related.film.id,true);}
 function journeyBack(){const v=journey.pop();if(!v)return;yearBand=v.period||'';$('#globe-period').value=yearBand;for(const key of Object.keys(facetFilter)){facetFilter[key]=v.facets?.[key]||'';$('#globe-filter-'+key).value=facetFilter[key];}if(v.theme.length)C().showThemeLens(v.theme);else C().clearThemeLens();pendingFilm=v.film;preferredLand=v.land;filmOffset=0;focusKey='';liveSignature='';refreshMenuLabels();setCamera(v.center,v.zoom);}
-function syncTerrain(){if(!liveReady||!live)return;const z=live.getZoom(),want=z>=6.2||(z>=5.7&&!!live.getTerrain());if(want&&!live.getTerrain())live.setTerrain({source:'dem',exaggeration:1});else if(!want&&live.getTerrain())live.setTerrain(null);}
+function syncTerrain(){if(!liveReady||!live)return;const z=live.getZoom(),want=z>=6.2||(z>=5.7&&!!live.getTerrain())||(landscape&&z>5.4);if(want&&!live.getTerrain())live.setTerrain({source:'dem',exaggeration:1});else if(!want&&live.getTerrain())live.setTerrain(null);}
 
 const nowMs=()=>performance.now();
 function liveStats(){
@@ -110,7 +111,7 @@ function close(){
  clearTimeout(firstSceneTimer);firstSceneTimer=0;
  const wasActive=active;closed=true;active=false;delete document.documentElement.dataset.globeEntry;clearStarDrag();closeGlobePlayer();clearTimeout(settleTimer);clearTimeout(labelTimer);labelTimer=0;cancelFlight();if(raf)cancelAnimationFrame(raf);raf=0;if(posterLayoutFrame)cancelAnimationFrame(posterLayoutFrame);posterLayoutFrame=0;ro?.disconnect();
  clearTimeout(liveTimer);stopWheel();zoomListeners?.abort();zoomListeners=null;restoreThemeLens();liveReady=false;live?.remove();live=null;liveHost=null;relief?.dispose();relief=null;host?.remove();host=null;document.body.classList.remove('atlas-globe-experiment');if(wasActive&&C()?.enabled)C().refreshDiscoveryMode();
- const u=new URL(location.href);for(const k of ['globe','at','themes','period','lands','language','form','length','land','film','edges'])u.searchParams.delete(k);history.replaceState(history.state,'',u.href);
+ const u=new URL(location.href);for(const k of ['globe','at','pitch','territories','themes','period','lands','language','form','length','land','film','edges'])u.searchParams.delete(k);history.replaceState(history.state,'',u.href);
 }
 function fallback(e){console.warn('Globe discovery unavailable',e);close();const p=document.createElement('p');p.className='globe-fallback';p.textContent='The globe could not initialize. The flat workspace remains available.';$('.map-panel')?.append(p);setTimeout(()=>p.remove(),9000);}
 function normalizeGeometry(g){
@@ -158,7 +159,7 @@ function overviewZoom(value){return clamp(value,.8,Math.max(25,zoom));}
 // A burst of wheel input accumulates against its goal, not a lagging camera frame.
 function queueOverviewZoom(delta){
  if(!active||liveReady||!Number.isFinite(delta)||!delta)return;
- cancelFlight();const current=Math.log2(zoom);
+ requestedPitch=0;cancelFlight();const current=Math.log2(zoom);
  wheelGoal=clamp((wheelGoal??current)+delta,Math.log2(.8),Math.log2(Math.max(25,zoom)));wheelLast=nowMs();
  if(!wheelActive){wheelActive=true;movement();}
  if(wheelFrame)return;
@@ -463,7 +464,7 @@ function loadRelief(){
  }
  function failLive(reason){
   if(!active)return;clearStarDrag();console.warn('Native globe unavailable; using local fallback',reason);const focused=!!liveHost?.contains(document.activeElement);if(liveReady&&live){try{readLiveCamera();}catch{}}stopWheel();zoomListeners?.abort();zoomListeners=null;
-  clearTimeout(liveTimer);liveReady=false;try{live?.remove();}catch{}live=null;liveHost?.remove();liveHost=null;activeMapPointers.clear();
+  clearTimeout(liveTimer);liveReady=false;try{live?.remove();}catch{}live=null;liveHost?.remove();liveHost=null;activeMapPointers.clear();requestedPitch=0;
   host?.classList.remove('globe-live','globe-revealed');landscape=false;$('#globe-landscape').setAttribute('aria-pressed','false');canvas.tabIndex=0;canvas.removeAttribute('aria-hidden');$('#globe-landscape').hidden=true;updateMapCredits();if(focused)canvas.focus({preventScroll:true});const e=$('#globe-detail-status');if(e)e.textContent='Overview only · detailed map unavailable';movement();draw();showFirstScene('overview');loadRelief();scheduleSettle(100);
  }
  async function bootLive(){
@@ -531,6 +532,7 @@ function loadRelief(){
     // Do not steal an ongoing fallback drag or flight. Transfer the actual visible camera.
     if(pointers.size||flight||wheelActive){liveTimer=setTimeout(handoff,50);return;}
     const target={center:[wrap(center[0]),clamp(center[1],-85,85)],zoom:clamp(liveBaseZoom+Math.log2(Math.max(.1,zoom)),live.getMinZoom(),live.getMaxZoom())};
+    target.pitch=target.zoom>5.4?Math.min(requestedPitch,42*clamp((target.zoom-5.4)/1.6,0,1)):0;requestedPitch=0;landscape=target.pitch>0;$('#globe-landscape').setAttribute('aria-pressed',String(landscape));
     const focused=document.activeElement===canvas;
     draw();live.jumpTo(target);liveReady=true;startup.handoff=nowMs();host.classList.add('globe-live');readLiveCamera();installZoom();
     canvas.tabIndex=-1;canvas.setAttribute('aria-hidden','true');if(focused)live.getCanvas().focus({preventScroll:true});
@@ -1115,7 +1117,7 @@ function movement(){
 function finishMove(){if(!host)return;/* Keep the prior encounter inactive until focal geography settles. */scheduleSettle(140);}
 function cancelFlight(){if(flight)cancelAnimationFrame(flight);flight=0;flightTarget=null;}
 function setCamera(c,z=zoom,duration=300){
- inboundEncounter=null;
+ inboundEncounter=null;requestedPitch=0;
  if(liveReady){stopWheel();movement();const target={center:[wrap(c[0]),clamp(c[1],-85,85)],zoom:clamp(liveBaseZoom+Math.log2(Math.max(.1,z)),live.getMinZoom(),live.getMaxZoom()),duration:reduced.matches?0:duration};live.easeTo(target);return;}
  stopWheel();cancelFlight();const goal=[wrap(c[0]),clamp(c[1],-89.9,89.9)],goalZoom=overviewZoom(z);
  movement();
@@ -1133,7 +1135,7 @@ function wire(){
  canvas.addEventListener('pointerdown',e=>{if(e.button!==0&&e.pointerType==='mouse')return;stopWheel();cancelFlight();lastDrag=null;canvas.setPointerCapture(e.pointerId);pointers.set(e.pointerId,{x:e.clientX,y:e.clientY});gesture=midpoint();dragged=pointers.size>1;clearTimeout(settleTimer);canvas.classList.add('grabbing');});
  canvas.addEventListener('pointermove',e=>{
   if(!pointers.has(e.pointerId))return;pointers.set(e.pointerId,{x:e.clientX,y:e.clientY});const m=midpoint(),g=gesture;gesture=m;if(!m||!g)return;
-  const dx=m.x-g.x,dy=m.y-g.y;if(Math.abs(dx)+Math.abs(dy)>1||Math.abs(m.d-g.d)>1)dragged=true;if(!dragged)return;inboundEncounter=null;
+  const dx=m.x-g.x,dy=m.y-g.y;if(Math.abs(dx)+Math.abs(dy)>1||Math.abs(m.d-g.d)>1)dragged=true;if(!dragged)return;inboundEncounter=null;requestedPitch=0;
   if(m.d&&g.d)zoom=overviewZoom(zoom*m.d/g.d);
   const scale=DEG/radius(),cos=Math.max(.35,Math.cos(center[1]/DEG));
   const now=performance.now(),dt=lastDrag?clamp(now-lastDrag.t,8,80):16;lastDrag={t:now,lon:-dx*scale/cos/dt,lat:dy*scale/dt};
@@ -1205,7 +1207,7 @@ function markup(){
  if(['0.65','1','1.6'].includes(params.get('lands'))){landStrength=Number(params.get('lands'));$('#globe-opacity').value=String(landStrength);}
  $('#globe-opacity').onchange=e=>{landStrength=Number(e.target.value);if(!landsVisible)landsVisible=true;syncLandVisibility();};
  if(['none','all','selected'].includes(params.get('edges')))edgeMode=params.get('edges');$('#globe-edges').value=edgeMode;
- $('#globe-edges').onchange=e=>{edgeMode=e.target.value;syncLandVisibility();};
+ $('#globe-edges').onchange=e=>{edgeMode=e.target.value;syncLandVisibility();};syncLandVisibility();
  $('.globe-settings').addEventListener('toggle',()=>placeEmergent());
  $('#globe-encounter').addEventListener('toggle',()=>placeEmergent(),true);
  // Pointer events are already disabled while moving; keyboard and assistive
