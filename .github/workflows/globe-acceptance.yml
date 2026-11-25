@@ -27,6 +27,9 @@ on:
       - 'beta/screening.html'
       - 'tools/pages/extra.py'
       - 'beta/assets/atlas-route.js'
+      - 'beta/watch.html'
+      - 'beta/watch-20261122.js'
+      - 'tools/pages/templates/watch.html'
       - '.github/workflows/globe-acceptance.yml'
   workflow_dispatch:
 permissions:

@@ -5,6 +5,8 @@ on:
     paths:
       - 'beta/assets/globe.js'
       - 'beta/assets/globe-core.js'
+      - 'beta/assets/atlas-route.js'
+      - 'tools/pages/templates/watch.html'
       - 'tools/qa/globe-core.cjs'
       - 'beta/assets/globe-experiment.css'
       - 'beta/assets/catalogue.js'

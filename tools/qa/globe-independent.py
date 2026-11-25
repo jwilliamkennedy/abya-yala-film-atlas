@@ -366,6 +366,16 @@ async def run(browser,name,viewport):
             assert await page.locator("#globe-encounter .globe-strip-item[aria-current=true]").count()==1
             assert await page.locator("#globe-encounter .globe-credit-details").count()==1
             await page.locator(".globe-credit-details summary").click()
+            # Roving focus must navigate the real film credits, including after
+            # a render replaces the thumbnail strip.
+            selected=page.locator("#globe-encounter .globe-strip-item[aria-current=true]")
+            first_id=await selected.get_attribute("data-strip-film")
+            await selected.focus()
+            await page.keyboard.press("ArrowRight")
+            await page.wait_for_function("id=>AtlasGlobe.discovery.featured?.film!==id && document.activeElement?.matches('.globe-strip-item[aria-current=true]')",arg=first_id)
+            assert await page.locator("#globe-encounter .globe-strip-item[tabindex='0']").count()==1
+            await page.keyboard.press("ArrowLeft")
+            await page.wait_for_function("id=>AtlasGlobe.discovery.featured?.film===id && document.activeElement?.matches('.globe-strip-item[aria-current=true]')",arg=first_id)
             print(name,"emergent artwork",await page.evaluate("window.AtlasGlobe.discovery.posterVisible"),flush=True)
             assert await page.evaluate("window.AtlasGlobe.discovery.recent.length>0")
             await shot(page,f"shots/globe-independent/{name}-encounter.png")
@@ -540,7 +550,9 @@ async def run(browser,name,viewport):
             await page.locator("#globe-link-reason").fill("Visitor-authored connection")
             await page.locator(".globe-link-form button[type=submit]").click()
             assert await page.evaluate("AtlasGlobe.discovery.collection.links===1")
+            assert await page.locator(".globe-thread-item textarea").count()==0
             await page.locator(".globe-thread-order summary").click()
+            await page.locator(".globe-thread-item textarea").first.wait_for(state="visible")
             before=await page.evaluate("AtlasCollections.activeThread().items.slice()")
             await page.locator(".globe-thread-item").first.get_by_role("button",name="Move",exact=False).last.click()
             assert await page.evaluate("AtlasCollections.activeThread().items.slice()")==before[::-1]
