@@ -180,15 +180,19 @@ jobs:
                 page.on('pageerror',lambda e:problems.append(str(e)))
                 await page.goto(BASE+prefix+'index.html?constellate=1',wait_until='domcontentloaded',timeout=90000)
                 await page.wait_for_function("window.AtlasConstellate?.enabled && window.AtlasCollections?.current() && document.documentElement.dataset.atlasUi==='ready'",timeout=45000)
-                await page.wait_for_function("document.getElementById('ws-theme-q') && document.getElementById('ws-film-q')",timeout=20000)
+                await page.wait_for_function("document.getElementById('ws-theme-all') && document.getElementById('ws-film-q')",timeout=20000)
                 searches=await page.evaluate("""() => {
                   const theme=document.getElementById('ws-theme-q'),film=document.getElementById('ws-film-q'),
-                    chips=document.querySelector('#weave-start .ws-chips');
-                  return {themeAboveChips:!!(theme.compareDocumentPosition(chips)&Node.DOCUMENT_POSITION_FOLLOWING),
-                    themeY:theme.getBoundingClientRect().y,filmY:film.getBoundingClientRect().y};
+                    all=document.getElementById('ws-theme-all'),chips=document.querySelector('#weave-start .ws-chips');
+                  const visible=e=>!!e&&e.getBoundingClientRect().width>0&&e.getBoundingClientRect().height>0;
+                  return {hasThemeSearch:!!theme,themeAboveChips:!!theme&&!!(theme.compareDocumentPosition(chips)&Node.DOCUMENT_POSITION_FOLLOWING),
+                    themeY:theme?.getBoundingClientRect().y,filmY:film.getBoundingClientRect().y,
+                    allVisible:visible(all),filmVisible:visible(film),chips:chips?.querySelectorAll('[data-ws-theme]').length||0,terms:[...all.options].filter(o=>o.value).length};
                 }""")
-                assert searches['themeAboveChips'],(label,'theme search is below popular chips',searches)
-                if not prefix:assert abs(searches['themeY']-searches['filmY'])<24,(label,'theme and film searches not aligned',searches)
+                assert searches['allVisible'] and searches['filmVisible'] and searches['chips']>0 and searches['terms']==30,(label,'theme and film entry controls unavailable',searches)
+                if not prefix:
+                    assert searches['hasThemeSearch'] and searches['themeAboveChips'],(label,'main theme search is missing or below popular chips',searches)
+                    assert abs(searches['themeY']-searches['filmY'])<24,(label,'theme and film searches not aligned',searches)
                 await page.evaluate("document.getElementById('weave-example').click()")
                 await page.wait_for_function("window.AtlasCollections.current().items.length>=3 && document.documentElement.dataset.weaveStage==='build'",timeout=30000)
                 modes=await page.evaluate("""()=>({
@@ -535,17 +539,23 @@ jobs:
             await p.goto(base+'index.html?constellate=1',wait_until='domcontentloaded',timeout=90000)
             await p.wait_for_function('window.AtlasConstellate?.enabled && document.getElementById("weave-start") && window.AtlasCollections?.current()',timeout=55000)
             beginning=await p.evaluate("""() => {
-              const q=document.querySelector('#ws-theme-q'), f=document.querySelector('#ws-film-q'),chips=document.querySelector('.ws-chips');
-              return {themeBeforeChips:!!(q.compareDocumentPosition(chips)&Node.DOCUMENT_POSITION_FOLLOWING),
-                themeY:q.getBoundingClientRect().top, filmY:f.getBoundingClientRect().top};
+              const q=document.querySelector('#ws-theme-q'), f=document.querySelector('#ws-film-q'),chips=document.querySelector('.ws-chips'),all=document.querySelector('#ws-theme-all');
+              const visible=e=>!!e&&e.getBoundingClientRect().width>0&&e.getBoundingClientRect().height>0;
+              return {hasThemeSearch:!!q,themeBeforeChips:!!q&&!!(q.compareDocumentPosition(chips)&Node.DOCUMENT_POSITION_FOLLOWING),
+                themeY:q?.getBoundingClientRect().top, filmY:f.getBoundingClientRect().top,
+                filmVisible:visible(f),allVisible:visible(all),chips:chips?.querySelectorAll('[data-ws-theme]').length||0,terms:[...all.options].filter(o=>o.value).length};
             }""")
-            assert beginning['themeBeforeChips'],(label,'theme search must be above chips',beginning)
+            assert beginning['filmVisible'] and beginning['allVisible'] and beginning['chips']>0 and beginning['terms']==30,(label,'missing discovery controls',beginning)
+            if label.startswith('main'):
+              assert beginning['hasThemeSearch'] and beginning['themeBeforeChips'],(label,'main theme search must be above chips',beginning)
             if label=='main-desktop':
               assert abs(beginning['themeY']-beginning['filmY'])<30,(label,'searches are not parallel',beginning)
-            # Open a theme the way a first-time visitor does. Calling themeThread()
-            # directly skips the start screen's own transition to Build.
-            await p.locator('#ws-theme-q').fill('Cosmology and Origin Stories')
-            await p.locator('#ws-theme-results [data-ws-theme]').first.click()
+            # Open a theme through actual public controls, respecting the simplified beta.
+            if beginning['hasThemeSearch']:
+              await p.locator('#ws-theme-q').fill('Cosmology and Origin Stories')
+              await p.locator('#ws-theme-results [data-ws-theme]').first.click()
+            else:
+              await p.locator('#ws-theme-all').select_option(value='Cosmology and Origin Stories')
             try:
               await p.wait_for_function("document.documentElement.dataset.weaveStage==='build'",timeout=40000)
             except Exception:

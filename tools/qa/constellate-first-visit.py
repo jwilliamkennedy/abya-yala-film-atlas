@@ -62,7 +62,10 @@ async def run(pw, width, height, mobile, label):
     async def start_state():
         return await page.evaluate("""() => ({ open: getComputedStyle(document.querySelector('#weave-start')).display !== 'none',
           films: window.AtlasCollections.current().items.length, threads: window.AtlasCollections.current().threads.map(t => t.name) })""")
-    for sel, name in [("#ws-theme-q", "theme search"), ("#ws-film-q", "film search"), ("#weave-start h2", "heading"), ("#ws-theme-all", "All themes list")]:
+    controls=[("#ws-film-q", "film search"), ("#weave-start h2", "heading"), ("#ws-theme-all", "All themes list")]
+    if await page.locator("#ws-theme-q").count(): controls.insert(0,("#ws-theme-q","theme search"))
+    else: check(await page.locator("#weave-start .ws-chips [data-ws-theme]").count()>0,"simplified start lacks theme chips")
+    for sel, name in controls:
         box = await page.evaluate("(s) => { const b = document.querySelector(s).getBoundingClientRect(); return [b.x + b.width / 2, b.y + b.height / 2]; }", sel)
         await page.mouse.click(box[0], box[1])
         await page.wait_for_timeout(700)
@@ -72,9 +75,16 @@ async def run(pw, width, height, mobile, label):
         await browser.close()
         return fails
     await page.evaluate("document.querySelector('#ws-theme-all').blur()")
-    await page.fill("#ws-theme-q", "water")
-    await page.wait_for_timeout(400)
-    await page.click("#ws-theme-results [data-ws-theme]")
+    if await page.locator("#ws-theme-q").count():
+        await page.fill("#ws-theme-q", "water")
+        await page.wait_for_timeout(400)
+        await page.click("#ws-theme-results [data-ws-theme]")
+    else:
+        # Beta intentionally exposes popular chips + the full controlled list.
+        # Exercise the visitor's real control, not an internal themeThread call.
+        water=await page.locator("#ws-theme-all option").evaluate_all("(options)=>options.find(o=>o.value.toLowerCase()==='water')?.value")
+        check(bool(water),"Water absent from all-themes selector")
+        await page.select_option("#ws-theme-all",value=water)
     await page.wait_for_function("window.AtlasCollections.current().items.length >= 1", timeout=20000)
     st = await start_state()
     check(any("water" in t.lower() for t in st["threads"]) and "Story-making" not in st["threads"], "theme search did not start that theme's thread", st)
