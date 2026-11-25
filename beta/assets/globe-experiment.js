@@ -1161,12 +1161,12 @@ function refreshMenuLabels(){
  const m=$('#globe-more-toggle'),filters=Object.values(facetFilter).filter(Boolean).length+Number(!!period);if(m){m.textContent=filters?'Map ('+filters+')':'Map';m.title=period?'Map settings · '+period+'–'+(Number(period)+19):'Map settings';}
 }
 function setMenu(mode='',restoreFocus=false){
- if(!host)return;const prior=menuMode;menuMode=mode===menuMode?'':mode;host.dataset.menu=menuMode;
+ if(!host)return;const prior=menuMode,hadPanelFocus=!!prior&&!!$('#globe-'+prior+'-panel')?.contains(document.activeElement);menuMode=mode===menuMode?'':mode;host.dataset.menu=menuMode;
  for(const key of ['find','theme','more','collection']){
   const b=$('#globe-'+key+'-toggle'),p=$('#globe-'+key+'-panel');if(!b||!p)continue;
   b.setAttribute('aria-expanded',String(menuMode===key));p.hidden=menuMode!==key;
  }
- if(restoreFocus&&prior)$('#globe-'+prior+'-toggle')?.focus({preventScroll:true});
+ if(prior&&!menuMode&&(restoreFocus||hadPanelFocus))$('#globe-'+prior+'-toggle')?.focus({preventScroll:true});
  if(menuMode==='find'&&!matchMedia('(pointer: coarse)').matches)$('#globe-search')?.focus({preventScroll:true});
  if(menuMode==='theme')$('#weave-map-theme')?.focus({preventScroll:true});
  if(menuMode==='collection')renderCollection(true);else if(prior==='collection')starGroup='';refreshMenuLabels();placeEmergent();
