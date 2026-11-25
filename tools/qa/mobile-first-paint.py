@@ -69,7 +69,7 @@ async def case(browser,engine,name,route,width,persisted=None):
   await asyncio.sleep(0.9)
   await req.continue_()
  await p.route('**/assets/world-50m.json', delay_world)
- url=BASE+route+('?constellate=1' if name=='constellate' else '')
+ url=BASE+route+('?constellate=1' if name=='constellate' else '?globe=0' if route=='beta/index.html' else '')
  samples=[]
  try:
   await p.goto(url,wait_until='domcontentloaded',timeout=90000)

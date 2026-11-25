@@ -39,7 +39,7 @@ async def state(pg,name,js=None,wait=1800,phone=False):
 async def run(p,w,h,m):
     tag="PHONE" if m else "DESK"
     b, pg = await start(p,w,h,m)
-    await pg.goto(B, wait_until="load"); await pg.wait_for_timeout(4000)
+    await pg.goto(B+"?globe=0", wait_until="load"); await pg.wait_for_timeout(4000)
     print("#####",tag)
     await state(pg,tag+" map home",phone=m)
     await state(pg,tag+" land open","document.querySelector('#atlas .land-word[data-ui-tier]').dispatchEvent(new MouseEvent('click',{bubbles:true}))",phone=m)

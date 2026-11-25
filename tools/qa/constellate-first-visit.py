@@ -291,7 +291,7 @@ async def run(pw, width, height, mobile, label):
     check(not await page.locator("#weave-start").is_visible(),"reentry opened obsolete welcome")
     check(await page.evaluate("window.AtlasCollections.current().items.length===0"),"reentry unexpectedly populated collection")
     # The Map page offers a thread from an open land.
-    await page.goto(BASE, wait_until="load", timeout=90000)
+    await page.goto(BASE + "?globe=0", wait_until="load", timeout=90000)
     await page.wait_for_timeout(3500)
     # Draw on the Map page draws without entering Constellate; Escape ends it.
     await page.click("#map-draw-line")

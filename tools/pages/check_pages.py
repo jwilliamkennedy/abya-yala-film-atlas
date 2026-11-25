@@ -30,7 +30,7 @@ async def main(base, chrome=None):
                 pg = await ctx.new_page()
                 errors = []
                 pg.on('pageerror', lambda e: errors.append(str(e)))
-                await pg.goto(base + page)
+                await pg.goto(base + page + ('?globe=0' if page == 'index.html' else ''))
                 await pg.wait_for_timeout(2500 if page == 'index.html' else 700)
                 got = await pg.evaluate(JS)
                 # A missing Watch loader is silent on the map: the globe simply loses

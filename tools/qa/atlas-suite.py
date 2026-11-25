@@ -105,7 +105,7 @@ async def constellate_ready(page):
 
 # ---- scenarios: each opens a state, checks it, and leaves the page ready to be fingerprinted ----
 async def map_home(page, base):
-    await page.goto(base, wait_until="load"); await atlas_ready(page)
+    await page.goto(base + ("?globe=0" if "/beta/" in base else ""), wait_until="load"); await atlas_ready(page)
     info = await page.evaluate("""() => ({ lands: document.querySelectorAll('#atlas .land-word').length,
       tools: [...document.querySelectorAll('.map-toolbar summary, .map-toolbar #td-toggle')].map(e => e.textContent.trim()),
       counts: [...document.querySelectorAll('header strong, header b, header [class*=count]')].map(e => e.textContent.trim()).filter(t => /^[\\d,]+$/.test(t)),
@@ -178,7 +178,7 @@ async def dial_closed(page, base):
 async def con_start(page, base):
     """24 Nov 2026: the map's Constellate button opens straight onto a night-sky map, with no start screen;
     an empty constellation leaves the side panel closed; a land's films can be added from the panel."""
-    await page.goto(base, wait_until="load")
+    await page.goto(base + ("?globe=0" if "/beta/" in base else ""), wait_until="load")
     await page.wait_for_function("window.AtlasConstellate && window.AtlasCollections", timeout=60000); await fallback_map(page)
     await page.wait_for_selector(".fw-proxy", timeout=20000)
     await page.evaluate("document.querySelector('.fw-proxy').click()")
@@ -345,7 +345,7 @@ async def no_overflow(page):
 
 
 async def phone_map(page, base):
-    await page.goto(base, wait_until="load"); await atlas_ready(page); await settle(page); await no_overflow(page)
+    await page.goto(base + ("?globe=0" if "/beta/" in base else ""), wait_until="load"); await atlas_ready(page); await settle(page); await no_overflow(page)
 
 
 async def phone_follow(page, base):

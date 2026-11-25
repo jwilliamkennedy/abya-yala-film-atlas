@@ -134,7 +134,7 @@ jobs:
                 page=await ctx.new_page()
                 problems=[]
                 page.on('pageerror',lambda e:problems.append(str(e)))
-                await page.goto(BASE+prefix+'index.html',wait_until='domcontentloaded',timeout=90000)
+                await page.goto(BASE+prefix+'index.html'+('?globe=0' if prefix=='beta/' else ''),wait_until='domcontentloaded',timeout=90000)
                 await page.wait_for_function("document.documentElement.dataset.atlasUi==='ready'",timeout=45000)
                 # the key opens from the top bar on the main site, and from inside Layers where the beta has moved it
                 if await page.locator('#layers-key').count():
@@ -410,7 +410,7 @@ jobs:
                     await asyncio.sleep(2)
                     await route.continue_()
                   await page.route("**/assets/world-50m.json",delay_world)
-                  url=BASE+path+("?constellate=1" if view=="constellate" else "")
+                  url=BASE+path+("?constellate=1" if view=="constellate" else "?globe=0" if path.startswith("beta/") else "")
                   await page.goto(url,wait_until="domcontentloaded",timeout=90000)
                   before=await page.evaluate("""() => ({
                     ready:document.documentElement.dataset.atlasUi==='ready',

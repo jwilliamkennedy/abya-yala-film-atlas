@@ -15,7 +15,7 @@ async def main():
         b = await p.chromium.launch(**({'executable_path': sys.argv[3]} if len(sys.argv) > 3 else {}), args=['--no-sandbox'])
         ctx = await b.new_context()
         await ctx.route(lambda u: not u.startswith('http://127.0.0.1'), lambda r: r.abort())
-        pg = await ctx.new_page(); await pg.goto(sys.argv[1], wait_until='networkidle'); await pg.wait_for_timeout(3500)
+        pg = await ctx.new_page(); await pg.goto(sys.argv[1] + ('&' if '?' in sys.argv[1] else '?') + 'globe=0', wait_until='networkidle'); await pg.wait_for_timeout(3500)
         data = await pg.evaluate(JS)
         json.dump(data, open(sys.argv[2], 'w'), ensure_ascii=False)
         print(len(data), 'records', sum(len(r['films']) for r in data), 'films')

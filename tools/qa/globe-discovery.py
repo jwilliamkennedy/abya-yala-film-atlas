@@ -21,7 +21,8 @@ async def check(browser,name,viewport):
             imagery.append(url)
     page.on("response",tile_response)
     page.on("pageerror",lambda e: errors.append(str(e)))
-    await page.goto(BASE+"?constellate=1&globe=1",wait_until="domcontentloaded",timeout=90000)
+    await page.goto(BASE,wait_until="domcontentloaded",timeout=90000)
+    assert await page.evaluate("new URLSearchParams(location.search).get('globe')==='1' && new URLSearchParams(location.search).get('constellate')==='1'"), "Clean beta entry did not select globe"
     await page.wait_for_function("window.AtlasGlobe?.active && window.AtlasGlobe.focus.settled",timeout=60000)
     assert await page.evaluate("window.AtlasGlobe.pointCount>0 && window.AtlasGlobe.geometryCount>0 && window.AtlasGlobe.landArea>2.5 && window.AtlasGlobe.landArea<4.8"),name
     # Test the production index rather than a mocked grouping or screen location.
