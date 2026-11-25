@@ -13,8 +13,16 @@ const groups=[...groupMap.values()],lands=[],usedGroups=new Set(),groupToLand=ne
 // maps the same nation as “Wet’suwet’en Yintikh” (territory source ID 36103).
 // Join that existing polygon to the existing land ID; do not create a proxy pin.
 const hawaiiRelay=window.AtlasHawaiiRelay;
-for(const n of names){if(hawaiiRelay?.aliases.includes(n.id))continue;const matches=groups.filter(g=>window.AtlasMapLabelLayout.sourceMatches(n.name,g.name)||
-  (n.id==='NAME-074'&&g.id==='36103')||(n.id===hawaiiRelay?.canonical&&g.id===hawaiiRelay.sourceId));const item={id:n.id,name:n.name,aliases:[...new Set([...(n.aliases||[]),...matches.map(g=>g.name),...(n.id===hawaiiRelay?.canonical?hawaiiRelay.labels:[])])],supplied:n,groups:matches};lands.push(item);for(const g of matches){usedGroups.add(g.id);groupToLand.set(g.id,item);}}
+// Source qualifiers are geographic distinctions, not just alternate spellings.
+// Keep the source's named subterritories separate instead of pooling them.
+const qualifiedSourceIds=new Map([
+ ['NAME-015',new Set(['33550'])], // Dënéndeh; not Dënësųłinë́ Nëné or Acho Dene Koe
+ ['NAME-063',new Set(['36317'])], // supplied context explicitly says Western Shoshone
+ ['NAME-161',new Set(['33417'])], // Matsés (Mayoruna), not the distinct Matis source
+ ['NAME-153',new Set(['36000'])]  // general Guarani source; specific subgroups below
+]);
+for(const n of names){if(hawaiiRelay?.aliases.includes(n.id))continue;const matches=groups.filter(g=>qualifiedSourceIds.has(n.id)?qualifiedSourceIds.get(n.id).has(g.id):(window.AtlasMapLabelLayout.sourceMatches(n.name,g.name)||
+  (n.id==='NAME-074'&&g.id==='36103')||(n.id===hawaiiRelay?.canonical&&g.id===hawaiiRelay.sourceId)));const item={id:n.id,name:n.name,aliases:[...new Set([...(n.aliases||[]),...matches.map(g=>g.name),...(n.id===hawaiiRelay?.canonical?hawaiiRelay.labels:[])])],supplied:n,groups:matches};lands.push(item);for(const g of matches){usedGroups.add(g.id);groupToLand.set(g.id,item);}}
 for(const g of groups)if(!usedGroups.has(g.id)){const item={id:'LAND-'+g.id,name:g.name,aliases:[],supplied:null,groups:[g]};lands.push(item);groupToLand.set(g.id,item);}
 // Preserve source feature IDs and attach explicit, previously unplaced names to
 // their verified existing reference, without copying or combining polygons.
@@ -270,7 +278,23 @@ function relatedCommunities(l){return pilot.communities.filter(c=>l.groups.some(
 // Repair a homonym collision: source 36469 is Maya in Australia, not the Maya peoples of the Americas.
 // These relays use only the specific affiliation already recorded on each edge; status and evidence stay unchanged.
 const mayaAffiliationRelays=[[/k['’]?iche/i,'LAND-36164'],[/kaqchikel/i,'LAND-36187'],[/poqomchi/i,'LAND-35828'],[/tsotsil|tzotzil/i,'LAND-36628'],[/tseltal|tzeltal/i,'LAND-35963'],[/\bmam\b/i,'LAND-35926'],[/q['’]?eqchi/i,'LAND-36036']];
-function repairedLandEdges(e){if(e.land!=='LAND-36469')return [{...e,land:canonicalLandId(e.land)}];const targets=mayaAffiliationRelays.filter(([pattern])=>pattern.test(e.basis||'')).map(([,id])=>canonicalLandId(id));return targets.map(land=>({...e,land,navigationCorrection:'Maya homonym repaired from the recorded specific affiliation'}));}
+const guaraniAffiliationRelays=[
+ [/\bkaiow[aá]\b|\bpa[ĩi]\s+tavytera\b/iu,'LAND-33460'],
+ [/\b(?:nhande[wv]a|[ñn]ande[wv]a|av[aá][\s-]+guaran[ií])\b/iu,'LAND-33458'],
+ [/\bmby[aá]\b/iu,'LAND-33387']
+];
+function repairedLandEdges(e){
+ const land=canonicalLandId(e.land);
+ if(land==='NAME-153'){
+  // Match only the already-recorded affiliation; an unspecified Guarani
+  // association retains the general source, not either subgroup's polygon.
+  const targets=guaraniAffiliationRelays.filter(([pattern])=>pattern.test(e.basis||'')).map(([,id])=>canonicalLandId(id)).filter(id=>landById(id)?.groups.length);
+  if(targets.length)return [...new Set(targets)].map(land=>({...e,land,navigationCorrection:'Specific Guarani affiliation matched to its named source territory'}));
+ }
+ if(e.land!=='LAND-36469')return [{...e,land}];
+ const targets=mayaAffiliationRelays.filter(([pattern])=>pattern.test(e.basis||'')).map(([,id])=>canonicalLandId(id));
+ return targets.map(land=>({...e,land,navigationCorrection:'Maya homonym repaired from the recorded specific affiliation'}));
+}
 for(const [pattern,id] of mayaAffiliationRelays){const l=landById(id);if(l){l.aliases.push('Maya '+l.name);if(/Mam/.test(l.groups[0]?.name||''))l.aliases.push('Maya Mam');if(/Tzotzil/.test(l.name))l.aliases.push('Maya Tsotsil');if(/Tzeltal/.test(l.name))l.aliases.push('Maya Tseltal');}}
 const crossEdges=[...new Map((window.ATLAS_LAND_CROSSINDEX?.edges||[]).flatMap(repairedLandEdges).filter(e=>!(window.AtlasCatalogAudit61?.edgeExclusions||[]).some(x=>x.record===e.record&&x.land===e.land)).sort((a,b)=>Number(a.status==='sourced')-Number(b.status==='sourced')).map(e=>[e.land+'|'+e.record,e])).values()],edgesByLand=new Map(),edgesByRecord=new Map();
 for(const e of crossEdges){if(!edgesByLand.has(e.land))edgesByLand.set(e.land,[]);edgesByLand.get(e.land).push(e);if(!edgesByRecord.has(e.record))edgesByRecord.set(e.record,[]);edgesByRecord.get(e.record).push(e);}
