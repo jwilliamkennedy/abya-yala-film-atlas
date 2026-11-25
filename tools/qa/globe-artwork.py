@@ -129,7 +129,9 @@ async def main():
                 await watch_tab.wait_for_function("(t)=>document.querySelector('#now-title')?.textContent.startsWith(t)",arg=entry["t"])
                 assert await watch_tab.locator("#now-frame").is_visible()==embedded
                 assert await watch_tab.locator("#now-external").is_visible()==(not embedded)
-                if not embedded:assert await watch_tab.locator("#now-external a").get_attribute("href")==entry["links"][0]["url"]
+                if not embedded:
+                    await watch_tab.wait_for_function("(u)=>document.querySelector('#now-external-link')?.getAttribute('href')===u",arg=entry['links'][0]['url'])
+                    assert await watch_tab.locator('#now-external-link').is_visible()
                 href=await watch_tab.locator("#watch-return-globe").get_attribute("href")
                 assert parse_qs(urlparse(href).query)==parse_qs(query),(href,shared)
                 print("WATCH_RETURN",entry["fid"],"embedded" if embedded else "external",flush=True)
@@ -137,10 +139,10 @@ async def main():
             await watch_tab.goto(BASE+"watch.html#"+indexed[0]["fid"],wait_until="domcontentloaded",timeout=90000)
             assert await watch_tab.locator("#watch-return-globe").count()==0
         finally:await watch_tab.close()
-        await page.locator("#globe-more-toggle").click()
-        await page.locator("#globe-close").click()
-        await page.wait_for_function("!window.AtlasGlobe.active && window.AtlasConstellate.enabled")
-        assert await page.locator("#atlas-rotational-globe").count()==0
-        print("FLAT_RETURN passed",flush=True)
+        assert await page.locator("#globe-close,.globe-legacy-link").count()==0
+        await page.goto(BASE+"flat.html",wait_until="domcontentloaded",timeout=90000)
+        await page.wait_for_function("document.documentElement.dataset.atlasUi==='ready'",timeout=60000)
+        assert await page.evaluate("!window.AtlasGlobe?.active && document.documentElement.dataset.legacyWorkspace==='true' && location.pathname.endsWith('flat.html')")
+        print("UNLISTED_FLAT_PAGE passed",flush=True)
         await browser.close()
 if __name__=="__main__":asyncio.run(main())

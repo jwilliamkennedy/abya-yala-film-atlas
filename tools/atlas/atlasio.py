@@ -18,7 +18,7 @@ tools the atlas folder (e.g. atlas/); a path ending in .xlsx still opens a workb
 Every file people open stays under GitHub's 1 MB file-view limit (connectors cannot open larger files). A file covers a
 range of names by their first two letters: "leads-a-l.csv" is names from A to L, "proposals.csv" is every name. When a
 file passes LIMIT on saving, its range is split in two (for example leads-a-l.csv becomes leads-a-f.csv and
-leads-g-l.csv). Ranges never merge again, so rows do not move between files from one save to the next. A row may be added
+leads-g-l.csv). Ranges never merge again. Nameless sparse history records use a stable Queue-ID bucket rather than the unsplittable aa name bucket. A row may be added
 to any file of its kind; the next save puts it in the right one."""
 import csv, io, os, re, sys, unicodedata
 from openpyxl import Workbook, load_workbook
@@ -260,6 +260,15 @@ def sheet_dicts(ws, conv):
             out.append(d)
     return out
 
+def history_key(r):
+    """Sparse archived corrections have no name. Partition them by their immutable Queue ID.
+    Never fill in a name or modify the archived record just to choose a file."""
+    if text(r.get('name')):
+        return key(r['name'])
+    bucket = (qnum(r.get('qid')) or 0) % (26 * 26)
+    return chr(97 + bucket // 26) + chr(97 + bucket % 26)
+
+
 def history_kind(r):
     s = re.sub(r'[^a-z]+', '-', (r.get('queue_status') or 'other').lower()).strip('-') or 'other'
     return f'history-{s}'
@@ -318,7 +327,7 @@ def save(wb, path):
         else:
             groups['proposals'].append(r)
     for base, rs in groups.items():
-        files[base] = write_split(q, base, QCOLS, rs, lambda r: key(r.get('name')))
+        files[base] = write_split(q, base, QCOLS, rs, history_key if base.startswith('history-') else lambda r: key(r.get('name')))
     for f in os.listdir(q):                      # files of a kind that no longer has rows (and the old history.csv)
         m = QUEUE_FILE.match(f)
         if m and m.group(1) not in groups:

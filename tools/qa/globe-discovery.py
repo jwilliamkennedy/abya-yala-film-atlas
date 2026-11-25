@@ -159,6 +159,7 @@ async def check(browser,name,viewport):
     radius=await page.evaluate("AtlasGlobe.focus.target.radius")
     assert abs(final_aperture["width"]-2*radius)<.5,(name,"visible target and hit radius differ")
     assert await page.evaluate(SNAP)==snapshot,(name,"discovery mutated collection")
+    assert await page.evaluate("!location.search && !location.hash"), (name,"public URL changed during discovery")
     assert not await page.locator("header .constellate-link").is_visible(), (name,"old Constellate navigation exposed")
     assert await page.locator("#globe-close,.globe-legacy-link").count()==0, (name,"old flat navigation exposed")
     await page.evaluate("AtlasGlobe.close()")

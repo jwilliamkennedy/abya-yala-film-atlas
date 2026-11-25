@@ -8,6 +8,8 @@ on:
       - 'beta/assets/maplibre/**'
       - 'beta/index.html'
       - 'tools/qa/globe-discovery.py'
+      - 'tools/qa/atlas-route.cjs'
+      - 'beta/assets/atlas-route.js'
       - '.github/workflows/globe-acceptance.yml'
   workflow_dispatch:
 permissions:
@@ -23,6 +25,8 @@ jobs:
     timeout-minutes: 12
     steps:
       - uses: actions/checkout@v4
+      - name: Verify public and legacy URL routes
+        run: node tools/qa/atlas-route.cjs
       - name: Install Chromium
         run: |
           python3 -m pip install -q 'playwright==1.*'

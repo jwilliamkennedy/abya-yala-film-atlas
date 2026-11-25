@@ -35,11 +35,11 @@ const frame=$('#now-frame');frame.referrerPolicy='strict-origin-when-cross-origi
 const withAutoplay=u=>u+(u.includes('?')?'&':'?')+'autoplay=1';
 function play(f,{scroll=false,quiet=false,auto=false}={}){
  const embed=playable(f),l=embed||f.links.find(v=>{try{return new URL(v.url).protocol==='https:';}catch{return false;}});if(!l)return;state.now=f.fid;
- const box=frame.parentElement;let outside=$('#now-external');
- if(!outside){outside=document.createElement('div');outside.id='now-external';outside.className='now-external';box.append(outside);}
- outside.hidden=!!embed;frame.hidden=!embed;box.classList.toggle('external-only',!embed);
+ const box=frame.parentElement,outside=$('#now-external'),link=$('#now-external-link');
+ // Keep a single permanent provider link and switch its visibility only after its target is set.
  if(embed){frame.src=auto?withAutoplay(embed.embed):embed.embed;frame.title='Player: '+f.t;}
- else{frame.removeAttribute('src');outside.replaceChildren();const title=document.createElement('strong');title.textContent=f.t;const desc=document.createElement('p');desc.textContent='This film is available at its source, rather than in the embedded player.';const link=document.createElement('a');link.href=l.url;link.target='_blank';link.rel='noopener noreferrer';link.className='btn';link.textContent='Watch at '+host(l.url)+' ↗';outside.append(title,desc,link);}
+ else{frame.removeAttribute('src');$('#now-external-title').textContent=f.t;link.href=l.url;link.textContent='Watch at '+host(l.url)+' ↗';}
+ outside.hidden=!!embed;frame.hidden=!embed;box.classList.toggle('external-only',!embed);
  $('#now-title').textContent=f.t+(f.y?` (${f.y})`:'');
  $('#now-by').innerHTML=makersHTML(f)+(f.fx?` · ${esc(f.fx)}`:'')+` · <a id="now-out" href="${esc(l.url)}" target="_blank" rel="noopener">${esc(host(l.url))} ↗</a>`;
  const map=$('#now-map');map.href=mapHref(f);
