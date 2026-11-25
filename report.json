@@ -1,0 +1,24 @@
+{
+ "open_1x": {
+  "basemap": "open",
+  "state": "deferred",
+  "zoom": "1\u00d7"
+ },
+ "open_6x": {
+  "basemap": "open",
+  "state": "deferred",
+  "zoom": "1\u00d7"
+ },
+ "open_23x": {
+  "basemap": "open",
+  "state": "deferred",
+  "zoom": "1\u00d7"
+ },
+ "hover_shapes": 0,
+ "relief_23x": {
+  "basemap": "open",
+  "state": "deferred",
+  "zoom": "1\u00d7"
+ },
+ "pageerrors": []
+}
