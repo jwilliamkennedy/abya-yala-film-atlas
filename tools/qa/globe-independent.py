@@ -82,6 +82,10 @@ async def run(browser,name,viewport):
             cam=await page.evaluate("window.AtlasGlobe.camera")
             await page.locator("#globe-theme-toggle").click()
             assert await page.locator("#weave-map-theme").is_visible()
+            await page.locator("#weave-map-theme").select_option("Water")
+            await page.wait_for_function("!document.querySelector('#globe-theme-coverage').hidden && window.AtlasGlobe.discovery.themeCoverage.credits>0")
+            assert await page.evaluate("""()=>{const G=window.AtlasGlobe,sets=G.anchors.map(a=>G.matchingCreditIds(a.id)),coverage=G.discovery.themeCoverage;return coverage.lands===sets.filter(x=>x.length).length&&coverage.credits===new Set(sets.flat()).size;}""")
+            await page.locator("#weave-map-theme").select_option("")
             assert await page.locator(".globe-menu-panel:visible").count()==1
             await page.locator("#globe-more-toggle").click()
             assert await page.locator(".globe-menu-panel:visible").count()==1
@@ -106,7 +110,7 @@ async def run(browser,name,viewport):
                 assert await page.evaluate("window.AtlasGlobe.territoryLayer.edgeVisibility")==expected
             await page.locator(".globe-settings summary").click()
             await page.locator("#globe-find-toggle").click()
-            land=await page.evaluate("window.AtlasGlobe.anchors.find(a=>window.AtlasConstellate.globeLandFilmCount(a.id)>1).id")
+            land=await page.evaluate("""()=>{const inv=window.AtlasGlobe.artworkInventory(),local=new Map();for(const c of inv.credits){if(!c.source||/^https?:/i.test(c.source))continue;for(const id of c.lands)local.set(id,(local.get(id)||0)+1);}return window.AtlasGlobe.anchors.find(a=>(local.get(a.id)||0)>1)?.id||window.AtlasGlobe.anchors.find(a=>window.AtlasConstellate.globeLandFilmCount(a.id)>1).id;}""")
             await page.locator("#globe-find").select_option(value=land)
             assert await page.locator(".globe-menu-panel:visible").count()==0
             await page.wait_for_function("(id)=>window.AtlasGlobe.focus.settled && window.AtlasGlobe.focus.ids.includes(id)",arg=land)
@@ -123,7 +127,11 @@ async def run(browser,name,viewport):
                 return !!b.querySelector('img') && (r.right<a.left||r.left>a.right||r.bottom<a.top||r.top>a.bottom);
             }"""),(name,"poster obstructs aperture or lacks sourced image")
             # Audit actual decoded dimensions, fit and contrast; allow honest missing/broken images.
-            await page.wait_for_timeout(1000)
+            for _ in range(8):
+                await page.wait_for_function("window.AtlasGlobe.discovery.artState!=='loading'",timeout=25000)
+                if await page.evaluate("window.AtlasGlobe.discovery.artState==='ready'"):break
+                await page.locator("#globe-encounter .globe-cycle").last.click()
+            await page.wait_for_function("window.AtlasGlobe.discovery.artState==='ready'",timeout=25000)
             art=await page.evaluate("""() => [...document.querySelectorAll('#atlas-rotational-globe .globe-artwork[data-art-state=ready] img')].filter(i=>i.getClientRects().length&&i.getBoundingClientRect().width>0).map(i=>{
                 const b=i.getBoundingClientRect(),s=getComputedStyle(i);
                 const f=i.parentElement.getBoundingClientRect();
@@ -155,6 +163,8 @@ async def run(browser,name,viewport):
             print(name,"emergent artwork",await page.evaluate("window.AtlasGlobe.discovery.posterVisible"),flush=True)
             assert await page.evaluate("window.AtlasGlobe.discovery.recent.length>0")
             await shot(page,f"shots/globe-independent/{name}-encounter.png")
+            targets=await page.locator("#globe-encounter [data-target-film]").evaluate_all("(els)=>els.map(e=>({film:e.dataset.targetFilm,land:e.dataset.targetLand}))")
+            assert len(targets)<=3 and len(set(v["land"] for v in targets))==len(targets)
             bridge=page.locator("#globe-encounter [data-target-film]").first
             if await bridge.count():
                 previous=await page.evaluate("window.AtlasGlobe.discovery.featured")

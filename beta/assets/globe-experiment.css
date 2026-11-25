@@ -305,3 +305,10 @@ body.atlas-globe-experiment #globe-close{position:static;z-index:auto;width:100%
 #globe-live-map .maplibregl-ctrl-bottom-right{bottom:calc(var(--globe-footer-height) + 4px)}
 #atlas-rotational-globe .globe-footer{padding-bottom:max(4px,env(safe-area-inset-bottom))}
 @media(max-height:500px) and (orientation:landscape){#atlas-rotational-globe #globe-encounter{max-height:calc(100% - var(--globe-footer-height) - 100px);width:min(280px,38%);padding:7px}#atlas-rotational-globe .globe-guide{top:48px}#atlas-rotational-globe .globe-menu-panel{max-height:calc(100vh - 118px)}#atlas-rotational-globe .globe-zoom{bottom:calc(var(--globe-footer-height) + 20px)}}
+
+#globe-encounter .globe-land-group{color:#b5cacb;font-weight:600;padding:4px 2px 0}
+#globe-encounter .globe-land-choice{text-align:left;overflow-wrap:anywhere;white-space:normal}
+.globe-theme-coverage{font:11px/1.4 system-ui,sans-serif;margin:6px 0;color:#c4d6d4}.globe-theme-coverage[hidden]{display:none}
+#globe-encounter .globe-related-list{display:grid;gap:5px}#globe-encounter .globe-related-list button{display:grid;gap:2px;text-align:left;white-space:normal;min-width:0;overflow-wrap:anywhere}#globe-encounter .globe-related-list button small{font-size:11px;font-weight:400;color:#c6d5d5}
+@keyframes globe-art-arrive{from{opacity:0;transform:translateY(3px)}to{opacity:1;transform:translateY(0)}}
+.globe-art-arrive{animation:globe-art-arrive .18s ease-out both}@media(prefers-reduced-motion:reduce){.globe-art-arrive{animation:none}}
