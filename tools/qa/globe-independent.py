@@ -63,11 +63,25 @@ async def run(browser,name,viewport):
             assert any("tiles.maps.eox.at/" in u for u in tiles),("no successful satellite response",tiles)
             assert any("tiles.mapterhorn.com/" in u for u in tiles),("no successful DEM response",tiles)
             await shot(page,f"shots/globe-independent/{name}-overhead.png")
+            await page.locator("#globe-more-toggle").click()
             await page.locator("#globe-landscape").click()
             await page.wait_for_function("window.AtlasGlobe.tileState.pitch>35 && window.AtlasGlobe.focus.settled")
             await shot(page,f"shots/globe-independent/{name}-tilted.png")
         else:
             initial=await page.evaluate("JSON.stringify(window.AtlasCollections.current())")
+            assert await page.locator(".globe-primary button").count()==4
+            assert await page.locator(".globe-menu-panel:visible").count()==0
+            cam=await page.evaluate("JSON.stringify(window.AtlasGlobe.camera)")
+            await page.locator("#globe-theme-toggle").click()
+            assert await page.locator("#weave-map-theme").is_visible()
+            assert await page.locator(".globe-menu-panel:visible").count()==1
+            await page.locator("#globe-more-toggle").click()
+            assert await page.locator(".globe-menu-panel:visible").count()==1
+            assert not await page.locator("#weave-map-theme").is_visible()
+            await page.keyboard.press("Escape")
+            assert await page.locator(".globe-menu-panel:visible").count()==0
+            assert await page.evaluate("JSON.stringify(window.AtlasGlobe.camera)")==cam
+            await page.locator("#globe-more-toggle").click()
             await page.locator("#globe-lands").click()
             assert not await page.evaluate("window.AtlasGlobe.territoryLayer.visible")
             await page.locator("#globe-lands").click()
@@ -77,8 +91,10 @@ async def run(browser,name,viewport):
             assert await page.evaluate("window.AtlasGlobe.territoryLayer.strength===1.6")
             await page.locator("#globe-opacity").select_option("1")
             await page.locator(".globe-settings summary").click()
+            await page.locator("#globe-find-toggle").click()
             land=await page.evaluate("window.AtlasGlobe.anchors.find(a=>window.AtlasConstellate.globeLandFilmCount(a.id)>1).id")
             await page.locator("#globe-find").select_option(value=land)
+            assert await page.locator(".globe-menu-panel:visible").count()==0
             await page.wait_for_function("(id)=>window.AtlasGlobe.focus.settled && window.AtlasGlobe.focus.ids.includes(id)",arg=land)
             await page.locator("#globe-encounter .globe-film-title").wait_for()
             first=await page.locator("#globe-encounter .globe-film-title").inner_text()
@@ -126,6 +142,7 @@ async def run(browser,name,viewport):
                 await page.locator("#globe-journey-back").click()
                 await page.wait_for_function("(v)=>window.AtlasGlobe.focus.settled && window.AtlasGlobe.discovery.featured?.film===v.film && window.AtlasGlobe.discovery.featured?.land===v.land",arg=previous,timeout=30000)
                 print(name,"thematic journey and return passed",flush=True)
+            await page.locator("#globe-more-toggle").click()
             await page.locator("#globe-period").select_option("2020")
             assert await page.evaluate("window.AtlasGlobe.discovery.period==='2020'")
             await page.locator("#globe-period").select_option("")

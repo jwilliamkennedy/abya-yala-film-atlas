@@ -108,13 +108,16 @@ async def check(browser,name,viewport):
     assert any('tiles.mapterhorn.com/' in u for u in imagery),(name,"no successful DEM image responses")
     print(name,"Acatenango elevation",await page.evaluate("window.AtlasGlobe.tileState"),flush=True)
     await shot(page,f"shots/globe/{name}-guatemala-overhead.png")
+    await page.locator("#globe-more-toggle").click()
     await page.locator("#globe-landscape").click()
     await page.wait_for_function("window.AtlasGlobe.tileState.pitch > 35")
     await page.wait_for_function("window.AtlasGlobe.focus.settled")
     await shot(page,f"shots/globe/{name}-guatemala-terrain.png")
+    await page.locator("#globe-more-toggle").click()
     await page.locator("#globe-home").click()
     await page.wait_for_function("window.AtlasGlobe.focus.settled")
     land=await page.evaluate("window.AtlasGlobe.anchors[0].id")
+    await page.locator("#globe-find-toggle").click()
     await page.locator("#globe-find").select_option(value=land)
     await page.wait_for_function("(id)=>window.AtlasGlobe.focus.settled && window.AtlasGlobe.focus.ids.includes(id)",arg=land)
     assert land in await page.evaluate("window.AtlasGlobe.focus.ids"),(name,"index join failed",land)
@@ -124,10 +127,12 @@ async def check(browser,name,viewport):
         await page.locator("#globe-encounter .globe-cycle").last.click()
         assert (await page.evaluate("window.AtlasGlobe.discovery.filmOffset"))>0
     assert await page.evaluate("new URL(window.AtlasGlobe.discovery.shareURL).searchParams.has('at')")
+    await page.locator("#globe-more-toggle").click()
     await page.locator("#globe-period").select_option("2020")
     assert await page.evaluate("window.AtlasGlobe.discovery.period")== "2020"
     await page.locator("#globe-period").select_option("")
     selected=await page.evaluate(CAM)
+    await page.locator("#globe-theme-toggle").click()
     await page.locator("#weave-map-theme").select_option(index=1)
     await page.wait_for_timeout(450)
     assert await page.evaluate(CAM)==selected,(name,"theme moved camera")
@@ -138,6 +143,7 @@ async def check(browser,name,viewport):
 
     assert await page.locator("#globe-aperture").bounding_box()==aperture,(name,"aperture shifted")
     assert await page.evaluate(SNAP)==snapshot,(name,"discovery mutated collection")
+    await page.locator("#globe-more-toggle").click()
     await page.locator("#globe-close").click()
     await page.wait_for_function("!window.AtlasGlobe.active && window.AtlasConstellate.enabled")
     assert await page.locator("#atlas-rotational-globe").count()==0
