@@ -14,7 +14,8 @@ permissions:
   contents: read
 concurrency:
   group: globe-acceptance-${{ github.ref }}
-  cancel-in-progress: true
+  # Data rebuilds are frequent; finish an in-flight test before testing the latest queued commit.
+  cancel-in-progress: false
 jobs:
   globe-discovery:
     name: "Beta: experimental globe rotation and discovery"
