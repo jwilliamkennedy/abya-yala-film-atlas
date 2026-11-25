@@ -1,0 +1,6 @@
+# Globe iteration: zoom and visible Indigenous reference territories
+
+- Native MapLibre wheel response increased; Ctrl+wheel and Safari gesture listeners capture at window level only for globe targets, and share a centered frame-based zoom queue. Listener lifecycle is tied to the active globe. Synthetic DOM pinch testing is explicitly distinguished from physical trackpad verification.
+- All existing mapped territory reference features are rendered continuously in a deduplicated geographic source, including lands without films. Ambient fill ranges from 7–16% by scale, outline from 15–42%; exact focused shapes add a restrained highlight. Land toggle leaves cinema anchors and all joins unchanged. Colors are display distinctions, not exclusive ownership or authoritative borders. No new polygons or identity associations are inferred.
+- Shared thumbnail images are positioned within their own containing blocks, not over the encounter or map. This addresses the actual interception reported by browser QA.
+- Prior independent QA measured 3901.59 m near Acatenango with successful satellite/DEM image responses, but screenshots timed out; physical Ctrl+wheel was not delivered in headless CDP. New tests distinguish DOM handling, native wheel, and real hardware still requiring manual verification.

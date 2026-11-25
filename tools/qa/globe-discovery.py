@@ -47,6 +47,7 @@ async def check(browser,name,viewport):
     await page.wait_for_function("window.AtlasGlobe.terrain in {'tiled':1,'ready':1,'unavailable':1}",timeout=25000)
     await page.wait_for_function("window.AtlasGlobe.camera.renderer === 'maplibre-globe'",timeout=40000)
     assert await page.evaluate("window.AtlasGlobe.tileState?.mesh === null"),(name,"overview should not load an elevation mesh")
+    assert await page.evaluate("window.AtlasGlobe.territoryLayer.features>0 && window.AtlasGlobe.territoryLayer.visible")
     await page.wait_for_function("window.AtlasGlobe.focus.settled")
     os.makedirs("shots/globe",exist_ok=True)
     await shot(page,f"shots/globe/{name}-planet.png")

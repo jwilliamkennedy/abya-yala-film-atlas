@@ -110,3 +110,10 @@ body.atlas-globe-experiment #globe-close{position:static;z-index:auto;width:100%
 #globe-encounter .globe-cycle{min-width:36px;min-height:36px}
 #globe-live-map canvas{touch-action:none;overscroll-behavior:contain}
 @media(max-width:760px){#globe-encounter{max-height:36%;width:min(260px,calc(100% - 12px))}#globe-encounter .globe-film-strip{display:none}}
+
+/* Quiet reference layer toggle, not a new editing mode. */
+.globe-guide #globe-lands[aria-pressed=true]{background:#385a50;color:#e4eee5;border-color:#91ab96}
+.globe-guide #globe-lands[aria-pressed=false]{background:#20364a;color:#c1cfd2}
+.globe-guide .globe-buttons button{flex:1}
+#globe-aperture{box-shadow:0 0 0 1px #14263850}
+#atlas-rotational-globe.has-cinema #globe-aperture{box-shadow:0 0 0 2px #dce8b719,0 0 8px #e2ecb320}

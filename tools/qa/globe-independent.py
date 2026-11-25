@@ -20,6 +20,9 @@ async def run(browser,name,viewport):
     try:
         await page.goto(BASE+"?constellate=1&globe=1",wait_until="domcontentloaded",timeout=90000)
         await page.wait_for_function("window.AtlasGlobe?.camera?.renderer==='maplibre-globe' && window.AtlasGlobe.focus.settled",timeout=60000)
+        layer=await page.evaluate("window.AtlasGlobe.territoryLayer")
+        assert layer["visible"] and layer["features"]>0 and layer["fill"] is not None,(name,"ambient territory layer absent",layer)
+        print(name,"ambient territory layer",json.dumps(layer),flush=True)
         if MODE=="terrain":
             await page.evaluate("window.AtlasGlobe.goTo([-90.875,14.501],10)")
             await page.wait_for_function("window.AtlasGlobe.tileState?.mesh==='dem'",timeout=20000)
@@ -32,6 +35,10 @@ async def run(browser,name,viewport):
             await shot(page,f"shots/globe-independent/{name}-tilted.png")
         else:
             initial=await page.evaluate("JSON.stringify(window.AtlasCollections.current())")
+            await page.locator("#globe-lands").click()
+            assert not await page.evaluate("window.AtlasGlobe.territoryLayer.visible")
+            await page.locator("#globe-lands").click()
+            assert await page.evaluate("window.AtlasGlobe.territoryLayer.visible")
             land=await page.evaluate("window.AtlasGlobe.anchors.find(a=>window.AtlasConstellate.globeLandFilmCount(a.id)>1).id")
             await page.locator("#globe-find").select_option(value=land)
             await page.wait_for_function("(id)=>window.AtlasGlobe.focus.settled && window.AtlasGlobe.focus.ids.includes(id)",arg=land)

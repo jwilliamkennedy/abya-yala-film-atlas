@@ -14,7 +14,7 @@ let relief=null,reliefState='loading',flight=0,flightTarget=null,lastDrag=null;
 let live=null,liveReady=false,liveHost=null,liveSignature='',liveBaseZoom=0,liveMoved=false,liveTimer=0;
 let wheelFrame=0,wheelGoal=null,wheelLast=0,wheelActive=false,gestureStart=null,gestureUntil=0,landscape=false,lastLiveUpdate=0;
 const received={marble:0,satellite:0,dem:0,hilldem:0,places:0},sourceErrors={};
-let zoomListeners=null,lastStatus=0,frameTimes=[],lastRender=0,preferredLand='',filmOffset=0,yearBand='',lastEncounter='',recent=[],lastRelated=null;
+let ambientCount=0,landsVisible=true,zoomListeners=null,lastStatus=0,frameTimes=[],lastRender=0,preferredLand='',filmOffset=0,yearBand='',lastEncounter='',recent=[],lastRelated=null;
 const inputStats={wheel:0,pinch:0,safari:0,touch:0,zoomEvents:0,lastDelta:0,lastBefore:null,lastAfter:null,lastInputMs:null};
 const params=new URLSearchParams(location.search);
 const initialCamera=(()=>{const a=params.get('at')?.split(',').map(Number);return a?.length===3&&a.every(Number.isFinite)&&Math.abs(a[0])<=180&&Math.abs(a[1])<=85&&a[2]>=-2&&a[2]<=14?a:null;})();
@@ -60,7 +60,7 @@ const sphere={type:'Sphere'};
 function camera(){if(liveReady&&live){const p=live.getCenter();return {center:[wrap(p.lng),p.lat],zoom:Math.pow(2,live.getZoom()-liveBaseZoom),projection:'globe',renderer:'maplibre-globe'};}return {center:[...center],zoom,projection:'globe',renderer:'orthographic-canvas'};}
 function renderSoon(){if(!active||raf)return;raf=requestAnimationFrame(()=>{raf=0;draw();});}
 function sync(){if(!active)return;renderSoon();if(!pointers.size&&!flight&&!wheelActive&&!live?.isMoving())scheduleSettle(75);}
-window.AtlasGlobe={get active(){return active},get camera(){return active?camera():null},get pointCount(){return points.length},get geometryCount(){return records.length},get anchorFailures(){return [...anchorFailures]},get anchors(){return points.map(p=>({id:p.id,coordinate:[...p.coord],sourceId:p.anchor.sourceId,component:p.anchor.component,method:p.anchor.method}))},get landArea(){return landArea},get terrain(){return liveReady?'tiled':reliefState},get tileState(){return liveStats()},get discovery(){return {period:yearBand,preferredLand,recent:[...recent],filmOffset,shareURL:shareView()}},goTo(coord,mapZoom){if(liveReady&&Array.isArray(coord)&&coord.length===2&&coord.every(Number.isFinite)&&Number.isFinite(mapZoom))setCamera(coord,Math.pow(2,mapZoom-liveBaseZoom),0);},get focus(){return {ids:[...focusIds],inside:inside.map(r=>r.id),settled};},sync,close};
+window.AtlasGlobe={get active(){return active},get camera(){return active?camera():null},get pointCount(){return points.length},get geometryCount(){return records.length},get anchorFailures(){return [...anchorFailures]},get anchors(){return points.map(p=>({id:p.id,coordinate:[...p.coord],sourceId:p.anchor.sourceId,component:p.anchor.component,method:p.anchor.method}))},get landArea(){return landArea},get territoryLayer(){return {visible:landsVisible,features:ambientCount,fill:liveReady?live.getPaintProperty('native-ambient-fill','fill-opacity'):null,outline:liveReady?live.getPaintProperty('native-ambient-line','line-opacity'):null}},get terrain(){return liveReady?'tiled':reliefState},get tileState(){return liveStats()},get discovery(){return {period:yearBand,preferredLand,recent:[...recent],filmOffset,shareURL:shareView()}},goTo(coord,mapZoom){if(liveReady&&Array.isArray(coord)&&coord.length===2&&coord.every(Number.isFinite)&&Number.isFinite(mapZoom))setCamera(coord,Math.pow(2,mapZoom-liveBaseZoom),0);},get focus(){return {ids:[...focusIds],inside:inside.map(r=>r.id),settled};},sync,close};
 function close(){
  const wasActive=active;closed=true;active=false;clearTimeout(settleTimer);cancelFlight();if(raf)cancelAnimationFrame(raf);raf=0;ro?.disconnect();
  clearTimeout(liveTimer);stopWheel();zoomListeners?.abort();zoomListeners=null;liveReady=false;live?.remove();live=null;liveHost=null;relief?.dispose();relief=null;host?.remove();host=null;document.body.classList.remove('atlas-globe-experiment');if(wasActive&&C()?.enabled)C().refreshDiscoveryMode();
@@ -184,6 +184,22 @@ function loadRelief(){
   if(g.type==='GeometryCollection')return {type:g.type,geometries:g.geometries.map(geoPolygon)};
   return g;
  }
+ // All reference geometry is kept visible, not just land under the aperture.
+ // Deduplicate identical source features shared by multiple catalogue groupings.
+ function ambientLandData(){
+  const unique=new Map();
+  for(const r of records)for(const {feature} of r.shapes){
+   const key=String(feature.id);if(unique.has(key))continue;
+   unique.set(key,{type:'Feature',properties:{land:r.id,name:r.name,color:'rgb('+territoryTone(r.id)+')'},geometry:geoPolygon(feature.geometry)});
+  }
+  ambientCount=unique.size;return {type:'FeatureCollection',features:[...unique.values()]};
+ }
+ const landLayerIds=['native-ambient-fill','native-ambient-line','land-color','land-outline','indigenous-names'];
+ function syncLandVisibility(){
+  const b=$('#globe-lands');if(b){b.setAttribute('aria-pressed',String(landsVisible));b.textContent=landsVisible?'Lands: on':'Lands: off';}
+  if(liveReady)for(const id of landLayerIds)if(live.getLayer(id))live.setLayoutProperty(id,'visibility',landsVisible?'visible':'none');
+  renderSoon();
+ }
  function liveLandData(ids){
   const features=[];
   for(const id of ids){const r=byId.get(id);if(!r)continue;const color='rgb('+territoryTone(id)+')',match=C().landMatchesTheme([id])&&(!yearBand||matchingFilms(id).length>0);
@@ -203,7 +219,7 @@ function loadRelief(){
   host.classList.toggle('has-cinema',near.length>0||settled&&inside.some(v=>C().landMatchesTheme([v.id])&&v.count));
   // Keep the source stable while dragging. Rebuild only once the camera settles or theme changes.
   if(live.isMoving()||wheelActive)return;
-  const ids=[...new Set([...focusIds,...C().selectedLandIds,...C().previewLandIds(),...ps.filter(v=>v.match&&v.distance<=aperture()*2.4).sort((a,b)=>a.distance-b.distance).slice(0,8).map(v=>v.p.id)])];
+  const ids=[...new Set([...focusIds,...C().selectedLandIds,...C().previewLandIds()])];
   const sig=JSON.stringify([ids,focusIds,C().selectedLandIds,C().previewLandIds(),currentTheme(),yearBand]);
   if(sig===liveSignature)return;liveSignature=sig;
   live.getSource('native-lands')?.setData(liveLandData(ids));
@@ -287,6 +303,7 @@ function loadRelief(){
     places:{type:'vector',url:'https://tiles.openfreemap.org/planet',attribution:'OpenStreetMap contributors / OpenFreeMap'},
     dem:{type:'raster-dem',tiles:['https://tiles.mapterhorn.com/{z}/{x}/{y}.webp'],tileSize:512,maxzoom:12,encoding:'terrarium',attribution:'Mapterhorn terrain'},
     hilldem:{type:'raster-dem',tiles:['https://tiles.mapterhorn.com/{z}/{x}/{y}.webp'],tileSize:512,maxzoom:12,encoding:'terrarium',attribution:'Mapterhorn terrain'},
+    'native-ambient':{type:'geojson',data:ambientLandData(),tolerance:.375,buffer:64,maxzoom:12},
     'native-lands':{type:'geojson',data:emptyGeo(),tolerance:0,buffer:128,maxzoom:14},
     'cinema-points':{type:'geojson',data:livePointsData(),maxzoom:14}
    },layers:[
@@ -300,8 +317,12 @@ function loadRelief(){
     {id:'water-names',type:'symbol',source:'places','source-layer':'water_name',minzoom:7,layout:{'text-field':['get','name'],'text-font':['Noto Sans Regular'],'text-size':11,'text-padding':9},paint:{'text-color':'#b9dce6','text-halo-color':'#24404e','text-halo-width':1}},
     {id:'mountain-names',type:'symbol',source:'places','source-layer':'mountain_peak',minzoom:8,layout:{'text-field':['get','name'],'text-font':['Noto Sans Regular'],'text-size':11,'text-padding':9,'symbol-sort-key':['coalesce',['get','rank'],99]},paint:{'text-color':'#f3e7d2','text-halo-color':'#333d36','text-halo-width':1}},
     {id:'city-context',type:'symbol',source:'places','source-layer':'place',minzoom:5,filter:['match',['get','class'],['city','town'],true,false],layout:{'text-field':['get','name'],'text-font':['Noto Sans Regular'],'text-size':['interpolate',['linear'],['zoom'],5,10,10,13],'symbol-sort-key':['coalesce',['get','rank'],99],'text-padding':8,'text-allow-overlap':false},paint:{'text-color':'#e2e9e4','text-halo-color':'#20362e','text-halo-width':1.1,'text-opacity':.75}},
-    {id:'land-color',type:'fill',source:'native-lands',paint:{'fill-color':['get','color'],'fill-opacity':['case',['==',['get','match'],0],.07,['==',['get','focus'],1],.30,.13],'fill-opacity-transition':{duration:160,delay:0}}},
-    {id:'land-outline',type:'line',source:'native-lands',paint:{'line-color':['get','color'],'line-opacity':['case',['==',['get','match'],0],.24,['==',['get','focus'],1],.92,.53],'line-width':['interpolate',['linear'],['zoom'],1,.8,5,1.4,11,2]}},
+    // Ambient territory references are deliberately translucent; overlapping
+    // polygons remain visible without claiming exclusive ownership.
+    {id:'native-ambient-fill',type:'fill',source:'native-ambient',paint:{'fill-color':['get','color'],'fill-opacity':['interpolate',['linear'],['zoom'],0,.07,3,.12,6,.16,10,.15,14,.13]}},
+    {id:'native-ambient-line',type:'line',source:'native-ambient',paint:{'line-color':['get','color'],'line-opacity':['interpolate',['linear'],['zoom'],0,.15,3,.27,6,.38,12,.42],'line-width':['interpolate',['linear'],['zoom'],0,.35,4,.65,8,.95,14,1.4]}},
+    {id:'land-color',type:'fill',source:'native-lands',paint:{'fill-color':['get','color'],'fill-opacity':['case',['==',['get','match'],0],.02,['==',['get','focus'],1],.14,.07],'fill-opacity-transition':{duration:160,delay:0}}},
+    {id:'land-outline',type:'line',source:'native-lands',paint:{'line-color':['get','color'],'line-opacity':['case',['==',['get','match'],0],.28,['==',['get','focus'],1],.78,.48],'line-width':['interpolate',['linear'],['zoom'],1,.8,5,1.4,11,2]}},
     {id:'cinema-glow',type:'circle',source:'cinema-points',paint:{'circle-radius':5,'circle-color':'#e8eed9','circle-opacity':['case',['==',['get','match'],1],.13,0],'circle-blur':.9,'circle-pitch-alignment':'map'}},
     {id:'cinema-light',type:'circle',source:'cinema-points',paint:{'circle-radius':['interpolate',['linear'],['zoom'],0,1.8,7,2.8],'circle-color':'#e5ebd8','circle-opacity':['case',['==',['get','match'],1],.95,.22],'circle-pitch-alignment':'map'}},
     {id:'indigenous-names',type:'symbol',source:'cinema-points',minzoom:3.5,filter:['==',['get','focus'],1],layout:{'text-field':['get','name'],'text-font':['Noto Sans Regular'],'text-size':14,'text-anchor':'top','text-offset':[0,.55],'text-padding':5,'text-allow-overlap':false,'text-ignore-placement':false},paint:{'text-color':'#f4eee0','text-halo-color':'#172a31','text-halo-width':1.65}}
@@ -319,7 +340,7 @@ function loadRelief(){
     if(!active||!live)return;
     clearTimeout(liveTimer);liveReady=true;host.classList.add('globe-live');cancelFlight();readLiveCamera();installZoom();
     if(initialCamera)live.jumpTo({center:initialCamera.slice(0,2),zoom:initialCamera[2]});
-    readLiveCamera();syncTerrain();movement();finishMove();updateDetailStatus(true);
+    readLiveCamera();syncTerrain();syncLandVisibility();movement();finishMove();updateDetailStatus(true);
     try{const t=JSON.parse(params.get('themes')||'[]');if(Array.isArray(t)&&t.every(x=>typeof x==='string')&&t.length)C().showThemeLens(t);}catch{}
     live.on('render',()=>{const t=nowMs();if(lastRender&&t-lastRender<250){frameTimes.push(t-lastRender);if(frameTimes.length>120)frameTimes.shift();}lastRender=t;});
     live.on('zoom',()=>{inputStats.zoomEvents++;inputStats.lastAfter=live.getZoom();});
@@ -338,7 +359,7 @@ function loadRelief(){
      const p=hit&&points.find(v=>v.id===hit.properties.land);
      if(p){preferredLand=p.id;filmOffset=0;setCamera(p.coord,zoom);return;}
      const coord=[wrap(e.lngLat.lng),e.lngLat.lat];
-     const hitLands=records.filter(r=>r.shapes.some(s=>includesBounds(s.bounds,coord)&&d3.geoContains(s.feature,coord)));if(hitLands.length){preferredLand=hitLands[0].id;filmOffset=0;setCamera(coord,zoom);}
+     const hitLands=records.filter(r=>r.shapes.some(s=>includesBounds(s.bounds,coord)&&d3.geoContains(s.feature,coord)));if(hitLands.length){preferredLand=(hitLands.find(r=>r.id===preferredLand)||hitLands.find(r=>matchingFilms(r.id).length)||hitLands[0]).id;filmOffset=0;setCamera(coord,zoom);}
     });
 
    });
@@ -368,7 +389,7 @@ function loadRelief(){
   const alpha=reduced.matches?target:old.alpha+(target-old.alpha)*(1-Math.exp(-Math.min(100,now-old.t)/65));
   if(Math.abs(alpha-target)>.008)fading=true;
   if(alpha<.008&&!target){paint.delete(id);continue;}paint.set(id,{alpha,t:now});
-  const rec=byId.get(id);if(!rec)continue;const rgb=territoryTone(id);
+  const rec=byId.get(id);if(!rec||!landsVisible)continue;const rgb=territoryTone(id);
   for(const f of rec.shapes)shape(f.feature,rgba(rgb,alpha*.72),rgba(rgb,Math.min(.92,alpha*1.65)),focused.has(id)||selected.has(id)?1.25:.75);
  }
  if(fading)renderSoon();
@@ -397,7 +418,7 @@ function button(label,fn,cls){const b=el('button',cls,label);b.type='button';b.a
 function drawEncounter(){
  const panel=$('#globe-encounter'),status=$('#globe-status'),actual=new Set(inside.map(r=>r.id));
  const chosen=focusIds.map(id=>byId.get(id)).filter(Boolean);
- const primary=chosen.find(r=>r.id===preferredLand)||chosen.find(r=>matchingFilms(r.id).length)||chosen[0];
+ const primary=chosen.find(r=>r.id===preferredLand)||chosen.find(r=>actual.has(r.id)&&matchingFilms(r.id).length)||chosen.find(r=>actual.has(r.id))||chosen.find(r=>matchingFilms(r.id).length)||chosen[0];
  const sig=JSON.stringify([focusIds,inside.map(v=>v.id),primary?.id,primary?matchingFilms(primary.id).map(f=>f.id):[],filmOffset,yearBand,currentTheme()]);
  if(sig===focusKey)return;focusKey=sig;panel.replaceChildren();
  if(!primary){panel.append(el('small','globe-kicker','Explore the globe'),el('strong',null,'Move a light into the circle'),el('p','globe-empty','Explore a land even if no films have been catalogued yet.'),button('Discover a film somewhere else',surprise,'globe-more'));status.textContent='No land reference in focus';return;}
@@ -481,7 +502,7 @@ function wire(){
 }
 function markup(){
  host=el('section');host.id='atlas-rotational-globe';host.setAttribute('aria-label','Rotatable cinema atlas');
- host.innerHTML='<canvas id="globe-surface" tabindex="0" aria-label="Rotate the globe using arrow keys, plus and minus to zoom, Enter to explore the focused lands"></canvas><div id="globe-aperture" aria-hidden="true"></div><div class="globe-instructions">Drag to rotate · zoom to explore</div><div class="globe-guide"><label for="globe-find" class="sr-only">Find a land reference</label><select id="globe-find"><option value="">Find a land…</option></select><div id="globe-detail-status" class="globe-detail-status" aria-live="off">Loading detailed map</div><select id="globe-period" aria-label="Film period"><option value="">All years</option></select><select id="globe-recent" aria-label="Recently explored lands" hidden><option value="">Recently explored…</option></select><div class="globe-buttons"><button type="button" id="globe-home">Americas</button><button type="button" id="globe-plus" aria-label="Zoom in">+</button><button type="button" id="globe-minus" aria-label="Zoom out">−</button></div><button type="button" id="globe-landscape" aria-pressed="false" hidden>Terrain view</button><div class="globe-buttons"><button type="button" id="globe-surprise">Discover</button><button type="button" id="globe-share">Share view</button></div><button type="button" id="globe-close">Flat workspace</button></div><section id="globe-encounter" aria-label="Cinema at the focal point"></section><div class="globe-footer"><span><a href="https://www.naturalearthdata.com/" target="_blank" rel="noopener">Natural Earth (fallback)</a> · <a href="https://earthobservatory.nasa.gov/features/BlueMarble" target="_blank" rel="noopener">NASA Blue Marble</a> · <a href="https://cloudless.eox.at/license-non-commercial" target="_blank" rel="noopener">EOxCloudless by EOX IT Services GmbH (Contains modified Copernicus Sentinel data 2016 &amp; 2017)</a> · <a href="https://mapterhorn.com/attribution/" target="_blank" rel="noopener">Mapterhorn terrain</a> · <a href="https://openfreemap.org/" target="_blank" rel="noopener">OpenFreeMap</a> / <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">© OpenStreetMap contributors</a> · Existing 2023 Atlas references: <a href="https://native-land.ca/" target="_blank" rel="noopener">Native Land Digital</a> / <a href="https://education.nationalgeographic.org/resource/mapmaker-indigenous-territories/" target="_blank" rel="noopener">MapMaker</a>. Reference shapes, not official boundaries or filming locations.</span><span id="globe-status" class="sr-only" role="status" aria-live="polite"></span></div>';
+ host.innerHTML='<canvas id="globe-surface" tabindex="0" aria-label="Rotate the globe using arrow keys, plus and minus to zoom, Enter to explore the focused lands"></canvas><div id="globe-aperture" aria-hidden="true"></div><div class="globe-instructions">Drag to rotate · zoom to explore</div><div class="globe-guide"><label for="globe-find" class="sr-only">Find a land reference</label><select id="globe-find"><option value="">Find a land…</option></select><div id="globe-detail-status" class="globe-detail-status" aria-live="off">Loading detailed map</div><select id="globe-period" aria-label="Film period"><option value="">All years</option></select><select id="globe-recent" aria-label="Recently explored lands" hidden><option value="">Recently explored…</option></select><div class="globe-buttons"><button type="button" id="globe-home">Americas</button><button type="button" id="globe-plus" aria-label="Zoom in">+</button><button type="button" id="globe-minus" aria-label="Zoom out">−</button></div><div class="globe-buttons"><button type="button" id="globe-lands" aria-pressed="true" title="Toggle translucent Indigenous reference territories">Lands: on</button><button type="button" id="globe-landscape" aria-pressed="false" hidden>Terrain</button></div><div class="globe-buttons"><button type="button" id="globe-surprise">Discover</button><button type="button" id="globe-share">Share view</button></div><button type="button" id="globe-close">Flat workspace</button></div><section id="globe-encounter" aria-label="Cinema at the focal point"></section><div class="globe-footer"><span><a href="https://www.naturalearthdata.com/" target="_blank" rel="noopener">Natural Earth (fallback)</a> · <a href="https://earthobservatory.nasa.gov/features/BlueMarble" target="_blank" rel="noopener">NASA Blue Marble</a> · <a href="https://cloudless.eox.at/license-non-commercial" target="_blank" rel="noopener">EOxCloudless by EOX IT Services GmbH (Contains modified Copernicus Sentinel data 2016 &amp; 2017)</a> · <a href="https://mapterhorn.com/attribution/" target="_blank" rel="noopener">Mapterhorn terrain</a> · <a href="https://openfreemap.org/" target="_blank" rel="noopener">OpenFreeMap</a> / <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">© OpenStreetMap contributors</a> · Existing 2023 Atlas references: <a href="https://native-land.ca/" target="_blank" rel="noopener">Native Land Digital</a> / <a href="https://education.nationalgeographic.org/resource/mapmaker-indigenous-territories/" target="_blank" rel="noopener">MapMaker</a>. Reference shapes, not official boundaries or filming locations.</span><span id="globe-status" class="sr-only" role="status" aria-live="polite"></span></div>';
  $('.map-panel').append(host);canvas=$('#globe-surface');ctx=canvas.getContext('2d',{alpha:false});if(!ctx)throw Error('Canvas unavailable');
  const sel=$('#globe-find');for(const p of records){const o=el('option',null,p.name+(p.count?' ('+p.count+')':' · no films yet'));o.value=p.id;sel.append(o);}
  sel.onchange=()=>{if(sel.value)gotoLand(sel.value);};
@@ -489,6 +510,7 @@ function markup(){
  try{recent=JSON.parse(sessionStorage.getItem('atlas-globe-recent')||'[]').filter(x=>x&&byId.has(x.id)).slice(0,10);}catch{}updateRecent();
  $('#globe-recent').onchange=e=>{if(e.target.value)gotoLand(e.target.value);};
  $('#globe-surprise').onclick=surprise;
+ $('#globe-lands').onclick=()=>{landsVisible=!landsVisible;syncLandVisibility();};
  $('#globe-share').onclick=async()=>{const u=shareView();try{await navigator.clipboard.writeText(u);$('#globe-share').textContent='Copied';setTimeout(()=>{if($('#globe-share'))$('#globe-share').textContent='Share view';},1400);}catch{const input=el('input','globe-share-url');input.value=u;input.readOnly=true;input.setAttribute('aria-label','Shareable globe link');$('#globe-share').after(input);input.select();}};
 
  $('#globe-home').onclick=()=>{sel.value='';preferredLand='';filmOffset=0;landscape=false;$('#globe-landscape').setAttribute('aria-pressed','false');if(liveReady)live.setPitch(0);setCamera([-91,12],1);};
