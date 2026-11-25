@@ -132,6 +132,7 @@ async def main():
                 if not embedded:
                     await watch_tab.wait_for_function("(u)=>document.querySelector('#now-external-link')?.getAttribute('href')===u",arg=entry['links'][0]['url'])
                     assert await watch_tab.locator('#now-external-link').is_visible()
+                print("WATCH_RETURN_REQUEST",watch_tab.url,"expected query",query,flush=True)
                 href=await watch_tab.locator("#watch-return-globe").get_attribute("href")
                 assert parse_qs(urlparse(href).query)==parse_qs(query),(href,shared)
                 print("WATCH_RETURN",entry["fid"],"embedded" if embedded else "external",flush=True)

@@ -17,11 +17,12 @@ const mapHref=f=>`./?maker=${encodeURIComponent(f.makers[0].id)}&film=${encodeUR
 const makersHTML=f=>f.makers.map(m=>`<a href="maker/${encodeURIComponent(m.id)}.html">${esc(m.name)}</a>${m.people?` (${esc(m.people)})`:''}`).join(', ');
 const THEME_VOCAB=W.families||{"Land and Environment":["Land Defense","Water","Extractivism","Environmental Change","More-than-Human Relations","Food Sovereignty"],"Sovereignty and Politics":["Sovereignty and Self-Determination","Resistance Movements","Borders","Displacement and Migration","State Violence and Genocide","Justice, Truth and Reconciliation","MMIWG2S"],"Knowledge and Continuity":["Linguistic Preservation","Memory and Oral History","Elders and Knowledge","Cosmology and Origin Stories","Residential and Boarding Schools","Archives, Museums and Repatriation"],"Lives and Relations":["Kinship","Youth","Women and Gender","LGBTQIA2S","Health and Healing","Urban Indigeneity"],"Expression and Representation":["Music and Performance","Art, Craft and Making","Non-Conformity / Punk Film","Self-Representation and Countering Stereotypes","Collective and Community Media"]},FAMILIES=Object.keys(THEME_VOCAB);
 const params=new URLSearchParams(location.search);
-// Only restore an atlas-local globe view; never follow an arbitrary return URL.
-const inboundGlobe=new URLSearchParams(params.get('fromGlobe')||'');
-if(inboundGlobe.has('at')||inboundGlobe.get('globe')==='1'&&inboundGlobe.get('constellate')==='1'){
+// The presence of fromGlobe is the navigation intent, even when a camera
+// was not yet available. Restore only allowlisted atlas state, never a URL.
+if(params.has('fromGlobe')){
+ const inboundGlobe=new URLSearchParams(params.get('fromGlobe')||'');
  const back=new URL('./',location.href);
- for(const k of ['at','pitch','territories','land','film','maker','themes','period','lands','edges','language','form','length'])if(inboundGlobe.has(k))back.searchParams.set(k,inboundGlobe.get(k));
+ for(const k of ['at','pitch','territories','land','film','maker','themes','period','lands','edges','language','form','length','menu'])if(inboundGlobe.has(k))back.searchParams.set(k,inboundGlobe.get(k));
  const link=document.createElement('a');link.className='btn';link.id='watch-return-globe';link.href=back.href;link.textContent='← Return to globe';$('.w-head').append(link);
 }
 const state={view:'browse',q:'',theme:params.get('theme')||'',pick:null,sort:'title',here:false,now:null};
