@@ -71,8 +71,8 @@ def yt_search(row):
             continue
         blob = set(words(vt + ' ' + ch + ' ' + snip))
         why = [s for s in sn if s in blob]
-        if row['year'] and row['year'] in (vt + snip):
-            why.append(row['year'])
+        if ch.endswith('- Topic'):
+            continue
         if why:
             vid = v['videoId']
             return dict(source='YouTube', image_url=f'https://i.ytimg.com/vi/{vid}/hqdefault.jpg', image_page=f'https://www.youtube.com/watch?v={vid}',
@@ -106,7 +106,8 @@ def tmdb_search(row):
 
 def one(row):
     res = dict(row, source='', image_url='', image_page='', found_title='', found_by='', why='', check='', w='', h='')
-    for fn in (tmdb_search, yt_search):
+    # TMDB refuses requests from GitHub runners (403/429), so only YouTube is searched.
+    for fn in (yt_search,):
         try:
             hit = fn(row)
         except Exception as e:
