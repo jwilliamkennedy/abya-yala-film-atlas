@@ -17,9 +17,9 @@ const PAGE={'watch.html':'watch','themes.html':'themes','languages.html':'langua
 
 /* key, words, short word for the collapsed rail, address */
 const MENU=[
- ['map','Atlas','Atlas',''],['lands','Lands','Lands',''],['watch','Watch','Watch','watch.html'],
+ ['map','Atlas','Atlas',''],['languages','Languages','Languages','languages.html'],['watch','Watch','Watch','watch.html'],
  'Indexes',
- ['themes','Themes','Themes','themes.html'],['languages','Languages','Languages','languages.html'],['timeline','Timeline','Timeline','timeline.html'],
+ ['themes','Themes','Themes','themes.html'],['timeline','Timeline','Timeline','timeline.html'],
  '',
  ['screening','Saved','Saved','screening.html'],['about','About','About','about.html'],['data','Data and CARE','Data','data.html'],['resources','Resources','Resources','resources.html']
 ];

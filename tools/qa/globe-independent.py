@@ -291,6 +291,19 @@ async def run(browser,name,viewport):
             await page.wait_for_function("(id)=>window.AtlasGlobe.focus.settled && window.AtlasGlobe.focus.ids.includes(id)",arg=land)
             await page.locator("#globe-encounter .globe-film-title").wait_for()
             panel=page.locator("#globe-encounter")
+            # The film panel closes by its button, by Escape and by its grip, and returns when a land is chosen again.
+            await page.locator("#globe-close-encounter").click()
+            await page.wait_for_function("window.AtlasGlobe.panel.closed && document.querySelector('#globe-encounter').classList.contains('is-empty') && !window.AtlasGlobe.discovery.featured")
+            assert await page.locator("#globe-encounter-grip").is_hidden()
+            await page.locator("#globe-find-toggle").click()
+            await page.locator("#globe-find").select_option(value=land)
+            await page.wait_for_function("(id)=>!window.AtlasGlobe.panel.closed && window.AtlasGlobe.focus.settled && window.AtlasGlobe.discovery.featured?.land===id",arg=land)
+            await page.locator("#globe-encounter .globe-film-title").wait_for()
+            await page.locator("#globe-encounter-grip").focus()
+            await page.keyboard.press("ArrowUp")
+            assert await panel.get_attribute("data-expanded")=="true"
+            await page.keyboard.press("ArrowDown")
+            assert await panel.get_attribute("data-expanded")=="false" and await panel.get_attribute("data-collapsed")=="false"
             await page.locator("#globe-expand-encounter").click()
             assert await panel.get_attribute("data-expanded")=="true"
             assert await page.locator("#globe-expand-encounter").get_attribute("aria-expanded")=="true"

@@ -1194,3 +1194,44 @@ html[data-reading-theme="night"] #atlas-rotational-globe .globe-primary,html[dat
 #atlas-rotational-globe #globe-encounter[data-belt-card="176"] .globe-strip-item{max-width:176px;flex-basis:176px}
 #atlas-rotational-globe #globe-encounter[data-belt-card="176"] .globe-strip-item .globe-thumb-frame{height:126px;flex-basis:126px}
 #atlas-rotational-globe #globe-encounter[data-belt-card="176"] .globe-strip-item .globe-strip-art[data-art-state=ready]{width:min(100%,var(--art-natural-width),calc(126px * var(--art-ratio,1)))!important}
+/* Film panel: close, grip and a height the reader sets (26 Nov) */
+#atlas-rotational-globe #globe-encounter#globe-encounter[data-user-height]:not([data-collapsed=true]){height:min(var(--user-h),78%,var(--globe-encounter-room,900px))!important;max-height:min(var(--user-h),78%,var(--globe-encounter-room,900px))!important}
+#atlas-rotational-globe #globe-encounter#globe-encounter[data-dragging=true]{height:var(--drag-h)!important;max-height:none!important;transition:none!important;user-select:none;-webkit-user-select:none}
+#atlas-rotational-globe #globe-encounter-grip{position:absolute;z-index:4;height:16px;display:flex;align-items:center;justify-content:center;cursor:ns-resize;touch-action:none;background:transparent;pointer-events:auto}
+#atlas-rotational-globe #globe-encounter-grip[hidden]{display:none}
+#atlas-rotational-globe #globe-encounter-grip i{width:46px;height:5px;border-radius:3px;background:var(--p-muted);opacity:.6;box-shadow:0 0 0 2px var(--p-bg)}
+#atlas-rotational-globe #globe-encounter-grip:hover i,#atlas-rotational-globe #globe-encounter-grip:focus-visible i{opacity:1;background:var(--p-ink)}
+#atlas-rotational-globe #globe-encounter-grip:focus-visible{outline:2px solid var(--p-ink);outline-offset:-3px;border-radius:8px}
+#atlas-rotational-globe.is-moving #globe-encounter-grip{opacity:.4}
+@media(max-width:760px){#atlas-rotational-globe #globe-encounter-grip{height:24px}#atlas-rotational-globe #globe-encounter-grip i{width:54px}}
+#atlas-rotational-globe #globe-encounter .globe-close-encounter{min-height:30px;min-width:28px;padding:0 7px;border-radius:8px!important;border:1px solid var(--p-line)!important;background:transparent!important;color:var(--p-ink)!important;font:400 18px/1 system-ui,sans-serif!important;cursor:pointer}
+#atlas-rotational-globe #globe-encounter .globe-close-encounter:hover{border-color:var(--p-ink)!important}
+#atlas-rotational-globe #globe-encounter:not([data-belt=true]) .globe-encounter-heading{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:start;column-gap:8px}
+#atlas-rotational-globe #globe-encounter:not([data-belt=true]) .globe-encounter-heading>.globe-belt-controls{grid-column:2;grid-row:1}
+@media(max-width:760px){#atlas-rotational-globe #globe-encounter .globe-close-encounter{min-height:34px;min-width:34px}}
+/* Themes: plain ways out */
+#atlas-rotational-globe #globe-encounter button.globe-active-theme{display:inline-flex;align-items:center;gap:6px;justify-self:start;width:auto;min-height:24px;padding:2px 6px 2px 9px;border:0!important;border-radius:999px;background:var(--p-fill-2)!important;color:var(--p-soft)!important;cursor:pointer}
+#atlas-rotational-globe #globe-encounter button.globe-active-theme em{font-style:normal;font-size:14px;line-height:1;color:var(--p-muted)}
+#atlas-rotational-globe #globe-encounter button.globe-active-theme:hover em{color:var(--p-ink)}
+#atlas-rotational-globe .globe-theme-key-item{min-height:36px;padding:6px 7px 6px 13px;font-size:13.5px}
+#atlas-rotational-globe .globe-theme-key-item em{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--p-fill-2);color:var(--p-ink);font-size:15px}
+#atlas-rotational-globe .globe-theme-key-item:hover em{background:var(--p-ink);color:var(--p-bg)}
+#atlas-rotational-globe .globe-theme-key-item.globe-theme-key-all{padding:6px 13px;color:var(--p-muted)}
+#atlas-rotational-globe .globe-theme-key-item.globe-theme-key-all:hover{color:var(--p-ink)}
+/* Gather: switches */
+#atlas-rotational-globe .globe-gather-switches{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 4px}
+#atlas-rotational-globe .globe-menu-panel .globe-gather-switch{min-height:30px;width:auto;padding:4px 11px;border-radius:999px!important;border:1px solid var(--p-line)!important;background:transparent!important;color:var(--p-ink)!important;font:500 12px/1.2 var(--ui-sans,system-ui,sans-serif);cursor:pointer}
+#atlas-rotational-globe .globe-menu-panel .globe-gather-switch[aria-pressed=true]{background:var(--p-accent)!important;color:var(--p-accent-ink)!important;border-color:var(--p-accent)!important}
+#atlas-rotational-globe .globe-menu-panel .globe-gather-switch:focus-visible{outline:2px solid var(--p-ink);outline-offset:1px}
+/* Film strip: centred, slightly larger stills, and a dock that swells under the pointer (26 Nov) */
+#atlas-rotational-globe #globe-encounter[data-belt=true] .globe-strip-track{justify-content:safe center;padding-top:16px}
+#atlas-rotational-globe #globe-encounter[data-belt=true] .globe-strip-item{position:relative;align-items:center;text-align:center;--dock-scale:.9;--dock-emphasis:.92}
+#atlas-rotational-globe #globe-encounter[data-belt=true] .globe-strip-item[data-dock-distance="1"]{--dock-scale:.95;--dock-emphasis:.96}
+#atlas-rotational-globe #globe-encounter[data-belt=true] .globe-strip-item[aria-current=true]{--dock-scale:1;--dock-emphasis:1}
+#atlas-rotational-globe #globe-encounter[data-belt=true] .globe-strip-item :is(.globe-strip-title,.globe-strip-maker){text-align:center;width:100%}
+#atlas-rotational-globe #globe-encounter[data-belt=true] .globe-strip-item .globe-thumb-frame{margin-inline:auto}
+#atlas-rotational-globe #globe-encounter[data-belt=true] .globe-strip-track.is-docking .globe-strip-item .globe-thumb-frame{transition:transform 90ms linear,opacity 90ms linear}
+@media(hover:hover){#atlas-rotational-globe #globe-encounter[data-belt=true] .globe-strip-item:not([aria-current=true]):hover{--dock-scale:1.08;--dock-emphasis:1}}
+#atlas-rotational-globe #globe-encounter[data-belt=true][data-collapsed=true] .globe-strip-track{padding-top:6px}
+@media(max-width:760px){#atlas-rotational-globe #globe-encounter[data-belt=true] .globe-strip-track{padding-top:6px;justify-content:flex-start}}
+
