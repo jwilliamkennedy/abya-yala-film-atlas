@@ -43,3 +43,9 @@ for(const [w,h] of [[1440,900],[1024,768],[844,390],[390,844],[320,640]]){
 }
 assert.equal(core.beltLayout(1440,900,37).capacity,6);assert.equal(core.beltLayout(390,844,37).capacity,3);
 console.log('Adaptive six-film belt geometry, pagination and small communities passed');
+
+assert(Math.abs(core.wheelDelta(-80,0,900)+core.wheelDelta(80,0,900))<1e-12);
+assert.equal(core.wheelDelta(1,2,900),-1.25);assert.equal(core.wheelDelta(NaN,0,900),0);assert.equal(core.wheelDelta(-1,1,900),core.wheelDelta(-16,0,900));
+let target=2;for(const delta of [.65,.65,-.65,-.65])target=core.zoomTarget(2,target,delta,-2,14);assert(Math.abs(target-2)<1e-12);
+assert.equal(core.zoomTarget(14,14,1,-2,14),14);assert.equal(core.zoomTarget(-2,-2,-1,-2,14),-2);
+console.log('Zoom normalization, accumulated reversal and limits passed');

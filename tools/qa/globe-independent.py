@@ -32,6 +32,11 @@ async def run(browser,name,viewport):
             await fallback.press("ArrowRight")
             await fallback.press("+")
             await page.wait_for_function("AtlasGlobe.focus.settled")
+            # The fallback and native controls use the same logarithmic increment.
+            fallback_before=await page.evaluate("AtlasGlobe.camera")
+            await page.evaluate("""()=>{document.querySelector('#globe-plus').click();document.querySelector('#globe-minus').click();}""")
+            await page.wait_for_function("AtlasGlobe.focus.settled")
+            assert abs((await page.evaluate("AtlasGlobe.camera.zoom"))/fallback_before["zoom"]-1)<.002
             # Hold native loading while exercising real-time overview easing.
             await page.emulate_media(reduced_motion="no-preference")
             burst=await fallback.evaluate("""e=>{const before=AtlasGlobe.camera;
@@ -117,6 +122,24 @@ async def run(browser,name,viewport):
             await page.wait_for_function("(z)=>window.AtlasGlobe.camera.zoom>z*1.05",arg=before,timeout=15000)
             await page.wait_for_function("window.AtlasGlobe.focus.settled")
             print(name,"native wheel delivered",await page.evaluate("window.AtlasGlobe.tileState.input"),flush=True)
+            after_in=await page.evaluate("AtlasGlobe.camera")
+            await page.mouse.wheel(0,160)
+            await page.wait_for_function("AtlasGlobe.focus.settled && !AtlasGlobe.tileState.wheelActive")
+            after_out=await page.evaluate("AtlasGlobe.camera")
+            assert abs(after_out["zoom"]/before-1)<.003,(name,"wheel direction not reversible",before,after_in,after_out)
+            assert max(abs((after_in["center"][0]-after_out["center"][0]+180)%360-180),abs(after_in["center"][1]-after_out["center"][1]))<.01
+            # All inputs accumulate against one target, even when mixed in one task.
+            mixed=await surface.evaluate("""e=>{const before=AtlasGlobe.camera;const wheel=y=>e.dispatchEvent(new WheelEvent('wheel',{deltaY:y,bubbles:true,cancelable:true}));
+                wheel(-40);document.querySelector('#globe-plus').click();wheel(40);document.querySelector('#globe-minus').click();
+                return before;}""")
+            await page.wait_for_function("AtlasGlobe.focus.settled && !AtlasGlobe.tileState.wheelActive")
+            assert abs((await page.evaluate("AtlasGlobe.camera.zoom"))/mixed["zoom"]-1)<.003,(name,"mixed zoom lost input")
+            # Wheel inside the film belt must never zoom the geographic camera.
+            panel=page.locator("#globe-encounter")
+            before_panel=await page.evaluate("AtlasGlobe.camera.zoom")
+            await panel.dispatch_event("wheel",{"deltaY":120,"bubbles":True,"cancelable":True})
+            await page.wait_for_timeout(250)
+            assert abs((await page.evaluate("AtlasGlobe.camera.zoom"))/before_panel-1)<.001,(name,"belt scroll zoomed map")
             before=await page.evaluate("window.AtlasGlobe.camera.zoom")
             await surface.dispatch_event("wheel",{"deltaY":-80,"deltaX":0,"ctrlKey":True,"bubbles":True,"cancelable":True})
             await page.wait_for_function("(z)=>window.AtlasGlobe.camera.zoom>z*1.1",arg=before,timeout=15000)
@@ -133,7 +156,16 @@ async def run(browser,name,viewport):
                     await page.wait_for_timeout(35)
                 await cdp.send("Input.dispatchTouchEvent",{"type":"touchEnd","touchPoints":[]})
                 await page.wait_for_function("(z)=>window.AtlasGlobe.camera.zoom>z*1.05",arg=before,timeout=15000)
-                print(name,"two-touch gesture delivered",await page.evaluate("window.AtlasGlobe.tileState.input"),flush=True)
+                await page.wait_for_function("AtlasGlobe.focus.settled && !AtlasGlobe.tileState.wheelActive")
+                pinched=await page.evaluate("AtlasGlobe.camera.zoom")
+                await cdp.send("Input.dispatchTouchEvent",{"type":"touchStart","touchPoints":fingers(75)})
+                for d in range(70,24,-5):
+                    await cdp.send("Input.dispatchTouchEvent",{"type":"touchMove","touchPoints":fingers(d)})
+                    await page.wait_for_timeout(35)
+                await cdp.send("Input.dispatchTouchEvent",{"type":"touchEnd","touchPoints":[]})
+                await page.wait_for_function("z=>AtlasGlobe.camera.zoom<z*.95",arg=pinched,timeout=15000)
+                await page.wait_for_function("AtlasGlobe.focus.settled")
+                print(name,"two-touch zoom in and out delivered",await page.evaluate("window.AtlasGlobe.tileState.input"),flush=True)
             await shot(page,f"shots/globe-independent/{name}-input.png")
             # A failed module request must retain a usable overview and its shared camera.
             await page.wait_for_function("window.AtlasGlobe.focus.settled && !window.AtlasGlobe.tileState.wheelActive")
@@ -230,7 +262,7 @@ async def run(browser,name,viewport):
                 await surface.press("-")
                 await page.wait_for_function("AtlasGlobe.focus.settled")
                 after=await page.evaluate("AtlasGlobe.camera.zoom")
-                assert abs(after/(recovered["camera"]["zoom"]/1.4)-1)<.002,(name,"overview zoom-out jumped",recovered,after)
+                assert abs(after/(recovered["camera"]["zoom"]/(2**.65))-1)<.002,(name,"overview zoom-out jumped",recovered,after)
                 print(name,"native-first context loss preserves film, camera, focus and gradual zoom-out",flush=True)
         else:
             await page.wait_for_function("window.AtlasGlobe.discovery.publication==='ready'",timeout=60000)

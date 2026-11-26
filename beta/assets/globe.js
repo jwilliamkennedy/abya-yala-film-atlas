@@ -10,6 +10,7 @@ const $=s=>document.querySelector(s),C=()=>window.AtlasCollectionEditor,A=()=>wi
 // interface and its data to finish constructing. Catch immediately; boot owns recovery.
 const nativeModule=import(new URL('assets/maplibre/maplibre-gl.mjs',document.baseURI).href).then(value=>({value}),error=>({error}));
 const worldRequest=fetch(new URL('assets/world-50m.json',document.baseURI)).then(async r=>{if(!r.ok)throw Error('Geography unavailable');return {value:await r.json()};}).catch(error=>({error}));
+const ZOOM_STEP=.65;
 const DEG=180/Math.PI,clamp=(v,a,b)=>Math.max(a,Math.min(b,v)),wrap=v=>((v+180)%360+360)%360-180;
 let active=false,closed=false,host=null,canvas=null,ctx=null,ro=null,raf=0,settleTimer=0,bootFailure=null;
 let W=0,H=0,dpr=1,zoom=1,center=[-91,12],proj=null,path=null,earth=null,landArea=0;
@@ -196,8 +197,8 @@ function overviewZoom(value){return clamp(value,.8,Math.max(25,zoom));}
 // A burst of wheel input accumulates against its goal, not a lagging camera frame.
 function queueOverviewZoom(delta){
  if(!active||liveReady||!Number.isFinite(delta)||!delta)return;
- requestedPitch=0;cancelFlight();const current=Math.log2(zoom);
- wheelGoal=clamp((wheelGoal??current)+delta,Math.log2(.8),Math.log2(Math.max(25,zoom)));wheelLast=nowMs();
+ requestedPitch=0;inboundEncounter=null;cancelFlight();const current=Math.log2(zoom);
+ const nextGoal=core.zoomTarget(current,wheelGoal,delta,Math.log2(.8),Math.log2(Math.max(25,zoom)));if(!wheelActive&&Math.abs(nextGoal-current)<1e-8)return;wheelGoal=nextGoal;wheelLast=nowMs();
  if(!wheelActive){wheelActive=true;movement();}
  if(wheelFrame)return;
  function frame(t){
@@ -419,8 +420,8 @@ function loadRelief(){
  function wheelStep(current,t){const dt=wheelTick?clamp(t-wheelTick,1,80):16.7;wheelTick=t;const delta=wheelGoal-current;return reduced.matches||Math.abs(delta)<.008?wheelGoal:current+delta*(1-Math.exp(-dt/62));}
  function stopWheel(resetGesture=true){if(wheelFrame)cancelAnimationFrame(wheelFrame);wheelFrame=0;wheelGoal=null;wheelTick=0;wheelActive=false;if(resetGesture)gestureStart=null;}
  function queueZoom(goal){
-  if(!liveReady)return;
-  wheelGoal=clamp(goal,live.getMinZoom(),live.getMaxZoom());wheelLast=nowMs();
+  if(!liveReady||!Number.isFinite(goal))return;
+  const nextGoal=clamp(goal,live.getMinZoom(),live.getMaxZoom());if(!wheelActive&&Math.abs(nextGoal-live.getZoom())<1e-8)return;wheelGoal=nextGoal;wheelLast=nowMs();inboundEncounter=null;
   if(!wheelActive){wheelActive=true;live.stop();movement();}
   if(wheelFrame)return;
   function frame(t){
@@ -435,12 +436,11 @@ function loadRelief(){
   }
   wheelFrame=requestAnimationFrame(frame);
  }
+ function stepZoom(delta){if(!active)return;if(liveReady)queueZoom(core.zoomTarget(live.getZoom(),wheelGoal,delta,live.getMinZoom(),live.getMaxZoom()));else if(!pointers.size)queueOverviewZoom(delta);}
  function installZoom(){
-  // Trackpad scroll and mouse wheel: native MapLibre inertia, with more responsive
-  // rates. Native touch pinch remains centered on the fixed discovery aperture.
-  live.scrollZoom.enable({around:'center'});
-  live.scrollZoom.setZoomRate?.(1/45);
-  live.scrollZoom.setWheelZoomRate?.(1/170);
+  // All wheel, keyboard and button zoom shares one accumulated logarithmic
+  // target. Native touch pinch remains centered on the discovery aperture.
+  live.scrollZoom.disable();
   live.touchZoomRotate.enable({around:'center'});live.touchZoomRotate.disableRotation();
   zoomListeners?.abort();zoomListeners=new AbortController();
   const opts={capture:true,passive:false,signal:zoomListeners.signal};
@@ -454,32 +454,29 @@ function loadRelief(){
    if(Number.isFinite(e.clientX)&&Number.isFinite(e.clientY)){
     const hit=document.elementFromPoint(e.clientX,e.clientY);
     if(hit?.closest('#globe-live-map'))return true;
-    if(hit?.closest('#globe-encounter,.globe-guide,.globe-footer'))return false;
+    if(hit?.closest('#globe-encounter,.globe-guide,.globe-footer,.globe-zoom,#constellate-popup,#globe-player'))return false;
    }
    return e.type.startsWith('gesture')&&mapPointer;
   };
   const stop=e=>{if(e.cancelable)e.preventDefault();e.stopImmediatePropagation();};
-  // Capture at WINDOW before other page or map handlers. Ordinary wheel events
-  // are left to MapLibre. Ctrl+wheel and Safari GestureEvent each have exactly
-  // one zoom owner and never propagate to browser page zoom if delivered here.
+  // One wheel owner prevents native inertia and queued buttons from competing.
+  // The belt and menus keep their normal scrolling; only map gestures are captured.
   window.addEventListener('wheel',e=>{
    if(!isMap(e))return;
    inputStats.wheel++;if(e.ctrlKey)inputStats.pinch++;
    inputStats.lastDelta=e.deltaY;inputStats.lastBefore=live.getZoom();inputStats.lastInputMs=nowMs();
    inputStats.lastTrusted=e.isTrusted;
-   if(!e.ctrlKey)return;
    stop(e);
-   if(gestureStart!==null||nowMs()<gestureUntil)return;
-   const unit=e.deltaMode===1?16:e.deltaMode===2?H:1,d=clamp(-e.deltaY*unit*.014,-1.25,1.25);
-   if(!d)return;
-   queueZoom((wheelGoal??live.getZoom())+d);
+   if(gestureStart!==null||nowMs()<gestureUntil||activeMapPointers.size)return;
+   if(!e.ctrlKey&&Math.abs(e.deltaX)>Math.abs(e.deltaY))return;
+   const d=core.wheelDelta(e.deltaY,e.deltaMode,H,e.ctrlKey);if(d)stepZoom(d);
   },opts);
   window.addEventListener('gesturestart',e=>{
    if(!isMap(e))return;stop(e);live.stop();stopWheel();gestureStart=live.getZoom();
    inputStats.pinch++;inputStats.safari++;inputStats.lastBefore=gestureStart;
   },opts);
   window.addEventListener('gesturechange',e=>{
-   if(gestureStart===null||!liveReady)return;stop(e);queueZoom(gestureStart+Math.log2(Math.max(.05,e.scale)));
+   if(gestureStart===null||!liveReady)return;stop(e);if(Number.isFinite(e.scale)&&e.scale>0)queueZoom(gestureStart+Math.log2(Math.max(.05,e.scale)));
   },opts);
   window.addEventListener('gestureend',e=>{
    if(gestureStart===null)return;stop(e);gestureStart=null;gestureUntil=nowMs()+180;
@@ -614,7 +611,7 @@ function loadRelief(){
     $('#globe-landscape').hidden=false;
     live.on('zoomend',()=>{if(landscape&&!wheelActive&&live.getZoom()<7){const pitch=42*clamp((live.getZoom()-5.4)/1.6,0,1);if(live.getZoom()<=5.4){landscape=false;$('#globe-landscape').setAttribute('aria-pressed','false');}if(Math.abs(live.getPitch()-pitch)>.5)live.easeTo({pitch,duration:reduced.matches?0:200});}});
     live.getCanvas().setAttribute('aria-label','Rotate and zoom the globe; Enter explores the focused lands');
-    live.getCanvas().addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();if(settled&&focusIds.length)focusEncounter();return;}if(['+','=','-'].includes(e.key)&&!e.ctrlKey&&!e.metaKey){e.preventDefault();e.stopImmediatePropagation();queueZoom((wheelGoal??live.getZoom())+(e.key==='-'?-.65:.65));}},{capture:true});
+    live.getCanvas().addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();if(settled&&focusIds.length)focusEncounter();return;}if(['+','=','-'].includes(e.key)&&!e.ctrlKey&&!e.metaKey){e.preventDefault();e.stopImmediatePropagation();stepZoom(e.key==='-'?-ZOOM_STEP:ZOOM_STEP);}},{capture:true});
     live.on('movestart',()=>{if(!liveReady||wheelActive)return;movement();});
     live.on('move',()=>{if(!liveReady)return;readLiveCamera();renderSoon();if(!settled)scheduleSettle(180);});
     live.on('idle',()=>{if(!settled&&!wheelActive)scheduleSettle(100);updateDetailStatus(true);});
@@ -1349,7 +1346,7 @@ function wire(){
  canvas.addEventListener('pointermove',e=>{
   if(!pointers.has(e.pointerId))return;pointers.set(e.pointerId,{x:e.clientX,y:e.clientY});const m=midpoint(),g=gesture;gesture=m;if(!m||!g)return;
   const dx=m.x-g.x,dy=m.y-g.y;if(Math.abs(dx)+Math.abs(dy)>1||Math.abs(m.d-g.d)>1)dragged=true;if(!dragged)return;inboundEncounter=null;requestedPitch=0;
-  if(m.d&&g.d)zoom=overviewZoom(zoom*m.d/g.d);
+  if(m.d>2&&g.d>2){zoom=overviewZoom(zoom*m.d/g.d);lastDrag=null;movement();return;}
   const scale=DEG/radius(),cos=Math.max(.35,Math.cos(center[1]/DEG));
   const now=performance.now(),dt=lastDrag?clamp(now-lastDrag.t,8,80):16;lastDrag={t:now,lon:-dx*scale/cos/dt,lat:dy*scale/dt};
   center=[wrap(center[0]-dx*scale/cos),clamp(center[1]+dy*scale,-89.9,89.9)];movement();
@@ -1366,8 +1363,8 @@ function wire(){
   finishMove();
  }
  canvas.addEventListener('pointerup',end);canvas.addEventListener('pointercancel',end);canvas.addEventListener('lostpointercapture',end);
- canvas.addEventListener('wheel',e=>{e.preventDefault();if(liveReady||pointers.size)return;const unit=e.deltaMode===1?16:e.deltaMode===2?H:1,delta=clamp(-e.deltaY*unit*(e.ctrlKey?.009:.004)/Math.LN2,-1.25,1.25);if(!delta)return;inboundEncounter=null;queueOverviewZoom(delta);},{passive:false});
- canvas.addEventListener('keydown',e=>{const k=e.key,step=12/Math.sqrt(zoom);if(!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','+','=','-','Home','Enter'].includes(k))return;e.preventDefault();e.stopPropagation();if(k==='Enter'){if(settled&&focusIds.length)focusEncounter();return;}if(k==='Home'){setCamera([-91,12],1);return;}if(k==='+'||k==='='){setCamera(center,zoom*1.4);return;}if(k==='-'){setCamera(center,zoom/1.4);return;}setCamera([center[0]+(k==='ArrowRight'?step:k==='ArrowLeft'?-step:0),center[1]+(k==='ArrowUp'?step:k==='ArrowDown'?-step:0)]);});
+ canvas.addEventListener('wheel',e=>{e.preventDefault();if(liveReady||pointers.size||(!e.ctrlKey&&Math.abs(e.deltaX)>Math.abs(e.deltaY)))return;const delta=core.wheelDelta(e.deltaY,e.deltaMode,H,e.ctrlKey);if(delta)stepZoom(delta);},{passive:false});
+ canvas.addEventListener('keydown',e=>{const k=e.key,step=12/Math.sqrt(zoom);if(!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','+','=','-','Home','Enter'].includes(k))return;e.preventDefault();e.stopPropagation();if(k==='Enter'){if(settled&&focusIds.length)focusEncounter();return;}if(k==='Home'){setCamera([-91,12],1);return;}if(k==='+'||k==='='){stepZoom(ZOOM_STEP);return;}if(k==='-'){stepZoom(-ZOOM_STEP);return;}setCamera([center[0]+(k==='ArrowRight'?step:k==='ArrowLeft'?-step:0),center[1]+(k==='ArrowUp'?step:k==='ArrowDown'?-step:0)]);});
 }
 let coverageMemo=null;
 function themeCoverage(){const stamp=filterKey();if(coverageMemo?.stamp===stamp)return coverageMemo.value;const seen=new Set();let lands=0;for(const p of points){const fs=matchingFilms(p.id,stamp);if(fs.length)lands++;for(const f of fs)seen.add(f.id);}const value={lands,credits:seen.size};coverageMemo={stamp,value};return value;}
@@ -1433,7 +1430,7 @@ function markup(){
 
  $('#globe-home').onclick=()=>{setMenu('');sel.value='';preferredLand='';filmOffset=0;landscape=false;$('#globe-landscape').setAttribute('aria-pressed','false');if(liveReady)live.setPitch(0);setCamera([-91,12],1);};
  $('#globe-landscape').onclick=()=>{if(!liveReady)return;setMenu('');stopWheel();landscape=!landscape;$('#globe-landscape').setAttribute('aria-pressed',String(landscape));if(landscape&&!live.getTerrain())live.setTerrain({source:'dem',exaggeration:1});live.easeTo({zoom:landscape?Math.max(live.getZoom(),7):live.getZoom(),pitch:landscape?42:0,duration:reduced.matches?0:350});};
- $('#globe-plus').onclick=()=>{if(liveReady)queueZoom((wheelGoal??live.getZoom())+.65);else setCamera(flightTarget?.center||center,(flightTarget?.zoom||zoom)*1.5);};$('#globe-minus').onclick=()=>{if(liveReady)queueZoom((wheelGoal??live.getZoom())-.65);else setCamera(flightTarget?.center||center,(flightTarget?.zoom||zoom)/1.5);};
+ $('#globe-plus').onclick=()=>stepZoom(ZOOM_STEP);$('#globe-minus').onclick=()=>stepZoom(-ZOOM_STEP);
  wire();
 }
 async function boot(){

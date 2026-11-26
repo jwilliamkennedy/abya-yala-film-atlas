@@ -73,6 +73,8 @@ function beltLayout(width,height,count,position=0){
  const visible=Math.min(size,total-start),desired=Math.min(available,Math.max(mobile?230:side+padding+card,side+padding+size*(card+gap)-gap));
  return {capacity,size,start,visible,width:Math.floor(desired),card};
 }
-const api=Object.freeze({greatCircleSegments,selectConnections,createArtworkCache,communityCinema,broadcastCredits,cinemaBeltOrder,beltLayout});
+function wheelDelta(deltaY,mode,height,pinch=false){if(!Number.isFinite(deltaY))return 0;const unit=mode===1?16:mode===2?Math.max(1,height):1;return Math.max(-1.25,Math.min(1.25,-deltaY*unit*(pinch?.009:.004)/Math.LN2));}
+function zoomTarget(current,pending,delta,min,max){if(!Number.isFinite(delta)||!Number.isFinite(current))return current;return Math.max(min,Math.min(max,(Number.isFinite(pending)?pending:current)+delta));}
+const api=Object.freeze({greatCircleSegments,selectConnections,createArtworkCache,communityCinema,broadcastCredits,cinemaBeltOrder,beltLayout,wheelDelta,zoomTarget});
 if(typeof module!=='undefined'&&module.exports)module.exports=api;else root.AtlasGlobeCore=api;
 })(typeof globalThis!=='undefined'?globalThis:this);
