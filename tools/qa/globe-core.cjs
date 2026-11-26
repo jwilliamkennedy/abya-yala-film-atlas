@@ -34,3 +34,12 @@ console.log('Community counts and director-diverse broadcast selection passed');
 
 const belt=core.cinemaBeltOrder(community,f=>f.image);
 assert.equal(belt.length,community.length);assert.equal(new Set(belt.map(f=>f.id)).size,community.length);assert.deepEqual(belt.slice(0,3).map(f=>f.id),['b','c','e']);
+
+for(const [w,h] of [[1440,900],[1024,768],[844,390],[390,844],[320,640]]){
+ for(const n of [0,1,2,5,6,7,37])for(let at=0;at<Math.max(1,n);at++){
+  const b=core.beltLayout(w,h,n,at);assert(b.capacity>=1&&b.capacity<=6);assert(b.visible<=b.size&&b.size<=n);assert(b.width<=w);if(n)assert(b.start<=at&&at<b.start+b.visible);
+ }
+ assert(core.beltLayout(w,h,1).width<=core.beltLayout(w,h,37).width);
+}
+assert.equal(core.beltLayout(1440,900,37).capacity,6);assert.equal(core.beltLayout(390,844,37).capacity,3);
+console.log('Adaptive six-film belt geometry, pagination and small communities passed');

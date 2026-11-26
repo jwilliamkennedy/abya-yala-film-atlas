@@ -290,7 +290,9 @@ async def run(browser,name,viewport):
             assert await panel.get_attribute("data-expanded")=="false"
             assert await panel.get_attribute("data-belt")=="true"
             belt_geometry=await page.evaluate("""()=>{const p=document.querySelector('#globe-encounter').getBoundingClientRect(),h=document.querySelector('#atlas-rotational-globe').getBoundingClientRect(),z=document.querySelector('.globe-zoom').getBoundingClientRect();return {ratio:p.width/h.width,right:p.right,zoomLeft:z.left,height:p.height,hostHeight:h.height}}""")
-            assert belt_geometry["ratio"]>=.70 and belt_geometry["right"]<=belt_geometry["zoomLeft"]+2,(name,"belt too narrow or overlapping zoom",belt_geometry)
+            assert belt_geometry["right"]<=belt_geometry["zoomLeft"]+2,(name,"belt overlaps zoom",belt_geometry)
+            layout=await panel.evaluate("""p=>({count:p.querySelectorAll('.globe-strip-item').length,capacity:Number(p.dataset.beltCapacity),visible:Number(p.dataset.beltVisible),width:p.clientWidth})""")
+            assert 1<=layout["count"]==layout["visible"]<=layout["capacity"]<=6,(name,layout)
             assert belt_geometry["height"]<=belt_geometry["hostHeight"]*.42+2,(name,"unexpanded belt too tall",belt_geometry)
             await page.locator("#globe-collapse-belt").click()
             assert await panel.get_attribute("data-collapsed")=="true"
@@ -381,7 +383,7 @@ async def run(browser,name,viewport):
             await page.locator(".globe-maker-works [data-maker-film]").first.wait_for()
             assert await page.locator(".globe-maker-actions a").first.get_attribute("href")
             await page.locator(".globe-land-makers summary").first.click()
-            assert 1 <= await page.locator("#globe-encounter .globe-strip-item").count() <= 12
+            assert 1 <= await page.locator("#globe-encounter .globe-strip-item").count() <= 6
             assert await page.locator("#globe-encounter .globe-strip-item[aria-current=true]").count()==1
             assert await page.locator("#globe-encounter .globe-credit-details").count()==1
             await page.locator(".globe-credit-details summary").click()

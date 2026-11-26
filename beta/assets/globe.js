@@ -186,7 +186,7 @@ function resize(){
  const primary=$('.globe-primary')?.getBoundingClientRect(),root=host.getBoundingClientRect(),footerTop=footer?.getBoundingClientRect().top??root.bottom;
  const room=Math.max(0,Math.floor(footerTop-(primary?.bottom??root.top)-16));const menuRoom=room+'px';host.style.setProperty('--globe-encounter-room',Math.max(0,room-4)+'px');if(host.style.getPropertyValue('--globe-menu-room')!==menuRoom)host.style.setProperty('--globe-menu-room',menuRoom);
  if(w===W&&h===H&&ratio===dpr)return;
- W=w;H=h;targetScreen=null;dpr=ratio;canvas.width=Math.round(W*dpr);canvas.height=Math.round(H*dpr);if(live)live.resize();renderSoon();scheduleSettle(100);
+ const oldWidth=W;W=w;H=h;if(oldWidth!==W)focusKey='';targetScreen=null;dpr=ratio;canvas.width=Math.round(W*dpr);canvas.height=Math.round(H*dpr);if(live)live.resize();renderSoon();scheduleSettle(100);
 }
 function radius(){return Math.max(70,Math.min(W,H)*.445)*zoom;}
 // A native failure or shared detail URL can enter the overview above its usual limit.
@@ -1152,22 +1152,22 @@ function setBeltCollapsed(value){
 }
 function filmStrip(films,oldStrip=null){
  const strip=el('div','globe-film-strip'),head=el('div','globe-strip-heading'),track=el('div','globe-strip-track');
- const order=beltOrder(films),selected=films[filmOffset],position=Math.max(0,order.findIndex(f=>f.id===selected.id)),size=12,n=order.length;
+ const order=beltOrder(films),selected=films[filmOffset],position=Math.max(0,order.findIndex(f=>f.id===selected.id)),n=order.length,layout=core.beltLayout(W,H,n,position),size=layout.size;
+ const panel=$('#globe-encounter');panel.style.setProperty('--belt-width',layout.width+'px');panel.dataset.beltCapacity=String(layout.capacity);panel.dataset.beltVisible=String(layout.visible);
  const select=(i,focus=false)=>{if(!settled)return;filmOffset=films.indexOf(order[(i+n)%n]);focusKey='';drawEncounter();if(focus)$('#globe-encounter .globe-strip-item[aria-current=true]')?.focus({preventScroll:true});};
  const prev=button('‹',()=>select(position-1),'globe-cycle'),next=button('›',()=>select(position+1),'globe-cycle');prev.setAttribute('aria-label','Previous film');next.setAttribute('aria-label','Next film');prev.disabled=next.disabled=n===1;
  head.append(el('strong',null,'Films'),el('small',null,(position+1)+' / '+n+' credits'),prev,next);
+ const pageBack=button('«',()=>select(Math.max(0,layout.start-size),true),'globe-cycle'),pageNext=button('»',()=>select(layout.start+size,true),'globe-cycle');pageBack.setAttribute('aria-label','Previous page of film credits');pageNext.setAttribute('aria-label','Next page of film credits');pageBack.disabled=layout.start===0;pageNext.disabled=layout.start+size>=n;if(n>size){head.insertBefore(pageBack,prev);head.append(pageNext);}
  track.setAttribute('role','group');track.setAttribute('aria-label','Film thumbnails');track.tabIndex=-1;
  track.addEventListener('keydown',event=>{if(event.altKey||event.ctrlKey||event.metaKey||event.shiftKey||!['ArrowLeft','ArrowRight','Home','End','PageUp','PageDown'].includes(event.key))return;event.preventDefault();select(event.key==='Home'?0:event.key==='End'?n-1:event.key==='PageUp'?Math.max(0,position-size):event.key==='PageDown'?Math.min(n-1,position+size-1):position+(event.key==='ArrowRight'?1:-1),true);});
- filmStripStart=Math.floor(position/size)*size;
+ filmStripStart=layout.start;
  const old=new Map([...(oldStrip?.querySelectorAll('[data-strip-film]')||[])].map(b=>[b.dataset.stripFilm,b.querySelector('.globe-thumb-frame')]));
  for(const f of order.slice(filmStripStart,filmStripStart+size)){
   const i=order.indexOf(f),b=button('',()=>{select(i);focusEncounter();},'globe-strip-item');b.dataset.stripFilm=f.id;b.setAttribute('aria-label',f.title+' · '+f.maker);b.tabIndex=i===position?0:-1;if(i===position)b.setAttribute('aria-current','true');
   const existing=old.get(f.id),art=existing?.querySelector('.globe-artwork');const thumb=art?.dataset.source===(C().sourceImage(f)||'')&&art.dataset.artState!=='broken'?existing:thumbnail(f);
   if(!C().sourceImage(f))thumb.classList.add('globe-no-art');
-  b.append(thumb,el('span','globe-strip-title',f.title),el('small','globe-strip-maker',f.maker));track.append(b);
+  if(!C().sourceImage(f)&&!thumb.querySelector('.globe-text-art'))thumb.append(el('span','globe-text-art','No artwork'));b.append(thumb,el('span','globe-strip-title',f.title),el('small','globe-strip-maker',f.maker));track.append(b);
  }
- if(filmStripStart+size<n){const more=button('More films →',()=>select(filmStripStart+size,true),'globe-belt-more');more.setAttribute('aria-label','Next page of film credits');track.append(more);}
- if(filmStripStart>0){const back=button('← Earlier films',()=>select(Math.max(0,filmStripStart-size),true),'globe-belt-more');back.setAttribute('aria-label','Previous page of film credits');track.prepend(back);}
  strip.append(head,track);requestAnimationFrame(()=>{if(!track.isConnected)return;const b=track.querySelector('[aria-current=true]');if(!b)return;if(b.offsetLeft<track.scrollLeft)track.scrollLeft=b.offsetLeft;else if(b.offsetLeft+b.offsetWidth>track.scrollLeft+track.clientWidth)track.scrollLeft=b.offsetLeft+b.offsetWidth-track.clientWidth;});return strip;
 }
 function makerProfile(id){return new URL('maker/'+encodeURIComponent(id)+'.html',document.baseURI).href;}
@@ -1232,16 +1232,17 @@ function drawEncounter(){
  if(primary&&lastEncounter!==primary.id){filmOffset=films.length?Math.max(0,films.indexOf(beltOrder(films)[0])):0;filmStripStart=0;lastEncounter=primary.id;}
  if(pendingFilm){const i=films.findIndex(f=>f.id===pendingFilm);if(i>=0){filmOffset=i;pendingFilm='';}}
  filmOffset=Math.min(filmOffset,Math.max(0,films.length-1));
- const sig=JSON.stringify([focusIds,inside.map(v=>v.id),primary?.id,films.map(f=>f.id),filmOffset,yearBand,currentTheme(),facetFilter,publicationStatus,pendingFilm,themeTrace,traceTerm,journey.length,readingJourney,readingJourney?collectionState()?.id:null,readingJourney?collectionState()?.activeThread:null,readingJourney?store()?.activeThread().items:null,readingJourney?store()?.activeThread().notes:null]);
+ const sig=JSON.stringify([focusIds,inside.map(v=>v.id),primary?.id,films.map(f=>f.id),filmOffset,core.beltLayout(W,H,films.length).capacity,W<=760,H<=500,yearBand,currentTheme(),facetFilter,publicationStatus,pendingFilm,themeTrace,traceTerm,journey.length,readingJourney,readingJourney?collectionState()?.id:null,readingJourney?collectionState()?.activeThread:null,readingJourney?store()?.activeThread().items:null,readingJourney?store()?.activeThread().notes:null]);
  if(sig===focusKey){updateCollectButton();const link=panel.querySelector('[data-view-kind^="indexed-"]');if(link&&featured)link.href=watchURL(featured.film);placeEmergent();return;}focusKey=sig;
  const nextFilm=films[filmOffset],sameEncounter=!!primary&&panel.dataset.land===primary.id&&panel.dataset.film===(nextFilm?.id||'');
- const savedScroll=sameEncounter?panel.scrollTop:0,openDetails=[...panel.querySelectorAll('details[open]')].map(d=>d.classList[0]);
+ const savedScroll=sameEncounter?panel.scrollTop:0,openDetails=[...panel.querySelectorAll('.globe-encounter-disclosures>details[open]')].map(d=>d.classList[0]);
+ if(primary?.id!==panel.dataset.land){encounterExpanded=false;}
  const oldArt=sameEncounter?panel.querySelector('.globe-feature-art'):null,sameLand=!!primary&&panel.dataset.land===primary.id,oldStrip=sameLand?panel.querySelector('.globe-film-strip'):null;const stripScroll=oldStrip?.querySelector('.globe-strip-track')?.scrollLeft||0;
  const activeControl=panel.contains(document.activeElement)?document.activeElement:null;
  const focusLabel=activeControl?.getAttribute('aria-label'),focusId=activeControl?.id;
- panel.replaceChildren();panel.dataset.belt=String(!!films.length);panel.dataset.expanded=String(encounterExpanded);panel.dataset.collapsed=String(beltCollapsed);panel.dataset.land=primary?.id||'';panel.dataset.film=nextFilm?.id||'';panel.scrollTop=0;
+ panel.replaceChildren();panel.style.removeProperty('--belt-width');delete panel.dataset.beltCapacity;delete panel.dataset.beltVisible;panel.dataset.belt=String(!!films.length);panel.dataset.expanded=String(encounterExpanded);panel.dataset.collapsed=String(beltCollapsed);panel.dataset.land=primary?.id||'';panel.dataset.film=nextFilm?.id||'';panel.scrollTop=0;
  function restorePanel(){
-  if(sameEncounter){for(const d of panel.querySelectorAll('details'))if(openDetails.includes(d.classList[0]))d.open=true;panel.scrollTop=savedScroll;}
+  if(sameEncounter&&!beltCollapsed){for(const d of panel.querySelectorAll('.globe-encounter-disclosures>details'))if(openDetails.includes(d.classList[0]))d.open=true;panel.scrollTop=savedScroll;}
   // Repeated Previous/Next and keyboard reading retain their control after replacement.
   if(activeControl){const candidate=[...panel.querySelectorAll('button,a,summary')].find(e=>focusId&&e.id===focusId||focusLabel&&e.getAttribute('aria-label')===focusLabel);if(candidate&&!candidate.disabled)candidate.focus({preventScroll:true});else if(sameEncounter)panel.querySelector('.globe-film-title')?.focus({preventScroll:true});}
  }
@@ -1271,7 +1272,7 @@ function drawEncounter(){
   const themes=el('div','globe-film-themes');for(const t of C().terms(film))themes.append(button(t,()=>{C().showThemeLens([t]);filmOffset=0;sync();}));
   if(traceTerm&&!C().terms(film).includes(traceTerm))traceTerm='';const related=relatedEncounters(film,primary.id);themeRoutes=related;
   // The strip already requests its eight visible works. Preload the next window and related destinations, not duplicates.
-  prewarmTimer=setTimeout(()=>warmArtwork([...beltOrder(films).slice(filmStripStart+12,filmStripStart+16),...related.map(v=>v.film)]),220);
+  prewarmTimer=setTimeout(()=>warmArtwork([...beltOrder(films).slice(filmStripStart+Number(panel.dataset.beltCapacity||6),filmStripStart+Number(panel.dataset.beltCapacity||6)+4),...related.map(v=>v.film)]),220);
   if(related.length||themeTrace){const connect=button(themeTrace?'Exit connections':'Connect',toggleThemeTrace,'globe-connect-mode');connect.id='globe-connect-mode';connect.setAttribute('aria-pressed',String(themeTrace));actionRow.append(connect);}
   if(related.length||themes.childNodes.length||themeTrace){
    const d=el('details','globe-related-details'),routes=el('div','globe-related-list');
