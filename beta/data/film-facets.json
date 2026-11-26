@@ -2,8 +2,8 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-26",
  "license": "See data.html",
- "films_on_public_map": 2867,
- "film_entries": 2867,
+ "films_on_public_map": 2897,
+ "film_entries": 2897,
  "published_field_conflicts": {
   "SA50-20261014-59f87a2e3ce5-WORK-01": [
    "themes"
@@ -479,7 +479,7 @@
     "note": "",
     "region": "",
     "region_basis": "",
-    "films": 46
+    "films": 47
    },
    {
     "label": "Portuguese",
@@ -2842,6 +2842,38 @@
     "Lives and Relations"
    ],
    "form": null,
+   "length": "Short"
+  },
+  "Q20261126-75-F1": {
+   "title": "Takumã Kuikuro: A view from the Xingu",
+   "year": 2020,
+   "makers": [
+    {
+     "id": "DIR-0052",
+     "name": "Takumã Kuikuro"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261126-74-F1": {
+   "title": "Combatendo a hiperdoença",
+   "year": 2021,
+   "makers": [
+    {
+     "id": "DIR-0052",
+     "name": "Takumã Kuikuro"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
    "length": "Short"
   },
   "FILM-0032": {
@@ -7096,6 +7128,86 @@
   "DIR-0098-W1031-1": {
    "title": "Sumé – The Sound of a Revolution",
    "year": 2014,
+   "makers": [
+    {
+     "id": "DIR-0098",
+     "name": "Inuk Silis Høegh"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "Q20261126-983-F1": {
+   "title": "Sinilluarit / Goodnight",
+   "year": 1999,
+   "makers": [
+    {
+     "id": "DIR-0098",
+     "name": "Inuk Silis Høegh"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
+  },
+  "Q20261126-984-F1": {
+   "title": "På Fremmed Is",
+   "year": 2000,
+   "makers": [
+    {
+     "id": "DIR-0098",
+     "name": "Inuk Silis Høegh"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "Q20261126-985-F1": {
+   "title": "Eskimo Weekend",
+   "year": 2001,
+   "makers": [
+    {
+     "id": "DIR-0098",
+     "name": "Inuk Silis Høegh"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
+  },
+  "Q20261126-986-F1": {
+   "title": "I samme båd",
+   "year": 2002,
+   "makers": [
+    {
+     "id": "DIR-0098",
+     "name": "Inuk Silis Høegh"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "Q20261126-987-F1": {
+   "title": "Tarrarsornerit / Spejlinger",
+   "year": 2007,
    "makers": [
     {
      "id": "DIR-0098",
@@ -12518,6 +12630,10 @@
     {
      "id": "DIR-0158",
      "name": "Tracey Deer"
+    },
+    {
+     "id": "NEW-68c28da55bd1",
+     "name": "Paul Rickard"
     }
    ],
    "languages": [],
@@ -17092,6 +17208,38 @@
    "form": "Experimental",
    "length": "Short"
   },
+  "Q20261126-04-F1": {
+   "title": "Tiemperos Del Antropoceno: TOLCHIKAUALISTLI (Timekeepers of the Anthropocene: TOLCHIKAUALISTLI)",
+   "year": 2021,
+   "makers": [
+    {
+     "id": "DIR-0224",
+     "name": "Federico Cuatlacuatl"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261126-05-F1": {
+   "title": "Quemarle las Patas al Imperio / To Burn the Feet of the Empire",
+   "year": 2025,
+   "makers": [
+    {
+     "id": "DIR-0224",
+     "name": "Federico Cuatlacuatl"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "FILM-0181": {
    "title": "3 días, 3 años",
    "year": 2022,
@@ -17504,6 +17652,54 @@
    ],
    "form": "Fiction",
    "length": "Short"
+  },
+  "Q20261126-990-F1": {
+   "title": "Una Nave per Tornare a Casa",
+   "year": 1998,
+   "makers": [
+    {
+     "id": "DIR-0229",
+     "name": "Itandehui Jansen"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "Q20261126-991-F1": {
+   "title": "Ocho Venado y Seis Mono",
+   "year": 1997,
+   "makers": [
+    {
+     "id": "DIR-0229",
+     "name": "Itandehui Jansen"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "Q20261126-992-F1": {
+   "title": "Signs and Gestures",
+   "year": 2021,
+   "makers": [
+    {
+     "id": "DIR-0229",
+     "name": "Itandehui Jansen"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": null
   },
   "FILM-0186": {
    "title": "Nixíí - Bastón de mando",
@@ -21382,6 +21578,22 @@
    "form": null,
    "length": "Short"
   },
+  "Q20261126-01-F1": {
+   "title": "Sides",
+   "year": 2022,
+   "makers": [
+    {
+     "id": "DIR-0317",
+     "name": "Felene Cayetano"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "FILM-0236": {
    "title": "Li Kiampka (Our descendants)",
    "year": 2020,
@@ -25077,6 +25289,38 @@
    "form": "Fiction",
    "length": "Short"
   },
+  "Q20261126-02-F1": {
+   "title": "Hangover",
+   "year": 2023,
+   "makers": [
+    {
+     "id": "NEW-10f8d32b8220",
+     "name": "Farrah Murdock"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Experimental",
+   "length": null
+  },
+  "Q20261126-03-F1": {
+   "title": "Mamasis",
+   "year": null,
+   "makers": [
+    {
+     "id": "NEW-10f8d32b8220",
+     "name": "Farrah Murdock"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "NEW-a26382b65f7e-WORK-1": {
    "title": "Guts & Glitz",
    "year": 2024,
@@ -25117,6 +25361,22 @@
    ],
    "form": "Experimental",
    "length": "Feature"
+  },
+  "Q20261126-06-F1": {
+   "title": "FALL OUT BOY",
+   "year": 2023,
+   "makers": [
+    {
+     "id": "NEW-a26382b65f7e",
+     "name": "Fox Maxy"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Music Video",
+   "length": null
   },
   "NEW-15d5f34b0dd7-WORK-1": {
    "title": "Taxi the Empties",
@@ -25352,6 +25612,38 @@
    "form": "Documentary",
    "length": "Short"
   },
+  "Q20261126-980-F1": {
+   "title": "The Quiet Invasion",
+   "year": 2026,
+   "makers": [
+    {
+     "id": "NEW-ece62656570c",
+     "name": "Inuk Jørgensen"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "Q20261126-981-F1": {
+   "title": "Where Dreams Are Forgotten",
+   "year": 2022,
+   "makers": [
+    {
+     "id": "NEW-ece62656570c",
+     "name": "Inuk Jørgensen"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
   "NEW-f82421999862-WORK-1": {
    "title": "Akababuru: Expression of astonishment",
    "year": null,
@@ -25468,6 +25760,22 @@
    ],
    "form": "Documentary",
    "length": "Feature"
+  },
+  "Q20261126-996-F1": {
+   "title": "In the Footsteps of Yellow Woman",
+   "year": 2009,
+   "makers": [
+    {
+     "id": "NEW-40ae1617c88c",
+     "name": "Ivey-Camille Manybeads Tso"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
   },
   "NEW-b5c3aa388940-WORK-1": {
    "title": "Why Would I Leave",
@@ -31160,6 +31468,38 @@
    "form": "Hybrid",
    "length": null
   },
+  "Q20261126-80-F1": {
+   "title": "Wejxa Ksxaw, Espíritu del Viento",
+   "year": 2025,
+   "makers": [
+    {
+     "id": "SA50-20261014-bdba8a2b66ca",
+     "name": "Gustavo Ulcué Campo"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": "Short"
+  },
+  "Q20261126-79-F1": {
+   "title": "Problemática de los Pueblos Indígenas una mira desde la MPC",
+   "year": 2014,
+   "makers": [
+    {
+     "id": "SA50-20261014-bdba8a2b66ca",
+     "name": "Gustavo Ulcué Campo"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "SA50-20261014-a29b5a20c63b-WORK-01": {
    "title": "Warmis, cultoras del territorio",
    "year": null,
@@ -33144,6 +33484,22 @@
    "families": [],
    "form": null,
    "length": null
+  },
+  "Q20261126-77-F1": {
+   "title": "Kiwe Luucx - Resistiendo al conflicto",
+   "year": 2022,
+   "makers": [
+    {
+     "id": "SAB2-20261014-c2d53dea271f",
+     "name": "Cesar Duvan Galarza Guetio"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
   },
   "SAB2-20261014-f1d1b424934d-WORK-01": {
    "title": "Tatuushi",
@@ -39186,6 +39542,22 @@
    ],
    "form": "Fiction",
    "length": "Short"
+  },
+  "Q20261126-993-F1": {
+   "title": "El Caminante",
+   "year": 2022,
+   "makers": [
+    {
+     "id": "NEW-0031c6469e76",
+     "name": "Inti Jacanamijoy"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
   },
   "NEW-df5458cce540-WORK-1": {
    "title": "Sa'twe'sx | Cacicazgos (series: Época de la Resistencia Milenaria; La Cacica Gaitana)",
@@ -46533,6 +46905,22 @@
    "form": null,
    "length": null
   },
+  "Q20261126-994-F1": {
+   "title": "Lullaby",
+   "year": 2021,
+   "makers": [
+    {
+     "id": "QM-c2135168d9",
+     "name": "Irène-Kimberley Valin-Awashish"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
   "QM-b302bb15b4-M1": {
    "title": "Kaushunekan",
    "year": 2023,
@@ -47241,6 +47629,32 @@
    "primary_theme": null,
    "families": [],
    "form": "Fiction",
+   "length": "Short"
+  },
+  "Q20261126-78-F1": {
+   "title": "Somos Andinoamazonía, Corazón del Agua",
+   "year": 2025,
+   "makers": [
+    {
+     "id": "Q20261108-04",
+     "name": "Pedro Jajoy"
+    }
+   ],
+   "languages": [
+    {
+     "label": "Spanish",
+     "as_credited": "Spanish",
+     "glottocode": "stan1288",
+     "iso639_3": "spa",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://ficcali.com/pelicula/somos-andinoamazonia-corazon-del-agua/"
+    }
+   ],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
    "length": "Short"
   },
   "Q20261108-05-F1": {
@@ -56145,6 +56559,22 @@
    "form": "Animation",
    "length": "Short"
   },
+  "Q20261126-995-F1": {
+   "title": "The Dimming",
+   "year": 2011,
+   "makers": [
+    {
+     "id": "Q20261122-49",
+     "name": "Ippiksaut Friesen"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": null
+  },
   "QW-8d6dcf6d77-F1": {
    "title": "More Than A Stereotype",
    "year": 2018,
@@ -60302,6 +60732,22 @@
    "form": "Fiction",
    "length": null
   },
+  "Q20261126-07-F1": {
+   "title": "REDBULL",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "Q20261124-23",
+     "name": "Frankie Pedersen"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Music Video",
+   "length": null
+  },
   "Q20261124-25-F1": {
    "title": "Women of the Stony Shore",
    "year": 2026,
@@ -61180,6 +61626,54 @@
     {
      "id": "QM-bcbbe6ee80",
      "name": "Enoque Raposo"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261126-73-F1": {
+   "title": "Kuhi ikugü – Os Kuikuro se apresentam",
+   "year": 2007,
+   "makers": [
+    {
+     "id": "Q20261126-73",
+     "name": "Coletivo Kuikuro de Cinema"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261126-73-F2": {
+   "title": "Kahehijü Ügühütu – O manejo da câmera",
+   "year": 2007,
+   "makers": [
+    {
+     "id": "Q20261126-73",
+     "name": "Coletivo Kuikuro de Cinema"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261126-73-F3": {
+   "title": "KUARUP",
+   "year": 2020,
+   "makers": [
+    {
+     "id": "Q20261126-73",
+     "name": "Coletivo Kuikuro de Cinema"
     }
    ],
    "languages": [],
