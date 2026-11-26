@@ -503,7 +503,7 @@ async def run(browser,name,viewport):
             assert await page.evaluate("window.AtlasGlobe.discovery.collection.links===0")
             await page.locator("#globe-connect-featured").click()
             assert await page.locator("#globe-connect-featured").is_disabled()
-            assert await page.locator("#globe-collection-toggle").inner_text()=="Connecting (1)"
+            assert await page.locator("#globe-collection-toggle").inner_text()=="Linking (1)"
             first_land=await page.evaluate("window.AtlasGlobe.discovery.featured.land")
             await page.locator("#globe-surprise").click()
             await page.wait_for_function("(id)=>window.AtlasGlobe.focus.settled && window.AtlasGlobe.discovery.featured?.land!==id && !!window.AtlasGlobe.discovery.featured",arg=first_land)
@@ -511,6 +511,7 @@ async def run(browser,name,viewport):
             await page.wait_for_function("window.AtlasGlobe.discovery.collection.items===2")
             await page.locator("#globe-connect-featured").click()
             await page.locator("#globe-link-reason").fill("A test of an authored connection")
+            await page.locator(".globe-link-more summary").click()
             await page.get_by_role('textbox', name='Connection note').fill("Unsubmitted note")
             await page.locator('[aria-label="Connection type"]').select_option("question")
             await page.keyboard.press("Escape")
