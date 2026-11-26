@@ -1075,3 +1075,9 @@ html[data-globe-entry] #atlas-globe-stage>#constellate-popup .constellate-headin
 @media(max-width:640px){#atlas-rotational-globe .globe-menu-panel button.globe-theme-chip{min-height:40px}}
 /* stills without artwork: the title's initials on the panel's own tint, in both lights */
 #atlas-rotational-globe #globe-encounter .globe-text-art,#atlas-rotational-globe #globe-encounter[data-belt=true] .globe-strip-item .globe-thumb-frame:has(.globe-artwork[data-art-state=broken])::after{background:var(--p-fill-2)!important;color:var(--p-select)!important}
+/* map thumbnails: larger on desktop (116 x 82); phones keep 64 x 46 */
+@media(min-width:761px){.globe-map-thumb{width:116px;height:82px}.globe-map-thumb-count{font-size:12px;line-height:18px;min-width:20px}}
+/* film box: the action row starts under the artwork so it stays inside its column; no spare band under the last row */
+#atlas-rotational-globe #globe-encounter[data-belt=true] .globe-featured:has(>.globe-feature-art[data-art-state=ready]:not([hidden])) .globe-encounter-actions{margin-left:-73px}
+#atlas-rotational-globe #globe-encounter[data-belt=true] .globe-encounter-actions{flex-wrap:wrap;row-gap:6px;max-width:258px!important}
+#atlas-rotational-globe #globe-encounter[data-belt=true][data-belt-card="148"]{--belt-standard-height:min(42%,272px,var(--globe-encounter-room,272px))}

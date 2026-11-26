@@ -1268,7 +1268,7 @@ function updateThumbs(){
  if(!liveReady||!live||!mlLib?.Marker)return;const starsOnly=nightOn&&menuMode==='collection'&&!drawingLink;
  const show=live.getZoom()>=7&&!gatherMode&&(!nightOn||starsOnly);
  if(!show){for(const m of thumbMarkers.values())m.remove();thumbMarkers.clear();return;}
- const cap=W<=760?6:16,tw=W<=760?64:84,th=W<=760?46:60,cw=live.getCanvas().clientWidth,ch=live.getCanvas().clientHeight,kept=[];
+ const cap=W<=760?6:16,tw=W<=760?64:116,th=W<=760?46:82,cw=live.getCanvas().clientWidth,ch=live.getCanvas().clientHeight,kept=[];
  // Day: the land's most-seen film. Constellate: the films you collected, one card per land.
  let cands;
  if(starsOnly){const idx=C().globeCreditIndex().films;cands=[...groupedStars()].map(([land,group])=>{const p=pointById.get(land),film=group.map(x=>idx.find(f=>f.id===x.id)).find(f=>f&&C().sourceImage(f));return p&&film?{p,film,n:group.length,key:'c:'+land+':'+film.id}:null;}).filter(Boolean);}
