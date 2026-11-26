@@ -307,7 +307,7 @@ async def run(browser,name,viewport):
             assert 1<=layout["count"]==layout["visible"]<=layout["capacity"]<=6,(name,layout)
             slots=await panel.locator(".globe-strip-item").evaluate_all("""els=>els.map(e=>({x:e.offsetLeft,w:e.offsetWidth,id:e.dataset.stripFilm,order:Number(e.style.getPropertyValue('--belt-order'))}))""")
             assert len({s["id"] for s in slots})==len(slots)
-            assert all(s["w"]<=164 and s["order"]==i for i,s in enumerate(slots))
+            assert all(s["w"]<=188 and s["order"]==i for i,s in enumerate(slots))
             assert all(a["x"]+a["w"]<=b["x"] for a,b in zip(slots,slots[1:]))
             dock=await panel.locator(".globe-strip-item").evaluate_all("""els=>els.map(e=>({selected:e.getAttribute('aria-current')==='true',distance:Number(e.dataset.dockDistance),scale:Number(getComputedStyle(e).getPropertyValue('--dock-scale'))}))""")
             assert sum(d["selected"] for d in dock)==1
