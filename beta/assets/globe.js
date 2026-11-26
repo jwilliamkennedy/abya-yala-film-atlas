@@ -579,9 +579,11 @@ function loadRelief(){reliefState='unavailable';return;/* the fallback draws sto
     'native-local-label':{type:'geojson',data:emptyGeo(),maxzoom:14},
     'cinema-points':{type:'geojson',data:livePointsData(),maxzoom:14},'globe-collected':{type:'geojson',data:emptyGeo(),maxzoom:14},'globe-authored-links':{type:'geojson',data:emptyGeo(),tolerance:0,maxzoom:14},'globe-theme-links':{type:'geojson',data:emptyGeo(),tolerance:0,maxzoom:14},'globe-theme-destinations':{type:'geojson',data:emptyGeo(),maxzoom:14}
    },layers:[
-    {id:'sea',type:'background',paint:{'background-color':'#1e3b73'}},
+    {id:'sea',type:'background',paint:{'background-color':'#4f6f99'}},
     {id:'fallback-land',type:'fill',source:'earth',paint:{'fill-color':'#6f7a5e'}},
     {id:'marble',type:'raster',source:'marble',paint:{'raster-fade-duration':320}},
+    // A sea wash over Blue Marble's dark ocean: lighter water, land untouched, the coast from OpenStreetMap.
+    {id:'sea-wash',type:'fill',source:'places','source-layer':'water',filter:['==',['get','class'],'ocean'],paint:{'fill-color':'#7d9cbd','fill-opacity':.55,'fill-antialias':false}},
     {id:'lake-context',type:'fill',source:'places','source-layer':'water',minzoom:6,filter:['==',['get','class'],'lake'],paint:{'fill-color':'#2d4f86','fill-opacity':.9}},
     {id:'river-context',type:'line',source:'places','source-layer':'waterway',minzoom:7,filter:['==',['get','class'],'river'],paint:{'line-color':'#8fb8d8','line-opacity':.8,'line-width':['interpolate',['linear'],['zoom'],7,.35,12,1.4]}},
     {id:'ne-rivers',type:'line',source:'rivers',minzoom:3.5,maxzoom:7.5,layout:{'line-cap':'round','line-join':'round'},paint:{'line-color':'#8fb8d8','line-opacity':['interpolate',['linear'],['zoom'],3.5,0,4.5,.85,7,.85,7.5,0],'line-width':['interpolate',['linear'],['zoom'],3.5,.6,7,1.6]}},
