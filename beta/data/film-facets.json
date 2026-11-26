@@ -2,8 +2,8 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-26",
  "license": "See data.html",
- "films_on_public_map": 2832,
- "film_entries": 2832,
+ "films_on_public_map": 2848,
+ "film_entries": 2848,
  "published_field_conflicts": {
   "SA50-20261014-59f87a2e3ce5-WORK-01": [
    "themes"
@@ -8478,6 +8478,22 @@
    "form": "Documentary",
    "length": null
   },
+  "DIR-0119-F4": {
+   "title": "Fierce Girls",
+   "year": null,
+   "makers": [
+    {
+     "id": "DIR-0119",
+     "name": "Loretta Todd"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Series"
+  },
   "Q20261115-100-F1": {
    "title": "Tia and Piujuq",
    "year": 2018,
@@ -16133,6 +16149,22 @@
     {
      "id": "DIR-0209",
      "name": "Elvis Rigoberto Caj Cojoc"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "FILM-0162": {
+   "title": "Somos de la tierra",
+   "year": null,
+   "makers": [
+    {
+     "id": "DIR-0210",
+     "name": "Ricardo Villanueva"
     }
    ],
    "languages": [],
@@ -33691,6 +33723,22 @@
    "form": "Documentary",
    "length": "Short"
   },
+  "QM-d8d3a4cbc2-M1": {
+   "title": "Semana Santa en San Martín Chamizal",
+   "year": 1992,
+   "makers": [
+    {
+     "id": "LEAD-20261031-0007",
+     "name": "Mariano Estrada"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "RESEARCH-FILM-20261031-0054-01": {
    "title": "The Best Days Are Ahead of Us",
    "year": null,
@@ -34051,6 +34099,22 @@
    "primary_theme": null,
    "families": [],
    "form": "Fiction",
+   "length": "Short"
+  },
+  "NEW-250c0b93f297-WORK-1": {
+   "title": "Take Care",
+   "year": null,
+   "makers": [
+    {
+     "id": "DIR-0350",
+     "name": "Dallas R Soonias"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
    "length": "Short"
   },
   "RESEARCH-FILM-20261031-800-NEW-351": {
@@ -36431,6 +36495,22 @@
    "form": null,
    "length": null
   },
+  "QM-6d04724333-M1": {
+   "title": "Terra Sem Pecado",
+   "year": 2020,
+   "makers": [
+    {
+     "id": "NEW-ab62a9e9d9ce",
+     "name": "Marcelo Kuhexê Krahô"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
   "NEW-6a88b648eb1e-WORK-1": {
    "title": "Eu sou Kaxuyana",
    "year": 2021,
@@ -37606,6 +37686,22 @@
    "form": "Documentary",
    "length": "Short"
   },
+  "QW-WAPI-V288870911": {
+   "title": "Le monde à l'envers",
+   "year": 2018,
+   "makers": [
+    {
+     "id": "NEW-a970361a90e5",
+     "name": "Lenny Francis Chachai"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "NEW-8ff0e773c262-WORK-1": {
    "title": "Nuuhkuum Uumichiwaapim",
    "year": 2024,
@@ -38104,6 +38200,22 @@
    "families": [],
    "form": null,
    "length": "Series"
+  },
+  "NEW-2a987dd9fafd-WORK-1": {
+   "title": "Take Care",
+   "year": null,
+   "makers": [
+    {
+     "id": "NEW-2a987dd9fafd",
+     "name": "Salia Joseph"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
   },
   "NEW-56ddab7566cd-WORK-1": {
    "title": "Le vieil homme et la rivière",
@@ -39178,6 +39290,22 @@
    ],
    "form": "Documentary",
    "length": "Feature"
+  },
+  "NEW-de1535be60dc-WORK-1": {
+   "title": "En defensa de los derechos de las mujeres: Imérhi atastakatechani chuxapani / Siguiendo sus pasos",
+   "year": 2017,
+   "makers": [
+    {
+     "id": "NEW-de1535be60dc",
+     "name": "Ana Gabriela González Espinoza"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
   },
   "NEW-02016bf49deb-WORK-1": {
    "title": "Un pueblo xi'ui resurge de la tierra",
@@ -48150,6 +48278,22 @@
    "form": "Documentary",
    "length": "Feature"
   },
+  "LEAD-20261011-014-QM8979ef": {
+   "title": "Autonomías Territoriales (select episodes)",
+   "year": null,
+   "makers": [
+    {
+     "id": "LEAD-20261011-014",
+     "name": "Yuli Guanga Ortiz"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "QM-ec0a41166c-M1": {
    "title": "Yuyarisun",
    "year": null,
@@ -48350,6 +48494,22 @@
    "form": "Documentary",
    "length": "Feature"
   },
+  "NEW-ee72f758b445-WORK-1": {
+   "title": "Pitago Stop (TV series)",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261114-02",
+     "name": "Jason Brennan"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Series"
+  },
   "Q20261114-02-F1": {
    "title": "The Journey",
    "year": 2008,
@@ -48494,6 +48654,22 @@
    "form": "Documentary",
    "length": "Series"
   },
+  "Q20261114-03-F5": {
+   "title": "Into the Music",
+   "year": 2001,
+   "makers": [
+    {
+     "id": "Q20261114-03",
+     "name": "Jennifer Podemski"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Series"
+  },
   "Q20261114-04-F1": {
    "title": "Treaty Road",
    "year": 2024,
@@ -48621,6 +48797,22 @@
    ],
    "form": "Animation",
    "length": "Series"
+  },
+  "NEW-e1425ada6f96-WORK-1": {
+   "title": "Red Suede Radical or Rats",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261114-07",
+     "name": "Angie-Pepper O'Bomsawin"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": null
   },
   "Q20261114-07-F1": {
    "title": "Working It Out Together",
@@ -59759,6 +59951,70 @@
    "primary_theme": null,
    "families": [],
    "form": "Documentary",
+   "length": null
+  },
+  "QM-6cd5e7d569-M1": {
+   "title": "Ma’ach / Machucado",
+   "year": 1994,
+   "makers": [
+    {
+     "id": "QM-6cd5e7d569",
+     "name": "Carlos Martínez Grabiel"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QM-a96a27dc0e-M1": {
+   "title": "Navidad amuzgos",
+   "year": null,
+   "makers": [
+    {
+     "id": "QM-a96a27dc0e",
+     "name": "Gilberto López Vásquez"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QM-614fcc993c-M1": {
+   "title": "Akoo / Basura",
+   "year": 1994,
+   "makers": [
+    {
+     "id": "QM-614fcc993c",
+     "name": "Héctor García Sandoval"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QM-01e4ba4656-M1": {
+   "title": "Una experiencia viva",
+   "year": 1991,
+   "makers": [
+    {
+     "id": "QM-01e4ba4656",
+     "name": "Olegario Candia Reyes"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
    "length": null
   }
  }
