@@ -53,7 +53,18 @@ async def main():
         by_source={v["src"]:v for v in loaded}
         failed_credits=[{**c,"image_result":by_source[c["source"]]["state"]} for c in credits if c["source"] in by_source and by_source[c["source"]]["state"]!="decoded"]
         local_failed=[v for v in loaded if not urlparse(v["src"]).netloc and v["state"]!="decoded"]
-        report={"local_urls_checked":len(local),"local_failures":local_failed,"failed_credit_images":failed_credits,"counts":counts,"playback":playback,"image_audit_mode":"full" if full else "sample","distinct_recorded_urls":len(set(c["source"] for c in credits if c["source"])),"lands_without_recorded_art":absent,"missing_credit_images":[c for c in credits if not c["source"]],"boundaries":boundaries,"sampled_image_responses":loaded,"all_credit_images":credits}
+        # Prioritize missing artwork that would make an entire presently text-only
+        # land reference visible. Work and credit IDs stay separate; no URLs invented.
+        uncovered={l["id"] for l in absent}; targets=[]
+        while uncovered:
+            candidates=[(len(uncovered.intersection(c["lands"])),c) for c in credits if not c["source"] and uncovered.intersection(c["lands"])]
+            if not candidates:break
+            _,chosen=max(candidates,key=lambda v:(v[0],v[1]["id"]))
+            covered=sorted(uncovered.intersection(chosen["lands"]))
+            targets.append({"film":chosen["film"],"credit":chosen["id"],"record":chosen["record"],"title":chosen["title"],"maker":chosen["maker"],"land_ids":covered})
+            uncovered.difference_update(covered)
+        print("ARTWORK_RESEARCH_PRIORITY",json.dumps({"targets":len(targets),"lands":len(absent)-len(uncovered)}),flush=True)
+        report={"artwork_research_priority":targets,"local_urls_checked":len(local),"local_failures":local_failed,"failed_credit_images":failed_credits,"counts":counts,"playback":playback,"image_audit_mode":"full" if full else "sample","distinct_recorded_urls":len(set(c["source"] for c in credits if c["source"])),"lands_without_recorded_art":absent,"missing_credit_images":[c for c in credits if not c["source"]],"boundaries":boundaries,"sampled_image_responses":loaded,"all_credit_images":credits}
         with open("shots/globe-independent/artwork-inventory.json","w",encoding="utf-8") as f:json.dump(report,f,ensure_ascii=False,indent=2)
         print("ARTWORK_INVENTORY",json.dumps(counts), "NO_ART_LANDS",json.dumps([l["name"] for l in absent],ensure_ascii=False),"IMAGE_SAMPLE",dict(collections.Counter(v["state"] for v in loaded)),"BOUNDARIES",json.dumps(boundaries),flush=True)
         assert any(v["state"]=="decoded" for v in loaded),"No real artwork decoded"

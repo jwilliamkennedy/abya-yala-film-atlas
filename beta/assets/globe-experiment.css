@@ -570,7 +570,9 @@ html[data-globe-entry] #atlas-globe-stage>#constellate-popup .constellate-headin
 #globe-encounter .globe-maker-card[open]>summary .globe-list-copy::after{transform:rotate(90deg)}
 #globe-encounter .globe-maker-card strong{font-size:12px}
 #globe-encounter .globe-maker-card small{font-size:10px;color:#abc2b9}
-#globe-encounter .globe-maker-affiliation{font-size:12px;margin:6px 0 2px}
+#globe-encounter .globe-maker-affiliation{font-size:11px;margin:1px 0;overflow-wrap:anywhere}
+#globe-encounter .globe-maker-quote{font-size:11px;line-height:1.4;max-height:96px;overflow:auto;margin:5px 0;padding:0 7px;border-left:1px solid #718e89;color:#c2d5cc}
+#globe-encounter .globe-maker-jump{font:inherit;color:inherit;background:none;border:0;padding:0;text-decoration:underline;text-underline-offset:2px;cursor:pointer}
 #globe-encounter .globe-maker-actions{display:flex;gap:8px;flex-wrap:wrap;margin:5px 0}
 #globe-encounter .globe-maker-actions a{font-size:11px;color:#c6dfd2}
 #globe-encounter .globe-maker-works{display:grid;gap:3px;margin-top:5px}

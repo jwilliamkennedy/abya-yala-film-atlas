@@ -366,7 +366,7 @@ async def run(browser,name,viewport):
             assert community["credits"]==sum(len(m["credits"]) for m in community["makers"])
             assert community["artwork"]<=community["films"] and community["watch"]<=community["films"]
             await page.locator(".globe-land-makers summary").first.click()
-            assert await page.locator(".globe-maker-card").count()==len(community["makers"])
+            await page.wait_for_function("n=>document.querySelectorAll('.globe-maker-card').length===n",arg=len(community["affiliatedMakers"]))
             await page.locator(".globe-maker-card summary").first.click()
             await page.locator(".globe-maker-works [data-maker-film]").first.wait_for()
             assert await page.locator(".globe-maker-actions a").first.get_attribute("href")

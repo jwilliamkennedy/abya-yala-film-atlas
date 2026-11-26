@@ -19,12 +19,16 @@ window.AtlasCollectionEditorReady=(async()=>{
  const raw=A.allRecords().flatMap(r=>[...r.films.map(f=>({...S.item({type:'film',record:r.id,film:f.id,title:f.title,maker:r.name,year:f.year,image:A.mediaForFilm(f)?.image}),community:r.community})),{...S.item({type:'maker',record:r.id,title:r.name,maker:r.name}),community:r.community}]);
  const key=x=>x.type==='film'?'t:'+norm(x.title).replace(/[^a-z0-9]+/g,' ').trim()+'|'+(x.year||''):x.id,grouped=new Map();const byFilm=new Map();for(const x of raw){let k=key(x);if(x.type==='film'&&x.film){if(byFilm.has(x.film))k=byFilm.get(x.film);else byFilm.set(x.film,k);}if(!grouped.has(k))grouped.set(k,[]);grouped.get(k).push(x);}const catalog=[...grouped.values()].map(g=>({...g[0],image:g.find(x=>x.image)?.image||'',credits:g,maker:[...new Set(g.map(x=>x.maker))].join(' · ')}));const catalogById=new Map(catalog.map(x=>[x.id,x]));
  const globeCredits=new Map(raw.filter(x=>x.type==='film').map(x=>[x.id,{...x,credits:[x]}]));
- let globeRelations=null,globePublication=null,globeFacetRows=new Map(),globeMetadataCache=new Map();
+ let globeRelations=null,globePublication=null,globeFacetRows=new Map(),globeMetadataCache=new Map(),globeMakerRows=new Map();
  const globeMode=()=>!!window.AtlasGlobe?.active;
  const csvList=v=>[...new Set(String(v||'').split(/\s*;\s*/).filter(Boolean))];
  const baseFilm=x=>A.recordById(x?.record)?.films.find(f=>f.id===x.film)||null;
  function installGlobePublication(rows,facets){
-  globePublication=rows;globeFacetRows=new Map();globeMetadataCache.clear();globeRelations=null;
+  globePublication=rows;globeFacetRows=new Map();globeMetadataCache.clear();globeRelations=null;globeMakerRows=new Map();
+  // The maker columns are repeated on every exact credit, including the row
+  // with no film. Do not choose one arbitrarily if those recorded fields differ.
+  const fields=['filmmaker_id','name','aliases','entity','nation','community','affiliation_basis','source_1_url','source_1_quote','source_1_detail','source_2_url','source_2_quote','source_2_detail','source_3_url','source_3_quote','source_3_detail','more_sources'];
+  for(const list of rows.values())for(const row of list){const id=row.filmmaker_id;if(!id)continue;const maker=Object.fromEntries(fields.map(k=>[k,row[k]||''])),prior=globeMakerRows.get(id);if(!prior)globeMakerRows.set(id,{maker,conflict:false});else if(fields.some(k=>prior.maker[k]!==maker[k]))prior.conflict=true;}
   for(const row of facets){if(!row.film_id||!row.value)continue;let f=globeFacetRows.get(row.film_id);if(!f){f={l:[],t:[],f:'',n:'',p:'',sources:[],conflicts:[]};globeFacetRows.set(row.film_id,f);}
    const field={language:'l',theme:'t',form:'f',length:'n'}[row.field];if(!field)continue;
    if(Array.isArray(f[field])){if(!f[field].includes(row.value))f[field].push(row.value);}
@@ -34,6 +38,7 @@ window.AtlasCollectionEditorReady=(async()=>{
   }
   if(globeMode())refreshDiscoveryMode();
  }
+ function globeMakerMetadata(id){const v=globeMakerRows.get(id);return v&&!v.conflict?v.maker:null;}
  function globeFacetExport(id){return globeFacetRows.get(id)||null;}
  function globeMetadata(x){
   if(x?.type!=='film'||!globePublication)return null;
@@ -1556,7 +1561,7 @@ function stopPlay(){if(!player)return;playThread=null;pausePlay(true);player.hid
  {const z=document.querySelector('.map-panel .zoom');let b=$('#atlas-unmap');if(!b&&z){z.insertAdjacentHTML('beforeend','<button id="atlas-unmap" aria-pressed="false" title="Disappear the cartography: keep names, lose coastlines, borders and shading">Disappear map</button>');b=$('#atlas-unmap');}
   if(b&&!b.dataset.atlasBound){b.dataset.atlasBound='1';const set=on=>{document.body.classList.toggle('atlas-unmapped',on);b.setAttribute('aria-pressed',String(on));b.textContent=on?'Return map':'Disappear map';try{localStorage.setItem('atlas-unmapped',on?'1':'0');}catch{}};b.onclick=()=>set(!document.body.classList.contains('atlas-unmapped'));try{if(localStorage.getItem('atlas-unmapped')==='1')set(true);}catch{}}}
  map.dataset.dropLabel='Drop to add to the thread';
- const editor={setTab,open,browse,close,exit,showPreview,get previewFilm(){return previewFilm},previewLandIds:()=>previewFilm?references(previewFilm).map(r=>r.id):[],showThemeLens,clearThemeLens,landMatchesTheme,themeIntersection,themeTerms:()=>[...discoveryIndex().byTheme.keys()],thumb,openLand,openLands,readFromStart,undo,redo,fit,add,globeCollect,globeConnect,followFilm,showPicker,setRead,readThread,shareURL,citation,csvExport,jsonExport,choose,startLink,reference,tags,play:playWeave,stopPlay,pausePlay,playStep,get playing(){return !!player},get enabled(){return enabled},get selectedLand(){return landShown},get selectedLandIds(){return [...selectedLandIds]},get positions(){return new Map(positions)},get anchors(){return new Map(anchors)},get catalog(){return catalog},themeFilms,themeThread,landThread,landFilmCount,refreshDiscoveryMode,globeLandFilmCount:id=>globeIndex().byLand.get(id)?.films.length||0,globeLandCatalogFilms:globeLandFilms,globeCreditIndex:()=>globeIndex(),installGlobePublication,globeMetadata,globeFacetExport,globeViewingRoutes,landCatalogFilms:id=>(landFilms().get(id)?.films||[]).filter(x=>!themeLens||themeLens.ids.has(x.id)),trace:startTrace,stopTrace,get tracing(){return !!trace},terms,sourceImage,get view(){return{k:1,x:0,y:0}}};
+ const editor={setTab,open,browse,close,exit,showPreview,get previewFilm(){return previewFilm},previewLandIds:()=>previewFilm?references(previewFilm).map(r=>r.id):[],showThemeLens,clearThemeLens,landMatchesTheme,themeIntersection,themeTerms:()=>[...discoveryIndex().byTheme.keys()],thumb,openLand,openLands,readFromStart,undo,redo,fit,add,globeCollect,globeConnect,followFilm,showPicker,setRead,readThread,shareURL,citation,csvExport,jsonExport,choose,startLink,reference,tags,play:playWeave,stopPlay,pausePlay,playStep,get playing(){return !!player},get enabled(){return enabled},get selectedLand(){return landShown},get selectedLandIds(){return [...selectedLandIds]},get positions(){return new Map(positions)},get anchors(){return new Map(anchors)},get catalog(){return catalog},themeFilms,themeThread,landThread,landFilmCount,refreshDiscoveryMode,globeLandFilmCount:id=>globeIndex().byLand.get(id)?.films.length||0,globeLandCatalogFilms:globeLandFilms,globeCreditIndex:()=>globeIndex(),installGlobePublication,globeMetadata,globeMakerMetadata,globeFacetExport,globeViewingRoutes,landCatalogFilms:id=>(landFilms().get(id)?.films||[]).filter(x=>!themeLens||themeLens.ids.has(x.id)),trace:startTrace,stopTrace,get tracing(){return !!trace},terms,sourceImage,get view(){return{k:1,x:0,y:0}}};
  window.AtlasCollectionEditor=editor;
  if(!globeEntry)window.AtlasConstellate=editor;
  // Share snapshots are additive: never replace a newer local weave with an old link.

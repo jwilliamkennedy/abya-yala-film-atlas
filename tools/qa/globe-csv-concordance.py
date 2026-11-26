@@ -15,7 +15,7 @@ async def main():
         await page.wait_for_function("window.AtlasGlobe?.active && window.AtlasGlobe.discovery.publication==='ready' && window.AtlasCollectionEditor?.globeCreditIndex",timeout=60000)
         live=await page.evaluate("""() => {
           const A=window.AtlasCatalogue,C=window.AtlasCollectionEditor,I=C.globeCreditIndex(),F=window.ATLAS_FACETS||{};
-          return {makers:A.allRecords().map(r=>({id:r.id,name:r.name,community:r.community,nation:r.nation,countries:r.countryCodes,refs:A.recordLandReferences(r.id)})),
+          return {makers:A.allRecords().map(r=>({id:r.id,name:r.name,community:r.community,nation:r.nation,countries:r.countryCodes,refs:A.recordLandReferences(r.id),publicMaker:C.globeMakerMetadata(r.id)})),
             films:I.films.map(x=>{const r=A.recordById(x.record),f=r.films.find(f=>f.id===x.film),m=C.globeMetadata(x);return {maker:x.record,film:x.film,title:x.title,year:x.year,credit:m?.film.credit||f.credit,refs:I.refs.get(x.id),terms:C.terms(x),image:C.sourceImage(x),watch:C.globeViewingRoutes(x).map(l=>l.url),facets:m?{l:m.l,f:m.f,n:m.n,p:m.p,t:m.t}:F.films?.[x.film]||{},exportFacet:C.globeFacetExport(x.film),baked:F.films?.[x.film]||{},hasPublic:!!m,publicRow:m?.row||null}}),
             languages:F.languages||{},terms:Object.values(F.families||{}).flat()};
         }""")
@@ -73,8 +73,14 @@ async def main():
         if x is None:note('language_authority_missing',r['label']);continue
         for col,field in [('glottocode','g'),('iso639_3','i'),('match','m')]:
             if (r.get(col) or '')!=(x.get(field) or ''):upstream_note('language_authority_'+col,r['label'],r.get(col),x.get(field))
+    maker_fields=('filmmaker_id','name','aliases','entity','nation','community','affiliation_basis','source_1_url','source_1_quote','source_1_detail','source_2_url','source_2_quote','source_2_detail','source_3_url','source_3_quote','source_3_detail','more_sources')
     for r in pub:
         if r['filmmaker_id'] not in mid:continue
+        m=mid[r['filmmaker_id']].get('publicMaker')
+        if not m:note('maker_index_conflict_or_missing',r['filmmaker_id'])
+        else:
+            for field in maker_fields:
+                if m.get(field,'')!=(r.get(field) or ''):note('maker_csv_field_roundtrip',(r['filmmaker_id'],field),r.get(field),m.get(field))
         for col,field in [('name','name'),('nation','nation'),('community','community')]:
             if r.get(col) and r[col]!=(mid[r['filmmaker_id']].get(field) or ''):upstream_note('maker_'+col,r['filmmaker_id'],r[col],mid[r['filmmaker_id']].get(field))
     for fid,fac in facet_index.items():
