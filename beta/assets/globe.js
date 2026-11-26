@@ -383,7 +383,7 @@ function loadRelief(){reliefState='unavailable';return;/* the fallback draws sto
  function opacityExpression(values){return ['interpolate',['linear'],['zoom'],...values.flatMap(([z,a])=>[z,Math.min(.85,a*landStrength)])];}
  function syncLandVisibility(){
   const b=$('#globe-lands');if(b){b.setAttribute('aria-pressed',String(landsVisible));b.textContent=landsVisible?'Lands: on':'Lands: off';}
-  if(liveReady){for(const id of landLayerIds)if(live.getLayer(id)){const show=landsVisible&&(id==='native-ambient-line'?edgeMode==='all':id==='land-outline'?edgeMode!=='none':true);live.setLayoutProperty(id,'visibility',show?'visible':'none');}live.setPaintProperty('native-ambient-fill','fill-opacity',opacityExpression([[0,.12],[3,.13],[6,.15],[10,.15],[14,.14]]));live.setPaintProperty('native-ambient-line','line-opacity',opacityExpression([[0,.55],[3,.72],[6,.82],[12,.9]]));}
+  if(liveReady){for(const id of landLayerIds)if(live.getLayer(id)){const show=landsVisible&&(id==='native-ambient-line'?edgeMode==='all':id==='land-outline'?edgeMode!=='none':true);live.setLayoutProperty(id,'visibility',show?'visible':'none');}live.setPaintProperty('native-ambient-fill','fill-opacity',opacityExpression([[0,.06],[3,.065],[6,.08],[10,.08],[14,.075]]));live.setPaintProperty('native-ambient-line','line-opacity',opacityExpression([[0,.55],[3,.72],[6,.82],[12,.9]]));}
   renderSoon();
  }
  function liveLandData(ids){
@@ -594,7 +594,7 @@ function loadRelief(){reliefState='unavailable';return;/* the fallback draws sto
     // Ambient territory references are deliberately translucent; overlapping
     // polygons remain visible without claiming exclusive ownership.
     {id:'native-ambient-fill',type:'fill',source:'native-ambient',paint:{'fill-color':['get','color'],'fill-opacity':['interpolate',['linear'],['zoom'],0,.12,3,.13,6,.15,10,.15,14,.14],'fill-outline-color':'rgba(0,0,0,0)'}},
-    {id:'native-ambient-feather',type:'line',source:'native-ambient-edges',layout:{'line-join':'round','line-cap':'round'},paint:{'line-color':['get','color'],'line-opacity':['interpolate',['linear'],['zoom'],0,.18,4,.22,8,.26],'line-width':['interpolate',['linear'],['zoom'],0,4,4,9,8,16,12,26],'line-blur':['interpolate',['linear'],['zoom'],0,4,4,8,8,14,12,22]}},
+    {id:'native-ambient-feather',type:'line',source:'native-ambient-edges',layout:{'line-join':'round','line-cap':'round'},paint:{'line-color':['get','color'],'line-opacity':['interpolate',['linear'],['zoom'],0,.1,4,.12,8,.15],'line-width':['interpolate',['linear'],['zoom'],0,4,4,9,8,16,12,26],'line-blur':['interpolate',['linear'],['zoom'],0,4,4,8,8,14,12,22]}},
     {id:'native-ambient-line',type:'line',source:'native-ambient-edges',layout:{'line-join':'round','line-cap':'round'},paint:{'line-color':['get','color'],'line-opacity':['interpolate',['linear'],['zoom'],0,.55,3,.72,6,.82,12,.9],'line-width':['interpolate',['linear'],['zoom'],0,.35,4,.65,8,.95,14,1.4]}},
     {id:'land-color',type:'fill',source:'native-lands',paint:{'fill-color':['get','color'],'fill-opacity':['case',['==',['get','match'],0],.04,['==',['get','focus'],1],.32,.12],'fill-opacity-transition':{duration:160,delay:0},'fill-outline-color':'rgba(0,0,0,0)'}},
     {id:'land-outline',type:'line',source:'native-focus-edges',layout:{'line-join':'round','line-cap':'round'},paint:{'line-color':['get','color'],'line-opacity':['case',['==',['get','match'],0],.15,['==',['get','focus'],1],.7,.3],'line-width':['interpolate',['linear'],['zoom'],1,4,5,8,11,14],'line-blur':['interpolate',['linear'],['zoom'],1,3,5,6,11,10]}},
