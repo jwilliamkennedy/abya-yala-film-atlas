@@ -80,7 +80,7 @@ function relatedEncounters(seed,land){
 let filmComparison=null;
 function renderFilmComparison(){
  const panel=$('#globe-film-comparison');if(!panel)return;
- if(!filmComparison){panel.hidden=true;panel.replaceChildren();return;}
+ if(!filmComparison){panel.hidden=true;if(panel.dataset.pair){delete panel.dataset.pair;panel.replaceChildren();}return;}
  const {from,to,shared}=filmComparison;
  const current=settled&&featured?[featured.land,featured.film.id].join('|'):'';
  const key=from.land+'|'+from.film.id+'|'+to.land+'|'+to.film.id;
@@ -90,7 +90,7 @@ function renderFilmComparison(){
   dismiss.setAttribute('aria-label','Close film comparison');header.append(el('strong',null,'Film comparison'),dismiss);
   const cards=el('div','globe-comparison-films');
   for(const entry of [from,to]){
-   const b=button('',()=>{if(menuMode)setMenu('');gotoLand(entry.land,entry.film.id,true);},'globe-comparison-film');b.dataset.comparisonFilm=entry.film.id;b.dataset.comparisonLand=entry.land;
+   const b=button('',()=>{if(menuMode)setMenu('');if(!matchingFilms(entry.land).some(f=>f.id===entry.film.id)){clearDiscoveryFilters();refreshMenuLabels();}gotoLand(entry.land,entry.film.id,true);},'globe-comparison-film');b.dataset.comparisonFilm=entry.film.id;b.dataset.comparisonLand=entry.land;
    const meta=el('div','globe-comparison-credit');meta.append(el('strong',null,entry.film.title),el('small',null,entry.film.maker),el('small','globe-comparison-land',byId.get(entry.land)?.name||'Land reference'));
    b.append(thumbnail(entry.film),meta);cards.append(b);
   }
