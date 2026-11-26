@@ -39,3 +39,6 @@ Requested by atlas owner: promote current beta/ to published root using tools/pr
 
 2026-11-24 (night)
 Requested by atlas owner: promote current beta/ to published root using tools/promote_beta.py; preserve beta and private research Queue. 1,440 filmmakers: 41 new filmmakers from IAIA, Red Nation and other programmes, Honã, NFB theme rows.
+
+2026-11-25 (night)
+Requested by atlas owner: promote current beta/ to published root using tools/promote_beta.py; preserve beta and private research Queue. Queue review: 245 proposal rows (imagineNATIVE programme data, themes, artwork, Watch links); leads: 15 new filmmakers and 15 credits on published records; 233 duplicate leads closed.
