@@ -337,10 +337,21 @@ async def run(browser,name,viewport):
             await page.locator("#globe-collapse-belt").click()
             assert await panel.get_attribute("data-collapsed")=="false"
             first=await page.locator("#globe-encounter .globe-film-title").inner_text()
+            # Test the actual panel and gallery bounds while cycling between films,
+            # not just the computed card widths. Artwork may decode asynchronously.
+            bounds_script="""()=>{const p=document.querySelector('#globe-encounter'),s=p.querySelector('.globe-film-strip'),b=p.getBoundingClientRect(),r=s.getBoundingClientRect();return {x:b.x,y:b.y,w:b.width,h:b.height,sx:r.x,sy:r.y,sw:r.width}}"""
+            baseline=await page.evaluate(bounds_script)
+            await page.evaluate("()=>{window.__qaStrip=document.querySelector('.globe-film-strip');window.__qaStripKey=window.__qaStrip.dataset.pageKey;}")
             await page.locator('#globe-encounter [aria-label="Next film"]').focus()
             await page.keyboard.press("Enter")
             assert await page.evaluate("document.activeElement?.getAttribute('aria-label')==='Next film'"),(name,"film navigation lost keyboard focus")
             assert await page.locator("#globe-encounter .globe-film-title").inner_text()!=first or await page.evaluate("window.AtlasGlobe.discovery.filmOffset===1")
+            for _ in range(3):
+                await page.wait_for_timeout(180)
+                current=await page.evaluate(bounds_script)
+                assert all(abs(current[k]-baseline[k])<=1 for k in baseline),(name,"belt resized during film navigation",baseline,current)
+                assert await page.evaluate("()=>{const s=document.querySelector('.globe-film-strip');return s.dataset.pageKey!==window.__qaStripKey||s===window.__qaStrip;}")
+                await page.locator('#globe-encounter [aria-label="Next film"]').click()
             await page.locator("#globe-encounter .globe-land-films summary").click()
             listed=page.locator("#globe-encounter .globe-land-film")
             await listed.first.wait_for()
