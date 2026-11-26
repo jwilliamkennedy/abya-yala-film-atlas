@@ -39,7 +39,8 @@ class PageLoaderTest(unittest.TestCase):
         def scripts(html):
             return [(m.group(1), m.group(0)) for m in re.finditer(pattern, html)]
         before = scripts(original)
-        required = ('atlas-data.js', 'territories-data.js', 'territory-fixes.js',
+        # The globe page loads land points and names, not the territory shapes.
+        required = ('atlas-data.js', 'land-points-data.js', 'territory-fixes.js',
                     'assets/catalogue.js', 'assets/collection-editor.js', 'watch-data.js', 'assets/globe-core.js', 'assets/globe.js')
         for src in required:
             self.assertEqual(sum(name == src for name, _ in before), 1, src)

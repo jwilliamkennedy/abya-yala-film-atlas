@@ -886,3 +886,5 @@ jobs:
         with:
           node-version: '22'
       - run: node tools/qa/globe-geography.cjs
+      - name: Land points are current with the shapes they are taken from
+        run: node tools/atlas/bake-land-points.cjs --check

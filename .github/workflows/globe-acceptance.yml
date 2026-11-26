@@ -14,6 +14,7 @@ on:
       - 'beta/territory-fixes.js'
       - 'beta/encounters.js'
       - 'beta/territories-data.js'
+      - 'beta/land-points-data.js'
       - 'beta/basemap-open-20261107.js'
       - 'beta/assets/geo-integrity.js'
       - 'beta/assets/maplibre/**'

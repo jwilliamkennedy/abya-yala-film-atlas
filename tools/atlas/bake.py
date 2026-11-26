@@ -3,7 +3,8 @@
   beta/atlas-data.js       everything of ours in one file: reference tables (land names and links, country index, verification
                            notes; frozen from the captured beta, with the workbook's land-link edits applied), the records,
                            images, watch links, theme tags, and the film tags the filters use
-  beta/index.html          made to load it (plus the Native Land shapes and territory-fixes.js) instead of any layers
+  beta/index.html          made to load it (plus the land points and names, land-points-data.js, and territory-fixes.js)
+                           instead of any layers; flat.html loads the Native Land shapes
 
 Normally called by tools/atlas/build.py (from the atlas CSV files). For the one-time identity test it can bake a captured
 state directly:  python3 tools/atlas/bake.py <state.json> --all-records   (never commit that output: it holds leads)."""
@@ -185,7 +186,7 @@ def page(path=B / 'index.html'):
             needs_catalogue = False
             out = out.replace(m.group(0), rep, 1)
     if 'territory-fixes.js' not in out:
-        out = re.sub(r'(<script\b[^>]*\bsrc="territories-data\.js[^"]*"[^>]*></script>)', r'\1<script src="territory-fixes.js" defer></script>', out, count=1)
+        out = re.sub(r'(<script\b[^>]*\bsrc="(?:territories-data|land-points-data)\.js[^"]*"[^>]*></script>)', r'\1<script src="territory-fixes.js" defer></script>', out, count=1)
     path.write_text(out, encoding='utf-8')
 
 if __name__ == '__main__':
