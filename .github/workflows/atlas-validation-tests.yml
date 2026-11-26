@@ -13,6 +13,10 @@ on:
       - 'tools/atlas/test_facet_identity.py'
       - 'tools/facets/**'
       - 'beta/index.html'
+      - 'beta/data/*.csv'
+      - 'data/*.csv'
+      - 'tools/thumbs/**/*.csv'
+      - 'tools/qa/csv-structure.py'
       - 'tools/atlas/atlasio.py'
       - 'tools/atlas/test_atlasio_split.py'
       - 'tools/atlas/test_bake_page.py'
@@ -32,3 +36,4 @@ jobs:
         run: |
           python3 -m pip install -q openpyxl
           python3 -m unittest discover -s tools/atlas -p 'test_*.py' -v
+          python3 tools/qa/csv-structure.py

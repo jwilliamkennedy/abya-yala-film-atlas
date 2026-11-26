@@ -655,6 +655,13 @@ html[data-globe-entry] #atlas-globe-stage>#constellate-popup .constellate-headin
  #globe-encounter[data-belt=true] .globe-strip-item .globe-strip-art[data-art-state=ready]{width:min(100%,var(--art-natural-width),calc(44px * var(--art-ratio,1)))!important}
 }
 
-#globe-encounter .globe-belt-arrive{animation:cinema-belt-arrive .22s ease-out}
-@keyframes cinema-belt-arrive{from{opacity:.35}to{opacity:1}}
-@media(prefers-reduced-motion:reduce){#globe-encounter .globe-belt-arrive{animation:none}}
+/* Fixed slots and a brief ordered entrance; late artwork cannot reorder cards. */
+#globe-encounter .globe-belt-arrive .globe-strip-item{animation:cinema-belt-arrive 180ms ease-out both;animation-delay:calc(var(--belt-order,0) * 22ms)}
+@keyframes cinema-belt-arrive{from{opacity:.55;transform:translateY(3px)}to{opacity:1;transform:translateY(0)}}
+#globe-encounter .globe-strip-item .globe-strip-title{min-height:2.4em}
+#globe-encounter .globe-strip-maker{min-height:1.2em}
+#globe-encounter[data-belt=true] .globe-feature-copy{overflow-wrap:anywhere}
+#globe-encounter[data-belt=true] .globe-encounter-actions{flex-wrap:wrap}
+#globe-encounter[data-belt=true] .globe-section-summary:focus-visible{outline-offset:-2px}
+#globe-encounter .globe-strip-item:focus-visible{scroll-margin-inline:4px}
+@media(prefers-reduced-motion:reduce){#globe-encounter .globe-belt-arrive .globe-strip-item{animation:none}#globe-encounter .globe-strip-track{scroll-snap-type:none}}

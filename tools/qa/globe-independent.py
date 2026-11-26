@@ -293,6 +293,10 @@ async def run(browser,name,viewport):
             assert belt_geometry["right"]<=belt_geometry["zoomLeft"]+2,(name,"belt overlaps zoom",belt_geometry)
             layout=await panel.evaluate("""p=>({count:p.querySelectorAll('.globe-strip-item').length,capacity:Number(p.dataset.beltCapacity),visible:Number(p.dataset.beltVisible),width:p.clientWidth})""")
             assert 1<=layout["count"]==layout["visible"]<=layout["capacity"]<=6,(name,layout)
+            slots=await panel.locator(".globe-strip-item").evaluate_all("""els=>els.map(e=>({x:e.offsetLeft,w:e.offsetWidth,id:e.dataset.stripFilm,order:Number(e.style.getPropertyValue('--belt-order'))}))""")
+            assert len({s["id"] for s in slots})==len(slots)
+            assert all(s["w"]<=104 and s["order"]==i for i,s in enumerate(slots))
+            assert all(a["x"]+a["w"]<=b["x"] for a,b in zip(slots,slots[1:]))
             assert belt_geometry["height"]<=belt_geometry["hostHeight"]*.42+2,(name,"unexpanded belt too tall",belt_geometry)
             await page.locator("#globe-collapse-belt").click()
             assert await panel.get_attribute("data-collapsed")=="true"
