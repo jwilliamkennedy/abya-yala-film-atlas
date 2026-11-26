@@ -2,8 +2,8 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-26",
  "license": "See data.html",
- "films_on_public_map": 2831,
- "film_entries": 2831,
+ "films_on_public_map": 2832,
+ "film_entries": 2832,
  "published_field_conflicts": {
   "SA50-20261014-59f87a2e3ce5-WORK-01": [
    "themes"
@@ -101,7 +101,7 @@
     "note": "Credits name the language without a regional variety",
     "region": "North America",
     "region_basis": "Glottolog coordinates",
-    "films": 2
+    "films": 9
    },
    {
     "label": "Atikamekw",
@@ -115,7 +115,7 @@
     "note": "",
     "region": "North America",
     "region_basis": "Glottolog countries",
-    "films": 3
+    "films": 4
    },
    {
     "label": "Ayuujk (Mixe)",
@@ -143,7 +143,7 @@
     "note": "",
     "region": "North America",
     "region_basis": "Glottolog countries",
-    "films": 2
+    "films": 3
    },
    {
     "label": "Cherokee",
@@ -171,7 +171,7 @@
     "note": "Credits name Cree without a variety",
     "region": "North America",
     "region_basis": "Glottolog countries",
-    "films": 4
+    "films": 5
    },
    {
     "label": "Plains Cree",
@@ -227,7 +227,7 @@
     "note": "",
     "region": "North America",
     "region_basis": "Glottolog countries",
-    "films": 3
+    "films": 5
    },
    {
     "label": "Garifuna",
@@ -269,7 +269,7 @@
     "note": "",
     "region": "North America",
     "region_basis": "Glottolog countries",
-    "films": 1
+    "films": 2
    },
    {
     "label": "Inuktitut",
@@ -283,7 +283,7 @@
     "note": "Inuktitut in Canadian credits usually names the eastern variety",
     "region": "North America",
     "region_basis": "Glottolog countries",
-    "films": 18
+    "films": 20
    },
    {
     "label": "Iñupiaq",
@@ -311,7 +311,7 @@
     "note": "",
     "region": "North America",
     "region_basis": "Glottolog countries",
-    "films": 2
+    "films": 3
    },
    {
     "label": "Kichwa",
@@ -339,7 +339,7 @@
     "note": "",
     "region": "North America",
     "region_basis": "Glottolog countries",
-    "films": 0
+    "films": 1
    },
    {
     "label": "Mohawk",
@@ -353,7 +353,7 @@
     "note": "",
     "region": "North America",
     "region_basis": "Glottolog countries",
-    "films": 3
+    "films": 5
    },
    {
     "label": "Nlakapamuxcheen",
@@ -465,7 +465,7 @@
     "note": "",
     "region": "",
     "region_basis": "",
-    "films": 90
+    "films": 140
    },
    {
     "label": "Spanish",
@@ -479,7 +479,7 @@
     "note": "",
     "region": "",
     "region_basis": "",
-    "films": 43
+    "films": 46
    },
    {
     "label": "Portuguese",
@@ -507,7 +507,7 @@
     "note": "",
     "region": "",
     "region_basis": "",
-    "films": 3
+    "films": 8
    },
    {
     "label": "Vietnamese",
@@ -605,7 +605,7 @@
     "note": "",
     "region": "South America",
     "region_basis": "Glottolog countries",
-    "films": 2
+    "films": 3
    },
    {
     "label": "Chinuk Wawa",
@@ -703,7 +703,7 @@
     "note": "",
     "region": "North America",
     "region_basis": "Glottolog countries",
-    "films": 1
+    "films": 3
    },
    {
     "label": "Quechua",
@@ -717,7 +717,7 @@
     "note": "Credits name Quechua without a variety",
     "region": "South America",
     "region_basis": "Glottolog coordinates",
-    "films": 2
+    "films": 3
    },
    {
     "label": "German",
@@ -4357,7 +4357,26 @@
      "name": "Alethea Arnaquq-Baril"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "Inuktitut",
+     "as_credited": "Inuktitut",
+     "glottocode": "east2534",
+     "iso639_3": "ike",
+     "match": "probable",
+     "indigenous": true,
+     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/"
+    },
+    {
+     "label": "French",
+     "as_credited": "French",
+     "glottocode": "stan1290",
+     "iso639_3": "fra",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/"
+    }
+   ],
    "themes": [
     "LGBTQIA2S",
     "Women and Gender"
@@ -5525,11 +5544,17 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "State Violence and Genocide",
+    "Archives, Museums and Repatriation"
+   ],
+   "primary_theme": "State Violence and Genocide",
+   "families": [
+    "Knowledge and Continuity",
+    "Sovereignty and Politics"
+   ],
+   "form": "Hybrid",
+   "length": "Feature"
   },
   "Q20261115-770-F1": {
    "title": "He Who Dreams",
@@ -5641,9 +5666,13 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "More-than-Human Relations"
+   ],
+   "primary_theme": "More-than-Human Relations",
+   "families": [
+    "Land and Environment"
+   ],
    "form": null,
    "length": "Short"
   },
@@ -5702,7 +5731,7 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
+   "form": "Experimental",
    "length": "Short"
   },
   "Q20261115-770-F10": {
@@ -6626,7 +6655,26 @@
      "name": "Ryan Cooper"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "Anishinaabemowin (Ojibwe)",
+     "as_credited": "Anishinaabemowin (Ojibwe)",
+     "glottocode": "ojib1241",
+     "iso639_3": "",
+     "match": "group",
+     "indigenous": true,
+     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/"
+    },
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/"
+    }
+   ],
    "themes": [],
    "primary_theme": null,
    "families": [],
@@ -6642,7 +6690,17 @@
      "name": "Eva Thomas"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/"
+    }
+   ],
    "themes": [
     "Women and Gender",
     "Youth"
@@ -6721,12 +6779,22 @@
      "name": "Gavin Baird"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/"
+    }
+   ],
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Fiction",
+   "length": "Short"
   },
   "DIR-0093-F1": {
    "title": "Older Than America",
@@ -7133,7 +7201,17 @@
      "name": "Jessie Anthony"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/"
+    }
+   ],
    "themes": [
     "Residential and Boarding Schools",
     "Justice, Truth and Reconciliation",
@@ -7274,7 +7352,17 @@
      "name": "Jules Koostachin"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/"
+    }
+   ],
    "themes": [
     "Women and Gender"
    ],
@@ -7825,7 +7913,44 @@
      "name": "Kim O'Bomsawin"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "Innu-aimun",
+     "as_credited": "Innu-aimun",
+     "glottocode": "mont1268",
+     "iso639_3": "moe",
+     "match": "exact",
+     "indigenous": true,
+     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/"
+    },
+    {
+     "label": "Atikamekw",
+     "as_credited": "Atikamekw",
+     "glottocode": "atik1240",
+     "iso639_3": "atj",
+     "match": "exact",
+     "indigenous": true,
+     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/"
+    },
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/"
+    },
+    {
+     "label": "French",
+     "as_credited": "French",
+     "glottocode": "stan1290",
+     "iso639_3": "fra",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/"
+    }
+   ],
    "themes": [
     "Youth"
    ],
@@ -7942,7 +8067,26 @@
      "name": "Lisa Jackson"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "Anishinaabemowin (Ojibwe)",
+     "as_credited": "Anishinaabemowin (Ojibwe)",
+     "glottocode": "ojib1241",
+     "iso639_3": "",
+     "match": "group",
+     "indigenous": true,
+     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/"
+    },
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/"
+    }
+   ],
    "themes": [
     "Memory and Oral History"
    ],
@@ -8071,9 +8215,13 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Art, Craft and Making"
+   ],
+   "primary_theme": "Art, Craft and Making",
+   "families": [
+    "Expression and Representation"
+   ],
    "form": "Documentary",
    "length": "Feature"
   },
@@ -8425,11 +8573,16 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Kinship",
+    "Youth"
+   ],
+   "primary_theme": "Kinship",
+   "families": [
+    "Lives and Relations"
+   ],
+   "form": "Fiction",
+   "length": "Short"
   },
   "DIR-0122-F3": {
    "title": "Exposed Nerves",
@@ -8711,11 +8864,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Collective and Community Media"
+   ],
+   "primary_theme": "Collective and Community Media",
+   "families": [
+    "Expression and Representation"
+   ],
    "form": "Documentary",
-   "length": null
+   "length": "Short"
   },
   "Q20261115-408-F4": {
    "title": "Me Mengwa Maa Sinatae: Butterfly Patterns of Light",
@@ -9039,7 +9196,17 @@
      "name": "Mary Galloway"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/"
+    }
+   ],
    "themes": [
     "LGBTQIA2S"
    ],
@@ -9047,7 +9214,7 @@
    "families": [
     "Lives and Relations"
    ],
-   "form": null,
+   "form": "Experimental",
    "length": "Short"
   },
   "RESEARCH-FILM-20261031-800-0017": {
@@ -9563,11 +9730,34 @@
      "name": "Rhayne Vermette"
     }
    ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/"
+    },
+    {
+     "label": "French",
+     "as_credited": "French",
+     "glottocode": "stan1290",
+     "iso639_3": "fra",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/"
+    }
+   ],
+   "themes": [
+    "Memory and Oral History"
+   ],
+   "primary_theme": "Memory and Oral History",
+   "families": [
+    "Knowledge and Continuity"
+   ],
+   "form": "Experimental",
    "length": "Feature"
   },
   "Q20261115-91-F1": {
@@ -10695,7 +10885,26 @@
      "name": "Sinakson Trevor Solway"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "Blackfoot",
+     "as_credited": "Blackfoot",
+     "glottocode": "siks1238",
+     "iso639_3": "bla",
+     "match": "exact",
+     "indigenous": true,
+     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/"
+    },
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/"
+    }
+   ],
    "themes": [
     "Land Defense",
     "Cosmology and Origin Stories"
@@ -10877,7 +11086,17 @@
      "name": "Tasha Hubbard"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/"
+    }
+   ],
    "themes": [
     "More-than-Human Relations",
     "Food Sovereignty"
@@ -10898,7 +11117,17 @@
      "name": "Tasha Hubbard"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/"
+    }
+   ],
    "themes": [
     "Kinship",
     "State Violence and Genocide"
@@ -11218,7 +11447,17 @@
      "name": "TJ Cuthand"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/"
+    }
+   ],
    "themes": [
     "LGBTQIA2S"
    ],
@@ -11226,7 +11465,7 @@
    "families": [
     "Lives and Relations"
    ],
-   "form": null,
+   "form": "Documentary",
    "length": "Short"
   },
   "MIRROR-FILMOGRAPHY-20261107-007": {
@@ -12159,12 +12398,26 @@
      "name": "Walter Scott"
     }
    ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/"
+    }
+   ],
+   "themes": [
+    "Health and Healing"
+   ],
+   "primary_theme": "Health and Healing",
+   "families": [
+    "Lives and Relations"
+   ],
+   "form": "Fiction",
+   "length": "Short"
   },
   "FILM-0094": {
    "title": "Balmoral Hotel",
@@ -13030,12 +13283,28 @@
      "name": "Zoe Leigh Hopkins"
     }
    ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "languages": [
+    {
+     "label": "Mohawk",
+     "as_credited": "Mohawk",
+     "glottocode": "moha1258",
+     "iso639_3": "moh",
+     "match": "exact",
+     "indigenous": true,
+     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/"
+    }
+   ],
+   "themes": [
+    "Kinship",
+    "Linguistic Preservation"
+   ],
+   "primary_theme": "Kinship",
+   "families": [
+    "Knowledge and Continuity",
+    "Lives and Relations"
+   ],
+   "form": "Fiction",
+   "length": "Short"
   },
   "Q20261115-761-F1": {
    "title": "Goldilocks tahnon Ohkwari (Goldilocks and the Bears)",
@@ -13540,8 +13809,8 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Experimental",
+   "length": "Short"
   },
   "FILM-0107": {
    "title": "Ilwen / The Earth Smells of Father",
@@ -13770,9 +14039,13 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Youth"
+   ],
+   "primary_theme": "Youth",
+   "families": [
+    "Lives and Relations"
+   ],
    "form": "Animation",
    "length": "Short"
   },
@@ -14111,9 +14384,16 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Archives, Museums and Repatriation",
+    "Art, Craft and Making",
+    "Memory and Oral History"
+   ],
+   "primary_theme": "Archives, Museums and Repatriation",
+   "families": [
+    "Expression and Representation",
+    "Knowledge and Continuity"
+   ],
    "form": "Documentary",
    "length": null
   },
@@ -15104,9 +15384,18 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Displacement and Migration",
+    "Art, Craft and Making",
+    "Kinship",
+    "Urban Indigeneity"
+   ],
+   "primary_theme": "Displacement and Migration",
+   "families": [
+    "Expression and Representation",
+    "Lives and Relations",
+    "Sovereignty and Politics"
+   ],
    "form": null,
    "length": null
   },
@@ -19092,10 +19381,14 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
+   "themes": [
+    "Memory and Oral History"
+   ],
+   "primary_theme": "Memory and Oral History",
+   "families": [
+    "Knowledge and Continuity"
+   ],
+   "form": "Documentary",
    "length": "Short"
   },
   "FILM-0225": {
@@ -19166,12 +19459,22 @@
      "name": "Blackhorse Lowe"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "Diné (Navajo)",
+     "as_credited": "Diné (Navajo)",
+     "glottocode": "nava1243",
+     "iso639_3": "nav",
+     "match": "exact",
+     "indigenous": true,
+     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/"
+    }
+   ],
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Fiction",
+   "length": "Short"
   },
   "FILM-SRC-2023-00049": {
    "title": "Metal Belt",
@@ -19204,12 +19507,26 @@
      "name": "Blackhorse Lowe"
     }
    ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/"
+    }
+   ],
+   "themes": [
+    "Music and Performance"
+   ],
+   "primary_theme": "Music and Performance",
+   "families": [
+    "Expression and Representation"
+   ],
+   "form": "Music Video",
+   "length": "Short"
   },
   "FILM-0226": {
    "title": "Smoke Signals",
@@ -19610,7 +19927,17 @@
      "name": "Paige Bethmann"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/"
+    }
+   ],
    "themes": [
     "Residential and Boarding Schools",
     "Youth",
@@ -19913,7 +20240,17 @@
      "name": "Sky Hopinka"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/"
+    }
+   ],
    "themes": [
     "Music and Performance"
    ],
@@ -20457,11 +20794,16 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Youth",
+    "Kinship"
+   ],
+   "primary_theme": "Youth",
+   "families": [
+    "Lives and Relations"
+   ],
+   "form": "Fiction",
+   "length": "Short"
   },
   "DIR-0308-F1": {
    "title": "Reservation Dogs",
@@ -21323,7 +21665,7 @@
     "Lives and Relations",
     "Sovereignty and Politics"
    ],
-   "form": null,
+   "form": "Animation",
    "length": "Short"
   },
   "Q20261114-80-F1": {
@@ -21737,11 +22079,16 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Kinship",
+    "Youth"
+   ],
+   "primary_theme": "Kinship",
+   "families": [
+    "Lives and Relations"
+   ],
+   "form": "Fiction",
+   "length": "Short"
   },
   "FILM-0279": {
    "title": "Ronnie BoDean",
@@ -21957,11 +22304,16 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "LGBTQIA2S",
+    "Health and Healing"
+   ],
+   "primary_theme": "LGBTQIA2S",
+   "families": [
+    "Lives and Relations"
+   ],
    "form": "Documentary",
-   "length": null
+   "length": "Feature"
   },
   "Q20261115-851-F3": {
    "title": "Mohawk Ironworkers",
@@ -22739,9 +23091,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Art, Craft and Making",
+    "Elders and Knowledge"
+   ],
+   "primary_theme": "Art, Craft and Making",
+   "families": [
+    "Expression and Representation",
+    "Knowledge and Continuity"
+   ],
    "form": "Documentary",
    "length": "Short"
   },
@@ -22856,11 +23214,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Youth"
+   ],
+   "primary_theme": "Youth",
+   "families": [
+    "Lives and Relations"
+   ],
+   "form": "Fiction",
+   "length": "Short"
   },
   "FILM-SRC-2023-00037": {
    "title": "Home",
@@ -23398,7 +23760,17 @@
      "name": "Charlene Raven Moore"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/"
+    }
+   ],
    "themes": [
     "Kinship",
     "Youth"
@@ -23407,7 +23779,7 @@
    "families": [
     "Lives and Relations"
    ],
-   "form": null,
+   "form": "Documentary",
    "length": "Short"
   },
   "NEW-9aa0b951017b-WORK-1": {
@@ -23802,7 +24174,26 @@
      "name": "Darcy Tara McDiarmid"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "Hän",
+     "as_credited": "Hän",
+     "glottocode": "hann1241",
+     "iso639_3": "haa",
+     "match": "exact",
+     "indigenous": true,
+     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/"
+    },
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/"
+    }
+   ],
    "themes": [
     "More-than-Human Relations",
     "Environmental Change"
@@ -23823,12 +24214,31 @@
      "name": "Darcy Tara McDiarmid"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/"
+    },
+    {
+     "label": "French",
+     "as_credited": "French",
+     "glottocode": "stan1290",
+     "iso639_3": "fra",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/"
+    }
+   ],
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Experimental",
+   "length": "Short"
   },
   "FILM-SRC-2023-00029": {
    "title": "Starlight Sojourn",
@@ -23852,14 +24262,24 @@
   },
   "NEW-2e4ac5c54066-WORK-1": {
    "title": "Lucky Strikes",
-   "year": null,
+   "year": 2024,
    "makers": [
     {
      "id": "NEW-2e4ac5c54066",
      "name": "Darcy Waite"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/"
+    }
+   ],
    "themes": [
     "Kinship"
    ],
@@ -23872,14 +24292,24 @@
   },
   "NEW-dfdd07a8d99a-WORK-1": {
    "title": "An Amazon night’s dream",
-   "year": null,
+   "year": 2024,
    "makers": [
     {
      "id": "NEW-dfdd07a8d99a",
      "name": "Diego Sarmiento"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "Spanish",
+     "as_credited": "Spanish",
+     "glottocode": "stan1288",
+     "iso639_3": "spa",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/"
+    }
+   ],
    "themes": [
     "Elders and Knowledge",
     "Youth"
@@ -23894,7 +24324,7 @@
   },
   "NEW-4df03f9ddcb0-WORK-1": {
    "title": "Datrin (The Raven)",
-   "year": null,
+   "year": 2024,
    "makers": [
     {
      "id": "NEW-4df03f9ddcb0",
@@ -24024,14 +24454,24 @@
   },
   "NEW-72e611292227-WORK-1": {
    "title": "América",
-   "year": null,
+   "year": 2025,
    "makers": [
     {
      "id": "NEW-72e611292227",
      "name": "Eduardo Valiente"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "Spanish",
+     "as_credited": "Spanish",
+     "glottocode": "stan1288",
+     "iso639_3": "spa",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/"
+    }
+   ],
    "themes": [
     "Art, Craft and Making",
     "Elders and Knowledge"
@@ -24109,14 +24549,33 @@
   },
   "NEW-21a57c1dac2c-WORK-1": {
    "title": "Migizi Makes A Deal With Gzhemnidoo",
-   "year": null,
+   "year": 2025,
    "makers": [
     {
      "id": "NEW-21a57c1dac2c",
      "name": "Esbikenh"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "Anishinaabemowin (Ojibwe)",
+     "as_credited": "Anishinaabemowin (Ojibwe)",
+     "glottocode": "ojib1241",
+     "iso639_3": "",
+     "match": "group",
+     "indigenous": true,
+     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/"
+    },
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/"
+    }
+   ],
    "themes": [
     "Linguistic Preservation",
     "Cosmology and Origin Stories"
@@ -24203,7 +24662,26 @@
      "name": "Evelyn Pakinewatik"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "Anishinaabemowin (Ojibwe)",
+     "as_credited": "Anishinaabemowin (Ojibwe)",
+     "glottocode": "ojib1241",
+     "iso639_3": "",
+     "match": "group",
+     "indigenous": true,
+     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/"
+    },
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/"
+    }
+   ],
    "themes": [
     "Health and Healing"
    ],
@@ -24232,7 +24710,7 @@
    "families": [
     "Knowledge and Continuity"
    ],
-   "form": null,
+   "form": "Documentary",
    "length": "Short"
   },
   "MIRROR-FILMOGRAPHY-20261107-104": {
@@ -24269,14 +24747,24 @@
   },
   "NEW-10f8d32b8220-WORK-1": {
    "title": "Regalia",
-   "year": null,
+   "year": 2024,
    "makers": [
     {
      "id": "NEW-10f8d32b8220",
      "name": "Farrah Murdock"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/"
+    }
+   ],
    "themes": [
     "Urban Indigeneity",
     "Music and Performance"
@@ -24429,14 +24917,33 @@
   },
   "NEW-f8409bf84ccd-WORK-1": {
    "title": "Sweetgrass Rings",
-   "year": null,
+   "year": 2024,
    "makers": [
     {
      "id": "NEW-f8409bf84ccd",
      "name": "Hector Jenkins"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "Anishinaabemowin (Ojibwe)",
+     "as_credited": "Anishinaabemowin (Ojibwe)",
+     "glottocode": "ojib1241",
+     "iso639_3": "",
+     "match": "group",
+     "indigenous": true,
+     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/"
+    },
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/"
+    }
+   ],
    "themes": [
     "Women and Gender",
     "Kinship"
@@ -24450,14 +24957,33 @@
   },
   "NEW-ece62656570c-WORK-1": {
    "title": "Entropy",
-   "year": null,
+   "year": 2024,
    "makers": [
     {
      "id": "NEW-ece62656570c",
      "name": "Inuk Jørgensen"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "Kalaallisut",
+     "as_credited": "Kalaallisut",
+     "glottocode": "kala1399",
+     "iso639_3": "kal",
+     "match": "exact",
+     "indigenous": true,
+     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/"
+    },
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/"
+    }
+   ],
    "themes": [
     "Environmental Change",
     "Cosmology and Origin Stories"
@@ -24590,14 +25116,24 @@
   },
   "NEW-be50361fffae-WORK-1": {
    "title": "Nenaboozhoo",
-   "year": null,
+   "year": 2025,
    "makers": [
     {
      "id": "NEW-be50361fffae",
      "name": "Isaac Murdoch"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "Anishinaabemowin (Ojibwe)",
+     "as_credited": "Anishinaabemowin (Ojibwe)",
+     "glottocode": "ojib1241",
+     "iso639_3": "",
+     "match": "group",
+     "indigenous": true,
+     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/"
+    }
+   ],
    "themes": [
     "Cosmology and Origin Stories",
     "Linguistic Preservation"
@@ -24676,14 +25212,24 @@
   },
   "NEW-0e6943bcfc39-WORK-1": {
    "title": "Wînipêk",
-   "year": null,
+   "year": 2024,
    "makers": [
     {
      "id": "NEW-0e6943bcfc39",
      "name": "James Dixon"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/"
+    }
+   ],
    "themes": [
     "Displacement and Migration",
     "More-than-Human Relations"
@@ -24721,19 +25267,29 @@
   },
   "NEW-530611f5ba51-WORK-1": {
    "title": "Wind Rabbit",
-   "year": null,
+   "year": 2025,
    "makers": [
     {
      "id": "NEW-530611f5ba51",
      "name": "January Rogers"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/"
+    }
+   ],
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Experimental",
+   "length": "Short"
   },
   "NEW-910d2e1ea6f9-F1": {
    "title": "Bay of Herons",
@@ -24868,14 +25424,24 @@
   },
   "NEW-87ea9931fa0d-WORK-1": {
    "title": "Erroll Kinistino: Inspiration and Activism in the Arts",
-   "year": null,
+   "year": 2025,
    "makers": [
     {
      "id": "NEW-87ea9931fa0d",
      "name": "Jimi Leigh Kinistino"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/"
+    }
+   ],
    "themes": [
     "Music and Performance",
     "Resistance Movements",
@@ -25138,11 +25704,16 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Kinship",
+    "Health and Healing"
+   ],
+   "primary_theme": "Kinship",
+   "families": [
+    "Lives and Relations"
+   ],
+   "form": "Documentary",
+   "length": "Short"
   },
   "NEW-62ef600b6317-F1": {
    "title": "Gods Acre",
@@ -25217,7 +25788,17 @@
      "name": "Kira Doxtator"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/"
+    }
+   ],
    "themes": [
     "LGBTQIA2S",
     "Urban Indigeneity",
@@ -25233,7 +25814,7 @@
   },
   "RESEARCH-FILM-20261031-800-NEW-363": {
    "title": "He Moʻolelo Wahi Pana (A Storied Landscape)",
-   "year": null,
+   "year": 2025,
    "makers": [
     {
      "id": "NEW-9d43ec46ed5e",
@@ -25248,7 +25829,7 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
+   "form": "Experimental",
    "length": "Short"
   },
   "NEW-c65e17478a98-WORK-1": {
@@ -25394,14 +25975,24 @@
   },
   "NEW-c91587181e29-WORK-1": {
    "title": "One Duck Down",
-   "year": null,
+   "year": 2025,
    "makers": [
     {
      "id": "NEW-c91587181e29",
      "name": "Lindsay McIntyre"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/"
+    }
+   ],
    "themes": [
     "More-than-Human Relations",
     "Memory and Oral History"
@@ -25500,11 +26091,15 @@
      "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/"
     }
    ],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Music and Performance"
+   ],
+   "primary_theme": "Music and Performance",
+   "families": [
+    "Expression and Representation"
+   ],
    "form": "Music Video",
-   "length": null
+   "length": "Short"
   },
   "RESEARCH-FILM-20261031-800-0015": {
    "title": "Tiger",
@@ -25515,7 +26110,17 @@
      "name": "Loren Waters"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/"
+    }
+   ],
    "themes": [
     "Art, Craft and Making",
     "Kinship"
@@ -25546,14 +26151,24 @@
   },
   "NEW-6f7957e0e500-WORK-1": {
    "title": "Mangittatuarjuk (The Gnawer of Rocks)",
-   "year": null,
+   "year": 2025,
    "makers": [
     {
      "id": "NEW-6f7957e0e500",
      "name": "Louise Flaherty"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "Inuktitut",
+     "as_credited": "Inuktitut",
+     "glottocode": "east2534",
+     "iso639_3": "ike",
+     "match": "probable",
+     "indigenous": true,
+     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/"
+    }
+   ],
    "themes": [
     "Elders and Knowledge",
     "Cosmology and Origin Stories"
@@ -25567,14 +26182,24 @@
   },
   "NEW-0f17e286a91a-WORK-1": {
    "title": "Jülapüin Yonna (The Dream of Dance)",
-   "year": null,
+   "year": 2025,
    "makers": [
     {
      "id": "NEW-0f17e286a91a",
      "name": "Luzbeidy Monterrosa Atencio"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "Wayuunaiki",
+     "as_credited": "Wayuunaiki",
+     "glottocode": "wayu1243",
+     "iso639_3": "guc",
+     "match": "exact",
+     "indigenous": true,
+     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/"
+    }
+   ],
    "themes": [
     "Extractivism",
     "Music and Performance",
@@ -25870,14 +26495,33 @@
   },
   "NEW-2652d494da73-WORK-1": {
    "title": "The Moth",
-   "year": null,
+   "year": 2025,
    "makers": [
     {
      "id": "NEW-2652d494da73",
      "name": "Michelle Derosier"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "Anishinaabemowin (Ojibwe)",
+     "as_credited": "Anishinaabemowin (Ojibwe)",
+     "glottocode": "ojib1241",
+     "iso639_3": "",
+     "match": "group",
+     "indigenous": true,
+     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/"
+    },
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/"
+    }
+   ],
    "themes": [
     "Extractivism",
     "Land Defense",
@@ -25995,7 +26639,7 @@
   },
   "NEW-665e8a4ab293-WORK-1": {
    "title": "cadèwašteya",
-   "year": null,
+   "year": 2025,
    "makers": [
     {
      "id": "NEW-665e8a4ab293",
@@ -26026,7 +26670,17 @@
      "name": "Roxanne Lauzon"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "French",
+     "as_credited": "French",
+     "glottocode": "stan1290",
+     "iso639_3": "fra",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/"
+    }
+   ],
    "themes": [
     "Women and Gender",
     "Kinship"
@@ -26111,7 +26765,7 @@
   },
   "NEW-bd42ac361cc5-WORK-1": {
    "title": "The Wandering Soul",
-   "year": null,
+   "year": 2024,
    "makers": [
     {
      "id": "NEW-bd42ac361cc5",
@@ -26254,14 +26908,24 @@
   },
   "NEW-5b6f10a24b2e-WORK-1": {
    "title": "pîķîwî",
-   "year": null,
+   "year": 2023,
    "makers": [
     {
      "id": "NEW-5b6f10a24b2e",
      "name": "Olivia Marie Golosky"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/"
+    }
+   ],
    "themes": [
     "LGBTQIA2S",
     "Health and Healing"
@@ -26369,7 +27033,17 @@
      "name": "Polaris Castillo"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/"
+    }
+   ],
    "themes": [
     "Youth"
    ],
@@ -26377,12 +27051,12 @@
    "families": [
     "Lives and Relations"
    ],
-   "form": null,
+   "form": "Music Video",
    "length": "Short"
   },
   "NEW-922a5b7b41f9-WORK-1": {
    "title": "Shaaghan Neekwaii (Two Old Women)",
-   "year": null,
+   "year": 2025,
    "makers": [
     {
      "id": "NEW-922a5b7b41f9",
@@ -26549,19 +27223,29 @@
   },
   "NEW-b8ff82e3ca1c-WORK-1": {
    "title": "The Wild Sheriff",
-   "year": null,
+   "year": 2025,
    "makers": [
     {
      "id": "NEW-b8ff82e3ca1c",
      "name": "Sarah Houle"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/"
+    }
+   ],
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Fiction",
+   "length": "Short"
   },
   "RESEARCH-FILM-20261031-800-0025": {
    "title": "Circles",
@@ -26572,7 +27256,26 @@
      "name": "Sarah Houle"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "Cree",
+     "as_credited": "Cree",
+     "glottocode": "cree1272",
+     "iso639_3": "cre",
+     "match": "group",
+     "indigenous": true,
+     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/"
+    },
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/"
+    }
+   ],
    "themes": [
     "Kinship",
     "Women and Gender",
@@ -27199,12 +27902,22 @@
      "name": "Shane McSauby"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/"
+    }
+   ],
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Fiction",
+   "length": "Short"
   },
   "NEW-e0d12f4753ec-WORK-1": {
    "title": "Nivingajuliat",
@@ -27215,7 +27928,17 @@
      "name": "Shelby Lisk"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/"
+    }
+   ],
    "themes": [
     "Art, Craft and Making",
     "Women and Gender",
@@ -27452,14 +28175,33 @@
   },
   "NEW-78d238c60c79-WORK-1": {
    "title": "Hatarimuy: Rise Up",
-   "year": null,
+   "year": 2024,
    "makers": [
     {
      "id": "NEW-78d238c60c79",
      "name": "Suni Sonqo Vizcarra Wood"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "Quechua",
+     "as_credited": "Quechua",
+     "glottocode": "quec1387",
+     "iso639_3": "que",
+     "match": "group",
+     "indigenous": true,
+     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/"
+    },
+    {
+     "label": "Spanish",
+     "as_credited": "Spanish",
+     "glottocode": "stan1288",
+     "iso639_3": "spa",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/"
+    }
+   ],
    "themes": [
     "Resistance Movements",
     "Youth"
@@ -27492,9 +28234,13 @@
      "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/"
     }
    ],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Kinship"
+   ],
+   "primary_theme": "Kinship",
+   "families": [
+    "Lives and Relations"
+   ],
    "form": "Fiction",
    "length": "Short"
   },
@@ -27554,14 +28300,24 @@
   },
   "NEW-99cac4bf4e69-WORK-1": {
    "title": "Endless Sunlight",
-   "year": null,
+   "year": 2026,
    "makers": [
     {
      "id": "NEW-99cac4bf4e69",
      "name": "Tyson Houseman"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/"
+    }
+   ],
    "themes": [
     "Residential and Boarding Schools",
     "Women and Gender",
@@ -27584,7 +28340,17 @@
      "name": "Vanessa Loewen"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/"
+    }
+   ],
    "themes": [],
    "primary_theme": null,
    "families": [],
@@ -27661,9 +28427,16 @@
      "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/"
     }
    ],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Linguistic Preservation",
+    "Youth",
+    "Elders and Knowledge"
+   ],
+   "primary_theme": "Linguistic Preservation",
+   "families": [
+    "Knowledge and Continuity",
+    "Lives and Relations"
+   ],
    "form": "Documentary",
    "length": "Short"
   },
@@ -27699,7 +28472,7 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": "Fiction",
+   "form": "Animation",
    "length": "Short"
   },
   "NEW-c74dcc05c3f0-WORK-1": {
@@ -27831,7 +28604,7 @@
   },
   "NEW-031a02f81a1f-WORK-1": {
    "title": "Corn Husk Doll",
-   "year": null,
+   "year": 2025,
    "makers": [
     {
      "id": "NEW-031a02f81a1f",
@@ -28495,9 +29268,13 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Elders and Knowledge"
+   ],
+   "primary_theme": "Elders and Knowledge",
+   "families": [
+    "Knowledge and Continuity"
+   ],
    "form": "Documentary",
    "length": null
   },
@@ -33060,7 +33837,17 @@
      "name": "Konwanahktotha Alvera Sargent"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "Mohawk",
+     "as_credited": "Mohawk",
+     "glottocode": "moha1258",
+     "iso639_3": "moh",
+     "match": "exact",
+     "indigenous": true,
+     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/"
+    }
+   ],
    "themes": [
     "Linguistic Preservation",
     "Elders and Knowledge",
@@ -33071,8 +33858,8 @@
     "Knowledge and Continuity",
     "Sovereignty and Politics"
    ],
-   "form": null,
-   "length": null
+   "form": "Documentary",
+   "length": "Short"
   },
   "RESEARCH-FILM-20261031-800-NEW-345": {
    "title": "EYES TWIRL ROUNDS",
@@ -33083,7 +33870,17 @@
      "name": "Nanobah Becker"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/"
+    }
+   ],
    "themes": [
     "Music and Performance"
    ],
@@ -33103,7 +33900,17 @@
      "name": "Montana Cypress"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/"
+    }
+   ],
    "themes": [
     "Health and Healing"
    ],
@@ -33139,7 +33946,17 @@
      "name": "Brit Hensel"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/"
+    }
+   ],
    "themes": [
     "Kinship",
     "Women and Gender"
@@ -33219,12 +34036,22 @@
      "name": "Dallas R Soonias"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/"
+    }
+   ],
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Fiction",
+   "length": "Short"
   },
   "RESEARCH-FILM-20261031-800-NEW-351": {
    "title": "Uncommon Ground",
@@ -33235,7 +34062,17 @@
      "name": "Faith Sparrow-Crawford"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/"
+    }
+   ],
    "themes": [
     "Elders and Knowledge"
    ],
@@ -33255,7 +34092,17 @@
      "name": "Normand Junior Thirnish-Pilot"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "Innu-aimun",
+     "as_credited": "Innu-aimun",
+     "glottocode": "mont1268",
+     "iso639_3": "moe",
+     "match": "exact",
+     "indigenous": true,
+     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/"
+    }
+   ],
    "themes": [
     "Kinship",
     "Health and Healing"
@@ -33321,7 +34168,17 @@
      "name": "Louise Thomas"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/"
+    }
+   ],
    "themes": [
     "Art, Craft and Making",
     "Health and Healing",
@@ -33344,7 +34201,35 @@
      "name": "Elise Beers Aachix̂ Qağaduug"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "Lakota",
+     "as_credited": "Lakota",
+     "glottocode": "lako1247",
+     "iso639_3": "lkt",
+     "match": "exact",
+     "indigenous": true,
+     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/"
+    },
+    {
+     "label": "Diné (Navajo)",
+     "as_credited": "Diné (Navajo)",
+     "glottocode": "nava1243",
+     "iso639_3": "nav",
+     "match": "exact",
+     "indigenous": true,
+     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/"
+    },
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/"
+    }
+   ],
    "themes": [
     "Youth",
     "Self-Representation and Countering Stereotypes"
@@ -33366,7 +34251,17 @@
      "name": "Zachery Cameron Longboy"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/"
+    }
+   ],
    "themes": [
     "Health and Healing"
    ],
@@ -34182,9 +35077,13 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Justice, Truth and Reconciliation"
+   ],
+   "primary_theme": "Justice, Truth and Reconciliation",
+   "families": [
+    "Sovereignty and Politics"
+   ],
    "form": null,
    "length": null
   },
@@ -34607,11 +35506,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Memory and Oral History"
+   ],
+   "primary_theme": "Memory and Oral History",
+   "families": [
+    "Knowledge and Continuity"
+   ],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "WAP-FILM-00427": {
    "title": "En cette nuit",
@@ -34623,11 +35526,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "More-than-Human Relations"
+   ],
+   "primary_theme": "More-than-Human Relations",
+   "families": [
+    "Land and Environment"
+   ],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "WAP-FILM-00428": {
    "title": "Là où le silence devient souffle",
@@ -34659,11 +35566,19 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Residential and Boarding Schools",
+    "Justice, Truth and Reconciliation",
+    "Youth"
+   ],
+   "primary_theme": "Residential and Boarding Schools",
+   "families": [
+    "Knowledge and Continuity",
+    "Lives and Relations",
+    "Sovereignty and Politics"
+   ],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "WAP-FILM-00430": {
    "title": "Nicw mahikanak, Deux loups, Two Wolves",
@@ -34695,11 +35610,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Self-Representation and Countering Stereotypes"
+   ],
+   "primary_theme": "Self-Representation and Countering Stereotypes",
+   "families": [
+    "Expression and Representation"
+   ],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "WAP-FILM-00432": {
    "title": "Yonnonhwe’",
@@ -36086,9 +37005,13 @@
      "source": "https://vtape.org/video?vi=3866"
     }
    ],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Memory and Oral History"
+   ],
+   "primary_theme": "Memory and Oral History",
+   "families": [
+    "Knowledge and Continuity"
+   ],
    "form": "Experimental",
    "length": "Short"
   },
@@ -39112,11 +40035,16 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Archives, Museums and Repatriation",
+    "Memory and Oral History"
+   ],
+   "primary_theme": "Archives, Museums and Repatriation",
+   "families": [
+    "Knowledge and Continuity"
+   ],
+   "form": "Documentary",
+   "length": "Short"
   },
   "NEW-fd82a54aaea6-WORK-2": {
    "title": "Auikanime (La que tiene hambre)",
@@ -43358,10 +44286,14 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
+   "themes": [
+    "Memory and Oral History"
+   ],
+   "primary_theme": "Memory and Oral History",
+   "families": [
+    "Knowledge and Continuity"
+   ],
+   "form": "Documentary",
    "length": null
   },
   "BETA30B-20261107-F19": {
@@ -43524,11 +44456,21 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Memory and Oral History",
+    "Linguistic Preservation",
+    "Resistance Movements",
+    "Land Defense",
+    "State Violence and Genocide"
+   ],
+   "primary_theme": "Memory and Oral History",
+   "families": [
+    "Knowledge and Continuity",
+    "Land and Environment",
+    "Sovereignty and Politics"
+   ],
+   "form": "Documentary",
+   "length": "Short"
   },
   "BETA30-20261106-F12": {
    "title": "Jeroky Gwasu – Grande Canto",
@@ -43540,11 +44482,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Music and Performance"
+   ],
+   "primary_theme": "Music and Performance",
+   "families": [
+    "Expression and Representation"
+   ],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "BETA30-20261106-F17": {
    "title": "Kaj aba obiryakaro – Cuidando la sangre de la tierra",
@@ -46255,11 +47201,19 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Kinship",
+    "State Violence and Genocide",
+    "Linguistic Preservation"
+   ],
+   "primary_theme": "Kinship",
+   "families": [
+    "Knowledge and Continuity",
+    "Lives and Relations",
+    "Sovereignty and Politics"
+   ],
    "form": "Documentary",
-   "length": null
+   "length": "Feature"
   },
   "Q20261108-66-F1": {
    "title": "My Roommate Makayla",
@@ -49656,9 +50610,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Music and Performance",
+    "Memory and Oral History"
+   ],
+   "primary_theme": "Music and Performance",
+   "families": [
+    "Expression and Representation",
+    "Knowledge and Continuity"
+   ],
    "form": "Documentary",
    "length": null
   },
@@ -50417,10 +51377,16 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
+   "themes": [
+    "Health and Healing",
+    "Art, Craft and Making"
+   ],
+   "primary_theme": "Health and Healing",
+   "families": [
+    "Expression and Representation",
+    "Lives and Relations"
+   ],
+   "form": "Documentary",
    "length": "Short"
   },
   "Q20261115-402-F2": {
@@ -50456,10 +51422,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
+   "themes": [
+    "Sovereignty and Self-Determination",
+    "Borders"
+   ],
+   "primary_theme": "Sovereignty and Self-Determination",
+   "families": [
+    "Sovereignty and Politics"
+   ],
+   "form": "Documentary",
    "length": "Short"
   },
   "Q20261115-403-F1": {
@@ -51979,9 +52950,20 @@
      "source": "https://miradanativa.org/pelicula/palabras-de-las-hijas-del-mayab/"
     }
    ],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Women and Gender",
+    "Land Defense",
+    "Extractivism",
+    "Resistance Movements",
+    "Collective and Community Media"
+   ],
+   "primary_theme": "Women and Gender",
+   "families": [
+    "Expression and Representation",
+    "Land and Environment",
+    "Lives and Relations",
+    "Sovereignty and Politics"
+   ],
    "form": "Documentary",
    "length": "Short"
   },
@@ -54222,11 +55204,18 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": "Fiction",
-   "length": null
+   "themes": [
+    "Urban Indigeneity",
+    "Youth",
+    "Music and Performance"
+   ],
+   "primary_theme": "Urban Indigeneity",
+   "families": [
+    "Expression and Representation",
+    "Lives and Relations"
+   ],
+   "form": "Animation",
+   "length": "Short"
   },
   "Q20261122-54-F1": {
    "title": "Shoot Your Shot",
@@ -56100,9 +57089,14 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Elders and Knowledge",
+    "Cosmology and Origin Stories"
+   ],
+   "primary_theme": "Elders and Knowledge",
+   "families": [
+    "Knowledge and Continuity"
+   ],
    "form": null,
    "length": "Short"
   },
@@ -56414,10 +57408,14 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
+   "themes": [
+    "Kinship"
+   ],
+   "primary_theme": "Kinship",
+   "families": [
+    "Lives and Relations"
+   ],
+   "form": "Fiction",
    "length": "Short"
   },
   "Q20261114-40-F4": {
@@ -57504,11 +58502,16 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "LGBTQIA2S",
+    "Kinship"
+   ],
+   "primary_theme": "LGBTQIA2S",
+   "families": [
+    "Lives and Relations"
+   ],
    "form": "Animation",
-   "length": null
+   "length": "Short"
   },
   "Q20261124-04-F1": {
    "title": "Forgotten Founder: The Untold Story of Samson Occom and Dartmouth",
@@ -57568,11 +58571,18 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Kinship",
+    "Health and Healing",
+    "Cosmology and Origin Stories"
+   ],
+   "primary_theme": "Kinship",
+   "families": [
+    "Knowledge and Continuity",
+    "Lives and Relations"
+   ],
+   "form": "Fiction",
+   "length": "Short"
   },
   "Q20261124-42-F1": {
    "title": "Poos",
@@ -57600,11 +58610,17 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Land Defense",
+    "Sovereignty and Self-Determination"
+   ],
+   "primary_theme": "Land Defense",
+   "families": [
+    "Land and Environment",
+    "Sovereignty and Politics"
+   ],
    "form": "Documentary",
-   "length": null
+   "length": "Short"
   },
   "Q20261124-47-F1": {
    "title": "Forever After",
@@ -57616,11 +58632,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Health and Healing"
+   ],
+   "primary_theme": "Health and Healing",
+   "families": [
+    "Lives and Relations"
+   ],
+   "form": "Fiction",
+   "length": "Short"
   },
   "Q20261124-60-F1": {
    "title": "Sacred Ink",
@@ -57632,11 +58652,16 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Art, Craft and Making",
+    "Self-Representation and Countering Stereotypes"
+   ],
+   "primary_theme": "Art, Craft and Making",
+   "families": [
+    "Expression and Representation"
+   ],
    "form": "Documentary",
-   "length": null
+   "length": "Short"
   },
   "Q20261124-61-F1": {
    "title": "Poacher’s Paradise",
@@ -57956,12 +58981,30 @@
      "name": "Reeva Billy"
     }
    ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://filmfreeway.com/CanoeConnections"
+    }
+   ],
+   "themes": [
+    "Art, Craft and Making",
+    "Elders and Knowledge",
+    "Kinship"
+   ],
+   "primary_theme": "Art, Craft and Making",
+   "families": [
+    "Expression and Representation",
+    "Knowledge and Continuity",
+    "Lives and Relations"
+   ],
    "form": "Documentary",
-   "length": null
+   "length": "Short"
   },
   "NEW-6a4dad66a06c-WORK-1": {
    "title": "Más de mil años después",
@@ -58343,11 +59386,16 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "More-than-Human Relations",
+    "Food Sovereignty"
+   ],
+   "primary_theme": "More-than-Human Relations",
+   "families": [
+    "Land and Environment"
+   ],
    "form": "Documentary",
-   "length": null
+   "length": "Short"
   },
   "Q20261124-56-F1": {
    "title": "Stay Awhile",
@@ -58688,6 +59736,22 @@
     {
      "id": "QM-e4a0eabad1",
      "name": "Abraham Ávila Quintero"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "Q20261124-16-F1": {
+   "title": "Wings of the Feather River: Memory & Renewal in Maidu Country",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261124-16",
+     "name": "Isaiah Meders"
     }
    ],
    "languages": [],
