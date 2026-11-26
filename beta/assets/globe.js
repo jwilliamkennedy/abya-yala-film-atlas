@@ -690,7 +690,7 @@ let hoverShown='';
     live.on('idle',()=>{if(!settled&&!wheelActive)scheduleSettle(100);revealFocus();updateDetailStatus(true);});
     live.on('zoomend',()=>updateClusters());live.on('moveend',()=>updateThumbs());
     live.on('moveend',()=>{if(!liveReady)return;readLiveCamera();if(wheelActive)return;syncTerrain();finishMove();updateDetailStatus(true);});
-    installStarDrawing();installGather();{const n=new URLSearchParams(location.search).get('nodes')||'toned';if(n!=='default')nodeStyle(n);}
+    installStarDrawing();installGather();{const n=new URLSearchParams(location.search).get('nodes')||'shadow';if(n!=='default')nodeStyle(n);}
     {const tip=el('div');tip.id='globe-hover-name';tip.setAttribute('aria-hidden','true');tip.hidden=true;host.append(tip);let pend=null,frame=0;
      const show=()=>{frame=0;const e=pend;if(!e)return;if(e.originalEvent?.target?.closest?.('.globe-map-thumb-anchor')){tip.hidden=true;return;}const xy=[wrap(e.lngLat.lng),e.lngLat.lat],land=gatherMode?null:landAt(xy);live.getCanvas().style.cursor=land?'pointer':'';hoverLand(land&&land.id!==targetPrimary?land.id:'');if(!land){tip.hidden=true;return;}tip.textContent=land.name;tip.style.transform=`translate(${Math.round(e.point.x+14)}px,${Math.round(e.point.y+12)}px)`;tip.hidden=false;};
      live.on('mousemove',e=>{pend=e;if(!frame)frame=requestAnimationFrame(show);});live.on('mouseout',()=>{pend=null;tip.hidden=true;hoverLand('');live.getCanvas().style.cursor='';});live.on('movestart',()=>{tip.hidden=true;});}
