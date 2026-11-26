@@ -2091,3 +2091,7 @@ body.is-constellating .map-panel:has(#constellate-mode details[open]) {
 #weave-trace-layer .wt-more[open]{max-height:min(52vh,460px);overflow:auto}
 #weave-trace-layer .wt-more .wt-all{margin-top:8px}
 #weave-trace-layer .wt-credit{margin:8px 0 0;font-size:10.5px;opacity:.5}
+body #weave-trace-layer .wt-result>.wt-head{position:static;min-height:0;margin:0;padding:0;border:0;background:none;box-shadow:none}
+body #weave-trace-layer .wt-result>.wt-actions{position:static;margin:0;padding:0;border:0;background:none;box-shadow:none}
+body #weave-trace-layer.is-figure .wt-dots circle.is-star{r:2.6px}
+body #weave-trace-layer.is-figure .wt-line{stroke:rgba(255,247,226,.9);stroke-width:1.2}
