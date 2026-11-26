@@ -11,6 +11,7 @@ Outputs : beta/data/film-facets.csv   one row per film, field and value, with co
           beta/languages.html, beta/themes.html   browse pages
 """
 import csv, json, re, sys, glob, html, datetime, os, unicodedata, collections
+from identity import published_facets, unambiguous_titles
 PUB, BETA = sys.argv[1], sys.argv[2].rstrip('/')
 # optional: --themes <json {families, films}> (theme tags as built from the atlas master), --js-out <path> (where the map's copy goes)
 OPT = {sys.argv[i]: sys.argv[i + 1] for i in range(3, len(sys.argv) - 1, 2)}
@@ -62,76 +63,72 @@ def length_from_medium(m):
     return None
 
 rows, films, lang_count, theme_count = [], {}, collections.Counter(), collections.Counter()
-seen = {}
+exact = published_facets(json.load(open(OPT['--published'], encoding='utf-8'))) if '--published' in OPT else {}
+facet_conflicts = {fid: c for fid, (_, _, c) in exact.items() if c}
 for r in P:
     for f in r['films']:
-        fk = (key(f['title']), f.get('year'))
-        if fk in seen:  # co-directed film: one entry, all directors
-            films[seen[fk]]['makers'].append({'id': r['id'], 'name': r['name']}); continue
-        fid = f['id']; seen[fk] = fid
+        fid = f['id']
+        if fid in films:  # same permanent ID, never a title/year resemblance
+            if not any(m['id'] == r['id'] for m in films[fid]['makers']):
+                films[fid]['makers'].append({'id': r['id'], 'name': r['name']})
+            continue
+        values, sources, conflicts = exact.get(fid, ({}, {}, []))
         e = {'title': f['title'], 'year': f.get('year'), 'makers': [{'id': r['id'], 'name': r['name']}], 'languages': [], 'themes': [],
              'primary_theme': None, 'families': [], 'form': None, 'length': None}
         def add(field, value, code='', source='', basis=''):
             rows.append({'film_id': fid, 'title': f['title'], 'year': f.get('year') or '', 'field': field, 'value': value, 'code': code, 'source_url': source, 'basis': basis})
         # languages
-        if f.get('languageLabels'):  # the atlas master: the language store since 8 Nov 2026
+        if 'languages' in conflicts:
+            raw, lsrc, basis = [], '', ''
+        elif 'languages' in values:
+            raw, lsrc, basis = values['languages'], sources['languages'], 'recorded in Published'
+        elif f.get('languageLabels'):  # the atlas master: the language store since 8 Nov 2026
             raw, lsrc, basis = f['languageLabels'], f.get('languageSource', ''), (f.get('languageNote') if f.get('languageNote') and not re.search(r'\.csv|fill\b|atlas\.xlsx|in the atlas', f.get('languageNote')) else 'recorded with the film')
         elif fid in FILLED:
             raw, lsrc, part = FILLED[fid]; basis = 'checked against the source page'
         else:
             raw, lsrc, basis = f.get('languages'), f.get('source', ''), 'recorded with the film'
-        for name in split_langs(raw):
-            a = ALIAS.get(key(name))
+        for name in (raw if 'languages' in values else split_langs(raw)):
+            a = (next((v for v in AUTH if v['label'] == name), None) if 'languages' in values else ALIAS.get(key(name)))
             label = a['label'] if a else name
             if label in [x['label'] for x in e['languages']]: continue
             e['languages'].append({'label': label, 'as_credited': name, 'glottocode': a['glottocode'] if a else '', 'iso639_3': a['iso639_3'] if a else '',
                                    'match': a['match'] if a else 'not in authority', 'indigenous': (a['indigenous'] == 'yes') if a else None, 'source': lsrc})
             add('language', label, a['glottocode'] if a else '', lsrc, basis + (f'; credited as "{name}"' if a and key(name) != key(label) else ''))
             lang_count[label] += 1
-        # themes, form, length from synopsis tagging
-        t = T['films'].get(fid)
-        if t:
-            tags, primary, form, length, tsrc = t
-            e['themes'] = tags; e['primary_theme'] = primary or None
-            e['families'] = sorted({FAMILY[x] for x in tags if x in FAMILY})
-            for tag in tags:
-                add('theme', tag, FAMILY.get(tag, ''), tsrc, 'tagged from a published synopsis' + ('; primary theme' if tag == primary else ''))
-                theme_count[tag] += 1
-            if form: e['form'] = form; add('form', form, '', tsrc, 'from the published synopsis')
-            if length: e['length'] = {'S': 'Short', 'F': 'Feature'}.get(length, length); add('length', e['length'], '', tsrc, 'from the published synopsis')
-        if not e['form']:
-            fm = form_from_medium(f.get('medium'))
-            if fm: e['form'] = fm; add('form', fm, '', f.get('source', ''), f'normalised from the recorded form "{f.get("medium")}"')
-        if not e['length']:
-            ln = length_from_medium(f.get('medium'))
-            if ln: e['length'] = ln; add('length', ln, '', f.get('source', ''), f'normalised from the recorded form "{f.get("medium")}"')
+        # Published values take precedence independently of whether a film has
+        # theme tags. Legacy fields only fill genuinely empty published fields.
+        tags, primary, form, length, tsrc = T['films'].get(fid) or ([], '', '', '', '')
+        tags = [] if 'themes' in conflicts else values.get('themes', tags)
+        primary = '' if 'primary_theme' in conflicts else values.get('primary_theme', primary)
+        e['themes'] = tags
+        e['primary_theme'] = primary if primary in tags else None
+        e['families'] = sorted({FAMILY[tag] for tag in tags if tag in FAMILY})
+        for tag in tags:
+            add('theme', tag, FAMILY.get(tag, ''), sources.get('themes', tsrc), 'tagged from a published synopsis' + ('; primary theme' if tag == e['primary_theme'] else ''))
+            theme_count[tag] += 1
+        for field, legacy, normalize in [('form', form, form_from_medium), ('length', {'S':'Short','F':'Feature','M':'Mid-length'}.get(length,length), length_from_medium)]:
+            if field in conflicts:
+                continue
+            if field in values:
+                e[field] = values[field]
+                add(field, e[field], '', sources[field], 'recorded in Published')
+            elif legacy:
+                e[field] = legacy
+                add(field, legacy, '', tsrc, 'from the published synopsis')
+            else:
+                v = normalize(f.get('medium'))
+                if v:
+                    e[field] = v
+                    add(field, v, '', f.get('source', ''), f'normalised from the recorded form "{f.get("medium")}"')
         films[fid] = e
 
-# Distinct works, counted the way the map's Films list groups them (2026-11-09): credits sharing a film ID are one work;
-# copies of the same title from different filmmakers are one work when their years agree, or when one year is missing and
-# the title is long enough to be distinctive; "Title / Translation" or "Title: subtitle" matches "Title" when the years agree.
-# (beta/patches-catalog.js, sections artwork-presentation59.js and films-merge-20261107.js.) Facet entries above stay one per film ID.
-def count_works(records):
-    by_id, groups = {}, []
-    for r in records:
-        for f in r['films']:
-            if f['id'] in by_id: continue
-            g = {'t': key(f['title']), 'y': f.get('year') or None, 'main': key(re.split(r'\s+/\s+|:\s', str(f['title'] or ''))[0])}
-            by_id[f['id']] = g; groups.append(g)
-    kept, by_title, by_main = 0, {}, {}
-    for g in groups:
-        lst = by_title.setdefault(g['t'], [])
-        match = next((o for o in lst if (g['y'] == o['y'] if g['y'] and o['y'] else len(g['t']) >= 10)), None)
-        mk = g['main'] + '|' + str(g['y'] or '')
-        if not match and g['y'] and len(mk) > 8: match = by_main.get(mk)
-        if match:
-            if not match['y'] and g['y']: match['y'] = g['y']
-            continue
-        lst.append(g)
-        if g['y']: by_main[mk] = g
-        kept += 1
-    return kept
-WORKS = count_works(P)
+# Published film IDs are authoritative; suspected duplicate titles require
+# reviewed catalogue corrections rather than automatic title-based merging.
+WORKS = len(films)
+if facet_conflicts:
+    print('Published facet conflicts (omitted from work-level indexes):', json.dumps(facet_conflicts, ensure_ascii=False), file=sys.stderr)
+
 
 os.makedirs(f'{BETA}/data', exist_ok=True)
 cols = ['film_id', 'title', 'year', 'field', 'value', 'code', 'source_url', 'basis']
@@ -145,7 +142,7 @@ for label, n in lang_count.items():
         lang_rows.append({'label': label, 'also_credited_as': '', 'glottocode': '', 'glottolog_name': '', 'glottolog_level': '', 'iso639_3': '', 'match': 'not in authority', 'indigenous': '', 'note': 'Add to tools/facets/languages_authority.csv', 'films': n})
 with open(f'{BETA}/data/languages.csv', 'w', newline='', encoding='utf-8') as fh:
     w = csv.DictWriter(fh, fieldnames=list(lang_rows[0].keys())); w.writeheader(); w.writerows(lang_rows)
-doc = {'title': 'Indigenous Cinema Atlas · film facets', 'generated': TODAY, 'license': 'See data.html', 'films_on_public_map': WORKS, 'film_entries': len(films),
+doc = {'title': 'Indigenous Cinema Atlas · film facets', 'generated': TODAY, 'license': 'See data.html', 'films_on_public_map': WORKS, 'film_entries': len(films), 'published_field_conflicts': facet_conflicts,
        'fields': {'language': 'Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3',
                   'theme': 'Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept',
                   'form': 'Documentary, Fiction, Animation, Experimental, Hybrid or Music Video', 'length': 'Short, Mid-length, Feature or Series'},
@@ -158,7 +155,7 @@ compact = {fid: {k: v for k, v in {'l': [x['label'] for x in e['languages']], 't
 auth = {a['label']: {'g': a['glottocode'], 'i': a['iso639_3'], 'm': a['match'], 'x': a['indigenous'] == 'yes'} for a in AUTH}
 open(OPT.get('--js-out', f'{BETA}/facets-data.js'), 'w', encoding='utf-8').write(
     f'/* Built by tools/facets/build.py on {TODAY} from the public records, the theme tagging and the language authority. Edit those, not this file. */\n'
-    f'window.ATLAS_FACETS={json.dumps({"films": compact, "families": T["families"], "languages": auth, "titleIndex": {key(e["title"]) + "|" + str(e["year"] or ""): fid for fid, e in films.items()}}, ensure_ascii=False, separators=(",", ":"))};\n')
+    f'window.ATLAS_FACETS={json.dumps({"films": compact, "families": T["families"], "languages": auth, "titleIndex": unambiguous_titles(films, key)}, ensure_ascii=False, separators=(",", ":"))};\n')
 
 # ---- browse pages, built on the filmmaker directory's own page shell ----
 shell = open(f'{BETA}/maker/index.html', encoding='utf-8').read()

@@ -40,12 +40,12 @@ class PageLoaderTest(unittest.TestCase):
             return [(m.group(1), m.group(0)) for m in re.finditer(pattern, html)]
         before = scripts(original)
         required = ('atlas-data.js', 'territories-data.js', 'territory-fixes.js',
-                    'assets/constellate.js', 'watch-data.js', 'assets/globe-experiment.js')
+                    'assets/catalogue.js', 'assets/collection-editor.js', 'watch-data.js', 'assets/globe-core.js', 'assets/globe.js')
         for src in required:
             self.assertEqual(sum(name == src for name, _ in before), 1, src)
         names = [name for name, _ in before]
-        self.assertLess(names.index('watch-data.js'), names.index('assets/globe-experiment.js'))
-        self.assertLess(names.index('assets/constellate.js'), names.index('assets/globe-experiment.js'))
+        self.assertLess(names.index('watch-data.js'), names.index('assets/globe.js'))
+        self.assertLess(names.index('assets/globe-core.js'), names.index('assets/globe.js'))
         with TemporaryDirectory() as folder:
             path = Path(folder) / 'index.html'
             path.write_text(original, encoding='utf-8')
