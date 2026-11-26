@@ -362,6 +362,15 @@ async def run(browser,name,viewport):
             assert await page.locator(".globe-credit-data").get_by_text("Film id",exact=True).count()>0
             assert await page.locator("#globe-encounter .globe-feature-art").count()==1
             assert await page.locator("#globe-encounter .globe-film-strip").count()==1
+            community=await page.evaluate("id=>AtlasGlobe.communityCinema(id)",land)
+            assert community["credits"]==sum(len(m["credits"]) for m in community["makers"])
+            assert community["artwork"]<=community["films"] and community["watch"]<=community["films"]
+            await page.locator(".globe-land-makers summary").first.click()
+            assert await page.locator(".globe-maker-card").count()==len(community["makers"])
+            await page.locator(".globe-maker-card summary").first.click()
+            await page.locator(".globe-maker-works [data-maker-film]").first.wait_for()
+            assert await page.locator(".globe-maker-actions a").first.get_attribute("href")
+            await page.locator(".globe-land-makers summary").first.click()
             assert 1 < await page.locator("#globe-encounter .globe-strip-item").count() <= 8
             assert await page.locator("#globe-encounter .globe-strip-item[aria-current=true]").count()==1
             assert await page.locator("#globe-encounter .globe-credit-details").count()==1

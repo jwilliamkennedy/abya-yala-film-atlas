@@ -23,3 +23,11 @@ assert.equal(core.selectConnections(routes,20).length,3);assert.equal(core.selec
 let time=0;const cache=core.createArtworkCache(2,()=>time);
 assert(cache.remember('a',100,50));cache.remember('b',50,100);assert.equal(cache.get('a').ratio,2);cache.remember('c',1,1);assert(!cache.get('b'));cache.fail('bad');assert(!cache.canWarm('bad'));time=60000;assert(cache.canWarm('bad'));assert(!cache.remember('bad',0,10));cache.remember('bad',10,10);assert(!cache.canWarm('bad'));cache.clear();assert.equal(cache.stats().decoded,0);
 console.log('Globe core: geographic arcs, distinct thematic destinations, bounded artwork cache passed');
+
+const credit=(id,film,record,image)=>({id,film,record,maker:record,title:id,image});
+const community=[credit('a','1','A',''),credit('b','2','A','one'),credit('c','3','B','two'),credit('d','3','C','two'),credit('e','4','C','three'),credit('f','5','C','three')];
+const info=core.communityCinema(community,f=>f.image,f=>f.film==='3');
+assert.equal(info.credits,6);assert.equal(info.films,5);assert.equal(info.artwork,4);assert.equal(info.watch,1);assert.equal(info.makers.length,3);
+assert.deepEqual(core.broadcastCredits(community,community[0],f=>f.image).map(f=>f.id),['c','e','b']);
+assert.equal(core.broadcastCredits(community,community[0],f=>f.image,1).length,1);
+console.log('Community counts and director-diverse broadcast selection passed');

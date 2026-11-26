@@ -49,6 +49,21 @@ function createArtworkCache(limit=160,now=()=>Date.now()){
     stats(){return {decoded:decoded.size,failed:failed.size,limit};}
   };
 }
-const api=Object.freeze({greatCircleSegments,selectConnections,createArtworkCache});
+function communityCinema(credits,hasImage,hasWatch){
+ const unique=[...new Map(credits.map(f=>[f.id,f])).values()],works=new Set(),art=new Set(),watch=new Set(),makers=new Map();
+ for(const f of unique){const id=f.film||f.id;works.add(id);if(hasImage(f))art.add(id);if(hasWatch(f))watch.add(id);
+ if(!f.record)continue;let group=makers.get(f.record);if(!group){group={id:f.record,name:f.maker,credits:[],works:new Set()};makers.set(f.record,group);}group.credits.push(f);group.works.add(id);}
+ return {credits:unique.length,films:works.size,artwork:art.size,watch:watch.size,makers:[...makers.values()].map(m=>({...m,works:m.works.size})).sort((a,b)=>a.name.localeCompare(b.name)||a.id.localeCompare(b.id))};
+}
+
+function broadcastCredits(credits,selected,sourceImage,limit=6){
+ const work=f=>f.film||f.id,seen=new Set(selected?[work(selected)]:[]),makers=new Set(selected?[selected.record]:[]),images=new Set(selected&&sourceImage(selected)?[sourceImage(selected)]:[]),out=[];
+ const pool=credits.map(f=>({f,source:sourceImage(f)})).filter(x=>x.source&&!seen.has(work(x.f)));
+ const add=entry=>{const {f,source}=entry;if(out.length>=limit||seen.has(work(f))||images.has(source))return;out.push(f);seen.add(work(f));makers.add(f.record);images.add(source);};
+ for(const item of pool)if(!makers.has(item.f.record))add(item);
+ for(const item of pool)add(item);
+ return out;
+}
+const api=Object.freeze({greatCircleSegments,selectConnections,createArtworkCache,communityCinema,broadcastCredits});
 if(typeof module!=='undefined'&&module.exports)module.exports=api;else root.AtlasGlobeCore=api;
 })(typeof globalThis!=='undefined'?globalThis:this);
