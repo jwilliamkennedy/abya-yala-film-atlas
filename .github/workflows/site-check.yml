@@ -134,7 +134,7 @@ jobs:
                 page=await ctx.new_page()
                 problems=[]
                 page.on('pageerror',lambda e:problems.append(str(e)))
-                await page.goto(BASE+prefix+'index.html'+('?globe=0' if prefix=='beta/' else ''),wait_until='domcontentloaded',timeout=90000)
+                await page.goto(BASE+prefix+'index.html?globe=0',wait_until='domcontentloaded',timeout=90000)
                 await page.wait_for_function("document.documentElement.dataset.atlasUi==='ready'",timeout=45000)
                 # the key opens from the top bar on the main site, and from inside Layers where the beta has moved it
                 if await page.locator('#layers-key').count():
@@ -183,7 +183,7 @@ jobs:
                 await page.goto(BASE+prefix+'index.html?constellate=1',wait_until='domcontentloaded',timeout=90000)
                 await page.wait_for_function("window.AtlasConstellate?.enabled && window.AtlasCollections?.current() && document.documentElement.dataset.atlasUi==='ready'",timeout=45000)
                 await page.wait_for_function("document.getElementById('ws-theme-all') && document.getElementById('ws-film-q')",timeout=20000)
-                if prefix:
+                if True:  # the main site carries the beta build since the 26 Nov promotion
                     await page.locator('#weave-map-theme').wait_for(state='visible')
                     assert not await page.locator('#weave-start').is_visible(),(label,'welcome covers map')
                     assert await page.locator('#weave-map-theme option[value]:not([value=""])').count()==30
@@ -230,8 +230,8 @@ jobs:
                   return {open:d.open,items:ol.querySelectorAll(':scope > li').length,height:r.height,
                     width:r.width,guide:document.getElementById('weave-guide')?.getBoundingClientRect().height};
                 }""")
-                assert help_state['open'] and help_state['items']==(3 if prefix else 4) and 0<help_state['height']<365,(label,'Help popover obstructs interface',help_state)
-                if not prefix:
+                assert help_state['open'] and help_state['items']==3 and 0<help_state['height']<365,(label,'Help popover obstructs interface',help_state)
+                if False:  # the main site carries the beta build
                     assert help_state['guide'] is not None and help_state['guide']<120,(label,'Onboarding guide too tall',help_state)
                 await page.keyboard.press('Escape')
                 assert await page.locator('#constellate-how').evaluate('(d)=>!d.open'),(label,'Help Escape failed')
@@ -256,7 +256,7 @@ jobs:
                 }""")
                 assert not geometry.get('error') and geometry['startError']<12 and geometry['endError']<12,(label,'thread not connected to card thumbnails',geometry)
                 read=page.locator('#constellate-read')
-                if prefix and not await read.is_visible():
+                if not await read.is_visible():
                     if await page.locator('#weave-browse-back').is_visible():
                         await page.locator('#weave-browse-back').click()
                     read=page.locator('#weave-read-start')
@@ -303,7 +303,7 @@ jobs:
                 assert await page.locator('#weave-player').is_hidden(),(label,'player did not close')
                 assert await page.locator('#weave-play').get_attribute('aria-pressed')=='false',(label,'Play mode remains pressed after closing')
                 assert await page.locator('#constellate-read').get_attribute('aria-pressed')=='true',(label,'Read mode not restored after presenting')
-                if not prefix:
+                if False:  # the main site carries the beta build
                   await page.locator('#constellate-mode .weave-more>summary').click(force=True,timeout=10000)
                   assert await page.locator('#constellate-mode .weave-more-menu #constellate-fit').is_visible()
                 # Dense thread regression: all film positions must remain on the ribbon
@@ -389,7 +389,7 @@ jobs:
           mkdir -p shots
           cat > /tmp/atlas-first-paint-qa.py <<'PY'
           import asyncio,json,pathlib
-          for filename in ('index.html','beta/flat.html'):
+          for filename in ('flat.html','beta/flat.html'):
             html=pathlib.Path(filename).read_text()
             assert html.index('id="view-control"')<html.index('id="jump-index"'), filename
             assert html.count('id="world"')==1,filename
@@ -399,7 +399,7 @@ jobs:
             report={}
             async with async_playwright() as playwright:
               browser=await playwright.chromium.launch(args=["--use-angle=swiftshader","--enable-unsafe-swiftshader"])
-              for path in ("index.html","beta/flat.html"):
+              for path in ("flat.html","beta/flat.html"):
                 for view in ("map","constellate"):
                   name=path.replace("/","-")+"-"+view
                   context=await browser.new_context(viewport={"width":1440,"height":900})
@@ -710,7 +710,7 @@ jobs:
             result=[]
             async with async_playwright() as p:
               browser=await p.chromium.launch(args=['--use-angle=swiftshader','--enable-unsafe-swiftshader'])
-              for base,label,width,height in [(ROOT,'main-desktop',1440,900),(ROOT+'beta/','beta-mobile',390,844)]:
+              for base,label,width,height in [(ROOT,'beta-build-on-main',390,844),(ROOT+'beta/','beta-mobile',390,844)]:
                 ctx=await browser.new_context(viewport={'width':width,'height':height},reduced_motion='reduce')
                 page=await ctx.new_page()
                 result.append(await verify(page,base,label,width,height))

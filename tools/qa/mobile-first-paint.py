@@ -70,6 +70,7 @@ async def case(browser,engine,name,route,width,persisted=None):
   await req.continue_()
  await p.route('**/assets/world-50m.json', delay_world)
  route=route.replace('beta/index.html','beta/flat.html')
+ if route.startswith('index.html'):route='flat.html'+route[len('index.html'):]
  url=BASE+route+('?constellate=1' if name=='constellate' else '')
  samples=[]
  try:
