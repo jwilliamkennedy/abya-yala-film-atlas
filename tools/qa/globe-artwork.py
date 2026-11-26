@@ -126,6 +126,28 @@ async def main():
         assert after==initial,("INLINE_PLAYBACK state changed",initial,after)
         assert await play.evaluate("(e)=>document.activeElement===e")
         print("INLINE_PLAYBACK passed",target["film"],flush=True)
+        # The film stage: Play opens the film in the centre; the arrows step through the land's films
+        # and stop playback; Escape closes and leaves the globe as it was.
+        await play.click()
+        await page.locator('#globe-player[open][data-state="playing"] iframe').wait_for(state="visible")
+        staged=await page.evaluate("({title:document.querySelector('#globe-player h2').textContent,count:document.querySelector('#globe-player .globe-stage-count')?.textContent||''})")
+        if staged["count"]:
+            await page.keyboard.press("ArrowRight")
+            await page.wait_for_function("(t)=>document.querySelector('#globe-player h2')?.textContent!==t && document.querySelector('#globe-player').dataset.state==='card' && !document.querySelector('#globe-player iframe')",arg=staged["title"])
+            await page.keyboard.press("ArrowLeft")
+            await page.wait_for_function("(t)=>document.querySelector('#globe-player h2')?.textContent===t",arg=staged["title"])
+        assert "open=film" in await page.evaluate("AtlasGlobe.discovery.shareURL")
+        await page.keyboard.press("Escape")
+        assert not await page.locator("#globe-player").count()
+        await page.wait_for_function("(f)=>AtlasGlobe.focus.settled && AtlasGlobe.discovery.featured?.film===f",arg=target["film"])
+        # Map thumbnails stand over their own land: MapLibre positions the anchor, and no two overlap.
+        anchor=await page.evaluate("(l)=>AtlasGlobe.anchors.find(a=>a.id===l)?.coordinate",target["land"])
+        await page.evaluate("(c)=>AtlasGlobe.goTo(c,7.3)",anchor)
+        await page.wait_for_function("AtlasGlobe.focus.settled && AtlasGlobe.tileState?.zoom>7.2",timeout=30000)
+        await page.wait_for_timeout(1500)
+        thumbs=await page.evaluate("""()=>{const a=[...document.querySelectorAll('.globe-map-thumb-anchor')],r=a.map(e=>e.firstElementChild.getBoundingClientRect());let overlap=0;for(let i=0;i<r.length;i++)for(let j=i+1;j<r.length;j++)if(r[i].left<r[j].right&&r[j].left<r[i].right&&r[i].top<r[j].bottom&&r[j].top<r[i].bottom)overlap++;return {count:a.length,reported:AtlasGlobe.thumbs,absolute:a.every(e=>getComputedStyle(e).position==='absolute'),overlap}}""")
+        assert thumbs["count"]==thumbs["reported"] and thumbs["absolute"] and thumbs["overlap"]==0,thumbs
+        print("FILM_STAGE passed",staged,thumbs,flush=True)
         # Verify both indexed playback types in a separate tab, without depending
         # on the availability of the third-party video itself.
         watch_tab=await browser.new_page()

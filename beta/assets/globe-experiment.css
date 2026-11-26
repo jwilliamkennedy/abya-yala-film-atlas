@@ -332,18 +332,6 @@ body.atlas-globe-experiment #constellate-mode{display:none!important}
 /* Full films remain part of the globe encounter. Native dialog traps focus and
    makes the map inert while the viewer is open; no third-party player is loaded
    until a visitor explicitly chooses Play. */
-#globe-player{box-sizing:border-box;width:min(920px,calc(100vw - 28px));max-width:100%;max-height:calc(100dvh - 24px);overflow:auto;overscroll-behavior:contain;background:#13252b;color:#eef1e8;border:1px solid #789a8b;border-radius:10px;padding:14px;box-shadow:0 18px 90px #0009}
-#globe-player::backdrop{background:#071319d9}
-#globe-player .globe-player-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:12px}
-#globe-player h2{font:500 clamp(18px,2.3vw,26px)/1.25 system-ui,sans-serif;color:#edf1e9;margin:0;overflow-wrap:anywhere}
-#globe-player p{font:13px/1.4 system-ui,sans-serif;color:#c0d6ce;margin:4px 0 0}
-#globe-player button,#globe-player a{font:600 13px/1.4 system-ui,sans-serif;color:#e3efe5}
-#globe-player button{min-height:44px;background:#29443e;border:1px solid #75988a;border-radius:5px;padding:7px 12px;cursor:pointer}
-#globe-player iframe{width:100%;aspect-ratio:16/9;display:block;border:0;background:#0a1216}
-#globe-player .globe-player-foot{display:flex;flex-wrap:wrap;gap:12px 18px;padding:12px 0 0}
-#globe-player .globe-player-foot a{text-decoration:underline;text-underline-offset:3px}
-@media(max-height:530px){#globe-player{width:min(760px,calc(100vw - 20px));padding:9px}#globe-player iframe{max-height:calc(100dvh - 125px)}}
-@media(max-width:550px){#globe-player{padding:10px}#globe-player .globe-player-foot a{padding:6px 0}}
 
 /* Geographic and catalogue context remain visibly distinct during reading. */
 #globe-encounter .globe-active-theme{color:#d6e5b9;font:500 12px/1.3 system-ui,sans-serif;overflow-wrap:anywhere}
@@ -854,3 +842,126 @@ html[data-globe-entry] #atlas-globe-stage>#constellate-popup .constellate-headin
 #atlas-rotational-globe .globe-gather-film .globe-thumb-frame,#atlas-rotational-globe .globe-gather-film .globe-strip-art{display:block;width:100%;height:100%}
 #atlas-rotational-globe .globe-gather-film img{width:100%;height:100%;object-fit:cover;display:block}
 #atlas-rotational-globe .globe-gather-film:hover{border-color:#f2d99b!important}
+/* Map thumbnails: MapLibre places the anchor; the card inside carries the look and the motion */
+.globe-map-thumb-anchor{line-height:0}
+.globe-map-thumb-anchor:hover,.globe-map-thumb-anchor:focus-within{z-index:8}
+.globe-map-thumb{display:block;transform-origin:50% 100%;transition:opacity .25s ease,transform .18s ease,border-color .15s ease}
+.globe-map-thumb.is-playable::before{content:"";position:absolute;left:4px;bottom:4px;width:16px;height:16px;border-radius:50%;background:#0d141bd9 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M6.2 4.6v6.8L11.6 8z' fill='%23fbf8ee'/%3E%3C/svg%3E") center/16px no-repeat}
+@media(prefers-reduced-motion:reduce){.globe-map-thumb{transition:none}.globe-map-thumb:hover,.globe-map-thumb:focus-visible{transform:none}}
+/* The film stage: a film in the centre of the globe, over its land; it plays there */
+#globe-player{box-sizing:border-box;width:min(760px,calc(100vw - 28px));max-width:100%;max-height:calc(100dvh - 28px);overflow:auto;overscroll-behavior:contain;padding:14px 18px 14px;border-radius:16px;border:1px solid rgba(251,248,238,.12);background:#0c131b;color:#e9e6dc;box-shadow:0 24px 80px rgba(0,0,0,.55),0 1px 0 rgba(255,255,255,.04) inset;font:400 13.5px/1.45 var(--ui-sans,system-ui,sans-serif)}
+#globe-player[data-state=playing]{width:max(min(420px,calc(100vw - 28px)),min(940px,calc(100vw - 28px),calc((100dvh - 410px)*1.7778)))}
+#globe-player::backdrop{background:rgba(5,10,16,.56)}
+#globe-player :is(button,a){font:500 13px/1.2 var(--ui-sans,system-ui,sans-serif);color:#f3efe3}
+#globe-player :is(button,a):focus-visible{outline:2px solid #f2d99b;outline-offset:2px}
+#globe-player .globe-stage-top{display:flex;align-items:center;gap:10px;margin:0 0 12px}
+#globe-player .globe-stage-land{display:inline-flex;align-items:center;gap:8px;min-height:32px;padding:5px 12px 5px 10px;border-radius:999px;border:1px solid rgba(251,248,238,.14);background:rgba(251,248,238,.04);cursor:pointer;font-family:Georgia,"Times New Roman",serif;font-size:14px;max-width:60%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#globe-player .globe-stage-land:hover{border-color:rgba(242,217,155,.55)}
+#globe-player .globe-stage-dot{flex:none;width:10px;height:10px;border-radius:50%;box-shadow:0 0 0 1.5px rgba(251,248,238,.9)}
+#globe-player .globe-stage-count{color:#9fb0b8;font-size:12px;font-variant-numeric:tabular-nums}
+#globe-player .globe-stage-close{margin-left:auto;min-height:32px;padding:5px 12px;border-radius:999px;border:1px solid rgba(251,248,238,.14);background:transparent;cursor:pointer}
+#globe-player .globe-stage-close:hover{background:rgba(251,248,238,.08)}
+#globe-player .globe-stage-body{display:grid;grid-template-columns:minmax(0,auto) minmax(0,1fr);gap:22px;align-items:start}
+#globe-player .globe-stage-media{position:relative;display:grid;place-items:center;min-width:180px;max-width:340px;border-radius:10px;overflow:hidden;background:#141f29;transform-origin:50% 50%}
+#globe-player .globe-stage-media img{display:block;max-width:100%;max-height:340px;width:auto;height:auto}
+#globe-player .globe-stage-media[data-art=loading]{min-height:200px;width:300px;background:linear-gradient(100deg,#141f29 30%,#1c2a36 50%,#141f29 70%) 0 0/200% 100%;animation:globe-stage-shimmer 1.4s linear infinite}
+@keyframes globe-stage-shimmer{to{background-position:-200% 0}}
+#globe-player .globe-stage-art{display:block;line-height:0}
+#globe-player .globe-stage-initials{display:grid;place-items:center;width:260px;height:190px;font:400 54px/1 Georgia,"Times New Roman",serif;letter-spacing:.04em;color:#f2d99b;opacity:.85}
+#globe-player .globe-stage-playmark{position:absolute;inset:0;margin:auto;width:58px;height:58px;border-radius:50%;border:0;background:rgba(251,248,238,.94);color:#14181c;cursor:pointer;box-shadow:0 6px 22px rgba(0,0,0,.5);display:grid;place-items:center;transition:transform .15s ease}
+#globe-player .globe-stage-playmark span{font-size:20px;line-height:1;transform:translateX(2px);color:#14181c}
+#globe-player .globe-stage-playmark:hover{transform:scale(1.06)}
+#globe-player[data-state=playing] .globe-stage-body{grid-template-columns:minmax(0,1fr);gap:14px}
+#globe-player[data-state=playing] .globe-stage-media{max-width:none;width:100%;min-width:0;background:#06090d}
+#globe-player iframe{display:block;width:100%;aspect-ratio:16/9;border:0;background:#06090d}
+#globe-player h2{margin:0;font:400 clamp(21px,2.6vw,28px)/1.18 Georgia,"Times New Roman",serif;color:#fbf8ee;overflow-wrap:anywhere;outline:none}
+#globe-player p{margin:0}
+#globe-player .globe-stage-byline{margin-top:6px;font-size:14.5px;color:#e9e6dc}
+#globe-player .globe-stage-byline a{font-size:14.5px;text-decoration:underline;text-decoration-color:rgba(242,217,155,.55);text-underline-offset:3px}
+#globe-player .globe-stage-affiliation{margin-top:3px;color:#c9d3d6;font-size:13px}
+#globe-player .globe-stage-facts{margin-top:8px;color:#9fb0b8;font-size:12.5px}
+#globe-player .globe-stage-actions{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 0}
+#globe-player .globe-stage-actions>:is(a,button){display:inline-flex;align-items:center;min-height:38px;box-sizing:border-box;padding:8px 14px;border-radius:10px;border:1px solid rgba(251,248,238,.16);background:rgba(251,248,238,.04);text-decoration:none;cursor:pointer}
+#globe-player .globe-stage-actions>:is(a,button):hover{border-color:rgba(242,217,155,.55)}
+#globe-player .globe-stage-actions>.globe-stage-primary{background:#f2d99b;border-color:#f2d99b;color:#14181c;font-weight:600}
+#globe-player .globe-stage-actions>.globe-stage-primary:hover{background:#f7e5b8}
+#globe-player .globe-stage-actions>button:disabled{opacity:.55;cursor:default}
+#globe-player .globe-stage-themes{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+#globe-player .globe-stage-themes button{min-height:26px;padding:3px 10px;border-radius:999px;border:1px solid rgba(251,248,238,.12);background:transparent;color:#c9d3d6;font-size:12px;cursor:pointer}
+#globe-player .globe-stage-themes button:hover{border-color:#f2d99b;color:#fbf8ee}
+#globe-player .globe-stage-note{margin-top:10px;color:#8898a1;font-size:11.5px}
+#globe-player .globe-stage-note+.globe-stage-note{margin-top:2px}
+#globe-player[data-state=playing] .globe-stage-copy{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:18px;align-items:start}
+#globe-player[data-state=playing] .globe-stage-copy>*{grid-column:1}
+#globe-player[data-state=playing] .globe-stage-actions{grid-column:2;grid-row:1/span 3;margin:0;justify-content:flex-end}
+#globe-player[data-state=playing] :is(.globe-stage-themes,.globe-stage-note,.globe-stage-facts){display:none}
+#globe-player[data-state=playing] h2{font-size:clamp(19px,2.1vw,23px)}
+#globe-player[data-state=playing] .globe-stage-more-list{grid-template-columns:repeat(6,minmax(0,1fr))}
+#globe-player[data-state=playing] .globe-stage-more{margin-top:12px;padding-top:10px}
+#globe-player .globe-stage-more{margin-top:16px;padding-top:12px;border-top:1px solid rgba(251,248,238,.08)}
+#globe-player .globe-stage-more>small{display:block;margin-bottom:8px;font:600 10.5px/1.2 var(--ui-sans,system-ui,sans-serif);letter-spacing:.08em;text-transform:uppercase;color:#9fb0b8}
+#globe-player .globe-stage-more-list{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px;align-items:start}
+#globe-player .globe-stage-more-film{display:block;padding:0;border:0;background:none;text-align:left;cursor:pointer;min-width:0}
+#globe-player .globe-stage-thumb{position:relative;display:grid;place-items:center;width:100%;aspect-ratio:16/10;border-radius:6px;overflow:hidden;background:#141f29}
+#globe-player .globe-stage-thumb img{display:block;width:100%;height:100%;object-fit:cover}
+#globe-player .globe-stage-thumb i{font:400 20px/1 Georgia,"Times New Roman",serif;font-style:normal;color:#f2d99b;opacity:.8}
+#globe-player .globe-stage-thumb::after{content:"";position:absolute;left:5px;bottom:5px;width:18px;height:18px;border-radius:50%;background:#0d141bd9 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M6.2 4.6v6.8L11.6 8z' fill='%23fbf8ee'/%3E%3C/svg%3E") center/18px no-repeat}
+#globe-player .globe-stage-more-film>span:last-child{display:block;margin-top:5px;font-size:11.5px;line-height:1.25;color:#c9d3d6;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+#globe-player .globe-stage-more-film:hover .globe-stage-thumb{box-shadow:0 0 0 2px #f2d99b}
+#globe-player .globe-stage-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:14px;padding-top:10px;border-top:1px solid rgba(251,248,238,.08)}
+#globe-player .globe-stage-links{display:flex;flex-wrap:wrap;justify-content:center;gap:4px 16px;flex:1 1 auto}
+#globe-player .globe-stage-links a{font-size:12px;color:#9fb0b8;text-decoration:underline;text-underline-offset:3px}
+#globe-player .globe-stage-links a:hover{color:#fbf8ee}
+#globe-player .globe-stage-step{flex:none;min-height:34px;padding:6px 12px;border-radius:10px;border:1px solid rgba(251,248,238,.14);background:rgba(251,248,238,.04);cursor:pointer;white-space:nowrap}
+#globe-player .globe-stage-step:hover{border-color:rgba(242,217,155,.55)}
+@media(max-width:640px){
+#globe-player{width:calc(100vw - 16px);max-height:calc(100dvh - 16px);padding:12px 12px 10px;border-radius:14px}
+#globe-player .globe-stage-body{grid-template-columns:minmax(0,1fr);gap:14px}
+#globe-player .globe-stage-media{max-width:none;justify-self:center}
+#globe-player .globe-stage-media img{max-height:min(38dvh,300px)}
+#globe-player[data-state=playing] .globe-stage-copy{grid-template-columns:minmax(0,1fr)}
+#globe-player[data-state=playing] .globe-stage-actions{grid-column:1;grid-row:auto;margin-top:12px;justify-content:flex-start}
+#globe-player .globe-stage-more-list{grid-template-columns:repeat(3,minmax(0,1fr))}
+#globe-player .globe-stage-actions>:is(a,button),#globe-player .globe-stage-step,#globe-player .globe-stage-close,#globe-player .globe-stage-land{min-height:44px}
+}
+@media(max-height:560px) and (min-width:641px){#globe-player .globe-stage-media img{max-height:44dvh}#globe-player[data-state=playing]{width:max(360px,min(940px,calc(100vw - 28px),calc((100dvh - 170px)*1.7778)))}#globe-player[data-state=playing] .globe-stage-more{display:none}}
+@media(prefers-reduced-motion:reduce){#globe-player .globe-stage-media[data-art=loading]{animation:none}#globe-player .globe-stage-playmark{transition:none}}
+/* The film box: centred under the globe; one family with the menus and the film stage (ink, cream, gold) */
+#atlas-rotational-globe #globe-encounter{background:rgba(11,18,26,.93)!important;-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border:1px solid rgba(251,248,238,.1)!important;border-radius:14px!important;box-shadow:0 18px 50px rgba(0,0,0,.45),0 1px 0 rgba(255,255,255,.04) inset!important;color:#e9e6dc}
+/* centred when there is room; never under the zoom buttons */
+@media(min-width:761px){#atlas-rotational-globe #globe-encounter[data-belt=true]{--box-w:min(var(--belt-width,960px),100% - 2 * var(--globe-gutter) - 46px);left:max(var(--globe-gutter),min(calc(50% - var(--box-w) / 2),calc(100% - var(--globe-gutter) - 46px - var(--box-w))))}}
+#atlas-rotational-globe #globe-encounter .globe-encounter-heading>strong{font:400 21px/1.15 Georgia,"Times New Roman",serif;color:#fbf8ee;letter-spacing:0}
+#atlas-rotational-globe #globe-encounter .globe-cinema-count,#atlas-rotational-globe #globe-encounter .globe-cinema-count button{color:#9fb0b8}
+#atlas-rotational-globe #globe-encounter .globe-film-title{font-family:Georgia,"Times New Roman",serif;font-weight:400;color:#fbf8ee}
+#atlas-rotational-globe #globe-encounter .globe-director-link{text-decoration-color:rgba(242,217,155,.55)}
+#atlas-rotational-globe #globe-encounter :is(.globe-director-affiliation,.globe-film-facts){color:#c9d3d6}
+#atlas-rotational-globe #globe-encounter :is(.globe-association,.globe-encounter-evidence,.globe-encounter-evidence :is(a,button)){color:#8898a1!important}
+#atlas-rotational-globe #globe-encounter .globe-feature-art{border-radius:6px;overflow:hidden;cursor:pointer}
+#atlas-rotational-globe #globe-encounter .globe-encounter-actions>:is(a,button){min-height:27px;box-sizing:border-box;display:inline-flex;align-items:center;padding:4px 10px!important;border-radius:9px!important;border:1px solid rgba(251,248,238,.16)!important;background:rgba(251,248,238,.04)!important;color:#f3efe3!important;font:500 12px/1.2 var(--ui-sans,system-ui,sans-serif)!important;text-decoration:none!important}
+#atlas-rotational-globe #globe-encounter .globe-encounter-actions>:is(a,button):hover{border-color:rgba(242,217,155,.55)!important}
+#atlas-rotational-globe #globe-encounter .globe-encounter-actions>.globe-view-link{background:#f2d99b!important;border-color:#f2d99b!important;color:#14181c!important;font-weight:600!important}
+#atlas-rotational-globe #globe-encounter .globe-encounter-actions>.globe-connect-mode[aria-pressed=true]{background:rgba(242,217,155,.16)!important;border-color:#f2d99b!important}
+#atlas-rotational-globe #globe-encounter .globe-encounter-actions>button:disabled{opacity:.55}
+#atlas-rotational-globe #globe-encounter .globe-strip-heading>strong{font:600 10.5px/1.2 var(--ui-sans,system-ui,sans-serif);letter-spacing:.08em;text-transform:uppercase;color:#9fb0b8}
+#atlas-rotational-globe #globe-encounter .globe-strip-position{color:#9fb0b8;font-variant-numeric:tabular-nums}
+#atlas-rotational-globe #globe-encounter :is(.globe-cycle,.globe-collapse-belt,.globe-expand-encounter){border-radius:8px!important;border:1px solid rgba(251,248,238,.14)!important;background:rgba(251,248,238,.04)!important;color:#f3efe3!important}
+#atlas-rotational-globe #globe-encounter :is(.globe-cycle,.globe-collapse-belt,.globe-expand-encounter):hover:not(:disabled){border-color:rgba(242,217,155,.55)!important}
+#atlas-rotational-globe #globe-encounter[data-belt=true] .globe-strip-item{border-radius:8px}
+#atlas-rotational-globe #globe-encounter[data-belt=true] .globe-strip-item[aria-current=true]{background:rgba(251,248,238,.06);border-color:transparent;box-shadow:inset 0 -2px 0 #f2d99b}
+#atlas-rotational-globe #globe-encounter[data-belt=true] .globe-strip-item[aria-current=true] .globe-strip-title{color:#fbf8ee}
+#atlas-rotational-globe #globe-encounter[data-belt=true] .globe-strip-item .globe-strip-maker{color:#9fb0b8}
+#atlas-rotational-globe #globe-encounter[data-belt=true] .globe-strip-item .globe-thumb-frame{background:#141f29;border-radius:6px;overflow:hidden}
+@media(hover:hover){#atlas-rotational-globe #globe-encounter[data-belt=true] .globe-strip-item:not([aria-current=true]):hover{background:rgba(251,248,238,.05)}}
+#atlas-rotational-globe #globe-encounter .globe-encounter-disclosures>details>summary{color:#c9d3d6}
+#atlas-rotational-globe #globe-encounter .globe-encounter-disclosures{border-top-color:rgba(251,248,238,.08)}
+/* Map thumbnails: a finer card */
+.globe-map-thumb{border:1.5px solid rgba(251,248,238,.94);border-radius:6px;box-shadow:0 6px 18px rgba(0,0,0,.5)}
+.globe-map-thumb img{border-radius:4px}
+.globe-map-thumb::after{width:1.5px;background:rgba(251,248,238,.94)}
+.globe-map-thumb-count{background:rgba(11,18,26,.88);border-radius:999px;padding:0 5px;font-weight:600}
+@media(max-width:640px){#globe-player[data-state=playing]{width:calc(100vw - 16px)}}
+#atlas-rotational-globe #globe-encounter[data-belt=true] .globe-feature-copy{min-width:0;grid-template-columns:minmax(0,1fr)}
+#atlas-rotational-globe #globe-encounter[data-belt=true] .globe-feature-copy>:is(.globe-encounter-actions,.globe-encounter-evidence){width:max-content;max-width:none}
+#atlas-rotational-globe #globe-encounter .globe-feature-copy>:is(small,.globe-film-title){max-width:100%;min-width:0;white-space:normal;overflow-wrap:anywhere}
+/* The film box's artwork frame is exactly as wide as the picture in it (tall posters used to sit in a wider frame) */
+#atlas-rotational-globe #globe-encounter[data-belt=true] .globe-feature-art[data-art-state=ready]{width:min(100%,var(--art-feature-width),65px,calc(85px * var(--art-ratio,1)))!important}
