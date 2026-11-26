@@ -102,7 +102,8 @@ async def run(browser,name,viewport):
             assert await page.locator("#globe-find-toggle").evaluate("e=>document.activeElement===e")
             print(name,"menu keyboard focus restored",flush=True)
         layer=await page.evaluate("window.AtlasGlobe.territoryLayer")
-        assert layer["visible"] and layer["features"]>0 and layer["fill"] is not None,(name,"ambient territory layer absent",layer)
+        # The globe marks a land with its point and name; it draws no territory shapes.
+        assert layer["shapes"] is False and not layer["visible"] and layer["features"]==0,(name,"territory shapes are drawn",layer)
         assert layer["boundaries"]["longEdges"]==0,(name,"cross-world territory edges",layer["boundaries"])
         print(name,"ambient territory layer",json.dumps(layer),flush=True)
         if MODE=="terrain":
@@ -278,15 +279,9 @@ async def run(browser,name,viewport):
             assert max(abs((after['center'][0]-cam['center'][0]+180)%360-180),abs(after['center'][1]-cam['center'][1]))<.01 and abs(after['zoom']/cam['zoom']-1)<.002,(name,cam,after)
             await page.locator("#globe-more-toggle").click()
             # Lands are always on: there is no switch to hide them.
-            assert await page.locator("#globe-lands").is_hidden() and await page.evaluate("window.AtlasGlobe.territoryLayer.visible")
-            await page.locator(".globe-settings summary").click()
-            await page.locator("#globe-opacity").select_option("1.6")
-            assert await page.evaluate("window.AtlasGlobe.territoryLayer.strength===1.6")
-            await page.locator("#globe-opacity").select_option("1")
-            for mode,expected in [("none",["none","none"]),("all",["visible","visible"]),("selected",["none","visible"])]:
-                await page.locator("#globe-edges").select_option(mode)
-                assert await page.evaluate("window.AtlasGlobe.territoryLayer.edgeVisibility")==expected
-            await page.locator(".globe-settings summary").click()
+            # No territory shapes are drawn, so there is nothing to switch, strengthen or outline.
+            assert await page.locator("#globe-lands").is_hidden() and await page.locator(".globe-settings").is_hidden()
+            assert await page.evaluate("window.AtlasGlobe.territoryLayer.shapes===false && window.AtlasGlobe.territoryLayer.features===0")
             await page.locator("#globe-find-toggle").click()
             land=await page.evaluate("""()=>{const inv=window.AtlasGlobe.artworkInventory(),local=new Map();for(const c of inv.credits){if(!c.source||/^https?:/i.test(c.source))continue;for(const id of c.lands)local.set(id,(local.get(id)||0)+1);}return window.AtlasGlobe.anchors.find(a=>(local.get(a.id)||0)>1)?.id||window.AtlasGlobe.anchors.find(a=>window.AtlasCollectionEditor.globeLandFilmCount(a.id)>1).id;}""")
             await page.locator("#globe-find").select_option(value=land)

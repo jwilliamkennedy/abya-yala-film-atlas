@@ -49,7 +49,7 @@ async def check():
             await expect(collect).to_be_disabled()
         assert await page.evaluate("Object.keys(AtlasCollections.current().pins).length===2 && AtlasCollections.current().links.length===0")
         # Lands are always on: a shared view carries them.
-        assert await page.evaluate("AtlasGlobe.territoryLayer.visible")
+        assert await page.evaluate("AtlasGlobe.territoryLayer.shapes===false")
         await page.locator("#globe-collection-toggle").click()
         await page.locator("#globe-draw-link").click()
         films = page.locator(".globe-collected-item")
@@ -79,7 +79,7 @@ async def check():
             assert await opened.evaluate(CONTENTS) == expected
             assert await opened.evaluate("AtlasGlobe.discovery.featured") == featured
             assert await opened.evaluate("AtlasGlobe.discovery.collection.stars") == 2
-            assert await opened.evaluate("AtlasGlobe.territoryLayer.visible")
+            assert await opened.evaluate("AtlasGlobe.territoryLayer.shapes===false")
             assert await opened.evaluate("localStorage.getItem('atlas-collections-v1')") is None
             actual = await opened.evaluate("AtlasGlobe.camera")
             assert max(abs(a-b) for a,b in zip(actual["center"],camera["center"])) < .02
