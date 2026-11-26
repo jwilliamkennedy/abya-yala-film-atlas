@@ -2,8 +2,8 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-26",
  "license": "See data.html",
- "films_on_public_map": 2865,
- "film_entries": 2865,
+ "films_on_public_map": 2867,
+ "film_entries": 2867,
  "published_field_conflicts": {
   "SA50-20261014-59f87a2e3ce5-WORK-01": [
    "themes"
@@ -33889,6 +33889,22 @@
    "form": null,
    "length": null
   },
+  "RESEARCH-FILM-20261031-0010-01": {
+   "title": "Defendiendo al Yasuní en Caravana",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "LEAD-20261031-0010",
+     "name": "Edison Muenala Muenala"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
+  },
   "RESEARCH-FILM-20261031-0054-01": {
    "title": "The Best Days Are Ahead of Us",
    "year": null,
@@ -60294,6 +60310,22 @@
    "families": [],
    "form": "Documentary",
    "length": null
+  },
+  "QM-bcbbe6ee80-M1": {
+   "title": "Maikan: A Terra da Raposa",
+   "year": 2020,
+   "makers": [
+    {
+     "id": "QM-bcbbe6ee80",
+     "name": "Enoque Raposo"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
   }
  }
 }
