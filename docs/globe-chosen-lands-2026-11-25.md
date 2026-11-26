@@ -95,3 +95,4 @@ John chose the Plate scheme and asked for every menu, the Themes menu and the fi
 - **Ten studies for the film lights**, none of them the default (`toned` stays until John chooses): `?nodes=quiet|grain|ink|fine|tone|sized|pools|approach|chosen|shadow`, or `AtlasGlobe.nodeStyle(name)`.
 - **Drawing cursor.** Gather and Draw in Constellate show a pen point (ring and dot) instead of the map's dragging hand.
 - Versions: `globe.js?v=46-plate`, `globe-experiment.css?v=84-plate`, `globe-core.js?v=7-belt`.
+- **Three more light studies, pool to point** (John: "soft pool light node vergence"): `?nodes=verge` (far off a soft pool of the land's colour, drawing in to a point of light as you come closer), `verge-light` (the same in cream alone), `ember` (a grain of light inside its pool at every scale). `globe.js?v=48-plate`.
