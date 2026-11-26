@@ -13,7 +13,7 @@ async def run(browser,name,viewport):
     errors=[]; tiles=[]
     page.on("pageerror",lambda e:errors.append(str(e)))
     def response(r):
-        if r.ok and r.headers.get("content-type","").startswith("image/") and ("tiles.mapterhorn.com/" in r.url or "tiles.maps.eox.at/" in r.url or "gibs.earthdata.nasa.gov/" in r.url):
+        if r.ok and r.headers.get("content-type","").startswith("image/") and ("tiles.mapterhorn.com/" in r.url or "tiles.maps.eox.at/" in r.url):
             tiles.append(r.url)
     page.on("response",response)
     os.makedirs("shots/globe-independent",exist_ok=True)
@@ -186,10 +186,10 @@ async def run(browser,name,viewport):
         elif MODE=="terrain":
             await page.evaluate("window.AtlasGlobe.goTo([-90.875,14.501],10)")
             await page.wait_for_function("AtlasGlobe.focus.settled && !AtlasGlobe.tileState.motion.moving",timeout=30000)
-            # The globe draws only local geometry and OpenFreeMap context: no satellite imagery, no elevation mesh.
+            # NASA Blue Marble only: no high-resolution satellite imagery, no elevation mesh.
             state=await page.evaluate("AtlasGlobe.tileState")
             assert state["mesh"] is None,(name,"terrain mesh present",state)
-            assert not tiles,("remote imagery or elevation requested",tiles[:3])
+            assert not tiles,("satellite or elevation tiles requested",tiles[:3])
             assert await page.locator("#globe-credit-satellite").is_hidden()
             assert await page.locator("#globe-credit-fallback").is_visible()
             await page.wait_for_function("AtlasGlobe.territoryNames.withoutCinema>0",timeout=60000)
@@ -255,7 +255,7 @@ async def run(browser,name,viewport):
             await page.wait_for_function("document.querySelector('#globe-encounter').getBoundingClientRect().bottom <= document.querySelector('.globe-footer').getBoundingClientRect().top+1")
             sources=await page.request.get(BASE+"map-sources.html")
             text=await sources.text()
-            assert sources.ok and "Natural Earth" in text and "Copernicus" not in text and "Mapterhorn" not in text
+            assert sources.ok and "Blue Marble" in text and "Copernicus" not in text and "Mapterhorn" not in text
             assert await page.locator(".globe-menu-panel:visible").count()==0
             cam=await page.evaluate("window.AtlasGlobe.camera")
             await page.locator("#globe-theme-toggle").click()

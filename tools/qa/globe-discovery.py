@@ -17,7 +17,7 @@ async def check(browser,name,viewport):
     imagery=[]
     def tile_response(response):
         url=response.url
-        if response.ok and ('gibs.earthdata.nasa.gov/wmts/' in url or 'tiles.maps.eox.at/wmts/' in url or 'tiles.mapterhorn.com/' in url) and response.headers.get('content-type','').startswith('image/'):
+        if response.ok and ('tiles.maps.eox.at/wmts/' in url or 'tiles.mapterhorn.com/' in url) and response.headers.get('content-type','').startswith('image/'):
             imagery.append(url)
     page.on("response",tile_response)
     page.on("pageerror",lambda e: errors.append(str(e)))
@@ -153,11 +153,11 @@ async def check(browser,name,viewport):
     await page.wait_for_function("window.AtlasGlobe.focus.settled && !window.AtlasGlobe.tileState.wheelActive")
     aperture=await page.locator("#globe-aperture").bounding_box()
     aperture_center=(aperture["x"]+aperture["width"]/2,aperture["y"]+aperture["height"]/2)
-    # Local geometry only: no satellite imagery and no elevation mesh at any scale.
+    # NASA Blue Marble only: no high-resolution satellite imagery and no elevation mesh at any scale.
     await page.evaluate("window.AtlasGlobe.goTo([-90.875,14.501],10)")
     await page.wait_for_function("window.AtlasGlobe.focus.settled && !window.AtlasGlobe.tileState.motion.moving",timeout=30000)
     assert await page.evaluate("window.AtlasGlobe.tileState?.mesh === null"),(name,"terrain mesh present")
-    assert not imagery,(name,"remote imagery or elevation requested",imagery[:3])
+    assert not imagery,(name,"satellite or elevation tiles requested",imagery[:3])
     assert await page.evaluate("getComputedStyle(document.querySelector('#globe-aperture')).visibility==='hidden'"),(name,"reticle visible")
     await shot(page,f"shots/globe/{name}-guatemala-overhead.png")
     await page.locator("#globe-more-toggle").click()
