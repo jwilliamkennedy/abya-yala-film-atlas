@@ -130,7 +130,7 @@ jobs:
                       print('COMPATIBILITY_PASS',os.environ['PROFILE'],json.dumps(camera),flush=True)
                   finally:
                       print('COMPATIBILITY_DIAGNOSTICS',os.environ['PROFILE'],json.dumps(
-                          await page.evaluate("({camera:window.AtlasGlobe?.camera,tiles:window.AtlasGlobe?.tileState,viewport:[innerWidth,innerHeight]})")),errors,flush=True)
+                          await page.evaluate("({camera:window.AtlasGlobe?.camera,failure:window.AtlasGlobe?.startupFailure,tiles:window.AtlasGlobe?.tileState,viewport:[innerWidth,innerHeight]})")),errors,flush=True)
                       print('FAILED_REQUESTS',json.dumps(failed_requests),flush=True)
                       try: await page.screenshot(path='shots/globe-browser/last.png',timeout=10000)
                       except Exception as e: print('SCREENSHOT_FAILED',str(e),flush=True)

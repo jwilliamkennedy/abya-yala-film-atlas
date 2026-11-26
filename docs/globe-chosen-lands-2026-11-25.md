@@ -108,3 +108,4 @@ John chose the Plate scheme and asked for every menu, the Themes menu and the fi
 - **Menus** all 360 px wide from one edge; on phones the six top-bar words sit on one line.
 - **Checks brought up to date:** six top-bar controls in the browser-compatibility check; the share check opens "Add a note" before filling it; the phone check expects "Atlas".
 - Versions: `globe.js?v=50-plate`, `globe-experiment.css?v=85-plate`, `rail-20261121.js?v=globe-routing-6`, `collection-editor.js?v=6-cite`, `i18n-20261107.js?v=40`.
+- **Promoted to the main site (26 Nov, 2:45 am)** on John's word, through `.github/atlas/promote-request.txt`. The main site before promotion is commit `96d258e` (root files as of the 25 Nov promotion). A QA output file (`shots/globe-independent/artwork-inventory.json`) that the previous commit carried by mistake is removed and `/shots/` is ignored.
