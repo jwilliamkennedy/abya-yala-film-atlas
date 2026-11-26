@@ -1,9 +1,27 @@
 {
  "title": "Indigenous Cinema Atlas · film facets",
- "generated": "2026-11-25",
+ "generated": "2026-11-26",
  "license": "See data.html",
- "films_on_public_map": 2789,
- "film_entries": 2803,
+ "films_on_public_map": 2831,
+ "film_entries": 2831,
+ "published_field_conflicts": {
+  "SA50-20261014-59f87a2e3ce5-WORK-01": [
+   "themes"
+  ],
+  "REVIEWFILM-20261008-008-01": [
+   "themes"
+  ],
+  "FILM-0027": [
+   "themes"
+  ],
+  "RESEARCH-FILM-20261031-800-0006": [
+   "themes",
+   "primary_theme"
+  ],
+  "RESEARCH-FILM-20261031-800-NEW-363": [
+   "themes"
+  ]
+ },
  "fields": {
   "language": "Languages spoken in the film; label is the atlas form, as_credited is the wording of the credit; codes from Glottolog (glottocode) and ISO 639-3",
   "theme": "Themes from the atlas vocabulary (30 tags in 5 families), tagged only from a published synopsis whose URL is kept",
@@ -69,7 +87,7 @@
   ]
  },
  "language_authority": {
-  "source": "Glottolog (glottolog-cldf, fetched 2026-11-25)",
+  "source": "Glottolog (glottolog-cldf, fetched 2026-11-26)",
   "languages": [
    {
     "label": "Anishinaabemowin (Ojibwe)",
@@ -447,7 +465,7 @@
     "note": "",
     "region": "",
     "region_basis": "",
-    "films": 88
+    "films": 90
    },
    {
     "label": "Spanish",
@@ -461,7 +479,7 @@
     "note": "",
     "region": "",
     "region_basis": "",
-    "films": 42
+    "films": 43
    },
    {
     "label": "Portuguese",
@@ -517,7 +535,7 @@
     "note": "Credits name Aymara without a variety; aym is the ISO macrolanguage code",
     "region": "South America",
     "region_basis": "Glottolog countries",
-    "films": 5
+    "films": 6
    },
    {
     "label": "Mapudungun",
@@ -1087,9 +1105,13 @@
    "length": "Feature"
   },
   "FILM-0015": {
-   "title": "Bicicletas de Nhanderu",
-   "year": 2011,
+   "title": "Bicicletas de Nhanderú",
+   "year": null,
    "makers": [
+    {
+     "id": "DIR-0014",
+     "name": "Ariel Kuaray Ortega"
+    },
     {
      "id": "DIR-0045",
      "name": "Patrícia Ferreira Pará Yxapy"
@@ -1192,9 +1214,13 @@
    "length": "Short"
   },
   "FILM-0056": {
-   "title": "Tava - A Casa de Pedra",
-   "year": null,
+   "title": "Tava – A casa de pedra",
+   "year": 2012,
    "makers": [
+    {
+     "id": "DIR-0014",
+     "name": "Ariel Kuaray Ortega"
+    },
     {
      "id": "DIR-0045",
      "name": "Patrícia Ferreira Pará Yxapy"
@@ -1213,9 +1239,13 @@
    "length": "Feature"
   },
   "FILM-0053": {
-   "title": "Mbya Mirim",
-   "year": null,
+   "title": "Mbyá mirim",
+   "year": 2013,
    "makers": [
+    {
+     "id": "DIR-0014",
+     "name": "Ariel Kuaray Ortega"
+    },
     {
      "id": "DIR-0045",
      "name": "Patrícia Ferreira Pará Yxapy"
@@ -1229,13 +1259,17 @@
    "families": [
     "Lives and Relations"
    ],
-   "form": null,
+   "form": "Documentary",
    "length": "Short"
   },
   "FILM-0055": {
    "title": "No caminho com Mario",
-   "year": null,
+   "year": 2014,
    "makers": [
+    {
+     "id": "DIR-0014",
+     "name": "Ariel Kuaray Ortega"
+    },
     {
      "id": "DIR-0045",
      "name": "Patrícia Ferreira Pará Yxapy"
@@ -1543,9 +1577,33 @@
    "length": null
   },
   "FILM-0027": {
-   "title": "Ava Yvy Vera – A Terra do Povo do Raio",
+   "title": "Ava Yvy Vera - A terra do povo do raio (The Land of the Lightning People)",
    "year": 2016,
    "makers": [
+    {
+     "id": "DIR-0021",
+     "name": "Dulcídio Gomes"
+    },
+    {
+     "id": "DIR-0022",
+     "name": "Edina Ximenes"
+    },
+    {
+     "id": "DIR-0023",
+     "name": "Genito Gomes"
+    },
+    {
+     "id": "DIR-0030",
+     "name": "Jhonaton Gomes"
+    },
+    {
+     "id": "DIR-0031",
+     "name": "Jhonn Nara Gomes"
+    },
+    {
+     "id": "DIR-0053",
+     "name": "Valmir G. Cabreira"
+    },
     {
      "id": "LEAD-20261011-006",
      "name": "Sarah Brites"
@@ -1560,16 +1618,9 @@
     }
    ],
    "languages": [],
-   "themes": [
-    "Land Defense",
-    "Resistance Movements",
-    "Sovereignty and Self-Determination"
-   ],
-   "primary_theme": "Land Defense",
-   "families": [
-    "Land and Environment",
-    "Sovereignty and Politics"
-   ],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
    "form": "Documentary",
    "length": "Feature"
   },
@@ -1698,7 +1749,7 @@
    "primary_theme": null,
    "families": [],
    "form": "Experimental",
-   "length": null
+   "length": "Short"
   },
   "Q20261113-85-F1": {
    "title": "Yvy Pãi Ne'e Aty Guasu (Kaiowá Land, the Speech of the Great Assembly)",
@@ -2466,8 +2517,12 @@
   },
   "FILM-0054": {
    "title": "Nhemongueta Kunhã Mbaraete",
-   "year": 2020,
+   "year": null,
    "makers": [
+    {
+     "id": "DIR-0045",
+     "name": "Patrícia Ferreira Pará Yxapy"
+    },
     {
      "id": "NEW-084a145f8fa7",
      "name": "Graciela Guarani"
@@ -5288,8 +5343,8 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Documentary",
+   "length": "Short"
   },
   "FILM-0070": {
    "title": "Now Is the Time",
@@ -5590,7 +5645,7 @@
    "primary_theme": null,
    "families": [],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "Q20261115-770-F7": {
    "title": "Anwolek Regatta City",
@@ -5648,7 +5703,7 @@
    "primary_theme": null,
    "families": [],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "Q20261115-770-F10": {
    "title": "10",
@@ -5766,7 +5821,7 @@
    "primary_theme": null,
    "families": [],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "Q20261115-770-F16": {
    "title": "I Want To Know Why",
@@ -5976,10 +6031,6 @@
     {
      "id": "DIR-0083",
      "name": "Darlene Naponse"
-    },
-    {
-     "id": "Q20261122-128",
-     "name": "Jamie Lee Reardon"
     }
    ],
    "languages": [],
@@ -6044,7 +6095,7 @@
    "primary_theme": null,
    "families": [],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "Q20261115-83-F2": {
    "title": "Black Water Creek",
@@ -6076,7 +6127,7 @@
    "primary_theme": null,
    "families": [],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "Q20261115-83-F4": {
    "title": "$4 Indian",
@@ -6108,7 +6159,7 @@
    "primary_theme": null,
    "families": [],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "Q20261115-83-F6": {
    "title": "Storing",
@@ -6124,7 +6175,7 @@
    "primary_theme": null,
    "families": [],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "Q20261115-83-F7": {
    "title": "hiberNATION",
@@ -6140,7 +6191,7 @@
    "primary_theme": null,
    "families": [],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "Q20261115-83-F8": {
    "title": "The Post",
@@ -6156,7 +6207,7 @@
    "primary_theme": null,
    "families": [],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "Q20261115-83-F9": {
    "title": "Cyclic Roots",
@@ -6171,8 +6222,8 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Experimental",
+   "length": "Short"
   },
   "Q20261115-83-F10": {
    "title": "Every Emotion Costs",
@@ -6421,8 +6472,8 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Fiction",
+   "length": "Feature"
   },
   "Q20261115-85-F2": {
    "title": "c̓əsnaʔəm, the city before the city",
@@ -6501,7 +6552,7 @@
    "primary_theme": null,
    "families": [],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "Q20261115-85-F6": {
    "title": "Under Your Always Light",
@@ -6576,18 +6627,9 @@
     }
    ],
    "languages": [],
-   "themes": [
-    "Displacement and Migration",
-    "Kinship",
-    "Women and Gender",
-    "Environmental Change"
-   ],
-   "primary_theme": "Displacement and Migration",
-   "families": [
-    "Land and Environment",
-    "Lives and Relations",
-    "Sovereignty and Politics"
-   ],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
    "form": "Fiction",
    "length": "Feature"
   },
@@ -7300,7 +7342,7 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
+   "form": "Fiction",
    "length": null
   },
   "DIR-0107-Q20261115-850-F3": {
@@ -7402,8 +7444,8 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Documentary",
+   "length": "Short"
   },
   "DIR-0107-Q20261115-850-F8": {
    "title": "NiiSoTeWak: Two Bodies, One Heart",
@@ -7539,7 +7581,7 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
+   "form": "Documentary",
    "length": null
   },
   "DIR-0107-Q20261115-850-F15": {
@@ -8263,7 +8305,7 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
+   "form": "Fiction",
    "length": null
   },
   "Q20261114-101-F1": {
@@ -8438,7 +8480,7 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
+   "form": "Fiction",
    "length": "Series"
   },
   "Q20261115-98-F1": {
@@ -8454,8 +8496,8 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Experimental",
+   "length": "Short"
   },
   "Q20261115-98-F2": {
    "title": "The Language of Love",
@@ -8470,8 +8512,8 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Documentary",
+   "length": "Short"
   },
   "Q20261115-98-F3": {
    "title": "Pilgrims",
@@ -8486,8 +8528,8 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Fiction",
+   "length": "Short"
   },
   "Q20261115-98-F4": {
    "title": "Ballads Not Bullets: Tom Jackson",
@@ -8522,8 +8564,8 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Fiction",
+   "length": "Short"
   },
   "Q20261115-98-F6": {
    "title": "Looking at Edward Curtis in the Pacific Northwest",
@@ -8538,8 +8580,8 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Documentary",
+   "length": "Short"
   },
   "Q20261115-98-F7": {
    "title": "Red Snow",
@@ -8554,8 +8596,8 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Fiction",
+   "length": "Feature"
   },
   "Q20261115-98-F8": {
    "title": "Lay Down Your Heart",
@@ -8593,8 +8635,8 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Fiction",
+   "length": "Feature"
   },
   "Q20261115-98-F10": {
    "title": "Bones of Crows: The Series",
@@ -8609,7 +8651,7 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
+   "form": "Fiction",
    "length": "Series"
   },
   "Q20261115-408-F1": {
@@ -9385,8 +9427,8 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Fiction",
+   "length": "Short"
   },
   "DIR-0136-W1031-2": {
    "title": "The Doe Boy",
@@ -9526,7 +9568,7 @@
    "primary_theme": null,
    "families": [],
    "form": null,
-   "length": null
+   "length": "Feature"
   },
   "Q20261115-91-F1": {
    "title": "A Black Screen Too",
@@ -9541,8 +9583,8 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Experimental",
+   "length": "Short"
   },
   "Q20261115-91-F2": {
    "title": "The Nightside of the Sky",
@@ -9557,8 +9599,8 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Experimental",
+   "length": "Short"
   },
   "Q20261115-91-F3": {
    "title": "Episode 5",
@@ -9589,8 +9631,8 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Experimental",
+   "length": "Short"
   },
   "Q20261115-91-F6": {
    "title": "Domus",
@@ -9605,8 +9647,8 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Animation",
+   "length": "Short"
   },
   "Q20261115-91-F7": {
    "title": "Les Châssis de Lourdes",
@@ -9621,8 +9663,8 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Experimental",
+   "length": "Short"
   },
   "Q20261115-91-F8": {
    "title": "U.F.O.",
@@ -9637,8 +9679,8 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Animation",
+   "length": "Short"
   },
   "Q20261115-91-F9": {
    "title": "Scene Missing",
@@ -9653,8 +9695,8 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Experimental",
+   "length": "Short"
   },
   "Q20261115-91-F10": {
    "title": "ROB WHAT",
@@ -9669,8 +9711,8 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Experimental",
+   "length": "Short"
   },
   "Q20261115-91-F11": {
    "title": "Turin",
@@ -9685,8 +9727,8 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Experimental",
+   "length": "Short"
   },
   "Q20261115-91-F12": {
    "title": "Extraits d’une famille",
@@ -9701,8 +9743,8 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Experimental",
+   "length": "Short"
   },
   "Q20261115-91-F13": {
    "title": "Black Rectangle",
@@ -9717,8 +9759,8 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Experimental",
+   "length": "Short"
   },
   "Q20261115-91-F14": {
    "title": "Full of Fire",
@@ -9733,8 +9775,8 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Experimental",
+   "length": "Short"
   },
   "Q20261115-91-F15": {
    "title": "J. Werier",
@@ -9749,8 +9791,8 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Experimental",
+   "length": "Short"
   },
   "Q20261115-91-F16": {
    "title": "take my word",
@@ -9765,8 +9807,8 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Experimental",
+   "length": "Short"
   },
   "Q20261115-91-F17": {
    "title": "Tudor Village: A One Shot Deal",
@@ -9781,8 +9823,8 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Experimental",
+   "length": "Short"
   },
   "Q20261115-91-F18": {
    "title": "Tricks are for Kiddo",
@@ -9797,8 +9839,8 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Experimental",
+   "length": "Short"
   },
   "Q20261115-91-F19": {
    "title": "R Seymore Goes North",
@@ -9813,8 +9855,8 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Experimental",
+   "length": "Short"
   },
   "Q20261115-91-F4": {
    "title": "Smoke",
@@ -9829,8 +9871,8 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Experimental",
+   "length": "Short"
   },
   "DIR-0142-W1031-1": {
    "title": "Legend of the Storm",
@@ -10581,7 +10623,7 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
+   "form": "Documentary",
    "length": null
   },
   "Q20261115-95-F2": {
@@ -10700,7 +10742,7 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
+   "form": "Fiction",
    "length": "Series"
   },
   "DIR-0150-F2": {
@@ -10716,7 +10758,7 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
+   "form": "Animation",
    "length": "Series"
   },
   "DIR-0150-F3": {
@@ -10946,8 +10988,8 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Documentary",
+   "length": "Short"
   },
   "FILM-SRC-2023-00043": {
    "title": "A Bear Named Jesus",
@@ -11984,7 +12026,7 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
+   "form": "Fiction",
    "length": "Series"
   },
   "DIR-0158-F2": {
@@ -12000,7 +12042,7 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
+   "form": "Fiction",
    "length": "Series"
   },
   "DIR-0158-F3": {
@@ -12016,7 +12058,7 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
+   "form": "Fiction",
    "length": "Series"
   },
   "Q20261115-762-F1": {
@@ -12077,14 +12119,6 @@
     {
      "id": "DIR-0158",
      "name": "Tracey Deer"
-    },
-    {
-     "id": "DIR-0300",
-     "name": "Ramona Emerson"
-    },
-    {
-     "id": "DIR-0286",
-     "name": "Kelly Byars"
     }
    ],
    "languages": [],
@@ -12776,7 +12810,7 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
+   "form": "Documentary",
    "length": null
   },
   "Q20261115-651-F1": {
@@ -13188,7 +13222,7 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
+   "form": "Fiction",
    "length": null
   },
   "Q20261115-761-F8": {
@@ -13236,7 +13270,7 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
+   "form": "Fiction",
    "length": "Series"
   },
   "DIR-0167-Q20261114-01-F2": {
@@ -13252,7 +13286,7 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
+   "form": "Fiction",
    "length": "Series"
   },
   "DIR-0167-Q20261114-01-F3": {
@@ -13268,7 +13302,7 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
+   "form": "Fiction",
    "length": "Series"
   },
   "DIR-0167-Q20261114-01-F4": {
@@ -13284,7 +13318,7 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
+   "form": "Fiction",
    "length": "Series"
   },
   "DIR-0167-Q20261114-01-F5": {
@@ -13300,7 +13334,7 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
+   "form": "Fiction",
    "length": "Series"
   },
   "DIR-0167-Q20261114-01-F6": {
@@ -13316,7 +13350,7 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
+   "form": "Fiction",
    "length": "Series"
   },
   "DIR-0167-Q20261114-01-F7": {
@@ -13332,7 +13366,7 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
+   "form": "Fiction",
    "length": "Series"
   },
   "FILM-0097": {
@@ -14448,14 +14482,6 @@
     {
      "id": "DIR-0182",
      "name": "David Hernández Palmar"
-    },
-    {
-     "id": "DIR-0184",
-     "name": "Leiqui Uriana Henríquez"
-    },
-    {
-     "id": "DIR-0188",
-     "name": "Miguel Ramírez Boscán"
     }
    ],
    "languages": [],
@@ -14472,10 +14498,6 @@
     {
      "id": "DIR-0182",
      "name": "David Hernández Palmar"
-    },
-    {
-     "id": "DIR-0188",
-     "name": "Miguel Ramírez Boscán"
     }
    ],
    "languages": [],
@@ -14499,10 +14521,6 @@
     {
      "id": "DIR-0182",
      "name": "David Hernández Palmar"
-    },
-    {
-     "id": "DIR-0187",
-     "name": "Marbel Ina Vanegas Jusayu"
     }
    ],
    "languages": [],
@@ -14700,6 +14718,22 @@
    "form": "Documentary",
    "length": "Short"
   },
+  "DIR-0184-QMfdf4b6": {
+   "title": "Wounmainkat (Nuestra Tierra)",
+   "year": 2008,
+   "makers": [
+    {
+     "id": "DIR-0184",
+     "name": "Leiqui Uriana Henríquez"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "DIR-0184-QM8ccdea": {
    "title": "El Hospital",
    "year": 2005,
@@ -14778,7 +14812,7 @@
    "primary_theme": null,
    "families": [],
    "form": "Fiction",
-   "length": null
+   "length": "Short"
   },
   "DIR-0186-QM059d4c": {
    "title": "Aipa’a – Yem",
@@ -14884,6 +14918,26 @@
    ],
    "form": "Documentary",
    "length": "Short"
+  },
+  "DIR-0187-QMb0d41a": {
+   "title": "Buscando las marcas del Asho’ojushi",
+   "year": 2025,
+   "makers": [
+    {
+     "id": "DIR-0187",
+     "name": "Marbel Ina Vanegas Jusayu"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Elders and Knowledge"
+   ],
+   "primary_theme": "Elders and Knowledge",
+   "families": [
+    "Knowledge and Continuity"
+   ],
+   "form": "Documentary",
+   "length": "Feature"
   },
   "DIR-0187-QM1eab5e": {
    "title": "El buen vivir – temporada 4",
@@ -15031,10 +15085,6 @@
     {
      "id": "DIR-0190",
      "name": "Nelly Kuiru"
-    },
-    {
-     "id": "Q20261123-01",
-     "name": "Nelly Kuiru Castro"
     }
    ],
    "languages": [],
@@ -15400,8 +15450,8 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Documentary",
+   "length": "Short"
   },
   "Q20261121-231-F1": {
    "title": "Los dueños de la selva preocupados",
@@ -15433,7 +15483,7 @@
    "primary_theme": null,
    "families": [],
    "form": "Documentary",
-   "length": null
+   "length": "Short"
   },
   "FILM-0151": {
    "title": "Akcha Sapi",
@@ -15865,7 +15915,7 @@
    "primary_theme": null,
    "families": [],
    "form": "Documentary",
-   "length": null
+   "length": "Feature"
   },
   "Q20261112-09-F1": {
    "title": "Dueto Charanda",
@@ -15881,7 +15931,7 @@
    "primary_theme": null,
    "families": [],
    "form": "Fiction",
-   "length": null
+   "length": "Short"
   },
   "FILM-0167": {
    "title": "Majt'anil : el legado",
@@ -16029,10 +16079,6 @@
     {
      "id": "DIR-0217",
      "name": "Aracely Méndez"
-    },
-    {
-     "id": "QM-fdd3000c6f",
-     "name": "Norma Aracely Méndez Gómez"
     }
    ],
    "languages": [],
@@ -16040,7 +16086,7 @@
    "primary_theme": null,
    "families": [],
    "form": "Documentary",
-   "length": null
+   "length": "Feature"
   },
   "FILM-0171": {
    "title": "El arte de limpiar",
@@ -16072,7 +16118,7 @@
    "primary_theme": null,
    "families": [],
    "form": "Documentary",
-   "length": null
+   "length": "Short"
   },
   "FILM-0172": {
    "title": "La espera (short film)",
@@ -16164,7 +16210,7 @@
    "primary_theme": null,
    "families": [],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "DIR-0219-QMd5727c": {
    "title": "Para curarnos el paisaje herido",
@@ -16173,10 +16219,6 @@
     {
      "id": "DIR-0219",
      "name": "Celina Yunuen Manuel Piñón"
-    },
-    {
-     "id": "LEAD-20261011-019",
-     "name": "Nisaguie Abril Flores Cruz"
     }
    ],
    "languages": [],
@@ -16228,7 +16270,7 @@
    "primary_theme": null,
    "families": [],
    "form": "Animation",
-   "length": null
+   "length": "Short"
   },
   "DIR-0220-QM2fd9c0": {
    "title": "Huachinango rojo",
@@ -16405,7 +16447,7 @@
    "primary_theme": null,
    "families": [],
    "form": null,
-   "length": null
+   "length": "Feature"
   },
   "Q20261113-56-F1": {
    "title": "K’úrátsekwa Tsïtsïkiisti (La vergüenza es una flor)",
@@ -16421,7 +16463,7 @@
    "primary_theme": null,
    "families": [],
    "form": "Fiction",
-   "length": null
+   "length": "Feature"
   },
   "FILM-0177": {
    "title": "Siempre andamos caminando",
@@ -16700,7 +16742,7 @@
    "primary_theme": null,
    "families": [],
    "form": "Documentary",
-   "length": null
+   "length": "Feature"
   },
   "Q20261113-59-F1": {
    "title": "Jvabajom-Músico",
@@ -16716,7 +16758,7 @@
    "primary_theme": null,
    "families": [],
    "form": "Documentary",
-   "length": null
+   "length": "Feature"
   },
   "Q20261121-09-F1": {
    "title": "Sat yelov jlumal (Rostros de mi pueblo)",
@@ -16732,7 +16774,7 @@
    "primary_theme": null,
    "families": [],
    "form": "Documentary",
-   "length": null
+   "length": "Short"
   },
   "FILM-0183": {
    "title": "Gente de mar y viento",
@@ -17180,7 +17222,7 @@
    "primary_theme": null,
    "families": [],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "FILM-B25B-01": {
    "title": "A cielo abierto / Open Sky",
@@ -17290,8 +17332,8 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Documentary",
+   "length": "Short"
   },
   "FILM-0190": {
    "title": "Los años azules",
@@ -17627,10 +17669,6 @@
     {
      "id": "DIR-0235",
      "name": "María Sojob"
-    },
-    {
-     "id": "PILOT-43-ANA-TSUYEB",
-     "name": "Ana Ts’uyeb"
     }
    ],
    "languages": [],
@@ -17915,7 +17953,7 @@
    "primary_theme": null,
    "families": [],
    "form": "Fiction",
-   "length": null
+   "length": "Feature"
   },
   "Q20261113-98-F1": {
    "title": "Tuyuku (Ahuehuete)",
@@ -17942,8 +17980,12 @@
   },
   "FILM-0201": {
    "title": "Marku Irekani = vivir juntos",
-   "year": null,
+   "year": 2021,
    "makers": [
+    {
+     "id": "DIR-0241",
+     "name": "Rosalba López"
+    },
     {
      "id": "DIR-0241-B",
      "name": "Daniel Isidoro Morales"
@@ -18154,7 +18196,7 @@
    "primary_theme": null,
    "families": [],
    "form": "Documentary",
-   "length": null
+   "length": "Short"
   },
   "FILM-0208": {
    "title": "De aspecto indígena",
@@ -18188,9 +18230,14 @@
     }
    ],
    "languages": [],
-   "themes": [],
+   "themes": [
+    "Kinship",
+    "Women and Gender"
+   ],
    "primary_theme": null,
-   "families": [],
+   "families": [
+    "Lives and Relations"
+   ],
    "form": "Documentary",
    "length": "Feature"
   },
@@ -18498,15 +18545,29 @@
    "length": null
   },
   "FILM-0214": {
-   "title": "Muu Palaa – La abuela mar",
-   "year": 2020,
+   "title": "Muu Palaa: La abuela mar",
+   "year": null,
    "makers": [
+    {
+     "id": "DIR-0253",
+     "name": "Olowaili Green"
+    },
     {
      "id": "NEW-0f17e286a91a",
      "name": "Luzbeidy Monterrosa Atencio"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "Wayuunaiki",
+     "as_credited": "Wayuunaiki",
+     "glottocode": "wayu1243",
+     "iso639_3": "guc",
+     "match": "exact",
+     "indigenous": true,
+     "source": "https://www.retinalatina.org/peliculas/muu-palaa-la-abuela-mar-olowaili-green-luzbeidy-monterrosa/"
+    }
+   ],
    "themes": [
     "Elders and Knowledge",
     "Youth",
@@ -18649,8 +18710,8 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Documentary",
+   "length": "Short"
   },
   "DIR-0254-QM31a099": {
    "title": "Burwa dii ebo (El viento y el agua)",
@@ -18719,7 +18780,17 @@
      "name": "Tito Catacora"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "Aymara",
+     "as_credited": "Aymara",
+     "glottocode": "nucl1667",
+     "iso639_3": "aym",
+     "match": "group",
+     "indigenous": true,
+     "source": "https://www.wikidata.org/wiki/Q121358121"
+    }
+   ],
    "themes": [
     "Women and Gender",
     "Justice, Truth and Reconciliation",
@@ -19025,7 +19096,7 @@
    "primary_theme": null,
    "families": [],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "FILM-0225": {
    "title": "Fukry",
@@ -19238,7 +19309,7 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
+   "form": "Fiction",
    "length": "Series"
   },
   "DIR-0273-F1": {
@@ -19308,8 +19379,8 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Fiction",
+   "length": "Feature"
   },
   "Q20261115-956-F2": {
    "title": "Mighty Lak' a Rose",
@@ -19324,8 +19395,8 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Fiction",
+   "length": "Feature"
   },
   "Q20261115-956-F3": {
    "title": "Joanna",
@@ -19340,8 +19411,8 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Fiction",
+   "length": "Feature"
   },
   "Q20261115-956-F4": {
    "title": "Resurrection",
@@ -19356,8 +19427,8 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Fiction",
+   "length": "Feature"
   },
   "Q20261115-956-F5": {
    "title": "Revenge",
@@ -19372,8 +19443,8 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Fiction",
+   "length": "Feature"
   },
   "Q20261115-956-F6": {
    "title": "Evangeline",
@@ -19647,6 +19718,22 @@
    ],
    "form": "Documentary",
    "length": "Feature"
+  },
+  "FILM-0230": {
+   "title": "Crossing the Line",
+   "year": null,
+   "makers": [
+    {
+     "id": "DIR-0300",
+     "name": "Ramona Emerson"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
   },
   "FILM-0231": {
    "title": "Mud",
@@ -20389,7 +20476,7 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
+   "form": "Fiction",
    "length": "Series"
   },
   "DIR-0308-F2": {
@@ -20405,7 +20492,7 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
+   "form": "Fiction",
    "length": "Series"
   },
   "DIR-0308-F3": {
@@ -20421,7 +20508,7 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
+   "form": "Fiction",
    "length": "Series"
   },
   "DIR-0309-F1": {
@@ -20554,7 +20641,7 @@
    "primary_theme": null,
    "families": [],
    "form": "Documentary",
-   "length": null
+   "length": "Feature"
   },
   "FILM-0233": {
    "title": "Itam Hakim, Hopiit",
@@ -21084,8 +21171,8 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Fiction",
+   "length": "Short"
   },
   "DIR-0328-QM7439ca": {
    "title": "Djaba Wera",
@@ -21100,8 +21187,8 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Documentary",
+   "length": "Short"
   },
   "Q20261113-88-F1": {
    "title": "Bannaba (Beyond)",
@@ -21190,7 +21277,7 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
+   "form": "Fiction",
    "length": "Series"
   },
   "FILM-0272": {
@@ -21561,7 +21648,7 @@
    "primary_theme": null,
    "families": [],
    "form": null,
-   "length": null
+   "length": "Feature"
   },
   "FILM-0277": {
    "title": "Your Name Isn’t English",
@@ -21738,7 +21825,7 @@
    "primary_theme": null,
    "families": [],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "Q20261115-530-F1": {
    "title": "Without a Whisper - Konnon:kwe",
@@ -21799,7 +21886,7 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
+   "form": "Documentary",
    "length": "Series"
   },
   "Q20261115-530-F4": {
@@ -21815,7 +21902,7 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
+   "form": "Documentary",
    "length": null
   },
   "FILM-0281": {
@@ -21873,7 +21960,7 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
+   "form": "Documentary",
    "length": null
   },
   "Q20261115-851-F3": {
@@ -21909,7 +21996,7 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
+   "form": "Documentary",
    "length": "Series"
   },
   "Q20261115-851-F5": {
@@ -21925,7 +22012,7 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
+   "form": "Documentary",
    "length": "Series"
   },
   "Q20261115-851-F6": {
@@ -21941,7 +22028,7 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
+   "form": "Documentary",
    "length": "Series"
   },
   "FILM-0282": {
@@ -22281,18 +22368,37 @@
   },
   "NEW-50f72e3ea718-WORK-1": {
    "title": "Allison Goes Berry Picking",
-   "year": null,
+   "year": 2024,
    "makers": [
+    {
+     "id": "NEW-50f72e3ea718",
+     "name": "Allison Anderson"
+    },
     {
      "id": "NEW-7dfb26bc8667",
      "name": "Georgette McLeod"
-    },
-    {
-     "id": "Q20261115-906",
-     "name": "Georgette McLoed"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "Hän",
+     "as_credited": "Hän",
+     "glottocode": "hann1241",
+     "iso639_3": "haa",
+     "match": "exact",
+     "indigenous": true,
+     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/"
+    },
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/"
+    }
+   ],
    "themes": [
     "More-than-Human Relations"
    ],
@@ -22637,7 +22743,7 @@
    "primary_theme": null,
    "families": [],
    "form": "Documentary",
-   "length": null
+   "length": "Short"
   },
   "NEW-73f9e534b2d7-WORK-1": {
    "title": "Sukkaillutit Uqaruk (Say It Slowly)",
@@ -22980,14 +23086,28 @@
   },
   "NEW-3965b06822b5-WORK-1": {
    "title": "Kimotiwin: The Act of Stealing",
-   "year": null,
+   "year": 2023,
    "makers": [
+    {
+     "id": "NEW-3965b06822b5",
+     "name": "Caeleigh Lightning"
+    },
     {
      "id": "NEW-38fb59d07d8f",
      "name": "Keara Lightning"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/"
+    }
+   ],
    "themes": [
     "LGBTQIA2S",
     "Environmental Change"
@@ -23356,7 +23476,7 @@
    "primary_theme": null,
    "families": [],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "Q20261114-28-F1": {
    "title": "Place Where I Belong",
@@ -23536,7 +23656,7 @@
    "primary_theme": null,
    "families": [],
    "form": "Documentary",
-   "length": null
+   "length": "Short"
   },
   "NEW-5a9be9a8d692-WORK-1": {
    "title": "Voz das Mulheres Indígenas",
@@ -24466,7 +24586,7 @@
    "primary_theme": null,
    "families": [],
    "form": "Documentary",
-   "length": null
+   "length": "Feature"
   },
   "NEW-be50361fffae-WORK-1": {
    "title": "Nenaboozhoo",
@@ -24814,7 +24934,7 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
+   "form": "Fiction",
    "length": "Short"
   },
   "NEW-2f13bf985833-F2": {
@@ -24847,7 +24967,7 @@
    "primary_theme": null,
    "families": [],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "NEW-4870cf62f977-WORK-1": {
    "title": "Flowers",
@@ -25113,23 +25233,21 @@
   },
   "RESEARCH-FILM-20261031-800-NEW-363": {
    "title": "He Moʻolelo Wahi Pana (A Storied Landscape)",
-   "year": 2025,
+   "year": null,
    "makers": [
+    {
+     "id": "NEW-9d43ec46ed5e",
+     "name": "Kuʻulei Keakealani"
+    },
     {
      "id": "DIR-0363",
      "name": "Kapena Liu"
     }
    ],
    "languages": [],
-   "themes": [
-    "Memory and Oral History",
-    "Kinship"
-   ],
-   "primary_theme": "Memory and Oral History",
-   "families": [
-    "Knowledge and Continuity",
-    "Lives and Relations"
-   ],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
    "form": null,
    "length": "Short"
   },
@@ -25486,7 +25604,7 @@
    "primary_theme": null,
    "families": [],
    "form": "Documentary",
-   "length": null
+   "length": "Feature"
   },
   "NEW-0f17e286a91a-QM059d4c": {
    "title": "Aipa’a – Yem",
@@ -25727,7 +25845,7 @@
     "Knowledge and Continuity",
     "Lives and Relations"
    ],
-   "form": null,
+   "form": "Hybrid",
    "length": "Short"
   },
   "Q20261121-20-F1": {
@@ -25748,7 +25866,7 @@
    "primary_theme": null,
    "families": [],
    "form": "Experimental",
-   "length": null
+   "length": "Short"
   },
   "NEW-2652d494da73-WORK-1": {
    "title": "The Moth",
@@ -25853,8 +25971,12 @@
   },
   "NEW-f6c274cb3b76-WORK-1": {
    "title": "My Friend Saabe",
-   "year": 2024,
+   "year": null,
    "makers": [
+    {
+     "id": "NEW-f6c274cb3b76",
+     "name": "Morningstar Derosier"
+    },
     {
      "id": "NEW-49dd86e44af1",
      "name": "Victoria Anderson-Gardner"
@@ -25989,8 +26111,12 @@
   },
   "NEW-bd42ac361cc5-WORK-1": {
    "title": "The Wandering Soul",
-   "year": 2024,
+   "year": null,
    "makers": [
+    {
+     "id": "NEW-bd42ac361cc5",
+     "name": "Noel-Leigh Cockney"
+    },
     {
      "id": "DIR-0354",
      "name": "Henna Taylor"
@@ -26091,7 +26217,7 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": "Experimental",
+   "form": "Fiction",
    "length": "Short"
   },
   "Q20261115-87-F2": {
@@ -26124,7 +26250,7 @@
    "primary_theme": null,
    "families": [],
    "form": null,
-   "length": null
+   "length": "Feature"
   },
   "NEW-5b6f10a24b2e-WORK-1": {
    "title": "pîķîwî",
@@ -26490,10 +26616,6 @@
     {
      "id": "NEW-df0d54c464f8",
      "name": "Segundo Fuérez"
-    },
-    {
-     "id": "NEW-72d1f9f5e205",
-     "name": "Wayra Ana Velásquez"
     }
    ],
    "languages": [
@@ -26528,9 +26650,13 @@
    "length": "Short"
   },
   "FILM-SRC-2023-00032": {
-   "title": "Nangulvi",
-   "year": 2023,
+   "title": "NANGULVI",
+   "year": null,
    "makers": [
+    {
+     "id": "NEW-df0d54c464f8",
+     "name": "Segundo Fuérez"
+    },
     {
      "id": "NEW-72d1f9f5e205",
      "name": "Wayra Ana Velásquez"
@@ -26588,7 +26714,7 @@
    "primary_theme": null,
    "families": [],
    "form": "Fiction",
-   "length": null
+   "length": "Short"
   },
   "NEW-df0d54c464f8-F1": {
    "title": "Yaku Wiki (Lágrimas del agua)",
@@ -26610,11 +26736,15 @@
      "source": "https://miradanativa.org/pelicula/yaku-wiki-lagrimas-del-agua/"
     }
    ],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Water"
+   ],
+   "primary_theme": "Water",
+   "families": [
+    "Land and Environment"
+   ],
    "form": "Animation",
-   "length": null
+   "length": "Short"
   },
   "NEW-df0d54c464f8-F3": {
    "title": "Wayta Sisagu: Flor de Clavel",
@@ -26666,11 +26796,15 @@
      "source": "https://miradanativa.org/pelicula/wawa-de-pan-2/"
     }
    ],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Memory and Oral History"
+   ],
+   "primary_theme": "Memory and Oral History",
+   "families": [
+    "Knowledge and Continuity"
+   ],
    "form": "Fiction",
-   "length": null
+   "length": "Short"
   },
   "NEW-df0d54c464f8-F5": {
    "title": "Colada Morada",
@@ -26692,11 +26826,15 @@
      "source": "https://miradanativa.org/pelicula/colada-morada-2/"
     }
    ],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Youth"
+   ],
+   "primary_theme": "Youth",
+   "families": [
+    "Lives and Relations"
+   ],
    "form": "Fiction",
-   "length": null
+   "length": "Short"
   },
   "NEW-df0d54c464f8-F6": {
    "title": "Pampa Ruraykuna: Agricultura",
@@ -26718,10 +26856,14 @@
      "source": "https://miradanativa.org/pelicula/pampa-ruraykuna-agricultura-2/"
     }
    ],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
+   "themes": [
+    "Youth"
+   ],
+   "primary_theme": "Youth",
+   "families": [
+    "Lives and Relations"
+   ],
+   "form": "Documentary",
    "length": "Short"
   },
   "NEW-df0d54c464f8-F7": {
@@ -26751,7 +26893,7 @@
    "families": [
     "Lives and Relations"
    ],
-   "form": null,
+   "form": "Documentary",
    "length": "Short"
   },
   "NEW-df0d54c464f8-F8": {
@@ -26850,9 +26992,13 @@
     }
    ],
    "languages": [],
-   "themes": [],
+   "themes": [
+    "Linguistic Preservation"
+   ],
    "primary_theme": null,
-   "families": [],
+   "families": [
+    "Knowledge and Continuity"
+   ],
    "form": null,
    "length": null
   },
@@ -27521,6 +27667,41 @@
    "form": "Documentary",
    "length": "Short"
   },
+  "NEW-72d1f9f5e205-WORK-1": {
+   "title": "KINKU",
+   "year": 2025,
+   "makers": [
+    {
+     "id": "NEW-72d1f9f5e205",
+     "name": "Wayra Ana Velásquez"
+    }
+   ],
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/"
+    },
+    {
+     "label": "Spanish",
+     "as_credited": "Spanish",
+     "glottocode": "stan1288",
+     "iso639_3": "spa",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/"
+    }
+   ],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": "Short"
+  },
   "NEW-c74dcc05c3f0-WORK-1": {
    "title": "Boca Vieja",
    "year": 2025,
@@ -27733,9 +27914,14 @@
      "source": "https://filmfreeway.com/MIWENE"
     }
    ],
-   "themes": [],
+   "themes": [
+    "Land Defense",
+    "Environmental Change"
+   ],
    "primary_theme": null,
-   "families": [],
+   "families": [
+    "Land and Environment"
+   ],
    "form": null,
    "length": null
   },
@@ -27962,16 +28148,9 @@
     }
    ],
    "languages": [],
-   "themes": [
-    "Water",
-    "Environmental Change",
-    "Cosmology and Origin Stories"
-   ],
-   "primary_theme": "Water",
-   "families": [
-    "Knowledge and Continuity",
-    "Land and Environment"
-   ],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
    "form": "Documentary",
    "length": "Feature"
   },
@@ -28602,22 +28781,20 @@
     }
    ],
    "languages": [],
-   "themes": [
-    "Cosmology and Origin Stories",
-    "Women and Gender"
-   ],
-   "primary_theme": "Cosmology and Origin Stories",
-   "families": [
-    "Knowledge and Continuity",
-    "Lives and Relations"
-   ],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
    "form": "Documentary",
    "length": "Short"
   },
   "NEW-990e9a76f225-WORK-2": {
-   "title": "Yuri u xëatima thë – A Pesca com Timbó",
+   "title": "Yuri uxëatima thë – A Pesca com Timbó",
    "year": 2023,
    "makers": [
+    {
+     "id": "SA50-20261014-59f87a2e3ce5",
+     "name": "Aida Harika Yanomami"
+    },
     {
      "id": "SA50-20261014-0eb675abc594",
      "name": "Roseane Yariana Yanomami"
@@ -28631,8 +28808,8 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Documentary",
+   "length": "Short"
   },
   "SA50-20261014-a2d92d5747d7-WORK-01": {
    "title": "A História do Monstro Khátpy",
@@ -29165,7 +29342,7 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
+   "form": "Fiction",
    "length": "Short"
   },
   "Q20261121-130-F1": {
@@ -29355,14 +29532,6 @@
     {
      "id": "SA50-20261014-5f1ed8bb999a",
      "name": "Sindy Yolanda Taan Yampis"
-    },
-    {
-     "id": "NEW-89862e9a3bdc",
-     "name": "Alexander Shimpukat"
-    },
-    {
-     "id": "NEW-378fa041ccbf",
-     "name": "Yomira Maciso"
     }
    ],
    "languages": [],
@@ -29764,10 +29933,6 @@
     {
      "id": "SA50-20261014-bdba8a2b66ca",
      "name": "Gustavo Ulcué Campo"
-    },
-    {
-     "id": "SA50-20261014-1a7e9023b596",
-     "name": "Harold Secue"
     }
    ],
    "languages": [],
@@ -30182,6 +30347,28 @@
    "form": "Documentary",
    "length": "Short"
   },
+  "SA50-20261014-1a7e9023b596-WORK-01": {
+   "title": "Flauta y tambor",
+   "year": null,
+   "makers": [
+    {
+     "id": "SA50-20261014-1a7e9023b596",
+     "name": "Harold Secue"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Music and Performance",
+    "Youth"
+   ],
+   "primary_theme": "Music and Performance",
+   "families": [
+    "Expression and Representation",
+    "Lives and Relations"
+   ],
+   "form": "Documentary",
+   "length": "Short"
+  },
   "SA50-20261014-14e876264d18-WORK-01": {
    "title": "Pensar y actuar bien",
    "year": 2020,
@@ -30316,7 +30503,19 @@
     {
      "id": "SAB2-20261014-e3499178f69e",
      "name": "Matsipaya Waurá Txucarramãe"
-    },
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "SAB2-20261014-bcdd867e2132-QMebc038": {
+   "title": "Raoni. A descida do povo mebêngôkre na terra",
+   "year": 2024,
+   "makers": [
     {
      "id": "SAB2-20261014-bcdd867e2132",
      "name": "Kokokaroti Txukahamãe Metuktire"
@@ -30822,11 +31021,19 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Art, Craft and Making",
+    "Kinship",
+    "Memory and Oral History"
+   ],
+   "primary_theme": "Art, Craft and Making",
+   "families": [
+    "Expression and Representation",
+    "Knowledge and Continuity",
+    "Lives and Relations"
+   ],
+   "form": "Fiction",
+   "length": "Short"
   },
   "SAB2-20261014-7c02eedcb51c-WORK-01": {
    "title": "Chimindi Ath’epa / Visión de Chimindi",
@@ -31334,9 +31541,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
+   "themes": [
+    "Land Defense",
+    "Sovereignty and Self-Determination"
+   ],
    "primary_theme": null,
-   "families": [],
+   "families": [
+    "Land and Environment",
+    "Sovereignty and Politics"
+   ],
    "form": null,
    "length": null
   },
@@ -31871,6 +32084,22 @@
    "form": "Documentary",
    "length": "Feature"
   },
+  "PILOT-43-ANA-TSUYEB-QM1b8d6a": {
+   "title": "Riox, palabra florida",
+   "year": null,
+   "makers": [
+    {
+     "id": "PILOT-43-ANA-TSUYEB",
+     "name": "Ana Ts’uyeb"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "RESEARCH-FILM-004-01": {
    "title": "Pohã Re’yi",
    "year": 2020,
@@ -31884,8 +32113,8 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Documentary",
+   "length": "Short"
   },
   "Q20261112-03-F1": {
    "title": "El camino de las mariposas",
@@ -31937,7 +32166,7 @@
    "primary_theme": null,
    "families": [],
    "form": "Documentary",
-   "length": null
+   "length": "Feature"
   },
   "LEAD-20261011-011-QM4e4ea9": {
    "title": "Las hijas de Naboba",
@@ -31953,7 +32182,7 @@
    "primary_theme": null,
    "families": [],
    "form": "Documentary",
-   "length": null
+   "length": "Short"
   },
   "LEAD-20261011-015-W1031-1": {
    "title": "La niña del arpa",
@@ -31969,7 +32198,7 @@
    "primary_theme": null,
    "families": [],
    "form": "Fiction",
-   "length": null
+   "length": "Short"
   },
   "LEAD-20261011-015-W1031-2": {
    "title": "La sombra de la casa",
@@ -32038,7 +32267,7 @@
    "primary_theme": null,
    "families": [],
    "form": "Fiction",
-   "length": null
+   "length": "Feature"
   },
   "Q20261113-57-F1": {
    "title": "El buceo de las ranas",
@@ -32054,7 +32283,7 @@
    "primary_theme": null,
    "families": [],
    "form": "Fiction",
-   "length": null
+   "length": "Feature"
   },
   "LEAD-20261011-020-W1031-1": {
    "title": "Kpaima",
@@ -32124,10 +32353,6 @@
     {
      "id": "LEAD-20261011-022",
      "name": "Yaremi Guadalupe Chan Padilla"
-    },
-    {
-     "id": "QM-4b9f5b2e83",
-     "name": "Yaremi Chan"
     }
    ],
    "languages": [],
@@ -32144,10 +32369,6 @@
     {
      "id": "LEAD-20261011-022",
      "name": "Yaremi Guadalupe Chan Padilla"
-    },
-    {
-     "id": "QM-4b9f5b2e83",
-     "name": "Yaremi Chan"
     }
    ],
    "languages": [],
@@ -32331,8 +32552,8 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": "Animation",
-   "length": null
+   "form": "Documentary",
+   "length": "Short"
   },
   "Q20261121-232-F1": {
    "title": "Ixofil Lawen",
@@ -32508,11 +32729,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Self-Representation and Countering Stereotypes"
+   ],
+   "primary_theme": "Self-Representation and Countering Stereotypes",
+   "families": [
+    "Expression and Representation"
+   ],
+   "form": "Documentary",
+   "length": "Short"
   },
   "Q20261112-24-F1": {
    "title": "Entre el cielo y la tierra",
@@ -32572,11 +32797,17 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Memory and Oral History",
+    "Music and Performance"
+   ],
+   "primary_theme": "Memory and Oral History",
+   "families": [
+    "Expression and Representation",
+    "Knowledge and Continuity"
+   ],
    "form": "Documentary",
-   "length": null
+   "length": "Short"
   },
   "LEAD-20261031-0007-F2": {
    "title": "Mujer Indígena: la vida olvidada",
@@ -32608,11 +32839,16 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Memory and Oral History",
+    "Elders and Knowledge"
+   ],
+   "primary_theme": "Memory and Oral History",
+   "families": [
+    "Knowledge and Continuity"
+   ],
    "form": "Documentary",
-   "length": null
+   "length": "Short"
   },
   "LEAD-20261031-0007-F4": {
    "title": "Cuando las tormentas llegan",
@@ -32624,11 +32860,17 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Water",
+    "Kinship"
+   ],
+   "primary_theme": "Water",
+   "families": [
+    "Land and Environment",
+    "Lives and Relations"
+   ],
    "form": "Documentary",
-   "length": null
+   "length": "Short"
   },
   "LEAD-20261031-0007-F5": {
    "title": "Nescafé: abono orgánico",
@@ -32685,8 +32927,8 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Documentary",
+   "length": "Short"
   },
   "LEAD-20261031-0055-F1": {
    "title": "Carrying the Fire",
@@ -32886,7 +33128,7 @@
    "primary_theme": null,
    "families": [],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "RESEARCH-FILM-20261031-800-NEW-349": {
    "title": "Thin Places",
@@ -33993,11 +34235,17 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Youth",
+    "More-than-Human Relations"
+   ],
+   "primary_theme": "Youth",
+   "families": [
+    "Land and Environment",
+    "Lives and Relations"
+   ],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "QW-WAPI-V286586821": {
    "title": "Uenutishiu Katshapistesh / La richesse du chauffe-eau",
@@ -34288,7 +34536,7 @@
    "primary_theme": null,
    "families": [],
    "form": "Experimental",
-   "length": null
+   "length": "Short"
   },
   "WAP-FILM-00423": {
    "title": "Phoenix",
@@ -34694,8 +34942,8 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Documentary",
+   "length": "Short"
   },
   "NEW-e6377662fe82-WORK-1": {
    "title": "Entrevista: costumbres y prácticas ancestrales de la mujer del Pueblo Wichí",
@@ -34763,7 +35011,7 @@
    "primary_theme": null,
    "families": [],
    "form": "Fiction",
-   "length": null
+   "length": "Short"
   },
   "NEW-d80b926f6064-WORK-1": {
    "title": "El Diablo Nunca Duerme / The Devil Never Sleeps",
@@ -35139,7 +35387,7 @@
    "primary_theme": null,
    "families": [],
    "form": "Documentary",
-   "length": null
+   "length": "Short"
   },
   "NEW-03c00feec59f-WORK-1": {
    "title": "Öwawë Pá Hã A'uwe Tsiri – River of the Dead",
@@ -35439,7 +35687,7 @@
    "primary_theme": null,
    "families": [],
    "form": "Music Video",
-   "length": null
+   "length": "Short"
   },
   "NEW-9a51a2c26e38-WORK-2": {
    "title": "Tupinambá na Baixada Santista",
@@ -35455,7 +35703,7 @@
    "primary_theme": null,
    "families": [],
    "form": "Music Video",
-   "length": null
+   "length": "Short"
   },
   "NEW-c3fa3281bf58-WORK-1": {
    "title": "Kry-Rytaiti / Lip-Piercing Ceremony",
@@ -35841,8 +36089,8 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Experimental",
+   "length": "Short"
   },
   "NEW-a9177b3cd41d-WORK-1": {
    "title": "Migmaoei Otjiosog / Mi'kmaq Family",
@@ -35967,7 +36215,7 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
+   "form": "Animation",
    "length": null
   },
   "Q20261115-96-F6": {
@@ -35983,7 +36231,7 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
+   "form": "Documentary",
    "length": null
   },
   "NEW-742064a2a245-WORK-1": {
@@ -36061,14 +36309,6 @@
     {
      "id": "NEW-3277b4b6fce3",
      "name": "Dawn Lavell-Harvard"
-    },
-    {
-     "id": "Q20261122-102",
-     "name": "Jeannette Corbiere Lavell"
-    },
-    {
-     "id": "Q20261122-103",
-     "name": "Pam Palmater"
     }
    ],
    "languages": [],
@@ -36466,8 +36706,12 @@
   },
   "NEW-0b08bae85906-WORK-1": {
    "title": "Timelapse",
-   "year": 2018,
+   "year": null,
    "makers": [
+    {
+     "id": "NEW-0b08bae85906",
+     "name": "Ludovic Nolan Courtois"
+    },
     {
      "id": "QW-e1fda356b7",
      "name": "Pascal Plante"
@@ -36636,7 +36880,7 @@
    "primary_theme": null,
    "families": [],
    "form": "Documentary",
-   "length": null
+   "length": "Feature"
   },
   "NEW-a2cce2b16ae8-WORK-1": {
    "title": "Nukum Kaut Ussima (Grand-mère contre petit-fils)",
@@ -36893,10 +37137,6 @@
     {
      "id": "NEW-642461aaa016",
      "name": "Ritchie Hemphill"
-    },
-    {
-     "id": "NEW-8b4953f2fb96",
-     "name": "Colleen Hemphill"
     }
    ],
    "languages": [],
@@ -37296,7 +37536,7 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
+   "form": "Documentary",
    "length": "Short"
   },
   "NEW-6760b53e0843-WORK-1": {
@@ -37485,7 +37725,7 @@
    "primary_theme": null,
    "families": [],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "NEW-8c72a5a58254-WORK-2": {
    "title": "Yasalgon",
@@ -37501,7 +37741,7 @@
    "primary_theme": null,
    "families": [],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "NEW-8c72a5a58254-WORK-3": {
    "title": "L'Attente",
@@ -37517,7 +37757,7 @@
    "primary_theme": null,
    "families": [],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "NEW-8c72a5a58254-WORK-4": {
    "title": "Le Manioc",
@@ -37533,7 +37773,7 @@
    "primary_theme": null,
    "families": [],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "NEW-e0e31180b550-WORK-1": {
    "title": "Mis raíces: mayas durante la covid-19",
@@ -37581,7 +37821,7 @@
    "primary_theme": null,
    "families": [],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "NEW-a1673e2c116c-WORK-1": {
    "title": "Amanecer",
@@ -37596,8 +37836,8 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Fiction",
+   "length": "Short"
   },
   "Q20261121-03-F1": {
    "title": "Olvidados",
@@ -37661,7 +37901,7 @@
    "primary_theme": null,
    "families": [],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "NEW-35815ec235b0-WORK-1": {
    "title": "Kat at Kat'ex?",
@@ -37766,8 +38006,8 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Fiction",
+   "length": "Short"
   },
   "NEW-1976cd104bb2-F1": {
    "title": "Ixoq",
@@ -37783,7 +38023,7 @@
    "primary_theme": null,
    "families": [],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "NEW-06de3ea6d018-WORK-1": {
    "title": "Waycan",
@@ -37873,7 +38113,7 @@
    "primary_theme": null,
    "families": [],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "NEW-0d399fe7dc63-WORK-1": {
    "title": "Ajornavianngilatit (You'll Be Ok)",
@@ -38257,8 +38497,8 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Documentary",
+   "length": "Short"
   },
   "NEW-7a1ad96c1468-WORK-2": {
    "title": "Palabras por la vida",
@@ -38273,8 +38513,8 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Documentary",
+   "length": "Short"
   },
   "NEW-4c89eb1eecae-WORK-6": {
    "title": "Saludos desde el pueblo que dice no a la minería",
@@ -39218,8 +39458,8 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Documentary",
+   "length": "Short"
   },
   "NEW-07c91b32d42b-WORK-1": {
    "title": "Tsihueri, el que fue valiente",
@@ -39280,6 +39520,22 @@
    ],
    "form": "Experimental",
    "length": "Feature"
+  },
+  "NEW-89862e9a3bdc-WORK-1": {
+   "title": "Short on community response to COVID-19 (Míranos y escúchanos project; title not given)",
+   "year": 2020,
+   "makers": [
+    {
+     "id": "NEW-89862e9a3bdc",
+     "name": "Alexander Shimpukat"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
   },
   "NEW-4e90fde2b240-WORK-1": {
    "title": "Los nietos del huito",
@@ -39380,6 +39636,22 @@
    ],
    "form": "Documentary",
    "length": "Short"
+  },
+  "NEW-378fa041ccbf-WORK-1": {
+   "title": "Short on community response to COVID-19 (Míranos y escúchanos project; title not given)",
+   "year": 2020,
+   "makers": [
+    {
+     "id": "NEW-378fa041ccbf",
+     "name": "Yomira Maciso"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
   },
   "NEW-16d1987f7410-WORK-1": {
    "title": "Intrepid Shadows",
@@ -39603,7 +39875,7 @@
    "primary_theme": null,
    "families": [],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "Q20261115-771-F2": {
    "title": "Locked Doors",
@@ -39619,7 +39891,7 @@
    "primary_theme": null,
    "families": [],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "Q20261115-771-F3": {
    "title": "Illegal Anger",
@@ -39635,7 +39907,7 @@
    "primary_theme": null,
    "families": [],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "Q20261115-771-F4": {
    "title": "The Graffiti",
@@ -39667,7 +39939,7 @@
    "primary_theme": null,
    "families": [],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "NEW-da8b6b1bdbc8-WORK-1": {
    "title": "Everything Has a Spirit",
@@ -40847,7 +41119,7 @@
    "families": [
     "Lives and Relations"
    ],
-   "form": null,
+   "form": "Experimental",
    "length": "Short"
   },
   "NEW-0eb2bf43aa15-WORK-1": {
@@ -41506,10 +41778,6 @@
     {
      "id": "NEW-4b43cfbe178e",
      "name": "Dolores Sántiz Gómez"
-    },
-    {
-     "id": "NEW-605d07d12a9f",
-     "name": "Dolores Santiz"
     }
    ],
    "languages": [],
@@ -41817,7 +42085,7 @@
    "primary_theme": null,
    "families": [],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "NEW-551fa83631f3-WORK-2": {
    "title": "Tejedora de destinos",
@@ -41848,10 +42116,6 @@
     {
      "id": "NEW-11d2e0d50c24",
      "name": "Miles T. Red Corn"
-    },
-    {
-     "id": "QM-f3f8718b1b",
-     "name": "Miles T. RedCorn"
     }
    ],
    "languages": [],
@@ -43732,7 +43996,7 @@
    "primary_theme": null,
    "families": [],
    "form": "Documentary",
-   "length": null
+   "length": "Feature"
   },
   "QM-6c1fe38e88-M1": {
    "title": "Corte Pelo",
@@ -44708,8 +44972,8 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Fiction",
+   "length": "Short"
   },
   "QM-34783567f7-M1": {
    "title": "Tapwerta",
@@ -44908,7 +45172,7 @@
    "primary_theme": null,
    "families": [],
    "form": "Fiction",
-   "length": null
+   "length": "Short"
   },
   "LEAD-20261011-012-QM3a5251": {
    "title": "Cuando florezca el chuño",
@@ -44924,7 +45188,7 @@
    "primary_theme": null,
    "families": [],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "QM-525e464677-M1": {
    "title": "Os espíritos só entendem o nosso idioma",
@@ -45005,6 +45269,45 @@
    "form": "Documentary",
    "length": "Short"
   },
+  "DIR-0188-QMfdf4b6": {
+   "title": "Wounmainkat (Nuestra Tierra)",
+   "year": 2008,
+   "makers": [
+    {
+     "id": "DIR-0188",
+     "name": "Miguel Ramírez Boscán"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "DIR-0188-QM4dff6f": {
+   "title": "Mujeres indígenas y otras formas de sabiduría",
+   "year": 2010,
+   "makers": [
+    {
+     "id": "DIR-0188",
+     "name": "Miguel Ramírez Boscán"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Women and Gender",
+    "Land Defense",
+    "Extractivism"
+   ],
+   "primary_theme": "Women and Gender",
+   "families": [
+    "Land and Environment",
+    "Lives and Relations"
+   ],
+   "form": "Documentary",
+   "length": "Short"
+  },
   "DIR-0188-F3": {
    "title": "Manifiesto Wayúu",
    "year": 2019,
@@ -45062,8 +45365,8 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Documentary",
+   "length": "Short"
   },
   "Q20261108-02-F1": {
    "title": "Namtrik, fogones lingüísticos",
@@ -45177,7 +45480,7 @@
    "primary_theme": null,
    "families": [],
    "form": "Documentary",
-   "length": null
+   "length": "Short"
   },
   "Q20261112-08-F2": {
    "title": "Mujer, palabras de la tierra",
@@ -45193,7 +45496,7 @@
    "primary_theme": null,
    "families": [],
    "form": "Documentary",
-   "length": null
+   "length": "Short"
   },
   "Q20261112-08-F3": {
    "title": "Samai kutij, el soplo del tiempo",
@@ -45209,7 +45512,7 @@
    "primary_theme": null,
    "families": [],
    "form": "Fiction",
-   "length": null
+   "length": "Feature"
   },
   "Q20261112-08-F4": {
    "title": "Kuri iaku",
@@ -45225,7 +45528,7 @@
    "primary_theme": null,
    "families": [],
    "form": "Fiction",
-   "length": null
+   "length": "Short"
   },
   "Q20261112-08-F5": {
    "title": "Muiu Puridur, semillas viajeras",
@@ -45241,7 +45544,7 @@
    "primary_theme": null,
    "families": [],
    "form": "Fiction",
-   "length": null
+   "length": "Short"
   },
   "Q20261108-05-F1": {
    "title": "Iyeba pôrã",
@@ -45280,7 +45583,7 @@
    "primary_theme": null,
    "families": [],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "Q20261108-07-F1": {
    "title": "Tabanóka Otjenayá, Soñadora del Lugar de Origen",
@@ -45295,8 +45598,8 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Animation",
+   "length": "Short"
   },
   "Q20261108-08-F1": {
    "title": "Voces Protectoras del Territorio, Mujer Guardia Indígena",
@@ -45335,8 +45638,8 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Fiction",
+   "length": "Short"
   },
   "QM-722f3b1060-M1": {
    "title": "Manuel Yojcom Mendoza, vida sin límite",
@@ -45351,8 +45654,8 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Documentary",
+   "length": "Short"
   },
   "Q20261108-10-F1": {
    "title": "Kumilha’",
@@ -45367,8 +45670,8 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Documentary",
+   "length": "Short"
   },
   "Q20261108-11-F1": {
    "title": "Tejida",
@@ -45384,7 +45687,7 @@
    "primary_theme": null,
    "families": [],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "Q20261108-13-F1": {
    "title": "Tramas y trascendencias",
@@ -45421,7 +45724,7 @@
    "primary_theme": null,
    "families": [],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "QM-ac60127ca8-M1": {
    "title": "El viaje del Kokorrdit / Dance of the Kokorrdit",
@@ -45436,8 +45739,8 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": "Hybrid",
-   "length": null
+   "form": "Documentary",
+   "length": "Feature"
   },
   "Q20261112-06-F1": {
    "title": "Kipara: Pintura Tradicional de los Embera",
@@ -45869,8 +46172,8 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Documentary",
+   "length": "Short"
   },
   "QM-fa560b068c-F1": {
    "title": "Kawil Ch’oolej. La resistencia Q’eqchi’ en El Estor",
@@ -45885,8 +46188,8 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Documentary",
+   "length": "Feature"
   },
   "Q20261108-62-F1": {
    "title": "Uu?uu~tah",
@@ -46083,8 +46386,8 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Fiction",
+   "length": "Short"
   },
   "QM-1a5fde6c6a-M1": {
    "title": "Alma mestiza",
@@ -46532,7 +46835,7 @@
    "primary_theme": null,
    "families": [],
    "form": "Documentary",
-   "length": null
+   "length": "Feature"
   },
   "NEW-4a3766c88a25-QM0e3d6e": {
    "title": "Antes había… entre la agonía del vuelo y el canto",
@@ -46548,7 +46851,7 @@
    "primary_theme": null,
    "families": [],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "NEW-665eb6a5ccee-QM47a524": {
    "title": "Binigula’sa’: los antiguos zapotecas",
@@ -46586,7 +46889,7 @@
    "primary_theme": null,
    "families": [],
    "form": "Documentary",
-   "length": null
+   "length": "Feature"
   },
   "NEW-665eb6a5ccee-QMc6e740": {
    "title": "Los monstruos que devoran la tierra",
@@ -46602,7 +46905,7 @@
    "primary_theme": null,
    "families": [],
    "form": "Documentary",
-   "length": null
+   "length": "Feature"
   },
   "QM-6f2cbe3bfe-M1": {
    "title": "Danzando con demonios",
@@ -46618,7 +46921,7 @@
    "primary_theme": null,
    "families": [],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "NEW-5234fdc3fab5-QM8dced7": {
    "title": "MEE´NËN KAXË´ËJKËN JËNJËËJTY TËJKJËËJTY / Nacer en el corazón de la casa-fuego",
@@ -46705,6 +47008,27 @@
    "form": "Fiction",
    "length": "Short"
   },
+  "Q20261123-92-F1": {
+   "title": "Para curarnos el paisaje herido",
+   "year": null,
+   "makers": [
+    {
+     "id": "LEAD-20261011-019",
+     "name": "Nisaguie Abril Flores Cruz"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Health and Healing",
+    "Women and Gender"
+   ],
+   "primary_theme": "Health and Healing",
+   "families": [
+    "Lives and Relations"
+   ],
+   "form": "Documentary",
+   "length": null
+  },
   "QM-b188b1371d-M2": {
    "title": "Tsajtsikan in ichtakayojmej (Secretos para gritar)",
    "year": null,
@@ -46718,8 +47042,8 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Fiction",
+   "length": "Short"
   },
   "Q20261112-01-F2": {
    "title": "Luna",
@@ -46817,6 +47141,45 @@
    "form": null,
    "length": null
   },
+  "QM-4b9f5b2e83-M1": {
+   "title": "K baakelo’on | Nuestros huesos",
+   "year": null,
+   "makers": [
+    {
+     "id": "QM-4b9f5b2e83",
+     "name": "Yaremi Chan"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Memory and Oral History",
+    "Women and Gender",
+    "Elders and Knowledge"
+   ],
+   "primary_theme": "Memory and Oral History",
+   "families": [
+    "Knowledge and Continuity",
+    "Lives and Relations"
+   ],
+   "form": "Documentary",
+   "length": "Feature"
+  },
+  "QM-4b9f5b2e83-M3": {
+   "title": "Maaya Ko’olelo’ob: Muuk’",
+   "year": null,
+   "makers": [
+    {
+     "id": "QM-4b9f5b2e83",
+     "name": "Yaremi Chan"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Feature"
+  },
   "LEAD-20261011-014-QM0e9ecc": {
    "title": "Kuankua Pi",
    "year": null,
@@ -46831,7 +47194,7 @@
    "primary_theme": null,
    "families": [],
    "form": "Documentary",
-   "length": null
+   "length": "Feature"
   },
   "QM-ec0a41166c-M1": {
    "title": "Yuyarisun",
@@ -46847,7 +47210,7 @@
    "primary_theme": null,
    "families": [],
    "form": "Documentary",
-   "length": null
+   "length": "Short"
   },
   "LEAD-20261011-016-QMe71298": {
    "title": "Wawa Pampay",
@@ -46863,7 +47226,7 @@
    "primary_theme": null,
    "families": [],
    "form": "Fiction",
-   "length": null
+   "length": "Feature"
   },
   "QM-1188c14584-M1": {
    "title": "Ser muxe´",
@@ -46909,7 +47272,7 @@
    "primary_theme": null,
    "families": [],
    "form": "Documentary",
-   "length": null
+   "length": "Feature"
   },
   "BETA25-20261105-23-FILM1": {
    "title": "Óscar",
@@ -46963,7 +47326,7 @@
    "primary_theme": null,
    "families": [],
    "form": "Documentary",
-   "length": null
+   "length": "Feature"
   },
   "Q20261114-95-F1": {
    "title": "Lay Pijedá, nuestro pueblo",
@@ -46995,7 +47358,7 @@
    "primary_theme": null,
    "families": [],
    "form": "Documentary",
-   "length": null
+   "length": "Feature"
   },
   "LEAD-20261011-009-QM22cf67": {
    "title": "Biñíi Dhxizáa (Retoños del zapoteco)",
@@ -47011,7 +47374,7 @@
    "primary_theme": null,
    "families": [],
    "form": "Documentary",
-   "length": null
+   "length": "Feature"
   },
   "Q20261113-86-F1": {
    "title": "When They Were Here",
@@ -47126,7 +47489,7 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
+   "form": "Fiction",
    "length": "Series"
   },
   "Q20261114-03-F2": {
@@ -47221,10 +47584,6 @@
     {
      "id": "Q20261114-04",
      "name": "Candy Renae Fox"
-    },
-    {
-     "id": "Q20261114-11",
-     "name": "Saxon de Cocq"
     }
    ],
    "languages": [],
@@ -47263,7 +47622,7 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
+   "form": "Fiction",
    "length": "Series"
   },
   "Q20261114-05-F1": {
@@ -47295,10 +47654,6 @@
     {
      "id": "Q20261114-06",
      "name": "Germaine Arnaktauyok"
-    },
-    {
-     "id": "Q20261122-129",
-     "name": "Amber Fradsham"
     }
    ],
    "languages": [],
@@ -47448,6 +47803,22 @@
    "form": "Fiction",
    "length": "Short"
   },
+  "Q20261114-11-F1": {
+   "title": "The Other Side",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261114-11",
+     "name": "Saxon de Cocq"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Series"
+  },
   "Q20261114-12-F1": {
    "title": "Waseteg",
    "year": 2010,
@@ -47507,8 +47878,8 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": "Animation",
-   "length": null
+   "form": "Fiction",
+   "length": "Short"
   },
   "Q20261114-74-F1": {
    "title": "Understanding the Law: The Coat",
@@ -47807,7 +48178,7 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": "Animation",
+   "form": "Fiction",
    "length": "Series"
   },
   "Q20261114-75-F1": {
@@ -47905,7 +48276,7 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
+   "form": "Documentary",
    "length": "Feature"
   },
   "Q20261114-20-F1": {
@@ -47945,7 +48316,7 @@
    "primary_theme": null,
    "families": [],
    "form": "Documentary",
-   "length": null
+   "length": "Feature"
   },
   "Q20261114-21-F2": {
    "title": "Bajo un Mismo Sol",
@@ -48492,7 +48863,7 @@
    "primary_theme": null,
    "families": [],
    "form": "Animation",
-   "length": null
+   "length": "Short"
   },
   "Q20261121-96-F1": {
    "title": "Cry of the Loup-garou",
@@ -48508,7 +48879,7 @@
    "primary_theme": null,
    "families": [],
    "form": "Animation",
-   "length": null
+   "length": "Short"
   },
   "Q20261114-33-F1": {
    "title": "Warmin Arupa: Barranderas – Trabajo por Alimentos",
@@ -48668,8 +49039,8 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Documentary",
+   "length": "Short"
   },
   "Q20261114-31-F2": {
    "title": "Back to the Loko",
@@ -48684,8 +49055,8 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Documentary",
+   "length": "Short"
   },
   "Q20261114-32-F1": {
    "title": "Hawaiian Soul",
@@ -48700,8 +49071,8 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Fiction",
+   "length": "Short"
   },
   "Q20261114-37-F1": {
    "title": "E Mālama Pono, Willy Boy",
@@ -48758,8 +49129,8 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Documentary",
+   "length": "Short"
   },
   "Q20261114-38-F3": {
    "title": "Ke Kahea: An Invitation into Sacred Space",
@@ -48774,8 +49145,8 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Documentary",
+   "length": "Short"
   },
   "Q20261114-38-F4": {
    "title": "The Man and the Tree",
@@ -48826,8 +49197,8 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Fiction",
+   "length": "Feature"
   },
   "Q20261114-44-F1": {
    "title": "Lahaina: Voices of Change",
@@ -48864,8 +49235,8 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Fiction",
+   "length": "Short"
   },
   "Q20261114-44-F3": {
    "title": "Visions in the Dark: The Life of Pinky Thompson",
@@ -48880,8 +49251,8 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Documentary",
+   "length": "Feature"
   },
   "Q20261114-44-F4": {
    "title": "Family Ingredients",
@@ -48896,7 +49267,7 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
+   "form": "Documentary",
    "length": "Series"
   },
   "Q20261114-44-F5": {
@@ -48933,8 +49304,8 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Documentary",
+   "length": "Feature"
   },
   "Q20261114-49-F1": {
    "title": "Noho'ana Farm",
@@ -48949,8 +49320,8 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Documentary",
+   "length": "Short"
   },
   "Q20261114-50-F1": {
    "title": "Dear Aloha",
@@ -50641,8 +51012,8 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Documentary",
+   "length": "Short"
   },
   "Q20261115-501-F5": {
    "title": "Timuti",
@@ -50757,7 +51128,7 @@
    "primary_theme": null,
    "families": [],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "Q20261115-765-F2": {
    "title": "2510037901",
@@ -50783,7 +51154,7 @@
    "primary_theme": null,
    "families": [],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "Q20261115-853-F1": {
    "title": "Palace",
@@ -50808,8 +51179,8 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Fiction",
+   "length": "Short"
   },
   "Q20261115-853-F2": {
    "title": "Elusive",
@@ -50834,8 +51205,8 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Fiction",
+   "length": "Short"
   },
   "Q20261115-853-F3": {
    "title": "Echo Lake",
@@ -50910,8 +51281,8 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": "Animation",
-   "length": null
+   "form": "Fiction",
+   "length": "Short"
   },
   "Q20261115-766-F1": {
    "title": "The Original Summit: Journey to the Sacred Uprising",
@@ -50952,6 +51323,36 @@
    "form": "Documentary",
    "length": "Short"
   },
+  "Q20261115-906-F1": {
+   "title": "Allison Goes Berry Picking",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "Q20261115-906",
+     "name": "Georgette McLoed"
+    }
+   ],
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/"
+    }
+   ],
+   "themes": [
+    "More-than-Human Relations"
+   ],
+   "primary_theme": "More-than-Human Relations",
+   "families": [
+    "Land and Environment"
+   ],
+   "form": "Documentary",
+   "length": "Short"
+  },
   "Q20261115-909-F1": {
    "title": "Legend of Fry-Roti: Rise of the Dough",
    "year": 2025,
@@ -50965,8 +51366,8 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Fiction",
+   "length": "Short"
   },
   "Q20261123-12-F1": {
    "title": "Grief Camp",
@@ -51003,8 +51404,8 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Animation",
+   "length": "Short"
   },
   "Q20261115-911-F1": {
    "title": "Txirin, o batismo do gavião",
@@ -51019,8 +51420,8 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Documentary",
+   "length": "Short"
   },
   "Q20261108-15-F1": {
    "title": "Mi Manchi",
@@ -51036,7 +51437,7 @@
    "primary_theme": null,
    "families": [],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "Q20261115-81-F1": {
    "title": "Aiku’é",
@@ -51106,7 +51507,7 @@
    "primary_theme": null,
    "families": [],
    "form": "Documentary",
-   "length": null
+   "length": "Short"
   },
   "Q20261115-82-F2": {
    "title": "Jayankiri",
@@ -51165,8 +51566,8 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Documentary",
+   "length": "Feature"
   },
   "Q20261121-06-F1": {
    "title": "Cho Ukayib’al / Mirada profunda",
@@ -51189,6 +51590,22 @@
    ],
    "form": "Documentary",
    "length": "Short"
+  },
+  "NEW-605d07d12a9f-QMbadf25": {
+   "title": "Nichimal Tseb, mujer florida",
+   "year": null,
+   "makers": [
+    {
+     "id": "NEW-605d07d12a9f",
+     "name": "Dolores Santiz"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
   },
   "QM-4c97dec0cc-M1": {
    "title": "A 515 años",
@@ -51566,7 +51983,7 @@
    "primary_theme": null,
    "families": [],
    "form": "Documentary",
-   "length": null
+   "length": "Short"
   },
   "Q20261114-83-F1": {
    "title": "Yawá – A história do povo Yawanawá",
@@ -51598,7 +52015,7 @@
    "primary_theme": null,
    "families": [],
    "form": "Documentary",
-   "length": null
+   "length": "Short"
   },
   "Q20261115-950-F1": {
    "title": "De raza azteca",
@@ -51613,8 +52030,8 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Fiction",
+   "length": "Feature"
   },
   "Q20261115-950-F2": {
    "title": "El indio yaqui",
@@ -51629,8 +52046,8 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Fiction",
+   "length": "Feature"
   },
   "Q20261115-950-F3": {
    "title": "Raza de bronce",
@@ -51645,8 +52062,8 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Fiction",
+   "length": "Feature"
   },
   "Q20261115-950-F4": {
    "title": "Sol de gloria",
@@ -51661,8 +52078,8 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Fiction",
+   "length": "Feature"
   },
   "Q20261115-958-F1": {
    "title": "Dios y ley",
@@ -51677,7 +52094,7 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
+   "form": "Fiction",
    "length": null
   },
   "Q20261115-958-F2": {
@@ -51693,7 +52110,7 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
+   "form": "Fiction",
    "length": null
   },
   "Q20261115-952-F1": {
@@ -51709,8 +52126,8 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Fiction",
+   "length": "Feature"
   },
   "Q20261115-952-F2": {
    "title": "Driftin' Sands",
@@ -51725,8 +52142,8 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Fiction",
+   "length": "Feature"
   },
   "Q20261115-952-F3": {
    "title": "The Riding Renegade",
@@ -51741,8 +52158,8 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Fiction",
+   "length": "Feature"
   },
   "Q20261115-951-F1": {
    "title": "The Bishop of the Ozarks",
@@ -51757,8 +52174,8 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Fiction",
+   "length": "Feature"
   },
   "Q20261115-951-F2": {
    "title": "The Man Between",
@@ -51773,8 +52190,8 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Fiction",
+   "length": "Feature"
   },
   "Q20261115-951-F3": {
    "title": "Tipped Off",
@@ -51789,8 +52206,8 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Fiction",
+   "length": "Feature"
   },
   "Q20261115-951-F4": {
    "title": "Bag and Baggage",
@@ -51805,8 +52222,8 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Fiction",
+   "length": "Feature"
   },
   "Q20261115-951-F5": {
    "title": "A Woman Who Sinned",
@@ -51821,8 +52238,8 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Fiction",
+   "length": "Feature"
   },
   "Q20261115-966-F1": {
    "title": "Travelling College",
@@ -52594,11 +53011,17 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Elders and Knowledge",
+    "Women and Gender"
+   ],
+   "primary_theme": "Elders and Knowledge",
+   "families": [
+    "Knowledge and Continuity",
+    "Lives and Relations"
+   ],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "QW-WAPI-V161213258": {
    "title": "VIVIR CON LA TIERRA",
@@ -52610,11 +53033,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Elders and Knowledge"
+   ],
+   "primary_theme": "Elders and Knowledge",
+   "families": [
+    "Knowledge and Continuity"
+   ],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "QW-WAPI-V552937225": {
    "title": "Pubertad",
@@ -52630,7 +53057,7 @@
    "primary_theme": null,
    "families": [],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "Q20261121-185-F1": {
    "title": "Chemu am Mapuche pigeiñ (¿Por qué nos llamamos Mapuche?)",
@@ -52681,7 +53108,7 @@
    "primary_theme": null,
    "families": [],
    "form": "Fiction",
-   "length": null
+   "length": "Short"
   },
   "QM-44e78904a4-M1": {
    "title": "Ãjãlí Numã: o jogo de cabeça dos Manoki e Mỹky",
@@ -52766,11 +53193,17 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Memory and Oral History",
+    "More-than-Human Relations"
+   ],
+   "primary_theme": "Memory and Oral History",
+   "families": [
+    "Knowledge and Continuity",
+    "Land and Environment"
+   ],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "QW-WAPI-V179948790": {
    "title": "I Am l'NU",
@@ -53221,6 +53654,27 @@
    "form": null,
    "length": null
   },
+  "DIR-0286-F1": {
+   "title": "Crossing the Line",
+   "year": null,
+   "makers": [
+    {
+     "id": "DIR-0286",
+     "name": "Kelly Byars"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Justice, Truth and Reconciliation",
+    "Resistance Movements"
+   ],
+   "primary_theme": "Justice, Truth and Reconciliation",
+   "families": [
+    "Sovereignty and Politics"
+   ],
+   "form": null,
+   "length": null
+  },
   "DIR-0270-F1": {
    "title": "Under the Battle Tipi",
    "year": null,
@@ -53364,6 +53818,22 @@
     {
      "id": "QM-5653b660e1",
      "name": "Anastacia Lopez"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QM-fdd3000c6f-N1": {
+   "title": "¿Quién es Me'Lupe?",
+   "year": null,
+   "makers": [
+    {
+     "id": "QM-fdd3000c6f",
+     "name": "Norma Aracely Méndez Gómez"
     }
    ],
    "languages": [],
@@ -54060,7 +54530,7 @@
    "primary_theme": null,
    "families": [],
    "form": "Documentary",
-   "length": null
+   "length": "Short"
   },
   "Q20261121-08-F1": {
    "title": "U muuk’il in t’aan (La fuerza de mi voz)",
@@ -54076,7 +54546,7 @@
    "primary_theme": null,
    "families": [],
    "form": "Documentary",
-   "length": null
+   "length": "Short"
   },
   "Q20261121-16-F1": {
    "title": "L’Innu du futur",
@@ -54332,11 +54802,16 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Land Defense",
+    "Extractivism"
+   ],
+   "primary_theme": "Land Defense",
+   "families": [
+    "Land and Environment"
+   ],
    "form": "Documentary",
-   "length": null
+   "length": "Short"
   },
   "DIR-0054-F1": {
    "title": "A Origem do Povo Khisetje",
@@ -54555,10 +55030,6 @@
     {
      "id": "Q20261122-101",
      "name": "Ehren Thomas"
-    },
-    {
-     "id": "Q20261122-132",
-     "name": "Tim Hill"
     }
    ],
    "languages": [],
@@ -54571,6 +55042,34 @@
    "families": [
     "Expression and Representation",
     "Lives and Relations"
+   ],
+   "form": "Documentary",
+   "length": null
+  },
+  "Q20261122-102-F1": {
+   "title": "Until Our Hearts Are On The Ground",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261122-102",
+     "name": "Jeannette Corbiere Lavell"
+    },
+    {
+     "id": "Q20261122-103",
+     "name": "Pam Palmater"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Women and Gender",
+    "Sovereignty and Self-Determination",
+    "State Violence and Genocide",
+    "Resistance Movements"
+   ],
+   "primary_theme": "Women and Gender",
+   "families": [
+    "Lives and Relations",
+    "Sovereignty and Politics"
    ],
    "form": "Documentary",
    "length": null
@@ -54599,6 +55098,26 @@
    "form": "Documentary",
    "length": null
   },
+  "NEW-8b4953f2fb96-F1": {
+   "title": "Homelands",
+   "year": null,
+   "makers": [
+    {
+     "id": "NEW-8b4953f2fb96",
+     "name": "Colleen Hemphill"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Health and Healing"
+   ],
+   "primary_theme": "Health and Healing",
+   "families": [
+    "Lives and Relations"
+   ],
+   "form": "Animation",
+   "length": null
+  },
   "NEW-5f6b8e7166f7-F1": {
    "title": "Unremembered",
    "year": null,
@@ -54606,10 +55125,6 @@
     {
      "id": "NEW-5f6b8e7166f7",
      "name": "Ryan R. Black"
-    },
-    {
-     "id": "NEW-7a7adbdebf61",
-     "name": "John Wapioke"
     }
    ],
    "languages": [],
@@ -54767,10 +55282,6 @@
     {
      "id": "NEW-da8fa380aeff",
      "name": "Tito Ybarra"
-    },
-    {
-     "id": "NEW-aa7b502a59d5",
-     "name": "Dakota Ray Hebert"
     }
    ],
    "languages": [],
@@ -55104,6 +55615,48 @@
    "form": "Fiction",
    "length": null
   },
+  "Q20261122-128-F1": {
+   "title": "Aki",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261122-128",
+     "name": "Jamie Lee Reardon"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Linguistic Preservation",
+    "Elders and Knowledge"
+   ],
+   "primary_theme": "Linguistic Preservation",
+   "families": [
+    "Knowledge and Continuity"
+   ],
+   "form": "Documentary",
+   "length": null
+  },
+  "Q20261122-129-F1": {
+   "title": "Arnattaujuup Unikkaaqtuaqtangit",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261122-129",
+     "name": "Amber Fradsham"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Memory and Oral History",
+    "Elders and Knowledge"
+   ],
+   "primary_theme": "Memory and Oral History",
+   "families": [
+    "Knowledge and Continuity"
+   ],
+   "form": "Hybrid",
+   "length": null
+  },
   "Q20261122-130-F1": {
    "title": "Le feu sacré",
    "year": null,
@@ -55321,6 +55874,51 @@
    "form": "Documentary",
    "length": null
   },
+  "NEW-aa7b502a59d5-F1": {
+   "title": "Counting Coup (Northland Tales)",
+   "year": null,
+   "makers": [
+    {
+     "id": "NEW-aa7b502a59d5",
+     "name": "Dakota Ray Hebert"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Resistance Movements",
+    "Self-Representation and Countering Stereotypes"
+   ],
+   "primary_theme": "Resistance Movements",
+   "families": [
+    "Expression and Representation",
+    "Sovereignty and Politics"
+   ],
+   "form": "Documentary",
+   "length": null
+  },
+  "Q20261122-132-F1": {
+   "title": "Turtle Island Tap",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261122-132",
+     "name": "Tim Hill"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Music and Performance",
+    "Youth",
+    "Self-Representation and Countering Stereotypes"
+   ],
+   "primary_theme": "Music and Performance",
+   "families": [
+    "Expression and Representation",
+    "Lives and Relations"
+   ],
+   "form": "Documentary",
+   "length": null
+  },
   "NEW-28f7d379e3b0-F1": {
    "title": "Pitago Stop",
    "year": null,
@@ -55334,6 +55932,26 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
+   "form": "Fiction",
+   "length": null
+  },
+  "NEW-7a7adbdebf61-F1": {
+   "title": "Unremembered",
+   "year": null,
+   "makers": [
+    {
+     "id": "NEW-7a7adbdebf61",
+     "name": "John Wapioke"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Youth"
+   ],
+   "primary_theme": "Youth",
+   "families": [
+    "Lives and Relations"
+   ],
    "form": "Fiction",
    "length": null
   },
@@ -55456,6 +56074,22 @@
    "form": "Fiction",
    "length": null
   },
+  "QM-f3f8718b1b-F1": {
+   "title": "Two Brothers",
+   "year": null,
+   "makers": [
+    {
+     "id": "QM-f3f8718b1b",
+     "name": "Miles T. RedCorn"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
+  },
   "Q20261123-01-F1": {
    "title": "RA",
    "year": 2020,
@@ -55474,6 +56108,22 @@
   },
   "Q20261123-01-F2": {
    "title": "KIYEDECAGO",
+   "year": 2021,
+   "makers": [
+    {
+     "id": "Q20261123-01",
+     "name": "Nelly Kuiru Castro"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
+  },
+  "Q20261123-01-F3": {
+   "title": "Yarokamena. La resistencia",
    "year": 2021,
    "makers": [
     {
@@ -55612,7 +56262,7 @@
    "primary_theme": null,
    "families": [],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "Q20261114-22-F1": {
    "title": "Visita inesperada",
@@ -55752,7 +56402,7 @@
    "primary_theme": null,
    "families": [],
    "form": "Animation",
-   "length": null
+   "length": "Short"
   },
   "Q20261114-40-F3": {
    "title": "Notre Père",
@@ -55816,7 +56466,7 @@
    "primary_theme": null,
    "families": [],
    "form": "Documentary",
-   "length": null
+   "length": "Feature"
   },
   "Q20261123-96-F1": {
    "title": "Vuelven",
@@ -56474,7 +57124,7 @@
    "primary_theme": null,
    "families": [],
    "form": "Documentary",
-   "length": null
+   "length": "Short"
   },
   "Q20261124-05-F1": {
    "title": "Goat Song",
