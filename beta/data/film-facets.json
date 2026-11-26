@@ -2,8 +2,8 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-26",
  "license": "See data.html",
- "films_on_public_map": 2848,
- "film_entries": 2848,
+ "films_on_public_map": 2856,
+ "film_entries": 2856,
  "published_field_conflicts": {
   "SA50-20261014-59f87a2e3ce5-WORK-01": [
    "themes"
@@ -60015,6 +60015,134 @@
    "primary_theme": null,
    "families": [],
    "form": null,
+   "length": null
+  },
+  "DIR-0080-F1": {
+   "title": "2 Hour Parking",
+   "year": 2011,
+   "makers": [
+    {
+     "id": "DIR-0080",
+     "name": "Cowboy Smithx"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Music Video",
+   "length": null
+  },
+  "NEW-c7c77f06bca3-F1": {
+   "title": "Manito-Api",
+   "year": null,
+   "makers": [
+    {
+     "id": "NEW-c7c77f06bca3",
+     "name": "Erica Daniels"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "DIR-0283-F1": {
+   "title": "Dude Vision",
+   "year": 2005,
+   "makers": [
+    {
+     "id": "DIR-0283",
+     "name": "Jon Proudstar"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "DIR-0116-F1": {
+   "title": "What Goes Around Comes Around",
+   "year": 2004,
+   "makers": [
+    {
+     "id": "DIR-0116",
+     "name": "Laura de Jonge"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "DIR-0117-F1": {
+   "title": "The Good Canadian",
+   "year": 2025,
+   "makers": [
+    {
+     "id": "DIR-0117",
+     "name": "Leena Minifie"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "DIR-0303-F1": {
+   "title": "The American Indian and His Government",
+   "year": null,
+   "makers": [
+    {
+     "id": "DIR-0303",
+     "name": "Ruth Arrington"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "DIR-0306-F1": {
+   "title": "Rutherford Falls",
+   "year": null,
+   "makers": [
+    {
+     "id": "DIR-0306",
+     "name": "Sierra Teller Ornelas"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Series"
+  },
+  "DIR-0166-F1": {
+   "title": "Qallunaat! Why White People Are Funny",
+   "year": null,
+   "makers": [
+    {
+     "id": "DIR-0166",
+     "name": "Zebedee Nungak"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
    "length": null
   }
  }
