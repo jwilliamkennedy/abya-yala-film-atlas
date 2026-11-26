@@ -9,13 +9,20 @@
 <link rel="stylesheet" href="assets/ui-20261109.css?v=41">
 <link rel="stylesheet" href="assets/constellate.css?v=87">
 <link rel="stylesheet" href="assets/rail-20261121.css?v=8">
-<link rel="stylesheet" href="assets/globe-experiment.css?v=73-unfold">
+<link rel="stylesheet" href="assets/globe-experiment.css?v=74-panel">
 <style>
 #atlas-globe-stage{display:none}
 html[data-globe-entry] #atlas-globe-stage{display:block;position:fixed;inset:var(--globe-shell-top,94px) 0 0 var(--globe-shell-left,0px);overflow:hidden;isolation:isolate;background:#101b29;z-index:20}
 html[data-globe-entry][data-rail]{--globe-shell-top:0px;--globe-shell-left:var(--rail-w,76px)}
 @media(max-width:760px){html[data-globe-entry]{--globe-shell-top:56px}}
-#globe-stage-loading{position:absolute;inset:0;display:grid;place-items:center;margin:0;color:#c9d3e0;font:500 15px/1.4 system-ui,sans-serif;pointer-events:none}
+#globe-stage-loading{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;margin:0;color:#c9d3e0;font:400 15px/1.4 Georgia,'Times New Roman',serif;letter-spacing:.02em;pointer-events:none}
+.globe-loader{width:84px;height:84px}
+.globe-loader-sphere{fill:#4f6f99;opacity:.35;stroke:none}
+.globe-loader-meridian{fill:none;stroke:#fbf8ee;stroke-opacity:.35;stroke-width:1;transform-origin:40px 40px;animation:globe-loader-turn 2.4s ease-in-out infinite}
+.globe-loader-ring{fill:none;stroke:#f2d99b;stroke-width:1.6;stroke-linecap:round;stroke-dasharray:188.5;stroke-dashoffset:188.5;transform:rotate(-90deg);transform-origin:40px 40px;animation:globe-loader-draw 2.4s ease-in-out infinite}
+@keyframes globe-loader-turn{0%{transform:scaleX(1)}50%{transform:scaleX(.08)}100%{transform:scaleX(1)}}
+@keyframes globe-loader-draw{0%{stroke-dashoffset:188.5}60%{stroke-dashoffset:0}100%{stroke-dashoffset:-188.5}}
+@media(prefers-reduced-motion:reduce){.globe-loader-meridian,.globe-loader-ring{animation:none;stroke-dashoffset:0}}
 html[data-globe-entry=ready] #globe-stage-loading{display:none}
 html[data-globe-entry=error] #globe-stage-loading{pointer-events:auto}
 html[data-globe-entry=error] #globe-stage-loading button{margin-left:8px;cursor:pointer}
@@ -40,13 +47,13 @@ html[data-globe-entry] body.atlas-page>header{box-sizing:border-box}
 <script defer src="assets/counter.js"></script>
 <script defer src="watch-data.js"></script>
 <script defer src="assets/globe-core.js?v=5-zoom"></script>
-<script defer src="assets/globe.js?v=34-unfold"></script>
+<script defer src="assets/globe.js?v=35-draw"></script>
 </head>
 <body class="atlas-page">
 <a class="skip" href="#atlas-globe-stage">Skip to globe</a>
 <header><a class="brand" href="./"><svg class="brand-mark" viewBox="0 0 120 120" aria-hidden="true" focusable="false"><circle cx="60" cy="60" r="50" fill="none" stroke="currentColor" stroke-width="7"/><path class="meridian" d="M44 16 C66 30 50 46 62 60 C74 74 56 88 66 104" fill="none" stroke="#5f8199" stroke-width="8" stroke-linecap="round"/><circle cx="62" cy="60" r="7" fill="currentColor"/></svg><span class="brand-title">Indigenous Cinema Atlas<small>Abya Yala and Turtle Island</small></span></a><nav class="primary" aria-label="Explore the atlas"><a href="about.html" class="about-link">About</a><a href="./" class="map-link" aria-current="page">Map</a><a href="watch.html" class="watch-link">Watch</a><details class="more-menu"><summary>More</summary><div><a href="languages.html">Languages</a><a href="themes.html">Themes</a><a href="timeline.html">Timeline</a><span class="more-sep"></span><a href="screening.html" data-screen-count>Saved</a><span class="more-sep"></span><a href="corrections.html">Suggest a correction</a></div></details></nav><nav class="atlas-utilities" aria-label="Atlas utilities"><button id="close-menus" hidden title="Close open menus without clearing your selection">Close menus ×</button></nav></header>
 <section id="atlas-globe-stage" tabindex="-1" role="main" aria-label="Cinema globe">
-<p id="globe-stage-loading" role="status">Opening the atlas…</p>
+<div id="globe-stage-loading" role="status"><svg class="globe-loader" viewBox="0 0 80 80" aria-hidden="true"><circle class="globe-loader-sphere" cx="40" cy="40" r="30"/><ellipse class="globe-loader-meridian" cx="40" cy="40" rx="12" ry="30"/><circle class="globe-loader-ring" cx="40" cy="40" r="30"/></svg><span>Opening the atlas…</span></div>
 </section>
 <div id="collection-editor" hidden></div>
 <noscript>The interactive globe requires JavaScript.</noscript>

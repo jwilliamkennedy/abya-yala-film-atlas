@@ -36,3 +36,12 @@ John asked to get as close to NASA as possible. The globe now layers NASA Blue M
 ## Constellate: clusters and the thread journey (25 Nov, late)
 - Films collected in one land spread into a ring of stars about 14 px apart at any zoom (`updateClusters`, `globe-cluster`), so links between them draw as short gold lines (`globe-inner-links`); the grouped star shrinks to a 2 px centre when its land holds more than one film (hit-testing and the star counts are unchanged).
 - Read this thread keeps the night sky; each step lights the arc just travelled from the previous film's land (`journey-arc`); End clears it and returns to the day unless Constellate is open.
+
+## Lands unfold, Draw in Constellate, panels (25 Nov, night)
+- Lands are feathered washes in their own colour (blurred lines under a light fill); the polygon outlines are gone, and the chosen land is a soft glow.
+- Film names appear from zoom 3.4 (fully at 3.7), the land with most films first; at zoom 5.8 and closer, film thumbnails sit on the map (22 at most, 8 on phones); a thumbnail opens its land. Neither shows at night or while gathering.
+- **Draw in Constellate:** the Constellate panel has Draw (also offered when the constellation is empty). It keeps the night sky and draws the line in gold; on release the films along the line are listed, and **Add in order** or **Add and link in order** puts the first 60 into the thread in the order the line meets them, the second linking each film to the next. Clear or Escape returns to Constellate.
+- Clusters spread up to 8 films in a land; a land with more keeps one larger star.
+- Loading: a drawn globe turns while the atlas opens; missing artwork shows the title's initials; loading artwork shimmers.
+- Menu panels (Find, Themes, Map, Gather, Constellate) share one style: dark frosted panel, serif headings, small capitals for labels, 38 px fields, rounded buttons, chevrons on folded sections.
+- The fallback canvas (no WebGL) uses NASA-like sea and land colours with light points.
