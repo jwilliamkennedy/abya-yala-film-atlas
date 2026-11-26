@@ -2095,3 +2095,4 @@ body #weave-trace-layer .wt-result>.wt-head{position:static;min-height:0;margin:
 body #weave-trace-layer .wt-result>.wt-actions{position:static;margin:0;padding:0;border:0;background:none;box-shadow:none}
 body #weave-trace-layer.is-figure .wt-dots circle.is-star{r:2.6px}
 body #weave-trace-layer.is-figure .wt-line{stroke:rgba(255,247,226,.9);stroke-width:1.2}
+body #weave-trace-layer.is-figure .wt-line{stroke-dasharray:none;stroke-dashoffset:0;animation:none;opacity:1;transition:opacity .6s ease}
