@@ -15,7 +15,7 @@ jobs:
         run: pip install -q requests pillow
       - name: Inspect filmed video thumbnail art from official watch URLs
         run: |
-          python3 tools/thumbs/video_candidates.py tools/thumbs/video_missing_20261120.csv out
+          python3 tools/thumbs/video_candidates.py $(ls tools/thumbs/video_missing_*.csv | sort | tail -1) out
       - name: Write nonpublic research report to research branch
         run: |
           cd out
