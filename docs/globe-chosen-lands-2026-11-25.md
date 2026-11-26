@@ -154,3 +154,12 @@ John, after trying the beta: the panel did not close on a click away; make it cl
 - `globe.js?v=57-plate`, `globe-experiment.css?v=89-plate`, `i18n-20261107.js?v=41`.
 - **Later (John, 26 Nov):** a Genres index page: Short, Animation, Experimental / Hybrid, Documentary, Narrative Feature.
 
+## The panel moves; the strip slides; a light on the opening view (26 Nov, 4:20 pm, beta only)
+John: the panel "still needs work and intuitive movement, grasping, closing, resizing, and better layout on text and thumbnails"; then a way to signal to people to come into the map ("A blinking light on one node?").
+- **Move.** Grasp the panel by its head (anywhere that is not a button) and set it down elsewhere on the globe; its head always stays on the globe. Let go within 24 px of home, or double-click the head, and it returns. The grip follows it. `AtlasGlobe.panel.shift`. Kept for the visit, not stored.
+- **Slide.** Grasp the strip and pull sideways 56 px or more for the next or previous page of films; a sideways swipe on a trackpad does the same (`installStripSwipe`). A pull does not also open the still under the pointer.
+- **Layout.** Stills sit directly on the panel (no tinted frame), bottoms aligned, with a soft shadow; the year follows the filmmaker's name; a film without a still shows a 16:9 tile with its initials, now taken from letters only ("AFIENI [Faith]" is AF, was A[).
+- **A way in.** On the opening view, with no land, film or menu in the address, one point carries a soft light that breathes (2.8 s) until the globe is first moved or a land is chosen; clicking it opens that land. The point is one of the lands near the centre with four or more films, a different one each day. Once per visit (`sessionStorage` `atlas-invited`); still under reduced motion. No words. `.globe-invite`, `AtlasGlobe.invite`.
+- Local test note: waits that poll on animation frames stalled on this machine while the map drew; polling on a timer did not.
+- `globe.js?v=58-plate`, `globe-experiment.css?v=90-plate`.
+

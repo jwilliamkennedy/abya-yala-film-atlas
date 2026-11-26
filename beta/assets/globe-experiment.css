@@ -1234,4 +1234,26 @@ html[data-reading-theme="night"] #atlas-rotational-globe .globe-primary,html[dat
 @media(hover:hover){#atlas-rotational-globe #globe-encounter[data-belt=true] .globe-strip-item:not([aria-current=true]):hover{--dock-scale:1.08;--dock-emphasis:1}}
 #atlas-rotational-globe #globe-encounter[data-belt=true][data-collapsed=true] .globe-strip-track{padding-top:6px}
 @media(max-width:760px){#atlas-rotational-globe #globe-encounter[data-belt=true] .globe-strip-track{padding-top:6px;justify-content:flex-start}}
+/* Film panel: grasp the head to move it, grasp the strip to slide a page; stills sit on the panel with their words centred beneath (26 Nov, evening) */
+#atlas-rotational-globe #globe-encounter .globe-encounter-heading{cursor:grab}
+#atlas-rotational-globe #globe-encounter .globe-encounter-heading :is(button,a){cursor:pointer}
+#atlas-rotational-globe #globe-encounter[data-grabbing=true]{user-select:none;-webkit-user-select:none;transition:none!important;box-shadow:0 22px 60px rgba(34,28,18,.26),0 2px 4px rgba(34,28,18,.12)}
+#atlas-rotational-globe #globe-encounter[data-grabbing=true] .globe-encounter-heading{cursor:grabbing}
+#atlas-rotational-globe #globe-encounter[data-belt=true] .globe-strip-track{cursor:grab;touch-action:pan-y;transition:translate 180ms cubic-bezier(.2,.7,.3,1)}
+#atlas-rotational-globe #globe-encounter[data-belt=true] .globe-strip-track.is-grabbing{cursor:grabbing;transition:none}
+#atlas-rotational-globe #globe-encounter[data-belt=true] .globe-strip-track.is-grabbing .globe-strip-item{pointer-events:none}
+#atlas-rotational-globe #globe-encounter[data-belt=true] .globe-strip-item{cursor:pointer;gap:7px;padding:4px 4px 7px;background:transparent!important}
+#atlas-rotational-globe #globe-encounter[data-belt=true] .globe-strip-item:hover{background:var(--p-fill)!important}
+#atlas-rotational-globe #globe-encounter[data-belt=true] .globe-strip-item .globe-thumb-frame{background:transparent!important;align-items:flex-end}
+#atlas-rotational-globe #globe-encounter[data-belt=true] .globe-strip-item .globe-thumb-frame .globe-artwork{border-radius:5px;box-shadow:0 1px 2px rgba(34,28,18,.14),0 6px 14px rgba(34,28,18,.10)}
+#atlas-rotational-globe #globe-encounter[data-belt=true] .globe-strip-item .globe-thumb-frame .globe-text-art{width:100%;height:auto;aspect-ratio:16/9;max-height:100%;border-radius:6px}
+#atlas-rotational-globe #globe-encounter[data-belt=true] .globe-strip-item .globe-strip-maker{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-height:0}
+/* A way in: one light breathes until the globe is touched */
+#atlas-rotational-globe .globe-invite{position:relative;width:36px;height:36px;padding:0;border:0;background:transparent;cursor:pointer}
+#atlas-rotational-globe .globe-invite i{position:absolute;inset:0;margin:auto;border-radius:50%;pointer-events:none}
+#atlas-rotational-globe .globe-invite i:first-child{width:9px;height:9px;background:#fdf3d0;box-shadow:0 0 0 1.5px rgba(13,20,27,.35)}
+#atlas-rotational-globe .globe-invite i:last-child{width:26px;height:26px;background:radial-gradient(circle,rgba(253,243,208,.85) 0,rgba(253,243,208,.35) 45%,rgba(253,243,208,0) 70%);animation:globe-invite 2.8s ease-in-out infinite alternate}
+@keyframes globe-invite{from{transform:scale(.55);opacity:.35}to{transform:scale(1.35);opacity:1}}
+#atlas-rotational-globe .globe-invite:focus-visible{outline:2px solid #fdf3d0;outline-offset:2px;border-radius:50%}
+@media(prefers-reduced-motion:reduce){#atlas-rotational-globe .globe-invite i:last-child{animation:none;transform:scale(1);opacity:.8}}
 
