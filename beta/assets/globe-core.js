@@ -64,6 +64,7 @@ function broadcastCredits(credits,selected,sourceImage,limit=6){
  for(const item of pool)add(item);
  return out;
 }
-const api=Object.freeze({greatCircleSegments,selectConnections,createArtworkCache,communityCinema,broadcastCredits});
+function cinemaBeltOrder(credits,image){const first=broadcastCredits(credits,null,image,Math.min(credits.length,12)),seen=new Set(first.map(f=>f.id));return [...first,...credits.filter(f=>!seen.has(f.id))];}
+const api=Object.freeze({greatCircleSegments,selectConnections,createArtworkCache,communityCinema,broadcastCredits,cinemaBeltOrder});
 if(typeof module!=='undefined'&&module.exports)module.exports=api;else root.AtlasGlobeCore=api;
 })(typeof globalThis!=='undefined'?globalThis:this);

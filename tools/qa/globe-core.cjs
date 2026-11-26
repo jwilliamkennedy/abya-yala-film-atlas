@@ -31,3 +31,6 @@ assert.equal(info.credits,6);assert.equal(info.films,5);assert.equal(info.artwor
 assert.deepEqual(core.broadcastCredits(community,community[0],f=>f.image).map(f=>f.id),['c','e','b']);
 assert.equal(core.broadcastCredits(community,community[0],f=>f.image,1).length,1);
 console.log('Community counts and director-diverse broadcast selection passed');
+
+const belt=core.cinemaBeltOrder(community,f=>f.image);
+assert.equal(belt.length,community.length);assert.equal(new Set(belt.map(f=>f.id)).size,community.length);assert.deepEqual(belt.slice(0,3).map(f=>f.id),['b','c','e']);

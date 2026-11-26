@@ -288,6 +288,13 @@ async def run(browser,name,viewport):
             assert not await page.locator("#globe-emergent").is_visible()
             await page.locator("#globe-expand-encounter").click()
             assert await panel.get_attribute("data-expanded")=="false"
+            assert await panel.get_attribute("data-belt")=="true"
+            await page.locator("#globe-collapse-belt").click()
+            assert await panel.get_attribute("data-collapsed")=="true"
+            assert await page.locator(".globe-film-strip").is_visible()
+            assert not await page.locator(".globe-featured").is_visible()
+            await page.locator("#globe-collapse-belt").click()
+            assert await panel.get_attribute("data-collapsed")=="false"
             first=await page.locator("#globe-encounter .globe-film-title").inner_text()
             await page.locator('#globe-encounter [aria-label="Next film"]').focus()
             await page.keyboard.press("Enter")
@@ -371,7 +378,7 @@ async def run(browser,name,viewport):
             await page.locator(".globe-maker-works [data-maker-film]").first.wait_for()
             assert await page.locator(".globe-maker-actions a").first.get_attribute("href")
             await page.locator(".globe-land-makers summary").first.click()
-            assert 1 < await page.locator("#globe-encounter .globe-strip-item").count() <= 8
+            assert 1 < await page.locator("#globe-encounter .globe-strip-item").count() <= 12
             assert await page.locator("#globe-encounter .globe-strip-item[aria-current=true]").count()==1
             assert await page.locator("#globe-encounter .globe-credit-details").count()==1
             await page.locator(".globe-credit-details summary").click()
