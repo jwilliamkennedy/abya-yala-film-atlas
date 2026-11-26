@@ -87,3 +87,4 @@ John chose the Plate scheme and asked for every menu, the Themes menu and the fi
 - **The site's night theme** (the moon in the rail) now reaches the globe: ground, bar, menus and sky take the rail's night paper (`#0f1830`, `SKY_SITE_NIGHT`); the earth stays lit. Constellate's night is unchanged. The theme is set before first paint (`theme-early` in `beta/index.html`).
 - **Zooming.** Lakes and rivers ease in over most of a zoom level instead of appearing at once; film names ease out before their upper limit; thumbnails fade out as they fade in.
 - Versions: `globe.js?v=44-plate`, `globe-experiment.css?v=82-plate`.
+- **Themes, five first.** The menu opens on the five families, each with its film count; a family opens to its themes, and a family holding a chosen theme stays open (`themeFamilyOpen`). `globe.js?v=45-plate`, `globe-experiment.css?v=83-plate`.

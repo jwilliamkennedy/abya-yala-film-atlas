@@ -1106,3 +1106,20 @@ html[data-globe-entry] #atlas-globe-stage>#constellate-popup .constellate-headin
 html[data-reading-theme="night"] #atlas-rotational-globe:not(.globe-night){--p-ground:#0f1830;--p-bg:#16223d;--p-ink:#f2e8cf;--p-soft:#e6dcc4;--p-muted:#b9c1d6;--p-line:rgba(185,193,214,.24);--p-fill:rgba(242,232,207,.06);--p-fill-2:#1c2b48;--p-accent:#e0c58a;--p-accent-ink:#0f1830;--p-select:#e0c58a;--p-shadow:0 18px 50px rgba(0,0,0,.5);--p-veil:rgba(10,16,34,.62)}
 html[data-reading-theme="night"] #atlas-rotational-globe .globe-primary,html[data-reading-theme="night"] #atlas-rotational-globe .globe-theme-key-item,html[data-reading-theme="night"] #atlas-rotational-globe #globe-gather-panel{box-shadow:0 0 0 1px var(--p-line)!important}
 #atlas-rotational-globe .globe-primary button:focus-visible{outline:1.5px solid var(--p-ink);outline-offset:-6px;border-radius:9px!important}
+/* Themes: five families; a family opens to its themes */
+#atlas-rotational-globe #globe-theme-panel{width:min(380px,calc(100vw - 24px))!important}
+#atlas-rotational-globe .globe-theme-family{margin:0;border-top:1px solid var(--p-line)}
+#atlas-rotational-globe .globe-theme-family:last-child{border-bottom:1px solid var(--p-line)}
+#atlas-rotational-globe .globe-menu-panel button.globe-theme-family-toggle{display:flex;align-items:baseline;gap:10px;width:100%;min-height:48px;padding:12px 2px!important;border:0!important;border-radius:0!important;text-align:left;cursor:pointer;font:400 17px/1.25 Georgia,"Times New Roman",serif!important;color:var(--p-ink)!important}
+#atlas-rotational-globe .globe-theme-family-toggle>span{flex:1 1 auto}
+#atlas-rotational-globe .globe-theme-family-toggle>small{font:400 12px/1 var(--ui-sans,system-ui,sans-serif);color:var(--p-muted);font-variant-numeric:tabular-nums}
+#atlas-rotational-globe .globe-theme-family-toggle>i{flex:none;align-self:center;width:7px;height:7px;border-right:1.5px solid var(--p-muted);border-bottom:1.5px solid var(--p-muted);transform:rotate(-45deg);transition:transform .15s ease}
+#atlas-rotational-globe .globe-theme-family-toggle[aria-expanded=true]>i{transform:rotate(45deg)}
+#atlas-rotational-globe .globe-menu-panel button.globe-theme-family-toggle:hover{border:0!important}
+#atlas-rotational-globe .globe-theme-family-toggle:hover>span{text-decoration:underline;text-decoration-color:var(--p-select);text-underline-offset:4px}
+#atlas-rotational-globe .globe-theme-family[data-open=true] .globe-theme-chips{padding:0 0 14px}
+#atlas-rotational-globe .globe-theme-head{margin-bottom:14px}
+@media(prefers-reduced-motion:reduce){#atlas-rotational-globe .globe-theme-family-toggle>i{transition:none}}
+#atlas-rotational-globe .globe-menu-panel button.globe-theme-family-toggle:is(:hover,:focus-visible){background:transparent!important}
+#atlas-rotational-globe .globe-menu-panel button.globe-theme-chip:not([aria-pressed=true]):hover:not(:disabled){background:var(--p-fill)!important}
+#atlas-rotational-globe .globe-menu-panel button:hover:not(:disabled):not([aria-pressed=true]):not(.globe-theme-family-toggle):not(.globe-theme-film){background:var(--p-fill)!important}
