@@ -498,7 +498,7 @@ try{
     '<h4>Films tagged '+esc(entry.name)+'</h4>'+renderFilms(entry.films);
   }else{
    aside.innerHTML='<p class="tw-kicker">HOW TO READ THIS WEB</p><h3>Films connect the themes.</h3>'+
-    '<p class="tw-claim">Choose any circle to discover films, or choose a line to see films carrying both themes. Colors group themes for navigation; the network is not a ranking of peoples, places or cultures.</p>'+
+    '<p class="tw-claim">Choose any circle to see its films, or choose a line to see films carrying both themes. Colors group themes for navigation; the network is not a ranking of peoples, places or cultures.</p>'+
     '<h4>Start with a question</h4><div class="tw-neighbors">'+
     [...nodeByName.values()].sort((a,b)=>b.films.length-a.films.length).slice(0,8).map(n=>'<button data-open-term="'+esc(n.name)+'">'+esc(n.name)+' <small>'+n.films.length+' films</small></button>').join('')+'</div>'+
     '<p class="tw-source-note">The underlying map retains sourced land references. Theme nodes have no invented geographical coordinates. Readers can build, annotate, export, and share their own film constellations.</p>';
