@@ -2,8 +2,8 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-26",
  "license": "See data.html",
- "films_on_public_map": 3028,
- "film_entries": 3028,
+ "films_on_public_map": 3029,
+ "film_entries": 3029,
  "published_field_conflicts": {
   "SA50-20261014-59f87a2e3ce5-WORK-01": [
    "themes"
@@ -311,7 +311,7 @@
     "note": "",
     "region": "North America",
     "region_basis": "Glottolog countries",
-    "films": 4
+    "films": 5
    },
    {
     "label": "Kichwa",
@@ -63809,6 +63809,32 @@
    "families": [],
    "form": null,
    "length": "Feature"
+  },
+  "Q20261126-38-F6": {
+   "title": "Imajuik",
+   "year": 2021,
+   "makers": [
+    {
+     "id": "Q20261126-38",
+     "name": "Marc Fussing Rosbach"
+    }
+   ],
+   "languages": [
+    {
+     "label": "Kalaallisut",
+     "as_credited": "Kalaallisut",
+     "glottocode": "kala1399",
+     "iso639_3": "kal",
+     "match": "exact",
+     "indigenous": true,
+     "source": "https://www.sapmifilm.com/film/30167"
+    }
+   ],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": "Short"
   },
   "Q20261126-6203-F1": {
    "title": "L'histoire de la petite valise rouge",
