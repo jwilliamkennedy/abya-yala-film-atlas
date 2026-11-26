@@ -53,13 +53,14 @@ window.ATLAS_ON_MAP=window.ATLAS_ON_MAP||new Set(['Map Ready']);
   if(!$('#view-link-fallback').hidden)$('#view-link').value=location.href;
  }
  function snapshot(){return {...api.captureState(),indexScroll:$('#index').scrollTop,pageScroll:window.scrollY};}
- function commit(mode='push'){
+ const publicGlobe=()=>!!window.AtlasRoute?.globe;
+ function commit(mode='push'){if(publicGlobe())return;
   if(applying||window.AtlasConstellate?.enabled||(!window.AtlasConstellate&&new URLSearchParams(location.search).has('weave')))return;const st=snapshot(),hash=route(st);controls();
   if(hash===location.hash){history.replaceState({atlas:st,atlasIndex:position},'',location.href);remember(st);controls();return;}
   try{if(mode!=='replace'){position++;farthest=position;}history[mode==='replace'?'replaceState':'pushState']({atlas:st,atlasIndex:position},'',location.pathname+location.search+hash);}catch{}
   remember(st);controls();
  }
- function preserve(){if(!applying&&!travelling)history.replaceState({atlas:snapshot(),atlasIndex:position},'',location.href);}
+ function preserve(){if(!publicGlobe()&&!applying&&!travelling&&!window.AtlasConstellate?.enabled)history.replaceState({atlas:snapshot(),atlasIndex:position},'',location.href);}
  function queue(mode='push'){
   if(applying)return;if(mode==='push')pushPending=true;if(pending)return;pending=true;
   setTimeout(()=>{pending=false;const write=pushPending?'push':'replace';pushPending=false;commit(write);},0);
@@ -76,10 +77,10 @@ window.ATLAS_ON_MAP=window.ATLAS_ON_MAP||new Set(['Map Ready']);
   }finally{applying=false;}
  }
  window.addEventListener('atlas-camera-change',()=>queue('replace'));
- window.addEventListener('popstate',e=>{travelling=false;position=Number(e.state?.atlasIndex)||0;farthest=Math.max(farthest,position);api.closeWorkspacePanels();apply(e.state?.atlas||parse(location.hash));controls();});
+ window.addEventListener('popstate',e=>{if(publicGlobe()||window.AtlasConstellate?.enabled)return;travelling=false;position=Number(e.state?.atlasIndex)||0;farthest=Math.max(farthest,position);api.closeWorkspacePanels();apply(e.state?.atlas||parse(location.hash));controls();});
  const travel=delta=>{if(travelling||delta<0&&position<=0||delta>0&&position>=farthest)return;api.closeWorkspacePanels();travelling=true;controls();history.go(delta);};
  $('#view-back').onclick=()=>travel(-1);$('#view-forward').onclick=()=>travel(1);
- window.addEventListener('hashchange',()=>{if(!history.state?.atlas){apply(parse(location.hash),true);commit('replace');}});
+ window.addEventListener('hashchange',()=>{if(publicGlobe())return;if(!history.state?.atlas){apply(parse(location.hash),true);commit('replace');}});
  const clickSelector='[data-journey],[data-land-film],[data-map-film],#map-films-all,[data-profile-step],[data-recover-search],[data-recover-filters],[data-open-film],[data-close-profile],#random-entry,[data-maker-letter],#maker-all,#maker-close,#reset-workspace,#clear-context,[data-clear-filter],[data-reading-pick],[data-reading-country],[data-reading-country-land],[data-reading-reference],[data-reading-context-land],[data-reading-makers],#reading-frame,#reading-clear,.primary button,.entry-button,[data-browse-list],[data-film-facet],[data-connection],[data-country],[data-relay-country],[data-tip-land],[data-tip-maker],[data-land-relay],[data-search-view],[data-index-land],[data-land-makers],[data-cross-maker],[data-community],[data-adjacent-maker],[data-show-maker],[data-show-films],[data-reveal-works],[data-film-letter],[data-trail],[data-saved],.work-node,#plane-map,#plane-relations,#return,#back-index,#back-land,#clear-country,#clear-community,#unassigned,#pilot,#all-films,#films-prev,#films-next,#relations-prev,#relations-next,#reset-filters,#close-works,#world,#focus-selection,#ixim-map,#clear-search';
  document.addEventListener('click',e=>{if(e.target.closest(clickSelector)){preserve();queue();}},true);
  document.addEventListener('keydown',e=>{if(e.key==='Escape'||e.key==='Enter'&&e.target.id==='search')queue();if(['Enter',' '].includes(e.key)&&e.target.closest('[data-connection],[data-country],.work-node'))queue();},true);
@@ -95,6 +96,6 @@ window.ATLAS_ON_MAP=window.ATLAS_ON_MAP||new Set(['Map Ready']);
  };
  $('#jump-index').onclick=()=>{api.closeWorkspacePanels();$('#index').scrollIntoView({block:'start',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});$('#index').focus({preventScroll:true});};
  $('#jump-map').onclick=()=>{api.closeWorkspacePanels();$('#atlas').setAttribute('tabindex','0');$('#atlas').scrollIntoView({block:'start',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});$('#atlas').focus({preventScroll:true});};
- const inbound=parse(location.hash);if(inbound)apply(inbound,true);commit('replace');document.body.dataset.navigation='ready';
+ const inbound=publicGlobe()?null:parse(location.hash);if(inbound)apply(inbound,true);commit('replace');document.body.dataset.navigation='ready';
  window.AtlasNavigation={route,parse,commit,apply};
 })().catch(()=>{document.querySelector('#announcement').textContent='View links are unavailable. The atlas remains browsable.';});

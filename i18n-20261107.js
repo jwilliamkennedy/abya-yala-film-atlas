@@ -4,7 +4,117 @@
 (()=>{'use strict';
 const LANGS={en:'English',es:'Español',pt:'Português',fr:'Français'};
 // [English, Español, Português, Français]
-const T=[["Map views","Vistas del mapa","Vistas do mapa","Vues de la carte"],["Open on the map","Abrir en el mapa","Abrir no mapa","Ouvrir sur la carte"],
+const T=[
+["Map themes","Temas del mapa","Temas do mapa","Thèmes de la carte"],
+["Filter map by theme","Filtrar mapa por tema","Filtrar mapa por tema","Filtrer la carte par thème"],
+["Intersect with a second theme","Cruzar con otro tema","Cruzar com outro tema","Croiser avec un second thème"],
+["Intersect with…","Cruzar con…","Cruzar com…","Croiser avec…"],
+["No matching films","No hay películas que coincidan","Nenhum filme correspondente","Aucun film correspondant"],
+["Show all films","Mostrar todas las películas","Mostrar todos os filmes","Afficher tous les films"],
+["Film preview","Vista previa de la película","Prévia do filme","Aperçu du film"],
+["Explore","Explorar","Explorar","Explorer"],
+["Film details and sources","Detalles y fuentes de la película","Detalhes e fontes do filme","Détails et sources du film"],
+["Mapped land references","Referencias territoriales cartografiadas","Referências territoriais mapeadas","Références territoriales cartographiées"],
+["Themes from the catalog. Select two to explore their intersection.","Temas del catálogo. Selecciona dos para explorar su intersección.","Temas do catálogo. Selecione dois para explorar sua interseção.","Thèmes du catalogue. Sélectionnez-en deux pour explorer leur intersection."],
+["Catalog coverage, not a measure of cultural significance.","Cobertura del catálogo, no una medida de relevancia cultural.","Cobertura do catálogo, não uma medida de relevância cultural.","Couverture du catalogue, non une mesure de l’importance culturelle."],
+["Atlas film record ↗","Ficha de la película en el atlas ↗","Registro do filme no atlas ↗","Fiche du film dans l’atlas ↗"],
+["← Back","← Atrás","← Voltar","← Retour"],
+["On thread","En el hilo","No fio","Dans le fil"],
+["Save constellation","Guardar constelación","Salvar constelação","Enregistrer la constellation"],
+["Not saved · temporary in this tab","Sin guardar · temporal en esta pestaña","Não salva · temporária nesta aba","Non enregistrée · temporaire dans cet onglet"],
+["Saved in this browser","Guardada en este navegador","Salva neste navegador","Enregistrée dans ce navigateur"],
+["Show on map","Mostrar en el mapa","Mostrar no mapa","Afficher sur la carte"],
+["Clear theme filter","Quitar filtro temático","Limpar filtro temático","Effacer le filtre thématique"],
+["Compare films","Comparar películas","Comparar filmes","Comparer les films"],
+["Compare","Comparar","Comparar","Comparer"],
+["Discover next","Descubre más","Descubra mais","Découvrez la suite"],
+["More films","Más películas","Mais filmes","Plus de films"],
+["Trailer","Tráiler","Trailer","Bande-annonce"],
+["Film page","Página de la película","Página do filme","Page du film"],
+["Watch ↗","Ver ↗","Assistir ↗","Voir ↗"],
+["Trailer ↗","Tráiler ↗","Trailer ↗","Bande-annonce ↗"],
+["Film page ↗","Página de la película ↗","Página do filme ↗","Page du film ↗"],
+
+["Choose a land","Elige un territorio","Escolha um território","Choisissez un territoire"],
+["Edit star","Editar estrella","Editar estrela","Modifier l’étoile"],
+
+["New star","Nueva estrella","Nova estrela","Nouvelle étoile"],
+["Star name","Nombre de la estrella","Nome da estrela","Nom de l’étoile"],
+["Create star","Crear estrella","Criar estrela","Créer une étoile"],
+["Star","Estrella","Estrela","Étoile"],
+["Freely placed star","Estrella de ubicación libre","Estrela de posição livre","Étoile placée librement"],
+/* Constellate, 24 Nov: labels and accessible names */
+["Choose a theme…","Elige un tema…","Escolha um tema…","Choisissez un thème…"],
+["Ways to gather and read","Formas de reunir y leer","Formas de reunir e ler","Modes de collecte et de lecture"],
+["Constellation actions","Acciones de la constelación","Ações da constelação","Actions de la constellation"],
+["Constellation editor","Editor de constelaciones","Editor de constelações","Éditeur de constellations"],
+["Films of the selected land","Películas del territorio seleccionado","Filmes do território selecionado","Films du territoire sélectionné"],
+["Close sharing","Cerrar opciones para compartir","Fechar opções de compartilhamento","Fermer les options de partage"],
+["Add to thread","Añadir al hilo","Adicionar ao fio","Ajouter au fil"],
+["Quiet atlas markers","Atenuar los marcadores del atlas","Atenuar os marcadores do atlas","Atténuer les repères de l’atlas"],
+["This land","Este territorio","Este território","Ce territoire"],
+["Search titles, filmmakers, peoples or themes…","Buscar títulos, cineastas, pueblos o temas…","Buscar títulos, cineastas, povos ou temas…","Chercher des titres, cinéastes, peuples ou thèmes…"],
+["Choose a constellation…","Elige una constelación…","Escolha uma constelação…","Choisissez une constellation…"],
+["Why this follows","Por qué viene después","Por que vem depois","Pourquoi ce film suit"],
+["Save note","Guardar nota","Salvar nota","Enregistrer la note"],
+["Remove from thread","Quitar del hilo","Remover do fio","Retirer du fil"],
+["Thread name","Nombre del hilo","Nome do fio","Nom du fil"],
+["Star color","Color de la estrella","Cor da estrela","Couleur de l’étoile"],
+["Description (optional)","Descripción (opcional)","Descrição (opcional)","Description (facultative)"],
+["Create thread","Crear hilo","Criar fio","Créer un fil"],
+["Close this start screen","Cerrar esta pantalla inicial","Fechar esta tela inicial","Fermer cet écran d’accueil"],
+/* Constellate, 24 Nov 2026: Add menu, the list, reasons between films */
+["No films yet. Click a land to see its films.", "Aún no hay películas. Haz clic en un territorio para ver sus películas.", "Ainda não há filmes. Clique em um território para ver seus filmes.", "Pas encore de films. Cliquez sur un territoire pour voir ses films."],
+["Read: go through the constellation film by film", "Leer: recorre la constelación película por película", "Ler: percorra a constelação filme por filme", "Lire : parcourez la constellation film par film"],
+["Why here?", "¿Por qué aquí?", "Por que aqui?", "Pourquoi ici ?"],
+["Constellate: how can films encounter each other?", "Constellar: ¿cómo pueden encontrarse las películas?", "Constellate: como os filmes podem se encontrar?", "Constellate : comment les films peuvent-ils se rencontrer ?"],
+["By year", "Por año", "Por ano", "Par année"],
+["By place", "Por lugar", "Por lugar", "Par lieu"],
+["Edit", "Editar", "Editar", "Modifier"],
+["interpretation", "interpretación", "interpretação", "interprétation"],
+["sourced", "con fuente", "com fonte", "avec source"],
+["confirmed by atlas record", "confirmado por el registro del atlas", "confirmado pelo registro do atlas", "confirmé par la fiche de l’atlas"],
+["Add", "Añadir", "Adicionar", "Ajouter"],
+["Films of a theme", "Películas de un tema", "Filmes de um tema", "Films d’un thème"],
+["Map and display", "Mapa y vista", "Mapa e exibição", "Carte et affichage"],
+["New thread", "Nuevo hilo", "Novo fio", "Nouveau fil"],
+["New idea card", "Nueva ficha de idea", "Nova ficha de ideia", "Nouvelle fiche d’idée"],
+["Why does it follow?", "¿Por qué esta película viene después?", "Por que este filme vem depois?", "Pourquoi ce film vient-il ensuite ?"],
+["← The list", "← La lista", "← A lista", "← La liste"],
+["← Back to the list", "← Volver a la lista", "← Voltar à lista", "← Retour à la liste"],
+["Read ▸", "Leer ▸", "Ler ▸", "Lire ▸"],
+["Remove from the constellation", "Quitar de la constelación", "Remover da constelação", "Retirer de la constellation"],
+["Opening note", "Nota inicial", "Nota de abertura", "Note d’ouverture"],
+["shown before the first film", "se muestra antes de la primera película", "exibida antes do primeiro filme", "affichée avant le premier film"],
+["No films yet. Use Add, above the map.", "Aún no hay películas. Usa Añadir, sobre el mapa.", "Ainda não há filmes. Use Adicionar, acima do mapa.", "Pas encore de films. Utilisez Ajouter, au-dessus de la carte."],
+["Save", "Guardar", "Salvar", "Enregistrer"],
+["Saved.", "Guardado.", "Salvo.", "Enregistré."],
+["On more than one thread", "En más de un hilo", "Em mais de um fio", "Sur plusieurs fils"],
+["Land marker", "Marcador de territorio", "Marcador de território", "Repère de territoire"],
+["Connections", "Conexiones", "Conexões", "Liens"],
+["View film", "Ver película", "Ver filme", "Voir le film"],
+["View filmmaker", "Ver cineasta", "Ver cineasta", "Voir le cinéaste"],
+["Focus selected thread", "Mostrar solo el hilo seleccionado", "Mostrar só o fio selecionado", "Afficher seulement le fil sélectionné"],
+["Show all threads", "Mostrar todos los hilos", "Mostrar todos os fios", "Afficher tous les fils"],
+["Help", "Ayuda", "Ajuda", "Aide"],
+["Adding to", "Añadiendo a", "Adicionando a", "Ajout à"],
+["Read", "Leer", "Ler", "Lire"],
+["brings films in: search, a theme, a line drawn across the map, or the theme web.", "trae películas: una búsqueda, un tema, una línea trazada sobre el mapa o la red de temas.", "traz filmes: uma busca, um tema, uma linha traçada no mapa ou a rede de temas.", "fait entrer des films : une recherche, un thème, une ligne tracée sur la carte ou la toile des thèmes."],
+["The order is the path.", "El orden es el recorrido.", "A ordem é o percurso.", "L’ordre est le parcours."],
+["Drag or use ↑ ↓ to reorder. Between two films, say why one follows the other.", "Arrastra o usa ↑ ↓ para reordenar. Entre dos películas, di por qué una sigue a la otra.", "Arraste ou use ↑ ↓ para reordenar. Entre dois filmes, diga por que um vem depois do outro.", "Faites glisser ou utilisez ↑ ↓ pour réordonner. Entre deux films, dites pourquoi l’un suit l’autre."],
+["goes through it film by film;", "la recorre película por película;", "percorre-a filme por filme;", "la parcourt film par film ;"],
+["presents it full screen;", "la presenta a pantalla completa;", "apresenta-a em tela cheia;", "la présente en plein écran ;"],
+["gives a link, a citation and downloads.", "da un enlace, una cita y descargas.", "dá um link, uma citação e downloads.", "donne un lien, une citation et des téléchargements."],
+["Search the atlas and add films", "Busca en el atlas y añade películas", "Busque no atlas e adicione filmes", "Cherchez dans l’atlas et ajoutez des films"],
+["Draw a line across the map: the lands it crosses give their films, in order", "Traza una línea sobre el mapa: los territorios que cruza aportan sus películas, en orden", "Trace uma linha no mapa: os territórios que ela cruza trazem seus filmes, em ordem", "Tracez une ligne sur la carte : les territoires qu’elle traverse apportent leurs films, dans l’ordre"],
+["Browse the themes documented together in film synopses", "Explora los temas documentados juntos en las sinopsis", "Explore os temas documentados juntos nas sinopses", "Parcourez les thèmes documentés ensemble dans les synopsis"],
+["Options: map, display and threads", "Opciones: mapa, vista e hilos", "Opções: mapa, exibição e fios", "Options : carte, affichage et fils"],
+["Clear this constellation (Undo restores it)", "Vaciar esta constelación (Deshacer la restaura)", "Limpar esta constelação (Desfazer a restaura)", "Vider cette constellation (Annuler la rétablit)"],
+["Split this constellation into a second thread", "Dividir esta constelación en un segundo hilo", "Dividir esta constelação em um segundo fio", "Diviser cette constellation en un second fil"],
+["Go through the constellation film by film", "Recorre la constelación película por película", "Percorra a constelação filme por filme", "Parcourez la constellation film par film"],
+["Back to the film list", "Volver a la lista de películas", "Voltar à lista de filmes", "Retour à la liste des films"],
+["Films that could come next", "Películas que podrían venir después", "Filmes que poderiam vir depois", "Films qui pourraient suivre"],
+["Map views","Vistas del mapa","Vistas do mapa","Vues de la carte"],["Open on the map","Abrir en el mapa","Abrir no mapa","Ouvrir sur la carte"],
 ["No saved map views yet. On the map, choose Save view to keep a selection with its filters and map position.","Aún no hay vistas guardadas. En el mapa, elige Guardar vista para conservar una selección con sus filtros y la posición del mapa.","Ainda não há vistas salvas. No mapa, escolha Salvar vista para guardar uma seleção com seus filtros e a posição do mapa.","Aucune vue enregistrée pour l’instant. Sur la carte, choisissez Enregistrer la vue pour conserver une sélection avec ses filtres et la position de la carte."],
 ["Remove saved view","Quitar la vista guardada","Remover a vista salva","Retirer la vue enregistrée"],["Saved view","Vista guardada","Vista salva","Vue enregistrée"],
 ["Watch the years pass on the map","Mira pasar los años en el mapa","Veja os anos passarem no mapa","Voir les années défiler sur la carte"],
@@ -234,7 +344,8 @@ const T=[["Map views","Vistas del mapa","Vistas do mapa","Vues de la carte"],["O
  ["Click the first film.", "Haz clic en la primera película.", "Clique no primeiro filme.", "Cliquez sur le premier film."],
  ["Solid line: sourced connection.", "Línea continua: relación con fuente.", "Linha contínua: relação com fonte.", "Ligne continue : lien sourcé."],
  ["Dotted line: interpretation.", "Línea punteada: interpretación.", "Linha pontilhada: interpretação.", "Ligne pointillée : interprétation."],
- ["Make a thread from this land", "Crear un hilo con este territorio", "Criar um fio com este território", "Créer un fil avec ce territoire"],
+ ["Make a constellation from this land", "Crear una constelación con este territorio", "Criar uma constelação com este território", "Créer une constellation avec ce territoire"],
+ ["Make a constellation", "Crear una constelación", "Criar uma constelação", "Créer une constellation"],
  ["+ Add", "+ Añadir", "+ Adicionar", "+ Ajouter"],
  ["Link", "Vincular", "Vincular", "Relier"],
  ["Chosen", "Elegida", "Escolhido", "Choisi"],
@@ -269,6 +380,8 @@ const T=[["Map views","Vistas del mapa","Vistas do mapa","Vues de la carte"],["O
 const IDX={es:1,pt:2,fr:3};
 const DICT={};for(const row of T)DICT[row[0]]=row;
 const PAT=[
+ [/^After (.+)$/,["Después de $1","Depois de $1","Après $1"]],
+ [/^Why does (.+) follow (.+)\?$/,["¿Por qué $1 viene después de $2?","Por que $1 vem depois de $2?","Pourquoi $1 vient-il après $2 ?"]],
  [/^([\d,]+) filmmakers share index references\. Open a land reference to explore more\.$/,["$1 cineastas comparten referencias del índice. Abre una referencia territorial para explorar más.","$1 cineastas compartilham referências do índice. Abra uma referência territorial para explorar mais.","$1 cinéastes partagent des références dans l’index. Ouvrez une référence territoriale pour en explorer davantage."]],
  [/^([\d,]+) filmmakers on the public map, each with a permanent page you can cite\.$/,["$1 cineastas en el mapa público, cada uno con una página permanente que se puede citar.", "$1 cineastas no mapa público, cada um com uma página permanente que pode ser citada.", "$1 cinéastes sur la carte publique, chacun avec une page permanente que l’on peut citer."]],
  [/^([\d,]+) dated films on the public map, by decade\. ([\d,]+) more film credits have no year recorded yet\.$/,["$1 películas con fecha en el mapa público, por década. Otros $2 créditos aún no tienen año registrado.", "$1 filmes datados no mapa público, por década. Outros $2 créditos ainda não têm ano registrado.", "$1 films datés sur la carte publique, par décennie. $2 autres crédits n’ont pas encore d’année."]],
@@ -310,6 +423,8 @@ function tr(en){
   return en.replace(k,msg[lang]);
  }
  const row=DICT[k];if(row)return en.replace(k,row[i]);
+ const evidence=k.match(/^(Shared theme|Same mapped land|Same people|Same filmmaker|Same published language): (.+)$/);
+ if(evidence){const prefixes={'Shared theme':['Tema compartido','Tema compartilhado','Thème commun'],'Same mapped land':['Mismo territorio indexado','Mesmo território indexado','Même territoire indexé'],'Same people':['Mismo pueblo','Mesmo povo','Même peuple'],'Same filmmaker':['Mismo cineasta','Mesmo cineasta','Même cinéaste'],'Same published language':['Misma lengua registrada','Mesma língua registrada','Même langue documentée']};const value=evidence[1]==='Shared theme'?evidence[2].split(' · ').map(term=>DICT[term]?.[i]||term).join(' · '):evidence[2];return en.replace(k,prefixes[evidence[1]][i-1]+': '+value);}
  if(k.includes(' · ')){const parts=k.split(' · ');if(parts.every(p=>DICT[p]||/^[\d,]+$/.test(p)))return en.replace(k,parts.map(p=>DICT[p]?DICT[p][i]:p).join(' · '));}
  for(const [re,out] of PAT){if(out&&re.test(k))return en.replace(k,k.replace(re,out[i-1]));}
  return null;
@@ -333,7 +448,9 @@ function textNode(n){
  let o=orig.get(n);const cur=n.nodeValue;
  if(o===undefined||(cur!==o&&cur!==n.__atlasT)){o=cur;orig.set(n,o);}
  if(lang==='en'){if(cur!==o)n.nodeValue=o;return;}
- const t=tr(o);if(t!=null&&cur!==t){n.__atlasT=t;n.nodeValue=t;}
+ let t=tr(o);
+ if(t==null&&p.matches('option')&&p.closest('#weave-theme-start,.cm-theme-select,#ws-theme-all')){const m=o.trim().match(/^(.+) \(([\d,]+)\)$/);if(m&&DICT[m[1]])t=DICT[m[1]][IDX[lang]]+' ('+m[2]+')';}
+ if(t!=null&&cur!==t){n.__atlasT=t;n.nodeValue=t;}
 }
 function attrs(e){
  if(e.closest(SKIP))return;

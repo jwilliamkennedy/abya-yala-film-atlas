@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><!-- YouTube requires the site origin as HTTP Referer for embedded playback (error 153). -->
 <meta name="referrer" content="strict-origin-when-cross-origin">
+<script src="assets/atlas-route.js?v=5"></script>
 <title>Watch · Indigenous Cinema Atlas</title>
 <meta name="description" content="Films by Indigenous filmmakers on the atlas that you can watch in full: on this page when the host allows it, or at their source.">
 <link rel="icon" href="assets/icon-1107.svg" type="image/svg+xml">
@@ -25,6 +26,7 @@ nav.primary{display:flex;flex-wrap:wrap;gap:4px 20px}nav.primary a{color:var(--i
 .more-menu>div a{color:var(--ink);border:0;padding:7px 14px;font-size:14px}
 
 main.w{max-width:1440px;margin:0 auto;padding:28px 0 64px}
+html:not([data-watch-origin="globe"]) #watch-return-globe{display:none!important}
 .w-head{padding:0 var(--pad);display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:4px 24px}
 h1{font:400 clamp(30px,3.6vw,42px)/1.1 var(--serif);margin:0;letter-spacing:-.01em}
 .lede{color:var(--muted);font-size:15px;margin:0}
@@ -158,6 +160,7 @@ a.btn{border-bottom:1px solid var(--line)}
 html[data-reading-theme="night"] .card .pic{box-shadow:0 0 0 1px rgba(255,255,255,.06)}
 html[data-reading-theme="night"] main.w .card,html[data-reading-theme="night"] main.w .track>li,html[data-reading-theme="night"] main.w .shelf-head .all,html[data-reading-theme="night"] main.w .q-item{background:transparent!important;border:0!important;box-shadow:none}
 @media (prefers-reduced-motion:reduce){.card .pic,.card img,.q-pic img,.nudge,.card .badge{transition:none}}
+.now-external{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:10px;padding:24px;color:#eef0ec}.now-external[hidden],#now-frame[hidden]{display:none!important}.now-external strong{font:400 clamp(20px,3vw,32px)/1.25 var(--serif)}.now-external p{max-width:38ch;margin:0;line-height:1.45;color:#d3d9da}.now-external .btn{background:#eef0ec;color:#192327;text-decoration:none}.frame.external-only{min-height:210px;aspect-ratio:16/7}#watch-return-globe{white-space:nowrap}
 </style><script defer src="assets/counter.js"></script>
 <style id="site-nav-css">
 /* the header sits exactly where the map's does: brand at left, the menu right after it, same sizes */
@@ -182,15 +185,15 @@ main a:not([href^="http"]):not(.primary):not(.btn){color:var(--ink);border-botto
 main a:not([href^="http"]):not(.primary):not(.btn):hover{border-bottom-color:var(--ink)}
 main a[href^="http"]{color:var(--accent,var(--gold))}
 </style>
-<link rel="stylesheet" href="assets/site-menu.css?v=83f271dc"><script defer src="assets/site-menu.js?v=3ce4d36d"></script><script defer src="i18n-20261107.js?v=23"></script>
-<link rel="stylesheet" href="assets/ui-20261109.css?v=eb897932"><script defer src="assets/ui-20261109.js?v=fdf903c2"></script>
-<script id="rail-early">(function(){var d=document.documentElement,p=null;if(!matchMedia('(min-width:901px)').matches)return;try{p=localStorage.getItem('atlas-rail')}catch(e){}d.setAttribute('data-rail',p||(innerWidth<1440||/[?&]constellate=1/.test(location.search)?'compact':'full'))})()</script><link rel="stylesheet" href="assets/rail-20261121.css?v=e7a41286"><script defer src="assets/rail-20261121.js?v=5f79230c"></script>
+<link rel="stylesheet" href="assets/site-menu.css?v=a6757a02"><script defer src="assets/site-menu.js?v=3ce4d36d"></script><script defer src="i18n-20261107.js?v=23"></script>
+<link rel="stylesheet" href="assets/ui-20261109.css?v=eb897932"><script defer src="assets/ui-20261109.js?v=64d5530b"></script>
+<script id="rail-early">(function(){var d=document.documentElement,p=null;if(!matchMedia('(min-width:901px)').matches)return;try{p=localStorage.getItem('atlas-rail')}catch(e){}d.setAttribute('data-rail',p||(innerWidth<1440||/[?&]constellate=1/.test(location.search)?'compact':'full'))})()</script><link rel="stylesheet" href="assets/rail-20261121.css?v=e7a41286"><script defer src="assets/rail-20261121.js?v=3b075983"></script>
 </head><body>
 <header><a class="brand" href="./"><svg class="brand-mark" viewBox="0 0 120 120" aria-hidden="true" focusable="false"><circle cx="60" cy="60" r="50" fill="none" stroke="currentColor" stroke-width="7"/><path class="meridian" d="M44 16 C66 30 50 46 62 60 C74 74 56 88 66 104" fill="none" stroke="#5f8199" stroke-width="8" stroke-linecap="round"/><circle cx="62" cy="60" r="7" fill="currentColor"/></svg><span>Indigenous Cinema Atlas<small>Abya Yala and Turtle Island</small></span></a>
-<nav class="primary" aria-label="Explore the atlas"><a href="about.html">About</a><a href="./">Map</a><a href="./?constellate=1">Constellate</a><a href="watch.html" aria-current="page">Watch</a><details class="more-menu"><summary>More</summary><div><a href="languages.html">Languages</a><a href="themes.html">Themes</a><a href="timeline.html">Timeline</a><span class="more-sep"></span><a href="screening.html" data-screen-count>Saved</a><span class="more-sep"></span><a href="corrections.html">Suggest a correction</a></div></details></nav></header>
+<nav class="primary" aria-label="Explore the atlas"><a href="about.html">About</a><a href="./">Map</a><a href="watch.html" aria-current="page">Watch</a><details class="more-menu"><summary>More</summary><div><a href="languages.html">Languages</a><a href="themes.html">Themes</a><a href="timeline.html">Timeline</a><span class="more-sep"></span><a href="screening.html" data-screen-count>Saved</a><span class="more-sep"></span><a href="corrections.html">Suggest a correction</a></div></details></nav></header>
 <main class="w">
-<div class="w-head"><h1>Watch</h1><p class="lede">More through <a href="resources.html#platforms">Indigenous cinema platforms and filmmakers’ networks</a>.</p></div>
-<section id="now" aria-label="Player"><div class="frame"><iframe id="now-frame" title="Player" referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
+<div class="w-head"><h1>Watch</h1><a class="btn" id="watch-return-globe" href="./">← Return to globe</a><p class="lede">More through <a href="resources.html#platforms">Indigenous cinema platforms and filmmakers’ networks</a>.</p></div>
+<section id="now" aria-label="Player"><div class="frame"><iframe id="now-frame" title="Player" referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe><div id="now-external" class="now-external" hidden><strong id="now-external-title"></strong><p>This film is available at its source, rather than in the embedded player.</p><a id="now-external-link" class="btn" target="_blank" rel="noopener noreferrer">Watch at source</a></div></div>
 <div class="now-cap"><h2 id="now-title"></h2>
 <div class="now-row"><p class="by" id="now-by"></p><div class="now-acts"><button type="button" class="btn" id="next" title="Play another film">Another film</button><a class="btn" id="now-map" href="./">On the map</a><button type="button" class="btn" id="now-scr" data-screen data-fid="" data-rid="" data-title="" data-year="" data-maker="" data-page="" data-watch="">＋ Screening list</button><button type="button" class="btn" id="now-share" title="Share this film">Share</button></div></div></div>
 <aside id="queue" aria-labelledby="queue-h" hidden><h2 id="queue-h">Related films</h2><ol id="queue-list"></ol></aside></section>
@@ -206,6 +209,6 @@ main a[href^="http"]{color:var(--accent,var(--gold))}
 <p class="credit">Something wrong or missing? <a href="corrections.html">Suggest a correction</a>.</p>
 </main>
 <script src="watch-data.js?v=4"></script>
-<script src="watch-20261122.js?v=6"></script>
+<script src="watch-20261122.js?v=14"></script>
 <script src="assets/screening.js"></script>
 </body></html>

@@ -7,18 +7,21 @@ if(window.__atlasRail)return;window.__atlasRail=1;
 const root=document.documentElement,wide=matchMedia('(min-width:901px)');
 const src=(document.currentScript&&document.currentScript.src)||'';
 const HOME=src?new URL('../',src).href:new URL('./',location.href).href;
+const FLAT=new URL('flat.html',HOME).href;
+const publicMap=()=>!root.dataset.legacyWorkspace;
+const findURL=()=>{const u=new URL(HOME);u.searchParams.set('menu','find');return u.href;};
 const rel=location.href.split(/[?#]/)[0].replace(HOME,'');
-const onMap=rel===''||rel==='index.html';
+const onMap=rel===''||rel==='index.html'||rel==='flat.html';
 const PAGE={'watch.html':'watch','themes.html':'themes','languages.html':'languages','timeline.html':'timeline','screening.html':'screening',
- 'about.html':'about','resources.html':'about','data.html':'data','corrections.html':'correct'};
+ 'about.html':'about','resources.html':'resources','data.html':'data','corrections.html':'correct'};
 
 /* key, words, short word for the collapsed rail, address */
 const MENU=[
- ['map','Map','Map',''],['lands','Lands','Lands',''],['constellate','Constellate','Constellate','?constellate=1'],['watch','Watch','Watch','watch.html'],
+ ['map','Map','Map',''],['lands','Lands','Lands',''],['watch','Watch','Watch','watch.html'],
  'Indexes',
  ['themes','Themes','Themes','themes.html'],['languages','Languages','Languages','languages.html'],['timeline','Timeline','Timeline','timeline.html'],
  '',
- ['screening','Saved','Saved','screening.html'],['about','About','About','about.html'],['data','Data and CARE','Data','data.html']
+ ['screening','Saved','Saved','screening.html'],['about','About','About','about.html'],['data','Data and CARE','Data','data.html'],['resources','Resources','Resources','resources.html']
 ];
 const ICON={
  search:'<circle cx="10.5" cy="10.5" r="6"/><path d="m15 15 5 5"/>',
@@ -33,6 +36,7 @@ const ICON={
  about:'<circle cx="12" cy="12" r="8.5"/><path d="M12 11v5.5M12 7.6v.2"/>',
  data:'<ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v12c0 1.7 3.1 3 7 3s7-1.3 7-3V6M5 12c0 1.7 3.1 3 7 3s7-1.3 7-3"/>',
  data:'<ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v12c0 1.7 3.1 3 7 3s7-1.3 7-3V6M5 12c0 1.7 3.1 3 7 3s7-1.3 7-3"/>',
+ resources:'<path d="M4.5 4.5h4v15h-4zM9.5 4.5h4v15h-4z"/><path d="m14.6 5.6 3.9-1 3.2 14.6-3.9 1z"/>',
  correct:'<path d="M4 20l1-4.2L15.8 5l3.2 3.2L8.2 19z"/><path d="m13.8 7 3.2 3.2"/>',
  fold:'<rect x="3.5" y="4.5" width="17" height="15" rx="2.5"/><path d="M9.5 4.5v15"/>'
 };
@@ -44,14 +48,14 @@ const flag={take(){try{const v=sessionStorage.getItem('atlas-rail-do');sessionSt
  set(v){try{sessionStorage.setItem('atlas-rail-do',v)}catch(e){}}};
 
 let nav=null;const homes=new Map();
-const constellating=()=>onMap&&(root.dataset.uiConstellate?root.dataset.uiConstellate==='on':new URLSearchParams(location.search).get('constellate')==='1');
+const constellating=()=>onMap&&(!!root.dataset.globeEntry||(root.dataset.uiConstellate?root.dataset.uiConstellate==='on':new URLSearchParams(location.search).get('constellate')==='1'));
 const landView=()=>onMap&&!!$('.view-switch [data-view="land"][aria-pressed="true"]');
-const current=()=>!onMap?(rel.startsWith('maker/')?'map':PAGE[rel]||''):constellating()?'constellate':landView()?'lands':'map';
+const current=()=>!onMap?(rel.startsWith('maker/')?'map':PAGE[rel]||''):constellating()?'map':landView()?'lands':'map';
 const wanted=()=>store.get('atlas-rail')||(constellating()||innerWidth<1440?'compact':'full');
 
 function build(){
  nav=document.createElement('nav');nav.id='atlas-rail';nav.setAttribute('aria-label','Atlas menu');
- const row=([k,full,short,href])=>'<a class="rail-item" data-rail="'+k+'" href="'+HOME+href+'" title="'+full+'">'+svg(k)+'<span class="full">'+full+'</span><span class="short">'+short+'</span>'+
+ const row=([k,full,short,href])=>'<a class="rail-item" data-rail="'+k+'" href="'+(k==='map'&&!publicMap()?FLAT:k==='lands'&&publicMap()?findURL():HOME+href)+'" title="'+full+'">'+svg(k)+'<span class="full">'+full+'</span><span class="short">'+short+'</span>'+
   (k==='screening'?'<span class="rail-n" data-rail-n="screening"></span>':'')+'</a>';
  nav.innerHTML='<a class="rail-brand" href="'+HOME+'">'+MARK+'<span class="rail-title"><b>Indigenous<br>Cinema Atlas</b>'+
   '<span class="rail-count" hidden><span><span data-rail-n="films"></span> <span>films</span></span><span><span data-rail-n="makers"></span> <span>filmmakers</span></span></span></span></a>'+
@@ -66,8 +70,8 @@ function build(){
 function onClick(e){
  const a=e.target.closest('[data-rail]');if(!a)return;const k=a.dataset.rail,here=onMap&&!constellating();
  if(k==='toggle'){const next=root.dataset.rail==='compact'?'full':'compact';store.set('atlas-rail',next);root.dataset.rail=next;sync();dispatchEvent(new Event('resize'));return;}
- if(k==='search'){e.preventDefault();if(here){const s=$('#search');if(s){s.focus();return;}}flag.set('search');location.href=HOME;return;}
- if(k==='lands'||k==='saved'){e.preventDefault();if(here)act(k);else{flag.set(k);location.href=HOME;}return;}
+ if(k==='search'){e.preventDefault();if(window.AtlasGlobe?.openMenu('find'))return;if(publicMap()){location.href=findURL();return;}if(here){const s=$('#search');if(s){s.focus();return;}}flag.set('search');location.href=FLAT;return;}
+ if(k==='lands'||k==='saved'){e.preventDefault();if(publicMap()){if(k==='saved'){location.href=new URL('screening.html',HOME).href;return;}if(!window.AtlasGlobe?.openMenu('find'))location.href=findURL();return;}if(here)act(k);else{flag.set(k);location.href=FLAT;}return;}
  if(k==='map'&&here){e.preventDefault();if(landView()){const b=$('.view-switch [data-view="filmmakers"]');if(b)b.click();}}
 }
 function act(k){
@@ -160,12 +164,12 @@ function goHome(){
  setTimeout(()=>{const r=$('#zoom-reset');if(r)r.click();},120);
 }
 /* a link on another page can ask the map to do one thing on arrival: <a href="./" data-atlas-do="time"> */
-document.addEventListener('click',e=>{const a=e.target.closest&&e.target.closest('a[data-atlas-do]');if(a)flag.set(a.dataset.atlasDo);},true);
+document.addEventListener('click',e=>{const a=e.target.closest&&e.target.closest('a[data-atlas-do]');if(!a)return;const dest=new URL(a.href,location.href);if(dest.origin!==location.origin||dest.pathname!==new URL(HOME).pathname||dest.search)return;if(publicMap()&&a.dataset.atlasDo==='time'){dest.searchParams.set('menu','more');a.href=dest.href;return;}if(publicMap()&&['lands','search'].includes(a.dataset.atlasDo)){a.href=findURL();return;}flag.set(a.dataset.atlasDo);a.href=FLAT;},true);
 document.addEventListener('click',e=>{const a=e.target.closest&&e.target.closest('#atlas-rail [data-rail="map"]');if(!a||!onMap||constellating()||landView())return;e.preventDefault();e.stopImmediatePropagation();goHome();},true);
 document.addEventListener('keydown',e=>{
  if(!root.dataset.rail)return;
  /* N2 "/" on any page goes to the map's search (the map page handles its own) */
- if(e.key==='/'&&!onMap&&!typing(e)&&!e.metaKey&&!e.ctrlKey&&!e.altKey){e.preventDefault();flag.set('search');location.href=HOME;return;}
+ if(e.key==='/'&&!onMap&&!typing(e)&&!e.metaKey&&!e.ctrlKey&&!e.altKey){e.preventDefault();if(publicMap()){location.href=findURL();return;}flag.set('search');location.href=FLAT;return;}
  /* N3 Esc leaves Link films, Draw a line, and the map's Draw */
  if(e.key==='Escape'){for(const s of ['#weave-draw-thread','#weave-trace','#map-draw-line']){const b=$(s);if(b&&b.getAttribute('aria-pressed')==='true'&&b.offsetParent){b.click();e.preventDefault();return;}}}
  /* N5 up and down arrows move through the list; Enter opens (it is a button) */

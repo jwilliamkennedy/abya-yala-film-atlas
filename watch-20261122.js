@@ -13,10 +13,18 @@ const host=u=>{try{return new URL(u).hostname.replace(/^www\./,'');}catch(e){ret
 const playable=f=>f.links.find(l=>l.embed);
 const makerText=f=>f.makers.map(m=>m.name).join(', ');
 const peopleText=f=>[...new Set(f.makers.map(m=>m.people).filter(Boolean))].join(', ');
-const mapHref=f=>`./#view=films&maker=${encodeURIComponent(f.makers[0].id)}&film=${encodeURIComponent(f.fid)}`;
+const mapHref=f=>`./?maker=${encodeURIComponent(f.makers[0].id)}&film=${encodeURIComponent(f.fid)}`;
 const makersHTML=f=>f.makers.map(m=>`<a href="maker/${encodeURIComponent(m.id)}.html">${esc(m.name)}</a>${m.people?` (${esc(m.people)})`:''}`).join(', ');
 const THEME_VOCAB=W.families||{"Land and Environment":["Land Defense","Water","Extractivism","Environmental Change","More-than-Human Relations","Food Sovereignty"],"Sovereignty and Politics":["Sovereignty and Self-Determination","Resistance Movements","Borders","Displacement and Migration","State Violence and Genocide","Justice, Truth and Reconciliation","MMIWG2S"],"Knowledge and Continuity":["Linguistic Preservation","Memory and Oral History","Elders and Knowledge","Cosmology and Origin Stories","Residential and Boarding Schools","Archives, Museums and Repatriation"],"Lives and Relations":["Kinship","Youth","Women and Gender","LGBTQIA2S","Health and Healing","Urban Indigeneity"],"Expression and Representation":["Music and Performance","Art, Craft and Making","Non-Conformity / Punk Film","Self-Representation and Countering Stereotypes","Collective and Community Media"]},FAMILIES=Object.keys(THEME_VOCAB);
 const params=new URLSearchParams(location.search);
+// The presence of fromGlobe is the navigation intent, even when a camera
+// was not yet available. Restore only allowlisted atlas state, never a URL.
+function syncGlobeReturn(){
+ const back=window.AtlasRouteTools.watchReturn(location.href),link=$('#watch-return-globe');
+ if(back&&link){link.href=back;document.documentElement.dataset.watchOrigin='globe';}
+ else{delete document.documentElement.dataset.watchOrigin;if(link)link.href='./';}
+}
+syncGlobeReturn();addEventListener('pageshow',syncGlobeReturn);addEventListener('popstate',syncGlobeReturn);addEventListener('hashchange',syncGlobeReturn);
 const state={view:'browse',q:'',theme:params.get('theme')||'',pick:null,sort:'title',here:false,now:null};
 try{const s=JSON.parse(localStorage.getItem('atlas-watch-view')||'{}');if(['maker','new','title'].includes(s.sort))state.sort=s.sort;state.here=!!s.here;}catch(e){}
 const remember=()=>{try{localStorage.setItem('atlas-watch-view',JSON.stringify({sort:state.sort,here:state.here}));}catch(e){}};
@@ -27,8 +35,13 @@ const listNames=a=>a.length<2?a.join(''):a.slice(0,-1).join(', ')+' and '+a[a.le
 const frame=$('#now-frame');frame.referrerPolicy='strict-origin-when-cross-origin';
 const withAutoplay=u=>u+(u.includes('?')?'&':'?')+'autoplay=1';
 function play(f,{scroll=false,quiet=false,auto=false}={}){
- const l=playable(f);if(!l)return;state.now=f.fid;
- frame.src=auto?withAutoplay(l.embed):l.embed;frame.title='Player: '+f.t;
+ syncGlobeReturn();
+ const embed=playable(f),l=embed||f.links.find(v=>{try{return new URL(v.url).protocol==='https:';}catch{return false;}});if(!l)return;state.now=f.fid;
+ const box=frame.parentElement,outside=$('#now-external'),link=$('#now-external-link');
+ // Keep a single permanent provider link and switch its visibility only after its target is set.
+ if(embed){frame.src=auto?withAutoplay(embed.embed):embed.embed;frame.title='Player: '+f.t;}
+ else{frame.removeAttribute('src');$('#now-external-title').textContent=f.t;link.href=l.url;link.textContent='Watch at '+host(l.url)+' ↗';}
+ outside.hidden=!!embed;frame.hidden=!embed;box.classList.toggle('external-only',!embed);
  $('#now-title').textContent=f.t+(f.y?` (${f.y})`:'');
  $('#now-by').innerHTML=makersHTML(f)+(f.fx?` · ${esc(f.fx)}`:'')+` · <a id="now-out" href="${esc(l.url)}" target="_blank" rel="noopener">${esc(host(l.url))} ↗</a>`;
  const map=$('#now-map');map.href=mapHref(f);
@@ -217,7 +230,10 @@ addEventListener('resize',stick);
 if('ResizeObserver' in window)new ResizeObserver(fitQueue).observe($('#queue'));else addEventListener('resize',fitQueue);
 render();stick();
 /* first film: the one named in the address (#film id), else one at random that plays here */
-const asked=data.find(f=>f.fid===decodeURIComponent(location.hash.slice(1)));
-if(asked&&playable(asked))play(asked,{quiet:true});
+function requestedFilm(){let id='';try{id=decodeURIComponent(location.hash.slice(1));}catch{}return data.find(f=>f.fid===id);}
+const asked=requestedFilm();
+if(asked)play(asked,{quiet:true});
 else{const p=(visible().filter(playable).length?visible():data).filter(playable);if(p.length)play(p[Math.floor(Math.random()*p.length)],{quiet:true});else $('#now').hidden=true;}
+// Hash-only navigation does not reload this page. Honor film deep links and browser Back/Forward.
+addEventListener('hashchange',()=>{const f=requestedFilm();if(f&&f.fid!==state.now){$('#now').hidden=false;play(f,{quiet:true});}});
 })();

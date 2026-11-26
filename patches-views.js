@@ -381,15 +381,13 @@ panel.addEventListener('gestureend',e=>{if(inPanel(e))e.preventDefault();last=1;
 /* ==== minimal-pass.js (2026-11-15) ==== */
 try{(function(){
 'use strict';
-// One map toolbar: a Constellations button joins the toolbar and opens the featured-constellation card.
+// One map toolbar: the Constellate button joins it and opens Constellate (24 Nov 2026; it used to open the featured-constellation card).
 const addProxy=(tries)=>{const actions=document.querySelector('.map-toolbar .map-actions'),weave=document.getElementById('featured-weave');
 if(!actions||!weave){if(tries<60)setTimeout(()=>addProxy(tries+1),250);return;}
 if(!actions.querySelector('.fw-proxy')){
   const pill=weave.querySelector('.fw-pill');
-  const b=document.createElement('button');b.type='button';b.className='fw-proxy';b.innerHTML='<span aria-hidden="true">✦</span> Constellations';
-  const sync=()=>b.setAttribute('aria-expanded',String(!weave.classList.contains('is-collapsed')));
-  b.addEventListener('click',()=>{const open=!weave.classList.contains('is-collapsed');if(open){if(weave.__fwSet)weave.__fwSet(true);else weave.classList.add('is-collapsed');}else (weave.querySelector('.fw-pill')||pill)?.click();setTimeout(sync,50);});
-  new MutationObserver(sync).observe(weave,{attributes:true,attributeFilter:['class']});sync();
+  const b=document.createElement('button');b.type='button';b.className='fw-proxy';b.innerHTML='<span aria-hidden="true">✦</span> Constellate';b.title='Constellate: how can films encounter each other?';
+  b.addEventListener('click',()=>{document.querySelector('.constellate-link')?.click();});
   actions.appendChild(b);
 }};
 addProxy(0);

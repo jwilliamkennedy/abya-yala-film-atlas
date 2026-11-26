@@ -16,8 +16,15 @@ if(!window.AtlasReadingTheme)root.dataset.readingTheme=storedTheme();
 function setTheme(id){
  if(window.AtlasReadingTheme&&window.AtlasReadingTheme.apply)window.AtlasReadingTheme.apply(id,true);
  else{root.dataset.readingTheme=id;try{localStorage.setItem('atlas-reading-theme',id);}catch(e){}}
- var b=$('.ui-theme-toggle');if(b){var night=id==='night';b.setAttribute('aria-pressed',String(night));b.title=night?'Switch to the day theme':'Switch to the night theme';b.setAttribute('aria-label',b.title);}
+ syncThemeButton();
 }
+function syncThemeButton(){
+ var b=$('.ui-theme-toggle');if(!b)return;
+ var night=root.dataset.readingTheme==='night',pressed=String(night);
+ if(b.getAttribute('aria-pressed')===pressed)return;
+ b.setAttribute('aria-pressed',pressed);b.title=night?'Switch to the day theme':'Switch to the night theme';b.setAttribute('aria-label',b.title);
+}
+new MutationObserver(syncThemeButton).observe(root,{attributes:true,attributeFilter:['data-reading-theme']});
 var MOON='<svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>';
 var SUN='<svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M12 2.5v2.4M12 19.1v2.4M2.5 12h2.4M19.1 12h2.4M5.3 5.3l1.7 1.7M17 17l1.7 1.7M5.3 18.7 7 17M17 7l1.7-1.7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>';
 function headerTools(){
@@ -27,7 +34,7 @@ function headerTools(){
  var util=$('.atlas-utilities',header);if(util)header.insertBefore(box,util);else header.appendChild(box);box.appendChild(lang);
  var b=document.createElement('button');b.type='button';b.className='ui-theme-toggle';b.innerHTML=MOON+SUN;
  b.addEventListener('click',function(){setTheme((root.dataset.readingTheme==='night')?'paper':'night');});
- box.appendChild(b);setTheme(root.dataset.readingTheme==='night'?'night':'paper');
+ box.appendChild(b);syncThemeButton();
  return true;
 }
 
@@ -235,11 +242,12 @@ function mapPage(){
  /* Constellate: the map dims while it is open */
  function constellate(){
   var mode=$('#constellate-mode');
-  var on=!!(mode&&!mode.hidden&&mode.getBoundingClientRect().height>0);
+  var globe=!!root.dataset.globeEntry, on=globe||!!(mode&&!mode.hidden&&mode.getBoundingClientRect().height>0);
   var val=on?'on':'off';
   if(root.dataset.uiConstellate!==val)root.dataset.uiConstellate=val;
-  var ml=$('header .map-link');if(ml&&on===(ml.getAttribute('aria-current')==='page')){if(on)ml.removeAttribute('aria-current');else ml.setAttribute('aria-current','page');}
-  var cl=$('header .constellate-link');if(cl&&on!==(cl.getAttribute('aria-current')==='page')){if(on)cl.setAttribute('aria-current','page');else cl.removeAttribute('aria-current');}
+  var legacyOn=on&&!globe;
+  var ml=$('header .map-link');if(ml&&legacyOn===(ml.getAttribute('aria-current')==='page')){if(legacyOn)ml.removeAttribute('aria-current');else ml.setAttribute('aria-current','page');}
+  var cl=$('header .constellate-link');if(cl&&legacyOn!==(cl.getAttribute('aria-current')==='page')){if(legacyOn)cl.setAttribute('aria-current','page');else cl.removeAttribute('aria-current');}
  }
  /* Run only the work a change actually requires. Previously every DOM
     mutation remeasured every SVG territory and traversed the entire page. */
@@ -286,6 +294,7 @@ function mapPage(){
 
 function start(){
  if(!headerTools()){var mo=new MutationObserver(function(){if(headerTools())mo.disconnect();});mo.observe(document.documentElement,{childList:true,subtree:true});setTimeout(function(){mo.disconnect();},15000);}
+ if(root.dataset.globeEntry)return;
  if(isMap()){var wait=function(n){if(window.Atlas&&window.Atlas.allRecords&&$('#atlas .land-word'))return mapPage();if(n<80)setTimeout(function(){wait(n+1);},250);else mapPage();};wait(0);}
  else{placeholders();var phScheduled=false;new MutationObserver(function(){if(phScheduled)return;phScheduled=true;requestAnimationFrame(function(){phScheduled=false;placeholders();});}).observe(document.body,{childList:true,subtree:true});}
 }

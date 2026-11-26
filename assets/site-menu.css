@@ -130,7 +130,7 @@ main .about-tabs a[aria-current=page]{background:var(--ui-surface,#fbfcfc);color
  html:not(#_):not(#__):not(#___) .map-toolbar .map-actions>#map-info{position:absolute!important;width:0!important;height:0!important;margin:0!important;padding:0!important;border:0!important}
  html:not(#_):not(#__):not(#___) .map-toolbar .map-actions>#map-info[open]>div{position:fixed!important;left:12px!important;right:12px!important;top:120px!important;width:auto!important;max-width:none!important;max-height:calc(100dvh - 200px)!important;overflow:auto!important;z-index:60!important}
  html:not(#_):not(#__):not(#___) .map-toolbar .map-actions>:is(#country-drawer,#layers)>summary,
- html:not(#_):not(#__):not(#___) .map-toolbar .map-actions>:is(#map-draw-line,#td-toggle){display:flex!important;align-items:center!important;justify-content:center!important;width:100%!important;height:34px!important;min-height:34px!important;margin:0!important;padding:0 4px!important;line-height:1!important;font-size:14px!important;vertical-align:middle!important;box-sizing:border-box!important}
+ html:not(#_):not(#__):not(#___) body:not(.is-constellating) .map-toolbar .map-actions>:is(#map-draw-line,#td-toggle){display:flex!important;align-items:center!important;justify-content:center!important;width:100%!important;height:34px!important;min-height:34px!important;margin:0!important;padding:0 4px!important;line-height:1!important;font-size:14px!important;vertical-align:middle!important;box-sizing:border-box!important}
 
  /* map: the floating controls in one row just above the closed sheet */
  html:not(#_):not(#__):not(#___)[data-sheet=peek] #index{height:58px!important;overflow:hidden!important}
@@ -162,3 +162,6 @@ main:is(:has(> nav.eyebrow.pair),:has(> nav.about-tabs),:has(#care-downloads)) >
 main:is(:has(> nav.eyebrow.pair),:has(> nav.about-tabs),:has(#care-downloads)) > nav.eyebrow.pair{min-height:38px;margin:0 0 26px}
 /* beside the rail, less empty space on the left: the column widens a little and its left gap is capped (23 Nov 2026) */
 html[data-rail] main:is(:has(> nav.eyebrow.pair),:has(> nav.about-tabs),:has(#care-downloads)){max-width:64rem;margin:0 auto 0 max(0px,min(calc((100% - 64rem) / 2),5vw))}
+
+/* The globe is the public beta Map. Keep the old Constellate navigation only in explicitly opened legacy workspaces. */
+html:not(#_):not(#__):not(#___):not([data-legacy-workspace]) body>header nav.primary>a[href$='?constellate=1']{display:none!important}

@@ -248,13 +248,16 @@
 /* Film imagery continues into the thread order and selected film details. */
 #weave-order-list [data-order-select]{align-items:center;gap:9px}
 #weave-order-list [data-order-select]>.weave-media-thumb{
- display:block;position:relative;flex:0 0 42px;width:42px;height:43px;min-width:42px;
+ display:block;position:relative;flex:0 0 52px;width:52px;height:54px;min-width:52px;
  border:1px solid var(--reading-line);border-radius:4px;overflow:hidden;
  background:var(--reading-wash);
 }
 #weave-order-list [data-order-select]>.weave-media-thumb .weave-media-placeholder>b{font-size:13px}
 #weave-order-list [data-order-select]>.weave-media-thumb .weave-media-placeholder>small{font-size:8px!important}
-#weave-order-list [data-order-select]>span:not(.weave-media-thumb){flex:1;min-width:0}
+#weave-order-list [data-order-select]>span:not(.weave-media-thumb){flex:1;min-width:0;font-size:17px;line-height:1.35;font-weight:500}
+#constellate-popup #weave-order-list [data-order-select] small{font-size:14px;line-height:1.35}
+#constellate-popup .constellate-result strong{font-size:17px;line-height:1.35;overflow-wrap:anywhere}
+#constellate-popup .constellate-result small{font-size:14px;line-height:1.35;overflow-wrap:anywhere}
 #constellate-context .weave-context-preview{
  display:flex;align-items:center;gap:12px;
  margin:4px 0 10px;min-width:0;
@@ -282,7 +285,6 @@
 
 
 #constellate-graph.weave-drawing-mode .constellate-card:not(.concept),
-#constellate-graph.weave-drawing-mode .weave-connect-handle,
 #constellate-graph.weave-drawing-mode .weave-stop{cursor:crosshair!important}
 #constellate-graph.weave-drawing-mode .constellate-card.selected rect:first-child{
  stroke:var(--reading-accent);stroke-width:3;
@@ -335,11 +337,9 @@
 /* Film Atlas · Constellate / theme web (beta)
    Source-led thematic navigation. The geography remains a reference, while concepts
    have no invented coordinates. Styles are scoped to this optional lens. */
-/* The thematic lens takes the full map width; the regular editing dock returns on close.
-   This avoids competing search boxes and keeps the scholarly network readable. */
-body.atlas-page.is-theme-weaving.weave-dock-open.is-theme-web-open main{display:block!important;grid-template-columns:minmax(0,1fr)!important}
-body.is-theme-web-open #constellate-popup{display:none!important}
-body.is-theme-web-open .map-panel{width:100%!important;max-width:none!important}
+/* Theme web and Draw are transient layers over the same map.
+   Suppress the dock without changing map dimensions or discarding its contents. */
+body.is-theme-weaving:is(.is-theme-web-open,.weave-tracing) #constellate-popup{visibility:hidden!important;pointer-events:none!important}
 
 
 
@@ -535,9 +535,6 @@ html[data-weave-stage="start"] #weave-start{display:block}
  background:var(--ui-surface);color:var(--ui-ink);border:1px solid var(--ui-line);border-radius:18px;box-shadow:var(--ui-shadow);padding:24px 28px 22px;font-family:var(--ui-sans)}
 #weave-start .ws-kicker{margin:0 0 8px;font:600 12px/1 var(--ui-sans);letter-spacing:.14em;text-transform:uppercase;color:var(--ui-accent)}
 #weave-start h2{margin:0 0 8px;font:400 34px/1.1 var(--ui-serif);letter-spacing:-.015em;color:var(--ui-ink)}
-#weave-start .ws-lede{margin:0 0 16px;max-width:62ch;font:400 16px/1.55 var(--ui-sans);color:var(--ui-muted)}
-#weave-start .ws-how{display:flex;flex-wrap:wrap;gap:6px 22px;list-style:none;margin:0 0 16px;padding:0;font:600 14px/1.2 var(--ui-sans);color:var(--ui-ink)}
-#weave-start .ws-how b{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--ui-ink);color:var(--ui-paper);font-size:12px;margin-right:6px}
 #weave-start .ws-paths{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
 #weave-start .ws-path{border:1px solid var(--ui-line);border-radius:14px;padding:16px 16px 14px;background:var(--ui-paper);display:flex;flex-direction:column;min-width:0}
 #weave-start .ws-path h3{margin:0;font:400 21px/1.2 var(--ui-serif);color:var(--ui-ink)}
@@ -572,17 +569,6 @@ html[data-weave-stage="start"] #weave-start{display:block}
 #weave-start .ws-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
 /* ---------- build: the guide at the top of the panel ---------- */
-#weave-guide{position:sticky;top:0;z-index:5;margin:4px 0 14px;padding:14px 14px 12px;border:1px solid var(--ui-line);border-radius:12px;background:var(--ui-surface);font-family:var(--ui-sans)}
-#weave-guide .wg-steps{display:flex;gap:4px;list-style:none;margin:0 0 10px;padding:0;counter-reset:wg}
-#weave-guide .wg-steps li{counter-increment:wg;flex:1;font:600 12px/1.2 var(--ui-sans);color:var(--ui-muted);padding-top:8px;border-top:3px solid var(--ui-line)}
-#weave-guide .wg-steps li::before{content:counter(wg) ' · '}
-#weave-guide .wg-steps li.is-done{color:var(--ui-ink);border-top-color:var(--ui-ink)}
-#weave-guide .wg-steps li.is-now{color:var(--ui-accent);border-top-color:var(--ui-accent)}
-#weave-guide .wg-text{margin:0 0 10px;font:400 14px/1.5 var(--ui-sans);color:var(--ui-ink)}
-#weave-guide .wg-actions{display:flex;flex-wrap:wrap;gap:6px}
-#weave-guide .wg-actions button{font:600 13px/1 var(--ui-sans);color:var(--ui-ink);background:transparent;border:1px solid var(--ui-line);border-radius:999px;padding:8px 12px;cursor:pointer}
-#weave-guide .wg-actions button.wg-primary{background:var(--ui-accent);border-color:var(--ui-accent);color:var(--ui-accent-ink)}
-html[data-weave-stage="play"] #weave-guide,html[data-weave-stage="read"] #weave-guide{display:none}
 
 /* ---------- toolbar: modes, then building tools (only while building), then the weave's own actions ---------- */
 
@@ -616,7 +602,6 @@ html[data-weave-stage] #atlas .land-watch,html[data-weave-stage] #atlas .land-th
 #weave-start .ws-example-films strong,#weave-start .ws-example-films b{color:var(--ui-ink)}
 #weave-start .ws-example-label{font:400 13px/1.3 var(--ui-sans)!important;color:var(--ui-muted)!important}
 /* connection and suggestion wording */
-#weave-guide .wg-text b{font-weight:600}
 @media (max-width:760px){#weave-start{top:58px}}
 #weave-start .ws-example-films .weave-media-thumb{position:relative!important;width:100%!important;height:auto!important}
 #weave-start .ws-example-films .weave-media-placeholder{position:absolute!important;inset:0!important;display:grid;place-items:center;align-content:center;font:400 18px/1 var(--ui-serif);color:var(--ui-muted)}
@@ -628,9 +613,9 @@ html[data-weave-stage] #atlas .land-watch,html[data-weave-stage] #atlas .land-th
 #weave-start .ws-path{gap:8px}
 /* phones while building: a shorter map, so the guide and the thread show beneath it without scrolling */
 @media (max-width:760px){
+ :root:not(#_)[data-atlas-entry="constellate"]:not([data-weave-stage]) body.atlas-page .map-panel,
  :root:not(#_)[data-weave-stage="build"] body.is-theme-weaving .map-panel{height:52dvh!important;min-height:300px!important;max-height:52dvh!important}
  :root:not(#_)[data-weave-stage="build"] body.is-theme-weaving #constellate-popup{max-height:none!important}
- #weave-guide{position:static}
 }
 
 /* Theme search and a link back to an existing authored weave. */
@@ -707,7 +692,7 @@ html[data-weave-stage="read"] #weave-read-panel>.constellate-actions button{min-
   height:auto!important;min-height:0!important;display:flex!important;flex-direction:column!important;
  }
  html[data-weave-stage="read"] body.is-theme-weaving .map-panel{
-  height:42dvh!important;min-height:270px!important;max-height:42dvh!important;
+  height:52dvh!important;min-height:300px!important;max-height:52dvh!important;
  }
  html[data-weave-stage="read"] body.is-theme-weaving #constellate-popup{
   height:auto!important;max-height:none!important;overflow:visible!important;
@@ -734,7 +719,7 @@ html[data-weave-stage="read"] #weave-read-panel>.constellate-actions button{min-
 html[data-weave-stage="read"] body.is-theme-weaving .map-panel::before,
 html[data-weave-stage="read"] body.is-theme-weaving .map-panel::after{display:none!important}
 html[data-weave-stage="read"] body.is-theme-weaving #atlas .weave-night-veil{display:none!important}
-html[data-weave-stage="read"] body #atlas-theme-web{display:none!important}
+/* Theme web remains available from Read; it overlays rather than replaces the map. */
 
 /* Search themes and search films begin at the same level.
    Featured themes are suggestions beneath the search, never an obstacle above it. */
@@ -879,16 +864,16 @@ body.is-theme-weaving #atlas .nation-wash{stroke-width:.8px!important}
 body.is-theme-weaving #atlas .land-shape{stroke-opacity:.16!important}
 /* 14 Make territory focus visible */
 body.is-theme-weaving #atlas .territory-focus-shape{stroke-opacity:.85!important}
-/* 15 Restore default land name opacity */
-body.is-theme-weaving #atlas .land-word{opacity:.5!important}
+/* 15 Land names stay quiet while building (24 Nov 2026); hover, focus or selection brings each back */
+body.is-theme-weaving #atlas .land-word{opacity:.24!important}
 /* 16 Prioritize high coverage names */
-html[data-ui-zoom=far] body.is-theme-weaving #atlas .land-word[data-ui-tier='1']{opacity:.62!important}
+html[data-ui-zoom=far] body.is-theme-weaving #atlas .land-word[data-ui-tier='1']{opacity:.3!important}
 /* 17 Keep midhigh coverage names legible */
-html[data-ui-zoom=far] body.is-theme-weaving #atlas .land-word[data-ui-tier='2']{opacity:.5!important}
+html[data-ui-zoom=far] body.is-theme-weaving #atlas .land-word[data-ui-tier='2']{opacity:.24!important}
 /* 18 Keep mid coverage names legible */
-html[data-ui-zoom=far] body.is-theme-weaving #atlas .land-word[data-ui-tier='3']{opacity:.4!important}
+html[data-ui-zoom=far] body.is-theme-weaving #atlas .land-word[data-ui-tier='3']{opacity:.18!important}
 /* 19 Do not disappear small communities */
-html[data-ui-zoom=far] body.is-theme-weaving #atlas .land-word[data-ui-tier='4']{opacity:.3!important}
+html[data-ui-zoom=far] body.is-theme-weaving #atlas .land-word[data-ui-tier='4']{opacity:.14!important}
 /* 20 Restore hover legibility */
 body.is-theme-weaving #atlas .land-word:hover{opacity:1!important}
 /* 21 Restore keyboard focus legibility */
@@ -961,15 +946,13 @@ body.is-theme-weaving #constellate-graph .constellate-edge.dream-thread{stroke-d
 body.is-theme-weaving #constellate-graph .constellate-edge.sourced-thread{stroke-width:2.4px!important;stroke-opacity:.95!important;opacity:1!important}
 body.is-theme-weaving #constellate-graph .constellate-edge-label{paint-order:stroke fill;stroke:#122239;stroke-width:3px;fill:#e4e8ec}
 
-/* 2026-11-11: Night Loom. Abstract weaving only: warp lines, braided strands, grain. No community's textile designs. */
-body.is-theme-weaving #constellate-graph .loom-warp path{fill:none;stroke:#8fa4d6;stroke-opacity:.13;stroke-width:.7px;vector-effect:non-scaling-stroke;pointer-events:none}
-body.is-theme-weaving #constellate-graph .weave-thread-glow{fill:none;stroke-width:8px;stroke-opacity:.26;stroke-linecap:round;filter:blur(3.2px);pointer-events:none}
-body.is-theme-weaving #constellate-graph .weave-cord.weave-strand{fill:none;stroke-width:1.5px!important;stroke-opacity:1!important;stroke-linecap:round;stroke-linejoin:round}
-body.is-theme-weaving #constellate-graph .weave-thread.is-quiet .weave-cord.weave-strand{stroke-width:1.2px!important}
-body.is-theme-weaving #constellate-graph .weave-thread.is-quiet .weave-thread-glow{stroke-opacity:.12}
-body.is-theme-weaving #constellate-graph .weave-thread.is-focus .weave-cord.weave-strand{stroke-width:1.9px!important}
-body.is-theme-weaving #constellate-graph .weave-thread-halo{stroke-width:7px!important;stroke-opacity:.55!important}
-body.is-theme-weaving #constellate-graph{background-image:radial-gradient(ellipse at 50% 46%,rgba(4,8,18,0) 55%,rgba(4,8,18,.46) 100%),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.09'/%3E%3C/svg%3E");background-size:auto,180px 180px}
+/* 24 Nov 2026: plain threads. One line per thread in its colour over a thin halo; numbered stops are the only marks.
+   (Replaces the Night Loom warp lines, braided strands, glow and grain of 11 Nov.) */
+body.is-theme-weaving #constellate-graph .weave-cord.weave-strand{fill:none;stroke-width:2.4px!important;stroke-opacity:1!important;stroke-linecap:round;stroke-linejoin:round}
+body.is-theme-weaving #constellate-graph .weave-thread.is-quiet .weave-cord.weave-strand{stroke-width:1.6px!important;stroke-opacity:.8!important}
+body.is-theme-weaving #constellate-graph .weave-thread.is-focus .weave-cord.weave-strand{stroke-width:3px!important}
+body.is-theme-weaving #constellate-graph .weave-thread-halo{stroke-width:5.5px!important;stroke-opacity:.6!important}
+body.is-theme-weaving #constellate-graph .weave-leader{stroke-dasharray:none!important;stroke-opacity:.22!important;stroke-width:1px}
 body.weave-unmapped #constellate-graph{background-image:none}
 
 /* 2026-11-11: named stars when cards would overlap; thread names ride the middle of the thread */
@@ -1092,24 +1075,6 @@ body.is-constellating #constellate-graph.weave-drawing-mode .constellate-preview
 body.is-constellating #constellate-graph .weave-leader{
  stroke-dasharray:2 4;stroke-opacity:.28;pointer-events:none
 }
-/* During film-to-film dragging, expose possible destinations and snap visibly to the chosen one. */
-#constellate-graph.weave-pair-dragging .constellate-card:not(.selected)>rect:first-child{
- stroke:var(--reading-muted,#718391)!important;stroke-width:1.8!important;stroke-dasharray:4 4
-}
-#constellate-graph.weave-pair-dragging .constellate-card.weave-drop-target>rect:first-child{
- stroke:var(--reading-accent,#7db6e8)!important;stroke-width:3.8!important;
- stroke-dasharray:none!important;filter:drop-shadow(0 0 5px rgba(195,221,255,.78))
-}
-#constellate-graph.weave-pair-dragging [data-weave-knot].weave-drop-target circle{
- stroke:var(--reading-accent,#7db6e8)!important;stroke-width:3.5!important
-}
-#constellate-graph.weave-pair-dragging .weave-star-label.weave-drop-target{
- fill:#fff!important;stroke-width:5px!important
-}
-#constellate-graph.weave-pair-dragging .constellate-preview{
- stroke:var(--reading-accent,#7db6e8)!important;stroke-width:3!important;
- stroke-dasharray:6 4!important;stroke-linecap:round;fill:none;pointer-events:none
-}
 /* Play is a third real mode, not an unselected action beside Build and Read. */
 
 
@@ -1200,26 +1165,6 @@ body.is-constellating #constellate-popup #constellate-how[open]>ol strong{
   color:var(--reading-ink,#1c2730)!important
 }
 
-/* A compact contextual hint replaces the oversized duplicate three-step guide. */
-html[data-weave-stage="build"] body.is-theme-weaving #weave-guide{
-  position:static!important;z-index:1!important;
-  display:flex!important;flex-wrap:wrap!important;
-  align-items:center!important;justify-content:space-between!important;
-  gap:7px 12px!important;margin:3px 0 10px!important;
-  padding:9px 11px!important;border-radius:8px!important;box-shadow:none!important
-}
-html[data-weave-stage="build"] body.is-theme-weaving #weave-guide .wg-steps{display:none!important}
-html[data-weave-stage="build"] body.is-theme-weaving #weave-guide .wg-text{
-  flex:1 1 215px!important;margin:0!important;font-size:12.5px!important;line-height:1.4!important
-}
-html[data-weave-stage="build"] body.is-theme-weaving #weave-guide .wg-actions{
-  display:flex!important;flex:0 1 auto!important;gap:4px!important;margin:0!important
-}
-html[data-weave-stage="build"] body.is-theme-weaving #weave-guide .wg-actions button:not(:first-child){display:none!important}
-html[data-weave-stage="build"] body.is-theme-weaving #weave-guide .wg-actions button{
-  min-height:32px!important;padding:6px 10px!important;
-  border-radius:6px!important;font-size:12px!important
-}
 @media(max-width:760px){
   body.is-constellating #constellate-popup .constellate-heading #constellate-how[open]>ol{
     max-height:min(44dvh,260px)!important
@@ -1375,13 +1320,13 @@ body.weave-playing #weave-offmap-rail{visibility:hidden;pointer-events:none}
 .weave-connection-kind{display:inline;font-size:11px;font-weight:600;color:var(--reading-muted,#54626b)}
 /* Connect is a short, focused task, not another pane stacked under all the building tools. */
 #constellate-popup:has(#constellate-inline:not([hidden])) :is(
- #weave-guide,#constellate-how,.constellate-collection,#weave-settings,
+ #constellate-how,.constellate-collection,#weave-settings,
  .weave-thread-heading,#weave-thread-form,#weave-draw-help,#weave-legend,
  #weave-order,#weave-suggest,#weave-compare,.weave-browse,
  #constellate-detail,#constellate-context
 ){display:none!important}
 #constellate-popup:has(#constellate-inline:not([hidden])) #weave-editor>.constellate-actions{display:none!important}
-#constellate-popup:has(#constellate-inline:not([hidden])) :is(.weave-tabs,#weave-find-films){display:none!important}
+#constellate-popup:has(#constellate-inline:not([hidden])) #weave-find-films{display:none!important}
 #constellate-inline .weave-pair-origin{
  display:flex;align-items:center;gap:12px;min-width:0;
  margin:10px 0 15px;padding:10px;
@@ -1480,111 +1425,93 @@ body.weave-tracing #atlas .land-shading .nation-wash.trace-lit{--territory-wash:
 
 #weave-trace-layer.has-result{cursor:default}
 
-/* ══ Constellate toolbar (13 Nov 2026) ═══════════════════════════════════════════════════════
-   The only rules for #constellate-mode; the older ones in atlas.css, ui-20261109.css and above
-   were removed so this block can stay plain. Structure is set by place() in constellate.js:
-     .cm-id (name) · .cm-modes (.cm-seg Build|Follow, Play) · #weave-stepper · .cm-tools · .cm-end
+/* ══ Constellate toolbar (24 Nov 2026) ═══════════════════════════════════════════════════════
+   The only rules for #constellate-mode. Structure is set by place() in constellate.js:
+     .cm-hold (hidden: name, Build, Read, Link, stepper) · .cm-add (Add ▾) · #weave-play · .cm-end (↶ ↷ Clear · Share · ⋯ · Exit)
+   One row at every width; on phones the labels drop and the icons stay.
    Tokens: --ui-paper/--ui-surface/--ui-wash/--ui-ink/--ui-line/--ui-accent change with the night theme. */
 #constellate-mode[hidden]{display:none}
 html:not([data-weave-stage]) body.is-constellating #constellate-mode{visibility:hidden}
 body.weave-playing #constellate-mode{display:none!important}
-body:has(#constellate-mode .weave-more[open]) #weave-notice{display:none}
-#constellate-mode{container:cmbar/inline-size;position:absolute;top:0;left:0;right:0;z-index:25;box-sizing:border-box;display:flex;align-items:center;gap:10px;height:52px;padding:0 12px 0 16px;
- background:color-mix(in srgb,var(--ui-paper) 94%,transparent);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid var(--ui-line);box-shadow:0 6px 18px rgba(12,20,32,.07);
+body:has(#constellate-mode details[open]) #weave-notice{display:none}
+#constellate-mode{container:cmbar/inline-size;position:absolute;top:0;left:0;right:0;z-index:25;box-sizing:border-box;display:flex;align-items:center;gap:6px;height:52px;padding:0 12px;
+ background:color-mix(in srgb,var(--ui-paper) 94%,transparent);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid var(--ui-line);
  color:var(--ui-ink);font:500 13.5px/1 var(--ui-sans)}
+#constellate-mode .cm-hold,#constellate-mode .cm-hold[hidden]{display:none!important}
 #constellate-mode .cm-group{display:flex;align-items:center;gap:4px;min-width:0}
-#constellate-mode .cm-id{flex:0 1 auto;min-width:0;max-width:300px}
-#constellate-mode .cm-id>span{display:block;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;font:500 16px/1.2 var(--ui-serif,var(--ui-serif,Georgia,serif));color:var(--ui-ink);letter-spacing:.005em}
-#constellate-mode .cm-modes{flex:none;gap:8px}
-#constellate-mode .cm-tools{flex:none;margin-left:6px;padding-left:12px;border-left:1px solid var(--ui-line)}
 #constellate-mode .cm-end{flex:none;margin-left:auto}
-#constellate-mode .weave-tool-group{display:flex;align-items:center;gap:2px;margin-right:4px}
-#constellate-mode .weave-tool-group:empty{display:none}
+#constellate-mode .weave-tool-group{display:flex;align-items:center;gap:2px;margin-right:6px;padding-right:8px;border-right:1px solid var(--ui-line)}
 
 /* every control: one height, one radius, one type */
-#constellate-mode button,#constellate-mode .weave-more>summary{appearance:none;box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;gap:7px;height:34px;min-height:34px;margin:0;padding:0 11px;
- border:1px solid transparent;border-radius:8px;background:transparent;color:var(--ui-ink);font:500 13.5px/1 var(--ui-sans);letter-spacing:0;white-space:nowrap;cursor:pointer;box-shadow:none;transition:background .15s,color .15s,border-color .15s}
-#constellate-mode button:hover:not(:disabled),#constellate-mode .weave-more>summary:hover{background:var(--ui-wash)}
-#constellate-mode button:focus-visible,#constellate-mode .weave-more>summary:focus-visible{outline:2.5px solid var(--ui-accent);outline-offset:2px}
-#constellate-mode button:disabled{opacity:.34;cursor:default}
+#constellate-mode button,#constellate-mode details>summary{appearance:none;box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;gap:7px;height:34px;min-height:34px;margin:0;padding:0 12px;
+ border:1px solid transparent;border-radius:8px;background:transparent;color:var(--ui-ink);font:500 13.5px/1 var(--ui-sans);letter-spacing:0;white-space:nowrap;cursor:pointer;box-shadow:none;list-style:none;transition:background .15s,color .15s,border-color .15s}
+#constellate-mode details>summary::-webkit-details-marker{display:none}
+#constellate-mode button:hover:not(:disabled),#constellate-mode details>summary:hover{background:var(--ui-wash)}
+#constellate-mode button:focus-visible,#constellate-mode details>summary:focus-visible{outline:2.5px solid var(--ui-accent);outline-offset:2px}
+#constellate-mode button:disabled{opacity:.3;cursor:default}
 #constellate-mode .cm-ico{flex:none;width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+#constellate-mode .cm-sr,#constellate-mode .weave-tool-group>button:not(#constellate-clear) .cm-label,#constellate-mode .weave-more>summary .cm-label{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
 
-/* modes: Build | Follow is one switch; Play is the one filled button */
-#constellate-mode .cm-seg{display:flex;padding:3px;gap:2px;border-radius:10px;background:var(--ui-wash)}
-#constellate-mode .cm-seg>button{height:30px;min-height:30px;padding:0 14px;border-radius:7px;color:var(--ui-muted);font-weight:600}
-#constellate-mode .cm-seg>button:hover:not([aria-pressed="true"]){background:color-mix(in srgb,var(--ui-ink) 7%,transparent);color:var(--ui-ink)}
-#constellate-mode .cm-seg>button[aria-pressed="true"]{background:var(--ui-surface);color:var(--ui-ink);box-shadow:0 1px 2px rgba(12,20,32,.16),0 0 0 1px color-mix(in srgb,var(--ui-ink) 10%,transparent)}
-#constellate-mode #weave-play{padding:0 15px 0 12px;border-radius:999px;background:var(--ui-accent);border-color:var(--ui-accent);color:#fff;font-weight:600}
+/* Add: the first control, outlined; Play: the one filled control */
+#constellate-mode .cm-add{position:relative;flex:none}
+#constellate-mode .cm-add>summary{border-color:var(--ui-line);font-weight:600;padding:0 14px 0 11px}
+#constellate-mode .cm-add[open]>summary{background:var(--ui-wash)}
+#constellate-mode #weave-play{flex:none;padding:0 15px 0 12px;border-radius:999px;background:var(--ui-accent);border-color:var(--ui-accent);color:var(--ui-accent-ink,#fff);font-weight:600}
 #constellate-mode #weave-play:hover{background:color-mix(in srgb,var(--ui-accent) 86%,#000)}
 #constellate-mode #weave-play .cm-ico{width:13px;height:13px}
 
-/* tools: same weight; the one in use is inked */
-#constellate-mode .cm-tools>button[aria-pressed="true"],#constellate-mode .cm-tools>button[aria-expanded="true"]{background:var(--ui-accent);border-color:var(--ui-accent);color:var(--ui-accent-ink)}
-#constellate-mode .cm-tools>button[hidden]{display:none}
+/* menus: Add opens left, Options opens right */
+#constellate-mode .cm-add-menu,#constellate-mode .weave-more-menu{position:absolute;top:calc(100% + 8px);z-index:40;box-sizing:border-box;display:flex;flex-direction:column;width:260px;max-height:min(70vh,560px);overflow-y:auto;overscroll-behavior:contain;padding:6px;
+ border:1px solid var(--ui-line);border-radius:12px;background:var(--ui-surface);box-shadow:0 18px 44px rgba(8,14,26,.24)}
+#constellate-mode .cm-add-menu{left:0}
+#constellate-mode .weave-more-menu{right:0}
+#constellate-mode .cm-add-menu>button,#constellate-mode .weave-more-menu button{justify-content:flex-start;width:100%;height:38px;min-height:38px;padding:0 10px;border-radius:7px;font-weight:500;text-align:left}
+#constellate-mode .cm-add-menu>button[aria-pressed="true"],#constellate-mode .cm-add-menu>button[aria-expanded="true"]{background:var(--ui-wash)}
+#constellate-mode .cm-theme-row{position:relative;display:flex;align-items:center;gap:7px;height:38px;padding:0 10px;border-radius:7px;cursor:pointer}
+#constellate-mode .cm-theme-row:hover,#constellate-mode .cm-theme-row:focus-within{background:var(--ui-wash)}
+#constellate-mode .cm-theme-row .cm-theme-select{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer}
+#constellate-mode .cm-theme-row::after{content:"›";margin-left:auto;color:var(--ui-muted);font-size:16px}
+#constellate-mode .weave-more-menu .weave-menu-heading{display:block;margin:10px 10px 4px;font:600 10.5px/1.2 var(--ui-sans);letter-spacing:.12em;text-transform:uppercase;color:var(--ui-muted)}
+#constellate-mode .weave-more-menu .weave-menu-heading:first-child{margin-top:4px}
+#constellate-mode .weave-more-menu button:not(:has(.cm-ico)){padding-left:33px}
+#constellate-mode .weave-more-menu button[aria-pressed="true"]::after{content:"✓";margin-left:auto;font-weight:700;color:var(--ui-accent)}
+#constellate-mode .weave-more-menu button[hidden]{display:none}
 
-/* stepper (a card is selected in Build) */
-#constellate-mode #weave-stepper{display:flex;align-items:center;gap:2px;flex:none;padding:0 4px;border-radius:999px;background:var(--ui-wash)}
-#constellate-mode #weave-stepper[hidden]{display:none}
-#constellate-mode #weave-stepper button{width:30px;height:30px;min-height:30px;padding:0;border-radius:999px;font-size:18px}
-#constellate-mode #weave-step-pos{min-width:42px;text-align:center;font:600 12.5px/1 var(--ui-sans);font-variant-numeric:tabular-nums;color:var(--ui-ink)}
-
-/* end: history as icons, Share, Options, Exit */
+/* Gather and Theme web beside Add; Read beside Play. The one in use is shaded. */
+#constellate-mode .cm-tools{flex:none;gap:2px}
+#constellate-mode :is(.cm-tools>button,#constellate-read)[aria-pressed="true"],#constellate-mode .cm-tools>button[aria-expanded="true"]{background:var(--ui-wash);border-color:var(--ui-line)}
+#constellate-mode #constellate-read{flex:none}
+/* the end: icons for history and Clear, labels for Share and Exit */
 #constellate-mode .weave-tool-group>button{width:34px;padding:0}
-#constellate-mode .weave-tool-group .cm-label,#constellate-mode .weave-more>summary .cm-label{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+/* Clear keeps its word beside Undo and Redo (24 Nov 2026) */
+#constellate-mode .weave-tool-group>#constellate-clear{width:auto;padding:0 10px 0 8px;margin-left:2px;color:var(--ui-accent)}
+#constellate-mode #constellate-clear:hover:not(:disabled){color:var(--ui-accent)}
 #constellate-mode .weave-more{position:relative}
-#constellate-mode .weave-more>summary{width:34px;padding:0;list-style:none}
-#constellate-mode .weave-more>summary::-webkit-details-marker{display:none}
+#constellate-mode .weave-more>summary{width:34px;padding:0}
 #constellate-mode .weave-more[open]>summary{background:var(--ui-wash);border-color:var(--ui-line)}
 #constellate-mode #constellate-exit{margin-left:4px;padding:0 12px 0 10px;border-color:var(--ui-line)}
 #constellate-mode #constellate-exit .cm-ico{width:13px;height:13px}
 
-/* Options menu */
-#constellate-mode .weave-more-menu{position:absolute;right:0;top:calc(100% + 8px);z-index:40;box-sizing:border-box;display:flex;flex-direction:column;width:260px;max-height:min(70vh,560px);overflow-y:auto;overscroll-behavior:contain;padding:6px;
- border:1px solid var(--ui-line);border-radius:12px;background:var(--ui-surface);box-shadow:0 18px 44px rgba(8,14,26,.24)}
-#constellate-mode .weave-more-menu .weave-menu-heading{display:block;margin:8px 10px 4px;font:600 10.5px/1.2 var(--ui-sans);letter-spacing:.12em;text-transform:uppercase;color:var(--ui-muted)}
-#constellate-mode .weave-more-menu .weave-menu-heading:first-child{margin-top:4px}
-#constellate-mode .weave-more-menu button{justify-content:flex-start;width:100%;height:36px;min-height:36px;padding:0 10px;border-radius:7px;font-weight:500;text-align:left}
-#constellate-mode .weave-more-menu button:not(:has(.cm-ico)){padding-left:33px}
-#constellate-mode .weave-more-menu button[aria-pressed="true"]::after{content:"✓";margin-left:auto;font-weight:700;color:var(--ui-accent)}
-#constellate-mode .weave-more-menu .cm-h-this{margin-top:10px;padding-top:10px;border-top:1px solid var(--ui-line)}
-#constellate-mode .weave-more-menu #constellate-clear{color:var(--ui-accent)}
-#constellate-mode .weave-more-menu #constellate-clear:hover{background:color-mix(in srgb,var(--ui-accent) 10%,transparent)}
+/* narrower maps: Share and Exit become icons first, then Gather and Theme web; the bar never wraps */
+@container cmbar (max-width:900px){#constellate-mode :is(#constellate-share,#constellate-exit) .cm-label{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}#constellate-mode :is(#constellate-share,#constellate-exit){width:34px;padding:0;margin-left:0}}
+@container cmbar (max-width:760px){#constellate-mode .cm-tools>button .cm-label{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}#constellate-mode .cm-tools>button{width:34px;padding:0}}
+@container cmbar (max-width:640px){#constellate-mode :is(#constellate-read,.weave-tool-group>#constellate-clear,.cm-add>summary) .cm-label{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}#constellate-mode :is(#constellate-read,.weave-tool-group>#constellate-clear){width:34px;padding:0;margin-left:0}#constellate-mode .cm-add>summary{width:38px;padding:0}}
+/* the start screen: only Options and Exit */
+html[data-weave-stage="start"] #constellate-mode :is(.cm-add,.cm-tools,#weave-play,#constellate-read,.weave-tool-group,#constellate-share){display:none}
 
-/* Clear: in the bar, beside Undo, in the accent colour; it asks before clearing */
-#constellate-mode #constellate-clear{color:var(--ui-accent);margin-right:2px}
-#constellate-mode #constellate-clear:hover:not(:disabled){background:color-mix(in srgb,var(--ui-accent) 11%,transparent)}
-#constellate-mode.cm-compact #constellate-clear{width:34px;padding:0}
-#constellate-mode.cm-compact #constellate-clear .cm-label{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
-html[data-weave-stage="start"] #constellate-mode #constellate-clear{display:none}
-
-/* stages: Start shows the name, Theme web, Options and Exit; Follow drops the tools */
-html[data-weave-stage="start"] #constellate-mode .cm-modes,
-html[data-weave-stage="start"] #constellate-mode .cm-tools>:not(#weave-theme-web-toggle),
-html[data-weave-stage="start"] #constellate-mode #constellate-share,
-html[data-weave-stage="start"] #constellate-mode .weave-tool-group>button:disabled{display:none}
-html[data-weave-stage="start"] #constellate-mode .cm-tools{border-left:0;padding-left:0}
-
-/* narrower bars: classes set by place() after measuring (cm-short, cm-compact, cm-narrow, cm-notitle) */
-#constellate-mode.cm-notitle .cm-id{display:none}
-#constellate-mode.cm-tight #constellate-share,#constellate-mode.cm-tight #constellate-exit{width:34px;padding:0;margin-left:0}
-#constellate-mode.cm-tight #constellate-share .cm-label,#constellate-mode.cm-tight #constellate-exit .cm-label{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
-#constellate-mode.cm-tight #constellate-exit .cm-ico{width:15px;height:15px}
-#constellate-mode.cm-short .cm-tools .cm-b{display:none}
-#constellate-mode.cm-short .cm-tools>button{padding:0 9px}
-#constellate-mode.cm-narrow{flex-wrap:wrap;align-content:center;height:auto;min-height:48px;padding:6px 8px;row-gap:6px;column-gap:6px}
-#constellate-mode.cm-narrow .cm-id{display:none}
-#constellate-mode.cm-narrow .cm-seg>button{padding:0 12px}
-#constellate-mode.cm-narrow #weave-play{padding:0 12px 0 10px}
-#constellate-mode.cm-narrow #constellate-exit .cm-label{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
-#constellate-mode.cm-narrow #constellate-exit{width:34px;padding:0;margin-left:0}
-#constellate-mode.cm-narrow .cm-tools{order:9;flex:1 0 100%;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px;margin:0;padding:6px 0 0;border-left:0;border-top:1px solid var(--ui-line)}
-html[data-weave-stage="start"] #constellate-mode.cm-narrow .cm-tools{display:none}
-#constellate-mode.cm-narrow .cm-tools>button{flex-direction:column;gap:4px;height:46px;min-height:46px;padding:4px 2px;font-size:11.5px;font-weight:600}
-#constellate-mode.cm-narrow .cm-tools .cm-b{display:inline}
-#constellate-mode.cm-narrow .cm-tools .cm-ico{width:18px;height:18px}
-#constellate-mode.cm-narrow #weave-stepper button{width:26px}
-#constellate-mode.cm-narrow #weave-step-pos{min-width:34px}
-@media (max-width:700px){#constellate-mode .weave-more-menu{position:fixed;left:8px;right:8px;top:auto;bottom:8px;width:auto;max-height:70vh}}
+/* phones: labels drop, one row stays */
+@media (max-width:700px){
+ #constellate-mode{gap:4px;padding:0 8px;height:48px}
+ #constellate-mode :is(#weave-play,#constellate-share,#constellate-exit,#constellate-clear,.cm-tools>button,.cm-add>summary) .cm-label{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+ #constellate-mode :is(#constellate-share,#constellate-exit),#constellate-mode .weave-tool-group>#constellate-clear{width:34px;padding:0;margin-left:0}
+ #constellate-mode #weave-play{width:38px;padding:0}
+ #constellate-mode :is(.cm-tools>button){width:34px;padding:0}
+ #constellate-mode .cm-add>summary{width:38px;padding:0}
+ #constellate-mode :is(#constellate-read,#constellate-redo){display:none}
+ #constellate-mode .weave-tool-group{margin-right:2px;padding-right:4px}
+ #constellate-mode .cm-add,#constellate-mode .weave-more{position:static}
+ #constellate-mode .cm-add-menu,#constellate-mode .weave-more-menu{position:absolute;left:8px;right:8px;top:100%;bottom:auto;width:auto;max-height:min(44dvh,360px)}
+}
 
 /* ══ Add films filters (13 Nov 2026): a two-column grid. Order across the top; the two tick boxes on one row;
    Country · Decade and Form · Length as labelled pairs; Clear at the end. */
@@ -1628,9 +1555,10 @@ body.weave-tracing #atlas .land-word,body.weave-tracing #atlas .land-word *{poin
 :root:not(#_):not(#__) #constellate-popup .cp-tidy>h2{position:absolute!important;width:1px!important;height:1px!important;overflow:hidden!important;clip-path:inset(50%)!important;margin:0!important;padding:0!important}
 :root:not(#_):not(#__) #constellate-popup .cp-tidy .constellate-collection{display:flex!important;flex-wrap:nowrap!important;flex:1 1 auto!important;min-width:0!important;align-items:center;gap:4px!important;margin:0!important;padding:0!important;border:0!important}
 :root:not(#_):not(#__) #constellate-popup .cp-tidy #constellate-collection{flex:1 1 auto!important;min-width:0!important;width:auto!important;height:38px!important;min-height:38px!important;font:500 14px/1.2 var(--ui-serif,var(--ui-serif,Georgia,serif))!important;padding:0 26px 0 9px!important;text-overflow:ellipsis}
-:root:not(#_):not(#__) #constellate-popup .cp-tidy #constellate-new,:root:not(#_):not(#__) #constellate-popup .cp-tidy #constellate-how>summary,:root:not(#_):not(#__) #constellate-popup .cp-tidy #constellate-close{flex:none!important;width:36px!important;min-width:36px!important;height:36px!important;min-height:36px!important;padding:0!important;display:inline-flex!important;align-items:center;justify-content:center;border:1px solid var(--ui-line)!important;border-radius:8px!important;background:transparent!important;color:var(--ui-ink)!important;font:500 18px/1 var(--ui-sans)!important;margin:0!important}
+:root:not(#_):not(#__) #constellate-popup .cp-tidy #constellate-new,:root:not(#_):not(#__) #constellate-popup .cp-tidy #constellate-how>summary{flex:none!important;width:36px!important;min-width:36px!important;height:36px!important;min-height:36px!important;padding:0!important;display:inline-flex!important;align-items:center;justify-content:center;border:1px solid var(--ui-line)!important;border-radius:8px!important;background:transparent!important;color:var(--ui-ink)!important;font:500 18px/1 var(--ui-sans)!important;margin:0!important}
 :root:not(#_):not(#__) #constellate-popup .cp-tidy #constellate-new{color:var(--ui-accent)!important;font-size:22px!important}
-:root:not(#_):not(#__) #constellate-popup .cp-tidy #constellate-close{border-color:transparent!important;font-size:22px!important;width:28px!important;min-width:28px!important}
+/* 24 Nov 2026: no × in the panel; Exit in the toolbar is the one way out */
+:root:not(#_):not(#__) #constellate-popup .cp-tidy #constellate-close{display:none!important}
 :root:not(#_):not(#__) #constellate-popup .cp-tidy #constellate-new:hover,:root:not(#_):not(#__) #constellate-popup .cp-tidy #constellate-how>summary:hover,:root:not(#_):not(#__) #constellate-popup .cp-tidy #constellate-close:hover{background:var(--ui-wash)!important}
 :root:not(#_):not(#__) #constellate-popup .cp-tidy #weave-settings{flex:none!important;margin:0!important}
 :root:not(#_):not(#__) #constellate-popup .cp-tidy #weave-settings>summary{width:36px;height:36px;display:inline-flex!important;align-items:center;justify-content:center;padding:0!important;border:1px solid var(--ui-line);border-radius:8px;color:var(--ui-ink);list-style:none}
@@ -1741,7 +1669,6 @@ body.weave-tracing.trace-themed #atlas .land-word:not(.trace-theme){opacity:.22!
 html body #weave-start .ws-paths{gap:36px!important}
 html body #weave-start .ws-path{border:0!important;background:transparent!important;box-shadow:none!important;padding:0!important}
 html body #weave-start .ws-trace{background:transparent!important;padding:0!important;border:0!important}
-html body #weave-start .ws-how b{background:var(--ui-accent)!important;color:var(--ui-accent-ink)!important}
 html body #weave-start .ws-current,html body #weave-start .ws-saved{border-width:1px 0 0!important;border-radius:0!important;background:transparent!important}
 /* The Map page's panel grip has no panel to resize on the start screen or in Play. */
 html[data-weave-stage="start"] .index-resizer,body.weave-playing .index-resizer{display:none!important}
@@ -1751,14 +1678,6 @@ html[data-weave-stage="start"] .index-resizer,body.weave-playing .index-resizer{
 #constellate-graph [data-read-thread]{pointer-events:bounding-box;cursor:pointer}
 #constellate-graph [data-read-thread]:focus-visible{outline:2px solid currentColor}
 
-#weave-start .ws-pair{margin:10px 0 14px;color:var(--reading-ink)}
-#weave-start .ws-pair summary{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;cursor:pointer}
-#weave-start .ws-pair-film{display:inline-flex;gap:7px;align-items:center;max-width:100%}
-#weave-start .ws-pair-film .weave-media-thumb{position:relative;display:block;width:48px;height:36px;flex:none;overflow:hidden}
-#weave-start .ws-pair-film img{width:100%;height:100%;object-fit:cover}
-#weave-start .ws-pair-film small{display:block}
-#weave-start .ws-pair-action{text-decoration:underline;text-underline-offset:.2em}
-#weave-start .ws-pair p{max-width:65ch}
 
 /* Link films (2026-11-21): while linking, the thread being built is drawn above the cards, so each click visibly extends
    it; its stops carry the order. It never takes clicks, so every card stays clickable. The step guide at the top of the
@@ -1783,22 +1702,367 @@ html[data-weave-stage] body.weave-empty #atlas .land-word{opacity:.78}
 #weave-land h3{margin:0;font:400 20px/1.2 var(--ui-serif);color:var(--ui-ink)}
 #weave-land .wl-head small{font:400 13px/1.3 var(--ui-sans);color:var(--ui-muted)}
 #weave-land .wl-close{border:0;background:none;font-size:20px;line-height:1;color:var(--ui-muted);cursor:pointer;padding:2px 6px}
+ #weave-land .wl-choices{display:grid;gap:4px;margin:8px 0}
+#weave-land .wl-choices button{text-align:left;padding:9px 12px;border:1px solid var(--ui-line);border-radius:7px;background:var(--ui-surface);color:var(--ui-ink);overflow-wrap:anywhere}
+#weave-land .wl-choices button:hover,#weave-land .wl-choices button:focus-visible{border-color:var(--ui-accent)}
 #weave-land .wl-note{margin:8px 0;font:400 13.5px/1.4 var(--ui-sans);color:var(--ui-muted)}
-#weave-land .wl-all{margin:10px 0 4px;font:600 13.5px/1 var(--ui-sans);color:var(--ui-accent-ink,#fff);background:var(--ui-accent);border:1px solid var(--ui-accent);border-radius:999px;padding:9px 14px;cursor:pointer}
+#weave-land .wl-all,#weave-land .wl-more{margin:8px 8px 4px 0;font:500 13px/1.3 var(--ui-sans);color:var(--ui-accent);background:transparent;border:1px solid var(--ui-line);border-radius:7px;padding:8px 10px;cursor:pointer}
 #weave-land .wl-films{list-style:none;margin:8px 0 0;padding:0;max-height:none}
 #weave-land .wl-films li+li{border-top:1px solid var(--ui-line)}
-#weave-land .wl-films button{display:grid;grid-template-columns:56px 1fr auto;align-items:center;gap:10px;width:100%;padding:8px 0;background:none;border:0;text-align:left;cursor:pointer;color:var(--ui-ink)}
+#weave-land .wl-films .weave-watch-link{display:inline-block;margin:0 0 9px 82px;font:500 12px/1.4 var(--ui-sans);color:var(--ui-accent);text-underline-offset:3px}
+#constellate-context .weave-watch-link{align-self:center;color:var(--ui-accent);font-weight:600;text-underline-offset:3px}
+ #weave-land .wl-films button{display:grid;grid-template-columns:72px minmax(0,1fr) auto;align-items:center;gap:10px;width:100%;padding:8px 0;background:none;border:0;text-align:left;cursor:pointer;color:var(--ui-ink)}
 #weave-land .wl-films button:hover .wl-t strong,#weave-land .wl-films button:focus-visible .wl-t strong{text-decoration:underline}
-#weave-land .wl-films .weave-media-thumb{position:relative;display:block;width:56px;height:40px;border-radius:6px;overflow:hidden;background:var(--ui-wash)}
+#weave-land .wl-films .weave-media-thumb{position:relative;display:block;width:72px;height:48px;border-radius:6px;overflow:hidden;background:var(--ui-wash)}
 #weave-land .wl-films .weave-media-thumb img{width:100%;height:100%;object-fit:cover;display:block}
 #weave-land .wl-films .weave-media-thumb.has-source:not(.is-broken) .weave-media-placeholder{display:none}
 #weave-land .wl-films .weave-media-thumb.is-broken img{display:none}
 #weave-land .wl-films .weave-media-placeholder{position:absolute;inset:0;display:grid;place-items:center;align-content:center;font:600 12px/1 var(--ui-sans);color:var(--ui-muted)}
 #weave-land .wl-films .weave-media-placeholder small{font-size:8px;letter-spacing:.08em;text-transform:uppercase}
-#weave-land .wl-t strong{display:block;font:400 15px/1.25 var(--ui-serif)}
-#weave-land .wl-t small{display:block;font:400 12.5px/1.3 var(--ui-sans);color:var(--ui-muted)}
+#weave-land .wl-t{min-width:0;overflow-wrap:anywhere}
+#weave-land .wl-t strong{display:block;font:500 18px/1.3 var(--ui-serif)}
+#weave-land .wl-t small{display:block;font:400 14px/1.4 var(--ui-sans);color:var(--ui-muted)}
 #weave-land .wl-films em{font:600 13px/1 var(--ui-sans);font-style:normal;color:var(--ui-accent);white-space:nowrap}
 #weave-land .wl-films button:disabled{cursor:default;opacity:.55}
 #weave-land .wl-films button:disabled em{color:var(--ui-muted)}
 body.is-constellating.weave-empty:not(.weave-show-atlas) #atlas .land-thumb[data-ui-ok="1"]{opacity:1}
 #constellate-graph [data-weave-knot].under-card{display:none}
+
+/* ══ Side panel (24 Nov 2026) ══════════════════════════════════════════════════════════════
+   One way to each place: the toolbar's Add opens the search (with "Back to the list"); the list is the default;
+   a film's card says what it is and why it follows; everything else is under More. */
+#constellate-popup #constellate-close,#constellate-popup #weave-find-films{display:none!important}
+#constellate-popup.cm-one-thread :is(.weave-thread-heading,#weave-legend,.weave-focus-actions){display:none!important}
+#constellate-popup:not(.cm-has-edges) #weave-line-key{display:none!important}
+/* the list: number, film, and between two films the reason the second follows the first */
+#weave-order-list>li{flex-wrap:wrap;row-gap:4px;padding:9px 0}
+#weave-order-list .weave-why{order:-1;flex:1 0 calc(100% - 12px);max-width:calc(100% - 12px);box-sizing:border-box;display:flex;align-items:baseline;gap:8px;margin:0 0 2px 11px;padding:3px 0 5px 14px;border:0;border-left:2px solid var(--ui-line);background:none;
+ font:400 12.5px/1.4 var(--ui-sans);color:var(--ui-muted);text-align:left;cursor:pointer}
+#weave-order-list .weave-why:not(.has-reason){font-style:italic;opacity:.75}
+#weave-order-list .weave-why:hover,#weave-order-list .weave-why:focus-visible{color:var(--ui-ink);opacity:1;border-left-color:var(--ui-accent)}
+#weave-order-list .weave-why.has-reason{color:var(--ui-ink)}
+#weave-order-list .weave-why small,#constellate-context .weave-why small{margin-left:auto;font-size:11px;color:var(--ui-muted);white-space:nowrap}
+#weave-order-list .weave-why-open{cursor:default;font-style:italic}
+#weave-order-list>li:first-child{border-top:0}
+#weave-order-list .weave-order-move{opacity:0;transition:opacity .15s}
+#weave-order-list>li:is(:hover,:focus-within,.is-active) .weave-order-move{opacity:1}
+@media (hover:none){#weave-order-list .weave-order-move{opacity:1}}
+/* the selected film */
+#constellate-context .weave-context-why{margin:10px 0 12px}
+#constellate-context .weave-context-why>small{display:block;margin-bottom:4px;font:600 11px/1.2 var(--ui-sans);letter-spacing:.06em;text-transform:uppercase;color:var(--ui-muted)}
+#constellate-context .weave-why{display:flex;align-items:baseline;gap:8px;width:100%;box-sizing:border-box;padding:9px 11px;border:1px solid var(--ui-line);border-radius:8px;background:var(--ui-surface);
+ font:400 13.5px/1.45 var(--ui-sans);color:var(--ui-ink);text-align:left;cursor:pointer}
+#constellate-context .weave-why:not(.has-reason){border-style:dashed;color:var(--ui-muted)}
+#constellate-context .weave-why:hover{border-color:var(--ui-accent)}
+#constellate-context .weave-card-more{margin-top:12px;border-top:1px solid var(--ui-line);padding-top:8px}
+#constellate-context .weave-card-more>summary{cursor:pointer;font:600 13px/2 var(--ui-sans);color:var(--ui-muted);list-style:none}
+#constellate-context .weave-card-more>summary::-webkit-details-marker{display:none}
+#constellate-context .weave-card-more>summary::before{content:"▸ ";font-size:10px}
+#constellate-context .weave-card-more[open]>summary::before{content:"▾ "}
+#constellate-context .weave-card-more #constellate-remove{margin:6px 0 10px;color:var(--ui-accent)}
+/* Add films: back to the list, search, folded filters */
+#weave-browse-back,#weave-read-back{appearance:none;display:inline-flex;align-items:center;margin:0 0 10px;padding:0;border:0;background:none;font:600 13px/1.6 var(--ui-sans);color:var(--ui-ink);cursor:pointer}
+#weave-browse-back:hover,#weave-read-back:hover{color:var(--ui-accent)}
+#constellate-popup .weave-browse-head{display:flex;flex-direction:column;align-items:flex-start}
+#weave-filters{margin:8px 0 4px}
+#weave-filters>summary{display:inline-flex;align-items:center;gap:6px;cursor:pointer;font:600 12.5px/2 var(--ui-sans);color:var(--ui-muted);list-style:none}
+#weave-filters>summary::-webkit-details-marker{display:none}
+#weave-filters>summary::after{content:"▾";font-size:10px}
+#weave-filters[open]>summary::after{content:"▴"}
+#weave-read-start{font-weight:600}
+/* the list comes first when no film is open: threads (if more than one), the films in order, then what could come next */
+#weave-editor[data-tab="thread"]{display:flex;flex-direction:column}
+#weave-editor[data-tab="thread"]:has(#constellate-context[hidden]) :is(.weave-thread-heading,#weave-thread-form){order:-5}
+#weave-editor[data-tab="thread"]:has(#constellate-context[hidden]) :is(#weave-legend,#weave-line-key){order:-4}
+#weave-editor[data-tab="thread"]:has(#constellate-context[hidden]) #weave-order{order:-3}
+#weave-editor[data-tab="thread"]:has(#constellate-context[hidden]) #weave-suggest{order:-2}
+/* ══ Less to read (24 Nov 2026) ═══════════════════════════════════════════════════════════
+   Headings and the films carry the meaning; explanatory sentences, counts and prompts are gone. */
+#weave-suggest .weave-suggest-intro,#weave-suggest .weave-suggest-head small,#weave-editor[data-tab] #weave-suggest:not([hidden]):not(:has(.constellate-result)),
+#weave-order-summary small,#weave-order-summary .cm-desc-empty,
+#weave-start .ws-path>p,
+#weave-order-list .weave-why small,
+#weave-line-key,
+#constellate-popup.cm-one-thread .weave-browse-head>span{display:none!important}
+#weave-discovery-count{position:absolute!important;width:1px!important;height:1px!important;overflow:hidden!important;clip-path:inset(50%)!important;margin:0!important}
+.weave-why-add{appearance:none;border:0;background:none;padding:0 6px;font:500 12px/1 var(--ui-sans);color:var(--ui-muted);cursor:pointer;white-space:nowrap}
+.weave-why-add:hover,.weave-why-add:focus-visible{color:var(--ui-accent)}
+#constellate-context .constellate-actions .weave-why-add{font-size:13px;padding:0 0 0 14px}
+
+/* ══ Night sky (24 Nov 2026) ════════════════════════════════════════════════════════════════
+   Constellate switches the page to the night theme (restored on Exit). The territories sink into the dark so the
+   lands' markers read as stars and the threads as the only colour; a land's films open at the top of the panel. */
+html[data-ui][data-reading-theme=night] body.is-theme-weaving #atlas .land-shading .nation-wash{fill-opacity:clamp(0,calc(var(--territory-wash,.36) * .42),.9)!important;stroke-opacity:.35!important}
+html[data-reading-theme=night] body.is-theme-weaving #atlas .land-word{opacity:.5!important}
+html[data-ui-zoom=far][data-reading-theme=night] body.is-theme-weaving #atlas .land-word[data-ui-tier]{opacity:.42!important}
+html[data-reading-theme=night] body.is-theme-weaving #atlas .land-word:is(:hover,:focus-visible,.selected){opacity:1!important}
+#weave-editor[data-tab="thread"] #weave-land:not([hidden]){order:-6}
+#weave-editor[data-tab="thread"] #constellate-detail:has(#constellate-idea-form){order:-6}
+:root[data-reading-theme] body.is-theme-weaving #constellate-graph .constellate-card.concept .weave-star-hit{fill:transparent;fill-opacity:0;stroke:transparent;stroke-opacity:0;pointer-events:all}
+:root[data-reading-theme] body.is-theme-weaving #constellate-graph .constellate-card.concept:focus-visible .weave-star-hit{stroke:var(--reading-accent);stroke-opacity:1}
+#constellate-graph .concept .weave-idea-star{stroke:#111b2a;stroke-width:1.4;stroke-linejoin:round;pointer-events:none}
+#constellate-graph .concept.selected .weave-idea-star{stroke:#fff;stroke-width:2;filter:none}
+#constellate-graph.weave-star-build .weave-stop{visibility:hidden;pointer-events:none}
+:root[data-reading-theme] body.is-theme-weaving #constellate-graph .weave-film-node .weave-film-hit{fill:transparent;fill-opacity:0;stroke:transparent;stroke-opacity:0;pointer-events:all}
+:root[data-reading-theme] body.is-theme-weaving #constellate-graph .weave-film-node:focus-visible .weave-film-hit{stroke:#f3e6c4;stroke-opacity:1}
+#constellate-graph .weave-film-light{stroke:#d5e1e9;stroke-width:.7;filter:none;pointer-events:none}
+#constellate-graph .weave-film-node:is(.selected,:hover,:focus-visible) .weave-film-light{stroke:#e1e7eb;stroke-width:1.1;filter:none}
+:root[data-reading-theme] body.is-theme-weaving #constellate-graph .weave-film-node :is(.weave-film-number,.weave-film-title){fill:#f3f4ff;stroke:#0c1426;stroke-width:3.2;paint-order:stroke fill;stroke-linejoin:round;pointer-events:none}
+#constellate-graph .weave-film-number{font:600 12px/1 var(--ui-sans)}
+#constellate-graph .weave-film-title{font:500 14px/1 var(--ui-sans);opacity:0}
+#constellate-graph .weave-film-node:is(.selected,:hover,:focus-visible) .weave-film-title{opacity:1}
+
+:root[data-reading-theme] body.is-theme-weaving #constellate-graph .constellate-card.concept .weave-star-title{fill:var(--reading-ink);font-weight:600;paint-order:stroke fill;stroke:var(--reading-paper);stroke-width:3px;stroke-linejoin:round}
+#constellate-popup .weave-media-thumb.weave-star-thumb{display:grid;place-items:center;color:var(--reading-accent);font-size:26px}
+#constellate-context .weave-star-note{white-space:pre-wrap;overflow-wrap:anywhere}
+/* Data-grounded land stars. No decorative or invented territorial positions. */
+body.is-constellating #atlas .land-sky-star{cursor:pointer;pointer-events:all;outline:none}
+#atlas .land-sky-hit{fill:transparent;stroke:none;pointer-events:all}
+#atlas .land-sky-light{fill:#fff0ce;stroke:#fff8eb;stroke-width:.65;filter:drop-shadow(0 0 4px #f7d991);pointer-events:none}
+#atlas .land-sky-star[data-multiple=true] .land-sky-light{fill:#e0eaff;stroke:#fff}
+#atlas .land-sky-label{opacity:0;fill:#fff2d8;stroke:#0b1527;stroke-width:3.5;paint-order:stroke fill;font:500 14px/1 var(--ui-sans);pointer-events:none}
+#atlas .land-sky-star:is(:hover,:focus-visible,.is-selected) .land-sky-label{opacity:1}
+#atlas .land-sky-star:is(:hover,:focus-visible,.is-selected) .land-sky-light{fill:#fff;stroke:#fff;stroke-width:1.8;filter:drop-shadow(0 0 7px #fff2c9)}
+#atlas .land-sky-star:focus-visible .land-sky-hit{stroke:#fff3d1;stroke-width:1.5}
+body.weave-playing #atlas .land-sky-star{opacity:.35}
+/* the sky holds only lands as stars: no film stills on the map, dark land under the territories */
+body.is-constellating #land-thumb-layer{display:none!important}
+html[data-reading-theme=night] body.is-theme-weaving #atlas .land-shape{fill:#16243b!important}
+/* with nothing on the constellation yet, only the ways in show */
+body.weave-empty #constellate-mode :is(#weave-play,#constellate-read,#constellate-share,#constellate-clear){display:none!important}
+body.weave-empty #weave-order .weave-order-tools{display:none}
+
+/* 24 Nov: image-led discovery. The Map toolbar opens the trace directly;
+   the primary site navigation still opens the Constellate workspace. */
+.map-panel .map-toolbar:has(#map-draw-line) .fw-proxy{display:none!important}
+#weave-suggest .weave-suggest-seed{font:500 13px/1.4 var(--ui-sans);color:var(--reading-muted);margin:0 0 8px;overflow-wrap:anywhere}
+#weave-suggest .weave-discovery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,145px),1fr));gap:10px;align-items:stretch}
+#constellate-popup #weave-suggest .weave-follow-result{display:flex;flex-direction:column;align-items:stretch;gap:0;padding:0;overflow:hidden;min-width:0;border:1px solid var(--reading-line);border-radius:9px;background:var(--reading-wash);margin:0}
+#constellate-popup #weave-suggest .weave-follow-result>.weave-media-thumb{flex:none;display:block;width:100%;min-width:0;height:auto;aspect-ratio:4/3;border:0;border-radius:0;background:#18283a}
+#weave-suggest .weave-follow-result>.weave-media-thumb>img{object-fit:contain!important}
+#weave-suggest .weave-discovery-copy{display:flex;flex-direction:column;gap:6px;padding:10px;flex:1;min-width:0}
+#weave-suggest .weave-discovery-copy>strong{font-size:15px;line-height:1.25;white-space:normal;overflow-wrap:anywhere}
+#weave-suggest .weave-discovery-copy>small{font-size:12px;line-height:1.35;white-space:normal;overflow-wrap:anywhere}
+#weave-suggest .weave-discovery-copy>.weave-theme-tags{font-size:12px;line-height:1.4;color:var(--reading-accent)}
+#weave-suggest .weave-discovery-actions{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px;margin-top:auto;padding-top:4px}
+#weave-suggest .weave-discovery-actions button,#weave-suggest .weave-discovery-actions a{min-height:36px;display:inline-flex;align-items:center;font-size:13px;white-space:normal}
+#weave-trace-layer .wt-film-preview{margin:10px 0}
+#weave-trace-layer .wt-shared-theme{font:600 13px/1.4 var(--ui-sans);color:var(--dw-ink);margin:0 0 8px;overflow-wrap:anywhere}
+#weave-trace-layer .wt-film-strip{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(108px,44%);gap:9px;overflow-x:auto;padding:2px 0 7px;overscroll-behavior-inline:contain}
+#weave-trace-layer .wt-film-card{min-width:0;display:flex;flex-direction:column;gap:4px}
+#weave-trace-layer .wt-film-card>.weave-media-thumb{position:relative;display:block;width:100%;aspect-ratio:4/3;overflow:hidden;border-radius:5px;background:#18283a}
+#weave-trace-layer .wt-film-card>.weave-media-thumb img{object-fit:contain!important}
+#weave-trace-layer .wt-film-card strong{font:600 13px/1.25 var(--ui-sans);color:var(--dw-ink);overflow-wrap:anywhere}
+#weave-trace-layer .wt-film-card small{font:500 12px/1.3 var(--ui-sans);color:var(--dw-sub);overflow-wrap:anywhere}
+
+/* Shared theme lens: a temporary view, not an edit to a thread. */
+/* One map selector for all discovery paths. The second term is progressive disclosure. */
+#weave-theme-lens{position:absolute;top:64px;left:12px;z-index:13;display:grid;gap:5px;width:min(280px,calc(100% - 24px));box-sizing:border-box;padding:8px 10px;border:1px solid var(--reading-line);border-radius:9px;background:var(--reading-paper);color:var(--reading-ink);box-shadow:0 3px 16px #0003}
+#weave-theme-lens[hidden],#weave-theme-lens [hidden]{display:none!important}
+#weave-theme-lens .weave-map-theme-row{display:flex;align-items:center;gap:8px;min-width:0}
+#weave-theme-lens label{font:600 12px/1.2 var(--ui-sans);flex:none;color:var(--reading-muted)}
+#weave-theme-lens select{flex:1;min-width:0;width:100%;font:500 13px/1.3 var(--ui-sans);min-height:34px;box-sizing:border-box;background:var(--reading-wash);color:var(--reading-ink);border:1px solid var(--reading-line);border-radius:6px;padding:4px 8px;text-overflow:ellipsis}
+#weave-theme-lens .weave-map-theme-results{font:500 12px/1.35 var(--ui-sans);color:var(--reading-muted);text-align:left;padding:3px 0;text-decoration:underline;text-underline-offset:2px;min-height:24px}
+#weave-theme-lens button{flex:none;min-width:30px;min-height:34px;border:0;background:transparent;color:inherit;font-size:20px;cursor:pointer}
+#weave-theme-lens :is(select,button):focus-visible{outline:2px solid #a8cbe5;outline-offset:2px}
+body.weave-theme-lens #atlas .land-sky-star:not(.theme-match){opacity:.18}
+body.weave-theme-lens #atlas .land-sky-star.theme-match .land-sky-light{fill:#fff2c4;stroke:#fff;stroke-width:1.2;filter:drop-shadow(0 0 4px #f5d68c)}
+body.weave-theme-lens #atlas .land-sky-star:not(.theme-match):is(:hover,:focus-visible,.is-selected){opacity:.85}
+body.is-theme-web-open #weave-theme-lens,body.weave-playing #weave-theme-lens,body.weave-unmapped #weave-theme-lens,body.weave-tracing #weave-theme-lens,html[data-weave-stage="read"] #weave-theme-lens{display:none!important}
+body.is-constellating #weave-trace-layer :is(.wt-switch,.wt-theme-pick,.wt-sep,.wt-theme){display:none!important}
+@media(max-width:700px){#weave-theme-lens{top:58px;left:8px;width:min(240px,calc(100% - 16px));padding:5px 7px}#weave-theme-lens select{min-height:32px;font-size:12px}}
+
+
+/* Film-to-film comparison, using the same sourced artwork as the discovery cards. */
+#weave-film-pair[hidden]{display:none!important}
+#weave-editor[data-tab="add"] #weave-film-pair{display:none!important}
+#weave-editor[data-tab="thread"] #weave-film-pair:not([hidden]){order:-6}
+#weave-film-pair{padding:12px 0;border-top:1px solid var(--reading-line);border-bottom:1px solid var(--reading-line)}
+.weave-pair-head{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.weave-pair-head h3{margin:0;font-size:18px}
+.weave-pair-head button{min-width:36px;min-height:36px}
+.weave-pair-shared{font:600 14px/1.4 var(--ui-sans);color:var(--reading-accent);margin:5px 0 10px}
+.weave-pair-bases{font:500 12px/1.4 var(--ui-sans);color:var(--reading-muted);margin:4px 0 10px}
+.weave-pair-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;align-items:start}
+.weave-pair-film{min-width:0;overflow-wrap:anywhere}
+.weave-pair-film>.weave-media-thumb,.tw-film-art>.weave-media-thumb{position:relative;display:block;width:100%;height:100%;overflow:hidden;background:#18283a}
+.weave-pair-film>.weave-media-thumb{height:auto;aspect-ratio:4/3;border-radius:6px}
+.weave-pair-film>.weave-media-thumb img,.tw-film-art>.weave-media-thumb img{object-fit:contain!important}
+.weave-pair-film h4{font:600 15px/1.3 var(--ui-sans);margin:8px 0 4px}
+.weave-pair-film p,.weave-pair-film dd,.weave-pair-film details{font:400 13px/1.45 var(--ui-sans);margin:0 0 8px}
+.weave-pair-film dt{font:600 11px/1.3 var(--ui-sans);color:var(--reading-muted);margin:8px 0 3px}
+.weave-pair-film summary{cursor:pointer;font-weight:600;margin-bottom:5px}
+#weave-film-pair .weave-discovery-actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:12px}
+#weave-film-pair .weave-discovery-actions button{min-height:36px}
+#atlas-theme-web .tw-film{grid-template-columns:86px minmax(0,1fr) auto;gap:10px}
+#atlas-theme-web .tw-film-art{width:86px;height:68px}
+#atlas-theme-web .tw-film-copy strong{font-size:14px;line-height:1.3}
+#atlas-theme-web .tw-film-copy small,#atlas-theme-web .tw-film-copy a,#atlas-theme-web .tw-no-source{font-size:12px;line-height:1.35}
+
+/* Save is explicit; Clear lives under Options. */
+#constellate-mode #constellate-save[data-saved="true"]{opacity:.65}
+@container cmbar (max-width:900px){#constellate-mode #constellate-save .cm-label{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}#constellate-mode #constellate-save{width:34px;padding:0}}
+#weave-save-state{font-size:12px;color:var(--reading-muted);line-height:1.4}
+
+/* Archive, film and personal concept are distinct; color reinforces shape. */
+body.is-theme-weaving{--cx-archive:#ece8db;--cx-film:#a8cbe5;--cx-concept:#e8bf76;--cx-night:#111d30;--cx-slate:#293b50}
+body.is-constellating #atlas .land-sky-light{fill:var(--cx-archive);stroke:none;filter:none}
+body.is-constellating #atlas .land-sky-star[data-multiple=true] .land-sky-light{fill:var(--cx-archive);stroke:var(--cx-archive)}
+body.is-constellating #atlas .land-sky-star:is(.is-selected,.film-preview-land) .land-sky-hit{stroke:var(--cx-film);stroke-width:1.7;fill:none;stroke-dasharray:3 2}
+body.is-constellating #atlas .land-sky-star:is(.film-preview-land,.is-selected) .land-sky-label{opacity:1}
+#constellate-graph .weave-film-node .weave-film-ring{fill:none;stroke:var(--cx-film);stroke-width:1.4;opacity:0;pointer-events:none}
+#constellate-graph .weave-film-node:is(.selected,:focus-visible,:hover) .weave-film-ring{opacity:1}
+#constellate-graph .concept .weave-idea-star{fill:var(--cx-night);stroke:var(--cx-concept);stroke-width:2}
+#constellate-graph .concept.selected .weave-idea-star{stroke:#fff;stroke-width:2}
+#constellate-graph .weave-film-light{filter:none}
+#weave-film-preview[hidden],#weave-lens-results[hidden]{display:none!important}
+#weave-editor[data-tab="add"] :is(#weave-film-preview,#weave-lens-results){display:none!important}
+#weave-editor[data-tab="thread"] #weave-film-preview:not([hidden]){order:-10}
+#weave-editor[data-tab="thread"] #weave-lens-results:not([hidden]){order:-8}
+#weave-editor[data-tab="thread"] #weave-film-pair:not([hidden]){order:-11}
+#constellate-popup.has-film-preview #weave-suggest{display:none!important}
+#constellate-popup.has-film-preview #weave-land{display:none!important}
+#constellate-popup.has-film-preview #weave-order{order:5}
+#weave-film-preview,#weave-lens-results{padding:12px 0;color:var(--reading-ink);min-width:0}
+.weave-preview-head{display:flex;justify-content:space-between;align-items:center;gap:8px;margin:0 0 12px}
+.weave-preview-head h3{font-size:17px;margin:0;overflow-wrap:anywhere}
+.weave-preview-head span,.weave-preview-note,#weave-lens-results>small{font:400 12px/1.4 var(--ui-sans);color:var(--reading-muted)}
+.weave-preview-main{display:grid;grid-template-columns:minmax(82px,38%) minmax(0,1fr);gap:12px;align-items:start}
+.weave-preview-main>.weave-media-thumb{display:block;position:relative;width:100%;height:auto;aspect-ratio:3/4;background:var(--cx-night);border-radius:6px}
+.weave-preview-main>.weave-media-thumb img,.weave-encounter-art>.weave-media-thumb img{object-fit:contain!important}
+.weave-preview-main h3{font:500 22px/1.16 var(--ui-serif,Georgia,serif);margin:2px 0 6px;overflow-wrap:anywhere}
+.weave-preview-main p,.weave-preview-synopsis{font:400 14px/1.5 var(--ui-sans);margin:0 0 10px}
+.weave-preview-synopsis{margin-top:12px}
+.weave-preview-main .weave-discovery-actions{display:flex;align-items:center;flex-wrap:wrap;gap:8px}
+.weave-preview-themes,.weave-context-themes{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0 6px}
+#constellate-popup .weave-theme-chip{padding:6px 9px;border:1px solid var(--reading-line);border-radius:16px;background:transparent;color:var(--reading-ink);font:500 12px/1.25 var(--ui-sans);cursor:pointer;white-space:normal;text-align:left}
+#constellate-popup .weave-theme-chip[aria-pressed=true]{background:var(--cx-film);color:#111d30;border-color:var(--cx-film)}
+.weave-preview-facts{margin:12px 0;padding:8px 0;border-top:1px solid var(--reading-line);font:400 13px/1.5 var(--ui-sans)}
+.weave-preview-facts summary{cursor:pointer;font-weight:600}
+.weave-preview-facts dt{font-weight:600;color:var(--reading-muted);margin-top:6px}
+.weave-preview-facts dd{margin:0 0 4px}
+.weave-encounter-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.weave-encounter-grid article{min-width:0;display:flex;flex-direction:column;gap:5px}
+#constellate-popup .weave-encounter-art{display:flex;flex-direction:column;gap:6px;text-align:left;border:0;background:transparent;color:inherit;padding:0;cursor:pointer;width:100%}
+.weave-encounter-art>.weave-media-thumb{display:block;position:relative;width:100%;height:auto;aspect-ratio:4/3;background:var(--cx-night);border-radius:6px;overflow:hidden}
+.weave-encounter-art strong{font:500 15px/1.25 var(--ui-serif,Georgia,serif);overflow-wrap:anywhere}
+.weave-encounter-grid article>small{font:400 12px/1.35 var(--ui-sans);color:var(--reading-muted);overflow-wrap:anywhere}
+.weave-encounter-grid article>.weave-encounter-reason{color:var(--reading-accent)}
+.weave-search-art,.weave-search-title{border:0!important;background:transparent!important;color:inherit!important;padding:0!important;text-align:left!important;cursor:pointer}
+.weave-search-title{white-space:normal;font:inherit}
+#weave-land .wl-films:not(.is-linking){display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+#weave-land .wl-films:not(.is-linking) li{min-width:0;border:0}
+#weave-land .wl-films:not(.is-linking) button{display:flex;flex-direction:column;align-items:flex-start;gap:6px}
+#weave-land .wl-films:not(.is-linking) .weave-media-thumb{width:100%;height:auto;aspect-ratio:4/3;background:var(--cx-night)}
+#weave-land .wl-films:not(.is-linking) .weave-media-thumb img{object-fit:contain}
+#weave-land .wl-t strong{font-size:15px;white-space:normal;overflow-wrap:anywhere}
+#weave-land .wl-t small{font-size:12px;line-height:1.35}
+#weave-land .wl-films:not(.is-linking) em{font-size:12px}
+#constellate-popup #weave-order-list [data-order-select] span{font-size:14px;line-height:1.35}
+#constellate-popup #weave-order-list [data-order-select] small{font-size:12px}
+#weave-film-preview button,#weave-lens-results button{min-height:36px}
+#weave-film-preview :is(button,a,summary):focus-visible,#weave-lens-results :is(button,a):focus-visible{outline:2px solid var(--cx-film);outline-offset:3px}
+.wt-selection summary{cursor:pointer;font:500 13px/1.4 var(--ui-sans)}
+.wt-selection .wt-film-strip{max-height:250px;overflow:auto}
+@media(prefers-reduced-motion:reduce){body.is-theme-weaving *,body.is-theme-weaving *::before,body.is-theme-weaving *::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+
+/* One active discovery surface. A new land never sits behind an old preview or theme result. */
+#constellate-popup.has-land-view #weave-editor[data-tab="thread"] #weave-land:not([hidden]){order:-20}
+#constellate-popup.has-land-view :is(#weave-film-preview,#weave-film-pair,#weave-lens-results,#weave-suggest,#constellate-context,#weave-compare){display:none!important}
+#constellate-popup.has-land-view .wl-choices button{display:flex;flex-direction:column;gap:4px;min-height:44px}
+#constellate-popup.has-land-view .wl-choices button strong{font:500 16px/1.3 var(--ui-serif,Georgia,serif)}
+#constellate-popup.has-land-view .wl-choices button small,.wl-bridge small{font:400 12px/1.4 var(--ui-sans);color:var(--reading-muted)}
+.wl-bridge{padding:8px 0 10px;border-bottom:1px solid var(--reading-line)}
+.wl-bridge>div{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+#constellate-graph #weave-ghost{pointer-events:none}
+
+/* Map selection and toolbar stay compact; the archive is the primary canvas. */
+@media(max-width:700px){#weave-theme-lens{width:min(205px,calc(100% - 16px));gap:4px}#weave-theme-lens label{display:none}#weave-theme-lens .weave-map-theme-results{font-size:11px}#weave-theme-lens select{min-height:32px}body.is-theme-weaving #constellate-mode{overflow:visible}}
+
+/* Discovery panels do not cover the selected film with unrelated editor controls. */
+#constellate-popup.has-film-preview #weave-film-preview{scroll-margin-top:58px}
+#constellate-popup.has-land-view #weave-land{scroll-margin-top:58px}
+#weave-theme-lens .weave-map-theme-results:hover{color:var(--reading-ink)}
+
+/* Wider toolbars expose creative actions; compact widths retain them in Add. */
+#constellate-mode[data-tools="1"] .cm-tools>button{width:34px;padding:0;gap:0}
+#constellate-mode[data-tools="1"] .cm-tools>button .cm-label{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+#constellate-mode .cm-add-menu #weave-draw-thread[aria-pressed="true"]{background:var(--ui-wash)}
+#constellate-mode .cm-tools>button:focus-visible,#constellate-mode .cm-add-menu>button:focus-visible{outline:2px solid var(--cx-film,#a8cbe5);outline-offset:2px}
+
+/* Stable geographic canvas: desktop discovery dock floats inside the existing map
+   frame. Opening, closing, drawing and filtering never change the map's grid track. */
+@media (min-width:761px){
+ :root body.atlas-page.is-theme-weaving:not(.weave-playing) main{position:relative;display:block!important;grid-template-columns:minmax(0,1fr)!important}
+ :root body.atlas-page.is-theme-weaving:not(.weave-playing) .map-panel{width:100%!important;max-width:none!important;height:100%!important}
+ :root body.atlas-page.is-theme-weaving:not(.weave-playing) #constellate-popup:not([hidden]){
+  position:absolute!important;left:auto!important;right:12px!important;top:60px!important;bottom:12px!important;
+  width:min(360px,calc(100% - 24px))!important;height:auto!important;max-height:none!important;min-height:0;
+  border:1px solid var(--reading-line);border-radius:10px;box-shadow:0 10px 32px #07122655;z-index:20;overflow-y:auto;
+ }
+}
+@media (max-width:760px){
+ :root:not(#_):not(#__) body.atlas-page.is-theme-weaving:not(.weave-playing) main{height:auto!important;min-height:0!important;display:flex!important;flex-direction:column!important}
+ :root:not(#_):not(#__) body.atlas-page.is-theme-weaving:not(.weave-playing) .map-panel{flex:none!important;height:52dvh!important;min-height:300px!important;max-height:52dvh!important;width:100%!important}
+}
+
+/* 24 Nov: Quiet reference points are not constellation nodes. Preserve hit areas,
+   sourced geography and keyboard focus; never encode film count as prominence. */
+body.is-constellating #atlas .land-sky-star .land-sky-light{fill:#b5c1c9;fill-opacity:.68;stroke:none;filter:none}
+body.is-constellating #atlas .land-sky-star[data-multiple=true] .land-sky-light{fill:none;stroke:#b5c1c9;stroke-width:1.25;stroke-opacity:.8;filter:none}
+body.is-constellating #atlas .land-sky-star:is(:hover,:focus-visible,.is-selected,.film-preview-land) .land-sky-light{fill:#dce4e8;fill-opacity:1;stroke:#dce4e8;stroke-width:.8;filter:none}
+body.is-constellating #atlas .land-sky-star:is(.is-selected,.film-preview-land) .land-sky-hit{stroke:#b8cbd8;stroke-width:1;stroke-dasharray:none}
+body.weave-theme-lens.is-constellating #atlas .land-sky-star.theme-match .land-sky-light{fill:#c6d6df;fill-opacity:1;stroke:none;filter:none}
+body.weave-theme-lens.is-constellating #atlas .land-sky-star.theme-match[data-multiple=true] .land-sky-light{fill:none;stroke:#c6d6df;stroke-width:1.25}
+body.weave-theme-lens.is-constellating #atlas .land-sky-star:not(.theme-match){opacity:.3}
+#atlas .land-sky-label{fill:#dce4e8;font-size:13px;stroke-width:2.5;filter:none}
+html[data-ui][data-reading-theme=night] body.is-theme-weaving #atlas .land-shading .nation-wash{fill-opacity:clamp(0,calc(var(--territory-wash,.36) * .72),.9)!important;stroke-opacity:.48!important}
+body.is-theme-weaving #constellate-graph .weave-thread-halo{stroke-width:3.5px!important;stroke-opacity:.35!important}
+body.is-theme-weaving #constellate-graph .weave-cord.weave-strand{stroke-width:1.65px!important;stroke-opacity:.85!important}
+body.is-theme-weaving #constellate-graph .weave-thread.is-quiet .weave-cord.weave-strand{stroke-width:1.2px!important;stroke-opacity:.7!important}
+body.is-theme-weaving #constellate-graph .weave-thread.is-focus .weave-cord.weave-strand{stroke-width:2px!important}
+#constellate-graph .weave-film-node .weave-film-ring{stroke-width:1;filter:none}
+#constellate-graph .weave-film-light,#constellate-graph .concept .weave-idea-star,#constellate-graph .weave-film-node:is(.selected,:hover,:focus-visible) .weave-film-light{filter:none;animation:none}
+#constellate-graph.weave-play-focus .weave-stop.current{filter:none}
+body.weave-playing:not(.weave-unmapped) #constellate-graph.weave-play-focus{background:none}
+#weave-theme-lens .weave-map-key{font:400 11px/1.4 var(--ui-sans);color:var(--reading-muted);margin:0;padding:3px 0 0;border-top:1px solid var(--reading-line)}
+
+/* The drawn route is an editable, evidence-led film sequence. */
+#weave-trace-layer .wt-result{width:min(390px,calc(100% - 32px));overflow-y:auto;overscroll-behavior:contain;gap:0}
+#weave-trace-layer .wt-result h3{flex:none;margin-bottom:4px}
+#weave-trace-layer .wt-result>ol{flex:none;max-height:112px;overflow:auto}
+#weave-trace-layer .wt-route-intro,#weave-trace-layer .wt-route-summary{font:400 13px/1.45 var(--ui-sans);color:var(--dw-sub);margin:5px 0 10px}
+#weave-trace-layer .wt-film-preview{flex:0 0 auto;margin:12px 0 0;min-width:0}
+#weave-trace-layer .wt-route-bridges{padding:0 0 12px;border-bottom:1px solid var(--dw-line)}
+#weave-trace-layer .wt-route-bridges>strong{font:600 14px/1.3 var(--ui-sans)}
+#weave-trace-layer .wt-route-bridges>div{display:flex;flex-wrap:wrap;gap:5px;margin:8px 0}
+#weave-trace-layer .wt-route-bridges button{font:500 12px/1.35 var(--ui-sans);padding:6px 9px;min-height:34px;border:1px solid var(--dw-line);border-radius:6px;background:transparent;color:var(--dw-ink);cursor:pointer;text-align:left}
+#weave-trace-layer .wt-route-bridges button[aria-pressed="true"]{background:var(--dw-ink);color:var(--dw-fill)}
+#weave-trace-layer .wt-route-bridges small,#weave-trace-layer .wt-route-relation small{display:block;font:400 12px/1.45 var(--ui-sans)}
+#weave-trace-layer .wt-route-bridges>small,#weave-trace-layer .wt-route-relation small{color:var(--dw-sub)}
+#weave-trace-layer .wt-route-sequence{margin-left:5px;padding-left:13px;border-left:1px solid var(--dw-line)}
+#weave-trace-layer .wt-route-stop{position:relative;display:flex;flex-direction:column;gap:7px;min-width:0;padding:10px 0}
+#weave-trace-layer .wt-route-stop:before{content:"";position:absolute;left:-17px;top:16px;width:7px;height:7px;border-radius:50%;background:var(--dw-sub)}
+#weave-trace-layer .wt-route-land{font:500 12px/1.4 var(--ui-sans);color:var(--dw-sub)}
+#weave-trace-layer .wt-route-film{display:grid;grid-template-columns:82px minmax(0,1fr);gap:10px;align-items:start}
+#weave-trace-layer .wt-route-film>.weave-media-thumb{display:block;position:relative;width:82px;height:auto;aspect-ratio:3/4;border-radius:4px;overflow:hidden;background:#18283a}
+#weave-trace-layer .wt-route-film>.weave-media-thumb img{object-fit:contain!important}
+#weave-trace-layer .wt-route-film>div{display:flex;flex-direction:column;gap:4px;min-width:0;overflow-wrap:anywhere}
+#weave-trace-layer .wt-route-film strong{font:500 17px/1.2 var(--ui-serif,Georgia,serif)}
+#weave-trace-layer .wt-route-film small,#weave-trace-layer .wt-route-stop details{font:400 12px/1.45 var(--ui-sans);color:var(--dw-sub)}
+#weave-trace-layer .wt-route-stop details p{margin:6px 0;overflow-wrap:anywhere}
+#weave-trace-layer .wt-route-choice{display:flex;flex-direction:column;gap:4px;font:500 12px/1.4 var(--ui-sans);color:var(--dw-sub)}
+#weave-trace-layer .wt-route-choice select{max-width:100%;width:100%;min-height:36px;background:var(--dw-track);color:var(--dw-ink);border:1px solid var(--dw-line);border-radius:6px;padding:4px 6px;font:500 13px/1.3 var(--ui-sans)}
+#weave-trace-layer .wt-route-relation{display:grid;gap:4px;margin:4px 0;padding:9px 0;border-block:1px solid var(--dw-line);font:500 13px/1.4 var(--ui-sans)}
+#weave-trace-layer .wt-route-relation a,#weave-trace-layer .wt-route-film a{color:var(--dw-ink);font:500 12px/1.4 var(--ui-sans);text-decoration:underline;text-underline-offset:2px}
+#weave-trace-layer .wt-route-stop summary{cursor:pointer}
+#weave-trace-layer .wt-result :is(button,select,a,summary):focus-visible{outline:2px solid #8faec4;outline-offset:2px}
+#weave-trace-layer .wt-result .wt-actions{position:sticky;bottom:-12px;flex:none;margin:10px -16px -12px;padding:10px 16px 12px;background:var(--reading-paper,#f4f5f6);border-top:1px solid var(--dw-line);z-index:1}
+#weave-trace-layer .wt-credit{font-size:11px;margin:5px 0 0;color:var(--dw-sub)}
+@media(max-width:700px){#weave-trace-layer .wt-result{width:auto}#weave-trace-layer .wt-result>ol{max-height:88px}#weave-trace-layer .wt-route-film{grid-template-columns:68px minmax(0,1fr)}#weave-trace-layer .wt-route-film>.weave-media-thumb{width:68px}}
+
+/* Let the open toolbar menu sit above its sibling editor dock. The map's
+   isolated stacking context otherwise traps even the frontmost menu. */
+body.is-constellating .map-panel:has(#constellate-mode details[open]) {
+  isolation: auto;
+}
