@@ -8520,6 +8520,35 @@
    "form": "Experimental",
    "length": "Short"
   },
+  "DIR-0151-F1": {
+   "title": "North of North Season 2",
+   "year": 2026,
+   "makers": [
+    {
+     "id": "DIR-0118",
+     "name": "Lisa Jackson"
+    },
+    {
+     "id": "DIR-0167",
+     "name": "Zoe Leigh Hopkins"
+    },
+    {
+     "id": "DIR-0151",
+     "name": "Stacey Aglok MacDonald"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Women and Gender",
+    "Kinship"
+   ],
+   "primary_theme": "Women and Gender",
+   "families": [
+    "Lives and Relations"
+   ],
+   "form": "Fiction",
+   "length": "Series"
+  },
   "FILM-SRC-NFB-00062": {
    "title": "The Learning Path",
    "year": null,
@@ -58385,27 +58414,6 @@
     "Youth"
    ],
    "primary_theme": "Kinship",
-   "families": [
-    "Lives and Relations"
-   ],
-   "form": "Fiction",
-   "length": null
-  },
-  "DIR-0151-F1": {
-   "title": "North of North Season 2",
-   "year": null,
-   "makers": [
-    {
-     "id": "DIR-0151",
-     "name": "Stacey Aglok MacDonald"
-    }
-   ],
-   "languages": [],
-   "themes": [
-    "Women and Gender",
-    "Kinship"
-   ],
-   "primary_theme": "Women and Gender",
    "families": [
     "Lives and Relations"
    ],
