@@ -2,8 +2,8 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-26",
  "license": "See data.html",
- "films_on_public_map": 3020,
- "film_entries": 3020,
+ "films_on_public_map": 3028,
+ "film_entries": 3028,
  "published_field_conflicts": {
   "SA50-20261014-59f87a2e3ce5-WORK-01": [
    "themes"
@@ -115,7 +115,7 @@
     "note": "",
     "region": "North America",
     "region_basis": "Glottolog countries",
-    "films": 4
+    "films": 5
    },
    {
     "label": "Ayuujk (Mixe)",
@@ -507,7 +507,7 @@
     "note": "",
     "region": "",
     "region_basis": "",
-    "films": 8
+    "films": 9
    },
    {
     "label": "Vietnamese",
@@ -1223,6 +1223,10 @@
     {
      "id": "SA50-20261014-8926e0d57678",
      "name": "Jorge Morinico"
+    },
+    {
+     "id": "SA50-20261014-7dabd75f6399",
+     "name": "Germano Beñites"
     }
    ],
    "languages": [],
@@ -39868,6 +39872,63 @@
    "form": null,
    "length": "Feature"
   },
+  "NEW-ef0de1fd12ef-WORK-1": {
+   "title": "Bird in a Cage",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "NEW-ef0de1fd12ef",
+     "name": "Myrann Newashish"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Health and Healing",
+    "Music and Performance"
+   ],
+   "primary_theme": "Health and Healing",
+   "families": [
+    "Expression and Representation",
+    "Lives and Relations"
+   ],
+   "form": "Experimental",
+   "length": "Short"
+  },
+  "QW-WAPI-V169116312": {
+   "title": "Ma connexion",
+   "year": 2016,
+   "makers": [
+    {
+     "id": "NEW-ef0de1fd12ef",
+     "name": "Myrann Newashish"
+    }
+   ],
+   "languages": [
+    {
+     "label": "Atikamekw",
+     "as_credited": "Atikamekw",
+     "glottocode": "atik1240",
+     "iso639_3": "atj",
+     "match": "exact",
+     "indigenous": true,
+     "source": "https://nouveaucinema.ca/storage/document/2025-09-24/10677-043129.pdf"
+    },
+    {
+     "label": "French",
+     "as_credited": "French",
+     "glottocode": "stan1290",
+     "iso639_3": "fra",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://nouveaucinema.ca/storage/document/2025-09-24/10677-043129.pdf"
+    }
+   ],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
+  },
   "NEW-98c6d3129c01-WORK-1": {
    "title": "Our Sisters in Spirit",
    "year": null,
@@ -63772,6 +63833,102 @@
     {
      "id": "Q20261126-6204",
      "name": "Quanah Style"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QM-16fcc59a0c-M1": {
+   "title": "La légende de Waban et Pisane",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "QM-16fcc59a0c",
+     "name": "Steven Gros-Louis Germain"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QM-a35f6983f0-M1": {
+   "title": "Dramatik",
+   "year": 2017,
+   "makers": [
+    {
+     "id": "QM-a35f6983f0",
+     "name": "Matthew Vachon"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
+  },
+  "QW-WAPI-V158415119": {
+   "title": "LOUP GAROU",
+   "year": 2016,
+   "makers": [
+    {
+     "id": "QM-a35f6983f0",
+     "name": "Matthew Vachon"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QM-0ad24e72b2-M1": {
+   "title": "La mémoire qui n'oublie pas",
+   "year": 2017,
+   "makers": [
+    {
+     "id": "QM-0ad24e72b2",
+     "name": "Rita Mestokosho"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
+  },
+  "QW-WAPI-V223631275": {
+   "title": "Les nomades",
+   "year": 2016,
+   "makers": [
+    {
+     "id": "QW-b74fe50294",
+     "name": "Kateri-Jade Lalo"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QW-WAPI-V348403092": {
+   "title": "L'ORIGINE DE LA WOLASTOQ",
+   "year": 2019,
+   "makers": [
+    {
+     "id": "QW-73fc00d174",
+     "name": "Mélanie Brière"
     }
    ],
    "languages": [],
