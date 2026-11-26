@@ -56,6 +56,7 @@ async def check():
         await films.nth(0).click()
         await films.nth(1).click()
         await page.get_by_label("Connection reason").fill("Shared screening")
+        await page.locator(".globe-link-form summary").filter(has_text="Add a note").click()
         await page.get_by_role("textbox", name="Connection note").fill("Compare the opening sequences.")
         await page.locator(".globe-link-form button[type=submit]").click()
         assert await page.evaluate("localStorage.getItem('atlas-collections-v1')") is None

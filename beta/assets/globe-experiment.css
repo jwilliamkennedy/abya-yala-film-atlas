@@ -1166,3 +1166,12 @@ html[data-reading-theme="night"] #atlas-rotational-globe .globe-primary,html[dat
 @media(max-width:640px){#globe-player{width:calc(100vw - 16px)}#globe-player .globe-stage-media{max-width:none}#globe-player .globe-stage-more-list,#globe-player[data-state=playing] .globe-stage-more-list{grid-template-columns:repeat(3,minmax(0,1fr))}}
 /* drawing (Gather, and Draw in Constellate): a pen point, not the map's dragging hand */
 #atlas-rotational-globe.is-gathering :is(.maplibregl-canvas-container,.maplibregl-canvas,#globe-surface),#atlas-rotational-globe.is-gathering .maplibregl-canvas-container.maplibregl-interactive:active{cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='6.5' fill='none' stroke='%23fbf9f4' stroke-width='3'/%3E%3Ccircle cx='12' cy='12' r='6.5' fill='none' stroke='%2314181c' stroke-width='1.4'/%3E%3Ccircle cx='12' cy='12' r='1.6' fill='%2314181c' stroke='%23fbf9f4' stroke-width='.8'/%3E%3C/svg%3E") 12 12,crosshair!important}
+/* every menu sheet is one width and hangs from the same edge */
+#atlas-rotational-globe .globe-menu-panel,#atlas-rotational-globe #globe-theme-panel{width:min(360px,calc(100vw - 24px))!important}
+#atlas-rotational-globe #globe-gather-panel:has(>.globe-gather-hint:only-child){width:min(360px,calc(100vw - 24px))!important;border-radius:10px!important;padding:12px 16px!important}
+#atlas-rotational-globe #globe-encounter .globe-land-note{color:var(--p-ink)!important}
+#atlas-rotational-globe #globe-encounter .globe-land-fix{display:inline-block;margin-top:6px}
+#globe-player .globe-stage-note a{font-size:inherit;color:inherit;text-decoration:underline;text-underline-offset:3px}
+/* phones: the six words sit on one line */
+#atlas-rotational-globe[data-layout=compact] .globe-primary{display:flex!important;flex-wrap:nowrap!important;justify-content:space-between;gap:0!important;padding:0 8px!important;width:max-content;max-width:calc(100vw - 16px)}
+#atlas-rotational-globe[data-layout=compact] .globe-primary>button{white-space:nowrap!important;font-size:12.5px!important;padding:11px clamp(4px,1.5vw,8px)!important;min-width:0;flex:none}

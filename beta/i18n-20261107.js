@@ -27,7 +27,7 @@ const T=[
 ["Clear theme filter","Quitar filtro temático","Limpar filtro temático","Effacer le filtre thématique"],
 ["Compare films","Comparar películas","Comparar filmes","Comparer les films"],
 ["Compare","Comparar","Comparar","Comparer"],
-["Discover next","Descubre más","Descubra mais","Découvrez la suite"],
+["See next","Ver más","Ver mais","Voir la suite"],
 ["More films","Más películas","Mais filmes","Plus de films"],
 ["Trailer","Tráiler","Trailer","Bande-annonce"],
 ["Film page","Página de la película","Página do filme","Page du film"],
@@ -372,7 +372,7 @@ const T=[
  ["The lands it crosses give their films, in the order it crosses them.","Los territorios que atraviesa aportan sus películas, en el orden en que los atraviesa.","Os territórios que ela atravessa oferecem seus filmes, na ordem em que os atravessa.","Les territoires qu’elle traverse apportent leurs films, dans l’ordre où elle les traverse."],
  ["No lands with films crossed. Draw again.","La línea no cruzó territorios con películas. Vuelve a dibujar.","A linha não cruzou territórios com filmes. Desenhe novamente.","La ligne n’a traversé aucun territoire avec des films. Dessinez de nouveau."],
  ["searches the atlas.","busca en el atlas.","busca no atlas.","cherche dans l’atlas."],
- ["collects the films of the lands crossed by a line you draw on the map. Large themes open with six films; you can add the rest.","trae las películas de los territorios que cruza una línea que dibujas en el mapa. Los temas grandes se abren con seis películas; puedes añadir el resto.","traz os filmes dos territórios cruzados por uma linha que você desenha no mapa. Os temas grandes abrem com seis filmes; você pode adicionar o resto.","apporte les films des territoires traversés par une ligne que vous dessinez sur la carte. Les grands thèmes s’ouvrent avec six films ; vous pouvez ajouter les autres."],
+ ["brings together the films of the lands crossed by a line you draw on the map. Large themes open with six films; you can add the rest.","trae las películas de los territorios que cruza una línea que dibujas en el mapa. Los temas grandes se abren con seis películas; puedes añadir el resto.","traz os filmes dos territórios cruzados por uma linha que você desenha no mapa. Os temas grandes abrem com seis filmes; você pode adicionar o resto.","apporte les films des territoires traversés par une ligne que vous dessinez sur la carte. Les grands thèmes s’ouvrent avec six films ; vous pouvez ajouter les autres."],
  ["Time dial","Control temporal","Seletor temporal","Curseur temporel"],
  ["See when each land’s first film appears","Ver cuándo aparece la primera película vinculada a cada territorio","Veja quando aparece o primeiro filme vinculado a cada território","Voir quand apparaît le premier film lié à chaque territoire"],
  ["Close the time dial","Cerrar el control temporal","Fechar o seletor temporal","Fermer le curseur temporel"]

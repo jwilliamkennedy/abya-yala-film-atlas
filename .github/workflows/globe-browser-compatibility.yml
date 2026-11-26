@@ -95,7 +95,7 @@ jobs:
                         return {label:e.textContent.trim(),inView:r.width>0&&r.height>0&&
                           r.left>=-1&&r.top>=-1&&r.right<=innerWidth+1&&r.bottom<=innerHeight+1};
                       })""")
-                      assert len(controls)==5 and all(c['inView'] for c in controls), controls
+                      assert len(controls)==6 and all(c['inView'] for c in controls), controls
                       await page.screenshot(path='shots/globe-browser/first-view.png',timeout=30000)
                       await press('#globe-theme-toggle')
                       await page.locator('#weave-map-theme').select_option('Water')
