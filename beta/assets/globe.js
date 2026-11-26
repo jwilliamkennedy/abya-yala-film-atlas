@@ -1371,7 +1371,7 @@ function drawEncounter(){
     const bar=el('div','globe-connection-toolbar'),trace=button(themeTrace?'Hide thematic lines':'Show thematic lines',toggleThemeTrace,'globe-theme-trace');
     trace.id='globe-trace-themes';trace.setAttribute('aria-pressed',String(themeTrace));bar.append(el('small','globe-source-label','Related films'),trace);routes.append(bar);
     for(const v of related){const bridge=button('',()=>followRelated(v),'globe-related'),thumb=thumbnail(v.film,d),copy=el('span','globe-list-copy');
-     copy.append(el('strong',null,v.film.title),el('small',null,v.ref.name),el('small','globe-shared-themes',v.shared.join(' · ')));bridge.append(thumb,copy);bridge.dataset.targetFilm=v.film.id;bridge.dataset.targetLand=v.ref.id;const row=el('div','globe-related-row'),retain=button('＋',()=>retainRelated(film,primary.id,v),'globe-retain-related');retain.setAttribute('aria-label','Collect and connect '+v.film.title);retain.title='Collect both films and add your own connection';row.append(bridge,retain);routes.append(row);}
+     copy.append(el('strong',null,v.film.title),el('small',null,v.ref.name),el('small','globe-shared-themes',v.shared.join(' · ')));bridge.append(thumb,copy);bridge.dataset.targetFilm=v.film.id;bridge.dataset.targetLand=v.ref.id;const row=el('div','globe-related-row'),retain=button('＋',()=>retainRelated(film,primary.id,v),'globe-retain-related');retain.setAttribute('aria-label','Collect and link '+v.film.title);retain.title='Collect both films and add your own connection';row.append(bridge,retain);routes.append(row);}
     routes.append(el('p','globe-connection-note','Shared catalogue themes connect films, not peoples or filming locations.'));
    }
    d.append(routes);sections.push(d);
