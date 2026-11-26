@@ -1012,14 +1012,14 @@ html[data-globe-entry] #atlas-globe-stage>#constellate-popup .constellate-headin
 @media(hover:hover){#atlas-rotational-globe #globe-encounter[data-belt=true] .globe-strip-item:not([aria-current=true]):hover{background:var(--p-fill)!important}}
 #atlas-rotational-globe #globe-encounter .globe-encounter-disclosures{border-top-color:var(--p-line)!important}
 /* larger stills where the window has room (card size is set by the layout, see beltLayout) */
-#atlas-rotational-globe #globe-encounter[data-belt=true]:is([data-belt-card="164"],[data-belt-card="180"],[data-belt-card="188"]){--belt-standard-height:min(42%,288px,var(--globe-encounter-room,288px));--belt-ribbon-height:min(28%,168px,var(--globe-encounter-room,168px))}
-#atlas-rotational-globe #globe-encounter:is([data-belt-card="164"],[data-belt-card="180"],[data-belt-card="188"]) .globe-strip-track{gap:10px}
-#atlas-rotational-globe #globe-encounter:is([data-belt-card="164"],[data-belt-card="180"],[data-belt-card="188"]) .globe-strip-item{max-width:148px;flex-basis:148px}
-#atlas-rotational-globe #globe-encounter:is([data-belt-card="164"],[data-belt-card="180"],[data-belt-card="188"]) .globe-strip-item .globe-thumb-frame{height:96px;flex-basis:96px}
-#atlas-rotational-globe #globe-encounter:is([data-belt-card="164"],[data-belt-card="180"],[data-belt-card="188"]) .globe-strip-item .globe-strip-art[data-art-state=ready]{width:min(100%,var(--art-natural-width),calc(96px * var(--art-ratio,1)))!important}
-#atlas-rotational-globe #globe-encounter:is([data-belt-card="164"],[data-belt-card="180"],[data-belt-card="188"]) .globe-strip-item .globe-strip-title{font-size:13.5px;line-height:1.25}
-#atlas-rotational-globe #globe-encounter:is([data-belt-card="164"],[data-belt-card="180"],[data-belt-card="188"])[data-collapsed=true] .globe-strip-item .globe-thumb-frame{height:72px;flex-basis:72px}
-#atlas-rotational-globe #globe-encounter:is([data-belt-card="164"],[data-belt-card="180"],[data-belt-card="188"])[data-collapsed=true] .globe-strip-item .globe-strip-art[data-art-state=ready]{width:min(100%,var(--art-natural-width),calc(72px * var(--art-ratio,1)))!important}
+#atlas-rotational-globe #globe-encounter[data-belt=true]:is([data-belt-card="164"],[data-belt-card="176"],[data-belt-card="188"]){--belt-standard-height:min(42%,288px,var(--globe-encounter-room,288px));--belt-ribbon-height:min(28%,168px,var(--globe-encounter-room,168px))}
+#atlas-rotational-globe #globe-encounter:is([data-belt-card="164"],[data-belt-card="176"],[data-belt-card="188"]) .globe-strip-track{gap:10px}
+#atlas-rotational-globe #globe-encounter:is([data-belt-card="164"],[data-belt-card="176"],[data-belt-card="188"]) .globe-strip-item{max-width:148px;flex-basis:148px}
+#atlas-rotational-globe #globe-encounter:is([data-belt-card="164"],[data-belt-card="176"],[data-belt-card="188"]) .globe-strip-item .globe-thumb-frame{height:96px;flex-basis:96px}
+#atlas-rotational-globe #globe-encounter:is([data-belt-card="164"],[data-belt-card="176"],[data-belt-card="188"]) .globe-strip-item .globe-strip-art[data-art-state=ready]{width:min(100%,var(--art-natural-width),calc(96px * var(--art-ratio,1)))!important}
+#atlas-rotational-globe #globe-encounter:is([data-belt-card="164"],[data-belt-card="176"],[data-belt-card="188"]) .globe-strip-item .globe-strip-title{font-size:13.5px;line-height:1.25}
+#atlas-rotational-globe #globe-encounter:is([data-belt-card="164"],[data-belt-card="176"],[data-belt-card="188"])[data-collapsed=true] .globe-strip-item .globe-thumb-frame{height:72px;flex-basis:72px}
+#atlas-rotational-globe #globe-encounter:is([data-belt-card="164"],[data-belt-card="176"],[data-belt-card="188"])[data-collapsed=true] .globe-strip-item .globe-strip-art[data-art-state=ready]{width:min(100%,var(--art-natural-width),calc(72px * var(--art-ratio,1)))!important}
 /* the centre view */
 #globe-player{border-radius:12px;border-color:var(--p-line);box-shadow:var(--p-shadow)}
 #globe-player::backdrop{background:var(--p-veil,rgba(244,245,246,.74))}
@@ -1080,7 +1080,7 @@ html[data-globe-entry] #atlas-globe-stage>#constellate-popup .constellate-headin
 /* film box: the action row starts under the artwork so it stays inside its column; no spare band under the last row */
 #atlas-rotational-globe #globe-encounter[data-belt=true] .globe-featured:has(>.globe-feature-art[data-art-state=ready]:not([hidden])) .globe-encounter-actions{margin-left:-73px}
 #atlas-rotational-globe #globe-encounter[data-belt=true] .globe-encounter-actions{flex-wrap:wrap;row-gap:6px;max-width:258px!important}
-#atlas-rotational-globe #globe-encounter[data-belt=true]:is([data-belt-card="164"],[data-belt-card="180"],[data-belt-card="188"]){--belt-standard-height:min(42%,272px,var(--globe-encounter-room,272px))}
+#atlas-rotational-globe #globe-encounter[data-belt=true]:is([data-belt-card="164"],[data-belt-card="176"],[data-belt-card="188"]){--belt-standard-height:min(42%,272px,var(--globe-encounter-room,272px))}
 /* ---------- Refinements (26 Nov, late) ---------- */
 /* a touch of warmth in the sheets against the cool ground: the page stays stone, what lies on it is paper */
 #atlas-rotational-globe:not(.globe-night){--p-bg:#fbf9f4;--p-fill-2:#ebe8e0;--p-line:rgba(40,34,24,.16);--p-fill:rgba(40,34,24,.05);--p-shadow:0 16px 44px rgba(34,28,18,.15),0 1px 2px rgba(34,28,18,.09)}
@@ -1124,25 +1124,25 @@ html[data-reading-theme="night"] #atlas-rotational-globe .globe-primary,html[dat
 #atlas-rotational-globe .globe-menu-panel button.globe-theme-chip:not([aria-pressed=true]):hover:not(:disabled){background:var(--p-fill)!important}
 #atlas-rotational-globe .globe-menu-panel button:hover:not(:disabled):not([aria-pressed=true]):not(.globe-theme-family-toggle):not(.globe-theme-film){background:var(--p-fill)!important}
 /* ---------- A size up (26 Nov, 1 am): larger stills and text in the film box and in the centre view ---------- */
-#atlas-rotational-globe #globe-encounter[data-belt=true]:is([data-belt-card="164"],[data-belt-card="180"],[data-belt-card="188"]){--belt-standard-height:min(46%,298px,var(--globe-encounter-room,298px));--belt-ribbon-height:min(30%,184px,var(--globe-encounter-room,184px))}
-#atlas-rotational-globe #globe-encounter:is([data-belt-card="164"],[data-belt-card="180"],[data-belt-card="188"]) .globe-strip-item{max-width:164px;flex-basis:164px}
-#atlas-rotational-globe #globe-encounter:is([data-belt-card="164"],[data-belt-card="180"],[data-belt-card="188"]) .globe-strip-item .globe-thumb-frame{height:108px;flex-basis:108px}
-#atlas-rotational-globe #globe-encounter:is([data-belt-card="164"],[data-belt-card="180"],[data-belt-card="188"]) .globe-strip-item .globe-strip-art[data-art-state=ready]{width:min(100%,var(--art-natural-width),calc(108px * var(--art-ratio,1)))!important}
-#atlas-rotational-globe #globe-encounter:is([data-belt-card="164"],[data-belt-card="180"],[data-belt-card="188"])[data-collapsed=true] .globe-strip-item .globe-thumb-frame{height:80px;flex-basis:80px}
-#atlas-rotational-globe #globe-encounter:is([data-belt-card="164"],[data-belt-card="180"],[data-belt-card="188"])[data-collapsed=true] .globe-strip-item .globe-strip-art[data-art-state=ready]{width:min(100%,var(--art-natural-width),calc(80px * var(--art-ratio,1)))!important}
-#atlas-rotational-globe #globe-encounter:is([data-belt-card="164"],[data-belt-card="180"],[data-belt-card="188"]) .globe-strip-item .globe-strip-title{font-size:15px;line-height:1.25}
-#atlas-rotational-globe #globe-encounter:is([data-belt-card="164"],[data-belt-card="180"],[data-belt-card="188"]) .globe-strip-item .globe-strip-maker{font-size:12.5px}
-#atlas-rotational-globe #globe-encounter:is([data-belt-card="164"],[data-belt-card="180"],[data-belt-card="188"]) .globe-encounter-heading>strong{font-size:23px}
-#atlas-rotational-globe #globe-encounter:is([data-belt-card="164"],[data-belt-card="180"],[data-belt-card="188"]) .globe-cinema-count,#atlas-rotational-globe #globe-encounter:is([data-belt-card="164"],[data-belt-card="180"],[data-belt-card="188"]) .globe-cinema-count button{font-size:12.5px}
-#atlas-rotational-globe #globe-encounter:is([data-belt-card="164"],[data-belt-card="180"],[data-belt-card="188"]) .globe-film-title{font-size:18px;line-height:1.2}
-#atlas-rotational-globe #globe-encounter:is([data-belt-card="164"],[data-belt-card="180"],[data-belt-card="188"]) .globe-film-byline,#atlas-rotational-globe #globe-encounter:is([data-belt-card="164"],[data-belt-card="180"],[data-belt-card="188"]) .globe-film-byline a{font-size:14px}
-#atlas-rotational-globe #globe-encounter:is([data-belt-card="164"],[data-belt-card="180"],[data-belt-card="188"]) :is(.globe-director-affiliation,.globe-film-facts){font-size:12.5px}
-#atlas-rotational-globe #globe-encounter:is([data-belt-card="164"],[data-belt-card="180"],[data-belt-card="188"]) :is(.globe-association,.globe-encounter-evidence :is(a,button)){font-size:11.5px!important}
-#atlas-rotational-globe #globe-encounter:is([data-belt-card="164"],[data-belt-card="180"],[data-belt-card="188"]) .globe-encounter-actions>:is(a,button){min-height:30px;font-size:13px!important;padding:5px 11px!important}
-#atlas-rotational-globe #globe-encounter:is([data-belt-card="164"],[data-belt-card="180"],[data-belt-card="188"]) .globe-encounter-actions{max-width:280px!important}
-#atlas-rotational-globe #globe-encounter:is([data-belt-card="164"],[data-belt-card="180"],[data-belt-card="188"]) .globe-encounter-disclosures>details>summary{font-size:12.5px}
-#atlas-rotational-globe #globe-encounter:is([data-belt-card="164"],[data-belt-card="180"],[data-belt-card="188"]) .globe-strip-heading>strong{font-size:11px}
-#atlas-rotational-globe #globe-encounter:is([data-belt-card="164"],[data-belt-card="180"],[data-belt-card="188"]) .globe-strip-position{font-size:12.5px}
+#atlas-rotational-globe #globe-encounter[data-belt=true]:is([data-belt-card="164"],[data-belt-card="176"],[data-belt-card="188"]){--belt-standard-height:min(46%,298px,var(--globe-encounter-room,298px));--belt-ribbon-height:min(30%,184px,var(--globe-encounter-room,184px))}
+#atlas-rotational-globe #globe-encounter:is([data-belt-card="164"],[data-belt-card="176"],[data-belt-card="188"]) .globe-strip-item{max-width:164px;flex-basis:164px}
+#atlas-rotational-globe #globe-encounter:is([data-belt-card="164"],[data-belt-card="176"],[data-belt-card="188"]) .globe-strip-item .globe-thumb-frame{height:108px;flex-basis:108px}
+#atlas-rotational-globe #globe-encounter:is([data-belt-card="164"],[data-belt-card="176"],[data-belt-card="188"]) .globe-strip-item .globe-strip-art[data-art-state=ready]{width:min(100%,var(--art-natural-width),calc(108px * var(--art-ratio,1)))!important}
+#atlas-rotational-globe #globe-encounter:is([data-belt-card="164"],[data-belt-card="176"],[data-belt-card="188"])[data-collapsed=true] .globe-strip-item .globe-thumb-frame{height:80px;flex-basis:80px}
+#atlas-rotational-globe #globe-encounter:is([data-belt-card="164"],[data-belt-card="176"],[data-belt-card="188"])[data-collapsed=true] .globe-strip-item .globe-strip-art[data-art-state=ready]{width:min(100%,var(--art-natural-width),calc(80px * var(--art-ratio,1)))!important}
+#atlas-rotational-globe #globe-encounter:is([data-belt-card="164"],[data-belt-card="176"],[data-belt-card="188"]) .globe-strip-item .globe-strip-title{font-size:15px;line-height:1.25}
+#atlas-rotational-globe #globe-encounter:is([data-belt-card="164"],[data-belt-card="176"],[data-belt-card="188"]) .globe-strip-item .globe-strip-maker{font-size:12.5px}
+#atlas-rotational-globe #globe-encounter:is([data-belt-card="164"],[data-belt-card="176"],[data-belt-card="188"]) .globe-encounter-heading>strong{font-size:23px}
+#atlas-rotational-globe #globe-encounter:is([data-belt-card="164"],[data-belt-card="176"],[data-belt-card="188"]) .globe-cinema-count,#atlas-rotational-globe #globe-encounter:is([data-belt-card="164"],[data-belt-card="176"],[data-belt-card="188"]) .globe-cinema-count button{font-size:12.5px}
+#atlas-rotational-globe #globe-encounter:is([data-belt-card="164"],[data-belt-card="176"],[data-belt-card="188"]) .globe-film-title{font-size:18px;line-height:1.2}
+#atlas-rotational-globe #globe-encounter:is([data-belt-card="164"],[data-belt-card="176"],[data-belt-card="188"]) .globe-film-byline,#atlas-rotational-globe #globe-encounter:is([data-belt-card="164"],[data-belt-card="176"],[data-belt-card="188"]) .globe-film-byline a{font-size:14px}
+#atlas-rotational-globe #globe-encounter:is([data-belt-card="164"],[data-belt-card="176"],[data-belt-card="188"]) :is(.globe-director-affiliation,.globe-film-facts){font-size:12.5px}
+#atlas-rotational-globe #globe-encounter:is([data-belt-card="164"],[data-belt-card="176"],[data-belt-card="188"]) :is(.globe-association,.globe-encounter-evidence :is(a,button)){font-size:11.5px!important}
+#atlas-rotational-globe #globe-encounter:is([data-belt-card="164"],[data-belt-card="176"],[data-belt-card="188"]) .globe-encounter-actions>:is(a,button){min-height:30px;font-size:13px!important;padding:5px 11px!important}
+#atlas-rotational-globe #globe-encounter:is([data-belt-card="164"],[data-belt-card="176"],[data-belt-card="188"]) .globe-encounter-actions{max-width:280px!important}
+#atlas-rotational-globe #globe-encounter:is([data-belt-card="164"],[data-belt-card="176"],[data-belt-card="188"]) .globe-encounter-disclosures>details>summary{font-size:12.5px}
+#atlas-rotational-globe #globe-encounter:is([data-belt-card="164"],[data-belt-card="176"],[data-belt-card="188"]) .globe-strip-heading>strong{font-size:11px}
+#atlas-rotational-globe #globe-encounter:is([data-belt-card="164"],[data-belt-card="176"],[data-belt-card="188"]) .globe-strip-position{font-size:12.5px}
 #globe-player{width:min(880px,calc(100vw - 28px))}
 #globe-player .globe-stage-media{max-width:410px}
 #globe-player .globe-stage-media img{max-height:410px}
@@ -1176,21 +1176,21 @@ html[data-reading-theme="night"] #atlas-rotational-globe .globe-primary,html[dat
 #atlas-rotational-globe[data-layout=compact] .globe-primary{display:flex!important;flex-wrap:nowrap!important;justify-content:space-between;gap:0!important;padding:0 8px!important;width:max-content;max-width:calc(100vw - 16px)}
 #atlas-rotational-globe[data-layout=compact] .globe-primary>button{white-space:nowrap!important;font-size:12.5px!important;padding:11px clamp(4px,1.5vw,8px)!important;min-width:0;flex:none}
 /* a size up again: taller stills everywhere on desktop, wider cards on wide screens */
-#atlas-rotational-globe #globe-encounter[data-belt=true]:is([data-belt-card="164"],[data-belt-card="180"],[data-belt-card="188"]){--belt-standard-height:min(48%,312px,var(--globe-encounter-room,312px));--belt-ribbon-height:min(31%,196px,var(--globe-encounter-room,196px))}
-#atlas-rotational-globe #globe-encounter:is([data-belt-card="164"],[data-belt-card="180"],[data-belt-card="188"]) .globe-strip-item .globe-thumb-frame{height:120px;flex-basis:120px}
-#atlas-rotational-globe #globe-encounter:is([data-belt-card="164"],[data-belt-card="180"],[data-belt-card="188"]) .globe-strip-item .globe-strip-art[data-art-state=ready]{width:min(100%,var(--art-natural-width),calc(120px * var(--art-ratio,1)))!important}
-#atlas-rotational-globe #globe-encounter[data-belt=true]:is([data-belt-card="180"],[data-belt-card="188"]){--belt-standard-height:min(50%,318px,var(--globe-encounter-room,318px));--belt-ribbon-height:min(33%,212px,var(--globe-encounter-room,212px))}
-#atlas-rotational-globe #globe-encounter:is([data-belt-card="180"],[data-belt-card="188"]) .globe-strip-item{max-width:188px;flex-basis:188px}
-#atlas-rotational-globe #globe-encounter:is([data-belt-card="180"],[data-belt-card="188"]) .globe-strip-item .globe-thumb-frame{height:132px;flex-basis:132px}
-#atlas-rotational-globe #globe-encounter:is([data-belt-card="180"],[data-belt-card="188"]) .globe-strip-item .globe-strip-art[data-art-state=ready]{width:min(100%,var(--art-natural-width),calc(132px * var(--art-ratio,1)))!important}
-#atlas-rotational-globe #globe-encounter:is([data-belt-card="180"],[data-belt-card="188"])[data-collapsed=true] .globe-strip-item .globe-thumb-frame{height:90px;flex-basis:90px}
-#atlas-rotational-globe #globe-encounter:is([data-belt-card="180"],[data-belt-card="188"])[data-collapsed=true] .globe-strip-item .globe-strip-art[data-art-state=ready]{width:min(100%,var(--art-natural-width),calc(90px * var(--art-ratio,1)))!important}
-#atlas-rotational-globe #globe-encounter:is([data-belt-card="180"],[data-belt-card="188"]) .globe-strip-item .globe-strip-title{font-size:15.5px}
-#atlas-rotational-globe #globe-encounter:is([data-belt-card="180"],[data-belt-card="188"]) .globe-strip-item .globe-strip-maker{font-size:13px}
-#atlas-rotational-globe #globe-encounter:is([data-belt-card="180"],[data-belt-card="188"]) .globe-encounter-heading>strong{font-size:25px}
-#atlas-rotational-globe #globe-encounter:is([data-belt-card="180"],[data-belt-card="188"]) .globe-film-title{font-size:19px}
-#atlas-rotational-globe #globe-encounter:is([data-belt-card="180"],[data-belt-card="188"]) .globe-film-byline,#atlas-rotational-globe #globe-encounter:is([data-belt-card="180"],[data-belt-card="188"]) .globe-film-byline a{font-size:14.5px}
+#atlas-rotational-globe #globe-encounter[data-belt=true]:is([data-belt-card="164"],[data-belt-card="176"],[data-belt-card="188"]){--belt-standard-height:min(48%,312px,var(--globe-encounter-room,312px));--belt-ribbon-height:min(31%,196px,var(--globe-encounter-room,196px))}
+#atlas-rotational-globe #globe-encounter:is([data-belt-card="164"],[data-belt-card="176"],[data-belt-card="188"]) .globe-strip-item .globe-thumb-frame{height:120px;flex-basis:120px}
+#atlas-rotational-globe #globe-encounter:is([data-belt-card="164"],[data-belt-card="176"],[data-belt-card="188"]) .globe-strip-item .globe-strip-art[data-art-state=ready]{width:min(100%,var(--art-natural-width),calc(120px * var(--art-ratio,1)))!important}
+#atlas-rotational-globe #globe-encounter[data-belt=true]:is([data-belt-card="176"],[data-belt-card="188"]){--belt-standard-height:min(50%,318px,var(--globe-encounter-room,318px));--belt-ribbon-height:min(33%,212px,var(--globe-encounter-room,212px))}
+#atlas-rotational-globe #globe-encounter:is([data-belt-card="176"],[data-belt-card="188"]) .globe-strip-item{max-width:188px;flex-basis:188px}
+#atlas-rotational-globe #globe-encounter:is([data-belt-card="176"],[data-belt-card="188"]) .globe-strip-item .globe-thumb-frame{height:132px;flex-basis:132px}
+#atlas-rotational-globe #globe-encounter:is([data-belt-card="176"],[data-belt-card="188"]) .globe-strip-item .globe-strip-art[data-art-state=ready]{width:min(100%,var(--art-natural-width),calc(132px * var(--art-ratio,1)))!important}
+#atlas-rotational-globe #globe-encounter:is([data-belt-card="176"],[data-belt-card="188"])[data-collapsed=true] .globe-strip-item .globe-thumb-frame{height:90px;flex-basis:90px}
+#atlas-rotational-globe #globe-encounter:is([data-belt-card="176"],[data-belt-card="188"])[data-collapsed=true] .globe-strip-item .globe-strip-art[data-art-state=ready]{width:min(100%,var(--art-natural-width),calc(90px * var(--art-ratio,1)))!important}
+#atlas-rotational-globe #globe-encounter:is([data-belt-card="176"],[data-belt-card="188"]) .globe-strip-item .globe-strip-title{font-size:15.5px}
+#atlas-rotational-globe #globe-encounter:is([data-belt-card="176"],[data-belt-card="188"]) .globe-strip-item .globe-strip-maker{font-size:13px}
+#atlas-rotational-globe #globe-encounter:is([data-belt-card="176"],[data-belt-card="188"]) .globe-encounter-heading>strong{font-size:25px}
+#atlas-rotational-globe #globe-encounter:is([data-belt-card="176"],[data-belt-card="188"]) .globe-film-title{font-size:19px}
+#atlas-rotational-globe #globe-encounter:is([data-belt-card="176"],[data-belt-card="188"]) .globe-film-byline,#atlas-rotational-globe #globe-encounter:is([data-belt-card="176"],[data-belt-card="188"]) .globe-film-byline a{font-size:14.5px}
 #atlas-rotational-globe #globe-encounter[data-belt=true] .globe-feature-copy>.globe-encounter-evidence{display:flex;flex-wrap:wrap;align-items:baseline;gap:1px 6px;width:auto;max-width:100%}
-#atlas-rotational-globe #globe-encounter[data-belt-card="180"] .globe-strip-item{max-width:180px;flex-basis:180px}
-#atlas-rotational-globe #globe-encounter[data-belt-card="180"] .globe-strip-item .globe-thumb-frame{height:128px;flex-basis:128px}
-#atlas-rotational-globe #globe-encounter[data-belt-card="180"] .globe-strip-item .globe-strip-art[data-art-state=ready]{width:min(100%,var(--art-natural-width),calc(128px * var(--art-ratio,1)))!important}
+#atlas-rotational-globe #globe-encounter[data-belt-card="176"] .globe-strip-item{max-width:176px;flex-basis:176px}
+#atlas-rotational-globe #globe-encounter[data-belt-card="176"] .globe-strip-item .globe-thumb-frame{height:126px;flex-basis:126px}
+#atlas-rotational-globe #globe-encounter[data-belt-card="176"] .globe-strip-item .globe-strip-art[data-art-state=ready]{width:min(100%,var(--art-natural-width),calc(126px * var(--art-ratio,1)))!important}
