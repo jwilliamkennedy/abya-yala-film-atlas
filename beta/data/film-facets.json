@@ -2,8 +2,8 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-26",
  "license": "See data.html",
- "films_on_public_map": 2897,
- "film_entries": 2897,
+ "films_on_public_map": 2914,
+ "film_entries": 2914,
  "published_field_conflicts": {
   "SA50-20261014-59f87a2e3ce5-WORK-01": [
    "themes"
@@ -17703,7 +17703,7 @@
   },
   "FILM-0186": {
    "title": "Nixíí - Bastón de mando",
-   "year": null,
+   "year": 2020,
    "makers": [
     {
      "id": "DIR-0230",
@@ -22490,6 +22490,54 @@
    "form": null,
    "length": "Feature"
   },
+  "Q20261126-92-F1": {
+   "title": "The Electric Indian",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "DIR-0336",
+     "name": "Leya Hale"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Feature"
+  },
+  "Q20261126-91-F1": {
+   "title": "The People’s Protectors",
+   "year": 2018,
+   "makers": [
+    {
+     "id": "DIR-0336",
+     "name": "Leya Hale"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Feature"
+  },
+  "Q20261126-89-F1": {
+   "title": "Reclaiming Sacred Tobacco",
+   "year": 2016,
+   "makers": [
+    {
+     "id": "DIR-0336",
+     "name": "Leya Hale"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
+  },
   "FILM-0277": {
    "title": "Your Name Isn’t English",
    "year": 2018,
@@ -23261,11 +23309,15 @@
   },
   "NEW-1f8a8f87fd75-WORK-1": {
    "title": "Ni racaladxe’",
-   "year": null,
+   "year": 2026,
    "makers": [
     {
      "id": "NEW-1f8a8f87fd75",
      "name": "Alma Yoari Cizaña López"
+    },
+    {
+     "id": "Q20261126-82",
+     "name": "Patricia Matus Alonso"
     }
    ],
    "languages": [],
@@ -23485,6 +23537,38 @@
    ],
    "form": "Documentary",
    "length": "Feature"
+  },
+  "Q20261126-90-F1": {
+   "title": "Totem Talk",
+   "year": 1997,
+   "makers": [
+    {
+     "id": "NEW-eb1d0de6ecaa",
+     "name": "Annie Fraziér Henry"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
+  },
+  "Q20261126-83-F1": {
+   "title": "Legends sxwexwxiy'am: The Story of Siwash Rock",
+   "year": 1999,
+   "makers": [
+    {
+     "id": "NEW-eb1d0de6ecaa",
+     "name": "Annie Fraziér Henry"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": "Short"
   },
   "NEW-28bcdcd1880f-WORK-1": {
    "title": "Kawá",
@@ -25474,6 +25558,22 @@
    "families": [],
    "form": null,
    "length": null
+  },
+  "Q20261126-99-F1": {
+   "title": "Wochiigii lo: End of the Peace",
+   "year": 2021,
+   "makers": [
+    {
+     "id": "NEW-45f5368fec01",
+     "name": "Heather Hatch"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Feature"
   },
   "NEW-f8409bf84ccd-WORK-1": {
    "title": "Sweetgrass Rings",
@@ -30954,6 +31054,22 @@
    "families": [],
    "form": null,
    "length": null
+  },
+  "Q20261126-93-F1": {
+   "title": "Puririkuy",
+   "year": 2021,
+   "makers": [
+    {
+     "id": "SA50-20261014-5e46bc439edd",
+     "name": "Siwar Gabriel Peralta Huamán"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": "Short"
   },
   "SA50-20261014-5f1ed8bb999a-WORK-01": {
    "title": "Awajun aidau depetuinawal játa virusan / Los awajún luchan contra el virus",
@@ -37205,6 +37321,22 @@
    "form": "Documentary",
    "length": "Short"
   },
+  "Q20261126-94-F1": {
+   "title": "Kaimanepá",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "NEW-e00d7fdda37e",
+     "name": "Helena Corezomaé"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
+  },
   "NEW-03c00feec59f-WORK-1": {
    "title": "Öwawë Pá Hã A'uwe Tsiri – River of the Dead",
    "year": 2022,
@@ -42526,6 +42658,22 @@
    ],
    "form": "Animation",
    "length": "Short"
+  },
+  "Q20261126-95-F1": {
+   "title": "The Healer Stones of Kapaemahu",
+   "year": 2022,
+   "makers": [
+    {
+     "id": "NEW-5b2be22f2d92",
+     "name": "Hinaleimoana Wong-Kalu"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Feature"
   },
   "NEW-b74ea7ce6f19-WORK-1": {
    "title": "Menominee Homecoming",
@@ -51795,6 +51943,38 @@
    "form": "Documentary",
    "length": null
   },
+  "Q20261126-88-F1": {
+   "title": "Reel Wāhine of Hawaiʻi - Ciara Lacy",
+   "year": 2020,
+   "makers": [
+    {
+     "id": "Q20261114-54",
+     "name": "Heather Haunani Giugni"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261126-87-F1": {
+   "title": "Reel Wāhine of Hawaiʻi - Hinaleimoana Wong-Kalu",
+   "year": 2022,
+   "makers": [
+    {
+     "id": "Q20261114-54",
+     "name": "Heather Haunani Giugni"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
+  },
   "Q20261114-56-F1": {
    "title": "MaunaKea: Sacred Mountain, Sacred Conduct",
    "year": 2020,
@@ -57506,6 +57686,22 @@
    "form": "Documentary",
    "length": null
   },
+  "Q20261126-98-F1": {
+   "title": "I'll Tell You When I'm Ready",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "NEW-b684ae51b534",
+     "name": "Hayley Morin"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
+  },
   "Q20261122-101-F1": {
    "title": "Turtle Island Tap",
    "year": null,
@@ -58484,6 +58680,38 @@
    ],
    "form": "Documentary",
    "length": null
+  },
+  "Q20261126-97-F1": {
+   "title": "Tzouhalem",
+   "year": 2021,
+   "makers": [
+    {
+     "id": "NEW-345633c1eab8",
+     "name": "Harold C. Joe"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Feature"
+  },
+  "Q20261126-96-F1": {
+   "title": "A Cedar Is Life",
+   "year": 2022,
+   "makers": [
+    {
+     "id": "NEW-345633c1eab8",
+     "name": "Harold C. Joe"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Feature"
   },
   "DIR-0386-F1": {
    "title": "Heart Like a Pow Wow",
@@ -60501,6 +60729,54 @@
    "families": [],
    "form": null,
    "length": null
+  },
+  "Q20261126-86-F1": {
+   "title": "Cervantine Videodance: Arirang, Cielito Lindo!",
+   "year": 2022,
+   "makers": [
+    {
+     "id": "Q20261124-54",
+     "name": "Héctor Maya Requena"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
+  },
+  "Q20261126-85-F1": {
+   "title": "Spontaneous Generation",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "Q20261124-54",
+     "name": "Héctor Maya Requena"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
+  },
+  "Q20261126-84-F1": {
+   "title": "Gypsy Videodance",
+   "year": 2023,
+   "makers": [
+    {
+     "id": "Q20261124-54",
+     "name": "Héctor Maya Requena"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
   },
   "Q20261124-55-F1": {
    "title": "We the Indigenous People",
