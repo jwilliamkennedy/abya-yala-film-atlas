@@ -2,8 +2,8 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-26",
  "license": "See data.html",
- "films_on_public_map": 2856,
- "film_entries": 2856,
+ "films_on_public_map": 2865,
+ "film_entries": 2865,
  "published_field_conflicts": {
   "SA50-20261014-59f87a2e3ce5-WORK-01": [
    "themes"
@@ -4972,6 +4972,22 @@
    "form": "Documentary",
    "length": null
   },
+  "DIR-0068-F1": {
+   "title": "Nowhere Land",
+   "year": 2015,
+   "makers": [
+    {
+     "id": "DIR-0068",
+     "name": "Rosie Bonnie Ammaaq"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
+  },
   "FILM-0067": {
    "title": "At the Place of Ghosts",
    "year": null,
@@ -7904,6 +7920,28 @@
    "form": "Experimental",
    "length": "Short"
   },
+  "FILM-0081": {
+   "title": "Innu Nikamu: Resist and Sing",
+   "year": 2017,
+   "makers": [
+    {
+     "id": "DIR-0113",
+     "name": "Kevin Bacon-Hervieux"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Music and Performance",
+    "Residential and Boarding Schools"
+   ],
+   "primary_theme": "Music and Performance",
+   "families": [
+    "Expression and Representation",
+    "Knowledge and Continuity"
+   ],
+   "form": "Documentary",
+   "length": "Feature"
+  },
   "RESEARCH-FILM-20261031-800-0002": {
    "title": "Ninan Auassat: We, The Children",
    "year": 2024,
@@ -9716,6 +9754,22 @@
    "form": "Fiction",
    "length": "Feature"
   },
+  "DIR-0137-F1": {
+   "title": "Fountain",
+   "year": 2005,
+   "makers": [
+    {
+     "id": "DIR-0137",
+     "name": "Rebecca Belmore"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Experimental",
+   "length": "Short"
+  },
   "DIR-0138-F1": {
    "title": "Ste. Anne",
    "year": 2021,
@@ -10931,6 +10985,22 @@
     "Land and Environment"
    ],
    "form": "Fiction",
+   "length": "Short"
+  },
+  "DIR-0149-F1": {
+   "title": "Touch Me",
+   "year": 2013,
+   "makers": [
+    {
+     "id": "DIR-0149",
+     "name": "Skeena Reece"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Experimental",
    "length": "Short"
   },
   "FILM-0090": {
@@ -19816,6 +19886,22 @@
    "form": "Fiction",
    "length": "Feature"
   },
+  "DIR-0279-F1": {
+   "title": "American Indian Dance Theatre: Finding the Circle",
+   "year": 1990,
+   "makers": [
+    {
+     "id": "DIR-0279",
+     "name": "Hanay Geiogamah"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
   "DIR-0285-F1": {
    "title": "Rabbit Stories",
    "year": 2023,
@@ -19895,6 +19981,22 @@
    ],
    "form": "Fiction",
    "length": "Short"
+  },
+  "DIR-0290-F1": {
+   "title": "They're Watching",
+   "year": 2016,
+   "makers": [
+    {
+     "id": "DIR-0290",
+     "name": "Micah Wright"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": "Feature"
   },
   "FILM-0227": {
    "title": "You Are on Indian Land",
@@ -20093,6 +20195,22 @@
    "families": [],
    "form": null,
    "length": null
+  },
+  "DIR-0304-F1": {
+   "title": "Lakota Nation vs. United States",
+   "year": 2022,
+   "makers": [
+    {
+     "id": "DIR-0304",
+     "name": "Sarah Eagle Heart"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Feature"
   },
   "FILM-0231": {
    "title": "Mud",
@@ -25675,6 +25793,22 @@
    "form": "Fiction",
    "length": "Short"
   },
+  "NEW-b13199fe5bf5-F1": {
+   "title": "Collector",
+   "year": 2019,
+   "makers": [
+    {
+     "id": "NEW-b13199fe5bf5",
+     "name": "Kassia Ward"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": "Short"
+  },
   "NEW-ff0e80bc0b40-WORK-1": {
    "title": "Bimaadizi/Along in Space and Time",
    "year": 2026,
@@ -29216,6 +29350,22 @@
    ],
    "form": "Documentary",
    "length": "Short"
+  },
+  "LEAD-20261014-007-F1": {
+   "title": "Rama Pankararu",
+   "year": 2022,
+   "makers": [
+    {
+     "id": "LEAD-20261014-007",
+     "name": "Bia Pankararu"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": "Feature"
   },
   "LEAD-20261014-015-WORK-01": {
    "title": "RAMI RAMI KIRANI",
