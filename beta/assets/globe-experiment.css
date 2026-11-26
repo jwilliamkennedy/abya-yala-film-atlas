@@ -682,7 +682,7 @@ html[data-globe-entry] #atlas-globe-stage>#constellate-popup .constellate-headin
 #globe-encounter[data-belt=true] .globe-strip-position{font-variant-numeric:tabular-nums;min-width:8ch;text-align:right}
 #globe-encounter[data-belt=true] .globe-featured .globe-association{font-size:10px;line-height:1.25;color:#afc6bd}
 #globe-encounter[data-belt=true] .globe-feature-art.globe-artwork{min-height:0;max-height:85px;align-self:start}
-#atlas-rotational-globe #globe-encounter[data-belt=true] .globe-art-feature img{max-height:min(85px,var(--art-natural-height,85px))!important;max-width:100%!important}
+#atlas-rotational-globe #globe-encounter[data-belt=true] .globe-art-feature img{width:min(100%,var(--art-natural-width),calc(85px * var(--art-ratio,1)))!important;height:auto!important;max-height:none!important;max-width:100%!important}
 @media(max-width:760px){
  #atlas-rotational-globe #globe-encounter[data-belt=true]{--belt-standard-height:min(39%,280px,var(--globe-encounter-room,280px));--belt-ribbon-height:min(29%,165px,var(--globe-encounter-room,165px));grid-template-columns:minmax(0,1fr)}
 }
@@ -714,3 +714,32 @@ html[data-globe-entry] #atlas-globe-stage>#constellate-popup .constellate-headin
 #globe-encounter[data-belt=true][data-expanded=true] .globe-film-title{display:block;max-height:none;min-height:0}
 #globe-encounter[data-belt=true] .globe-feature-copy .globe-director-affiliation{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}
 @media(prefers-reduced-motion:reduce){#globe-encounter[data-belt=true] .globe-strip-item,#globe-encounter[data-belt=true] .globe-strip-item .globe-thumb-frame{transition:none}}
+
+/* Compare two actual film credits without moving the gallery, or implying that
+   thematic affinity establishes a geographic or political relationship. */
+#globe-film-comparison{position:absolute;z-index:4;top:var(--globe-gutter);left:var(--globe-gutter);width:min(390px,calc(100% - 2 * var(--globe-gutter)));box-sizing:border-box;padding:8px 10px;border:1px solid #607b7e;border-radius:8px;background:#142735f5;color:#e0eae3;display:grid;gap:6px;max-height:32%;overflow:auto;overscroll-behavior:contain}
+#globe-film-comparison[hidden],#atlas-rotational-globe:not([data-menu=""]):has(.globe-menu-panel:not([hidden])) #globe-film-comparison{display:none!important}
+#globe-film-comparison .globe-comparison-header{display:flex;align-items:center;justify-content:space-between;gap:8px;font:600 12px/1.3 system-ui,sans-serif}
+#globe-film-comparison button{border:1px solid #607b7e;border-radius:4px;background:transparent;color:inherit;font:500 11px/1.3 system-ui,sans-serif;cursor:pointer;padding:4px}
+#globe-film-comparison button:disabled{opacity:.5;cursor:default}
+#globe-film-comparison .globe-comparison-header button{min-width:24px;min-height:24px}
+#globe-film-comparison .globe-comparison-films{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+#globe-film-comparison .globe-comparison-film{display:flex;align-items:flex-start;gap:5px;min-width:0;text-align:left}
+#globe-film-comparison .globe-comparison-film[aria-current=true]{background:#284742;border-color:#dfd6a2}
+#globe-film-comparison .globe-comparison-credit{display:grid;gap:2px;min-width:0;overflow-wrap:anywhere}
+#globe-film-comparison .globe-comparison-credit strong{font-size:11px;line-height:1.25}
+#globe-film-comparison .globe-comparison-credit small{font-size:10px;color:#b8cdc3}
+#globe-film-comparison .globe-comparison-land{color:#e9dcb5!important}
+#globe-film-comparison .globe-thumb-frame{width:45px;flex:0 0 45px;height:56px;min-height:0}
+#globe-film-comparison .globe-comparison-themes{font:10px/1.3 system-ui,sans-serif;color:#c4d7ce;margin:0;overflow-wrap:anywhere}
+#globe-film-comparison .globe-comparison-author{justify-self:start}
+#globe-encounter .globe-encounter-evidence{display:flex;gap:5px;align-items:baseline;flex-wrap:wrap}
+#globe-encounter .globe-encounter-evidence :is(a,button){font:500 10px/1.3 system-ui,sans-serif;color:#d9e7d8;text-decoration:underline;background:none;border:0;padding:0;cursor:pointer}
+#atlas-rotational-globe #globe-encounter[data-belt=true][data-single=true]{grid-template-columns:minmax(0,1fr);grid-template-areas:"head" "film" "branches";height:auto;max-height:min(42%,360px,var(--globe-encounter-room,360px))}
+#atlas-rotational-globe #globe-encounter[data-single=true] .globe-featured:has(>.globe-feature-art[data-art-state=ready]:not([hidden])){grid-template-columns:minmax(80px,40%) minmax(0,1fr);gap:10px}
+#atlas-rotational-globe #globe-encounter[data-single=true] .globe-feature-art[data-art-state=ready]{width:min(100%,var(--art-feature-width),calc(180px * var(--art-ratio,1)))!important;max-height:180px}
+#atlas-rotational-globe #globe-encounter[data-single=true] .globe-art-feature img{width:min(100%,var(--art-natural-width),calc(180px * var(--art-ratio,1)))!important;height:auto!important}
+#globe-encounter[data-single=true] .globe-film-title{display:block;min-height:0;max-height:none;overflow:visible}
+#atlas-rotational-globe #globe-encounter[data-single=true]:is([data-expanded=true],:has(.globe-encounter-disclosures>details[open])){max-height:min(70%,570px,var(--globe-encounter-room,570px))}
+@media(max-width:900px){#globe-film-comparison{top:calc(var(--globe-gutter) + 92px);width:min(360px,calc(100% - 2 * var(--globe-gutter)));max-height:23%}}
+@media(max-height:500px){#globe-film-comparison{top:var(--globe-gutter);width:min(300px,38%);max-height:30%}}

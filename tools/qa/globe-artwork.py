@@ -91,6 +91,8 @@ async def main():
                 raise
             state=await page.evaluate("window.AtlasGlobe.discovery")
             assert any(c["id"]==state["featured"]["film"] for c in refs[l["id"]])
+            if await page.locator("#globe-encounter").get_attribute("data-single")=="true":
+                assert await page.locator("#globe-encounter .globe-film-strip").count()==0
             art=page.locator("#globe-encounter .globe-feature-art")
             assert await art.is_visible()==(state["artState"]=="ready"),(l["id"],state["artState"])
             assert await page.locator("#globe-encounter .globe-film-title").is_visible()
