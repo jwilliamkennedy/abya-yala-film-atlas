@@ -840,3 +840,17 @@ html[data-globe-entry] #atlas-globe-stage>#constellate-popup .constellate-headin
 #atlas-rotational-globe .globe-menu-panel .globe-gather-toggle-land,#atlas-rotational-globe .globe-gather-toggle-land{text-align:left!important;justify-content:flex-start!important}
 #atlas-rotational-globe .globe-gather-actions{flex-wrap:wrap;margin:6px 0 10px}
 #atlas-rotational-globe .globe-gather-list{display:flex;flex-direction:column;gap:6px}
+/* Map thumbnails: a title on hover; gold cards for collected films at night */
+.globe-map-thumb-title{position:absolute;left:50%;top:calc(100% + 10px);transform:translateX(-50%);width:max-content;max-width:200px;padding:5px 8px;border-radius:7px;background:rgba(11,18,26,.94);color:#fbf8ee;text-align:left;pointer-events:none;opacity:0;transition:opacity .15s ease;box-shadow:0 4px 14px #0009;z-index:6}
+.globe-map-thumb-title strong{display:block;font:600 12px/1.25 Georgia,"Times New Roman",serif;white-space:normal}
+.globe-map-thumb-title small{display:block;font:500 10.5px/1.3 system-ui,sans-serif;opacity:.75;margin-top:2px}
+.globe-map-thumb:hover .globe-map-thumb-title,.globe-map-thumb:focus-visible .globe-map-thumb-title{opacity:1}
+.globe-map-thumb:hover,.globe-map-thumb:focus-visible{z-index:8}
+.globe-map-thumb.is-collected{border-color:#f2d99b;box-shadow:0 0 0 3px rgba(242,217,155,.18),0 4px 16px #000c}
+.globe-map-thumb.is-collected::after{background:#f2d99b}
+/* Gather: the films along the line */
+#atlas-rotational-globe .globe-gather-strip{display:grid;grid-template-columns:repeat(6,1fr);gap:5px;margin:8px 0 4px}
+#atlas-rotational-globe .globe-menu-panel button.globe-gather-film{padding:0!important;height:auto!important;min-height:0!important;aspect-ratio:1/1;overflow:hidden;border-radius:6px!important;border:1px solid rgba(255,255,255,.14)!important;background:#1b262e!important}
+#atlas-rotational-globe .globe-gather-film .globe-thumb-frame,#atlas-rotational-globe .globe-gather-film .globe-strip-art{display:block;width:100%;height:100%}
+#atlas-rotational-globe .globe-gather-film img{width:100%;height:100%;object-fit:cover;display:block}
+#atlas-rotational-globe .globe-gather-film:hover{border-color:#f2d99b!important}

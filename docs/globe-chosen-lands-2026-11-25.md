@@ -51,3 +51,8 @@ John asked to get as close to NASA as possible. The globe now layers NASA Blue M
 - **Constellate settings:** the constellation and thread names are edited in place in the panel heading; "Other constellations and threads" holds the two pickers, New thread, New constellation and Download a copy.
 - **Thumbnails** appear only from zoom 7, once the map has flattened, so they do not drift over the sea during the globe-to-map transition; they are larger (84 × 60, 64 × 46 on phones), stand on a short stem over their land, at most 16 (6 on phones), and never overlap.
 - **Node studies** (default unchanged until John chooses): `?nodes=toned` (cream core, ring and glow in the land's own colour), `?nodes=seeds` (warm ivory seeds with a gold rim and glow, size by films), `?nodes=rings` (open rings, cream edge, dark centre). `AtlasGlobe.nodeStyle(name)` switches them in the console.
+
+## Nodes chosen; thumbnails and the gather strip (25 Nov, night)
+- **Film nodes:** John chose the land-toned ring: a cream core ringed in the land's own colour with a soft glow in that colour; the chosen land's node takes a gold ring. `?nodes=seeds`, `?nodes=rings` and `?nodes=default` keep the other studies.
+- **Thumbnails** open their film (not only the land), show the title and land on hover or focus, and in Constellate (night, from zoom 7) the films you collected stand over their stars as gold-edged cards; clicking one opens it from the constellation.
+- **Gather and Draw results** show the first 12 films along the line as artwork squares above the land list; each opens its film.
