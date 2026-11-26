@@ -45,3 +45,8 @@ John asked to get as close to NASA as possible. The globe now layers NASA Blue M
 - Loading: a drawn globe turns while the atlas opens; missing artwork shows the title's initials; loading artwork shimmers.
 - Menu panels (Find, Themes, Map, Gather, Constellate) share one style: dark frosted panel, serif headings, small capitals for labels, 38 px fields, rounded buttons, chevrons on folded sections.
 - The fallback canvas (no WebGL) uses NASA-like sea and land colours with light points.
+
+## Draw lights lands as it goes; Constellate settings; thumbnails (25 Nov, night)
+- **Draw (Gather and Constellate)** works as the flat map's did: as the line crosses a land's territory (or passes within 14 px of its films) the land lights in gold, its node takes a gold ring, and the panel counts it live ("Nasa · 6 lands · 31 films"). The line no longer has to touch a node. On release every land in the list can be switched off; ↗ opens it. In Constellate: **Keep this thread** adds one film per land, linked in the order the line meets them; **All N films** adds every film in order. In Gather: Collect N films (first 80).
+- **Constellate settings:** the constellation and thread names are edited in place in the panel heading; "Other constellations and threads" holds the two pickers, New thread, New constellation and Download a copy.
+- **Thumbnails** appear only from zoom 7, once the map has flattened, so they do not drift over the sea during the globe-to-map transition; they are larger (84 × 60, 64 × 46 on phones), stand on a short stem over their land, at most 16 (6 on phones), and never overlap.

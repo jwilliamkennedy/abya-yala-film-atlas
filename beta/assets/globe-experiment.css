@@ -775,7 +775,7 @@ html[data-globe-entry] #atlas-globe-stage>#constellate-popup .constellate-headin
 @media(max-width:760px){#atlas-rotational-globe .globe-primary{overflow-x:auto;max-width:calc(100vw - 16px)}}
 #atlas-rotational-globe:not([data-layout=compact]) .globe-primary{grid-template-columns:repeat(6,max-content)}
 /* Thumbnails that rise above the nodes close in */
-.globe-map-thumb{position:relative;width:46px;height:32px;padding:0;border:1.5px solid #fbf8ee;border-radius:5px;background:#1b262e;overflow:hidden;cursor:pointer;box-shadow:0 3px 10px #0008;opacity:0;transform:translateY(4px);transition:opacity .25s ease,transform .25s ease}
+.globe-map-thumb{position:relative;width:84px;height:60px;padding:0;border:2px solid #fbf8ee;border-radius:7px;background:#1b262e;overflow:hidden;cursor:pointer;box-shadow:0 3px 10px #0008;opacity:0;transform:translateY(4px);transition:opacity .25s ease,transform .25s ease}
 .globe-map-thumb.is-ready{opacity:1;transform:none}
 .globe-map-thumb img{width:100%;height:100%;object-fit:cover;display:block}
 .globe-map-thumb:hover,.globe-map-thumb:focus-visible{border-color:#f2d99b;z-index:5;transform:scale(1.25);outline:none}
@@ -815,3 +815,28 @@ html[data-globe-entry] #atlas-globe-stage>#constellate-popup .constellate-headin
 #atlas-rotational-globe .globe-menu-panel .globe-collected-item{justify-content:flex-start!important}
 #atlas-rotational-globe .globe-menu-panel .globe-collected-item>span:last-child{flex:1 1 auto;text-align:left}
 #atlas-rotational-globe .globe-menu-panel .globe-constellate-tools>button{flex:1 1 0;white-space:normal;line-height:1.2}
+/* Constellate: names edited in place */
+#atlas-rotational-globe .globe-collection-heading{display:flex;flex-direction:column;gap:2px}
+#atlas-rotational-globe .globe-menu-panel input.globe-name-field{background:transparent!important;border:1px solid transparent!important;border-radius:6px;padding:2px 4px!important;margin-left:-5px;height:auto!important;min-height:0!important;color:inherit;width:100%}
+#atlas-rotational-globe .globe-menu-panel input.globe-name-field:hover{border-color:rgba(255,255,255,.18)!important}
+#atlas-rotational-globe .globe-menu-panel input.globe-name-field:focus{border-color:rgba(242,217,155,.6)!important;outline:none;background:rgba(255,255,255,.05)!important}
+#atlas-rotational-globe .globe-menu-panel input.globe-name-constellation{font-family:Georgia,"Times New Roman",serif;font-size:21px;line-height:1.2}
+#atlas-rotational-globe .globe-menu-panel input.globe-name-thread{font-size:12px;opacity:.72}
+#atlas-rotational-globe .globe-settings-actions{flex-wrap:wrap}
+.globe-map-thumb::after{content:"";position:absolute;left:50%;bottom:-7px;width:2px;height:7px;background:#fbf8ee;transform:translateX(-50%)}
+.globe-map-thumb{overflow:visible}.globe-map-thumb img{border-radius:5px}
+.globe-map-thumb-count{font-size:11px;line-height:16px;min-width:18px;right:4px;bottom:4px}
+.globe-map-thumb:hover,.globe-map-thumb:focus-visible{transform:scale(1.12)}
+@media(max-width:760px){.globe-map-thumb{width:64px;height:46px}}
+/* Draw: lands switch on and off in the result list */
+#atlas-rotational-globe .globe-gather-row{display:flex;gap:6px;align-items:stretch}
+#atlas-rotational-globe .globe-gather-toggle-land{flex:1 1 auto;display:flex;align-items:center;gap:8px;text-align:left;justify-content:flex-start!important}
+#atlas-rotational-globe .globe-gather-toggle-land .globe-gather-name{flex:1 1 auto}
+#atlas-rotational-globe .globe-gather-check{display:inline-grid;place-items:center;width:16px;height:16px;border-radius:4px;border:1px solid rgba(242,217,155,.7);color:#f2d99b;font-size:11px;flex:none}
+#atlas-rotational-globe .globe-gather-toggle-land[aria-pressed=false]{opacity:.5}
+#atlas-rotational-globe .globe-gather-toggle-land[aria-pressed=false] .globe-gather-check{border-color:rgba(255,255,255,.3)}
+#atlas-rotational-globe .globe-gather-open{flex:none;width:38px;padding:0!important}
+#atlas-rotational-globe .globe-gather-hint{font-variant-numeric:tabular-nums}
+#atlas-rotational-globe .globe-menu-panel .globe-gather-toggle-land,#atlas-rotational-globe .globe-gather-toggle-land{text-align:left!important;justify-content:flex-start!important}
+#atlas-rotational-globe .globe-gather-actions{flex-wrap:wrap;margin:6px 0 10px}
+#atlas-rotational-globe .globe-gather-list{display:flex;flex-direction:column;gap:6px}
