@@ -2066,3 +2066,28 @@ body.weave-playing:not(.weave-unmapped) #constellate-graph.weave-play-focus{back
 body.is-constellating .map-panel:has(#constellate-mode details[open]) {
   isolation: auto;
 }
+
+/* 26 Nov 2026: a drawn line ends like a constellation; the result is a small card, details folded away */
+#weave-trace-layer .wt-line,#weave-trace-layer .wt-casing{transition:opacity .25s ease}
+#weave-trace-layer.is-ending .wt-line,#weave-trace-layer.is-ending .wt-casing,#weave-trace-layer.is-ending .wt-dots{opacity:0;transition:opacity .45s ease}
+#weave-trace-layer.is-figure .wt-casing{display:none}
+#weave-trace-layer.is-figure .wt-line{stroke:rgba(255,247,226,.8);stroke-width:1.1;filter:none;stroke-dasharray:var(--wt-len,3000);stroke-dashoffset:var(--wt-len,3000);animation:wt-figure 1s ease-out forwards}
+@keyframes wt-figure{to{stroke-dashoffset:0}}
+#weave-trace-layer.is-figure .wt-dots circle{opacity:0;transition:opacity .3s ease}
+#weave-trace-layer.is-figure .wt-dots circle.is-star{opacity:1;r:3.6px;fill:#fff8e8;stroke:none;filter:drop-shadow(0 0 4px rgba(255,238,200,.95))}
+#weave-trace-layer .wt-result{width:min(290px,calc(100% - 32px));padding:14px 16px 10px;border-radius:6px;background:rgba(9,14,28,.9);-webkit-backdrop-filter:none;backdrop-filter:none;border:1px solid rgba(255,255,255,.13);box-shadow:0 10px 30px rgba(0,0,0,.35);color:#e8e3d6}
+#weave-trace-layer .wt-head{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+#weave-trace-layer .wt-result h3{margin:0 0 12px;color:#f4f0e6;font:500 19px/1.2 var(--ui-serif,Georgia,serif);letter-spacing:0}
+#weave-trace-layer .wt-x{flex:none;width:28px;height:28px;margin:-6px -8px 0 0;border:0;border-radius:4px;background:none;color:rgba(232,227,214,.7);font:400 20px/1 var(--ui-sans,system-ui);cursor:pointer}
+#weave-trace-layer .wt-x:hover{color:#fff;background:rgba(255,255,255,.08)}
+#weave-trace-layer .wt-result>.wt-actions{display:flex;gap:8px;margin:0}
+#weave-trace-layer .wt-result>.wt-actions button{flex:1 1 auto;min-height:36px;padding:0 12px;border:1px solid rgba(255,255,255,.24);border-radius:4px;background:transparent;color:#e8e3d6;font:500 13px/1 var(--ui-sans,system-ui)}
+#weave-trace-layer .wt-result>.wt-actions .wt-primary{flex:2 1 auto;border-color:#f4f0e6;background:#f4f0e6;color:#0a1020;font-weight:600}
+#weave-trace-layer .wt-more{margin-top:10px;min-height:0;display:flex;flex-direction:column}
+#weave-trace-layer .wt-more>summary{padding:6px 0;color:rgba(232,227,214,.72);font:500 12.5px/1.3 var(--ui-sans,system-ui);cursor:pointer;list-style:none}
+#weave-trace-layer .wt-more>summary::-webkit-details-marker{display:none}
+#weave-trace-layer .wt-more>summary::after{content:' ›';display:inline-block;transition:transform .2s ease}
+#weave-trace-layer .wt-more[open]>summary::after{transform:rotate(90deg)}
+#weave-trace-layer .wt-more[open]{max-height:min(52vh,460px);overflow:auto}
+#weave-trace-layer .wt-more .wt-all{margin-top:8px}
+#weave-trace-layer .wt-credit{margin:8px 0 0;font-size:10.5px;opacity:.5}
