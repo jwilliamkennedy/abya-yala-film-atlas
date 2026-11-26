@@ -45,3 +45,6 @@ Requested by atlas owner: promote current beta/ to published root using tools/pr
 
 2026-11-26 (night)
 Requested by atlas owner: promote current beta/ to published root using tools/promote_beta.py; preserve beta and private research Queue. The globe as of 26 November: a film opens in the centre and plays there; the Plate colours with night; the five theme families; a land's shape shows when chosen; Cite; Atlas in the menu.
+
+2026-11-26 (afternoon)
+Requested by atlas owner: promote current beta/ to published root using tools/promote_beta.py; preserve beta and private research Queue. The globe as of 26 November afternoon: no territory shapes (a land is a point and its name), languages in Find, one colour for the film points, a net between neighbouring lands, ties from a chosen land, film counts under the pointer, each land's own Native Land Digital page; land links for 157 more filmmakers. Beta commit 61f00d9 passed Site check, Globe acceptance, Globe terrain and discovery and Globe browser compatibility.

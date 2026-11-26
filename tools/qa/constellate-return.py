@@ -56,9 +56,12 @@ async def check(browser, name, viewport):
     # Choose a direction that is not already at the zoom limit, and measure actual camera scale.
     prior = await page.evaluate("window.Atlas.captureState().scale")
     zoom_in = await page.locator('#zoom-in').is_enabled()
-    await page.locator('#zoom-in' if zoom_in else '#zoom-out').click(timeout=15000)
+    # On a slow runner the flat map can take longer than 15 s to answer its first zoom after Constellate closes
+    # (run 45876137728: the wait timed out, and the scale read straight afterwards had changed). Poll on a timer,
+    # not on animation frames, which stall while the map redraws.
+    await page.locator('#zoom-in' if zoom_in else '#zoom-out').click(timeout=45000)
     try:
-        await page.wait_for_function('v => Math.abs(window.Atlas.captureState().scale-v)>0.01', arg=prior, timeout=15000)
+        await page.wait_for_function('v => Math.abs(window.Atlas.captureState().scale-v)>0.01', arg=prior, timeout=45000, polling=250)
     except Exception:
         print('MAP_RETURN_CAMERA', await page.evaluate('({scale:window.Atlas.captureState().scale,zoom:window.Atlas.captureState().zoom,body:document.body.className,entry:document.documentElement.dataset.atlasEntry})'), 'prior',prior, 'errors', errors, flush=True)
         raise
