@@ -66,8 +66,10 @@ function broadcastCredits(credits,selected,sourceImage,limit=6){
 }
 function cinemaBeltOrder(credits,image){const first=broadcastCredits(credits,null,image,Math.min(credits.length,12)),seen=new Set(first.map(f=>f.id));return [...first,...credits.filter(f=>!seen.has(f.id))];}
 function beltLayout(width,height,count,position=0){
- const landscape=height<=500&&width>760,mobile=width<=760,roomy=width>=1200&&height>=700,card=landscape?78:mobile?82:roomy?164:104,gap=roomy?10:7;
- const available=Math.max(card,width-(mobile?62:70)),side=landscape?210:mobile?0:260,padding=mobile?16:landscape?16:38;
+ const landscape=height<=500&&width>760,mobile=width<=760,roomy=width>=1200&&height>=700,gap=roomy?10:7,side=landscape?210:mobile?0:260,padding=mobile?16:landscape?16:roomy?48:38;
+ // On a roomy screen the cards take the largest size at which six still fit.
+ const sixFit=c=>Math.floor((width-70-side-padding+gap)/(c+gap))>=6,card=landscape?78:mobile?82:roomy?(sixFit(188)?188:sixFit(176)?176:164):104;
+ const available=Math.max(card,width-(mobile?62:70));
  const capacity=Math.max(1,Math.min(landscape?5:6,Math.floor((available-side-padding+gap)/(card+gap))));
  const total=Math.max(0,Math.floor(count)),size=Math.min(capacity,total),at=Math.max(0,Math.min(total-1,Math.floor(position))),start=size?Math.floor(at/size)*size:0;
  const visible=Math.min(size,total-start),desired=Math.min(available,Math.max(mobile?230:side+padding+card,side+padding+size*(card+gap)-gap));
