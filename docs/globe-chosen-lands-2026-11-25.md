@@ -32,3 +32,7 @@ John asked to get as close to NASA as possible. The globe now layers NASA Blue M
 ## Gather on the globe (25 Nov, late)
 - Top bar: Find · Themes · Discover · **Gather** · Map · Constellate. Gather turns the pointer into a pen (map panning off); the drawn line follows the curve of the earth (`gather-line`). On release the lands with films within 20 px of the line (26 px on phones) are listed in the order the line meets them, with film counts; a land opens on click; **Collect all** (first 60) adds them to the current thread in that order; Draw again, Clear, Escape. The click that follows a release is swallowed so the camera does not jump.
 - Test: `.globe-primary button` count is 6.
+
+## Constellate: clusters and the thread journey (25 Nov, late)
+- Films collected in one land spread into a ring of stars about 14 px apart at any zoom (`updateClusters`, `globe-cluster`), so links between them draw as short gold lines (`globe-inner-links`); the grouped star shrinks to a 2 px centre when its land holds more than one film (hit-testing and the star counts are unchanged).
+- Read this thread keeps the night sky; each step lights the arc just travelled from the previous film's land (`journey-arc`); End clears it and returns to the day unless Constellate is open.
