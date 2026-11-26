@@ -24,3 +24,7 @@ John asked to get as close to NASA as possible. The globe now layers NASA Blue M
 - Film cards: films without artwork show their title's initials on a dark card (was "No artwork"); the pager reads "2 of 10"; the "with artwork · to watch" line is gone; Hide/Show replace Hide details/Show details.
 - Film points: a smaller core; the chosen land's point is larger with a gold ring; the chosen land's fill and outline are stronger.
 - Tests: "Linking (1)"; the note test opens "Add a note" first.
+
+## Nodes and theme weaving (25 Nov, late)
+- Film nodes are larger (2.8–5.6 px plus up to 1.6 px with zoom), near-white with a 1.2 px dark ring and a soft halo; the chosen land's node grows and takes a gold ring; nodes of a chosen theme are a step larger and warmer.
+- **Theme weaving:** choosing a theme joins its lands with gold great-circle arcs, each land to its nearest neighbour in the theme (a minimum spanning tree, `updateWeave`), so a theme reads as one web; `AtlasGlobe.weave` reports lands and arcs (Water: 39 lands, 38 arcs).
