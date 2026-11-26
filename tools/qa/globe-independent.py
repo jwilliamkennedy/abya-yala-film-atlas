@@ -329,6 +329,9 @@ async def run(browser,name,viewport):
             assert len({s["id"] for s in slots})==len(slots)
             assert all(s["w"]<=104 and s["order"]==i for i,s in enumerate(slots))
             assert all(a["x"]+a["w"]<=b["x"] for a,b in zip(slots,slots[1:]))
+            dock=await panel.locator(".globe-strip-item").evaluate_all("""els=>els.map(e=>({selected:e.getAttribute('aria-current')==='true',distance:Number(e.dataset.dockDistance),scale:Number(getComputedStyle(e).getPropertyValue('--dock-scale'))}))""")
+            assert sum(d["selected"] for d in dock)==1
+            assert all(d["scale"]==1 if d["selected"] else d["scale"]<1 for d in dock),(name,dock)
             assert belt_geometry["height"]<=belt_geometry["hostHeight"]*.42+2,(name,"unexpanded belt too tall",belt_geometry)
             await page.locator("#globe-collapse-belt").click()
             assert await panel.get_attribute("data-collapsed")=="true"

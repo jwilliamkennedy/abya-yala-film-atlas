@@ -689,3 +689,28 @@ html[data-globe-entry] #atlas-globe-stage>#constellate-popup .constellate-headin
 @media(max-height:500px) and (orientation:landscape){
  #atlas-rotational-globe #globe-encounter[data-belt=true]{--belt-standard-height:min(40%,155px,var(--globe-encounter-room,155px));--belt-ribbon-height:min(32%,120px,var(--globe-encounter-room,120px));grid-template-columns:minmax(140px,210px) minmax(0,1fr)}
 }
+
+/* Dock-style optical magnification inside fixed hit boxes. The chosen film
+   gets the largest artwork; nearby films retain a gentle visual hierarchy.
+   Never animate flex-basis, card width, or the surrounding belt. */
+#globe-encounter[data-belt=true] .globe-strip-item{
+ --dock-scale:.82;--dock-emphasis:.86;
+ background:transparent;border-color:transparent;transition:background-color 170ms ease,border-color 170ms ease;
+}
+#globe-encounter[data-belt=true] .globe-strip-item[data-dock-distance="1"]{--dock-scale:.90;--dock-emphasis:.94}
+#globe-encounter[data-belt=true] .globe-strip-item[aria-current=true]{--dock-scale:1;--dock-emphasis:1;background:#284742;border-color:#dfd6a2}
+#globe-encounter[data-belt=true] .globe-strip-item .globe-thumb-frame{
+ transform:scale(var(--dock-scale));transform-origin:50% 100%;opacity:var(--dock-emphasis);
+ transition:transform 180ms cubic-bezier(.2,.7,.3,1),opacity 180ms ease;
+}
+#globe-encounter[data-belt=true] .globe-strip-item .globe-strip-title{opacity:var(--dock-emphasis)}
+#globe-encounter[data-belt=true] .globe-strip-item[aria-current=true] .globe-strip-title{color:#fff2cf;font-weight:600}
+#globe-encounter[data-belt=true] .globe-strip-item[aria-current=true] .globe-strip-maker{color:#d9e9df}
+@media(hover:hover) and (pointer:fine){
+ #globe-encounter[data-belt=true] .globe-strip-item:not([aria-current=true]):hover{--dock-scale:.97;--dock-emphasis:1;background:#203b45}
+ #globe-encounter[data-belt=true] .globe-strip-item:not([aria-current=true]):has(+ .globe-strip-item:hover),#globe-encounter[data-belt=true] .globe-strip-item:hover+.globe-strip-item:not([aria-current=true]){--dock-scale:.91;--dock-emphasis:.95}
+}
+#globe-encounter[data-belt=true] .globe-film-title{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;line-height:1.25;min-height:2.5em;max-height:2.5em}
+#globe-encounter[data-belt=true][data-expanded=true] .globe-film-title{display:block;max-height:none;min-height:0}
+#globe-encounter[data-belt=true] .globe-feature-copy .globe-director-affiliation{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}
+@media(prefers-reduced-motion:reduce){#globe-encounter[data-belt=true] .globe-strip-item,#globe-encounter[data-belt=true] .globe-strip-item .globe-thumb-frame{transition:none}}
