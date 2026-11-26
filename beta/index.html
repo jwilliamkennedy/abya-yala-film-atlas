@@ -1,15 +1,16 @@
 <!DOCTYPE html>
-<html lang="en" data-atlas-entry="globe" data-globe-entry="pending" data-reading-theme="night">
+<html lang="en" data-atlas-entry="globe" data-globe-entry="pending" data-reading-theme="paper">
 <head>
 <meta charset="utf-8">
 <script src="assets/atlas-route.js?v=6"></script>
 <meta name="viewport" content="width=device-width,initial-scale=1"><meta name="referrer" content="no-referrer"><meta name="theme-color" content="#f4f5f6"><title>Indigenous Cinema Atlas · Films of Abya Yala and Turtle Island</title><meta name="description" content="A map of Indigenous filmmakers and their films across Abya Yala and Turtle Island, placed on the lands they name."><meta property="og:title" content="Indigenous Cinema Atlas"><meta property="og:description" content="A map of Indigenous filmmakers and their films across Abya Yala and Turtle Island."><meta property="og:image" content="https://jwilliamkennedy.github.io/abya-yala-film-atlas/beta/assets/og-atlas.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image"><link rel="icon" href="assets/icon-1107.svg" type="image/svg+xml"><link rel="stylesheet" href="assets/maplibre/maplibre-gl.css"><link rel="stylesheet" href="atlas.css?v=13">
 <script id="rail-early">(function(){var d=document.documentElement,p=null;if(!matchMedia('(min-width:901px)').matches)return;try{p=localStorage.getItem('atlas-rail')}catch(e){}d.setAttribute('data-rail',p||(innerWidth<1440||d.dataset.globeEntry||/[?&]constellate=1/.test(location.search)?'compact':'full'))})()</script>
+<script id="theme-early">(function(){var t=null;try{t=localStorage.getItem('atlas-reading-theme')}catch(e){}document.documentElement.setAttribute('data-reading-theme',t==='night'?'night':'paper')})()</script>
 <link rel="stylesheet" href="assets/site-menu.css?v=21">
 <link rel="stylesheet" href="assets/ui-20261109.css?v=41">
 <link rel="stylesheet" href="assets/constellate.css?v=87">
 <link rel="stylesheet" href="assets/rail-20261121.css?v=8">
-<link rel="stylesheet" href="assets/globe-experiment.css?v=80-plate">
+<link rel="stylesheet" href="assets/globe-experiment.css?v=82-plate">
 <style>
 #atlas-globe-stage{display:none}
 html[data-globe-entry] #atlas-globe-stage{display:block;position:fixed;inset:var(--globe-shell-top,94px) 0 0 var(--globe-shell-left,0px);overflow:hidden;isolation:isolate;background:#f4f5f6;z-index:20}
@@ -23,6 +24,8 @@ html[data-globe-entry][data-rail]{--globe-shell-top:0px;--globe-shell-left:var(-
 @keyframes globe-loader-turn{0%{transform:scaleX(1)}50%{transform:scaleX(.08)}100%{transform:scaleX(1)}}
 @keyframes globe-loader-draw{0%{stroke-dashoffset:188.5}60%{stroke-dashoffset:0}100%{stroke-dashoffset:-188.5}}
 @media(prefers-reduced-motion:reduce){.globe-loader-meridian,.globe-loader-ring{animation:none;stroke-dashoffset:0}}
+html[data-reading-theme=night][data-globe-entry] #atlas-globe-stage{background:#0f1830}
+html[data-reading-theme=night] #globe-stage-loading{color:#b9c1d6}
 html[data-globe-entry=ready] #globe-stage-loading{display:none}
 html[data-globe-entry=error] #globe-stage-loading{pointer-events:auto}
 html[data-globe-entry=error] #globe-stage-loading button{margin-left:8px;cursor:pointer}
@@ -47,7 +50,7 @@ html[data-globe-entry] body.atlas-page>header{box-sizing:border-box}
 <script defer src="assets/counter.js"></script>
 <script defer src="watch-data.js"></script>
 <script defer src="assets/globe-core.js?v=6-belt"></script>
-<script defer src="assets/globe.js?v=42-plate"></script>
+<script defer src="assets/globe.js?v=44-plate"></script>
 </head>
 <body class="atlas-page">
 <a class="skip" href="#atlas-globe-stage">Skip to globe</a>

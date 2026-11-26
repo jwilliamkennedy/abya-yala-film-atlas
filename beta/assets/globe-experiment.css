@@ -1081,3 +1081,28 @@ html[data-globe-entry] #atlas-globe-stage>#constellate-popup .constellate-headin
 #atlas-rotational-globe #globe-encounter[data-belt=true] .globe-featured:has(>.globe-feature-art[data-art-state=ready]:not([hidden])) .globe-encounter-actions{margin-left:-73px}
 #atlas-rotational-globe #globe-encounter[data-belt=true] .globe-encounter-actions{flex-wrap:wrap;row-gap:6px;max-width:258px!important}
 #atlas-rotational-globe #globe-encounter[data-belt=true][data-belt-card="148"]{--belt-standard-height:min(42%,272px,var(--globe-encounter-room,272px))}
+/* ---------- Refinements (26 Nov, late) ---------- */
+/* a touch of warmth in the sheets against the cool ground: the page stays stone, what lies on it is paper */
+#atlas-rotational-globe:not(.globe-night){--p-bg:#fbf9f4;--p-fill-2:#ebe8e0;--p-line:rgba(40,34,24,.16);--p-fill:rgba(40,34,24,.05);--p-shadow:0 16px 44px rgba(34,28,18,.15),0 1px 2px rgba(34,28,18,.09)}
+#globe-hover-name{background:var(--p-bg,#fbf9f4);color:var(--p-ink,#14181c)}
+/* the bar is a floating paper tab, so its words read over the earth as well as over the page */
+#atlas-rotational-globe .globe-primary{background:var(--p-bg)!important;border-radius:999px!important;padding:0 12px!important;box-shadow:0 1px 2px rgba(34,28,18,.10),0 8px 24px rgba(34,28,18,.12)!important}
+#atlas-rotational-globe.globe-night .globe-primary{box-shadow:0 0 0 1px var(--p-line)!important}
+#atlas-rotational-globe .globe-primary button{padding-top:11px!important;padding-bottom:11px!important}
+#atlas-rotational-globe .globe-primary button:is([aria-expanded=true],[aria-pressed=true],.has-filter){box-shadow:inset 0 -2px 0 var(--p-select)!important}
+/* the chosen themes, named in their line colours */
+#atlas-rotational-globe #globe-theme-key{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end;pointer-events:auto}
+#atlas-rotational-globe #globe-theme-key[hidden],#atlas-rotational-globe[data-menu=theme] #globe-theme-key{display:none}
+#atlas-rotational-globe .globe-theme-key-item{display:inline-flex;align-items:center;gap:7px;min-height:30px;padding:4px 10px 4px 9px;border:0;border-radius:999px;background:var(--p-bg);color:var(--p-ink);font:500 12.5px/1.2 var(--ui-sans,system-ui,sans-serif);cursor:pointer;box-shadow:0 1px 2px rgba(34,28,18,.10),0 6px 18px rgba(34,28,18,.10)}
+#atlas-rotational-globe .globe-theme-key-item i{width:14px;height:3px;border-radius:2px;background:#e3c877}
+#atlas-rotational-globe .globe-theme-key-item[data-web=b] i{background:#9fc0e0}
+#atlas-rotational-globe .globe-theme-key-item em{font-style:normal;color:var(--p-muted);font-size:14px;line-height:1}
+#atlas-rotational-globe .globe-theme-key-item:hover em{color:var(--p-ink)}
+#atlas-rotational-globe .globe-theme-key-item:focus-visible{outline:2px solid var(--p-ink);outline-offset:1px}
+/* Gather before the first stroke: one quiet line, not a box */
+#atlas-rotational-globe #globe-gather-panel:has(>.globe-gather-hint:only-child){width:auto!important;padding:8px 16px!important;border-radius:999px!important;box-shadow:0 1px 2px rgba(34,28,18,.10),0 6px 18px rgba(34,28,18,.10)!important;border:0!important}
+#atlas-rotational-globe #globe-gather-panel:has(>.globe-gather-hint:only-child) .globe-gather-hint{margin:0;font-size:12.5px;color:var(--p-muted)}
+/* the site's own night theme (the moon in the rail): the globe stands on the rail's night paper; the earth stays lit. Constellate's night is darker still. */
+html[data-reading-theme="night"] #atlas-rotational-globe:not(.globe-night){--p-ground:#0f1830;--p-bg:#16223d;--p-ink:#f2e8cf;--p-soft:#e6dcc4;--p-muted:#b9c1d6;--p-line:rgba(185,193,214,.24);--p-fill:rgba(242,232,207,.06);--p-fill-2:#1c2b48;--p-accent:#e0c58a;--p-accent-ink:#0f1830;--p-select:#e0c58a;--p-shadow:0 18px 50px rgba(0,0,0,.5);--p-veil:rgba(10,16,34,.62)}
+html[data-reading-theme="night"] #atlas-rotational-globe .globe-primary,html[data-reading-theme="night"] #atlas-rotational-globe .globe-theme-key-item,html[data-reading-theme="night"] #atlas-rotational-globe #globe-gather-panel{box-shadow:0 0 0 1px var(--p-line)!important}
+#atlas-rotational-globe .globe-primary button:focus-visible{outline:1.5px solid var(--p-ink);outline-offset:-6px;border-radius:9px!important}

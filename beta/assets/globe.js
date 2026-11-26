@@ -568,7 +568,7 @@ function loadRelief(){reliefState='unavailable';return;/* the fallback draws sto
    liveHost=el('div');liveHost.id='globe-live-map';host.insertBefore(liveHost,canvas);
    // 512 CSS pixels per world at zoom 0. Use a viewport-dependent overview size.
    liveBaseZoom=overviewBase(W,H);
-   const ambient=ambientLandData();const style={version:8,projection:{type:['interpolate',['linear'],['zoom'],5,'vertical-perspective',7,'mercator']},sky:SKY_DAY,glyphs:'https://tiles.openfreemap.org/fonts/{fontstack}/{range}.pbf',sources:{
+   const ambient=ambientLandData();const style={version:8,projection:{type:['interpolate',['linear'],['zoom'],5,'vertical-perspective',7,'mercator']},sky:siteNight()?SKY_SITE_NIGHT:SKY_DAY,glyphs:'https://tiles.openfreemap.org/fonts/{fontstack}/{range}.pbf',sources:{
     earth:{type:'geojson',data:{type:'Feature',properties:{},geometry:planarRings(geoPolygon(earthParts||earth))}},
     marble:{type:'raster',tiles:['https://gibs.earthdata.nasa.gov/wmts/epsg3857/best/BlueMarble_NextGeneration/default/GoogleMapsCompatible_Level8/{z}/{y}/{x}.jpeg'],tileSize:256,maxzoom:8,attribution:'NASA Blue Marble / GIBS'},
     rivers:{type:'geojson',data:new URL('assets/rivers-ne-50m.geojson',document.baseURI).href},
@@ -586,8 +586,8 @@ function loadRelief(){reliefState='unavailable';return;/* the fallback draws sto
     {id:'marble',type:'raster',source:'marble',paint:{'raster-fade-duration':320}},
     // A sea wash over Blue Marble's dark ocean: lighter water, land untouched, the coast from OpenStreetMap.
     {id:'sea-wash',type:'fill',source:'places','source-layer':'water',filter:['==',['get','class'],'ocean'],paint:{'fill-color':'#7d9cbd','fill-opacity':.55,'fill-antialias':false}},
-    {id:'lake-context',type:'fill',source:'places','source-layer':'water',minzoom:6,filter:['==',['get','class'],'lake'],paint:{'fill-color':'#2d4f86','fill-opacity':.9}},
-    {id:'river-context',type:'line',source:'places','source-layer':'waterway',minzoom:7,filter:['==',['get','class'],'river'],paint:{'line-color':'#8fb8d8','line-opacity':.8,'line-width':['interpolate',['linear'],['zoom'],7,.35,12,1.4]}},
+    {id:'lake-context',type:'fill',source:'places','source-layer':'water',minzoom:6,filter:['==',['get','class'],'lake'],paint:{'fill-color':'#2d4f86','fill-opacity':['interpolate',['linear'],['zoom'],6,0,6.8,.9]}},
+    {id:'river-context',type:'line',source:'places','source-layer':'waterway',minzoom:7,filter:['==',['get','class'],'river'],paint:{'line-color':'#8fb8d8','line-opacity':['interpolate',['linear'],['zoom'],7,0,7.8,.8],'line-width':['interpolate',['linear'],['zoom'],7,.35,12,1.4]}},
     {id:'ne-rivers',type:'line',source:'rivers',minzoom:3.5,maxzoom:7.5,layout:{'line-cap':'round','line-join':'round'},paint:{'line-color':'#8fb8d8','line-opacity':['interpolate',['linear'],['zoom'],3.5,0,4.5,.85,7,.85,7.5,0],'line-width':['interpolate',['linear'],['zoom'],3.5,.6,7,1.6]}},
     {id:'water-names',type:'symbol',source:'places','source-layer':'water_name',minzoom:7,filter:['boolean',false],layout:{'text-field':['get','name'],'text-font':['Noto Sans Regular'],'text-size':11,'text-padding':9},paint:{'text-color':'#b9dce6','text-halo-color':'#24404e','text-halo-width':1}},
     {id:'mountain-names',type:'symbol',source:'places','source-layer':'mountain_peak',minzoom:8,filter:['boolean',false],layout:{'text-field':['get','name'],'text-font':['Noto Sans Regular'],'text-size':11,'text-padding':9,'symbol-sort-key':['coalesce',['get','rank'],99]},paint:{'text-color':'#f3e7d2','text-halo-color':'#333d36','text-halo-width':1}},
@@ -617,7 +617,7 @@ function loadRelief(){reliefState='unavailable';return;/* the fallback draws sto
     {id:'journey-arc-glow',type:'line',source:'journey-arc',layout:{'line-cap':'round','line-join':'round'},paint:{'line-color':'#fff1c4','line-opacity':.35,'line-width':8,'line-blur':4}},
     {id:'journey-arc',type:'line',source:'journey-arc',layout:{'line-cap':'round','line-join':'round'},paint:{'line-color':'#fff6dc','line-opacity':.95,'line-width':2.4}},
     {id:'globe-cluster-star',type:'circle',source:'globe-cluster',paint:{'circle-radius':['case',['==',['get','selected'],1],5,3.8],'circle-color':'#fff8e4','circle-stroke-color':'#f2d99b','circle-stroke-width':1.4,'circle-opacity':.98}},
-    {id:'cinema-names',type:'symbol',source:'cinema-points',minzoom:3.4,maxzoom:5.6,filter:['==',['get','match'],1],layout:{'text-field':['get','name'],'text-font':['Noto Sans Regular'],'text-size':['interpolate',['linear'],['zoom'],3.4,11,5.6,13],'text-anchor':'top','text-offset':[0,.75],'text-max-width':10,'text-padding':6,'symbol-sort-key':['-',0,['get','films']],'text-allow-overlap':false},paint:{'text-color':'#fbf8ee','text-halo-color':'#0d141b','text-halo-width':2,'text-halo-blur':.6,'text-opacity':['interpolate',['linear'],['zoom'],3.4,0,3.7,1]}},
+    {id:'cinema-names',type:'symbol',source:'cinema-points',minzoom:3.4,maxzoom:5.6,filter:['==',['get','match'],1],layout:{'text-field':['get','name'],'text-font':['Noto Sans Regular'],'text-size':['interpolate',['linear'],['zoom'],3.4,11,5.6,13],'text-anchor':'top','text-offset':[0,.75],'text-max-width':10,'text-padding':6,'symbol-sort-key':['-',0,['get','films']],'text-allow-overlap':false},paint:{'text-color':'#fbf8ee','text-halo-color':'#0d141b','text-halo-width':2,'text-halo-blur':.6,'text-opacity':['interpolate',['linear'],['zoom'],3.4,0,3.7,1,5.2,1,5.6,0]}},
     {id:'indigenous-regional-names',type:'symbol',source:'native-labels',minzoom:5.5,layout:{'text-field':['get','name'],'text-font':['Noto Sans Regular'],'text-size':['interpolate',['linear'],['zoom'],5.5,12.5,11,15.5],'text-anchor':'top','text-offset':[0,.6],'text-padding':11,'text-max-width':12,'text-allow-overlap':false,'text-ignore-placement':false},paint:{'text-color':'#fbf8ee','text-halo-color':'#0d141b','text-halo-width':2,'text-halo-blur':.6,'text-opacity':['interpolate',['linear'],['zoom'],5.5,0,7,.82,10,.94]}},
     {id:'indigenous-local-name',type:'symbol',source:'native-local-label',minzoom:7,layout:{'text-field':['get','name'],'text-font':['Noto Sans Regular'],'text-size':15,'text-anchor':'top','text-offset':[0,1.5],'text-max-width':18,'text-padding':7,'text-allow-overlap':false},paint:{'text-color':'#fbf8ee','text-halo-color':'#0d141b','text-halo-width':2,'text-halo-blur':.6}},
     {id:'indigenous-names',type:'symbol',source:'native-labels',minzoom:3,filter:['in',['get','land'],['literal',[]]],layout:{'text-field':['get','name'],'text-font':['Noto Sans Regular'],'text-size':['interpolate',['linear'],['zoom'],3,12,7,14,11,15],'text-anchor':'top','text-offset':[0,.65],'text-padding':7,'text-max-width':12,'text-allow-overlap':false,'text-ignore-placement':false},paint:{'text-color':'#fbf8ee','text-halo-color':'#0d141b','text-halo-width':2,'text-halo-blur':.6,'text-opacity':['interpolate',['linear'],['zoom'],3,0,4.3,1]}}
@@ -712,7 +712,7 @@ function loadRelief(){reliefState='unavailable';return;/* the fallback draws sto
  // A visible overview follows the native camera while local tiles stabilize.
  // Never leave an interactive but frozen canvas above the incoming renderer.
  updateProjection();ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,W,H);
- ctx.fillStyle='#f4f5f6';ctx.fillRect(0,0,W,H);
+ ctx.fillStyle=siteNight()?'#0f1830':'#f4f5f6';ctx.fillRect(0,0,W,H);
  const r=radius(),ocean=ctx.createRadialGradient(W/2-r*.25,H/2-r*.3,0,W/2,H/2,r);
  ocean.addColorStop(0,'#6a89ad');ocean.addColorStop(.72,'#55759d');ocean.addColorStop(1,'#3f5d85');
  shape(sphere,ocean,null);shape(earth,'#56614a',null);
@@ -1171,7 +1171,10 @@ function collectionSummary(){const c=collectionState(),g=collectionGeometry();re
 // Constellate turns the globe to night: the earth and its lands dim, collected films become stars, links gold arcs.
 let nightOn=false,nightDay=null;
 // By day the globe stands on the page's own paper; the dark sky belongs to Constellate's night.
-const SKY_DAY={'sky-color':'#f4f5f6','horizon-color':'#c3ced6','fog-color':'#dfe5e9','atmosphere-blend':['interpolate',['linear'],['zoom'],0,.24,5,.10,8,0],'horizon-fog-blend':.25,'sky-horizon-blend':.45,'fog-ground-blend':.15},SKY_NIGHT={...SKY_DAY,'sky-color':'#060a14','horizon-color':'#40566a','fog-color':'#1b2733'};
+const SKY_DAY={'sky-color':'#f4f5f6','horizon-color':'#c3ced6','fog-color':'#dfe5e9','atmosphere-blend':['interpolate',['linear'],['zoom'],0,.24,5,.10,8,0],'horizon-fog-blend':.25,'sky-horizon-blend':.45,'fog-ground-blend':.15},SKY_NIGHT={...SKY_DAY,'sky-color':'#060a14','horizon-color':'#40566a','fog-color':'#1b2733'},SKY_SITE_NIGHT={...SKY_DAY,'sky-color':'#0f1830','horizon-color':'#4a5f86','fog-color':'#22304f'};
+const siteNight=()=>document.documentElement.dataset.readingTheme==='night';
+function applySky(){if(!liveReady||!live)return;try{live.setSky(nightOn?SKY_NIGHT:siteNight()?SKY_SITE_NIGHT:SKY_DAY);}catch{}renderSoon();}
+new MutationObserver(()=>{if(active){applySky();renderSoon();}}).observe(document.documentElement,{attributes:true,attributeFilter:['data-reading-theme']});
 const NIGHT={'sea':{'background-color':'#060a14'},'marble':{'raster-brightness-max':.3,'raster-saturation':-.6},'sea-wash':{'fill-color':'#070c18','fill-opacity':.82},
  'native-ambient-fill':{'fill-opacity':.07},'native-ambient-feather':{'line-opacity':.08},'native-ambient-line':{'line-opacity':.16},'cinema-glow':{'circle-opacity':0},
  'cinema-light':{'circle-opacity':['case',['==',['get','match'],1],.32,.04],'circle-stroke-opacity':0},'cinema-count':{'text-opacity':0},
@@ -1182,8 +1185,7 @@ function applyNight(on){
  if(!liveReady||!live||nightOn===on)return;nightOn=on;host?.classList.toggle('globe-night',on);setTimeout(updateThumbs,0);
  if(!nightDay){nightDay={};for(const [id,props] of Object.entries(NIGHT)){const isBg=id==='sea';for(const p of Object.keys(props))if(live.getLayer(id))nightDay[id+'|'+p]=live.getPaintProperty(id,p)??null;}}
  for(const [id,props] of Object.entries(NIGHT))for(const [p,v] of Object.entries(props)){if(!live.getLayer(id))continue;const day=nightDay[id+'|'+p];try{live.setPaintProperty(id,p,on?v:day===null?undefined:day);}catch{}}
- try{live.setSky(on?SKY_NIGHT:SKY_DAY);}catch{}
- renderSoon();
+ applySky();
 }
 
 // Film nodes: a cream core ringed in the land's own colour (chosen 25 Nov). ?nodes=seeds|rings|default keep the other studies.
@@ -1205,7 +1207,7 @@ function nodeStyle(name){if(!liveReady||!live)return false;const make=NODE_STYLE
 let gatherMode=false,gatherPath=[],gatherHits=[],gatherDrawing=false,constellateDraw=false,gatherSeen=new Set(),gatherScreen=null,gatherLast=null;
 function nightWanted(){return menuMode==='collection'||drawingLink||!!readingJourney||constellateDraw;}
 function setGather(on){
- gatherMode=on;const b=$('#globe-gather-toggle');if(b){b.setAttribute('aria-pressed',String(on));b.textContent=on?'Drawing…':'Gather';}
+ gatherMode=on;const b=$('#globe-gather-toggle');if(b){b.setAttribute('aria-pressed',String(on));}
  host?.classList.toggle('is-gathering',on);setTimeout(updateThumbs,0);if(liveReady&&live){if(on)live.dragPan.disable();else live.dragPan.enable();live.getCanvas().style.cursor=on?'crosshair':'';}
  if(on){setMenu('');const p=$('#globe-gather-panel');if(p&&!gatherHits.length){p.hidden=false;p.replaceChildren(gatherHint(constellateDraw?'Draw across the lands; each one lights as the line crosses it.':'Draw across the lands with films.'));}}applyNight(nightWanted());
 }
@@ -1216,7 +1218,11 @@ function gatherLine(){return gatherPath.length>1?{type:'Feature',properties:{},g
 function keptGather(){return gatherHits.filter(h=>!h.skip);}
 function relightGather(){if(!liveReady||!live?.getLayer('gather-lit'))return;const ids=keptGather().map(h=>h.p.id),f=['in',['get','land'],['literal',ids]];live.setFilter('gather-lit',f);live.setFilter('gather-lit-edge',f);live.getSource('gather-hits')?.setData({type:'FeatureCollection',features:gatherHits.map(h=>({type:'Feature',properties:{skip:h.skip?1:0},geometry:{type:'Point',coordinates:h.p.coord}}))});}
 // A land joins when the line crosses its territory or passes within 14 px of its films; in the order it is met.
-function gatherHit(id){if(gatherSeen.has(id))return;gatherSeen.add(id);const p=pointById.get(id),films=p?matchingFilms(id):[];if(!films.length)return;gatherHits.push({p,films,skip:false});return true;}
+let gatherUnionKey='',gatherUnion=new Map();
+function gatherFilms(id){const themes=currentTheme();if(themes.length<2)return matchingFilms(id);const key=filterKey();
+ if(key!==gatherUnionKey){gatherUnionKey=key;gatherUnion=new Map();const refs=C().globeCreditIndex().refs,seen=new Set();for(const t of themes)for(const f of C().themeIntersection([t])){if(seen.has(f.id)||!periodMatch(f)||!matchesFacets(f))continue;seen.add(f.id);for(const r of refs.get(f.id)||[]){if(!gatherUnion.has(r.id))gatherUnion.set(r.id,[]);gatherUnion.get(r.id).push(f);}}}
+ return gatherUnion.get(id)||[];}
+function gatherHit(id){if(gatherSeen.has(id))return;gatherSeen.add(id);const p=pointById.get(id),films=p?gatherFilms(id):[];if(!films.length)return;gatherHits.push({p,films,skip:false});return true;}
 function gatherSample(x,y){let added=false;
  for(const f of live.queryRenderedFeatures([x,y],{layers:['native-ambient-fill']})){const id=f.properties?.land;if(id&&gatherHit(id))added=true;}
  for(const v of gatherScreen||[])if(!gatherSeen.has(v.id)&&Math.hypot(v.x-x,v.y-y)<=(W<=760?18:14)&&gatherHit(v.id))added=true;
@@ -1264,10 +1270,11 @@ function updateClusters(){
 // Close in, each land's films rise as a thumbnail above its node (DOM markers: artwork from other sites needs no CORS).
 let mlLib=null;const thumbMarkers=new Map();
 function openFilmAt(p,film){preferredLand=p.id;pendingFilm=film.id;filmOffset=0;setCamera(p.coord,zoom);}
+function dropThumb(k){const m=thumbMarkers.get(k);if(!m)return;thumbMarkers.delete(k);const card=m.getElement()?.firstElementChild;if(card&&!reduced.matches){card.classList.remove('is-ready');setTimeout(()=>m.remove(),230);}else m.remove();}
 function updateThumbs(){
  if(!liveReady||!live||!mlLib?.Marker)return;const starsOnly=nightOn&&menuMode==='collection'&&!drawingLink;
  const show=live.getZoom()>=7&&!gatherMode&&(!nightOn||starsOnly);
- if(!show){for(const m of thumbMarkers.values())m.remove();thumbMarkers.clear();return;}
+ if(!show){for(const k of [...thumbMarkers.keys()])dropThumb(k);return;}
  const cap=W<=760?6:16,tw=W<=760?64:116,th=W<=760?46:82,cw=live.getCanvas().clientWidth,ch=live.getCanvas().clientHeight,kept=[];
  // Day: the land's most-seen film. Constellate: the films you collected, one card per land.
  let cands;
@@ -1275,7 +1282,7 @@ function updateThumbs(){
  else cands=points.filter(p=>matchingFilms(p.id).length).map(p=>{const film=rankedFilms(p.id).find(f=>C().sourceImage(f));return film?{p,film,n:matchingFilms(p.id).length,key:'d:'+p.id+':'+film.id}:null;}).filter(Boolean);
  // Thumbnails stand over films that are on screen, the most films first, never stacked on one another.
  const visible=cands.map(c=>({...c,q:live.project(c.p.coord)})).filter(({q})=>q.x>tw/2&&q.x<cw-tw/2&&q.y>th+12&&q.y<ch).sort((a,b)=>b.n-a.n||a.p.id.localeCompare(b.p.id)).filter(({q})=>{if(kept.length>=cap||kept.some(k=>Math.abs(k.x-q.x)<tw+6&&Math.abs(k.y-q.y)<th+6))return false;kept.push(q);return true;});
- const want=new Set(visible.map(c=>c.key));for(const [k,m] of thumbMarkers)if(!want.has(k)){m.remove();thumbMarkers.delete(k);}
+ const want=new Set(visible.map(c=>c.key));for(const k of [...thumbMarkers.keys()])if(!want.has(k))dropThumb(k);
  for(const {p,film,n,key} of visible){if(thumbMarkers.has(key))continue;
   const holder=el('div','globe-map-thumb-anchor'),b=document.createElement('button');b.type='button';b.className='globe-map-thumb'+(starsOnly?' is-collected':'')+(viewingOf(film)?.kind==='play'?' is-playable':'');b.setAttribute('aria-label',film.title+' · '+p.name);holder.append(b);
   const img=new Image();img.alt='';img.decoding='async';img.loading='lazy';img.referrerPolicy='strict-origin-when-cross-origin';img.onload=()=>b.classList.add('is-ready');img.onerror=()=>{thumbMarkers.get(key)?.remove();thumbMarkers.delete(key);};img.src=new URL(C().sourceImage(film),location.href).href;b.append(img);
@@ -1670,6 +1677,12 @@ function themeCoverage(){const stamp=filterKey();if(coverageMemo?.stamp===stamp)
 function setThemeSelect(select,value){if(!select)return;select.value=value;select.dispatchEvent(new Event('change',{bubbles:true}));}
 function themeFilms(limit=12){const out=[],seen=new Set();for(const p of points){for(const f of matchingFilms(p.id)){if(seen.has(f.id)||!C().sourceImage(f))continue;seen.add(f.id);out.push([f,p]);break;}}
  for(const p of points){if(out.length>=limit)break;for(const f of matchingFilms(p.id)){if(out.length>=limit)break;if(seen.has(f.id)||!C().sourceImage(f))continue;seen.add(f.id);out.push([f,p]);}}return out.slice(0,limit);}
+function renderThemeKey(){
+ const guide=$('#atlas-rotational-globe .globe-guide'),first=$('#weave-map-theme'),second=$('#weave-map-theme-second');if(!guide||!first)return;
+ let key=$('#globe-theme-key');if(!key){key=el('div');key.id='globe-theme-key';guide.querySelector('.globe-primary').after(key);}
+ const t=currentTheme(),sig=t.join('|');if(key.dataset.key===sig)return;key.dataset.key=sig;key.replaceChildren();key.hidden=!t.length;
+ t.forEach((name,i)=>{const b=button('',()=>{if(i)setThemeSelect(second,'');else setThemeSelect(first,t[1]||'');},'globe-theme-key-item');b.dataset.web=i?'b':'a';b.setAttribute('aria-label','Clear '+name);b.title='Clear '+name;b.append(el('i'),el('span',null,name),el('em',null,'×'));key.append(b);});
+}
 function renderThemeList(){
  const panel=$('#globe-theme-panel'),first=$('#weave-map-theme'),second=$('#weave-map-theme-second');if(!panel||!first||!first.options.length)return;
  let box=$('#globe-theme-list');if(!box){box=el('div');box.id='globe-theme-list';panel.prepend(box);}
@@ -1693,7 +1706,7 @@ function refreshMenuLabels(){
  const b=$('#globe-theme-toggle'),t=currentTheme(),period=$('#globe-period')?.value;
  if(b){b.textContent='Themes';b.classList.toggle('has-filter',!!t.length);b.title=t.join(' + ')||'Explore films by theme';}
  const legend=$('#globe-theme-coverage');if(legend){legend.hidden=!t.length;if(t.length){const c=themeCoverage();const label=c.credits+' matching mapped credits · '+c.lands+' lands. Numbers count distinct indexed film IDs at a land reference, not filming locations or cultural significance.';if(legend.textContent!==label)legend.textContent=label;}}
- renderThemeList();const m=$('#globe-more-toggle'),filters=Object.values(facetFilter).filter(Boolean).length+Number(!!period);if(m){m.textContent=filters?'Map ('+filters+')':'Map';m.title=period?'Map settings · '+period+'–'+(Number(period)+19):'Map settings';}
+ renderThemeList();renderThemeKey();const m=$('#globe-more-toggle'),filters=Object.values(facetFilter).filter(Boolean).length+Number(!!period);if(m){m.textContent=filters?'Map ('+filters+')':'Map';m.title=period?'Map settings · '+period+'–'+(Number(period)+19):'Map settings';}
 }
 function setMenu(mode='',restoreFocus=false){
  if(!host)return;const prior=menuMode,hadPanelFocus=!!prior&&!!$('#globe-'+prior+'-panel')?.contains(document.activeElement);menuMode=mode===menuMode?'':mode;host.dataset.menu=menuMode;applyNight(nightWanted());

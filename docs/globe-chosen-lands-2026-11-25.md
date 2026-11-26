@@ -78,3 +78,12 @@ John chose the Plate scheme and asked for every menu, the Themes menu and the fi
 - Versions: `globe.js?v=41-plate`, `globe-experiment.css?v=79-plate`, `globe-core.js?v=6-belt`.
 - **Later the same night:** map thumbnails are 116 × 82 on desktop (phones keep 64 × 46); the film box's action row starts under the artwork and stays in its column; `globe.js?v=42-plate`, `globe-experiment.css?v=80-plate`. `tools/qa/globe-independent.py` allows stills up to 148 px.
 - Seen on the live beta in Chrome (v41): the sheet of paper round the globe with NASA imagery, a still opening its film in the centre with its artwork, Play starting a YouTube film in place, the Themes list with two webs, Constellate's night and the return to day, thumbnails standing over their lands at zoom 7.
+
+## Refinements after Plate (26 Nov, late)
+- **Bar.** The top bar is a floating paper tab, so its words read over the earth as well as over the page (ink on imagery was unreadable when zoomed in). "Gather" keeps its name while drawing; the underline shows it is on. Before the first stroke Gather shows one quiet line, not a panel.
+- **Warmth.** The ground stays the rail's stone (`#f4f5f6`); what lies on it (bar, menus, film box, centre view) is a slightly warm paper (`--p-bg:#fbf9f4`, warm hairlines and shadow). John asked for "a touch" of warmer contrast; oat itself stays out.
+- **Theme key.** While themes are on and the menu is closed, the chosen themes stand under the bar in their line colours (gold, pale blue); pressing one lets it go.
+- **Gather with themes.** With two themes on, a drawn line gathers the films of either web (`gatherFilms`); before, only films carrying both themes counted, so most lines gathered nothing.
+- **The site's night theme** (the moon in the rail) now reaches the globe: ground, bar, menus and sky take the rail's night paper (`#0f1830`, `SKY_SITE_NIGHT`); the earth stays lit. Constellate's night is unchanged. The theme is set before first paint (`theme-early` in `beta/index.html`).
+- **Zooming.** Lakes and rivers ease in over most of a zoom level instead of appearing at once; film names ease out before their upper limit; thumbnails fade out as they fade in.
+- Versions: `globe.js?v=44-plate`, `globe-experiment.css?v=82-plate`.
