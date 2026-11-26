@@ -762,3 +762,6 @@ html[data-globe-entry] #atlas-globe-stage>#constellate-popup .constellate-headin
 #atlas-rotational-globe .globe-link-more[open]{display:grid;gap:6px}
 #atlas-rotational-globe.globe-night #globe-collection-panel{background:#0b1220f2;border-color:#f2d99b33}
 #atlas-rotational-globe.globe-night #globe-collection-toggle{background:#f2d99b;color:#14181c}
+#atlas-rotational-globe #globe-encounter .globe-encounter-actions{flex-wrap:nowrap;gap:4px;overflow:visible}
+#atlas-rotational-globe #globe-encounter .globe-encounter-actions :is(a,button){padding:4px 7px;min-height:28px;font-size:11px;flex:0 0 auto}
+@media(max-width:760px){#atlas-rotational-globe #globe-encounter .globe-encounter-actions{flex-wrap:wrap}}
