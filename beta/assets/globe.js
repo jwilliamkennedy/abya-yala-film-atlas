@@ -1162,7 +1162,7 @@ function filmStrip(films,oldStrip=null){
  const old=new Map([...(oldStrip?.querySelectorAll('[data-strip-film]')||[])].map(b=>[b.dataset.stripFilm,b.querySelector('.globe-thumb-frame')]));
  for(const f of order.slice(filmStripStart,filmStripStart+size)){
   const i=order.indexOf(f),b=button('',()=>{select(i);focusEncounter();},'globe-strip-item');b.dataset.stripFilm=f.id;b.setAttribute('aria-label',f.title+' · '+f.maker);b.tabIndex=i===position?0:-1;if(i===position)b.setAttribute('aria-current','true');
-  const existing=old.get(f.id),art=existing?.querySelector('.globe-artwork');const thumb=art?.dataset.source===(C().sourceImage(f)||'')?existing:thumbnail(f);
+  const existing=old.get(f.id),art=existing?.querySelector('.globe-artwork');const thumb=art?.dataset.source===(C().sourceImage(f)||'')&&art.dataset.artState!=='broken'?existing:thumbnail(f);
   if(!C().sourceImage(f))thumb.classList.add('globe-no-art');
   b.append(thumb,el('span','globe-strip-title',f.title),el('small','globe-strip-maker',f.maker));track.append(b);
  }
@@ -1263,7 +1263,7 @@ function drawEncounter(){
   const {actions,profile,external}=encounterLinks(film,work);const actionRow=el('div','globe-encounter-actions');for(const a of [...actions.children])if(a.classList.contains('globe-view-link'))actionRow.append(a);
   const inThread=store()?.activeThread().items.includes(film.id),collect=button(inThread?'Collected':'＋ Collect',()=>collectFilm(film,primary.id),'globe-collect-film');collect.id='globe-collect-film';collect.disabled=!!inThread;actionRow.append(collect);if(external&&!actionRow.querySelector('.globe-view-link'))actionRow.append(external.cloneNode(true));const link=button('Link collected films',()=>{if(!settled||featured?.film.id!==film.id)return;pickLink(film.id);updateCollectButton();if(linkTo&&menuMode!=='collection')setMenu('collection');else if(linkFrom&&!linkTo){collectionNotice='Explore and collect another film, then connect it.';if(menuMode==='collection')setMenu('');renderCollection(true);}},'globe-connect-featured');link.id='globe-connect-featured';link.hidden=true;actionRow.append(link);
   copy.append(actionRow);card.append(art,copy);panel.append(card);updateCollectButton();const reading=journeyControls(film);if(reading)panel.append(reading);
-  {const strip=filmStrip(films,oldStrip);panel.append(strip);strip.querySelector('.globe-strip-track').scrollLeft=stripScroll;}
+  {const strip=filmStrip(films,oldStrip);if(!sameLand)strip.classList.add('globe-belt-arrive');panel.append(strip);strip.querySelector('.globe-strip-track').scrollLeft=stripScroll;}
   clearTimeout(prewarmTimer);const sections=[];if(films.length>1)sections.push(landFilmPicker(films));sections.push(filmmakerPicker(films,primary.id));const other=otherLands(chosen,primary);if(other)sections.push(other);
   const source=landSources(ref);if(external)source.append(external);if(profile)source.append(profile);
   const language=facet.l||work?.languageLabels||work?.languages,lang=Array.isArray(language)?language.join(' · '):typeof language==='string'?language:'';

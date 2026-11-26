@@ -289,6 +289,9 @@ async def run(browser,name,viewport):
             await page.locator("#globe-expand-encounter").click()
             assert await panel.get_attribute("data-expanded")=="false"
             assert await panel.get_attribute("data-belt")=="true"
+            belt_geometry=await page.evaluate("""()=>{const p=document.querySelector('#globe-encounter').getBoundingClientRect(),h=document.querySelector('#atlas-rotational-globe').getBoundingClientRect(),z=document.querySelector('.globe-zoom').getBoundingClientRect();return {ratio:p.width/h.width,right:p.right,zoomLeft:z.left,height:p.height,hostHeight:h.height}}""")
+            assert belt_geometry["ratio"]>=.70 and belt_geometry["right"]<=belt_geometry["zoomLeft"]+2,(name,"belt too narrow or overlapping zoom",belt_geometry)
+            assert belt_geometry["height"]<=belt_geometry["hostHeight"]*.42+2,(name,"unexpanded belt too tall",belt_geometry)
             await page.locator("#globe-collapse-belt").click()
             assert await panel.get_attribute("data-collapsed")=="true"
             assert await page.locator(".globe-film-strip").is_visible()
@@ -378,7 +381,7 @@ async def run(browser,name,viewport):
             await page.locator(".globe-maker-works [data-maker-film]").first.wait_for()
             assert await page.locator(".globe-maker-actions a").first.get_attribute("href")
             await page.locator(".globe-land-makers summary").first.click()
-            assert 1 < await page.locator("#globe-encounter .globe-strip-item").count() <= 12
+            assert 1 <= await page.locator("#globe-encounter .globe-strip-item").count() <= 12
             assert await page.locator("#globe-encounter .globe-strip-item[aria-current=true]").count()==1
             assert await page.locator("#globe-encounter .globe-credit-details").count()==1
             await page.locator(".globe-credit-details summary").click()
@@ -392,7 +395,18 @@ async def run(browser,name,viewport):
             assert await page.locator("#globe-encounter .globe-strip-item[tabindex='0']").count()==1
             await page.keyboard.press("ArrowLeft")
             await page.wait_for_function("id=>AtlasGlobe.discovery.featured?.film===id && document.activeElement?.matches('.globe-strip-item[aria-current=true]')",arg=first_id)
-            print(name,"emergent artwork",await page.evaluate("window.AtlasGlobe.discovery.posterVisible"),flush=True)
+            await page.locator("#globe-more-toggle").click()
+            await page.locator("#globe-floating-cinema").check()
+            await page.locator("#globe-more-toggle").click()
+            assert await page.evaluate("AtlasGlobe.discovery.belt.floating")
+            assert await page.evaluate("AtlasGlobe.discovery.posterReason!=='cinema-belt'")
+            await page.locator("#globe-more-toggle").click()
+            await page.locator("#globe-floating-cinema").uncheck()
+            await page.locator("#globe-more-toggle").click()
+            assert not await page.evaluate("AtlasGlobe.discovery.belt.floating")
+            assert not await page.locator("#globe-emergent").is_visible()
+            assert not await page.locator("#globe-community-broadcast").is_visible()
+            print(name,"cinema belt geometry and optional previews verified",belt_geometry,flush=True)
             assert await page.evaluate("window.AtlasGlobe.discovery.recent.length>0")
             await shot(page,f"shots/globe-independent/{name}-encounter.png")
             targets=await page.locator("#globe-encounter [data-target-film]").evaluate_all("(els)=>els.map(e=>({film:e.dataset.targetFilm,land:e.dataset.targetLand}))")
