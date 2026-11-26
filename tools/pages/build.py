@@ -85,6 +85,8 @@ for r in data:
             if w not in used: used.add(w); links.append(f'<a href="{esc(w)}" target="_blank" rel="noopener">Watch · {esc(host(w))} ↗</a>')
         if f['source'] and f['source'] not in used: used.add(f['source']); links.append(f'<a href="{esc(f["source"])}" target="_blank" rel="noopener">Credit source · {esc(host(f["source"]))} ↗</a>')
         links.append(f'<a href="../?maker={esc(r["id"])}&amp;film={esc(f["id"])}">On the map</a>')
+        request_url = f'../corrections.html?about={quote(f["title"] + " — " + nm)}&maker={quote(r["id"])}&film={quote(f["id"])}&page={quote(BASE + "/maker/" + r["id"] + ".html#" + f["id"])}'
+        links.append(f'<a href="{esc(request_url)}">Request a correction or withdrawal</a>')
         links.append(f'<button type="button" class="scr" data-screen data-fid="{esc(f["id"])}" data-rid="{esc(r["id"])}" data-title="{esc(f["title"])}" data-year="{esc(f["year"] or "")}" data-maker="{esc(nm)}" data-page="{esc(r["id"])}.html#{esc(f["id"])}" data-watch="{esc((f["watch"] or [""])[0])}">＋ Screening list</button>')
         # one order for a film everywhere (map card, this page, Watch): title and year · role · form, length, language · themes · links
         langs = ', '.join(f['languageLabels']) if isinstance(f.get('languageLabels'), list) else (f['languages'] or '')

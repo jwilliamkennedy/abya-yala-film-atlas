@@ -805,6 +805,12 @@ function encounterDisclosures(panel,sections){
  if(wrap.childElementCount)panel.append(wrap);
  return wrap;
 }
+function participationLink({film=null,maker='',land='',name='',kind=''}={}){
+ const u=new URL('corrections.html',document.baseURI);
+ const context={about:name||[film?.title,film?.maker].filter(Boolean).join(' — '),maker:maker||film?.record,film:film?.film,land,kind,page:film?makerProfile(film.record)+'#'+encodeURIComponent(film.film):new URL('index.html',document.baseURI).href};
+ for(const [k,v] of Object.entries(context))if(v)u.searchParams.set(k,v);
+ return externalLink('Request a correction or withdrawal',u.href,'globe-participation-link');
+}
 function creditDetails(film,summaryContent=[]){
  const d=el('details','globe-credit-details');d.append(encounterSummary('Details & sources'),...summaryContent);const body=el('div','globe-credit-data');d.append(body);
  let loading=false,done=false;d.addEventListener('toggle',async()=>{if(!d.open||done||loading)return;loading=true;body.replaceChildren(el('p',null,'Loading public record…'));
@@ -1248,7 +1254,7 @@ function filmmakerPicker(films,land){
   copy.append(el('small',null,countLabel(maker.works,'matching film')+' · '+countLabel(new Set((r?.films||[]).map(v=>v.id)).size,'film')+' in Atlas'));
   head.append(copy);card.append(head);
   if(ref)card.append(el('small','globe-maker-evidence',ref.status==='sourced'?'Sourced land association':'Provisional land association'));
-  const actions=el('div','globe-maker-actions'),profile=externalLink('Director profile ↗',makerProfile(maker.id)),source=externalLink('Identity source ↗',row?.source_1_url||''),association=externalLink('Land association source ↗',ref?.source||'');if(profile)actions.append(profile);if(source)actions.append(source);if(association&&association.href!==source?.href)actions.append(association);card.append(actions);
+  const actions=el('div','globe-maker-actions'),profile=externalLink('Director profile ↗',makerProfile(maker.id)),source=externalLink('Identity source ↗',row?.source_1_url||''),association=externalLink('Land association source ↗',ref?.source||'');if(profile)actions.append(profile);if(source)actions.append(source);if(association&&association.href!==source?.href)actions.append(association);actions.append(participationLink({maker:maker.id,land,name:maker.name}));card.append(actions);
   if(row?.source_1_quote)card.append(el('blockquote','globe-maker-quote',row.source_1_quote));
   const works=el('div','globe-maker-works');card.append(works);
   let rendered=false;card.addEventListener('toggle',()=>{if(!card.open||rendered)return;rendered=true;for(const work of maker.credits){const idx=films.findIndex(x=>x.id===work.id),b=button('',()=>{if(!settled)return;filmOffset=idx;focusKey='';drawEncounter();focusEncounter();},'globe-land-film');b.dataset.makerFilm=work.id;const info=el('span','globe-list-copy');info.append(el('strong',null,work.title));if(work.year)info.append(el('small',null,String(work.year)));b.append(thumbnail(work),info);works.append(b);}});
@@ -1321,7 +1327,7 @@ function drawEncounter(){
   copy.append(actionRow);card.append(art,copy);panel.append(card);updateCollectButton();const reading=journeyControls(film);if(reading)panel.append(reading);
   if(films.length>1){const strip=filmStrip(films,oldStrip);if(!sameLand)strip.classList.add('globe-belt-arrive');panel.append(strip);if(strip!==oldStrip)strip.querySelector('.globe-strip-track').scrollLeft=stripScroll;}else{panel.style.setProperty('--belt-width','420px');panel.dataset.beltCapacity='1';panel.dataset.beltVisible='0';filmStripStart=0;}
   clearTimeout(prewarmTimer);const sections=[];if(films.length>1)sections.push(landFilmPicker(films));sections.push(filmmakerPicker(films,primary.id));const other=otherLands(chosen,primary);if(other)sections.push(other);
-  const source=landSources(ref);if(external)source.append(external);if(profile)source.append(profile);
+  const source=landSources(ref);if(external)source.append(external);if(profile)source.append(profile);source.append(participationLink({film,land:primary.id}));
   const language=facet.l||work?.languageLabels||work?.languages,lang=Array.isArray(language)?language.join(' · '):typeof language==='string'?language:'';
   if(lang){const info=el('div','globe-source-group globe-film-language');info.append(el('small','globe-source-label','Film language'),el('p',null,lang));source.prepend(info);}
   const themes=el('div','globe-film-themes');for(const t of C().terms(film))themes.append(button(t,()=>{C().showThemeLens([t]);filmOffset=0;sync();}));
@@ -1349,7 +1355,7 @@ function drawEncounter(){
   clearTimeout(prewarmTimer);featured=null;themeRoutes=[];panel.append(el('p','globe-empty',primary.count?'No films match the active filters.':'No linked films in the Atlas yet.'));
   const other=otherLands(chosen,primary);
   if(primary.count)panel.append(button('Clear film filters',clearDiscoveryFilters,'globe-more'));else if(points.some(p=>matchingFilms(p.id).length))panel.append(button('Discover a film',surprise,'globe-more'));
-  const d=el('details','globe-credit-details');d.append(encounterSummary('Land sources'),landSources(null));encounterDisclosures(panel,[filmmakerPicker(films,primary.id),other,d]);
+  const d=el('details','globe-credit-details');d.append(encounterSummary('Land sources'),landSources(null),participationLink({land:primary.id,name:primary.name,kind:'land link'}));encounterDisclosures(panel,[filmmakerPicker(films,primary.id),other,d]);
  }
  status.textContent=primary.name+' · '+films.length+' matching film credits';restorePanel();placeEmergent();updateThemeMap();renderSoon();
 }

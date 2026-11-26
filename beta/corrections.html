@@ -61,7 +61,7 @@ details.scholarship summary small{font:13px/1 'Atlas Sans',sans-serif;letter-spa
 html{scroll-behavior:smooth}@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
 @media (prefers-reduced-motion: reduce){details.scholarship summary::before{transition:none}}
 
-form{display:grid;gap:18px;margin-top:8px}
+form{display:grid;gap:18px;margin-top:8px} form [hidden]{display:none!important} #request-context{padding:10px 12px;border:1px solid var(--line);border-radius:4px;overflow-wrap:anywhere}
 label{display:grid;gap:6px;font-weight:600;font-size:.95em}
 label small{font-weight:400;color:var(--muted)}
 input,select,textarea{font:inherit;font-weight:400;color:var(--ink);background:var(--bg2);border:1px solid var(--line);border-radius:4px;padding:10px 12px}
@@ -105,23 +105,23 @@ main a[href^="http"]{color:var(--accent,var(--gold))}
 <header><a class="brand" href="./"><svg class="brand-mark" viewBox="0 0 120 120" aria-hidden="true" focusable="false"><circle cx="60" cy="60" r="50" fill="none" stroke="currentColor" stroke-width="7"/><path class="meridian" d="M44 16 C66 30 50 46 62 60 C74 74 56 88 66 104" fill="none" stroke="#5f8199" stroke-width="8" stroke-linecap="round"/><circle cx="62" cy="60" r="7" fill="currentColor"/></svg><span>Indigenous Cinema Atlas<small>Abya Yala and Turtle Island</small></span></a><nav class="primary" aria-label="Explore the atlas"><a href="about.html">About</a><a href="./">Map</a><a href="watch.html">Watch</a><details class="more-menu here"><summary>More</summary><div><a href="languages.html">Languages</a><a href="themes.html">Themes</a><a href="timeline.html">Timeline</a><span class="more-sep"></span><a href="screening.html" data-screen-count>Saved</a><span class="more-sep"></span><a href="corrections.html" aria-current="page">Suggest a correction</a></div></details></nav></header>
 <main>
 <p class="eyebrow">Corrections and additions</p>
-<h1>Suggest a correction</h1>
+<h1>Corrections, withdrawal and participation</h1>
 <p class="lede">Anyone may suggest a correction, an addition or a removal <strong>without giving a name, email address or account</strong>.</p>
-<p class="note">Questions about names, credits, land connections and community affiliations are welcome. You don’t need to identify yourself to raise a concern. Each request is reviewed before anything changes.</p>
+<p class="note">The Atlas is an early-stage prototype. Community consultation and filmmaker-led review are planned, not completed. You can use this form to request a change, restrict a map association, withdraw a record or express interest in future consultation. No submission changes the catalogue automatically.</p>
 <form id="fix" action="https://formsubmit.co/23dc26ddb5bcfa3245608936dfdd283e" method="POST" accept-charset="utf-8" novalidate>
 <input type="hidden" name="_subject" value="Indigenous Cinema Atlas — anonymous correction request">
 <input type="hidden" name="_template" value="table">
 <input type="hidden" name="_url" value="https://jwilliamkennedy.github.io/abya-yala-film-atlas/beta/corrections.html">
 <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none">
 <input type="hidden" id="record" name="atlas_record">
-<input type="hidden" id="page" name="atlas_page">
+<input type="hidden" id="page" name="atlas_page"><input type="hidden" id="maker" name="filmmaker_id"><input type="hidden" id="film" name="film_id"><input type="hidden" id="land" name="land_id"><div id="request-context" class="note" hidden></div>
 <label>Which filmmaker, film or land? <small>(required)</small><input id="about" name="record_name" required placeholder="Filmmaker, film or land name"></label>
-<label>Type of request<select id="kind" name="request_type"><option>Correct a filmmaker’s nation or affiliation</option><option>Correct a film’s details</option><option>Correct a land link on the map</option><option>Add a missing filmmaker or film</option><option>Remove or withdraw a record</option><option>Something else</option></select></label>
-<label>What should change? <small>(required)</small><textarea id="what" name="requested_change" required placeholder="Describe the change or concern. Avoid including personal or sensitive information."></textarea></label>
+<label>Type of request<select id="kind" name="request_type"><option>Correct a filmmaker’s nation or affiliation</option><option>Correct a film’s details</option><option>Correct a land link on the map</option><option>Add a missing filmmaker or film</option><option>Remove or withdraw a record</option><option>Change geographic visibility</option><option>Remove artwork or viewing link</option><option>Express interest in future consultation</option><option>Something else</option></select></label>
+<label id="visibility-field" hidden>Requested geographic visibility<select id="visibility" name="requested_visibility" disabled><option value="">Choose an option</option><option>Named territory only</option><option>Broad region only</option><option>Multiple documented associations</option><option>Catalogue listing without map placement</option><option>Remove the record entirely</option><option>Discuss before deciding</option></select><small>These are requests for review, not automatic map settings.</small></label><label>What should change? <small>(required)</small><textarea id="what" name="requested_change" required placeholder="Describe the change or concern. Avoid including personal or sensitive information."></textarea></label>
 <label>Supporting page <small>(optional)</small><input id="source" type="url" name="source_url" placeholder="https://"></label>
 <label>Your connection to the record <small>(optional)</small><select id="who" name="connection"><option value="">Prefer not to say</option><option>I am the filmmaker</option><option>I am a member of the community or nation</option><option>I work with the filmmaker or film</option><option>Researcher or viewer</option></select></label>
-<div class="actions"><button type="submit" id="send">Send correction</button><button type="button" class="secondary" id="copy">Copy request</button></div>
-<p class="note"><strong>Privacy:</strong> No name, email or account is asked for. Submissions pass through <a href="https://formsubmit.co/" target="_blank" rel="noopener noreferrer">FormSubmit ↗</a>, a third-party service that may log technical details, so anonymity can’t be guaranteed. Please don’t include private or ceremonial information.</p>
+<label>Reply email <small>(optional; only if you want a response or follow-up about participation)</small><input id="reply" name="reply_email" type="email" autocomplete="email" maxlength="254"></label><div class="actions"><button type="submit" id="send">Send request</button><button type="button" class="secondary" id="copy">Copy request</button><button type="button" class="secondary" id="download">Download request</button></div>
+<p class="note"><strong>Privacy:</strong> No name, email or account is required. An optional reply email is included only if you enter one. Submissions pass through <a href="https://formsubmit.co/" target="_blank" rel="noopener noreferrer">FormSubmit ↗</a>, a third-party service that may log technical details, so anonymity can’t be guaranteed. Please don’t include private or ceremonial information.</p>
 <textarea id="copy-fallback" rows="6" readonly hidden aria-label="Text to select and copy"></textarea>
 <p id="copied" role="status" aria-live="polite" class="note"></p>
 </form>
@@ -131,18 +131,29 @@ main a[href^="http"]{color:var(--accent,var(--gold))}
   const q = new URLSearchParams(location.search);
   const $ = id => document.getElementById(id);
   const form = $('fix'), status = $('copied'), send = $('send');
-  if (q.get('about')) $('about').value = q.get('about');
+  if (q.get('about')) $('about').value = q.get('about').slice(0,500);
   if (q.get('kind')) for (const o of $('kind').options) {
     if (o.text.toLowerCase().includes(q.get('kind').toLowerCase())) { $('kind').value=o.text; break; }
   }
-  $('record').value = q.get('record') || '';
-  $('page').value = q.get('page') || '';
+  const id = key => /^[A-Za-z0-9][A-Za-z0-9._:-]{0,180}$/.test(q.get(key)||'') ? q.get(key) : '';
+  for (const key of ['record','maker','film','land']) $(key).value=id(key);
+  try {
+    const u=new URL(q.get('page')||'',location.href);
+    if(q.has('page')&&u.origin===location.origin&&u.pathname.startsWith(new URL('./',location.href).pathname)&&!u.username&&!u.password) $('page').value=u.href;
+  } catch {}
+  const context=['maker','film','land','record'].filter(k=>$(k).value).map(k=>k+': '+$(k).value);
+  if(context.length){$('request-context').hidden=false;$('request-context').textContent='Record context · '+context.join(' · ');}
+  function syncKind(){const visible=$('kind').value==='Change geographic visibility';$('visibility-field').hidden=!visible;$('visibility').disabled=!visible;}
+  $('kind').addEventListener('change',syncKind);syncKind();
   const message = () => [
     'About: ' + $('about').value.trim(),
     'Request: ' + $('kind').value,
     'What should change: ' + $('what').value.trim(),
     'Source: ' + ($('source').value.trim() || '(not supplied)'),
     'Connection: ' + ($('who').value || 'Prefer not to say'),
+    !$('visibility').disabled&&$('visibility').value ? 'Requested visibility: '+$('visibility').value : '',
+    $('reply').value ? 'Optional reply email: '+$('reply').value : '',
+    ...['maker','film','land'].filter(k=>$(k).value).map(k=>k+': '+$(k).value),
     $('record').value ? 'Record: ' + $('record').value : '',
     $('page').value ? 'Page: ' + $('page').value : ''
   ].filter(Boolean).join('\n');
@@ -150,6 +161,8 @@ main a[href^="http"]{color:var(--accent,var(--gold))}
     if (!$('about').value.trim()) {status.textContent='Identify the filmmaker, film or land.';$('about').focus();return false;}
     if (!$('what').value.trim()) {status.textContent='Describe your concern or requested change.';$('what').focus();return false;}
     if ($('source').value.trim() && !$('source').checkValidity()) {status.textContent='Use a complete source URL or leave the source blank.';$('source').focus();return false;}
+    if (!$('visibility').disabled && !$('visibility').value) {status.textContent='Choose the geographic visibility you would like reviewed.';$('visibility').focus();return false;}
+    if ($('reply').value.trim() && !$('reply').checkValidity()) {status.textContent='Enter a valid reply email or leave it blank.';$('reply').focus();return false;}
     return true;
   };
   // FormSubmit's normal POST navigates away before we can see its response. The
@@ -182,7 +195,7 @@ main a[href^="http"]{color:var(--accent,var(--gold))}
           status.textContent = 'FormSubmit refused the request. Your correction has NOT been delivered. Details: ' + explanation;
         }
       } else {
-        status.textContent = 'Thank you. Your correction was sent.'; form.reset();
+        status.textContent = 'The submission service accepted your request. Receipt by the Atlas team and any catalogue change are not yet confirmed.';
       }
     } catch (error) {
       const timedOut = error && error.name === 'AbortError';
@@ -195,6 +208,7 @@ main a[href^="http"]{color:var(--accent,var(--gold))}
       form.removeAttribute('aria-busy');
     }
   });
+  $('download').addEventListener('click',()=>{if(!valid())return;const url=URL.createObjectURL(new Blob([message()+'\n'],{type:'text/plain;charset=utf-8'}));const a=document.createElement('a');a.href=url;a.download='atlas-request.txt';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);status.textContent='Local copy prepared. Nothing was submitted.';});
   $('copy').addEventListener('click', async () => {
     if (!valid()) return;
     try {

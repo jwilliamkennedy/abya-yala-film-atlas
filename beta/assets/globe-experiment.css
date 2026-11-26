@@ -743,3 +743,5 @@ html[data-globe-entry] #atlas-globe-stage>#constellate-popup .constellate-headin
 #atlas-rotational-globe #globe-encounter[data-single=true]:is([data-expanded=true],:has(.globe-encounter-disclosures>details[open])){max-height:min(70%,570px,var(--globe-encounter-room,570px))}
 @media(max-width:900px){#globe-film-comparison{top:calc(var(--globe-gutter) + 92px);width:min(360px,calc(100% - 2 * var(--globe-gutter)));max-height:23%}}
 @media(max-height:500px){#globe-film-comparison{top:var(--globe-gutter);width:min(300px,38%);max-height:30%}}
+
+#globe-encounter .globe-participation-link{display:inline-block;font-size:11px;line-height:1.5;color:#c4dcd1;text-decoration:underline;text-underline-offset:3px;margin:3px 0;overflow-wrap:anywhere}
