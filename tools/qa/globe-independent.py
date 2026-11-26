@@ -185,48 +185,32 @@ async def run(browser,name,viewport):
             print(name,"degraded renderer remains navigable",flush=True)
         elif MODE=="terrain":
             await page.evaluate("window.AtlasGlobe.goTo([-90.875,14.501],10)")
-            await page.wait_for_function("window.AtlasGlobe.tileState?.mesh==='dem'",timeout=20000)
-            await page.wait_for_function("window.AtlasGlobe.tileState?.elevation>1500",timeout=60000)
-            # Elevation can arrive first; explicitly await actual satellite tile success.
-            await page.wait_for_function("window.AtlasGlobe.tileState?.received.satellite>0",timeout=60000)
-            assert await page.locator("#globe-credit-satellite").is_visible()
-            assert any("tiles.maps.eox.at/" in u for u in tiles),("no successful satellite response",tiles)
-            assert any("tiles.mapterhorn.com/" in u for u in tiles),("no successful DEM response",tiles)
+            await page.wait_for_function("AtlasGlobe.focus.settled && !AtlasGlobe.tileState.motion.moving",timeout=30000)
+            # The globe draws only local geometry and OpenFreeMap context: no satellite imagery, no elevation mesh.
+            state=await page.evaluate("AtlasGlobe.tileState")
+            assert state["mesh"] is None,(name,"terrain mesh present",state)
+            assert not tiles,("remote imagery or elevation requested",tiles[:3])
+            assert await page.locator("#globe-credit-satellite").is_hidden()
+            assert await page.locator("#globe-credit-fallback").is_visible()
             await page.wait_for_function("AtlasGlobe.territoryNames.withoutCinema>0",timeout=60000)
             labels=await page.evaluate("""()=>{const N=AtlasGlobe.territoryNames,L=new Map(AtlasCatalogue.lands.map(x=>[x.id,x]));return {indexed:N.indexed,total:N.total,withoutCinema:N.withoutCinema,invalid:N.anchors.filter(a=>!L.get(a.id)?.groups.some(g=>g.features.some(f=>String(f.id)===a.sourceId&&d3.geoContains(f,a.coordinate)))).map(a=>a.id)};}""")
             assert not labels["invalid"] and labels["withoutCinema"]>0,(name,labels)
             print(name,"geographic name coverage",json.dumps(labels),flush=True)
             await shot(page,f"shots/globe-independent/{name}-overhead.png")
-            await page.locator("#globe-more-toggle").click()
-            await page.locator("#globe-landscape").click()
-            await page.wait_for_function("window.AtlasGlobe.tileState.pitch>35 && window.AtlasGlobe.focus.settled")
-            await shot(page,f"shots/globe-independent/{name}-tilted.png")
-            assert await page.evaluate("Math.abs(Number(new URL(AtlasGlobe.discovery.shareURL).searchParams.get('pitch'))-AtlasGlobe.tileState.pitch)<.02"),(name,"shared terrain pitch missing")
-            # Confirm that the actual reticle, geographic hit test and encounter
-            # remain aligned through close zoom, including a pitched terrain view.
-            await page.locator("#globe-more-toggle").click()
-            await page.locator("#globe-landscape").click()
-            await page.wait_for_function("AtlasGlobe.tileState.pitch<1 && AtlasGlobe.focus.settled")
             land=await page.evaluate("AtlasGlobe.anchors.find(a=>a.id==='LAND-36072')")
             assert land
             await page.locator("#globe-find-toggle").click()
             await page.locator("#globe-find").select_option(land["id"])
             await page.wait_for_function("id=>AtlasGlobe.focus.settled && AtlasGlobe.discovery.featured?.land===id",arg=land["id"],timeout=30000)
             film=await page.evaluate("AtlasGlobe.discovery.featured.film")
-            sizes=[]
-            for z in (3,5,8,10):
-                await page.evaluate("([a,z])=>AtlasGlobe.goTo(a,z)",[land["coordinate"],z])
+            # A chosen land stays open while the globe moves; moving the globe never chooses another land.
+            assert await page.evaluate("getComputedStyle(document.querySelector('#globe-aperture')).visibility==='hidden'"),(name,"reticle visible")
+            for at,z in (([-60,-15],5),([-105,40],3),(land["coordinate"],8),(land["coordinate"],10)):
+                await page.evaluate("([a,z])=>AtlasGlobe.goTo(a,z)",[at,z])
                 await page.wait_for_function("AtlasGlobe.focus.settled && !AtlasGlobe.tileState.motion.moving",timeout=30000)
-                target=await page.evaluate("""()=>{const G=AtlasGlobe,T=G.focus.target,e=document.querySelector('#globe-aperture').getBoundingClientRect(),b=document.querySelector('#globe-live-map').getBoundingClientRect();return {target:T,inside:G.focus.inside,featured:G.discovery.featured,width:e.width,offset:[e.x+e.width/2-b.x-b.width/2,e.y+e.height/2-b.y-b.height/2],lit:document.querySelector('#atlas-rotational-globe').classList.contains('has-cinema')};}""")
-                assert abs(target["width"]-2*target["target"]["radius"])<.5 and max(map(abs,target["offset"]))<.5,(name,z,target)
-                assert target["target"]["primary"]==land["id"] and target["featured"]["film"]==film and target["lit"],(name,z,target)
-                sizes.append(target["width"])
-            assert sizes[0]>sizes[-1] and sizes[-1]==26,(name,sizes)
-            await page.locator("#globe-more-toggle").click()
-            await page.locator("#globe-landscape").click()
-            await page.wait_for_function("AtlasGlobe.tileState.pitch>35 && AtlasGlobe.focus.settled")
-            assert await page.evaluate("""()=>{const G=AtlasGlobe,t=G.focus.target;const ids=AtlasCatalogue.lands.filter(l=>!l.browseGroup&&l.groups?.some(g=>g.features.some(f=>d3.geoContains(f,t.coordinate)))).map(l=>l.id);return G.focus.inside.every(id=>ids.includes(id))&&ids.every(id=>G.focus.inside.includes(id))&&(!t.primary||G.focus.ids.includes(t.primary))&&(t.reason!=='contains-target'||ids.includes(t.primary));}"""),(name,"pitched geographic target mismatch")
-            print(name,"adaptive targeting",sizes,flush=True)
+                held=await page.evaluate("({primary:AtlasGlobe.focus.target.primary,featured:AtlasGlobe.discovery.featured})")
+                assert held["primary"]==land["id"] and held["featured"]["film"]==film,(name,at,z,held)
+            print(name,"chosen land held across camera moves",flush=True)
             # Verify real button-driven zoom, not only programmatic jumps.
             before=await page.evaluate("({center:AtlasGlobe.camera.center,zoom:AtlasGlobe.camera.zoom,featured:AtlasGlobe.discovery.featured})")
             await page.locator("#globe-plus").click()
@@ -243,9 +227,6 @@ async def run(browser,name,viewport):
                 # Use an overhead view at a scale above the overview's ordinary
                 # maximum, where a renderer failure previously made the next
                 # zoom-out jump by several orders of magnitude.
-                await page.locator("#globe-more-toggle").click()
-                await page.locator("#globe-landscape").click()
-                await page.wait_for_function("AtlasGlobe.tileState.pitch<1 && AtlasGlobe.focus.settled",timeout=30000)
                 await page.evaluate("a=>AtlasGlobe.goTo(a,8)",land["coordinate"])
                 await page.wait_for_function("AtlasGlobe.focus.settled && AtlasGlobe.camera.zoom>40",timeout=30000)
                 expected=await page.evaluate("({camera:AtlasGlobe.camera,featured:AtlasGlobe.discovery.featured,collection:JSON.stringify(AtlasCollections.current())})")
@@ -295,10 +276,8 @@ async def run(browser,name,viewport):
             assert after is not None,(name,'Escape exited the globe instead of closing its menu')
             assert max(abs((after['center'][0]-cam['center'][0]+180)%360-180),abs(after['center'][1]-cam['center'][1]))<.01 and abs(after['zoom']/cam['zoom']-1)<.002,(name,cam,after)
             await page.locator("#globe-more-toggle").click()
-            await page.locator("#globe-lands").click()
-            assert not await page.evaluate("window.AtlasGlobe.territoryLayer.visible")
-            await page.locator("#globe-lands").click()
-            assert await page.evaluate("window.AtlasGlobe.territoryLayer.visible")
+            # Lands are always on: there is no switch to hide them.
+            assert await page.locator("#globe-lands").is_hidden() and await page.evaluate("window.AtlasGlobe.territoryLayer.visible")
             await page.locator(".globe-settings summary").click()
             await page.locator("#globe-opacity").select_option("1.6")
             assert await page.evaluate("window.AtlasGlobe.territoryLayer.strength===1.6")

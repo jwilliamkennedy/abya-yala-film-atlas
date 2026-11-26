@@ -12,7 +12,7 @@ class PageLoaderTest(unittest.TestCase):
             '<script src="watch-data.js?v=7" defer></script>',
             '<script src="future-data.js?v=1"></script>',
             '<script src="assets/constellate.js?v=98-globe"></script>',
-            '<script src="assets/globe-experiment.js?v=32"></script>',
+            '<script src="assets/globe.js?v=24"></script>',
         ]
         legacy = '<script src="connections-data.js?v=19"></script>'
         for catalogue in ['', '<script src="atlas-data.js?v=current"></script>']:

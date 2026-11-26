@@ -39,7 +39,7 @@ async def main(base, chrome=None):
                     watch = await pg.evaluate("""() => {
                       const scripts = [...document.scripts].map(s => new URL(s.src || location.href, location.href).pathname);
                       const loaders = scripts.filter(s => s.endsWith('/watch-data.js'));
-                      const globe = scripts.findIndex(s => s.endsWith('/assets/globe-experiment.js'));
+                      const globe = scripts.findIndex(s => s.endsWith('/assets/globe.js'));
                       const films = window.ATLAS_WATCH?.films;
                       return {loaders: loaders.length, films: Array.isArray(films) ? films.length : -1,
                               ordered: globe < 0 || scripts.indexOf(loaders[0]) < globe};

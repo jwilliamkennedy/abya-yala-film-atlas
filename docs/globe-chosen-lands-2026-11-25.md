@@ -1,0 +1,15 @@
+# Globe: chosen lands, local land, no satellite (25 November 2026)
+
+John's decision (25 Nov): keep the sphere, drop what made it a surveillance view.
+
+- **No satellite imagery, no elevation.** NASA GIBS, EOxCloudless and Mapterhorn are removed from the globe. Land is the Natural Earth 1:50m coastline (`assets/world-50m.json`, already local) filled in the flat map's stone `#d9dbdd`; the sea is the flat map's blue-grey `#8093a1`; rivers and lakes from OpenFreeMap at zoom 6+, in the same colour. Basemap place, water and peak names stay off, as on the flat map. The Terrain (tilted) button is gone; `syncTerrain` does nothing.
+- **Territories at full strength.** Ambient fill 0.30–0.40, edges 0.35–0.70 (Soft/Strong still multiply these). Lands are always on: the Lands switch is hidden and an old `territories=off` link opens with lands shown.
+- **No reticle, no tuning.** `#globe-aperture` is hidden (kept in the page because hit-testing measures it). Moving the globe never chooses a land. A land opens when it is chosen: click or tap it, pick it in Find, follow a link, or press Enter (the land at the centre of the view). It stays open while the globe moves, until another is chosen (`heldLand` in `settle()`); Home clears it. With nothing chosen the panel is hidden (`#globe-encounter.is-empty`). Hovering shows the land's name (`#globe-hover-name`).
+- **Globe, then flat.** Projection `['interpolate',['linear'],['zoom'],5,'vertical-perspective',7,'mercator']`: a sphere at the scale of the continent, a flat map at the scale of a land.
+- **Antimeridian.** The native land fill uses the unmerged countries, with rings made continuous past ±180 and polar rings closed along the pole (`planarRings`). Without this Chukotka and Antarctica drew bands round the globe (previously hidden under the satellite layer).
+- **Fallback canvas** uses the same stone, blue-grey and ink; the colour relief raster is no longer drawn.
+- `assets/globe-experiment.js` (unused) is deleted.
+
+Checks changed to the new contract: `tools/qa/globe-independent.py` (terrain mode: no remote imagery or mesh, reticle hidden, chosen land held across camera moves; lands always on), `tools/qa/globe-discovery.py`, `tools/qa/globe-share.py`. Local runs (Chromium, SwiftShader, external hosts blocked): terrain, input, discovery-page and share suites passed; the independent discovery mode stops on an artwork-frame check locally (images blocked), as the unedited code also fails locally.
+
+Still to do: Constellate on the globe (night sky, threads as arcs), the theme web as arcs, then retire `flat.html`.

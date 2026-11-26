@@ -1,5 +1,7 @@
 # Globe acceptance contract — 24 November 2026
 
+**Superseded on 25 November 2026:** the globe no longer uses satellite imagery or elevation; see [globe-chosen-lands-2026-11-25.md](globe-chosen-lands-2026-11-25.md).
+
 ## Architecture
 - MapLibre globe and one camera; same projection for all imagery, elevation, reference polygons and film anchors. Offline vector canvas is explicitly an overview only.
 - NASA GIBS Blue Marble for overview, 2016–17 EOxCloudless for regional/local imagery (CC BY 4.0), Mapterhorn Terrarium DEM for genuine elevation displacement at 1x, with restrained hillshade. OpenFreeMap vector place context (no political boundaries) from regional zoom. Tile source credits displayed on map.
