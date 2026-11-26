@@ -1,0 +1,26 @@
+name: Film image search (YouTube and TMDB)
+permissions:
+  contents: write
+on:
+  workflow_dispatch:
+  push:
+    paths: ['tools/thumbs/search_*.csv', 'tools/thumbs/search_candidates.py']
+jobs:
+  search:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - uses: actions/checkout@v4
+      - run: pip install -q requests pillow
+      - name: Search for each film
+        run: |
+          f=$(ls tools/thumbs/search_*.csv | sort | tail -1)
+          python3 tools/thumbs/search_candidates.py "$f" out
+      - name: Publish the results to the ci-thumbs-search branch (not deployed)
+        if: always()
+        run: |
+          cd out
+          git init -q -b ci-thumbs-search
+          git config user.name "github-actions"; git config user.email "github-actions@users.noreply.github.com"
+          git add . && git commit -q -m "Film image search ${GITHUB_SHA::7}"
+          git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" ci-thumbs-search
