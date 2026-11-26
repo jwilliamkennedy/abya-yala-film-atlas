@@ -254,7 +254,8 @@ async def run(browser,name,viewport):
             assert await page.locator("#globe-credit-live").is_visible()
             await page.wait_for_function("document.querySelector('#globe-encounter').getBoundingClientRect().bottom <= document.querySelector('.globe-footer').getBoundingClientRect().top+1")
             sources=await page.request.get(BASE+"map-sources.html")
-            assert sources.ok and "Copernicus Sentinel data 2016" in await sources.text()
+            text=await sources.text()
+            assert sources.ok and "Natural Earth" in text and "Copernicus" not in text and "Mapterhorn" not in text
             assert await page.locator(".globe-menu-panel:visible").count()==0
             cam=await page.evaluate("window.AtlasGlobe.camera")
             await page.locator("#globe-theme-toggle").click()
