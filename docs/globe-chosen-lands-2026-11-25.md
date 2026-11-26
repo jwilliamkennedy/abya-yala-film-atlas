@@ -28,3 +28,7 @@ John asked to get as close to NASA as possible. The globe now layers NASA Blue M
 ## Nodes and theme weaving (25 Nov, late)
 - Film nodes are larger (2.8–5.6 px plus up to 1.6 px with zoom), near-white with a 1.2 px dark ring and a soft halo; the chosen land's node grows and takes a gold ring; nodes of a chosen theme are a step larger and warmer.
 - **Theme weaving:** choosing a theme joins its lands with gold great-circle arcs, each land to its nearest neighbour in the theme (a minimum spanning tree, `updateWeave`), so a theme reads as one web; `AtlasGlobe.weave` reports lands and arcs (Water: 39 lands, 38 arcs).
+
+## Gather on the globe (25 Nov, late)
+- Top bar: Find · Themes · Discover · **Gather** · Map · Constellate. Gather turns the pointer into a pen (map panning off); the drawn line follows the curve of the earth (`gather-line`). On release the lands with films within 20 px of the line (26 px on phones) are listed in the order the line meets them, with film counts; a land opens on click; **Collect all** (first 60) adds them to the current thread in that order; Draw again, Clear, Escape. The click that follows a release is swallowed so the camera does not jump.
+- Test: `.globe-primary button` count is 6.

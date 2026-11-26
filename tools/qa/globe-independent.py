@@ -249,7 +249,7 @@ async def run(browser,name,viewport):
             await page.wait_for_function("window.AtlasGlobe.discovery.publication==='ready'",timeout=60000)
             await page.wait_for_function("window.AtlasGlobe.focus.settled && !window.AtlasGlobe.tileState.wheelActive")
             initial=await page.evaluate("JSON.stringify(window.AtlasCollections.current())")
-            assert await page.locator(".globe-primary button").count()==5
+            assert await page.locator(".globe-primary button").count()==6
             assert await page.locator(".globe-map-sources").get_attribute("href")=="map-sources.html"
             assert await page.locator("#globe-credit-live").is_visible()
             await page.wait_for_function("document.querySelector('#globe-encounter').getBoundingClientRect().bottom <= document.querySelector('.globe-footer').getBoundingClientRect().top+1")
