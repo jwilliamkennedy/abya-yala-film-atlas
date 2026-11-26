@@ -1196,6 +1196,31 @@ const NODE_STYLES={
   'cinema-glow':{'circle-color':'#f2c96b','circle-opacity':['case',['==',['get','match'],1],.32,0],'circle-blur':1,'circle-radius':['interpolate',['linear'],['zoom'],1,['interpolate',['linear'],F,1,5,100,14],6,['interpolate',['linear'],F,1,8,100,20]]}}),
  rings:F=>({'cinema-light':{'circle-radius':['interpolate',['linear'],['zoom'],1,['+',['interpolate',['linear'],F,1,2.4,8,3.4,30,4.6,100,6],['case',['==',['get','focus'],1],2,0]],6,['+',['interpolate',['linear'],F,1,3.6,8,5,30,6.6,100,8.4],['case',['==',['get','focus'],1],2.4,0]]],'circle-color':'#0e1820','circle-opacity':['case',['==',['get','match'],1],.55,0],'circle-stroke-color':['case',['==',['get','focus'],1],'#f2d99b','#fdf8ea'],'circle-stroke-width':['interpolate',['linear'],['zoom'],1,1.3,6,1.9],'circle-stroke-opacity':['case',['==',['get','match'],1],.95,0]},
   'cinema-glow':{'circle-opacity':0}})};
+{const M=['==',['get','match'],1],FOC=['==',['get','focus'],1],
+  rad=(F,lo,hi)=>['interpolate',['linear'],['zoom'],1,['+',['interpolate',['linear'],F,1,lo[0],8,lo[1],30,lo[2],100,lo[3]],['case',FOC,1.6,0]],6,['+',['interpolate',['linear'],F,1,hi[0],8,hi[1],30,hi[2],100,hi[3]],['case',FOC,2.2,0]]],
+  off={'circle-opacity':0},small=[1.5,1.9,2.3,2.8],smallNear=[2.4,3,3.7,4.4];
+ Object.assign(NODE_STYLES,{
+  // 1 the chosen style turned down: no glow, smaller core, finer ring
+  quiet:F=>({'cinema-light':{'circle-radius':rad(F,small,smallNear),'circle-color':'#fdf8ea','circle-opacity':['case',M,.95,.08],'circle-stroke-color':['case',FOC,'#f2d99b',['get','tone']],'circle-stroke-width':['interpolate',['linear'],['zoom'],1,1.1,6,1.8],'circle-stroke-opacity':['case',M,.95,0]},'cinema-glow':off}),
+  // 2 grains: the smallest cream points, nothing round them
+  grain:F=>({'cinema-light':{'circle-radius':rad(F,[1.1,1.4,1.8,2.2],[1.9,2.4,3,3.6]),'circle-color':'#fdf8ea','circle-opacity':['case',M,.92,.06],'circle-stroke-color':'#14181c','circle-stroke-width':.5,'circle-stroke-opacity':['case',M,.45,0]},'cinema-glow':off}),
+  // 3 ink: a cartographer's dot, dark with a cream hairline
+  ink:F=>({'cinema-light':{'circle-radius':rad(F,small,smallNear),'circle-color':'#14181c','circle-opacity':['case',M,.92,.06],'circle-stroke-color':['case',FOC,'#f2d99b','#fdf8ea'],'circle-stroke-width':['interpolate',['linear'],['zoom'],1,.8,6,1.3],'circle-stroke-opacity':['case',M,.95,0]},'cinema-glow':off}),
+  // 4 fine rings: open circles, a cream line
+  fine:F=>({'cinema-light':{'circle-radius':rad(F,[2,2.6,3.3,4],[3,3.8,4.8,5.8]),'circle-color':'#fdf8ea','circle-opacity':['case',FOC,.9,0],'circle-stroke-color':['case',FOC,'#f2d99b','#fdf8ea'],'circle-stroke-width':['interpolate',['linear'],['zoom'],1,1,6,1.5],'circle-stroke-opacity':['case',M,.95,0]},'cinema-glow':off}),
+  // 5 the land's own colour as the dot
+  tone:F=>({'cinema-light':{'circle-radius':rad(F,small,smallNear),'circle-color':['get','tone'],'circle-opacity':['case',M,1,.06],'circle-stroke-color':['case',FOC,'#f2d99b','#14181c'],'circle-stroke-width':['interpolate',['linear'],['zoom'],1,.6,6,1],'circle-stroke-opacity':['case',M,.6,0]},'cinema-glow':off}),
+  // 6 sized by films: translucent discs, so a land with one film is still there and a land with many is plainly larger
+  sized:F=>({'cinema-light':{'circle-radius':rad(F,[1.6,3.4,5.6,8.5],[2.6,5.2,8.4,12.5]),'circle-color':'#fdf8ea','circle-opacity':['case',M,.3,.04],'circle-stroke-color':['case',FOC,'#f2d99b','#fdf8ea'],'circle-stroke-width':1,'circle-stroke-opacity':['case',M,.9,0]},'cinema-glow':off}),
+  // 7 pools: no points at all, a soft pool of each land's colour
+  pools:F=>({'cinema-light':{'circle-opacity':['case',FOC,.95,0],'circle-stroke-opacity':['case',FOC,1,0],'circle-stroke-color':'#f2d99b'},'cinema-glow':{'circle-color':['get','tone'],'circle-opacity':['case',M,.62,0],'circle-blur':1,'circle-radius':['interpolate',['linear'],['zoom'],1,['interpolate',['linear'],F,1,7,100,16],6,['interpolate',['linear'],F,1,12,100,26]]}}),
+  // 8 on approach: at the scale of the globe only earth and lands; the lights arrive as you come closer
+  approach:F=>({'cinema-light':{'circle-radius':rad(F,small,smallNear),'circle-color':'#fdf8ea','circle-opacity':['interpolate',['linear'],['zoom'],3.1,['case',FOC,.95,0],4.3,['case',M,.95,.08]],'circle-stroke-color':['case',FOC,'#f2d99b',['get','tone']],'circle-stroke-width':['interpolate',['linear'],['zoom'],1,1.1,6,1.8],'circle-stroke-opacity':['interpolate',['linear'],['zoom'],3.1,['case',FOC,1,0],4.3,['case',M,.95,0]]},'cinema-glow':off}),
+  // 9 only the chosen land is lit; every other land with films is a faint mark
+  chosen:F=>({'cinema-light':{'circle-radius':rad(F,[1.2,1.5,1.9,2.3],[2,2.5,3.1,3.7]),'circle-color':'#fdf8ea','circle-opacity':['case',FOC,1,M,.42,.04],'circle-stroke-color':'#f2d99b','circle-stroke-width':['case',FOC,2.2,0],'circle-stroke-opacity':['case',FOC,1,0]},'cinema-glow':{'circle-color':'#f2d99b','circle-opacity':['case',FOC,.5,0],'circle-blur':1}}),
+  // 10 shadowed: a cream point on a soft dark ground, no colour at all
+  shadow:F=>({'cinema-light':{'circle-radius':rad(F,small,smallNear),'circle-color':'#fdf8ea','circle-opacity':['case',M,.96,.06],'circle-stroke-color':['case',FOC,'#f2d99b','#fdf8ea'],'circle-stroke-width':['case',FOC,1.8,0],'circle-stroke-opacity':['case',FOC,1,0]},'cinema-glow':{'circle-color':'#0d141b','circle-opacity':['case',M,.5,0],'circle-blur':.9,'circle-radius':['interpolate',['linear'],['zoom'],1,['interpolate',['linear'],F,1,4.5,100,8],6,['interpolate',['linear'],F,1,7,100,12]]}})
+ });}
 let nodeStyleName='';const nodeDefaults={};
 function nodeStyle(name){if(!liveReady||!live)return false;const make=NODE_STYLES[name];
  for(const id of ['cinema-light','cinema-glow'])if(!nodeDefaults[id]){nodeDefaults[id]={};}

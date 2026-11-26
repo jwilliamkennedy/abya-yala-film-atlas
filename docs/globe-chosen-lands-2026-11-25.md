@@ -88,3 +88,10 @@ John chose the Plate scheme and asked for every menu, the Themes menu and the fi
 - **Zooming.** Lakes and rivers ease in over most of a zoom level instead of appearing at once; film names ease out before their upper limit; thumbnails fade out as they fade in.
 - Versions: `globe.js?v=44-plate`, `globe-experiment.css?v=82-plate`.
 - **Themes, five first.** The menu opens on the five families, each with its film count; a family opens to its themes, and a family holding a chosen theme stays open (`themeFamilyOpen`). `globe.js?v=45-plate`, `globe-experiment.css?v=83-plate`.
+
+## A size up; light studies; pen cursor (26 Nov, 1 am)
+- **Larger stills and text** in the film box and the centre view, as John asked: film box stills 164 × 108 on roomy windows (was 148 × 96), titles 15 px, the selected film's text a step up; centre view artwork up to 410 px (was 340), title up to 34 px, text and buttons a step up. `beltLayout` card 164; `tools/qa/globe-independent.py` allows stills up to 164 px.
+- **Play mark** on the centre view's artwork is a cream disc again (its background had been lost in the move to colour tokens).
+- **Ten studies for the film lights**, none of them the default (`toned` stays until John chooses): `?nodes=quiet|grain|ink|fine|tone|sized|pools|approach|chosen|shadow`, or `AtlasGlobe.nodeStyle(name)`.
+- **Drawing cursor.** Gather and Draw in Constellate show a pen point (ring and dot) instead of the map's dragging hand.
+- Versions: `globe.js?v=46-plate`, `globe-experiment.css?v=84-plate`, `globe-core.js?v=7-belt`.
