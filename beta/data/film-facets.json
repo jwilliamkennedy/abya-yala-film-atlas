@@ -2,8 +2,8 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-27",
  "license": "See data.html",
- "films_on_public_map": 3513,
- "film_entries": 3513,
+ "films_on_public_map": 3515,
+ "film_entries": 3515,
  "published_field_conflicts": {
   "SA50-20261014-59f87a2e3ce5-WORK-01": [
    "themes"
@@ -75728,6 +75728,48 @@
     "Expression and Representation"
    ],
    "form": "Music Video",
+   "length": "Short"
+  },
+  "Q20261126-9301-F6": {
+   "title": "Lust",
+   "year": 2017,
+   "makers": [
+    {
+     "id": "Q20261126-9301",
+     "name": "Harrison J. Bahe"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "LGBTQIA2S"
+   ],
+   "primary_theme": "LGBTQIA2S",
+   "families": [
+    "Lives and Relations"
+   ],
+   "form": "Fiction",
+   "length": "Short"
+  },
+  "Q20261126-9301-F7": {
+   "title": "Xibalba",
+   "year": 2019,
+   "makers": [
+    {
+     "id": "Q20261126-9301",
+     "name": "Harrison J. Bahe"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "LGBTQIA2S",
+    "Music and Performance"
+   ],
+   "primary_theme": "LGBTQIA2S",
+   "families": [
+    "Expression and Representation",
+    "Lives and Relations"
+   ],
+   "form": "Experimental",
    "length": "Short"
   },
   "Q20261126-9302-F1": {
