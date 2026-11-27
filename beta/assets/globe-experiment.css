@@ -1263,12 +1263,7 @@ html[data-reading-theme="night"] #atlas-rotational-globe .globe-primary,html[dat
 #atlas-rotational-globe .globe-drum-body::after{content:"";position:absolute;left:12px;right:12px;top:50%;height:32px;margin-top:-16px;border-top:1px solid #b0852a;border-bottom:1px solid #b0852a;pointer-events:none}
 #atlas-rotational-globe .globe-theme-drum[data-keys=true]{border-color:#b0852a}
 #atlas-rotational-globe .globe-theme-drum:focus-visible{box-shadow:0 0 0 2px #b0852a}
-#atlas-rotational-globe .globe-drum-tabs{display:flex;flex-wrap:wrap;justify-content:center;gap:0 2px;padding:4px 6px 0;border-bottom:1px solid var(--p-line);background:rgba(127,127,127,.09)}
-#atlas-rotational-globe .globe-menu-panel button.globe-drum-tab{min-height:30px!important;padding:5px 9px 7px!important;border:0!important;border-radius:8px 8px 0 0!important;background:transparent!important;color:var(--p-muted)!important;font:500 12.5px/1.2 var(--ui-sans,system-ui,sans-serif)!important;box-shadow:none!important;cursor:pointer}
-#atlas-rotational-globe .globe-menu-panel button.globe-drum-tab:not([aria-pressed=true]):hover{background:transparent!important;color:var(--p-ink)!important}
 #atlas-rotational-globe .globe-theme-head{flex-wrap:nowrap;align-items:center;min-height:32px}
-#atlas-rotational-globe .globe-menu-panel button.globe-drum-tab[aria-pressed=true]{background:var(--p-fill)!important;color:var(--p-ink)!important;font-weight:600!important;box-shadow:inset 0 -2px 0 #b0852a!important}
-@media(max-width:640px){#atlas-rotational-globe .globe-menu-panel button.globe-drum-tab{min-height:38px!important}}
 #atlas-rotational-globe .globe-drum-window{position:relative;flex:1 1 auto;min-width:0;height:150px;perspective:700px;overflow:hidden;cursor:grab;touch-action:none}
 #atlas-rotational-globe .globe-drum-ticks{position:relative;flex:0 0 18px;height:150px;margin-right:6px;perspective:700px;overflow:hidden}
 #atlas-rotational-globe .globe-drum-cylinder{position:absolute;inset:0;transform-style:preserve-3d;transform:translateZ(-85px)}
@@ -1286,4 +1281,27 @@ html[data-reading-theme="night"] #atlas-rotational-globe .globe-primary,html[dat
 #globe-film-comparison .globe-comparison-sources{display:flex;flex-wrap:wrap;align-items:baseline;gap:3px 10px;font:10.5px/1.3 system-ui,sans-serif}
 #globe-film-comparison .globe-comparison-sources small{color:#b8cdc3}
 #globe-film-comparison :is(.globe-comparison-source,.globe-participation-link){color:#e9dcb5;font:10.5px/1.3 system-ui,sans-serif;overflow-wrap:anywhere}
+
+/* Upper-right column (26 Nov): the bar, the five family pills under it and the menu panels share one width; the globe sits left of centre to leave them room. */
+#atlas-rotational-globe{--globe-shift:0px;--globe-menu-width:520px;background:var(--p-ground,#101b29)}
+@media(min-width:1181px){#atlas-rotational-globe:not([data-layout=compact]){--globe-shift:clamp(0px,calc(100vw - 1180px),300px)}}
+#atlas-rotational-globe #globe-surface{width:calc(100% - var(--globe-shift))}
+#atlas-rotational-globe #globe-live-map{inset:0 var(--globe-shift) 0 0}
+#atlas-rotational-globe #globe-aperture,#atlas-rotational-globe .globe-instructions{left:calc((100% - var(--globe-shift)) / 2)}
+@media(min-width:761px){#atlas-rotational-globe #globe-encounter[data-belt=true]{margin-left:calc(var(--globe-shift) / -2)}}
+#atlas-rotational-globe:not([data-layout=compact]) .globe-guide{width:min(var(--globe-menu-width),calc(100% - 2 * var(--globe-gutter)));align-items:stretch}
+#atlas-rotational-globe:not([data-layout=compact]) .globe-primary{display:flex!important;justify-content:space-between;padding:0 18px!important}
+#atlas-rotational-globe:not([data-layout=compact]) .globe-primary button{font-size:14.5px!important;padding-top:13px!important;padding-bottom:13px!important}
+#atlas-rotational-globe:not([data-layout=compact]) :is(.globe-menu-panel,#globe-theme-panel){width:100%!important}
+#atlas-rotational-globe:not([data-layout=compact]) :is(#globe-theme-key,#globe-line-note){align-self:flex-end}
+#atlas-rotational-globe #globe-theme-families{display:none;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px;pointer-events:auto}
+#atlas-rotational-globe[data-menu=theme] #globe-theme-families{display:grid}
+#atlas-rotational-globe .globe-family-pill{min-height:44px;padding:6px 6px;border:0;border-radius:14px;background:var(--p-bg);color:var(--p-muted);font:500 12px/1.2 var(--ui-sans,system-ui,sans-serif);text-align:center;cursor:pointer;box-shadow:0 1px 2px rgba(34,28,18,.10),0 6px 18px rgba(34,28,18,.10)}
+#atlas-rotational-globe .globe-family-pill:hover{color:var(--p-ink)}
+#atlas-rotational-globe .globe-family-pill[aria-pressed=true]{color:var(--p-ink);font-weight:600;box-shadow:inset 0 -2.5px 0 #b0852a,0 1px 2px rgba(34,28,18,.10),0 6px 18px rgba(34,28,18,.10)}
+#atlas-rotational-globe .globe-family-pill:focus-visible{outline:2px solid var(--p-ink);outline-offset:2px}
+#atlas-rotational-globe.globe-night .globe-family-pill,html[data-reading-theme="night"] #atlas-rotational-globe .globe-family-pill{box-shadow:0 0 0 1px var(--p-line)}
+#atlas-rotational-globe.globe-night .globe-family-pill[aria-pressed=true],html[data-reading-theme="night"] #atlas-rotational-globe .globe-family-pill[aria-pressed=true]{box-shadow:inset 0 -2.5px 0 #b0852a,0 0 0 1px var(--p-line)}
+#atlas-rotational-globe[data-layout=compact][data-menu=theme] #globe-theme-families{display:flex;overflow-x:auto;scrollbar-width:none;padding:2px}
+#atlas-rotational-globe[data-layout=compact] .globe-family-pill{flex:0 0 auto;min-height:40px;padding:6px 12px;white-space:nowrap}
 

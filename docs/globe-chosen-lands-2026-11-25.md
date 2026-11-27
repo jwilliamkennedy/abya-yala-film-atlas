@@ -214,3 +214,12 @@ John: "It should be menu of 5 above and then drum roll." and, on whether the two
 - The line above the drum stays one line ("Themes", the count, Clear) so the drum does not move when a theme is chosen.
 - `globe.js?v=69-plate`, `globe-experiment.css?v=94-plate`.
 
+## Family pills under a wider bar; the globe sits left (26 Nov, 11:15 pm, beta only)
+John: "Move globe left; have the menu be 5 horizontal pills below upper right menu which should be enlargened slightly to accommodate and sit neatly"
+- The five families are a single row of pills directly under the upper-right bar, shown while Themes is open. The drum is its own object beneath them and no longer carries the families on its top edge.
+- The bar is wider and slightly larger (520 px, 14.5 px type), and the pill row and every menu panel take the same width, so the column's edges line up (`--globe-menu-width`).
+- On wide screens the globe sits left of centre to leave the column room: the map, the overview canvas, the centre mark and the film panel move together by up to 150 px (`--globe-shift`, from 1181 px of window width; nothing moves on narrower screens or in the compact layout).
+- On phones the pills are one row that scrolls sideways.
+- Behaviour is unchanged: pressing a family turns the drum to it and chooses its theme; up and down roll themes, left and right move across families.
+- `globe.js?v=70-plate`, `globe-experiment.css?v=95-plate`.
+

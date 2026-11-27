@@ -1884,20 +1884,20 @@ function renderThemeKey(){
 }
 let themeFamilyOpen='',themeFamilyCounts=null;
 function familyCounts(first){const key=first.options.length+'|'+publicationStatus;if(themeFamilyCounts?.key===key)return themeFamilyCounts.map;const map=new Map();for(const g of first.querySelectorAll('optgroup')){const ids=new Set();for(const o of g.querySelectorAll('option'))for(const f of C().themeIntersection([o.value]))ids.add(f.film||f.id);map.set(g.label,ids.size);}themeFamilyCounts={key,map};return map;}
-// The theme drum (John, 26 Nov): the five families run across its top edge; the chosen family's themes roll into the slot beneath.
+// The theme drum (John, 26 Nov): the five families are a row of pills under the upper-right bar; the chosen family's themes roll into the drum's slot beneath.
 // What is in the slot is what is on the globe: rolling, or pressing a family, chooses the theme and the web redraws.
 let drum=null,drumKeys=false;
 function setDrumKeys(on){drumKeys=!!on;if(drum)drum.root.dataset.keys=String(drumKeys);}
 function buildDrum(first){
  const STEP=20,R=85,mod=(n,m)=>((n%m)+m)%m,fams=[...first.querySelectorAll('optgroup')].map(g=>({f:g.label,themes:[...g.querySelectorAll('option')].map(o=>o.value).filter(Boolean)})).filter(g=>g.themes.length);if(!fams.length)return null;
- const root=el('div','globe-theme-drum'),tabs=el('div','globe-drum-tabs'),body=el('div','globe-drum-body'),win=el('div','globe-drum-window'),cyl=el('div','globe-drum-cylinder'),tw=el('div','globe-drum-ticks'),tcyl=el('div','globe-drum-cylinder');
+ const root=el('div','globe-theme-drum'),tabs=el('div','globe-theme-families'),body=el('div','globe-drum-body'),win=el('div','globe-drum-window'),cyl=el('div','globe-drum-cylinder'),tw=el('div','globe-drum-ticks'),tcyl=el('div','globe-drum-cylinder');
  root.tabIndex=0;root.setAttribute('role','group');root.setAttribute('aria-label','Themes');root.dataset.keys=String(drumKeys);win.setAttribute('role','spinbutton');win.setAttribute('aria-label','Theme');win.setAttribute('aria-valuemin','1');
  for(const h of [52,34,16])for(const side of ['top','bottom']){const shade=el('span','globe-drum-shade');shade.style[side]='0';shade.style.height=h+'px';win.append(shade);}
  const items=Array.from({length:9},()=>{const e=el('div','globe-drum-item');cyl.append(e);return e;}),ticks=Array.from({length:19},()=>{const e=el('span','globe-drum-tick');tcyl.append(e);return e;});
- win.append(cyl);tw.append(tcyl);body.append(win,tw);root.append(tabs,body);
- const still=matchMedia('(prefers-reduced-motion: reduce)').matches,d={root,fi:0,pos:0,target:0,raf:0,timer:0,count:first.options.length},kept=fams.map(()=>0);
+ win.append(cyl);tw.append(tcyl);body.append(win,tw);root.append(body);tabs.id='globe-theme-families';tabs.setAttribute('role','group');tabs.setAttribute('aria-label','Theme families');
+ const still=matchMedia('(prefers-reduced-motion: reduce)').matches,d={root,tabs,fi:0,pos:0,target:0,raf:0,timer:0,count:first.options.length},kept=fams.map(()=>0);
  const list=()=>fams[d.fi].themes,now=()=>list()[mod(d.target,list().length)];
- const tabButtons=fams.map((g,i)=>{const b=button(g.f,()=>d.family(i,true),'globe-drum-tab');b.setAttribute('aria-pressed','false');tabs.append(b);return b;});
+ const tabButtons=fams.map((g,i)=>{const b=button(g.f,()=>d.family(i,true),'globe-family-pill');b.setAttribute('aria-pressed','false');tabs.append(b);return b;});
  const place=(e,a)=>{const c=Math.cos(a*Math.PI/180);e.style.transform='rotateX('+(-a).toFixed(2)+'deg) translateZ('+R+'px)';e.style.opacity=c>0?Math.pow(c,1.5).toFixed(2):'0';};
  d.render=()=>{const themes=list(),n=themes.length,base=Math.round(d.pos),chosen=first.value;
   items.forEach((e,i)=>{const idx=base+i-4,name=themes[mod(idx,n)];if(e.dataset.name!==name){e.dataset.name=name;e.dataset.len=name.length>40?'xl':'';e.textContent=name;}e.dataset.slot=String(idx===d.target);e.dataset.on=String(idx===d.target&&chosen===name);place(e,(idx-d.pos)*STEP);});
@@ -1924,7 +1924,7 @@ function buildDrum(first){
 function renderThemeList(){
  const panel=$('#globe-theme-panel'),first=$('#weave-map-theme'),second=$('#weave-map-theme-second');if(!panel||!first||!first.options.length)return;
  let box=$('#globe-theme-list');if(!box){box=el('div');box.id='globe-theme-list';panel.prepend(box);}
- if(!drum||!box.contains(drum.root)||drum.count!==first.options.length){drum=buildDrum(first);box.replaceChildren();box.dataset.key='';if(!drum)return;const head=el('div','globe-theme-head'),strip=el('div','globe-theme-films');head.id='globe-theme-head';strip.id='globe-theme-strip';box.append(head,drum.root,strip);}
+ if(!drum||!box.contains(drum.root)||drum.count!==first.options.length){drum=buildDrum(first);box.replaceChildren();box.dataset.key='';$('#globe-theme-families')?.remove();if(!drum)return;$('#atlas-rotational-globe .globe-guide .globe-primary')?.after(drum.tabs);const head=el('div','globe-theme-head'),strip=el('div','globe-theme-films');head.id='globe-theme-head';strip.id='globe-theme-strip';box.append(head,drum.root,strip);}
  drum.sync();
  const a=first.value,b=a?second?.value||'':'',cover=a?themeCoverage():null,key=JSON.stringify([a,b,cover,publicationStatus,yearBand,facetFilter]);if(box.dataset.key===key)return;box.dataset.key=key;
  // The head keeps one line whatever is chosen, so the drum never moves under the pointer; the slot names the theme.
@@ -1961,7 +1961,7 @@ function markup(){
  const stage=$('#atlas-globe-stage');if(!stage)throw Error('Public globe stage missing');stage.append(host);const popup=$('#constellate-popup');if(popup){previewHome={parent:popup.parentNode,next:popup.nextSibling};stage.append(popup);}const lens=$('#weave-theme-lens');if(lens){themeLensHome={parent:lens.parentNode,next:lens.nextSibling};$('#globe-theme-panel').append(lens,el('p','globe-theme-coverage'));const legend=$('.globe-theme-coverage');legend.id='globe-theme-coverage';legend.hidden=true;}
  for(const key of ['find','theme','more','collection'])$('#globe-'+key+'-toggle').onclick=()=>setMenu(key);renderCollection();
  menuListeners=new AbortController();const opts={capture:true,signal:menuListeners.signal};
- document.addEventListener('pointerdown',e=>{const guide=!!e.target.closest('.globe-guide');if(menuMode==='theme')setDrumKeys(guide&&!!e.target.closest('#globe-theme-panel'));
+ document.addEventListener('pointerdown',e=>{const guide=!!e.target.closest('.globe-guide');if(menuMode==='theme')setDrumKeys(guide&&!!e.target.closest('#globe-theme-panel,#globe-theme-families'));
   if(menuMode&&!guide&&!(menuMode==='theme'&&currentTheme().length&&host?.dataset.layout!=='compact')){menuClosedAt=nowMs();setMenu('');}},opts);
  // Window capture precedes document-level legacy Escape handlers, which can exit Constellate.
  window.addEventListener('keydown',e=>{
