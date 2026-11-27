@@ -2,8 +2,8 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-27",
  "license": "See data.html",
- "films_on_public_map": 3242,
- "film_entries": 3242,
+ "films_on_public_map": 3251,
+ "film_entries": 3251,
  "published_field_conflicts": {
   "SA50-20261014-59f87a2e3ce5-WORK-01": [
    "themes"
@@ -465,7 +465,7 @@
     "note": "",
     "region": "",
     "region_basis": "",
-    "films": 169
+    "films": 170
    },
    {
     "label": "Spanish",
@@ -507,7 +507,7 @@
     "note": "",
     "region": "",
     "region_basis": "",
-    "films": 12
+    "films": 14
    },
    {
     "label": "Vietnamese",
@@ -703,7 +703,7 @@
     "note": "",
     "region": "North America",
     "region_basis": "Glottolog countries",
-    "films": 5
+    "films": 7
    },
    {
     "label": "Quechua",
@@ -7812,14 +7812,24 @@
   },
   "Q20261126-1507-F1": {
    "title": "Discussions in Bioethics: The Courage of One's Convictions",
-   "year": null,
+   "year": 1985,
    "makers": [
     {
      "id": "DIR-0095",
      "name": "Gil Cardinal"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://repertoire.cinema.mcc.gouv.qc.ca/film/discussions-in-bioethics-the-courage-of-ones-convictions-29155/"
+    }
+   ],
    "themes": [
     "Health and Healing"
    ],
@@ -40710,6 +40720,26 @@
    "form": "Documentary",
    "length": "Short"
   },
+  "NEW-324c7488d212-WORK-1": {
+   "title": "Le Jour de la marmotte",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "NEW-324c7488d212",
+     "name": "Alfred Newashish Birothé"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Health and Healing"
+   ],
+   "primary_theme": "Health and Healing",
+   "families": [
+    "Lives and Relations"
+   ],
+   "form": "Documentary",
+   "length": "Short"
+  },
   "NEW-df58a04a3edd-WORK-1": {
    "title": "Onitcin",
    "year": 2023,
@@ -68701,6 +68731,216 @@
    ],
    "form": "Music Video",
    "length": "Short"
+  },
+  "QM-5cb5905cc8-M1": {
+   "title": "Le Pouillaouin",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "QM-5cb5905cc8",
+     "name": "Katia Kurtness"
+    }
+   ],
+   "languages": [
+    {
+     "label": "French",
+     "as_credited": "French",
+     "glottocode": "stan1290",
+     "iso639_3": "fra",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://rendez-vous.quebeccinema.ca/films/le-pouillaouin"
+    }
+   ],
+   "themes": [
+    "Elders and Knowledge",
+    "Memory and Oral History",
+    "Kinship",
+    "Art, Craft and Making"
+   ],
+   "primary_theme": "Elders and Knowledge",
+   "families": [
+    "Expression and Representation",
+    "Knowledge and Continuity",
+    "Lives and Relations"
+   ],
+   "form": "Animation",
+   "length": "Short"
+  },
+  "Q20261126-9851-F1": {
+   "title": "Les ciseaux",
+   "year": 2022,
+   "makers": [
+    {
+     "id": "QM-5cb5905cc8",
+     "name": "Katia Kurtness"
+    }
+   ],
+   "languages": [
+    {
+     "label": "French",
+     "as_credited": "French",
+     "glottocode": "stan1290",
+     "iso639_3": "fra",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://www.iffo.ca/2024/close-your-eyes"
+    }
+   ],
+   "themes": [
+    "Art, Craft and Making",
+    "Elders and Knowledge",
+    "Kinship"
+   ],
+   "primary_theme": "Art, Craft and Making",
+   "families": [
+    "Expression and Representation",
+    "Knowledge and Continuity",
+    "Lives and Relations"
+   ],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "QM-4b328e7ec4-M1": {
+   "title": "Ka Ussi-Tshishkutamashuht (Les débutants)",
+   "year": 2017,
+   "makers": [
+    {
+     "id": "QM-5f4b8ee7fe",
+     "name": "Rachel Mark"
+    },
+    {
+     "id": "QM-ee4d803c81",
+     "name": "Béatrice Mark"
+    },
+    {
+     "id": "QM-4b328e7ec4",
+     "name": "Gisèle Mark"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Music and Performance",
+    "Elders and Knowledge"
+   ],
+   "primary_theme": "Music and Performance",
+   "families": [
+    "Expression and Representation",
+    "Knowledge and Continuity"
+   ],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "QW-WAPI-V201857182": {
+   "title": "Inuk Hunter",
+   "year": 2016,
+   "makers": [
+    {
+     "id": "QW-fc57de011a",
+     "name": "George Annanack"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
+  },
+  "QW-WAPI-V180211029": {
+   "title": "NEKATENITAMU NAPEU",
+   "year": 2016,
+   "makers": [
+    {
+     "id": "QW-036d692dde",
+     "name": "René-John Fontaine"
+    }
+   ],
+   "languages": [
+    {
+     "label": "Innu-aimun",
+     "as_credited": "Innu-aimun",
+     "glottocode": "mont1268",
+     "iso639_3": "moe",
+     "match": "exact",
+     "indigenous": true,
+     "source": "https://img1.wsimg.com/blobby/go/c5fdeedf-d4e8-46ec-9b26-c057eaa3652c/Asinabka%20Booklet%202017%20Proof%2003.pdf"
+    }
+   ],
+   "themes": [
+    "Health and Healing",
+    "Kinship"
+   ],
+   "primary_theme": "Health and Healing",
+   "families": [
+    "Lives and Relations"
+   ],
+   "form": null,
+   "length": "Short"
+  },
+  "QW-WAPI-V176882768": {
+   "title": "Numushum (My Grandfather)",
+   "year": 2016,
+   "makers": [
+    {
+     "id": "QW-c407d6a260",
+     "name": "Cory Jack"
+    }
+   ],
+   "languages": [
+    {
+     "label": "Innu-aimun",
+     "as_credited": "Innu-aimun",
+     "glottocode": "mont1268",
+     "iso639_3": "moe",
+     "match": "exact",
+     "indigenous": true,
+     "source": "https://img1.wsimg.com/blobby/go/c5fdeedf-d4e8-46ec-9b26-c057eaa3652c/Asinabka%20Booklet%202017%20Proof%2003.pdf"
+    }
+   ],
+   "themes": [
+    "Kinship",
+    "Music and Performance"
+   ],
+   "primary_theme": "Kinship",
+   "families": [
+    "Expression and Representation",
+    "Lives and Relations"
+   ],
+   "form": "Music Video",
+   "length": "Short"
+  },
+  "QW-WAPI-V286584646": {
+   "title": "Gilles Vigneault Kashkanatshu / l'homme qui descend des vagues",
+   "year": 2018,
+   "makers": [
+    {
+     "id": "QW-d1e99d493c",
+     "name": "Germaine Mesténapéo"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QW-WAPI-V339577601": {
+   "title": "Kaiaishpanit ute tipatshimun",
+   "year": 2019,
+   "makers": [
+    {
+     "id": "QW-d1e99d493c",
+     "name": "Germaine Mesténapéo"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
   }
  }
 }
