@@ -2,8 +2,8 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-27",
  "license": "See data.html",
- "films_on_public_map": 3527,
- "film_entries": 3527,
+ "films_on_public_map": 3528,
+ "film_entries": 3528,
  "published_field_conflicts": {
   "SA50-20261014-59f87a2e3ce5-WORK-01": [
    "themes"
@@ -66128,6 +66128,30 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
+   "form": null,
+   "length": "Short"
+  },
+  "Q20261126-9181-F5": {
+   "title": "Artist Leadership Program: Maria Hupfield",
+   "year": 2013,
+   "makers": [
+    {
+     "id": "Q20261122-56",
+     "name": "John Hupfield"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Linguistic Preservation",
+    "Art, Craft and Making",
+    "Youth"
+   ],
+   "primary_theme": "Linguistic Preservation",
+   "families": [
+    "Expression and Representation",
+    "Knowledge and Continuity",
+    "Lives and Relations"
+   ],
    "form": null,
    "length": "Short"
   },
