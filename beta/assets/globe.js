@@ -1885,23 +1885,24 @@ function renderThemeKey(){
 }
 
 // The theme drum (John, 26 Nov): the five families are a row of pills under the upper-right bar; the chosen family's themes roll into the drum's slot beneath.
+// It is dressed, lightly, as film: each theme is a frame, four perforations to a frame run down both edges and turn with it, and the slot is the gate.
 // What is in the slot is what is on the globe: rolling, or pressing a family, chooses the theme and the web redraws.
 let drum=null,drumKeys=false;
 function setDrumKeys(on){drumKeys=!!on;if(drum)drum.root.dataset.keys=String(drumKeys);}
 function buildDrum(first){
  const STEP=20,R=85,mod=(n,m)=>((n%m)+m)%m,fams=[...first.querySelectorAll('optgroup')].map(g=>({f:g.label,themes:[...g.querySelectorAll('option')].map(o=>o.value).filter(Boolean)})).filter(g=>g.themes.length);if(!fams.length)return null;
- const root=el('div','globe-theme-drum'),tabs=el('div','globe-theme-families'),body=el('div','globe-drum-body'),win=el('div','globe-drum-window'),cyl=el('div','globe-drum-cylinder'),tw=el('div','globe-drum-ticks'),tcyl=el('div','globe-drum-cylinder');
+ const root=el('div','globe-theme-drum'),tabs=el('div','globe-theme-families'),body=el('div','globe-drum-body'),win=el('div','globe-drum-window'),cyl=el('div','globe-drum-cylinder'),perfs=['left','right'].map(side=>{const w=el('div','globe-drum-perfs'),c=el('div','globe-drum-cylinder');w.dataset.side=side;w.setAttribute('aria-hidden','true');w.append(c);return {w,c};});
  root.tabIndex=0;root.setAttribute('role','group');root.setAttribute('aria-label','Themes');root.dataset.keys=String(drumKeys);win.setAttribute('role','spinbutton');win.setAttribute('aria-label','Theme');win.setAttribute('aria-valuemin','1');
  for(const h of [52,34,16])for(const side of ['top','bottom']){const shade=el('span','globe-drum-shade');shade.style[side]='0';shade.style.height=h+'px';win.append(shade);}
- const items=Array.from({length:9},()=>{const e=el('div','globe-drum-item');cyl.append(e);return e;}),ticks=Array.from({length:19},()=>{const e=el('span','globe-drum-tick');tcyl.append(e);return e;});
- win.append(cyl);tw.append(tcyl);body.append(win,tw);root.append(body);tabs.id='globe-theme-families';tabs.setAttribute('role','group');tabs.setAttribute('aria-label','Theme families');
+ const items=Array.from({length:9},()=>{const e=el('div','globe-drum-item');cyl.append(e);return e;}),ticks=perfs.flatMap(({c})=>Array.from({length:37},(_,j)=>{const e=el('span','globe-drum-perf');e.dataset.j=String(j);c.append(e);return e;}));
+ win.append(cyl);body.append(perfs[0].w,win,perfs[1].w);root.append(body);tabs.id='globe-theme-families';tabs.setAttribute('role','group');tabs.setAttribute('aria-label','Theme families');
  const still=matchMedia('(prefers-reduced-motion: reduce)').matches,d={root,tabs,fi:0,pos:0,target:0,raf:0,timer:0,count:first.options.length},kept=fams.map(()=>0);
  const list=()=>fams[d.fi].themes,now=()=>list()[mod(d.target,list().length)];
  const tabButtons=fams.map((g,i)=>{const b=button(g.f,()=>d.family(i,true),'globe-family-pill');b.setAttribute('aria-pressed','false');tabs.append(b);return b;});
- const place=(e,a)=>{const c=Math.cos(a*Math.PI/180);e.style.transform='rotateX('+(-a).toFixed(2)+'deg) translateZ('+R+'px)';e.style.opacity=c>0?Math.pow(c,1.5).toFixed(2):'0';};
+ const place=(e,a,strength=1)=>{const c=Math.cos(a*Math.PI/180);e.style.transform='rotateX('+(-a).toFixed(2)+'deg) translateZ('+R+'px)';e.style.opacity=c>0?(Math.pow(c,1.5)*strength).toFixed(2):'0';};
  d.render=()=>{const themes=list(),n=themes.length,base=Math.round(d.pos),chosen=first.value;
   items.forEach((e,i)=>{const idx=base+i-4,name=themes[mod(idx,n)];if(e.dataset.name!==name){e.dataset.name=name;e.dataset.len=name.length>40?'xl':'';e.textContent=name;}e.dataset.slot=String(idx===d.target);e.dataset.on=String(idx===d.target&&chosen===name);place(e,(idx-d.pos)*STEP);});
-  const off=mod(d.pos*STEP,10);ticks.forEach((e,j)=>place(e,(j-9)*10-off));
+  const off=mod(d.pos*STEP,5);ticks.forEach(e=>place(e,(Number(e.dataset.j)-18)*5+2.5-off,.42));
   if(root.dataset.family!==String(d.fi)){root.dataset.family=String(d.fi);tabButtons.forEach((b,i)=>b.setAttribute('aria-pressed',String(i===d.fi)));win.setAttribute('aria-valuemax',String(n));}
   win.setAttribute('aria-valuenow',String(mod(d.target,n)+1));win.setAttribute('aria-valuetext',now()+', '+fams[d.fi].f);};
  const roll=()=>{if(Math.abs(d.target-d.pos)<.003){d.pos=d.target;d.raf=0;d.render();return;}d.pos+=(d.target-d.pos)*.2;d.render();d.raf=requestAnimationFrame(roll);};

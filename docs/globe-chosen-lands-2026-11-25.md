@@ -238,3 +238,10 @@ John: "Let's work on clean up now. Architecture. Smoothing out edges."
 - Found, not changed: the globe page loads `atlas-data.js` at 6.8 MB before compression; 22 branches besides `main`; 17 workflows; the hidden Lands picker kept for the checks; `SHAPES=false` code still present in ten places.
 - `globe.js?v=72-plate`, `globe-experiment.css?v=97-plate`.
 
+## The drum dressed as film (26 Nov, midnight, beta only)
+John: "subtlely and elegantly change the drum roll to a iflm canister style"
+- Each theme is a frame: a hairline separates one from the next. Perforations run down both edges, four to a frame, and turn with the drum. The gold lines of the slot are the gate. The thumbwheel ticks are gone.
+- Behaviour is unchanged.
+- Shown to John as a mockup only, not built: a one-line note beside the drum the first time a web is drawn, and a Key button by the scale bar.
+- `globe.js?v=73-plate`, `globe-experiment.css?v=98-plate`.
+
