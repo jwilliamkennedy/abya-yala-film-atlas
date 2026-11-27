@@ -204,4 +204,4 @@ John: "Yes, clicking a theme should make them all light up and have lines connec
 - The native theme pickers remain in the panel, hidden from view, for assistive technology and the checks.
 - Agreed for later, not built: two rings around the globe (Years, Genre) switched from the bar, turning the globe's bearing from the ring, Draw moved into Constellate, and a revised upper-right bar (Watch stays on the left). Nahua land links are on the urgent list.
 - `globe.js?v=67-plate`, `globe-experiment.css?v=92-plate`, `i18n-20261107.js?v=43`.
-
+- 10:30 pm: the drum's panel is the same width as the other menus again (the terrain check compares them), and long theme names are set smaller so they fit the slot. `globe.js?v=68-plate`, `globe-experiment.css?v=93-plate`.

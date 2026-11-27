@@ -1897,7 +1897,7 @@ function buildDrum(first){
  const still=matchMedia('(prefers-reduced-motion: reduce)').matches,d={root,pos:0,target:0,raf:0,timer:0,count:first.options.length};
  const place=(e,a)=>{const c=Math.cos(a*Math.PI/180);e.style.transform='rotateX('+(-a).toFixed(2)+'deg) translateZ('+R+'px)';e.style.opacity=c>0?Math.pow(c,1.5).toFixed(2):'0';};
  d.render=()=>{const base=Math.round(d.pos),chosen=first.value,now=list[mod(d.target,list.length)];
-  items.forEach((e,i)=>{const idx=base+i-4,name=list[mod(idx,list.length)].t;if(e.dataset.name!==name){e.dataset.name=name;e.textContent=name;}e.dataset.slot=String(idx===d.target);e.dataset.on=String(idx===d.target&&chosen===name);place(e,(idx-d.pos)*STEP);});
+  items.forEach((e,i)=>{const idx=base+i-4,name=list[mod(idx,list.length)].t;if(e.dataset.name!==name){e.dataset.name=name;e.dataset.len=name.length>40?'xl':name.length>30?'l':name.length>24?'m':'';e.textContent=name;}e.dataset.slot=String(idx===d.target);e.dataset.on=String(idx===d.target&&chosen===name);place(e,(idx-d.pos)*STEP);});
   const off=mod(d.pos*STEP,10);ticks.forEach((e,j)=>place(e,(j-9)*10-off));
   if(fam.dataset.name!==now.f){fam.dataset.name=now.f;fam.textContent=now.f;}root.setAttribute('aria-valuenow',String(mod(d.target,list.length)+1));root.setAttribute('aria-valuetext',now.t+', '+now.f);};
  const roll=()=>{if(Math.abs(d.target-d.pos)<.003){d.pos=d.target;d.raf=0;d.render();return;}d.pos+=(d.target-d.pos)*.2;d.render();d.raf=requestAnimationFrame(roll);};
