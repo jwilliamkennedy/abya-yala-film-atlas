@@ -582,6 +582,9 @@ Q20261126-65-F1,Mawitai’kw,2022,length,Short,,https://www.reelout.com/event/wi
 Q20261126-72-F1,Wildhood,2021,form,Fiction,,https://cfccreates.com/content-hub/wildhood/,"normalised from the recorded form ""Narrative feature"""
 Q20261126-72-F1,Wildhood,2021,length,Feature,,https://cfccreates.com/content-hub/wildhood/,"normalised from the recorded form ""Narrative feature"""
 Q20261126-67-F1,Deep End,2011,length,Short,,https://prosperopictures.com/news/,"normalised from the recorded form ""Short film"""
+Q20261126-69-F1,New Skin,2008,length,Short,,https://prod3.agileticketing.net/websales/pages/info.aspx?epguid=6afead16-021b-4b88-b338-6a4b642c57cf&evtinfo=731689~36893ed1-b0b9-423c-bbab-90f22d0aeafe,"normalised from the recorded form ""Short film"""
+Q20261126-68-F1,Puppy,2010,length,Short,,https://prod3.agileticketing.net/websales/pages/info.aspx?epguid=6afead16-021b-4b88-b338-6a4b642c57cf&evtinfo=731689~36893ed1-b0b9-423c-bbab-90f22d0aeafe,"normalised from the recorded form ""Short film"""
+Q20261126-66-F1,Elmiteskuatl,2019,length,Short,,https://prod3.agileticketing.net/websales/pages/info.aspx?epguid=6afead16-021b-4b88-b338-6a4b642c57cf&evtinfo=731689~36893ed1-b0b9-423c-bbab-90f22d0aeafe,"normalised from the recorded form ""Short film"""
 RESEARCH-FILM-20261031-800-0005,Pidikwe (Rumble),2024,theme,Music and Performance,Expression and Representation,https://www.themoviedb.org/movie/1414895,tagged from a published synopsis; primary theme
 RESEARCH-FILM-20261031-800-0005,Pidikwe (Rumble),2024,theme,Women and Gender,Lives and Relations,https://www.themoviedb.org/movie/1414895,tagged from a published synopsis
 RESEARCH-FILM-20261031-800-0005,Pidikwe (Rumble),2024,form,Experimental,,https://www.themoviedb.org/movie/1414895,recorded in Published
@@ -649,6 +652,10 @@ FILM-0071,Deep Inside Clint Star,,length,Feature,,https://outonscreen.com/archiv
 FILM-SRC-2023-00001,"Hey, Viktor!",,theme,Self-Representation and Countering Stereotypes,Expression and Representation,https://www.themoviedb.org/movie/1116043,tagged from a published synopsis; primary theme
 FILM-SRC-2023-00001,"Hey, Viktor!",,form,Fiction,,https://www.themoviedb.org/movie/1116043,recorded in Published
 FILM-SRC-2023-00001,"Hey, Viktor!",,length,Feature,,https://www.themoviedb.org/movie/1116043,recorded in Published
+Q20261126-150-F1,Smudge the Blades,2026,language,English,stan1293,https://www.ciffcalgary.ca/films/2026/smudge-the-blades,recorded in Published
+Q20261126-150-F1,Smudge the Blades,2026,theme,Youth,Lives and Relations,https://www.ciffcalgary.ca/films/2026/smudge-the-blades,tagged from a published synopsis; primary theme
+Q20261126-150-F1,Smudge the Blades,2026,form,Fiction,,https://www.ciffcalgary.ca/films/2026/smudge-the-blades,recorded in Published
+Q20261126-150-F1,Smudge the Blades,2026,length,Feature,,https://www.ciffcalgary.ca/films/2026/smudge-the-blades,recorded in Published
 FILM-0072,nanekawâsis,,theme,"Art, Craft and Making",Expression and Representation,https://www.themoviedb.org/movie/1271196,tagged from a published synopsis; primary theme
 FILM-0072,nanekawâsis,,theme,Memory and Oral History,Knowledge and Continuity,https://www.themoviedb.org/movie/1271196,tagged from a published synopsis
 FILM-0072,nanekawâsis,,theme,Elders and Knowledge,Knowledge and Continuity,https://www.themoviedb.org/movie/1271196,tagged from a published synopsis
@@ -1890,10 +1897,14 @@ Q20261115-761-F6,Button Blanket,2010,theme,Music and Performance,Expression and 
 Q20261115-761-F6,Button Blanket,2010,form,Documentary,,https://www.nfb.ca/film/vistas_button_blanket/,recorded in Published
 Q20261115-761-F6,Button Blanket,2010,length,Short,,https://www.nfb.ca/film/vistas_button_blanket/,recorded in Published
 Q20261115-761-F7,Kayak to Klemtu,2018,form,Fiction,,https://www.tvguide.com/celebrities/zoe-leigh-hopkins/credits/3000494370/,recorded in Published
+Q20261115-761-F8,Our First Voices,,theme,Linguistic Preservation,Knowledge and Continuity,https://www.knowledge.ca/program/our-first-voices,tagged from a published synopsis; primary theme
+Q20261115-761-F8,Our First Voices,,form,Documentary,,https://www.knowledge.ca/program/our-first-voices,recorded in Published
 Q20261115-761-F8,Our First Voices,,length,Series,,https://www.tvguide.com/celebrities/zoe-leigh-hopkins/credits/3000494370/,"normalised from the recorded form ""Television series"""
 DIR-0167-Q20261114-01-F1,Little Bird,2023,form,Fiction,,https://www.zoehopkins.ca/recent-works,recorded in Published
 DIR-0167-Q20261114-01-F1,Little Bird,2023,length,Series,,https://www.zoehopkins.ca/recent-works,"normalised from the recorded form ""Television series"""
-DIR-0167-Q20261114-01-F2,Don't Even,2024,form,Fiction,,https://www.zoehopkins.ca/recent-works,recorded in Published
+DIR-0167-Q20261114-01-F2,Don't Even,2024,theme,Youth,Lives and Relations,https://www.aptn.org/media-centre/shows/dont-even/,tagged from a published synopsis; primary theme
+DIR-0167-Q20261114-01-F2,Don't Even,2024,theme,Urban Indigeneity,Lives and Relations,https://www.aptn.org/media-centre/shows/dont-even/,tagged from a published synopsis
+DIR-0167-Q20261114-01-F2,Don't Even,2024,form,Fiction,,https://www.aptn.org/media-centre/shows/dont-even/,recorded in Published
 DIR-0167-Q20261114-01-F2,Don't Even,2024,length,Series,,https://www.zoehopkins.ca/recent-works,"normalised from the recorded form ""Television series"""
 DIR-0167-Q20261114-01-F3,North of North,2025,form,Fiction,,https://www.zoehopkins.ca/recent-works,recorded in Published
 DIR-0167-Q20261114-01-F3,North of North,2025,length,Series,,https://www.zoehopkins.ca/recent-works,"normalised from the recorded form ""Television series"""
@@ -1901,8 +1912,8 @@ DIR-0167-Q20261114-01-F4,Run the Burbs,,form,Fiction,,https://www.zoehopkins.ca/
 DIR-0167-Q20261114-01-F4,Run the Burbs,,length,Series,,https://www.zoehopkins.ca/recent-works,"normalised from the recorded form ""Television series"""
 DIR-0167-Q20261114-01-F5,Small Achievable Goals,2025,form,Fiction,,https://www.zoehopkins.ca/recent-works,recorded in Published
 DIR-0167-Q20261114-01-F5,Small Achievable Goals,2025,length,Series,,https://www.zoehopkins.ca/recent-works,"normalised from the recorded form ""Television series"""
-DIR-0167-Q20261114-01-F6,Sullivan's Crossing,,form,Fiction,,https://www.zoehopkins.ca/recent-works,recorded in Published
-DIR-0167-Q20261114-01-F6,Sullivan's Crossing,,length,Series,,https://www.zoehopkins.ca/recent-works,"normalised from the recorded form ""Television series (in progress)"""
+DIR-0167-Q20261114-01-F6,Sullivan's Crossing,2026,form,Fiction,,https://www.zoehopkins.ca/recent-works,recorded in Published
+DIR-0167-Q20261114-01-F6,Sullivan's Crossing,2026,length,Series,,https://www.zoehopkins.ca/recent-works,"normalised from the recorded form ""Television series"""
 DIR-0167-Q20261114-01-F7,Law & Order Toronto: Criminal Intent,,form,Fiction,,https://www.zoehopkins.ca/recent-works,recorded in Published
 DIR-0167-Q20261114-01-F7,Law & Order Toronto: Criminal Intent,,length,Series,,https://www.zoehopkins.ca/recent-works,"normalised from the recorded form ""Television series (in progress)"""
 FILM-0097,Mala Junta (Bad Influence),,language,Mapudungun,mapu1245,https://www.wikidata.org/wiki/Q51158735,recorded in Published
@@ -1965,8 +1976,8 @@ Q20261114-96-F12,Palmer Cortez,2005,form,Animation,,https://cinechile.cl/persona
 Q20261114-96-F12,Palmer Cortez,2005,length,Short,,https://cinechile.cl/persona/francisco-huichaqueo/,"normalised from the recorded form ""Animated short"""
 Q20261114-96-F13,Altrove semilla,2005,form,Experimental,,https://cinechile.cl/persona/francisco-huichaqueo/,"normalised from the recorded form ""Experimental short"""
 Q20261114-96-F13,Altrove semilla,2005,length,Short,,https://cinechile.cl/persona/francisco-huichaqueo/,"normalised from the recorded form ""Experimental short"""
-Q20261114-96-F14,Cadenza,2005,form,Animation,,https://cinechile.cl/persona/francisco-huichaqueo/,"normalised from the recorded form ""Animated short"""
-Q20261114-96-F14,Cadenza,2005,length,Short,,https://cinechile.cl/persona/francisco-huichaqueo/,"normalised from the recorded form ""Animated short"""
+Q20261114-96-F14,Cadenza,2005,form,Experimental,,https://cinechile.cl/pelicula/cadenza/,recorded in Published
+Q20261114-96-F14,Cadenza,2005,length,Short,,https://cinechile.cl/pelicula/cadenza/,recorded in Published
 Q20261114-96-F15,Pájaro mudo,2004,form,Animation,,https://cinechile.cl/persona/francisco-huichaqueo/,"normalised from the recorded form ""Animated short"""
 Q20261114-96-F15,Pájaro mudo,2004,length,Short,,https://cinechile.cl/persona/francisco-huichaqueo/,"normalised from the recorded form ""Animated short"""
 Q20261114-96-F16,Guernica,2004,form,Animation,,https://cinechile.cl/persona/francisco-huichaqueo/,"normalised from the recorded form ""Animated short"""
@@ -2196,7 +2207,11 @@ Q20261121-248-F1,Piatúa Resiste,2019,theme,Extractivism,Land and Environment,ht
 Q20261121-248-F1,Piatúa Resiste,2019,theme,Resistance Movements,Sovereignty and Politics,https://www.flacso.edu.ec/cine-etnografico/pelicula/piatua-resiste/,tagged from a published synopsis
 Q20261121-248-F1,Piatúa Resiste,2019,form,Documentary,,https://www.flacso.edu.ec/cine-etnografico/pelicula/piatua-resiste/,recorded in Published
 Q20261121-248-F1,Piatúa Resiste,2019,length,Short,,https://www.flacso.edu.ec/cine-etnografico/pelicula/piatua-resiste/,recorded in Published
-FILM-0160,Uqaxikbe = CrossingPaths,2024,form,Documentary,,https://www.prensalibre.com/vida/escenario/la-guatemalteca-lucia-ixchiu-gana-premio-en-el-festival-de-cannes-breaking/,"normalised from the recorded form ""Documentary"""
+FILM-0160,Uq'axik b'e (Atravesar Caminos),2024,language,Spanish,stan1288,https://www.simaacademy.tv/videos/uqaxik-be,recorded in Published
+FILM-0160,Uq'axik b'e (Atravesar Caminos),2024,theme,Displacement and Migration,Sovereignty and Politics,https://www.simaacademy.tv/videos/uqaxik-be,tagged from a published synopsis; primary theme
+FILM-0160,Uq'axik b'e (Atravesar Caminos),2024,theme,Resistance Movements,Sovereignty and Politics,https://www.simaacademy.tv/videos/uqaxik-be,tagged from a published synopsis
+FILM-0160,Uq'axik b'e (Atravesar Caminos),2024,form,Documentary,,https://www.simaacademy.tv/videos/uqaxik-be,recorded in Published
+FILM-0160,Uq'axik b'e (Atravesar Caminos),2024,length,Short,,https://www.simaacademy.tv/videos/uqaxik-be,recorded in Published
 DIR-0209-W1031-2,Ixquic,2025,theme,Water,Land and Environment,https://www.themoviedb.org/movie/1714900,tagged from a published synopsis; primary theme
 DIR-0209-W1031-2,Ixquic,2025,theme,Extractivism,Land and Environment,https://www.themoviedb.org/movie/1714900,tagged from a published synopsis
 DIR-0209-W1031-2,Ixquic,2025,theme,Youth,Lives and Relations,https://www.themoviedb.org/movie/1714900,tagged from a published synopsis
@@ -2322,6 +2337,12 @@ Q20261113-59-F1,Jvabajom-Músico,,form,Documentary,,https://www.gob.mx/cultura/p
 Q20261113-59-F1,Jvabajom-Músico,,length,Feature,,https://www.gob.mx/cultura/prensa/13-cineastas-indigenas-obtienen-el-apoyo-del-imcine-mediante-el-estimulo-ecamc-2023,recorded in Published
 Q20261121-09-F1,Sat yelov jlumal (Rostros de mi pueblo),2015,form,Documentary,,https://revistas.inah.gob.mx/index.php/diariodecampo/article/download/19380/21254/42421,recorded in Published
 Q20261121-09-F1,Sat yelov jlumal (Rostros de mi pueblo),2015,length,Short,,https://revistas.inah.gob.mx/index.php/diariodecampo/article/download/19380/21254/42421,recorded in Published
+Q20261126-167-F1,Alperes,2017,form,Documentary,,https://moreliafilmfest.com/sites/default/files/2021-08/17-ficm-cat-todo.pdf,recorded in Published
+Q20261126-167-F1,Alperes,2017,length,Short,,https://moreliafilmfest.com/sites/default/files/2021-08/17-ficm-cat-todo.pdf,recorded in Published
+Q20261126-168-F1,Mujeres de barro,2015,form,Documentary,,https://moreliafilmfest.com/sites/default/files/2021-08/17-ficm-cat-todo.pdf,recorded in Published
+Q20261126-168-F1,Mujeres de barro,2015,length,Short,,https://moreliafilmfest.com/sites/default/files/2021-08/17-ficm-cat-todo.pdf,recorded in Published
+Q20261126-169-F1,Ilk’in,2015,form,Documentary,,https://moreliafilmfest.com/sites/default/files/2021-08/17-ficm-cat-todo.pdf,recorded in Published
+Q20261126-169-F1,Ilk’in,2015,length,Short,,https://moreliafilmfest.com/sites/default/files/2021-08/17-ficm-cat-todo.pdf,recorded in Published
 FILM-0183,Gente de mar y viento,2016,theme,Extractivism,Land and Environment,https://www.themoviedb.org/movie/802647,tagged from a published synopsis; primary theme
 FILM-0183,Gente de mar y viento,2016,theme,Land Defense,Land and Environment,https://www.themoviedb.org/movie/802647,tagged from a published synopsis
 FILM-0183,Gente de mar y viento,2016,length,Short,,https://www.themoviedb.org/movie/802647,recorded in Published
@@ -3971,6 +3992,37 @@ NEW-99cac4bf4e69-WORK-1,Endless Sunlight,2026,theme,Women and Gender,Lives and R
 NEW-99cac4bf4e69-WORK-1,Endless Sunlight,2026,theme,Memory and Oral History,Knowledge and Continuity,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,tagged from a published synopsis
 NEW-99cac4bf4e69-WORK-1,Endless Sunlight,2026,form,Documentary,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,recorded in Published
 NEW-99cac4bf4e69-WORK-1,Endless Sunlight,2026,length,Short,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,recorded in Published
+Q20261126-156-F1,You Can’t Have One Without The Other,2026,theme,LGBTQIA2S,Lives and Relations,https://nac-cna.ca/en/video/reconcilethis-you-cant-have-one-without-the-other-tyson-houseman,tagged from a published synopsis; primary theme
+Q20261126-156-F1,You Can’t Have One Without The Other,2026,theme,Kinship,Lives and Relations,https://nac-cna.ca/en/video/reconcilethis-you-cant-have-one-without-the-other-tyson-houseman,tagged from a published synopsis
+Q20261126-156-F1,You Can’t Have One Without The Other,2026,theme,Elders and Knowledge,Knowledge and Continuity,https://nac-cna.ca/en/video/reconcilethis-you-cant-have-one-without-the-other-tyson-houseman,tagged from a published synopsis
+Q20261126-156-F1,You Can’t Have One Without The Other,2026,length,Short,,https://nac-cna.ca/en/video/reconcilethis-you-cant-have-one-without-the-other-tyson-houseman,recorded in Published
+Q20261126-157-F1,Caustics,,language,Plains Cree,plai1258,https://tysonhouseman.com/caustics,recorded in Published
+Q20261126-157-F1,Caustics,,language,English,stan1293,https://tysonhouseman.com/caustics,recorded in Published
+Q20261126-157-F1,Caustics,,theme,Cosmology and Origin Stories,Knowledge and Continuity,https://tysonhouseman.com/caustics,tagged from a published synopsis; primary theme
+Q20261126-157-F1,Caustics,,theme,Elders and Knowledge,Knowledge and Continuity,https://tysonhouseman.com/caustics,tagged from a published synopsis
+Q20261126-157-F1,Caustics,,theme,More-than-Human Relations,Land and Environment,https://tysonhouseman.com/caustics,tagged from a published synopsis
+Q20261126-157-F1,Caustics,,theme,Kinship,Lives and Relations,https://tysonhouseman.com/caustics,tagged from a published synopsis
+Q20261126-157-F1,Caustics,,theme,Health and Healing,Lives and Relations,https://tysonhouseman.com/caustics,tagged from a published synopsis
+Q20261126-157-F1,Caustics,,form,Documentary,,https://tysonhouseman.com/caustics,recorded in Published
+Q20261126-157-F1,Caustics,,length,Feature,,https://tysonhouseman.com/caustics,recorded in Published
+Q20261126-158-F1,NDN Time,2026,theme,Cosmology and Origin Stories,Knowledge and Continuity,https://tysonhouseman.com/ndn-time,tagged from a published synopsis; primary theme
+Q20261126-158-F1,NDN Time,2026,theme,More-than-Human Relations,Land and Environment,https://tysonhouseman.com/ndn-time,tagged from a published synopsis
+Q20261126-158-F1,NDN Time,2026,theme,Elders and Knowledge,Knowledge and Continuity,https://tysonhouseman.com/ndn-time,tagged from a published synopsis
+Q20261126-158-F1,NDN Time,2026,form,Experimental,,https://tysonhouseman.com/ndn-time,recorded in Published
+Q20261126-158-F1,NDN Time,2026,length,Short,,https://tysonhouseman.com/ndn-time,recorded in Published
+Q20261126-160-F1,opwêyakatâmêw,2024,language,Plains Cree,plai1258,https://tysonhouseman.com/opweyakatamew,recorded in Published
+Q20261126-160-F1,opwêyakatâmêw,2024,theme,Kinship,Lives and Relations,https://tysonhouseman.com/opweyakatamew,tagged from a published synopsis; primary theme
+Q20261126-160-F1,opwêyakatâmêw,2024,theme,Elders and Knowledge,Knowledge and Continuity,https://tysonhouseman.com/opweyakatamew,tagged from a published synopsis
+Q20261126-160-F1,opwêyakatâmêw,2024,theme,More-than-Human Relations,Land and Environment,https://tysonhouseman.com/opweyakatamew,tagged from a published synopsis
+Q20261126-160-F1,opwêyakatâmêw,2024,form,Experimental,,https://tysonhouseman.com/opweyakatamew,recorded in Published
+Q20261126-160-F1,opwêyakatâmêw,2024,length,Short,,https://tysonhouseman.com/opweyakatamew,recorded in Published
+Q20261126-161-F1,Mycorrhizal Dreaming,2025,theme,More-than-Human Relations,Land and Environment,https://tysonhouseman.com/mycorrhizal-dreaming,tagged from a published synopsis; primary theme
+Q20261126-161-F1,Mycorrhizal Dreaming,2025,form,Experimental,,https://tysonhouseman.com/mycorrhizal-dreaming,recorded in Published
+Q20261126-161-F1,Mycorrhizal Dreaming,2025,length,Short,,https://tysonhouseman.com/mycorrhizal-dreaming,recorded in Published
+Q20261126-162-F1,WÎSKACÂN,2020,form,Experimental,,https://tysonhouseman.com/wiskacan,recorded in Published
+Q20261126-162-F1,WÎSKACÂN,2020,length,Short,,https://tysonhouseman.com/wiskacan,recorded in Published
+Q20261126-163-F1,Doorway,2023,form,Experimental,,https://tysonhouseman.com/doorway,recorded in Published
+Q20261126-163-F1,Doorway,2023,length,Short,,https://tysonhouseman.com/doorway,recorded in Published
 NEW-2aa6df7856b7-WORK-1,REZervations for Two (television),2026,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,recorded in Published
 Q20261126-7303-F1,Braided Together,2022,form,Fiction,,https://www.wrappedproductionsinc.com/scripted,recorded in Published
 Q20261126-7303-F1,Braided Together,2022,length,Short,,https://www.wrappedproductionsinc.com/scripted,recorded in Published
@@ -4488,6 +4540,7 @@ SAB2-20261014-f10ee5ef110f-WORK-01,"Trully, el lobo solitario",2016,form,Animati
 SAB2-20261014-f10ee5ef110f-WORK-01,"Trully, el lobo solitario",2016,length,Short,,https://centronacionaldearte.cultura.gob.cl/cartelera/,recorded in Published
 SAB2-20261014-f9aad6391fe4-WORK-01,Llakilla Kushicuy / Triste felicidad,2011,theme,Kinship,Lives and Relations,https://elpais.com/cultura/2016/02/11/actualidad/1455220967_214219.html,tagged from a published synopsis; primary theme
 NEW-293955d2b25c-WORK-4,Pillallaw,,theme,Cosmology and Origin Stories,Knowledge and Continuity,https://www.expreso.ec/actualidad/cine-indigena-propio-spielberg-80888.html,tagged from a published synopsis; primary theme
+Q20261126-8734-F1,Nostalgia de María,2004,length,Short,,https://www.elcomercio.com/tendencias/entretenimiento/williamleon-cine-interculturalidad-quichua-indigena/,recorded in Published
 SAB2-20261014-8b424f7a4364-WORK-01,Sembradoras de vida / Mothers of the Land,2019,theme,Food Sovereignty,Land and Environment,https://www.themoviedb.org/movie/598000,tagged from a published synopsis; primary theme
 SAB2-20261014-8b424f7a4364-WORK-01,Sembradoras de vida / Mothers of the Land,2019,theme,Women and Gender,Lives and Relations,https://www.themoviedb.org/movie/598000,tagged from a published synopsis
 SAB2-20261014-8b424f7a4364-WORK-01,Sembradoras de vida / Mothers of the Land,2019,form,Documentary,,https://www.themoviedb.org/movie/598000,recorded in Published
@@ -4808,10 +4861,17 @@ RESEARCH-FILM-20261031-800-NEW-349,Thin Places,2024,length,Short,,https://www.th
 BETA30B-20261107-F24,Zibi Yajdan,2019,theme,Water,Land and Environment,https://vimeo.com/390408082,tagged from a published synopsis; primary theme
 BETA30B-20261107-F24,Zibi Yajdan,2019,theme,Extractivism,Land and Environment,https://vimeo.com/390408082,tagged from a published synopsis
 BETA30B-20261107-F24,Zibi Yajdan,2019,theme,More-than-Human Relations,Land and Environment,https://vimeo.com/390408082,tagged from a published synopsis
+DIR-0349-QMf4888f,ᎤᏕᏲᏅ (What They’ve Been Taught),2022,language,Cherokee,cher1273,https://www.reciprocity.org/press-kits/udeyonv,recorded in Published
+DIR-0349-QMf4888f,ᎤᏕᏲᏅ (What They’ve Been Taught),2022,language,English,stan1293,https://www.reciprocity.org/press-kits/udeyonv,recorded in Published
 DIR-0349-QMf4888f,ᎤᏕᏲᏅ (What They’ve Been Taught),2022,theme,Elders and Knowledge,Knowledge and Continuity,https://www.reciprocity.org/films/udeyonv,tagged from a published synopsis; primary theme
 DIR-0349-QMf4888f,ᎤᏕᏲᏅ (What They’ve Been Taught),2022,theme,Memory and Oral History,Knowledge and Continuity,https://www.reciprocity.org/films/udeyonv,tagged from a published synopsis
 DIR-0349-QMf4888f,ᎤᏕᏲᏅ (What They’ve Been Taught),2022,form,Documentary,,https://www.reciprocity.org/films/udeyonv,recorded in Published
 DIR-0349-QMf4888f,ᎤᏕᏲᏅ (What They’ve Been Taught),2022,length,Short,,https://www.reciprocity.org/films/udeyonv,recorded in Published
+Q20261126-151-F1,What She Carries,,theme,Women and Gender,Lives and Relations,https://www.tuyagaduproductions.com/what-she-carries,tagged from a published synopsis; primary theme
+Q20261126-151-F1,What She Carries,,theme,Health and Healing,Lives and Relations,https://www.tuyagaduproductions.com/what-she-carries,tagged from a published synopsis
+Q20261126-151-F1,What She Carries,,theme,Kinship,Lives and Relations,https://www.tuyagaduproductions.com/what-she-carries,tagged from a published synopsis
+Q20261126-151-F1,What She Carries,,form,Documentary,,https://www.tuyagaduproductions.com/what-she-carries,recorded in Published
+Q20261126-151-F1,What She Carries,,length,Feature,,https://www.tuyagaduproductions.com/what-she-carries,recorded in Published
 RESEARCH-FILM-20261031-800-NEW-350,The Saint and The Bear,2024,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,recorded in Published
 RESEARCH-FILM-20261031-800-NEW-350,The Saint and The Bear,2024,form,Fiction,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,recorded in Published
 RESEARCH-FILM-20261031-800-NEW-350,The Saint and The Bear,2024,length,Short,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,recorded in Published
@@ -6678,7 +6738,7 @@ QM-1a5fde6c6a-F1,Kixampe,2021,form,Music Video,,https://www.behance.net/gallery/
 Q20261108-74-F1,ahcahkopiyêsis,,form,Animation,,https://viff.org/catalyst/viff-2024/,"normalised from the recorded form ""Animated short (in progress)"""
 Q20261108-74-F1,ahcahkopiyêsis,,length,Short,,https://viff.org/catalyst/viff-2024/,"normalised from the recorded form ""Animated short (in progress)"""
 Q20261108-75-F1,Martins Beach,,form,Documentary,,https://documentary.org/node/39324,"normalised from the recorded form ""Documentary (in progress)"""
-Q20261126-123-F1,Open Doors,2012,form,Experimental,,https://ethnographicterminalia.org/2012-artists/catherine-herrera,"normalised from the recorded form ""Video art"""
+Q20261126-123-F1,Open Doors,2012,form,Experimental,,https://ethnographicterminalia.org/2012-artists/catherine-herrera,recorded in Published
 Q20261126-124-F1,Witness the Healing,2008,form,Experimental,,https://ethnographicterminalia.org/2012-artists/catherine-herrera,"normalised from the recorded form ""Video art"""
 Q20261126-127-F1,Transition,,form,Documentary,,https://collab.sundance.org/people/Catherine-Herrera-1550213910,"normalised from the recorded form ""Documentary"""
 Q20261108-76-F1,Blayne Tree,,theme,Health and Healing,Lives and Relations,https://friedenfilms.com/,tagged from a published synopsis; primary theme
@@ -7952,6 +8012,10 @@ NEW-eadaecaac7e7-F1,Smudge The Blades,,form,Fiction,,https://iso-bea.ca/news-eve
 NEW-b684ae51b534-F2,Under The Arbor,,theme,Music and Performance,Expression and Representation,https://iso-bea.ca/news-events/2025/04/10/iso-2024-25-production-recipients/,tagged from a published synopsis; primary theme
 NEW-b684ae51b534-F2,Under The Arbor,,form,Documentary,,https://iso-bea.ca/news-events/2025/04/10/iso-2024-25-production-recipients/,recorded in Published
 Q20261126-98-F1,I'll Tell You When I'm Ready,2024,length,Short,,https://player.bfi.org.uk/free/film/watch-ill-tell-you-when-im-ready-2024-online,recorded in Published
+Q20261126-153-F1,The Crying Fields,2019,theme,Land Defense,Land and Environment,https://watch.plex.tv/en-GB/movie/the-crying-fields-2019,tagged from a published synopsis; primary theme
+Q20261126-153-F1,The Crying Fields,2019,theme,"Justice, Truth and Reconciliation",Sovereignty and Politics,https://watch.plex.tv/en-GB/movie/the-crying-fields-2019,tagged from a published synopsis
+Q20261126-153-F1,The Crying Fields,2019,form,Documentary,,https://watch.plex.tv/en-GB/movie/the-crying-fields-2019,recorded in Published
+Q20261126-153-F1,The Crying Fields,2019,length,Short,,https://watch.plex.tv/en-GB/movie/the-crying-fields-2019,recorded in Published
 Q20261122-101-F1,Turtle Island Tap,,theme,Music and Performance,Expression and Representation,https://iso-bea.ca/news-events/2025/04/10/iso-2024-25-production-recipients/,tagged from a published synopsis; primary theme
 Q20261122-101-F1,Turtle Island Tap,,theme,Youth,Lives and Relations,https://iso-bea.ca/news-events/2025/04/10/iso-2024-25-production-recipients/,tagged from a published synopsis
 Q20261122-101-F1,Turtle Island Tap,,theme,Self-Representation and Countering Stereotypes,Expression and Representation,https://iso-bea.ca/news-events/2025/04/10/iso-2024-25-production-recipients/,tagged from a published synopsis
@@ -8228,10 +8292,11 @@ Q20261124-33-F1,Self Portrait,2018,theme,Self-Representation and Countering Ster
 Q20261124-33-F1,Self Portrait,2018,length,Short,,https://facets.org/programs/the-other-51-native-american-women-directors/,recorded in Published
 Q20261126-112-F1,Things You Know But Cannot Explain,2022,form,Animation,,https://www.mcminnvillefilmfest.org/past-official-selections,"normalised from the recorded form ""Animation"""
 Q20261126-118-F1,Tuluwat Reclaimed,2023,form,Documentary,,https://sugarbushhillproductions.com/projects/tuluwat-reclaimed,"normalised from the recorded form ""Documentary"""
-Q20261126-120-F1,Graphite & War,,theme,"Art, Craft and Making",Expression and Representation,https://sugarbushhillproductions.com/projects/graphiteandwar,tagged from a published synopsis; primary theme
 Q20261126-120-F1,Graphite & War,,form,Documentary,,https://sugarbushhillproductions.com/projects/graphiteandwar,recorded in Published
-Q20261126-120-F1,Graphite & War,,length,Short,,https://sugarbushhillproductions.com/projects/graphiteandwar,recorded in Published
-Q20261126-121-F1,Baduwa’t,2025,form,Documentary,,https://www.baduwatwatershedcouncil.org/documentary,"normalised from the recorded form ""Documentary"""
+Q20261126-121-F1,Baduwa’t,2025,theme,Water,Land and Environment,https://www.baduwatwatershedcouncil.org/documentary,tagged from a published synopsis; primary theme
+Q20261126-121-F1,Baduwa’t,2025,theme,Environmental Change,Land and Environment,https://www.baduwatwatershedcouncil.org/documentary,tagged from a published synopsis
+Q20261126-121-F1,Baduwa’t,2025,theme,Land Defense,Land and Environment,https://www.baduwatwatershedcouncil.org/documentary,tagged from a published synopsis
+Q20261126-121-F1,Baduwa’t,2025,form,Documentary,,https://www.baduwatwatershedcouncil.org/documentary,recorded in Published
 Q20261124-36-F1,Sun dressed woman,2022,form,Animation,,https://filmfreeway.com/mulhervestidadesol,"normalised from the recorded form ""Animation"""
 Q20261124-94-F1,February Sixteenth Nineteen Forty-Seven,2024,theme,Memory and Oral History,Knowledge and Continuity,https://movingimages.ca/products/feb-16-1947,tagged from a published synopsis; primary theme
 Q20261124-94-F1,February Sixteenth Nineteen Forty-Seven,2024,theme,Elders and Knowledge,Knowledge and Continuity,https://movingimages.ca/products/feb-16-1947,tagged from a published synopsis
@@ -8364,6 +8429,9 @@ QM-eaec7451b0-M1,TRANSpassado – corpos que retratam,2023,length,Short,,https:/
 Q20261125-01-F1,Healing Nation,2022,form,Documentary,,https://viff.org/institute/catalyst/cohort-archive/,"normalised from the recorded form ""Documentary"""
 QM-e4a0eabad1-M1,He visto caer la lluvia,,form,Documentary,,https://www.imcine.gob.mx/pdf/anuarios/5cae1be6509bf7b2.pdf,"normalised from the recorded form ""Documentary (in progress)"""
 Q20261124-16-F1,Wings of the Feather River: Memory & Renewal in Maidu Country,,form,Documentary,,https://www.rednationff.com/wings-of-the-feather-river-memory-renewal-in-maidu-country/,"normalised from the recorded form ""Documentary"""
+QM-614fcc993c-M1,Akoo / Basura,1994,theme,Environmental Change,Land and Environment,https://redmifa.com/wp-content/uploads/2022/05/406bc-e-157-320_ia2_reuniones.pdf,tagged from a published synopsis; primary theme
+QM-614fcc993c-M1,Akoo / Basura,1994,form,Documentary,,https://redmifa.com/wp-content/uploads/2022/05/406bc-e-157-320_ia2_reuniones.pdf,recorded in Published
+QM-614fcc993c-M1,Akoo / Basura,1994,length,Short,,https://redmifa.com/wp-content/uploads/2022/05/406bc-e-157-320_ia2_reuniones.pdf,recorded in Published
 DIR-0080-F1,2 Hour Parking,2011,form,Music Video,,https://en.wikipedia.org/wiki/Cowboy_Smithx,"normalised from the recorded form ""Music video"""
 NEW-c7c77f06bca3-F1,Manito-Api,,form,Documentary,,https://nsi-canada.ca/media_release/meet-the-2020-nsi-indigidocs-students/,"normalised from the recorded form ""Documentary (in progress)"""
 DIR-0306-F1,Rutherford Falls,,length,Series,,https://en.wikipedia.org/wiki/Sierra_Teller_Ornelas,"normalised from the recorded form ""Television series"""
@@ -8430,9 +8498,39 @@ Q20261127-14-F1,Kun Bi,2022,theme,Women and Gender,Lives and Relations,https://w
 Q20261127-14-F1,Kun Bi,2022,theme,Kinship,Lives and Relations,https://www.retinalatina.org/peliculas/kun-bi-agamenon-quintero-jorge-alfaro/,tagged from a published synopsis
 Q20261127-14-F1,Kun Bi,2022,form,Fiction,,https://www.retinalatina.org/peliculas/kun-bi-agamenon-quintero-jorge-alfaro/,recorded in Published
 Q20261127-14-F1,Kun Bi,2022,length,Short,,https://www.retinalatina.org/peliculas/kun-bi-agamenon-quintero-jorge-alfaro/,recorded in Published
+RESEARCH-FILM-20261031-0009-01,Qamasa,2018,form,Documentary,,https://publicar.cgantropologia.org.ar/index.php/revista/article/view/528,recorded in Published
+RESEARCH-FILM-20261031-0009-01,Qamasa,2018,length,Feature,,https://publicar.cgantropologia.org.ar/index.php/revista/article/view/528,recorded in Published
 Q20261126-19603-F1,La Illa,2022,theme,Environmental Change,Land and Environment,https://www.retinalatina.org/peliculas/la-illa/,tagged from a published synopsis; primary theme
 Q20261126-19603-F1,La Illa,2022,theme,Water,Land and Environment,https://www.retinalatina.org/peliculas/la-illa/,tagged from a published synopsis
 Q20261126-19603-F1,La Illa,2022,form,Documentary,,https://www.retinalatina.org/peliculas/la-illa/,recorded in Published
 Q20261126-19603-F1,La Illa,2022,length,Feature,,https://www.retinalatina.org/peliculas/la-illa/,recorded in Published
 Q20261126-19604-F1,Taypi,2021,form,Documentary,,https://museo.precolombino.cl/static/archivados/cine-video-indigena-2022/taypi/index.html,recorded in Published
 Q20261126-19604-F1,Taypi,2021,length,Short,,https://museo.precolombino.cl/static/archivados/cine-video-indigena-2022/taypi/index.html,recorded in Published
+Q20261126-19605-F1,La finca es mi proyecto de vida,2015,form,Documentary,,https://ipdrs.org/multimedia-ipdrs/?coordinacion=ivan-molina-velasquez,recorded in Published
+Q20261126-19613-F1,Entre el Cielo y la Tierra,2007,form,Documentary,,https://www.fenavid.com/en/fenavidindustria,recorded in Published
+Q20261126-19616-F1,Un Trabajo Es … Clavo,2006,language,Spanish,stan1288,https://www.prodocumentales.org/catalogos/Catalogo2008.pdf,recorded in Published
+Q20261126-19616-F1,Un Trabajo Es … Clavo,2006,theme,Displacement and Migration,Sovereignty and Politics,https://www.prodocumentales.org/catalogos/Catalogo2008.pdf,tagged from a published synopsis; primary theme
+Q20261126-19616-F1,Un Trabajo Es … Clavo,2006,form,Documentary,,https://www.prodocumentales.org/catalogos/Catalogo2008.pdf,recorded in Published
+Q20261126-19616-F1,Un Trabajo Es … Clavo,2006,length,Short,,https://www.prodocumentales.org/catalogos/Catalogo2008.pdf,recorded in Published
+Q20261126-98-F2,Tushka,1996,theme,State Violence and Genocide,Sovereignty and Politics,https://cinema.ucla.edu/events/trudell-2005-tushka-1996-2014-10-06/,tagged from a published synopsis; primary theme
+Q20261126-98-F2,Tushka,1996,theme,Resistance Movements,Sovereignty and Politics,https://cinema.ucla.edu/events/trudell-2005-tushka-1996-2014-10-06/,tagged from a published synopsis
+Q20261126-98-F2,Tushka,1996,form,Fiction,,https://cinema.ucla.edu/events/trudell-2005-tushka-1996-2014-10-06/,recorded in Published
+Q20261126-98-F2,Tushka,1996,length,Feature,,https://cinema.ucla.edu/events/trudell-2005-tushka-1996-2014-10-06/,recorded in Published
+Q20261126-98-F3,Walking on Turtle Island,2009,theme,Kinship,Lives and Relations,https://skinsplex.com/shows/walking-on-turtle-island/,tagged from a published synopsis; primary theme
+Q20261126-98-F3,Walking on Turtle Island,2009,form,Fiction,,https://skinsplex.com/shows/walking-on-turtle-island/,recorded in Published
+Q20261126-98-F3,Walking on Turtle Island,2009,length,Short,,https://skinsplex.com/shows/walking-on-turtle-island/,recorded in Published
+Q20261126-98-F4,Crazy Ind’n,2007,theme,"Archives, Museums and Repatriation",Knowledge and Continuity,https://skinsplex.com/shows/crazy-indn/,tagged from a published synopsis; primary theme
+Q20261126-98-F4,Crazy Ind’n,2007,theme,Resistance Movements,Sovereignty and Politics,https://skinsplex.com/shows/crazy-indn/,tagged from a published synopsis
+Q20261126-98-F4,Crazy Ind’n,2007,form,Animation,,https://skinsplex.com/shows/crazy-indn/,recorded in Published
+Q20261126-98-F4,Crazy Ind’n,2007,length,Short,,https://skinsplex.com/shows/crazy-indn/,recorded in Published
+Q20261126-98-F5,Ramona Band of Cahuilla: A History,,theme,Elders and Knowledge,Knowledge and Continuity,https://skinsplex.com/shows/ramona-band-of-cahuilla-a-history/,tagged from a published synopsis
+Q20261126-98-F5,Ramona Band of Cahuilla: A History,,theme,Memory and Oral History,Knowledge and Continuity,https://skinsplex.com/shows/ramona-band-of-cahuilla-a-history/,tagged from a published synopsis; primary theme
+Q20261126-98-F5,Ramona Band of Cahuilla: A History,,form,Documentary,,https://skinsplex.com/shows/ramona-band-of-cahuilla-a-history/,recorded in Published
+Q20261126-98-F5,Ramona Band of Cahuilla: A History,,length,Short,,https://skinsplex.com/shows/ramona-band-of-cahuilla-a-history/,recorded in Published
+Q20261126-98-F6,Wave (Pilot),,form,Fiction,,https://skinsplex.com/shows/wave-s1e1/,recorded in Published
+Q20261126-98-F6,Wave (Pilot),,length,Short,,https://skinsplex.com/shows/wave-s1e1/,recorded in Published
+Q20261126-98-F7,Jew in Choctaw Country (Aaron),,form,Fiction,,https://skinsplex.com/shows/jew-in-choctaw-country-s1e1/,recorded in Published
+Q20261126-98-F7,Jew in Choctaw Country (Aaron),,length,Short,,https://skinsplex.com/shows/jew-in-choctaw-country-s1e1/,recorded in Published
+Q20261126-98-F8,The Homestead,,theme,Displacement and Migration,Sovereignty and Politics,https://www.televisionacademy.com/features/news/online-originals/nahm/ian-skorodin,tagged from a published synopsis; primary theme
+Q20261126-98-F8,The Homestead,,theme,Memory and Oral History,Knowledge and Continuity,https://www.televisionacademy.com/features/news/online-originals/nahm/ian-skorodin,tagged from a published synopsis
+Q20261126-98-F8,The Homestead,,form,Documentary,,https://www.televisionacademy.com/features/news/online-originals/nahm/ian-skorodin,recorded in Published

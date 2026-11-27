@@ -2,8 +2,8 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-27",
  "license": "See data.html",
- "films_on_public_map": 3174,
- "film_entries": 3174,
+ "films_on_public_map": 3202,
+ "film_entries": 3202,
  "published_field_conflicts": {
   "SA50-20261014-59f87a2e3ce5-WORK-01": [
    "themes"
@@ -157,7 +157,7 @@
     "note": "",
     "region": "North America",
     "region_basis": "Glottolog countries",
-    "films": 1
+    "films": 2
    },
    {
     "label": "Cree",
@@ -185,7 +185,7 @@
     "note": "",
     "region": "North America",
     "region_basis": "Glottolog countries",
-    "films": 1
+    "films": 3
    },
    {
     "label": "Denaakk’e (Koyukon)",
@@ -465,7 +465,7 @@
     "note": "",
     "region": "",
     "region_basis": "",
-    "films": 148
+    "films": 151
    },
    {
     "label": "Spanish",
@@ -479,7 +479,7 @@
     "note": "",
     "region": "",
     "region_basis": "",
-    "films": 54
+    "films": 56
    },
    {
     "label": "Portuguese",
@@ -5252,6 +5252,54 @@
    "form": null,
    "length": "Short"
   },
+  "Q20261126-69-F1": {
+   "title": "New Skin",
+   "year": 2008,
+   "makers": [
+    {
+     "id": "DIR-0071",
+     "name": "Bretten Hannam"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
+  },
+  "Q20261126-68-F1": {
+   "title": "Puppy",
+   "year": 2010,
+   "makers": [
+    {
+     "id": "DIR-0071",
+     "name": "Bretten Hannam"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
+  },
+  "Q20261126-66-F1": {
+   "title": "Elmiteskuatl",
+   "year": 2019,
+   "makers": [
+    {
+     "id": "DIR-0071",
+     "name": "Bretten Hannam"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
+  },
   "FILM-SRC-2023-00006": {
    "title": "Tautuktavuk (What We See)",
    "year": null,
@@ -5708,6 +5756,36 @@
    "primary_theme": "Self-Representation and Countering Stereotypes",
    "families": [
     "Expression and Representation"
+   ],
+   "form": "Fiction",
+   "length": "Feature"
+  },
+  "Q20261126-150-F1": {
+   "title": "Smudge the Blades",
+   "year": 2026,
+   "makers": [
+    {
+     "id": "DIR-0078",
+     "name": "Cody Lightning"
+    }
+   ],
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://www.ciffcalgary.ca/films/2026/smudge-the-blades"
+    }
+   ],
+   "themes": [
+    "Youth"
+   ],
+   "primary_theme": "Youth",
+   "families": [
+    "Lives and Relations"
    ],
    "form": "Fiction",
    "length": "Feature"
@@ -14508,10 +14586,14 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
+   "themes": [
+    "Linguistic Preservation"
+   ],
+   "primary_theme": "Linguistic Preservation",
+   "families": [
+    "Knowledge and Continuity"
+   ],
+   "form": "Documentary",
    "length": "Series"
   },
   "Q20261115-761-F9": {
@@ -14556,9 +14638,14 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Youth",
+    "Urban Indigeneity"
+   ],
+   "primary_theme": "Youth",
+   "families": [
+    "Lives and Relations"
+   ],
    "form": "Fiction",
    "length": "Series"
   },
@@ -14612,7 +14699,7 @@
   },
   "DIR-0167-Q20261114-01-F6": {
    "title": "Sullivan's Crossing",
-   "year": null,
+   "year": 2026,
    "makers": [
     {
      "id": "DIR-0167",
@@ -15146,7 +15233,7 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": "Animation",
+   "form": "Experimental",
    "length": "Short"
   },
   "Q20261114-96-F15": {
@@ -17038,7 +17125,7 @@
    "length": "Short"
   },
   "FILM-0160": {
-   "title": "Uqaxikbe = CrossingPaths",
+   "title": "Uq'axik b'e (Atravesar Caminos)",
    "year": 2024,
    "makers": [
     {
@@ -17046,12 +17133,27 @@
      "name": "Ana Lucia Ixchiu Hernandez"
     }
    ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "languages": [
+    {
+     "label": "Spanish",
+     "as_credited": "Spanish",
+     "glottocode": "stan1288",
+     "iso639_3": "spa",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://www.simaacademy.tv/videos/uqaxik-be"
+    }
+   ],
+   "themes": [
+    "Displacement and Migration",
+    "Resistance Movements"
+   ],
+   "primary_theme": "Displacement and Migration",
+   "families": [
+    "Sovereignty and Politics"
+   ],
    "form": "Documentary",
-   "length": null
+   "length": "Short"
   },
   "FILM-0161": {
    "title": "Hiñaru Duna (Mujer agua)",
@@ -18268,6 +18370,54 @@
   },
   "Q20261121-09-F1": {
    "title": "Sat yelov jlumal (Rostros de mi pueblo)",
+   "year": 2015,
+   "makers": [
+    {
+     "id": "DIR-0226",
+     "name": "Humberto Gómez Pérez"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261126-167-F1": {
+   "title": "Alperes",
+   "year": 2017,
+   "makers": [
+    {
+     "id": "DIR-0226",
+     "name": "Humberto Gómez Pérez"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261126-168-F1": {
+   "title": "Mujeres de barro",
+   "year": 2015,
+   "makers": [
+    {
+     "id": "DIR-0226",
+     "name": "Humberto Gómez Pérez"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261126-169-F1": {
+   "title": "Ilk’in",
    "year": 2015,
    "makers": [
     {
@@ -22358,10 +22508,6 @@
     {
      "id": "DIR-0308",
      "name": "Sterlin Harjo"
-    },
-    {
-     "id": "SAB2-20261014-f9aad6391fe4",
-     "name": "William León"
     }
    ],
    "languages": [],
@@ -30579,6 +30725,183 @@
    "form": "Documentary",
    "length": "Short"
   },
+  "Q20261126-156-F1": {
+   "title": "You Can’t Have One Without The Other",
+   "year": 2026,
+   "makers": [
+    {
+     "id": "NEW-99cac4bf4e69",
+     "name": "Tyson Houseman"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "LGBTQIA2S",
+    "Kinship",
+    "Elders and Knowledge"
+   ],
+   "primary_theme": "LGBTQIA2S",
+   "families": [
+    "Knowledge and Continuity",
+    "Lives and Relations"
+   ],
+   "form": null,
+   "length": "Short"
+  },
+  "Q20261126-157-F1": {
+   "title": "Caustics",
+   "year": null,
+   "makers": [
+    {
+     "id": "NEW-99cac4bf4e69",
+     "name": "Tyson Houseman"
+    }
+   ],
+   "languages": [
+    {
+     "label": "Plains Cree",
+     "as_credited": "Plains Cree",
+     "glottocode": "plai1258",
+     "iso639_3": "crk",
+     "match": "exact",
+     "indigenous": true,
+     "source": "https://tysonhouseman.com/caustics"
+    },
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://tysonhouseman.com/caustics"
+    }
+   ],
+   "themes": [
+    "Cosmology and Origin Stories",
+    "Elders and Knowledge",
+    "More-than-Human Relations",
+    "Kinship",
+    "Health and Healing"
+   ],
+   "primary_theme": "Cosmology and Origin Stories",
+   "families": [
+    "Knowledge and Continuity",
+    "Land and Environment",
+    "Lives and Relations"
+   ],
+   "form": "Documentary",
+   "length": "Feature"
+  },
+  "Q20261126-158-F1": {
+   "title": "NDN Time",
+   "year": 2026,
+   "makers": [
+    {
+     "id": "NEW-99cac4bf4e69",
+     "name": "Tyson Houseman"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Cosmology and Origin Stories",
+    "More-than-Human Relations",
+    "Elders and Knowledge"
+   ],
+   "primary_theme": "Cosmology and Origin Stories",
+   "families": [
+    "Knowledge and Continuity",
+    "Land and Environment"
+   ],
+   "form": "Experimental",
+   "length": "Short"
+  },
+  "Q20261126-160-F1": {
+   "title": "opwêyakatâmêw",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "NEW-99cac4bf4e69",
+     "name": "Tyson Houseman"
+    }
+   ],
+   "languages": [
+    {
+     "label": "Plains Cree",
+     "as_credited": "Plains Cree",
+     "glottocode": "plai1258",
+     "iso639_3": "crk",
+     "match": "exact",
+     "indigenous": true,
+     "source": "https://tysonhouseman.com/opweyakatamew"
+    }
+   ],
+   "themes": [
+    "Kinship",
+    "Elders and Knowledge",
+    "More-than-Human Relations"
+   ],
+   "primary_theme": "Kinship",
+   "families": [
+    "Knowledge and Continuity",
+    "Land and Environment",
+    "Lives and Relations"
+   ],
+   "form": "Experimental",
+   "length": "Short"
+  },
+  "Q20261126-161-F1": {
+   "title": "Mycorrhizal Dreaming",
+   "year": 2025,
+   "makers": [
+    {
+     "id": "NEW-99cac4bf4e69",
+     "name": "Tyson Houseman"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "More-than-Human Relations"
+   ],
+   "primary_theme": "More-than-Human Relations",
+   "families": [
+    "Land and Environment"
+   ],
+   "form": "Experimental",
+   "length": "Short"
+  },
+  "Q20261126-162-F1": {
+   "title": "WÎSKACÂN",
+   "year": 2020,
+   "makers": [
+    {
+     "id": "NEW-99cac4bf4e69",
+     "name": "Tyson Houseman"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Experimental",
+   "length": "Short"
+  },
+  "Q20261126-163-F1": {
+   "title": "Doorway",
+   "year": 2023,
+   "makers": [
+    {
+     "id": "NEW-99cac4bf4e69",
+     "name": "Tyson Houseman"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Experimental",
+   "length": "Short"
+  },
   "NEW-2aa6df7856b7-WORK-1": {
    "title": "REZervations for Two (television)",
    "year": 2026,
@@ -34549,6 +34872,22 @@
    "form": null,
    "length": null
   },
+  "Q20261126-8734-F1": {
+   "title": "Nostalgia de María",
+   "year": 2004,
+   "makers": [
+    {
+     "id": "SAB2-20261014-f9aad6391fe4",
+     "name": "William León"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
+  },
   "SAB2-20261014-8b424f7a4364-WORK-01": {
    "title": "Sembradoras de vida / Mothers of the Land",
    "year": 2019,
@@ -36712,7 +37051,26 @@
      "name": "Brit Hensel"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "Cherokee",
+     "as_credited": "Cherokee",
+     "glottocode": "cher1273",
+     "iso639_3": "chr",
+     "match": "exact",
+     "indigenous": true,
+     "source": "https://www.reciprocity.org/press-kits/udeyonv"
+    },
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://www.reciprocity.org/press-kits/udeyonv"
+    }
+   ],
    "themes": [
     "Elders and Knowledge",
     "Memory and Oral History"
@@ -36723,6 +37081,28 @@
    ],
    "form": "Documentary",
    "length": "Short"
+  },
+  "Q20261126-151-F1": {
+   "title": "What She Carries",
+   "year": null,
+   "makers": [
+    {
+     "id": "DIR-0349",
+     "name": "Brit Hensel"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Women and Gender",
+    "Health and Healing",
+    "Kinship"
+   ],
+   "primary_theme": "Women and Gender",
+   "families": [
+    "Lives and Relations"
+   ],
+   "form": "Documentary",
+   "length": "Feature"
   },
   "RESEARCH-FILM-20261031-800-NEW-350": {
    "title": "The Saint and The Bear",
@@ -61533,6 +61913,28 @@
    "form": null,
    "length": "Short"
   },
+  "Q20261126-153-F1": {
+   "title": "The Crying Fields",
+   "year": 2019,
+   "makers": [
+    {
+     "id": "NEW-b684ae51b534",
+     "name": "Hayley Morin"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Land Defense",
+    "Justice, Truth and Reconciliation"
+   ],
+   "primary_theme": "Land Defense",
+   "families": [
+    "Land and Environment",
+    "Sovereignty and Politics"
+   ],
+   "form": "Documentary",
+   "length": "Short"
+  },
   "Q20261122-101-F1": {
    "title": "Turtle Island Tap",
    "year": null,
@@ -63976,15 +64378,11 @@
     }
    ],
    "languages": [],
-   "themes": [
-    "Art, Craft and Making"
-   ],
-   "primary_theme": "Art, Craft and Making",
-   "families": [
-    "Expression and Representation"
-   ],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
    "form": "Documentary",
-   "length": "Short"
+   "length": null
   },
   "Q20261126-121-F1": {
    "title": "Baduwa’t",
@@ -63996,9 +64394,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Water",
+    "Environmental Change",
+    "Land Defense"
+   ],
+   "primary_theme": "Water",
+   "families": [
+    "Land and Environment"
+   ],
    "form": "Documentary",
    "length": null
   },
@@ -65936,11 +66340,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Environmental Change"
+   ],
+   "primary_theme": "Environmental Change",
+   "families": [
+    "Land and Environment"
+   ],
+   "form": "Documentary",
+   "length": "Short"
   },
   "QM-01e4ba4656-M1": {
    "title": "Una experiencia viva",
@@ -66753,6 +67161,22 @@
    "form": "Fiction",
    "length": "Short"
   },
+  "RESEARCH-FILM-20261031-0009-01": {
+   "title": "Qamasa",
+   "year": 2018,
+   "makers": [
+    {
+     "id": "LEAD-20261031-0009",
+     "name": "Iván Molina Velásquez"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Feature"
+  },
   "Q20261126-19603-F1": {
    "title": "La Illa",
    "year": 2022,
@@ -66804,6 +67228,206 @@
    "primary_theme": null,
    "families": [],
    "form": null,
+   "length": null
+  },
+  "Q20261126-19605-F1": {
+   "title": "La finca es mi proyecto de vida",
+   "year": 2015,
+   "makers": [
+    {
+     "id": "LEAD-20261031-0009",
+     "name": "Iván Molina Velásquez"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "Q20261126-19613-F1": {
+   "title": "Entre el Cielo y la Tierra",
+   "year": 2007,
+   "makers": [
+    {
+     "id": "LEAD-20261031-0009",
+     "name": "Iván Molina Velásquez"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "Q20261126-19616-F1": {
+   "title": "Un Trabajo Es … Clavo",
+   "year": 2006,
+   "makers": [
+    {
+     "id": "LEAD-20261031-0009",
+     "name": "Iván Molina Velásquez"
+    }
+   ],
+   "languages": [
+    {
+     "label": "Spanish",
+     "as_credited": "Spanish",
+     "glottocode": "stan1288",
+     "iso639_3": "spa",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://www.prodocumentales.org/catalogos/Catalogo2008.pdf"
+    }
+   ],
+   "themes": [
+    "Displacement and Migration"
+   ],
+   "primary_theme": "Displacement and Migration",
+   "families": [
+    "Sovereignty and Politics"
+   ],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261126-98-F2": {
+   "title": "Tushka",
+   "year": 1996,
+   "makers": [
+    {
+     "id": "Q20261126-98",
+     "name": "Ian Skorodin"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "State Violence and Genocide",
+    "Resistance Movements"
+   ],
+   "primary_theme": "State Violence and Genocide",
+   "families": [
+    "Sovereignty and Politics"
+   ],
+   "form": "Fiction",
+   "length": "Feature"
+  },
+  "Q20261126-98-F3": {
+   "title": "Walking on Turtle Island",
+   "year": 2009,
+   "makers": [
+    {
+     "id": "Q20261126-98",
+     "name": "Ian Skorodin"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Kinship"
+   ],
+   "primary_theme": "Kinship",
+   "families": [
+    "Lives and Relations"
+   ],
+   "form": "Fiction",
+   "length": "Short"
+  },
+  "Q20261126-98-F4": {
+   "title": "Crazy Ind’n",
+   "year": 2007,
+   "makers": [
+    {
+     "id": "Q20261126-98",
+     "name": "Ian Skorodin"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Archives, Museums and Repatriation",
+    "Resistance Movements"
+   ],
+   "primary_theme": "Archives, Museums and Repatriation",
+   "families": [
+    "Knowledge and Continuity",
+    "Sovereignty and Politics"
+   ],
+   "form": "Animation",
+   "length": "Short"
+  },
+  "Q20261126-98-F5": {
+   "title": "Ramona Band of Cahuilla: A History",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261126-98",
+     "name": "Ian Skorodin"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Elders and Knowledge",
+    "Memory and Oral History"
+   ],
+   "primary_theme": "Memory and Oral History",
+   "families": [
+    "Knowledge and Continuity"
+   ],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261126-98-F6": {
+   "title": "Wave (Pilot)",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261126-98",
+     "name": "Ian Skorodin"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": "Short"
+  },
+  "Q20261126-98-F7": {
+   "title": "Jew in Choctaw Country (Aaron)",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261126-98",
+     "name": "Ian Skorodin"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": "Short"
+  },
+  "Q20261126-98-F8": {
+   "title": "The Homestead",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261126-98",
+     "name": "Ian Skorodin"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Displacement and Migration",
+    "Memory and Oral History"
+   ],
+   "primary_theme": "Displacement and Migration",
+   "families": [
+    "Knowledge and Continuity",
+    "Sovereignty and Politics"
+   ],
+   "form": "Documentary",
    "length": null
   }
  }
