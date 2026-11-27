@@ -245,3 +245,11 @@ John: "subtlely and elegantly change the drum roll to a iflm canister style"
 - Shown to John as a mockup only, not built: a one-line note beside the drum the first time a web is drawn, and a Key button by the scale bar.
 - `globe.js?v=73-plate`, `globe-experiment.css?v=98-plate`.
 - 12:10 am: the drum's focus is shown by its thin gold outline alone; the heavy dark ring is gone. Reaching the drum by Tab also gives it the arrow keys. `globe.js?v=74-plate`, `globe-experiment.css?v=99-plate`.
+
+## The one-film panel (27 Nov, 12:25 am, beta only)
+John, with a capture of Cherokee (Oklahoma) under MMIWG2S: "The submenu shrunk? When you have themes open rather small."
+- Cause: a theme narrows a land to the films that carry it. When one film is left, the panel switches to its one-film layout, which was 420 px wide with a 65 px still in a 158 px column, leaving a gap. The same land shows 15 films at 994 px with no theme.
+- Now the one-film panel is 560 px wide, the still fills its column (210 px), and the buttons no longer slide under it.
+- Not changed: the heading counts the films and filmmakers that match the theme (1 and 1) while the Filmmakers list below counts everyone linked to the land (6).
+- `globe.js?v=75-plate`, `globe-experiment.css?v=100-plate`.
+

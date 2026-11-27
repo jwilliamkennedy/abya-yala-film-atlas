@@ -1272,3 +1272,8 @@ html[data-reading-theme="night"] #atlas-rotational-globe .globe-primary,html[dat
 /* Find has no Lands picker (John, 26 Nov). The control stays in the page, out of sight and out of the reading order, only because the checks choose lands through it. */
 #atlas-rotational-globe .globe-find-lands{position:absolute!important;width:1px!important;height:1px!important;overflow:hidden!important;clip-path:inset(50%);opacity:0;pointer-events:none;margin:0!important;padding:0!important}
 #globe-live-map .maplibregl-ctrl-bottom-left{bottom:calc(var(--globe-footer-height) + 4px);left:8px}
+
+/* A land showing one film (often because a theme narrowed it): a wider panel, and the still fills its column, so the panel does not look shrunken. */
+#atlas-rotational-globe #globe-encounter[data-single=true] :is(.globe-feature-art,.globe-art-feature)[data-art-state=ready]{width:100%!important;max-height:210px}
+#atlas-rotational-globe #globe-encounter[data-single=true] :is(.globe-feature-art,.globe-art-feature) img{width:100%!important;height:auto!important}
+#atlas-rotational-globe #globe-encounter[data-belt=true][data-single=true] .globe-featured:has(>.globe-feature-art[data-art-state=ready]:not([hidden])) .globe-encounter-actions{margin-left:0}
