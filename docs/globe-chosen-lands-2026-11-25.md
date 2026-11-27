@@ -261,3 +261,9 @@ John: "push beta to main"
 - On main with this promotion: everything in this file from "Neighbour lines removed" (26 Nov, 8:30 pm) onward.
 - Still to fix, now on main as well as the beta: the Nahua land links.
 
+## Constellate stays on while the globe is moved (27 Nov, 12:30 am, beta only)
+John: "Constellate turns off when you move globe"
+- Cause: every menu closed on a press outside it, and closing Constellate's panel also ended its dusk view. A reader could not move the globe to find a film without leaving Constellate.
+- Now Constellate stays open while the globe is moved, as Themes does with a theme on. It closes from its own word in the bar or with Escape. On a phone it still closes on a press outside, because the panel covers the globe there.
+- `globe.js?v=76-plate`.
+

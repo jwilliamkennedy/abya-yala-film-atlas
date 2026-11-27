@@ -1964,7 +1964,9 @@ function markup(){
  for(const key of ['find','theme','more','collection'])$('#globe-'+key+'-toggle').onclick=()=>setMenu(key);renderCollection();
  menuListeners=new AbortController();const opts={capture:true,signal:menuListeners.signal};
  document.addEventListener('pointerdown',e=>{const guide=!!e.target.closest('.globe-guide');if(menuMode==='theme')setDrumKeys(guide&&!!e.target.closest('#globe-theme-panel,#globe-theme-families'));
-  if(menuMode&&!guide&&!(menuMode==='theme'&&currentTheme().length&&host?.dataset.layout!=='compact')){menuClosedAt=nowMs();setMenu('');}},opts);
+  // Themes (with a theme on) and Constellate are places to work in, not pop-up menus: moving the globe leaves them open. On a phone they still close, because they cover the globe.
+  const stays=host?.dataset.layout!=='compact'&&(menuMode==='collection'||menuMode==='theme'&&currentTheme().length>0);
+  if(menuMode&&!guide&&!stays){menuClosedAt=nowMs();setMenu('');}},opts);
  // Window capture precedes document-level legacy Escape handlers, which can exit Constellate.
  window.addEventListener('keydown',e=>{
   if(menuMode==='theme'&&drum&&drumKeys&&!e.altKey&&!e.ctrlKey&&!e.metaKey&&/^Arrow(Left|Right|Up|Down)$/.test(e.key)&&!e.target.closest?.('input,select,textarea,[contenteditable="true"]')){e.preventDefault();e.stopImmediatePropagation();if(e.key==='ArrowUp'||e.key==='ArrowDown')drum.step(e.key==='ArrowDown'?1:-1);else drum.family(e.key==='ArrowRight'?1:-1);return;}
