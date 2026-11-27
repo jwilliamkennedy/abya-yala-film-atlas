@@ -205,3 +205,12 @@ John: "Yes, clicking a theme should make them all light up and have lines connec
 - Agreed for later, not built: two rings around the globe (Years, Genre) switched from the bar, turning the globe's bearing from the ring, Draw moved into Constellate, and a revised upper-right bar (Watch stays on the left). Nahua land links are on the urgent list.
 - `globe.js?v=67-plate`, `globe-experiment.css?v=92-plate`, `i18n-20261107.js?v=43`.
 - 10:30 pm: the drum's panel is the same width as the other menus again (the terrain check compares them), and long theme names are set smaller so they fit the slot. `globe.js?v=68-plate`, `globe-experiment.css?v=93-plate`.
+
+## Drum with the five families across its top (26 Nov, 10:50 pm, beta only)
+John: "It should be menu of 5 above and then drum roll." and, on whether the two are separate or one: "All right try it out" (integrated).
+- The five families run across the top edge of the drum's own frame; the chosen one is joined to the drum. The drum rolls only that family's themes (five to seven) and wraps around. The family label that sat left of the slot is gone, so theme names have the full width.
+- Pressing a family turns the drum to it and chooses its theme at once, so the slot always matches the globe. A family returns to the theme last rolled to in it.
+- Keys: up and down roll the themes; left and right move across the families.
+- The line above the drum stays one line ("Themes", the count, Clear) so the drum does not move when a theme is chosen.
+- `globe.js?v=69-plate`, `globe-experiment.css?v=94-plate`.
+
