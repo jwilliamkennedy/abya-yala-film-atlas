@@ -194,3 +194,14 @@ John: "We need theme lines." and "My sense is have the menu and pop guide users?
 - No theme is open on landing. The opening view stays points and names.
 - `globe.js?v=66-plate`, `globe-experiment.css?v=91-plate`, `i18n-20261107.js?v=42`. The acceptance check asserts the lights without arcs, the lines following the theme, and the note in the comparison.
 
+## Theme drum and the theme web restored (26 Nov, 10:15 pm, beta only)
+John: "Yes, clicking a theme should make them all light up and have lines connecting them", "You should be able with themes to click left and right with keyboard", "Start with the theme drum."
+- Themes opens a drum in place of the list of families and chips. The family holds still on the left; its themes roll on a cylinder into the marked slot. Rolling through all thirty themes crosses from family to family, and the family label follows.
+- Rolling chooses the theme when the drum comes to rest (so a long roll redraws once). Ways to roll: arrow keys (all four), scroll, drag, or pressing a word above or below the slot. Pressing the slot, or Enter, chooses the theme in it. Clear and Escape work as before.
+- With a theme on, the drum stays in place while the globe is moved and films are opened (desktop). Pressing the globe hands the arrow keys back to the globe; pressing the drum takes them again, shown by its gold outline.
+- The theme web is back: a chosen theme lights every land whose films carry it, as a glowing orb, and joins them in one web (each to its nearest neighbour in the theme). The 9:15 pm change that removed the web and switched a film's lines on with the theme is undone, with its first-time note and the two sentences in the Themes menu.
+- Kept from 9:15 pm: a film's own theme line can be pressed to open the comparison, which lists each theme's source and the correction link. Its note is now one sentence, on land.
+- The native theme pickers remain in the panel, hidden from view, for assistive technology and the checks.
+- Agreed for later, not built: two rings around the globe (Years, Genre) switched from the bar, turning the globe's bearing from the ring, Draw moved into Constellate, and a revised upper-right bar (Watch stays on the left). Nahua land links are on the urgent list.
+- `globe.js?v=67-plate`, `globe-experiment.css?v=92-plate`, `i18n-20261107.js?v=43`.
+
