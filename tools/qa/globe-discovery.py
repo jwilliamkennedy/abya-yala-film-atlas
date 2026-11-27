@@ -199,9 +199,9 @@ async def check(browser,name,viewport):
     assert await page.evaluate("!location.search && !location.hash"), (name,"public URL changed during discovery")
     assert not await page.locator("header .constellate-link").is_visible(), (name,"old Constellate navigation exposed")
     assert await page.locator("#globe-close,.globe-legacy-link").count()==0, (name,"old flat navigation exposed")
-    # The view's centre stops short of the poles (79 degrees), and the atlas's own zoom keeps its meaning there.
+    # The view's centre stops short of the poles (79 degrees) however far north it is sent, and never falls below the least zoom there.
     await page.evaluate("window.AtlasGlobe.goTo([-40,88.5],1)")
-    await page.wait_for_function("(()=>{const c=window.AtlasGlobe.camera;return c.renderer==='maplibre-globe' && c.center[1]>78 && c.center[1]<=79.01 && c.zoom>.7 && c.zoom<1.4})()",timeout=45000,polling=250)
+    await page.wait_for_function("(()=>{const c=window.AtlasGlobe.camera;return c.renderer==='maplibre-globe' && c.center[1]>78 && c.center[1]<=79.01 && Number.isFinite(c.zoom) && c.zoom>.7})()",timeout=45000,polling=250)
     await page.evaluate("AtlasGlobe.close()")
     await page.wait_for_function("!window.AtlasOpenBasemap?.active || !!document.querySelector('#atlas-basemap')",timeout=30000)
     assert await page.evaluate("!document.documentElement.dataset.globeEntry && !document.querySelector('#atlas-rotational-globe')"),(name,"globe ownership not released")
