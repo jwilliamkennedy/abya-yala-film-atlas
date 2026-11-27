@@ -2,8 +2,8 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-27",
  "license": "See data.html",
- "films_on_public_map": 3211,
- "film_entries": 3211,
+ "films_on_public_map": 3216,
+ "film_entries": 3216,
  "published_field_conflicts": {
   "SA50-20261014-59f87a2e3ce5-WORK-01": [
    "themes"
@@ -283,7 +283,7 @@
     "note": "Inuktitut in Canadian credits usually names the eastern variety",
     "region": "North America",
     "region_basis": "Glottolog countries",
-    "films": 20
+    "films": 21
    },
    {
     "label": "Iñupiaq",
@@ -465,7 +465,7 @@
     "note": "",
     "region": "",
     "region_basis": "",
-    "films": 156
+    "films": 157
    },
    {
     "label": "Spanish",
@@ -479,7 +479,7 @@
     "note": "",
     "region": "",
     "region_basis": "",
-    "films": 56
+    "films": 57
    },
    {
     "label": "Portuguese",
@@ -2259,6 +2259,103 @@
    "form": "Documentary",
    "length": null
   },
+  "SA50-20261014-a2d92d5747d7-WORK-01": {
+   "title": "A História do Monstro Khátpy",
+   "year": null,
+   "makers": [
+    {
+     "id": "DIR-0032",
+     "name": "Kamikia Kisêdjê"
+    },
+    {
+     "id": "SA50-20261014-f4921804930d",
+     "name": "Whinti Suyá"
+    },
+    {
+     "id": "SA50-20261014-8bec2455b51b",
+     "name": "Yaiku Suyá"
+    },
+    {
+     "id": "SA50-20261014-a2d92d5747d7",
+     "name": "Kambrinti Suyá"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Cosmology and Origin Stories",
+    "Memory and Oral History"
+   ],
+   "primary_theme": "Cosmology and Origin Stories",
+   "families": [
+    "Knowledge and Continuity"
+   ],
+   "form": null,
+   "length": "Short"
+  },
+  "Q20261127-41-F1": {
+   "title": "AMTÔ: A Festa do Rato",
+   "year": 2010,
+   "makers": [
+    {
+     "id": "DIR-0032",
+     "name": "Kamikia Kisêdjê"
+    },
+    {
+     "id": "SA50-20261014-f4921804930d",
+     "name": "Whinti Suyá"
+    },
+    {
+     "id": "SA50-20261014-8bec2455b51b",
+     "name": "Yaiku Suyá"
+    },
+    {
+     "id": "SA50-20261014-a2d92d5747d7",
+     "name": "Kambrinti Suyá"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Collective and Community Media",
+    "Land Defense",
+    "Memory and Oral History",
+    "Youth"
+   ],
+   "primary_theme": "Collective and Community Media",
+   "families": [
+    "Expression and Representation",
+    "Knowledge and Continuity",
+    "Land and Environment",
+    "Lives and Relations"
+   ],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261127-41-F3": {
+   "title": "Kîsêdjê ro Sujareni – Os Kisêdjê Contam a Sua História",
+   "year": 2011,
+   "makers": [
+    {
+     "id": "DIR-0032",
+     "name": "Kamikia Kisêdjê"
+    },
+    {
+     "id": "SA50-20261014-f4921804930d",
+     "name": "Whinti Suyá"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Memory and Oral History",
+    "Elders and Knowledge",
+    "Archives, Museums and Repatriation"
+   ],
+   "primary_theme": "Memory and Oral History",
+   "families": [
+    "Knowledge and Continuity"
+   ],
+   "form": null,
+   "length": "Short"
+  },
   "FILM-0038": {
    "title": "Marangmotxíngmo mïrang (From the Ikpeng Children…)",
    "year": 2001,
@@ -2646,6 +2743,33 @@
    ],
    "form": "Documentary",
    "length": "Short"
+  },
+  "BETA8D-20261107-D01-QM68f2c9": {
+   "title": "Kunhangue: a criação do universo",
+   "year": null,
+   "makers": [
+    {
+     "id": "DIR-0045",
+     "name": "Patrícia Ferreira Pará Yxapy"
+    },
+    {
+     "id": "BETA8D-20261107-D01",
+     "name": "Werá Alexandre"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Kinship",
+    "Youth",
+    "Memory and Oral History"
+   ],
+   "primary_theme": "Kinship",
+   "families": [
+    "Knowledge and Continuity",
+    "Lives and Relations"
+   ],
+   "form": "Hybrid",
+   "length": "Feature"
   },
   "Q20261114-88-F5": {
    "title": "Agahü: O Sal do Xingu",
@@ -16453,7 +16577,7 @@
     "Knowledge and Continuity"
    ],
    "form": "Documentary",
-   "length": null
+   "length": "Short"
   },
   "Q20261111-03-F1": {
    "title": "Mujeres Umari. Tejedoras de historias y saberes",
@@ -18481,8 +18605,8 @@
    "length": "Short"
   },
   "FILM-B25B-07": {
-   "title": "MaxtoroLionokleero",
-   "year": 2016,
+   "title": "Maixtoro Lionokleero",
+   "year": null,
    "makers": [
     {
      "id": "DIR-0228",
@@ -20122,11 +20246,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "More-than-Human Relations"
+   ],
+   "primary_theme": "More-than-Human Relations",
+   "families": [
+    "Land and Environment"
+   ],
+   "form": "Documentary",
+   "length": "Short"
   },
   "FILM-0209": {
    "title": "2501 Migrants: A Journey",
@@ -32308,35 +32436,6 @@
    "form": "Documentary",
    "length": "Short"
   },
-  "SA50-20261014-a2d92d5747d7-WORK-01": {
-   "title": "A História do Monstro Khátpy",
-   "year": null,
-   "makers": [
-    {
-     "id": "SA50-20261014-f4921804930d",
-     "name": "Whinti Suyá"
-    },
-    {
-     "id": "SA50-20261014-8bec2455b51b",
-     "name": "Yaiku Suyá"
-    },
-    {
-     "id": "SA50-20261014-a2d92d5747d7",
-     "name": "Kambrinti Suyá"
-    }
-   ],
-   "languages": [],
-   "themes": [
-    "Cosmology and Origin Stories",
-    "Memory and Oral History"
-   ],
-   "primary_theme": "Cosmology and Origin Stories",
-   "families": [
-    "Knowledge and Continuity"
-   ],
-   "form": null,
-   "length": "Short"
-  },
   "NEW-79baff8324d2-WORK-1": {
    "title": "Khátpy Ro sujarení",
    "year": 2009,
@@ -39367,12 +39466,49 @@
      "name": "Inocencio Ramos"
     }
    ],
+   "languages": [
+    {
+     "label": "Spanish",
+     "as_credited": "Spanish",
+     "glottocode": "stan1288",
+     "iso639_3": "spa",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://americanindian.si.edu/sites/1/files/pdf/festival/1997.PDF"
+    }
+   ],
+   "themes": [
+    "Cosmology and Origin Stories"
+   ],
+   "primary_theme": "Cosmology and Origin Stories",
+   "families": [
+    "Knowledge and Continuity"
+   ],
+   "form": "Fiction",
+   "length": "Short"
+  },
+  "Q20261126-19701-F1": {
+   "title": "Robert de Jesús Guachetá / The Work Goes On",
+   "year": 2009,
+   "makers": [
+    {
+     "id": "NEW-914d3498dfac",
+     "name": "Inocencio Ramos"
+    }
+   ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Resistance Movements",
+    "State Violence and Genocide",
+    "Memory and Oral History"
+   ],
+   "primary_theme": "Resistance Movements",
+   "families": [
+    "Knowledge and Continuity",
+    "Sovereignty and Politics"
+   ],
+   "form": "Documentary",
+   "length": "Short"
   },
   "NEW-006bd8484fea-WORK-1": {
    "title": "Qamasan Warmi / Woman of Courage",
@@ -42460,11 +42596,17 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Kinship",
+    "Memory and Oral History"
+   ],
+   "primary_theme": "Kinship",
+   "families": [
+    "Knowledge and Continuity",
+    "Lives and Relations"
+   ],
    "form": "Documentary",
-   "length": null
+   "length": "Feature"
   },
   "NEW-df5458cce540-WORK-1": {
    "title": "Sa'twe'sx | Cacicazgos (series: Época de la Resistencia Milenaria; La Cacica Gaitana)",
@@ -42512,11 +42654,19 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Women and Gender",
+    "Justice, Truth and Reconciliation",
+    "Elders and Knowledge"
+   ],
+   "primary_theme": "Women and Gender",
+   "families": [
+    "Knowledge and Continuity",
+    "Lives and Relations",
+    "Sovereignty and Politics"
+   ],
+   "form": "Documentary",
+   "length": "Short"
   },
   "NEW-c2f732e6e7d6-WORK-1": {
    "title": "Untɨ les Origines",
@@ -43588,7 +43738,7 @@
    "primary_theme": null,
    "families": [],
    "form": "Documentary",
-   "length": null
+   "length": "Short"
   },
   "NEW-c2055a72bb3e-WORK-1": {
    "title": "Nkwí nayà tónko: compromiso de palabra",
@@ -48591,7 +48741,7 @@
     "Knowledge and Continuity"
    ],
    "form": "Documentary",
-   "length": null
+   "length": "Short"
   },
   "BETA25-20261105-13-FILM1": {
    "title": "Meworoné: Falar Claramente",
@@ -49562,22 +49712,6 @@
    ],
    "form": "Documentary",
    "length": "Short"
-  },
-  "BETA8D-20261107-D01-QM68f2c9": {
-   "title": "Kunhangue: a criação do universo",
-   "year": null,
-   "makers": [
-    {
-     "id": "BETA8D-20261107-D01",
-     "name": "Werá Alexandre"
-    }
-   ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
   },
   "BETA-AYOREO-20261107-1-FILM": {
    "title": "Ore Enominone – Visions",
@@ -50671,11 +50805,17 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Kinship",
+    "Memory and Oral History"
+   ],
+   "primary_theme": "Kinship",
+   "families": [
+    "Knowledge and Continuity",
+    "Lives and Relations"
+   ],
    "form": "Documentary",
-   "length": null
+   "length": "Short"
   },
   "QM-97c02d8462-M1": {
    "title": "Le voleur de paix",
@@ -52903,28 +53043,6 @@
    "families": [],
    "form": null,
    "length": "Short"
-  },
-  "NEW-665eb6a5ccee-QM47a524": {
-   "title": "Binigula’sa’: los antiguos zapotecas",
-   "year": null,
-   "makers": [
-    {
-     "id": "NEW-665eb6a5ccee",
-     "name": "Jorge Ángel Pérez"
-    }
-   ],
-   "languages": [],
-   "themes": [
-    "Archives, Museums and Repatriation",
-    "Resistance Movements"
-   ],
-   "primary_theme": "Archives, Museums and Repatriation",
-   "families": [
-    "Knowledge and Continuity",
-    "Sovereignty and Politics"
-   ],
-   "form": "Documentary",
-   "length": "Feature"
   },
   "NEW-665eb6a5ccee-QM7c02fe": {
    "title": "La piedra de los Binnigulaza",
@@ -62678,6 +62796,41 @@
    "form": "Animation",
    "length": null
   },
+  "Q20261126-6404-F1": {
+   "title": "Lemming's First Christmas",
+   "year": 2026,
+   "makers": [
+    {
+     "id": "Q20261122-126",
+     "name": "Jamesie Fournier"
+    }
+   ],
+   "languages": [
+    {
+     "label": "Inuktitut",
+     "as_credited": "Inuktitut",
+     "glottocode": "east2534",
+     "iso639_3": "ike",
+     "match": "probable",
+     "indigenous": true,
+     "source": "https://asinabkafestival.org/shapeshifters"
+    },
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://asinabkafestival.org/shapeshifters"
+    }
+   ],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": "Short"
+  },
   "Q20261122-127-F1": {
    "title": "Acting Good Season 4",
    "year": null,
@@ -67290,6 +67443,30 @@
    "form": "Documentary",
    "length": "Feature"
   },
+  "Q20261127-42-F1": {
+   "title": "Kidendatch",
+   "year": 2011,
+   "makers": [
+    {
+     "id": "Q20261126-7301",
+     "name": "Denis Chachai"
+    },
+    {
+     "id": "Q20261127-42",
+     "name": "Siméon Chachai"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Water"
+   ],
+   "primary_theme": "Water",
+   "families": [
+    "Land and Environment"
+   ],
+   "form": null,
+   "length": "Short"
+  },
   "Q20261127-14-F1": {
    "title": "Kun Bi",
    "year": 2022,
@@ -67700,6 +67877,28 @@
    ],
    "form": "Fiction",
    "length": "Short"
+  },
+  "Q20261126-197-F1": {
+   "title": "Lineage: Tlingit Art Across Generations",
+   "year": 2017,
+   "makers": [
+    {
+     "id": "Q20261126-197",
+     "name": "Ishmael Angaluuk Hope"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Art, Craft and Making",
+    "Kinship"
+   ],
+   "primary_theme": "Art, Craft and Making",
+   "families": [
+    "Expression and Representation",
+    "Lives and Relations"
+   ],
+   "form": "Documentary",
+   "length": "Feature"
   }
  }
 }
