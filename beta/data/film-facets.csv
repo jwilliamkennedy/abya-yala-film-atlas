@@ -945,7 +945,7 @@ Q20261126-2812-F1,The Strings of Fate,2025,theme,Music and Performance,Expressio
 Q20261126-2812-F1,The Strings of Fate,2025,form,Fiction,,https://www.reelasian.com/festival-events/the-strings-of-fate/,recorded in Published
 Q20261126-2812-F1,The Strings of Fate,2025,length,Short,,https://www.reelasian.com/festival-events/the-strings-of-fate/,recorded in Published
 Q20261126-2814-F1,Behind the Windowpane,2019,length,Short,,https://www.pavedarts.ca/2020/saskatchewan-home-movies/,recorded in Published
-Q20261126-2815-F1,My Masterpiece,,length,Short,,https://www.filmpool.ca/post/7th-annual-sifa-winners-update,recorded in Published
+Q20261126-2815-F1,My Masterpiece,2020,length,Short,,https://www.filmpool.ca/post/7th-annual-sifa-winners-update,recorded in Published
 Q20261126-1533-F1,The Big Gust!,2018,form,Fiction,,https://watch.plex.tv/en-GB/movie/the-big-gust-2018,recorded in Published
 Q20261126-1533-F1,The Big Gust!,2018,length,Feature,,https://watch.plex.tv/en-GB/movie/the-big-gust-2018,recorded in Published
 Q20261126-2813-F1,Four in a Blanket,2018,form,Fiction,,https://www.pavedarts.ca/2020/members-micro-grant-recipients/,recorded in Published
@@ -1479,11 +1479,12 @@ DIR-0136-W1031-2,The Doe Boy,2001,length,Feature,,https://www.themoviedb.org/mov
 Q20261114-100-F1,Haircuts Hurt,1992,theme,Music and Performance,Expression and Representation,https://americanindian.si.edu/sites/1/files/pdf/festival/2003.pdf#page=4,tagged from a published synopsis; primary theme
 Q20261114-100-F1,Haircuts Hurt,1992,theme,Kinship,Lives and Relations,https://americanindian.si.edu/sites/1/files/pdf/festival/2003.pdf#page=4,tagged from a published synopsis
 Q20261114-100-F1,Haircuts Hurt,1992,length,Short,,https://americanindian.si.edu/sites/1/files/pdf/festival/2003.pdf#page=4,recorded in Published
-Q20261114-100-F2,Moccasin Flats,,theme,Youth,Lives and Relations,https://ammsa.com/publications/windspeaker/all-aboriginal-television-drama-set-air,tagged from a published synopsis; primary theme
-Q20261114-100-F2,Moccasin Flats,,theme,Collective and Community Media,Expression and Representation,https://ammsa.com/publications/windspeaker/all-aboriginal-television-drama-set-air,tagged from a published synopsis
-Q20261114-100-F2,Moccasin Flats,,theme,Urban Indigeneity,Lives and Relations,https://ammsa.com/publications/windspeaker/all-aboriginal-television-drama-set-air,tagged from a published synopsis
-Q20261114-100-F2,Moccasin Flats,,form,Fiction,,https://ammsa.com/publications/windspeaker/all-aboriginal-television-drama-set-air,recorded in Published
-Q20261114-100-F2,Moccasin Flats,,length,Short,,https://ammsa.com/publications/windspeaker/all-aboriginal-television-drama-set-air,recorded in Published
+Q20261114-100-F2,Moccasin Flats,2003,language,English,stan1293,https://cfe.tiff.net/canadianfilmencyclopedia/content/films/moccasin-flats,recorded in Published
+Q20261114-100-F2,Moccasin Flats,2003,theme,Youth,Lives and Relations,https://ammsa.com/publications/windspeaker/all-aboriginal-television-drama-set-air,tagged from a published synopsis; primary theme
+Q20261114-100-F2,Moccasin Flats,2003,theme,Collective and Community Media,Expression and Representation,https://ammsa.com/publications/windspeaker/all-aboriginal-television-drama-set-air,tagged from a published synopsis
+Q20261114-100-F2,Moccasin Flats,2003,theme,Urban Indigeneity,Lives and Relations,https://ammsa.com/publications/windspeaker/all-aboriginal-television-drama-set-air,tagged from a published synopsis
+Q20261114-100-F2,Moccasin Flats,2003,form,Fiction,,https://ammsa.com/publications/windspeaker/all-aboriginal-television-drama-set-air,recorded in Published
+Q20261114-100-F2,Moccasin Flats,2003,length,Short,,https://ammsa.com/publications/windspeaker/all-aboriginal-television-drama-set-air,recorded in Published
 Q20261114-100-F3,Music Is the Medicine,2003,theme,Music and Performance,Expression and Representation,https://americanindian.si.edu/sites/1/files/pdf/festival/2003.pdf#page=13,tagged from a published synopsis; primary theme
 Q20261114-100-F3,Music Is the Medicine,2003,form,Music Video,,https://americanindian.si.edu/sites/1/files/pdf/festival/2003.pdf#page=13,recorded in Published
 Q20261114-100-F3,Music Is the Medicine,2003,length,Short,,https://americanindian.si.edu/sites/1/files/pdf/festival/2003.pdf#page=13,recorded in Published
@@ -1965,7 +1966,10 @@ Q20261115-650-F16,Sirmilik,2011,form,Documentary,,https://www.academie-cinema.or
 Q20261115-650-F16,Sirmilik,2011,length,Short,,https://www.academie-cinema.org/films/sirmilik/-42966/,recorded in Published
 Q20261115-650-F17,My Father's Land (Ataatama Nunanga),2014,language,Inuktitut,east2534,https://www.isuma.tv/movies/myfathersland,recorded in Published
 Q20261115-650-F17,My Father's Land (Ataatama Nunanga),2014,language,English,stan1293,https://www.isuma.tv/movies/myfathersland,recorded in Published
-Q20261115-650-F17,My Father's Land (Ataatama Nunanga),2014,form,Documentary,,https://vtape.org/artist?ai=1670,recorded in Published
+Q20261115-650-F17,My Father's Land (Ataatama Nunanga),2014,theme,Extractivism,Land and Environment,https://vtape.org/video?vi=8452,tagged from a published synopsis; primary theme
+Q20261115-650-F17,My Father's Land (Ataatama Nunanga),2014,theme,Collective and Community Media,Expression and Representation,https://vtape.org/video?vi=8452,tagged from a published synopsis
+Q20261115-650-F17,My Father's Land (Ataatama Nunanga),2014,form,Documentary,,https://vtape.org/video?vi=8452,recorded in Published
+Q20261115-650-F17,My Father's Land (Ataatama Nunanga),2014,length,Feature,,https://vtape.org/video?vi=8452,recorded in Published
 Q20261115-651-F1,Hunting With My Ancestors: Walrus Hunting Training Video,2018,language,Inuktitut,east2534,https://vtape.org/video?vi=9084,recorded in Published
 Q20261115-651-F1,Hunting With My Ancestors: Walrus Hunting Training Video,2018,theme,Food Sovereignty,Land and Environment,https://vtape.org/video?vi=9084,tagged from a published synopsis; primary theme
 Q20261115-651-F1,Hunting With My Ancestors: Walrus Hunting Training Video,2018,form,Documentary,,https://vtape.org/video?vi=9084,recorded in Published
@@ -2805,11 +2809,18 @@ BETA30B-20261107-F08,Yana-Wara,2023,theme,Youth,Lives and Relations,https://prag
 BETA30B-20261107-F08,Yana-Wara,2023,theme,Cosmology and Origin Stories,Knowledge and Continuity,https://pragda.com/film/yana-wara/,tagged from a published synopsis
 BETA30B-20261107-F08,Yana-Wara,2023,form,Fiction,,https://pragda.com/film/yana-wara/,recorded in Published
 BETA30B-20261107-F08,Yana-Wara,2023,length,Feature,,https://pragda.com/film/yana-wara/,recorded in Published
-DIR-0264-W1031-2,Kusi Smiles,,theme,Youth,Lives and Relations,https://www.themoviedb.org/movie/1426026,tagged from a published synopsis; primary theme
-DIR-0264-W1031-2,Kusi Smiles,,theme,Kinship,Lives and Relations,https://www.themoviedb.org/movie/1426026,tagged from a published synopsis
-DIR-0264-W1031-2,Kusi Smiles,,theme,Music and Performance,Expression and Representation,https://www.themoviedb.org/movie/1426026,tagged from a published synopsis
-DIR-0264-W1031-2,Kusi Smiles,,form,Fiction,,https://www.themoviedb.org/movie/1426026,recorded in Published
-DIR-0264-W1031-2,Kusi Smiles,,length,Short,,https://www.themoviedb.org/movie/1426026,recorded in Published
+DIR-0264-W1031-2,Kusi Smiles,2025,language,Quechua,quec1387,https://www.rednationff.com/kusi-smiles/,recorded in Published
+DIR-0264-W1031-2,Kusi Smiles,2025,theme,Youth,Lives and Relations,https://www.themoviedb.org/movie/1426026,tagged from a published synopsis; primary theme
+DIR-0264-W1031-2,Kusi Smiles,2025,theme,Kinship,Lives and Relations,https://www.themoviedb.org/movie/1426026,tagged from a published synopsis
+DIR-0264-W1031-2,Kusi Smiles,2025,theme,Music and Performance,Expression and Representation,https://www.themoviedb.org/movie/1426026,tagged from a published synopsis
+DIR-0264-W1031-2,Kusi Smiles,2025,form,Fiction,,https://www.themoviedb.org/movie/1426026,recorded in Published
+DIR-0264-W1031-2,Kusi Smiles,2025,length,Short,,https://www.themoviedb.org/movie/1426026,recorded in Published
+Q20261127-90-F1,Encanto Lamarino,2025,theme,Music and Performance,Expression and Representation,https://sisaquispe.com/films/encanto-lamarino-music-video-3kgx3,tagged from a published synopsis; primary theme
+Q20261127-90-F1,Encanto Lamarino,2025,form,Music Video,,https://sisaquispe.com/films/encanto-lamarino-music-video-3kgx3,recorded in Published
+Q20261127-90-F1,Encanto Lamarino,2025,length,Short,,https://sisaquispe.com/films/encanto-lamarino-music-video-3kgx3,recorded in Published
+Q20261127-91-F1,The Flight of Zyanya,,theme,Displacement and Migration,Sovereignty and Politics,https://sisaquispe.com/films/new-project-m5ttp,tagged from a published synopsis; primary theme
+Q20261127-91-F1,The Flight of Zyanya,,form,Fiction,,https://sisaquispe.com/films/new-project-m5ttp,recorded in Published
+Q20261127-91-F1,The Flight of Zyanya,,length,Short,,https://sisaquispe.com/films/new-project-m5ttp,recorded in Published
 FILM-1491S-2009,New Moon Wolf Pack Auditions,2009,theme,Self-Representation and Countering Stereotypes,Expression and Representation,https://www.americanindianmagazine.org/story/1491s-occupy-web,tagged from a published synopsis; primary theme
 FILM-1491S-2009,New Moon Wolf Pack Auditions,2009,form,Fiction,,,"normalised from the recorded form ""Digital video / comedy sketch"""
 Q20261121-256-F1,Slapping Medicine Man,2011,theme,Self-Representation and Countering Stereotypes,Expression and Representation,https://www.americanindianmagazine.org/story/1491s-occupy-web,tagged from a published synopsis; primary theme
@@ -4706,6 +4717,7 @@ Q20261127-12-F1,Malaire,2015,theme,Health and Healing,Lives and Relations,https:
 Q20261127-12-F1,Malaire,2015,theme,Kinship,Lives and Relations,https://cinecorto.co/mujeres-de-tierra/,tagged from a published synopsis
 Q20261127-12-F1,Malaire,2015,form,Fiction,,https://cinecorto.co/mujeres-de-tierra/,recorded in Published
 Q20261127-12-F1,Malaire,2015,length,Short,,https://cinecorto.co/mujeres-de-tierra/,recorded in Published
+Q20261126-9911-F1,Peones,,form,Documentary,,https://cinecorto.co/anku-tupue-ofrenda-a-los-muertos/,recorded in Published
 SA50-20261014-c6d731eec058-WORK-01,Atizando la Hoguera,2018,theme,Women and Gender,Lives and Relations,https://daupara.com/obra/atizando-la-hoguera,tagged from a published synopsis; primary theme
 SA50-20261014-c6d731eec058-WORK-01,Atizando la Hoguera,2018,theme,Resistance Movements,Sovereignty and Politics,https://daupara.com/obra/atizando-la-hoguera,tagged from a published synopsis
 SA50-20261014-c6d731eec058-WORK-01,Atizando la Hoguera,2018,theme,Memory and Oral History,Knowledge and Continuity,https://daupara.com/obra/atizando-la-hoguera,tagged from a published synopsis
@@ -7102,6 +7114,7 @@ Q20261108-35-F1,Kikuyu Land,2026,length,Feature,,https://www.sundance.org/blogs/
 QM-1f982a755a-M1,"Mujabä Tojk, La casa grande",,theme,Displacement and Migration,Sovereignty and Politics,https://www.udg.mx/en/noticia/retratan-en-documental-migracion-de-indigenas-zoques-guadalajara-y-eua,tagged from a published synopsis; primary theme
 QM-1f982a755a-M1,"Mujabä Tojk, La casa grande",,theme,Urban Indigeneity,Lives and Relations,https://www.udg.mx/en/noticia/retratan-en-documental-migracion-de-indigenas-zoques-guadalajara-y-eua,tagged from a published synopsis
 QM-1f982a755a-M1,"Mujabä Tojk, La casa grande",,form,Documentary,,https://www.udg.mx/en/noticia/retratan-en-documental-migracion-de-indigenas-zoques-guadalajara-y-eua,recorded in Published
+QM-1f982a755a-M1,"Mujabä Tojk, La casa grande",,length,Feature,,https://www.udg.mx/en/noticia/retratan-en-documental-migracion-de-indigenas-zoques-guadalajara-y-eua,recorded in Published
 Q20261108-41-F1,Kiñe Rupa: Treng Treng Kai Kai,2018,theme,Cosmology and Origin Stories,Knowledge and Continuity,https://centronacionaldearte.cultura.gob.cl/cartelera/,tagged from a published synopsis; primary theme
 Q20261108-41-F1,Kiñe Rupa: Treng Treng Kai Kai,2018,theme,Elders and Knowledge,Knowledge and Continuity,https://centronacionaldearte.cultura.gob.cl/cartelera/,tagged from a published synopsis
 Q20261108-41-F1,Kiñe Rupa: Treng Treng Kai Kai,2018,theme,Youth,Lives and Relations,https://centronacionaldearte.cultura.gob.cl/cartelera/,tagged from a published synopsis

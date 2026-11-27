@@ -2,8 +2,8 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-27",
  "license": "See data.html",
- "films_on_public_map": 3361,
- "film_entries": 3361,
+ "films_on_public_map": 3364,
+ "film_entries": 3364,
  "published_field_conflicts": {
   "SA50-20261014-59f87a2e3ce5-WORK-01": [
    "themes"
@@ -465,7 +465,7 @@
     "note": "",
     "region": "",
     "region_basis": "",
-    "films": 191
+    "films": 192
    },
    {
     "label": "Spanish",
@@ -717,7 +717,7 @@
     "note": "Credits name Quechua without a variety",
     "region": "South America",
     "region_basis": "Glottolog coordinates",
-    "films": 5
+    "films": 6
    },
    {
     "label": "German",
@@ -7792,7 +7792,7 @@
   },
   "Q20261126-2815-F1": {
    "title": "My Masterpiece",
-   "year": null,
+   "year": 2020,
    "makers": [
     {
      "id": "DIR-0092",
@@ -11459,14 +11459,24 @@
   },
   "Q20261114-100-F2": {
    "title": "Moccasin Flats",
-   "year": null,
+   "year": 2003,
    "makers": [
     {
      "id": "DIR-0136",
      "name": "Randy Redroad"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://cfe.tiff.net/canadianfilmencyclopedia/content/films/moccasin-flats"
+    }
+   ],
    "themes": [
     "Youth",
     "Collective and Community Media",
@@ -14996,11 +15006,17 @@
      "source": "https://www.isuma.tv/movies/myfathersland"
     }
    ],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Extractivism",
+    "Collective and Community Media"
+   ],
+   "primary_theme": "Extractivism",
+   "families": [
+    "Expression and Representation",
+    "Land and Environment"
+   ],
    "form": "Documentary",
-   "length": null
+   "length": "Feature"
   },
   "Q20261115-651-F1": {
    "title": "Hunting With My Ancestors: Walrus Hunting Training Video",
@@ -21852,14 +21868,24 @@
   },
   "DIR-0264-W1031-2": {
    "title": "Kusi Smiles",
-   "year": null,
+   "year": 2025,
    "makers": [
     {
      "id": "DIR-0264",
      "name": "Sisa Quispe"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "Quechua",
+     "as_credited": "Quechua",
+     "glottocode": "quec1387",
+     "iso639_3": "que",
+     "match": "group",
+     "indigenous": true,
+     "source": "https://www.rednationff.com/kusi-smiles/"
+    }
+   ],
    "themes": [
     "Youth",
     "Kinship",
@@ -21869,6 +21895,46 @@
    "families": [
     "Expression and Representation",
     "Lives and Relations"
+   ],
+   "form": "Fiction",
+   "length": "Short"
+  },
+  "Q20261127-90-F1": {
+   "title": "Encanto Lamarino",
+   "year": 2025,
+   "makers": [
+    {
+     "id": "DIR-0264",
+     "name": "Sisa Quispe"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Music and Performance"
+   ],
+   "primary_theme": "Music and Performance",
+   "families": [
+    "Expression and Representation"
+   ],
+   "form": "Music Video",
+   "length": "Short"
+  },
+  "Q20261127-91-F1": {
+   "title": "The Flight of Zyanya",
+   "year": null,
+   "makers": [
+    {
+     "id": "DIR-0264",
+     "name": "Sisa Quispe"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Displacement and Migration"
+   ],
+   "primary_theme": "Displacement and Migration",
+   "families": [
+    "Sovereignty and Politics"
    ],
    "form": "Fiction",
    "length": "Short"
@@ -35570,6 +35636,22 @@
    ],
    "form": "Fiction",
    "length": "Short"
+  },
+  "Q20261126-9911-F1": {
+   "title": "Peones",
+   "year": null,
+   "makers": [
+    {
+     "id": "SA50-20261014-b13c85277547",
+     "name": "Maryoli Ceballos Vivas"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
   },
   "SA50-20261014-c6d731eec058-WORK-01": {
    "title": "Atizando la Hoguera",
@@ -53943,7 +54025,7 @@
     "Sovereignty and Politics"
    ],
    "form": "Documentary",
-   "length": null
+   "length": "Feature"
   },
   "Q20261108-41-F1": {
    "title": "Kiñe Rupa: Treng Treng Kai Kai",
