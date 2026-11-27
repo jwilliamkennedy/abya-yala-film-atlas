@@ -681,7 +681,7 @@ jobs:
             await p.keyboard.press('Escape')
             assert not await p.locator('#constellate-how').evaluate('(x)=>x.open'),(label,'Help did not close')
             await press(p,'#weave-play')
-            await p.locator('#weave-player:not([hidden])').wait_for(timeout=12000)
+            await p.locator('#weave-player:not([hidden])').wait_for(timeout=45000)  # 12 s ran out on slow runners three times on 26 Nov; the player did open
             play_state=await p.evaluate("""() => {
               const e=document.querySelector('#weave-play-close'),p=document.querySelector('#weave-player'),r=e.getBoundingClientRect();
               return {button:r.toJSON(),player:p.getBoundingClientRect().toJSON(),
