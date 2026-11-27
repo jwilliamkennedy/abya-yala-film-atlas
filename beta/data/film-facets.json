@@ -2,8 +2,8 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-27",
  "license": "See data.html",
- "films_on_public_map": 3309,
- "film_entries": 3309,
+ "films_on_public_map": 3330,
+ "film_entries": 3330,
  "published_field_conflicts": {
   "SA50-20261014-59f87a2e3ce5-WORK-01": [
    "themes"
@@ -115,7 +115,7 @@
     "note": "",
     "region": "North America",
     "region_basis": "Glottolog countries",
-    "films": 7
+    "films": 9
    },
    {
     "label": "Ayuujk (Mixe)",
@@ -465,7 +465,7 @@
     "note": "",
     "region": "",
     "region_basis": "",
-    "films": 180
+    "films": 189
    },
    {
     "label": "Spanish",
@@ -479,7 +479,7 @@
     "note": "",
     "region": "",
     "region_basis": "",
-    "films": 60
+    "films": 61
    },
    {
     "label": "Portuguese",
@@ -507,7 +507,7 @@
     "note": "",
     "region": "",
     "region_basis": "",
-    "films": 15
+    "films": 18
    },
    {
     "label": "Vietnamese",
@@ -703,7 +703,7 @@
     "note": "",
     "region": "North America",
     "region_basis": "Glottolog countries",
-    "films": 8
+    "films": 10
    },
    {
     "label": "Quechua",
@@ -1795,7 +1795,7 @@
     "Sovereignty and Politics"
    ],
    "form": "Documentary",
-   "length": null
+   "length": "Feature"
   },
   "FILM-0030": {
    "title": "The Rainy Season",
@@ -1862,6 +1862,26 @@
     "Health and Healing"
    ],
    "primary_theme": "Health and Healing",
+   "families": [
+    "Lives and Relations"
+   ],
+   "form": "Documentary",
+   "length": null
+  },
+  "Q20261126-29805-F1": {
+   "title": "Dançando com cachorro",
+   "year": 2001,
+   "makers": [
+    {
+     "id": "DIR-0025",
+     "name": "Isaac Pinhanta"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Kinship"
+   ],
+   "primary_theme": "Kinship",
    "families": [
     "Lives and Relations"
    ],
@@ -2023,7 +2043,7 @@
   },
   "DIR-0028-W1031-7": {
    "title": "Yõg Ãtak: Meu Pai, Kaiowá",
-   "year": null,
+   "year": 2024,
    "makers": [
     {
      "id": "DIR-0028",
@@ -2492,6 +2512,32 @@
    "families": [],
    "form": null,
    "length": null
+  },
+  "Q20261126-7801-F1": {
+   "title": "Moyngo: O sonho de Maragareum / The Dream of Maragareum",
+   "year": 2003,
+   "makers": [
+    {
+     "id": "DIR-0033",
+     "name": "Karané Ikpeng"
+    },
+    {
+     "id": "SA50-20261014-15029d374c29",
+     "name": "Kumaré Ikpeng"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Cosmology and Origin Stories",
+    "Music and Performance"
+   ],
+   "primary_theme": "Cosmology and Origin Stories",
+   "families": [
+    "Expression and Representation",
+    "Knowledge and Continuity"
+   ],
+   "form": "Hybrid",
+   "length": "Short"
   },
   "FILM-0040": {
    "title": "Kiarãsâ Yõ Sâty, The Agouti's Peanut",
@@ -5185,7 +5231,7 @@
     "Knowledge and Continuity",
     "Lives and Relations"
    ],
-   "form": "Fiction",
+   "form": "Animation",
    "length": "Short"
   },
   "FILM-SRC-2023-00003": {
@@ -7792,6 +7838,22 @@
    "form": "Fiction",
    "length": "Series"
   },
+  "Q20261126-96732-F1": {
+   "title": "Jesus Issues",
+   "year": 2023,
+   "makers": [
+    {
+     "id": "DIR-0092",
+     "name": "Gavin Baird"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Music Video",
+   "length": null
+  },
   "DIR-0093-F1": {
    "title": "Older Than America",
    "year": 2008,
@@ -9380,6 +9442,47 @@
    ],
    "form": "Documentary",
    "length": "Series"
+  },
+  "Q20261126-28604-F1": {
+   "title": "Nitassinan",
+   "year": 2026,
+   "makers": [
+    {
+     "id": "DIR-0115",
+     "name": "Kim O'Bomsawin"
+    }
+   ],
+   "languages": [
+    {
+     "label": "French",
+     "as_credited": "French",
+     "glottocode": "stan1290",
+     "iso639_3": "fra",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://www.presenceautochtone.ca/en/programmation/nitassinan/"
+    },
+    {
+     "label": "Innu-aimun",
+     "as_credited": "Innu-aimun",
+     "glottocode": "mont1268",
+     "iso639_3": "moe",
+     "match": "exact",
+     "indigenous": true,
+     "source": "https://www.presenceautochtone.ca/en/programmation/nitassinan/"
+    }
+   ],
+   "themes": [
+    "Land Defense",
+    "Memory and Oral History"
+   ],
+   "primary_theme": "Land Defense",
+   "families": [
+    "Knowledge and Continuity",
+    "Land and Environment"
+   ],
+   "form": "Documentary",
+   "length": "Feature"
   },
   "FILM-0082": {
    "title": "Wilfred Buck",
@@ -18655,7 +18758,7 @@
   },
   "FILM-0178": {
    "title": "Coapan in espera",
-   "year": null,
+   "year": 2019,
    "makers": [
     {
      "id": "DIR-0224",
@@ -18663,15 +18766,19 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Displacement and Migration"
+   ],
+   "primary_theme": "Displacement and Migration",
+   "families": [
+    "Sovereignty and Politics"
+   ],
+   "form": "Experimental",
+   "length": "Short"
   },
   "FILM-0179": {
    "title": "Tiemperos del Antropoceno: TEWAME TIYOLICHA KAWITL",
-   "year": 2022,
+   "year": 2023,
    "makers": [
     {
      "id": "DIR-0224",
@@ -18722,11 +18829,18 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Displacement and Migration",
+    "Resistance Movements",
+    "Memory and Oral History"
+   ],
+   "primary_theme": "Displacement and Migration",
+   "families": [
+    "Knowledge and Continuity",
+    "Sovereignty and Politics"
+   ],
    "form": null,
-   "length": null
+   "length": "Short"
   },
   "Q20261126-05-F1": {
    "title": "Quemarle las Patas al Imperio / To Burn the Feet of the Empire",
@@ -18738,11 +18852,18 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Resistance Movements",
+    "Cosmology and Origin Stories",
+    "State Violence and Genocide"
+   ],
+   "primary_theme": "Resistance Movements",
+   "families": [
+    "Knowledge and Continuity",
+    "Sovereignty and Politics"
+   ],
+   "form": "Experimental",
+   "length": "Short"
   },
   "Q20261126-103-F1": {
    "title": "El Humo que Desplaza tu Piel",
@@ -19129,7 +19250,7 @@
   },
   "FILM-B25B-07": {
    "title": "Maixtoro Lionokleero",
-   "year": null,
+   "year": 2016,
    "makers": [
     {
      "id": "DIR-0228",
@@ -28111,12 +28232,28 @@
      "name": "Inuk Jørgensen"
     }
    ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://www.docnyc.net/film/shorts-shifting/the-quiet-invasion/"
+    }
+   ],
+   "themes": [
+    "Sovereignty and Self-Determination",
+    "Environmental Change"
+   ],
+   "primary_theme": "Sovereignty and Self-Determination",
+   "families": [
+    "Land and Environment",
+    "Sovereignty and Politics"
+   ],
    "form": "Documentary",
-   "length": null
+   "length": "Short"
   },
   "Q20261126-981-F1": {
    "title": "Where Dreams Are Forgotten",
@@ -28127,12 +28264,26 @@
      "name": "Inuk Jørgensen"
     }
    ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://skabmagovat.fi/en/film/where-dreams-are-forgotten/"
+    }
+   ],
+   "themes": [
+    "Youth"
+   ],
+   "primary_theme": "Youth",
+   "families": [
+    "Lives and Relations"
+   ],
    "form": "Documentary",
-   "length": null
+   "length": "Short"
   },
   "Q20261126-982-F1": {
    "title": "Home",
@@ -28143,11 +28294,37 @@
      "name": "Inuk Jørgensen"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://ecofilmfest.wordpress.com/blog/"
+    }
+   ],
    "themes": [],
    "primary_theme": null,
    "families": [],
    "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261126-40801-F1": {
+   "title": "The Bottle Cleaner",
+   "year": 2006,
+   "makers": [
+    {
+     "id": "NEW-ece62656570c",
+     "name": "Inuk Jørgensen"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
    "length": null
   },
   "NEW-f82421999862-WORK-1": {
@@ -28277,11 +28454,18 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Memory and Oral History",
+    "State Violence and Genocide",
+    "Displacement and Migration"
+   ],
+   "primary_theme": "Memory and Oral History",
+   "families": [
+    "Knowledge and Continuity",
+    "Sovereignty and Politics"
+   ],
+   "form": "Hybrid",
+   "length": "Short"
   },
   "NEW-b5c3aa388940-WORK-1": {
    "title": "Why Would I Leave",
@@ -29659,7 +29843,17 @@
      "name": "Meky Ottawa"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "Atikamekw",
+     "as_credited": "Atikamekw",
+     "glottocode": "atik1240",
+     "iso639_3": "atj",
+     "match": "exact",
+     "indigenous": true,
+     "source": "https://festival.shortfilm.com/media/pages/medialibrary/89f5de5154-1736517014/2016_ikff_katalog.pdf"
+    }
+   ],
    "themes": [],
    "primary_theme": null,
    "families": [],
@@ -33604,12 +33798,42 @@
      "name": "Frida Muenala"
     }
    ],
+   "languages": [
+    {
+     "label": "Spanish",
+     "as_credited": "Spanish",
+     "glottocode": "stan1288",
+     "iso639_3": "spa",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://ictnews.org/lifestyle/indigenous-film-online-nov-21/"
+    }
+   ],
+   "themes": [
+    "Women and Gender"
+   ],
+   "primary_theme": "Women and Gender",
+   "families": [
+    "Lives and Relations"
+   ],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261126-9801-F1": {
+   "title": "Yasuní, selva en resistencia",
+   "year": null,
+   "makers": [
+    {
+     "id": "SA50-20261014-4c05b1125ca7",
+     "name": "Frida Muenala"
+    }
+   ],
    "languages": [],
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
-   "length": null
+   "form": "Documentary",
+   "length": "Feature"
   },
   "SA50-20261014-b68e2c076008-WORK-01": {
    "title": "Warmikunamantami Shamuni",
@@ -36796,13 +37020,46 @@
     {
      "id": "LEAD-20261011-004",
      "name": "Jhomalis Franco Gomes"
+    },
+    {
+     "id": "QM-b28a904c25",
+     "name": "Joilson Brites"
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Health and Healing",
+    "Kinship",
+    "Land Defense",
+    "More-than-Human Relations"
+   ],
+   "primary_theme": "Health and Healing",
+   "families": [
+    "Land and Environment",
+    "Lives and Relations"
+   ],
    "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261126-96731-F1": {
+   "title": "Guahuí Guyra Kuera (Enchantment of Birds)",
+   "year": 2020,
+   "makers": [
+    {
+     "id": "LEAD-20261011-004",
+     "name": "Jhomalis Franco Gomes"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "More-than-Human Relations",
+    "Land Defense"
+   ],
+   "primary_theme": "More-than-Human Relations",
+   "families": [
+    "Land and Environment"
+   ],
+   "form": null,
    "length": "Short"
   },
   "Q20261112-03-F1": {
@@ -37005,6 +37262,22 @@
    "primary_theme": null,
    "families": [],
    "form": null,
+   "length": "Short"
+  },
+  "Q20261126-9871-F1": {
+   "title": "El hilo y la pólvora / The Thread and the Gunpowder",
+   "year": 2026,
+   "makers": [
+    {
+     "id": "LEAD-20261011-015",
+     "name": "Leyzer Chiquin"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
    "length": "Short"
   },
   "LEAD-20261011-020-W1031-1": {
@@ -39943,7 +40216,35 @@
      "name": "Terry Randy Awashish"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "Atikamekw",
+     "as_credited": "Atikamekw",
+     "glottocode": "atik1240",
+     "iso639_3": "atj",
+     "match": "exact",
+     "indigenous": true,
+     "source": "https://ridm.ca/en/films/nicw-mahikanak-deux-loups-two-wolves"
+    },
+    {
+     "label": "French",
+     "as_credited": "French",
+     "glottocode": "stan1290",
+     "iso639_3": "fra",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://ridm.ca/en/films/nicw-mahikanak-deux-loups-two-wolves"
+    },
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://ridm.ca/en/films/nicw-mahikanak-deux-loups-two-wolves"
+    }
+   ],
    "themes": [
     "Cosmology and Origin Stories"
    ],
@@ -39953,6 +40254,22 @@
    ],
    "form": "Experimental",
    "length": "Short"
+  },
+  "Q20261126-28605-F1": {
+   "title": "Choisir de vivre",
+   "year": 2012,
+   "makers": [
+    {
+     "id": "DIR-0430",
+     "name": "Terry Randy Awashish"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
   },
   "WAP-FILM-00431": {
    "title": "On Postindian Survivance",
@@ -40979,11 +41296,16 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Memory and Oral History",
+    "Elders and Knowledge"
+   ],
+   "primary_theme": "Memory and Oral History",
+   "families": [
+    "Knowledge and Continuity"
+   ],
+   "form": "Documentary",
+   "length": "Short"
   },
   "Q20261126-10-F1": {
    "title": "Fruto da Aliança dos Povos da Floresta",
@@ -41186,6 +41508,22 @@
     "Lives and Relations"
    ],
    "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261127-89-F1": {
+   "title": "To kayrere Kry Ritayti Na",
+   "year": 1993,
+   "makers": [
+    {
+     "id": "NEW-c3fa3281bf58",
+     "name": "Xontapti Totore Payroroti"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
    "length": "Short"
   },
   "NEW-f5822b7c2065-WORK-1": {
@@ -43576,10 +43914,14 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
+   "themes": [
+    "Borders"
+   ],
+   "primary_theme": "Borders",
+   "families": [
+    "Sovereignty and Politics"
+   ],
+   "form": "Documentary",
    "length": "Short"
   },
   "NEW-8c72a5a58254-WORK-2": {
@@ -43989,22 +44331,6 @@
     "Knowledge and Continuity"
    ],
    "form": "Fiction",
-   "length": "Short"
-  },
-  "NEW-f60277eedca1-WORK-2": {
-   "title": "Lumalali Niwani",
-   "year": 2025,
-   "makers": [
-    {
-     "id": "NEW-f60277eedca1",
-     "name": "Nery Bernárdez"
-    }
-   ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
    "length": "Short"
   },
   "NEW-0d399fe7dc63-WORK-1": {
@@ -44581,7 +44907,7 @@
   },
   "NEW-59dd1aa256aa-WORK-1": {
    "title": "Tecuani (hombre jaguar)",
-   "year": 2017,
+   "year": 2016,
    "makers": [
     {
      "id": "NEW-59dd1aa256aa",
@@ -44607,7 +44933,7 @@
   },
   "NEW-59dd1aa256aa-QM33a0b3": {
    "title": "Mi no lugar",
-   "year": null,
+   "year": 2022,
    "makers": [
     {
      "id": "NEW-59dd1aa256aa",
@@ -44615,11 +44941,18 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Displacement and Migration",
+    "Youth",
+    "Kinship"
+   ],
+   "primary_theme": "Displacement and Migration",
+   "families": [
+    "Lives and Relations",
+    "Sovereignty and Politics"
+   ],
+   "form": "Documentary",
+   "length": "Feature"
   },
   "Q20261126-1059-F1": {
    "title": "Dicen que yo no lo sé",
@@ -44661,7 +44994,7 @@
   },
   "NEW-c2055a72bb3e-W1031-2": {
    "title": "Hilando sones",
-   "year": null,
+   "year": 2023,
    "makers": [
     {
      "id": "NEW-c2055a72bb3e",
@@ -44939,11 +45272,16 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Elders and Knowledge",
+    "Memory and Oral History"
+   ],
+   "primary_theme": "Elders and Knowledge",
+   "families": [
+    "Knowledge and Continuity"
+   ],
+   "form": "Documentary",
+   "length": "Short"
   },
   "NEW-656112f6f1c6-WORK-3": {
    "title": "K'evujel ta jteklum (Song of Our Land)",
@@ -44955,11 +45293,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Music and Performance"
+   ],
+   "primary_theme": "Music and Performance",
+   "families": [
+    "Expression and Representation"
+   ],
+   "form": "Documentary",
+   "length": "Short"
   },
   "NEW-656112f6f1c6-QMa73e03": {
    "title": "El encargo de los dioses",
@@ -51036,9 +51378,16 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Displacement and Migration",
+    "Women and Gender",
+    "Urban Indigeneity"
+   ],
+   "primary_theme": "Displacement and Migration",
+   "families": [
+    "Lives and Relations",
+    "Sovereignty and Politics"
+   ],
    "form": "Documentary",
    "length": "Short"
   },
@@ -64426,9 +64775,14 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Memory and Oral History",
+    "Elders and Knowledge"
+   ],
+   "primary_theme": "Memory and Oral History",
+   "families": [
+    "Knowledge and Continuity"
+   ],
    "form": "Documentary",
    "length": null
   },
@@ -65803,9 +66157,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "State Violence and Genocide",
+    "Memory and Oral History"
+   ],
+   "primary_theme": "State Violence and Genocide",
+   "families": [
+    "Knowledge and Continuity",
+    "Sovereignty and Politics"
+   ],
    "form": "Documentary",
    "length": "Short"
   },
@@ -69656,6 +70016,176 @@
    "form": "Experimental",
    "length": "Short"
   },
+  "Q20261126-28601-F1": {
+   "title": "AlienNATION [star spangled]",
+   "year": 2018,
+   "makers": [
+    {
+     "id": "Q20261126-28401",
+     "name": "New Red Order"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Justice, Truth and Reconciliation"
+   ],
+   "primary_theme": "Justice, Truth and Reconciliation",
+   "families": [
+    "Sovereignty and Politics"
+   ],
+   "form": "Experimental",
+   "length": "Short"
+  },
+  "Q20261126-28601-F2": {
+   "title": "Culture Capture 001",
+   "year": 2017,
+   "makers": [
+    {
+     "id": "Q20261126-28401",
+     "name": "New Red Order"
+    }
+   ],
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://www.vdb.org/titles/culture-capture-001"
+    }
+   ],
+   "themes": [
+    "Archives, Museums and Repatriation"
+   ],
+   "primary_theme": "Archives, Museums and Repatriation",
+   "families": [
+    "Knowledge and Continuity"
+   ],
+   "form": "Experimental",
+   "length": "Short"
+  },
+  "Q20261126-28601-F3": {
+   "title": "Give it Back: Crimes Against Realty",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "Q20261126-28401",
+     "name": "New Red Order"
+    }
+   ],
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://www.vdb.org/titles/give-it-back-crimes-against-realty"
+    }
+   ],
+   "themes": [
+    "Land Defense"
+   ],
+   "primary_theme": "Land Defense",
+   "families": [
+    "Land and Environment"
+   ],
+   "form": "Hybrid",
+   "length": "Short"
+  },
+  "Q20261126-28601-F4": {
+   "title": "Give it Back: Severed Head",
+   "year": 2018,
+   "makers": [
+    {
+     "id": "Q20261126-28401",
+     "name": "New Red Order"
+    }
+   ],
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://www.vdb.org/titles/give-it-back-severed-head"
+    }
+   ],
+   "themes": [
+    "Archives, Museums and Repatriation"
+   ],
+   "primary_theme": "Archives, Museums and Repatriation",
+   "families": [
+    "Knowledge and Continuity"
+   ],
+   "form": "Experimental",
+   "length": "Short"
+  },
+  "Q20261126-28601-F5": {
+   "title": "Give it Back: Stage Theory",
+   "year": 2023,
+   "makers": [
+    {
+     "id": "Q20261126-28401",
+     "name": "New Red Order"
+    }
+   ],
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://www.vdb.org/titles/give-it-back-stage-theory"
+    }
+   ],
+   "themes": [
+    "Archives, Museums and Repatriation"
+   ],
+   "primary_theme": "Archives, Museums and Repatriation",
+   "families": [
+    "Knowledge and Continuity"
+   ],
+   "form": "Experimental",
+   "length": "Short"
+  },
+  "Q20261126-28601-F6": {
+   "title": "Red Coat",
+   "year": 2018,
+   "makers": [
+    {
+     "id": "Q20261126-28401",
+     "name": "New Red Order"
+    }
+   ],
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://www.vdb.org/titles/red-coat"
+    }
+   ],
+   "themes": [
+    "Self-Representation and Countering Stereotypes"
+   ],
+   "primary_theme": "Self-Representation and Countering Stereotypes",
+   "families": [
+    "Expression and Representation"
+   ],
+   "form": "Experimental",
+   "length": "Short"
+  },
   "Q20261126-19710-F1": {
    "title": "Connected by Water",
    "year": 2022,
@@ -70107,6 +70637,38 @@
    "form": "Documentary",
    "length": "Short"
   },
+  "Q20261126-145-F2": {
+   "title": "Ahora es el tiempo más duro",
+   "year": 2000,
+   "makers": [
+    {
+     "id": "Q20261126-145",
+     "name": "Fabiola Gervasio Cándido"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
+  },
+  "Q20261126-145-F3": {
+   "title": "Abriendo brecha",
+   "year": 1999,
+   "makers": [
+    {
+     "id": "Q20261126-145",
+     "name": "Fabiola Gervasio Cándido"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
+  },
   "QM-b64977576d-M1": {
    "title": "Nimik",
    "year": 2024,
@@ -70316,6 +70878,105 @@
    ],
    "form": "Documentary",
    "length": "Short"
+  },
+  "Q20261124-84-F2": {
+   "title": "Returning",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "Q20261124-84",
+     "name": "Gina Bussidor"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261126-28602-F1": {
+   "title": "Ni8itci8akan",
+   "year": 2025,
+   "makers": [
+    {
+     "id": "Q20261126-28602",
+     "name": "Alice Jerome"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Residential and Boarding Schools",
+    "Kinship"
+   ],
+   "primary_theme": "Residential and Boarding Schools",
+   "families": [
+    "Knowledge and Continuity",
+    "Lives and Relations"
+   ],
+   "form": "Experimental",
+   "length": "Short"
+  },
+  "Q20261126-28603-F1": {
+   "title": "Nitassinan",
+   "year": 2026,
+   "makers": [
+    {
+     "id": "Q20261126-28603",
+     "name": "Joséphine Bacon"
+    }
+   ],
+   "languages": [
+    {
+     "label": "French",
+     "as_credited": "French",
+     "glottocode": "stan1290",
+     "iso639_3": "fra",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://www.presenceautochtone.ca/en/programmation/nitassinan/"
+    },
+    {
+     "label": "Innu-aimun",
+     "as_credited": "Innu-aimun",
+     "glottocode": "mont1268",
+     "iso639_3": "moe",
+     "match": "exact",
+     "indigenous": true,
+     "source": "https://www.presenceautochtone.ca/en/programmation/nitassinan/"
+    }
+   ],
+   "themes": [
+    "Land Defense",
+    "Memory and Oral History"
+   ],
+   "primary_theme": "Land Defense",
+   "families": [
+    "Knowledge and Continuity",
+    "Land and Environment"
+   ],
+   "form": "Documentary",
+   "length": "Feature"
+  },
+  "Q20261126-28603-F2": {
+   "title": "Tshishe Mishtikuashisht - Le petit grand européen : Johan Beetz",
+   "year": 1997,
+   "makers": [
+    {
+     "id": "Q20261126-28603",
+     "name": "Joséphine Bacon"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Memory and Oral History"
+   ],
+   "primary_theme": "Memory and Oral History",
+   "families": [
+    "Knowledge and Continuity"
+   ],
+   "form": "Documentary",
+   "length": null
   }
  }
 }
