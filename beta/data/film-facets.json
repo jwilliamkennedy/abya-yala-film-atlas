@@ -2,8 +2,8 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-27",
  "license": "See data.html",
- "films_on_public_map": 3423,
- "film_entries": 3423,
+ "films_on_public_map": 3434,
+ "film_entries": 3434,
  "published_field_conflicts": {
   "SA50-20261014-59f87a2e3ce5-WORK-01": [
    "themes"
@@ -171,7 +171,7 @@
     "note": "Credits name Cree without a variety",
     "region": "North America",
     "region_basis": "Glottolog countries",
-    "films": 7
+    "films": 8
    },
    {
     "label": "Plains Cree",
@@ -465,7 +465,7 @@
     "note": "",
     "region": "",
     "region_basis": "",
-    "films": 210
+    "films": 215
    },
    {
     "label": "Spanish",
@@ -6855,12 +6855,27 @@
      "name": "Darlene Naponse"
     }
    ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://vtape.org/video?vi=4051"
+    }
+   ],
+   "themes": [
+    "Youth",
+    "Women and Gender"
+   ],
+   "primary_theme": "Youth",
+   "families": [
+    "Lives and Relations"
+   ],
+   "form": "Experimental",
+   "length": "Short"
   },
   "Q20261115-83-F3": {
    "title": "Abandoned Houses on the Reservation",
@@ -22889,6 +22904,52 @@
    "form": "Documentary",
    "length": null
   },
+  "Q20261126-9293-F1": {
+   "title": "NTV (Native Television)",
+   "year": 1994,
+   "makers": [
+    {
+     "id": "DIR-0280",
+     "name": "Hulleah J. Tsinhnahjinnie"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Self-Representation and Countering Stereotypes",
+    "Sovereignty and Self-Determination",
+    "Collective and Community Media"
+   ],
+   "primary_theme": "Self-Representation and Countering Stereotypes",
+   "families": [
+    "Expression and Representation",
+    "Sovereignty and Politics"
+   ],
+   "form": null,
+   "length": "Short"
+  },
+  "Q20261126-9293-F2": {
+   "title": "An Aboriginal World View with Aboriginal Dreams",
+   "year": 2002,
+   "makers": [
+    {
+     "id": "DIR-0280",
+     "name": "Hulleah J. Tsinhnahjinnie"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Sovereignty and Self-Determination",
+    "Land Defense",
+    "Resistance Movements"
+   ],
+   "primary_theme": "Sovereignty and Self-Determination",
+   "families": [
+    "Land and Environment",
+    "Sovereignty and Politics"
+   ],
+   "form": "Experimental",
+   "length": "Short"
+  },
   "DIR-0285-F1": {
    "title": "Rabbit Stories",
    "year": 2023,
@@ -27029,6 +27090,38 @@
    "primary_theme": null,
    "families": [],
    "form": "Fiction",
+   "length": "Short"
+  },
+  "Q20261126-8431-F1": {
+   "title": "Tomson Highway: kipimâtisinaw tapâhpeyahk",
+   "year": 2022,
+   "makers": [
+    {
+     "id": "NEW-41297500b675",
+     "name": "Barry Bilinsky"
+    }
+   ],
+   "languages": [
+    {
+     "label": "Cree",
+     "as_credited": "Cree",
+     "glottocode": "cree1272",
+     "iso639_3": "cre",
+     "match": "group",
+     "indigenous": true,
+     "source": "https://reelcanada.ca/film/tomson-highway-kipimatisinaw-tapahpeyahk/"
+    }
+   ],
+   "themes": [
+    "Music and Performance",
+    "Memory and Oral History"
+   ],
+   "primary_theme": "Music and Performance",
+   "families": [
+    "Expression and Representation",
+    "Knowledge and Continuity"
+   ],
+   "form": "Documentary",
    "length": "Short"
   },
   "NEW-f50923a97b8d-WORK-1": {
@@ -32555,9 +32648,13 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Women and Gender"
+   ],
+   "primary_theme": "Women and Gender",
+   "families": [
+    "Lives and Relations"
+   ],
    "form": "Experimental",
    "length": "Short"
   },
@@ -67838,6 +67935,32 @@
    "form": "Documentary",
    "length": "Short"
   },
+  "Q20261126-9292-F1": {
+   "title": "La Canción de la Madre Tierra",
+   "year": 2022,
+   "makers": [
+    {
+     "id": "Q20261123-97",
+     "name": "Liliana Claudia Herrera Salinas"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Linguistic Preservation",
+    "Music and Performance",
+    "More-than-Human Relations",
+    "Health and Healing"
+   ],
+   "primary_theme": "Linguistic Preservation",
+   "families": [
+    "Expression and Representation",
+    "Knowledge and Continuity",
+    "Land and Environment",
+    "Lives and Relations"
+   ],
+   "form": "Documentary",
+   "length": "Series"
+  },
   "NEW-b9dba9c4a2d8-WORK-1": {
    "title": "De l'ombre à la lumière",
    "year": 2024,
@@ -68556,6 +68679,32 @@
    "families": [
     "Lives and Relations"
    ],
+   "form": "Fiction",
+   "length": "Short"
+  },
+  "Q20261126-8432-F1": {
+   "title": "Foresight",
+   "year": 2022,
+   "makers": [
+    {
+     "id": "Q20261124-71",
+     "name": "Brandon Martinez"
+    }
+   ],
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://www.nordamerika-filmfestival.com/filme-2023.html"
+    }
+   ],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
    "form": "Fiction",
    "length": "Short"
   },
@@ -73443,6 +73592,166 @@
     "Knowledge and Continuity"
    ],
    "form": null,
+   "length": "Short"
+  },
+  "Q20261126-9290-F1": {
+   "title": "GHOST DAYS: IXL Brick Factory",
+   "year": 2017,
+   "makers": [
+    {
+     "id": "Q20261126-9290",
+     "name": "Terrance Houle"
+    }
+   ],
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://vtape.org/video?vi=8983"
+    }
+   ],
+   "themes": [
+    "Music and Performance",
+    "Justice, Truth and Reconciliation",
+    "Kinship"
+   ],
+   "primary_theme": "Music and Performance",
+   "families": [
+    "Expression and Representation",
+    "Lives and Relations",
+    "Sovereignty and Politics"
+   ],
+   "form": "Hybrid",
+   "length": "Feature"
+  },
+  "Q20261126-9290-F2": {
+   "title": "The Metrosexual Indian",
+   "year": 2005,
+   "makers": [
+    {
+     "id": "Q20261126-9290",
+     "name": "Terrance Houle"
+    }
+   ],
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://vtape.org/video?vi=5860"
+    }
+   ],
+   "themes": [
+    "Self-Representation and Countering Stereotypes"
+   ],
+   "primary_theme": "Self-Representation and Countering Stereotypes",
+   "families": [
+    "Expression and Representation"
+   ],
+   "form": null,
+   "length": "Short"
+  },
+  "Q20261126-9290-F3": {
+   "title": "The Wagon Burner",
+   "year": 2003,
+   "makers": [
+    {
+     "id": "Q20261126-9290",
+     "name": "Terrance Houle"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Self-Representation and Countering Stereotypes",
+    "Resistance Movements"
+   ],
+   "primary_theme": "Self-Representation and Countering Stereotypes",
+   "families": [
+    "Expression and Representation",
+    "Sovereignty and Politics"
+   ],
+   "form": null,
+   "length": "Short"
+  },
+  "Q20261126-9290-F4": {
+   "title": "Cows",
+   "year": 2003,
+   "makers": [
+    {
+     "id": "Q20261126-9290",
+     "name": "Terrance Houle"
+    }
+   ],
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://vtape.org/video?vi=5858"
+    }
+   ],
+   "themes": [
+    "Residential and Boarding Schools"
+   ],
+   "primary_theme": "Residential and Boarding Schools",
+   "families": [
+    "Knowledge and Continuity"
+   ],
+   "form": "Experimental",
+   "length": "Short"
+  },
+  "Q20261126-9290-F8": {
+   "title": "Aakaisttsiiksiinaakii: Many Snake Woman — The Daughters after Me",
+   "year": 2008,
+   "makers": [
+    {
+     "id": "Q20261126-9290",
+     "name": "Terrance Houle"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Kinship",
+    "Women and Gender",
+    "Self-Representation and Countering Stereotypes"
+   ],
+   "primary_theme": "Kinship",
+   "families": [
+    "Expression and Representation",
+    "Lives and Relations"
+   ],
+   "form": "Hybrid",
+   "length": "Short"
+  },
+  "Q20261126-94308-F1": {
+   "title": "Mommy Goes Race",
+   "year": 2017,
+   "makers": [
+    {
+     "id": "Q20261126-94308",
+     "name": "Charlene McConini"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Women and Gender",
+    "Kinship"
+   ],
+   "primary_theme": "Women and Gender",
+   "families": [
+    "Lives and Relations"
+   ],
+   "form": "Documentary",
    "length": "Short"
   }
  }
