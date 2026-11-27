@@ -2,8 +2,8 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-27",
  "license": "See data.html",
- "films_on_public_map": 3438,
- "film_entries": 3438,
+ "films_on_public_map": 3486,
+ "film_entries": 3486,
  "published_field_conflicts": {
   "SA50-20261014-59f87a2e3ce5-WORK-01": [
    "themes"
@@ -241,7 +241,7 @@
     "note": "",
     "region": "Central America and the Caribbean",
     "region_basis": "Glottolog countries",
-    "films": 1
+    "films": 2
    },
    {
     "label": "Haida",
@@ -325,7 +325,7 @@
     "note": "Kichwa names the Ecuadorian Quechua varieties",
     "region": "South America",
     "region_basis": "Glottolog coordinates",
-    "films": 12
+    "films": 13
    },
    {
     "label": "Lakota",
@@ -381,7 +381,7 @@
     "note": "",
     "region": "North America",
     "region_basis": "Glottolog countries",
-    "films": 1
+    "films": 2
    },
    {
     "label": "Q’eqchi’",
@@ -395,7 +395,7 @@
     "note": "",
     "region": "Central America and the Caribbean",
     "region_basis": "Glottolog countries",
-    "films": 1
+    "films": 2
    },
    {
     "label": "Secwépemctsín",
@@ -465,7 +465,7 @@
     "note": "",
     "region": "",
     "region_basis": "",
-    "films": 217
+    "films": 225
    },
    {
     "label": "Spanish",
@@ -479,7 +479,7 @@
     "note": "",
     "region": "",
     "region_basis": "",
-    "films": 69
+    "films": 70
    },
    {
     "label": "Portuguese",
@@ -3554,6 +3554,26 @@
    "form": "Fiction",
    "length": "Feature"
   },
+  "Q20261126-58276-F1": {
+   "title": "Liar",
+   "year": 2012,
+   "makers": [
+    {
+     "id": "DIR-0058",
+     "name": "Adam Garnet Jones"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Youth"
+   ],
+   "primary_theme": "Youth",
+   "families": [
+    "Lives and Relations"
+   ],
+   "form": "Fiction",
+   "length": "Short"
+  },
   "FILM-0062": {
    "title": "Amisk",
    "year": null,
@@ -5494,7 +5514,7 @@
   },
   "FILM-0067": {
    "title": "At the Place of Ghosts",
-   "year": null,
+   "year": 2025,
    "makers": [
     {
      "id": "DIR-0071",
@@ -5522,10 +5542,24 @@
      "name": "Bretten Hannam"
     }
    ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://outshinefilm.com/films/info/810/north-mountain"
+    }
+   ],
+   "themes": [
+    "LGBTQIA2S"
+   ],
+   "primary_theme": "LGBTQIA2S",
+   "families": [
+    "Lives and Relations"
+   ],
    "form": "Fiction",
    "length": "Feature"
   },
@@ -5539,10 +5573,17 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
+   "themes": [
+    "LGBTQIA2S",
+    "Youth",
+    "Linguistic Preservation"
+   ],
+   "primary_theme": "LGBTQIA2S",
+   "families": [
+    "Knowledge and Continuity",
+    "Lives and Relations"
+   ],
+   "form": "Fiction",
    "length": "Short"
   },
   "Q20261126-65-F1": {
@@ -5575,9 +5616,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "LGBTQIA2S",
+    "Kinship",
+    "Youth"
+   ],
+   "primary_theme": "LGBTQIA2S",
+   "families": [
+    "Lives and Relations"
+   ],
    "form": "Fiction",
    "length": "Feature"
   },
@@ -6029,7 +6076,7 @@
   },
   "FILM-0070": {
    "title": "Now Is the Time",
-   "year": null,
+   "year": 2019,
    "makers": [
     {
      "id": "DIR-0075",
@@ -6070,7 +6117,29 @@
     "Sovereignty and Politics"
    ],
    "form": "Documentary",
-   "length": null
+   "length": "Feature"
+  },
+  "Q20261126-94401-F1": {
+   "title": "The Mountain of SGaana",
+   "year": 2017,
+   "makers": [
+    {
+     "id": "DIR-0075",
+     "name": "Christopher Auchter"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Cosmology and Origin Stories",
+    "More-than-Human Relations"
+   ],
+   "primary_theme": "Cosmology and Origin Stories",
+   "families": [
+    "Knowledge and Continuity",
+    "Land and Environment"
+   ],
+   "form": "Animation",
+   "length": "Short"
   },
   "FILM-0071": {
    "title": "Deep Inside Clint Star",
@@ -6224,6 +6293,27 @@
     "Urban Indigeneity"
    ],
    "primary_theme": "Urban Indigeneity",
+   "families": [
+    "Lives and Relations"
+   ],
+   "form": null,
+   "length": "Short"
+  },
+  "Q20261126-94415-F1": {
+   "title": "Very Present",
+   "year": 2020,
+   "makers": [
+    {
+     "id": "DIR-0079",
+     "name": "Conor McNally"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Kinship",
+    "Health and Healing"
+   ],
+   "primary_theme": "Kinship",
    "families": [
     "Lives and Relations"
    ],
@@ -6767,10 +6857,16 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
+   "themes": [
+    "Sovereignty and Self-Determination",
+    "Land Defense"
+   ],
+   "primary_theme": "Sovereignty and Self-Determination",
+   "families": [
+    "Land and Environment",
+    "Sovereignty and Politics"
+   ],
+   "form": "Fiction",
    "length": "Short"
   },
   "FILM-0074": {
@@ -7786,10 +7882,26 @@
      "name": "Gavin Baird"
     }
    ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://www.reelworld.ca/2024-feature-films/8th-street-menace"
+    }
+   ],
+   "themes": [
+    "Music and Performance",
+    "Urban Indigeneity"
+   ],
+   "primary_theme": "Music and Performance",
+   "families": [
+    "Expression and Representation",
+    "Lives and Relations"
+   ],
    "form": "Fiction",
    "length": "Feature"
   },
@@ -8221,14 +8333,24 @@
   },
   "Q20261126-1506-F1": {
    "title": "David with F.A.S.",
-   "year": null,
+   "year": 1997,
    "makers": [
     {
      "id": "DIR-0095",
      "name": "Gil Cardinal"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://repertoire.cinema.mcc.gouv.qc.ca/film/david-with-f-a-s-a-story-of-fetal-alcohol-syndrome-137155/"
+    }
+   ],
    "themes": [
     "Health and Healing",
     "Kinship"
@@ -10626,7 +10748,17 @@
      "name": "Marie Clements"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://www.femfilm.ca/film_search.php?film=clements-looking&lang=e"
+    }
+   ],
    "themes": [
     "Self-Representation and Countering Stereotypes",
     "Archives, Museums and Repatriation"
@@ -22747,6 +22879,38 @@
    "form": "Fiction",
    "length": "Series"
   },
+  "Q20261126-94413-F1": {
+   "title": "Skinwalkers",
+   "year": 2002,
+   "makers": [
+    {
+     "id": "DIR-0271",
+     "name": "Chris Eyre"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": null
+  },
+  "Q20261126-94414-F1": {
+   "title": "A Thief of Time",
+   "year": 2004,
+   "makers": [
+    {
+     "id": "DIR-0271",
+     "name": "Chris Eyre"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": null
+  },
   "DIR-0273-F1": {
    "title": "Native America (season 2)",
    "year": null,
@@ -24393,11 +24557,26 @@
      "name": "Felene Cayetano"
     }
    ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
+   "languages": [
+    {
+     "label": "Garifuna",
+     "as_credited": "Garifuna",
+     "glottocode": "gari1256",
+     "iso639_3": "cab",
+     "match": "exact",
+     "indigenous": true,
+     "source": "https://beinggarifuna.com/?p=2352"
+    }
+   ],
+   "themes": [
+    "Health and Healing",
+    "Women and Gender"
+   ],
+   "primary_theme": "Health and Healing",
+   "families": [
+    "Lives and Relations"
+   ],
+   "form": "Fiction",
    "length": "Short"
   },
   "Q20261126-01-F1": {
@@ -24496,7 +24675,7 @@
   },
   "FILM-0238": {
    "title": "Dak’Toká Taíno (I Am Taíno)",
-   "year": null,
+   "year": 2018,
    "makers": [
     {
      "id": "DIR-0320",
@@ -27100,9 +27279,13 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Youth"
+   ],
+   "primary_theme": "Youth",
+   "families": [
+    "Lives and Relations"
+   ],
    "form": "Fiction",
    "length": "Short"
   },
@@ -27833,6 +28016,96 @@
    "primary_theme": null,
    "families": [],
    "form": "Fiction",
+   "length": "Short"
+  },
+  "Q20261126-94402-F1": {
+   "title": "Nbisiing",
+   "year": 2020,
+   "makers": [
+    {
+     "id": "NEW-45cb5ec69bd9",
+     "name": "Cole Forrest"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Water",
+    "Health and Healing"
+   ],
+   "primary_theme": "Water",
+   "families": [
+    "Land and Environment",
+    "Lives and Relations"
+   ],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261126-94403-F1": {
+   "title": "Ozigwan (Tail of Serpent)",
+   "year": null,
+   "makers": [
+    {
+     "id": "NEW-45cb5ec69bd9",
+     "name": "Cole Forrest"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Cosmology and Origin Stories",
+    "Water",
+    "Kinship"
+   ],
+   "primary_theme": "Cosmology and Origin Stories",
+   "families": [
+    "Knowledge and Continuity",
+    "Land and Environment",
+    "Lives and Relations"
+   ],
+   "form": "Fiction",
+   "length": "Short"
+  },
+  "Q20261126-94404-F1": {
+   "title": "Into Water",
+   "year": 2019,
+   "makers": [
+    {
+     "id": "NEW-45cb5ec69bd9",
+     "name": "Cole Forrest"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Water",
+    "More-than-Human Relations"
+   ],
+   "primary_theme": "Water",
+   "families": [
+    "Land and Environment"
+   ],
+   "form": "Fiction",
+   "length": "Short"
+  },
+  "Q20261126-94405-F1": {
+   "title": "my popsicle queen",
+   "year": 2019,
+   "makers": [
+    {
+     "id": "NEW-45cb5ec69bd9",
+     "name": "Cole Forrest"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Youth",
+    "Health and Healing",
+    "Music and Performance"
+   ],
+   "primary_theme": "Youth",
+   "families": [
+    "Expression and Representation",
+    "Lives and Relations"
+   ],
+   "form": "Experimental",
    "length": "Short"
   },
   "NEW-01a3564b2b5b-WORK-1": {
@@ -29041,12 +29314,39 @@
      "name": "Fox Maxy"
     }
    ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "languages": [
+    {
+     "label": "Payómkawichum Chaamteela",
+     "as_credited": "Payómkawichum Chaamteela",
+     "glottocode": "luis1253",
+     "iso639_3": "lui",
+     "match": "exact",
+     "indigenous": true,
+     "source": "https://imagesfestival.com/catalogue/images-festival-2026-catalogue-screen-reader.pdf"
+    },
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://imagesfestival.com/catalogue/images-festival-2026-catalogue-screen-reader.pdf"
+    }
+   ],
+   "themes": [
+    "Water",
+    "Elders and Knowledge",
+    "Youth"
+   ],
+   "primary_theme": "Water",
+   "families": [
+    "Knowledge and Continuity",
+    "Land and Environment",
+    "Lives and Relations"
+   ],
    "form": "Experimental",
-   "length": null
+   "length": "Short"
   },
   "Q20261126-15-F1": {
    "title": "Maat Means Land",
@@ -34274,12 +34574,28 @@
     {
      "id": "LEAD-20261014-010",
      "name": "Beatriz Paulina Pankararu"
+    },
+    {
+     "id": "Q20261127-95",
+     "name": "Pedro Pankararé"
+    },
+    {
+     "id": "Q20261127-96",
+     "name": "Simone Pankararu"
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Land Defense",
+    "Urban Indigeneity",
+    "Sovereignty and Self-Determination"
+   ],
+   "primary_theme": "Land Defense",
+   "families": [
+    "Land and Environment",
+    "Lives and Relations",
+    "Sovereignty and Politics"
+   ],
    "form": "Documentary",
    "length": "Short"
   },
@@ -35797,7 +36113,7 @@
     "Lives and Relations",
     "Sovereignty and Politics"
    ],
-   "form": null,
+   "form": "Documentary",
    "length": null
   },
   "SA50-20261014-e9f1117d9852-WORK-01": {
@@ -42024,10 +42340,12 @@
    ],
    "languages": [],
    "themes": [
-    "More-than-Human Relations"
+    "More-than-Human Relations",
+    "Cosmology and Origin Stories"
    ],
    "primary_theme": "More-than-Human Relations",
    "families": [
+    "Knowledge and Continuity",
     "Land and Environment"
    ],
    "form": "Fiction",
@@ -43692,7 +44010,17 @@
      "name": "Catherine Anne Martin"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://www.oralhistoryforum.ca/index.php/ohf/article/download/65/109/65-Article%20Text-273-1-10-20100128.pdf"
+    }
+   ],
    "themes": [],
    "primary_theme": null,
    "families": [],
@@ -46451,8 +46779,8 @@
     "Expression and Representation",
     "Sovereignty and Politics"
    ],
-   "form": null,
-   "length": null
+   "form": "Documentary",
+   "length": "Short"
   },
   "NEW-645b77f311d8-WORK-2": {
    "title": "La música tradicional es la esencia del pueblo",
@@ -46475,8 +46803,8 @@
    "families": [
     "Expression and Representation"
    ],
-   "form": null,
-   "length": null
+   "form": "Documentary",
+   "length": "Short"
   },
   "NEW-645b77f311d8-WORK-3": {
    "title": "Castillo donado por José Marcial y Petra Reyes radicados en EE.UU.",
@@ -46492,11 +46820,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Displacement and Migration"
+   ],
+   "primary_theme": "Displacement and Migration",
+   "families": [
+    "Sovereignty and Politics"
+   ],
+   "form": "Documentary",
+   "length": "Short"
   },
   "NEW-59dd1aa256aa-WORK-1": {
    "title": "Tecuani (hombre jaguar)",
@@ -50526,11 +50858,18 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Women and Gender",
+    "Health and Healing",
+    "Elders and Knowledge"
+   ],
+   "primary_theme": "Women and Gender",
+   "families": [
+    "Knowledge and Continuity",
+    "Lives and Relations"
+   ],
+   "form": "Documentary",
+   "length": "Short"
   },
   "NEW-084a145f8fa7-QM6ced28": {
    "title": "Meu Sangue é Vermelho (My Blood Is Red)",
@@ -50766,6 +51105,30 @@
    ],
    "form": "Documentary",
    "length": "Short"
+  },
+  "Q20261126-94573-F1": {
+   "title": "Sekhdese",
+   "year": 2023,
+   "makers": [
+    {
+     "id": "NEW-084a145f8fa7",
+     "name": "Graciela Guarani"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Women and Gender",
+    "Land Defense",
+    "State Violence and Genocide"
+   ],
+   "primary_theme": "Women and Gender",
+   "families": [
+    "Land and Environment",
+    "Lives and Relations",
+    "Sovereignty and Politics"
+   ],
+   "form": "Documentary",
+   "length": "Feature"
   },
   "NEW-f51c22579e1e-WORK-1": {
    "title": "Ayllu: Memorias y Visiones",
@@ -52288,11 +52651,20 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Health and Healing",
+    "Elders and Knowledge",
+    "Kinship",
+    "Women and Gender",
+    "Youth"
+   ],
+   "primary_theme": "Health and Healing",
+   "families": [
+    "Knowledge and Continuity",
+    "Lives and Relations"
+   ],
+   "form": "Documentary",
+   "length": "Short"
   },
   "BETA30-20261106-D01-QMfe8e2c": {
    "title": "Kiwe Thé, Mujer sabedora",
@@ -52309,6 +52681,29 @@
    "families": [],
    "form": "Documentary",
    "length": null
+  },
+  "Q20261126-98907-F1": {
+   "title": "Aurora en el camino del tiempo",
+   "year": null,
+   "makers": [
+    {
+     "id": "BETA30-20261106-D01",
+     "name": "Frank William Cayapur Delgado"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Cosmology and Origin Stories",
+    "Elders and Knowledge",
+    "Youth"
+   ],
+   "primary_theme": "Cosmology and Origin Stories",
+   "families": [
+    "Knowledge and Continuity",
+    "Lives and Relations"
+   ],
+   "form": "Animation",
+   "length": "Series"
   },
   "BETA30-20261106-F08": {
    "title": "Nipi utaiamun",
@@ -54913,6 +55308,122 @@
    "form": "Documentary",
    "length": null
   },
+  "Q20261126-94407-F1": {
+   "title": "More",
+   "year": 2026,
+   "makers": [
+    {
+     "id": "QM-8ade5da1ed",
+     "name": "Colleen Thurston"
+    }
+   ],
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://watch.imaginenative.org/imaginenative/play/69f39be53b9b889810c370ba/69e7b62fd4723e6d85330566"
+    }
+   ],
+   "themes": [
+    "Music and Performance"
+   ],
+   "primary_theme": "Music and Performance",
+   "families": [
+    "Expression and Representation"
+   ],
+   "form": "Music Video",
+   "length": "Short"
+  },
+  "Q20261126-94408-F1": {
+   "title": "The 1969 Occupation of Alcatraz Was a Catalyst for Indigenous Activism",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "QM-8ade5da1ed",
+     "name": "Colleen Thurston"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Resistance Movements",
+    "Land Defense"
+   ],
+   "primary_theme": "Resistance Movements",
+   "families": [
+    "Land and Environment",
+    "Sovereignty and Politics"
+   ],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261126-94409-F1": {
+   "title": "Quapaw Cattle Company: Tribal nation honors traditional values",
+   "year": null,
+   "makers": [
+    {
+     "id": "QM-8ade5da1ed",
+     "name": "Colleen Thurston"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
+  },
+  "Q20261126-94410-F1": {
+   "title": "Chasing 14,000",
+   "year": null,
+   "makers": [
+    {
+     "id": "QM-8ade5da1ed",
+     "name": "Colleen Thurston"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
+  },
+  "Q20261126-94411-F1": {
+   "title": "Running Coast to Coast, Andy Payne and the 1928 Transcontinental Footrace",
+   "year": null,
+   "makers": [
+    {
+     "id": "QM-8ade5da1ed",
+     "name": "Colleen Thurston"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
+  },
+  "Q20261126-94412-F1": {
+   "title": "Speaking Through Generations",
+   "year": null,
+   "makers": [
+    {
+     "id": "QM-8ade5da1ed",
+     "name": "Colleen Thurston"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
+  },
   "QM-46e5bc5c8e-M1": {
    "title": "Who She Is",
    "year": 2024,
@@ -55538,10 +56049,28 @@
      "name": "Benjamín Sagüí"
     }
    ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "languages": [
+    {
+     "label": "Q’eqchi’",
+     "as_credited": "Q’eqchi’",
+     "glottocode": "kekc1242",
+     "iso639_3": "kek",
+     "match": "exact",
+     "indigenous": true,
+     "source": "https://escueladecinecasacomal.com/2023/11/21/donde-he-dejado-el-alma/"
+    }
+   ],
+   "themes": [
+    "More-than-Human Relations",
+    "Youth",
+    "Elders and Knowledge"
+   ],
+   "primary_theme": "More-than-Human Relations",
+   "families": [
+    "Knowledge and Continuity",
+    "Land and Environment",
+    "Lives and Relations"
+   ],
    "form": "Fiction",
    "length": "Short"
   },
@@ -57511,11 +58040,11 @@
    "primary_theme": null,
    "families": [],
    "form": "Animation",
-   "length": null
+   "length": "Short"
   },
   "Q20261115-229-F1": {
    "title": "Canard à l’orange",
-   "year": null,
+   "year": 1996,
    "makers": [
     {
      "id": "Q20261114-13",
@@ -57527,7 +58056,7 @@
    "primary_theme": null,
    "families": [],
    "form": "Animation",
-   "length": null
+   "length": "Short"
   },
   "Q20261115-230-F1": {
    "title": "Le 26 septembre à l’atelier",
@@ -57543,7 +58072,7 @@
    "primary_theme": null,
    "families": [],
    "form": "Animation",
-   "length": null
+   "length": "Short"
   },
   "Q20261114-74-F8": {
    "title": "I Like Girls (J’aime les filles)",
@@ -57579,6 +58108,270 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
+   "form": "Animation",
+   "length": "Short"
+  },
+  "Q20261126-9974-F1": {
+   "title": "Machine",
+   "year": 2012,
+   "makers": [
+    {
+     "id": "Q20261114-13",
+     "name": "Diane Obomsawin"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": "Short"
+  },
+  "Q20261126-9974-F2": {
+   "title": "Matriochkas",
+   "year": 2007,
+   "makers": [
+    {
+     "id": "Q20261114-13",
+     "name": "Diane Obomsawin"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": "Short"
+  },
+  "Q20261126-9974-F3": {
+   "title": "Baleine",
+   "year": 2007,
+   "makers": [
+    {
+     "id": "Q20261114-13",
+     "name": "Diane Obomsawin"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Environmental Change"
+   ],
+   "primary_theme": "Environmental Change",
+   "families": [
+    "Land and Environment"
+   ],
+   "form": "Animation",
+   "length": "Short"
+  },
+  "Q20261126-9974-F4": {
+   "title": "Das Boat",
+   "year": 2007,
+   "makers": [
+    {
+     "id": "Q20261114-13",
+     "name": "Diane Obomsawin"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": "Short"
+  },
+  "Q20261126-9974-F5": {
+   "title": "Joyeux Noël",
+   "year": 2007,
+   "makers": [
+    {
+     "id": "Q20261114-13",
+     "name": "Diane Obomsawin"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Music and Performance"
+   ],
+   "primary_theme": "Music and Performance",
+   "families": [
+    "Expression and Representation"
+   ],
+   "form": "Animation",
+   "length": "Short"
+  },
+  "Q20261126-9974-F6": {
+   "title": "Lapin",
+   "year": 2007,
+   "makers": [
+    {
+     "id": "Q20261114-13",
+     "name": "Diane Obomsawin"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": "Short"
+  },
+  "Q20261126-9974-F7": {
+   "title": "Oui",
+   "year": 2007,
+   "makers": [
+    {
+     "id": "Q20261114-13",
+     "name": "Diane Obomsawin"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": "Short"
+  },
+  "Q20261126-9974-F8": {
+   "title": "Popcorn",
+   "year": 2007,
+   "makers": [
+    {
+     "id": "Q20261114-13",
+     "name": "Diane Obomsawin"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": "Short"
+  },
+  "Q20261126-9974-F9": {
+   "title": "Rideau",
+   "year": 2007,
+   "makers": [
+    {
+     "id": "Q20261114-13",
+     "name": "Diane Obomsawin"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": "Short"
+  },
+  "Q20261126-9974-F10": {
+   "title": "Rita",
+   "year": 2007,
+   "makers": [
+    {
+     "id": "Q20261114-13",
+     "name": "Diane Obomsawin"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": "Short"
+  },
+  "Q20261126-9974-F11": {
+   "title": "Sapins",
+   "year": 2007,
+   "makers": [
+    {
+     "id": "Q20261114-13",
+     "name": "Diane Obomsawin"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Music and Performance"
+   ],
+   "primary_theme": "Music and Performance",
+   "families": [
+    "Expression and Representation"
+   ],
+   "form": "Animation",
+   "length": "Short"
+  },
+  "Q20261126-9974-F12": {
+   "title": "Sapins Rachmaninov",
+   "year": 2010,
+   "makers": [
+    {
+     "id": "Q20261114-13",
+     "name": "Diane Obomsawin"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Music and Performance"
+   ],
+   "primary_theme": "Music and Performance",
+   "families": [
+    "Expression and Representation"
+   ],
+   "form": "Animation",
+   "length": "Short"
+  },
+  "Q20261126-9974-F13": {
+   "title": "Tango",
+   "year": 2007,
+   "makers": [
+    {
+     "id": "Q20261114-13",
+     "name": "Diane Obomsawin"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Music and Performance"
+   ],
+   "primary_theme": "Music and Performance",
+   "families": [
+    "Expression and Representation"
+   ],
+   "form": "Animation",
+   "length": "Short"
+  },
+  "Q20261126-9974-F14": {
+   "title": "Volcan",
+   "year": 2007,
+   "makers": [
+    {
+     "id": "Q20261114-13",
+     "name": "Diane Obomsawin"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": "Short"
+  },
+  "Q20261126-9974-F15": {
+   "title": "Youpi",
+   "year": 2007,
+   "makers": [
+    {
+     "id": "Q20261114-13",
+     "name": "Diane Obomsawin"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Music and Performance"
+   ],
+   "primary_theme": "Music and Performance",
+   "families": [
+    "Expression and Representation"
+   ],
    "form": "Animation",
    "length": "Short"
   },
@@ -67429,7 +68222,7 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
+   "form": "Fiction",
    "length": "Short"
   },
   "Q20261121-102-F1": {
@@ -68361,11 +69154,18 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "themes": [
+    "Residential and Boarding Schools",
+    "Kinship",
+    "Youth"
+   ],
+   "primary_theme": "Residential and Boarding Schools",
+   "families": [
+    "Knowledge and Continuity",
+    "Lives and Relations"
+   ],
+   "form": "Fiction",
+   "length": "Short"
   },
   "Q20261126-55-F1": {
    "title": "The Little Deer Killer",
@@ -68769,6 +69569,22 @@
    ],
    "form": "Documentary",
    "length": "Short"
+  },
+  "Q20261126-8451-F1": {
+   "title": "Keep Your Eyes Open",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261124-71",
+     "name": "Brandon Martinez"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
   },
   "Q20261124-72-F1": {
    "title": "Unearthing the Past",
@@ -73860,6 +74676,379 @@
    "families": [
     "Expression and Representation",
     "Knowledge and Continuity"
+   ],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261126-20-F1": {
+   "title": "Kasna mi kawsani",
+   "year": 2022,
+   "makers": [
+    {
+     "id": "QM-62528e75ee",
+     "name": "Grupo de Jóvenes de Sarayaku"
+    }
+   ],
+   "languages": [
+    {
+     "label": "Kichwa",
+     "as_credited": "Kichwa",
+     "glottocode": "colo1257",
+     "iso639_3": "",
+     "match": "group",
+     "indigenous": true,
+     "source": "https://ficvaldivia.cl/wp-content/uploads/2024/10/Catalogo-31FICValdivia_02_10_2024.pdf"
+    },
+    {
+     "label": "Spanish",
+     "as_credited": "Spanish",
+     "glottocode": "stan1288",
+     "iso639_3": "spa",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://ficvaldivia.cl/wp-content/uploads/2024/10/Catalogo-31FICValdivia_02_10_2024.pdf"
+    }
+   ],
+   "themes": [
+    "Youth",
+    "More-than-Human Relations"
+   ],
+   "primary_theme": "Youth",
+   "families": [
+    "Land and Environment",
+    "Lives and Relations"
+   ],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261126-94571-F1": {
+   "title": "Canto para acordar nossas histórias Wapichana que estão no Museu Britânico",
+   "year": 2022,
+   "makers": [
+    {
+     "id": "Q20261126-94571",
+     "name": "Gustavo Caboco"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Archives, Museums and Repatriation",
+    "Borders",
+    "Memory and Oral History"
+   ],
+   "primary_theme": "Archives, Museums and Repatriation",
+   "families": [
+    "Knowledge and Continuity",
+    "Sovereignty and Politics"
+   ],
+   "form": null,
+   "length": "Short"
+  },
+  "Q20261126-94571-F2": {
+   "title": "Duwid Tuminkiz: Makunaima é Duwid?",
+   "year": 2025,
+   "makers": [
+    {
+     "id": "Q20261126-94571",
+     "name": "Gustavo Caboco"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Cosmology and Origin Stories",
+    "Self-Representation and Countering Stereotypes"
+   ],
+   "primary_theme": "Cosmology and Origin Stories",
+   "families": [
+    "Expression and Representation",
+    "Knowledge and Continuity"
+   ],
+   "form": "Animation",
+   "length": "Short"
+  },
+  "Q20261126-94571-F3": {
+   "title": "Erva do diabo",
+   "year": 2020,
+   "makers": [
+    {
+     "id": "Q20261126-94571",
+     "name": "Gustavo Caboco"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Archives, Museums and Repatriation",
+    "Memory and Oral History",
+    "Self-Representation and Countering Stereotypes"
+   ],
+   "primary_theme": "Memory and Oral History",
+   "families": [
+    "Expression and Representation",
+    "Knowledge and Continuity"
+   ],
+   "form": null,
+   "length": "Short"
+  },
+  "Q20261126-94571-F4": {
+   "title": "Fortalecendo os fios",
+   "year": 2022,
+   "makers": [
+    {
+     "id": "Q20261126-94571",
+     "name": "Gustavo Caboco"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Archives, Museums and Repatriation",
+    "Music and Performance",
+    "Borders"
+   ],
+   "primary_theme": "Archives, Museums and Repatriation",
+   "families": [
+    "Expression and Representation",
+    "Knowledge and Continuity",
+    "Sovereignty and Politics"
+   ],
+   "form": null,
+   "length": "Short"
+  },
+  "Q20261126-94571-F5": {
+   "title": "Kanau’kyba: kaminhos das pedras",
+   "year": 2021,
+   "makers": [
+    {
+     "id": "Q20261126-94571",
+     "name": "Gustavo Caboco"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Archives, Museums and Repatriation",
+    "More-than-Human Relations",
+    "Memory and Oral History"
+   ],
+   "primary_theme": "Memory and Oral History",
+   "families": [
+    "Knowledge and Continuity",
+    "Land and Environment"
+   ],
+   "form": "Animation",
+   "length": "Short"
+  },
+  "Q20261126-94571-F6": {
+   "title": "Kasulo da Kuwazaza",
+   "year": 2021,
+   "makers": [
+    {
+     "id": "Q20261126-94571",
+     "name": "Gustavo Caboco"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Music and Performance",
+    "Memory and Oral History",
+    "Art, Craft and Making"
+   ],
+   "primary_theme": "Music and Performance",
+   "families": [
+    "Expression and Representation",
+    "Knowledge and Continuity"
+   ],
+   "form": null,
+   "length": "Short"
+  },
+  "Q20261126-94571-F7": {
+   "title": "Recado do Bendegó",
+   "year": 2021,
+   "makers": [
+    {
+     "id": "Q20261126-94571",
+     "name": "Gustavo Caboco"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Archives, Museums and Repatriation",
+    "More-than-Human Relations",
+    "Memory and Oral History"
+   ],
+   "primary_theme": "Archives, Museums and Repatriation",
+   "families": [
+    "Knowledge and Continuity",
+    "Land and Environment"
+   ],
+   "form": null,
+   "length": "Short"
+  },
+  "Q20261126-94571-F8": {
+   "title": "Rede: entre o buriti e a bananeira",
+   "year": 2019,
+   "makers": [
+    {
+     "id": "Q20261126-94571",
+     "name": "Gustavo Caboco"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Displacement and Migration",
+    "Land Defense",
+    "Kinship"
+   ],
+   "primary_theme": "Displacement and Migration",
+   "families": [
+    "Land and Environment",
+    "Lives and Relations",
+    "Sovereignty and Politics"
+   ],
+   "form": "Animation",
+   "length": "Short"
+  },
+  "Q20261126-94571-F9": {
+   "title": "Somos Fronteiras Vivas",
+   "year": 2022,
+   "makers": [
+    {
+     "id": "Q20261126-94571",
+     "name": "Gustavo Caboco"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Borders",
+    "Land Defense",
+    "Resistance Movements"
+   ],
+   "primary_theme": "Borders",
+   "families": [
+    "Land and Environment",
+    "Sovereignty and Politics"
+   ],
+   "form": null,
+   "length": "Short"
+  },
+  "Q20261126-94571-F10": {
+   "title": "Vídeo-Críticas: memórias Inviabilizadas",
+   "year": 2025,
+   "makers": [
+    {
+     "id": "Q20261126-94571",
+     "name": "Gustavo Caboco"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Archives, Museums and Repatriation",
+    "Memory and Oral History"
+   ],
+   "primary_theme": "Archives, Museums and Repatriation",
+   "families": [
+    "Knowledge and Continuity"
+   ],
+   "form": null,
+   "length": "Short"
+  },
+  "Q20261126-94572-F1": {
+   "title": "Vivência Sonora Pankararu",
+   "year": 2021,
+   "makers": [
+    {
+     "id": "Q20261126-94572",
+     "name": "Gean Ramos Pankararu"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Music and Performance",
+    "Memory and Oral History",
+    "Resistance Movements"
+   ],
+   "primary_theme": "Music and Performance",
+   "families": [
+    "Expression and Representation",
+    "Knowledge and Continuity",
+    "Sovereignty and Politics"
+   ],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261126-58272-F1": {
+   "title": "Laundry Day",
+   "year": 2017,
+   "makers": [
+    {
+     "id": "Q20261126-58272",
+     "name": "JJ Neepin"
+    }
+   ],
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://www.theinc.ca/events/screening-series/survivance"
+    }
+   ],
+   "themes": [
+    "Memory and Oral History",
+    "Kinship",
+    "Elders and Knowledge"
+   ],
+   "primary_theme": "Memory and Oral History",
+   "families": [
+    "Knowledge and Continuity",
+    "Lives and Relations"
+   ],
+   "form": null,
+   "length": "Short"
+  },
+  "Q20261126-58272-F2": {
+   "title": "Headdress",
+   "year": 2017,
+   "makers": [
+    {
+     "id": "Q20261126-58272",
+     "name": "JJ Neepin"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Art, Craft and Making",
+    "Memory and Oral History",
+    "Self-Representation and Countering Stereotypes"
+   ],
+   "primary_theme": "Self-Representation and Countering Stereotypes",
+   "families": [
+    "Expression and Representation",
+    "Knowledge and Continuity"
+   ],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261126-58275-F1": {
+   "title": "Les enfants des Nomades",
+   "year": 2018,
+   "makers": [
+    {
+     "id": "Q20261126-58275",
+     "name": "Evelyne Papatie"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Kinship",
+    "Memory and Oral History",
+    "Elders and Knowledge"
+   ],
+   "primary_theme": "Kinship",
+   "families": [
+    "Knowledge and Continuity",
+    "Lives and Relations"
    ],
    "form": "Documentary",
    "length": "Short"

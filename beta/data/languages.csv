@@ -9,24 +9,24 @@ Plains Cree,Nehiyawewin,plai1258,Plains Cree,language,crk,exact,yes,,North Ameri
 Denaakk’e (Koyukon),Denaakk’e; Koyukon,koyu1237,Koyukon,language,koy,exact,yes,,North America,Glottolog countries,1
 Dene,,,,,,unresolved,yes,Several Dene languages; the credit does not say which,North America,"region by hand: no Glottolog code (Dene languages, Canada)",1
 Diné (Navajo),Diné; Navajo; Diné Bizaad,nava1243,Navajo,language,nav,exact,yes,,North America,Glottolog countries,6
-Garifuna,,gari1256,Garifuna,language,cab,exact,yes,,Central America and the Caribbean,Glottolog countries,1
+Garifuna,,gari1256,Garifuna,language,cab,exact,yes,,Central America and the Caribbean,Glottolog countries,2
 Haida,,haid1248,Haida,family,hai,group,yes,,North America,Glottolog countries,1
 Hän,,hann1241,Han,language,haa,exact,yes,,North America,Glottolog countries,2
 Inuktitut,,east2534,Eastern Canadian Inuktitut,language,ike,probable,yes,Inuktitut in Canadian credits usually names the eastern variety,North America,Glottolog countries,23
 Iñupiaq,Inupiaq,inup1234,Alaskan Inupiaq,family,ipk,group,yes,,North America,Glottolog countries,2
 Kalaallisut,Kalaallisut (Greenlandic); Greenlandic,kala1399,Kalaallisut,language,kal,exact,yes,,North America,Glottolog countries,5
-Kichwa,,colo1257,Colombia-Ecuador Quechua,family,,group,yes,Kichwa names the Ecuadorian Quechua varieties,South America,Glottolog coordinates,12
+Kichwa,,colo1257,Colombia-Ecuador Quechua,family,,group,yes,Kichwa names the Ecuadorian Quechua varieties,South America,Glottolog coordinates,13
 Lakota,,lako1247,Lakota,language,lkt,exact,yes,,North America,Glottolog countries,1
 Mohawk,Kanien’kéha,moha1258,Mohawk,language,moh,exact,yes,,North America,Glottolog countries,7
 Nlakapamuxcheen,,thom1243,Thompson,language,thp,exact,yes,,North America,Glottolog countries,1
-Payómkawichum Chaamteela,Luiseño,luis1253,Luiseno-Juaneño,language,lui,exact,yes,,North America,Glottolog countries,1
-Q’eqchi’,,kekc1242,Q'eqchi',language,kek,exact,yes,,Central America and the Caribbean,Glottolog countries,1
+Payómkawichum Chaamteela,Luiseño,luis1253,Luiseno-Juaneño,language,lui,exact,yes,,North America,Glottolog countries,2
+Q’eqchi’,,kekc1242,Q'eqchi',language,kek,exact,yes,,Central America and the Caribbean,Glottolog countries,2
 Secwépemctsín,Secwepemctsín; Secwepemctsin; Shuswap,shus1248,Shuswap,language,shs,exact,yes,,North America,Glottolog countries,2
 Taíno,Taíno dialect of Island Arawak Wahiyani,tain1254,Taino,language,tnq,exact,yes,,Central America and the Caribbean,Glottolog countries,2
 Tewa,,tewa1261,Tewa,family,,group,yes,,North America,Glottolog coordinates,1
 Tupí,,,,,,unresolved,yes,Tupí names several Tupian languages; the credit does not say which,South America,"region by hand: no Glottolog code (Tupí, Brazil)",1
-English,,stan1293,English,language,eng,exact,no,,,,217
-Spanish,Español,stan1288,Spanish,language,spa,exact,no,,,,69
+English,,stan1293,English,language,eng,exact,no,,,,225
+Spanish,Español,stan1288,Spanish,language,spa,exact,no,,,,70
 Portuguese,Português,port1283,Portuguese,language,por,exact,no,,,,3
 French,Français,stan1290,French,language,fra,exact,no,,,,21
 Vietnamese,,viet1252,Vietnamese,language,vie,exact,no,,,,1
