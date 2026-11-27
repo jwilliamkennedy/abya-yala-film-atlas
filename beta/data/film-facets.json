@@ -2,8 +2,8 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-27",
  "license": "See data.html",
- "films_on_public_map": 3507,
- "film_entries": 3507,
+ "films_on_public_map": 3513,
+ "film_entries": 3513,
  "published_field_conflicts": {
   "SA50-20261014-59f87a2e3ce5-WORK-01": [
    "themes"
@@ -314,7 +314,7 @@
     "note": "",
     "region": "North America",
     "region_basis": "Glottolog countries",
-    "films": 6
+    "films": 7
    },
    {
     "label": "Kichwa",
@@ -468,7 +468,7 @@
     "note": "",
     "region": "",
     "region_basis": "",
-    "films": 234
+    "films": 237
    },
    {
     "label": "Spanish",
@@ -5543,6 +5543,32 @@
    "families": [
     "Land and Environment"
    ],
+   "form": "Experimental",
+   "length": "Short"
+  },
+  "DIR-0069-F2": {
+   "title": "Reading Light",
+   "year": 2003,
+   "makers": [
+    {
+     "id": "DIR-0069",
+     "name": "Bonnie Devine"
+    }
+   ],
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://vtape.org/video?vi=5254"
+    }
+   ],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
    "form": "Experimental",
    "length": "Short"
   },
@@ -32323,6 +32349,26 @@
    "form": "Music Video",
    "length": "Short"
   },
+  "Q20261126-9304-F1": {
+   "title": "Mashkiki Sunset",
+   "year": 2022,
+   "makers": [
+    {
+     "id": "NEW-b8ff82e3ca1c",
+     "name": "Sarah Houle"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Music and Performance"
+   ],
+   "primary_theme": "Music and Performance",
+   "families": [
+    "Expression and Representation"
+   ],
+   "form": "Music Video",
+   "length": "Short"
+  },
   "NEW-8b961b170d36-F1": {
    "title": "ᏓᏗᏬᏂᏏ (We Will Speak)",
    "year": 2023,
@@ -46298,12 +46344,26 @@
      "name": "Aka Hansen"
     }
    ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "languages": [
+    {
+     "label": "Kalaallisut",
+     "as_credited": "Kalaallisut",
+     "glottocode": "kala1399",
+     "iso639_3": "kal",
+     "match": "exact",
+     "indigenous": true,
+     "source": "https://www.cca.qc.ca/en/events/86344/queer-film-night"
+    }
+   ],
+   "themes": [
+    "Women and Gender"
+   ],
+   "primary_theme": "Women and Gender",
+   "families": [
+    "Lives and Relations"
+   ],
+   "form": "Fiction",
+   "length": "Short"
   },
   "NEW-0d399fe7dc63-WORK-2": {
    "title": "Qulleq",
@@ -62109,6 +62169,36 @@
    "form": "Experimental",
    "length": "Short"
   },
+  "Q20261126-9347-F2": {
+   "title": "My Skin, My Body",
+   "year": 2003,
+   "makers": [
+    {
+     "id": "Q20261115-767",
+     "name": "Adrian Kahgee"
+    }
+   ],
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://vtape.org/artist?ai=959"
+    }
+   ],
+   "themes": [
+    "Self-Representation and Countering Stereotypes"
+   ],
+   "primary_theme": "Self-Representation and Countering Stereotypes",
+   "families": [
+    "Expression and Representation"
+   ],
+   "form": null,
+   "length": "Short"
+  },
   "Q20261115-909-F1": {
    "title": "Legend of Fry-Roti: Rise of the Dough",
    "year": 2025,
@@ -75554,6 +75644,42 @@
    "form": "Experimental",
    "length": "Short"
   },
+  "Q20261126-9300-F2": {
+   "title": "everlasting",
+   "year": 2016,
+   "makers": [
+    {
+     "id": "Q20261126-9300",
+     "name": "Hannah Claus"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Memory and Oral History"
+   ],
+   "primary_theme": "Memory and Oral History",
+   "families": [
+    "Knowledge and Continuity"
+   ],
+   "form": "Experimental",
+   "length": "Short"
+  },
+  "Q20261126-9300-F7": {
+   "title": "capillary",
+   "year": 2010,
+   "makers": [
+    {
+     "id": "Q20261126-9300",
+     "name": "Hannah Claus"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Experimental",
+   "length": "Short"
+  },
   "Q20261126-9301-F1": {
    "title": "Nobody's Boy",
    "year": 2021,
@@ -75602,6 +75728,38 @@
     "Expression and Representation"
    ],
    "form": "Music Video",
+   "length": "Short"
+  },
+  "Q20261126-9302-F1": {
+   "title": "Gaamominik: One Woman's Journey to Find the Bits and Pieces",
+   "year": 2022,
+   "makers": [
+    {
+     "id": "Q20261126-9302",
+     "name": "Hannah Lemelin"
+    }
+   ],
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://watch.eventive.org/reframe2022/play/61d66c8c1700fa005b437037/61cdb9ccc21b7b00554225e5"
+    }
+   ],
+   "themes": [
+    "Health and Healing",
+    "Memory and Oral History"
+   ],
+   "primary_theme": "Health and Healing",
+   "families": [
+    "Knowledge and Continuity",
+    "Lives and Relations"
+   ],
+   "form": "Documentary",
    "length": "Short"
   }
  }
