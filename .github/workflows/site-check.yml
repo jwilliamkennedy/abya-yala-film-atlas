@@ -692,7 +692,7 @@ jobs:
             b=play_state['button']
             assert play_state['display']!='none' and b['y']>=0 and b['bottom']<=height and play_state['topAtButton']=='weave-play-close',(label,'Play Close is unreachable',play_state)
             await p.mouse.click(b['x']+b['width']/2,b['y']+b['height']/2)
-            await p.wait_for_function("!document.body.classList.contains('weave-playing')",timeout=8000)
+            await p.wait_for_function("!document.body.classList.contains('weave-playing')",timeout=30000)
             await press(p,'#weave-theme-web-toggle')
             await p.locator('#atlas-theme-web:not([hidden])').wait_for(timeout=12000)
             bridge_count=await p.locator('#tw-graph .tw-bridge').count()

@@ -229,3 +229,12 @@ John: "Lands needs to go from Find."
 - The picker is still in the page, hidden from view and from assistive technology, because nineteen steps in the checks choose lands through it. To do: move those steps to another way of choosing a land, then delete the control.
 - `globe.js?v=71-plate`, `globe-experiment.css?v=96-plate`.
 
+## Clean-up pass (26 Nov, 11:45 pm, beta only)
+John: "Let's work on clean up now. Architecture. Smoothing out edges."
+- Audit: of 248 functions in `globe.js`, three were never called (`cinemaSummary`, `openGlobePlayer`, `familyCounts`); removed with the old theme list's state. 39 style rules for elements that no longer exist (the theme families and chips, the line note and six older classes) removed from `globe-experiment.css`.
+- Constellate's view is dusk, not night: the sky stays dark, the land is readable (imagery brightness .3 to .7) and the film lights are bright (.32 to .9).
+- The scale bar sits at the lower left of the map; the globe shift had left it stranded mid-screen.
+- Two flat-map waits that timed out on slow runners are longer: the Layers press in the phone first-paint check (5 s to 20 s) and the player closing in Constellate discovery (8 s to 30 s). Both had failed on commits that did not touch the flat map.
+- Found, not changed: the globe page loads `atlas-data.js` at 6.8 MB before compression; 22 branches besides `main`; 17 workflows; the hidden Lands picker kept for the checks; `SHAPES=false` code still present in ten places.
+- `globe.js?v=72-plate`, `globe-experiment.css?v=97-plate`.
+

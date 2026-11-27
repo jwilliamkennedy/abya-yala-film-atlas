@@ -455,7 +455,7 @@ let hoverShown='';
   cinemaStatsCache.set(films,result);return result;
  }
  const countLabel=(n,word)=>n+' '+word+(n===1?'':'s');
- function cinemaSummary(stats){return countLabel(stats.films,'film')+' · '+countLabel(stats.makers,'filmmaker')+(stats.credits!==stats.films?' · '+countLabel(stats.credits,'credit'):'');}
+ 
  function livePointsData(){
   const focus=new Set(encounterClosed?[]:focusIds),stamp=filterKey(),lens=currentTheme().length?1:0;
   return {type:'FeatureCollection',features:points.map(p=>{const stats=cinemaStats(matchingFilms(p.id,stamp));return {type:'Feature',properties:{land:p.id,name:p.name,tone:'rgb('+territoryTone(p.id)+')',focus:focus.has(p.id)?1:0,match:stats.credits>0?1:0,count:stats.credits,films:stats.films,makers:stats.makers,lens},geometry:{type:'Point',coordinates:p.coord}};})};
@@ -713,7 +713,7 @@ let hoverShown='';
     restoreEncounter();
     live.on('render',()=>{const t=nowMs();if(lastRender&&t-lastRender<250){frameTimes.push(t-lastRender);if(frameTimes.length>120)frameTimes.shift();}lastRender=t;});
     live.on('zoom',()=>{inputStats.zoomEvents++;inputStats.lastAfter=live.getZoom();});
-    live.addControl(new ml.ScaleControl({maxWidth:90,unit:'metric'}),'bottom-right');
+    live.addControl(new ml.ScaleControl({maxWidth:90,unit:'metric'}),'bottom-left');
     // Keep the default overhead view. An explicit landscape button exposes the actual mesh.
     live.on('zoomend',()=>{if(landscape&&!wheelActive&&live.getZoom()<7){const pitch=42*clamp((live.getZoom()-5.4)/1.6,0,1);if(live.getZoom()<=5.4){landscape=false;$('#globe-landscape').setAttribute('aria-pressed','false');}if(Math.abs(live.getPitch()-pitch)>.5)live.easeTo({pitch,duration:reduced.matches?0:200});}});
     live.getCanvas().setAttribute('aria-label','Rotate and zoom the globe; Enter opens the land at the centre');
@@ -1131,7 +1131,7 @@ function openStage(film,land='',trigger=null,play=false){
  if(from&&from.width&&!reduced.matches&&d.animate){const media=d.querySelector('.globe-stage-media'),to=media?.getBoundingClientRect();if(to?.width){media.animate([{transform:`translate(${from.left+from.width/2-to.left-to.width/2}px,${from.top+from.height/2-to.top-to.height/2}px) scale(${Math.max(.08,from.width/to.width)})`,opacity:.9},{transform:'none',opacity:1}],{duration:360,easing:'cubic-bezier(.2,.75,.2,1)'});d.animate([{opacity:0},{opacity:1}],{duration:220,easing:'ease-out'});}}
  return true;
 }
-function openGlobePlayer(film,route,trigger){return openStage(film,featured?.film.id===film.id?featured.land:'',trigger,true);}
+
 function encounterLinks(film,work){
  const actions=el('div','globe-film-actions'),meta=C().globeMetadata(film),view=safeViewing(film);
  const watch=watchEntry(film),route=embeddedRoute(watch),embedded=!!route;
@@ -1252,9 +1252,10 @@ const SKY_DAY={'sky-color':'#f4f5f6','horizon-color':'#c3ced6','fog-color':'#dfe
 const siteNight=()=>document.documentElement.dataset.readingTheme==='night';
 function applySky(){if(!liveReady||!live)return;try{live.setSky(nightOn?SKY_NIGHT:siteNight()?SKY_SITE_NIGHT:SKY_DAY);}catch{}renderSoon();}
 new MutationObserver(()=>{if(active){applySky();renderSoon();}}).observe(document.documentElement,{attributes:true,attributeFilter:['data-reading-theme']});
-const NIGHT={'sea':{'background-color':'#060a14'},'pole-caps':{'fill-color':['match',['get','pole'],'n','#070c17','#4a4b4e']},'land-net':{'line-color':'#dfe7f3','line-opacity':['interpolate',['linear'],['zoom'],1,.3,4.5,.26,6.5,.12,8,0]},'land-ties':{'line-opacity':.5},'land-ties-glow':{'line-opacity':.1},'marble':{'raster-brightness-max':.3,'raster-saturation':-.6},'sea-wash':{'fill-color':'#070c18','fill-opacity':.82},
+// Constellate's view is dusk, not night (John, 26 Nov: "too dark to even work"): the sky stays dark, the land stays readable and the film lights stay bright.
+const NIGHT={'sea':{'background-color':'#060a14'},'pole-caps':{'fill-color':['match',['get','pole'],'n','#070c17','#4a4b4e']},'land-net':{'line-color':'#dfe7f3','line-opacity':['interpolate',['linear'],['zoom'],1,.3,4.5,.26,6.5,.12,8,0]},'land-ties':{'line-opacity':.5},'land-ties-glow':{'line-opacity':.1},'marble':{'raster-brightness-max':.7,'raster-saturation':-.3},'sea-wash':{'fill-color':'#16233c','fill-opacity':.8},
  'native-ambient-fill':{'fill-opacity':.012},'native-ambient-feather':{'line-opacity':0},'native-ambient-line':{'line-opacity':.16},'cinema-glow':{'circle-opacity':0},
- 'cinema-light':{'circle-opacity':['case',['==',['get','match'],1],.32,.04],'circle-stroke-opacity':0},'cinema-count':{'text-opacity':0},
+ 'cinema-light':{'circle-opacity':['case',['==',['get','match'],1],.9,.14],'circle-stroke-opacity':0},'cinema-count':{'text-opacity':0},
  'globe-user-halo':{'circle-radius':14,'circle-color':'#f2d99b','circle-opacity':.38,'circle-blur':1},
  'globe-user-star':{'circle-color':'#fff8e4','circle-stroke-color':'#f2d99b','circle-stroke-width':1.4,'circle-radius':['case',['>',['get','count'],8],7,['>',['get','count'],1],2,['==',['get','selected'],1],5.5,4]},
  'gather-line':{'line-color':'#f2d99b'},'gather-line-glow':{'line-color':'#f2d99b','line-opacity':.35},'globe-user-link':{'line-color':'#f2d99b','line-opacity':.92,'line-width':1.8,'line-dasharray':['literal',[1,0]]}};
@@ -1882,8 +1883,7 @@ function renderThemeKey(){
  if(themeTrace){const b=button('',toggleThemeTrace,'globe-theme-key-item');b.dataset.web='trace';b.setAttribute('aria-label','Close theme web');b.title='Close theme web';b.append(el('i'),el('span',null,'Theme web'),el('em',null,'×'));key.append(b);}
  if(key.childElementCount>1){const b=button('Clear all',()=>clearThemes(true),'globe-theme-key-item globe-theme-key-all');key.append(b);}
 }
-let themeFamilyOpen='',themeFamilyCounts=null;
-function familyCounts(first){const key=first.options.length+'|'+publicationStatus;if(themeFamilyCounts?.key===key)return themeFamilyCounts.map;const map=new Map();for(const g of first.querySelectorAll('optgroup')){const ids=new Set();for(const o of g.querySelectorAll('option'))for(const f of C().themeIntersection([o.value]))ids.add(f.film||f.id);map.set(g.label,ids.size);}themeFamilyCounts={key,map};return map;}
+
 // The theme drum (John, 26 Nov): the five families are a row of pills under the upper-right bar; the chosen family's themes roll into the drum's slot beneath.
 // What is in the slot is what is on the globe: rolling, or pressing a family, chooses the theme and the web redraws.
 let drum=null,drumKeys=false;
