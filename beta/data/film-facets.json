@@ -2,8 +2,8 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-27",
  "license": "See data.html",
- "films_on_public_map": 3068,
- "film_entries": 3068,
+ "films_on_public_map": 3123,
+ "film_entries": 3123,
  "published_field_conflicts": {
   "SA50-20261014-59f87a2e3ce5-WORK-01": [
    "themes"
@@ -115,7 +115,7 @@
     "note": "",
     "region": "North America",
     "region_basis": "Glottolog countries",
-    "films": 5
+    "films": 6
    },
    {
     "label": "Ayuujk (Mixe)",
@@ -465,7 +465,7 @@
     "note": "",
     "region": "",
     "region_basis": "",
-    "films": 144
+    "films": 145
    },
    {
     "label": "Spanish",
@@ -479,7 +479,7 @@
     "note": "",
     "region": "",
     "region_basis": "",
-    "films": 49
+    "films": 51
    },
    {
     "label": "Portuguese",
@@ -2544,7 +2544,7 @@
   },
   "FILM-0051": {
    "title": "Us and Them (Nós e Eles)",
-   "year": null,
+   "year": 2014,
    "makers": [
     {
      "id": "DIR-0044",
@@ -2555,7 +2555,7 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
-   "form": null,
+   "form": "Documentary",
    "length": null
   },
   "FILM-0052": {
@@ -7182,6 +7182,64 @@
    "form": "Fiction",
    "length": "Feature"
   },
+  "Q20261126-2812-F1": {
+   "title": "The Strings of Fate",
+   "year": 2025,
+   "makers": [
+    {
+     "id": "DIR-0092",
+     "name": "Gavin Baird"
+    }
+   ],
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://www.reelasian.com/festival-events/the-strings-of-fate/"
+    }
+   ],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": "Short"
+  },
+  "Q20261126-2814-F1": {
+   "title": "Behind the Windowpane",
+   "year": 2019,
+   "makers": [
+    {
+     "id": "DIR-0092",
+     "name": "Gavin Baird"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
+  },
+  "Q20261126-2815-F1": {
+   "title": "My Masterpiece",
+   "year": null,
+   "makers": [
+    {
+     "id": "DIR-0092",
+     "name": "Gavin Baird"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
+  },
   "DIR-0093-F1": {
    "title": "Older Than America",
    "year": 2008,
@@ -7697,6 +7755,22 @@
    "families": [],
    "form": "Documentary",
    "length": null
+  },
+  "Q20261126-1063-F1": {
+   "title": "Historien om Grønland og Danmark",
+   "year": 2022,
+   "makers": [
+    {
+     "id": "DIR-0098",
+     "name": "Inuk Silis Høegh"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Series"
   },
   "DIR-0099-F1": {
    "title": "Butterfly",
@@ -18099,6 +18173,86 @@
    "form": null,
    "length": null
   },
+  "Q20261126-1301-F1": {
+   "title": "Mujer Yoreme (Cocinera) / Yolem Jammut: Jiboleerom",
+   "year": 2017,
+   "makers": [
+    {
+     "id": "DIR-0228",
+     "name": "Iris Villalpando"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261126-1302-F1": {
+   "title": "Mujer Yoreme (Alfarera) / Yolem Jammut: Sotorimjooleero",
+   "year": 2017,
+   "makers": [
+    {
+     "id": "DIR-0228",
+     "name": "Iris Villalpando"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261126-1305-F1": {
+   "title": "Yolem Jammut: Maxtialeero (Maestra bilingüe)",
+   "year": 2017,
+   "makers": [
+    {
+     "id": "DIR-0228",
+     "name": "Iris Villalpando"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261126-1306-F1": {
+   "title": "Ohuira, lugar sagrado",
+   "year": 2022,
+   "makers": [
+    {
+     "id": "DIR-0228",
+     "name": "Iris Villalpando"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261126-1307-F1": {
+   "title": "Yolem Buawam, comidas yoremes",
+   "year": 2023,
+   "makers": [
+    {
+     "id": "DIR-0228",
+     "name": "Iris Villalpando"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
   "FILM-ADD-20261031-18": {
    "title": "Alma & Esperanza",
    "year": 2012,
@@ -19417,6 +19571,22 @@
    ],
    "form": null,
    "length": "Short"
+  },
+  "Q20261126-142-F1": {
+   "title": "Curaciones ikoods",
+   "year": 1994,
+   "makers": [
+    {
+     "id": "DIR-0243",
+     "name": "Teófila Palafox Herranz"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
   },
   "FILM-0206": {
    "title": "La Baláhna",
@@ -21951,6 +22121,22 @@
    "families": [],
    "form": "Fiction",
    "length": "Series"
+  },
+  "Q20261126-141-F1": {
+   "title": "Never Give Up",
+   "year": null,
+   "makers": [
+    {
+     "id": "DIR-0308",
+     "name": "Sterlin Harjo"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
   },
   "DIR-0309-F1": {
    "title": "Doing the Sheep Good",
@@ -26469,6 +26655,27 @@
     "Lives and Relations"
    ],
    "form": "Fiction",
+   "length": "Short"
+  },
+  "Q20261126-2810-F1": {
+   "title": "Entre a doença e a cura: Caruru em tempo de Covid-19 na aldeia Serra do Padeiro",
+   "year": 2022,
+   "makers": [
+    {
+     "id": "NEW-1d473747ac7c",
+     "name": "Glicéria Tupinambá"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Health and Healing",
+    "Women and Gender"
+   ],
+   "primary_theme": "Health and Healing",
+   "families": [
+    "Lives and Relations"
+   ],
+   "form": "Documentary",
    "length": "Short"
   },
   "NEW-099ac75a70fe-F1": {
@@ -40128,6 +40335,48 @@
    "form": null,
    "length": null
   },
+  "Q20261126-6402-F1": {
+   "title": "Ma jeunesse",
+   "year": null,
+   "makers": [
+    {
+     "id": "NEW-a970361a90e5",
+     "name": "Lenny Francis Chachai"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Music Video",
+   "length": "Short"
+  },
+  "Q20261126-6403-F1": {
+   "title": "Mon ami",
+   "year": null,
+   "makers": [
+    {
+     "id": "NEW-a970361a90e5",
+     "name": "Lenny Francis Chachai"
+    }
+   ],
+   "languages": [
+    {
+     "label": "Atikamekw",
+     "as_credited": "Atikamekw",
+     "glottocode": "atik1240",
+     "iso639_3": "atj",
+     "match": "exact",
+     "indigenous": true,
+     "source": "https://evenementswapikoni.ca/mon-ami"
+    }
+   ],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Music Video",
+   "length": "Short"
+  },
   "NEW-8ff0e773c262-WORK-1": {
    "title": "Nuuhkuum Uumichiwaapim",
    "year": 2024,
@@ -44316,6 +44565,22 @@
    "form": "Documentary",
    "length": "Feature"
   },
+  "Q20261126-2804-F1": {
+   "title": "The Native Americans: The Plains",
+   "year": 1994,
+   "makers": [
+    {
+     "id": "NEW-82a07d6bbfc4",
+     "name": "George Burdeau"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
   "NEW-87e55f59773d-WORK-1": {
    "title": "The Right to Be",
    "year": 1994,
@@ -44370,6 +44635,22 @@
    "families": [],
    "form": "Documentary",
    "length": "Feature"
+  },
+  "Q20261126-128-F1": {
+   "title": "Kapō Ma'i Lele (Kapō And Her Flying Lady Parts)",
+   "year": 2025,
+   "makers": [
+    {
+     "id": "NEW-5b2be22f2d92",
+     "name": "Hinaleimoana Wong-Kalu"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": null
   },
   "NEW-b74ea7ce6f19-WORK-1": {
    "title": "Menominee Homecoming",
@@ -46078,6 +46359,116 @@
    "form": "Documentary",
    "length": "Short"
   },
+  "Q20261126-2805-F1": {
+   "title": "Mba’eicha Nhande Rekova’erã – Mensageiros do Futuro",
+   "year": 2018,
+   "makers": [
+    {
+     "id": "NEW-084a145f8fa7",
+     "name": "Graciela Guarani"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Elders and Knowledge",
+    "Youth"
+   ],
+   "primary_theme": "Elders and Knowledge",
+   "families": [
+    "Knowledge and Continuity",
+    "Lives and Relations"
+   ],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261126-2806-F1": {
+   "title": "Plantando Água",
+   "year": null,
+   "makers": [
+    {
+     "id": "NEW-084a145f8fa7",
+     "name": "Graciela Guarani"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Water",
+    "Health and Healing"
+   ],
+   "primary_theme": "Water",
+   "families": [
+    "Land and Environment",
+    "Lives and Relations"
+   ],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261126-2807-F1": {
+   "title": "Cidade Invisível (Season 2)",
+   "year": 2023,
+   "makers": [
+    {
+     "id": "NEW-084a145f8fa7",
+     "name": "Graciela Guarani"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "More-than-Human Relations",
+    "Extractivism",
+    "Kinship"
+   ],
+   "primary_theme": "More-than-Human Relations",
+   "families": [
+    "Land and Environment",
+    "Lives and Relations"
+   ],
+   "form": "Fiction",
+   "length": "Series"
+  },
+  "Q20261126-2808-F1": {
+   "title": "Falas da Terra: Pintadas (Histórias (Im)possíveis)",
+   "year": 2023,
+   "makers": [
+    {
+     "id": "NEW-084a145f8fa7",
+     "name": "Graciela Guarani"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Environmental Change",
+    "Women and Gender",
+    "Youth"
+   ],
+   "primary_theme": "Environmental Change",
+   "families": [
+    "Land and Environment",
+    "Lives and Relations"
+   ],
+   "form": "Fiction",
+   "length": null
+  },
+  "Q20261126-2809-F1": {
+   "title": "Falas de Orgulho apresenta Histórias (Im)possíveis",
+   "year": 2023,
+   "makers": [
+    {
+     "id": "NEW-084a145f8fa7",
+     "name": "Graciela Guarani"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "LGBTQIA2S"
+   ],
+   "primary_theme": "LGBTQIA2S",
+   "families": [
+    "Lives and Relations"
+   ],
+   "form": "Fiction",
+   "length": null
+  },
   "NEW-f51c22579e1e-WORK-1": {
    "title": "Ayllu: Memorias y Visiones",
    "year": 2024,
@@ -47657,6 +48048,26 @@
    ],
    "form": null,
    "length": null
+  },
+  "Q20261126-6401-F1": {
+   "title": "Shipu (River)",
+   "year": 2015,
+   "makers": [
+    {
+     "id": "BETA30-20261106-D03",
+     "name": "Uapukun Mestokosho McKenzie"
+    },
+    {
+     "id": "QW-88047738a5",
+     "name": "Shanice Mollen-Picard"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
   },
   "BETA30-20261106-F11": {
    "title": "Vãnh gõ tõ Laklãnõ",
@@ -50866,6 +51277,102 @@
    "form": "Documentary",
    "length": null
   },
+  "Q20261126-122-F1": {
+   "title": "Bridge Walkers",
+   "year": 2012,
+   "makers": [
+    {
+     "id": "Q20261108-75",
+     "name": "Catherine Herrera"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261126-123-F1": {
+   "title": "Open Doors",
+   "year": 2012,
+   "makers": [
+    {
+     "id": "Q20261108-75",
+     "name": "Catherine Herrera"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Experimental",
+   "length": null
+  },
+  "Q20261126-124-F1": {
+   "title": "Witness the Healing",
+   "year": 2008,
+   "makers": [
+    {
+     "id": "Q20261108-75",
+     "name": "Catherine Herrera"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Experimental",
+   "length": null
+  },
+  "Q20261126-125-F1": {
+   "title": "From the Same Family: An Intimate View of Globalization",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261108-75",
+     "name": "Catherine Herrera"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261126-126-F1": {
+   "title": "Alphabet People",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261108-75",
+     "name": "Catherine Herrera"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261126-127-F1": {
+   "title": "Transition",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261108-75",
+     "name": "Catherine Herrera"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
   "Q20261108-76-F1": {
    "title": "Blayne Tree",
    "year": null,
@@ -53432,6 +53939,120 @@
    "primary_theme": null,
    "families": [],
    "form": "Animation",
+   "length": "Short"
+  },
+  "Q20261126-2816-F1": {
+   "title": "Katinngak (Together)",
+   "year": 2020,
+   "makers": [
+    {
+     "id": "Q20261114-65",
+     "name": "Glenn Gear"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Music and Performance",
+    "More-than-Human Relations"
+   ],
+   "primary_theme": "Music and Performance",
+   "families": [
+    "Expression and Representation",
+    "Land and Environment"
+   ],
+   "form": "Animation",
+   "length": "Short"
+  },
+  "Q20261126-2817-F1": {
+   "title": "Child & Firefly",
+   "year": 2009,
+   "makers": [
+    {
+     "id": "Q20261114-65",
+     "name": "Glenn Gear"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "More-than-Human Relations",
+    "Youth"
+   ],
+   "primary_theme": "More-than-Human Relations",
+   "families": [
+    "Land and Environment",
+    "Lives and Relations"
+   ],
+   "form": "Animation",
+   "length": "Short"
+  },
+  "Q20261126-2819-F1": {
+   "title": "Ginkgo",
+   "year": 2011,
+   "makers": [
+    {
+     "id": "Q20261114-65",
+     "name": "Glenn Gear"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": "Short"
+  },
+  "Q20261126-2822-F1": {
+   "title": "Lust",
+   "year": 2004,
+   "makers": [
+    {
+     "id": "Q20261114-65",
+     "name": "Glenn Gear"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": "Short"
+  },
+  "Q20261126-2825-F1": {
+   "title": "Resettlement [floating home]",
+   "year": 2004,
+   "makers": [
+    {
+     "id": "Q20261114-65",
+     "name": "Glenn Gear"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Displacement and Migration",
+    "Memory and Oral History"
+   ],
+   "primary_theme": "Displacement and Migration",
+   "families": [
+    "Knowledge and Continuity",
+    "Sovereignty and Politics"
+   ],
+   "form": "Animation",
+   "length": "Short"
+  },
+  "Q20261126-2826-F1": {
+   "title": "Volatile Works Does Coney Island: A Prelinger Remix",
+   "year": 2006,
+   "makers": [
+    {
+     "id": "Q20261114-65",
+     "name": "Glenn Gear"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Experimental",
    "length": "Short"
   },
   "Q20261114-33-F1": {
@@ -58658,6 +59279,94 @@
    "form": "Documentary",
    "length": null
   },
+  "Q20261126-114-F1": {
+   "title": "We Only Answer Our Land Line",
+   "year": 2019,
+   "makers": [
+    {
+     "id": "Q20261122-19",
+     "name": "Olivia Camfield"
+    },
+    {
+     "id": "Q20261122-20",
+     "name": "Woodrow Hunt"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Experimental",
+   "length": null
+  },
+  "Q20261126-115-F1": {
+   "title": "Pekewa",
+   "year": 2026,
+   "makers": [
+    {
+     "id": "Q20261122-19",
+     "name": "Olivia Camfield"
+    },
+    {
+     "id": "Q20261122-20",
+     "name": "Woodrow Hunt"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "Q20261126-113-F1": {
+   "title": "Faces, Displays, and Other Imaginary Things",
+   "year": 2020,
+   "makers": [
+    {
+     "id": "Q20261122-20",
+     "name": "Woodrow Hunt"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Experimental",
+   "length": null
+  },
+  "Q20261126-116-F1": {
+   "title": "Stories from the Canoe",
+   "year": 2023,
+   "makers": [
+    {
+     "id": "Q20261122-20",
+     "name": "Woodrow Hunt"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "Q20261126-117-F1": {
+   "title": "Salmon’s Agreement",
+   "year": 2021,
+   "makers": [
+    {
+     "id": "Q20261122-20",
+     "name": "Woodrow Hunt"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
   "NEW-746053d844bb-N1": {
    "title": "Ñimikan",
    "year": null,
@@ -59559,6 +60268,146 @@
    ],
    "form": "Documentary",
    "length": "Short"
+  },
+  "Q20261127-03-F1": {
+   "title": "Kerpuel, sembrar con la luna",
+   "year": 2018,
+   "makers": [
+    {
+     "id": "QM-bd85298ce6",
+     "name": "Jorge Mauricio Telpiz Quitiaquez"
+    }
+   ],
+   "languages": [
+    {
+     "label": "Spanish",
+     "as_credited": "Spanish",
+     "glottocode": "stan1288",
+     "iso639_3": "spa",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://cinecorto.co/kerpuel-sembrar-con-la-luna/"
+    }
+   ],
+   "themes": [
+    "Food Sovereignty"
+   ],
+   "primary_theme": "Food Sovereignty",
+   "families": [
+    "Land and Environment"
+   ],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261127-04-F1": {
+   "title": "Guaca Guanga, Tejedoras de Pastás",
+   "year": 2017,
+   "makers": [
+    {
+     "id": "QM-bd85298ce6",
+     "name": "Jorge Mauricio Telpiz Quitiaquez"
+    }
+   ],
+   "languages": [
+    {
+     "label": "Spanish",
+     "as_credited": "Spanish",
+     "glottocode": "stan1288",
+     "iso639_3": "spa",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://cinecorto.co/guaca-guanga-tejedoras-de-pastas/"
+    }
+   ],
+   "themes": [
+    "Art, Craft and Making"
+   ],
+   "primary_theme": "Art, Craft and Making",
+   "families": [
+    "Expression and Representation"
+   ],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261127-05-F1": {
+   "title": "Kuas apuguan: tras las huellas de la madre agua",
+   "year": 2016,
+   "makers": [
+    {
+     "id": "QM-bd85298ce6",
+     "name": "Jorge Mauricio Telpiz Quitiaquez"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261127-07-F1": {
+   "title": "Ojo de agua",
+   "year": null,
+   "makers": [
+    {
+     "id": "QM-bd85298ce6",
+     "name": "Jorge Mauricio Telpiz Quitiaquez"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261127-08-F1": {
+   "title": "Sombras verdaderas",
+   "year": 2011,
+   "makers": [
+    {
+     "id": "QM-bd85298ce6",
+     "name": "Jorge Mauricio Telpiz Quitiaquez"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": "Short"
+  },
+  "Q20261127-09-F1": {
+   "title": "A tu vida",
+   "year": 2011,
+   "makers": [
+    {
+     "id": "QM-bd85298ce6",
+     "name": "Jorge Mauricio Telpiz Quitiaquez"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": "Short"
+  },
+  "Q20261127-10-F1": {
+   "title": "Masas humanas",
+   "year": null,
+   "makers": [
+    {
+     "id": "QM-bd85298ce6",
+     "name": "Jorge Mauricio Telpiz Quitiaquez"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Experimental",
+   "length": null
   },
   "Q20261122-70-F1": {
    "title": "Spirit Of The Bluebird",
@@ -61275,6 +62124,29 @@
    "form": "Documentary",
    "length": null
   },
+  "Q20261126-2811-F1": {
+   "title": "Lago Bolívia – A luta pela preservação",
+   "year": 2022,
+   "makers": [
+    {
+     "id": "Q20261123-44",
+     "name": "Genilson Guajajara"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Land Defense",
+    "Water",
+    "Resistance Movements"
+   ],
+   "primary_theme": "Land Defense",
+   "families": [
+    "Land and Environment",
+    "Sovereignty and Politics"
+   ],
+   "form": "Documentary",
+   "length": "Short"
+  },
   "QM-ce30bebea6-M1": {
    "title": "The Spectrum Keeper",
    "year": 2025,
@@ -62359,6 +63231,94 @@
    "form": null,
    "length": null
   },
+  "Q20261126-112-F1": {
+   "title": "Things You Know But Cannot Explain",
+   "year": 2022,
+   "makers": [
+    {
+     "id": "Q20261124-34",
+     "name": "Michelle Hernandez"
+    },
+    {
+     "id": "Q20261126-112",
+     "name": "Chantal Jung"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Animation",
+   "length": null
+  },
+  "Q20261126-118-F1": {
+   "title": "Tuluwat Reclaimed",
+   "year": 2023,
+   "makers": [
+    {
+     "id": "Q20261124-34",
+     "name": "Michelle Hernandez"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "Q20261126-119-F1": {
+   "title": "Work is Ceremony",
+   "year": 2022,
+   "makers": [
+    {
+     "id": "Q20261124-34",
+     "name": "Michelle Hernandez"
+    },
+    {
+     "id": "Q20261124-29",
+     "name": "Samantha Williams-Gray"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261126-120-F1": {
+   "title": "Graphite & War",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261124-34",
+     "name": "Michelle Hernandez"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "Q20261126-121-F1": {
+   "title": "Baduwa’t",
+   "year": 2025,
+   "makers": [
+    {
+     "id": "Q20261124-34",
+     "name": "Michelle Hernandez"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
   "Q20261124-36-F1": {
    "title": "Sun dressed woman",
    "year": 2022,
@@ -63069,6 +64029,22 @@
    "families": [],
    "form": null,
    "length": "Short"
+  },
+  "Q20261126-129-F1": {
+   "title": "Migraciones",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "Q20261124-54",
+     "name": "Héctor Maya Requena"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
   },
   "Q20261124-55-F1": {
    "title": "We the Indigenous People",
@@ -64704,6 +65680,38 @@
    "families": [],
    "form": null,
    "length": "Short"
+  },
+  "QM-3ff8b91ce3-M1": {
+   "title": "Francisca, ká di neki",
+   "year": null,
+   "makers": [
+    {
+     "id": "QM-3ff8b91ce3",
+     "name": "Iris Esmeralda Martínez Morales"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "Q20261126-99-F2": {
+   "title": "Two Old Women",
+   "year": null,
+   "makers": [
+    {
+     "id": "Q20261126-99",
+     "name": "Irene Bedard"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
   }
  }
 }
