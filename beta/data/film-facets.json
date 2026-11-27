@@ -2,8 +2,8 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-27",
  "license": "See data.html",
- "films_on_public_map": 3362,
- "film_entries": 3362,
+ "films_on_public_map": 3361,
+ "film_entries": 3361,
  "published_field_conflicts": {
   "SA50-20261014-59f87a2e3ce5-WORK-01": [
    "themes"
@@ -507,7 +507,7 @@
     "note": "",
     "region": "",
     "region_basis": "",
-    "films": 18
+    "films": 17
    },
    {
     "label": "Vietnamese",
@@ -703,7 +703,7 @@
     "note": "",
     "region": "North America",
     "region_basis": "Glottolog countries",
-    "films": 10
+    "films": 9
    },
    {
     "label": "Quechua",
@@ -9653,13 +9653,17 @@
    "form": "Documentary",
    "length": "Series"
   },
-  "Q20261126-28604-F1": {
+  "Q20261126-28603-F1": {
    "title": "Nitassinan",
    "year": 2026,
    "makers": [
     {
      "id": "DIR-0115",
      "name": "Kim O'Bomsawin"
+    },
+    {
+     "id": "Q20261126-28603",
+     "name": "Joséphine Bacon"
     }
    ],
    "languages": [
@@ -71461,47 +71465,6 @@
    ],
    "form": "Experimental",
    "length": "Short"
-  },
-  "Q20261126-28603-F1": {
-   "title": "Nitassinan",
-   "year": 2026,
-   "makers": [
-    {
-     "id": "Q20261126-28603",
-     "name": "Joséphine Bacon"
-    }
-   ],
-   "languages": [
-    {
-     "label": "French",
-     "as_credited": "French",
-     "glottocode": "stan1290",
-     "iso639_3": "fra",
-     "match": "exact",
-     "indigenous": false,
-     "source": "https://www.presenceautochtone.ca/en/programmation/nitassinan/"
-    },
-    {
-     "label": "Innu-aimun",
-     "as_credited": "Innu-aimun",
-     "glottocode": "mont1268",
-     "iso639_3": "moe",
-     "match": "exact",
-     "indigenous": true,
-     "source": "https://www.presenceautochtone.ca/en/programmation/nitassinan/"
-    }
-   ],
-   "themes": [
-    "Land Defense",
-    "Memory and Oral History"
-   ],
-   "primary_theme": "Land Defense",
-   "families": [
-    "Knowledge and Continuity",
-    "Land and Environment"
-   ],
-   "form": "Documentary",
-   "length": "Feature"
   },
   "Q20261126-28603-F2": {
    "title": "Tshishe Mishtikuashisht - Le petit grand européen : Johan Beetz",
