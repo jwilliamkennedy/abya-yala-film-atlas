@@ -2,8 +2,8 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-27",
  "license": "See data.html",
- "films_on_public_map": 3202,
- "film_entries": 3202,
+ "films_on_public_map": 3206,
+ "film_entries": 3206,
  "published_field_conflicts": {
   "SA50-20261014-59f87a2e3ce5-WORK-01": [
    "themes"
@@ -101,7 +101,7 @@
     "note": "Credits name the language without a regional variety",
     "region": "North America",
     "region_basis": "Glottolog coordinates",
-    "films": 8
+    "films": 9
    },
    {
     "label": "Atikamekw",
@@ -465,7 +465,7 @@
     "note": "",
     "region": "",
     "region_basis": "",
-    "films": 151
+    "films": 154
    },
    {
     "label": "Spanish",
@@ -703,7 +703,7 @@
     "note": "",
     "region": "North America",
     "region_basis": "Glottolog countries",
-    "films": 4
+    "films": 5
    },
    {
     "label": "Quechua",
@@ -37928,14 +37928,32 @@
     {
      "id": "DIR-0397",
      "name": "Donavan Vollant"
+    },
+    {
+     "id": "QW-9d8136f520",
+     "name": "Cassandra Ambroise-St-Onge"
     }
    ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "languages": [
+    {
+     "label": "Innu-aimun",
+     "as_credited": "Innu-aimun",
+     "glottocode": "mont1268",
+     "iso639_3": "moe",
+     "match": "exact",
+     "indigenous": true,
+     "source": "https://img1.wsimg.com/blobby/go/c5fdeedf-d4e8-46ec-9b26-c057eaa3652c/Asinabka%20Festival%20Guide%202019%20Proof%2005.pdf"
+    }
+   ],
+   "themes": [
+    "Cosmology and Origin Stories"
+   ],
+   "primary_theme": "Cosmology and Origin Stories",
+   "families": [
+    "Knowledge and Continuity"
+   ],
+   "form": "Animation",
+   "length": "Short"
   },
   "WAP-2026-NEW398": {
    "title": "Auntie’s Hands",
@@ -40178,7 +40196,17 @@
      "name": "Barb Cranmer"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://www.femfilm.ca/film_search.php?film=cranmer-laxwesa&lang=e"
+    }
+   ],
    "themes": [
     "Food Sovereignty",
     "Water",
@@ -59587,6 +59615,10 @@
     {
      "id": "QW-8780df084b",
      "name": "Analicia López"
+    },
+    {
+     "id": "QW-8742dbc434",
+     "name": "Isac Dogirama"
     }
    ],
    "languages": [
@@ -67429,6 +67461,117 @@
    ],
    "form": "Documentary",
    "length": null
+  },
+  "QW-WAPI-V280993460": {
+   "title": "The Legend of Quanja Lake",
+   "year": 2018,
+   "makers": [
+    {
+     "id": "QW-836529309e",
+     "name": "Louie Francis"
+    }
+   ],
+   "languages": [
+    {
+     "label": "Anishinaabemowin (Ojibwe)",
+     "as_credited": "Anishinaabemowin (Ojibwe)",
+     "glottocode": "ojib1241",
+     "iso639_3": "",
+     "match": "group",
+     "indigenous": true,
+     "source": "https://img1.wsimg.com/blobby/go/c5fdeedf-d4e8-46ec-9b26-c057eaa3652c/Asinabka%20Festival%20Guide%202019%20Proof%2005.pdf"
+    },
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://img1.wsimg.com/blobby/go/c5fdeedf-d4e8-46ec-9b26-c057eaa3652c/Asinabka%20Festival%20Guide%202019%20Proof%2005.pdf"
+    }
+   ],
+   "themes": [
+    "Cosmology and Origin Stories",
+    "Water",
+    "Elders and Knowledge"
+   ],
+   "primary_theme": "Cosmology and Origin Stories",
+   "families": [
+    "Knowledge and Continuity",
+    "Land and Environment"
+   ],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261126-8735-F1": {
+   "title": "The Bell Rocks",
+   "year": 2017,
+   "makers": [
+    {
+     "id": "QW-836529309e",
+     "name": "Louie Francis"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Memory and Oral History",
+    "Water",
+    "Land Defense"
+   ],
+   "primary_theme": "Memory and Oral History",
+   "families": [
+    "Knowledge and Continuity",
+    "Land and Environment"
+   ],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261126-19602-F1": {
+   "title": "DAIRA DADA DROA DE, La Casa de Nuestros Abuelos",
+   "year": 2015,
+   "makers": [
+    {
+     "id": "QW-8742dbc434",
+     "name": "Isac Dogirama"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": null
+  },
+  "Q20261126-6501-F2": {
+   "title": "Dead Bird Hearts",
+   "year": 2022,
+   "makers": [
+    {
+     "id": "Q20261126-6501",
+     "name": "Ryan RedCorn"
+    }
+   ],
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://www.rednationff.com/dead-bird-hearts/"
+    }
+   ],
+   "themes": [
+    "More-than-Human Relations"
+   ],
+   "primary_theme": "More-than-Human Relations",
+   "families": [
+    "Land and Environment"
+   ],
+   "form": "Fiction",
+   "length": "Short"
   }
  }
 }
