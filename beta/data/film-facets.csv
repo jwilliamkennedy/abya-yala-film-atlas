@@ -58,8 +58,8 @@ DIR-0014-W1031-4,A transformação de Canuto,2023,theme,Memory and Oral History,
 DIR-0014-W1031-4,A transformação de Canuto,2023,theme,Kinship,Lives and Relations,https://www.themoviedb.org/movie/1203573,tagged from a published synopsis
 DIR-0014-W1031-4,A transformação de Canuto,2023,form,Documentary,,https://www.themoviedb.org/movie/1203573,recorded in Published
 DIR-0014-W1031-4,A transformação de Canuto,2023,length,Feature,,https://www.themoviedb.org/movie/1203573,recorded in Published
-Q20261114-92-F1,Nós e a cidade,2009,form,Documentary,,https://www.cinematecapauloamorim.com.br/filmografias/568/ariel-kuaray-ortega,"normalised from the recorded form ""Documentary short"""
-Q20261114-92-F1,Nós e a cidade,2009,length,Short,,https://www.cinematecapauloamorim.com.br/filmografias/568/ariel-kuaray-ortega,"normalised from the recorded form ""Documentary short"""
+Q20261114-92-F1,Nós e a cidade,2009,form,Documentary,,https://www.cinematecapauloamorim.com.br/filmografias/568/ariel-kuaray-ortega,recorded in Published
+Q20261114-92-F1,Nós e a cidade,2009,length,Short,,https://www.cinematecapauloamorim.com.br/filmografias/568/ariel-kuaray-ortega,recorded in Published
 FILM-0056,Tava – A casa de pedra,2012,theme,Cosmology and Origin Stories,Knowledge and Continuity,https://www.themoviedb.org/movie/641235,tagged from a published synopsis; primary theme
 FILM-0056,Tava – A casa de pedra,2012,theme,Memory and Oral History,Knowledge and Continuity,https://www.themoviedb.org/movie/641235,tagged from a published synopsis
 FILM-0056,Tava – A casa de pedra,2012,form,Documentary,,https://www.themoviedb.org/movie/641235,recorded in Published
@@ -124,30 +124,43 @@ Q20261113-85-F1,"Yvy Pãi Ne'e Aty Guasu (Kaiowá Land, the Speech of the Great 
 Q20261113-85-F1,"Yvy Pãi Ne'e Aty Guasu (Kaiowá Land, the Speech of the Great Assembly)",,theme,Resistance Movements,Sovereignty and Politics,https://www.firelightmedia.tv/filmmakers/genito-gomes,tagged from a published synopsis
 Q20261113-85-F1,"Yvy Pãi Ne'e Aty Guasu (Kaiowá Land, the Speech of the Great Assembly)",,theme,Sovereignty and Self-Determination,Sovereignty and Politics,https://www.firelightmedia.tv/filmmakers/genito-gomes,tagged from a published synopsis
 Q20261113-85-F1,"Yvy Pãi Ne'e Aty Guasu (Kaiowá Land, the Speech of the Great Assembly)",,form,Documentary,,https://www.firelightmedia.tv/filmmakers/genito-gomes,recorded in Published
-FILM-0031,A gente luta mas come fruta / We Struggle But We Eat Fruit,2006,theme,Land Defense,Land and Environment,https://www.themoviedb.org/movie/279560,tagged from a published synopsis; primary theme
-FILM-0031,A gente luta mas come fruta / We Struggle But We Eat Fruit,2006,theme,Extractivism,Land and Environment,https://www.themoviedb.org/movie/279560,tagged from a published synopsis
-FILM-0031,A gente luta mas come fruta / We Struggle But We Eat Fruit,2006,theme,Collective and Community Media,Expression and Representation,https://www.themoviedb.org/movie/279560,tagged from a published synopsis
-FILM-0031,A gente luta mas come fruta / We Struggle But We Eat Fruit,2006,form,Documentary,,https://www.themoviedb.org/movie/279560,recorded in Published
-FILM-0031,A gente luta mas come fruta / We Struggle But We Eat Fruit,2006,length,Feature,,https://www.themoviedb.org/movie/279560,recorded in Published
-FILM-0020,Kakxop Pit Hãmkoxuk Xop Te Yumugãhã - Iniciação dos Filhos dos Espíritos da Terra,,theme,Cosmology and Origin Stories,Knowledge and Continuity,https://www.themoviedb.org/movie/763697,tagged from a published synopsis; primary theme
-FILM-0020,Kakxop Pit Hãmkoxuk Xop Te Yumugãhã - Iniciação dos Filhos dos Espíritos da Terra,,theme,Youth,Lives and Relations,https://www.themoviedb.org/movie/763697,tagged from a published synopsis
-FILM-0020,Kakxop Pit Hãmkoxuk Xop Te Yumugãhã - Iniciação dos Filhos dos Espíritos da Terra,,form,Documentary,,https://www.themoviedb.org/movie/763697,recorded in Published
-FILM-0020,Kakxop Pit Hãmkoxuk Xop Te Yumugãhã - Iniciação dos Filhos dos Espíritos da Terra,,length,Feature,,https://www.themoviedb.org/movie/763697,recorded in Published
-FILM-0021,Konãgxeka: o Dilúvio Maxakali (The Maxakali Deluge),,theme,Cosmology and Origin Stories,Knowledge and Continuity,https://www.themoviedb.org/movie/763601,tagged from a published synopsis; primary theme
-FILM-0021,Konãgxeka: o Dilúvio Maxakali (The Maxakali Deluge),,theme,Water,Land and Environment,https://www.themoviedb.org/movie/763601,tagged from a published synopsis
-FILM-0021,Konãgxeka: o Dilúvio Maxakali (The Maxakali Deluge),,theme,Collective and Community Media,Expression and Representation,https://www.themoviedb.org/movie/763601,tagged from a published synopsis
-FILM-0021,Konãgxeka: o Dilúvio Maxakali (The Maxakali Deluge),,form,Animation,,https://www.themoviedb.org/movie/763601,recorded in Published
-FILM-0021,Konãgxeka: o Dilúvio Maxakali (The Maxakali Deluge),,length,Short,,https://www.themoviedb.org/movie/763601,recorded in Published
-FILM-0033,Nũhũ yãg mũ yõg hãm - This Land Is Ours!,,theme,Land Defense,Land and Environment,https://www.themoviedb.org/movie/766584,tagged from a published synopsis; primary theme
-FILM-0033,Nũhũ yãg mũ yõg hãm - This Land Is Ours!,,theme,Environmental Change,Land and Environment,https://www.themoviedb.org/movie/766584,tagged from a published synopsis
-FILM-0033,Nũhũ yãg mũ yõg hãm - This Land Is Ours!,,theme,Cosmology and Origin Stories,Knowledge and Continuity,https://www.themoviedb.org/movie/766584,tagged from a published synopsis
-FILM-0033,Nũhũ yãg mũ yõg hãm - This Land Is Ours!,,form,Documentary,,https://www.themoviedb.org/movie/766584,recorded in Published
-FILM-0033,Nũhũ yãg mũ yõg hãm - This Land Is Ours!,,length,Feature,,https://www.themoviedb.org/movie/766584,recorded in Published
-FILM-0034,Yiax Kaax,,theme,Health and Healing,Lives and Relations,https://narrativasindigenas.ensp.fiocruz.br/filme/yiax-kaax-fim-do-resguardo/,tagged from a published synopsis; primary theme
-FILM-0034,Yiax Kaax,,theme,Kinship,Lives and Relations,https://narrativasindigenas.ensp.fiocruz.br/filme/yiax-kaax-fim-do-resguardo/,tagged from a published synopsis
-FILM-0034,Yiax Kaax,,theme,Elders and Knowledge,Knowledge and Continuity,https://narrativasindigenas.ensp.fiocruz.br/filme/yiax-kaax-fim-do-resguardo/,tagged from a published synopsis
-FILM-0034,Yiax Kaax,,form,Documentary,,https://narrativasindigenas.ensp.fiocruz.br/filme/yiax-kaax-fim-do-resguardo/,recorded in Published
-FILM-0034,Yiax Kaax,,length,Short,,https://narrativasindigenas.ensp.fiocruz.br/filme/yiax-kaax-fim-do-resguardo/,recorded in Published
+FILM-0030,The Rainy Season,2000,theme,Collective and Community Media,Expression and Representation,https://laboep.uff.br/wp-content/uploads/sites/133/2020/01/Filmografia_VNA_por_povo-131111.pdf,tagged from a published synopsis; primary theme
+FILM-0030,The Rainy Season,2000,form,Documentary,,https://laboep.uff.br/wp-content/uploads/sites/133/2020/01/Filmografia_VNA_por_povo-131111.pdf,recorded in Published
+FILM-0030,The Rainy Season,2000,length,Short,,https://laboep.uff.br/wp-content/uploads/sites/133/2020/01/Filmografia_VNA_por_povo-131111.pdf,recorded in Published
+FILM-0031,A gente luta mas come fruta / We Struggle But We Eat Fruit,2006,theme,Land Defense,Land and Environment,https://cpiacre.org.br/publicacao-acervo/a-gente-luta-mas-come-fruta/,tagged from a published synopsis; primary theme
+FILM-0031,A gente luta mas come fruta / We Struggle But We Eat Fruit,2006,theme,Extractivism,Land and Environment,https://cpiacre.org.br/publicacao-acervo/a-gente-luta-mas-come-fruta/,tagged from a published synopsis
+FILM-0031,A gente luta mas come fruta / We Struggle But We Eat Fruit,2006,theme,Collective and Community Media,Expression and Representation,https://cpiacre.org.br/publicacao-acervo/a-gente-luta-mas-come-fruta/,tagged from a published synopsis
+FILM-0031,A gente luta mas come fruta / We Struggle But We Eat Fruit,2006,form,Documentary,,https://cpiacre.org.br/publicacao-acervo/a-gente-luta-mas-come-fruta/,recorded in Published
+FILM-0031,A gente luta mas come fruta / We Struggle But We Eat Fruit,2006,length,Short,,https://cpiacre.org.br/publicacao-acervo/a-gente-luta-mas-come-fruta/,recorded in Published
+Q20261126-29806-F1,Pega não pega,1998,theme,Health and Healing,Lives and Relations,https://ppgcine.cinemauff.com.br/wp-content/uploads/2026/11/Kim_Mello_Queiroz_compressed.pdf,tagged from a published synopsis; primary theme
+Q20261126-29806-F1,Pega não pega,1998,form,Documentary,,https://ppgcine.cinemauff.com.br/wp-content/uploads/2026/11/Kim_Mello_Queiroz_compressed.pdf,recorded in Published
+FILM-0020,Kakxop Pit Hãmkoxuk Xop Te Yumugãhã - Iniciação dos Filhos dos Espíritos da Terra,2015,theme,Cosmology and Origin Stories,Knowledge and Continuity,https://www.themoviedb.org/movie/763697,tagged from a published synopsis; primary theme
+FILM-0020,Kakxop Pit Hãmkoxuk Xop Te Yumugãhã - Iniciação dos Filhos dos Espíritos da Terra,2015,theme,Youth,Lives and Relations,https://www.themoviedb.org/movie/763697,tagged from a published synopsis
+FILM-0020,Kakxop Pit Hãmkoxuk Xop Te Yumugãhã - Iniciação dos Filhos dos Espíritos da Terra,2015,form,Documentary,,https://www.themoviedb.org/movie/763697,recorded in Published
+FILM-0020,Kakxop Pit Hãmkoxuk Xop Te Yumugãhã - Iniciação dos Filhos dos Espíritos da Terra,2015,length,Feature,,https://www.themoviedb.org/movie/763697,recorded in Published
+FILM-0021,Konãgxeka: o Dilúvio Maxakali (The Maxakali Deluge),2016,theme,Cosmology and Origin Stories,Knowledge and Continuity,https://cinebaru.com.br/filme/konagxeka-o-diluvio-maxakali/,tagged from a published synopsis; primary theme
+FILM-0021,Konãgxeka: o Dilúvio Maxakali (The Maxakali Deluge),2016,theme,Water,Land and Environment,https://cinebaru.com.br/filme/konagxeka-o-diluvio-maxakali/,tagged from a published synopsis
+FILM-0021,Konãgxeka: o Dilúvio Maxakali (The Maxakali Deluge),2016,theme,Collective and Community Media,Expression and Representation,https://cinebaru.com.br/filme/konagxeka-o-diluvio-maxakali/,tagged from a published synopsis
+FILM-0021,Konãgxeka: o Dilúvio Maxakali (The Maxakali Deluge),2016,form,Animation,,https://cinebaru.com.br/filme/konagxeka-o-diluvio-maxakali/,recorded in Published
+FILM-0021,Konãgxeka: o Dilúvio Maxakali (The Maxakali Deluge),2016,length,Short,,https://cinebaru.com.br/filme/konagxeka-o-diluvio-maxakali/,recorded in Published
+FILM-0033,Nũhũ yãg mũ yõg hãm - This Land Is Ours!,2020,theme,Land Defense,Land and Environment,https://www.flacso.edu.ec/cine-etnografico/pelicula/nu%CC%83hu%CC%83-yag-mu%CC%83-yog-ham-essa-terra-e-nossa/,tagged from a published synopsis; primary theme
+FILM-0033,Nũhũ yãg mũ yõg hãm - This Land Is Ours!,2020,theme,Environmental Change,Land and Environment,https://www.flacso.edu.ec/cine-etnografico/pelicula/nu%CC%83hu%CC%83-yag-mu%CC%83-yog-ham-essa-terra-e-nossa/,tagged from a published synopsis
+FILM-0033,Nũhũ yãg mũ yõg hãm - This Land Is Ours!,2020,theme,Cosmology and Origin Stories,Knowledge and Continuity,https://www.flacso.edu.ec/cine-etnografico/pelicula/nu%CC%83hu%CC%83-yag-mu%CC%83-yog-ham-essa-terra-e-nossa/,tagged from a published synopsis
+FILM-0033,Nũhũ yãg mũ yõg hãm - This Land Is Ours!,2020,form,Documentary,,https://www.flacso.edu.ec/cine-etnografico/pelicula/nu%CC%83hu%CC%83-yag-mu%CC%83-yog-ham-essa-terra-e-nossa/,recorded in Published
+FILM-0033,Nũhũ yãg mũ yõg hãm - This Land Is Ours!,2020,length,Feature,,https://www.flacso.edu.ec/cine-etnografico/pelicula/nu%CC%83hu%CC%83-yag-mu%CC%83-yog-ham-essa-terra-e-nossa/,recorded in Published
+FILM-0034,Yiax Kaax,2010,theme,Health and Healing,Lives and Relations,https://narrativasindigenas.ensp.fiocruz.br/filme/yiax-kaax-fim-do-resguardo/,tagged from a published synopsis; primary theme
+FILM-0034,Yiax Kaax,2010,theme,Kinship,Lives and Relations,https://narrativasindigenas.ensp.fiocruz.br/filme/yiax-kaax-fim-do-resguardo/,tagged from a published synopsis
+FILM-0034,Yiax Kaax,2010,theme,Elders and Knowledge,Knowledge and Continuity,https://narrativasindigenas.ensp.fiocruz.br/filme/yiax-kaax-fim-do-resguardo/,tagged from a published synopsis
+FILM-0034,Yiax Kaax,2010,form,Documentary,,https://narrativasindigenas.ensp.fiocruz.br/filme/yiax-kaax-fim-do-resguardo/,recorded in Published
+FILM-0034,Yiax Kaax,2010,length,Short,,https://narrativasindigenas.ensp.fiocruz.br/filme/yiax-kaax-fim-do-resguardo/,recorded in Published
+FILM-0035,Yãmiyhex: As Mulheres‑Espírito,2019,theme,Women and Gender,Lives and Relations,https://festivaldevitoria.com.br/27fv/filme/51028-51028/,tagged from a published synopsis; primary theme
+FILM-0035,Yãmiyhex: As Mulheres‑Espírito,2019,theme,Cosmology and Origin Stories,Knowledge and Continuity,https://festivaldevitoria.com.br/27fv/filme/51028-51028/,tagged from a published synopsis
+FILM-0035,Yãmiyhex: As Mulheres‑Espírito,2019,theme,Kinship,Lives and Relations,https://festivaldevitoria.com.br/27fv/filme/51028-51028/,tagged from a published synopsis
+FILM-0035,Yãmiyhex: As Mulheres‑Espírito,2019,form,Documentary,,https://festivaldevitoria.com.br/27fv/filme/51028-51028/,recorded in Published
+FILM-0035,Yãmiyhex: As Mulheres‑Espírito,2019,length,Feature,,https://festivaldevitoria.com.br/27fv/filme/51028-51028/,recorded in Published
+FILM-GRIN-GUARDA-RURAL-IND-GENA-R-2016,GRIN - Guarda Rural Indígena (Rural Indigenous Guard),2016,theme,State Violence and Genocide,Sovereignty and Politics,https://museudasculturasindigenas.org.br/programacao/exibicao-do-documentario-grin-guarda-rural-indigena-primavera-dos-museus/,tagged from a published synopsis; primary theme
+FILM-GRIN-GUARDA-RURAL-IND-GENA-R-2016,GRIN - Guarda Rural Indígena (Rural Indigenous Guard),2016,theme,Memory and Oral History,Knowledge and Continuity,https://museudasculturasindigenas.org.br/programacao/exibicao-do-documentario-grin-guarda-rural-indigena-primavera-dos-museus/,tagged from a published synopsis
+FILM-GRIN-GUARDA-RURAL-IND-GENA-R-2016,GRIN - Guarda Rural Indígena (Rural Indigenous Guard),2016,form,Documentary,,https://museudasculturasindigenas.org.br/programacao/exibicao-do-documentario-grin-guarda-rural-indigena-primavera-dos-museus/,recorded in Published
 DIR-0028-W1031-7,"Yõg Ãtak: Meu Pai, Kaiowá",,theme,Kinship,Lives and Relations,https://www.themoviedb.org/movie/1397226,tagged from a published synopsis; primary theme
 DIR-0028-W1031-7,"Yõg Ãtak: Meu Pai, Kaiowá",,theme,State Violence and Genocide,Sovereignty and Politics,https://www.themoviedb.org/movie/1397226,tagged from a published synopsis
 DIR-0028-W1031-7,"Yõg Ãtak: Meu Pai, Kaiowá",,form,Documentary,,https://www.themoviedb.org/movie/1397226,recorded in Published
@@ -179,7 +192,13 @@ Q20261121-76-F1,Mîmãnãm: mõgmõka xi xûnîm,2012,theme,"Art, Craft and Maki
 Q20261121-76-F1,Mîmãnãm: mõgmõka xi xûnîm,2012,theme,More-than-Human Relations,Land and Environment,https://narrativasindigenas.ensp.fiocruz.br/filme/mimanam-mogmoka-xi-xunin/,tagged from a published synopsis
 Q20261121-76-F1,Mîmãnãm: mõgmõka xi xûnîm,2012,form,Documentary,,https://narrativasindigenas.ensp.fiocruz.br/filme/mimanam-mogmoka-xi-xunin/,recorded in Published
 Q20261121-76-F1,Mîmãnãm: mõgmõka xi xûnîm,2012,length,Short,,https://narrativasindigenas.ensp.fiocruz.br/filme/mimanam-mogmoka-xi-xunin/,recorded in Published
-Q20261126-1058-F1,Tatakox,2007,form,Documentary,,https://www.forumdoc.org.br/filmes/tatakox,"normalised from the recorded form ""Documentary"""
+Q20261126-1058-F1,Tatakox,2007,theme,Youth,Lives and Relations,https://ica.art/films/brazil-indigenous-film-festival-2021/the-ritual-dimension,tagged from a published synopsis
+Q20261126-1058-F1,Tatakox,2007,theme,Cosmology and Origin Stories,Knowledge and Continuity,https://ica.art/films/brazil-indigenous-film-festival-2021/the-ritual-dimension,tagged from a published synopsis; primary theme
+Q20261126-1058-F1,Tatakox,2007,theme,Kinship,Lives and Relations,https://ica.art/films/brazil-indigenous-film-festival-2021/the-ritual-dimension,tagged from a published synopsis
+Q20261126-1058-F1,Tatakox,2007,form,Documentary,,https://ica.art/films/brazil-indigenous-film-festival-2021/the-ritual-dimension,recorded in Published
+Q20261126-1058-F1,Tatakox,2007,length,Short,,https://ica.art/films/brazil-indigenous-film-festival-2021/the-ritual-dimension,recorded in Published
+Q20261126-29802-F1,Dia do índio na Aldeia Verde em 2010,2010,form,Documentary,,https://curtadoc.com.br/curta/comportamento/dia-do-indio-na-aldeia-verde/,recorded in Published
+Q20261126-29802-F1,Dia do índio na Aldeia Verde em 2010,2010,length,Short,,https://curtadoc.com.br/curta/comportamento/dia-do-indio-na-aldeia-verde/,recorded in Published
 BETA30B-20261107-F07,Sukande Kasáká | Terra Doente,2025,theme,Health and Healing,Lives and Relations,https://ecofalante.org.br/filme/sukande-kasaka-terra-doente,tagged from a published synopsis; primary theme
 BETA30B-20261107-F07,Sukande Kasáká | Terra Doente,2025,theme,Environmental Change,Land and Environment,https://ecofalante.org.br/filme/sukande-kasaka-terra-doente,tagged from a published synopsis
 BETA30B-20261107-F07,Sukande Kasáká | Terra Doente,2025,theme,Land Defense,Land and Environment,https://ecofalante.org.br/filme/sukande-kasaka-terra-doente,tagged from a published synopsis
@@ -213,6 +232,7 @@ FILM-0041,"Prîara Jõ - Depois do ovo, a guerra (After the Egg, the War)",2008,
 FILM-0041,"Prîara Jõ - Depois do ovo, a guerra (After the Egg, the War)",2008,form,Documentary,,https://www.themoviedb.org/movie/1105504,recorded in Published
 FILM-0041,"Prîara Jõ - Depois do ovo, a guerra (After the Egg, the War)",2008,length,Short,,https://www.themoviedb.org/movie/1105504,recorded in Published
 DIR-0037-QM2df3f7,Meriup,2016,form,Documentary,,https://katahirine.org.br/ela/kujaesage-kaiab/,recorded in Published
+DIR-0037-QM2df3f7,Meriup,2016,length,Series,,https://katahirine.org.br/ela/kujaesage-kaiab/,"normalised from the recorded form ""Documentary (part of Amanajé series)"""
 DIR-0037-QMa08bd5,Maira Porongyta – O Aviso do Céu,2025,theme,Cosmology and Origin Stories,Knowledge and Continuity,https://www.gazetadigital.com.br/colunas-e-opiniao/fogo-cruzado/filme-indigena-de-mt-tem-pre-estreia-no-festival-de-cinema-de-tiradentes/834438,tagged from a published synopsis; primary theme
 DIR-0037-QMa08bd5,Maira Porongyta – O Aviso do Céu,2025,length,Short,,https://www.gazetadigital.com.br/colunas-e-opiniao/fogo-cruzado/filme-indigena-de-mt-tem-pre-estreia-no-festival-de-cinema-de-tiradentes/834438,recorded in Published
 FILM-0046,Nguné Elü - The Day When the Moon Menstruated,2004,theme,Collective and Community Media,Expression and Representation,https://www.themoviedb.org/movie/530901,tagged from a published synopsis; primary theme
@@ -258,8 +278,9 @@ Q20261114-88-F5,Agahü: O Sal do Xingu,2021,theme,Food Sovereignty,Land and Envi
 Q20261114-88-F5,Agahü: O Sal do Xingu,2021,theme,More-than-Human Relations,Land and Environment,https://2020.kinoforum.org/en/filme/340627/agah-the-salt-of-xingu,tagged from a published synopsis
 Q20261114-88-F5,Agahü: O Sal do Xingu,2021,form,Documentary,,https://2020.kinoforum.org/en/filme/340627/agah-the-salt-of-xingu,recorded in Published
 Q20261114-88-F5,Agahü: O Sal do Xingu,2021,length,Short,,https://2020.kinoforum.org/en/filme/340627/agah-the-salt-of-xingu,recorded in Published
-Q20261114-88-F7,Kugihe Kuêgü: A Hiper Doença,2020,form,Documentary,,https://www.frontiersin.org/journals/climate/articles/10.3389/fclim.2023.1231794/full,"normalised from the recorded form ""Documentary short"""
-Q20261114-88-F7,Kugihe Kuêgü: A Hiper Doença,2020,length,Short,,https://www.frontiersin.org/journals/climate/articles/10.3389/fclim.2023.1231794/full,"normalised from the recorded form ""Documentary short"""
+Q20261114-88-F7,Kugihe Kuêgü: A Hiper Doença,2020,theme,Health and Healing,Lives and Relations,https://ims.com.br/por-dentro-acervo/olhares-sobre-o-xingu-por-guilherme-freitas/,tagged from a published synopsis; primary theme
+Q20261114-88-F7,Kugihe Kuêgü: A Hiper Doença,2020,form,Documentary,,https://ims.com.br/por-dentro-acervo/olhares-sobre-o-xingu-por-guilherme-freitas/,recorded in Published
+Q20261114-88-F7,Kugihe Kuêgü: A Hiper Doença,2020,length,Short,,https://ims.com.br/por-dentro-acervo/olhares-sobre-o-xingu-por-guilherme-freitas/,recorded in Published
 Q20261114-88-F8,Jogos Mundiais Indígenas,2015,form,Documentary,,https://www.frontiersin.org/journals/climate/articles/10.3389/fclim.2023.1231794/full,"normalised from the recorded form ""Documentary short"""
 Q20261114-88-F8,Jogos Mundiais Indígenas,2015,length,Short,,https://www.frontiersin.org/journals/climate/articles/10.3389/fclim.2023.1231794/full,"normalised from the recorded form ""Documentary short"""
 Q20261114-88-F9,Pandemia e Fake News no Alto Xingu,2021,theme,Health and Healing,Lives and Relations,https://pulitzercenter.org/stories/documentary-pandemic-and-fake-news-upper-xingu-portuguese,tagged from a published synopsis; primary theme
@@ -295,6 +316,11 @@ Q20261126-75-F1,Takumã Kuikuro: A view from the Xingu,2020,length,Short,,https:
 Q20261126-74-F1,Combatendo a hiperdoença,2021,form,Documentary,,https://www.frontiersin.org/journals/climate/articles/10.3389/fclim.2023.1231794/full,recorded in Published
 Q20261126-74-F1,Combatendo a hiperdoença,2021,length,Short,,https://www.frontiersin.org/journals/climate/articles/10.3389/fclim.2023.1231794/full,recorded in Published
 Q20261126-76-F1,Itsuni Ugunu: a febre da mata,,length,Short,,https://www.gov.br/museugoeldi/pt-br/arquivos/noticias/parque-zoobotanico-recebe-mostra-de-cinema-vozes-do-xingu-ciencia-e-arte-kuikuro-em-defesa-da-amazonia-e-promove-conversa-com-o-cineasta-takuma-kuikuro,recorded in Published
+Q20261127-87-F1,Natural Future Museums,2021,theme,Land Defense,Land and Environment,https://peoplespalaceprojects.org.uk/pt/reimagining-museums-for-climate-action/,tagged from a published synopsis; primary theme
+Q20261127-87-F1,Natural Future Museums,2021,theme,Environmental Change,Land and Environment,https://peoplespalaceprojects.org.uk/pt/reimagining-museums-for-climate-action/,tagged from a published synopsis
+Q20261127-87-F1,Natural Future Museums,2021,theme,"Archives, Museums and Repatriation",Knowledge and Continuity,https://peoplespalaceprojects.org.uk/pt/reimagining-museums-for-climate-action/,tagged from a published synopsis
+Q20261127-87-F1,Natural Future Museums,2021,form,Experimental,,https://peoplespalaceprojects.org.uk/pt/reimagining-museums-for-climate-action/,"normalised from the recorded form ""Video installation / short film"""
+Q20261127-87-F1,Natural Future Museums,2021,length,Short,,https://peoplespalaceprojects.org.uk/pt/reimagining-museums-for-climate-action/,recorded in Published
 FILM-0032,Antônio e Piti,,theme,Land Defense,Land and Environment,https://www.themoviedb.org/movie/640892,tagged from a published synopsis; primary theme
 FILM-0032,Antônio e Piti,,theme,Extractivism,Land and Environment,https://www.themoviedb.org/movie/640892,tagged from a published synopsis
 FILM-0032,Antônio e Piti,,theme,Borders,Sovereignty and Politics,https://www.themoviedb.org/movie/640892,tagged from a published synopsis
@@ -874,7 +900,10 @@ Q20261126-1512-F1,Thirst,2007,theme,Water,Land and Environment,https://www.cultu
 Q20261126-1512-F1,Thirst,2007,theme,Health and Healing,Lives and Relations,https://www.cultureunplugged.com/documentary/watch-online/play/6922/Thirst,tagged from a published synopsis
 Q20261126-1512-F1,Thirst,2007,form,Documentary,,https://www.cultureunplugged.com/documentary/watch-online/play/6922/Thirst,recorded in Published
 Q20261126-1512-F1,Thirst,2007,length,Short,,https://www.cultureunplugged.com/documentary/watch-online/play/6922/Thirst,recorded in Published
-Q20261126-1515-F1,Misawac Kawi Na'wapamitin (Until We Meet Again),2011,length,Short,,https://lift.ca/programming-home/lift-co-presents-the-uprooted-at-imaginenative/,recorded in Published
+Q20261126-1515-F1,Misawac Kawi Na'wapamitin (Until We Meet Again),2011,theme,Kinship,Lives and Relations,https://vtape.org/video?vi=7861,tagged from a published synopsis; primary theme
+Q20261126-1515-F1,Misawac Kawi Na'wapamitin (Until We Meet Again),2011,theme,Health and Healing,Lives and Relations,https://vtape.org/video?vi=7861,tagged from a published synopsis
+Q20261126-1515-F1,Misawac Kawi Na'wapamitin (Until We Meet Again),2011,length,Short,,https://vtape.org/video?vi=7861,recorded in Published
+Q20261126-2202-F1,Memory in Bones,2005,language,English,stan1293,https://vtape.org/video?vi=5784,recorded in Published
 Q20261126-2202-F1,Memory in Bones,2005,theme,Memory and Oral History,Knowledge and Continuity,https://www.torontomu.ca/jack-layton-chair/events/2018/11/pimatisiwin--life-/,tagged from a published synopsis; primary theme
 Q20261126-2202-F1,Memory in Bones,2005,theme,Women and Gender,Lives and Relations,https://www.torontomu.ca/jack-layton-chair/events/2018/11/pimatisiwin--life-/,tagged from a published synopsis
 Q20261126-2202-F1,Memory in Bones,2005,theme,Urban Indigeneity,Lives and Relations,https://www.torontomu.ca/jack-layton-chair/events/2018/11/pimatisiwin--life-/,tagged from a published synopsis
@@ -886,7 +915,12 @@ Q20261126-1510-F1,Rosie,2018,form,Fiction,,https://www.presenceautochtone.ca/arc
 Q20261126-1510-F1,Rosie,2018,length,Short,,https://www.presenceautochtone.ca/archives/2019/fr/2019/films/rosie.html,recorded in Published
 Q20261126-4702-F1,Nokum,,form,Documentary,,https://www.widc.ca/director/gail-maurice/,recorded in Published
 Q20261126-4702-F1,Nokum,,length,Feature,,https://www.widc.ca/director/gail-maurice/,recorded in Published
-Q20261126-1514-F1,Little Indians,2004,length,Short,,https://www.torontomu.ca/jack-layton-chair/events/2018/11/pimatisiwin--life-,recorded in Published
+Q20261126-1514-F1,Little Indians,2004,language,English,stan1293,https://vtape.org/video?vi=5693,recorded in Published
+Q20261126-1514-F1,Little Indians,2004,theme,Kinship,Lives and Relations,https://vtape.org/video?vi=5693,tagged from a published synopsis; primary theme
+Q20261126-1514-F1,Little Indians,2004,theme,Self-Representation and Countering Stereotypes,Expression and Representation,https://vtape.org/video?vi=5693,tagged from a published synopsis
+Q20261126-1514-F1,Little Indians,2004,length,Short,,https://vtape.org/video?vi=5693,recorded in Published
+Q20261126-1513-F1,Me + D = Ahh,2004,language,English,stan1293,https://vtape.org/video?vi=5694,recorded in Published
+Q20261126-1513-F1,Me + D = Ahh,2004,length,Short,,https://vtape.org/video?vi=5694,recorded in Published
 RESEARCH-FILM-20261031-800-0034,Klee,2025,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,recorded in Published
 RESEARCH-FILM-20261031-800-0034,Klee,2025,form,Fiction,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,recorded in Published
 RESEARCH-FILM-20261031-800-0034,Klee,2025,length,Short,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,recorded in Published
@@ -907,9 +941,14 @@ Q20261126-2814-F1,Behind the Windowpane,2019,length,Short,,https://www.pavedarts
 Q20261126-2815-F1,My Masterpiece,,length,Short,,https://www.filmpool.ca/post/7th-annual-sifa-winners-update,recorded in Published
 Q20261126-1533-F1,The Big Gust!,2018,form,Fiction,,https://watch.plex.tv/en-GB/movie/the-big-gust-2018,recorded in Published
 Q20261126-1533-F1,The Big Gust!,2018,length,Feature,,https://watch.plex.tv/en-GB/movie/the-big-gust-2018,recorded in Published
+Q20261126-2813-F1,Four in a Blanket,2018,form,Fiction,,https://www.pavedarts.ca/2020/members-micro-grant-recipients/,recorded in Published
+Q20261126-2813-F1,Four in a Blanket,2018,length,Series,,https://www.pavedarts.ca/2020/members-micro-grant-recipients/,"normalised from the recorded form ""Web series"""
 Q20261126-1534-F1,Spirit of the Medicine,2025,form,Documentary,,https://www.geraldauger.com/,recorded in Published
 Q20261126-1534-F1,Spirit of the Medicine,2025,length,Feature,,https://www.geraldauger.com/,recorded in Published
-Q20261126-1535-F1,Walking Alone,2007,length,Short,,https://www.geraldauger.com/,recorded in Published
+Q20261126-1535-F1,Walking Alone,2007,theme,Music and Performance,Expression and Representation,https://www.nfb.ca/film/first_stories_walking_alone/,tagged from a published synopsis
+Q20261126-1535-F1,Walking Alone,2007,theme,Health and Healing,Lives and Relations,https://www.nfb.ca/film/first_stories_walking_alone/,tagged from a published synopsis; primary theme
+Q20261126-1535-F1,Walking Alone,2007,form,Documentary,,https://www.nfb.ca/film/first_stories_walking_alone/,recorded in Published
+Q20261126-1535-F1,Walking Alone,2007,length,Short,,https://www.nfb.ca/film/first_stories_walking_alone/,recorded in Published
 FILM-SRC-NFB-00059,Foster Child,,theme,Kinship,Lives and Relations,https://www.themoviedb.org/movie/445992,tagged from a published synopsis; primary theme
 FILM-SRC-NFB-00059,Foster Child,,form,Documentary,,https://www.themoviedb.org/movie/445992,recorded in Published
 FILM-SRC-NFB-00059,Foster Child,,length,Feature,,https://www.themoviedb.org/movie/445992,recorded in Published
@@ -1008,6 +1047,9 @@ DIR-0105-W1031-3,"Brother, I Cry",2020,theme,Kinship,Lives and Relations,https:/
 DIR-0105-W1031-3,"Brother, I Cry",2020,theme,Women and Gender,Lives and Relations,https://www.themoviedb.org/movie/740746,tagged from a published synopsis
 DIR-0105-W1031-3,"Brother, I Cry",2020,form,Fiction,,https://www.themoviedb.org/movie/740746,recorded in Published
 DIR-0105-W1031-3,"Brother, I Cry",2020,length,Feature,,https://www.themoviedb.org/movie/740746,recorded in Published
+DIR-0106-F1,Might of the Starchaser,2003,language,English,stan1293,https://vtape.org/video?vi=5427,recorded in Published
+DIR-0106-F1,Might of the Starchaser,2003,form,Hybrid,,https://vtape.org/video?vi=5427,recorded in Published
+DIR-0106-F1,Might of the Starchaser,2003,length,Short,,https://vtape.org/video?vi=5427,recorded in Published
 Q20261114-123-F1,Mervin,2001,theme,Youth,Lives and Relations,https://vtape.org/video?vi=5392,tagged from a published synopsis; primary theme
 Q20261114-123-F1,Mervin,2001,form,Fiction,,https://vtape.org/video?vi=5392,recorded in Published
 Q20261114-123-F1,Mervin,2001,length,Short,,https://vtape.org/video?vi=5392,recorded in Published
@@ -1017,6 +1059,7 @@ Q20261115-243-F1,To the Rescue,,form,Fiction,,https://vtape.org/video?vi=5391,"n
 Q20261115-243-F1,To the Rescue,,length,Short,,https://vtape.org/video?vi=5391,"normalised from the recorded form ""Narrative short"""
 Q20261115-241-F1,Good Looking,2007,form,Fiction,,https://www.imdb.com/title/tt3419128/,recorded in Published
 Q20261115-241-F1,Good Looking,2007,length,Short,,https://www.imdb.com/title/tt3419128/,recorded in Published
+Q20261126-7701-F1,Bat Kidd,,length,Short,,https://cyberpowwow.net/cpw04_artists.htm,recorded in Published
 RESEARCH-FILM-20261031-800-0004,NiiMisSak: Sisters in Film,2024,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,recorded in Published
 RESEARCH-FILM-20261031-800-0004,NiiMisSak: Sisters in Film,2024,theme,Women and Gender,Lives and Relations,https://www.mcintyre.ca/titles/DJAK00,tagged from a published synopsis; primary theme
 RESEARCH-FILM-20261031-800-0004,NiiMisSak: Sisters in Film,2024,form,Documentary,,https://www.mcintyre.ca/titles/DJAK00,recorded in Published
@@ -1379,9 +1422,11 @@ DIR-0136-W1031-2,The Doe Boy,2001,length,Feature,,https://www.themoviedb.org/mov
 Q20261114-100-F1,Haircuts Hurt,1992,theme,Music and Performance,Expression and Representation,https://americanindian.si.edu/sites/1/files/pdf/festival/2003.pdf#page=4,tagged from a published synopsis; primary theme
 Q20261114-100-F1,Haircuts Hurt,1992,theme,Kinship,Lives and Relations,https://americanindian.si.edu/sites/1/files/pdf/festival/2003.pdf#page=4,tagged from a published synopsis
 Q20261114-100-F1,Haircuts Hurt,1992,length,Short,,https://americanindian.si.edu/sites/1/files/pdf/festival/2003.pdf#page=4,recorded in Published
-Q20261114-100-F2,Moccasin Flats,,theme,Youth,Lives and Relations,https://cfe.tiff.net/canadianfilmencyclopedia/content/films/moccasin-flats,tagged from a published synopsis; primary theme
-Q20261114-100-F2,Moccasin Flats,,theme,Collective and Community Media,Expression and Representation,https://cfe.tiff.net/canadianfilmencyclopedia/content/films/moccasin-flats,tagged from a published synopsis
-Q20261114-100-F2,Moccasin Flats,,form,Fiction,,https://cfe.tiff.net/canadianfilmencyclopedia/content/films/moccasin-flats,recorded in Published
+Q20261114-100-F2,Moccasin Flats,,theme,Youth,Lives and Relations,https://ammsa.com/publications/windspeaker/all-aboriginal-television-drama-set-air,tagged from a published synopsis; primary theme
+Q20261114-100-F2,Moccasin Flats,,theme,Collective and Community Media,Expression and Representation,https://ammsa.com/publications/windspeaker/all-aboriginal-television-drama-set-air,tagged from a published synopsis
+Q20261114-100-F2,Moccasin Flats,,theme,Urban Indigeneity,Lives and Relations,https://ammsa.com/publications/windspeaker/all-aboriginal-television-drama-set-air,tagged from a published synopsis
+Q20261114-100-F2,Moccasin Flats,,form,Fiction,,https://ammsa.com/publications/windspeaker/all-aboriginal-television-drama-set-air,recorded in Published
+Q20261114-100-F2,Moccasin Flats,,length,Short,,https://ammsa.com/publications/windspeaker/all-aboriginal-television-drama-set-air,recorded in Published
 Q20261114-100-F3,Music Is the Medicine,2003,theme,Music and Performance,Expression and Representation,https://americanindian.si.edu/sites/1/files/pdf/festival/2003.pdf#page=13,tagged from a published synopsis; primary theme
 Q20261114-100-F3,Music Is the Medicine,2003,form,Music Video,,https://americanindian.si.edu/sites/1/files/pdf/festival/2003.pdf#page=13,recorded in Published
 Q20261114-100-F3,Music Is the Medicine,2003,length,Short,,https://americanindian.si.edu/sites/1/files/pdf/festival/2003.pdf#page=13,recorded in Published
@@ -1950,6 +1995,14 @@ DIR-0167-Q20261114-01-F6,Sullivan's Crossing,2026,form,Fiction,,https://www.zoeh
 DIR-0167-Q20261114-01-F6,Sullivan's Crossing,2026,length,Series,,https://www.zoehopkins.ca/recent-works,"normalised from the recorded form ""Television series"""
 DIR-0167-Q20261114-01-F7,Law & Order Toronto: Criminal Intent,,form,Fiction,,https://www.zoehopkins.ca/recent-works,recorded in Published
 DIR-0167-Q20261114-01-F7,Law & Order Toronto: Criminal Intent,,length,Series,,https://www.zoehopkins.ca/recent-works,"normalised from the recorded form ""Television series (in progress)"""
+Q20261126-8852-F1,Skoha,2016,theme,MMIWG2S,Sovereignty and Politics,https://maorilandfilm.co.nz/tbuilder-layout/nsii/,tagged from a published synopsis; primary theme
+Q20261126-8852-F1,Skoha,2016,theme,Kinship,Lives and Relations,https://maorilandfilm.co.nz/tbuilder-layout/nsii/,tagged from a published synopsis
+Q20261126-8852-F1,Skoha,2016,form,Fiction,,https://maorilandfilm.co.nz/tbuilder-layout/nsii/,recorded in Published
+Q20261126-8852-F1,Skoha,2016,length,Short,,https://maorilandfilm.co.nz/tbuilder-layout/nsii/,recorded in Published
+Q20261126-8852-F2,Ghost House,,form,Music Video,,https://nsi-canada.ca/imaginenative-film-media-festival/ | https://imaginenative.org/artists/zoe-hopkins/,recorded in Published
+Q20261126-8852-F2,Ghost House,,length,Short,,https://nsi-canada.ca/imaginenative-film-media-festival/ | https://imaginenative.org/artists/zoe-hopkins/,recorded in Published
+Q20261126-8852-F3,Last Song,,form,Music Video,,https://nsi-canada.ca/imaginenative-film-media-festival/ | https://imaginenative.org/artists/zoe-hopkins/,recorded in Published
+Q20261126-8852-F3,Last Song,,length,Short,,https://nsi-canada.ca/imaginenative-film-media-festival/ | https://imaginenative.org/artists/zoe-hopkins/,recorded in Published
 FILM-0097,Mala Junta (Bad Influence),,language,Mapudungun,mapu1245,https://www.wikidata.org/wiki/Q51158735,recorded in Published
 FILM-0097,Mala Junta (Bad Influence),,language,Spanish,stan1288,https://www.wikidata.org/wiki/Q51158735,recorded in Published
 FILM-0097,Mala Junta (Bad Influence),,theme,Youth,Lives and Relations,https://www.themoviedb.org/movie/421883,tagged from a published synopsis; primary theme
@@ -2130,6 +2183,8 @@ DIR-0183-QM878606,Shimirra'in Wayuu: Juegos tradicionales wayuu,,theme,Elders an
 DIR-0183-QM878606,Shimirra'in Wayuu: Juegos tradicionales wayuu,,form,Documentary,,https://www.firelightmedia.tv/filmmakers/elizabeth-pirela-gonzalez,recorded in Published
 DIR-0183-QM878606,Shimirra'in Wayuu: Juegos tradicionales wayuu,,length,Series,,https://www.encuadradas.com/perfiles-elizabeth-pirela,"normalised from the recorded form ""Documentary series (13 episodes)"""
 FILM-0128,El cedrón,,form,Documentary,,https://www.encuadradas.com/perfiles-leiqui-uriana,recorded in Published
+FILM-0129,Ser un ser humano,2011,form,Documentary,,https://www.encuadradas.com/perfiles-leiqui-uriana,recorded in Published
+FILM-0129,Ser un ser humano,2011,length,Short,,https://www.encuadradas.com/perfiles-leiqui-uriana,recorded in Published
 FILM-0130,SŪKŪJULA TEI,,theme,Elders and Knowledge,Knowledge and Continuity,https://clacpifilm.org/2023/2023esp.html,tagged from a published synopsis; primary theme
 FILM-0130,SŪKŪJULA TEI,,theme,More-than-Human Relations,Land and Environment,https://clacpifilm.org/2023/2023esp.html,tagged from a published synopsis
 FILM-0130,SŪKŪJULA TEI,,theme,Kinship,Lives and Relations,https://clacpifilm.org/2023/2023esp.html,tagged from a published synopsis
@@ -2357,7 +2412,8 @@ FILM-0180,Ánimas (Spirits),2023,form,Experimental,,https://lasaweb.org/uploads/
 FILM-0180,Ánimas (Spirits),2023,length,Short,,https://lasaweb.org/uploads/prog-final_lasa-filmfestival-2024_002.pdf,recorded in Published
 Q20261126-103-F1,El Humo que Desplaza tu Piel,2025,form,Experimental,,https://art.as.virginia.edu/federico-cuatlacuatl-skin-stars-sacredness-disobedience,"normalised from the recorded form ""2-channel video installation"""
 Q20261126-104-F1,Xochipitzahuatl-Nova,2024,form,Experimental,,https://art.as.virginia.edu/border-defiance-federico-cuatlacuatl-erika-hirugami-rigoberto-luna-and-leo-zhang,"normalised from the recorded form ""Video installation"""
-Q20261126-105-F1,End Of / Fin De,2013,form,Animation,,https://athensanimfest.eu/2015/en/competition/student-competition/4/,"normalised from the recorded form ""Animation"""
+Q20261126-105-F1,End Of / Fin De,2013,form,Animation,,https://athensanimfest.eu/2015/en/competition/student-competition/4/,recorded in Published
+Q20261126-105-F1,End Of / Fin De,2013,length,Short,,https://athensanimfest.eu/2015/en/competition/student-competition/4/,recorded in Published
 Q20261126-100-F1,Coapan Sin Tiempo,,form,Animation,,https://currentsnewmedia.org/work/coapan-sin-tiempo/,"normalised from the recorded form ""Animation"""
 Q20261126-101-F1,Carnaval,,form,Animation,,https://currentsnewmedia.org/work/carnaval/,"normalised from the recorded form ""Animation"""
 Q20261126-102-F1,Tiempo,,form,Animation,,https://currentsnewmedia.org/work/tiempo/,"normalised from the recorded form ""Animation"""
@@ -2384,9 +2440,14 @@ Q20261126-168-F1,Mujeres de barro,2015,form,Documentary,,https://moreliafilmfest
 Q20261126-168-F1,Mujeres de barro,2015,length,Short,,https://moreliafilmfest.com/sites/default/files/2021-08/17-ficm-cat-todo.pdf,recorded in Published
 Q20261126-169-F1,Ilk’in,2015,form,Documentary,,https://moreliafilmfest.com/sites/default/files/2021-08/17-ficm-cat-todo.pdf,recorded in Published
 Q20261126-169-F1,Ilk’in,2015,length,Short,,https://moreliafilmfest.com/sites/default/files/2021-08/17-ficm-cat-todo.pdf,recorded in Published
-FILM-0183,Gente de mar y viento,2016,theme,Extractivism,Land and Environment,https://www.themoviedb.org/movie/802647,tagged from a published synopsis; primary theme
-FILM-0183,Gente de mar y viento,2016,theme,Land Defense,Land and Environment,https://www.themoviedb.org/movie/802647,tagged from a published synopsis
-FILM-0183,Gente de mar y viento,2016,length,Short,,https://www.themoviedb.org/movie/802647,recorded in Published
+FILM-0183,Gente de mar y viento,2016,theme,Land Defense,Land and Environment,https://ambulante.org/catalogo/gente-de-mar-y-viento-largometraje,tagged from a published synopsis; primary theme
+FILM-0183,Gente de mar y viento,2016,theme,Extractivism,Land and Environment,https://ambulante.org/catalogo/gente-de-mar-y-viento-largometraje,tagged from a published synopsis
+FILM-0183,Gente de mar y viento,2016,form,Documentary,,https://ambulante.org/catalogo/gente-de-mar-y-viento-largometraje,recorded in Published
+FILM-0183,Gente de mar y viento,2016,length,Feature,,https://ambulante.org/catalogo/gente-de-mar-y-viento-largometraje,recorded in Published
+Q20261126-29801-F1,Gente de mar y viento (cortometraje),2014,theme,Land Defense,Land and Environment,https://ambulante.org/catalogo/gente-de-mar-y-viento-cortometraje,tagged from a published synopsis; primary theme
+Q20261126-29801-F1,Gente de mar y viento (cortometraje),2014,theme,Extractivism,Land and Environment,https://ambulante.org/catalogo/gente-de-mar-y-viento-cortometraje,tagged from a published synopsis
+Q20261126-29801-F1,Gente de mar y viento (cortometraje),2014,form,Documentary,,https://ambulante.org/catalogo/gente-de-mar-y-viento-cortometraje,recorded in Published
+Q20261126-29801-F1,Gente de mar y viento (cortometraje),2014,length,Short,,https://ambulante.org/catalogo/gente-de-mar-y-viento-cortometraje,recorded in Published
 FILM-0184,Yolem Jammut-Mujer Yoreme,2017,theme,Health and Healing,Lives and Relations,https://www.themoviedb.org/movie/980024,tagged from a published synopsis; primary theme
 FILM-0184,Yolem Jammut-Mujer Yoreme,2017,theme,Women and Gender,Lives and Relations,https://www.themoviedb.org/movie/980024,tagged from a published synopsis
 FILM-0184,Yolem Jammut-Mujer Yoreme,2017,length,Short,,https://www.themoviedb.org/movie/980024,recorded in Published
@@ -2947,6 +3008,9 @@ FILM-0250,Jüwai Meda´Cha – El Primer Chamán Yekwana,,form,Animation,,,"norm
 FILM-0250,Jüwai Meda´Cha – El Primer Chamán Yekwana,,length,Short,,,"normalised from the recorded form ""Animated short"""
 FILM-0234,La nación oculta en el meteorito,2011,form,Documentary,,,"normalised from the recorded form ""Community documentary / Indigenous audiovisual work"""
 FILM-0235,AFIENI [Faith],2023,length,Short,,,"normalised from the recorded form ""Short film"""
+Q20261126-01-F1,Sides,2022,language,English,stan1293,https://watch.eventive.org/timehrifilmfestival/play/652d39a38dfb7e006cd2e4c7/6511c6fea9097900a1a3773b,recorded in Published
+Q20261126-01-F1,Sides,2022,theme,LGBTQIA2S,Lives and Relations,https://watch.eventive.org/timehrifilmfestival/play/652d39a38dfb7e006cd2e4c7/6511c6fea9097900a1a3773b,tagged from a published synopsis; primary theme
+Q20261126-01-F1,Sides,2022,length,Short,,https://watch.eventive.org/timehrifilmfestival/play/652d39a38dfb7e006cd2e4c7/6511c6fea9097900a1a3773b,recorded in Published
 FILM-0236,Li Kiampka (Our descendants),2020,form,Documentary,,,"normalised from the recorded form ""Short documentary"""
 FILM-0236,Li Kiampka (Our descendants),2020,length,Short,,,"normalised from the recorded form ""Short documentary"""
 FILM-0237,Wa Kuwai,2023,form,Experimental,,https://katahirine.org.br/ela/jama-wapichana/,"normalised from the recorded form ""Experimental short"""
@@ -3503,6 +3567,7 @@ NEW-10f8d32b8220-WORK-1,Regalia,2024,theme,Music and Performance,Expression and 
 NEW-10f8d32b8220-WORK-1,Regalia,2024,form,Fiction,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,recorded in Published
 NEW-10f8d32b8220-WORK-1,Regalia,2024,length,Short,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,recorded in Published
 Q20261126-02-F1,Hangover,2023,form,Experimental,,https://www.wfgcatalogue.com/films/hangover,"normalised from the recorded form ""Experimental"""
+Q20261126-146-F1,Unless You Have Been There,,length,Short,,https://thejohnseymour.com/,recorded in Published
 NEW-a26382b65f7e-WORK-1,Guts & Glitz,2024,language,Payómkawichum Chaamteela,luis1253,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,recorded in Published
 NEW-a26382b65f7e-WORK-1,Guts & Glitz,2024,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,recorded in Published
 NEW-a26382b65f7e-WORK-1,Guts & Glitz,2024,theme,Health and Healing,Lives and Relations,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,tagged from a published synopsis; primary theme
@@ -3784,6 +3849,13 @@ FILM-SRC-2023-00046,Grape Soda in the Parking Lot,,form,Hybrid,,https://www.them
 FILM-SRC-2023-00046,Grape Soda in the Parking Lot,,length,Short,,https://www.themoviedb.org/movie/1102759,recorded in Published
 Q20261121-20-F1,Micta,2012,form,Experimental,,https://2024.fcvq.ca/programmation/20-ans-de-recit-au-coeur-des-premiers-peuples-wapikoni-2024-09-11-14h30,recorded in Published
 Q20261121-20-F1,Micta,2012,length,Short,,https://2024.fcvq.ca/programmation/20-ans-de-recit-au-coeur-des-premiers-peuples-wapikoni-2024-09-11-14h30,recorded in Published
+Q20261126-9863-F1,La tonsure,2009,form,Experimental,,https://festivalregard.com/programmation/18e-festival-2014/programmes-thematiques/programme/totem-10-ans-de-wapikoni/la-tonsure,recorded in Published
+Q20261126-9863-F1,La tonsure,2009,length,Short,,https://festivalregard.com/programmation/18e-festival-2014/programmes-thematiques/programme/totem-10-ans-de-wapikoni/la-tonsure,recorded in Published
+Q20261126-9863-F2,Les petits bonheurs,2009,theme,Youth,Lives and Relations,https://ciera-recherches.ca/wp-content/uploads/2022/08/colloque_ciera-programme_2010.pdf,tagged from a published synopsis; primary theme
+Q20261126-9863-F2,Les petits bonheurs,2009,length,Short,,https://ciera-recherches.ca/wp-content/uploads/2022/08/colloque_ciera-programme_2010.pdf,recorded in Published
+Q20261126-9863-F4,Message,2016,form,Experimental,,https://quebeccinema.ca/films/message,recorded in Published
+Q20261126-9863-F4,Message,2016,length,Short,,https://quebeccinema.ca/films/message,recorded in Published
+Q20261126-9863-F5,Shaniss,,length,Short,,https://vimeo.com/151681563,recorded in Published
 NEW-2652d494da73-WORK-1,The Moth,2025,language,Anishinaabemowin (Ojibwe),ojib1241,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,recorded in Published
 NEW-2652d494da73-WORK-1,The Moth,2025,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,recorded in Published
 NEW-2652d494da73-WORK-1,The Moth,2025,theme,Extractivism,Land and Environment,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,tagged from a published synopsis; primary theme
@@ -4442,7 +4514,8 @@ Q20261112-22-F2,Territorios y Voces Indígenas,2021,form,Documentary,,https://ww
 Q20261112-22-F2,Territorios y Voces Indígenas,2021,length,Series,,https://clacpifilm.org/2023/2023esp.html,"normalised from the recorded form ""Documentary series"""
 Q20261112-22-F3,Somos Originarios,2018,form,Documentary,,https://clacpifilm.org/2023/2023esp.html,"normalised from the recorded form ""Documentary series"""
 Q20261112-22-F3,Somos Originarios,2018,length,Series,,https://clacpifilm.org/2023/2023esp.html,"normalised from the recorded form ""Documentary series"""
-Q20261112-22-F4,Ya'ja,2018,form,Hybrid,,https://clacpifilm.org/2023/2023esp.html,"normalised from the recorded form ""Docufiction"""
+Q20261112-22-F4,Ya'ja,2018,form,Hybrid,,https://concip.mpcindigena.org/noticias/actualidad-concip/240-muestra-de-cine-indigena-en-el-ficci-del-7-al-11-de-marzo,"normalised from the recorded form ""Docufiction"""
+Q20261112-22-F4,Ya'ja,2018,length,Short,,https://concip.mpcindigena.org/noticias/actualidad-concip/240-muestra-de-cine-indigena-en-el-ficci-del-7-al-11-de-marzo,recorded in Published
 Q20261126-80-F1,"Wejxa Ksxaw, Espíritu del Viento",2025,form,Fiction,,https://ficcali.com/pelicula/wejxa-ksxaw-espiritu-del-viento/,recorded in Published
 Q20261126-80-F1,"Wejxa Ksxaw, Espíritu del Viento",2025,length,Short,,https://ficcali.com/pelicula/wejxa-ksxaw-espiritu-del-viento/,recorded in Published
 SA50-20261014-a29b5a20c63b-WORK-01,"Warmis, cultoras del territorio",,theme,Women and Gender,Lives and Relations,https://www.ficpa.co/warmis-cultoras-del-territorio/,tagged from a published synopsis; primary theme
@@ -4510,10 +4583,13 @@ Q20261112-10-F6,"Hampi Mama Misak, sanar desde el vientre",2022,form,Documentary
 Q20261112-10-F6,"Hampi Mama Misak, sanar desde el vientre",2022,length,Short,,https://daupara.com/obra/hampi-mama-misak-sanar-desde-el-vientre-,recorded in Published
 Q20261127-11-F1,Mujeres de Tierra,2013,language,Spanish,stan1288,https://cinecorto.co/mujeres-de-tierra/,recorded in Published
 Q20261127-11-F1,Mujeres de Tierra,2013,theme,Women and Gender,Lives and Relations,https://cinecorto.co/mujeres-de-tierra/,tagged from a published synopsis; primary theme
+Q20261127-11-F1,Mujeres de Tierra,2013,theme,Kinship,Lives and Relations,https://cinecorto.co/mujeres-de-tierra/,tagged from a published synopsis
 Q20261127-11-F1,Mujeres de Tierra,2013,form,Documentary,,https://cinecorto.co/mujeres-de-tierra/,recorded in Published
 Q20261127-11-F1,Mujeres de Tierra,2013,length,Short,,https://cinecorto.co/mujeres-de-tierra/,recorded in Published
-Q20261127-12-F1,Malaire,2015,form,Fiction,,https://cinecorto.co/chaupinacer-pasto/,recorded in Published
-Q20261127-12-F1,Malaire,2015,length,Short,,https://cinecorto.co/chaupinacer-pasto/,recorded in Published
+Q20261127-12-F1,Malaire,2015,theme,Health and Healing,Lives and Relations,https://cinecorto.co/mujeres-de-tierra/,tagged from a published synopsis; primary theme
+Q20261127-12-F1,Malaire,2015,theme,Kinship,Lives and Relations,https://cinecorto.co/mujeres-de-tierra/,tagged from a published synopsis
+Q20261127-12-F1,Malaire,2015,form,Fiction,,https://cinecorto.co/mujeres-de-tierra/,recorded in Published
+Q20261127-12-F1,Malaire,2015,length,Short,,https://cinecorto.co/mujeres-de-tierra/,recorded in Published
 SA50-20261014-c6d731eec058-WORK-01,Atizando la Hoguera,2018,theme,Women and Gender,Lives and Relations,https://daupara.com/obra/atizando-la-hoguera,tagged from a published synopsis; primary theme
 SA50-20261014-c6d731eec058-WORK-01,Atizando la Hoguera,2018,theme,Resistance Movements,Sovereignty and Politics,https://daupara.com/obra/atizando-la-hoguera,tagged from a published synopsis
 SA50-20261014-c6d731eec058-WORK-01,Atizando la Hoguera,2018,theme,Memory and Oral History,Knowledge and Continuity,https://daupara.com/obra/atizando-la-hoguera,tagged from a published synopsis
@@ -4752,6 +4828,7 @@ Q20261126-77-F1,Kiwe Luucx - Resistiendo al conflicto,2022,length,Short,,https:/
 SAB2-20261014-f1d1b424934d-WORK-01,Tatuushi,2010,theme,Extractivism,Land and Environment,https://daupara.com/img/events/programacion-daupara-xv-muestra-de-cine-y-video-indigena-territorios-y-visiones-de-memoria-2024_25022800RCyW.pdf,tagged from a published synopsis; primary theme
 SAB2-20261014-f1d1b424934d-WORK-01,Tatuushi,2010,theme,Elders and Knowledge,Knowledge and Continuity,https://daupara.com/img/events/programacion-daupara-xv-muestra-de-cine-y-video-indigena-territorios-y-visiones-de-memoria-2024_25022800RCyW.pdf,tagged from a published synopsis
 SAB2-20261014-f1d1b424934d-WORK-01,Tatuushi,2010,theme,Food Sovereignty,Land and Environment,https://daupara.com/img/events/programacion-daupara-xv-muestra-de-cine-y-video-indigena-territorios-y-visiones-de-memoria-2024_25022800RCyW.pdf,tagged from a published synopsis
+FILM-B25B-11,Li Cham (Morí),2024,language,Tsotsil (Tzotzil),tzot1259,https://www.indifest.org/es/pelicula/li-cham/ | https://www.imcine.gob.mx/media/2025/2/cm-2025-v3.pdf | https://diccionariodedirectoresdelcinemexicano.com/directores-cine-mex/tsuyeb-ana/,recorded in Published
 FILM-B25B-11,Li Cham (Morí),2024,theme,Women and Gender,Lives and Relations,https://www.moreliafilmfest.com/peliculas/li-cham,tagged from a published synopsis; primary theme
 FILM-B25B-11,Li Cham (Morí),2024,theme,Land Defense,Land and Environment,https://www.moreliafilmfest.com/peliculas/li-cham,tagged from a published synopsis
 FILM-B25B-11,Li Cham (Morí),2024,theme,Resistance Movements,Sovereignty and Politics,https://www.moreliafilmfest.com/peliculas/li-cham,tagged from a published synopsis
@@ -4761,6 +4838,8 @@ PILOT-43-ANA-TSUYEB-QM9f1fbc,Andares en la infancia,2018,form,Documentary,,https
 PILOT-43-ANA-TSUYEB-QM9f1fbc,Andares en la infancia,2018,length,Short,,https://ellugarquehabitamos.org/genero-y-disidencias-cine/,recorded in Published
 PILOT-43-ANA-TSUYEB-QM5960a0,Deconstrucción orgánica,2018,form,Documentary,,https://ellugarquehabitamos.org/genero-y-disidencias-cine/,recorded in Published
 PILOT-43-ANA-TSUYEB-QM5960a0,Deconstrucción orgánica,2018,length,Short,,https://ellugarquehabitamos.org/genero-y-disidencias-cine/,recorded in Published
+PILOT-43-ANA-TSUYEB-QMbd5b9f,Guardianes de la tierra,2024,form,Documentary,,https://diccionariodedirectoresdelcinemexicano.com/directores-cine-mex/tsuyeb-ana/,recorded in Published
+PILOT-43-ANA-TSUYEB-QMbd5b9f,Guardianes de la tierra,2024,length,Short,,https://diccionariodedirectoresdelcinemexicano.com/directores-cine-mex/tsuyeb-ana/,recorded in Published
 PILOT-43-ANA-TSUYEB-QM11043c,Kolel (Sanar),,theme,Health and Healing,Lives and Relations,https://moreliafilmfest.com/iv-laboratorio-de-desarrollo-de-proyectos-para-cineastas-indigenas-y-afrodescendientes,tagged from a published synopsis; primary theme
 PILOT-43-ANA-TSUYEB-QM11043c,Kolel (Sanar),,theme,Kinship,Lives and Relations,https://moreliafilmfest.com/iv-laboratorio-de-desarrollo-de-proyectos-para-cineastas-indigenas-y-afrodescendientes,tagged from a published synopsis
 PILOT-43-ANA-TSUYEB-QM11043c,Kolel (Sanar),,form,Documentary,,https://moreliafilmfest.com/iv-laboratorio-de-desarrollo-de-proyectos-para-cineastas-indigenas-y-afrodescendientes,recorded in Published
@@ -4799,10 +4878,15 @@ LEAD-20261011-020-QMddfd49,Caminares que germinan en la jícara sagrada,,theme,M
 LEAD-20261011-020-QMddfd49,Caminares que germinan en la jícara sagrada,,theme,Resistance Movements,Sovereignty and Politics,https://moreliafilmfest.com/laboratorio-desarrollo-proyectos-cineastas-indigenas-afrodescendientes-mx-2025,tagged from a published synopsis
 LEAD-20261011-020-QMddfd49,Caminares que germinan en la jícara sagrada,,form,Documentary,,https://moreliafilmfest.com/laboratorio-desarrollo-proyectos-cineastas-indigenas-afrodescendientes-mx-2025,recorded in Published
 LEAD-20261011-020-QMddfd49,Caminares que germinan en la jícara sagrada,,length,Feature,,https://moreliafilmfest.com/laboratorio-desarrollo-proyectos-cineastas-indigenas-afrodescendientes-mx-2025,recorded in Published
-LEAD-20261011-022-QM39a01b,K baakelo’on (Nuestros huesos),,form,Documentary,,https://moreliafilmfest.com/en/third-film-development-lab-filmmakers-indigenous-and-african-descent-mexico-has-begun,"normalised from the recorded form ""Documentary (in progress)"""
+LEAD-20261011-022-QM39a01b,K baakelo’on (Nuestros huesos),,theme,Memory and Oral History,Knowledge and Continuity,https://moreliafilmfest.com/en/laboratorio-desarrollo-proyectos-cineastas-indigenas-afrodescendientes-mx-2025,tagged from a published synopsis; primary theme
+LEAD-20261011-022-QM39a01b,K baakelo’on (Nuestros huesos),,theme,Women and Gender,Lives and Relations,https://moreliafilmfest.com/en/laboratorio-desarrollo-proyectos-cineastas-indigenas-afrodescendientes-mx-2025,tagged from a published synopsis
+LEAD-20261011-022-QM39a01b,K baakelo’on (Nuestros huesos),,theme,Elders and Knowledge,Knowledge and Continuity,https://moreliafilmfest.com/en/laboratorio-desarrollo-proyectos-cineastas-indigenas-afrodescendientes-mx-2025,tagged from a published synopsis
+LEAD-20261011-022-QM39a01b,K baakelo’on (Nuestros huesos),,form,Documentary,,https://moreliafilmfest.com/en/laboratorio-desarrollo-proyectos-cineastas-indigenas-afrodescendientes-mx-2025,recorded in Published
+LEAD-20261011-022-QM39a01b,K baakelo’on (Nuestros huesos),,length,Feature,,https://moreliafilmfest.com/en/laboratorio-desarrollo-proyectos-cineastas-indigenas-afrodescendientes-mx-2025,recorded in Published
 LEAD-20261011-022-QM73bf05,Maaya Ko'olelo'ob: Muuk',,theme,Women and Gender,Lives and Relations,https://helenico.gob.mx/eventos-especiales/detalle/segundo-coloquio-de-creadoras-escenicas-intersecciones-afectivas-en-el-marco-del-festival-amado-nervo-2026,tagged from a published synopsis; primary theme
 LEAD-20261011-022-QM73bf05,Maaya Ko'olelo'ob: Muuk',,theme,Collective and Community Media,Expression and Representation,https://helenico.gob.mx/eventos-especiales/detalle/segundo-coloquio-de-creadoras-escenicas-intersecciones-afectivas-en-el-marco-del-festival-amado-nervo-2026,tagged from a published synopsis
-LEAD-20261011-022-QM73bf05,Maaya Ko'olelo'ob: Muuk',,form,Documentary,,https://helenico.gob.mx/eventos-especiales/detalle/segundo-coloquio-de-creadoras-escenicas-intersecciones-afectivas-en-el-marco-del-festival-amado-nervo-2026,"normalised from the recorded form ""Documentary"""
+LEAD-20261011-022-QM73bf05,Maaya Ko'olelo'ob: Muuk',,form,Documentary,,https://helenico.gob.mx/eventos-especiales/detalle/segundo-coloquio-de-creadoras-escenicas-intersecciones-afectivas-en-el-marco-del-festival-amado-nervo-2026,recorded in Published
+LEAD-20261011-022-QM73bf05,Maaya Ko'olelo'ob: Muuk',,length,Feature,,https://helenico.gob.mx/eventos-especiales/detalle/segundo-coloquio-de-creadoras-escenicas-intersecciones-afectivas-en-el-marco-del-festival-amado-nervo-2026,recorded in Published
 LEAD-20261031-0001-F1,Ñvmineyiñ Kimvn – Recogiendo el Conocimiento,2018,theme,Elders and Knowledge,Knowledge and Continuity,https://cinechile.cl/pelicula/nvmineyin-kimvn-recogiendo-el-conocimiento/,tagged from a published synopsis; primary theme
 LEAD-20261031-0001-F1,Ñvmineyiñ Kimvn – Recogiendo el Conocimiento,2018,theme,Youth,Lives and Relations,https://cinechile.cl/pelicula/nvmineyin-kimvn-recogiendo-el-conocimiento/,tagged from a published synopsis
 LEAD-20261031-0001-F1,Ñvmineyiñ Kimvn – Recogiendo el Conocimiento,2018,theme,More-than-Human Relations,Land and Environment,https://cinechile.cl/pelicula/nvmineyin-kimvn-recogiendo-el-conocimiento/,tagged from a published synopsis
@@ -5185,7 +5269,9 @@ Q20261121-22-F1,TRANSMISSION_01_34-OD,2017,length,Short,,https://vimeo.com/22050
 WAP-FILM-00424,"Ruby, la petite fourmi",2024,theme,Kinship,Lives and Relations,https://www.themoviedb.org/movie/1572224,tagged from a published synopsis; primary theme
 WAP-FILM-00424,"Ruby, la petite fourmi",2024,theme,Memory and Oral History,Knowledge and Continuity,https://www.themoviedb.org/movie/1572224,tagged from a published synopsis
 WAP-FILM-00424,"Ruby, la petite fourmi",2024,length,Short,,https://www.themoviedb.org/movie/1572224,recorded in Published
-Q20261126-6202-F1,La Terrasse,2023,form,Music Video,,https://evenementswapikoni.ca/la-terrasse,"normalised from the recorded form ""Music video"""
+Q20261126-6202-F1,La Terrasse,2023,theme,Music and Performance,Expression and Representation,https://evenementswapikoni.ca/la-terrasse,tagged from a published synopsis; primary theme
+Q20261126-6202-F1,La Terrasse,2023,form,Music Video,,https://evenementswapikoni.ca/la-terrasse,recorded in Published
+Q20261126-6202-F1,La Terrasse,2023,length,Short,,https://evenementswapikoni.ca/la-terrasse,recorded in Published
 WAP-FILM-00425,Solastalgie,2025,theme,Extractivism,Land and Environment,https://www.themoviedb.org/movie/1572226,tagged from a published synopsis; primary theme
 WAP-FILM-00425,Solastalgie,2025,theme,Environmental Change,Land and Environment,https://www.themoviedb.org/movie/1572226,tagged from a published synopsis
 WAP-FILM-00425,Solastalgie,2025,form,Documentary,,https://www.themoviedb.org/movie/1572226,recorded in Published
@@ -5639,7 +5725,8 @@ NEW-0031c6469e76-QM86bec2,La Manuela,2019,theme,Youth,Lives and Relations,https:
 NEW-0031c6469e76-QM86bec2,La Manuela,2019,form,Fiction,,https://lacuevacine.com/en/la-manuela-eng/,recorded in Published
 NEW-0031c6469e76-QM86bec2,La Manuela,2019,length,Short,,https://lacuevacine.com/en/la-manuela-eng/,recorded in Published
 Q20261126-993-F1,El Caminante,2022,form,Documentary,,https://www.retinalatina.org/peliculas/el-caminante-inti-jacanamijoy/,"normalised from the recorded form ""Documentary"""
-Q20261126-1060-F1,Sentir,2019,form,Documentary,,https://mng.mincultura.gov.co/areas/cinematografia/estadisticas-del-sector/Documents/ProductoCorto2020.pdf,"normalised from the recorded form ""Documentary"""
+Q20261126-1060-F1,Sentir,2019,form,Documentary,,https://mng.mincultura.gov.co/areas/cinematografia/estadisticas-del-sector/Documents/ProductoCorto2020.pdf,recorded in Published
+Q20261126-1060-F1,Sentir,2019,length,Short,,https://mng.mincultura.gov.co/areas/cinematografia/estadisticas-del-sector/Documents/ProductoCorto2020.pdf,recorded in Published
 Q20261126-1061-F1,El Umbral,,theme,Kinship,Lives and Relations,https://lacuevacine.com/el-umbral/,tagged from a published synopsis; primary theme
 Q20261126-1061-F1,El Umbral,,theme,Memory and Oral History,Knowledge and Continuity,https://lacuevacine.com/el-umbral/,tagged from a published synopsis
 Q20261126-1061-F1,El Umbral,,form,Documentary,,https://lacuevacine.com/el-umbral/,recorded in Published
@@ -5772,6 +5859,7 @@ NEW-c2055a72bb3e-W1031-2,Hilando sones,,form,Documentary,,https://www.themoviedb
 NEW-c2055a72bb3e-W1031-2,Hilando sones,,length,Feature,,https://www.themoviedb.org/movie/772539,recorded in Published
 NEW-60cee3c7afb0-WORK-1,Masewaltlatzotzontli,2017,theme,Music and Performance,Expression and Representation,https://precolombino.cl/wp/wp-content/uploads/2017/08/Catalogo-11-Muestra-Cine-Video-Indigena-2017.pdf,tagged from a published synopsis; primary theme
 NEW-60cee3c7afb0-WORK-1,Masewaltlatzotzontli,2017,theme,More-than-Human Relations,Land and Environment,https://precolombino.cl/wp/wp-content/uploads/2017/08/Catalogo-11-Muestra-Cine-Video-Indigena-2017.pdf,tagged from a published synopsis
+NEW-60cee3c7afb0-WORK-1,Masewaltlatzotzontli,2017,form,Documentary,,https://precolombino.cl/wp/wp-content/uploads/2017/08/Catalogo-11-Muestra-Cine-Video-Indigena-2017.pdf,recorded in Published
 NEW-60cee3c7afb0-WORK-1,Masewaltlatzotzontli,2017,length,Short,,https://precolombino.cl/wp/wp-content/uploads/2017/08/Catalogo-11-Muestra-Cine-Video-Indigena-2017.pdf,recorded in Published
 NEW-466606e593c5-WORK-2,Lhallchho (Nuestro pueblo),2000,theme,Food Sovereignty,Land and Environment,https://sic.cultura.gob.mx/ficha.php?table=produccion_cine&table_id=4038,tagged from a published synopsis; primary theme
 NEW-466606e593c5-WORK-2,Lhallchho (Nuestro pueblo),2000,theme,Displacement and Migration,Sovereignty and Politics,https://sic.cultura.gob.mx/ficha.php?table=produccion_cine&table_id=4038,tagged from a published synopsis
@@ -5836,9 +5924,12 @@ NEW-4e90fde2b240-WORK-1,Los nietos del huito,,theme,Self-Representation and Coun
 NEW-4e90fde2b240-WORK-1,Los nietos del huito,,form,Documentary,,https://www.actualidadambiental.pe/cine-indigenas-proyectan-documentales-comunicadores-amarakaeri/,recorded in Published
 NEW-4e90fde2b240-WORK-1,Los nietos del huito,,length,Short,,https://www.actualidadambiental.pe/cine-indigenas-proyectan-documentales-comunicadores-amarakaeri/,recorded in Published
 NEW-75f92529652d-WORK-1,C. N. Infierno: por un turismo sostenible,2023,theme,Sovereignty and Self-Determination,Sovereignty and Politics,https://www.actualidadambiental.pe/puerto-maldonado-cortodocumentales-producidos-por-comunicadores-indigenas-fueron-proyectados-en-pantalla-gigante/,tagged from a published synopsis; primary theme
+NEW-75f92529652d-WORK-1,C. N. Infierno: por un turismo sostenible,2023,form,Documentary,,https://www.actualidadambiental.pe/puerto-maldonado-cortodocumentales-producidos-por-comunicadores-indigenas-fueron-proyectados-en-pantalla-gigante/,recorded in Published
+NEW-75f92529652d-WORK-1,C. N. Infierno: por un turismo sostenible,2023,length,Short,,https://www.actualidadambiental.pe/puerto-maldonado-cortodocumentales-producidos-por-comunicadores-indigenas-fueron-proyectados-en-pantalla-gigante/,recorded in Published
 NEW-ced1815bec80-WORK-1,El legado harakbut,2025,theme,Women and Gender,Lives and Relations,https://www.actualidadambiental.pe/video-legado-harakbut-rol-de-las-mujeres-amarakaeri/,tagged from a published synopsis; primary theme
 NEW-ced1815bec80-WORK-1,El legado harakbut,2025,theme,Land Defense,Land and Environment,https://www.actualidadambiental.pe/video-legado-harakbut-rol-de-las-mujeres-amarakaeri/,tagged from a published synopsis
-NEW-ced1815bec80-WORK-1,El legado harakbut,2025,form,Documentary,,https://www.actualidadambiental.pe/video-legado-harakbut-rol-de-las-mujeres-amarakaeri/,"normalised from the recorded form ""Documentary"""
+NEW-ced1815bec80-WORK-1,El legado harakbut,2025,form,Documentary,,https://www.actualidadambiental.pe/video-legado-harakbut-rol-de-las-mujeres-amarakaeri/,recorded in Published
+NEW-ced1815bec80-WORK-1,El legado harakbut,2025,length,Short,,https://www.actualidadambiental.pe/video-legado-harakbut-rol-de-las-mujeres-amarakaeri/,recorded in Published
 NEW-9d672a8a828c-WORK-1,El Pilar: una comunidad en busca de su historia,2023,theme,Memory and Oral History,Knowledge and Continuity,https://www.actualidadambiental.pe/puerto-maldonado-cortodocumentales-producidos-por-comunicadores-indigenas-fueron-proyectados-en-pantalla-gigante/,tagged from a published synopsis; primary theme
 NEW-9d672a8a828c-WORK-1,El Pilar: una comunidad en busca de su historia,2023,theme,Displacement and Migration,Sovereignty and Politics,https://www.actualidadambiental.pe/puerto-maldonado-cortodocumentales-producidos-por-comunicadores-indigenas-fueron-proyectados-en-pantalla-gigante/,tagged from a published synopsis
 NEW-9d672a8a828c-WORK-1,El Pilar: una comunidad en busca de su historia,2023,theme,Extractivism,Land and Environment,https://www.actualidadambiental.pe/puerto-maldonado-cortodocumentales-producidos-por-comunicadores-indigenas-fueron-proyectados-en-pantalla-gigante/,tagged from a published synopsis
@@ -5870,6 +5961,22 @@ NEW-d0f7656266d0-WORK-1,The Last Walk,2017,form,Fiction,,https://www.themoviedb.
 NEW-d0f7656266d0-WORK-1,The Last Walk,2017,length,Short,,https://www.themoviedb.org/movie/807252,recorded in Published
 Q20261126-56-F1,Salmon Reflection,2021,form,Documentary,,https://www.uarctic.org/news/2024/4/witnessing-climate-change-film-project-in-new-york-and-los-angeles/,"normalised from the recorded form ""Documentary short"""
 Q20261126-56-F1,Salmon Reflection,2021,length,Short,,https://www.uarctic.org/news/2024/4/witnessing-climate-change-film-project-in-new-york-and-los-angeles/,"normalised from the recorded form ""Documentary short"""
+Q20261126-8851-F1,Generations,2018,form,Experimental,,https://img-cache.oppcdn.com/fixed/20638/assets/65MJQeYR8_gMdYNn.pdf,recorded in Published
+Q20261126-8851-F1,Generations,2018,length,Short,,https://img-cache.oppcdn.com/fixed/20638/assets/65MJQeYR8_gMdYNn.pdf,recorded in Published
+Q20261126-8851-F2,A Man from Kanatak,2019,theme,Elders and Knowledge,Knowledge and Continuity,https://img-cache.oppcdn.com/fixed/20638/assets/65MJQeYR8_gMdYNn.pdf,tagged from a published synopsis; primary theme
+Q20261126-8851-F2,A Man from Kanatak,2019,theme,Memory and Oral History,Knowledge and Continuity,https://img-cache.oppcdn.com/fixed/20638/assets/65MJQeYR8_gMdYNn.pdf,tagged from a published synopsis
+Q20261126-8851-F2,A Man from Kanatak,2019,form,Documentary,,https://img-cache.oppcdn.com/fixed/20638/assets/65MJQeYR8_gMdYNn.pdf,recorded in Published
+Q20261126-8851-F2,A Man from Kanatak,2019,length,Short,,https://img-cache.oppcdn.com/fixed/20638/assets/65MJQeYR8_gMdYNn.pdf,recorded in Published
+Q20261126-8851-F3,Whakarongo,2020,form,Fiction,,https://img-cache.oppcdn.com/fixed/20638/assets/65MJQeYR8_gMdYNn.pdf,recorded in Published
+Q20261126-8851-F3,Whakarongo,2020,length,Short,,https://img-cache.oppcdn.com/fixed/20638/assets/65MJQeYR8_gMdYNn.pdf,recorded in Published
+Q20261126-8851-F4,Alaxsxaq,2016,theme,Environmental Change,Land and Environment,https://annahoover.net/section/423657-Video%20Art.html,tagged from a published synopsis; primary theme
+Q20261126-8851-F4,Alaxsxaq,2016,form,Experimental,,https://annahoover.net/section/423657-Video%20Art.html,recorded in Published
+Q20261126-8851-F4,Alaxsxaq,2016,length,Short,,https://annahoover.net/section/423657-Video%20Art.html,recorded in Published
+Q20261126-8851-F5,Current Conversationist,2010,form,Experimental,,https://annahoover.net/section/423657-Video%20Art.html,recorded in Published
+Q20261126-8851-F6,Unipkaat (Our Stories),,theme,Elders and Knowledge,Knowledge and Continuity,https://img-cache.oppcdn.com/fixed/20638/assets/65MJQeYR8_gMdYNn.pdf,tagged from a published synopsis; primary theme
+Q20261126-8851-F6,Unipkaat (Our Stories),,theme,Memory and Oral History,Knowledge and Continuity,https://img-cache.oppcdn.com/fixed/20638/assets/65MJQeYR8_gMdYNn.pdf,tagged from a published synopsis
+Q20261126-8851-F6,Unipkaat (Our Stories),,form,Documentary,,https://img-cache.oppcdn.com/fixed/20638/assets/65MJQeYR8_gMdYNn.pdf,recorded in Published
+Q20261126-8851-F6,Unipkaat (Our Stories),,length,Short,,https://img-cache.oppcdn.com/fixed/20638/assets/65MJQeYR8_gMdYNn.pdf,recorded in Published
 NEW-bb70abba1394-WORK-1,Navajo Talking Picture,1986,theme,Self-Representation and Countering Stereotypes,Expression and Representation,https://www.themoviedb.org/movie/421807,tagged from a published synopsis; primary theme
 NEW-bb70abba1394-WORK-1,Navajo Talking Picture,1986,theme,Elders and Knowledge,Knowledge and Continuity,https://www.themoviedb.org/movie/421807,tagged from a published synopsis
 NEW-bb70abba1394-WORK-1,Navajo Talking Picture,1986,theme,Kinship,Lives and Relations,https://www.themoviedb.org/movie/421807,tagged from a published synopsis
@@ -5929,7 +6036,8 @@ NEW-06da6376521a-WORK-1,Kaho'olawe,1997,theme,Sovereignty and Self-Determination
 NEW-06da6376521a-WORK-1,Kaho'olawe,1997,theme,Linguistic Preservation,Knowledge and Continuity,https://americanindian.si.edu/sites/1/files/pdf/festival/2000.pdf,tagged from a published synopsis
 NEW-06da6376521a-WORK-1,Kaho'olawe,1997,form,Documentary,,https://americanindian.si.edu/sites/1/files/pdf/festival/2000.pdf,recorded in Published
 NEW-06da6376521a-WORK-1,Kaho'olawe,1997,length,Feature,,https://americanindian.si.edu/sites/1/files/pdf/festival/2000.pdf,recorded in Published
-Q20261127-16-F1,"Kuʻu ʻĀina Aloha - Beloved Land, Beloved Country",,form,Documentary,,https://www.firstfridayhawaii.com/calendar/201510/12246.html,"normalised from the recorded form ""Documentary (in progress)"""
+Q20261127-16-F1,"Kuʻu ʻĀina Aloha - Beloved Land, Beloved Country",,form,Documentary,,https://www.firstfridayhawaii.com/calendar/201510/12246.html,recorded in Published
+Q20261127-16-F1,"Kuʻu ʻĀina Aloha - Beloved Land, Beloved Country",,length,Feature,,https://www.firstfridayhawaii.com/calendar/201510/12246.html,recorded in Published
 NEW-ba876526c7cd-WORK-1,Warrior Chiefs in a New Age,1992,theme,Memory and Oral History,Knowledge and Continuity,https://s3.amazonaws.com/isuma.attachments/Native_Networks_list_by_director.pdf,tagged from a published synopsis; primary theme
 NEW-ba876526c7cd-WORK-1,Warrior Chiefs in a New Age,1992,form,Documentary,,https://s3.amazonaws.com/isuma.attachments/Native_Networks_list_by_director.pdf,recorded in Published
 NEW-ba876526c7cd-WORK-1,Warrior Chiefs in a New Age,1992,length,Short,,https://s3.amazonaws.com/isuma.attachments/Native_Networks_list_by_director.pdf,recorded in Published
@@ -5952,6 +6060,12 @@ NEW-58e37d552da9-WORK-1,Then There Were None,1996,theme,Health and Healing,Lives
 NEW-58e37d552da9-WORK-1,Then There Were None,1996,theme,Memory and Oral History,Knowledge and Continuity,https://www.themoviedb.org/movie/220712,tagged from a published synopsis
 NEW-58e37d552da9-WORK-1,Then There Were None,1996,form,Documentary,,https://www.themoviedb.org/movie/220712,recorded in Published
 NEW-58e37d552da9-WORK-1,Then There Were None,1996,length,Short,,https://www.themoviedb.org/movie/220712,recorded in Published
+NEW-bf9e2aaca57a-WORK-1,Let My People Go Skiing,2025,theme,Self-Representation and Countering Stereotypes,Expression and Representation,https://www.mountainfilm.org/films/let-my-people-go-skiing/,tagged from a published synopsis; primary theme
+NEW-bf9e2aaca57a-WORK-1,Let My People Go Skiing,2025,theme,Youth,Lives and Relations,https://www.mountainfilm.org/films/let-my-people-go-skiing/,tagged from a published synopsis
+NEW-bf9e2aaca57a-WORK-1,Let My People Go Skiing,2025,theme,Land Defense,Land and Environment,https://www.mountainfilm.org/films/let-my-people-go-skiing/,tagged from a published synopsis
+NEW-bf9e2aaca57a-WORK-1,Let My People Go Skiing,2025,theme,Linguistic Preservation,Knowledge and Continuity,https://www.mountainfilm.org/films/let-my-people-go-skiing/,tagged from a published synopsis
+NEW-bf9e2aaca57a-WORK-1,Let My People Go Skiing,2025,form,Documentary,,https://www.mountainfilm.org/films/let-my-people-go-skiing/,recorded in Published
+NEW-bf9e2aaca57a-WORK-1,Let My People Go Skiing,2025,length,Short,,https://www.mountainfilm.org/films/let-my-people-go-skiing/,recorded in Published
 NEW-4a265d56f02e-WORK-1,Inheritance,2022,theme,Displacement and Migration,Sovereignty and Politics,https://tribecafilm.com/festival/archive/inheritance-2022,tagged from a published synopsis; primary theme
 NEW-4a265d56f02e-WORK-1,Inheritance,2022,theme,Kinship,Lives and Relations,https://tribecafilm.com/festival/archive/inheritance-2022,tagged from a published synopsis
 NEW-4a265d56f02e-WORK-1,Inheritance,2022,form,Fiction,,https://tribecafilm.com/festival/archive/inheritance-2022,recorded in Published
@@ -5989,6 +6103,9 @@ Q20261126-2801-F1,Who Owns the Past?,2000,theme,"Archives, Museums and Repatriat
 Q20261126-2801-F1,Who Owns the Past?,2000,theme,Sovereignty and Self-Determination,Sovereignty and Politics,https://jedriffefilms.com/films/who-owns-the-past/,tagged from a published synopsis
 Q20261126-2801-F1,Who Owns the Past?,2000,form,Documentary,,https://jedriffefilms.com/films/who-owns-the-past/,recorded in Published
 Q20261126-2801-F1,Who Owns the Past?,2000,length,Feature,,https://jedriffefilms.com/films/who-owns-the-past/,recorded in Published
+NEW-87e55f59773d-WORK-1,The Right to Be,1994,theme,Self-Representation and Countering Stereotypes,Expression and Representation,https://www.iucat.iu.edu/iusb/14693269,tagged from a published synopsis; primary theme
+NEW-87e55f59773d-WORK-1,The Right to Be,1994,form,Documentary,,https://www.iucat.iu.edu/iusb/14693269,recorded in Published
+NEW-87e55f59773d-WORK-1,The Right to Be,1994,length,Short,,https://www.iucat.iu.edu/iusb/14693269,recorded in Published
 NEW-5b2be22f2d92-WORK-1,Kapaemahu,2020,theme,Cosmology and Origin Stories,Knowledge and Continuity,https://www.themoviedb.org/movie/712071,tagged from a published synopsis; primary theme
 NEW-5b2be22f2d92-WORK-1,Kapaemahu,2020,theme,Health and Healing,Lives and Relations,https://www.themoviedb.org/movie/712071,tagged from a published synopsis
 NEW-5b2be22f2d92-WORK-1,Kapaemahu,2020,theme,LGBTQIA2S,Lives and Relations,https://www.themoviedb.org/movie/712071,tagged from a published synopsis
@@ -6427,6 +6544,8 @@ BETA25-20261105-17-FILM1,Meu Corpo Território – Uma Performance Originária,2
 BETA25-20261105-18-FILM1,Mano Seca (Dry Hand),2022,theme,More-than-Human Relations,Land and Environment,https://www.rednationff.com/film/dry-hand/,tagged from a published synopsis; primary theme
 BETA25-20261105-18-FILM1,Mano Seca (Dry Hand),2022,form,Animation,,https://www.rednationff.com/film/dry-hand/,recorded in Published
 BETA25-20261105-18-FILM1,Mano Seca (Dry Hand),2022,length,Short,,https://www.rednationff.com/film/dry-hand/,recorded in Published
+BETA25-20261105-18-QMd9c74b,El Cielo Recuerda el Fin,2020,form,Animation,,https://www.rednationff.com/film/dry-hand/,recorded in Published
+BETA25-20261105-18-QMd9c74b,El Cielo Recuerda el Fin,2020,length,Short,,https://www.rednationff.com/film/dry-hand/,recorded in Published
 BETA25-20261105-19-FILM1,Chew Müley (Dónde está),2025,theme,"Justice, Truth and Reconciliation",Sovereignty and Politics,https://cinechile.cl/pelicula/chew-muley/,tagged from a published synopsis; primary theme
 BETA25-20261105-19-FILM1,Chew Müley (Dónde está),2025,theme,Kinship,Lives and Relations,https://cinechile.cl/pelicula/chew-muley/,tagged from a published synopsis
 BETA25-20261105-19-FILM1,Chew Müley (Dónde está),2025,form,Documentary,,https://cinechile.cl/pelicula/chew-muley/,recorded in Published
@@ -6646,8 +6765,11 @@ QM-b302bb15b4-M1,Kaushunekan,2023,theme,Women and Gender,Lives and Relations,htt
 QM-b302bb15b4-M1,Kaushunekan,2023,length,Short,,https://evenementswapikoni.ca/kaushunekan,"normalised from the recorded form ""Wapikoni short film"""
 QM-16f88fe715-M1,Kushtatshun,2023,theme,Memory and Oral History,Knowledge and Continuity,https://evenementswapikoni.ca/kushtatshun,tagged from a published synopsis; primary theme
 QM-16f88fe715-M1,Kushtatshun,2023,length,Short,,https://evenementswapikoni.ca/kushtatshun,"normalised from the recorded form ""Wapikoni short film"""
-Q20261126-1051-F1,Caserne 79,2013,form,Documentary,,https://festivalregard.com/programmation/27e-festival-2023/competition-parallele/programme/100-regions/accordez-moi-votre-confiance,"normalised from the recorded form ""Documentary"""
-Q20261126-1052-F1,Ka Mitshelitakuess Auass / L'enfant qui plantait des clous,2015,form,Animation,,https://repertoire.cinema.mcc.gouv.qc.ca/film/lenfant-qui-plantait-des-clous-395590/,"normalised from the recorded form ""Animation"""
+Q20261126-1051-F1,Caserne 79,2013,form,Documentary,,https://festivalregard.com/programmation/27e-festival-2023/competition-parallele/programme/100-regions/accordez-moi-votre-confiance,recorded in Published
+Q20261126-1052-F1,Ka Mitshelitakuess Auass / L'enfant qui plantait des clous,2014,language,Innu-aimun,mont1268,https://repertoire.cinema.mcc.gouv.qc.ca/film/lenfant-qui-plantait-des-clous-395590/,recorded in Published
+Q20261126-1052-F1,Ka Mitshelitakuess Auass / L'enfant qui plantait des clous,2014,theme,Kinship,Lives and Relations,https://repertoire.cinema.mcc.gouv.qc.ca/film/lenfant-qui-plantait-des-clous-395590/,tagged from a published synopsis; primary theme
+Q20261126-1052-F1,Ka Mitshelitakuess Auass / L'enfant qui plantait des clous,2014,form,Animation,,https://repertoire.cinema.mcc.gouv.qc.ca/film/lenfant-qui-plantait-des-clous-395590/,recorded in Published
+Q20261126-1052-F1,Ka Mitshelitakuess Auass / L'enfant qui plantait des clous,2014,length,Short,,https://repertoire.cinema.mcc.gouv.qc.ca/film/lenfant-qui-plantait-des-clous-395590/,recorded in Published
 Q20261126-1053-F1,Ka tatishtipatakanit (Éthéré),2020,form,Fiction,,https://festivalcinema.ca/film/ethere-ka-tatishtipatakanit/,"normalised from the recorded form ""Fiction"""
 Q20261126-1054-F1,Milikᵘ tshishutshelimunuau (Accordez-moi votre confiance),2022,form,Documentary,,https://festivalregard.com/programmation/27e-festival-2023/competition-parallele/programme/100-regions/accordez-moi-votre-confiance,"normalised from the recorded form ""Documentary"""
 Q20261126-1055-F1,W8ban : Retrouver nos voix,2026,form,Documentary,,https://presse.radio-canada.ca/television/14456/w8ban-retrouver-nos-voix-la-quete-de-xavier-watso-face-a-l-urgence-de-proteger-les-langues-autochtones-d-ici/,"normalised from the recorded form ""Documentary"""
@@ -6929,6 +7051,8 @@ QM-1249b8bc7b-M1,"8 venado, garra jaguar",2024,length,Feature,,https://www.imcin
 Q20261108-91-F1,La soledad,2023,theme,Kinship,Lives and Relations,https://www.klikatucineinvisible.org/es/festival/pack/66d1b2f4f7eaa1081b87af86/pelicula/66d049def7eaa1081b87ae66,tagged from a published synopsis; primary theme
 Q20261108-91-F1,La soledad,2023,form,Fiction,,https://www.klikatucineinvisible.org/es/festival/pack/66d1b2f4f7eaa1081b87af86/pelicula/66d049def7eaa1081b87ae66,recorded in Published
 Q20261108-91-F1,La soledad,2023,length,Short,,https://www.klikatucineinvisible.org/es/festival/pack/66d1b2f4f7eaa1081b87af86/pelicula/66d049def7eaa1081b87ae66,recorded in Published
+NEW-65d746d4dc9c-F1,Metzew (Energía),2023,length,Short,,https://www.sapcine.com/wp-content/uploads/2025/09/Dossier.pdf,recorded in Published
+NEW-65d746d4dc9c-F2,Komonil,2024,length,Short,,https://www.sapcine.com/wp-content/uploads/2025/09/Dossier.pdf,recorded in Published
 Q20261111-11-F1,Se’ K’o,,theme,Land Defense,Land and Environment,https://chileconecta.cl/en/noticias/the-funding-and-market-application-workshop-announces-its-selected-projects/,tagged from a published synopsis; primary theme
 Q20261111-11-F1,Se’ K’o,,theme,Sovereignty and Self-Determination,Sovereignty and Politics,https://chileconecta.cl/en/noticias/the-funding-and-market-application-workshop-announces-its-selected-projects/,tagged from a published synopsis
 Q20261111-11-F1,Se’ K’o,,form,Documentary,,https://chileconecta.cl/en/noticias/the-funding-and-market-application-workshop-announces-its-selected-projects/,"normalised from the recorded form ""Documentary feature (in progress)"""
@@ -7003,8 +7127,8 @@ QM-4b9f5b2e83-M1,K baakelo’on | Nuestros huesos,,theme,Women and Gender,Lives 
 QM-4b9f5b2e83-M1,K baakelo’on | Nuestros huesos,,theme,Elders and Knowledge,Knowledge and Continuity,https://moreliafilmfest.com/laboratorio-desarrollo-proyectos-cineastas-indigenas-afrodescendientes-mx-2025,tagged from a published synopsis
 QM-4b9f5b2e83-M1,K baakelo’on | Nuestros huesos,,form,Documentary,,https://moreliafilmfest.com/laboratorio-desarrollo-proyectos-cineastas-indigenas-afrodescendientes-mx-2025,recorded in Published
 QM-4b9f5b2e83-M1,K baakelo’on | Nuestros huesos,,length,Feature,,https://moreliafilmfest.com/laboratorio-desarrollo-proyectos-cineastas-indigenas-afrodescendientes-mx-2025,recorded in Published
-QM-4b9f5b2e83-M3,Maaya Ko’olelo’ob: Muuk’,,form,Documentary,,https://moreliafilmfest.com/laboratorio-desarrollo-proyectos-cineastas-indigenas-afrodescendientes-mx-2025,recorded in Published
-QM-4b9f5b2e83-M3,Maaya Ko’olelo’ob: Muuk’,,length,Feature,,https://moreliafilmfest.com/laboratorio-desarrollo-proyectos-cineastas-indigenas-afrodescendientes-mx-2025,recorded in Published
+QM-4b9f5b2e83-M3,Maaya Ko’olelo’ob: Muuk’,,form,Documentary,,https://helenico.gob.mx/eventos-especiales/detalle/segundo-coloquio-de-creadoras-escenicas-intersecciones-afectivas-en-el-marco-del-festival-amado-nervo-2026,recorded in Published
+QM-4b9f5b2e83-M3,Maaya Ko’olelo’ob: Muuk’,,length,Feature,,https://helenico.gob.mx/eventos-especiales/detalle/segundo-coloquio-de-creadoras-escenicas-intersecciones-afectivas-en-el-marco-del-festival-amado-nervo-2026,recorded in Published
 LEAD-20261011-014-QM0e9ecc,Kuankua Pi,,form,Documentary,,https://www.moreliafilmfest.com/en/node/97411,recorded in Published
 LEAD-20261011-014-QM0e9ecc,Kuankua Pi,,length,Feature,,https://www.moreliafilmfest.com/en/node/97411,recorded in Published
 QM-ec0a41166c-M1,Yuyarisun,,form,Documentary,,https://www.moreliafilmfest.com/en/node/97411,recorded in Published
@@ -7131,8 +7255,8 @@ Q20261114-74-F5,Vistas: Walk-in-the-Forest,2009,length,Short,,https://www.nfb.ca
 Q20261114-74-F6,Kaspar (Inspired by the Life of Kaspar Hauser),2012,theme,Youth,Lives and Relations,https://www.nfb.ca/film/kaspar_inspired_by_life_of_kaspar_hauser/,tagged from a published synopsis; primary theme
 Q20261114-74-F6,Kaspar (Inspired by the Life of Kaspar Hauser),2012,form,Animation,,https://www.nfb.ca/film/kaspar_inspired_by_life_of_kaspar_hauser/,recorded in Published
 Q20261114-74-F6,Kaspar (Inspired by the Life of Kaspar Hauser),2012,length,Short,,https://www.nfb.ca/film/kaspar_inspired_by_life_of_kaspar_hauser/,recorded in Published
-Q20261114-74-F7,La forêt,2014,form,Animation,,https://www.lesvideophages.org/film/la-foret,"normalised from the recorded form ""Animated short"""
-Q20261114-74-F7,La forêt,2014,length,Short,,https://www.lesvideophages.org/film/la-foret,"normalised from the recorded form ""Animated short"""
+Q20261114-74-F7,La forêt,2014,form,Animation,,https://www.lesvideophages.org/film/la-foret,recorded in Published
+Q20261114-74-F7,La forêt,2014,length,Short,,https://www.lesvideophages.org/film/la-foret,recorded in Published
 Q20261114-74-F10,Transatlantic (The One-Minute Memoir segment),2020,form,Animation,,https://www.femfilm.ca/film_search.php?film=obomsawin-one&lang=e,"normalised from the recorded form ""Animated anthology segment"""
 Q20261115-226-F1,L’abominable microbe,1992,form,Animation,,https://www.oboro.net/en/exhibition/obom/,"normalised from the recorded form ""Experimental animation"""
 Q20261115-227-F1,Ma rencontre avec Marianne Faithful et un enfant orignal,1995,form,Animation,,https://www.oboro.net/en/exhibition/obom/,"normalised from the recorded form ""Experimental animation"""
@@ -7304,6 +7428,8 @@ Q20261126-2825-F1,Resettlement [floating home],2002,form,Animation,,https://vime
 Q20261126-2825-F1,Resettlement [floating home],2002,length,Short,,https://vimeo.com/67520601,recorded in Published
 Q20261126-2826-F1,Volatile Works Does Coney Island: A Prelinger Remix,2005,form,Experimental,,https://repertoire.cinema.mcc.gouv.qc.ca/film/volatile-works-does-coney-island-a-prelinger-remix-289686/,recorded in Published
 Q20261126-2826-F1,Volatile Works Does Coney Island: A Prelinger Remix,2005,length,Short,,https://repertoire.cinema.mcc.gouv.qc.ca/film/volatile-works-does-coney-island-a-prelinger-remix-289686/,recorded in Published
+Q20261126-2821-F1,Spell [aperio],2007,form,Animation,,https://rendez-vous.quebeccinema.ca/uploads/document/rvcq_2008_catalogue.pdf,recorded in Published
+Q20261126-2821-F1,Spell [aperio],2007,length,Short,,https://rendez-vous.quebeccinema.ca/uploads/document/rvcq_2008_catalogue.pdf,recorded in Published
 Q20261114-33-F1,Warmin Arupa: Barranderas – Trabajo por Alimentos,1993,form,Documentary,,https://americanindian.si.edu/sites/1/files/pdf/festival/1995.pdf,"normalised from the recorded form ""News / documentary short"""
 Q20261114-33-F1,Warmin Arupa: Barranderas – Trabajo por Alimentos,1993,length,Short,,https://americanindian.si.edu/sites/1/files/pdf/festival/1995.pdf,"normalised from the recorded form ""News / documentary short"""
 Q20261114-30-F1,Cleaning’s a Cakewalk,2024,form,Fiction,,https://santafefilmfestival.com/index/film/cleanings-a-cakewalk/,recorded in Published
@@ -7854,6 +7980,18 @@ Q20261121-105-F1,Kokom,2014,length,Short,,https://www.panorama-cinema.com/V2/art
 Q20261121-105-F2,Entre l’arbre et l’écorce,2008,theme,Urban Indigeneity,Lives and Relations,https://vimeo.com/153236882,tagged from a published synopsis; primary theme
 Q20261121-105-F2,Entre l’arbre et l’écorce,2008,form,Experimental,,https://vimeo.com/153236882,recorded in Published
 Q20261121-105-F2,Entre l’arbre et l’écorce,2008,length,Short,,https://ctvm.info/12-courts-metrages-produits-par-wapikoni-mobile-pour-cloturer-la-2eme-edition-de-cine-vert/,"normalised from the recorded form ""Experimental short"""
+Q20261126-9862-F2,Nous sommes,2009,theme,Resistance Movements,Sovereignty and Politics,https://festivalregard.com/programmation/18e-festival-2014/programmes-thematiques/programme/totem-10-ans-de-wapikoni/nous-sommes,tagged from a published synopsis; primary theme
+Q20261126-9862-F2,Nous sommes,2009,theme,Sovereignty and Self-Determination,Sovereignty and Politics,https://festivalregard.com/programmation/18e-festival-2014/programmes-thematiques/programme/totem-10-ans-de-wapikoni/nous-sommes,tagged from a published synopsis
+Q20261126-9862-F2,Nous sommes,2009,length,Short,,https://festivalregard.com/programmation/18e-festival-2014/programmes-thematiques/programme/totem-10-ans-de-wapikoni/nous-sommes,recorded in Published
+Q20261126-9862-F3,Anicinapemowin,,theme,Linguistic Preservation,Knowledge and Continuity,https://evenementswapikoni.ca/anicinapemowin,tagged from a published synopsis; primary theme
+Q20261126-9862-F3,Anicinapemowin,,theme,Elders and Knowledge,Knowledge and Continuity,https://evenementswapikoni.ca/anicinapemowin,tagged from a published synopsis
+Q20261126-9862-F4,Wabak,2006,theme,Cosmology and Origin Stories,Knowledge and Continuity,https://ciera-recherches.ca/wp-content/uploads/2022/08/colloque_ciera-programme_2010.pdf,tagged from a published synopsis; primary theme
+Q20261126-9862-F4,Wabak,2006,theme,Youth,Lives and Relations,https://ciera-recherches.ca/wp-content/uploads/2022/08/colloque_ciera-programme_2010.pdf,tagged from a published synopsis
+Q20261126-9862-F4,Wabak,2006,form,Experimental,,https://ciera-recherches.ca/wp-content/uploads/2022/08/colloque_ciera-programme_2010.pdf,recorded in Published
+Q20261126-9862-F4,Wabak,2006,length,Short,,https://ciera-recherches.ca/wp-content/uploads/2022/08/colloque_ciera-programme_2010.pdf,recorded in Published
+Q20261126-9862-F5,Waseya Dizihin (Trésor de Lumière),2010,theme,Kinship,Lives and Relations,https://festivalregard.com/programmation/18e-festival-2014/programmes-thematiques/programme/totem-10-ans-de-wapikoni/nous-sommes,tagged from a published synopsis; primary theme
+Q20261126-9862-F5,Waseya Dizihin (Trésor de Lumière),2010,theme,More-than-Human Relations,Land and Environment,https://festivalregard.com/programmation/18e-festival-2014/programmes-thematiques/programme/totem-10-ans-de-wapikoni/nous-sommes,tagged from a published synopsis
+Q20261126-9862-F5,Waseya Dizihin (Trésor de Lumière),2010,theme,Women and Gender,Lives and Relations,https://festivalregard.com/programmation/18e-festival-2014/programmes-thematiques/programme/totem-10-ans-de-wapikoni/nous-sommes,tagged from a published synopsis
 Q20261121-104-F1,WAPIKONI (Fleur),2017,theme,Women and Gender,Lives and Relations,https://vimeo.com/220353064,tagged from a published synopsis; primary theme
 Q20261121-104-F1,WAPIKONI (Fleur),2017,theme,Elders and Knowledge,Knowledge and Continuity,https://vimeo.com/220353064,tagged from a published synopsis
 Q20261121-104-F1,WAPIKONI (Fleur),2017,form,Experimental,,https://vimeo.com/220353064,recorded in Published
@@ -8391,7 +8529,7 @@ Q20261123-51-F1,"Gregoria, tu nombre",2023,length,Short,,https://ellugarquehabit
 Q20261123-52-F1,"Ayllu, encuentro de nuestras almas",,theme,Youth,Lives and Relations,https://www.biobiochile.cl/noticias/artes-y-cultura/actualidad-cultural/2024/02/13/amp/chile-participa-en-berlinale-compitiendo-en-tres-secciones-y-con-variada-presencia-en-el-mercado.shtml,tagged from a published synopsis; primary theme
 Q20261123-52-F1,"Ayllu, encuentro de nuestras almas",,theme,Urban Indigeneity,Lives and Relations,https://www.biobiochile.cl/noticias/artes-y-cultura/actualidad-cultural/2024/02/13/amp/chile-participa-en-berlinale-compitiendo-en-tres-secciones-y-con-variada-presencia-en-el-mercado.shtml,tagged from a published synopsis
 Q20261123-52-F1,"Ayllu, encuentro de nuestras almas",,theme,Self-Representation and Countering Stereotypes,Expression and Representation,https://www.biobiochile.cl/noticias/artes-y-cultura/actualidad-cultural/2024/02/13/amp/chile-participa-en-berlinale-compitiendo-en-tres-secciones-y-con-variada-presencia-en-el-mercado.shtml,tagged from a published synopsis
-Q20261123-52-F1,"Ayllu, encuentro de nuestras almas",,form,Fiction,,https://www.biobiochile.cl/noticias/artes-y-cultura/actualidad-cultural/2024/02/13/amp/chile-participa-en-berlinale-compitiendo-en-tres-secciones-y-con-variada-presencia-en-el-mercado.shtml,"normalised from the recorded form ""Fiction (in progress)"""
+Q20261123-52-F1,"Ayllu, encuentro de nuestras almas",,form,Fiction,,https://www.biobiochile.cl/noticias/artes-y-cultura/actualidad-cultural/2024/02/13/amp/chile-participa-en-berlinale-compitiendo-en-tres-secciones-y-con-variada-presencia-en-el-mercado.shtml,recorded in Published
 Q20261123-95-F1,Los muertos,2024,theme,Cosmology and Origin Stories,Knowledge and Continuity,https://www.chirapaq.org.pe/es/articles/cine-indigena-del-pueblo-matses-llega-a-youtube-con-tres-cortos-animados,tagged from a published synopsis; primary theme
 Q20261123-95-F1,Los muertos,2024,theme,Memory and Oral History,Knowledge and Continuity,https://www.chirapaq.org.pe/es/articles/cine-indigena-del-pueblo-matses-llega-a-youtube-con-tres-cortos-animados,tagged from a published synopsis
 Q20261123-95-F1,Los muertos,2024,form,Animation,,https://www.chirapaq.org.pe/es/articles/cine-indigena-del-pueblo-matses-llega-a-youtube-con-tres-cortos-animados,recorded in Published
@@ -8461,9 +8599,9 @@ Q20261124-31-F1,In Our Own Hands,2021,theme,MMIWG2S,Sovereignty and Politics,htt
 Q20261124-31-F1,In Our Own Hands,2021,theme,Women and Gender,Lives and Relations,https://cinematicarts.duke.edu/screensociety/screenings/first-nations-film-video-festival-shorts-program,tagged from a published synopsis
 Q20261124-31-F1,In Our Own Hands,2021,form,Fiction,,https://cinematicarts.duke.edu/screensociety/screenings/first-nations-film-video-festival-shorts-program,recorded in Published
 Q20261124-31-F1,In Our Own Hands,2021,length,Short,,https://cinematicarts.duke.edu/screensociety/screenings/first-nations-film-video-festival-shorts-program,recorded in Published
-Q20261124-33-F1,Self Portrait,2018,theme,LGBTQIA2S,Lives and Relations,https://facets.org/programs/the-other-51-native-american-women-directors/,tagged from a published synopsis; primary theme
-Q20261124-33-F1,Self Portrait,2018,theme,Self-Representation and Countering Stereotypes,Expression and Representation,https://facets.org/programs/the-other-51-native-american-women-directors/,tagged from a published synopsis
-Q20261124-33-F1,Self Portrait,2018,length,Short,,https://facets.org/programs/the-other-51-native-american-women-directors/,recorded in Published
+Q20261124-33-F1,Self Portrait,2018,theme,LGBTQIA2S,Lives and Relations,https://fnfvf.org/featured-films-fall-2023-1,tagged from a published synopsis; primary theme
+Q20261124-33-F1,Self Portrait,2018,theme,Self-Representation and Countering Stereotypes,Expression and Representation,https://fnfvf.org/featured-films-fall-2023-1,tagged from a published synopsis
+Q20261124-33-F1,Self Portrait,2018,length,Short,,https://fnfvf.org/featured-films-fall-2023-1,recorded in Published
 Q20261126-34-F1,Postcards,,theme,Self-Representation and Countering Stereotypes,Expression and Representation,https://fnfvf.org/featured-films-fall-2023-1,tagged from a published synopsis; primary theme
 Q20261126-34-F1,Postcards,,length,Short,,https://fnfvf.org/featured-films-fall-2023-1,recorded in Published
 Q20261126-112-F1,Things You Know But Cannot Explain,2022,form,Animation,,https://www.mcminnvillefilmfest.org/past-official-selections,"normalised from the recorded form ""Animation"""
@@ -8474,6 +8612,10 @@ Q20261126-121-F1,Baduwa’t,2025,theme,Environmental Change,Land and Environment
 Q20261126-121-F1,Baduwa’t,2025,theme,Land Defense,Land and Environment,https://www.baduwatwatershedcouncil.org/documentary,tagged from a published synopsis
 Q20261126-121-F1,Baduwa’t,2025,form,Documentary,,https://www.baduwatwatershedcouncil.org/documentary,recorded in Published
 Q20261124-36-F1,Sun dressed woman,2022,form,Animation,,https://filmfreeway.com/mulhervestidadesol,"normalised from the recorded form ""Animation"""
+Q20261126-8765-F1,Grandma's Barn,,form,Fiction,,https://poehcenter.org/pathways/ | https://iaia.edu/avery-hale-creates-magic-on-and-off-camera/,recorded in Published
+Q20261126-8765-F1,Grandma's Barn,,length,Short,,https://poehcenter.org/pathways/ | https://iaia.edu/avery-hale-creates-magic-on-and-off-camera/,recorded in Published
+Q20261126-8767-F1,Grand Entry,,form,Fiction,,https://poehcenter.org/pathways/,recorded in Published
+Q20261126-8767-F1,Grand Entry,,length,Short,,https://poehcenter.org/pathways/,recorded in Published
 Q20261124-94-F1,February Sixteenth Nineteen Forty-Seven,2024,theme,Memory and Oral History,Knowledge and Continuity,https://movingimages.ca/products/feb-16-1947,tagged from a published synopsis; primary theme
 Q20261124-94-F1,February Sixteenth Nineteen Forty-Seven,2024,theme,Elders and Knowledge,Knowledge and Continuity,https://movingimages.ca/products/feb-16-1947,tagged from a published synopsis
 Q20261124-94-F1,February Sixteenth Nineteen Forty-Seven,2024,theme,Kinship,Lives and Relations,https://movingimages.ca/products/feb-16-1947,tagged from a published synopsis
@@ -8521,7 +8663,9 @@ Q20261124-49-F1,Made For Her: A Native American Fashion Film,,form,Fiction,,http
 Q20261124-49-F1,Made For Her: A Native American Fashion Film,,length,Short,,https://www.nmfilmfoundation.org/fiscal-sponsorship,recorded in Published
 Q20261124-51-F1,Florencio Quispe,2025,form,Documentary,,https://www.enpalco.cl/categoria/cine/florencio-quispe-retrato-norte-chileno-viaja-corazon-cine-mundial,"normalised from the recorded form ""Documentary"""
 Q20261126-86-F1,"Cervantine Videodance: Arirang, Cielito Lindo!",2022,length,Short,,https://www.socialfilmfestivalartelesia.it/2024/08/elenco-delle-opere-selezionate-in-concorso/,recorded in Published
+Q20261126-85-F1,Spontaneous Generation,2024,form,Experimental,,https://www.socialfilmfestivalartelesia.it/2024/08/elenco-delle-opere-selezionate-in-concorso/,recorded in Published
 Q20261126-85-F1,Spontaneous Generation,2024,length,Short,,https://www.socialfilmfestivalartelesia.it/2024/08/elenco-delle-opere-selezionate-in-concorso/,recorded in Published
+Q20261126-84-F1,Gypsy Videodance,2023,form,Experimental,,https://www.socialfilmfestivalartelesia.it/2024/08/elenco-delle-opere-selezionate-in-concorso/,recorded in Published
 Q20261126-84-F1,Gypsy Videodance,2023,length,Short,,https://www.socialfilmfestivalartelesia.it/2024/08/elenco-delle-opere-selezionate-in-concorso/,recorded in Published
 QM-77e7e886fe-M1,Xgooba,,theme,Linguistic Preservation,Knowledge and Continuity,https://oaxaca.eluniversal.com.mx/mas-de-oaxaca/cineasta-zapoteco-david-illescas-presentara-en-oaxaca-xgooba-su-primera-cinta-como/?outputType=amp,tagged from a published synopsis; primary theme
 QM-77e7e886fe-M1,Xgooba,,theme,Displacement and Migration,Sovereignty and Politics,https://oaxaca.eluniversal.com.mx/mas-de-oaxaca/cineasta-zapoteco-david-illescas-presentara-en-oaxaca-xgooba-su-primera-cinta-como/?outputType=amp,tagged from a published synopsis
@@ -8593,7 +8737,9 @@ Q20261124-77-F1,O Alimento da Saúde é Indígena e Intercultural,,form,Document
 Q20261124-81-F1,El canto del maguaré. Palabra de consejo de Dújdulli,2022,form,Documentary,,https://www.flacso.edu.ec/cine-etnografico/pelicula/el-canto-del-maguare-palabra-de-consejo-de-dujdulli/,"normalised from the recorded form ""Documentary"""
 Q20261124-82-F1,Tanuzanamu: Principio del Equilibrio,2026,form,Documentary,,https://unimagdalena.edu.co/presentacionPublicacion/VerNoticia/468742,"normalised from the recorded form ""Documentary"""
 Q20261124-83-F1,Navajo Highways,2025,length,Series,,https://www.kjzz.org/the-show/2025-05-06/navajo-highways-teaches-kids-dine-but-older-generation-had-an-emotional-response-creator-says,"normalised from the recorded form ""Television series"""
-Q20261124-78-F1,"Nosso alimento, nosso jeito de viver Madiha – Ikha zamatapa, ikha madie, ikha wima naharo",2025,form,Documentary,,https://cba.aba-agroecologia.org.br/ficaeco/,"normalised from the recorded form ""Documentary"""
+Q20261124-78-F1,"Nosso alimento, nosso jeito de viver Madiha – Ikha zamatapa, ikha madie, ikha wima naharo",2025,theme,Food Sovereignty,Land and Environment,https://ac24horas.com/2025/11/21/filmes-dirigidos-por-indigenas-do-acre-sao-lancados-na-cop30/,tagged from a published synopsis; primary theme
+Q20261124-78-F1,"Nosso alimento, nosso jeito de viver Madiha – Ikha zamatapa, ikha madie, ikha wima naharo",2025,form,Documentary,,https://ac24horas.com/2025/11/21/filmes-dirigidos-por-indigenas-do-acre-sao-lancados-na-cop30/,recorded in Published
+Q20261124-78-F1,"Nosso alimento, nosso jeito de viver Madiha – Ikha zamatapa, ikha madie, ikha wima naharo",2025,length,Feature,,https://ac24horas.com/2025/11/21/filmes-dirigidos-por-indigenas-do-acre-sao-lancados-na-cop30/,recorded in Published
 Q20261124-79-F1,Katxa nawa: cantar para o crescer das plantas,2025,form,Documentary,,https://cba.aba-agroecologia.org.br/ficaeco/,"normalised from the recorded form ""Documentary"""
 Q20261124-86-F1,Whiteface,,theme,Self-Representation and Countering Stereotypes,Expression and Representation,https://www.everettsokol.com/whiteface,tagged from a published synopsis; primary theme
 Q20261124-86-F1,Whiteface,,theme,Music and Performance,Expression and Representation,https://www.everettsokol.com/whiteface,tagged from a published synopsis
@@ -8629,8 +8775,10 @@ Q20261126-73-F2,Kahehijü Ügühütu – O manejo da câmera,2007,theme,Collecti
 Q20261126-73-F2,Kahehijü Ügühütu – O manejo da câmera,2007,theme,Memory and Oral History,Knowledge and Continuity,https://www.lisa.fflch.usp.br/node/1320,tagged from a published synopsis
 Q20261126-73-F2,Kahehijü Ügühütu – O manejo da câmera,2007,form,Documentary,,https://www.lisa.fflch.usp.br/node/1320,recorded in Published
 Q20261126-73-F2,Kahehijü Ügühütu – O manejo da câmera,2007,length,Short,,https://www.lisa.fflch.usp.br/node/1320,recorded in Published
-Q20261126-73-F3,KUARUP,2020,form,Documentary,,https://www.frontiersin.org/journals/climate/articles/10.3389/fclim.2023.1231794/full,recorded in Published
-Q20261126-73-F3,KUARUP,2020,length,Short,,https://www.frontiersin.org/journals/climate/articles/10.3389/fclim.2023.1231794/full,recorded in Published
+Q20261126-73-F3,KUARUP,2020,theme,Health and Healing,Lives and Relations,https://www.youtube.com/watch?v=ij0DVQhj0n8,tagged from a published synopsis; primary theme
+Q20261126-73-F3,KUARUP,2020,theme,Kinship,Lives and Relations,https://www.youtube.com/watch?v=ij0DVQhj0n8,tagged from a published synopsis
+Q20261126-73-F3,KUARUP,2020,form,Documentary,,https://www.youtube.com/watch?v=ij0DVQhj0n8,recorded in Published
+Q20261126-73-F3,KUARUP,2020,length,Short,,https://www.youtube.com/watch?v=ij0DVQhj0n8,recorded in Published
 Q20261126-08-F1,A Câmera é a Flecha,2022,length,Short,,https://www.forumdoc.org.br/debates/mostra-seminario-a-camera-e-a-flecha-a-camera-e-a-cesta-cinemas-kraho-tupinamba--kuikuro-kaiabi-e-guarani,recorded in Published
 Q20261126-38-F2,Naja (Little Sister),2020,form,Animation,,https://trentofestival.it/en/archives/2021/naja/,"normalised from the recorded form ""Animated short"""
 Q20261126-38-F2,Naja (Little Sister),2020,length,Short,,https://trentofestival.it/en/archives/2021/naja/,recorded in Published
@@ -8641,6 +8789,9 @@ Q20261126-38-F5,Akornatsinniittut – Kiinappalik (Among Us – The Masked Man),
 Q20261126-38-F6,Imajuik,2021,language,Kalaallisut,kala1399,https://www.sapmifilm.com/film/30167,recorded in Published
 Q20261126-38-F6,Imajuik,2021,form,Fiction,,https://www.sapmifilm.com/film/30167,recorded in Published
 Q20261126-38-F6,Imajuik,2021,length,Short,,https://www.sapmifilm.com/film/30167,recorded in Published
+Q20261126-6203-F1,L'histoire de la petite valise rouge,2022,theme,Residential and Boarding Schools,Knowledge and Continuity,https://evenementswapikoni.ca/lhistoire-de-la-petite-valise-rouge,tagged from a published synopsis; primary theme
+Q20261126-6203-F1,L'histoire de la petite valise rouge,2022,theme,Health and Healing,Lives and Relations,https://evenementswapikoni.ca/lhistoire-de-la-petite-valise-rouge,tagged from a published synopsis
+Q20261126-6203-F1,L'histoire de la petite valise rouge,2022,theme,Kinship,Lives and Relations,https://evenementswapikoni.ca/lhistoire-de-la-petite-valise-rouge,tagged from a published synopsis
 Q20261126-6203-F1,L'histoire de la petite valise rouge,2022,form,Documentary,,https://evenementswapikoni.ca/lhistoire-de-la-petite-valise-rouge,recorded in Published
 Q20261126-6203-F1,L'histoire de la petite valise rouge,2022,length,Short,,https://evenementswapikoni.ca/lhistoire-de-la-petite-valise-rouge,recorded in Published
 QM-a35f6983f0-M1,Dramatik,2017,length,Short,,https://evenementswapikoni.ca/collection-duvres/films-2017,"normalised from the recorded form ""Short film (Wapikoni Mobile film collection)"""
@@ -8696,6 +8847,9 @@ Q20261126-19603-F1,La Illa,2022,form,Documentary,,https://www.retinalatina.org/p
 Q20261126-19603-F1,La Illa,2022,length,Feature,,https://www.retinalatina.org/peliculas/la-illa/,recorded in Published
 Q20261126-19604-F1,Taypi,2021,form,Documentary,,https://museo.precolombino.cl/static/archivados/cine-video-indigena-2022/taypi/index.html,recorded in Published
 Q20261126-19604-F1,Taypi,2021,length,Short,,https://museo.precolombino.cl/static/archivados/cine-video-indigena-2022/taypi/index.html,recorded in Published
+Q20261126-19606-F1,"Refugio, Revolución, Resistencia",2026,theme,"Art, Craft and Making",Expression and Representation,https://elbunkercasadecreacion.com/eventos/refugio-revolucion-resistencia/,tagged from a published synopsis; primary theme
+Q20261126-19606-F1,"Refugio, Revolución, Resistencia",2026,theme,Music and Performance,Expression and Representation,https://elbunkercasadecreacion.com/eventos/refugio-revolucion-resistencia/,tagged from a published synopsis
+Q20261126-19606-F1,"Refugio, Revolución, Resistencia",2026,form,Documentary,,https://elbunkercasadecreacion.com/eventos/refugio-revolucion-resistencia/,recorded in Published
 Q20261126-19605-F1,La finca es mi proyecto de vida,2015,form,Documentary,,https://ipdrs.org/multimedia-ipdrs/?coordinacion=ivan-molina-velasquez,recorded in Published
 Q20261126-19613-F1,Entre el Cielo y la Tierra,2007,form,Documentary,,https://www.fenavid.com/en/fenavidindustria,recorded in Published
 Q20261126-19616-F1,Un Trabajo Es … Clavo,2006,language,Spanish,stan1288,https://www.prodocumentales.org/catalogos/Catalogo2008.pdf,recorded in Published
@@ -8770,6 +8924,25 @@ Q20261126-28401-F3,Culture Capture: Terminal Addition,2019,theme,Sovereignty and
 Q20261126-28401-F3,Culture Capture: Terminal Addition,2019,theme,Self-Representation and Countering Stereotypes,Expression and Representation,https://vdb.vdb.org/titles/culture-capture-terminal-adddition,tagged from a published synopsis
 Q20261126-28401-F3,Culture Capture: Terminal Addition,2019,form,Experimental,,https://vdb.vdb.org/titles/culture-capture-terminal-adddition,recorded in Published
 Q20261126-28401-F3,Culture Capture: Terminal Addition,2019,length,Short,,https://vdb.vdb.org/titles/culture-capture-terminal-adddition,recorded in Published
+Q20261126-28501-F1,City Seal: Native New Yorkers,2018,language,English,stan1293,https://vdb.vdb.org/titles/city-seal-native-new-yorkers,recorded in Published
+Q20261126-28501-F1,City Seal: Native New Yorkers,2018,theme,Self-Representation and Countering Stereotypes,Expression and Representation,https://vdb.vdb.org/titles/city-seal-native-new-yorkers,tagged from a published synopsis; primary theme
+Q20261126-28501-F1,City Seal: Native New Yorkers,2018,form,Animation,,https://vdb.vdb.org/titles/city-seal-native-new-yorkers,recorded in Published
+Q20261126-28501-F1,City Seal: Native New Yorkers,2018,length,Short,,https://vdb.vdb.org/titles/city-seal-native-new-yorkers,recorded in Published
+Q20261126-28501-F2,Endless Acknowledgment,2020,language,English,stan1293,https://www.vdb.org/titles/endless-acknowledgment,recorded in Published
+Q20261126-28501-F2,Endless Acknowledgment,2020,theme,Sovereignty and Self-Determination,Sovereignty and Politics,https://www.vdb.org/titles/endless-acknowledgment,tagged from a published synopsis; primary theme
+Q20261126-28501-F2,Endless Acknowledgment,2020,theme,Self-Representation and Countering Stereotypes,Expression and Representation,https://www.vdb.org/titles/endless-acknowledgment,tagged from a published synopsis
+Q20261126-28501-F2,Endless Acknowledgment,2020,form,Experimental,,https://www.vdb.org/titles/endless-acknowledgment,recorded in Published
+Q20261126-28501-F2,Endless Acknowledgment,2020,length,Short,,https://www.vdb.org/titles/endless-acknowledgment,recorded in Published
+Q20261126-28501-F3,Culture Capture: Crimes Against Reality,2020,language,English,stan1293,https://vdb.vdb.org/titles/culture-capture-crimes-against-reality,recorded in Published
+Q20261126-28501-F3,Culture Capture: Crimes Against Reality,2020,theme,"Archives, Museums and Repatriation",Knowledge and Continuity,https://vdb.vdb.org/titles/culture-capture-crimes-against-reality,tagged from a published synopsis; primary theme
+Q20261126-28501-F3,Culture Capture: Crimes Against Reality,2020,theme,Self-Representation and Countering Stereotypes,Expression and Representation,https://vdb.vdb.org/titles/culture-capture-crimes-against-reality,tagged from a published synopsis
+Q20261126-28501-F3,Culture Capture: Crimes Against Reality,2020,form,Experimental,,https://vdb.vdb.org/titles/culture-capture-crimes-against-reality,recorded in Published
+Q20261126-28501-F3,Culture Capture: Crimes Against Reality,2020,length,Short,,https://vdb.vdb.org/titles/culture-capture-crimes-against-reality,recorded in Published
+Q20261126-28501-F4,What is Savage Philosophy?,2018,language,English,stan1293,https://www.vdb.org/titles/what-savage-philosophy,recorded in Published
+Q20261126-28501-F4,What is Savage Philosophy?,2018,theme,Self-Representation and Countering Stereotypes,Expression and Representation,https://www.vdb.org/titles/what-savage-philosophy,tagged from a published synopsis; primary theme
+Q20261126-28501-F4,What is Savage Philosophy?,2018,theme,Sovereignty and Self-Determination,Sovereignty and Politics,https://www.vdb.org/titles/what-savage-philosophy,tagged from a published synopsis
+Q20261126-28501-F4,What is Savage Philosophy?,2018,form,Experimental,,https://www.vdb.org/titles/what-savage-philosophy,recorded in Published
+Q20261126-28501-F4,What is Savage Philosophy?,2018,length,Short,,https://www.vdb.org/titles/what-savage-philosophy,recorded in Published
 Q20261126-19710-F1,Connected by Water,2022,theme,Water,Land and Environment,https://sbiff.org/wp-content/uploads/2022-Pocketguide.pdf,tagged from a published synopsis; primary theme
 Q20261126-19710-F1,Connected by Water,2022,theme,Kinship,Lives and Relations,https://sbiff.org/wp-content/uploads/2022-Pocketguide.pdf,tagged from a published synopsis
 Q20261126-19710-F1,Connected by Water,2022,theme,"Art, Craft and Making",Expression and Representation,https://sbiff.org/wp-content/uploads/2022-Pocketguide.pdf,tagged from a published synopsis
@@ -8806,3 +8979,16 @@ QW-WAPI-V176882768,Numushum (My Grandfather),2016,theme,Kinship,Lives and Relati
 QW-WAPI-V176882768,Numushum (My Grandfather),2016,theme,Music and Performance,Expression and Representation,https://img1.wsimg.com/blobby/go/c5fdeedf-d4e8-46ec-9b26-c057eaa3652c/Asinabka%20Booklet%202017%20Proof%2003.pdf,tagged from a published synopsis
 QW-WAPI-V176882768,Numushum (My Grandfather),2016,form,Music Video,,https://img1.wsimg.com/blobby/go/c5fdeedf-d4e8-46ec-9b26-c057eaa3652c/Asinabka%20Booklet%202017%20Proof%2003.pdf,recorded in Published
 QW-WAPI-V176882768,Numushum (My Grandfather),2016,length,Short,,https://img1.wsimg.com/blobby/go/c5fdeedf-d4e8-46ec-9b26-c057eaa3652c/Asinabka%20Booklet%202017%20Proof%2003.pdf,recorded in Published
+QM-2f5ef9997f-M1,La solidaridad no está en cuarentena,2020,form,Documentary,,https://realizadorestzikin.org/muesta/muestra-2020/seleccion-oficial,recorded in Published
+QM-2f5ef9997f-M1,La solidaridad no está en cuarentena,2020,length,Short,,https://realizadorestzikin.org/muesta/muestra-2020/seleccion-oficial,recorded in Published
+QW-WAPI-V280363220,Le coureur,2018,length,Short,,https://evenementswapikoni.ca/collection-duvres/films-2018,recorded in Published
+Q20261126-9861-F1,Madjin !,2009,length,Short,,https://www.paris-friendly.fr/rencontre-et-projection-gratuite-avec-6-realisateurs-amerindiens-du-quebec.html,recorded in Published
+Q20261126-9861-F2,Sketch ta vie !,2010,length,Short,,https://www.paris-friendly.fr/rencontre-et-projection-gratuite-avec-6-realisateurs-amerindiens-du-quebec.html,recorded in Published
+Q20261126-8850-F1,The Forgotten Slavery of Our Ancestors,2020,theme,State Violence and Genocide,Sovereignty and Politics,https://seestories.org/videos/the-forgotten-slavery-of-our-ancestors/,tagged from a published synopsis; primary theme
+Q20261126-8850-F1,The Forgotten Slavery of Our Ancestors,2020,form,Documentary,,https://seestories.org/videos/the-forgotten-slavery-of-our-ancestors/,recorded in Published
+Q20261126-8850-F2,Awake,2022,theme,Linguistic Preservation,Knowledge and Continuity,https://www.uaf.edu/news/archives/2023/alaska-native-language-center-film-nominated-for-northwest-regional-emmy.php,tagged from a published synopsis; primary theme
+Q20261126-8850-F2,Awake,2022,length,Short,,https://www.uaf.edu/news/archives/2023/alaska-native-language-center-film-nominated-for-northwest-regional-emmy.php,recorded in Published
+Q20261126-145-F1,Eso viene sucediendo,2003,theme,Women and Gender,Lives and Relations,https://moreliafilmfest.com/sites/default/files/2021-08/catalogo_2003.pdf,tagged from a published synopsis; primary theme
+Q20261126-145-F1,Eso viene sucediendo,2003,theme,Health and Healing,Lives and Relations,https://moreliafilmfest.com/sites/default/files/2021-08/catalogo_2003.pdf,tagged from a published synopsis
+Q20261126-145-F1,Eso viene sucediendo,2003,form,Documentary,,https://moreliafilmfest.com/sites/default/files/2021-08/catalogo_2003.pdf,recorded in Published
+Q20261126-145-F1,Eso viene sucediendo,2003,length,Short,,https://moreliafilmfest.com/sites/default/files/2021-08/catalogo_2003.pdf,recorded in Published
