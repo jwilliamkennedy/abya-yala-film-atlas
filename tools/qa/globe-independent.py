@@ -474,6 +474,9 @@ async def run(browser,name,viewport):
                 await page.wait_for_function("(id)=>window.AtlasGlobe.focus.settled && window.AtlasGlobe.discovery.featured?.film===id",arg=target,timeout=30000)
                 assert await page.locator("#globe-film-comparison [aria-current=true]").get_attribute("data-comparison-film")==target
                 assert await page.evaluate("AtlasGlobe.discovery.comparison.shared.length>0")
+                # Following a related film chooses its theme: the theme lights its lands without lines between them, the open film's lines follow it, and the comparison carries the line note.
+                await page.wait_for_function("AtlasGlobe.weave.lands>0 && AtlasGlobe.weave.arcs===0 && AtlasGlobe.themeConnections.enabled",timeout=30000)
+                assert await page.locator("#globe-film-comparison .globe-comparison-note").count()==1
                 await page.locator("#globe-more-toggle").click()
                 await page.locator("#globe-period").select_option("2020")
                 await page.keyboard.press("Escape")

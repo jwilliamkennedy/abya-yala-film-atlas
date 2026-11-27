@@ -184,3 +184,13 @@ John: "We dont need neighbors lines. We need theme lines."
 - The opening view is points and names, with the one breathing light.
 - `globe.js?v=65-plate`; the acceptance check now asserts there are no neighbour lines.
 
+## Thematic lines belong to a film (26 Nov, 9:15 pm, beta only)
+John: "We need theme lines." and "My sense is have the menu and pop guide users?"
+- A theme chosen alone lights the lands whose films carry it and draws no lines between them. The old web joined each land to its nearest neighbour in the theme, so which lands were joined was decided by distance; that tree (`weaveTree`) is removed. `AtlasGlobe.weave.arcs` is always 0.
+- Lines belong to a film. With a theme chosen, opening a film draws its lines to films that share the theme (up to three, as before); clearing the theme takes them away. A film's own "Theme web" button still works with no theme chosen. The panel says how many films share the theme beside the three drawn.
+- A line can be pressed. It opens the comparison of the two films with the shared themes, a note on what the line says and does not say, the synopsis page each theme was read from (`themeSource`), and the correction link.
+- The first time lines are drawn, a short note says what a line is and that it can be pressed. It is shown once per browser (`atlas-line-note`).
+- The Themes menu opens with two sentences: what a theme does on the globe, and that themes come from published synopses and not every film has them.
+- No theme is open on landing. The opening view stays points and names.
+- `globe.js?v=66-plate`, `globe-experiment.css?v=91-plate`, `i18n-20261107.js?v=42`. The acceptance check asserts the lights without arcs, the lines following the theme, and the note in the comparison.
+
