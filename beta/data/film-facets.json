@@ -2,8 +2,8 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-27",
  "license": "See data.html",
- "films_on_public_map": 3515,
- "film_entries": 3515,
+ "films_on_public_map": 3527,
+ "film_entries": 3527,
  "published_field_conflicts": {
   "SA50-20261014-59f87a2e3ce5-WORK-01": [
    "themes"
@@ -468,7 +468,7 @@
     "note": "",
     "region": "",
     "region_basis": "",
-    "films": 237
+    "films": 242
    },
    {
     "label": "Spanish",
@@ -482,7 +482,7 @@
     "note": "",
     "region": "",
     "region_basis": "",
-    "films": 71
+    "films": 72
    },
    {
     "label": "Portuguese",
@@ -1344,11 +1344,17 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Art, Craft and Making",
+    "Urban Indigeneity"
+   ],
+   "primary_theme": "Art, Craft and Making",
+   "families": [
+    "Expression and Representation",
+    "Lives and Relations"
+   ],
    "form": "Documentary",
-   "length": null
+   "length": "Feature"
   },
   "Q20261114-92-F7": {
    "title": "Nhe’ẽ kuery jogueru teri / Nossos espíritos seguem chegando",
@@ -7976,6 +7982,10 @@
     {
      "id": "DIR-0092",
      "name": "Gavin Baird"
+    },
+    {
+     "id": "Q20261126-95",
+     "name": "Jacob Farrell"
     }
    ],
    "languages": [
@@ -13515,6 +13525,41 @@
    "themes": [],
    "primary_theme": null,
    "families": [],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "RESEARCH-FILM-20261031-800-0024": {
+   "title": "Graduation Day",
+   "year": 2025,
+   "makers": [
+    {
+     "id": "DIR-0154",
+     "name": "Tasha Hubbard"
+    },
+    {
+     "id": "NEW-dc664128300b",
+     "name": "Charlene Raven Moore"
+    }
+   ],
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/"
+    }
+   ],
+   "themes": [
+    "Kinship",
+    "Youth"
+   ],
+   "primary_theme": "Kinship",
+   "families": [
+    "Lives and Relations"
+   ],
    "form": "Documentary",
    "length": "Short"
   },
@@ -25982,10 +26027,24 @@
      "name": "Courtney Montour"
     }
    ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://www.aptn.ca/programs/working-it-out-together/"
+    }
+   ],
+   "themes": [
+    "Health and Healing"
+   ],
+   "primary_theme": "Health and Healing",
+   "families": [
+    "Lives and Relations"
+   ],
    "form": "Documentary",
    "length": "Series"
   },
@@ -27867,37 +27926,6 @@
    "form": "Experimental",
    "length": "Short"
   },
-  "RESEARCH-FILM-20261031-800-0024": {
-   "title": "Graduation Day",
-   "year": 2025,
-   "makers": [
-    {
-     "id": "NEW-dc664128300b",
-     "name": "Charlene Raven Moore"
-    }
-   ],
-   "languages": [
-    {
-     "label": "English",
-     "as_credited": "English",
-     "glottocode": "stan1293",
-     "iso639_3": "eng",
-     "match": "exact",
-     "indigenous": false,
-     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/"
-    }
-   ],
-   "themes": [
-    "Kinship",
-    "Youth"
-   ],
-   "primary_theme": "Kinship",
-   "families": [
-    "Lives and Relations"
-   ],
-   "form": "Documentary",
-   "length": "Short"
-  },
   "Q20261126-94204-F1": {
    "title": "When the Children Left",
    "year": 2019,
@@ -27977,9 +28005,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "Land Defense",
+    "Memory and Oral History"
+   ],
+   "primary_theme": "Land Defense",
+   "families": [
+    "Knowledge and Continuity",
+    "Land and Environment"
+   ],
    "form": "Documentary",
    "length": "Series"
   },
@@ -46661,12 +46695,29 @@
      "name": "Carlos Efraín Pérez Rojas"
     }
    ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
-   "length": null
+   "languages": [
+    {
+     "label": "Spanish",
+     "as_credited": "Spanish",
+     "glottocode": "stan1288",
+     "iso639_3": "spa",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://sic.cultura.gob.mx/ficha.php?table=produccion_cine&table_id=580"
+    }
+   ],
+   "themes": [
+    "Extractivism",
+    "Resistance Movements",
+    "Land Defense"
+   ],
+   "primary_theme": "Extractivism",
+   "families": [
+    "Land and Environment",
+    "Sovereignty and Politics"
+   ],
+   "form": "Documentary",
+   "length": "Short"
   },
   "NEW-6d73018c2cfc-WORK-5": {
    "title": "Y el río sigue corriendo",
@@ -50505,6 +50556,32 @@
    "primary_theme": null,
    "families": [],
    "form": null,
+   "length": "Short"
+  },
+  "Q20261126-9951-F1": {
+   "title": "Tough Case",
+   "year": 2014,
+   "makers": [
+    {
+     "id": "NEW-eb8552ed354b",
+     "name": "Stefan Perez"
+    }
+   ],
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://filmfreeway.com/21869"
+    }
+   ],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
    "length": "Short"
   },
   "NEW-9341d60332f6-WORK-1": {
@@ -55600,6 +55677,40 @@
    "form": null,
    "length": "Short"
   },
+  "Q20261126-94406-F1": {
+   "title": "Sardis",
+   "year": 2020,
+   "makers": [
+    {
+     "id": "QM-8ade5da1ed",
+     "name": "Colleen Thurston"
+    }
+   ],
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://www.cinemahtx.org/event/borders-no-borders-documentary-shorts-2021/"
+    }
+   ],
+   "themes": [
+    "Water",
+    "Displacement and Migration",
+    "Memory and Oral History"
+   ],
+   "primary_theme": "Water",
+   "families": [
+    "Knowledge and Continuity",
+    "Land and Environment",
+    "Sovereignty and Politics"
+   ],
+   "form": "Documentary",
+   "length": "Short"
+  },
   "QM-46e5bc5c8e-M1": {
    "title": "Who She Is",
    "year": 2024,
@@ -60049,7 +60160,7 @@
     "Sovereignty and Politics"
    ],
    "form": "Documentary",
-   "length": null
+   "length": "Feature"
   },
   "Q20261114-52-F1": {
    "title": "Kī Hoʻalu: (Loosen the Key) Keola Beamer",
@@ -63154,7 +63265,17 @@
      "name": "Wallace W. Fox"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://catalog.afi.com/Film/8758-DRIFTIN-SANDS?cxt=filmography"
+    }
+   ],
    "themes": [],
    "primary_theme": null,
    "families": [],
@@ -63974,6 +64095,29 @@
    ],
    "form": null,
    "length": null
+  },
+  "Q20261126-9862-F1": {
+   "title": "L'Amendement (Abinodjic Madjinakini / The Amendment)",
+   "year": 2007,
+   "makers": [
+    {
+     "id": "DIR-0114",
+     "name": "Kevin Papatie"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Linguistic Preservation",
+    "Residential and Boarding Schools",
+    "Kinship"
+   ],
+   "primary_theme": "Linguistic Preservation",
+   "families": [
+    "Knowledge and Continuity",
+    "Lives and Relations"
+   ],
+   "form": "Documentary",
+   "length": "Short"
   },
   "Q20261121-104-F1": {
    "title": "WAPIKONI (Fleur)",
@@ -67859,6 +68003,26 @@
    "form": "Fiction",
    "length": null
   },
+  "Q20261127-97-F1": {
+   "title": "Kakatshat",
+   "year": 2018,
+   "makers": [
+    {
+     "id": "NEW-28f7d379e3b0",
+     "name": "Eve Ringuette"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Kinship"
+   ],
+   "primary_theme": "Kinship",
+   "families": [
+    "Lives and Relations"
+   ],
+   "form": "Fiction",
+   "length": "Short"
+  },
   "NEW-7a7adbdebf61-F1": {
    "title": "Unremembered",
    "year": null,
@@ -69941,10 +70105,26 @@
      "name": "Harlan Wungnema Shield"
     }
    ],
-   "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://filmfreeway.com/DirtRoad818"
+    }
+   ],
+   "themes": [
+    "MMIWG2S",
+    "Women and Gender"
+   ],
+   "primary_theme": "MMIWG2S",
+   "families": [
+    "Lives and Relations",
+    "Sovereignty and Politics"
+   ],
    "form": "Fiction",
    "length": "Short"
   },
@@ -75772,6 +75952,54 @@
    "form": "Experimental",
    "length": "Short"
   },
+  "Q20261126-9301-F2": {
+   "title": "Followed",
+   "year": 2026,
+   "makers": [
+    {
+     "id": "Q20261126-9301",
+     "name": "Harrison J. Bahe"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": "Short"
+  },
+  "Q20261126-9301-F3": {
+   "title": "Runaway",
+   "year": 2021,
+   "makers": [
+    {
+     "id": "Q20261126-9301",
+     "name": "Harrison J. Bahe"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": "Short"
+  },
+  "Q20261126-9301-F4": {
+   "title": "Veil",
+   "year": 2020,
+   "makers": [
+    {
+     "id": "Q20261126-9301",
+     "name": "Harrison J. Bahe"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": "Short"
+  },
   "Q20261126-9302-F1": {
    "title": "Gaamominik: One Woman's Journey to Find the Bits and Pieces",
    "year": 2022,
@@ -75802,6 +76030,86 @@
     "Lives and Relations"
    ],
    "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261126-95-F2": {
+   "title": "6M - O.C.D.",
+   "year": 2025,
+   "makers": [
+    {
+     "id": "Q20261126-95",
+     "name": "Jacob Farrell"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Music Video",
+   "length": "Short"
+  },
+  "Q20261126-95-F3": {
+   "title": "Spookymadeit - Joni Mitchell",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "Q20261126-95",
+     "name": "Jacob Farrell"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Music Video",
+   "length": "Short"
+  },
+  "Q20261126-95-F4": {
+   "title": "Riversleem - Eating Teeth",
+   "year": 2023,
+   "makers": [
+    {
+     "id": "Q20261126-95",
+     "name": "Jacob Farrell"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Music Video",
+   "length": "Short"
+  },
+  "Q20261126-95-F5": {
+   "title": "Enjay - Akimbo",
+   "year": 2023,
+   "makers": [
+    {
+     "id": "Q20261126-95",
+     "name": "Jacob Farrell"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Music Video",
+   "length": "Short"
+  },
+  "Q20261126-95-F6": {
+   "title": "Axis Decade - Front Page Challenge",
+   "year": 2022,
+   "makers": [
+    {
+     "id": "Q20261126-95",
+     "name": "Jacob Farrell"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Music Video",
    "length": "Short"
   }
  }
