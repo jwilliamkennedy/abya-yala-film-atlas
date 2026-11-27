@@ -2,8 +2,8 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-27",
  "license": "See data.html",
- "films_on_public_map": 3434,
- "film_entries": 3434,
+ "films_on_public_map": 3438,
+ "film_entries": 3438,
  "published_field_conflicts": {
   "SA50-20261014-59f87a2e3ce5-WORK-01": [
    "themes"
@@ -465,7 +465,7 @@
     "note": "",
     "region": "",
     "region_basis": "",
-    "films": 215
+    "films": 216
    },
    {
     "label": "Spanish",
@@ -507,7 +507,7 @@
     "note": "",
     "region": "",
     "region_basis": "",
-    "films": 20
+    "films": 21
    },
    {
     "label": "Vietnamese",
@@ -34252,6 +34252,22 @@
    "families": [],
    "form": "Fiction",
    "length": "Feature"
+  },
+  "LEAD-20261014-010-F1": {
+   "title": "Kwa se jobají yané!: Essa terra é nossa!",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "LEAD-20261014-010",
+     "name": "Beatriz Paulina Pankararu"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
   },
   "LEAD-20261014-015-WORK-01": {
    "title": "RAMI RAMI KIRANI",
@@ -68708,6 +68724,38 @@
    "form": "Fiction",
    "length": "Short"
   },
+  "Q20261126-8433-F1": {
+   "title": "Stay on the Path",
+   "year": 2023,
+   "makers": [
+    {
+     "id": "Q20261124-71",
+     "name": "Brandon Martinez"
+    }
+   ],
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://www.nordamerika-filmfestival.com/wp-content/uploads/2024/12/filmfestival_2025_programm_WEB.pdf"
+    }
+   ],
+   "themes": [
+    "Music and Performance",
+    "Kinship"
+   ],
+   "primary_theme": "Music and Performance",
+   "families": [
+    "Expression and Representation",
+    "Lives and Relations"
+   ],
+   "form": "Documentary",
+   "length": "Short"
+  },
   "Q20261124-72-F1": {
    "title": "Unearthing the Past",
    "year": 2024,
@@ -73750,6 +73798,54 @@
    "primary_theme": "Women and Gender",
    "families": [
     "Lives and Relations"
+   ],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "QW-WAPI-V284427034": {
+   "title": "Matakan",
+   "year": 2018,
+   "makers": [
+    {
+     "id": "QW-92e7854176",
+     "name": "Bella Cawnée Niquay"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QW-WAPI-V356718428": {
+   "title": "Katutuat Teueikanat",
+   "year": 2019,
+   "makers": [
+    {
+     "id": "QW-35e665e702",
+     "name": "Benoit Thisselmagan"
+    }
+   ],
+   "languages": [
+    {
+     "label": "French",
+     "as_credited": "French",
+     "glottocode": "stan1290",
+     "iso639_3": "fra",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://www.musee-mccord-stewart.ca/app/uploads/2022/10/katutuat-teueikanat_fiche_fr_en.pdf"
+    }
+   ],
+   "themes": [
+    "Art, Craft and Making",
+    "Elders and Knowledge"
+   ],
+   "primary_theme": "Art, Craft and Making",
+   "families": [
+    "Expression and Representation",
+    "Knowledge and Continuity"
    ],
    "form": "Documentary",
    "length": "Short"
