@@ -2,8 +2,8 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-27",
  "license": "See data.html",
- "films_on_public_map": 3123,
- "film_entries": 3123,
+ "films_on_public_map": 3127,
+ "film_entries": 3127,
  "published_field_conflicts": {
   "SA50-20261014-59f87a2e3ce5-WORK-01": [
    "themes"
@@ -18253,6 +18253,38 @@
    "form": "Documentary",
    "length": null
   },
+  "Q20261126-1303-F1": {
+   "title": "Mujer Yoreme - Partera / Yolem Jammut: Äsuatame",
+   "year": 2017,
+   "makers": [
+    {
+     "id": "DIR-0228",
+     "name": "Iris Villalpando"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261126-1304-F1": {
+   "title": "Mujer Yoreme - Curandera / Yolem Jammut: Jiteberi",
+   "year": 2017,
+   "makers": [
+    {
+     "id": "DIR-0228",
+     "name": "Iris Villalpando"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
+  },
   "FILM-ADD-20261031-18": {
    "title": "Alma & Esperanza",
    "year": 2012,
@@ -32594,6 +32626,10 @@
     {
      "id": "BETA30-20261106-D10",
      "name": "Martha Zelady"
+    },
+    {
+     "id": "QM-b1ab03ad5a",
+     "name": "Rubén Darío Cayaduro"
     }
    ],
    "languages": [],
@@ -65704,6 +65740,38 @@
     {
      "id": "Q20261126-99",
      "name": "Irene Bedard"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QM-f963717a3a-M1": {
+   "title": "La nación oculta en el meteorito",
+   "year": 2010,
+   "makers": [
+    {
+     "id": "QM-f963717a3a",
+     "name": "Juan Carlos Martínez"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QW-WAPI-V285618844": {
+   "title": "Know Yourself",
+   "year": 2018,
+   "makers": [
+    {
+     "id": "QW-419fda9195",
+     "name": "Ivy Durston"
     }
    ],
    "languages": [],
