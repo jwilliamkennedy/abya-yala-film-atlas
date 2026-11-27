@@ -1252,7 +1252,7 @@ html[data-reading-theme="night"] #atlas-rotational-globe .globe-primary,html[dat
 #atlas-rotational-globe #globe-surface{width:calc(100% - var(--globe-shift))}
 #atlas-rotational-globe #globe-live-map{inset:0 var(--globe-shift) 0 0}
 #atlas-rotational-globe #globe-aperture,#atlas-rotational-globe .globe-instructions{left:calc((100% - var(--globe-shift)) / 2)}
-@media(min-width:761px){#atlas-rotational-globe #globe-encounter[data-belt=true]{margin-left:calc(var(--globe-shift) / -2)}}
+@media(min-width:761px){#atlas-rotational-globe #globe-encounter[data-belt=true]{left:max(var(--globe-gutter),min(calc(50% - var(--globe-shift) / 2 - var(--box-w) / 2),calc(100% - var(--globe-gutter) - 46px - var(--box-w))))}}
 #atlas-rotational-globe:not([data-layout=compact]) .globe-guide{width:min(var(--globe-menu-width),calc(100% - 2 * var(--globe-gutter)));align-items:stretch}
 #atlas-rotational-globe:not([data-layout=compact]) .globe-primary{display:flex!important;justify-content:space-between;padding:0 18px!important}
 #atlas-rotational-globe:not([data-layout=compact]) .globe-primary button{font-size:14.5px!important;padding-top:13px!important;padding-bottom:13px!important}
@@ -1277,3 +1277,11 @@ html[data-reading-theme="night"] #atlas-rotational-globe .globe-primary,html[dat
 #atlas-rotational-globe #globe-encounter[data-single=true] :is(.globe-feature-art,.globe-art-feature)[data-art-state=ready]{width:100%!important;max-height:210px}
 #atlas-rotational-globe #globe-encounter[data-single=true] :is(.globe-feature-art,.globe-art-feature) img{width:100%!important;height:auto!important}
 #atlas-rotational-globe #globe-encounter[data-belt=true][data-single=true] .globe-featured:has(>.globe-feature-art[data-art-state=ready]:not([hidden])) .globe-encounter-actions{margin-left:0}
+
+/* The theme reel (27 Nov): with a theme on, the strip holds every film of the theme; each card names its land. */
+#atlas-rotational-globe #globe-encounter .globe-strip-land{display:block;width:100%;text-align:center;font:500 11.5px/1.25 var(--ui-sans,system-ui,sans-serif);color:var(--p-select,#9a7420);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#atlas-rotational-globe #globe-encounter .globe-film-land{display:block;font:500 12.5px/1.3 var(--ui-sans,system-ui,sans-serif);color:var(--p-select,#9a7420)}
+#atlas-rotational-globe #globe-encounter[data-belt=true][data-reel=only]{grid-template-columns:minmax(0,1fr);grid-template-areas:"head" "strip"}
+#atlas-rotational-globe #globe-encounter[data-belt=true][data-reel]:not([data-reel=""]){max-height:min(42%,340px,var(--globe-encounter-room,340px))}
+#atlas-rotational-globe #globe-encounter[data-belt=true][data-reel]:not([data-reel=""]):is([data-expanded=true],:has(.globe-encounter-disclosures>details[open])){max-height:min(70%,570px,var(--globe-encounter-room,570px))}
+

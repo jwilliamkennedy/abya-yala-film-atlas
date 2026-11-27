@@ -267,3 +267,14 @@ John: "Constellate turns off when you move globe"
 - Now Constellate stays open while the globe is moved, as Themes does with a theme on. It closes from its own word in the bar or with Escape. On a phone it still closes on a press outside, because the panel covers the globe there.
 - `globe.js?v=76-plate`.
 
+## The theme reel (27 Nov, 12:50 am, beta only)
+John, with a capture of MMIWG2S showing one land's two films: "When selected, the theme shows one community or director as thumbnail. Not super intuitive." then "increase size and ensure streamlined navigabiility."
+- With a theme on, the film panel's strip holds every film of the theme (the reel), not one land's films. Each card gives the title, the filmmaker and the land. The heading names the theme with its film and land counts; the open film's land is named beside the film.
+- The reel appears as soon as a theme is chosen, even with no land open, and nothing moves until a card is pressed.
+- Stepping (the arrows, the arrow keys on a card, a swipe, the page buttons) marks the card at once and turns the globe to that film's land. Lands follow one another by nearness, starting from the open land or the one nearest the view, so each step is a short turn. Pressing the current card opens the film.
+- Pressing a light on the globe still opens that land; the reel moves to its film.
+- The film panel is laid out against the whole stage again, not the narrower box the globe has sat in since it moved left, so it shows up to six cards where it had dropped to three.
+- The twelve unlabelled thumbnails are gone from the Themes panel; the upper-right column is now the bar, the pills and the drum.
+- A newly chosen theme brings the panel back if it had been closed.
+- `globe.js?v=77-plate`, `globe-experiment.css?v=101-plate`.
+
