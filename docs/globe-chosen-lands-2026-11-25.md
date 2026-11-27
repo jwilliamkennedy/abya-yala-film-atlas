@@ -163,3 +163,13 @@ John: the panel "still needs work and intuitive movement, grasping, closing, res
 - Local test note: waits that poll on animation frames stalled on this machine while the map drew; polling on a timer did not.
 - `globe.js?v=58-plate`, `globe-experiment.css?v=90-plate`.
 
+## Near the poles (26 Nov, 6 pm, beta only)
+John: "Little jumpy in the poles when moving around." Reproduced on the live beta in his Chrome and locally.
+- **What happened.** Dragged north from the opening view, the centre reached 90 degrees and passed over the pole: the longitude flipped (from 83 W to 93 E in one drag) and the view pinned there, turning instead of moving. Any zoom near a pole made the Earth lurch: the map library lowers its zoom toward the poles to hold the Earth's size (2.34 at the opening view, 0.8 at 70 N, below zero at the pole), while the atlas clamped and converted zoom as if latitude did not matter, so one wheel notch at 70 N more than doubled the Earth.
+- **The centre stops at 79 degrees** north and south, through the library's own constraint (`setTransformConstrain`), so a drag runs into it without being cut off. Every land can still be centred: the northernmost point is Avanersuarmiut at 77.8 N. The poles stay in view.
+- **The atlas's zoom is now the Earth's apparent size at every latitude** (`scaleOf`, `mapZoomFor`, `minMapZoom`): dragging from the opening view to 79 N keeps it at 1.00 (it read 0.35 at 70 N before), and the wheel, the buttons, a chosen land and the least zoom behave there as they do at the equator.
+- **Polar caps.** Web map imagery stops at 85 degrees, and the pole showed a pale disc. Two fills (`pole-caps`) carry the Arctic Ocean's washed colour and Antarctica's ice to the poles, with night colours.
+- **Not changed:** near 79 degrees a sideways drag still turns the Earth quickly (the grabbed point stays under the pointer, and meridians are close together there), and imagery is coarser toward the poles because the library asks for lower-zoom tiles there.
+- Local note: the sandbox's software renderer now and then loses its graphics context ("Graphics context lost" in `AtlasGlobe.liveFailure`); the globe then falls back to the plain canvas, as designed.
+- `globe.js?v=60-plate`; a check in `tools/qa/globe-discovery.py`.
+
