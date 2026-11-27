@@ -2,8 +2,8 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-27",
  "license": "See data.html",
- "films_on_public_map": 3127,
- "film_entries": 3127,
+ "films_on_public_map": 3137,
+ "film_entries": 3137,
  "published_field_conflicts": {
   "SA50-20261014-59f87a2e3ce5-WORK-01": [
    "themes"
@@ -101,7 +101,7 @@
     "note": "Credits name the language without a regional variety",
     "region": "North America",
     "region_basis": "Glottolog coordinates",
-    "films": 9
+    "films": 8
    },
    {
     "label": "Atikamekw",
@@ -465,7 +465,7 @@
     "note": "",
     "region": "",
     "region_basis": "",
-    "films": 145
+    "films": 144
    },
    {
     "label": "Spanish",
@@ -2920,6 +2920,22 @@
    "form": "Documentary",
    "length": "Short"
   },
+  "Q20261126-76-F1": {
+   "title": "Itsuni Ugunu: a febre da mata",
+   "year": null,
+   "makers": [
+    {
+     "id": "DIR-0052",
+     "name": "Takumã Kuikuro"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
+  },
   "FILM-0032": {
    "title": "Antônio e Piti",
    "year": null,
@@ -5200,6 +5216,38 @@
    "form": "Documentary",
    "length": "Short"
   },
+  "Q20261126-72-F1": {
+   "title": "Wildhood",
+   "year": 2021,
+   "makers": [
+    {
+     "id": "DIR-0071",
+     "name": "Bretten Hannam"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": "Feature"
+  },
+  "Q20261126-67-F1": {
+   "title": "Deep End",
+   "year": 2011,
+   "makers": [
+    {
+     "id": "DIR-0071",
+     "name": "Bretten Hannam"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
+  },
   "FILM-SRC-2023-00006": {
    "title": "Tautuktavuk (What We See)",
    "year": null,
@@ -7092,6 +7140,27 @@
    "form": "Documentary",
    "length": "Short"
   },
+  "Q20261126-1510-F1": {
+   "title": "Rosie",
+   "year": 2018,
+   "makers": [
+    {
+     "id": "DIR-0091",
+     "name": "Gail Maurice"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Kinship",
+    "Youth"
+   ],
+   "primary_theme": "Kinship",
+   "families": [
+    "Lives and Relations"
+   ],
+   "form": "Fiction",
+   "length": "Short"
+  },
   "RESEARCH-FILM-20261031-800-0034": {
    "title": "Klee",
    "year": 2025,
@@ -8815,26 +8884,7 @@
      "name": "Lisa Jackson"
     }
    ],
-   "languages": [
-    {
-     "label": "Anishinaabemowin (Ojibwe)",
-     "as_credited": "Anishinaabemowin (Ojibwe)",
-     "glottocode": "ojib1241",
-     "iso639_3": "",
-     "match": "group",
-     "indigenous": true,
-     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/"
-    },
-    {
-     "label": "English",
-     "as_credited": "English",
-     "glottocode": "stan1293",
-     "iso639_3": "eng",
-     "match": "exact",
-     "indigenous": false,
-     "source": "https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/"
-    }
-   ],
+   "languages": [],
    "themes": [
     "Memory and Oral History"
    ],
@@ -37240,6 +37290,22 @@
    "form": null,
    "length": null
   },
+  "QW-WAPI-V277533055": {
+   "title": "L'origine du capteur de rêves",
+   "year": 2018,
+   "makers": [
+    {
+     "id": "DIR-0397",
+     "name": "Donavan Vollant"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "WAP-2026-NEW398": {
    "title": "Auntie’s Hands",
    "year": 2017,
@@ -41934,7 +42000,7 @@
   },
   "NEW-1976cd104bb2-F1": {
    "title": "Ixoq",
-   "year": 2021,
+   "year": null,
    "makers": [
     {
      "id": "NEW-1976cd104bb2",
@@ -45158,6 +45224,22 @@
    "form": "Documentary",
    "length": null
   },
+  "Q20261126-39-F1": {
+   "title": "A Prayer for Joshua Jackson",
+   "year": 2018,
+   "makers": [
+    {
+     "id": "NEW-6aaa983968e2",
+     "name": "Khalil Hudson"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
+  },
   "NEW-286007eb290a-WORK-1": {
    "title": "A Traditional Kind of Woman: Too Much, Not 'Nuff",
    "year": 1997,
@@ -45913,6 +45995,22 @@
    "families": [],
    "form": "Documentary",
    "length": null
+  },
+  "Q20261126-64-F1": {
+   "title": "Mankiller",
+   "year": 2017,
+   "makers": [
+    {
+     "id": "NEW-47f1d133e435",
+     "name": "Valerie Red-Horse Mohl"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Feature"
   },
   "NEW-4cece503d728-WORK-1": {
    "title": "Behind the Bayano",
@@ -64082,6 +64180,38 @@
    "form": null,
    "length": null
   },
+  "Q20261126-133-F1": {
+   "title": "Lost Rroma Archive: Și roata a continuat să se învârtă...",
+   "year": 2026,
+   "makers": [
+    {
+     "id": "Q20261124-54",
+     "name": "Héctor Maya Requena"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "Q20261126-137-F1": {
+   "title": "Round City",
+   "year": 2025,
+   "makers": [
+    {
+     "id": "Q20261124-54",
+     "name": "Héctor Maya Requena"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
   "Q20261124-55-F1": {
    "title": "We the Indigenous People",
    "year": null,
@@ -65780,6 +65910,26 @@
    "families": [],
    "form": null,
    "length": null
+  },
+  "Q20261126-81-F1": {
+   "title": "Koski Kiwetan (Retourner d’où l’on vient)",
+   "year": 2011,
+   "makers": [
+    {
+     "id": "Q20261126-81",
+     "name": "Annie Dubé"
+    },
+    {
+     "id": "Q20261126-80",
+     "name": "Lorraine Echaquan"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
   }
  }
 }
