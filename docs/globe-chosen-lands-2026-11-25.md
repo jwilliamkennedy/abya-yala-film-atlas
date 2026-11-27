@@ -253,3 +253,11 @@ John, with a capture of Cherokee (Oklahoma) under MMIWG2S: "The submenu shrunk? 
 - Not changed: the heading counts the films and filmmakers that match the theme (1 and 1) while the Filmmakers list below counts everyone linked to the land (6).
 - `globe.js?v=75-plate`, `globe-experiment.css?v=100-plate`.
 
+## Promoted to the main site (27 Nov, 12:00 am)
+John: "push beta to main"
+- The promotion ran at 07:00 UTC on 27 Nov, started by hand from the Actions page (not through `promote-request.txt`), from beta commit dec52c4. Promotion commit 662872a.
+- The main site now serves `globe.js?v=75-plate`, `globe-experiment.css?v=100-plate`, `i18n-20261107.js?v=43`, identical to the beta's files.
+- Checked on the live main site in a real browser: the globe renders, Themes shows the five family pills and the drum, choosing a family draws its web (Kinship: 106 lands), there are no neighbour lines, and Find has no Lands picker.
+- On main with this promotion: everything in this file from "Neighbour lines removed" (26 Nov, 8:30 pm) onward.
+- Still to fix, now on main as well as the beta: the Nahua land links.
+
