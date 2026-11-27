@@ -26,7 +26,7 @@ let relief=null,reliefState='deferred',flight=0,flightTarget=null,lastDrag=null;
 const LAT_WALL=79,HOME_LAT=12,latShare=lat=>Math.log2(Math.max(.05,Math.cos(clamp(lat,-85,85)*Math.PI/180))),baseShare=latShare(HOME_LAT);
 function scaleOf(mapZoom,lat){return Math.pow(2,mapZoom-latShare(lat)+baseShare-liveBaseZoom);}
 function mapZoomFor(scale,lat){return liveBaseZoom+Math.log2(Math.max(.1,scale))-baseShare+latShare(lat);}
-let wallHeld=null,flyUntil=0;
+let wallHeld=null,atlasFlight=false;
 function minMapZoom(lat){return live.getMinZoom()-baseShare+latShare(lat);}
 let liveFailure='';let live=null,liveReady=false,liveHost=null,liveSignature='',liveBaseZoom=0,liveTimer=0;
  const startup={fallbackPaint:null,nativeLoaded:null,handoff:null,revealed:null,reason:null,localReady:null,imageryReady:false,firstVisible:null,firstRenderer:null,stableFrames:0,stableMs:0};
@@ -641,11 +641,13 @@ let hoverShown='';
    ]};
    live=new ml.Map({container:liveHost,style,center:initialCamera?[initialCamera[0],clamp(initialCamera[1],-LAT_WALL,LAT_WALL)]:center,zoom:initialCamera?initialCamera[2]:liveBaseZoom,minZoom:Math.max(-2,liveBaseZoom-0.35),maxZoom:14,maxPitch:55,attributionControl:false,dragRotate:false,pitchWithRotate:false,touchPitch:false,renderWorldCopies:false,cooperativeGestures:false,fadeDuration:120,trackResize:false,maxTileCacheSize:W<760?96:240,scrollZoom:{around:'center'}});
    live.keyboard?.disableRotation?.();
+   live.on('moveend',e=>{if(e?.atlasFlight)atlasFlight=false;});
    if(typeof live.setTransformConstrain==='function')live.setTransformConstrain((c,z)=>{
     // Past the limit the view stops on the meridian it was on, so a drag or a flick toward a pole runs north and rests in place of swinging round the pole.
-    // The atlas's own flights are left to slide along the limit.
+    // The atlas's own flights are left to slide along the limit: they are marked when they start and unmarked when the map reports their end,
+    // not by the clock, because a slow machine can draw a flight's last step long after its nominal time.
     let lat=clamp(c.lat,-LAT_WALL,LAT_WALL),lng=c.lng;
-    if(wallHeld&&nowMs()>flyUntil){
+    if(wallHeld&&!atlasFlight){
      // A move that turns the longitude more than a quarter-turn at once has gone over a pole: stop at that pole's limit.
      // The same for one that lands more than 100 degrees of latitude away.
      if(Math.abs(c.lat-wallHeld[1])>100){lat=(Math.sign(wallHeld[1])||1)*LAT_WALL;lng=wallHeld[0];}
@@ -671,7 +673,7 @@ let hoverShown='';
     const hLat=clamp(center[1],-LAT_WALL,LAT_WALL),target={center:[wrap(center[0]),hLat],zoom:clamp(mapZoomFor(zoom,hLat),minMapZoom(hLat),live.getMaxZoom())};
     target.pitch=target.zoom>5.4?Math.min(requestedPitch,42*clamp((target.zoom-5.4)/1.6,0,1)):0;requestedPitch=0;landscape=target.pitch>0;$('#globe-landscape').setAttribute('aria-pressed',String(landscape));
     const focused=document.activeElement===canvas;
-    draw();flyUntil=nowMs()+250;live.jumpTo(target);liveReady=true;startup.handoff=nowMs();host.classList.add('globe-live');readLiveCamera();installZoom();
+    draw();atlasFlight=true;live.jumpTo(target,{atlasFlight:true});liveReady=true;startup.handoff=nowMs();host.classList.add('globe-live');readLiveCamera();installZoom();
     canvas.tabIndex=-1;canvas.setAttribute('aria-hidden','true');if(focused)live.getCanvas().focus({preventScroll:true});
     syncTerrain();syncLandVisibility();settle();updateLive();updateDetailStatus(true);
     // Wait for a rendered frame with local geometry, not remote imagery or global idle.
@@ -1818,7 +1820,7 @@ function finishMove(){if(!host)return;/* Keep the prior encounter inactive until
 function cancelFlight(){if(flight)cancelAnimationFrame(flight);flight=0;flightTarget=null;}
 function setCamera(c,z=zoom,duration=300,pitch=null){
  inboundEncounter=null;requestedPitch=0;
- if(liveReady){stopWheel();live.stop();movement();const lat=clamp(c[1],-LAT_WALL,LAT_WALL),target={center:[wrap(c[0]),lat],zoom:clamp(mapZoomFor(z,lat),minMapZoom(lat),live.getMaxZoom()),duration:reduced.matches?0:duration,easing:t=>t*t*(3-2*t)};if(Number.isFinite(pitch))target.pitch=pitch;flyUntil=nowMs()+(reduced.matches?0:duration||0)+150;live.easeTo(target);return;}
+ if(liveReady){stopWheel();live.stop();movement();const lat=clamp(c[1],-LAT_WALL,LAT_WALL),target={center:[wrap(c[0]),lat],zoom:clamp(mapZoomFor(z,lat),minMapZoom(lat),live.getMaxZoom()),duration:reduced.matches?0:duration,easing:t=>t*t*(3-2*t)};if(Number.isFinite(pitch))target.pitch=pitch;atlasFlight=true;live.easeTo(target,{atlasFlight:true});return;}
  stopWheel();cancelFlight();const goal=[wrap(c[0]),clamp(c[1],-LAT_WALL,LAT_WALL)],goalZoom=overviewZoom(z);
  movement();
  if(reduced.matches||duration===0){center=goal;zoom=goalZoom;finishMove();return;}
