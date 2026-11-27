@@ -2,8 +2,8 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-27",
  "license": "See data.html",
- "films_on_public_map": 3330,
- "film_entries": 3330,
+ "films_on_public_map": 3362,
+ "film_entries": 3362,
  "published_field_conflicts": {
   "SA50-20261014-59f87a2e3ce5-WORK-01": [
    "themes"
@@ -283,7 +283,7 @@
     "note": "Inuktitut in Canadian credits usually names the eastern variety",
     "region": "North America",
     "region_basis": "Glottolog countries",
-    "films": 22
+    "films": 23
    },
    {
     "label": "Iñupiaq",
@@ -465,7 +465,7 @@
     "note": "",
     "region": "",
     "region_basis": "",
-    "films": 189
+    "films": 191
    },
    {
     "label": "Spanish",
@@ -479,7 +479,7 @@
     "note": "",
     "region": "",
     "region_basis": "",
-    "films": 61
+    "films": 62
    },
    {
     "label": "Portuguese",
@@ -605,7 +605,7 @@
     "note": "",
     "region": "South America",
     "region_basis": "Glottolog countries",
-    "films": 4
+    "films": 5
    },
    {
     "label": "Chinuk Wawa",
@@ -717,7 +717,7 @@
     "note": "Credits name Quechua without a variety",
     "region": "South America",
     "region_basis": "Glottolog coordinates",
-    "films": 4
+    "films": 5
    },
    {
     "label": "German",
@@ -8316,6 +8316,86 @@
    "form": "Fiction",
    "length": "Short"
   },
+  "Q20261126-8981-F1": {
+   "title": "Sylix Song",
+   "year": 2010,
+   "makers": [
+    {
+     "id": "DIR-0097",
+     "name": "Helen Haig-Brown"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Linguistic Preservation"
+   ],
+   "primary_theme": "Linguistic Preservation",
+   "families": [
+    "Knowledge and Continuity"
+   ],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261126-8982-F1": {
+   "title": "Math Class",
+   "year": 2010,
+   "makers": [
+    {
+     "id": "DIR-0097",
+     "name": "Helen Haig-Brown"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Linguistic Preservation"
+   ],
+   "primary_theme": "Linguistic Preservation",
+   "families": [
+    "Knowledge and Continuity"
+   ],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261126-8983-F1": {
+   "title": "Sisters Sam",
+   "year": 2010,
+   "makers": [
+    {
+     "id": "DIR-0097",
+     "name": "Helen Haig-Brown"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Linguistic Preservation"
+   ],
+   "primary_theme": "Linguistic Preservation",
+   "families": [
+    "Knowledge and Continuity"
+   ],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261126-8984-F1": {
+   "title": "Mom n'Me",
+   "year": 2010,
+   "makers": [
+    {
+     "id": "DIR-0097",
+     "name": "Helen Haig-Brown"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Linguistic Preservation"
+   ],
+   "primary_theme": "Linguistic Preservation",
+   "families": [
+    "Knowledge and Continuity"
+   ],
+   "form": "Documentary",
+   "length": "Short"
+  },
   "DIR-0098-W1031-1": {
    "title": "Sumé – The Sound of a Revolution",
    "year": 2014,
@@ -9145,6 +9225,136 @@
    "form": null,
    "length": null
   },
+  "Q20261126-8992-F1": {
+   "title": "Lullaby",
+   "year": 2010,
+   "makers": [
+    {
+     "id": "DIR-0111",
+     "name": "Kelvin Redvers"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Linguistic Preservation"
+   ],
+   "primary_theme": "Linguistic Preservation",
+   "families": [
+    "Knowledge and Continuity"
+   ],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261126-8993-F1": {
+   "title": "Ts'ak",
+   "year": 2010,
+   "makers": [
+    {
+     "id": "DIR-0111",
+     "name": "Kelvin Redvers"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Linguistic Preservation"
+   ],
+   "primary_theme": "Linguistic Preservation",
+   "families": [
+    "Knowledge and Continuity"
+   ],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261126-9000-F1": {
+   "title": "firebear called them faith healers ...an aboriginal story...",
+   "year": 2009,
+   "makers": [
+    {
+     "id": "DIR-0111",
+     "name": "Kelvin Redvers"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Memory and Oral History"
+   ],
+   "primary_theme": "Memory and Oral History",
+   "families": [
+    "Knowledge and Continuity"
+   ],
+   "form": "Experimental",
+   "length": "Short"
+  },
+  "Q20261126-9001-F1": {
+   "title": "The Making of a Haida Totem Pole",
+   "year": 2007,
+   "makers": [
+    {
+     "id": "DIR-0111",
+     "name": "Kelvin Redvers"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Art, Craft and Making"
+   ],
+   "primary_theme": "Art, Craft and Making",
+   "families": [
+    "Expression and Representation"
+   ],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261126-9002-F1": {
+   "title": "A Look at the Life of Morgan Green",
+   "year": 2007,
+   "makers": [
+    {
+     "id": "DIR-0111",
+     "name": "Kelvin Redvers"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Art, Craft and Making"
+   ],
+   "primary_theme": "Art, Craft and Making",
+   "families": [
+    "Expression and Representation"
+   ],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261126-9003-F1": {
+   "title": "Cold Road",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "DIR-0111",
+     "name": "Kelvin Redvers"
+    }
+   ],
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://riotheatre.ca/movie/cold-road/"
+    }
+   ],
+   "themes": [
+    "Kinship"
+   ],
+   "primary_theme": "Kinship",
+   "families": [
+    "Lives and Relations"
+   ],
+   "form": "Fiction",
+   "length": "Feature"
+  },
   "Q20261115-854-F1": {
    "title": "Miss Chief's Praying Hands",
    "year": 2019,
@@ -9803,6 +10013,86 @@
    ],
    "form": "Fiction",
    "length": "Series"
+  },
+  "Q20261126-8988-F1": {
+   "title": "Typewriter",
+   "year": 2010,
+   "makers": [
+    {
+     "id": "DIR-0118",
+     "name": "Lisa Jackson"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Linguistic Preservation"
+   ],
+   "primary_theme": "Linguistic Preservation",
+   "families": [
+    "Knowledge and Continuity"
+   ],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261126-8989-F1": {
+   "title": "Earl Smith",
+   "year": 2010,
+   "makers": [
+    {
+     "id": "DIR-0118",
+     "name": "Lisa Jackson"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Linguistic Preservation"
+   ],
+   "primary_theme": "Linguistic Preservation",
+   "families": [
+    "Knowledge and Continuity"
+   ],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261126-8990-F1": {
+   "title": "Songbringer",
+   "year": 2010,
+   "makers": [
+    {
+     "id": "DIR-0118",
+     "name": "Lisa Jackson"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Linguistic Preservation"
+   ],
+   "primary_theme": "Linguistic Preservation",
+   "families": [
+    "Knowledge and Continuity"
+   ],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261126-8991-F1": {
+   "title": "City Speaks",
+   "year": 2010,
+   "makers": [
+    {
+     "id": "DIR-0118",
+     "name": "Lisa Jackson"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Linguistic Preservation"
+   ],
+   "primary_theme": "Linguistic Preservation",
+   "families": [
+    "Knowledge and Continuity"
+   ],
+   "form": "Documentary",
+   "length": "Short"
   },
   "FILM-SRC-NFB-00062": {
    "title": "The Learning Path",
@@ -15343,6 +15633,66 @@
    "form": "Music Video",
    "length": "Short"
   },
+  "Q20261126-8985-F1": {
+   "title": "Spelling Bee",
+   "year": 2010,
+   "makers": [
+    {
+     "id": "DIR-0167",
+     "name": "Zoe Leigh Hopkins"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Linguistic Preservation"
+   ],
+   "primary_theme": "Linguistic Preservation",
+   "families": [
+    "Knowledge and Continuity"
+   ],
+   "form": null,
+   "length": "Short"
+  },
+  "Q20261126-8986-F1": {
+   "title": "Ktunaxa",
+   "year": 2010,
+   "makers": [
+    {
+     "id": "DIR-0167",
+     "name": "Zoe Leigh Hopkins"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Linguistic Preservation"
+   ],
+   "primary_theme": "Linguistic Preservation",
+   "families": [
+    "Knowledge and Continuity"
+   ],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261126-8987-F1": {
+   "title": "Airplane",
+   "year": 2010,
+   "makers": [
+    {
+     "id": "DIR-0167",
+     "name": "Zoe Leigh Hopkins"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Linguistic Preservation"
+   ],
+   "primary_theme": "Linguistic Preservation",
+   "families": [
+    "Knowledge and Continuity"
+   ],
+   "form": "Documentary",
+   "length": "Short"
+  },
   "FILM-0097": {
    "title": "Mala Junta (Bad Influence)",
    "year": null,
@@ -15988,6 +16338,10 @@
     {
      "id": "DIR-0172",
      "name": "Freddy Treuquil"
+    },
+    {
+     "id": "DIR-0176",
+     "name": "Pablo Villagra"
     }
    ],
    "languages": [],
@@ -16511,26 +16865,29 @@
    "length": null
   },
   "FILM-0123": {
-   "title": "Sukujula Tei (Stories of My Mother)",
-   "year": 2022,
+   "title": "SŪKŪJULA TEI (Stories of My Mother)",
+   "year": null,
    "makers": [
     {
      "id": "DIR-0182",
      "name": "David Hernández Palmar"
     }
    ],
-   "languages": [],
-   "themes": [
-    "Elders and Knowledge",
-    "Women and Gender",
-    "Kinship"
+   "languages": [
+    {
+     "label": "Wayuunaiki",
+     "as_credited": "Wayuunaiki",
+     "glottocode": "wayu1243",
+     "iso639_3": "guc",
+     "match": "exact",
+     "indigenous": true,
+     "source": "https://www.reciprocity.org/press-kits/sukujula-tei"
+    }
    ],
-   "primary_theme": "Elders and Knowledge",
-   "families": [
-    "Knowledge and Continuity",
-    "Lives and Relations"
-   ],
-   "form": "Documentary",
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
    "length": "Short"
   },
   "FILM-0124": {
@@ -16647,6 +17004,26 @@
    "families": [],
    "form": "Documentary",
    "length": "Feature"
+  },
+  "Q20261126-9004-F1": {
+   "title": "Tamaquito",
+   "year": null,
+   "makers": [
+    {
+     "id": "DIR-0182",
+     "name": "David Hernández Palmar"
+    },
+    {
+     "id": "DIR-0188",
+     "name": "Miguel Ramírez Boscán"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
   },
   "FILM-0126": {
    "title": "El viaje mítico de Sain y el Duende Akalakui",
@@ -28086,6 +28463,22 @@
    "form": "Documentary",
    "length": "Feature"
   },
+  "Q20261126-9005-F1": {
+   "title": "Wrecked",
+   "year": null,
+   "makers": [
+    {
+     "id": "NEW-45f5368fec01",
+     "name": "Heather Hatch"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": "Short"
+  },
   "NEW-f8409bf84ccd-WORK-1": {
    "title": "Sweetgrass Rings",
    "year": 2024,
@@ -32079,6 +32472,26 @@
    "primary_theme": null,
    "families": [],
    "form": "Music Video",
+   "length": "Short"
+  },
+  "Q20261126-159-F1": {
+   "title": "Collapsing Wave Function",
+   "year": 2025,
+   "makers": [
+    {
+     "id": "NEW-99cac4bf4e69",
+     "name": "Tyson Houseman"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "More-than-Human Relations"
+   ],
+   "primary_theme": "More-than-Human Relations",
+   "families": [
+    "Land and Environment"
+   ],
+   "form": "Experimental",
    "length": "Short"
   },
   "NEW-2aa6df7856b7-WORK-1": {
@@ -62363,6 +62776,128 @@
    "form": "Documentary",
    "length": null
   },
+  "Q20261126-8994-F1": {
+   "title": "Stories from the River: Resilience",
+   "year": 2019,
+   "makers": [
+    {
+     "id": "Q20261122-20",
+     "name": "Woodrow Hunt"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Sovereignty and Self-Determination",
+    "Water"
+   ],
+   "primary_theme": "Sovereignty and Self-Determination",
+   "families": [
+    "Land and Environment",
+    "Sovereignty and Politics"
+   ],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261126-8995-F1": {
+   "title": "Stories from the River: Lifeways",
+   "year": 2019,
+   "makers": [
+    {
+     "id": "Q20261122-20",
+     "name": "Woodrow Hunt"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Water"
+   ],
+   "primary_theme": "Water",
+   "families": [
+    "Land and Environment"
+   ],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261126-8996-F1": {
+   "title": "Stories from the River: Surrounded by History",
+   "year": 2019,
+   "makers": [
+    {
+     "id": "Q20261122-20",
+     "name": "Woodrow Hunt"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Memory and Oral History"
+   ],
+   "primary_theme": "Memory and Oral History",
+   "families": [
+    "Knowledge and Continuity"
+   ],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261126-8997-F1": {
+   "title": "Stories from the River: Language",
+   "year": 2019,
+   "makers": [
+    {
+     "id": "Q20261122-20",
+     "name": "Woodrow Hunt"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Linguistic Preservation"
+   ],
+   "primary_theme": "Linguistic Preservation",
+   "families": [
+    "Knowledge and Continuity"
+   ],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261126-8998-F1": {
+   "title": "Stories from the River: Treaties",
+   "year": 2019,
+   "makers": [
+    {
+     "id": "Q20261122-20",
+     "name": "Woodrow Hunt"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Sovereignty and Self-Determination"
+   ],
+   "primary_theme": "Sovereignty and Self-Determination",
+   "families": [
+    "Sovereignty and Politics"
+   ],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261126-8999-F1": {
+   "title": "Stories from the River: Celilo",
+   "year": 2019,
+   "makers": [
+    {
+     "id": "Q20261122-20",
+     "name": "Woodrow Hunt"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Water"
+   ],
+   "primary_theme": "Water",
+   "families": [
+    "Land and Environment"
+   ],
+   "form": "Documentary",
+   "length": "Short"
+  },
   "NEW-746053d844bb-N1": {
    "title": "Ñimikan",
    "year": null,
@@ -64264,7 +64799,17 @@
      "name": "Nadia Sammurtok"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "Inuktitut",
+     "as_credited": "Inuktitut",
+     "glottocode": "east2534",
+     "iso639_3": "ike",
+     "match": "probable",
+     "indigenous": true,
+     "source": "https://iso-bea.ca/fr/news-events/2025/04/10/bea-2024-25-production-recipients/"
+    }
+   ],
    "themes": [
     "Youth",
     "Health and Healing",
@@ -70976,6 +71521,141 @@
     "Knowledge and Continuity"
    ],
    "form": "Documentary",
+   "length": null
+  },
+  "QM-bcee5584f7-M1": {
+   "title": "Allillamanta Purinki",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "QM-bcee5584f7",
+     "name": "Yanïnti del Castillo"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": "Short"
+  },
+  "QM-bcee5584f7-M2": {
+   "title": "Noqaq Sonqoyqa Qanchis (Tengo siete corazones)",
+   "year": 2025,
+   "makers": [
+    {
+     "id": "QM-bcee5584f7",
+     "name": "Yanïnti del Castillo"
+    }
+   ],
+   "languages": [
+    {
+     "label": "Quechua",
+     "as_credited": "Quechua",
+     "glottocode": "quec1387",
+     "iso639_3": "que",
+     "match": "group",
+     "indigenous": true,
+     "source": "https://29fcl.codestation.pe/pelicula/noqaq-sonqoyqa-qanchis/"
+    }
+   ],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Fiction",
+   "length": "Short"
+  },
+  "Q20261127-88-F1": {
+   "title": "Kindred Roots (La Sangre Llama)",
+   "year": 2026,
+   "makers": [
+    {
+     "id": "Q20261127-88",
+     "name": "Janet Martinez"
+    }
+   ],
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://www.gironafilmfestival.com/pellicules/kindred-roots/"
+    },
+    {
+     "label": "Spanish",
+     "as_credited": "Spanish",
+     "glottocode": "stan1288",
+     "iso639_3": "spa",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://www.gironafilmfestival.com/pellicules/kindred-roots/"
+    }
+   ],
+   "themes": [
+    "Displacement and Migration",
+    "Urban Indigeneity"
+   ],
+   "primary_theme": "Displacement and Migration",
+   "families": [
+    "Lives and Relations",
+    "Sovereignty and Politics"
+   ],
+   "form": "Documentary",
+   "length": "Feature"
+  },
+  "Q20261126-8980-F2": {
+   "title": "Martyr, or: Your Own Prairie Bonnet Jesus",
+   "year": 2023,
+   "makers": [
+    {
+     "id": "Q20261126-8980",
+     "name": "Anthony Hudson"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Hybrid",
+   "length": null
+  },
+  "Q20261126-8980-F3": {
+   "title": "When It Was Hers",
+   "year": 2023,
+   "makers": [
+    {
+     "id": "Q20261126-8980",
+     "name": "Anthony Hudson"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Hybrid",
+   "length": null
+  },
+  "Q20261126-8980-F4": {
+   "title": "Carla Rossi: Freedom Runs",
+   "year": 2020,
+   "makers": [
+    {
+     "id": "Q20261126-8980",
+     "name": "Anthony Hudson"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Self-Representation and Countering Stereotypes"
+   ],
+   "primary_theme": "Self-Representation and Countering Stereotypes",
+   "families": [
+    "Expression and Representation"
+   ],
+   "form": "Hybrid",
    "length": null
   }
  }
