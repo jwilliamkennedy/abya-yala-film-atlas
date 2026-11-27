@@ -244,4 +244,4 @@ John: "subtlely and elegantly change the drum roll to a iflm canister style"
 - Behaviour is unchanged.
 - Shown to John as a mockup only, not built: a one-line note beside the drum the first time a web is drawn, and a Key button by the scale bar.
 - `globe.js?v=73-plate`, `globe-experiment.css?v=98-plate`.
-
+- 12:10 am: the drum's focus is shown by its thin gold outline alone; the heavy dark ring is gone. Reaching the drum by Tab also gives it the arrow keys. `globe.js?v=74-plate`, `globe-experiment.css?v=99-plate`.

@@ -1914,6 +1914,7 @@ function buildDrum(first){
  d.family=(i,exact=false)=>{const to=exact?i:mod(d.fi+i,fams.length);if(to===d.fi){d.choose();return;}kept[d.fi]=d.target;d.fi=to;d.target=kept[to];d.pos=d.target-1.4;spin();};
  // A theme chosen elsewhere (a film's theme button, a shared link) turns the drum to it.
  d.sync=()=>{const name=first.value;if(name&&!d.timer){const fi=fams.findIndex(g=>g.themes.includes(name));if(fi>=0){const n=fams[fi].themes.length,at=fams[fi].themes.indexOf(name);if(fi!==d.fi){kept[d.fi]=d.target;d.fi=fi;d.target=kept[fi];}const cur=mod(d.target,n);if(at!==cur){let k=mod(at-cur,n);if(k>n/2)k-=n;d.target+=k;}if(!d.raf)d.pos=d.target;kept[fi]=d.target;}}d.render();};
+ root.addEventListener('focus',()=>setDrumKeys(true));
  let acc=0,y0=null,dragged=false;
  win.addEventListener('wheel',e=>{e.preventDefault();acc+=e.deltaY||e.deltaX;while(Math.abs(acc)>=40){d.step(Math.sign(acc));acc-=Math.sign(acc)*40;}},{passive:false});
  win.addEventListener('pointerdown',e=>{y0=e.clientY;dragged=false;try{win.setPointerCapture(e.pointerId);}catch{}});

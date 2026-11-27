@@ -1223,7 +1223,8 @@ html[data-reading-theme="night"] #atlas-rotational-globe .globe-primary,html[dat
 #atlas-rotational-globe .globe-drum-body{position:relative;display:flex;align-items:center}
 #atlas-rotational-globe .globe-drum-body::after{content:"";position:absolute;left:17px;right:17px;top:50%;height:32px;margin-top:-16px;border-top:1px solid #b0852a;border-bottom:1px solid #b0852a;pointer-events:none}
 #atlas-rotational-globe .globe-theme-drum[data-keys=true]{border-color:#b0852a}
-#atlas-rotational-globe .globe-theme-drum:focus-visible{box-shadow:0 0 0 2px #b0852a}
+#atlas-rotational-globe .globe-theme-drum:focus,#atlas-rotational-globe .globe-theme-drum:focus-visible{outline:none!important;box-shadow:none!important}
+#atlas-rotational-globe .globe-theme-drum[data-keys=true]{box-shadow:0 0 0 1px #b0852a!important}
 #atlas-rotational-globe .globe-theme-head{flex-wrap:nowrap;align-items:center;min-height:32px}
 #atlas-rotational-globe .globe-drum-window{position:relative;flex:1 1 auto;min-width:0;height:150px;perspective:700px;overflow:hidden;cursor:grab;touch-action:none}
 #atlas-rotational-globe .globe-drum-perfs{position:relative;flex:0 0 17px;height:150px;perspective:700px;overflow:hidden;background:rgba(127,127,127,.07)}
