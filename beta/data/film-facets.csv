@@ -581,7 +581,11 @@ Q20261126-65-F1,Mawitai’kw,2022,form,Documentary,,https://www.reelout.com/even
 Q20261126-65-F1,Mawitai’kw,2022,length,Short,,https://www.reelout.com/event/wigudun-with-short-film/,recorded in Published
 Q20261126-72-F1,Wildhood,2021,form,Fiction,,https://cfccreates.com/content-hub/wildhood/,"normalised from the recorded form ""Narrative feature"""
 Q20261126-72-F1,Wildhood,2021,length,Feature,,https://cfccreates.com/content-hub/wildhood/,"normalised from the recorded form ""Narrative feature"""
-Q20261126-67-F1,Deep End,2011,length,Short,,https://prosperopictures.com/news/,"normalised from the recorded form ""Short film"""
+Q20261126-67-F1,Deep End,2011,theme,LGBTQIA2S,Lives and Relations,https://www.moviefone.com/movie/deep-end/VnsdjZaYj5EIqs2s6A96Q6/main/,tagged from a published synopsis; primary theme
+Q20261126-67-F1,Deep End,2011,theme,Kinship,Lives and Relations,https://www.moviefone.com/movie/deep-end/VnsdjZaYj5EIqs2s6A96Q6/main/,tagged from a published synopsis
+Q20261126-67-F1,Deep End,2011,theme,Youth,Lives and Relations,https://www.moviefone.com/movie/deep-end/VnsdjZaYj5EIqs2s6A96Q6/main/,tagged from a published synopsis
+Q20261126-67-F1,Deep End,2011,form,Fiction,,https://www.moviefone.com/movie/deep-end/VnsdjZaYj5EIqs2s6A96Q6/main/,recorded in Published
+Q20261126-67-F1,Deep End,2011,length,Short,,https://www.moviefone.com/movie/deep-end/VnsdjZaYj5EIqs2s6A96Q6/main/,recorded in Published
 Q20261126-69-F1,New Skin,2008,length,Short,,https://prod3.agileticketing.net/websales/pages/info.aspx?epguid=6afead16-021b-4b88-b338-6a4b642c57cf&evtinfo=731689~36893ed1-b0b9-423c-bbab-90f22d0aeafe,"normalised from the recorded form ""Short film"""
 Q20261126-68-F1,Puppy,2010,length,Short,,https://prod3.agileticketing.net/websales/pages/info.aspx?epguid=6afead16-021b-4b88-b338-6a4b642c57cf&evtinfo=731689~36893ed1-b0b9-423c-bbab-90f22d0aeafe,"normalised from the recorded form ""Short film"""
 Q20261126-66-F1,Elmiteskuatl,2019,length,Short,,https://prod3.agileticketing.net/websales/pages/info.aspx?epguid=6afead16-021b-4b88-b338-6a4b642c57cf&evtinfo=731689~36893ed1-b0b9-423c-bbab-90f22d0aeafe,"normalised from the recorded form ""Short film"""
@@ -2876,6 +2880,8 @@ Q20261126-141-F1,Never Give Up,,length,Short,,https://fnfvf.org/featured-films-f
 Q20261126-6501-F1,NVision,2008,theme,Youth,Lives and Relations,https://americanindian.si.edu/sites/1/files/pdf/festival/2009.pdf,tagged from a published synopsis; primary theme
 Q20261126-6501-F1,NVision,2008,theme,Collective and Community Media,Expression and Representation,https://americanindian.si.edu/sites/1/files/pdf/festival/2009.pdf,tagged from a published synopsis
 Q20261126-6501-F1,NVision,2008,length,Short,,https://americanindian.si.edu/sites/1/files/pdf/festival/2009.pdf,recorded in Published
+Q20261126-152-F1,Mean Old Sun,2023,form,Music Video,,https://www.youtube.com/watch?v=flU7-5Zjxd4,recorded in Published
+Q20261126-152-F1,Mean Old Sun,2023,length,Short,,https://www.youtube.com/watch?v=flU7-5Zjxd4,recorded in Published
 Q20261108-92-F1,March Point,2008,theme,Youth,Lives and Relations,https://itvs.org/films/march-point/?tab=2,tagged from a published synopsis; primary theme
 Q20261108-92-F1,March Point,2008,theme,Extractivism,Land and Environment,https://itvs.org/films/march-point/?tab=2,tagged from a published synopsis
 Q20261108-92-F1,March Point,2008,theme,Collective and Community Media,Expression and Representation,https://itvs.org/films/march-point/?tab=2,tagged from a published synopsis
@@ -3842,6 +3848,13 @@ RESEARCH-FILM-20261031-800-0025,Circles,2024,theme,Women and Gender,Lives and Re
 RESEARCH-FILM-20261031-800-0025,Circles,2024,theme,Memory and Oral History,Knowledge and Continuity,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,tagged from a published synopsis
 RESEARCH-FILM-20261031-800-0025,Circles,2024,form,Experimental,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,recorded in Published
 RESEARCH-FILM-20261031-800-0025,Circles,2024,length,Short,,https://imaginenative.org/the-imaginenative-film-media-arts-festival-announces-25th-anniversary-programming/,recorded in Published
+Q20261126-165-F1,This Is How I Know You,2022,language,English,stan1293,https://imaginenative.org/wp-content/uploads/2023/02/2023-TOUR-CAT-_acces_Final-copy.pdf,recorded in Published
+Q20261126-165-F1,This Is How I Know You,2022,theme,MMIWG2S,Sovereignty and Politics,https://imaginenative.org/wp-content/uploads/2023/02/2023-TOUR-CAT-_acces_Final-copy.pdf,tagged from a published synopsis; primary theme
+Q20261126-165-F1,This Is How I Know You,2022,theme,"Justice, Truth and Reconciliation",Sovereignty and Politics,https://imaginenative.org/wp-content/uploads/2023/02/2023-TOUR-CAT-_acces_Final-copy.pdf,tagged from a published synopsis
+Q20261126-165-F1,This Is How I Know You,2022,form,Music Video,,https://imaginenative.org/wp-content/uploads/2023/02/2023-TOUR-CAT-_acces_Final-copy.pdf,recorded in Published
+Q20261126-165-F1,This Is How I Know You,2022,length,Short,,https://imaginenative.org/wp-content/uploads/2023/02/2023-TOUR-CAT-_acces_Final-copy.pdf,recorded in Published
+Q20261126-166-F1,I Know How,2023,form,Music Video,,https://www.youtube.com/watch?v=OxGqpfCd18c,recorded in Published
+Q20261126-166-F1,I Know How,2023,length,Short,,https://www.youtube.com/watch?v=OxGqpfCd18c,recorded in Published
 NEW-8b961b170d36-F1,ᏓᏗᏬᏂᏏ (We Will Speak),2023,theme,Linguistic Preservation,Knowledge and Continuity,https://mothertongue.si.edu/2024-program.html,tagged from a published synopsis; primary theme
 NEW-8b961b170d36-F1,ᏓᏗᏬᏂᏏ (We Will Speak),2023,theme,Youth,Lives and Relations,https://mothertongue.si.edu/2024-program.html,tagged from a published synopsis
 NEW-8b961b170d36-F1,ᏓᏗᏬᏂᏏ (We Will Speak),2023,theme,Elders and Knowledge,Knowledge and Continuity,https://mothertongue.si.edu/2024-program.html,tagged from a published synopsis
@@ -4023,6 +4036,10 @@ Q20261126-162-F1,WÎSKACÂN,2020,form,Experimental,,https://tysonhouseman.com/wi
 Q20261126-162-F1,WÎSKACÂN,2020,length,Short,,https://tysonhouseman.com/wiskacan,recorded in Published
 Q20261126-163-F1,Doorway,2023,form,Experimental,,https://tysonhouseman.com/doorway,recorded in Published
 Q20261126-163-F1,Doorway,2023,length,Short,,https://tysonhouseman.com/doorway,recorded in Published
+Q20261126-154-F1,Simple Song,2022,form,Music Video,,https://vimeo.com/856984969,recorded in Published
+Q20261126-154-F1,Simple Song,2022,length,Short,,https://vimeo.com/856984969,recorded in Published
+Q20261126-155-F1,Mountain of Gore,2022,form,Music Video,,https://vimeo.com/856983998,recorded in Published
+Q20261126-155-F1,Mountain of Gore,2022,length,Short,,https://vimeo.com/856983998,recorded in Published
 NEW-2aa6df7856b7-WORK-1,REZervations for Two (television),2026,language,English,stan1293,https://imaginenative.org/the-imaginenative-film-media-arts-festival-unveils-its-2026-programming/,recorded in Published
 Q20261126-7303-F1,Braided Together,2022,form,Fiction,,https://www.wrappedproductionsinc.com/scripted,recorded in Published
 Q20261126-7303-F1,Braided Together,2022,length,Short,,https://www.wrappedproductionsinc.com/scripted,recorded in Published
@@ -8014,8 +8031,11 @@ NEW-a8dd13433f82-F1,ETTHÉN / along the caribou fence,,theme,Food Sovereignty,La
 NEW-a8dd13433f82-F1,ETTHÉN / along the caribou fence,,form,Experimental,,https://iso-bea.ca/news-events/2025/04/10/iso-2024-25-production-recipients/,recorded in Published
 NEW-eadaecaac7e7-F1,Smudge The Blades,,theme,Youth,Lives and Relations,https://iso-bea.ca/news-events/2025/04/10/iso-2024-25-production-recipients/,tagged from a published synopsis; primary theme
 NEW-eadaecaac7e7-F1,Smudge The Blades,,form,Fiction,,https://iso-bea.ca/news-events/2025/04/10/iso-2024-25-production-recipients/,recorded in Published
-NEW-b684ae51b534-F2,Under The Arbor,,theme,Music and Performance,Expression and Representation,https://iso-bea.ca/news-events/2025/04/10/iso-2024-25-production-recipients/,tagged from a published synopsis; primary theme
-NEW-b684ae51b534-F2,Under The Arbor,,form,Documentary,,https://iso-bea.ca/news-events/2025/04/10/iso-2024-25-production-recipients/,recorded in Published
+NEW-b684ae51b534-F2,Under the Arbor,2025,language,Cree,cree1272,https://www.rednationff.com/under-the-arbor/,recorded in Published
+NEW-b684ae51b534-F2,Under the Arbor,2025,language,English,stan1293,https://www.rednationff.com/under-the-arbor/,recorded in Published
+NEW-b684ae51b534-F2,Under the Arbor,2025,theme,Music and Performance,Expression and Representation,https://www.rednationff.com/under-the-arbor/,tagged from a published synopsis; primary theme
+NEW-b684ae51b534-F2,Under the Arbor,2025,form,Documentary,,https://www.rednationff.com/under-the-arbor/,recorded in Published
+NEW-b684ae51b534-F2,Under the Arbor,2025,length,Feature,,https://www.rednationff.com/under-the-arbor/,recorded in Published
 Q20261126-98-F1,I'll Tell You When I'm Ready,2024,length,Short,,https://player.bfi.org.uk/free/film/watch-ill-tell-you-when-im-ready-2024-online,recorded in Published
 Q20261126-153-F1,The Crying Fields,2019,theme,Land Defense,Land and Environment,https://watch.plex.tv/en-GB/movie/the-crying-fields-2019,tagged from a published synopsis; primary theme
 Q20261126-153-F1,The Crying Fields,2019,theme,"Justice, Truth and Reconciliation",Sovereignty and Politics,https://watch.plex.tv/en-GB/movie/the-crying-fields-2019,tagged from a published synopsis

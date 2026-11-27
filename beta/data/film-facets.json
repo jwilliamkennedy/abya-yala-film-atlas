@@ -2,8 +2,8 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-27",
  "license": "See data.html",
- "films_on_public_map": 3206,
- "film_entries": 3206,
+ "films_on_public_map": 3211,
+ "film_entries": 3211,
  "published_field_conflicts": {
   "SA50-20261014-59f87a2e3ce5-WORK-01": [
    "themes"
@@ -171,7 +171,7 @@
     "note": "Credits name Cree without a variety",
     "region": "North America",
     "region_basis": "Glottolog countries",
-    "films": 5
+    "films": 6
    },
    {
     "label": "Plains Cree",
@@ -465,7 +465,7 @@
     "note": "",
     "region": "",
     "region_basis": "",
-    "films": 154
+    "films": 156
    },
    {
     "label": "Spanish",
@@ -5246,10 +5246,16 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
-   "form": null,
+   "themes": [
+    "LGBTQIA2S",
+    "Kinship",
+    "Youth"
+   ],
+   "primary_theme": "LGBTQIA2S",
+   "families": [
+    "Lives and Relations"
+   ],
+   "form": "Fiction",
    "length": "Short"
   },
   "Q20261126-69-F1": {
@@ -22523,6 +22529,22 @@
    "form": null,
    "length": "Short"
   },
+  "Q20261126-152-F1": {
+   "title": "Mean Old Sun",
+   "year": 2023,
+   "makers": [
+    {
+     "id": "DIR-0308",
+     "name": "Sterlin Harjo"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Music Video",
+   "length": "Short"
+  },
   "DIR-0309-F1": {
    "title": "Doing the Sheep Good",
    "year": 2013,
@@ -29676,6 +29698,53 @@
    "form": "Experimental",
    "length": "Short"
   },
+  "Q20261126-165-F1": {
+   "title": "This Is How I Know You",
+   "year": 2022,
+   "makers": [
+    {
+     "id": "NEW-b8ff82e3ca1c",
+     "name": "Sarah Houle"
+    }
+   ],
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://imaginenative.org/wp-content/uploads/2023/02/2023-TOUR-CAT-_acces_Final-copy.pdf"
+    }
+   ],
+   "themes": [
+    "MMIWG2S",
+    "Justice, Truth and Reconciliation"
+   ],
+   "primary_theme": "MMIWG2S",
+   "families": [
+    "Sovereignty and Politics"
+   ],
+   "form": "Music Video",
+   "length": "Short"
+  },
+  "Q20261126-166-F1": {
+   "title": "I Know How",
+   "year": 2023,
+   "makers": [
+    {
+     "id": "NEW-b8ff82e3ca1c",
+     "name": "Sarah Houle"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Music Video",
+   "length": "Short"
+  },
   "NEW-8b961b170d36-F1": {
    "title": "ᏓᏗᏬᏂᏏ (We Will Speak)",
    "year": 2023,
@@ -30900,6 +30969,38 @@
    "primary_theme": null,
    "families": [],
    "form": "Experimental",
+   "length": "Short"
+  },
+  "Q20261126-154-F1": {
+   "title": "Simple Song",
+   "year": 2022,
+   "makers": [
+    {
+     "id": "NEW-99cac4bf4e69",
+     "name": "Tyson Houseman"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Music Video",
+   "length": "Short"
+  },
+  "Q20261126-155-F1": {
+   "title": "Mountain of Gore",
+   "year": 2022,
+   "makers": [
+    {
+     "id": "NEW-99cac4bf4e69",
+     "name": "Tyson Houseman"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Music Video",
    "length": "Short"
   },
   "NEW-2aa6df7856b7-WORK-1": {
@@ -51035,6 +51136,10 @@
     {
      "id": "QM-650864154e",
      "name": "Olo Villalaz"
+    },
+    {
+     "id": "QW-8742dbc434",
+     "name": "Isac Dogirama"
     }
    ],
    "languages": [],
@@ -59557,6 +59662,10 @@
     {
      "id": "QW-8780df084b",
      "name": "Analicia López"
+    },
+    {
+     "id": "QW-8742dbc434",
+     "name": "Isac Dogirama"
     }
    ],
    "languages": [],
@@ -61910,15 +62019,34 @@
    "length": null
   },
   "NEW-b684ae51b534-F2": {
-   "title": "Under The Arbor",
-   "year": null,
+   "title": "Under the Arbor",
+   "year": 2025,
    "makers": [
     {
      "id": "NEW-b684ae51b534",
      "name": "Hayley Morin"
     }
    ],
-   "languages": [],
+   "languages": [
+    {
+     "label": "Cree",
+     "as_credited": "Cree",
+     "glottocode": "cree1272",
+     "iso639_3": "cre",
+     "match": "group",
+     "indigenous": true,
+     "source": "https://www.rednationff.com/under-the-arbor/"
+    },
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://www.rednationff.com/under-the-arbor/"
+    }
+   ],
    "themes": [
     "Music and Performance"
    ],
@@ -61927,7 +62055,7 @@
     "Expression and Representation"
    ],
    "form": "Documentary",
-   "length": null
+   "length": "Feature"
   },
   "Q20261126-98-F1": {
    "title": "I'll Tell You When I'm Ready",
