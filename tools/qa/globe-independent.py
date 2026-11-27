@@ -282,8 +282,8 @@ async def run(browser,name,viewport):
             # No territory shapes are drawn, so there is nothing to switch, strengthen or outline.
             assert await page.locator("#globe-lands").is_hidden() and await page.locator(".globe-settings").is_hidden()
             assert await page.evaluate("window.AtlasGlobe.territoryLayer.shapes===false && window.AtlasGlobe.territoryLayer.features===0")
-            # The net joins lands with films to their nearest neighbours; with no land chosen there are no ties.
-            assert await page.evaluate("(()=>{const n=window.AtlasGlobe.net;return n.lands>1&&n.lines>=n.lands/2&&n.lines<=n.lands*2})()")
+            # No neighbour lines: the globe draws only recorded lines (themes, shared credits, cited links).
+            assert await page.evaluate("window.AtlasGlobe.net.lines===0")
             await page.locator("#globe-find-toggle").click()
             land=await page.evaluate("""()=>{const inv=window.AtlasGlobe.artworkInventory(),local=new Map();for(const c of inv.credits){if(!c.source||/^https?:/i.test(c.source))continue;for(const id of c.lands)local.set(id,(local.get(id)||0)+1);}return window.AtlasGlobe.anchors.find(a=>(local.get(a.id)||0)>1)?.id||window.AtlasGlobe.anchors.find(a=>window.AtlasCollectionEditor.globeLandFilmCount(a.id)>1).id;}""")
             await page.locator("#globe-find").select_option(value=land)

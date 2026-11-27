@@ -177,3 +177,10 @@ John: "Little jumpy in the poles when moving around." Reproduced on the live bet
 - **Fast and coarse moves (v63).** On the live beta one long drag from 70 N still came out on the far side (91 W to 81 E): the library proposes a centre beyond the pole, on the opposite meridian. Any drag or flick whose proposed centre is past the limit, turns the longitude more than a quarter-turn at once, or lands more than 100 degrees of latitude away now stops at the limit on the meridian it was on. The atlas's own flights (`setCamera`, the overview handoff) are exempt and slide along the limit.
 - **A stranded flight (v64).** v63 exempted the atlas's flights by the clock. On a slow runner a flight from Mexico to Sápmi drew its last step after that time and was stopped at 79 N as if it were a drag; the artwork check caught it (run on `d66da20`). Flights are now marked when they start and unmarked when the map reports their end (`atlasFlight`, `moveend`).
 
+## Neighbour lines removed (26 Nov, 8:30 pm, beta only)
+John: "We dont need neighbors lines. We need theme lines."
+- The net between neighbouring lands is off (`NEIGHBOUR_LINES=false`; `AtlasGlobe.net.lines` is 0), by day and in Constellate's night view. It joined lands only because they were near one another, which the atlas does not record and a reader could take for kinship.
+- The lines that remain are recorded ones: a chosen theme's web, a film's theme web, the ties from a chosen land to lands that share a film credit with it, and the links a reader cites in Constellate.
+- The opening view is points and names, with the one breathing light.
+- `globe.js?v=65-plate`; the acceptance check now asserts there are no neighbour lines.
+

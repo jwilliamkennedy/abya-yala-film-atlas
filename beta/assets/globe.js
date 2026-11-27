@@ -1190,11 +1190,13 @@ function weaveTree(lands,web){const n=lands.length,features=[];if(n<2)return fea
   if(from[u]>=0){const segs=core.greatCircleSegments(lands[from[u]].coord,lands[u].coord,d3);if(segs.length)features.push({type:'Feature',properties:{from:lands[from[u]].id,to:lands[u].id,web},geometry:{type:'MultiLineString',coordinates:segs}});}
   for(let i=0;i<n;i++)if(!inTree[i]){const d=d3.geoDistance(lands[u].coord,lands[i].coord);if(d<best[i]){best[i]=d;from[i]=u;}}}
  return features;}
-// The net: each land with films is joined to its two nearest neighbours, as a constellation is drawn. The lines say only that the lands are near one another.
+// Neighbour lines are off (John, 26 Nov): a line joining two lands only because they are near says nothing the atlas records, and can be read as kinship.
+// The lines the globe draws are recorded ones: a theme's web, a film's theme web, the ties of a shared film credit, and a reader's own cited links.
+const NEIGHBOUR_LINES=false;
 let netKey='',netStats={lands:0,lines:0},tieKey='',tieStats={land:'',lines:0,lands:[]};
 function updateNet(){
  if(!liveReady)return;const key=filterKey();if(key===netKey)return;netKey=key;const src=live.getSource('land-net');if(!src)return;
- if(currentTheme().length){netStats={lands:0,lines:0};src.setData(emptyGeo());return;}
+ if(!NEIGHBOUR_LINES||currentTheme().length){netStats={lands:0,lines:0};src.setData(emptyGeo());return;}
  const lands=points.filter(p=>matchingFilms(p.id).length>0),seen=new Set(),features=[];
  for(const a of lands){const near=[];for(const b of lands){if(b===a)continue;const d=d3.geoDistance(a.coord,b.coord);if(d<.004||d>.28)continue;near.push([d,b]);}
   near.sort((x,y)=>x[0]-y[0]||x[1].id.localeCompare(y[1].id));
