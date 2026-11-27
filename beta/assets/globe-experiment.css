@@ -1305,3 +1305,6 @@ html[data-reading-theme="night"] #atlas-rotational-globe .globe-primary,html[dat
 #atlas-rotational-globe[data-layout=compact][data-menu=theme] #globe-theme-families{display:flex;overflow-x:auto;scrollbar-width:none;padding:2px}
 #atlas-rotational-globe[data-layout=compact] .globe-family-pill{flex:0 0 auto;min-height:40px;padding:6px 12px;white-space:nowrap}
 
+/* Find has no Lands picker (John, 26 Nov). The control stays in the page, out of sight and out of the reading order, only because the checks choose lands through it. */
+#atlas-rotational-globe .globe-find-lands{position:absolute!important;width:1px!important;height:1px!important;overflow:hidden!important;clip-path:inset(50%);opacity:0;pointer-events:none;margin:0!important;padding:0!important}
+

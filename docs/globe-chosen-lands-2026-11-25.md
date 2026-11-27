@@ -223,3 +223,9 @@ John: "Move globe left; have the menu be 5 horizontal pills below upper right me
 - Behaviour is unchanged: pressing a family turns the drum to it and chooses its theme; up and down roll themes, left and right move across families.
 - `globe.js?v=70-plate`, `globe-experiment.css?v=95-plate`.
 
+## Lands removed from Find (26 Nov, 11:20 pm, beta only)
+John: "Lands needs to go from Find."
+- The Find menu no longer shows a Lands picker. It holds the search for films and filmmakers and the Languages picker.
+- The picker is still in the page, hidden from view and from assistive technology, because nineteen steps in the checks choose lands through it. To do: move those steps to another way of choosing a land, then delete the control.
+- `globe.js?v=71-plate`, `globe-experiment.css?v=96-plate`.
+
