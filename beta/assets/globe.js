@@ -26,7 +26,7 @@ let relief=null,reliefState='deferred',flight=0,flightTarget=null,lastDrag=null;
 const LAT_WALL=79,HOME_LAT=12,latShare=lat=>Math.log2(Math.max(.05,Math.cos(clamp(lat,-85,85)*Math.PI/180))),baseShare=latShare(HOME_LAT);
 function scaleOf(mapZoom,lat){return Math.pow(2,mapZoom-latShare(lat)+baseShare-liveBaseZoom);}
 function mapZoomFor(scale,lat){return liveBaseZoom+Math.log2(Math.max(.1,scale))-baseShare+latShare(lat);}
-let wallHeld=null;
+let wallHeld=null,flyUntil=0;
 function minMapZoom(lat){return live.getMinZoom()-baseShare+latShare(lat);}
 let liveFailure='';let live=null,liveReady=false,liveHost=null,liveSignature='',liveBaseZoom=0,liveTimer=0;
  const startup={fallbackPaint:null,nativeLoaded:null,handoff:null,revealed:null,reason:null,localReady:null,imageryReady:false,firstVisible:null,firstRenderer:null,stableFrames:0,stableMs:0};
@@ -485,7 +485,7 @@ let hoverShown='';
   if(pk!==pointSourceKey){pointSourceKey=pk;live.getSource('cinema-points')?.setData(livePointsData());sourceUpdates.points++;updateWeave();updateNet();updateThumbs();}
   revealFocus();
  }
- function readLiveCamera(){const p=live.getCenter();center=[wrap(p.lng),p.lat];zoom=scaleOf(live.getZoom(),p.lat);const k=[center[0].toFixed(7),center[1].toFixed(7),live.getZoom().toFixed(6),live.getPitch().toFixed(4)].join('|');if(k!==lastCameraKey){lastCameraKey=k;lastCameraChange=nowMs();}}
+ function readLiveCamera(){const p=live.getCenter();wallHeld=[p.lng,p.lat];center=[wrap(p.lng),p.lat];zoom=scaleOf(live.getZoom(),p.lat);const k=[center[0].toFixed(7),center[1].toFixed(7),live.getZoom().toFixed(6),live.getPitch().toFixed(4)].join('|');if(k!==lastCameraKey){lastCameraKey=k;lastCameraChange=nowMs();}}
  // Centered wheel/pinch uses accumulated logarithmic scale, not a restarted easing
  // animation. The geographic point inside the fixed aperture stays fixed.
  function wheelStep(current,t){const dt=wheelTick?clamp(t-wheelTick,1,80):16.7;wheelTick=t;const delta=wheelGoal-current;return reduced.matches||Math.abs(delta)<.008?wheelGoal:current+delta*(1-Math.exp(-dt/105));}
@@ -642,8 +642,16 @@ let hoverShown='';
    live=new ml.Map({container:liveHost,style,center:initialCamera?[initialCamera[0],clamp(initialCamera[1],-LAT_WALL,LAT_WALL)]:center,zoom:initialCamera?initialCamera[2]:liveBaseZoom,minZoom:Math.max(-2,liveBaseZoom-0.35),maxZoom:14,maxPitch:55,attributionControl:false,dragRotate:false,pitchWithRotate:false,touchPitch:false,renderWorldCopies:false,cooperativeGestures:false,fadeDuration:120,trackResize:false,maxTileCacheSize:W<760?96:240,scrollZoom:{around:'center'}});
    live.keyboard?.disableRotation?.();
    if(typeof live.setTransformConstrain==='function')live.setTransformConstrain((c,z)=>{
-    // Past the limit the view stops. Pushing on against it holds the longitude too, so under a drag the Earth rests there in place of swinging round the pole.
-    const lat=clamp(c.lat,-LAT_WALL,LAT_WALL);let lng=c.lng;if(lat!==c.lat&&wallHeld&&live.dragPan?.isActive?.()&&Math.abs(wallHeld[1])>=LAT_WALL-.75&&Math.sign(wallHeld[1])===Math.sign(lat))lng=wallHeld[0];wallHeld=[lng,lat];
+    // Past the limit the view stops on the meridian it was on, so a drag or a flick toward a pole runs north and rests in place of swinging round the pole.
+    // The atlas's own flights are left to slide along the limit.
+    let lat=clamp(c.lat,-LAT_WALL,LAT_WALL),lng=c.lng;
+    if(wallHeld&&nowMs()>flyUntil){
+     // A move that turns the longitude more than a quarter-turn at once has gone over a pole: stop at that pole's limit.
+     // The same for one that lands more than 100 degrees of latitude away.
+     if(Math.abs(c.lat-wallHeld[1])>100){lat=(Math.sign(wallHeld[1])||1)*LAT_WALL;lng=wallHeld[0];}
+     else if(Math.abs(wrap(c.lng-wallHeld[0]))>90&&Math.abs(wallHeld[1])+Math.abs(c.lat)>60){lat=(Math.sign(wallHeld[1]+c.lat)||1)*LAT_WALL;lng=wallHeld[0];}
+     else if(lat!==c.lat)lng=wallHeld[0];
+    }
     return {center:lat===c.lat&&lng===c.lng?c:new ml.LngLat(lng,lat),zoom:clamp(z,minMapZoom(lat),live.getMaxZoom())};});
     live.getCanvas().addEventListener('webglcontextlost',e=>{e.preventDefault();failLive('Graphics context lost');},{once:true});
    // Source readiness alone can be true after an error. Count actual tile loads.
@@ -663,7 +671,7 @@ let hoverShown='';
     const hLat=clamp(center[1],-LAT_WALL,LAT_WALL),target={center:[wrap(center[0]),hLat],zoom:clamp(mapZoomFor(zoom,hLat),minMapZoom(hLat),live.getMaxZoom())};
     target.pitch=target.zoom>5.4?Math.min(requestedPitch,42*clamp((target.zoom-5.4)/1.6,0,1)):0;requestedPitch=0;landscape=target.pitch>0;$('#globe-landscape').setAttribute('aria-pressed',String(landscape));
     const focused=document.activeElement===canvas;
-    draw();live.jumpTo(target);liveReady=true;startup.handoff=nowMs();host.classList.add('globe-live');readLiveCamera();installZoom();
+    draw();flyUntil=nowMs()+250;live.jumpTo(target);liveReady=true;startup.handoff=nowMs();host.classList.add('globe-live');readLiveCamera();installZoom();
     canvas.tabIndex=-1;canvas.setAttribute('aria-hidden','true');if(focused)live.getCanvas().focus({preventScroll:true});
     syncTerrain();syncLandVisibility();settle();updateLive();updateDetailStatus(true);
     // Wait for a rendered frame with local geometry, not remote imagery or global idle.
@@ -1810,7 +1818,7 @@ function finishMove(){if(!host)return;/* Keep the prior encounter inactive until
 function cancelFlight(){if(flight)cancelAnimationFrame(flight);flight=0;flightTarget=null;}
 function setCamera(c,z=zoom,duration=300,pitch=null){
  inboundEncounter=null;requestedPitch=0;
- if(liveReady){stopWheel();live.stop();movement();const lat=clamp(c[1],-LAT_WALL,LAT_WALL),target={center:[wrap(c[0]),lat],zoom:clamp(mapZoomFor(z,lat),minMapZoom(lat),live.getMaxZoom()),duration:reduced.matches?0:duration,easing:t=>t*t*(3-2*t)};if(Number.isFinite(pitch))target.pitch=pitch;live.easeTo(target);return;}
+ if(liveReady){stopWheel();live.stop();movement();const lat=clamp(c[1],-LAT_WALL,LAT_WALL),target={center:[wrap(c[0]),lat],zoom:clamp(mapZoomFor(z,lat),minMapZoom(lat),live.getMaxZoom()),duration:reduced.matches?0:duration,easing:t=>t*t*(3-2*t)};if(Number.isFinite(pitch))target.pitch=pitch;flyUntil=nowMs()+(reduced.matches?0:duration||0)+150;live.easeTo(target);return;}
  stopWheel();cancelFlight();const goal=[wrap(c[0]),clamp(c[1],-LAT_WALL,LAT_WALL)],goalZoom=overviewZoom(z);
  movement();
  if(reduced.matches||duration===0){center=goal;zoom=goalZoom;finishMove();return;}
