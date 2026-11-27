@@ -26,6 +26,7 @@ let relief=null,reliefState='deferred',flight=0,flightTarget=null,lastDrag=null;
 const LAT_WALL=79,HOME_LAT=12,latShare=lat=>Math.log2(Math.max(.05,Math.cos(clamp(lat,-85,85)*Math.PI/180))),baseShare=latShare(HOME_LAT);
 function scaleOf(mapZoom,lat){return Math.pow(2,mapZoom-latShare(lat)+baseShare-liveBaseZoom);}
 function mapZoomFor(scale,lat){return liveBaseZoom+Math.log2(Math.max(.1,scale))-baseShare+latShare(lat);}
+let wallHeld=null;
 function minMapZoom(lat){return live.getMinZoom()-baseShare+latShare(lat);}
 let liveFailure='';let live=null,liveReady=false,liveHost=null,liveSignature='',liveBaseZoom=0,liveTimer=0;
  const startup={fallbackPaint:null,nativeLoaded:null,handoff:null,revealed:null,reason:null,localReady:null,imageryReady:false,firstVisible:null,firstRenderer:null,stableFrames:0,stableMs:0};
@@ -640,7 +641,10 @@ let hoverShown='';
    ]};
    live=new ml.Map({container:liveHost,style,center:initialCamera?[initialCamera[0],clamp(initialCamera[1],-LAT_WALL,LAT_WALL)]:center,zoom:initialCamera?initialCamera[2]:liveBaseZoom,minZoom:Math.max(-2,liveBaseZoom-0.35),maxZoom:14,maxPitch:55,attributionControl:false,dragRotate:false,pitchWithRotate:false,touchPitch:false,renderWorldCopies:false,cooperativeGestures:false,fadeDuration:120,trackResize:false,maxTileCacheSize:W<760?96:240,scrollZoom:{around:'center'}});
    live.keyboard?.disableRotation?.();
-   if(typeof live.setTransformConstrain==='function')live.setTransformConstrain((c,z)=>{const lat=clamp(c.lat,-LAT_WALL,LAT_WALL);return {center:lat===c.lat?c:new ml.LngLat(c.lng,lat),zoom:clamp(z,minMapZoom(lat),live.getMaxZoom())};});
+   if(typeof live.setTransformConstrain==='function')live.setTransformConstrain((c,z)=>{
+    // Past the limit the view stops. Pushing on against it holds the longitude too, so under a drag the Earth rests there in place of swinging round the pole.
+    const lat=clamp(c.lat,-LAT_WALL,LAT_WALL);let lng=c.lng;if(lat!==c.lat&&wallHeld&&live.dragPan?.isActive?.()&&Math.abs(wallHeld[1])>=LAT_WALL-.75&&Math.sign(wallHeld[1])===Math.sign(lat))lng=wallHeld[0];wallHeld=[lng,lat];
+    return {center:lat===c.lat&&lng===c.lng?c:new ml.LngLat(lng,lat),zoom:clamp(z,minMapZoom(lat),live.getMaxZoom())};});
     live.getCanvas().addEventListener('webglcontextlost',e=>{e.preventDefault();failLive('Graphics context lost');},{once:true});
    // Source readiness alone can be true after an error. Count actual tile loads.
    live.on('sourcedata',e=>{

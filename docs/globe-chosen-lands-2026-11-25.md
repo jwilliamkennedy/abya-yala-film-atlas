@@ -173,4 +173,5 @@ John: "Little jumpy in the poles when moving around." Reproduced on the live bet
 - Local note: the sandbox's software renderer now and then loses its graphics context ("Graphics context lost" in `AtlasGlobe.liveFailure`); the globe then falls back to the plain canvas, as designed.
 - `globe.js?v=60-plate`; a check in `tools/qa/globe-discovery.py`.
 - **Shared views (v61).** The first push converted an arriving `at=` zoom by the old rule, so a shared view reopened 2% larger; Globe browser compatibility caught it on four of its jobs. The arrival now uses the same rule, and a view saved beyond 79 degrees opens at the limit.
+- **Pushing against the limit (v62).** On the live beta a drag held against the limit still swung the Earth round the pole (91 W to 141 E over three drags). While a drag is under way the longitude is now held there too, so the Earth rests in place; a sideways drag along the limit still turns it.
 
