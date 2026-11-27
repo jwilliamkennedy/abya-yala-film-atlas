@@ -2,8 +2,8 @@
  "title": "Indigenous Cinema Atlas · film facets",
  "generated": "2026-11-27",
  "license": "See data.html",
- "films_on_public_map": 3296,
- "film_entries": 3296,
+ "films_on_public_map": 3309,
+ "film_entries": 3309,
  "published_field_conflicts": {
   "SA50-20261014-59f87a2e3ce5-WORK-01": [
    "themes"
@@ -283,7 +283,7 @@
     "note": "Inuktitut in Canadian credits usually names the eastern variety",
     "region": "North America",
     "region_basis": "Glottolog countries",
-    "films": 21
+    "films": 22
    },
    {
     "label": "Iñupiaq",
@@ -465,7 +465,7 @@
     "note": "",
     "region": "",
     "region_basis": "",
-    "films": 179
+    "films": 180
    },
    {
     "label": "Spanish",
@@ -479,7 +479,7 @@
     "note": "",
     "region": "",
     "region_basis": "",
-    "films": 58
+    "films": 60
    },
    {
     "label": "Portuguese",
@@ -507,7 +507,7 @@
     "note": "",
     "region": "",
     "region_basis": "",
-    "films": 14
+    "films": 15
    },
    {
     "label": "Vietnamese",
@@ -549,7 +549,7 @@
     "note": "",
     "region": "South America",
     "region_basis": "Glottolog countries",
-    "films": 10
+    "films": 12
    },
    {
     "label": "Ika (Arhuaco)",
@@ -15878,6 +15878,107 @@
    "form": "Animation",
    "length": null
   },
+  "FILM-0112": {
+   "title": "Mapu Rakiduam - La Otra Mirada / The Other View",
+   "year": 2000,
+   "makers": [
+    {
+     "id": "DIR-0172",
+     "name": "Freddy Treuquil"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Collective and Community Media",
+    "Self-Representation and Countering Stereotypes"
+   ],
+   "primary_theme": "Collective and Community Media",
+   "families": [
+    "Expression and Representation"
+   ],
+   "form": null,
+   "length": "Short"
+  },
+  "Q20261126-143-F1": {
+   "title": "Leufu",
+   "year": 2010,
+   "makers": [
+    {
+     "id": "DIR-0172",
+     "name": "Freddy Treuquil"
+    }
+   ],
+   "languages": [
+    {
+     "label": "Mapudungun",
+     "as_credited": "Mapudungun",
+     "glottocode": "mapu1245",
+     "iso639_3": "arn",
+     "match": "exact",
+     "indigenous": true,
+     "source": "https://cinechile.cl/pelicula/leufu/"
+    },
+    {
+     "label": "Spanish",
+     "as_credited": "Spanish",
+     "glottocode": "stan1288",
+     "iso639_3": "spa",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://cinechile.cl/pelicula/leufu/"
+    }
+   ],
+   "themes": [
+    "Land Defense",
+    "Water",
+    "More-than-Human Relations"
+   ],
+   "primary_theme": "Land Defense",
+   "families": [
+    "Land and Environment"
+   ],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "Q20261126-144-F1": {
+   "title": "Newen",
+   "year": 2004,
+   "makers": [
+    {
+     "id": "DIR-0172",
+     "name": "Freddy Treuquil"
+    }
+   ],
+   "languages": [
+    {
+     "label": "Mapudungun",
+     "as_credited": "Mapudungun",
+     "glottocode": "mapu1245",
+     "iso639_3": "arn",
+     "match": "exact",
+     "indigenous": true,
+     "source": "https://www.teseopress.com/geopoeticafilmicaenwallmapu/chapter/intermedialidad-y-mapuzungun-en-el-audiovisual-mapuche/"
+    },
+    {
+     "label": "Spanish",
+     "as_credited": "Spanish",
+     "glottocode": "stan1288",
+     "iso639_3": "spa",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://www.teseopress.com/geopoeticafilmicaenwallmapu/chapter/intermedialidad-y-mapuzungun-en-el-audiovisual-mapuche/"
+    }
+   ],
+   "themes": [
+    "Music and Performance"
+   ],
+   "primary_theme": "Music and Performance",
+   "families": [
+    "Expression and Representation"
+   ],
+   "form": "Music Video",
+   "length": "Short"
+  },
   "FILM-0113": {
    "title": "Punalka",
    "year": 1995,
@@ -17898,7 +17999,7 @@
   },
   "Q20261112-09-F1": {
    "title": "Dueto Charanda",
-   "year": null,
+   "year": 2025,
    "makers": [
     {
      "id": "DIR-0213",
@@ -17906,9 +18007,15 @@
     }
    ],
    "languages": [],
-   "themes": [],
-   "primary_theme": null,
-   "families": [],
+   "themes": [
+    "LGBTQIA2S",
+    "Music and Performance"
+   ],
+   "primary_theme": "LGBTQIA2S",
+   "families": [
+    "Expression and Representation",
+    "Lives and Relations"
+   ],
    "form": "Fiction",
    "length": "Short"
   },
@@ -46784,7 +46891,7 @@
   },
   "NEW-08d932a03d50-WORK-1": {
    "title": "Native Horse",
-   "year": null,
+   "year": 2024,
    "makers": [
     {
      "id": "NEW-08d932a03d50",
@@ -69994,6 +70101,216 @@
     "Health and Healing"
    ],
    "primary_theme": "Women and Gender",
+   "families": [
+    "Lives and Relations"
+   ],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "QM-b64977576d-M1": {
+   "title": "Nimik",
+   "year": 2024,
+   "makers": [
+    {
+     "id": "QM-b64977576d",
+     "name": "Laurence Vollant-Vachon"
+    }
+   ],
+   "languages": [],
+   "themes": [
+    "Self-Representation and Countering Stereotypes"
+   ],
+   "primary_theme": "Self-Representation and Countering Stereotypes",
+   "families": [
+    "Expression and Representation"
+   ],
+   "form": "Experimental",
+   "length": "Short"
+  },
+  "Q20261126-28502-F1": {
+   "title": "Déracinée",
+   "year": 2023,
+   "makers": [
+    {
+     "id": "QM-b64977576d",
+     "name": "Laurence Vollant-Vachon"
+    }
+   ],
+   "languages": [
+    {
+     "label": "French",
+     "as_credited": "French",
+     "glottocode": "stan1290",
+     "iso639_3": "fra",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://static1.squarespace.com/static/65b429c4b28b8119c65529e6/t/698bdc0481b4e167d29fdabc/1770773508648/09FEB2026_FILMINISTES_PROGRAMME.pdf"
+    }
+   ],
+   "themes": [
+    "Displacement and Migration",
+    "Health and Healing"
+   ],
+   "primary_theme": "Displacement and Migration",
+   "families": [
+    "Lives and Relations",
+    "Sovereignty and Politics"
+   ],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "QW-WAPI-V275158999": {
+   "title": "Misidjipzin",
+   "year": 2018,
+   "makers": [
+    {
+     "id": "QW-7b032b3e60",
+     "name": "Gracy Ratt"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QW-WAPI-V270671588": {
+   "title": "Names for Snow",
+   "year": 2018,
+   "makers": [
+    {
+     "id": "QW-d20d19b638",
+     "name": "Rebecca Thomassie"
+    }
+   ],
+   "languages": [
+    {
+     "label": "Inuktitut",
+     "as_credited": "Inuktitut",
+     "glottocode": "east2534",
+     "iso639_3": "ike",
+     "match": "probable",
+     "indigenous": true,
+     "source": "https://they-have-to-hear-us.isuma.tv/hai/wapikoni/names-for-snow"
+    }
+   ],
+   "themes": [
+    "Linguistic Preservation",
+    "Elders and Knowledge"
+   ],
+   "primary_theme": "Linguistic Preservation",
+   "families": [
+    "Knowledge and Continuity"
+   ],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "QW-WAPI-V272870235": {
+   "title": "Nikanite",
+   "year": 2018,
+   "makers": [
+    {
+     "id": "QW-16f4794832",
+     "name": "Vicki Aylestock"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QW-WAPI-V282074957": {
+   "title": "Nikussat (Mes Fils)",
+   "year": 2018,
+   "makers": [
+    {
+     "id": "QW-00fa728858",
+     "name": "Lison Mestokosho"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QW-WAPI-V574943315": {
+   "title": "Nâdu",
+   "year": 2019,
+   "makers": [
+    {
+     "id": "QW-ccfd6a0475",
+     "name": "Jarret Twoyoungmen"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": "Documentary",
+   "length": "Short"
+  },
+  "QW-WAPI-V356677917": {
+   "title": "Nimeskanam",
+   "year": 2019,
+   "makers": [
+    {
+     "id": "QW-890a6cae30",
+     "name": "Chantal Niquay"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QW-WAPI-V345034843": {
+   "title": "NON À L'INTIMIDATION",
+   "year": 2019,
+   "makers": [
+    {
+     "id": "QW-c4c61382a0",
+     "name": "Lyne-Sue Kistabish"
+    }
+   ],
+   "languages": [],
+   "themes": [],
+   "primary_theme": null,
+   "families": [],
+   "form": null,
+   "length": null
+  },
+  "QW-WAPI-V345036784": {
+   "title": "The Comeback",
+   "year": 2019,
+   "makers": [
+    {
+     "id": "QW-c4c61382a0",
+     "name": "Lyne-Sue Kistabish"
+    }
+   ],
+   "languages": [
+    {
+     "label": "English",
+     "as_credited": "English",
+     "glottocode": "stan1293",
+     "iso639_3": "eng",
+     "match": "exact",
+     "indigenous": false,
+     "source": "https://ridm.ca/uploads/document/catalogue_ridm_2020_web.pdf"
+    }
+   ],
+   "themes": [
+    "Health and Healing",
+    "Kinship"
+   ],
+   "primary_theme": "Health and Healing",
    "families": [
     "Lives and Relations"
    ],

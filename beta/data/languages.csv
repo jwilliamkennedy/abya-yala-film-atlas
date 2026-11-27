@@ -12,7 +12,7 @@ Diné (Navajo),Diné; Navajo; Diné Bizaad,nava1243,Navajo,language,nav,exact,ye
 Garifuna,,gari1256,Garifuna,language,cab,exact,yes,,Central America and the Caribbean,Glottolog countries,1
 Haida,,haid1248,Haida,family,hai,group,yes,,North America,Glottolog countries,1
 Hän,,hann1241,Han,language,haa,exact,yes,,North America,Glottolog countries,2
-Inuktitut,,east2534,Eastern Canadian Inuktitut,language,ike,probable,yes,Inuktitut in Canadian credits usually names the eastern variety,North America,Glottolog countries,21
+Inuktitut,,east2534,Eastern Canadian Inuktitut,language,ike,probable,yes,Inuktitut in Canadian credits usually names the eastern variety,North America,Glottolog countries,22
 Iñupiaq,Inupiaq,inup1234,Alaskan Inupiaq,family,ipk,group,yes,,North America,Glottolog countries,2
 Kalaallisut,Kalaallisut (Greenlandic); Greenlandic,kala1399,Kalaallisut,language,kal,exact,yes,,North America,Glottolog countries,5
 Kichwa,,colo1257,Colombia-Ecuador Quechua,family,,group,yes,Kichwa names the Ecuadorian Quechua varieties,South America,Glottolog coordinates,11
@@ -25,13 +25,13 @@ Secwépemctsín,Secwepemctsín; Secwepemctsin; Shuswap,shus1248,Shuswap,language
 Taíno,Taíno dialect of Island Arawak Wahiyani,tain1254,Taino,language,tnq,exact,yes,,Central America and the Caribbean,Glottolog countries,1
 Tewa,,tewa1261,Tewa,family,,group,yes,,North America,Glottolog coordinates,1
 Tupí,,,,,,unresolved,yes,Tupí names several Tupian languages; the credit does not say which,South America,"region by hand: no Glottolog code (Tupí, Brazil)",1
-English,,stan1293,English,language,eng,exact,no,,,,179
-Spanish,Español,stan1288,Spanish,language,spa,exact,no,,,,58
+English,,stan1293,English,language,eng,exact,no,,,,180
+Spanish,Español,stan1288,Spanish,language,spa,exact,no,,,,60
 Portuguese,Português,port1283,Portuguese,language,por,exact,no,,,,1
-French,Français,stan1290,French,language,fra,exact,no,,,,14
+French,Français,stan1290,French,language,fra,exact,no,,,,15
 Vietnamese,,viet1252,Vietnamese,language,vie,exact,no,,,,1
 Aymara,Aimara; Aymara,nucl1667,Central-Southern Aymara,family,aym,group,yes,Credits name Aymara without a variety; aym is the ISO macrolanguage code,South America,Glottolog countries,6
-Mapudungun,Mapuche language; la lengua del pueblo mapuche,mapu1245,Mapudungun,language,arn,exact,yes,,South America,Glottolog countries,10
+Mapudungun,Mapuche language; la lengua del pueblo mapuche,mapu1245,Mapudungun,language,arn,exact,yes,,South America,Glottolog countries,12
 Ika (Arhuaco),Arhuaco; Ika; Iku,arhu1242,Arhuaco,language,arh,exact,yes,,South America,Glottolog countries,4
 Me'phaa (Tlapanec),Me’phaa; Me' phaa (Tlapaneco); Tlapanec; Tlapaneco,meph1234,Mephaa,family,,group,yes,Credits name Me'phaa without a variety,Central America and the Caribbean,Glottolog coordinates,1
 Tsotsil (Tzotzil),Tzotzil; Tsotsil,tzot1259,Tzotzil,language,tzo,exact,yes,,Central America and the Caribbean,Glottolog countries,3
