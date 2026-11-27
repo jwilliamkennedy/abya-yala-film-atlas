@@ -172,4 +172,5 @@ John: "Little jumpy in the poles when moving around." Reproduced on the live bet
 - **Not changed:** near 79 degrees a sideways drag still turns the Earth quickly (the grabbed point stays under the pointer, and meridians are close together there), and imagery is coarser toward the poles because the library asks for lower-zoom tiles there.
 - Local note: the sandbox's software renderer now and then loses its graphics context ("Graphics context lost" in `AtlasGlobe.liveFailure`); the globe then falls back to the plain canvas, as designed.
 - `globe.js?v=60-plate`; a check in `tools/qa/globe-discovery.py`.
+- **Shared views (v61).** The first push converted an arriving `at=` zoom by the old rule, so a shared view reopened 2% larger; Globe browser compatibility caught it on four of its jobs. The arrival now uses the same rule, and a view saved beyond 79 degrees opens at the limit.
 
