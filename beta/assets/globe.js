@@ -1073,6 +1073,15 @@ function viewingOf(film){
 }
 function stageFilms(land){return land&&byId.has(land)?beltOrder(rankedFilms(land)):[];}
 function stageEntries(land,film){
+ const cur=collectionState(),reading=currentReadingItem();
+ const browse=citedBrowse?.collection===cur?.id&&citedBrowse?.film===film.id;
+ if(reading?.id===film.id||browse||menuMode==='collection'){
+  const items=reading?.id===film.id?journeyItems():cur?.items.filter(x=>x.type==='film'&&(!browse||citedBrowse.ids.includes(x.id)))||[];
+  if(items.some(x=>x.id===film.id)){
+   const credits=new Map(C().globeCreditIndex().films.map(f=>[f.id,f]));
+   return items.map(x=>({film:credits.get(x.id),land:journeyReference(x)?.id||'',item:x})).filter(x=>x.film);
+  }
+ }
  const reel=themeReel();
  if(reel?.items.some(v=>v.film.id===film.id))return reel.items;
  return stageFilms(land).map(f=>({film:f,land}));
@@ -1083,8 +1092,13 @@ function stageThumb(f){const frame=el('span','globe-stage-thumb'),source=C().sou
 function stageStep(delta,play=false){
  if(!stage)return;const entries=stageEntries(stage.land,stage.film),i=entries.findIndex(v=>v.film.id===stage.film.id);
  if(i<0||entries.length<2)return;const next=entries[(i+delta+entries.length)%entries.length];
- if(next.land!==stage.land){const p=pointById.get(next.land);if(!p)return;openFilmAt(p,next.film);}
- else if(!settled)pendingFilm=next.film.id;
+ if(next.item&&currentReadingItem()?.id===stage.film.id){
+  const j=journeyItems().findIndex(x=>x.id===next.item.id);if(j>=0)readJourneyStep(j);
+ }else{
+  if(next.item){const cur=collectionState();citedBrowse={collection:cur.id,film:next.film.id,ids:entries.map(x=>x.film.id)};}
+  if(next.land&&next.land!==stage.land){const p=pointById.get(next.land);if(!p)return;openFilmAt(p,next.film);}
+  else if(next.land&&!settled)pendingFilm=next.film.id;
+ }
  playerReturn=null;showInStage(next.film,next.land,play);
 }
 function showInStage(film,land,play=false){if(!stage||!globePlayer)return;stage.film=film;stage.land=land;stage.playing=!!play&&viewingOf(film)?.kind==='play';if(land&&featured?.land===land&&featured.film.id!==film.id){pendingFilm=film.id;if(settled){focusKey='';drawEncounter();}}renderStage();}
@@ -1492,7 +1506,8 @@ function retainRelated(seed,land,related){
  drawingLink=true;linkFrom=seed.id;linkTo=related.film.id;connectionDraft=null;collectionNotice='Both films cited. Why do they belong together?';collectionPanelKey='';if(menuMode!=='collection')setMenu('collection');else renderCollection(true);updateCollectButton();$('#globe-link-reason')?.focus({preventScroll:true});renderSoon();
 }
 function collectFilm(film,land){if(!settled||featured?.film.id!==film.id||featured?.land!==land)return;const ok=C().globeCollect(film,land);collectionNotice=ok?'':'Could not add this film.';collectionPanelKey='';updateCollectButton();renderCollection();renderSoon();sync();}
-function openCollected(x){starGroup='';const ref=C().reference(x);if(!ref||!pointById.has(ref.id)){if(menuMode)setMenu('');const exact=C().globeCreditIndex().films.find(f=>f.id===x.id);if(exact)previewFromGlobe(exact,'',null);else{collectionNotice='This film has no current catalogue record.';setMenu('collection');}return;}if(menuMode)setMenu('');clearDiscoveryFilters();gotoLand(ref.id,x.id,true);}
+let citedBrowse=null;
+function openCollected(x){const cur=collectionState(),group=groupedStars().get(starGroup);citedBrowse={collection:cur.id,film:x.id,ids:cur.items.filter(v=>v.type==='film'&&(!group||group.some(g=>g.id===v.id))).map(v=>v.id)};starGroup='';const ref=C().reference(x);if(!ref||!pointById.has(ref.id)){if(menuMode)setMenu('');const exact=C().globeCreditIndex().films.find(f=>f.id===x.id);if(exact)previewFromGlobe(exact,'',null);else{collectionNotice='This film has no current catalogue record.';setMenu('collection');}return;}if(menuMode)setMenu('');clearDiscoveryFilters();gotoLand(ref.id,x.id,true);}
 let readingJourney=null,collectionImageObserver=null;
 const collectionImageFilms=new WeakMap();
 function journeyItems(){const cur=collectionState(),t=store()?.activeThread();return (t?.items||[]).map(id=>cur.items.find(x=>x.id===id)).filter(Boolean);}
@@ -2077,7 +2092,12 @@ function markup(){
  // The same Left/Right controls work on the feature thumbnail and film submenu, not just on its focused thumbnail track.
  $('#globe-encounter').addEventListener('keydown',e=>{
   if(!settled||e.defaultPrevented||e.isComposing||e.altKey||e.ctrlKey||e.metaKey||e.shiftKey||!['ArrowLeft','ArrowRight'].includes(e.key))return;
-  if(!e.target.closest('.globe-featured,.globe-strip-heading,.globe-encounter-heading')||e.target.closest('input,textarea,select,[contenteditable]'))return;
+  if(e.target.closest('input,textarea,select,[contenteditable]'))return;
+  if(e.target.closest('.globe-reading-journey')){
+   const step=e.target.closest('.globe-reading-journey').querySelector('[aria-label^="'+(e.key==='ArrowLeft'?'Previous':'Next')+'"]');
+   if(step&&!step.disabled){e.preventDefault();e.stopPropagation();step.click();}return;
+  }
+  if(!e.target.closest('.globe-featured,.globe-strip-heading,.globe-encounter-heading'))return;
   const track=$('#globe-encounter .globe-strip-track');if(!track)return;
   e.preventDefault();e.stopPropagation();track.dispatchEvent(new KeyboardEvent('keydown',{key:e.key,cancelable:true}));
  });
