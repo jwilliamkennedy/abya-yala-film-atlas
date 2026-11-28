@@ -1285,20 +1285,3 @@ html[data-reading-theme="night"] #atlas-rotational-globe .globe-primary,html[dat
 #atlas-rotational-globe #globe-encounter[data-belt=true][data-reel]:not([data-reel=""]){max-height:min(42%,340px,var(--globe-encounter-room,340px))}
 #atlas-rotational-globe #globe-encounter[data-belt=true][data-reel]:not([data-reel=""]):is([data-expanded=true],:has(.globe-encounter-disclosures>details[open])){max-height:min(70%,570px,var(--globe-encounter-room,570px))}
 
-
-/* Keyboard-first constellation navigation; no new geographic or catalogue state. */
-#globe-collection-panel .globe-collection-heading{position:relative;padding-right:42px}
-#atlas-rotational-globe #globe-collection-panel .globe-collection-close{position:absolute;right:0;top:0;width:34px;min-height:34px;padding:0!important;font-size:20px!important}
-#atlas-rotational-globe .globe-cited-nav{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin:8px 0 3px}
-#atlas-rotational-globe .globe-cited-nav .globe-cited-jump{flex:1 1 auto;text-align:left}
-#atlas-rotational-globe .globe-cited-position{font-variant-numeric:tabular-nums;color:var(--p-muted);white-space:nowrap}
-#atlas-rotational-globe .globe-key-hint{margin:3px 0 7px;color:var(--p-muted);font:500 11px/1.4 var(--ui-sans,system-ui,sans-serif)}
-#atlas-rotational-globe .globe-reading-journey{grid-column:1/-1;border:1px solid var(--p-line);border-radius:8px;padding:7px}
-#atlas-rotational-globe .globe-reading-journey .globe-buttons{display:flex;flex-wrap:wrap;gap:5px}
-#atlas-rotational-globe :is(.globe-reading-journey,.globe-cited-nav button,.globe-collected-item,.globe-related-row button,.globe-section-summary,.globe-search-film):focus-visible{outline:2px solid var(--p-select,#b0852a);outline-offset:-2px}
-#atlas-rotational-globe .globe-reading-journey .globe-key-hint{margin:0}
-@media(pointer:coarse){#atlas-rotational-globe .globe-cited-nav button,#atlas-rotational-globe .globe-reading-journey button{min-height:44px}}
-#atlas-rotational-globe #globe-encounter[data-belt=true][data-collapsed=false]:has(>.globe-reading-journey){grid-template-areas:"head strip" "film strip" "journey journey" "branches branches"}
-#atlas-rotational-globe #globe-encounter[data-belt=true]>.globe-reading-journey{grid-area:journey}
-#atlas-rotational-globe #globe-encounter[data-belt=true][data-single=true]:has(>.globe-reading-journey){grid-template-areas:"head" "film" "journey" "branches"}
-@media(max-width:760px) and (min-height:501px){#atlas-rotational-globe #globe-encounter[data-belt=true][data-collapsed=false]:not([data-single=true]):has(>.globe-reading-journey){grid-template-areas:"head" "strip" "film" "journey" "branches"}}

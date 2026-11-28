@@ -20,8 +20,6 @@ on:
       - 'beta/assets/maplibre/**'
       - 'beta/index.html'
       - 'tools/qa/globe-discovery.py'
-      - 'tools/qa/globe-keyboard.cjs'
-      - 'tools/qa/globe-constellation-keyboard.py'
       - 'tools/qa/atlas-route.cjs'
       - 'tools/qa/atlas-route-browser.py'
       - 'beta/flat.html'
@@ -52,16 +50,10 @@ jobs:
         run: |
           node tools/qa/atlas-route.cjs
           node tools/qa/globe-core.cjs
-          node tools/qa/globe-keyboard.cjs
       - name: Install Chromium
         run: |
           python3 -m pip install -q 'playwright==1.*'
           python3 -m playwright install --with-deps chromium >/dev/null
-      - name: Verify keyboard-first constellation navigation
-        run: |
-          python3 -m http.server 8987 --bind 127.0.0.1 >/tmp/atlas-keyboard.log 2>&1 &
-          sleep 2
-          ATLAS_QA_BASE=http://127.0.0.1:8987/beta/ python3 tools/qa/globe-constellation-keyboard.py
       - name: Verify rotation, thematic camera continuity and return
         run: |
           python3 -m http.server 8985 --bind 127.0.0.1 >/tmp/atlas-globe.log 2>&1 &
